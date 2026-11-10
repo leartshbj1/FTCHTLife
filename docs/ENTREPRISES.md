@@ -26,7 +26,7 @@ Vérification : `python3 tools/validate_entreprises.py`.
 - **Crise de l'année** : environ une chance sur deux par boîte, tirée dans `EntrepriseEvents`. Elle attend la décision
   du joueur dans l'écran Entreprises. Ignorée jusqu'au bilan suivant → l'issue `ignore` s'applique.
 - **Faillite** : trésorerie sous `−30 %` des charges annuelles deux bilans de suite → la boîte ferme, le joueur perd
-  la moitié du trou (caution personnelle) et beaucoup de bonheur. Le joueur peut aussi déposer le bilan lui-même.
+  la moitié du trou (caution personnelle) et beaucoup de bonheur. Le joueur peut aussi fermer sa boîte : à l'amiable s'il reste de l'argent une fois la dette payée, sinon c'est la faillite.
 - **Revente** : une offre par an (valeur × 0,7 à 1,3). La valeur dépend du résultat, du secteur, de la réputation.
 - **Empire** : atteindre le niveau 5 rend le joueur célèbre (« magnat »).
 
@@ -181,5 +181,5 @@ drames d'équipe (le cousin qui pique dans la caisse, la mère qui réorganise t
 5. Optionnel : afficher la crise en attente dès la fin de l'année avec
    `.sheet(item: …) { EntrepriseCriseView(entrepriseId: …) }` (voir `EntrepriseMoteur.criseEnAttente(j)`).
 6. Répercussions : signaux `entreprise_creee`, `entreprise_agrandie`, `entreprise_empire`, `entreprise_vendue`,
-   `entreprise_faillite`, `proche_licencie` (renvoyés dans `EntreprisesEtat.signaux`, à vider par le module répercussions).
+   `entreprise_faillite`, `entreprise_fermee`, `proche_licencie` (renvoyés dans `EntreprisesEtat.signaux`, à vider par le module répercussions).
 7. Mort du joueur : rien à faire, `EntrepriseMoteur.resumeVie(j.entreprises)` donne des lignes pour la nécrologie.
