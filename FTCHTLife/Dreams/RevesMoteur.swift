@@ -86,16 +86,24 @@ enum RevesMoteur {
         let possibles = catalogue.filter { eligible($0, j) && !estRealise($0, j, marques: marques) }
         var choisis: [ReveDefinition] = []
         for niveau in ReveNiveau.allCases {
-            let candidats = possibles.filter { $0.level == niveau && !choisis.contains($0) }
+            let candidats = possibles.filter { $0.level == niveau && compatible($0, choisis) }
             if let r = tirage(candidats) { choisis.append(r) }
         }
         // S'il manque un niveau dans le catalogue, on complète avec n'importe quel rêve.
         while choisis.count < nombreDeReves {
-            let reste = possibles.filter { !choisis.contains($0) }
+            let reste = possibles.filter { compatible($0, choisis) }
             guard let r = tirage(reste) else { break }
             choisis.append(r)
         }
         return choisis.map { ReveActif(id: $0.id) }
+    }
+
+    /// Évite deux rêves identiques ou qui se réalisent avec la même marque (ex. deux « voir la mer »).
+    private static func compatible(_ r: ReveDefinition, _ choisis: [ReveDefinition]) -> Bool {
+        let marques = Set((r.marks ?? []) + [r.id])
+        return !choisis.contains { autre in
+            autre.id == r.id || !marques.isDisjoint(with: (autre.marks ?? []) + [autre.id])
+        }
     }
 
     static func eligible(_ r: ReveDefinition, _ j: Joueur) -> Bool {
