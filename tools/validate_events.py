@@ -22,6 +22,10 @@ def check_effects(e, where, errs):
         elif k not in SPECIAL: errs.append(f"{where}: clé d'effet inconnue {k}")
 def check_text(t, where, errs):
     if not isinstance(t,str) or not t.strip(): errs.append(f"{where}: texte vide"); return
+    m = re.search(r"\b\w*(x|f|er|et|en|on|el)\{e\}", t)
+    if m: errs.append(f"{where}: accord {{e}} incorrect sur « {m.group(0)} » (reformule)")
+    m2 = re.search(r"\{(ami|fratrie|mere|pere|parent|partenaire)\}([^.!?]{0,25})\{e\}", t)
+    if m2 and not re.search(r"\bt'|\bte\b|\btoi\b|\bt’", m2.group(2)): errs.append(f"{where}: {{e}} semble porter sur un autre personnage que le joueur")
     for p in re.findall(r"\{(\w+)\}", t):
         if p not in PH: errs.append(f"{where}: placeholder inconnu {{{p}}}")
 def main():
