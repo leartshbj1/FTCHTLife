@@ -3,6 +3,13 @@ import Foundation
 /// Rejouer avec un de ses enfants après sa mort.
 enum VieGenerations {
 
+    /// Autres modules à transmettre à l'héritier (réputation de la famille…), branché par le moteur :
+    /// `VieGenerations.transmission = { ancien, h in h.reputationFamille = ReputationFamille.transmettre(parent: ancien,
+    ///   etat: ancien.reputationFamille ?? ReputationFamille.aleatoire(), heritier: h);
+    ///   return ReputationFamille.lignesNaissance(h.reputationFamille!, joueur: h) }`
+    /// Renvoie des lignes de journal.
+    static var transmission: ((Joueur, inout Joueur) -> [String])?
+
     static func heritiers(_ j: Joueur) -> [Relation] {
         j.relations.filter { $0.type == .enfant && $0.vivant }.sorted { $0.age > $1.age }
     }
@@ -65,6 +72,10 @@ enum VieGenerations {
         else if ancien.argent < 0 { lignes.append("Tu hérites… de rien. Et heureusement, les dettes ne se transmettent pas ici.") }
         lignes.append(["Tu as aussi hérité de son rire bizarre.", "Tu as aussi hérité de sa collection de cuillères souvenirs.", "Tu as aussi hérité de son nez. Désolé."].auHasard(""))
         j.journal = [Annee(age: j.age, lignes: lignes)]
+        if let t = transmission {
+            let plus = t(ancien, &j)
+            j.journal[0].lignes += plus
+        }
         return j
     }
 }
