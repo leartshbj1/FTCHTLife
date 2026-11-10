@@ -1,0 +1,659 @@
+[
+  {
+    "id": "ani_sante_0001",
+    "weight": 3,
+    "malade": true,
+    "minAge": 18,
+    "text": "{animal} est malade. Le vétérinaire propose un traitement complet à 900 euros, « hors options ».",
+    "choices": [
+      { "label": "Payer le traitement",
+        "outcomes": [
+          { "chance": 0.8, "text": "Trois semaines de cachets cachés dans la nourriture. {animal} les a tous recrachés, sauf le dernier. Guérison quand même.", "effects": { "money": -900, "happiness": 4 }, "pet": { "cure": true, "bond": 3 } },
+          { "chance": 0.2, "text": "Le traitement n'a rien changé. Le vétérinaire parle maintenant d'un « traitement complet plus ».", "effects": { "money": -900, "happiness": -4 }, "pet": { "health": -5 } }
+        ] },
+      { "label": "Chercher moins cher",
+        "outcomes": [
+          { "chance": 0.4, "text": "Un vétérinaire de campagne a soigné {animal} pour 150 euros et une tarte aux pommes.", "effects": { "money": -150, "happiness": 3 }, "pet": { "cure": true } },
+          { "chance": 0.6, "text": "Le vétérinaire au rabais tenait son diplôme d'un site Internet. {animal} va un peu plus mal.", "effects": { "money": -100, "happiness": -3 }, "pet": { "health": -8 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0002",
+    "weight": 2,
+    "malade": true,
+    "text": "Ta grand-tante jure qu'une tisane au thym guérit tout, y compris {le_espece}.",
+    "choices": [
+      { "label": "Essayer la tisane",
+        "outcomes": [
+          { "chance": 0.2, "text": "Contre toute attente, {animal} va mieux. Ta grand-tante parle d'ouvrir un cabinet.", "effects": { "happiness": 3 }, "pet": { "cure": true } },
+          { "chance": 0.8, "text": "{animal} a refusé la tisane, l'a renversée, puis a empiré, par principe.", "effects": { "happiness": -2 }, "pet": { "health": -8 } }
+        ] },
+      { "label": "Aller chez le vétérinaire",
+        "outcomes": [
+          { "chance": 1, "text": "Le vétérinaire a soigné {animal} en dix minutes et t'a conseillé d'écouter un peu moins ta famille.", "effects": { "money": -200 }, "pet": { "cure": true } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0003",
+    "weight": 2,
+    "malade": true,
+    "text": "Un forum en ligne affirme qu'il suffit de frotter {animal} avec de l'ail pour chasser la maladie.",
+    "choices": [
+      { "label": "Suivre le forum",
+        "outcomes": [
+          { "chance": 0.85, "text": "{animal} sent l'ail, va plus mal et t'en veut. Le forum a supprimé le message.", "effects": { "happiness": -3 }, "pet": { "health": -10, "bond": -4 } },
+          { "chance": 0.15, "text": "Miracle : {animal} va mieux. Personne ne comprend pourquoi, surtout pas le forum.", "effects": { "happiness": 3 }, "pet": { "cure": true } }
+        ] },
+      { "label": "Fermer l'ordinateur",
+        "outcomes": [
+          { "chance": 1, "text": "Sage décision. Le vétérinaire t'a facturé 180 euros et un regard plein de compassion.", "effects": { "money": -180 }, "pet": { "cure": true } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0004",
+    "weight": 2,
+    "malade": true,
+    "text": "Tu as caché le médicament de {animal} dans un morceau de fromage. {animal} a mangé le fromage et t'a rendu le cachet, propre.",
+    "effects": { "happiness": -1 },
+    "pet": { "health": -2 }
+  },
+  {
+    "id": "ani_sante_0005",
+    "weight": 2,
+    "malade": true,
+    "text": "{animal} refuse catégoriquement de prendre ses médicaments.",
+    "choices": [
+      { "label": "Ruser",
+        "outcomes": [
+          { "chance": 0.6, "text": "Deux heures de négociation et une boulette de jambon plus tard, le médicament est passé. Tu as besoin d'une sieste.", "effects": { "happiness": -1 }, "pet": { "health": 10 } },
+          { "chance": 0.4, "text": "{animal} a déjoué toutes tes ruses. Tu as un pansement au doigt et plus aucune dignité.", "effects": { "health": -2 }, "pet": { "health": -3 } }
+        ] },
+      { "label": "Demander au vétérinaire",
+        "outcomes": [
+          { "chance": 1, "text": "Le vétérinaire l'a fait en trois secondes, en sifflotant. Facture : 60 euros. Humiliation : offerte.", "effects": { "money": -60 }, "pet": { "health": 10 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0006",
+    "weight": 1,
+    "malade": true,
+    "text": "{animal} s'est réveillé{a} un matin en pleine forme, sans explication. Le vétérinaire a demandé à garder le dossier pour un colloque.",
+    "effects": { "happiness": 6 },
+    "pet": { "cure": true }
+  },
+  {
+    "id": "ani_sante_0007",
+    "weight": 2,
+    "malade": true,
+    "minAge": 18,
+    "text": "Le vétérinaire recommande une opération pour {animal}. Coût : 1 500 euros. Il a prononcé le chiffre très vite.",
+    "choices": [
+      { "label": "Opérer",
+        "outcomes": [
+          { "chance": 0.85, "text": "Opération réussie. {animal} exhibe son bandage avec la fierté d'un vétéran.", "effects": { "money": -1500, "happiness": 5 }, "pet": { "cure": true, "bond": 4 } },
+          { "chance": 0.15, "text": "L'opération s'est bien passée, mais {animal} a fait une rechute. Toi aussi, en lisant la facture.", "effects": { "money": -1500, "happiness": -5 }, "pet": { "health": -5 } }
+        ] },
+      { "label": "Attendre et voir",
+        "outcomes": [
+          { "chance": 0.4, "text": "{animal} a guéri tout{a} seul{a}. Par fierté, sans doute.", "effects": { "happiness": 4 }, "pet": { "cure": true } },
+          { "chance": 0.6, "text": "L'état de {animal} s'aggrave. Le vétérinaire a soupiré en rouvrant ton dossier.", "effects": { "happiness": -4 }, "pet": { "health": -12 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0008",
+    "weight": 2,
+    "malade": true,
+    "minAge": 6,
+    "maxAge": 17,
+    "text": "{animal} est malade et le traitement coûte cher. Il va falloir convaincre tes parents.",
+    "choices": [
+      { "label": "Casser ta tirelire",
+        "outcomes": [
+          { "chance": 1, "text": "Ta tirelire contenait 23 euros et un bouton. Tes parents, émus, ont payé le reste.", "effects": { "money": -23, "happiness": 4, "relationships": { "parent": 3 } }, "pet": { "cure": true } }
+        ] },
+      { "label": "Préparer un exposé avec graphiques",
+        "outcomes": [
+          { "chance": 0.6, "text": "Tes parents ont été convaincus par la « courbe de tristesse ». {animal} est soigné{a}.", "effects": { "smarts": 2, "relationships": { "parent": 2 } }, "pet": { "cure": true } },
+          { "chance": 0.4, "text": "Tes parents ont proposé « d'attendre un peu ». Tu ne leur adresses plus la parole jusqu'à mardi.", "effects": { "happiness": -4, "relationships": { "parent": -4 } }, "pet": { "health": -5 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0009",
+    "weight": 2,
+    "malade": true,
+    "minAge": 18,
+    "text": "Le vétérinaire a gardé {animal} en observation pour la nuit. Tu as dormi dans la salle d'attente, à côté d'un perroquet qui connaissait des gros mots.",
+    "effects": { "money": -300 },
+    "pet": { "health": 15, "bond": 4 }
+  },
+  {
+    "id": "ani_sante_0010",
+    "weight": 1,
+    "malade": true,
+    "minAge": 18,
+    "text": "{animal} est très faible. Le vétérinaire te prend à part, l'air grave.",
+    "choices": [
+      { "label": "Tout tenter",
+        "outcomes": [
+          { "chance": 0.5, "text": "Une semaine de soins intensifs. {animal} s'en est sorti{a}, avec un appétit de revenant.", "effects": { "money": -1200, "happiness": 6 }, "pet": { "cure": true, "bond": 5 } },
+          { "chance": 0.5, "text": "Malgré tous les soins, {animal} est parti{a} doucement, après avoir réclamé une dernière friandise. Le vétérinaire a pleuré aussi. Ça, il ne l'a pas facturé.", "effects": { "money": -1200, "happiness": -18 }, "pet": { "death": "paisiblement, après une dernière friandise" } }
+        ] },
+      { "label": "Ramener {animal} à la maison",
+        "outcomes": [
+          { "chance": 0.6, "text": "À la maison, entouré{a} des siens, {animal} a repris des forces. Personne ne sait comment. Personne ne pose de questions.", "effects": { "happiness": 6 }, "pet": { "health": 15 } },
+          { "chance": 0.4, "text": "{animal} a passé ses derniers jours à sa place préférée, puis s'est endormi{a} pour de bon. La maison est d'un calme qu'{il} aurait détesté.", "effects": { "happiness": -18 }, "pet": { "death": "à la maison, à sa place préférée" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0011",
+    "weight": 2,
+    "malade": true,
+    "text": "Le traitement de {animal} dure deux semaines. {Il} te tient pour personnellement responsable de chaque cachet.",
+    "choices": [
+      { "label": "Tenir bon jusqu'au bout",
+        "outcomes": [
+          { "chance": 0.8, "text": "Deux semaines de lutte. {animal} est guéri{a}, et te boude encore un peu, pour le principe.", "effects": { "happiness": 3 }, "pet": { "cure": true, "bond": -3 } },
+          { "chance": 0.2, "text": "Au dixième jour, {animal} a trouvé ta cachette à médicaments et l'a vidée. Tout est à refaire.", "effects": { "money": -100, "happiness": -2 }, "pet": { "health": -3 } }
+        ] },
+      { "label": "Arrêter le traitement plus tôt",
+        "outcomes": [
+          { "chance": 0.4, "text": "Coup de chance : {animal} était déjà guéri{a}. Le reste des cachets servira de presse-papiers.", "pet": { "cure": true } },
+          { "chance": 0.6, "text": "La maladie a profité de l'entracte pour revenir en force.", "effects": { "happiness": -3 }, "pet": { "health": -10 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0012",
+    "weight": 2,
+    "malade": true,
+    "minAge": 18,
+    "text": "La facture du vétérinaire est arrivée : 1 100 euros. Tu as relu le chiffre trois fois. Il n'a pas changé.",
+    "choices": [
+      { "label": "Payer sans broncher",
+        "outcomes": [
+          { "chance": 1, "text": "Tu as payé. {animal} va mieux. Ton compte en banque, beaucoup moins.", "effects": { "money": -1100 }, "pet": { "cure": true } }
+        ] },
+      { "label": "Négocier",
+        "outcomes": [
+          { "chance": 0.5, "text": "Le vétérinaire a accepté une petite remise en échange d'un compliment sur sa moustache. {animal} est soigné{a}.", "effects": { "money": -950, "happiness": 2 }, "pet": { "cure": true } },
+          { "chance": 0.5, "text": "Le vétérinaire ne négocie pas. Il a même ajouté une ligne « temps de discussion ».", "effects": { "money": -1200, "happiness": -3 }, "pet": { "cure": true } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0013",
+    "weight": 2,
+    "malade": true,
+    "conditions": { "tags": ["partner"] },
+    "text": "{partenaire} a passé la nuit à veiller {animal}, une bouillotte sur les genoux. Au matin, tu les as retrouvés endormis l'un contre l'autre. Tu as pris une photo. Tu la gardes pour les disputes.",
+    "effects": { "happiness": 4, "relationships": { "partner": 6 } },
+    "pet": { "health": 5 }
+  },
+  {
+    "id": "ani_sante_0014",
+    "weight": 2,
+    "malade": true,
+    "conditions": { "tags": ["children"] },
+    "text": "Tes enfants veulent soigner {animal} avec leur mallette de docteur en plastique.",
+    "choices": [
+      { "label": "Les laisser jouer aux docteurs",
+        "outcomes": [
+          { "chance": 0.3, "text": "{animal} va mieux. Tes enfants veulent devenir vétérinaires. Tu calcules déjà le prix des études.", "effects": { "relationships": { "child": 5 } }, "pet": { "cure": true } },
+          { "chance": 0.7, "text": "{animal} est couvert{a} de pansements colorés, mais toujours pas guéri{a}.", "effects": { "happiness": 2, "relationships": { "child": 3 } }, "pet": { "health": -2 } }
+        ] },
+      { "label": "Appeler un vrai vétérinaire",
+        "outcomes": [
+          { "chance": 1, "text": "Le vétérinaire a pris 150 euros. Tes enfants ont réclamé leur part pour la consultation préliminaire.", "effects": { "money": -150, "happiness": 2 }, "pet": { "cure": true } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0015",
+    "weight": 2,
+    "malade": true,
+    "text": "Pendant sa convalescence, {animal} a pris l'habitude d'être servi{a} au lit. Maintenant guéri{a}, {il} refuse de reprendre une vie normale.",
+    "effects": { "happiness": 1 },
+    "pet": { "cure": true, "bond": 3 }
+  },
+  {
+    "id": "ani_sante_0016",
+    "weight": 3,
+    "vieux": true,
+    "text": "{animal} ralentit. {Il} met désormais dix minutes à faire ce qu'{il} faisait en dix secondes. Avec la même conviction.",
+    "effects": { "happiness": 1 },
+    "pet": { "health": -2 }
+  },
+  {
+    "id": "ani_sante_0017",
+    "weight": 2,
+    "vieux": true,
+    "text": "{animal} grisonne. Enfin, l'équivalent pour {le_espece}. Tu as remarqué. {Il} a remarqué que tu as remarqué.",
+    "choices": [
+      { "label": "Offrir une retraite dorée",
+        "outcomes": [
+          { "chance": 1, "text": "Coussin chauffant, nourriture premium, musique classique. {animal} vit désormais comme un rentier.", "effects": { "money": -200, "happiness": 3 }, "pet": { "health": 5, "bond": 4 } }
+        ] },
+      { "label": "Ne rien dire",
+        "outcomes": [
+          { "chance": 0.7, "text": "{animal} apprécie qu'on ne parle pas de son âge. C'est une question de dignité.", "pet": { "bond": 2 } },
+          { "chance": 0.3, "text": "Ton silence a été interprété comme de l'indifférence. {animal} a boudé une semaine, à son rythme, donc très lentement.", "pet": { "bond": -2 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0018",
+    "weight": 2,
+    "vieux": true,
+    "unique": true,
+    "text": "Aujourd'hui, {animal} a l'air en pleine forme, comme saisi{a} d'un dernier sursaut de jeunesse.",
+    "choices": [
+      { "label": "En faire la plus belle journée",
+        "outcomes": [
+          { "chance": 1, "text": "Ses plats préférés, ses endroits préférés, toi. Le soir, {animal} s'est endormi{a} comblé{a}. Toi aussi.", "effects": { "happiness": 8, "money": -80 }, "pet": { "bond": 8 } }
+        ] },
+      { "label": "Le laisser profiter au calme",
+        "outcomes": [
+          { "chance": 1, "text": "{animal} a passé la journée à observer le monde par la fenêtre, avec la sagesse des anciens et l'œil d'un critique.", "effects": { "happiness": 3 }, "pet": { "health": 3 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0019",
+    "weight": 1,
+    "vieux": true,
+    "text": "{animal} s'est endormi{a} au soleil cet après-midi et ne s'est pas réveillé{a}. {Il} avait l'air de quelqu'un qui vient de gagner une discussion.",
+    "effects": { "happiness": -15 },
+    "pet": { "death": "dans son sommeil, au meilleur endroit du salon" }
+  },
+  {
+    "id": "ani_sante_0020",
+    "weight": 2,
+    "vieux": true,
+    "minAge": 18,
+    "text": "Le vétérinaire suggère une cure de vitamines pour seniors. 300 euros. La boîte montre un animal qui fait du ski.",
+    "choices": [
+      { "label": "Acheter la cure",
+        "outcomes": [
+          { "chance": 0.7, "text": "{animal} a retrouvé de la vigueur. Hier, {il} a même eu l'air surpris{a} par quelque chose.", "effects": { "money": -300, "happiness": 3 }, "pet": { "health": 10 } },
+          { "chance": 0.3, "text": "Les vitamines n'ont rien changé, sauf la couleur de {animal}, désormais légèrement orangée.", "effects": { "money": -300, "happiness": -1 }, "pet": { "health": 2 } }
+        ] },
+      { "label": "Miser sur l'amour",
+        "outcomes": [
+          { "chance": 1, "text": "Les câlins ne sont pas remboursés par la Sécurité sociale, mais ils font un peu effet.", "effects": { "happiness": 2 }, "pet": { "bond": 5, "health": 2 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0021",
+    "weight": 2,
+    "vieux": true,
+    "text": "{animal} oublie parfois où {il} va. {Il} s'arrête au milieu du salon, réfléchit, puis s'installe là. C'est une stratégie.",
+    "effects": { "happiness": 2 },
+    "pet": { "health": -3 }
+  },
+  {
+    "id": "ani_sante_0022",
+    "weight": 2,
+    "vieux": true,
+    "conditions": { "tags": ["children"] },
+    "text": "Tes enfants ont remarqué que {animal} vieillit. Ils posent des questions difficiles au petit déjeuner.",
+    "choices": [
+      { "label": "Leur expliquer avec douceur",
+        "outcomes": [
+          { "chance": 1, "text": "Vous avez parlé de la vie, du temps, et des animaux qui deviennent des étoiles. Le plus jeune a demandé laquelle.", "effects": { "happiness": 3, "relationships": { "child": 5 } } }
+        ] },
+      { "label": "Changer de sujet",
+        "outcomes": [
+          { "chance": 1, "text": "Tes enfants sont allés poser leurs questions directement à {animal}, qui a gardé le silence avec beaucoup d'élégance.", "effects": { "relationships": { "child": -1 } }, "pet": { "bond": 2 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0023",
+    "weight": 1,
+    "vieux": true,
+    "text": "{animal} est très âgé{a}. Le vétérinaire dit qu'il ne reste plus beaucoup de temps.",
+    "choices": [
+      { "label": "Profiter de chaque jour",
+        "outcomes": [
+          { "chance": 0.6, "text": "Des semaines tranquilles. {animal} a même retrouvé un peu d'entrain, sans doute pour te faire plaisir.", "effects": { "happiness": 4 }, "pet": { "health": 5, "bond": 6 } },
+          { "chance": 0.4, "text": "Après de belles semaines, {animal} est parti{a} tout doucement, un soir, juste après ton retour. Tu jurerais qu'{il} t'attendait.", "effects": { "happiness": -18 }, "pet": { "death": "paisiblement, juste après ton retour" } }
+        ] },
+      { "label": "Écrire une liste de choses à faire ensemble",
+        "outcomes": [
+          { "chance": 1, "text": "La liste comptait douze points. Vous en avez fait onze. Le douzième, « apprendre la valse », restera un mystère.", "effects": { "happiness": 7 }, "pet": { "bond": 6 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0024",
+    "weight": 2,
+    "vieux": true,
+    "text": "Le vétérinaire a qualifié {animal} de « patient remarquable pour son âge ». {animal} a très mal pris le « pour son âge ».",
+    "effects": { "money": -60, "happiness": 2 },
+    "pet": { "health": 3 }
+  },
+  {
+    "id": "ani_sante_0025",
+    "weight": 2,
+    "vieux": true,
+    "minLien": 80,
+    "text": "{animal} te suit des yeux en permanence. À son âge, chaque minute compte, et {il} les veut toutes avec toi.",
+    "effects": { "happiness": 5 },
+    "pet": { "bond": 3 }
+  },
+  {
+    "id": "ani_sante_0026",
+    "weight": 2,
+    "vieux": true,
+    "text": "{animal} n'arrive plus à atteindre son endroit préféré. {Il} le regarde de loin, avec nostalgie.",
+    "choices": [
+      { "label": "Construire une rampe",
+        "outcomes": [
+          { "chance": 0.7, "text": "La rampe est moche, mais {animal} l'emprunte avec la majesté d'un monarque.", "effects": { "money": -60, "happiness": 3 }, "pet": { "bond": 5 } },
+          { "chance": 0.3, "text": "{animal} ignore la rampe. {Il} préfère être porté{a}, ce qui était sans doute le plan depuis le début.", "effects": { "money": -60 }, "pet": { "bond": 3 } }
+        ] },
+      { "label": "Déplacer l'endroit préféré",
+        "outcomes": [
+          { "chance": 1, "text": "Tu as tout déplacé au ras du sol. {animal} s'est aussitôt choisi un nouvel endroit préféré, plus haut.", "effects": { "happiness": -1 }, "pet": { "bond": 1 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0027",
+    "weight": 1,
+    "vieux": true,
+    "text": "{animal} est parti{a} cette nuit, à un âge record. Le vétérinaire veut écrire un article. Tu as accepté, à condition qu'il soit élogieux.",
+    "effects": { "happiness": -15 },
+    "pet": { "death": "de vieillesse, à un âge qui force le respect" }
+  },
+  {
+    "id": "ani_sante_0028",
+    "weight": 2,
+    "vieux": true,
+    "text": "Un photographe propose une séance « souvenirs » pour {animal}. 250 euros.",
+    "choices": [
+      { "label": "Accepter",
+        "outcomes": [
+          { "chance": 1, "text": "Les photos sont magnifiques. Sur l'une d'elles, {animal} te regarde. Tu l'as fait agrandir en poster.", "effects": { "money": -250, "happiness": 6 }, "pet": { "bond": 2 } }
+        ] },
+      { "label": "Faire les photos toi-même",
+        "outcomes": [
+          { "chance": 0.5, "text": "Sur trois cents photos, deux cent quatre-vingt-dix-huit sont floues. Les deux autres sont les plus belles du monde.", "effects": { "happiness": 5 } },
+          { "chance": 0.5, "text": "{animal} a dormi pendant toute la séance. Tu as maintenant un album intitulé « Sieste, volume 1 ».", "effects": { "happiness": 3 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0029",
+    "weight": 2,
+    "vieux": true,
+    "text": "{animal} entend de moins en moins bien. Tu l'appelles depuis dix minutes.",
+    "choices": [
+      { "label": "Parler plus fort",
+        "outcomes": [
+          { "chance": 1, "text": "{animal} ne réagit toujours pas. Les voisins, si.", "effects": { "happiness": -1 } }
+        ] },
+      { "label": "Secouer le paquet de friandises",
+        "outcomes": [
+          { "chance": 1, "text": "Entendu à trois pièces de distance. L'ouïe de {animal} n'est pas défaillante, elle est sélective.", "effects": { "happiness": 3 }, "pet": { "bond": 3 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0030",
+    "weight": 2,
+    "vieux": true,
+    "maxLien": 30,
+    "text": "Un soir, {animal}, qui t'a ignoré{e} toute sa vie, est venu{a} s'installer près de toi. Juste un moment. Tu n'as pas osé bouger.",
+    "effects": { "happiness": 6 },
+    "pet": { "bond": 10 }
+  },
+  {
+    "id": "ani_sante_0031",
+    "weight": 2,
+    "vieux": true,
+    "unique": true,
+    "minAgeAnimal": 8,
+    "minAge": 12,
+    "maxAge": 25,
+    "text": "{animal} était là pour tes premiers pas. Aujourd'hui, c'est toi qui l'aides à faire les siens.",
+    "effects": { "happiness": 4 },
+    "pet": { "bond": 5 }
+  },
+  {
+    "id": "ani_sante_0032",
+    "weight": 3,
+    "malade": false,
+    "text": "{animal} a l'air barbouillé{a} depuis le repas de famille. Quelqu'un lui a donné du foie gras.",
+    "choices": [
+      { "label": "Filer chez le vétérinaire",
+        "outcomes": [
+          { "chance": 0.7, "text": "Pansement gastrique et leçon de morale. {animal} va mieux. Tes invités sont priés de se tenir.", "effects": { "money": -90 }, "pet": { "health": -2 } },
+          { "chance": 0.3, "text": "Diagnostic : une gastro-entérite de luxe. Le traitement est à la hauteur du diagnostic.", "effects": { "money": -350, "happiness": -2 }, "pet": { "sick": "une gastro-entérite de luxe" } }
+        ] },
+      { "label": "Attendre que ça passe",
+        "outcomes": [
+          { "chance": 0.5, "text": "Ça a fini par passer. Ton tapis, lui, ne s'en remettra jamais.", "effects": { "money": -80 } },
+          { "chance": 0.5, "text": "Ça n'est pas passé. {animal} couve une gastro-entérite de luxe, avec supplément foie gras.", "effects": { "happiness": -3 }, "pet": { "sick": "une gastro-entérite de luxe" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0033",
+    "weight": 2,
+    "malade": false,
+    "text": "{animal} a attrapé ton rhume. {Il} le vit avec beaucoup plus de dramatisme que toi.",
+    "effects": { "happiness": -1 },
+    "pet": { "sick": "un rhume très théâtral" }
+  },
+  {
+    "id": "ani_sante_0034",
+    "weight": 2,
+    "malade": false,
+    "text": "{animal} a tenté une manœuvre ambitieuse dans le salon. La manœuvre a échoué. La lampe aussi.",
+    "choices": [
+      { "label": "Consulter le vétérinaire",
+        "outcomes": [
+          { "chance": 0.7, "text": "Une petite foulure, rien de grave. Le vétérinaire a noté « excès de confiance » dans le dossier.", "effects": { "money": -150 }, "pet": { "health": -5 } },
+          { "chance": 0.3, "text": "Plus de peur que de mal. {animal} a surtout blessé son ego. La lampe, elle, est irrécupérable.", "effects": { "money": -100 } }
+        ] },
+      { "label": "Surveiller à la maison",
+        "outcomes": [
+          { "chance": 0.6, "text": "{animal} s'est remis{a} en deux jours et a retenté la manœuvre dès le troisième.", "pet": { "health": -3 } },
+          { "chance": 0.4, "text": "Ça ne s'arrange pas. {animal} traîne une vilaine entorse, et une rancune tenace.", "effects": { "happiness": -3 }, "pet": { "sick": "une entorse mal soignée", "bond": -3 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0035",
+    "weight": 2,
+    "malade": false,
+    "text": "Le vétérinaire déclare que {animal} est en surpoids et impose un régime strict. {animal} a entendu le mot « régime ».",
+    "choices": [
+      { "label": "Appliquer le régime",
+        "outcomes": [
+          { "chance": 0.6, "text": "{animal} a perdu du poids, et beaucoup de respect pour toi. Mais {il} est en pleine forme.", "pet": { "health": 10, "bond": -5 } },
+          { "chance": 0.4, "text": "{animal} a contourné le régime en se faisant nourrir par les voisins. Tu as découvert le réseau trop tard.", "effects": { "happiness": -2 }, "pet": { "health": -2 } }
+        ] },
+      { "label": "Faire le régime ensemble",
+        "outcomes": [
+          { "chance": 1, "text": "Vous avez maigri tous les deux. Vous êtes aussi de mauvaise humeur tous les deux.", "effects": { "health": 5, "happiness": -2 }, "pet": { "health": 8 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0036",
+    "weight": 2,
+    "malade": false,
+    "minAge": 18,
+    "text": "Le vétérinaire recommande une petite opération préventive pour {animal}. 600 euros.",
+    "choices": [
+      { "label": "Accepter",
+        "outcomes": [
+          { "chance": 0.9, "text": "Tout s'est bien passé. {animal} s'est réveillé{a} de l'anesthésie avec l'air de quelqu'un qui a vu des choses.", "effects": { "money": -600 }, "pet": { "health": 10 } },
+          { "chance": 0.1, "text": "L'opération a révélé un souci que personne n'avait vu. Bonne nouvelle : il est réglé. Mauvaise : la facture aussi a grossi.", "effects": { "money": -1000, "happiness": 2 }, "pet": { "health": 15 } }
+        ] },
+      { "label": "Refuser",
+        "outcomes": [
+          { "chance": 0.7, "text": "Il ne s'est rien passé. Le vétérinaire te salue désormais avec une froideur clinique.", "effects": { "happiness": -1 } },
+          { "chance": 0.3, "text": "Le petit souci est devenu un vrai problème. Le vétérinaire n'a pas dit « je vous l'avais dit ». Il l'a pensé très fort.", "effects": { "happiness": -4 }, "pet": { "sick": "une infection qu'on aurait pu éviter" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0037",
+    "weight": 2,
+    "malade": false,
+    "text": "Bilan annuel chez le vétérinaire : {animal} est en pleine forme. Le vétérinaire a l'air presque déçu.",
+    "effects": { "money": -60, "happiness": 3 },
+    "pet": { "health": 3 }
+  },
+  {
+    "id": "ani_sante_0038",
+    "weight": 2,
+    "malade": false,
+    "text": "{animal} a mangé une plante d'intérieur. Toute la plante. Le pot est resté, par politesse.",
+    "choices": [
+      { "label": "Appeler le centre antipoison",
+        "outcomes": [
+          { "chance": 0.7, "text": "La plante était inoffensive. Le standardiste a ri, s'est excusé, puis a ri encore.", "effects": { "happiness": 1 } },
+          { "chance": 0.3, "text": "La plante était légèrement toxique. {animal} va passer une mauvaise semaine.", "effects": { "happiness": -2 }, "pet": { "sick": "une intoxication à la plante verte" } }
+        ] },
+      { "label": "Racheter une plante",
+        "outcomes": [
+          { "chance": 0.6, "text": "{animal} se porte à merveille. La nouvelle plante a déjà peur.", "effects": { "money": -25 } },
+          { "chance": 0.4, "text": "{animal} a passé la nuit à le regretter bruyamment. Toi aussi.", "effects": { "money": -25, "health": -2 }, "pet": { "sick": "une indigestion de plante verte" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0039",
+    "weight": 2,
+    "malade": false,
+    "text": "{animal} tousse. Le vétérinaire soupçonne la poussière sous ton canapé, qu'il qualifie de « préoccupante ».",
+    "choices": [
+      { "label": "Grand ménage",
+        "outcomes": [
+          { "chance": 0.8, "text": "Sous le canapé : deux euros, une chaussette et un écosystème. {animal} respire mieux.", "effects": { "money": 2, "happiness": 2 }, "pet": { "health": 5 } },
+          { "chance": 0.2, "text": "Le ménage a soulevé tant de poussière que vous toussez désormais tous les deux.", "effects": { "health": -3 }, "pet": { "sick": "une toux poussiéreuse" } }
+        ] },
+      { "label": "Ignorer",
+        "outcomes": [
+          { "chance": 1, "text": "La toux s'est installée. Le canapé aussi, il n'a jamais bougé.", "pet": { "sick": "une toux poussiéreuse" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0040",
+    "weight": 2,
+    "malade": false,
+    "text": "C'est l'heure des vaccins de {animal}. {Il} l'a senti. {Il} s'est caché{a}.",
+    "choices": [
+      { "label": "Partir à sa recherche",
+        "outcomes": [
+          { "chance": 0.6, "text": "Retrouvé{a} au bout d'une heure dans un endroit physiquement impossible. Les vaccins sont faits.", "effects": { "money": -80 }, "pet": { "health": 5, "bond": -2 } },
+          { "chance": 0.4, "text": "Introuvable jusqu'à la fermeture du cabinet. {animal} a gagné cette manche.", "effects": { "happiness": -2 } }
+        ] },
+      { "label": "Reporter",
+        "outcomes": [
+          { "chance": 0.7, "text": "{animal} ressort de sa cachette, triomphant{a}.", "pet": { "bond": 2 } },
+          { "chance": 0.3, "text": "Mauvaise idée. {animal} a attrapé ce qui traînait dans le quartier.", "effects": { "happiness": -3 }, "pet": { "sick": "un virus qui traînait dans le quartier" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0041",
+    "weight": 2,
+    "malade": false,
+    "text": "L'haleine de {animal} pourrait décoller du papier peint. Le vétérinaire propose un détartrage à 300 euros.",
+    "choices": [
+      { "label": "Payer le détartrage",
+        "outcomes": [
+          { "chance": 1, "text": "{animal} a désormais un sourire éclatant. Tu te sens négligé{e} à côté.", "effects": { "money": -300 }, "pet": { "health": 6 } }
+        ] },
+      { "label": "Acheter une brosse à dents",
+        "outcomes": [
+          { "chance": 0.4, "text": "Contre toute attente, {animal} adore le brossage. Vous le faites ensemble, chaque soir, devant le miroir.", "effects": { "money": -10, "happiness": 3 }, "pet": { "bond": 4, "health": 3 } },
+          { "chance": 0.6, "text": "La brosse à dents a disparu le lendemain. Une semaine plus tard, la rage de dents est arrivée.", "effects": { "money": -10 }, "pet": { "sick": "une rage de dents" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0042",
+    "weight": 2,
+    "malade": false,
+    "conditions": { "tags": ["partner"] },
+    "text": "{partenaire} a donné du chocolat à {animal}, « juste un petit bout ». C'était un grand bout.",
+    "effects": { "relationships": { "partner": -3 } },
+    "pet": { "sick": "une crise de foie au chocolat" }
+  },
+  {
+    "id": "ani_sante_0043",
+    "weight": 2,
+    "malade": false,
+    "conditions": { "tags": ["children"] },
+    "text": "Tes enfants ont nourri {animal} aux bonbons pendant une semaine, en secret.",
+    "choices": [
+      { "label": "Faire un grand sermon",
+        "outcomes": [
+          { "chance": 1, "text": "Les enfants ont promis. {animal}, privé{a} de bonbons, a entamé une grève de la faim de quatre heures.", "effects": { "relationships": { "child": -2 } }, "pet": { "health": 3 } }
+        ] },
+      { "label": "Emmener tout le monde chez le vétérinaire",
+        "outcomes": [
+          { "chance": 0.5, "text": "Le vétérinaire a examiné {animal}, puis les enfants. Tout le monde est reparti avec une leçon et une sucette sans sucre.", "effects": { "money": -80, "relationships": { "child": 2 } } },
+          { "chance": 0.5, "text": "Verdict : crise de foie. Les enfants aussi, mais ce n'est pas le même médecin.", "effects": { "money": -80 }, "pet": { "sick": "une crise de foie aux bonbons" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0044",
+    "weight": 2,
+    "malade": false,
+    "text": "{animal} se gratte sans arrêt depuis l'arrivée du nouveau tapis.",
+    "choices": [
+      { "label": "Rendre le tapis",
+        "outcomes": [
+          { "chance": 1, "text": "Le tapis est retourné au magasin avec un mot d'excuse. Les démangeaisons ont cessé dans l'heure.", "effects": { "happiness": 1 }, "pet": { "health": 3 } }
+        ] },
+      { "label": "Garder le tapis",
+        "outcomes": [
+          { "chance": 0.5, "text": "{animal} s'est habitué{a} au tapis. Le tapis, lui, ne s'est jamais habitué à {animal}.", "effects": { "happiness": 1 } },
+          { "chance": 0.5, "text": "Les démangeaisons ont tourné à l'allergie franche. Le tapis a gagné.", "effects": { "happiness": -2 }, "pet": { "sick": "une allergie au tapis du salon" } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0045",
+    "weight": 2,
+    "malade": false,
+    "minAge": 18,
+    "text": "Un conseiller te propose une assurance santé pour {animal}. 25 euros par mois, « tout compris, sauf ce qui arrive ».",
+    "choices": [
+      { "label": "Souscrire",
+        "outcomes": [
+          { "chance": 0.5, "text": "Un an d'assurance payé. {animal} ne s'est jamais aussi bien porté{a}. Évidemment.", "effects": { "money": -300 }, "pet": { "health": 3 } },
+          { "chance": 0.5, "text": "Bonne pioche : {animal} est tombé{a} malade peu après. L'assurance a remboursé. Enfin, en partie. Une petite partie.", "effects": { "money": -300, "happiness": 1 }, "pet": { "sick": "une bronchite heureusement assurée" } }
+        ] },
+      { "label": "Refuser",
+        "outcomes": [
+          { "chance": 1, "text": "Le conseiller t'a souhaité « bon courage » d'un ton franchement inquiétant.", "effects": { "happiness": -1 } }
+        ] }
+    ]
+  },
+  {
+    "id": "ani_sante_0046",
+    "weight": 1,
+    "malade": false,
+    "text": "{animal} s'est coincé{a} la tête dans un rouleau d'essuie-tout. Le libérer a pris dix minutes et une partie de ta dignité.",
+    "effects": { "happiness": 1 },
+    "pet": { "health": -2, "bond": 1 }
+  }
+]
