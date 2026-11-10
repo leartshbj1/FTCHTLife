@@ -51,7 +51,7 @@ enum VieRelations {
             v.proches[i].age += 1
             v.proches[i].lien = Stats.borne(v.proches[i].lien + Int.random(in: -3...1))
             let p = v.proches[i]
-            if p.role == .grandParent && VieHasard.reussi(GameEngine.chanceDeces(age: p.age, sante: 60) + (p.age > 95 ? 0.3 : 0)) {
+            if p.role == .grandParent && VieHasard.reussi(VieHasard.chanceDeces(age: p.age) + (p.age > 95 ? 0.3 : 0)) {
                 v.proches[i].vivant = false
                 lignes.append("💀 \(p.role.libelle(p.genre)) \(p.prenom) est \(p.genre == .femme ? "morte" : "mort") à \(p.age) ans. Il reste trois boîtes de biscuits rassis chez \(p.genre == .femme ? "elle" : "lui").")
                 j.stats.bonheur -= 8

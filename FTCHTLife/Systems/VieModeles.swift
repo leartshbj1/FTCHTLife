@@ -172,6 +172,12 @@ extension Joueur {
 enum VieHasard {
     static func reussi(_ chance: Double) -> Bool { Double.random(in: 0..<1) < chance }
     static func borne(_ c: Double) -> Double { min(0.98, max(0.02, c)) }
+
+    /// Chance de mourir dans l'année pour un proche âgé (santé moyenne).
+    static func chanceDeces(age: Int) -> Double {
+        guard age >= 50 else { return 0.0005 }
+        return min(0.95, pow(Double(age - 50) / 50, 4) * 0.6)
+    }
 }
 
 extension Array where Element == String {
