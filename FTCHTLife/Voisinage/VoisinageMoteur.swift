@@ -322,8 +322,12 @@ enum VoisinageMoteur {
             lignes.append("\(v.prenom) fait maintenant partie de tes " + (v.genre == .femme ? "amies." : "amis."))
             if !signaux.contains("voisin_ami") { signaux.append("voisin_ami") }
         }
-        if eff.devientPartenaire == true, j.age >= 18, v.age >= 18,
-           !j.relations.contains(where: { $0.type == .partenaire && $0.vivant }) {
+        let dejaEnCouple = j.relations.contains(where: { $0.type == .partenaire && $0.vivant && $0.id != v.relationId })
+        if eff.devientPartenaire == true, (j.age < 18 || v.age < 18 || dejaEnCouple), v.statut == .amour {
+            // Pas de deuxième couple ni de couple avec un mineur : on reste bons amis.
+            v.statut = .ami
+        }
+        if eff.devientPartenaire == true, j.age >= 18, v.age >= 18, !dejaEnCouple {
             // Si le voisin était déjà un ami dans tes relations, il change de case.
             if let rid = v.relationId, let k = j.relations.firstIndex(where: { $0.id == rid }) {
                 j.relations[k].type = .partenaire
@@ -380,7 +384,16 @@ enum VoisinageMoteur {
             var v = etat.voisins[i]
             // Un voisin devenu ami ou partenaire suit le destin de la relation.
             if let rid = v.relationId, let r = j.relations.first(where: { $0.id == rid }) {
-                if !r.vivant { v.vivant = false; etat.voisins[i] = v; partis.append(v) }
+                if !r.vivant {
+                    v.vivant = false
+                    partis.append(v)
+                } else if v.statut == .amour && r.type != .partenaire {
+                    // Rupture (module amour) : l'ex habite toujours à côté. Ambiance.
+                    v.statut = .neutre
+                    v.lien = max(0, v.lien - 30)
+                    if !v.souvenirs.contains("ex_de_palier") { v.souvenirs.append("ex_de_palier") }
+                }
+                etat.voisins[i] = v
                 continue
             }
             if v.age >= 55 && Double.random(in: 0...1) < GameEngine.chanceDeces(age: v.age, sante: 65) {
