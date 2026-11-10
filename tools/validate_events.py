@@ -7,9 +7,10 @@ REL = {"mother","father","parent","sibling","friend","partner","child"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart"}
 # Tags du module Retraite (RetraiteSysteme.tags, voir docs/RETRAITE.md).
 TAGS |= {"maison_retraite","maison_retraite_imposee","en_cavale","romance_residence","grand_parent","petits_enfants_absents","senior_voyageur","champion_loto"}
-SPECIAL = {"death","newFriend","relationships","setFlags"}
+SPECIAL = {"death","newFriend","relationships","setFlags","skills"}
+SKILLS = {"anglais","espagnol","allemand","italien","albanais","japonais","guitare","piano","chant","danse","dessin","photo","cuisine","bricolage","mecanique","jardinage","sport","survie","code","echecs","seduction","eloquence","humour","marchandage","magie"}
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
-COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
+COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags","skills"}
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
     for k,v in e.items():
@@ -18,9 +19,15 @@ def check_effects(e, where, errs):
             elif k!="money" and abs(v)>100: errs.append(f"{where}: {k} hors bornes")
         elif k == "relationships":
             if not isinstance(v, dict) or any(r not in REL for r in v): errs.append(f"{where}: relationships invalide {v}")
+        elif k == "skills":
+            if not isinstance(v, dict) or any(x not in SKILLS for x in v): errs.append(f"{where}: skills invalide {v}")
         elif k not in SPECIAL: errs.append(f"{where}: clé d'effet inconnue {k}")
 def check_text(t, where, errs):
     if not isinstance(t,str) or not t.strip(): errs.append(f"{where}: texte vide"); return
+    m = re.search(r"\b\w*(x|f|er|et|en|on|el)\{e\}", t)
+    if m: errs.append(f"{where}: accord {{e}} incorrect sur « {m.group(0)} » (reformule)")
+    m2 = re.search(r"\{(ami|fratrie|mere|pere|parent|partenaire)\}([^.!?]{0,25})\{e\}", t)
+    if m2 and not re.search(r"\bt'|\bte\b|\btoi\b|\bt’", m2.group(2)): errs.append(f"{where}: {{e}} semble porter sur un autre personnage que le joueur")
     for p in re.findall(r"\{(\w+)\}", t):
         if p not in PH: errs.append(f"{where}: placeholder inconnu {{{p}}}")
 def main():
@@ -48,8 +55,11 @@ def main():
                 check_effects(ev.get("effects", {}), w, errs)
                 if "resultText" in ev: errs.append(f"{w}: resultText non supporté, mets le texte dans text")
             if len(ch) > 4: errs.append(f"{w}: plus de 4 choix")
+            if ch and all(c.get("requiresSkill") for c in ch): errs.append(f"{w}: au moins un choix doit être sans requiresSkill")
             for ci,c in enumerate(ch):
                 cw=f"{w}/choix{ci}"; check_text(c.get("label"), cw, errs)
+                rs=c.get("requiresSkill")
+                if rs is not None and (not isinstance(rs,dict) or any(x not in SKILLS or not 1<=n<=5 for x,n in rs.items())): errs.append(f"{cw}: requiresSkill invalide {rs}")
                 outs=c.get("outcomes") or []
                 if not outs: errs.append(f"{cw}: aucun outcome")
                 s=sum(o.get("chance",0) for o in outs)
