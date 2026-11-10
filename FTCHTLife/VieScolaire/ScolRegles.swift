@@ -57,9 +57,10 @@ enum ScolRegles {
     /// Langue vivante 2, fixe pour toute la vie.
     static func lv2(_ j: Joueur) -> String { j.prenom.count % 2 == 0 ? "espagnol" : "allemand" }
 
-    static func tags(_ j: Joueur) -> Set<String> {
+    /// `etat` : l'état en cours de modification s'il n'est pas encore sauvegardé.
+    static func tags(_ j: Joueur, etat: ScolEtat? = nil) -> Set<String> {
         guard scolarise(j) else { return [] }
-        let e = ScolStockage.lire(j)
+        let e = etat ?? ScolStockage.lire(j)
         var t: Set<String> = [j.age <= 14 ? "scol_college" : "scol_lycee"]
         switch j.age {
         case 11: t.insert("scol_6e")

@@ -39,8 +39,8 @@ extension GameEngine {
         objectWillChange.send()
     }
 
-    func scolTags(_ j: Joueur) -> Set<String> {
-        tags(j).union(ScolRegles.tags(j))
+    func scolTags(_ j: Joueur, _ etat: ScolEtat? = nil) -> Set<String> {
+        tags(j).union(ScolRegles.tags(j, etat: etat))
     }
 
     /// Remplit les variables du module ({prof}, {matiere}, {classe}, {groupe}, {camarade}) puis celles du moteur.
@@ -97,7 +97,7 @@ extension GameEngine {
     }
 
     private func scolPlanifierConvocation(_ j: Joueur, _ etat: inout ScolEtat) -> [String] {
-        let t = scolTags(j)
+        let t = scolTags(j, etat)
         let possibles = ScolDonnees.convocations.filter {
             ScolRegles.ageOK($0, j.age) && ScolRegles.conditionsOK($0.conditions, j, tags: t)
                 && !($0.unique == true && etat.scenesVues.contains($0.id))
@@ -166,7 +166,7 @@ extension GameEngine {
         }
 
         // Situations de l'année.
-        let t = scolTags(j)
+        let t = scolTags(j, etat)
         var possibles = ScolDonnees.situations.filter {
             ScolRegles.ageOK($0, j.age) && ScolRegles.conditionsOK($0.conditions, j, tags: t)
                 && !($0.unique == true && etat.scenesVues.contains($0.id))
