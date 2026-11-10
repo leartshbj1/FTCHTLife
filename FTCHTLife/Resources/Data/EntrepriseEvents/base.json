@@ -1,0 +1,1909 @@
+[
+  {
+    "id": "ent_base_0001",
+    "kind": "crise",
+    "conditions": {
+      "minAnnees": 1
+    },
+    "text": "Un contrôleur des impôts s'installe dans ton bureau avec un thermos et un sourire inquiétant. Il compte rester « le temps qu'il faut ».",
+    "choices": [
+      {
+        "label": "Tout lui montrer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il repart au bout de trois jours en disant « tout est en ordre ». Tu n'y crois toujours pas.",
+            "business": {
+              "reputation": 2
+            },
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il trouve une note de restaurant à 400 € « réunion stratégique » avec ta mère. Redressement.",
+            "business": {
+              "cash": -6000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui offrir des {produit}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il accepte, puis ajoute « tentative de corruption » à son rapport.",
+            "business": {
+              "cash": -9000
+            },
+            "effects": {
+              "karma": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il adore. Il ferme les yeux sur deux ou trois détails.",
+            "business": {
+              "cash": -1000
+            },
+            "effects": {
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Engager un comptable",
+        "cost": 2000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton comptable parle une langue inconnue faite d'acronymes. Le contrôleur s'enfuit.",
+            "business": {
+              "cash": -3000,
+              "reputation": 1
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "Le contrôleur a interprété ton silence comme un aveu.",
+      "business": {
+        "cash": -8000,
+        "reputation": -3
+      }
+    }
+  },
+  {
+    "id": "ent_base_0002",
+    "kind": "crise",
+    "text": "Un client a laissé un avis une étoile sur {entreprise} : « Pas aimé l'ambiance, ni la couleur des murs, ni le patron. » Il a 80 000 abonnés.",
+    "choices": [
+      {
+        "label": "Répondre poliment",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta réponse est si élégante qu'elle devient virale. On t'appelle « le saint de la relation client ».",
+            "business": {
+              "reputation": 8,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Personne ne lit ta réponse. L'avis, lui, est partout.",
+            "business": {
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre en majuscules",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ta réponse fait le tour d'internet. Les gens viennent voir le patron fou en vrai.",
+            "business": {
+              "reputation": -8,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu passes pour un tyran. Ta mère t'appelle pour te demander si ça va.",
+            "business": {
+              "reputation": -15
+            },
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Repeindre les murs",
+        "cost": 1500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le client revient, adore la nouvelle couleur et met cinq étoiles. Puis il déménage.",
+            "business": {
+              "reputation": 5
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "L'avis reste là, en haut, comme une verrue numérique.",
+      "business": {
+        "reputation": -6
+      }
+    }
+  },
+  {
+    "id": "ent_base_0003",
+    "kind": "crise",
+    "text": "{concurrent} vient d'ouvrir juste en face de {entreprise}, avec les mêmes {produit}, 20 % moins chers et un clown gonflable devant la porte.",
+    "choices": [
+      {
+        "label": "Baisser tes prix",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Guerre des prix. Tu vends plus, tu gagnes moins, tu dors mal.",
+            "business": {
+              "cash": -4000,
+              "elan": 10
+            },
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Monter en gamme",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu ajoutes « artisanal » sur tout. Ça marche étonnamment bien.",
+            "business": {
+              "reputation": 6,
+              "elan": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les clients trouvent ça prétentieux et traversent la rue.",
+            "business": {
+              "elan": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter un clown plus gros",
+        "cost": 2500,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ton clown de 12 mètres bat le leur. Les enfants pleurent, les parents achètent.",
+            "business": {
+              "elan": 15,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le vent emporte ton clown sur la mairie. Amende.",
+            "business": {
+              "cash": -3000,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "{concurrent} te pique tranquillement un client sur trois.",
+      "business": {
+        "elan": -20
+      }
+    }
+  },
+  {
+    "id": "ent_base_0004",
+    "kind": "opportunite",
+    "text": "Un influenceur avec trop de dents et pas assez de scrupules propose de faire une vidéo sur {entreprise}. Il demande juste « un petit geste ».",
+    "choices": [
+      {
+        "label": "Payer le petit geste",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Sa vidéo cartonne. Une file d'attente se forme, composée à 90 % d'ados qui n'achètent rien.",
+            "business": {
+              "elan": 20,
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il a filmé en mode portrait, flou, en parlant d'un autre commerce.",
+            "business": {
+              "reputation": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il fait une vidéo quand même, pour dire que tu es « pas chill ». 40 vues.",
+            "business": {
+              "reputation": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui proposer un stage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il éclate de rire et part. Sa vidéo s'appelle « le patron qui voulait me faire travailler ».",
+            "business": {
+              "reputation": 2,
+              "elan": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0005",
+    "kind": "opportunite",
+    "text": "Une grande entreprise veut commander une montagne de {produit} pour son séminaire annuel. Il faut tout livrer en une semaine.",
+    "choices": [
+      {
+        "label": "Accepter et tout donner",
+        "outcomes": [
+          {
+            "chance": 0.65,
+            "text": "Tu livres à l'heure, épuisé{e} mais riche. Ils te recommandent partout.",
+            "business": {
+              "cash": 12000,
+              "reputation": 5
+            },
+            "effects": {
+              "health": -4
+            }
+          },
+          {
+            "chance": 0.35,
+            "text": "Tu livres avec deux jours de retard. Ils paient la moitié en grommelant.",
+            "business": {
+              "cash": 4000,
+              "reputation": -4
+            },
+            "effects": {
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier plus cher",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils acceptent sans broncher. Tu aurais dû demander le double.",
+            "business": {
+              "cash": 16000
+            },
+            "effects": {
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils vont chez {concurrent}. Tu les vois passer avec leurs cartons, tristement.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu gardes ta santé mentale. C'est déjà ça.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0006",
+    "kind": "absurde",
+    "text": "Un pigeon a élu domicile dans {entreprise}. Il ne paie pas, mais les clients l'adorent et l'appellent Gérard.",
+    "choices": [
+      {
+        "label": "Adopter Gérard",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Gérard devient la mascotte officielle. Ses photos font plus de likes que les tiennes.",
+            "business": {
+              "reputation": 6,
+              "elan": 8
+            },
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les services d'hygiène n'apprécient pas Gérard.",
+            "business": {
+              "cash": -2500,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chasser Gérard",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Gérard revient avec des amis. Ils sont maintenant onze.",
+            "business": {
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Gérard part en te jetant un regard de mépris. Les clients te boudent une semaine.",
+            "business": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Embaucher un faucon",
+        "cost": 800,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le faucon mange Gérard devant un groupe d'enfants. Ambiance.",
+            "business": {
+              "reputation": -10
+            },
+            "effects": {
+              "karma": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le faucon et Gérard deviennent amis. Tu paies maintenant deux oiseaux.",
+            "business": {
+              "cash": -1000,
+              "reputation": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0007",
+    "kind": "crise",
+    "text": "Une canalisation a explosé pendant la nuit. {entreprise} ressemble à une piscine municipale, sans le maître-nageur.",
+    "choices": [
+      {
+        "label": "Appeler un plombier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il arrive en trois heures, répare en dix minutes et facture comme un chirurgien.",
+            "business": {
+              "cash": -4000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réparer toi-même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Avec du scotch et de la foi, ça tient. Pour l'instant.",
+            "business": {
+              "cash": -300
+            },
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as inondé aussi le voisin du dessous. Il est avocat.",
+            "business": {
+              "cash": -9000
+            },
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une soirée pool party",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les clients adorent ! Puis l'assurance refuse de payer, car « c'était une fête ».",
+            "business": {
+              "cash": -5000,
+              "elan": 15,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "L'eau a fini par partir toute seule. Elle a emporté le stock.",
+      "business": {
+        "cash": -7000,
+        "elan": -10
+      }
+    }
+  },
+  {
+    "id": "ent_base_0008",
+    "kind": "opportunite",
+    "text": "Un journaliste local veut écrire un portrait de toi : « Le visage de l'entrepreneuriat à {ville} ».",
+    "choices": [
+      {
+        "label": "Accepter l'interview",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'article est flatteur. La photo, moins : tu clignes des yeux.",
+            "business": {
+              "reputation": 7,
+              "elan": 10
+            },
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le titre final : « Ce patron qui croit encore au rêve ». C'est ironique ? Personne ne sait.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger la une",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu as la une ! Juste au-dessus d'un article sur une épidémie de poux.",
+            "business": {
+              "reputation": 5,
+              "elan": 12
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le journaliste te trouve insupportable. L'article est très court.",
+            "business": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer ta mère à ta place",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{mere} raconte ta naissance en détail. L'article est un succès, ta dignité moins.",
+            "business": {
+              "reputation": 6
+            },
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "mother": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0009",
+    "kind": "crise",
+    "conditions": {
+      "enDifficulte": true
+    },
+    "text": "Ta banque t'annonce, avec un émoji triste, qu'elle « réévalue sa relation avec {entreprise} ».",
+    "choices": [
+      {
+        "label": "Aller les voir en costume",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le banquier est impressionné par ta cravate. Il te laisse tranquille un an.",
+            "business": {
+              "reputation": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le banquier remarque que ta cravate est une serviette pliée. Il augmente tes frais.",
+            "business": {
+              "cash": -3000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de banque",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La nouvelle banque t'offre un grille-pain et des frais plus bas.",
+            "business": {
+              "cash": 1500
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La nouvelle banque est encore pire. Elle a un émoji encore plus triste.",
+            "business": {
+              "cash": -2000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pleurer au téléphone",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton conseiller pleure avec toi. Vous êtes maintenant amis, pas plus riches.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "La banque augmente tous tes frais « par prudence ».",
+      "business": {
+        "cash": -3000
+      }
+    }
+  },
+  {
+    "id": "ent_base_0010",
+    "kind": "absurde",
+    "text": "Un client vient tous les jours à {entreprise} depuis un an, regarde partout, dit « intéressant » et n'achète jamais rien.",
+    "choices": [
+      {
+        "label": "Lui parler enfin",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "C'est un inspecteur d'un guide très connu. Il te met une mention spéciale « patience ».",
+            "business": {
+              "reputation": 12,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "C'est juste un monsieur qui aime l'odeur. Il s'appelle Bernard. Il est gentil.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui facturer l'entrée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il paie sans discuter. Puis amène ses amis. Tu as créé un musée par accident.",
+            "business": {
+              "cash": 2000,
+              "reputation": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'ignorer pour toujours",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il est toujours là. Il le sera toujours."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0011",
+    "kind": "opportunite",
+    "text": "Le maire de {ville} te propose de représenter les commerçants à une cérémonie officielle. Il y aura un ruban et des ciseaux géants.",
+    "choices": [
+      {
+        "label": "Accepter avec joie",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu coupes le ruban du premier coup. Les gens applaudissent. Tu pleures un peu.",
+            "business": {
+              "reputation": 8
+            },
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les ciseaux géants coupent aussi la cravate du maire. Silence de mort.",
+            "business": {
+              "reputation": -4,
+              "elan": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à être payé{e}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le maire te regarde comme une crotte de chien. La cérémonie se fait sans toi.",
+            "business": {
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0012",
+    "kind": "crise",
+    "text": "Une panne informatique géante bloque la caisse de {entreprise}. L'ordinateur affiche un message en russe et un lapin qui danse.",
+    "choices": [
+      {
+        "label": "Payer un informaticien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il appuie sur un bouton. Ça marche. Il facture 900 €.",
+            "business": {
+              "cash": -900
+            }
+          }
+        ]
+      },
+      {
+        "label": "Débrancher, rebrancher",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ça marche ! Tu deviens la légende informatique de ta famille.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le lapin danse maintenant sur tous tes appareils. Même le grille-pain.",
+            "business": {
+              "cash": -2500,
+              "elan": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout noter à la main",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Pendant une semaine, tu fais les additions de tête. Personne n'a payé le bon prix.",
+            "business": {
+              "cash": -1500
+            },
+            "effects": {
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "Le lapin a gagné. Tu as perdu une semaine de ventes.",
+      "business": {
+        "cash": -3000,
+        "elan": -8
+      }
+    }
+  },
+  {
+    "id": "ent_base_0013",
+    "kind": "opportunite",
+    "minNiveau": 1,
+    "text": "Un investisseur en lunettes de soleil (à l'intérieur) veut mettre de l'argent dans {entreprise}. Il parle de « synergies » et de « disruption ».",
+    "choices": [
+      {
+        "label": "Prendre l'argent",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il investit vraiment. Il appelle maintenant tous les jours pour donner son avis sur les serviettes.",
+            "business": {
+              "cash": 20000
+            },
+            "effects": {
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'argent arrive, puis l'investisseur est arrêté pour fraude. Il faut rendre l'argent, plus les frais.",
+            "business": {
+              "cash": -3000,
+              "reputation": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il part en disant que tu « manques de vision ». Il a heurté la porte vitrée.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0014",
+    "kind": "crise",
+    "text": "Une mystérieuse odeur flotte dans {entreprise}. Personne ne sait d'où elle vient. Les clients pensent que c'est toi.",
+    "choices": [
+      {
+        "label": "Chercher la source",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "C'était un sandwich oublié derrière une étagère en 2019. Il avait développé une civilisation.",
+            "business": {
+              "reputation": 2
+            },
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mettre du parfum partout",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ça sent maintenant « lavande sur poubelle ». Les clients ont la nausée avec élégance.",
+            "business": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler un spécialiste",
+        "cost": 1200,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il trouve la source, l'emporte dans un bocal et refuse de dire ce que c'était.",
+            "business": {
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "L'odeur est devenue « l'odeur de {entreprise} ». Certains aiment, la plupart non.",
+      "business": {
+        "reputation": -6
+      }
+    }
+  },
+  {
+    "id": "ent_base_0015",
+    "kind": "opportunite",
+    "minNiveau": 1,
+    "text": "Une émission de télé veut filmer {entreprise} pour un reportage « Ces patrons qui en bavent ».",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ils montrent ton meilleur côté. Ventes en hausse !",
+            "business": {
+              "reputation": 8,
+              "elan": 20
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Ils te montrent en train de pleurer dans la réserve. Le pays entier compatit.",
+            "business": {
+              "elan": 15
+            },
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils filment {concurrent} à la place. Ils deviennent célèbres. Tu ragerais si tu avais le temps.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0016",
+    "kind": "crise",
+    "conditions": {
+      "minAnnees": 1
+    },
+    "text": "Un procès ! Un client affirme que {entreprise} lui a causé « un traumatisme émotionnel ». Il réclame beaucoup d'argent.",
+    "choices": [
+      {
+        "label": "Prendre un avocat",
+        "cost": 1000,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ton avocat gagne. Il te facture le prix d'une petite voiture.",
+            "business": {
+              "cash": -6000,
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu perds quand même. Le juge avait le même traumatisme.",
+            "business": {
+              "cash": -14000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier à l'amiable",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il accepte un chèque et un bon d'achat. Il revient chaque semaine avec.",
+            "business": {
+              "cash": -5000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te défendre seul{e}",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Ta plaidoirie fait pleurer la salle. Tu gagnes ! Tu te découvres une vocation.",
+            "business": {
+              "reputation": 6
+            },
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "Tu as dit « objection » 47 fois sans raison. Lourde défaite.",
+            "business": {
+              "cash": -16000,
+              "reputation": -4
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "Tu n'es pas venu{e} à l'audience. Condamnation par défaut.",
+      "business": {
+        "cash": -15000,
+        "reputation": -5
+      }
+    }
+  },
+  {
+    "id": "ent_base_0017",
+    "kind": "absurde",
+    "text": "Un fantôme semble hanter la réserve de {entreprise}. Les {produit} changent de place la nuit. Un employé jure avoir entendu « encore ».",
+    "choices": [
+      {
+        "label": "Faire venir un exorciste",
+        "cost": 500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il asperge tout d'eau bénite. Le fantôme part. Le stock est trempé.",
+            "business": {
+              "cash": -2000
+            }
+          }
+        ]
+      },
+      {
+        "label": "En faire une attraction",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Visites hantées le vendredi soir ! Gros succès.",
+            "business": {
+              "cash": 4000,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le fantôme n'apparaît jamais devant les clients. Remboursements.",
+            "business": {
+              "cash": -1000,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier avec le fantôme",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu poses un contrat sur la table. Le lendemain, il est signé. Tu ne sais pas comment le prendre.",
+            "business": {
+              "moral": 5
+            },
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0018",
+    "kind": "crise",
+    "text": "Les fournisseurs augmentent tous leurs prix de 30 % « à cause de la conjoncture ». Personne ne sait ce que c'est, mais c'est cher.",
+    "choices": [
+      {
+        "label": "Augmenter tes prix",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les clients râlent mais restent. Ils râlent beaucoup.",
+            "business": {
+              "reputation": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les clients partent chez {concurrent}, qui n'a pas augmenté (il a des fournisseurs louches).",
+            "business": {
+              "elan": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Absorber la hausse",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu gardes tes prix. Tes marges pleurent, tes clients t'aiment.",
+            "business": {
+              "cash": -5000,
+              "reputation": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Trouver un fournisseur louche",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il livre la nuit, sans facture, dans une camionnette sans plaque. Pas cher du tout.",
+            "business": {
+              "cash": 3000
+            },
+            "effects": {
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La marchandise était volée. La police passe. Puis repasse.",
+            "business": {
+              "cash": -6000,
+              "reputation": -8
+            },
+            "effects": {
+              "karma": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0019",
+    "kind": "opportunite",
+    "maxNiveau": 2,
+    "weight": 0.5,
+    "text": "Un vieux couple te propose de racheter leur commerce voisin pour une bouchée de pain. Ils partent vivre sur un bateau.",
+    "choices": [
+      {
+        "label": "Racheter et agrandir",
+        "cost": 20000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu abats le mur entre les deux. Tu découvres un deuxième sous-sol. {entreprise} grandit !",
+            "business": {
+              "niveau": 1,
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les aider à partir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu les aides à porter les cartons. Ils te laissent leur chat en remerciement.",
+            "business": {
+              "reputation": 2
+            },
+            "effects": {
+              "karma": 4,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{concurrent} rachète le local. Il est maintenant de chaque côté de toi.",
+            "business": {
+              "elan": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0020",
+    "kind": "crise",
+    "text": "Une tempête de neige bloque {ville} pendant une semaine. Plus personne ne sort, sauf les livreurs de pizza et toi.",
+    "choices": [
+      {
+        "label": "Rester ouvert",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les trois clients de la semaine sont tes amis. Ils ont payé en cookies.",
+            "business": {
+              "cash": -2000,
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer et dormir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu dors 14 heures par jour. Les finances moins bien que toi.",
+            "business": {
+              "cash": -3000
+            },
+            "effects": {
+              "health": 3,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Livrer en luge",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tes photos en luge font le buzz. « {prenom}, l'irréductible de la livraison », titre le journal.",
+            "business": {
+              "elan": 15,
+              "reputation": 6
+            },
+            "effects": {
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu fonces dans un bonhomme de neige. Il cachait une borne à incendie.",
+            "business": {
+              "cash": -1000
+            },
+            "effects": {
+              "health": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0021",
+    "kind": "crise",
+    "conditions": {
+      "enDifficulte": true
+    },
+    "text": "Les comptes de {entreprise} sont dans le rouge. Ton comptable t'appelle et dit simplement « hmm » avant de raccrocher.",
+    "choices": [
+      {
+        "label": "Couper dans les dépenses",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu supprimes le café gratuit. L'ambiance devient glaciale, les comptes un peu moins.",
+            "business": {
+              "cash": 3000,
+              "moral": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Emprunter à {mere}",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Elle prête, en te rappelant qu'elle t'avait dit de faire médecine.",
+            "business": {
+              "cash": 8000
+            },
+            "effects": {
+              "relationships": {
+                "mother": -3
+              },
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle dit non et te propose de revenir habiter chez elle.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une grosse promo",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu brades tout. Les gens adorent, ta trésorerie remonte un peu.",
+            "business": {
+              "cash": 5000,
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu brades tout et tu perds de l'argent sur chaque vente. Bravo.",
+            "business": {
+              "cash": -2000
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "chance": 1,
+      "text": "Le rouge devient bordeaux.",
+      "business": {
+        "cash": -3000
+      }
+    }
+  },
+  {
+    "id": "ent_base_0022",
+    "kind": "crise",
+    "conditions": {
+      "patronAbsent": true
+    },
+    "text": "Tu as aussi un autre travail, et ça se voit : {entreprise} tourne en pilote automatique et le pilote est endormi.",
+    "choices": [
+      {
+        "label": "Prendre un congé sans solde",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu reviens une semaine. Tout le monde se remet à travailler par peur.",
+            "business": {
+              "elan": 12,
+              "moral": 5
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Installer des caméras",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu regardes les caméras pendant tes réunions. Ton chef te voit. Les deux boîtes sont fâchées.",
+            "business": {
+              "elan": 5
+            },
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser faire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le pilote automatique a sorti la boîte de la route.",
+            "business": {
+              "elan": -12,
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0023",
+    "kind": "opportunite",
+    "text": "Une star de la télé est entrée dans {entreprise}, incognito avec des lunettes énormes. Tout le monde l'a reconnue.",
+    "choices": [
+      {
+        "label": "Lui demander un selfie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle accepte et poste la photo ! Ventes record.",
+            "business": {
+              "elan": 25,
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle refuse et part. Elle poste « boutique avec un patron collant ».",
+            "business": {
+              "reputation": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comme si de rien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle revient chaque semaine, ravie qu'on la laisse tranquille. Elle en parle en interview.",
+            "business": {
+              "reputation": 8,
+              "elan": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prévenir les paparazzis",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu touches une petite commission et une réputation de traître.",
+            "business": {
+              "cash": 2000,
+              "reputation": -6
+            },
+            "effects": {
+              "karma": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0024",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "proche"
+    },
+    "text": "On a retrouvé la main de {employe}, ton {poste}, dans la caisse. Le montant est petit, l'excuse énorme : « je testais la sécurité ».",
+    "choices": [
+      {
+        "label": "Virer {employe}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Départ en claquant la porte. Il manquait aussi une plante verte.",
+            "business": {
+              "employePart": true,
+              "lienEmploye": -25
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pardonner",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{employe} pleure, promet, puis recommence trois mois plus tard. Mais avec plus de talent.",
+            "business": {
+              "cash": -1500,
+              "employeMoral": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{employe} te devient fidèle à vie. Tu reçois des chocolats chaque Noël.",
+            "business": {
+              "employeMoral": 25,
+              "lienEmploye": 10
+            },
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retenir sur le salaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} accepte, puis te fait la tête jusqu'à la fin des temps.",
+            "business": {
+              "cash": 1000,
+              "employeMoral": -25,
+              "lienEmploye": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0025",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "proche"
+    },
+    "text": "{employe} arrive tous les jours à 11 h en disant que « l'heure, c'est une construction sociale ».",
+    "choices": [
+      {
+        "label": "Recadrer {employe}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{employe} arrive maintenant à 10 h 55. Victoire.",
+            "business": {
+              "employeMoral": -5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{employe} se vexe et ne vient plus du tout pendant une semaine.",
+            "business": {
+              "employeMoral": -15,
+              "lienEmploye": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Virer {employe}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu vires {employe}. Le repas de famille suivant est un champ de mines.",
+            "business": {
+              "employePart": true,
+              "lienEmploye": -30
+            },
+            "effects": {
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décaler l'ouverture",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{entreprise} ouvre à 11 h. Les clients du matin ne reviendront pas.",
+            "business": {
+              "elan": -8,
+              "employeMoral": 15,
+              "lienEmploye": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0026",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "proche",
+      "minAnnees": 1
+    },
+    "text": "{employe} veut des parts de {entreprise}. « Après tout ce que j'ai fait pour toi. » Ce qui n'est pas grand-chose.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} a enfin le sourire et se donne à fond. Pour la première fois.",
+            "business": {
+              "employeMoral": 30,
+              "employeCompetence": 5,
+              "lienEmploye": 15,
+              "cash": -2000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser gentiment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} hoche la tête calmement. Trop calmement.",
+            "business": {
+              "employeMoral": -15,
+              "lienEmploye": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une prime",
+        "cost": 1500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un compromis qui ne satisfait personne, comme tous les compromis.",
+            "business": {
+              "employeMoral": 5,
+              "lienEmploye": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0027",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "proche"
+    },
+    "text": "{employe} a réorganisé tout {entreprise} pendant le week-end « parce que c'était n'importe quoi ». Plus personne ne trouve rien.",
+    "choices": [
+      {
+        "label": "Remettre comme avant",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu passes ton dimanche à tout remettre. {employe} te regarde faire en soupirant.",
+            "business": {
+              "employeMoral": -10,
+              "lienEmploye": -5
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder la nouvelle organisation",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Contre toute attente, c'est beaucoup mieux. Tu ne le diras jamais.",
+            "business": {
+              "elan": 8,
+              "employeMoral": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "C'est pire. Mais tu n'as plus la force de te battre.",
+            "business": {
+              "elan": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0028",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "proche"
+    },
+    "text": "{employe} demande une augmentation en plein repas de famille, devant tout le monde, entre la viande et le fromage.",
+    "choices": [
+      {
+        "label": "Accepter devant tous",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Applaudissements à table. Tes finances, elles, n'applaudissent pas.",
+            "business": {
+              "cash": -3000,
+              "employeMoral": 20,
+              "lienEmploye": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "« On en parle lundi »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le fromage est servi dans un silence glacial.",
+            "business": {
+              "employeMoral": -10,
+              "lienEmploye": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander une baisse à la place",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Rire général. Sauf {employe}.",
+            "business": {
+              "employeMoral": -20,
+              "lienEmploye": -12
+            },
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0029",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "inconnu"
+    },
+    "text": "{employe}, ton {poste}, a eu une idée de génie qui pourrait doubler les ventes de {produit}. Personne n'y croit, sauf {employe}.",
+    "choices": [
+      {
+        "label": "Appliquer l'idée",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ça marche ! Tu t'attribues tout le mérite en réunion.",
+            "business": {
+              "elan": 20,
+              "employeMoral": -10
+            },
+            "effects": {
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ça marche ! Tu dis que c'est son idée. {employe} est aux anges.",
+            "business": {
+              "elan": 20,
+              "employeMoral": 20
+            },
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer l'idée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} part la proposer à {concurrent}. Elle marche très bien là-bas.",
+            "business": {
+              "employePart": true,
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0030",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "inconnu"
+    },
+    "text": "{concurrent} essaie de débaucher {employe}, ton {poste}, avec un meilleur salaire et une machine à café qui fait du lait mousseux.",
+    "choices": [
+      {
+        "label": "Surenchérir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} reste, pour plus cher. Mais reste.",
+            "business": {
+              "cash": -3000,
+              "employeMoral": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser partir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} part, et t'envoie le lendemain une photo de son cappuccino.",
+            "business": {
+              "employePart": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter la même machine",
+        "cost": 1200,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ça marche. Tout le monde boit du lait mousseux. La productivité baisse, le moral monte.",
+            "business": {
+              "moral": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0031",
+    "kind": "equipe",
+    "conditions": {
+      "minEmployes": 2
+    },
+    "text": "Le team building organisé pour l'équipe de {entreprise} tourne mal : l'accrobranche a fini en sauvetage par hélicoptère.",
+    "choices": [
+      {
+        "label": "Payer la facture",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'hélico, c'est cher. Mais l'équipe n'a jamais été aussi soudée par le traumatisme.",
+            "business": {
+              "cash": -4000,
+              "moral": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser le moniteur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le moniteur t'accuse aussi. Le procès dure deux ans.",
+            "business": {
+              "cash": -2000,
+              "moral": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0032",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "any"
+    },
+    "text": "{employe} a monté un syndicat dans {entreprise}. Un seul membre, président à vie.",
+    "choices": [
+      {
+        "label": "Négocier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} obtient des tickets resto et un fauteuil en cuir, puis dissout le syndicat dans la joie.",
+            "business": {
+              "cash": -1500,
+              "employeMoral": 20
+            }
+          }
+        ]
+      },
+      {
+        "label": "Créer ton propre syndicat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu es maintenant président du syndicat des patrons de toi-même. Les réunions sont courtes.",
+            "business": {
+              "employeMoral": -10
+            },
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} lance une grève d'une personne. Ça se voit à peine.",
+            "business": {
+              "employeMoral": -15,
+              "elan": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_base_0033",
+    "kind": "equipe",
+    "conditions": {
+      "employe": "any"
+    },
+    "text": "{employe}, ton {poste}, fait la cour à tous les clients. Certains reviennent pour ça, d'autres fuient pour ça.",
+    "choices": [
+      {
+        "label": "Lui demander d'arrêter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{employe} arrête. Les ventes baissent un peu. L'ambiance aussi.",
+            "business": {
+              "employeMoral": -10,
+              "elan": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "En faire un argument",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu affiches « le personnel le plus charmant de {ville} ». Ça marche bizarrement bien.",
+            "business": {
+              "elan": 10,
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une cliente porte plainte. Puis l'épouse d'un client.",
+            "business": {
+              "reputation": -8,
+              "cash": -1500
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
