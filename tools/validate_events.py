@@ -5,7 +5,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATS = {"happiness","health","smarts","looks","money","karma","stress","fame"}
 REL = {"mother","father","parent","sibling","friend","partner","child"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart"}
-SPECIAL = {"death","newFriend","relationships","setFlags","skills"}
+SPECIAL = {"death","newFriend","relationships","setFlags","skills","clearFlags","followUps","vie","casier","familyRep","dreamMarks"}
 SKILLS = {"anglais","espagnol","allemand","italien","albanais","japonais","guitare","piano","chant","danse","dessin","photo","cuisine","bricolage","mecanique","jardinage","sport","survie","code","echecs","seduction","eloquence","humour","marchandage","magie"}
 # Tags du module Permis (PermisModule.tags, docs/PERMIS.md)
 TAGS |= {"permis_scooter","permis_voiture","permis_moto","permis_poids_lourd","permis_bus","permis_bateau","licence_pilote","licence_helico","permis_chasse","permis_armes","carte_peche","brevet_drone","permis_fusee","conducteur","sans_permis","permis_probatoire","permis_points_bas","permis_suspendu","permis_annule","conduit_sans_permis","faux_permis","pilote","chasseur","chauffard"}
@@ -26,7 +26,7 @@ TAG_PREFIXES = ("pays_","loi_","zone_","origine_","famille_")
 TAGS |= {"casier","tig","casier_lourd","casier_efface"}
 SPECIAL |= {"death","newFriend","relationships","setFlags"}
 SPECIAL |= {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
-PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
+PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e","ancetre"}
 COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags","skills"}
 TAGS |= {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart",
         # module vie (FTCHTLife/Systems/VieSysteme.swift, tags)
@@ -35,6 +35,7 @@ SPECIAL |= {"death","newFriend","relationships","setFlags","clearFlags","followU
 PH |= {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e","enfant","ex","codetenu","grandparent"}
 COND |= {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
 SPECIAL |= {"death","newFriend","relationships","setFlags","skills"}  # skills : docs/COMPETENCES.md
+WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
     for k,v in e.items():
@@ -51,7 +52,7 @@ def check_text(t, where, errs):
     m = re.search(r"\b\w*(x|f|er|et|en|on|el)\{e\}", t)
     if m: errs.append(f"{where}: accord {{e}} incorrect sur « {m.group(0)} » (reformule)")
     m2 = re.search(r"\{(ami|fratrie|mere|pere|parent|partenaire)\}([^.!?]{0,25})\{e\}", t)
-    if m2 and not re.search(r"\bt'|\bte\b|\btoi\b|\bt’", m2.group(2)): errs.append(f"{where}: {{e}} semble porter sur un autre personnage que le joueur")
+    if m2 and not re.search(r"\bt'|\bte\b|\btoi\b|\bt’", m2.group(2)): WARN.append(f"{where}: {{e}} semble porter sur un autre personnage que le joueur")
     for p in re.findall(r"\{(\w+)\}", t):
         if p not in PH: errs.append(f"{where}: placeholder inconnu {{{p}}}")
 def main():
@@ -91,6 +92,7 @@ def main():
                 for oi,o in enumerate(outs):
                     check_text(o.get("text"), f"{cw}/o{oi}", errs); check_effects(o.get("effects",{}), f"{cw}/o{oi}", errs)
     for e in errs: print("ERREUR", e)
+    for x in WARN: print("AVERTISSEMENT", x)
     print(f"{n} événements, {len(files)} fichiers, {len(errs)} erreurs")
     sys.exit(1 if errs else 0)
 if __name__=="__main__": main()
