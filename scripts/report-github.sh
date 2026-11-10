@@ -18,7 +18,7 @@ import json, os, sys
 print(json.dumps({"state": sys.argv[1], "description": sys.argv[2], "context": "ipa", "target_url": os.environ.get("CIRCLE_BUILD_URL", "")}))
 PY
 curl -sS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
-  "https://api.github.com/repos/$REPO/statuses/$SHA" -d @/tmp/status.json > /dev/null
+  "https://api.github.com/repos/$REPO/statuses/$SHA" -d @/tmp/status.json -w "\nHTTP %{http_code}\n" | tail -c 400
 
 if [ "$STATE" = failure ]; then
   python3 - "$DESC" > /tmp/comment.json <<'PY'
