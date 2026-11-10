@@ -23,14 +23,14 @@ Une suite se déclenche sur un **signal** (`"on"`) :
 
 | Domaine | Signaux |
 |---|---|
-| Amour | `rencontre`, `rendez_vous`, `rendez_vous_rate`, `couple`, `rupture`, `largue` (le joueur se fait quitter), `tromperie`, `tromperie_decouverte`, `demande_mariage`, `demande_refusee`, `mariage`, `divorce`, `veuvage` |
+| Amour | `rencontre`, `rendez_vous`, `rendez_vous_rate`, `couple`, `rupture`, `largue` (le joueur se fait quitter), `tromperie`, `tromperie_decouverte`, `demande_mariage`, `demande_refusee`, `fiancailles_rompues`, `mariage`, `divorce`, `veuvage`, `meilleur_ami` |
 | Bébés | `grossesse`, `naissance_enfant`, `adoption`, `enfant_majeur`, `enfant_quitte_maison` |
 | Casino, jeux | `casino_gain`, `casino_perte`, `casino_jackpot`, `casino_ruine`, `casino_triche`, `casino_triche_attrape`, `loterie_ticket`, `loterie_gain`, `pari_sportif_gain`, `pari_sportif_perte` |
-| Randonnée, nature | `randonnee`, `randonnee_sommet`, `randonnee_perdu`, `randonnee_blessure`, `randonnee_animal`, `camping` |
+| Loisirs (module Activities) | `<activite>` et `<activite>_<issue>`. Activités : `randonnee`, `camping`, `peche`, `escalade`, `ski`, `kayak`, `champignons`, `salle_sport`, `course`, `natation`, `velo`, `yoga`, `danse`, `meditation`, `spa`, `cinema`, `restaurant`, `concert`, `soiree`, `jardinage`, `cuisine`, `jeux_video`, `voyage` (treks, road trips, tour du monde). Issues : `_sommet`, `_perdu`, `_blessure`, `_animal`, `_rencontre`, `_honte`, `_victoire`, `_casse`, `_arnaque` (ex. `escalade_blessure`) |
 | Permis, voiture | `permis_code_obtenu`, `permis_code_rate`, `permis_obtenu`, `permis_rate`, `permis_retire`, `amende_vitesse`, `accident_voiture`, `achat_voiture` |
 | Crime, justice | `crime_reussi`, `crime_rate`, `arrestation`, `proces_gagne`, `proces_perdu`, `prison_entree`, `prison_sortie`, `evasion` |
 | École, travail | `bac_obtenu`, `bac_rate`, `diplome`, `abandon_etudes`, `embauche`, `promotion`, `licenciement`, `demission`, `retraite` |
-| Famille, santé, argent | `deces_parent`, `deces_proche`, `heritage`, `maladie`, `guerison`, `chirurgie_esthetique`, `hopital`, `achat_maison`, `demenagement`, `gros_achat`, `faillite`, `voyage`, `celebrite` |
+| Famille, santé, argent | `deces_parent`, `deces_proche`, `heritage`, `maladie`, `guerison`, `addiction`, `cure_desintox`, `chirurgie_esthetique`, `hopital`, `achat_maison`, `demenagement`, `gros_achat`, `faillite`, `voyage`, `celebrite` |
 
 Un module peut ajouter ses propres signaux : il suffit de les émettre et de les ajouter à ce tableau.
 

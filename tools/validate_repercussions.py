@@ -34,8 +34,12 @@ camping permis_code_obtenu permis_code_rate permis_obtenu permis_rate permis_ret
 achat_voiture crime_reussi crime_rate arrestation proces_gagne proces_perdu prison_entree prison_sortie evasion
 bac_obtenu bac_rate diplome abandon_etudes embauche promotion licenciement demission retraite deces_parent
 deces_proche heritage maladie guerison chirurgie_esthetique hopital achat_maison demenagement gros_achat faillite
-voyage celebrite
+voyage celebrite fiancailles_rompues addiction cure_desintox meilleur_ami
 """.split())
+ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
+meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
+ISSUES = ["", "_sommet", "_perdu", "_blessure", "_animal", "_rencontre", "_honte", "_victoire", "_casse", "_arnaque"]
+SIGNAUX |= {a + i for a in ACTIVITES for i in ISSUES}
 RE_FLAG = re.compile(r"^[a-z0-9_]+$")
 RE_ID = re.compile(r"^rep_[a-z]+_\d{4}$")
 
