@@ -99,6 +99,7 @@ extension GameEngine {
     func tagsModules(_ j: Joueur) -> Set<String> {
         var t: Set<String> = []
         t.formUnion(VieSysteme.tags(j))
+        t.formUnion(tagsTrainDeVie(j))
         t.formUnion(ExpatMoteur.tags(j.etatExpat, j))
         t.insert("origine_\(j.etatExpat.paysNaissance)")
         t.formUnion(CasierSysteme.tags(j.casier))
@@ -252,7 +253,7 @@ extension GameEngine {
     }
 
     func poidsEvenement(_ e: Evenement, _ j: Joueur) -> Double {
-        MondeJournal.poidsEvenement(e, etat: j.monde ?? MondeEtat())
+        MondeJournal.poidsEvenement(e, etat: j.monde ?? MondeEtat()) * bonusSituation(e)
     }
 
     func causeDecesModules(_ j: Joueur) -> String? {

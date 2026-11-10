@@ -34,6 +34,7 @@ extension GameEngine {
     func postulerCarriere(_ job: CareerJob) -> String {
         guard var j = joueur, j.vivant else { return "" }
         if j.etudes != nil { return "Tu es en études. Finis-les d'abord (ou abandonne)." }
+        if let raison = empechementEmploi(j) { return raison }
         if let raison = CasierSysteme.raisonMetierFerme(id: job.id, titre: job.name, casier: j.casier) { return raison }
         let moteur = CareerEngine()
         var rng = SystemRandomNumberGenerator()

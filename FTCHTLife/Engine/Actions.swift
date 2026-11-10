@@ -248,6 +248,7 @@ extension GameEngine {
         guard var j = joueur else { return "" }
         if j.age < 18 { return "Reviens quand tu seras majeur·e." }
         if j.etudes != nil { return "Tu es en études. Finis-les d'abord (ou abandonne)." }
+        if let raison = empechementEmploi(j) { return raison }
         if !j.actionsAnnee.filter({ $0 == "postuler" }).isEmpty && j.actionsAnnee.filter({ $0 == "postuler" }).count >= 3 {
             return "Tu as déjà passé 3 entretiens cette année. Repose-toi."
         }

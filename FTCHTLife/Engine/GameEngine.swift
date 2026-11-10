@@ -4,7 +4,9 @@ import SwiftUI
 /// Moteur du jeu : gère la vie en cours, le passage des années, les événements et la sauvegarde.
 @MainActor
 final class GameEngine: ObservableObject {
-    @Published var joueur: Joueur?
+    @Published var joueur: Joueur? { didSet { verifierCoherence() } }
+    /// Garde-fou contre la récursion de verifierCoherence().
+    var enCoherence = false
     @Published var evenementEnCours: EvenementAffiche?
     /// Une du « Journal du monde » à afficher cette année.
     @Published var flashMonde: MondeFlash?
@@ -189,6 +191,8 @@ final class GameEngine: ObservableObject {
             }
         }
 
+        coherenceSituation(&j)
+
         // Emploi (module Métiers si l'emploi vient du catalogue, sinon ancien système)
         if j.carriere != nil {
             lignes += anneeCarriere(&j)
@@ -302,10 +306,14 @@ final class GameEngine: ObservableObject {
         let candidats = (BibliothequeEvenements.tous + evenementsModules(j)).filter {
             conditionsRemplies($0, j, tags: t) && VieSysteme.evenementAutorise($0, tags: t)
         }
+        // Au plus 3 événements à choix par année : d'abord les suites de ses choix, puis le hasard.
+        limiterFileEvenements()
+        let place = Self.maxEvenementsAChoix - fileEvenements.count - (evenementEnCours == nil ? 0 : 1)
         var nombre = 0
         if Double.random(in: 0...1) < 0.85 { nombre += 1 }
         if Double.random(in: 0...1) < 0.40 { nombre += 1 }
         if j.age < 3 && nombre > 1 { nombre = 1 }
+        nombre = min(nombre, max(0, place))
         if candidats.isEmpty { nombre = 0 }
 
         var dejaPris: Set<String> = []

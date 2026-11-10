@@ -21,6 +21,8 @@ TAGS |= {"testament","testament_secret","testament_annonce","heritier","heritier
 LOISIRS_TAG = re.compile(r"^((pratique|habitue)_[a-z0-9_]+|sportif|blesse|abonne|aventurier|trophee)$")
 # Tags du module « Vivre à l'étranger » (docs/ETRANGER_EVENTS.md), plus pays_xx, loi_xx, zone_xx.
 TAGS |= {"etranger","expat_nouveau","expat_installe","langue_faible","bilingue","polyglotte","binational","de_retour"}
+# Train de vie (Engine/Coherence.swift, tagsTrainDeVie).
+TAGS |= {"millionaire","milliardaire","endette","gros_salaire","petit_salaire","chez_parents","locataire","proprietaire","voiture","voiture_luxe","moto","bateau","avion_prive","bijoux","collection_art","multi_proprietaire","vie_de_luxe","grand_voyageur"}
 TAG_PREFIXES = ("pays_","loi_","zone_","origine_","famille_")
 # Modules Casier et Réputation familiale.
 TAGS |= {"casier","tig","casier_lourd","casier_efface"}
