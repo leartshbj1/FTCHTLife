@@ -9,8 +9,8 @@ pas les textes, noms ou visuels d'un autre jeu.
 - Projet généré par **XcodeGen** depuis `project.yml` (le `.xcodeproj` n'est pas versionné).
 - Une seule cible : `FTCHTLife`. **Tout fichier `.swift` placé n'importe où sous `FTCHTLife/` est compilé automatiquement.** Pas besoin de toucher `project.yml`.
 - Le dossier `FTCHTLife/Resources/Data/` est copié **tel quel avec ses sous-dossiers** dans l'app (`Bundle.main.resourceURL/Data/...`).
-- Le .ipa non signé est fabriqué par `.github/workflows/build-ipa.yml` (macOS, `xcodebuild`, sans signature) à chaque push sur `main` et sur chaque PR. Chaque push sur `main` publie une Release téléchargeable.
-- La CI vérifie aussi que tous les JSON de `Resources/Data` sont valides.
+- Le .ipa non signé est fabriqué par `scripts/build-ipa.sh` (XcodeGen + `xcodebuild` sans signature), lancé par **CircleCI** (`.circleci/config.yml`) à chaque push, sur toutes les branches. Le .ipa est dans les « Artifacts » du job. Plan B : `codemagic.yaml`. (GitHub Actions est inutilisable : compte bloqué.)
+- Le script vérifie aussi que tous les JSON de `Resources/Data` sont valides.
 
 ## Où ranger quoi
 
