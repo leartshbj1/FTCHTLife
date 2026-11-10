@@ -72,10 +72,12 @@ Ce sont des **multiplicateurs** (1.0 = rien ne change, 1.3 = +30 %, 0.5 = moiti�
 Quand plusieurs flashs sont actifs, les multiplicateurs se multiplient. `tout` s'applique à toutes les clés de la table.
 
 - `prix` : `immobilier`, `voitures`, `bateaux`, `avions`, `bijoux`, `voyages`, `nourriture`, `tech`, `luxe`, `animaux`, `sante`, `etudes`, `loisirs`, `vetements`, `tout`
-- `salaires` (secteurs) : `restauration`, `commerce`, `transport`, `batiment`, `beaute`, `securite`, `administration`, `medias`, `immobilier`, `tech`, `finance`, `arts`, `science`, `education`, `droit`, `sante`, `sport`, `politique`, `tout`
+- `salaires` (secteurs) : `restauration`, `commerce`, `transport`, `batiment`, `beaute`, `securite`, `administration`, `medias`, `immobilier`, `tech`, `finance`, `arts`, `science`, `education`, `droit`, `sante`, `sport`, `politique`, `industrie`, `agriculture`, `tourisme`, `tout`.
+  Les secteurs du module Métiers sont traduits automatiquement (`beaute_mode` → `beaute`, `art_culture` et `spectacle` → `arts`, `hotellerie_tourisme` → `tourisme`, `ingenierie` → `industrie`, `armee` → `securite`, `environnement` → `science`)
 - `evenements.categories` : catégorie d'événement (`category`), ex. `travail`, `argent`, `amour`, `sante`, `crime`, `absurde`, `ecole`, `vieillesse`…
 - `evenements.prefixes` : début d'`id` d'événement, ex. `"tra_"`
-- `marches` : `bourse`, `crypto`, `or`, `immobilier_locatif` (pour le futur module placements)
+- `marches` (module Placements) : `bourse`, `crypto`, `or`, `immobilier_locatif`, `epargne` (taux du livret),
+  et `bourse_<secteur>` avec `tech`, `alimentation`, `energie`, `luxe`, `sante`, `transport`, `loisirs`, `finance`, `industrie` (multiplié en plus de `bourse`)
 - `mortalite` : multiplie la chance de mourir chaque année
 - `retraite` : multiplie la pension
 

@@ -10,8 +10,10 @@ RUBRIQUES = {"economie", "politique", "science", "insolite", "meteo", "sport", "
 PRIX = {"immobilier", "voitures", "bateaux", "avions", "bijoux", "voyages", "nourriture", "tech", "luxe", "animaux",
         "sante", "etudes", "loisirs", "vetements", "tout"}
 SECTEURS = {"restauration", "commerce", "transport", "batiment", "beaute", "securite", "administration", "medias",
-            "immobilier", "tech", "finance", "arts", "science", "education", "droit", "sante", "sport", "politique", "tout"}
-MARCHES = {"bourse", "crypto", "or", "immobilier_locatif"}
+            "immobilier", "tech", "finance", "arts", "science", "education", "droit", "sante", "sport", "politique",
+            "industrie", "agriculture", "tourisme", "tout"}
+MARCHES = {"bourse", "crypto", "or", "immobilier_locatif", "epargne"} | {"bourse_" + x for x in
+           ("tech", "alimentation", "energie", "luxe", "sante", "transport", "loisirs", "finance", "industrie")}
 CHAMPS = {"id", "rubrique", "titre", "texte", "poids", "duree", "unique", "minAge", "maxAge", "requiertTagsMonde",
           "excluTagsMonde", "suiteSeulement", "modificateurs", "effetsImmediats", "effetsAnnuels", "evenements",
           "tagsMonde", "texteFin", "suites", "chanceSuite"}
