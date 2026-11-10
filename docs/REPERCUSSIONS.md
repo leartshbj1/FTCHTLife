@@ -32,6 +32,8 @@ Une suite se déclenche sur un **signal** (`"on"`) :
 | École, travail | `bac_obtenu`, `bac_rate`, `diplome`, `abandon_etudes`, `embauche`, `promotion`, `licenciement`, `demission`, `retraite` |
 | Famille, santé, argent | `deces_parent`, `deces_proche`, `heritage`, `maladie`, `guerison`, `addiction`, `cure_desintox`, `chirurgie_esthetique`, `hopital`, `achat_maison`, `demenagement`, `gros_achat`, `faillite`, `voyage`, `celebrite` |
 
+`vie_suite` : signal jamais émis, réservé aux suites du module amour/crime/santé qui ne sont programmées que par `followUps`.
+
 Un module peut ajouter ses propres signaux : il suffit de les émettre et de les ajouter à ce tableau.
 
 Tags ajoutés par les modules (utilisables dans `conditions.tags`) : permis : `permis_voiture`, `permis_moto`,

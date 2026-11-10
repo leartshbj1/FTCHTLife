@@ -20,7 +20,8 @@ CONDITIONS = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner"
               "excludeTags", "flags", "excludeFlags", "minCounters", "maxCounters"}
 REQUIRES = {"flags", "excludeFlags", "minCounters", "maxCounters"}
 EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame", "relationships",
-          "newFriend", "death", "setFlags", "clearFlags", "followUps"}
+          "newFriend", "death", "setFlags", "clearFlags", "followUps",
+          "vie"}  # "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
 RELATIONS = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
 TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemployed", "retired", "rich",
         "poor", "friend", "mother", "father", "siblings", "partner", "children", "sick", "attractive", "smart",
@@ -41,6 +42,7 @@ deces_proche heritage maladie guerison chirurgie_esthetique hopital achat_maison
 voyage celebrite fiancailles_rompues addiction cure_desintox meilleur_ami
 permis_suspendu permis_annule permis_points_recuperes faux_permis_achete faux_permis_demasque
 conduite_sans_permis_arretee corruption_examinateur corruption_ratee casino_usurier casino_usurier_violence
+vie_suite
 """.split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
@@ -74,6 +76,9 @@ def verifier_effets(eff, ou, erreurs, ids):
     for k, v in eff.items():
         if k not in EFFETS:
             erreurs.append(f"{ou} : effet inconnu « {k} »")
+        elif k == "vie":
+            if not isinstance(v, dict):
+                erreurs.append(f"{ou} : vie doit être un objet")
         elif k == "relationships":
             for r in v:
                 if r not in RELATIONS:
