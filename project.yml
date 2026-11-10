@@ -1,0 +1,36 @@
+name: FTCHTLife
+options:
+  bundleIdPrefix: com.ftcht
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+targets:
+  FTCHTLife:
+    type: application
+    platform: iOS
+    sources:
+      - path: FTCHTLife
+        excludes:
+          - "Resources/Data/**"
+      # Le dossier Data est copié tel quel (avec ses sous-dossiers) dans l'app.
+      - path: FTCHTLife/Resources/Data
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ftcht.life
+        PRODUCT_NAME: FTCHTLife
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: FTCHTLife
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        ENABLE_PREVIEWS: YES
+        DEVELOPMENT_TEAM: ""
+    scheme: {}
