@@ -110,22 +110,26 @@ struct PolitiqueView: View {
         } else if !j.vivant {
             EmptyView()
         } else {
-            dossiers(j, e)
-            if e.mandat?.poste == .president || e.mandat?.poste == .premierMinistre { gouvernement(j, e) }
-            parti(j, e)
-            if e.partiId != nil { vieDeParti(j, e) }
-            if e.candidature != nil { campagne(j, e) }
-            if j.age >= PolMoteur.ageCandidat { elections(j, e) }
-            if e.mandat != nil { mandat(j, e) }
-            if PolMoteur.estAncien(e) { apres(j, e) }
-            if j.age >= PolMoteur.ageCandidat {
-                argent(j, e)
-                equipe(j, e)
+            Group {
+                dossiers(j, e)
+                if e.mandat?.poste == .president || e.mandat?.poste == .premierMinistre { gouvernement(j, e) }
+                parti(j, e)
+                if e.partiId != nil { vieDeParti(j, e) }
+                if e.candidature != nil { campagne(j, e) }
+                if j.age >= PolMoteur.ageCandidat { elections(j, e) }
+                if e.mandat != nil { mandat(j, e) }
             }
-            if !e.rivaux.isEmpty { rivaux(j, e) }
-            if j.age >= PolMoteur.ageCandidat { pays(e) }
-            lois(e)
-            historique(j, e)
+            Group {
+                if PolMoteur.estAncien(e) { apres(j, e) }
+                if j.age >= PolMoteur.ageCandidat {
+                    argent(j, e)
+                    equipe(j, e)
+                }
+                if !e.rivaux.isEmpty { rivaux(j, e) }
+                if j.age >= PolMoteur.ageCandidat { pays(e) }
+                lois(e)
+                historique(j, e)
+            }
         }
     }
 
@@ -153,20 +157,22 @@ struct PolitiqueView: View {
             if e.partiId != nil {
                 BarreStat(titre: "Loyauté", icone: "flag.fill", valeur: e.loyaute)
             }
-            if e.caisse > 0 {
-                HStack { Text("Caisse de campagne"); Spacer(); Text(Format.argent(e.caisse)).foregroundStyle(.secondary) }
-            }
-            if e.parrainages > 0 {
-                HStack { Text("Parrainages"); Spacer(); Text("\(e.parrainages) / \(PolMoteur.parrainagesRequis)").foregroundStyle(.secondary) }
-            }
-            if let s = e.dernierSondage {
-                HStack { Text("Dernier sondage"); Spacer(); Text("\(s) %").foregroundStyle(.secondary) }
-            }
-            if let r = e.dernierResultat {
-                Text(r).font(.caption).foregroundStyle(.secondary)
-            }
-            if e.ineligibilite > 0 {
-                Text("⚖️ Inéligible encore \(e.ineligibilite) an\(e.ineligibilite > 1 ? "s" : "").").foregroundStyle(.red)
+            Group {
+                if e.caisse > 0 {
+                    HStack { Text("Caisse de campagne"); Spacer(); Text(Format.argent(e.caisse)).foregroundStyle(.secondary) }
+                }
+                if e.parrainages > 0 {
+                    HStack { Text("Parrainages"); Spacer(); Text("\(e.parrainages) / \(PolMoteur.parrainagesRequis)").foregroundStyle(.secondary) }
+                }
+                if let s = e.dernierSondage {
+                    HStack { Text("Dernier sondage"); Spacer(); Text("\(s) %").foregroundStyle(.secondary) }
+                }
+                if let r = e.dernierResultat {
+                    Text(r).font(.caption).foregroundStyle(.secondary)
+                }
+                if e.ineligibilite > 0 {
+                    Text("⚖️ Inéligible encore \(e.ineligibilite) an\(e.ineligibilite > 1 ? "s" : "").").foregroundStyle(.red)
+                }
             }
         }
     }

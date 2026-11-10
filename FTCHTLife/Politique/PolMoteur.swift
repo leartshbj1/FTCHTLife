@@ -567,7 +567,10 @@ enum PolMoteur {
         let rang = min(5, max(0, e.rangMax))
         let base = Double(e.influence * 150 + e.popularite * 80 + 500)
         let tresorier = e.equipe.first { $0.role == .tresorier }
-        let montant = Int(base * pow(2.6, Double(rang)) * Double.random(in: 0.6...1.4) * (1 + Double(tresorier?.competence ?? 0) / 100))
+        let multiplicateur: Double = pow(2.6, Double(rang))
+        let hasard: Double = Double.random(in: 0.6...1.4)
+        let bonusTresorier: Double = 1 + Double(tresorier?.competence ?? 0) / 100
+        let montant = Int(base * multiplicateur * hasard * bonusTresorier)
         e.caisse += montant
         if Double.random(in: 0...1) < (tresorier == nil ? 0.25 : 0.12) {
             e.casseroles += Int.random(in: 4...10)
