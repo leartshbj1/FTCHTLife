@@ -203,14 +203,15 @@ struct RetraiteView: View {
     private func sectionPetitsEnfants(_ j: Joueur, _ e: RetraiteEtat) -> some View {
         Section("Petits-enfants") {
             ForEach(e.petitsEnfants) { pe in
+                let fille = pe.genre == .femme
+                let visite: String = pe.derniereVisite.map { " · dernière visite à tes \($0) ans" } ?? (fille ? " · jamais venue" : " · jamais venu")
                 VStack(alignment: .leading, spacing: 3) {
                     HStack {
                         Text(pe.prenom).font(.subheadline.bold())
                         Spacer()
                         Text("\(pe.age) an\(pe.age > 1 ? "s" : "")").font(.caption).foregroundStyle(.secondary)
                     }
-                    Text((pe.genre == .femme ? "Fille de " : "Fils de ") + pe.parentPrenom
-                         + (pe.derniereVisite.map { " · dernière visite à tes \($0) ans" } ?? " · jamais venu" + (pe.genre == .femme ? "e" : "")))
+                    Text((fille ? "Fille de " : "Fils de ") + pe.parentPrenom + visite)
                         .font(.caption).foregroundStyle(.secondary)
                     BarreStat(titre: "Lien", icone: "heart", valeur: pe.lien)
                 }
