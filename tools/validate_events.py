@@ -12,7 +12,7 @@ def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
     for k,v in e.items():
         if k in STATS:
-            if not isinstance(v,(int,float)): errs.append(f"{where}: {k} non numérique")
+            if not isinstance(v,int) or isinstance(v,bool): errs.append(f"{where}: {k} doit être un entier")
             elif k!="money" and abs(v)>100: errs.append(f"{where}: {k} hors bornes")
         elif k == "relationships":
             if not isinstance(v, dict) or any(r not in REL for r in v): errs.append(f"{where}: relationships invalide {v}")
