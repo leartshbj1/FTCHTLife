@@ -351,11 +351,11 @@ struct RoueVue: View {
         } else if s.multiplicateur == 1 {
             dire(entete + (RoueFortuneTextes.rembourse.randomElement() ?? ""), nil)
         } else if s.multiplicateur < 5 {
-            dire(RoueFortuneTextes.petitGain(s.etiquette, g) + " (+\(Format.argent(net)))", true)
+            dire(RoueFortuneTextes.petitGain(s.etiquette, { g($0, $1) }) + " (+\(Format.argent(net)))", true)
         } else if s.multiplicateur < 20 {
-            dire(RoueFortuneTextes.grosGain(s.etiquette, g) + " (+\(Format.argent(net)))", true)
+            dire(RoueFortuneTextes.grosGain(s.etiquette, { g($0, $1) }) + " (+\(Format.argent(net)))", true)
         } else {
-            dire(RoueFortuneTextes.jackpot(s.etiquette, g) + " (+\(Format.argent(net)))", true)
+            dire(RoueFortuneTextes.jackpot(s.etiquette, { g($0, $1) }) + " (+\(Format.argent(net)))", true)
         }
         enCours = false
     }

@@ -962,13 +962,13 @@ struct ParisSportifsVue: View {
         let net = totalPaye - totalMise
         let phrase: String
         if net > 0 {
-            phrase = (meilleureCote >= 20 ? ParisTextes.jackpot(g) : ParisTextes.gain(g)).randomElement() ?? ""
+            phrase = (meilleureCote >= 20 ? ParisTextes.jackpot({ g($0, $1) }) : ParisTextes.gain({ g($0, $1) })).randomElement() ?? ""
         } else if unGagnant {
             phrase = ParisTextes.mixte.randomElement() ?? ""
         } else if presque {
             phrase = ParisTextes.presque(g).randomElement() ?? ""
         } else {
-            phrase = ParisTextes.perte(g).randomElement() ?? ""
+            phrase = ParisTextes.perte({ g($0, $1) }).randomElement() ?? ""
         }
         let bilan: String
         if net > 0 {

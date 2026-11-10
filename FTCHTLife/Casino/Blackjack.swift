@@ -122,6 +122,7 @@ enum BlackjackEtape {
 
 /// État et déroulement d'une table de blackjack. Toutes les méthodes sont appelées sur le fil principal
 /// (actions de boutons et `DispatchQueue.main.asyncAfter`).
+@MainActor
 final class BlackjackTable: ObservableObject {
     @Published private(set) var sabot: [CasinoCarte] = CasinoCarte.paquet(jeux: BlackjackRegles.nombreJeux)
     @Published private(set) var mains: [BlackjackMain] = []

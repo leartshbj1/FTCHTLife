@@ -283,7 +283,7 @@ struct CasinoUsurierVue: View {
                 Section("Ta dette") {
                     Text(Format.argent(e.detteUsurier))
                         .font(.title2.weight(.bold))
-                        .foregroundStyle(e.detteUsurier > 0 ? .red : .primary)
+                        .foregroundStyle(e.detteUsurier > 0 ? Color.red : Color.primary)
                     if e.anneesDetteImpayee > 0 {
                         Text("Impayée depuis \(e.anneesDetteImpayee) an\(e.anneesDetteImpayee > 1 ? "s" : "").")
                             .font(.caption).foregroundStyle(.red)

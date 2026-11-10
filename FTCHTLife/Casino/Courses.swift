@@ -858,13 +858,13 @@ struct CoursesVue: View {
         let net = totalPaye - totalMise
         let phrase: String
         if net > 0 {
-            phrase = (meilleurMultiplicateur >= 15 ? CoursesTextes.grosGain(g) : CoursesTextes.gain(g)).randomElement() ?? ""
+            phrase = (meilleurMultiplicateur >= 15 ? CoursesTextes.grosGain({ g($0, $1) }) : CoursesTextes.gain({ g($0, $1) })).randomElement() ?? ""
         } else if unGagnant {
             phrase = CoursesTextes.mixte.randomElement() ?? ""
         } else if presque {
             phrase = CoursesTextes.presque.randomElement() ?? ""
         } else {
-            phrase = CoursesTextes.perte(g).randomElement() ?? ""
+            phrase = CoursesTextes.perte({ g($0, $1) }).randomElement() ?? ""
         }
         let bilan: String
         if net > 0 {

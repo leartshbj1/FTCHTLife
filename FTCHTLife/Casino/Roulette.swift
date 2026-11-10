@@ -535,15 +535,15 @@ struct RouletteVue: View {
         if paiement == 0 && numero == 0 {
             dire(entete + (RouletteTextes.zero.randomElement() ?? "Zéro."), false)
         } else if paiement == 0 {
-            dire(entete + RouletteTextes.perte(g) + " (−\(Format.argent(t)))", false)
+            dire(entete + RouletteTextes.perte({ g($0, $1) }) + " (−\(Format.argent(t)))", false)
         } else if net < 0 {
             dire(entete + (RouletteTextes.partiel.randomElement() ?? "") + " Tu récupères \(Format.argent(paiement)) sur \(Format.argent(t)).", false)
         } else if net == 0 {
             dire(entete + (RouletteTextes.nul.randomElement() ?? ""), nil)
         } else if pleinGagne {
-            dire(entete + RouletteTextes.plein(g) + " (+\(Format.argent(net)))", true)
+            dire(entete + RouletteTextes.plein({ g($0, $1) }) + " (+\(Format.argent(net)))", true)
         } else {
-            dire(entete + RouletteTextes.gain(g) + " (+\(Format.argent(net)))", true)
+            dire(entete + RouletteTextes.gain({ g($0, $1) }) + " (+\(Format.argent(net)))", true)
         }
         enCours = false
     }

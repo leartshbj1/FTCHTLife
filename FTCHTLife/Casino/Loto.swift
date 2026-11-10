@@ -164,7 +164,7 @@ struct LotoVue: View {
                 .font(.system(size: 13, weight: .bold, design: .rounded))
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(cochee ? couleur : Color.white.opacity(0.1), in: RoundedRectangle(cornerRadius: 6))
-                .foregroundStyle(cochee ? .white : .white.opacity(0.85))
+                .foregroundStyle(cochee ? Color.white : Color.white.opacity(0.85))
         }
     }
 

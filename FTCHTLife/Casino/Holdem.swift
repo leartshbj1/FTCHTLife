@@ -930,7 +930,7 @@ final class HoldemTable: ObservableObject {
                 resultat = "Tu gagnes \(Format.argent(netJoueur)) ! " + accorder(HoldemTextes.abandon.randomElement() ?? "")
             } else {
                 let partageGagnant = vainqueurs.count > 1 && vainqueurs.contains(0)
-                let debut = "Tu gagnes \(Format.argent(netJoueur))" + (descriptions[0].map { " avec \($0)" } ?? "") + " ! "
+                let debut: String = "Tu gagnes \(Format.argent(netJoueur))" + (descriptions[0].map { " avec \($0)" } ?? "") + " ! "
                 let blague = partageGagnant ? (HoldemTextes.partage.randomElement() ?? "") : (HoldemTextes.victoire.randomElement() ?? "")
                 resultat = debut + accorder(blague)
             }
