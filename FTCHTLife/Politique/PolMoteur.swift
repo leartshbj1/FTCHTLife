@@ -21,7 +21,12 @@ enum PolMoteur {
     /// À appeler une fois par an dans `GameEngine.vieillir()`. Renvoie les lignes du journal de l'année.
     static func passerAnnee(_ j: inout Joueur, _ e: inout PolEtat) -> [String] {
         var l: [String] = []
-        e.titres = []
+        defer {
+            e.titresPublies = e.titres
+            e.titres = []
+            e.flashsPublies = e.flashsMonde
+            e.flashsMonde = []
+        }
         guard j.vivant else { return l }
 
         // Lois en vigueur
@@ -728,6 +733,7 @@ enum PolMoteur {
             e.loisVotees.append(id)
             if let a = loi.adoption { appliquerPol(a, &j, &e) }
             e.titres.append(remplir(loi.headline, j, e))
+            if let flash = loi.monde { e.flashsMonde.append(flash) }
             return PolResultat(texte: "✅ \(loi.titre) : adoptée ! " + remplir(loi.texteAdoption, j, e))
         }
         e.popularite -= 2
@@ -814,6 +820,7 @@ enum PolMoteur {
         if let id = p.loi, !e.loisActives.contains(id), let loi = PolCatalogue.loi(id) {
             e.loisActives.append(id)
             e.titres.append(remplir(loi.headline, j, e))
+            if let flash = loi.monde { e.flashsMonde.append(flash) }
         }
         if let id = p.abroger { e.loisActives.removeAll { $0 == id } }
         if p.exclusionParti == true, e.partiId != nil {
@@ -894,8 +901,12 @@ enum PolMoteur {
         return t
     }
 
-    /// Titres de presse politiques de l'année (pour le Journal du monde).
-    static func titresActualite(_ e: PolEtat?) -> [String] { e?.titres ?? [] }
+    /// Titres de presse politiques de l'année écoulée (à lire après `passerAnnee`, pour le Journal du monde).
+    static func titresActualite(_ e: PolEtat?) -> [String] { e?.titresPublies ?? [] }
+
+    /// Flashs du Journal du monde à publier (lois adoptées l'année écoulée), à lire après `passerAnnee`
+    /// et à passer à `MondeJournal.forcer(id:etat:age:tagsJoueur:)`.
+    static func flashsMonde(_ e: PolEtat?) -> [String] { e?.flashsPublies ?? [] }
 
     /// Multiplicateurs de prix des lois en vigueur (à passer en `extra:` au Journal du monde).
     static func facteursPrix(_ e: PolEtat?) -> [[String: Double]] {

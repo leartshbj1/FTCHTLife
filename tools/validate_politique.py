@@ -144,6 +144,8 @@ def main():
         pref = "mun_" if l.get("niveau") == "municipal" else "nat_"
         if not i.startswith(pref):
             err(f, f"{i}: l'id doit commencer par {pref}")
+        if l.get("monde") is not None and not re.fullmatch(r"mon_\d{4}", str(l["monde"])):
+            err(f, f"{i}: monde doit être un id de flash mon_NNNN")
         if l.get("ministere") is not None and l["ministere"] not in ids_min:
             err(f, f"{i}: ministère inconnu {l['ministere']}")
         d = l.get("difficulte")

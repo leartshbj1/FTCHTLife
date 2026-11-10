@@ -109,6 +109,7 @@ Chaque fichier contient un **tableau**. Sous-dossiers :
   - pour les autres modules : `prison` (multiplicateur des peines), `amendes`, `retraite` (multiplicateur de pension), `ageRetraite` (années en plus ou en moins), `permis`, `mortalite`, `fertilite`, `etudes` (frais), `chomage`, `loyer`, `casino`, `animaux`.
 - `tag` : ajouté aux tags du joueur tant que la loi est en vigueur (les événements peuvent l'utiliser).
 - `headline` : titre de presse (Journal du monde) quand la loi passe.
+- `monde` (optionnel) : id d'un flash du Journal du monde (`mon_NNNN`) à publier quand la loi passe.
 
 ## Branchement dans le moteur (fil principal)
 
@@ -123,7 +124,8 @@ Chaque fichier contient un **tableau**. Sous-dossiers :
 4. Interface : un bouton « Politique » (onglet ou ligne dans Occupation, dès 16 ans) qui ouvre
    `PolitiqueView(etat: \.politique)`. La vue lit et écrit l'état par ce chemin, via `engine.modifier`.
 5. Optionnel :
-   - Journal du monde : `PolMoteur.titresActualite(j.politique)` pour les titres, `PolMoteur.facteursPrix(j.politique)` et `PolMoteur.facteursSalaires(j.politique)` à passer en `extra:`.
+   - Journal du monde (après `passerAnnee`) : `PolMoteur.titresActualite(j.politique)` pour les titres (`MondeJournalView(titresExternes:)`),
+     `PolMoteur.flashsMonde(j.politique)` : ids de flashs à publier avec `MondeJournal.forcer(id:etat:age:tagsJoueur:)`, `PolMoteur.facteursPrix(j.politique)` et `PolMoteur.facteursSalaires(j.politique)` à passer en `extra:`.
    - Autres modules : `PolMoteur.regle("prison", j.politique)` renvoie le produit des multiplicateurs des lois en vigueur (1 par défaut) ;
      pour une règle additive (`ageRetraite`), `PolMoteur.regleSomme("ageRetraite", j.politique)` (0 par défaut).
    - Métiers : les métiers politiques du fil métiers (`attache_parlementaire`, `lobbyiste`…, liste dans `PolMoteur.metiersPolitiques`) donnent +2 d'influence par an.

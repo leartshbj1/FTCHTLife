@@ -179,8 +179,14 @@ struct PolEtat: Codable, Equatable {
     var electionsGagnees: Int = 0
     /// Années d'inéligibilité restantes après une condamnation.
     var ineligibilite: Int = 0
-    /// Titres de presse de l'année, pour le Journal du monde.
+    /// Titres de presse de l'année en cours (remplis au fil des actions).
     var titres: [String] = []
+    /// Titres de l'année qui vient de s'écouler, publiés au passage d'année (à lire par le Journal du monde).
+    var titresPublies: [String] = []
+    /// Flashs du Journal du monde déclenchés par les lois adoptées cette année.
+    var flashsMonde: [String] = []
+    /// Flashs à publier au passage d'année.
+    var flashsPublies: [String] = []
 
     init() {}
 
@@ -209,6 +215,9 @@ struct PolEtat: Codable, Equatable {
         electionsGagnees = try c.decodeIfPresent(Int.self, forKey: .electionsGagnees) ?? 0
         ineligibilite = try c.decodeIfPresent(Int.self, forKey: .ineligibilite) ?? 0
         titres = try c.decodeIfPresent([String].self, forKey: .titres) ?? []
+        titresPublies = try c.decodeIfPresent([String].self, forKey: .titresPublies) ?? []
+        flashsMonde = try c.decodeIfPresent([String].self, forKey: .flashsMonde) ?? []
+        flashsPublies = try c.decodeIfPresent([String].self, forKey: .flashsPublies) ?? []
     }
 
     mutating func borner() {
@@ -334,6 +343,8 @@ struct PolLoi: Codable, Identifiable, Equatable {
     var regles: [String: Double]?
     /// Tag ajouté au joueur tant que la loi est en vigueur (utilisable dans conditions.tags des événements).
     var tag: String?
+    /// Flash du Journal du monde à déclencher à l'adoption (id `mon_…`, voir docs/MONDE_FORMAT.md).
+    var monde: String?
     /// Titre de presse quand la loi passe ({ville}, {prenom}, {nom}, {poste}).
     var headline: String
     var texteAdoption: String
