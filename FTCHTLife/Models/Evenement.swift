@@ -23,6 +23,8 @@ struct Effets: Codable, Equatable {
     var clearFlags: [String]?
     /// Ids de suites (Data/Repercussions) à programmer.
     var followUps: [String]?
+    /// XP gagnée (ou perdue) par compétence, ex. {"cuisine": 6}. Voir docs/COMPETENCES.md.
+    var skills: [String: Int]?
 }
 
 struct ConditionsEvenement: Codable, Equatable {
@@ -40,6 +42,8 @@ struct ConditionsEvenement: Codable, Equatable {
     /// Drapeaux (souvenirs) que le joueur doit tous avoir / ne doit pas avoir. Voir docs/REPERCUSSIONS.md.
     var flags: [String]?
     var excludeFlags: [String]?
+    /// Niveau minimum (1 à 5) exigé par compétence, ex. {"guitare": 3}. Voir docs/COMPETENCES.md.
+    var skills: [String: Int]?
 }
 
 struct Issue: Codable, Equatable {
@@ -52,6 +56,8 @@ struct Issue: Codable, Equatable {
 struct Choix: Codable, Equatable {
     var label: String
     var outcomes: [Issue]
+    /// Choix caché : visible seulement si le joueur a ces niveaux de compétence. Voir docs/COMPETENCES.md.
+    var requiresSkill: [String: Int]?
 }
 
 struct Evenement: Codable, Identifiable, Equatable {
