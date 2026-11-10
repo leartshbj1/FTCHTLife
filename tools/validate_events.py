@@ -44,7 +44,7 @@ def main():
             ch = ev.get("choices", [])
             if not ch:
                 check_effects(ev.get("effects", {}), w, errs)
-                if "resultText" in ev: check_text(ev["resultText"], w, errs)
+                if "resultText" in ev: errs.append(f"{w}: resultText non supporté, mets le texte dans text")
             if len(ch) > 4: errs.append(f"{w}: plus de 4 choix")
             for ci,c in enumerate(ch):
                 cw=f"{w}/choix{ci}"; check_text(c.get("label"), cw, errs)
