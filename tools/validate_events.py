@@ -9,6 +9,12 @@ SPECIAL = {"death","newFriend","relationships","setFlags","skills"}
 SKILLS = {"anglais","espagnol","allemand","italien","albanais","japonais","guitare","piano","chant","danse","dessin","photo","cuisine","bricolage","mecanique","jardinage","sport","survie","code","echecs","seduction","eloquence","humour","marchandage","magie"}
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
 COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags","skills"}
+TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart",
+        # module vie (FTCHTLife/Systems/VieSysteme.swift, tags)
+        "prison","record","malade","bien_portant","addiction","pregnant","ex","parents","grandparents","grandchildren","dating","engaged","married","single"}
+SPECIAL = {"death","newFriend","relationships","setFlags","clearFlags","followUps","vie"}
+PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e","enfant","ex","codetenu","grandparent"}
+COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
     for k,v in e.items():
