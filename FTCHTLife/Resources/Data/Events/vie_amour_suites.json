@@ -1,0 +1,3612 @@
+[
+ {
+  "id": "rel_debut_appli",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 65,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "single"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Une appli de rencontre te propose un match à 98 % de compatibilité. Sa bio : « J'aime les randonnées et les gens qui ne mâchent pas fort. »",
+  "choices": [
+   {
+    "label": "Proposer un verre",
+    "outcomes": [
+     {
+      "chance": 0.65,
+      "text": "Premier rendez-vous réussi : vous avez parlé trois heures de vos pires colocataires. Ça accroche.",
+      "effects": {
+       "happiness": 5,
+       "followUps": [
+        "rep_vie_0001"
+       ],
+       "vie": {
+        "newPartner": true
+       }
+      }
+     },
+     {
+      "chance": 0.35,
+      "text": "La personne ressemble à sa photo… de 2009. Soirée correcte, sans plus.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Envoyer un mème",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le mème fait mouche. Un rendez-vous est fixé, et le courant passe.",
+      "effects": {
+       "happiness": 4,
+       "followUps": [
+        "rep_vie_0001"
+       ],
+       "vie": {
+        "newPartner": true
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Pas de réponse. Le mème était peut-être un peu trop niche.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Supprimer l'appli",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu supprimes l'appli. Ton pouce se repose enfin.",
+      "effects": {
+       "happiness": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_infidelite",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 90,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le téléphone de {partenaire} s'allume : « Nouveau message de Chouchou ». Ce n'est pas toi qui t'appelles Chouchou.",
+  "choices": [
+   {
+    "label": "Demander des explications",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "« Chouchou », c'est le garagiste. Il appelle tout le monde comme ça. Tu as vérifié, c'est vrai.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "partner": -2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Silence gêné. {partenaire} avoue une « connexion émotionnelle » avec quelqu'un de la compta.",
+      "effects": {
+       "happiness": -12,
+       "relationships": {
+        "partner": -20
+       },
+       "followUps": [
+        "rep_vie_0005"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Fouiller le téléphone",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "400 messages. {partenaire} te ment depuis des mois.",
+      "effects": {
+       "happiness": -15,
+       "karma": -2,
+       "relationships": {
+        "partner": -25
+       },
+       "followUps": [
+        "rep_vie_0005"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{partenaire} te surprend en pleine fouille. Maintenant, le suspect, c'est toi.",
+      "effects": {
+       "relationships": {
+        "partner": -10
+       },
+       "followUps": [
+        "rep_vie_0008"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire comme si de rien",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ranges l'info dans un coin de ta tête. Elle y fait du bruit toutes les nuits.",
+      "effects": {
+       "happiness": -6,
+       "followUps": [
+        "rep_vie_0009"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_coloc",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 35,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "single"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton/ta colocataire t'a laissé un post-it sur le frigo : « J'ai fait trop de lasagnes, sers-toi ». Avec un cœur dessiné. Tu ne dors plus.",
+  "choices": [
+   {
+    "label": "Déclarer ta flamme",
+    "outcomes": [
+     {
+      "chance": 0.55,
+      "text": "Tu bafouilles une déclaration près du micro-ondes. Réponse : « Enfin ! » Vous êtes ensemble.",
+      "effects": {
+       "happiness": 10,
+       "followUps": [
+        "rep_vie_0011"
+       ],
+       "vie": {
+        "newPartner": true
+       }
+      }
+     },
+     {
+      "chance": 0.45,
+      "text": "Le cœur était pour tout le monde. Il y a eu un post-it identique sur la porte du voisin.",
+      "effects": {
+       "happiness": -8,
+       "followUps": [
+        "rep_vie_0010"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Répondre par un post-it",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "S'ensuit une correspondance de post-its digne d'un roman épistolaire. Ça finit en dîner, puis en couple.",
+      "effects": {
+       "happiness": 8,
+       "followUps": [
+        "rep_vie_0011"
+       ],
+       "vie": {
+        "newPartner": true
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton post-it est tombé derrière le frigo. Il y sera retrouvé en 2041.",
+      "effects": {
+       "happiness": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Manger les lasagnes sans rien dire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Les lasagnes étaient divines. Le mystère reste entier.",
+      "effects": {
+       "health": 1,
+       "happiness": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_vegas",
+  "category": "relation",
+  "minAge": 21,
+  "maxAge": 50,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "single"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Week-end à Las Vegas. Tu te réveilles avec une bague au doigt, un chapeau de cow-boy et une personne inconnue qui ronfle à côté de toi.",
+  "choices": [
+   {
+    "label": "Faire connaissance",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Cette personne s'appelle Dominique et fait des pancakes divins. Pourquoi pas ?",
+      "effects": {
+       "happiness": 6,
+       "followUps": [
+        "rep_vie_0012"
+       ],
+       "vie": {
+        "newPartner": true
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La personne parle uniquement en citations de films. Vous décidez quand même de vous revoir.",
+      "effects": {
+       "happiness": 2,
+       "followUps": [
+        "rep_vie_0012"
+       ],
+       "vie": {
+        "newPartner": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Fuir par la fenêtre",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu fuis par la fenêtre du rez-de-chaussée. La bague, elle, est restée coincée.",
+      "effects": {
+       "happiness": -2,
+       "money": -300
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "C'était le 4e étage. Heureusement, il y avait une piscine.",
+      "effects": {
+       "health": -8,
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler un avocat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'avocat confirme : ce mariage n'existe pas en France. Facture : 900 dollars.",
+      "effects": {
+       "money": -850
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_demande_stade",
+  "category": "relation",
+  "minAge": 20,
+  "maxAge": 60,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "dating",
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu as un plan : demander {partenaire} en mariage sur l'écran géant du stade, à la mi-temps.",
+  "choices": [
+   {
+    "label": "Le faire",
+    "outcomes": [
+     {
+      "chance": 0.65,
+      "text": "« OUI ! » 40 000 personnes applaudissent. Le gardien adverse pleure.",
+      "effects": {
+       "happiness": 15,
+       "money": -500,
+       "relationships": {
+        "partner": 15
+       },
+       "followUps": [
+        "rep_vie_0015"
+       ]
+      }
+     },
+     {
+      "chance": 0.35,
+      "text": "{partenaire} est parti·e aux toilettes pile à ce moment. Tout le stade a vu ta demande… à une chaise vide.",
+      "effects": {
+       "happiness": -10,
+       "money": -500,
+       "relationships": {
+        "partner": 2
+       },
+       "followUps": [
+        "rep_vie_0014"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire ça en privé",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Dîner aux chandelles, bague dans le dessert. {partenaire} a failli l'avaler, mais dit oui.",
+      "effects": {
+       "happiness": 12,
+       "money": -300,
+       "relationships": {
+        "partner": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Renoncer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu gardes la bague dans un tiroir. Elle attend son heure.",
+      "effects": {
+       "happiness": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_distance",
+  "category": "relation",
+  "minAge": 20,
+  "maxAge": 60,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} décroche un poste de rêve… au Canada. Départ dans un mois.",
+  "choices": [
+   {
+    "label": "Tenter la relation à distance",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous achetez deux réveils, un à chaque fuseau horaire. Le pacte est scellé.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": 6
+       },
+       "followUps": [
+        "rep_vie_0016"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir avec",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu fais tes valises. Le Canada t'accueille avec -30 °C et un orignal sur le parking.",
+      "effects": {
+       "happiness": 6,
+       "money": -3000,
+       "relationships": {
+        "partner": 12
+       },
+       "followUps": [
+        "rep_vie_0018"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton visa est refusé à cause d'une amende de stationnement de 2014.",
+      "effects": {
+       "happiness": -6,
+       "followUps": [
+        "rep_vie_0016"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui demander de refuser",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{partenaire} refuse le poste. {partenaire} te le rappellera à chaque dispute pendant dix ans.",
+      "effects": {
+       "relationships": {
+        "partner": -6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{partenaire} part quand même. La relation ne survit pas à l'aéroport.",
+      "effects": {
+       "happiness": -12,
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_surprise",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 85,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu prépares en secret une fête surprise pour l'anniversaire de {partenaire}. 30 invités, un DJ, une piñata géante.",
+  "choices": [
+   {
+    "label": "Tout miser sur le secret",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Surprise totale ! {partenaire} hurle, rit, pleure et danse sur la table.",
+      "effects": {
+       "happiness": 10,
+       "money": -800,
+       "relationships": {
+        "partner": 12
+       },
+       "followUps": [
+        "rep_vie_0019"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{partenaire} a tout découvert à cause d'une story Instagram de ta tante. Faire semblant d'être surpris·e a demandé un vrai talent.",
+      "effects": {
+       "money": -800,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mettre la belle-mère dans le coup",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La belle-mère a tout gardé pour elle. Elle a gagné ton respect éternel.",
+      "effects": {
+       "happiness": 8,
+       "money": -800,
+       "relationships": {
+        "partner": 10
+       },
+       "followUps": [
+        "rep_vie_0019"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La belle-mère a vendu la mèche en 4 minutes. Elle prétend que c'était « un test ».",
+      "effects": {
+       "money": -800,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_chien_couple",
+  "category": "relation",
+  "minAge": 20,
+  "maxAge": 75,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} t'envoie la photo d'un chien du refuge : « Il s'appelle Biscotte. Il a besoin de nous. »",
+  "choices": [
+   {
+    "label": "Adopter Biscotte",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Biscotte arrive chez vous. Il a mangé une chaussette avant même d'avoir enlevé son harnais.",
+      "effects": {
+       "happiness": 8,
+       "money": -250,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_vie_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer un chat plutôt",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Vous adoptez un chat nommé Monsieur. Il vous ignore avec beaucoup de classe.",
+      "effects": {
+       "happiness": 5,
+       "money": -150
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{partenaire} boude. {partenaire} met la photo de Biscotte en fond d'écran.",
+      "effects": {
+       "relationships": {
+        "partner": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} va voir Biscotte au refuge tous les samedis, comme un parent divorcé.",
+      "effects": {
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_hobby_partenaire",
+  "category": "relation",
+  "minAge": 25,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} s'est mis·e au pain au levain. Le levain s'appelle Jean-Pierre et vit dans le frigo.",
+  "choices": [
+   {
+    "label": "Encourager",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} est ravi·e. Le pain est délicieux. Jean-Pierre grossit.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "partner": 6
+       },
+       "followUps": [
+        "rep_vie_0022"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Se moquer gentiment",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{partenaire} rit et te nomme officiellement « goûteur ».",
+      "effects": {
+       "relationships": {
+        "partner": 3
+       },
+       "followUps": [
+        "rep_vie_0022"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{partenaire} ne rit pas. Jean-Pierre non plus, apparemment.",
+      "effects": {
+       "relationships": {
+        "partner": -4
+       },
+       "followUps": [
+        "rep_vie_0022"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_voisin",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 70,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "single"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le facteur s'est trompé : tu as reçu le colis de ton/ta voisin·e du 3e. C'est un kit de broderie et une figurine de dragon.",
+  "choices": [
+   {
+    "label": "Monter le rapporter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous parlez dragons pendant une heure sur le palier. Dîner fixé.",
+      "effects": {
+       "happiness": 7,
+       "followUps": [
+        "rep_vie_0024"
+       ],
+       "vie": {
+        "newPartner": true
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton/ta voisin·e prend le colis sans un mot et ferme la porte. Mystère.",
+      "effects": {
+       "happiness": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Glisser un mot sous la porte",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le mot devient un échange de mots. Puis un dîner. Puis plus.",
+      "effects": {
+       "happiness": 6,
+       "followUps": [
+        "rep_vie_0024"
+       ],
+       "vie": {
+        "newPartner": true
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ton mot a été lu par le chat. Le chat l'a mangé."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_grossesse",
+  "category": "relation",
+  "minAge": 20,
+  "maxAge": 45,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} sort de la salle de bain avec un test de grossesse à la main et l'air de quelqu'un qui a vu un fantôme.",
+  "choices": [
+   {
+    "label": "Hurler de joie",
+    "outcomes": [
+     {
+      "chance": 0.85,
+      "text": "Deux barres ! Tu cours dans tout l'appart en criant. Le voisin du dessous tape au plafond pour féliciter.",
+      "effects": {
+       "happiness": 10,
+       "relationships": {
+        "partner": 10
+       },
+       "followUps": [
+        "rep_vie_0025"
+       ],
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     },
+     {
+      "chance": 0.15,
+      "text": "Fausse alerte : c'était un autotest de covid. Tu as quand même versé une larme.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un malaise",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tombes dans les pommes. Au réveil, tu vas être parent. Re-malaise.",
+      "effects": {
+       "happiness": 4,
+       "followUps": [
+        "rep_vie_0025"
+       ],
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander si c'est vraiment sûr",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} te lance le test au visage. Oui, c'est sûr. Félicitations quand même.",
+      "effects": {
+       "relationships": {
+        "partner": -3
+       },
+       "followUps": [
+        "rep_vie_0025"
+       ],
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_deuxieme_bebe",
+  "category": "relation",
+  "minAge": 24,
+  "maxAge": 46,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "children",
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} regarde {enfant} jouer et soupire : « Tu ne trouves pas qu'il manque quelqu'un à cette famille ? »",
+  "choices": [
+   {
+    "label": "Oui, faisons un deuxième",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Un an plus tard, la famille s'agrandit. {enfant} observe le nouveau-né avec méfiance.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_vie_0028"
+       ],
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Ça prend plus de temps que prévu. Vous adoptez un poisson rouge en attendant.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "On a déjà assez de chaos",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} acquiesce en regardant {enfant} peindre le chat. Argument recevable.",
+      "effects": {
+       "relationships": {
+        "partner": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer un chien à la place",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Compromis : un teckel nommé Saucisse. {enfant} est aux anges.",
+      "effects": {
+       "happiness": 5,
+       "money": -300
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_gender_reveal",
+  "category": "relation",
+  "minAge": 22,
+  "maxAge": 45,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} veut organiser une fête de révélation du sexe du bébé. Le beau-frère propose « un petit fumigène ».",
+  "choices": [
+   {
+    "label": "Accepter le fumigène",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "La fumée rose est magnifique. Jusqu'à ce que la haie prenne feu. Les pompiers repartent avec du gâteau.",
+      "effects": {
+       "happiness": -3,
+       "money": -200,
+       "followUps": [
+        "rep_vie_0030"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "La fumée est bleue, tout le monde applaudit, le chien aboie. Fête réussie.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un simple gâteau",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "On coupe le gâteau : l'intérieur est jaune parce que le pâtissier a oublié. Fou rire général.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser toute fête",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} est déçu·e. Le beau-frère, lui, est dévasté. Il avait déjà acheté le fumigène.",
+      "effects": {
+       "relationships": {
+        "partner": -3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_enfant_talent",
+  "category": "relation",
+  "minAge": 28,
+  "maxAge": 65,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "children"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} vient de jouer de la batterie pour la première fois et ne veut plus jamais s'arrêter. Les voisins ont déjà déposé une pétition.",
+  "choices": [
+   {
+    "label": "Acheter une batterie",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La batterie arrive. Tes oreilles partent. {enfant} est en extase.",
+      "effects": {
+       "happiness": -2,
+       "money": -700,
+       "relationships": {
+        "child": 10
+       },
+       "followUps": [
+        "rep_vie_0031"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer le piano à la place",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{enfant} se découvre une passion pour le piano. Silence relatif.",
+      "effects": {
+       "relationships": {
+        "child": 3
+       },
+       "followUps": [
+        "rep_vie_0031"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{enfant} joue du piano comme d'une batterie. Le piano ne s'en remet pas.",
+      "effects": {
+       "money": -300,
+       "followUps": [
+        "rep_vie_0031"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser net",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{enfant} tape désormais sur les casseroles. Tu as perdu sur toute la ligne.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_enfant_bagarre",
+  "category": "relation",
+  "minAge": 28,
+  "maxAge": 60,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "children"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le directeur de l'école te convoque : {enfant} s'est battu pour une carte Pokémon brillante.",
+  "choices": [
+   {
+    "label": "Défendre {enfant}",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il s'avère que {enfant} défendait un camarade. Le directeur s'excuse presque.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 8
+       },
+       "followUps": [
+        "rep_vie_0033"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il s'avère que {enfant} voulait juste la carte. Silence gêné.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": 2
+       },
+       "followUps": [
+        "rep_vie_0033"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Punir {enfant}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pas d'écran pendant un mois. {enfant} découvre les livres, à contrecœur.",
+      "effects": {
+       "relationships": {
+        "child": -5
+       },
+       "followUps": [
+        "rep_vie_0033"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander à voir la carte",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La carte est vraiment magnifique. Tu comprends un peu. Le directeur aussi, au fond.",
+      "effects": {
+       "happiness": 2,
+       "followUps": [
+        "rep_vie_0033"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_ado_soiree",
+  "category": "relation",
+  "minAge": 35,
+  "maxAge": 65,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "children"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} demande à aller à sa première vraie soirée. « Tout le monde y va. Même Lucas, et Lucas ne sort jamais. »",
+  "choices": [
+   {
+    "label": "Autoriser jusqu'à minuit",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{enfant} rentre à 23 h 58, essoufflé, mais à l'heure. Tu es impressionné·e.",
+      "effects": {
+       "relationships": {
+        "child": 8
+       },
+       "followUps": [
+        "rep_vie_0035"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il est 4 h. {enfant} rentre par la fenêtre et marche sur le chat.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -4
+       },
+       "followUps": [
+        "rep_vie_0034"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Autoriser mais aller le chercher",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu attends devant la maison en peignoir, klaxon à la main. {enfant} va mettre trois ans à s'en remettre.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": -3
+       },
+       "followUps": [
+        "rep_vie_0035"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{enfant} claque la porte de sa chambre si fort qu'un tableau tombe dans le salon.",
+      "effects": {
+       "relationships": {
+        "child": -8
+       },
+       "followUps": [
+        "rep_vie_0035"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_nid_vide",
+  "category": "relation",
+  "minAge": 40,
+  "maxAge": 75,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "children"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} t'annonce son départ de la maison pour son premier appartement. Avec ta poêle préférée dans les cartons.",
+  "choices": [
+   {
+    "label": "Aider au déménagement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu montes 5 étages sans ascenseur avec un frigo. Ton dos s'en souviendra, ton cœur aussi.",
+      "effects": {
+       "health": -3,
+       "relationships": {
+        "child": 10
+       },
+       "followUps": [
+        "rep_vie_0038"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Récupérer la poêle",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu récupères la poêle. {enfant} part avec une poêle de supermarché et une rancune légère.",
+      "effects": {
+       "relationships": {
+        "child": -3
+       },
+       "followUps": [
+        "rep_vie_0038"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu ouvres le carton : {enfant} a aussi pris ton grille-pain, tes serviettes et ton chat.",
+      "effects": {
+       "happiness": -3,
+       "followUps": [
+        "rep_vie_0038"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pleurer dans sa chambre vide",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu pleures assis·e sur le lit. Puis tu imagines un bureau à la place. Tu pleures un peu moins.",
+      "effects": {
+       "happiness": -4,
+       "followUps": [
+        "rep_vie_0038"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_enfant_hamster",
+  "category": "relation",
+  "minAge": 28,
+  "maxAge": 60,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "children"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} te supplie d'adopter un hamster. Il a déjà un prénom : Monsieur Croquette.",
+  "choices": [
+   {
+    "label": "Adopter Monsieur Croquette",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Monsieur Croquette arrive. Premier jour : il s'évade et se cache dans le moteur du lave-linge.",
+      "effects": {
+       "money": -60,
+       "relationships": {
+        "child": 8
+       },
+       "followUps": [
+        "rep_vie_0040"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier une plante verte",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "{enfant} accepte la plante et l'appelle Monsieur Croquette. Elle meurt en une semaine.",
+      "effects": {
+       "relationships": {
+        "child": -2
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "{enfant} refuse. Grève de brocolis pendant 15 jours.",
+      "effects": {
+       "relationships": {
+        "child": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_mariage_enfant",
+  "category": "relation",
+  "minAge": 45,
+  "maxAge": 95,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "children"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} t'annonce son mariage. Ta mission : le discours du parent. Et la future belle-famille est… intense.",
+  "choices": [
+   {
+    "label": "Écrire un discours émouvant",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Toute la salle pleure. Même le traiteur. {enfant} te serre dans ses bras.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "child": 12
+       },
+       "followUps": [
+        "rep_vie_0042"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu as raconté l'histoire du pot de chambre de 1998. {enfant} ne te parle plus pendant le dessert.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": -5
+       },
+       "followUps": [
+        "rep_vie_0042"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer le traiteur pour impressionner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Homard pour 120 personnes. La belle-famille est enfin impressionnée. Ton banquier, lui, s'évanouit.",
+      "effects": {
+       "happiness": 5,
+       "money": -9000,
+       "relationships": {
+        "child": 8
+       },
+       "followUps": [
+        "rep_vie_0042"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser la belle-famille tout gérer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Thème du mariage : « Les années disco ». Tu portes un pantalon pattes d'eph argenté.",
+      "effects": {
+       "happiness": 2,
+       "looks": -1,
+       "followUps": [
+        "rep_vie_0042"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_mariage_tonton",
+  "category": "relation",
+  "minAge": 16,
+  "maxAge": 90,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "siblings"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Mariage de {fratrie}. L'oncle Gérard, trois coupes dans le nez, monte sur la table pendant le discours.",
+  "choices": [
+   {
+    "label": "Le filmer",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu as tout : Gérard qui danse le madison au-dessus de la pièce montée. Document historique.",
+      "effects": {
+       "happiness": 5,
+       "followUps": [
+        "rep_vie_0044"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ta batterie meurt juste avant le salto. Le moment est perdu à jamais.",
+      "effects": {
+       "happiness": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le faire descendre",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu le fais descendre avec diplomatie. {fratrie} te remercie les larmes aux yeux.",
+      "effects": {
+       "karma": 2,
+       "relationships": {
+        "sibling": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Gérard t'entraîne dans sa danse. Vous finissez tous les deux dans la fontaine à chocolat.",
+      "effects": {
+       "happiness": 4,
+       "looks": -2,
+       "followUps": [
+        "rep_vie_0044"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le rejoindre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Duo de rock acrobatique sur la table des mariés. {fratrie} ne t'adresse plus la parole de la soirée.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "sibling": -6
+       },
+       "followUps": [
+        "rep_vie_0044"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_heritage",
+  "category": "relation",
+  "minAge": 25,
+  "maxAge": 90,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "siblings"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tante Odile est morte en laissant une maison en Bretagne « à se partager équitablement » entre toi et {fratrie}.",
+  "choices": [
+   {
+    "label": "Proposer de la vendre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{fratrie} est d'accord. C'était trop simple.",
+      "effects": {
+       "relationships": {
+        "sibling": 3
+       },
+       "followUps": [
+        "rep_vie_0049"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{fratrie} refuse : « Tante Odile voulait qu'on la garde ! » Le ton monte.",
+      "effects": {
+       "relationships": {
+        "sibling": -10
+       },
+       "followUps": [
+        "rep_vie_0047"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Réclamer la chambre avec vue mer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{fratrie} réclame la même chambre. La guerre de succession commence.",
+      "effects": {
+       "relationships": {
+        "sibling": -12
+       },
+       "followUps": [
+        "rep_vie_0047"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser {fratrie} tout prendre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{fratrie} est ému. Tu gagnes en karma ce que tu perds en résidence secondaire.",
+      "effects": {
+       "karma": 5,
+       "relationships": {
+        "sibling": 15
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_parent_retraite",
+  "category": "relation",
+  "minAge": 25,
+  "maxAge": 75,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "parents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{parent} prend sa retraite et vient d'acheter un camping-car baptisé « La Liberté ». Il est plus grand que ton appartement.",
+  "choices": [
+   {
+    "label": "Applaudir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{parent} klaxonne La Marseillaise en démarrant. Il est parti pour le tour de France.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "parent": 6
+       },
+       "followUps": [
+        "rep_vie_0051"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui demander qui va garder ton chat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{parent} te regarde comme si tu avais 6 ans. Il/elle part quand même.",
+      "effects": {
+       "relationships": {
+        "parent": -3
+       },
+       "followUps": [
+        "rep_vie_0051"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander à venir",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu fais une semaine de camping-car. Vous vous disputez sur la carte routière, mais c'est génial.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "parent": 10
+       },
+       "followUps": [
+        "rep_vie_0051"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Trois jours dans 12 m². Vous rentrez chacun de votre côté, en train.",
+      "effects": {
+       "relationships": {
+        "parent": -4
+       },
+       "followUps": [
+        "rep_vie_0051"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_parent_dating",
+  "category": "relation",
+  "minAge": 25,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "parents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu découvres que {parent} est inscrit·e sur un site de rencontres pour seniors. Son pseudo : « TangoPassion63 ».",
+  "choices": [
+   {
+    "label": "L'aider à améliorer son profil",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous refaites les photos. Tu as dû supprimer celle avec le poisson. Les messages affluent.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "parent": 8
+       },
+       "followUps": [
+        "rep_vie_0053"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire comme si tu n'avais rien vu",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ne peux plus regarder {parent} sans penser à « TangoPassion63 ».",
+      "effects": {
+       "happiness": -2,
+       "followUps": [
+        "rep_vie_0053"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le dire à tout le monde au dîner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Grand silence. Puis ta tante avoue être inscrite aussi.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "parent": -8
+       },
+       "followUps": [
+        "rep_vie_0053"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_parents_divorce",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 70,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "parents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{parent} t'annonce, entre le fromage et le dessert, que tes parents divorcent après 35 ans « parce qu'il est temps ».",
+  "choices": [
+   {
+    "label": "Encaisser avec calme",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu poses ta cuillère. Tu la reprends. Le dessert était bon, au moins.",
+      "effects": {
+       "happiness": -6,
+       "followUps": [
+        "rep_vie_0055"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tenter une médiation",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Ta médiation au restaurant tourne au règlement de comptes sur un voyage en Grèce de 1994.",
+      "effects": {
+       "happiness": -4,
+       "followUps": [
+        "rep_vie_0055"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Ils te remercient poliment et divorcent quand même.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "parent": 3
+       },
+       "followUps": [
+        "rep_vie_0055"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander qui garde la maison de vacances",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{parent} te regarde avec déception. Question légitime pourtant.",
+      "effects": {
+       "relationships": {
+        "parent": -5
+       },
+       "followUps": [
+        "rep_vie_0055"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_adn",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu as fait un test ADN pour rire. Résultat : 23 % de Viking, et un demi-frère inconnu qui habite à Perpignan.",
+  "choices": [
+   {
+    "label": "Le contacter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il s'appelle Thierry, il a ta tête et rit comme ton père. Rendez-vous pris.",
+      "effects": {
+       "happiness": 4,
+       "followUps": [
+        "rep_vie_0057"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Interroger ta famille",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton père devient tout pâle et change de sujet pour parler du prix du gazole.",
+      "effects": {
+       "happiness": -3,
+       "followUps": [
+        "rep_vie_0057"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ta mère éclate de rire : « On se demandait quand tu le découvrirais. »",
+      "effects": {
+       "happiness": -1,
+       "followUps": [
+        "rep_vie_0057"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Effacer le résultat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu effaces tout. Thierry t'envoie quand même une demande d'ami.",
+      "effects": {
+       "followUps": [
+        "rep_vie_0057"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_grenier",
+  "category": "relation",
+  "minAge": 15,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "parents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Dans le grenier, tu trouves une cassette : « {parent} — Tube de l'été 1986 ». Avec une photo en combinaison à paillettes.",
+  "choices": [
+   {
+    "label": "Écouter la cassette",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "C'est une chanson disco intitulée « Ma Moussaka d'Amour ». Elle est… entêtante.",
+      "effects": {
+       "happiness": 5,
+       "followUps": [
+        "rep_vie_0059"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Confronter {parent}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{parent} rougit jusqu'aux oreilles et avoue avoir été une star d'un été.",
+      "effects": {
+       "relationships": {
+        "parent": 3
+       },
+       "followUps": [
+        "rep_vie_0059"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_fratrie_dette",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "siblings"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{fratrie} te demande 2 000 € « pour un projet en or » : un food-truck de raclette en plein été.",
+  "choices": [
+   {
+    "label": "Prêter l'argent",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu prêtes. {fratrie} te serre dans ses bras et te promet de rembourser « avec intérêts ».",
+      "effects": {
+       "money": -2000,
+       "relationships": {
+        "sibling": 10
+       },
+       "followUps": [
+        "rep_vie_0061"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{fratrie} te traite de banque centrale sans cœur. Ambiance au réveillon.",
+      "effects": {
+       "relationships": {
+        "sibling": -10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Investir et devenir associé·e",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Te voilà co-propriétaire d'un camion à raclette. Le rêve.",
+      "effects": {
+       "money": -2000,
+       "relationships": {
+        "sibling": 6
+       },
+       "followUps": [
+        "rep_vie_0062"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_parrainage",
+  "category": "relation",
+  "minAge": 16,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "siblings"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{fratrie} vient d'avoir un bébé et te demande d'être parrain ou marraine.",
+  "choices": [
+   {
+    "label": "Accepter, très ému·e",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu pleures dans la maternité. Le bébé t'attrape le doigt. Contrat signé.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "sibling": 12
+       },
+       "followUps": [
+        "rep_vie_0063"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander ce que ça implique financièrement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{fratrie} soupire. Tu acceptes quand même, avec une calculatrice.",
+      "effects": {
+       "relationships": {
+        "sibling": -2
+       },
+       "followUps": [
+        "rep_vie_0063"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_belle_mere",
+  "category": "relation",
+  "minAge": 22,
+  "maxAge": 85,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "married",
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La mère de {partenaire} vient s'installer chez vous « pour deux semaines, le temps des travaux ».",
+  "choices": [
+   {
+    "label": "Accueillir chaleureusement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle arrive avec trois valises, une plante et son propre oreiller. Mauvais signe.",
+      "effects": {
+       "relationships": {
+        "partner": 6
+       },
+       "followUps": [
+        "rep_vie_0065"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier une date de départ",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Date fixée. Elle note la date sur un post-it… qui disparaît mystérieusement.",
+      "effects": {
+       "relationships": {
+        "partner": -2
+       },
+       "followUps": [
+        "rep_vie_0065"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{partenaire} se vexe. Tu dors sur le canapé, la belle-mère dans ton lit.",
+      "effects": {
+       "relationships": {
+        "partner": -8
+       },
+       "followUps": [
+        "rep_vie_0065"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_perceuse",
+  "category": "relation",
+  "minAge": 12,
+  "maxAge": 90,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} te rend ta perceuse… en morceaux, avec un mot : « Elle était déjà comme ça. » Elle n'était pas comme ça.",
+  "choices": [
+   {
+    "label": "Exploser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous vous criez dessus dans la cage d'escalier. Le gardien prend le parti de la perceuse.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "friend": -20
+       },
+       "followUps": [
+        "rep_vie_0067"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger un remboursement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "{ami} paye en pièces de 10 centimes, dans un bocal. Le message est clair.",
+      "effects": {
+       "money": 90,
+       "relationships": {
+        "friend": -12
+       },
+       "followUps": [
+        "rep_vie_0067"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{ami} rembourse et s'excuse platement. L'amitié survit.",
+      "effects": {
+       "money": 120,
+       "relationships": {
+        "friend": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser couler",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses couler. Mais chaque fois que tu vois {ami}, tu entends un bruit de perceuse.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "friend": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_ex_message",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "ex"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "2 h 14 du matin. Message de {ex} : « tu dors ? »",
+  "choices": [
+   {
+    "label": "Répondre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Vous discutez jusqu'à l'aube. {ex} propose un café « pour parler ».",
+      "effects": {
+       "happiness": 2,
+       "followUps": [
+        "rep_vie_0069"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{ex} voulait juste ton code Netflix. Romantisme zéro.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire semblant de dormir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fixes le message jusqu'à 4 h. Tu as vraiment fait semblant de dormir.",
+      "effects": {
+       "health": -1,
+       "followUps": [
+        "rep_vie_0070"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Bloquer {ex}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Bloqué. Tu dors comme un bébé. Un bébé fier de lui.",
+      "effects": {
+       "happiness": 4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_ex_reseaux",
+  "category": "relation",
+  "minAge": 16,
+  "maxAge": 70,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "ex"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ex} poste des photos avec sa nouvelle moitié. Problème : cette personne te ressemble énormément. Même coupe, même pull.",
+  "choices": [
+   {
+    "label": "Liker par fierté",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Like envoyé. Tu as l'air détaché·e. Tu ne l'es pas.",
+      "effects": {
+       "happiness": -2,
+       "followUps": [
+        "rep_vie_0072"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Commenter « jolie copie »",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le commentaire fait 3 000 likes. {ex} te bloque.",
+      "effects": {
+       "happiness": 4,
+       "followUps": [
+        "rep_vie_0072"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Personne ne trouve ça drôle. Tu supprimes au bout de 2 minutes, trop tard.",
+      "effects": {
+       "happiness": -4,
+       "followUps": [
+        "rep_vie_0072"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer de coupe de cheveux",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu te fais une coupe radicalement différente. C'est… audacieux.",
+      "effects": {
+       "happiness": 2,
+       "looks": -1,
+       "followUps": [
+        "rep_vie_0072"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_ex_sweat",
+  "category": "relation",
+  "minAge": 16,
+  "maxAge": 70,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "ex"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu réalises que ton sweat préféré est toujours chez {ex}. Ainsi que ta plante, ta poêle et ton chat.",
+  "choices": [
+   {
+    "label": "Aller tout récupérer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "{ex} te rend tout. Sauf le chat, qui refuse de partir.",
+      "effects": {
+       "happiness": 3,
+       "followUps": [
+        "rep_vie_0074"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{ex} porte ton sweat en ouvrant la porte. Ça te met en colère, puis ça te touche.",
+      "effects": {
+       "followUps": [
+        "rep_vie_0074"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser tomber",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rachètes tout. Sauf le chat.",
+      "effects": {
+       "happiness": -2,
+       "money": -150,
+       "followUps": [
+        "rep_vie_0074"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_ami_startup",
+  "category": "relation",
+  "minAge": 22,
+  "maxAge": 75,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} veut que tu investisses dans sa startup : la livraison de raclette par drone.",
+  "choices": [
+   {
+    "label": "Investir 5 000 €",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu investis. {ami} t'appelle désormais « mon business angel ».",
+      "effects": {
+       "money": -5000,
+       "relationships": {
+        "friend": 10
+       },
+       "followUps": [
+        "rep_vie_0075"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Investir 500 € pour le geste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Petit chèque, grand sourire. Tu possèdes 0,3 % d'un rêve.",
+      "effects": {
+       "money": -500,
+       "relationships": {
+        "friend": 4
+       },
+       "followUps": [
+        "rep_vie_0075"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{ami} hoche la tête : « Tu le regretteras. » Le ton est inquiétant.",
+      "effects": {
+       "relationships": {
+        "friend": -5
+       },
+       "followUps": [
+        "rep_vie_0075"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_temoin",
+  "category": "relation",
+  "minAge": 20,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} se marie et te choisit comme témoin. Tu dois faire un discours devant 150 personnes.",
+  "choices": [
+   {
+    "label": "Écrire un discours émouvant",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Larmes générales, ovation. Même le DJ applaudit.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "friend": 12
+       },
+       "followUps": [
+        "rep_vie_0077"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Trop émouvant : tu pleures si fort que personne ne comprend rien.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_vie_0077"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un discours humoristique",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu fais rire toute la salle. La belle-famille aussi.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "friend": 8
+       },
+       "followUps": [
+        "rep_vie_0077"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu as raconté l'anecdote du camping de 2012. Silence de mort. La belle-mère a noté ton nom.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "friend": -8
+       },
+       "followUps": [
+        "rep_vie_0077"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Improviser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu improvises un rap. C'est ambitieux. C'est filmé.",
+      "effects": {
+       "happiness": 3,
+       "followUps": [
+        "rep_vie_0077"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_ami_annule",
+  "category": "relation",
+  "minAge": 20,
+  "maxAge": 70,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Coup de tonnerre : le mariage de {ami} est annulé à deux semaines de la date. Tu avais déjà acheté une tenue à 300 €.",
+  "choices": [
+   {
+    "label": "Débarquer avec de la glace",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trois pots de glace, deux films tristes, une boîte de mouchoirs. {ami} te serre fort.",
+      "effects": {
+       "relationships": {
+        "friend": 15
+       },
+       "followUps": [
+        "rep_vie_0079"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer de partir en voyage",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous partez à Lisbonne avec les billets de la lune de miel. Thérapie efficace.",
+      "effects": {
+       "happiness": 8,
+       "money": -400,
+       "relationships": {
+        "friend": 12
+       },
+       "followUps": [
+        "rep_vie_0079"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{ami} pleure tout le voyage dans les tramways de Lisbonne. Mais va mieux à la fin.",
+      "effects": {
+       "money": -400,
+       "relationships": {
+        "friend": 10
+       },
+       "followUps": [
+        "rep_vie_0079"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_reunion_lycee",
+  "category": "relation",
+  "minAge": 28,
+  "maxAge": 70,
+  "weight": 1.0,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Invitation à la réunion des anciens du lycée, 15 ans après. Le groupe Facebook est déjà en feu.",
+  "choices": [
+   {
+    "label": "Y aller",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tout le monde a vieilli sauf Romain, qui a l'air d'avoir 17 ans. Suspect.",
+      "effects": {
+       "happiness": 5,
+       "followUps": [
+        "rep_vie_0081"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Personne ne se souvient de toi. Quelqu'un te prend pour le serveur.",
+      "effects": {
+       "happiness": -4,
+       "followUps": [
+        "rep_vie_0081"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mentir sur ta réussite",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu prétends être chirurgien·ne astronaute. Quelqu'un te demande de regarder son genou.",
+      "effects": {
+       "happiness": 2,
+       "karma": -2,
+       "followUps": [
+        "rep_vie_0081"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas y aller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu regardes les photos le lendemain. Personne n'a changé, vraiment."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_ami_depart",
+  "category": "relation",
+  "minAge": 16,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} t'annonce qu'il ou elle part vivre en Australie. « Pour élever des alpagas. »",
+  "choices": [
+   {
+    "label": "Organiser une fête d'adieu",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Fête mémorable sur le thème de l'alpaga. {ami} pleure dans un costume de kangourou.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "friend": 12
+       },
+       "followUps": [
+        "rep_vie_0083"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Essayer de le ou la retenir",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "{ami} reste ! Les alpagas attendront.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "friend": 10
+       }
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "{ami} part quand même, mais t'offre un alpaga en peluche.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "friend": 4
+       },
+       "followUps": [
+        "rep_vie_0083"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_coloc_ami",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 40,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} te propose d'être colocs. « Ça va être génial, on va faire des soirées tous les soirs. »",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous emménagez. Premier soir : pizza, jeux vidéo, rires. Le rêve.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "friend": 8
+       },
+       "followUps": [
+        "rep_vie_0085"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser pour préserver l'amitié",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{ami} comprend. L'amitié est sauve, ton calme aussi.",
+      "effects": {
+       "relationships": {
+        "friend": -2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_orga_mariage",
+  "category": "relation",
+  "minAge": 20,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "engaged",
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'organisation du mariage avec {partenaire} commence. Premier débat : château, grange ou salle des fêtes de Mamie ?",
+  "choices": [
+   {
+    "label": "Le château",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Château réservé. Acompte : un rein. Mais il y a des tourelles.",
+      "effects": {
+       "happiness": 5,
+       "money": -5000,
+       "relationships": {
+        "partner": 4
+       },
+       "followUps": [
+        "rep_vie_0087"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "La grange",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Grange champêtre, guirlandes lumineuses. Instagram va adorer.",
+      "effects": {
+       "happiness": 4,
+       "money": -2000,
+       "relationships": {
+        "partner": 5
+       },
+       "followUps": [
+        "rep_vie_0087"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "La grange est encore utilisée par des vaches. Elles seront invitées.",
+      "effects": {
+       "happiness": 2,
+       "money": -1500,
+       "followUps": [
+        "rep_vie_0087"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "La salle des fêtes de Mamie",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mamie est aux anges. Elle s'occupe de la déco : nappes en papier et napperons partout.",
+      "effects": {
+       "money": -300,
+       "relationships": {
+        "partner": 3
+       },
+       "followUps": [
+        "rep_vie_0087"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_voeux",
+  "category": "relation",
+  "minAge": 40,
+  "maxAge": 95,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "married",
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} propose de renouveler vos vœux de mariage. « Mais cette fois, en Écosse, en kilt. »",
+  "choices": [
+   {
+    "label": "Accepter avec le kilt",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Cérémonie dans les Highlands, cornemuse et vent glacial. Un des plus beaux jours de ta vie.",
+      "effects": {
+       "happiness": 10,
+       "money": -3000,
+       "relationships": {
+        "partner": 12
+       },
+       "followUps": [
+        "rep_vie_0091"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le vent soulève les kilts au moment des photos. Elles sont désormais interdites aux mineurs.",
+      "effects": {
+       "happiness": 6,
+       "money": -3000,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_vie_0091"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer plus simple",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Renouvellement dans le jardin, avec les voisins. Le chien porte les alliances. Il en perd une.",
+      "effects": {
+       "happiness": 6,
+       "money": -300,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_crise_quarantaine",
+  "category": "relation",
+  "minAge": 38,
+  "maxAge": 60,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} rentre avec une moto rouge, un blouson en cuir et une boucle d'oreille. « Je me sens vivant·e. »",
+  "choices": [
+   {
+    "label": "Monter derrière",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Balade au coucher du soleil. Tu découvres que tu adores la moto.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "partner": 10
+       },
+       "followUps": [
+        "rep_vie_0092"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu as eu tellement peur que tu as perdu ta voix. {partenaire} a adoré.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": 4
+       },
+       "followUps": [
+        "rep_vie_0092"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger qu'on la revende",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{partenaire} revend la moto, achète un paddle. La crise continue, sur l'eau.",
+      "effects": {
+       "relationships": {
+        "partner": -5
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{partenaire} refuse et dort dans le garage avec la moto pendant trois jours.",
+      "effects": {
+       "relationships": {
+        "partner": -10
+       },
+       "followUps": [
+        "rep_vie_0092"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Acheter une moto aussi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous voilà gang de deux. Les voisins vous appellent « les Hell's Pantoufles ».",
+      "effects": {
+       "happiness": 10,
+       "money": -6000,
+       "relationships": {
+        "partner": 12
+       },
+       "followUps": [
+        "rep_vie_0092"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_noel_politique",
+  "category": "relation",
+  "minAge": 14,
+  "maxAge": 90,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "parents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Repas de Noël. {parent} lance un débat sur la politique entre la dinde et la bûche. L'oncle Patrick s'étouffe.",
+  "choices": [
+   {
+    "label": "Argumenter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le débat dure 3 heures. La bûche fond. Personne n'a changé d'avis.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "parent": -8
+       },
+       "followUps": [
+        "rep_vie_0094"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer de sujet : le temps qu'il fait",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Brillant. Tout le monde parle du verglas. Noël est sauvé.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "parent": 3
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Même le temps qu'il fait devient politique. Tu as essayé.",
+      "effects": {
+       "relationships": {
+        "parent": -4
+       },
+       "followUps": [
+        "rep_vie_0094"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aller faire la vaisselle",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu te caches à la cuisine avec ta cousine. Meilleur moment de la soirée.",
+      "effects": {
+       "happiness": 4,
+       "followUps": [
+        "rep_vie_0094"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_recomposee",
+  "category": "relation",
+  "minAge": 25,
+  "maxAge": 70,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "children",
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Premières vacances en famille recomposée avec {partenaire}. Les enfants ne s'aiment pas. Le camping-car est petit.",
+  "choices": [
+   {
+    "label": "Organiser des activités communes",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tournoi de pétanque, glaces, karaoké. Les enfants commencent à se supporter.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_vie_0096"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La pétanque finit en bataille de boules. Une est encore dans le lac.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": 2
+       },
+       "followUps": [
+        "rep_vie_0096"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser les enfants se débrouiller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ils finissent par s'unir… contre vous. Une alliance est née.",
+      "effects": {
+       "happiness": 2,
+       "followUps": [
+        "rep_vie_0096"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_parent_medecin",
+  "category": "relation",
+  "minAge": 25,
+  "maxAge": 75,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "parents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{parent} entend mal, plisse les yeux devant la télé, mais refuse catégoriquement d'aller chez le médecin. « Je suis en pleine forme. »",
+  "choices": [
+   {
+    "label": "Insister",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Après trois semaines de siège, {parent} cède. Rendez-vous pris.",
+      "effects": {
+       "relationships": {
+        "parent": -2
+       },
+       "followUps": [
+        "rep_vie_0098"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{parent} fait semblant d'y aller et passe l'après-midi au PMU.",
+      "effects": {
+       "relationships": {
+        "parent": -1
+       },
+       "followUps": [
+        "rep_vie_0098"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre le rendez-vous en cachette",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu l'emmènes « faire des courses ». Surprise : l'ophtalmo. {parent} boude dans la salle d'attente.",
+      "effects": {
+       "relationships": {
+        "parent": -4
+       },
+       "followUps": [
+        "rep_vie_0098"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser faire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{parent} continue de répondre « oui, oui » à tout. Il ou elle a dit oui pour un abonnement à la pêche.",
+      "effects": {
+       "happiness": -2,
+       "followUps": [
+        "rep_vie_0098"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_cousin_huiles",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton cousin Kévin te contacte après 10 ans de silence : « J'ai une opportunité incroyable pour toi. » Il vend des huiles essentielles.",
+  "choices": [
+   {
+    "label": "Écouter le pitch",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il te faut acheter un stock de 1 500 € pour devenir « ambassadeur diamant ». Tu sens le piège.",
+      "effects": {
+       "happiness": -1,
+       "followUps": [
+        "rep_vie_0100"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Bloquer Kévin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Kévin te bloque en retour. Puis te débloque pour te proposer un régime à base de jus.",
+      "effects": {
+       "happiness": 2,
+       "followUps": [
+        "rep_vie_0102"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_testament",
+  "category": "relation",
+  "minAge": 16,
+  "maxAge": 80,
+  "weight": 1.0,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Grand-père est parti et laisse un testament étrange : une chasse au trésor à travers toute la famille.",
+  "choices": [
+   {
+    "label": "Participer à fond",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Première énigme : « Là où ta grand-mère cachait le cognac. » Tu sais exactement où.",
+      "effects": {
+       "happiness": 5,
+       "followUps": [
+        "rep_vie_0103"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser les cousins s'en charger",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Les cousins s'entre-déchirent. Tu regardes avec du pop-corn.",
+      "effects": {
+       "happiness": 3,
+       "followUps": [
+        "rep_vie_0103"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_evjf",
+  "category": "relation",
+  "minAge": 18,
+  "maxAge": 70,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "siblings"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{fratrie} se marie et tu organises l'enterrement de vie de célibataire. Budget : modeste. Ambitions : démesurées.",
+  "choices": [
+   {
+    "label": "Week-end à Amsterdam",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Week-end génial. Mais vous avez perdu {fratrie} pendant 6 heures. Retrouvé·e sur un vélo-taxi.",
+      "effects": {
+       "happiness": 8,
+       "money": -600,
+       "relationships": {
+        "sibling": 6
+       },
+       "followUps": [
+        "rep_vie_0105"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tout le monde a raté le train retour. Vous rentrez en bus de nuit.",
+      "effects": {
+       "happiness": 4,
+       "money": -800,
+       "relationships": {
+        "sibling": 4
+       },
+       "followUps": [
+        "rep_vie_0105"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Atelier poterie et tisane",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "{fratrie} adore. Les autres participants s'ennuient poliment.",
+      "effects": {
+       "happiness": 2,
+       "money": -150,
+       "relationships": {
+        "sibling": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{fratrie} voulait de l'action. Déception visible.",
+      "effects": {
+       "money": -150,
+       "relationships": {
+        "sibling": -4
+       },
+       "followUps": [
+        "rep_vie_0105"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laser game en déguisement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{fratrie} en dinosaure, toi en banane. Épique.",
+      "effects": {
+       "happiness": 8,
+       "money": -300,
+       "relationships": {
+        "sibling": 8
+       },
+       "followUps": [
+        "rep_vie_0105"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rel_debut_ronflements",
+  "category": "relation",
+  "minAge": 25,
+  "maxAge": 95,
+  "weight": 1.0,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} ronfle comme un poids lourd qui monte un col. Tu ne dors plus depuis trois semaines.",
+  "choices": [
+   {
+    "label": "Acheter des bouchons d'oreilles",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Efficaces ! Tu n'entends plus rien. Pas même le réveil. Retard au travail.",
+      "effects": {
+       "happiness": 2,
+       "followUps": [
+        "rep_vie_0107"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Les ronflements traversent les bouchons. Ils traversent sans doute le béton.",
+      "effects": {
+       "health": -2,
+       "happiness": -3,
+       "followUps": [
+        "rep_vie_0107"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Enregistrer {partenaire}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} écoute l'enregistrement, horrifié·e, et accuse le chien.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": -2
+       },
+       "followUps": [
+        "rep_vie_0107"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dormir sur le canapé",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le canapé est confortable. Trop. Tu y dors encore.",
+      "effects": {
+       "relationships": {
+        "partner": -4
+       },
+       "followUps": [
+        "rep_vie_0107"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ }
+]
