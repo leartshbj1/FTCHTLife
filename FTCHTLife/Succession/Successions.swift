@@ -664,7 +664,7 @@ enum Successions {
         var pool = chroniquesData.filter { chroniqueOK($0.conditions, l) }
         var lignes: [String] = []
         for _ in 0..<n {
-            guard let c = tirer(pool) { $0.weight ?? 1 } else { break }
+            guard let c = tirer(pool, poids: { $0.weight ?? 1 }) else { break }
             pool.removeAll { $0.id == c.id }
             lignes.append(remplirChronique(c.text, l))
         }
