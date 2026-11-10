@@ -1,0 +1,666 @@
+[
+  {
+    "id": "fet_gal_0001",
+    "category": "galette",
+    "minAge": 0,
+    "maxAge": 2,
+    "weight": 5,
+    "conditions": {},
+    "text": "Tu es trop petit{e} pour aller sous la table, alors c'est toi qui désignes les parts depuis ta chaise haute. Tout le monde attend ton verdict.",
+    "choices": [
+      {
+        "label": "Pointer le chien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le chien reçoit une part et la fève. Il est roi. Il ne rendra jamais la couronne.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Plonger la main dedans",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ta main entière disparaît dans la frangipane. Plus personne n'a faim, sauf toi.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "parent": -1
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu ressors la fève du premier coup. Tes parents parlent déjà de don surnaturel.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mâchouiller la couronne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La couronne en carton a un goût de victoire et d'encre dorée.",
+            "effects": {
+              "happiness": 3,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0002",
+    "category": "galette",
+    "minAge": 3,
+    "maxAge": 12,
+    "weight": 5,
+    "conditions": {},
+    "text": "Tu as trouvé la fève : un minuscule facteur en porcelaine. Maintenant tu dois choisir qui sera ta reine ou ton roi.",
+    "choices": [
+      {
+        "label": "Choisir un parent",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu couronnes un de tes parents. Il porte la couronne jusqu'au journal de 20 heures, très ému.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Choisir le chat",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le chat accepte la couronne trois secondes, puis la mange. Règne court mais intense.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le chat refuse la couronne d'un coup de patte. Tu as été rejeté{e} par ton propre sujet.",
+            "effects": {
+              "happiness": -2,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Se choisir soi-même",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu te couronnes toi-même, comme un empereur. La famille trouve ça un peu inquiétant.",
+            "effects": {
+              "happiness": 5,
+              "karma": -2,
+              "relationships": {
+                "parent": -1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0003",
+    "category": "galette",
+    "minAge": 4,
+    "maxAge": 17,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "siblings"
+      ]
+    },
+    "text": "C'est {fratrie} qui est sous la table pour désigner les parts. Toi, tu as repéré une petite bosse suspecte dans la pâte.",
+    "choices": [
+      {
+        "label": "Tricher discrètement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu orientes le plat d'un millimètre. La fève est à toi, et personne n'a rien vu.",
+            "effects": {
+              "happiness": 6,
+              "karma": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{fratrie} t'a vu{e} tourner le plat. Scandale familial, couronne confisquée.",
+            "effects": {
+              "happiness": -4,
+              "karma": -3,
+              "relationships": {
+                "sibling": -6
+              },
+              "setFlags": [
+                "fete_gal_triche_fratrie"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer honnête",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu n'as pas la fève. Mais tu as ta dignité, et une part un peu plus grosse.",
+            "effects": {
+              "happiness": 1,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dénoncer la bosse",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu révèles l'emplacement de la fève à toute la tablée. Tu viens de tuer le suspense. {fratrie} t'en est quand même reconnaissant.",
+            "effects": {
+              "smarts": 1,
+              "relationships": {
+                "sibling": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0004",
+    "category": "galette",
+    "minAge": 18,
+    "maxAge": 64,
+    "weight": 5,
+    "conditions": {},
+    "text": "Tu croques ta part avec conviction. Crac. La fève était une tour Eiffel en métal, et ta molaire n'a pas survécu.",
+    "choices": [
+      {
+        "label": "Sourire quand même",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu portes la couronne avec un trou dans le sourire. Un roi, mais un roi de pirates.",
+            "effects": {
+              "happiness": -3,
+              "looks": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réclamer à la boulangerie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La boulangère t'offre trois galettes en dédommagement. Tu n'as plus les dents pour.",
+            "effects": {
+              "money": 25,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La boulangerie affirme que « la fève fait partie de l'expérience ».",
+            "effects": {
+              "stress": 4,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Filer chez le dentiste",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le dentiste garde la fève en souvenir. Toi, tu gardes la facture.",
+            "effects": {
+              "money": -90,
+              "health": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0005",
+    "category": "galette",
+    "minAge": 18,
+    "maxAge": 67,
+    "weight": 5,
+    "conditions": {
+      "requiresJob": true
+    },
+    "text": "Ta collègue Sandrine a apporté une galette au travail. Le stagiaire, le plus jeune, est envoyé sous le bureau pour désigner les parts.",
+    "choices": [
+      {
+        "label": "Laisser la fève au chef",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu glisses la fève dans la part du chef. Il se couronne en réunion. Tu deviens son préféré pour une semaine.",
+            "effects": {
+              "karma": -2,
+              "happiness": 2,
+              "stress": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le chef a vu ton manège. « Je n'aime pas les flatteurs. » Silence glacial à la machine à café.",
+            "effects": {
+              "stress": 5,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder la fève",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu portes la couronne toute la journée et exiges qu'on t'appelle « Votre Majesté du deuxième étage ».",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu gardes la couronne en visio avec un client important. Le client trouve ça « créatif ». Ton chef moins.",
+            "effects": {
+              "happiness": 2,
+              "stress": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser ta part",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses ta part. Sandrine le prend personnellement et ne te salue plus jusqu'en mars.",
+            "effects": {
+              "health": 1,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0006",
+    "category": "galette",
+    "minAge": 13,
+    "maxAge": 17,
+    "weight": 5,
+    "conditions": {},
+    "text": "Ta famille veut que tu portes la couronne dorée pour la photo de la galette. La photo finira forcément sur le groupe familial.",
+    "choices": [
+      {
+        "label": "Poser fièrement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu prends la pose. Ta tante commente « notre petite majesté » avec onze cœurs. Tu as honte, mais tes parents sont ravis.",
+            "effects": {
+              "happiness": -1,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier sans photo",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu obtiens le droit de porter la couronne hors champ. Victoire diplomatique.",
+            "effects": {
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les négociations échouent. Il y a maintenant une photo de toi en train de négocier, avec la couronne.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "parent": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couronne de travers",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu portes la couronne à l'envers, l'air blasé. La photo devient la plus likée de l'histoire de la famille.",
+            "effects": {
+              "happiness": 3,
+              "fame": 1,
+              "relationships": {
+                "parent": -1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0007",
+    "category": "galette",
+    "minAge": 20,
+    "maxAge": 64,
+    "weight": 5,
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Tu as eu la fève chez ta belle-famille. Il faut choisir ta reine ou ton roi. {partenaire} te regarde. Ta belle-mère aussi.",
+    "choices": [
+      {
+        "label": "Couronner {partenaire}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{partenaire} rougit sous la couronne. Ta belle-mère approuve d'un signe de tête minuscule.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "partner": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couronner la belle-mère",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta belle-mère est bouleversée. Elle parle de toi comme « le meilleur choix de la famille ». {partenaire} applaudit, avec un sourire légèrement crispé.",
+            "effects": {
+              "karma": 3,
+              "relationships": {
+                "partner": -2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta belle-mère trouve ça « un peu fayot ». Tout le monde mange en silence.",
+            "effects": {
+              "stress": 3,
+              "relationships": {
+                "partner": -1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder la couronne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu te couronnes toi-même. Ta belle-famille a désormais un sujet de conversation pour les dix prochaines années.",
+            "effects": {
+              "happiness": 2,
+              "relationships": {
+                "partner": -5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0008",
+    "category": "galette",
+    "minAge": 65,
+    "maxAge": 100,
+    "weight": 5,
+    "conditions": {},
+    "text": "Au club des aînés, la galette est coupée en vingt-quatre parts minuscules. Tu as la fève. Le titre de roi se dispute avec Gérard depuis trente ans.",
+    "choices": [
+      {
+        "label": "Couronner Gérard",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Gérard pleure un peu. Il t'invite à sa partie de belote du jeudi. Une nouvelle ère commence.",
+            "effects": {
+              "karma": 4,
+              "happiness": 3,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder la couronne",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu gardes la couronne et fais le tour de la salle en saluant. Gérard prépare sa revanche pour l'an prochain.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Gérard conteste : selon lui, la fève a été « plantée ». Une enquête interne est ouverte.",
+            "effects": {
+              "happiness": 2,
+              "stress": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Cacher la fève",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu glisses la fève dans ta poche pour ta collection. Personne n'est roi. Gérard est furieux de ne pas pouvoir être jaloux.",
+            "effects": {
+              "happiness": 2,
+              "karma": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0009",
+    "category": "galette",
+    "minAge": 18,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {},
+    "text": "Tu as décidé de faire ta galette maison pour tes parents. La frangipane a la texture du mastic et la couleur d'un vieux pull.",
+    "choices": [
+      {
+        "label": "La servir quand même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tes parents mangent poliment. Puis l'un d'eux « descend chercher le journal » et revient avec une vraie galette.",
+            "effects": {
+              "happiness": -2,
+              "relationships": {
+                "parent": 2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Contre toute attente, c'est délicieux. Tu ne sauras jamais pourquoi.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter en douce",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fais passer une galette de boulangerie pour la tienne. L'étiquette du prix est restée collée dessous.",
+            "effects": {
+              "money": -22,
+              "karma": -2,
+              "relationships": {
+                "parent": -1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Cacher trois fèves",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Trois rois à table. Ils se disputent le trône pendant une heure. Meilleure galette de l'histoire familiale.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fet_gal_0010",
+    "category": "galette",
+    "minAge": 5,
+    "maxAge": 18,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "siblings"
+      ],
+      "flags": [
+        "fete_gal_triche_fratrie"
+      ]
+    },
+    "text": "Cette année, {fratrie} a exigé de couper la galette soi-même, « vu ce qui s'est passé la dernière fois ». Tout le monde te surveille.",
+    "choices": [
+      {
+        "label": "Avouer la triche",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu avoues enfin avoir tourné le plat l'an dernier. {fratrie} te pardonne, à condition d'être roi cette année.",
+            "effects": {
+              "karma": 3,
+              "relationships": {
+                "sibling": 5
+              },
+              "clearFlags": [
+                "fete_gal_triche_fratrie"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier en bloc",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu nies tout. {fratrie} te regarde manger comme un inspecteur des impôts.",
+            "effects": {
+              "stress": 3,
+              "relationships": {
+                "sibling": -3
+              },
+              "clearFlags": [
+                "fete_gal_triche_fratrie"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Pendant que tu nies, la fève tombe dans ta part. Personne ne te croit innocent{e}.",
+            "effects": {
+              "happiness": 1,
+              "relationships": {
+                "sibling": -4
+              },
+              "clearFlags": [
+                "fete_gal_triche_fratrie"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester sous la table",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu passes le repas sous la table pour prouver ta bonne foi. C'est absurde, mais ça marche.",
+            "effects": {
+              "happiness": 2,
+              "relationships": {
+                "sibling": 3
+              },
+              "clearFlags": [
+                "fete_gal_triche_fratrie"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
