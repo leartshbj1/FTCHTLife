@@ -131,3 +131,54 @@ Chaque fichier contient un **tableau**. Sous-dossiers :
    - Métiers : les métiers politiques du fil métiers (`attache_parlementaire`, `lobbyiste`…, liste dans `PolMoteur.metiersPolitiques`) donnent +2 d'influence par an.
    - Nécrologie : `PolMoteur.resumeCarriere(j.politique, genre: j.genre)` (« Ancien maire de Lyon, auteur de 3 lois absurdes »).
    - Profil : `j.politique?.mandat` pour afficher le mandat en cours.
+
+## Deuxième couche : politique très poussée
+
+### Nouveaux postes (`postes` des dossiers)
+
+| Poste (id) | Comment | Lois |
+|---|---|---|
+| `conseillerRegional` | élection directe, dès 18 ans | aucune |
+| `presidentRegion` | élu par les conseillers régionaux (il faut être conseiller régional) | `regional` |
+| `senateur` | élu par les grands électeurs (24 ans, avoir été maire ou élu régional, ou influence ≥ 60) | `national` |
+| `presidentAssemblee` | élu par les députés (il faut être député) | `national` |
+| `premierMinistre` | nomination | `national` |
+| `commissaire` | nomination à l'Union des Pays Voisins (après ministre ou Premier ministre) | `international` |
+| `secretaireGeneral` | élu par les pays des Nations Pas Très Unies (après président ou commissaire) | `international` |
+
+Autres valeurs de `postes` : `chef_parti` (le joueur dirige un parti), `ancien` (plus de mandat, mais a été au moins maire).
+
+### Nouveaux `kind` de dossiers
+
+- `lobby` (id `lob_`) : un lobby fait une offre à un élu (argent, voyage, cadeau) contre une faveur. Postes : les postes d'élus.
+- `proces` (id `pro_`) : procès après une mise en examen. Postes : `any`. Les pires issues : `finMandat`, `ineligibilite`, grosse amende.
+- `crise` (id `cri_`) : crise nationale à gérer (grève, catastrophe, panne, crise diplomatique). Postes : `president`, `premierMinistre`, `ministre`.
+- `parti` (id `par_`) : vie interne quand on dirige un parti. Postes : `["chef_parti"]`.
+- `apres` (id `apr_`) : la vie d'ancien élu (mémoires, plateaux télé, conférences, retour raté). Postes : `["ancien"]`.
+
+### Nouveaux niveaux de lois
+
+`regional` (id `reg_`, votées par un président de région) et `international` (id `int_`, portées par un commissaire ou le secrétaire général).
+
+### Nouvelles clés `pol` (et `adoption` des lois)
+
+- `segments` : opinion de six groupes d'électeurs, ±20 max : `{"jeunes": 5, "retraites": -8, "ruraux": 0, "urbains": 3, "patrons": -4, "fonctionnaires": 6}`.
+- `pays` : indicateurs du pays : `dette` (points de PIB, ±15), `chomage` (points, ±3), `croissance` (points, ±2), `securite` (±15), `moral` (±15).
+- `mobilisation` : colère sociale (grèves, manifestations), ±40.
+- `majorite` : sièges du camp du joueur à l'Assemblée, en points, ±40.
+- `rival` : rancune du rival principal envers le joueur, ±40.
+
+Variables en plus : `{rival}` (un rival du joueur), `{pm}` (le Premier ministre).
+
+### Systèmes de la deuxième couche (code : `PolProfond.swift`)
+
+- **Pays** (`PolEtat.pays`) : croissance, chômage, dette, moral, sécurité évoluent chaque année. Quand le joueur gouverne (ministre, Premier ministre, président), le bilan change sa popularité.
+- **Électorat** (`PolEtat.segments`) : six groupes ; une élection directe compte moitié popularité, moitié groupes pondérés (retraités 24 %, urbains 22 %, fonctionnaires 19 %, ruraux 16 %, jeunes 12 %, patrons 7 %), plus les affinités du parti (`segments` dans `Partis/*.json`).
+- **Élections indirectes** (président de région, sénateur, président de l'Assemblée, secrétaire général) : le réseau compte plus que la popularité.
+- **Rivaux** (`PolEtat.rivaux`, 5 max) : reviennent comme adversaires, gardent rancune, peuvent faire fuiter des affaires. Actions : réconciliation, alliance, sortir un dossier.
+- **Parti** : rang (adhérent, cadre, bureau national, chef), courants, congrès, investiture et primaire (sans investiture = dissidence et exclusion), fonder son propre parti (il prend de la force à chaque élection gagnée).
+- **Équipe** : directeur de campagne, plume, conseiller com, trésorier, garde du corps ; salaires annuels ; un membre peu loyal peut trahir.
+- **Gouvernement** : le joueur président nomme un Premier ministre (5 profils), peut organiser un référendum, dissoudre (cohabitation possible), passer une loi en force (49-trois-quarts, motion de censure). Grève générale si la colère sociale dépasse 60. Destitution possible.
+- **Après-politique** : mémoires, conférences, chroniqueur télé, conseil d'administration, fondation ; dossiers `apres`.
+- **Dynastie** : `PolMoteur.heritage(j.politique)` donne un `PolEtat` de départ pour un enfant qui reprend la vie (influence selon le rang atteint).
+- Tags en plus : `pol_chef_parti`, `pol_gouverne`, `pol_ancien`.
