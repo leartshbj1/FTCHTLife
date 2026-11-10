@@ -1,0 +1,3456 @@
+[
+  {
+    "id": "ami_0001",
+    "category": "amitie",
+    "minAge": 5,
+    "maxAge": 8,
+    "weight": 8,
+    "conditions": {},
+    "text": "À la récré, un garçon aux genoux écorchés te propose de devenir ton meilleur ami. En échange, il veut ta gomme qui sent la fraise.",
+    "choices": [
+      {
+        "label": "Signer le contrat",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il renifle la gomme toute la journée et te défend contre les CM2. Affaire conclue.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le lendemain, il te lâche pour un garçon qui a une gomme à la banane. Le marché est impitoyable.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un essai",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Deux jours d'essai sans gomme. Il accepte, impressionné par ton sens des affaires.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ta gomme",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes la récré à renifler ta gomme. C'est elle, ta vraie meilleure amie.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0002",
+    "category": "amitie",
+    "minAge": 6,
+    "maxAge": 11,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} te confie un énorme secret : un hamster vit dans son cartable depuis trois jours. Il s'appelle Président.",
+    "choices": [
+      {
+        "label": "Garder le secret",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu fournis des graines en douce. Président et toi êtes désormais liés à vie.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Président s'échappe en pleine dictée. Tu es complice. Vous êtes privés de récré ensemble.",
+            "effects": {
+              "happiness": -2,
+              "stress": 3,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prévenir la maîtresse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Président est sauvé. {ami} t'appelle « la balance » pendant un mois.",
+            "effects": {
+              "karma": 2,
+              "relationships": {
+                "friend": -10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger une garde partagée",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Président passe un week-end sur deux chez toi. Tes parents ne savent rien.",
+            "effects": {
+              "happiness": 7,
+              "stress": 2,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0003",
+    "category": "amitie",
+    "minAge": 13,
+    "maxAge": 17,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'ajoute dans un groupe WhatsApp ultra-fermé nommé « Les Vrais ». Il compte 47 membres, dont un prof de techno.",
+    "choices": [
+      {
+        "label": "Poster un mème",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le prof de techno réagit avec un pouce. Le groupe meurt dans la seconde.",
+            "effects": {
+              "happiness": -3,
+              "fame": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton mème tourne dans tout le collège. Tu es une légende pendant 48 heures.",
+            "effects": {
+              "happiness": 6,
+              "fame": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Quitter discrètement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« {prenom} a quitté le groupe. » Le message le plus commenté de l'année.",
+            "effects": {
+              "stress": 3,
+              "relationships": {
+                "friend": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout mettre en sourdine",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu découvres 2 000 messages un mois plus tard. Ils parlaient surtout de chips.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0004",
+    "category": "amitie",
+    "minAge": 22,
+    "maxAge": 50,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ],
+      "minMoney": 300
+    },
+    "text": "{ami} te demande de lui prêter 300 € « juste jusqu'à vendredi, promis, sur la tête de ma plante verte ».",
+    "choices": [
+      {
+        "label": "Prêter les 300 €",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} te serre dans ses bras. La plante verte, elle, semble inquiète.",
+            "effects": {
+              "money": -300,
+              "relationships": {
+                "friend": 5
+              },
+              "setFlags": [
+                "ami_pret_300"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prêter la moitié",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "150 €, et un regard qui veut dire « on en reparlera ». {ami} acquiesce.",
+            "effects": {
+              "money": -150,
+              "relationships": {
+                "friend": 1
+              },
+              "setFlags": [
+                "ami_pret_300"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} dit « pas de souci » avec la voix de quelqu'un pour qui c'est un énorme souci.",
+            "effects": {
+              "stress": 2,
+              "relationships": {
+                "friend": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger des intérêts",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu négocies 10 % et un repas. {ami} signe un contrat sur une serviette en papier.",
+            "effects": {
+              "money": -300,
+              "smarts": 1,
+              "relationships": {
+                "friend": 2
+              },
+              "setFlags": [
+                "ami_pret_300",
+                "ami_pret_interets"
+              ],
+              "skills": {
+                "marchandage": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0005",
+    "category": "amitie",
+    "minAge": 24,
+    "maxAge": 65,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ],
+      "flags": [
+        "ami_pret_300"
+      ],
+      "excludeFlags": [
+        "ami_pret_regle"
+      ]
+    },
+    "text": "Le fameux vendredi n'est toujours pas arrivé. {ami} vient de poster des photos de vacances à Bali avec un cocktail dans un ananas.",
+    "choices": [
+      {
+        "label": "Réclamer poliment",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "{ami} rougit et te fait un virement dans l'heure. La plante verte est sauvée.",
+            "effects": {
+              "money": 300,
+              "happiness": 4,
+              "setFlags": [
+                "ami_pret_regle"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu reçois un vocal de six minutes plein d'émotion. Aucun virement n'y figure.",
+            "effects": {
+              "stress": 4,
+              "relationships": {
+                "friend": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Commenter la photo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« Joli ananas, il m'a coûté combien ? » Les likes pleuvent. L'amitié, un peu moins.",
+            "effects": {
+              "happiness": 4,
+              "fame": 1,
+              "relationships": {
+                "friend": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une croix dessus",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu considères ces 300 € comme le prix d'une leçon. Une leçon bronzée.",
+            "effects": {
+              "karma": 3,
+              "happiness": -2,
+              "setFlags": [
+                "ami_pret_regle"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Plaidoirie émouvante",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton message est si bien tourné que {ami} pleure, rembourse et ajoute un porte-clé de Bali.",
+            "effects": {
+              "money": 300,
+              "happiness": 6,
+              "relationships": {
+                "friend": 3
+              },
+              "setFlags": [
+                "ami_pret_regle"
+              ],
+              "skills": {
+                "eloquence": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0006",
+    "category": "amitie",
+    "minAge": 7,
+    "maxAge": 12,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Tu organises un anniversaire surprise pour {ami}. Tout le monde est caché derrière le canapé… quand {ami} débarque avec un gâteau : c'est une surprise pour toi, le même jour.",
+    "choices": [
+      {
+        "label": "Sortir en hurlant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Deux surprises s'annulent. Il reste deux gâteaux. Personne ne se plaint.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester caché",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{ami} se cache aussi. Vous attendez tous les deux pendant 40 minutes.",
+            "effects": {
+              "happiness": 3,
+              "stress": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton chien trouve les deux gâteaux avant tout le monde. Fête annulée, chien malade.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Revendiquer l'idée",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous vous disputez pour savoir qui l'a eue en premier. Les invités mangent sans vous.",
+            "effects": {
+              "happiness": -2,
+              "relationships": {
+                "friend": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0007",
+    "category": "amitie",
+    "minAge": 30,
+    "maxAge": 60,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Tu prépares les 40 ans surprise de {ami} depuis trois mois. Ce matin, quelqu'un a fait « répondre à tous » en incluant {ami}.",
+    "choices": [
+      {
+        "label": "Prétendre que c'est annulé",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{ami} y croit, pleure un peu, puis s'effondre de joie le soir venu. Mission accomplie.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{ami} se vexe et part au cinéma ce soir-là. 30 invités fêtent un fauteuil vide.",
+            "effects": {
+              "happiness": -5,
+              "money": -80
+            }
+          }
+        ]
+      },
+      {
+        "label": "Assumer la non-surprise",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} arrive en jouant la surprise. Le jeu d'acteur est épouvantable, tout le monde adore.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser une fausse fausse fête",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un double bluff digne d'un film d'espionnage. Tu y laisses ton sommeil et 200 €.",
+            "effects": {
+              "happiness": 7,
+              "stress": 6,
+              "money": -200,
+              "relationships": {
+                "friend": 8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0008",
+    "category": "amitie",
+    "minAge": 14,
+    "maxAge": 19,
+    "weight": 6,
+    "conditions": {},
+    "text": "À l'arrêt de bus, une fille porte le même t-shirt que toi : celui d'un groupe de métal finlandais qui a vendu onze albums dans le monde.",
+    "choices": [
+      {
+        "label": "Lui faire un signe",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Vous ratez trois bus à parler du batteur. Une amitié est née.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Elle ne connaît pas le groupe, elle a trouvé le t-shirt dans une friperie. Malaise métal.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fredonner leur tube",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle complète le refrain. Le chauffeur vous demande d'arrêter. Vous êtes inséparables.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de trottoir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu préfères rester le seul fan de ta ville. C'est plus mystérieux.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0009",
+    "category": "amitie",
+    "minAge": 18,
+    "maxAge": 35,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} déménage à Brest et compte sur toi pour porter le frigo. Au cinquième étage. Sans ascenseur.",
+    "choices": [
+      {
+        "label": "Porter le frigo",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu arrives en haut en héros. {ami} t'offre une bière tiède et sa gratitude éternelle.",
+            "effects": {
+              "health": -2,
+              "relationships": {
+                "friend": 8
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton dos fait un bruit de biscotte. Le frigo, lui, va très bien.",
+            "effects": {
+              "health": -7,
+              "stress": 3,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter les coussins",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu montes 47 fois avec un coussin. Techniquement, tu as aidé.",
+            "effects": {
+              "health": 1,
+              "relationships": {
+                "friend": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pleurer dans le camion",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sanglotes contre un carton marqué « Divers ». {ami} vient te consoler. Le frigo attend.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Démonter la porte",
+        "requiresSkill": {
+          "bricolage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dégondes la porte, passes le frigo en un geste, remontes tout. Les voisins applaudissent.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "friend": 9
+              },
+              "skills": {
+                "bricolage": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0010",
+    "category": "amitie",
+    "minAge": 40,
+    "maxAge": 75,
+    "weight": 5,
+    "conditions": {},
+    "text": "Au boulodrome, un monsieur en bob te propose de rejoindre son équipe, « Les Cochonnets Rugissants ». Leur dernier membre a déménagé.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu perds tous tes matchs mais gagnes un pastis et trois copains bavards.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu découvres une rivalité vieille de trente ans avec l'équipe d'en face. Tu es pris dedans.",
+            "effects": {
+              "happiness": 4,
+              "stress": 3,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Montrer ton tir",
+        "requiresSkill": {
+          "sport": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton carreau parfait fait tomber un bob. On te nomme capitaine sur-le-champ.",
+            "effects": {
+              "happiness": 9,
+              "fame": 1,
+              "newFriend": true,
+              "skills": {
+                "sport": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il te regarde partir comme un homme qui ne pardonnera pas.",
+            "effects": {
+              "karma": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0011",
+    "category": "amitie",
+    "minAge": 62,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {},
+    "text": "Au marché, un homme te dévisage : vous étiez en CE2 ensemble. Il affirme que tu lui dois toujours une bille. Une agate, précise-t-il.",
+    "choices": [
+      {
+        "label": "Lui rendre une bille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu achètes un sac de billes au bureau de tabac. Il pleure. Vous déjeunez ensemble chaque jeudi.",
+            "effects": {
+              "happiness": 8,
+              "money": -5,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier en bloc",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« C'était Bernard ! » Il te croit à moitié. Bernard est injoignable.",
+            "effects": {
+              "happiness": 1,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réclamer ton yo-yo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu te souviens soudain qu'il t'a cassé un yo-yo. Les comptes sont soldés, l'amitié renaît.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0012",
+    "category": "amitie",
+    "minAge": 13,
+    "maxAge": 17,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} te jure que te teindre les cheveux en vert pomme la veille de la photo de classe est « une stratégie de marque personnelle ».",
+    "choices": [
+      {
+        "label": "Suivre le conseil",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Sur la photo, tu brilles comme un néon. On t'appelle « la Pomme ». Tu assumes.",
+            "effects": {
+              "happiness": 5,
+              "fame": 2,
+              "looks": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La teinture vire au kaki. Tu ressembles à une tenue de camouflage.",
+            "effects": {
+              "looks": -5,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Teindre {ami} d'abord",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} se dégonfle à la vue du pinceau. La stratégie de marque est abandonnée.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Sur la photo, tu es normal. {ami}, en revanche, est vert pomme.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0013",
+    "category": "amitie",
+    "minAge": 20,
+    "maxAge": 40,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Tu découvres que {ami}, qui gardait tes clés pendant tes vacances, a sous-loué ton canapé sur Internet. Note moyenne : 4,2 étoiles.",
+    "choices": [
+      {
+        "label": "Exiger ta part",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} te verse la moitié des gains : 140 €. Tu ne sais pas si tu dois être fâché{e} ou flatté{e}.",
+            "effects": {
+              "money": 140,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couper les ponts",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu récupères tes clés et ta dignité. Le canapé, lui, garde le souvenir de 9 inconnus.",
+            "effects": {
+              "happiness": -3,
+              "karma": 1,
+              "relationships": {
+                "friend": -20
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lire les avis",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« Hôte absent mais canapé sincère. » Tu es étrangement ému{e} par cette critique.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "« Odeur de chaussette ancienne. » La vérité te blesse plus que la trahison.",
+            "effects": {
+              "happiness": -5,
+              "stress": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une blague cinglante",
+        "requiresSkill": {
+          "humour": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu publies une réponse d'hôte hilarante. Elle devient virale, {ami} rit jaune et rembourse tout.",
+            "effects": {
+              "money": 280,
+              "happiness": 6,
+              "fame": 2,
+              "skills": {
+                "humour": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0014",
+    "category": "amitie",
+    "minAge": 8,
+    "maxAge": 13,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} te défie au championnat du monde de crachat de noyau de cerise, organisé dans le jardin de ta grand-mère.",
+    "choices": [
+      {
+        "label": "Cracher fort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "4,20 mètres. Nouveau record du jardin. {ami} réclame un contrôle antidopage.",
+            "effects": {
+              "happiness": 7,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le noyau atterrit dans la tasse de ta grand-mère. Disqualification familiale.",
+            "effects": {
+              "happiness": -2,
+              "stress": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Viser le chat",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Raté. Le chat te regarde avec un mépris qui te suivra jusqu'à l'âge adulte.",
+            "effects": {
+              "karma": -2,
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Technique d'athlète",
+        "requiresSkill": {
+          "sport": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Élan, rotation, souffle maîtrisé : 6 mètres. {ami} s'incline et te remet une médaille en capsule.",
+            "effects": {
+              "happiness": 9,
+              "relationships": {
+                "friend": 3
+              },
+              "skills": {
+                "sport": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0015",
+    "category": "amitie",
+    "minAge": 35,
+    "maxAge": 65,
+    "weight": 5,
+    "conditions": {},
+    "text": "Le groupe WhatsApp « Promo 2004 » ressuscite en pleine nuit. 312 messages pour débattre de la meilleure marque de chips de votre jeunesse.",
+    "choices": [
+      {
+        "label": "Tout lire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu finis à 4 h du matin, les yeux rouges. Le débat n'est toujours pas tranché.",
+            "effects": {
+              "stress": 5,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mettre en sourdine",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dors comme un bébé. On organise une soirée sans toi.",
+            "effects": {
+              "health": 2,
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un sondage",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton sondage apaise les tensions. On te nomme modérateur à vie.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le sondage déclenche une guerre civile. Deux anciens délégués quittent le groupe.",
+            "effects": {
+              "stress": 3,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Poster le mème parfait",
+        "requiresSkill": {
+          "humour": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un seul montage met tout le monde d'accord. On te retrouve, on te réinvite à tout.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true,
+              "skills": {
+                "humour": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0016",
+    "category": "amitie",
+    "minAge": 70,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} et toi comparez vos piluliers au salon de thé. Une rivalité féroce s'installe sur qui en prend le plus.",
+    "choices": [
+      {
+        "label": "Gonfler tes chiffres",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu comptes deux fois la vitamine D. {ami} te soupçonne, mais n'a pas de preuves.",
+            "effects": {
+              "happiness": 4,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déclarer forfait",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} gagne. Vous trinquez à la tisane, chacun secrètement content de sa santé.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de sujet",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous passez à la comparaison des petits-enfants. C'est pire.",
+            "effects": {
+              "stress": 2,
+              "relationships": {
+                "friend": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0017",
+    "category": "amitie",
+    "minAge": 5,
+    "maxAge": 7,
+    "weight": 7,
+    "conditions": {},
+    "text": "Au bac à sable, une petite fille avec une pelle rouge te propose de creuser un tunnel jusqu'en Chine.",
+    "choices": [
+      {
+        "label": "Creuser ensemble",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Vous atteignez 40 cm de profondeur et une capsule de bière. C'est presque la Chine. Elle devient ta copine.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le gardien du parc vous fait reboucher la Chine. Vous restez amis par solidarité.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Corriger : c'est l'Australie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle te regarde comme si tu avais insulté sa pelle. Elle creuse seule.",
+            "effects": {
+              "smarts": 1,
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ton seau",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu construis un château. Il est moche. Tu l'aimes.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0018",
+    "category": "amitie",
+    "minAge": 18,
+    "maxAge": 26,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'avoue avec fierté avoir eu le code de la route en répondant B à toutes les questions. {ami} propose de te raccompagner.",
+    "choices": [
+      {
+        "label": "Monter quand même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le trajet se passe bien, sauf aux ronds-points, que {ami} prend comme des suggestions.",
+            "effects": {
+              "stress": 6,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{ami} cale onze fois. Vous arrivez à pied, en poussant la voiture.",
+            "effects": {
+              "health": 1,
+              "stress": 3,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le secret",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prends le bus. {ami} ne comprend pas pourquoi, et c'est très bien comme ça.",
+            "effects": {
+              "karma": 1,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le crier à la soirée",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tout le monde rit. {ami} un peu moins, et repasse le code par fierté.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0019",
+    "category": "amitie",
+    "minAge": 25,
+    "maxAge": 55,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Au mariage de ta cousine, {ami} prend le micro et raconte ta pire anecdote : celle de la tondeuse, du poney et de la piscine gonflable.",
+    "choices": [
+      {
+        "label": "Riposter au micro",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu racontes l'histoire du karaoké de {ami}. Le DJ coupe le son. Les deux camps sont blessés.",
+            "effects": {
+              "happiness": 3,
+              "fame": 1,
+              "relationships": {
+                "friend": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Quitter la salle",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu finis la soirée au parking avec l'oncle qui fume. Il connaissait déjà l'histoire.",
+            "effects": {
+              "happiness": -5,
+              "stress": 3,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rire avec tout le monde",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ris si fort que tout le monde croit que c'était prévu. Le poney devient une légende familiale.",
+            "effects": {
+              "happiness": 2,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retourner la salle",
+        "requiresSkill": {
+          "humour": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu enchaînes avec la suite de l'histoire, encore plus drôle. Standing ovation. {ami} te tend le micro à vie.",
+            "effects": {
+              "happiness": 9,
+              "fame": 2,
+              "relationships": {
+                "friend": 4
+              },
+              "skills": {
+                "humour": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0020",
+    "category": "amitie",
+    "minAge": 45,
+    "maxAge": 78,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "friend"
+      ],
+      "minMoney": 500
+    },
+    "text": "{ami} retrouve la vieille 2CV de vos 20 ans dans une grange et propose de refaire votre road trip jusqu'à Biarritz.",
+    "choices": [
+      {
+        "label": "Partir demain",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Deux pannes, une crevaison, des fous rires. Le plus beau voyage de ta vie, pour la deuxième fois.",
+            "effects": {
+              "happiness": 15,
+              "money": -450,
+              "health": -2,
+              "relationships": {
+                "friend": 15
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La 2CV rend l'âme à Angoulême. Vous finissez en train, à chanter dans le wagon-bar.",
+            "effects": {
+              "happiness": 10,
+              "money": -600,
+              "relationships": {
+                "friend": 12
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre le train direct",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "C'est confortable, rapide et sans aucune anecdote. {ami} boude jusqu'à Bordeaux.",
+            "effects": {
+              "happiness": 4,
+              "money": -250,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retaper la 2CV",
+        "requiresSkill": {
+          "mecanique": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu la remets en état en trois week-ends. Elle ronronne jusqu'à l'océan sans un hoquet.",
+            "effects": {
+              "happiness": 16,
+              "money": -300,
+              "relationships": {
+                "friend": 15
+              },
+              "skills": {
+                "mecanique": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, trop vieux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu restes chez toi. {ami} t'envoie une carte postale de chaque village. Tu regrettes un peu.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0021",
+    "category": "amitie",
+    "minAge": 11,
+    "maxAge": 15,
+    "weight": 6,
+    "conditions": {},
+    "text": "Le nouveau de la classe s'assoit à côté de toi. En dix minutes, il t'a récité les horaires de tous les TER de ta région.",
+    "choices": [
+      {
+        "label": "Lui poser des questions",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il est passionnant, en fait. Il t'apprend que le 17 h 42 n'est jamais à l'heure. Nouvel ami.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 2,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de place",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu te retrouves à côté de quelqu'un qui mange des gommes. Le TER, c'était mieux.",
+            "effects": {
+              "happiness": -2,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un débat sur le RER",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La conversation dure jusqu'au bac. Vous êtes désormais une alliance ferroviaire.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0022",
+    "category": "amitie",
+    "minAge": 15,
+    "maxAge": 22,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} lance un groupe de rock nommé « Les Panaris ». Il ne manque qu'un musicien : toi. Tu ne sais jouer de rien.",
+    "choices": [
+      {
+        "label": "Jouer des casseroles",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Votre premier concert dans un garage attire 4 personnes et un voisin furieux. Du vrai rock.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{ami} te vire du groupe pour « divergences artistiques ». Tu gardes les casseroles.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "friend": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Être le manager",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu négocies un concert à la fête de la musique, entre la fanfare et la tombola.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre la guitare",
+        "requiresSkill": {
+          "guitare": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton solo fait taire la tombola. Les Panaris deviennent le groupe le plus connu du quartier.",
+            "effects": {
+              "happiness": 9,
+              "fame": 3,
+              "relationships": {
+                "friend": 6
+              },
+              "skills": {
+                "guitare": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les Panaris splittent avant leur premier morceau. Tu restes dans l'histoire comme la personne qui a dit non.",
+            "effects": {
+              "happiness": -1,
+              "relationships": {
+                "friend": -2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0023",
+    "category": "amitie",
+    "minAge": 25,
+    "maxAge": 55,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} se marie et t'a choisi{e} comme témoin. Le discours est dans deux heures et ton brouillon tient en un mot : « Bon. »",
+    "choices": [
+      {
+        "label": "Improviser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu parles avec ton cœur. La mariée pleure, le marié aussi, le traiteur aussi.",
+            "effects": {
+              "happiness": 7,
+              "relationships": {
+                "friend": 8
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu parles douze minutes du buffet. Le buffet est content. Les mariés, moins.",
+            "effects": {
+              "happiness": -4,
+              "stress": 5,
+              "relationships": {
+                "friend": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lire un poème en ligne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un invité reconnaît le texte : c'est une chanson de variété des années 80. Il chante la suite.",
+            "effects": {
+              "happiness": 2,
+              "stress": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Discours bouleversant",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton discours est si beau qu'un oncle demande une copie pour son propre enterrement. Triomphe total.",
+            "effects": {
+              "happiness": 9,
+              "fame": 1,
+              "relationships": {
+                "friend": 12
+              },
+              "skills": {
+                "eloquence": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0024",
+    "category": "amitie",
+    "minAge": 55,
+    "maxAge": 88,
+    "weight": 5,
+    "conditions": {},
+    "text": "Tu rejoins le club de lecture du quartier. Lors de la première séance, tu réalises que personne n'a lu le livre. Ni l'organisatrice.",
+    "choices": [
+      {
+        "label": "Avouer ne pas l'avoir lu",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le soulagement est général. Le club devient officiellement un club de gâteaux. Tu t'y fais une amie.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bluffer une analyse",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu parles de « la symbolique du phare ». Il n'y a pas de phare. Tout le monde acquiesce.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une dame a lu le livre en cachette et te démolit. Elle devient ta meilleure ennemie.",
+            "effects": {
+              "stress": 3,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne plus revenir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lis le livre seul{e} chez toi. Il est très bien. Personne ne le saura.",
+            "effects": {
+              "smarts": 2,
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0025",
+    "category": "amitie",
+    "minAge": 6,
+    "maxAge": 10,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Depuis deux ans, {ami} et toi échangez vos goûters. Aujourd'hui, {ami} sort de son sac des haricots verts froids.",
+    "choices": [
+      {
+        "label": "Respecter le pacte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu manges les haricots en silence. {ami} dévore ton pain au chocolat. L'honneur est sauf, ton palais non.",
+            "effects": {
+              "happiness": -2,
+              "health": 2,
+              "karma": 2,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rompre le traité",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Crise diplomatique dans la cour. Les échanges de goûters sont gelés pour une semaine.",
+            "effects": {
+              "happiness": 1,
+              "relationships": {
+                "friend": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Revendre les haricots",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Un garçon de CM2 te les achète 50 centimes. Personne ne sait pourquoi.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Personne n'en veut. Tu finis avec des haricots et sans pain au chocolat.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0026",
+    "category": "amitie",
+    "minAge": 13,
+    "maxAge": 18,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} recopie tes devoirs de maths depuis le début de l'année. Aujourd'hui, {ami} a eu 16. Toi, 13.",
+    "choices": [
+      {
+        "label": "Exiger des explications",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« J'ai corrigé tes erreurs en recopiant. » Tu ne sais plus qui tu es.",
+            "effects": {
+              "happiness": -4,
+              "smarts": 1,
+              "relationships": {
+                "friend": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Arrêter de passer tes copies",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{ami} se met à travailler et te dépasse. Tu aurais dû continuer.",
+            "effects": {
+              "stress": 3,
+              "relationships": {
+                "friend": -3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{ami} s'effondre à 6 de moyenne. Tu ressens une joie coupable, mais une joie quand même.",
+            "effects": {
+              "happiness": 3,
+              "karma": -2,
+              "relationships": {
+                "friend": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réviser ensemble",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "À deux, vous comprenez enfin les fonctions affines. Vous montez tous les deux à 15.",
+            "effects": {
+              "smarts": 4,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0027",
+    "category": "amitie",
+    "minAge": 22,
+    "maxAge": 45,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ],
+      "minMoney": 200
+    },
+    "text": "{ami} t'expose un « plan en or » : investir dans des canards en plastique de collection. « Le marché explose », assure {ami} en brandissant un canard pirate.",
+    "choices": [
+      {
+        "label": "Investir 200 €",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Le marché du canard s'effondre. Tu possèdes 64 canards et une baignoire très chargée.",
+            "effects": {
+              "money": -200,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Un collectionneur japonais rachète le lot. Tu triples la mise. {ami} se prend pour un génie.",
+            "effects": {
+              "money": 400,
+              "happiness": 7,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} t'envoie des graphiques de canards pendant trois semaines.",
+            "effects": {
+              "stress": 2,
+              "relationships": {
+                "friend": -1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier le stock",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu obtiens 30 canards gratuits contre ta participation au site. Tu les revends dans une brocante.",
+            "effects": {
+              "money": 90,
+              "happiness": 4,
+              "skills": {
+                "marchandage": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0028",
+    "category": "amitie",
+    "minAge": 25,
+    "maxAge": 70,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} part une semaine et te confie son chat Gaspard, « très calme, il dort tout le temps ». Gaspard vient de grimper sur tes rideaux.",
+    "choices": [
+      {
+        "label": "Négocier avec Gaspard",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Vous trouvez un terrain d'entente : il dort sur ta tête, tu ne dors plus.",
+            "effects": {
+              "happiness": 2,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Gaspard détruit ton canapé et te regarde dans les yeux en le faisant.",
+            "effects": {
+              "money": -150,
+              "stress": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer la facture",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} répond « Gaspard n'a jamais fait ça ». Gaspard ronronne, innocent.",
+            "effects": {
+              "stress": 3,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Adopter Gaspard dans ton cœur",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "À la fin de la semaine, Gaspard refuse de repartir. {ami} en fait une crise de jalousie.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0029",
+    "category": "amitie",
+    "minAge": 78,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Depuis un mois, {ami} t'appelle tous les matins à 7 h pour te lire ton horoscope. Celui d'aujourd'hui annonce « une rencontre inattendue ».",
+    "choices": [
+      {
+        "label": "Écouter religieusement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La rencontre inattendue, c'est le facteur. Vous en riez pendant une heure.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Débrancher le téléphone",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} s'inquiète et appelle les pompiers. La rencontre inattendue, c'était eux.",
+            "effects": {
+              "stress": 5,
+              "happiness": 2,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lire le sien en retour",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu inventes des prédictions délirantes. {ami} y croit totalement. Ce nouveau rituel te ravit.",
+            "effects": {
+              "happiness": 6,
+              "karma": -1,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0030",
+    "category": "amitie",
+    "minAge": 18,
+    "maxAge": 26,
+    "weight": 6,
+    "conditions": {},
+    "text": "Dans le dernier métro, un étudiant s'endort sur ton épaule. À la station terminus, il se réveille et te raconte toute sa vie.",
+    "choices": [
+      {
+        "label": "Écouter jusqu'au bout",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Trois heures plus tard, vous partagez un kebab à 4 h du matin. Ami pour la vie.",
+            "effects": {
+              "happiness": 6,
+              "health": -1,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Sa vie est d'un ennui abyssal. Tu t'endors à ton tour, sur son épaule.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rentres à pied. Il fait froid. Il avait l'air sympa, en fait.",
+            "effects": {
+              "health": 1,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui raconter la tienne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Échange de confidences totales. Vous ne vous êtes jamais demandé vos prénoms, mais vous vous écrivez.",
+            "effects": {
+              "happiness": 5,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0031",
+    "category": "amitie",
+    "minAge": 9,
+    "maxAge": 13,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} propose de sceller votre amitié éternelle par un rituel sacré : boire dans le même verre de grenadine en récitant un serment.",
+    "choices": [
+      {
+        "label": "Prêter serment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« Unis par le sirop, jusqu'au bout du dodo. » C'est nul et sublime à la fois.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "friend": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ajouter de la menthe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le mélange est infect. Le serment est valide malgré tout, selon {ami}.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Trouver ça bébé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} boit tout le verre sans toi. L'éternité attendra.",
+            "effects": {
+              "happiness": -2,
+              "relationships": {
+                "friend": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0032",
+    "category": "amitie",
+    "minAge": 25,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Le nouvel amour de {ami} parle de cryptomonnaies au brunch depuis 45 minutes. {ami} te regarde avec des yeux qui demandent « alors ? ».",
+    "choices": [
+      {
+        "label": "Dire la vérité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{ami} pousse un soupir de soulagement : tout le monde pensait pareil. Ta franchise est saluée.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{ami} se vexe et ne te parle plus pendant trois mois. Le couple tient deux semaines.",
+            "effects": {
+              "stress": 4,
+              "relationships": {
+                "friend": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sourire énormément",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu souris si fort que ta mâchoire se coince. {ami} croit que tu adores son nouvel amour.",
+            "effects": {
+              "stress": 2,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui vendre un canard",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lui parles d'un « actif numérique très prometteur ». Le nouvel amour investit. Personne ne comprend rien.",
+            "effects": {
+              "happiness": 5,
+              "karma": -2,
+              "money": 20
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0033",
+    "category": "amitie",
+    "minAge": 40,
+    "maxAge": 80,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'assure que le vinaigre blanc soigne absolument tout : mal de dos, chagrin d'amour et impôts.",
+    "choices": [
+      {
+        "label": "Essayer sur ton dos",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Ton dos va mieux. Probablement une coïncidence. Tu sens la vinaigrette.",
+            "effects": {
+              "health": 2,
+              "looks": -1
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Ton dos va pareil, mais ton salon sent le cornichon pour un mois.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Essayer sur tes impôts",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu verses du vinaigre sur ton avis d'imposition. Il est toujours là. Et maintenant il colle.",
+            "effects": {
+              "happiness": 1,
+              "stress": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contre-argumenter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} contre-attaque avec le bicarbonate. Le débat dure jusqu'à minuit.",
+            "effects": {
+              "smarts": 1,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0034",
+    "category": "amitie",
+    "minAge": 5,
+    "maxAge": 9,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} déménage dans une autre ville à la fin de l'année. Ses parents disent que c'est « pas si loin ». C'est à sept heures de voiture.",
+    "choices": [
+      {
+        "label": "Promettre d'écrire",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous vous envoyez des lettres pleines de fautes et de dessins de dinosaures pendant des années.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu écris une lettre, {ami} une aussi. Elles se croisent, puis plus rien. Le temps file.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "friend": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Cacher {ami} dans ta chambre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le plan échoue à cause d'un éternuement. Les deux familles rient, toi tu pleures.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dessiner un portrait",
+        "requiresSkill": {
+          "dessin": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton dessin de vous deux trône désormais dans la nouvelle chambre de {ami}. Rien ne vous séparera.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 10
+              },
+              "skills": {
+                "dessin": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0035",
+    "category": "amitie",
+    "minAge": 16,
+    "maxAge": 19,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} a « amélioré » ta lettre de motivation pour tes études. Elle commence désormais par : « Depuis l'aube des temps, l'Homme rêve de moi. »",
+    "choices": [
+      {
+        "label": "L'envoyer telle quelle",
+        "outcomes": [
+          {
+            "chance": 0.2,
+            "text": "Un jury amusé te convoque à l'oral « par curiosité ». Te voilà sur liste d'attente.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.8,
+            "text": "Refusé partout. Une école te répond juste : « Non. Mais bravo. »",
+            "effects": {
+              "happiness": -5,
+              "stress": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout réécrire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta lettre est sobre, efficace. {ami} la trouve « sans âme ».",
+            "effects": {
+              "smarts": 2,
+              "relationships": {
+                "friend": -1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder la première phrase",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le reste est sérieux, l'intro est cosmique. Le mélange intrigue, tu as un entretien.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0036",
+    "category": "amitie",
+    "minAge": 22,
+    "maxAge": 50,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} vient dîner et t'annonce sur le pas de la porte ne plus manger de produits animaux, ni de gluten, et boycotter le sel « par principe ».",
+    "choices": [
+      {
+        "label": "Servir de l'eau tiède",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} trouve ça « très pur ». Vous parlez toute la soirée l'estomac vide.",
+            "effects": {
+              "happiness": 2,
+              "health": -1,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Commander une pizza",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} en mange quatre parts en pleurant de bonheur et te fait jurer le silence.",
+            "effects": {
+              "happiness": 5,
+              "money": -20,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Improviser un festin",
+        "requiresSkill": {
+          "cuisine": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton curry de légumes sans rien est si bon que {ami} demande la recette et l'affiche au frigo.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "friend": 8
+              },
+              "skills": {
+                "cuisine": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0037",
+    "category": "amitie",
+    "minAge": 50,
+    "maxAge": 85,
+    "weight": 5,
+    "conditions": {},
+    "text": "En voyage organisé, ta voisine de car te raconte sa vie pendant six heures de route. Elle a été dresseuse d'otaries dans un cirque.",
+    "choices": [
+      {
+        "label": "Poser mille questions",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "À l'arrivée, vous êtes inséparables. Elle t'apprend à imiter le cri de l'otarie.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire semblant de dormir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle continue de raconter à ton épaule. Tu entends l'histoire quand même, en rêve.",
+            "effects": {
+              "happiness": 1,
+              "stress": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Raconter des mensonges",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prétends avoir été astronaute. Elle aussi, apparemment. Vous rivalisez d'inventions.",
+            "effects": {
+              "happiness": 6,
+              "karma": -1,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0038",
+    "category": "amitie",
+    "minAge": 12,
+    "maxAge": 18,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} et toi vous battez pour le record d'un jeu vidéo de course depuis six mois. {ami} vient de te battre de 0,03 seconde.",
+    "choices": [
+      {
+        "label": "Jouer toute la nuit",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "À 5 h du matin, tu reprends le record. Tu as les yeux comme des billes.",
+            "effects": {
+              "happiness": 6,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu fais pire à chaque essai. La manette finit sous le lit, en pénitence.",
+            "effects": {
+              "happiness": -4,
+              "stress": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Féliciter {ami}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La surprise de {ami} est telle que la rivalité s'éteint. C'était presque mieux avant.",
+            "effects": {
+              "karma": 2,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exploiter un bug",
+        "requiresSkill": {
+          "code": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu découvres un raccourci à travers un mur. Record pulvérisé. {ami} crie à la triche, à raison.",
+            "effects": {
+              "happiness": 7,
+              "smarts": 1,
+              "relationships": {
+                "friend": -2
+              },
+              "skills": {
+                "code": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0039",
+    "category": "amitie",
+    "minAge": 25,
+    "maxAge": 60,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "friend"
+      ],
+      "requiresJob": true
+    },
+    "text": "Tu apprends que {ami} a postulé en secret au poste dont tu lui parlais depuis des mois. Et l'a obtenu.",
+    "choices": [
+      {
+        "label": "Confronter {ami}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{ami} jure avoir cru que tu ne voulais « plus vraiment ». Tu jures que si.",
+            "effects": {
+              "stress": 5,
+              "relationships": {
+                "friend": -12
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{ami} s'effondre en excuses et t'invite au restaurant. Ça ne répare pas tout, mais le dessert aide.",
+            "effects": {
+              "happiness": 2,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Féliciter, les dents serrées",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton « bravo » a le goût d'un citron entier. Personne n'est dupe.",
+            "effects": {
+              "happiness": -5,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rompre l'amitié",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu effaces son numéro, puis le récris, puis l'effaces encore. C'est fini.",
+            "effects": {
+              "happiness": -6,
+              "stress": 3,
+              "relationships": {
+                "friend": -30
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0040",
+    "category": "amitie",
+    "minAge": 60,
+    "maxAge": 92,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'envoie par la poste une photo de vous deux en 1983 : coupes mulet, vestes à épaulettes et une moto qui n'était pas à vous.",
+    "choices": [
+      {
+        "label": "L'encadrer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle trône dans ton salon. Tes petits-enfants ne croient pas que c'est toi.",
+            "effects": {
+              "happiness": 7,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler {ami}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous parlez trois heures de la moto. Il s'avère qu'elle appartenait à un gendarme.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre avec pire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu envoies la photo du mariage de 1979, avec la permanente. {ami} demande grâce.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0041",
+    "category": "amitie",
+    "minAge": 7,
+    "maxAge": 12,
+    "weight": 6,
+    "conditions": {},
+    "text": "Dans le petit bois derrière l'école, tu trouves une cabane. Un garçon en sort et déclare que c'est son royaume.",
+    "choices": [
+      {
+        "label": "Demander l'asile",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il te nomme ministre des Glands. Vous gouvernez ensemble tout l'été.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déclarer la guerre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Bataille de pommes de pin. Vous finissez par signer la paix et devenir amis.",
+            "effects": {
+              "happiness": 5,
+              "health": -1,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il a une armée de trois cousins. Tu bats en retraite avec une bosse.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Agrandir la cabane",
+        "requiresSkill": {
+          "bricolage": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ajoutes un étage et une porte qui ferme. Il te nomme architecte royal à vie.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true,
+              "skills": {
+                "bricolage": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0042",
+    "category": "amitie",
+    "minAge": 19,
+    "maxAge": 30,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "En colocation avec {ami}, la pile de vaisselle dans l'évier a développé son propre écosystème. Quelque chose y bouge.",
+    "choices": [
+      {
+        "label": "Laver toi-même",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Deux heures de combat. {ami} rentre et dit « ah, t'as fait la vaisselle ? » sans plus.",
+            "effects": {
+              "health": 1,
+              "stress": 4,
+              "relationships": {
+                "friend": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Instaurer un planning",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le planning est respecté trois jours. C'est un record dans l'histoire de la colocation.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{ami} utilise le planning comme dessous-de-plat. Le symbole est fort.",
+            "effects": {
+              "stress": 4,
+              "relationships": {
+                "friend": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nommer l'écosystème",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous baptisez la créature Gérald. Elle devient la mascotte de l'appart. Votre santé, moins.",
+            "effects": {
+              "happiness": 5,
+              "health": -3,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0043",
+    "category": "amitie",
+    "minAge": 30,
+    "maxAge": 60,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Tu remarques que {ami} t'a retiré de ses amis sur un réseau social. Quand tu demandes pourquoi, {ami} parle d'une « erreur de pouce ».",
+    "choices": [
+      {
+        "label": "Accepter l'excuse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} te rajoute dans la minute. Ton pouce, lui, n'a rien oublié.",
+            "effects": {
+              "happiness": 1,
+              "relationships": {
+                "friend": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Enquêter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu découvres 40 autres « erreurs de pouce » dans la même journée. C'était un grand ménage. Tu en faisais partie.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "friend": -6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "C'était vraiment un accident : {ami} avait dormi sur son téléphone.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te retirer aussi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Œil pour œil, pouce pour pouce. Vous vous croisez au marché sans vous saluer. Puéril et satisfaisant.",
+            "effects": {
+              "happiness": 2,
+              "karma": -1,
+              "relationships": {
+                "friend": -8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0044",
+    "category": "amitie",
+    "minAge": 68,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {},
+    "text": "Le club de belote du quartier cherche un quatrième joueur depuis que Gérard est parti vivre chez sa fille à Perpignan. On te regarde.",
+    "choices": [
+      {
+        "label": "Prendre la place",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu perds toutes tes parties, mais on te garde pour ta bonne humeur et ton cake.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu gagnes trop souvent. Les anciens soupçonnent une infiltration de professionnels.",
+            "effects": {
+              "happiness": 5,
+              "stress": 2,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer les échecs",
+        "requiresSkill": {
+          "echecs": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fondes une section échecs. Le club double ses effectifs et te remercie au journal municipal.",
+            "effects": {
+              "happiness": 8,
+              "fame": 1,
+              "newFriend": true,
+              "skills": {
+                "echecs": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le club cherche toujours. Tu sens leur regard chaque fois que tu passes devant.",
+            "effects": {
+              "stress": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0045",
+    "category": "amitie",
+    "minAge": 13,
+    "maxAge": 17,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} te fait jurer le silence avant de t'avouer son plus grand secret : écouter de l'accordéon musette en cachette, tous les soirs.",
+    "choices": [
+      {
+        "label": "Garder le secret",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu emportes ce secret dans la tombe. Ou au moins jusqu'au lycée.",
+            "effects": {
+              "karma": 2,
+              "relationships": {
+                "friend": 7
+              },
+              "setFlags": [
+                "ami_secret_accordeon"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer le tien",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu confesses dormir avec un doudou girafe. Vous êtes désormais liés par la honte.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "friend": 9
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "En parler à tout le monde",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le collège se moque une journée, puis l'accordéon devient tendance. {ami} ne te pardonne pas.",
+            "effects": {
+              "karma": -4,
+              "relationships": {
+                "friend": -15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0046",
+    "category": "amitie",
+    "minAge": 20,
+    "maxAge": 40,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} a organisé votre road trip et réservé le gîte. Problème : dans un village du même nom, mais à 600 km.",
+    "choices": [
+      {
+        "label": "Rouler toute la nuit",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous arrivez à l'aube, épuisés, et le gîte est magnifique. Vous dormez tout le séjour.",
+            "effects": {
+              "health": -3,
+              "money": -60,
+              "happiness": 3,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dormir dans la voiture",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une nuit coincé{e} entre le levier de vitesse et une glacière. Tes vertèbres s'en souviennent.",
+            "effects": {
+              "health": -4,
+              "happiness": 2,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Camper à la sauvage",
+        "requiresSkill": {
+          "survie": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Feu de camp, abri de branches, ciel étoilé. {ami} dit que c'est le meilleur voyage de sa vie.",
+            "effects": {
+              "happiness": 9,
+              "relationships": {
+                "friend": 8
+              },
+              "skills": {
+                "survie": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rentrer à la maison",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le road trip le plus court de l'histoire. {ami} rembourse l'essence en guise d'excuse.",
+            "effects": {
+              "happiness": -3,
+              "money": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0047",
+    "category": "amitie",
+    "minAge": 35,
+    "maxAge": 65,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'inscrit à un semi-marathon « pour rigoler ». Tu découvres l'inscription le matin de la course, en recevant ton dossard.",
+    "choices": [
+      {
+        "label": "Courir quand même",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu finis en 2 h 40, derrière un homme déguisé en cafetière. Fierté immense.",
+            "effects": {
+              "health": 4,
+              "happiness": 7
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Abandon au kilomètre 6, devant un stand de crêpes. Tu ne regrettes rien.",
+            "effects": {
+              "health": 1,
+              "happiness": 2,
+              "money": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire semblant de boiter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{ami} court sans toi et finit en sanglots. Tu as un pincement de culpabilité.",
+            "effects": {
+              "karma": -2,
+              "relationships": {
+                "friend": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Encourager depuis le bord",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu brandis une pancarte « COURS, TRAÎTRE ». {ami} rit tellement que sa course se termine en marchant.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0048",
+    "category": "amitie",
+    "minAge": 5,
+    "maxAge": 8,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'explique d'un ton grave que si tu avales un pépin de pastèque, une pastèque poussera dans ton ventre. Tu viens d'en avaler un.",
+    "choices": [
+      {
+        "label": "Paniquer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refuses de boire de l'eau pendant deux jours pour « ne pas arroser ». {parent} est perplexe.",
+            "effects": {
+              "stress": 5,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à un adulte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "On te rassure. Tu informes {ami} de son erreur. Réponse : « Ça marche que pour les grands. »",
+            "effects": {
+              "smarts": 2,
+              "relationships": {
+                "friend": -1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter ton destin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu annonces que tu deviens une pastèque. {ami} te propose de t'arroser. Fou rire.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0049",
+    "category": "amitie",
+    "minAge": 24,
+    "maxAge": 45,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'annonce partir vivre au Québec. Pour de bon. L'avion décolle dans un mois.",
+    "choices": [
+      {
+        "label": "Organiser une fête d'adieu",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une soirée mémorable. Tu pleures dans la poutine que tu as cuisinée en hommage. Elle est ratée, mais sincère.",
+            "effects": {
+              "happiness": 3,
+              "money": -100,
+              "relationships": {
+                "friend": 10
+              },
+              "setFlags": [
+                "ami_parti_quebec"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Supplier de rester",
+        "outcomes": [
+          {
+            "chance": 0.1,
+            "text": "{ami} annule tout. Tu ne sais pas si tu dois être content{e} ou terrifié{e} par ton pouvoir.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "friend": 8
+              }
+            }
+          },
+          {
+            "chance": 0.9,
+            "text": "{ami} part quand même, mais te promet un sirop d'érable par an. Tu tiens les comptes.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "friend": 4
+              },
+              "setFlags": [
+                "ami_parti_quebec"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre ça mal",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu boudes jusqu'au départ. À l'aéroport, tu regrettes tout. Trop tard, la porte s'est fermée.",
+            "effects": {
+              "happiness": -10,
+              "relationships": {
+                "friend": -10
+              },
+              "setFlags": [
+                "ami_parti_quebec"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ami_0050",
+    "category": "amitie",
+    "minAge": 85,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {},
+    "text": "Sur un banc du parc, une dame de 102 ans t'appelle « le petit jeune » et te propose une partie de dominos.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle triche, elle gagne, elle rit comme une gamine. Rendez-vous tous les mardis.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander son secret",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« Jamais de rancune, toujours du beurre. » Tu notes. Vous devenez inséparables.",
+            "effects": {
+              "happiness": 6,
+              "health": 1,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester digne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refuses qu'on t'appelle « le petit jeune ». Elle hausse les épaules et joue seule.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
