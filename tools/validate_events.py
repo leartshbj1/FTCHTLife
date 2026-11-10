@@ -5,6 +5,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATS = {"happiness","health","smarts","looks","money","karma","stress","fame"}
 REL = {"mother","father","parent","sibling","friend","partner","child"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart"}
+# Tags du module « Vivre à l'étranger » (docs/ETRANGER_EVENTS.md), plus pays_xx, loi_xx, zone_xx,
+# et origine_xx = pays de naissance (docs/ALBANIE.md).
+TAGS |= {"etranger","expat_nouveau","expat_installe","langue_faible","bilingue","polyglotte","binational","de_retour"}
+TAG_PREFIXES = ("pays_","loi_","zone_","origine_")
 SPECIAL = {"death","newFriend","relationships","setFlags","skills"}
 SKILLS = {"anglais","espagnol","allemand","italien","albanais","japonais","guitare","piano","chant","danse","dessin","photo","cuisine","bricolage","mecanique","jardinage","sport","survie","code","echecs","seduction","eloquence","humour","marchandage","magie"}
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
@@ -46,7 +50,7 @@ def main():
                 if k not in COND: errs.append(f"{w}: condition inconnue {k}")
                 elif k in ("tags","excludeTags"):
                     for t in ev["conditions"][k] or []:
-                        if t not in TAGS: errs.append(f"{w}: tag inconnu {t}")
+                        if t not in TAGS and not t.startswith(TAG_PREFIXES): errs.append(f"{w}: tag inconnu {t}")
             check_text(ev.get("text"), w, errs)
             ch = ev.get("choices", [])
             if not ch:
