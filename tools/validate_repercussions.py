@@ -40,7 +40,7 @@ bac_obtenu bac_rate diplome abandon_etudes embauche promotion licenciement demis
 deces_proche heritage maladie guerison chirurgie_esthetique hopital achat_maison demenagement gros_achat faillite
 voyage celebrite fiancailles_rompues addiction cure_desintox meilleur_ami
 permis_suspendu permis_annule permis_points_recuperes faux_permis_achete faux_permis_demasque
-conduite_sans_permis_arretee corruption_examinateur corruption_ratee
+conduite_sans_permis_arretee corruption_examinateur corruption_ratee casino_usurier casino_usurier_violence
 """.split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
