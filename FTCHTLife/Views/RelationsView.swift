@@ -65,15 +65,18 @@ struct ListeRelationsView: View {
         NavigationLink {
             RelationDetailView(relationId: r.id)
         } label: {
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text(r.nomComplet).font(.headline).foregroundStyle(r.vivant ? Theme.encre : .gray)
-                    Spacer()
-                    Text(r.vivant ? "\(r.libelle) · \(r.age) ans" : "\(r.libelle) · décédé\(r.genre == .femme ? "e" : "")")
-                        .font(.caption).foregroundStyle(.secondary)
-                }
-                if r.vivant {
-                    BarreStat(titre: "Relation", icone: "heart.fill", valeur: r.lien)
+            HStack(spacing: 12) {
+                VisageProche(relation: r, taille: 42)
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Text(r.nomComplet).font(.headline).foregroundStyle(r.vivant ? Theme.encre : .gray)
+                        Spacer()
+                        Text(r.vivant ? "\(r.libelle) · \(r.age) ans" : "\(r.libelle) · décédé\(r.genre == .femme ? "e" : "")")
+                            .font(.caption).foregroundStyle(.secondary)
+                    }
+                    if r.vivant {
+                        BarreStat(titre: "Relation", icone: "heart.fill", valeur: r.lien)
+                    }
                 }
             }
         }
@@ -90,11 +93,9 @@ struct RelationDetailView: View {
         List {
             if let r = engine.joueur?.relations.first(where: { $0.id == relationId }) {
                 Section {
-                    HStack { Text("Lien"); Spacer(); Text(r.libelle).foregroundStyle(.secondary) }
-                    HStack { Text("Âge"); Spacer(); Text("\(r.age) ans").foregroundStyle(.secondary) }
-                    if r.vivant {
-                        BarreStat(titre: "Relation", icone: "heart.fill", valeur: r.lien)
-                    }
+                    FicheProche(relation: r)
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
                 }
                 if r.vivant {
                     Section("Actions") {
@@ -113,5 +114,80 @@ struct RelationDetailView: View {
         }
         .navigationTitle(engine.joueur?.relations.first(where: { $0.id == relationId })?.prenom ?? "")
         .alerteResultat($message)
+    }
+}
+
+// MARK: - Visage et fiche d'un proche
+
+/// Petit visage d'un proche, selon son âge, son genre et s'il est encore là.
+struct VisageProche: View {
+    let relation: Relation
+    var taille: CGFloat = 42
+
+    private var visage: String {
+        let r = relation
+        let f = r.genre == .femme
+        if !r.vivant { return "🪦" }
+        switch r.age {
+        case ..<3: return "👶"
+        case ..<13: return f ? "👧" : "👦"
+        case ..<60: return f ? "👩" : "👨"
+        default: return f ? "👵" : "👴"
+        }
+    }
+
+    private var couleur: Color {
+        switch relation.type {
+        case .mere, .pere, .frere, .soeur, .enfant: return CategorieMenu.relations.couleur
+        case .partenaire, .ex: return Color(red: 0.85, green: 0.15, blue: 0.35)
+        case .ami: return CategorieMenu.activites.couleur
+        }
+    }
+
+    var body: some View {
+        Text(visage)
+            .font(.system(size: taille * 0.56))
+            .frame(width: taille, height: taille)
+            .background(Circle().fill(couleur.opacity(0.14)))
+            .overlay(Circle().stroke(couleur.opacity(0.4), lineWidth: 2))
+    }
+}
+
+/// En-tête de la fiche d'un proche : visage, nom, lien, âge, jauge de relation.
+struct FicheProche: View {
+    let relation: Relation
+
+    private var humeur: String {
+        let l = relation.lien
+        switch l {
+        case ..<15: return "Vous vous détestez cordialement."
+        case ..<35: return "C'est tendu."
+        case ..<60: return "Ça va, sans plus."
+        case ..<85: return "Vous vous entendez bien."
+        default: return "Inséparables."
+        }
+    }
+
+    var body: some View {
+        let r = relation
+        VStack(spacing: 10) {
+            VisageProche(relation: r, taille: 76)
+            Text(r.nomComplet)
+                .font(.system(size: 22, weight: .heavy, design: .rounded))
+                .foregroundStyle(Theme.encre)
+            Text(r.vivant ? "\(r.libelle) · \(r.age) ans" : "\(r.libelle) · parti\(r.genre == .femme ? "e" : "") à \(r.age) ans")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            if r.vivant {
+                BarreStat(titre: "Relation", icone: "heart.fill", valeur: r.lien)
+                    .padding(.top, 4)
+                Text(humeur)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity)
+        .background(RoundedRectangle(cornerRadius: 18).fill(Theme.carte))
     }
 }

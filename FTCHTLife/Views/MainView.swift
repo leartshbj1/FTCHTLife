@@ -5,6 +5,10 @@ struct MainView: View {
     @EnvironmentObject var engine: GameEngine
     @State private var categorie: CategorieMenu?
     @State private var moduleDirect: ModuleJeu?
+    /// Stats juste avant le dernier « Âge +1 », pour afficher les +/- sur les barres.
+    @State private var statsAvant: Stats?
+    /// Bulle « 12 ans ! » affichée un instant après chaque année.
+    @State private var bulleAge: Int?
 
     var body: some View {
         if let j = engine.joueur {
@@ -14,10 +18,17 @@ struct MainView: View {
                     bandeauPrison
                 }
                 JournalVieView(joueur: j)
-                PanneauStats(stats: j.stats) { moduleDirect = .profil }
+                PanneauStats(stats: j.stats, reference: statsAvant) { moduleDirect = .profil }
                 barreMenus(j)
             }
             .background(Theme.fond.ignoresSafeArea())
+            .overlay(alignment: .top) {
+                if let age = bulleAge {
+                    BulleAge(age: age)
+                        .padding(.top, 74)
+                        .transition(.move(edge: .top).combined(with: .opacity))
+                }
+            }
             .sheet(item: $categorie) { c in
                 MenuCategorieView(categorie: c)
                     .environmentObject(engine)
@@ -70,6 +81,8 @@ struct MainView: View {
                 Text(Format.argent(j.argent))
                     .font(.system(size: 15, weight: .heavy, design: .rounded))
                     .foregroundStyle(j.argent < 0 ? Theme.argentNegatif : Theme.argentPositif)
+                    .chiffresAnimes()
+                    .animation(.easeOut(duration: 0.4), value: j.argent)
             }
             Spacer(minLength: 4)
             Button { categorie = .moi } label: {
@@ -110,7 +123,7 @@ struct MainView: View {
             boutonMenu(.carriere)
             boutonMenu(.biens)
             BoutonAge(actif: j.vivant && engine.evenementEnCours == nil) {
-                withAnimation { engine.vieillir() }
+                vieillir(j)
             }
             .frame(maxWidth: .infinity)
             boutonMenu(.relations)
@@ -122,8 +135,21 @@ struct MainView: View {
         .background(Theme.carte.ignoresSafeArea(edges: .bottom))
     }
 
+    private func vieillir(_ j: Joueur) {
+        Vibration.moyenne()
+        statsAvant = j.stats
+        withAnimation(.spring(response: 0.45, dampingFraction: 0.85)) {
+            engine.vieillir()
+        }
+        guard let nouveau = engine.joueur, nouveau.vivant else { return }
+        withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) { bulleAge = nouveau.age }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
+            withAnimation(.easeIn(duration: 0.25)) { if bulleAge == nouveau.age { bulleAge = nil } }
+        }
+    }
+
     private func boutonMenu(_ c: CategorieMenu) -> some View {
-        Button { categorie = c } label: {
+        Button { Vibration.legere(); categorie = c } label: {
             VStack(spacing: 5) {
                 Image(systemName: c.icone)
                     .font(.system(size: 19, weight: .semibold))
@@ -138,7 +164,23 @@ struct MainView: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(StyleAppui())
+    }
+}
+
+/// Bulle qui annonce le nouvel âge.
+struct BulleAge: View {
+    let age: Int
+
+    var body: some View {
+        Text(age == 1 ? "1 an !" : "\(age) ans !")
+            .font(.system(size: 20, weight: .black, design: .rounded))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 22)
+            .padding(.vertical, 10)
+            .background(Capsule().fill(Theme.accent))
+            .shadow(color: Theme.accent.opacity(0.4), radius: 10, y: 4)
+            .allowsHitTesting(false)
     }
 }
 
@@ -162,7 +204,7 @@ struct BoutonAge: View {
             .overlay(Circle().stroke(Color.white, lineWidth: 4))
             .shadow(color: Theme.accent.opacity(actif ? 0.45 : 0), radius: 8, y: 4)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(StyleAppui())
         .disabled(!actif)
         .offset(y: -12)
         .padding(.bottom, -12)
@@ -208,6 +250,8 @@ struct JournalVieView: View {
                     ForEach(joueur.journal) { annee in
                         blocAnnee(annee, courante: annee.id == joueur.journal.last?.id)
                             .id(annee.id)
+                            .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity),
+                                                    removal: .opacity))
                     }
                     if joueur.journal.count <= 2 && joueur.vivant {
                         CommentJouerCarte()
@@ -289,15 +333,22 @@ struct CommentJouerCarte: View {
 
 struct PanneauStats: View {
     let stats: Stats
+    /// Stats de l'an dernier : si présentes, chaque barre montre son changement.
+    var reference: Stats? = nil
     let ouvrirProfil: () -> Void
+
+    private func d(_ actuel: Int, _ ancien: Int?) -> Int? {
+        guard let a = ancien else { return nil }
+        return actuel - a
+    }
 
     var body: some View {
         Button(action: ouvrirProfil) {
             VStack(spacing: 6) {
-                BarreStat(titre: "Bonheur", icone: "face.smiling.fill", valeur: stats.bonheur)
-                BarreStat(titre: "Santé", icone: "heart.fill", valeur: stats.sante)
-                BarreStat(titre: "Intelligence", icone: "brain.head.profile", valeur: stats.intelligence)
-                BarreStat(titre: "Apparence", icone: "sparkles", valeur: stats.apparence)
+                BarreStat(titre: "Bonheur", icone: "face.smiling.fill", valeur: stats.bonheur, delta: d(stats.bonheur, reference?.bonheur))
+                BarreStat(titre: "Santé", icone: "heart.fill", valeur: stats.sante, delta: d(stats.sante, reference?.sante))
+                BarreStat(titre: "Intelligence", icone: "brain.head.profile", valeur: stats.intelligence, delta: d(stats.intelligence, reference?.intelligence))
+                BarreStat(titre: "Apparence", icone: "sparkles", valeur: stats.apparence, delta: d(stats.apparence, reference?.apparence))
             }
             .padding(.horizontal)
             .padding(.vertical, 10)

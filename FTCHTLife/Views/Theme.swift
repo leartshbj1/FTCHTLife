@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// Couleurs et petits composants partagés par tout le jeu.
 /// Les modules utilisent `Theme.accent`, `encre`, `fond`, `carte`, `couleurStat`, `BarreStat` et `LigneAction` :
@@ -26,6 +27,8 @@ struct BarreStat: View {
     let titre: String
     let icone: String
     let valeur: Int
+    /// Changement depuis l'an dernier, affiché en petit à côté du pourcentage (optionnel).
+    var delta: Int? = nil
 
     var body: some View {
         HStack(spacing: 8) {
@@ -50,6 +53,14 @@ struct BarreStat: View {
                 .monospacedDigit()
                 .foregroundStyle(Theme.encre)
                 .frame(width: 40, alignment: .trailing)
+            if let d = delta {
+                Text(d == 0 ? "" : (d > 0 ? "+\(d)" : "−\(abs(d))"))
+                    .font(.system(size: 11, weight: .heavy, design: .rounded))
+                    .monospacedDigit()
+                    .foregroundStyle(d > 0 ? Theme.argentPositif : Theme.argentNegatif)
+                    .frame(width: 30, alignment: .leading)
+                    .transition(.opacity)
+            }
         }
     }
 }
@@ -114,6 +125,24 @@ struct Feuille<Contenu: View>: View {
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) { Button("Fermer") { dismiss() } }
                 }
+        }
+    }
+}
+
+/// Petite vibration (sur iPhone) pour les gestes importants.
+enum Vibration {
+    static func legere() { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
+    static func moyenne() { UIImpactFeedbackGenerator(style: .medium).impactOccurred() }
+}
+
+extension View {
+    /// Les chiffres qui changent défilent (iOS 17 et plus).
+    @ViewBuilder
+    func chiffresAnimes() -> some View {
+        if #available(iOS 17.0, *) {
+            self.contentTransition(.numericText())
+        } else {
+            self
         }
     }
 }
