@@ -966,7 +966,7 @@ struct ParisSportifsVue: View {
         } else if unGagnant {
             phrase = ParisTextes.mixte.randomElement() ?? ""
         } else if presque {
-            phrase = ParisTextes.presque(g).randomElement() ?? ""
+            phrase = ParisTextes.presque({ g($0, $1) }).randomElement() ?? ""
         } else {
             phrase = ParisTextes.perte({ g($0, $1) }).randomElement() ?? ""
         }
