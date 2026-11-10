@@ -55,18 +55,12 @@ enum VoisinageDonnees {
 // par `j.voisinage` / `j.voisinage = etat`. En attendant, l'état est gardé en mémoire (perdu à la fermeture).
 
 enum VoisinageStockage {
-    private static var memoire: [UUID: VoisinageEtat] = [:]
-
-    private static func cle(_ j: Joueur) -> UUID? { j.journal.first?.id }
-
     static func lire(_ j: Joueur) -> VoisinageEtat? {
-        guard let k = cle(j) else { return nil }
-        return memoire[k]   // ⚙️ return j.voisinage
+        j.voisinage
     }
 
     static func ecrire(_ j: inout Joueur, _ etat: VoisinageEtat?) {
-        guard let k = cle(j) else { return }
-        memoire[k] = etat   // ⚙️ j.voisinage = etat
+        j.voisinage = etat
     }
 
     /// Signaux envoyés au module Répercussions. Le fil moteur peut brancher :

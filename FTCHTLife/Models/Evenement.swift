@@ -25,6 +25,14 @@ struct Effets: Codable, Equatable {
     var followUps: [String]?
     /// XP gagnée (ou perdue) par compétence, ex. {"cuisine": 6}. Voir docs/COMPETENCES.md.
     var skills: [String: Int]?
+    /// Module amour/crime/santé (prison, maladies, grossesse…). Voir FTCHTLife/Systems.
+    var vie: VieEffets?
+    /// Module casier judiciaire. Voir docs/CASIER.md.
+    var casier: CasierEffet?
+    /// Réputation de la famille. Voir docs/REPUTATION_FAMILLE.md.
+    var familyRep: [String: Int]?
+    /// Marques des rêves de vie. Voir docs/reves-format.md.
+    var dreamMarks: [String]?
 }
 
 struct ConditionsEvenement: Codable, Equatable {

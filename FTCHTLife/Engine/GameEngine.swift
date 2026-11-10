@@ -6,11 +6,17 @@ import SwiftUI
 final class GameEngine: ObservableObject {
     @Published var joueur: Joueur?
     @Published var evenementEnCours: EvenementAffiche?
+    /// Une du « Journal du monde » à afficher cette année.
+    @Published var flashMonde: MondeFlash?
 
-    private var fileEvenements: [EvenementAffiche] = []
+    var fileEvenements: [EvenementAffiche] = []
 
     init() {
+        SignauxModules.configurer()
         charger()
+        ShopHooks.emmenagement = { [weak self] nom, _, proprio in
+            self?.voisinageEmmenager(logement: .depuis(nom), proprietaire: proprio)
+        }
     }
 
     // MARK: - Nouvelle vie
@@ -50,10 +56,14 @@ final class GameEngine: ObservableObject {
         }
         lignes.append(Self.phrasesNaissance.randomElement()!)
         j.journal = [Annee(age: 0, lignes: lignes)]
+        let lignesModules = modulesNaissance(&j)
+        j.journal[0].lignes += lignesModules
 
         fileEvenements = []
         evenementEnCours = nil
+        flashMonde = nil
         joueur = j
+        voisinageNouvelleVie()
         sauvegarder()
     }
 
@@ -88,6 +98,7 @@ final class GameEngine: ObservableObject {
         if j.stats.sante < 30 { t.insert("sick") }
         if j.stats.apparence >= 75 { t.insert("attractive") }
         if j.stats.intelligence >= 75 { t.insert("smart") }
+        t.formUnion(tagsModules(j))
         return t
     }
 
@@ -104,6 +115,7 @@ final class GameEngine: ObservableObject {
         if let r = c.requiresSchool, r != (t.contains("school") || t.contains("university")) { return false }
         if let r = c.tags, !Set(r).isSubset(of: t) { return false }
         if let x = c.excludeTags, !Set(x).isDisjoint(with: t) { return false }
+        if !conditionsModules(c, j) { return false }
         return true
     }
 
@@ -112,8 +124,12 @@ final class GameEngine: ObservableObject {
     func vieillir() {
         guard var j = joueur, j.vivant, evenementEnCours == nil else { return }
         j.age += 1
+        let actionsPassees = j.actionsAnnee
         j.actionsAnnee = []
         var lignes: [String] = []
+        let debut = modulesDebutAnnee(&j)
+        lignes += debut.lignes
+        var decesModules = debut.deces
 
         // Relations
         for i in j.relations.indices where j.relations[i].vivant {
@@ -124,10 +140,10 @@ final class GameEngine: ObservableObject {
                 j.relations[i].vivant = false
                 lignes.append("💀 \(r.designation), \(r.prenom), est \(r.genre == .femme ? "morte" : "mort") à \(r.age) ans.")
                 j.stats.bonheur -= r.type.estParent ? 25 : 10
-                if r.type.estParent && r.argent > 0 && j.age >= 18 {
-                    let heritage = r.argent / 2
-                    j.argent += heritage
-                    lignes.append("Tu hérites de \(Format.argent(heritage)).")
+                if r.type.estParent {
+                    modulesDecesParent(r, &j)
+                } else {
+                    SignauxModules.signaler("deces_proche", &j)
                 }
             }
         }
@@ -141,14 +157,16 @@ final class GameEngine: ObservableObject {
             lignes.append("Tu entres au lycée.")
             if j.diplome < .ecoleObligatoire { j.diplome = .ecoleObligatoire }
         case 18 where !j.aQuitteEcole && j.diplome < .bac:
-            let reussite = Double(j.stats.intelligence) / 100 * 0.7 + 0.35
+            let reussite = Shkurtaaa.chanceExamen(Double(j.stats.intelligence) / 100 * 0.7 + 0.35 + scolBonusBac(j))
             if Double.random(in: 0...1) < reussite {
                 j.diplome = .bac
                 j.stats.bonheur += 10
                 lignes.append("🎓 Tu as eu ton bac ! Tes parents ont pleuré. De soulagement, surtout.")
+                SignauxModules.signaler("bac_obtenu", &j)
             } else {
                 lignes.append("Tu as raté ton bac. Tu blâmes le réchauffement climatique.")
                 j.stats.bonheur -= 10
+                SignauxModules.signaler("bac_rate", &j)
             }
             lignes.append("La scolarité obligatoire est terminée. Va voir l'onglet Occupation.")
         default: break
@@ -156,7 +174,7 @@ final class GameEngine: ObservableObject {
 
         // Université
         if var e = j.etudes {
-            j.argent -= e.filiere.fraisAnnuels
+            j.argent -= MondeJournal.prix(e.filiere.fraisAnnuels, categorie: "etudes", etat: j.monde ?? MondeEtat())
             e.annee += 1
             if e.annee > e.filiere.duree {
                 j.diplome = max(j.diplome, e.filiere.diplomeObtenu)
@@ -164,6 +182,7 @@ final class GameEngine: ObservableObject {
                 j.etudes = nil
                 j.stats.bonheur += 15
                 lignes.append("🎓 Tu es " + j.g("diplômé", "diplômée") + " en \(e.filiere.nom.lowercased()) ! Il est temps de chercher un vrai travail.")
+                SignauxModules.signaler("diplome", &j)
             } else {
                 j.etudes = e
                 lignes.append("Tu entames ta \(e.annee)e année de \(e.filiere.nom.lowercased()).")
@@ -172,30 +191,40 @@ final class GameEngine: ObservableObject {
 
         // Emploi
         if var e = j.emploi {
-            let net = Int(Double(e.salaire) * 0.75)
+            let salaire = MondeJournal.salaire(e.salaire, metierId: e.metierId, titre: e.titre, etat: j.monde ?? MondeEtat())
+            let net = Int(Double(salaire) * 0.75)
             j.argent += net
             e.annees += 1
             e.performance = Stats.borne(e.performance + Int.random(in: -8...4))
-            if e.performance >= 80 && Double.random(in: 0...1) < 0.35 && e.niveau < 4 {
+            if e.performance >= 80 && Double.random(in: 0...1) < Shkurtaaa.chancePromotion(0.35) && e.niveau < 4 {
                 e.niveau += 1
                 e.salaire = Int(Double(e.salaire) * Double.random(in: 1.10...1.25))
                 if let m = Donnees.metier(e.metierId) { e.titre = Donnees.titrePromotion(base: m.titre, niveau: e.niveau) }
                 e.performance = 50
                 lignes.append("📈 Promotion ! Tu es maintenant \(e.titre) à \(Format.argent(e.salaire))/an.")
+                SignauxModules.signaler("promotion", &j)
             } else if e.performance <= 10 && Double.random(in: 0...1) < 0.5 {
                 lignes.append("📉 Tu as été " + j.g("viré", "virée") + " de ton poste de \(e.titre.lowercased()). Ton patron a dit « bon courage » sans le penser.")
                 j.emploi = nil
                 j.stats.bonheur -= 15
+                SignauxModules.signaler("licenciement", &j)
             }
             if j.emploi != nil { j.emploi = e }
             if j.age >= 65 && j.emploi != nil && Double.random(in: 0...1) < 0.5 {
                 lignes.append("Tu prends ta retraite. Ton pot de départ avait des chips premier prix.")
+                j.dernierEmploi = j.emploi
                 j.emploi = nil
+                SignauxModules.signaler("retraite", &j)
             }
         }
         if j.age >= 65 && j.emploi == nil {
-            j.argent += 18000
+            j.argent += Int(18000 * MondeJournal.multiplicateurRetraite(j.monde ?? MondeEtat()))
         }
+
+        // Modules (amour, crime, santé, permis, placements, politique, téléphone, entreprises, biens…)
+        let annee = modulesAnnee(&j, actionsPassees: actionsPassees)
+        lignes += annee.lignes
+        if decesModules == nil { decesModules = annee.deces }
 
         // Évolution naturelle des stats
         j.stats.bonheur += Int.random(in: -3...3)
@@ -206,16 +235,27 @@ final class GameEngine: ObservableObject {
         j.stats.borner()
 
         j.journal.append(Annee(age: j.age, lignes: lignes))
+        modulesApresJournal(&j)
+        if let cause = decesModules {
+            mourir(&j, cause: cause)
+            joueur = j
+            sauvegarder()
+            return
+        }
         joueur = j
 
-        // Événements aléatoires
+        // Fêtes, suites, secrets, héritages, voisins, puis événements aléatoires
+        modulesAvantTirage()
         tirerEvenements()
 
         // Mort naturelle
         if var j2 = joueur, j2.vivant {
             if j2.stats.sante <= 0 {
-                mourir(&j2, cause: "de maladie")
-            } else if Double.random(in: 0...1) < Self.chanceDeces(age: j2.age, sante: j2.stats.sante) {
+                if Shkurtaaa.peutMourir(deVieillesse: false) { mourir(&j2, cause: "de maladie") } else { j2.stats.sante = 1 }
+            } else if let cause = causeDecesModules(j2), Shkurtaaa.peutMourir(deVieillesse: false) {
+                mourir(&j2, cause: cause)
+            } else if Double.random(in: 0...1) < Self.chanceDeces(age: j2.age, sante: j2.stats.sante) * MondeJournal.multiplicateurMortalite(j2.monde ?? MondeEtat()),
+                      Shkurtaaa.peutMourir(deVieillesse: true) {
                 mourir(&j2, cause: Self.causesNaturelles.randomElement()!)
             }
             joueur = j2
@@ -238,9 +278,12 @@ final class GameEngine: ObservableObject {
         return min(0.95, base * facteurSante)
     }
 
-    private func mourir(_ j: inout Joueur, cause: String) {
+    func mourir(_ j: inout Joueur, cause: String) {
+        guard j.vivant else { return }
         j.vivant = false
         j.causeDeces = cause
+        if j.emploi != nil { j.dernierEmploi = j.emploi }
+        modulesMort(&j)
         j.emploi = nil
         j.etudes = nil
         if j.journal.isEmpty { j.journal.append(Annee(age: j.age, lignes: [])) }
@@ -251,10 +294,12 @@ final class GameEngine: ObservableObject {
 
     // MARK: - Événements
 
-    private func tirerEvenements() {
-        guard let j = joueur else { return }
+    func tirerEvenements() {
+        guard let j = joueur, j.vivant else { return }
         let t = tags(j)
-        let candidats = BibliothequeEvenements.tous.filter { conditionsRemplies($0, j, tags: t) }
+        let candidats = (BibliothequeEvenements.tous + evenementsModules(j)).filter {
+            conditionsRemplies($0, j, tags: t) && VieSysteme.evenementAutorise($0, tags: t)
+        }
         var nombre = 0
         if Double.random(in: 0...1) < 0.85 { nombre += 1 }
         if Double.random(in: 0...1) < 0.40 { nombre += 1 }
@@ -264,7 +309,7 @@ final class GameEngine: ObservableObject {
         var dejaPris: Set<String> = []
         for _ in 0..<nombre {
             let restants = candidats.filter { !dejaPris.contains($0.id) }
-            guard let e = Self.tirage(restants, poids: { $0.weight ?? 1 }) else { break }
+            guard let e = Self.tirage(restants, poids: { self.poidsEvenement($0, j) }) else { break }
             dejaPris.insert(e.id)
             declencher(e)
         }
@@ -273,7 +318,7 @@ final class GameEngine: ObservableObject {
         }
     }
 
-    private func declencher(_ e: Evenement) {
+    func declencher(_ e: Evenement) {
         guard var j = joueur else { return }
         if e.unique == true { j.evenementsVus.append(e.id) }
         let texte = remplir(e.text, j)
@@ -283,6 +328,7 @@ final class GameEngine: ObservableObject {
         } else {
             ajouterLigne(&j, texte)
             if let eff = e.effects { appliquer(eff, &j) }
+            modulesApresEvenementSimple(e, &j)
             joueur = j
         }
     }
@@ -293,10 +339,20 @@ final class GameEngine: ObservableObject {
               let choix = aff.evenement.choices, choix.indices.contains(index),
               var j = joueur else { return }
         let c = choix[index]
+        if Secrets.estCarte(aff.evenement.id) {
+            let r = Secrets.resoudre(evenementId: aff.evenement.id, choix: index, joueur: &j)
+            ajouterLigne(&j, aff.texte + " → " + c.label + ". " + r.texte)
+            joueur = j
+            aff.resultat = r.texte
+            evenementEnCours = aff
+            sauvegarder()
+            return
+        }
         let issue = Self.tirage(c.outcomes)
         let resultat = remplir(issue?.text ?? "Il ne se passe rien.", j)
         ajouterLigne(&j, aff.texte + " → " + c.label + ". " + resultat)
         if let eff = issue?.effects { appliquer(eff, &j) }
+        modulesApresChoix(aff.evenement, choix: index, c, issue: issue, &j)
         joueur = j
         aff.resultat = resultat
         evenementEnCours = aff
@@ -339,6 +395,7 @@ final class GameEngine: ObservableObject {
         j.stats.karma += eff.karma ?? 0
         j.argent += eff.money ?? 0
         j.stats.borner()
+        modulesAppliquer(eff, &j)
         if let liens = eff.relationships {
             for (cle, delta) in liens {
                 for i in j.relations.indices where j.relations[i].vivant && Self.correspond(j.relations[i].type, cle) {
@@ -353,9 +410,9 @@ final class GameEngine: ObservableObject {
             j.relations.append(ami)
             ajouterLigne(&j, "Tu t'es fait " + (g == .femme ? "une nouvelle amie" : "un nouvel ami") + " : \(ami.prenom).")
         }
-        if let cause = eff.death {
+        if let cause = eff.death, Shkurtaaa.peutMourir(deVieillesse: false) {
             mourir(&j, cause: cause)
-        } else if j.stats.sante <= 0 {
+        } else if j.stats.sante <= 0, Shkurtaaa.peutMourir(deVieillesse: false) {
             mourir(&j, cause: "de ses blessures")
         }
     }
@@ -380,7 +437,7 @@ final class GameEngine: ObservableObject {
 
     /// Remplace les mots-clés {prenom}, {mere}, {pere}, {ami}, {ville}, {fratrie}, {e} (accord féminin).
     func remplir(_ texte: String, _ j: Joueur) -> String {
-        var t = texte
+        var t = modulesRemplir(texte, j)
         t = t.replacingOccurrences(of: "{prenom}", with: j.prenom)
         t = t.replacingOccurrences(of: "{nom}", with: j.nom)
         t = t.replacingOccurrences(of: "{ville}", with: j.ville)
@@ -417,6 +474,7 @@ final class GameEngine: ObservableObject {
 
     func effacerVie() {
         joueur = nil
+        flashMonde = nil
         evenementEnCours = nil
         fileEvenements = []
         try? FileManager.default.removeItem(at: urlSauvegarde)
@@ -426,6 +484,8 @@ final class GameEngine: ObservableObject {
     func modifier(_ action: (inout Joueur) -> Void) {
         guard var j = joueur else { return }
         action(&j)
+        j.argent = Shkurtaaa.argent(j.argent)
+        revesMettreAJour(&j, etat: \.reves)
         j.stats.borner()
         joueur = j
         sauvegarder()

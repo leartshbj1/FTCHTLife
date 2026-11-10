@@ -217,6 +217,29 @@ struct Joueur: Codable, Equatable {
     /// Module Entreprises (docs/ENTREPRISES.md).
     var entreprises: EntreprisesEtat? = nil
 
+    // États des modules (tous optionnels : les anciennes sauvegardes restent lisibles).
+    var vie: VieEtat? = nil
+    var casier: CasierJudiciaire? = nil
+    var competences: CompetencesEtat? = nil
+    var scolarite: ScolEtat? = nil
+    var tele: TeleEtat? = nil
+    var permis: PermisEtat? = nil
+    var placements: PlacementsEtat? = nil
+    var politique: PolEtat? = nil
+    var telephone: PhoneEtat? = nil
+    var loisirs: LoisirsEtat? = nil
+    var animaux: AnimauxEtat? = nil
+    var reves: RevesDeVie? = nil
+    var monde: MondeEtat? = nil
+    var fetes: FetesEtat? = nil
+    var repercussions: RepercussionsEtat? = nil
+    var reputationFamille: RepFamilleEtat? = nil
+    var retraite: RetraiteEtat? = nil
+    var succession: SuccessionEtat? = nil
+    var voisinage: VoisinageEtat? = nil
+    /// Dernier métier exercé (gardé pour la nécrologie, car `emploi` est vidé à la mort).
+    var dernierEmploi: Emploi? = nil
+
     var nomComplet: String { "\(prenom) \(nom)" }
 
     /// Accorde un mot selon le genre du joueur.
