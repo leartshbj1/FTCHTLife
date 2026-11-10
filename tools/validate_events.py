@@ -13,6 +13,8 @@ TAGS |= {"permis_scooter","permis_voiture","permis_moto","permis_poids_lourd","p
 TAGS |= {"investisseur","crypto","proprietaire_bailleur","epargnant","ruine_crypto"}
 # Étiquettes ajoutées par le module casino (CasinoSysteme.tags).
 TAGS |= {"gambled","gambler","gambling_addict","gambler_recovering","casino_debt","casino_vip","casino_banned","casino_winner","casino_ruined"}
+# Tags du module Retraite (RetraiteSysteme.tags, voir docs/RETRAITE.md).
+TAGS |= {"maison_retraite","maison_retraite_imposee","en_cavale","romance_residence","grand_parent","petits_enfants_absents","senior_voyageur","champion_loto"}
 SPECIAL = {"death","newFriend","relationships","setFlags"}
 SPECIAL = {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
