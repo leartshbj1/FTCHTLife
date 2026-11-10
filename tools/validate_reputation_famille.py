@@ -70,7 +70,7 @@ def main():
             i = ev.get("id", "?"); w = f"{os.path.basename(f)}:{i}"
             for k in ("id", "category", "minAge", "maxAge", "weight", "text", "choices"):
                 if k not in ev: errs.append(f"{w}: champ manquant {k}")
-            if not str(i).startswith("fam_"): errs.append(f"{w}: l'id doit commencer par fam_")
+            if not str(i).startswith("frep_"): errs.append(f"{w}: l'id doit commencer par frep_")
             if i in ids: errs.append(f"{w}: id dupliqué (aussi dans {ids[i]})")
             if i in ids_ailleurs: errs.append(f"{w}: id déjà pris dans {ids_ailleurs[i]}")
             ids[i] = os.path.basename(f)
