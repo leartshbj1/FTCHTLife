@@ -242,5 +242,12 @@ engine.voisinageEmmenager(logement: .depuis(bien.nom), proprietaire: true)      
 engine.voisinageEmmenager(logement: .depuis(bien.nom), proprietaire: false)         // location gérée par la boutique
 ```
 
+La boutique (PR #5) expose déjà un crochet `ShopHooks.emmenagement`, appelé à chaque achat, location ou
+emménagement. Au branchement, une ligne suffit :
+
+```swift
+ShopHooks.emmenagement = { nom, _, proprio in engine.voisinageEmmenager(logement: .depuis(nom), proprietaire: proprio) }
+```
+
 L'écran Voisins propose aussi un déménagement simple en location (« Quitter le nid » / « Déménager ») avec un loyer
 annuel prélevé par le module (`loyerAnnuel`). Si la boutique gère tous les logements, on pourra retirer ce bouton.
