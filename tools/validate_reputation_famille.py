@@ -51,7 +51,7 @@ def check_text(t, where, errs):
 
 
 def main():
-    files = sys.argv[1:] or sorted(glob.glob(os.path.join(ROOT, "FTCHTLife/Resources/Data/Events/famille_reputation_*.json")))
+    files = [os.path.abspath(f) for f in sys.argv[1:]] or sorted(glob.glob(os.path.join(ROOT, "FTCHTLife/Resources/Data/Events/famille_reputation_*.json")))
     all_events = sorted(glob.glob(os.path.join(ROOT, "FTCHTLife/Resources/Data/Events/*.json")))
     ids_ailleurs = {}
     for f in all_events:
