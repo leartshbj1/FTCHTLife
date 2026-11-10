@@ -1,0 +1,17 @@
+# Plan B : Codemagic (500 minutes macOS gratuites par mois).
+workflows:
+  ipa-non-signe:
+    name: FTCHTLife .ipa non signé
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+    scripts:
+      - name: Fabriquer le .ipa
+        script: ./scripts/build-ipa.sh
+    artifacts:
+      - output/FTCHTLife.ipa
+      - build.log
