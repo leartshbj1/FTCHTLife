@@ -1,0 +1,911 @@
+[
+  {
+    "id": "ent_tra_0001",
+    "kind": "absurde",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "vtc"
+    ],
+    "text": "Arrivé à destination, un passager de {entreprise} refuse de descendre de la voiture. Il dit qu'il « se sent bien ici ».",
+    "choices": [
+      {
+        "label": "Le laisser rester",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il reste trois jours, compteur allumé. Ta meilleure course de l'année.",
+            "business": {
+              "cash": 4000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il s'installe pour de bon et fait livrer son courrier dans la boîte à gants.",
+            "business": {
+              "cash": -500
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler la police",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les policiers le convainquent de sortir. Il monte dans leur voiture : il la trouve plus confortable.",
+            "business": {
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le ramener chez lui",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Sa famille t'accueille en héros : ils le cherchaient depuis mardi.",
+            "business": {
+              "reputation": 4
+            },
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0002",
+    "kind": "crise",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "vtc"
+    ],
+    "text": "Une appli concurrente baisse ses prix de 40 %. Les clients de {entreprise} préfèrent attendre 45 minutes pour économiser deux euros.",
+    "choices": [
+      {
+        "label": "Baisser tes prix",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu baisses tes prix. Tes chauffeurs baissent les vitres : la clim coûte trop cher.",
+            "business": {
+              "cash": -4000,
+              "elan": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Miser sur le luxe",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Bonbons, eau fraîche, chauffeurs en gants blancs : les cadres reviennent.",
+            "business": {
+              "cash": 8000,
+              "reputation": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les gants blancs inquiètent les clients. Certains croient à un enlèvement.",
+            "business": {
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre leur faillite",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils font faillite en six mois. Les clients reviennent, tête basse.",
+            "business": {
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils ne font pas faillite. Toi, presque.",
+            "business": {
+              "cash": -5000,
+              "elan": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0003",
+    "kind": "opportunite",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "vtc"
+    ],
+    "minNiveau": 1,
+    "text": "Un groupe de rock en tournée veut louer toutes les voitures de {entreprise} pendant une semaine. Ils promettent de ne « presque rien » casser.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils n'ont rien cassé. Ils ont juste repeint une voiture en violet. C'est assez réussi.",
+            "business": {
+              "cash": 12000,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Une batterie entière dans un coffre, une guitare dans un rétroviseur. Le chèque couvre presque tout.",
+            "business": {
+              "cash": 4000,
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger une caution",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils paient la caution en liquide et en médiators.",
+            "business": {
+              "cash": 8000,
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils partent avec {concurrent}. Tu les revois au journal télévisé, debout sur le toit d'une berline.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0004",
+    "kind": "crise",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "demenagement"
+    ],
+    "text": "Les déménageurs de {entreprise} ont monté un piano au sixième étage sans ascenseur. C'était le mauvais immeuble.",
+    "choices": [
+      {
+        "label": "Redescendre le piano",
+        "cost": 2000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le piano redescend en jouant une note à chaque marche. Cent vingt notes très tristes.",
+            "business": {
+              "reputation": 3,
+              "moral": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Convaincre l'occupant",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le monsieur du sixième garde le piano et prend des cours. Le vrai client est remboursé, avec une partition.",
+            "business": {
+              "cash": -3000,
+              "reputation": 4
+            },
+            "effects": {
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le monsieur du sixième n'a pas la place. Il dort désormais sous le piano.",
+            "business": {
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Offrir un piano neuf",
+        "cost": 6000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le client reçoit un piano neuf. Il ne sait toujours pas jouer, mais sur du neuf.",
+            "business": {
+              "reputation": 6
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Le client attend son piano trois mois. Entre-temps, il s'est mis au triangle, par dépit.",
+      "business": {
+        "cash": -2000,
+        "reputation": -8
+      }
+    }
+  },
+  {
+    "id": "ent_tra_0005",
+    "kind": "absurde",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "demenagement"
+    ],
+    "text": "Un client de {entreprise} déménage de l'appartement 12 à l'appartement 14. Même palier. Il veut quand même un camion.",
+    "choices": [
+      {
+        "label": "Envoyer le camion",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le camion fait le tour du pâté de maisons pour la forme. Le client pleure de joie.",
+            "business": {
+              "cash": 1500,
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout porter à la main",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vingt minutes chrono. Le client trouve ça « bâclé » et ne paie que la moitié.",
+            "business": {
+              "cash": 500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Facturer le prix fort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il paie, ravi, et te recommande à tout l'étage.",
+            "business": {
+              "cash": 3000,
+              "elan": 5
+            },
+            "effects": {
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le voisin du 13 refuse qu'on passe devant sa porte. Il faut tout faire par la fenêtre.",
+            "business": {
+              "cash": -1000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0006",
+    "kind": "crise",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "demenagement"
+    ],
+    "conditions": {
+      "minAnnees": 1
+    },
+    "text": "Sur l'autoroute, un carton de {entreprise} contenant la collection de nains de jardin d'un client tombe du camion.",
+    "choices": [
+      {
+        "label": "Rembourser les nains",
+        "cost": 2500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il accepte. Il baptise chacun de ses nouveaux nains « {prenom} ».",
+            "business": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Récupérer les nains",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu les retrouves sur la bande d'arrêt d'urgence, alignés comme s'ils attendaient un bus.",
+            "business": {
+              "reputation": 3
+            },
+            "effects": {
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Des automobilistes en ont pris en souvenir. Il en manque douze.",
+            "business": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier le carton",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le journal publie la photo : trente nains au péage, devant un carton à ton logo.",
+            "business": {
+              "reputation": -8
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Les nains réapparaissent partout dans la région. Une radio lance le jeu « Où sont les nains de {entreprise} ? ».",
+      "business": {
+        "reputation": -6,
+        "elan": 5
+      }
+    }
+  },
+  {
+    "id": "ent_tra_0007",
+    "kind": "opportunite",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "demenagement"
+    ],
+    "minNiveau": 1,
+    "text": "Un ministère déménage et veut confier ses 4 000 cartons d'archives à {entreprise}. Personne ne sait ce qu'il y a dedans, pas même eux.",
+    "choices": [
+      {
+        "label": "Accepter sans questions",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tout se passe bien. Tu ne poses aucune question, ce qui est très apprécié en haut lieu.",
+            "business": {
+              "cash": 15000,
+              "reputation": 6
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un carton s'ouvre : il ne contient que des agrafeuses. Des milliers d'agrafeuses.",
+            "business": {
+              "cash": 10000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir un carton",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le soir même, deux hommes en costume sonnent chez toi. Ils ne disent rien. Ils repartent.",
+            "business": {
+              "cash": 12000
+            },
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le contrat part chez {concurrent}. Un an plus tard, on leur consacre un documentaire.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0008",
+    "kind": "crise",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "compagnie_aerienne"
+    ],
+    "minNiveau": 2,
+    "text": "Un avion de {entreprise} est cloué au sol : un passager refuse d'éteindre son grille-pain.",
+    "choices": [
+      {
+        "label": "Débarquer le passager",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il descend avec son grille-pain et sa dignité. La cabine applaudit.",
+            "business": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Servir des toasts",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le « vol petit-déjeuner » obtient cinq étoiles partout.",
+            "business": {
+              "reputation": 5,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le détecteur de fumée se déclenche à 10 000 mètres. Tout le monde va bien, mais tout le monde a eu chaud.",
+            "business": {
+              "cash": -5000,
+              "reputation": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier avec lui",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il l'éteint contre un surclassement. Trois autres passagers sortent aussitôt leur grille-pain.",
+            "business": {
+              "cash": -2000,
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "L'avion décolle avec quatre heures de retard. Les passagers ont fini tout le pain.",
+      "business": {
+        "cash": -3000,
+        "reputation": -6
+      }
+    }
+  },
+  {
+    "id": "ent_tra_0009",
+    "kind": "opportunite",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "compagnie_aerienne"
+    ],
+    "minNiveau": 2,
+    "text": "Un petit pays veut faire de {entreprise} sa compagnie nationale. En échange, ton personnel de bord portera la coiffe traditionnelle : un chapeau de 80 cm.",
+    "choices": [
+      {
+        "label": "Accepter le chapeau",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les chapeaux font sensation dans tous les aéroports. On photographie ton équipage plus que tes avions.",
+            "business": {
+              "cash": 25000,
+              "reputation": 8,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les chapeaux ne passent pas dans les allées. Le service se fait à genoux.",
+            "business": {
+              "cash": 10000,
+              "moral": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier la taille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils acceptent 40 cm et un pompon. Le contrat est signé dans la bonne humeur.",
+            "business": {
+              "cash": 15000,
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le pays choisit {concurrent}, qui découvre le chapeau le jour du premier vol.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0010",
+    "kind": "crise",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "compagnie_aerienne"
+    ],
+    "minNiveau": 3,
+    "text": "Les pilotes de {entreprise} menacent de faire grève si on ne remet pas les bonbons gratuits dans le cockpit.",
+    "choices": [
+      {
+        "label": "Remettre les bonbons",
+        "cost": 2000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les bonbons reviennent. Les atterrissages sont plus doux, et un peu plus collants.",
+            "business": {
+              "moral": 8,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser fermement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils cèdent. Les annonces en vol sont désormais d'une froideur polaire.",
+            "business": {
+              "moral": -10,
+              "reputation": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Trois jours de grève. Les passagers attendent à l'aéroport en mangeant des bonbons du duty free.",
+            "business": {
+              "cash": -15000,
+              "reputation": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer des fruits",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils acceptent les fruits, à condition qu'ils soient coupés. Tu passes l'année à négocier des mangues.",
+            "business": {
+              "moral": 2
+            },
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0011",
+    "kind": "absurde",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "compagnie_aerienne"
+    ],
+    "minNiveau": 2,
+    "text": "Un passager voyage gratuitement sur {entreprise} depuis dix ans grâce à un billet de 1998 trouvé dans une boîte de céréales.",
+    "choices": [
+      {
+        "label": "Honorer le billet",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il voyagera gratis à vie. Il écrit un livre sur ta compagnie, d'une tendresse folle.",
+            "business": {
+              "cash": -2000,
+              "reputation": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annuler le billet",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il saisit la justice. Le juge est un grand mangeur de céréales.",
+            "business": {
+              "cash": -5000,
+              "reputation": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il paie, désemparé. Pour la première fois, il voyage avec un vrai billet.",
+            "business": {
+              "cash": 500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Relancer l'opération",
+        "cost": 8000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu caches 10 000 billets dans des boîtes de céréales. Les ventes de billets et de céréales décollent.",
+            "business": {
+              "cash": 20000,
+              "elan": 15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0012",
+    "kind": "crise",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "compagnie_aerienne"
+    ],
+    "minNiveau": 2,
+    "conditions": {
+      "enDifficulte": true
+    },
+    "text": "Le kérosène coûte de plus en plus cher. Un consultant propose que les passagers de {entreprise} pédalent pendant le vol.",
+    "choices": [
+      {
+        "label": "Faire pédaler les passagers",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le « vol fitness » séduit les sportifs. Ils arrivent en avance et en sueur.",
+            "business": {
+              "reputation": 3,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le premier vol pédalé met dix heures pour un Paris-Lyon. Personne ne veut pédaler dans la descente.",
+            "business": {
+              "reputation": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Augmenter les billets",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le billet passe de 39 à 89 €. Les passagers découvrent que l'eau était déjà payante.",
+            "business": {
+              "cash": 8000,
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier le carburant",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le fournisseur te fait un prix. Il veut juste un siège à vie, côté hublot.",
+            "business": {
+              "cash": 10000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le fournisseur éclate de rire et raccroche.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Le carburant te ruine. Tu fais le plein à crédit, comme un étudiant en fin de mois.",
+      "business": {
+        "cash": -15000,
+        "dette": 5000
+      }
+    }
+  },
+  {
+    "id": "ent_tra_0013",
+    "kind": "crise",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "vtc"
+    ],
+    "text": "Un chauffeur de {entreprise} a suivi le GPS jusqu'au milieu d'un champ de blé. Le client, un PDG pressé, rate la réunion de sa vie.",
+    "choices": [
+      {
+        "label": "S'excuser avec des fleurs",
+        "cost": 800,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le PDG accepte les excuses et un bouquet d'épis de blé. Il trouve le geste joli.",
+            "business": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de GPS",
+        "cost": 2000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le nouveau GPS est parfait, mais sa voix grave terrifie les passagers.",
+            "business": {
+              "reputation": 2,
+              "elan": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parler de raccourci",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le PDG trouve la campagne apaisante. Il démissionne, devient agriculteur et te remercie.",
+            "business": {
+              "reputation": 4
+            },
+            "effects": {
+              "karma": 3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le PDG ne rit pas. Il a beaucoup d'amis, tous pressés.",
+            "business": {
+              "reputation": -8,
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_tra_0014",
+    "kind": "opportunite",
+    "secteurs": [
+      "transport"
+    ],
+    "types": [
+      "demenagement"
+    ],
+    "minNiveau": 1,
+    "text": "Une star de cinéma veut que {entreprise} déménage sa maison. Pas les meubles : la maison entière, de l'autre côté de la rue.",
+    "choices": [
+      {
+        "label": "Relever le défi",
+        "cost": 6000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La maison traverse la rue sous les applaudissements. Une chaîne en fait une émission spéciale.",
+            "business": {
+              "cash": 25000,
+              "reputation": 12,
+              "elan": 20
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La maison reste coincée au milieu de la rue. La star y vit trois semaines, au milieu des bus.",
+            "business": {
+              "cash": -5000,
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de déplacer la rue",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La star trouve l'idée géniale. La mairie, beaucoup moins.",
+            "business": {
+              "reputation": -2
+            },
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{concurrent} accepte et casse la maison. Tu regardes ça à la télé avec un sourire coupable.",
+            "effects": {
+              "happiness": 3,
+              "karma": -1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
