@@ -74,12 +74,13 @@ Le module ne touche à aucun fichier du moteur. Tout passe par des fonctions pur
    - boutique, activités : `ExpatMoteur.prixLocal(prix, j.etatExpat)` ;
    - médecin, hôpital : `ExpatMoteur.prixSoin(prix, j.etatExpat)`.
 
-7. **Langues du module Compétences** (anglais, espagnol, allemand, italien, albanais, japonais) :
+7. **Langues du module Compétences** (anglais, espagnol, allemand, italien, albanais, japonais, portugais, arabe) :
    la compétence fait foi. Brancher le pont une fois au démarrage :
 
    ```swift
    let competencesLangues = ["en": "anglais", "es": "espagnol", "de": "allemand",
-                             "it": "italien", "sq": "albanais", "ja": "japonais"]
+                             "it": "italien", "sq": "albanais", "ja": "japonais",
+                             "pt": "portugais", "ar": "arabe"]
    ExpatPontLangues.lire = { id, j in competencesLangues[id].map { Competences.xp($0, j) } }
    ExpatPontLangues.gagner = { id, n, j in
        guard let c = competencesLangues[id] else { return [] }
