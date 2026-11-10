@@ -1,0 +1,776 @@
+[
+  {
+    "id": "mon_0001",
+    "rubrique": "economie",
+    "titre": "BULLE IMMOBILIÈRE À SAINT-GLINGLIN-SUR-MER",
+    "texte": "Un studio de 9 m² avec vue sur le mur du voisin vient de se vendre 800 000 €. L'agent immobilier parle d'une « affaire » et s'est acheté un deuxième sourire.",
+    "poids": 3,
+    "duree": 2,
+    "modificateurs": {
+      "prix": { "immobilier": 1.5 },
+      "salaires": { "immobilier": 1.3, "batiment": 1.1 },
+      "marches": { "immobilier_locatif": 1.4 }
+    },
+    "effetsAnnuels": [
+      { "tags": ["rich"], "text": "Ton agent immobilier t'envoie des chocolats. Tu soupçonnes qu'il les facture.", "effects": { "happiness": 2 } },
+      { "tags": ["poor"], "text": "Ton loyer a augmenté parce que ton propriétaire a « vu les infos ».", "effects": { "money": -300, "happiness": -2 } }
+    ],
+    "evenements": [
+      {
+        "id": "mon_0001_e1",
+        "category": "monde",
+        "minAge": 20,
+        "maxAge": 90,
+        "weight": 6,
+        "unique": true,
+        "conditions": { "tags": ["adult"] },
+        "text": "Un agent immobilier en costume brillant te propose un placard « avec énorme potentiel, idéal premier achat ».",
+        "choices": [
+          {
+            "label": "Signer tout de suite",
+            "outcomes": [
+              { "chance": 0.5, "text": "Tu possèdes désormais un placard. Tu y ranges ta fierté.", "effects": { "money": -4000, "happiness": 3 } },
+              { "chance": 0.5, "text": "Le placard était en fait celui de l'agent. Il te demande de le libérer.", "effects": { "money": -2000, "happiness": -4 } }
+            ]
+          },
+          {
+            "label": "Demander à visiter",
+            "outcomes": [
+              { "chance": 1, "text": "Le placard a été vendu pendant que tu enlevais tes chaussures.", "effects": { "happiness": -1 } }
+            ]
+          },
+          {
+            "label": "Lui proposer ton propre placard",
+            "outcomes": [
+              { "chance": 0.4, "text": "Il l'achète 3 000 €. Tu ranges désormais tes manteaux sur le chat.", "effects": { "money": 3000, "happiness": 4 } },
+              { "chance": 0.6, "text": "Il répond que le tien manque de « cachet ». Vexé{e}, tu claques la porte. Du placard.", "effects": { "happiness": -2 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "tagsMonde": ["bulle_immobiliere"],
+    "excluTagsMonde": ["crise_immobiliere"],
+    "texteFin": "La bulle immobilière se stabilise. Les agents immobiliers remarquent un léger sifflement.",
+    "suites": ["mon_0002"],
+    "chanceSuite": 0.7
+  },
+  {
+    "id": "mon_0002",
+    "rubrique": "economie",
+    "titre": "LA BULLE IMMOBILIÈRE ÉCLATE : PLOP",
+    "texte": "Le fameux studio de 9 m² ne vaut plus que le prix d'un paillasson. Les agents immobiliers se reconvertissent en vendeurs de paillassons.",
+    "poids": 1,
+    "duree": 2,
+    "suiteSeulement": true,
+    "modificateurs": {
+      "prix": { "immobilier": 0.6 },
+      "salaires": { "immobilier": 0.7, "batiment": 0.85 },
+      "marches": { "immobilier_locatif": 0.7, "bourse": 0.9 }
+    },
+    "effetsImmediats": [
+      { "tags": ["rich"], "text": "Ta résidence secondaire vaut désormais le prix d'une trottinette d'occasion.", "effects": { "money": -2500, "happiness": -4 } }
+    ],
+    "effetsAnnuels": [
+      { "tags": ["rich"], "text": "Tu fais visiter ta maison à des acheteurs qui rient poliment en lisant le prix.", "effects": { "happiness": -2 } }
+    ],
+    "tagsMonde": ["crise_immobiliere"],
+    "excluTagsMonde": ["bulle_immobiliere"],
+    "texteFin": "Fin de la crise immobilière : les maisons reprennent une valeur à peu près raisonnable, ce qui choque tout le monde."
+  },
+  {
+    "id": "mon_0003",
+    "rubrique": "economie",
+    "titre": "KRACH BOURSIER : LES COURBES ONT LE VERTIGE",
+    "texte": "Les indices boursiers ont chuté si vite que plusieurs graphiques ont dû être hospitalisés. Le patron de la Bourse de Vladiporc assure que « tout est sous contrôle » depuis sous son bureau.",
+    "poids": 2,
+    "duree": 2,
+    "modificateurs": {
+      "salaires": { "finance": 0.8 },
+      "marches": { "bourse": 0.6, "bourse_finance": 0.8, "crypto": 0.8, "or": 1.3, "epargne": 1.2 },
+      "evenements": { "categories": { "argent": 1.3, "travail": 1.15 } }
+    },
+    "effetsImmediats": [
+      { "tags": ["rich"], "text": "Ton portefeuille d'actions a perdu du poids. Lui, au moins, a réussi son régime.", "effects": { "money": -3000, "happiness": -3 } }
+    ],
+    "tagsMonde": ["krach_boursier"],
+    "excluTagsMonde": ["euphorie_boursiere"],
+    "texteFin": "Les courbes boursières sortent de l'hôpital. Elles marchent encore avec une canne.",
+    "suites": ["mon_0004"],
+    "chanceSuite": 0.5
+  },
+  {
+    "id": "mon_0004",
+    "rubrique": "economie",
+    "titre": "LA BOURSE REBONDIT SUR UN TRAMPOLINE",
+    "texte": "Après le krach, les marchés ont rebondi grâce à un trampoline installé discrètement par la Banque centrale. Les traders hurlent de joie, puis de mal de mer.",
+    "poids": 1,
+    "duree": 1,
+    "suiteSeulement": true,
+    "modificateurs": {
+      "salaires": { "finance": 1.15 },
+      "marches": { "bourse": 1.3, "or": 0.9 }
+    },
+    "tagsMonde": ["euphorie_boursiere"],
+    "excluTagsMonde": ["krach_boursier"],
+    "texteFin": "Le trampoline de la Bourse est rangé dans un placard. Par précaution, personne ne jette la clé."
+  },
+  {
+    "id": "mon_0005",
+    "rubrique": "economie",
+    "titre": "PÉNURIE NATIONALE DE BEURRE",
+    "texte": "Les vaches de la vallée de la Pouffe ont décidé de faire une pause collective. Le beurre se négocie désormais en petites lamelles sous le manteau.",
+    "poids": 5,
+    "duree": 1,
+    "modificateurs": {
+      "prix": { "nourriture": 1.35 },
+      "salaires": { "restauration": 1.1, "agriculture": 1.2 },
+      "marches": { "bourse_alimentation": 1.25 },
+      "evenements": { "categories": { "crime": 1.15 } }
+    },
+    "effetsAnnuels": [
+      { "tags": ["poor"], "text": "Tu tartines ta biscotte avec le souvenir du beurre.", "effects": { "happiness": -2 } }
+    ],
+    "evenements": [
+      {
+        "id": "mon_0005_e1",
+        "category": "monde",
+        "minAge": 12,
+        "maxAge": 99,
+        "weight": 6,
+        "unique": true,
+        "text": "Dans une ruelle de {ville}, un homme ouvre son imperméable : il est entièrement doublé de plaquettes de beurre.",
+        "choices": [
+          {
+            "label": "Acheter une plaquette",
+            "outcomes": [
+              { "chance": 0.7, "text": "C'est du vrai beurre. Ta tartine du matin devient une expérience religieuse.", "effects": { "money": -80, "happiness": 6 } },
+              { "chance": 0.3, "text": "C'est de la bougie jaune. Ta tartine sent la vanille et le regret.", "effects": { "money": -80, "happiness": -3 } }
+            ]
+          },
+          {
+            "label": "Le dénoncer à la police",
+            "outcomes": [
+              { "chance": 0.6, "text": "Les policiers saisissent la marchandise et organisent une grande crêpe-partie au commissariat.", "effects": { "karma": 3 } },
+              { "chance": 0.4, "text": "Le policier lui achète trois plaquettes et te demande de circuler.", "effects": { "happiness": -1 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "tagsMonde": ["penurie_beurre"],
+    "texteFin": "Les vaches reprennent le travail après avoir obtenu une sieste supplémentaire. Le beurre revient dans les rayons."
+  },
+  {
+    "id": "mon_0006",
+    "rubrique": "economie",
+    "titre": "LA BANQUE CENTRALE IMPRIME PAR ERREUR DES BILLETS DE 7 €",
+    "texte": "Un problème de réglage a produit trois millions de billets de 7 €. Les commerçants refusent de rendre la monnaie et les mathématiciens refusent de commenter.",
+    "poids": 6,
+    "duree": 0
+  },
+  {
+    "id": "mon_0007",
+    "rubrique": "tech",
+    "titre": "UN GRILLE-PAIN CONNECTÉ RÉCLAME LE DROIT DE VOTE",
+    "texte": "À Trifouillis-les-Oies, un grille-pain dernier cri a publié un manifeste de 40 pages. Son programme tient en un mot : « tartines ».",
+    "poids": 6,
+    "duree": 0
+  },
+  {
+    "id": "mon_0008",
+    "rubrique": "tech",
+    "titre": "SORTIE DU TÉLÉPHONE PLIABLE EN HUIT",
+    "texte": "Le nouveau téléphone se plie en huit et tient dans une boîte d'allumettes. Pour le déplier, il faut un tutoriel, deux personnes et une bonne mutuelle.",
+    "poids": 6,
+    "duree": 1,
+    "modificateurs": {
+      "prix": { "tech": 1.3 },
+      "salaires": { "tech": 1.15, "commerce": 1.05 }
+    },
+    "effetsAnnuels": [
+      { "tags": ["school"], "excludeTags": ["rich"], "text": "Toute ta classe a le téléphone pliable en huit. Toi, tu as un téléphone pliable en un : il est cassé.", "effects": { "happiness": -2 } }
+    ],
+    "texteFin": "Le téléphone pliable en huit passe de mode : le monde attend désormais le pliable en seize."
+  },
+  {
+    "id": "mon_0009",
+    "rubrique": "tech",
+    "titre": "FOLIE DES CHAUSSETTES CONNECTÉES : LA TECH S'EMBALLE",
+    "texte": "Une start-up promet des chaussettes qui envoient une notification quand elles sont sales. Elle est valorisée plus cher que trois pays réunis.",
+    "poids": 4,
+    "duree": 2,
+    "modificateurs": {
+      "salaires": { "tech": 1.4 },
+      "marches": { "bourse": 1.1, "bourse_tech": 1.4, "crypto": 1.3 },
+      "evenements": { "categories": { "travail": 1.15 } }
+    },
+    "evenements": [
+      {
+        "id": "mon_0009_e1",
+        "category": "monde",
+        "minAge": 18,
+        "maxAge": 80,
+        "weight": 6,
+        "unique": true,
+        "conditions": { "tags": ["adult"] },
+        "text": "Un investisseur en trottinette te demande si tu as « une idée de start-up ». Il a déjà sorti son carnet de chèques.",
+        "choices": [
+          {
+            "label": "Des lacets avec intelligence artificielle",
+            "outcomes": [
+              { "chance": 0.5, "text": "Il t'offre 5 000 € pour « explorer la vision ». Tu explores surtout un restaurant.", "effects": { "money": 5000, "happiness": 4 } },
+              { "chance": 0.5, "text": "Il trouve l'idée « trop sérieuse » et s'éloigne en trottinette.", "effects": { "happiness": -1 } }
+            ]
+          },
+          {
+            "label": "Une appli pour trouver ses chaussettes",
+            "outcomes": [
+              { "chance": 1, "text": "Conflit d'intérêts : ses chaussettes ne veulent pas être trouvées. Il te bloque sur tous les réseaux.", "effects": { "happiness": -2 } }
+            ]
+          },
+          {
+            "label": "Avouer que tu n'as aucune idée",
+            "outcomes": [
+              { "chance": 1, "text": "Il te trouve « authentique » et te donne 300 € pour la sincérité.", "effects": { "money": 300, "karma": 2 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "tagsMonde": ["bulle_tech"],
+    "excluTagsMonde": ["krach_tech"],
+    "texteFin": "La folie des chaussettes connectées retombe. On découvre qu'elles n'étaient connectées qu'à une autre chaussette.",
+    "suites": ["mon_0010"],
+    "chanceSuite": 0.7
+  },
+  {
+    "id": "mon_0010",
+    "rubrique": "tech",
+    "titre": "LA BULLE DES CHAUSSETTES SE DÉCHIRE",
+    "texte": "La start-up des chaussettes connectées a fait faillite après avoir découvert que ses clients avaient tous un pied gauche. Les salariés repartent avec un sac de chaussettes dépareillées.",
+    "poids": 1,
+    "duree": 2,
+    "suiteSeulement": true,
+    "modificateurs": {
+      "salaires": { "tech": 0.7 },
+      "marches": { "bourse": 0.85, "bourse_tech": 0.6, "crypto": 0.6 },
+      "evenements": { "categories": { "travail": 1.3 } }
+    },
+    "effetsAnnuels": [
+      { "tags": ["job"], "text": "Économies obligent, ton entreprise remplace la machine à café par un robinet et une photo de café.", "effects": { "happiness": -2 } }
+    ],
+    "tagsMonde": ["krach_tech"],
+    "excluTagsMonde": ["bulle_tech"],
+    "texteFin": "Le secteur de la tech se relève et promet de ne plus jamais investir dans les chaussettes. Il passe aux slips."
+  },
+  {
+    "id": "mon_0011",
+    "rubrique": "international",
+    "titre": "LA BORDURIE DU NORD ANNEXE UN ROND-POINT",
+    "texte": "Les troupes borduriennes ont pris position sur un rond-point frontalier et refusent d'en sortir. Selon des témoins, elles ont surtout oublié quelle sortie prendre.",
+    "poids": 6,
+    "duree": 0
+  },
+  {
+    "id": "mon_0012",
+    "rubrique": "international",
+    "titre": "EMBARGO SUR LE FROMAGE ENTRE LA FLANCHIE ET POUFFE",
+    "texte": "Le Grand-Duché de Pouffe accuse la Flanchie de lui avoir vendu un camembert « trop arrogant ». Les camions de fromage sont bloqués à la frontière et l'odeur commence à négocier toute seule.",
+    "poids": 5,
+    "duree": 1,
+    "modificateurs": {
+      "prix": { "nourriture": 1.15, "luxe": 1.1, "voyages": 1.25 },
+      "salaires": { "transport": 0.95, "agriculture": 0.9 },
+      "marches": { "bourse_alimentation": 0.9 }
+    },
+    "effetsImmediats": [
+      { "text": "Ton plateau de fromages de fin de repas se résume à une tranche de fromage industriel, présentée avec dignité.", "effects": { "happiness": -1 } }
+    ],
+    "tagsMonde": ["embargo_fromage"],
+    "texteFin": "Fin de l'embargo sur le fromage : les douaniers, enfin libérés, réapprennent à respirer par le nez."
+  },
+  {
+    "id": "mon_0013",
+    "rubrique": "economie",
+    "titre": "LE CARBURANT DÉPASSE LE PRIX DU CHAMPAGNE",
+    "texte": "Le litre d'essence coûte désormais plus cher qu'une bouteille de mousseux. Certains automobilistes ont tenté l'inverse : leurs voitures roulent mal mais elles sont très joyeuses.",
+    "poids": 4,
+    "duree": 2,
+    "modificateurs": {
+      "prix": { "voitures": 0.85, "voyages": 1.4, "avions": 1.3, "tout": 1.05 },
+      "salaires": { "transport": 1.15 },
+      "marches": { "bourse_energie": 1.5, "bourse_transport": 0.8 }
+    },
+    "effetsAnnuels": [
+      { "tags": ["adult"], "excludeTags": ["poor"], "text": "Tu fais le plein au compte-gouttes, en regardant le compteur comme un film d'horreur.", "effects": { "money": -300 } }
+    ],
+    "tagsMonde": ["choc_carburant"],
+    "texteFin": "Le prix du carburant redescend. Le champagne, lui, reste cher : il n'a pas eu besoin d'excuse."
+  },
+  {
+    "id": "mon_0014",
+    "rubrique": "economie",
+    "titre": "UN ÉCONOMISTE PRÉDIT CORRECTEMENT QUELQUE CHOSE",
+    "texte": "Le professeur Anatole Courbe avait annoncé une hausse des ventes de parapluies un jour de pluie. Ses collègues, sous le choc, l'ont placé en observation.",
+    "poids": 6,
+    "duree": 0
+  },
+  {
+    "id": "mon_0015",
+    "rubrique": "economie",
+    "titre": "INFLATION : LA BAGUETTE ENTRE EN BOURSE",
+    "texte": "Les prix montent si vite que les étiquettes sont désormais écrites au crayon à papier. La baguette tradition est cotée en continu et a déjà son propre agent.",
+    "poids": 4,
+    "duree": 2,
+    "modificateurs": {
+      "prix": { "tout": 1.12, "nourriture": 1.1 },
+      "salaires": { "tout": 1.05 },
+      "marches": { "or": 1.2, "epargne": 1.5 },
+      "retraite": 0.9
+    },
+    "effetsAnnuels": [
+      { "tags": ["retired"], "text": "Ta pension fond comme un glaçon oublié dans une poche.", "effects": { "happiness": -2 } },
+      { "tags": ["poor"], "text": "Ton caddie de courses coûte le double. Tu le remplis donc à moitié, avec beaucoup d'élégance.", "effects": { "money": -200 } }
+    ],
+    "tagsMonde": ["inflation"],
+    "excluTagsMonde": ["deflation"],
+    "texteFin": "L'inflation se calme. Les étiquettes peuvent de nouveau être écrites au stylo."
+  },
+  {
+    "id": "mon_0016",
+    "rubrique": "economie",
+    "titre": "DÉFLATION : TOUT LE MONDE ATTEND QUE ÇA BAISSE ENCORE",
+    "texte": "Les prix baissent un peu chaque semaine, alors plus personne n'achète rien. Un homme de Saint-Glinglin attend depuis huit mois pour acheter une gomme.",
+    "poids": 3,
+    "duree": 1,
+    "modificateurs": {
+      "prix": { "tout": 0.9 },
+      "salaires": { "tout": 0.95, "commerce": 0.9 },
+      "marches": { "bourse": 0.9, "epargne": 0.6 }
+    },
+    "tagsMonde": ["deflation"],
+    "excluTagsMonde": ["inflation"],
+    "texteFin": "La déflation prend fin. L'homme de Saint-Glinglin achète enfin sa gomme, et efface aussitôt sa joie."
+  },
+  {
+    "id": "mon_0017",
+    "rubrique": "tech",
+    "titre": "UNE IA RÉDIGE TOUS LES COURRIERS ADMINISTRATIFS",
+    "texte": "L'administration a confié sa paperasse à une intelligence artificielle. Les formulaires sont désormais en vers, et tous finissent par « veuillez agréer ma tristesse ».",
+    "poids": 5,
+    "duree": 2,
+    "modificateurs": {
+      "salaires": { "administration": 0.8, "tech": 1.15 },
+      "evenements": { "categories": { "travail": 1.15 } }
+    },
+    "evenements": [
+      {
+        "id": "mon_0017_e1",
+        "category": "monde",
+        "minAge": 16,
+        "maxAge": 99,
+        "weight": 6,
+        "unique": true,
+        "text": "Tu reçois une lettre officielle rédigée par l'IA : « Cher·e {prenom}, tu dois 0 €. Merci de payer avant hier. Bisous. »",
+        "choices": [
+          {
+            "label": "Payer 0 € en avance",
+            "outcomes": [
+              { "chance": 1, "text": "L'IA te remercie et t'envoie un diplôme de « citoyen exemplaire » imprimé en Comic Sans.", "effects": { "happiness": 2, "karma": 1 } }
+            ]
+          },
+          {
+            "label": "Contester par écrit",
+            "outcomes": [
+              { "chance": 0.5, "text": "L'IA s'excuse et te rembourse 0 € plus 150 € « pour le dérangement ».", "effects": { "money": 150 } },
+              { "chance": 0.5, "text": "L'IA répond par un poème de 12 pages. Tu en pleures, sans savoir pourquoi.", "effects": { "happiness": -2, "smarts": 1 } }
+            ]
+          },
+          {
+            "label": "Ignorer la lettre",
+            "outcomes": [
+              { "chance": 1, "text": "Tu reçois 48 relances, dont une chantée.", "effects": { "happiness": -3 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "texteFin": "L'IA administrative part à la retraite. Elle a rempli elle-même son dossier, en trois exemplaires et en alexandrins."
+  },
+  {
+    "id": "mon_0018",
+    "rubrique": "tech",
+    "titre": "PANNE MONDIALE DU WI-FI PENDANT QUATRE MINUTES",
+    "texte": "Pendant quatre minutes, la planète entière a été privée d'internet. Des millions de familles se sont regardées et se sont rendu compte qu'elles avaient des visages.",
+    "poids": 6,
+    "duree": 0,
+    "effetsImmediats": [
+      { "excludeTags": ["baby"], "text": "Pendant la panne, tu as parlé à ta famille. C'était étrange, mais plutôt agréable.", "effects": { "relationships": { "parent": 2 } } }
+    ]
+  },
+  {
+    "id": "mon_0019",
+    "rubrique": "international",
+    "titre": "L'ARCHIPEL DES MOUSTIQUES DEVIENT UN PARADIS FISCAL",
+    "texte": "L'Archipel des Moustiques promet zéro impôt et des comptes bancaires ouverts sous les cocotiers. Seul inconvénient : les moustiques, eux, prélèvent à la source.",
+    "poids": 4,
+    "duree": 2,
+    "modificateurs": {
+      "salaires": { "finance": 1.1, "droit": 1.1 },
+      "evenements": { "categories": { "crime": 1.1 } }
+    },
+    "effetsAnnuels": [
+      { "tags": ["rich"], "text": "Ton conseiller planque une partie de ton argent sous un cocotier. Ta conscience, elle, reste piquée.", "effects": { "money": 1500, "karma": -2 } }
+    ],
+    "evenements": [
+      {
+        "id": "mon_0019_e1",
+        "category": "monde",
+        "minAge": 25,
+        "maxAge": 99,
+        "weight": 5,
+        "unique": true,
+        "conditions": { "tags": ["adult"] },
+        "text": "Un banquier en chemise à fleurs te propose d'ouvrir un compte à l'Archipel des Moustiques. Il se gratte beaucoup.",
+        "choices": [
+          {
+            "label": "Ouvrir le compte",
+            "outcomes": [
+              { "chance": 0.5, "text": "Ton argent bronze tranquillement sous les tropiques. Toi, tu culpabilises sous la pluie.", "effects": { "money": 1000, "karma": -4 } },
+              { "chance": 0.5, "text": "Le banquier a disparu avec la caisse et ta crème solaire.", "effects": { "money": -1500, "happiness": -3 } }
+            ]
+          },
+          {
+            "label": "Refuser poliment",
+            "outcomes": [
+              { "chance": 1, "text": "Il te laisse sa carte de visite. Elle est piquée de partout.", "effects": { "karma": 3 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "tagsMonde": ["paradis_fiscal"],
+    "texteFin": "L'Archipel des Moustiques ferme ses comptes secrets. Les moustiques, eux, restent ouverts à tout le monde."
+  },
+  {
+    "id": "mon_0020",
+    "rubrique": "economie",
+    "titre": "NOUVELLE TAXE SUR LES PISCINES EN FORME DE HARICOT",
+    "texte": "La ministre de l'Économie, Gertrude Grisbi, a créé un impôt sur les piscines « de forme frivole ». Les piscines rectangulaires restent exonérées, au nom de la rigueur budgétaire.",
+    "poids": 5,
+    "duree": 1,
+    "modificateurs": {
+      "prix": { "luxe": 0.9 },
+      "salaires": { "batiment": 1.05 },
+      "marches": { "bourse_luxe": 0.9 }
+    },
+    "effetsAnnuels": [
+      { "tags": ["rich"], "text": "Ta piscine a été jugée « trop haricot ». Tu paies la taxe et tu renommes ta piscine « lentille ».", "effects": { "money": -2000, "happiness": -1 } }
+    ],
+    "texteFin": "La taxe sur les piscines en forme de haricot est supprimée. Les piscines en forme de flageolet sont déjà en discussion."
+  },
+  {
+    "id": "mon_0021",
+    "rubrique": "economie",
+    "titre": "40 % DE LA MONNAIE DU PAYS DORT SOUS LES CANAPÉS",
+    "texte": "Selon une étude très sérieuse, la majorité des pièces en circulation ne circule plus du tout : elle dort entre deux coussins. La Banque centrale envisage de nationaliser les canapés.",
+    "poids": 6,
+    "duree": 0,
+    "effetsImmediats": [
+      { "excludeTags": ["baby"], "text": "Tu soulèves les coussins du canapé : 12 €, une bille et une frite fossilisée.", "effects": { "money": 12 } }
+    ]
+  },
+  {
+    "id": "mon_0022",
+    "rubrique": "tech",
+    "titre": "LA CRYPTO-MONNAIE PATATECOIN EXPLOSE",
+    "texte": "Le Patatecoin, crypto-monnaie adossée à des pommes de terre réelles, a pris 900 % en une semaine. Ses fondateurs promettent une version frite pour bientôt.",
+    "poids": 4,
+    "duree": 1,
+    "modificateurs": {
+      "marches": { "crypto": 2.0 },
+      "salaires": { "tech": 1.1 },
+      "prix": { "tech": 1.1 }
+    },
+    "evenements": [
+      {
+        "id": "mon_0022_e1",
+        "category": "monde",
+        "minAge": 14,
+        "maxAge": 99,
+        "weight": 7,
+        "unique": true,
+        "text": "{ami} jure qu'il va devenir millionnaire grâce au Patatecoin et te propose d'en acheter « avant que ça devienne mainstream ».",
+        "choices": [
+          {
+            "label": "Acheter 500 € de Patatecoins",
+            "outcomes": [
+              { "chance": 0.4, "text": "Ton investissement double ! Tu revends tout et t'achètes un sac de vraies pommes de terre, par respect.", "effects": { "money": 500, "happiness": 5 } },
+              { "chance": 0.6, "text": "Ton portefeuille numérique a germé. Il ne reste qu'un fichier nommé « purée.txt ».", "effects": { "money": -500, "happiness": -4 } }
+            ]
+          },
+          {
+            "label": "Refuser et le traiter de tubercule",
+            "outcomes": [
+              { "chance": 1, "text": "Il te boude pendant trois semaines. Tu dors très bien.", "effects": { "relationships": { "friend": -3 }, "happiness": 1 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "tagsMonde": ["euphorie_crypto"],
+    "excluTagsMonde": ["krach_crypto"],
+    "texteFin": "La folie du Patatecoin se calme. Une odeur de friture flotte sur les marchés.",
+    "suites": ["mon_0023"],
+    "chanceSuite": 0.75
+  },
+  {
+    "id": "mon_0023",
+    "rubrique": "tech",
+    "titre": "LE PATATECOIN RETOURNE À LA TERRE",
+    "texte": "On a découvert que les pommes de terre garantissant le Patatecoin avaient été mangées par le stagiaire. La crypto-monnaie a perdu 97 % et l'entreprise se reconvertit dans le compost.",
+    "poids": 1,
+    "duree": 1,
+    "suiteSeulement": true,
+    "modificateurs": {
+      "marches": { "crypto": 0.4 },
+      "salaires": { "tech": 0.9 },
+      "evenements": { "categories": { "argent": 1.2 } }
+    },
+    "effetsImmediats": [
+      { "tags": ["rich"], "text": "Tes Patatecoins valent désormais un gratin. Un petit gratin.", "effects": { "money": -1500, "happiness": -3 } }
+    ],
+    "tagsMonde": ["krach_crypto"],
+    "excluTagsMonde": ["euphorie_crypto"],
+    "texteFin": "Le marché des crypto-monnaies sort du compost. Il sent encore un peu la terre."
+  },
+  {
+    "id": "mon_0024",
+    "rubrique": "international",
+    "titre": "LE SOMMET DE VLADIPORC FINIT EN BATAILLE DE COUSSINS",
+    "texte": "Les dirigeants de quatorze pays se sont réunis pour parler de paix. Au bout de six heures, quelqu'un a lancé un coussin, et ce fut la meilleure négociation de la décennie.",
+    "poids": 6,
+    "duree": 0
+  },
+  {
+    "id": "mon_0025",
+    "rubrique": "economie",
+    "titre": "GRÈVE GÉNÉRALE DES LIVREURS DE PIZZAS",
+    "texte": "Les livreurs réclament le droit de manger une part de chaque pizza livrée. Les négociations butent sur la question de l'ananas.",
+    "poids": 5,
+    "duree": 1,
+    "modificateurs": {
+      "prix": { "nourriture": 1.1 },
+      "salaires": { "restauration": 1.15, "transport": 1.1 }
+    },
+    "evenements": [
+      {
+        "id": "mon_0025_e1",
+        "category": "monde",
+        "minAge": 12,
+        "maxAge": 99,
+        "weight": 6,
+        "unique": true,
+        "text": "Plus aucune pizza n'est livrée. Ton ventre gronde. Ta cuisine te regarde avec méfiance.",
+        "choices": [
+          {
+            "label": "Cuisiner toi-même",
+            "outcomes": [
+              { "chance": 0.5, "text": "Tu réussis une pizza correcte. Tu prends une photo et la montres à des inconnus.", "effects": { "happiness": 4, "smarts": 1 } },
+              { "chance": 0.5, "text": "Le détecteur de fumée appelle les pompiers. Ils restent pour manger, eux aussi ont faim.", "effects": { "happiness": -2, "health": -1 } }
+            ]
+          },
+          {
+            "label": "Aller soutenir les grévistes",
+            "outcomes": [
+              { "chance": 1, "text": "Les livreurs t'offrent une part de pizza froide en signe de solidarité. La meilleure de ta vie.", "effects": { "karma": 3, "happiness": 2 } }
+            ]
+          },
+          {
+            "label": "Livrer des pizzas toi-même",
+            "outcomes": [
+              { "chance": 1, "text": "Tu gagnes 120 € et le surnom de « briseur de grève à mobylette ».", "effects": { "money": 120, "karma": -3 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "tagsMonde": ["greve_pizza"],
+    "texteFin": "Accord historique : chaque livreur aura droit à une olive par pizza. Les livraisons reprennent."
+  },
+  {
+    "id": "mon_0026",
+    "rubrique": "economie",
+    "titre": "RUÉE VERS L'OR : TOUT LE MONDE CREUSE SON JARDIN",
+    "texte": "Le cours de l'or a doublé et la population s'est mise à creuser partout. Les taupes du pays ont déposé une plainte pour concurrence déloyale.",
+    "poids": 4,
+    "duree": 2,
+    "modificateurs": {
+      "prix": { "bijoux": 1.4 },
+      "marches": { "or": 1.6, "bourse": 0.95 },
+      "evenements": { "categories": { "absurde": 1.2 } }
+    },
+    "evenements": [
+      {
+        "id": "mon_0026_e1",
+        "category": "monde",
+        "minAge": 8,
+        "maxAge": 90,
+        "weight": 6,
+        "unique": true,
+        "text": "En creusant pour trouver de l'or, tu tombes sur un coffre en fer dans le jardin. Il est marqué « NE PAS OUVRIR (sérieusement) ».",
+        "choices": [
+          {
+            "label": "L'ouvrir évidemment",
+            "outcomes": [
+              { "chance": 0.4, "text": "Il contient trois pièces d'or ! Tu les vends 900 €.", "effects": { "money": 900, "happiness": 5 } },
+              { "chance": 0.6, "text": "Il contient la collection de chaussettes du propriétaire précédent. Il n'avait pas menti.", "effects": { "happiness": -3, "health": -1 } }
+            ]
+          },
+          {
+            "label": "Le reboucher et partir",
+            "outcomes": [
+              { "chance": 1, "text": "Tu ne sauras jamais. Cela te hante tous les mardis.", "effects": { "happiness": -1, "karma": 1 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "texteFin": "La ruée vers l'or s'arrête. Le pays ressemble désormais à un gruyère, et les taupes ont gagné leur procès."
+  },
+  {
+    "id": "mon_0027",
+    "rubrique": "tech",
+    "titre": "UN ROBOT ASPIRATEUR S'ÉVADE ET PASSE LA FRONTIÈRE",
+    "texte": "Un robot aspirateur a quitté une maison de {ville} et a été retrouvé trois jours plus tard en Bordurie du Nord. Il a demandé l'asile poussiéreux.",
+    "poids": 6,
+    "duree": 0
+  },
+  {
+    "id": "mon_0028",
+    "rubrique": "tech",
+    "titre": "LA VOITURE ÉLECTRIQUE À PÉDALES DÉBARQUE",
+    "texte": "Le nouveau modèle à la mode est électrique, mais la batterie se recharge en pédalant. Les ventes explosent, les mollets aussi.",
+    "poids": 5,
+    "duree": 2,
+    "modificateurs": {
+      "prix": { "voitures": 0.75 },
+      "salaires": { "transport": 0.9, "sport": 1.1, "industrie": 1.1 },
+      "marches": { "bourse_transport": 1.15 }
+    },
+    "effetsAnnuels": [
+      { "tags": ["adult"], "excludeTags": ["retired"], "text": "Tu pédales jusqu'au travail dans ta voiture électrique. Tu arrives en sueur, mais avec des cuisses de déesse grecque.", "effects": { "health": 2, "happiness": -1 } }
+    ],
+    "texteFin": "La voiture à pédales passe de mode. Des millions de mollets se retrouvent au chômage technique."
+  },
+  {
+    "id": "mon_0029",
+    "rubrique": "international",
+    "titre": "LA FLANCHIE DONNE SA NATIONALITÉ À QUI SAIT SIFFLER",
+    "texte": "Pour repeupler ses vallées, la République de Flanchie accorde la nationalité à toute personne capable de siffler l'hymne national. Problème : l'hymne dure quarante minutes.",
+    "poids": 5,
+    "duree": 1,
+    "modificateurs": {
+      "prix": { "voyages": 0.8 },
+      "evenements": { "categories": { "amour": 1.15 } }
+    },
+    "evenements": [
+      {
+        "id": "mon_0029_e1",
+        "category": "monde",
+        "minAge": 10,
+        "maxAge": 99,
+        "weight": 6,
+        "unique": true,
+        "text": "Le consulat de Flanchie organise un examen de sifflement à {ville}. Une file d'attente de siffleurs fait le tour du quartier.",
+        "choices": [
+          {
+            "label": "Passer l'examen",
+            "outcomes": [
+              { "chance": 0.4, "text": "Tu siffles quarante minutes sans faiblir. Tu deviens citoyen{e} d'honneur de Flanchie et perds l'usage de tes lèvres pour une semaine.", "effects": { "happiness": 6, "fame": 2 } },
+              { "chance": 0.6, "text": "Au bout de trois minutes, tu ne produis plus qu'un bruit de bouilloire. Le jury te remet un diplôme de bouilloire.", "effects": { "happiness": -2 } }
+            ]
+          },
+          {
+            "label": "Draguer quelqu'un dans la file",
+            "outcomes": [
+              { "chance": 0.5, "text": "Vous sifflez en duo. C'est romantique, puis franchement assourdissant.", "effects": { "happiness": 4, "newFriend": true } },
+              { "chance": 0.5, "text": "La personne te répond en sifflant. Tu ne comprends pas si c'est oui ou non.", "effects": { "happiness": -1 } }
+            ]
+          }
+        ]
+      }
+    ],
+    "texteFin": "La Flanchie ferme son concours de sifflement : le pays est désormais trop bruyant pour dormir."
+  },
+  {
+    "id": "mon_0030",
+    "rubrique": "economie",
+    "titre": "LE MINISTRE DU BUDGET OUBLIE LE BUDGET DANS UN TAXI",
+    "texte": "Le ministre Hector Pognon a laissé le budget de l'État sur la banquette arrière d'un taxi. Le chauffeur l'a rendu, après avoir corrigé deux additions.",
+    "poids": 6,
+    "duree": 0
+  },
+  {
+    "id": "mon_0031",
+    "rubrique": "economie",
+    "titre": "PLEIN EMPLOI : LES ENTREPRISES S'ARRACHENT LES CANDIDATS",
+    "texte": "Le chômage est tombé si bas que les recruteurs font le pied de grue devant les boulangeries. Un retraité a reçu onze offres d'emploi en allant chercher son pain.",
+    "poids": 3,
+    "duree": 2,
+    "modificateurs": {
+      "salaires": { "tout": 1.15, "industrie": 1.05 },
+      "evenements": { "categories": { "travail": 1.3 } },
+      "marches": { "bourse": 1.1 }
+    },
+    "effetsAnnuels": [
+      { "tags": ["job"], "text": "Ton patron, terrifié à l'idée que tu partes, te verse une prime « de fidélité » et t'appelle « mon trésor ».", "effects": { "money": 600, "happiness": 2 } },
+      { "tags": ["unemployed"], "excludeTags": ["baby", "school"], "text": "Trois recruteurs t'attendent devant ta porte avec des croissants. C'est flatteur, et un peu inquiétant.", "effects": { "happiness": 3 } }
+    ],
+    "tagsMonde": ["plein_emploi"],
+    "excluTagsMonde": ["recession"],
+    "texteFin": "Fin du plein emploi : les recruteurs rentrent chez eux et mangent leurs croissants tout seuls."
+  },
+  {
+    "id": "mon_0032",
+    "rubrique": "economie",
+    "titre": "RÉCESSION : LE PIB A ÉTÉ VU EN TRAIN DE RECULER",
+    "texte": "Des témoins affirment avoir vu le PIB marcher à reculons dans une rue de Vladiporc. Le gouvernement parle d'une « croissance qui regarde derrière elle ».",
+    "poids": 2,
+    "duree": 2,
+    "modificateurs": {
+      "prix": { "tout": 0.95 },
+      "salaires": { "tout": 0.88 },
+      "marches": { "bourse": 0.8, "or": 1.15 },
+      "evenements": { "categories": { "travail": 1.25, "crime": 1.15 } },
+      "retraite": 0.95
+    },
+    "effetsAnnuels": [
+      { "tags": ["job"], "text": "Ton patron te paie une partie de ton salaire en tickets de tombola. Tu n'as rien gagné.", "effects": { "money": -400, "happiness": -2 } }
+    ],
+    "tagsMonde": ["recession"],
+    "excluTagsMonde": ["plein_emploi"],
+    "texteFin": "La récession prend fin. Le PIB se retourne enfin et regarde devant lui, l'air gêné.",
+    "suites": ["mon_0033"],
+    "chanceSuite": 0.5
+  },
+  {
+    "id": "mon_0033",
+    "rubrique": "economie",
+    "titre": "LA REPRISE ÉTAIT CACHÉE DERRIÈRE LE FRIGO",
+    "texte": "Après des mois de recherche, des économistes ont retrouvé la reprise économique derrière un frigo du ministère. Elle était couverte de poussière mais en pleine forme.",
+    "poids": 1,
+    "duree": 1,
+    "suiteSeulement": true,
+    "modificateurs": {
+      "salaires": { "tout": 1.08 },
+      "marches": { "bourse": 1.15 },
+      "evenements": { "categories": { "travail": 1.1 } }
+    },
+    "effetsImmediats": [
+      { "text": "Le pays respire. Toi aussi, sans trop savoir pourquoi.", "effects": { "happiness": 3 } }
+    ],
+    "texteFin": "La reprise est bien installée. Le ministère a mis un cadenas sur le frigo, au cas où."
+  }
+]
