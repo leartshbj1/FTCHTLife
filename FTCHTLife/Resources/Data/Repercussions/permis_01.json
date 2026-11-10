@@ -1,0 +1,775 @@
+[
+  {
+    "id": "rep_per_0001",
+    "on": "permis_obtenu",
+    "remember": ["permis_en_poche"],
+    "forget": ["permis_suspendu", "permis_annule", "conduit_sans_permis"],
+    "delay": [0, 0],
+    "chance": 0.6,
+    "text": "Tu as posté la photo de ton permis tout neuf. Sur la photo d'identité, tu as l'air d'un suspect dans une affaire de vol de poules. Ce sera ta tête officielle pour quinze ans.",
+    "effects": { "happiness": 6, "looks": -1 }
+  },
+  {
+    "id": "rep_per_0002",
+    "on": "permis_rate",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "remember": ["a_rate_le_permis"],
+    "text": "Sur ta feuille d'examen du permis, l'inspecteur, M. Brochard, a écrit « non » trois fois, puis a souligné le troisième. Tu ne savais pas qu'on pouvait souligner un « non » avec autant de colère.",
+    "effects": { "happiness": -5 }
+  },
+  {
+    "id": "rep_per_0003",
+    "on": "permis_rate",
+    "requires": { "flags": ["a_rate_le_permis"] },
+    "chance": 0.4,
+    "delay": [8, 15],
+    "unique": true,
+    "patience": 3,
+    "minAge": 25,
+    "conditions": { "tags": ["adult"] },
+    "text": "Des années après ton permis raté, tu reconnais M. Brochard, l'inspecteur, dans la file d'attente devant toi. Il a vieilli. Il tient un formulaire et cherche un stylo. Le seul stylo, c'est toi qui l'as.",
+    "choices": [
+      { "label": "Lui dire « non » trois fois", "outcomes": [
+        { "text": "Tu as dit « non », « non », puis « non », en soulignant avec le doigt. Il a compris. Tu ne t'es jamais senti{e} aussi vivant{e}.", "effects": { "happiness": 8, "karma": -3 } }
+      ]},
+      { "label": "Lui prêter ton stylo", "outcomes": [
+        { "text": "Il t'a remercié sans te reconnaître. Il est reparti avec ton stylo. Évidemment.", "effects": { "karma": 3, "happiness": -1 } }
+      ]},
+      { "label": "Lui rappeler qui tu es", "outcomes": [
+        { "chance": 0.5, "text": "Il s'est souvenu de toi. Il a pâli et murmuré « le rond-point ». Il n'en a pas dit plus.", "effects": { "happiness": 3, "smarts": 1 } },
+        { "chance": 0.5, "text": "Il ne se souvenait pas du tout de toi. Tu as été une ligne parmi des milliers. C'est pire.", "effects": { "happiness": -4 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0004",
+    "on": "event:rep_per_0003",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [1, 3],
+    "text": "Depuis l'incident du stylo, M. Brochard s'est installé dans ta rue. Coïncidence, assure-t-il. Il te salue chaque matin d'un « non » à peine audible.",
+    "choices": [
+      { "label": "Faire la paix autour d'un café", "outcomes": [
+        { "text": "Il t'a avoué qu'il avait gardé ta feuille d'examen, « pour les jours où il doute de son métier ». Vous êtes presque amis.", "effects": { "happiness": 5, "karma": 3, "newFriend": true } }
+      ]},
+      { "label": "Répondre « non » chaque matin aussi", "outcomes": [
+        { "text": "Votre guerre des « non » dure depuis des mois. Les voisins prennent les paris.", "effects": { "happiness": 2, "stress": 3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0005",
+    "on": "event:rep_per_0004",
+    "chance": 0.6,
+    "delay": [10, 20],
+    "unique": true,
+    "text": "Bien des années après votre drôle de voisinage, M. Brochard s'est éteint. Il t'a légué, par testament, un volant d'auto-école et une enveloppe. Dans l'enveloppe : ta vieille feuille d'examen. Il a ajouté au crayon : « peut-être ».",
+    "effects": { "happiness": 3, "karma": 1 }
+  },
+  {
+    "id": "rep_per_0006",
+    "on": "permis_obtenu",
+    "chance": 0.6,
+    "delay": [1, 1],
+    "conditions": { "flags": ["permis_en_poche"] },
+    "text": "Depuis que tu as le permis, ton téléphone sonne étrangement plus. {ami} a besoin d'aller chercher un canapé. Puis un autre ami a un mariage à 300 km. Puis un troisième « juste à la gare, c'est sur ta route ». Ce n'est jamais sur ta route.",
+    "choices": [
+      { "label": "Accepter, c'est ça l'amitié", "outcomes": [
+        { "text": "Tu es devenu{e} le taxi officiel de la bande. Tout le monde t'aime. Personne ne paie l'essence.", "effects": { "happiness": 3, "money": -300, "relationships": { "friend": 5 }, "setFlags": ["taxi_des_amis"] } }
+      ]},
+      { "label": "Refuser fermement", "outcomes": [
+        { "text": "Tu as dit non. Tu n'es plus invité{e} qu'aux soirées où il y a un bus.", "effects": { "relationships": { "friend": -4 }, "happiness": -1 } }
+      ]},
+      { "label": "Faire payer la course", "outcomes": [
+        { "text": "Tu as installé un compteur en carton sur le tableau de bord. 2 € la prise en charge. Les affaires reprennent.", "effects": { "money": 200, "relationships": { "friend": -2 }, "setFlags": ["taxi_des_amis"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0007",
+    "on": "event:rep_per_0006",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [1, 3],
+    "conditions": { "flags": ["taxi_des_amis"] },
+    "text": "Bilan de ta carrière de taxi des amis : 14 000 km, trois canapés, un déménagement de piano et zéro plein d'essence remboursé. {ami} t'a offert un porte-clés. En forme de voiture.",
+    "effects": { "happiness": -2, "money": -400, "relationships": { "friend": 2 } }
+  },
+  {
+    "id": "rep_per_0008",
+    "on": "event:rep_per_0006",
+    "choice": 2,
+    "chance": 0.6,
+    "delay": [2, 4],
+    "conditions": { "flags": ["taxi_des_amis"] },
+    "text": "Ton compteur en carton a fait des petits : des inconnus t'appellent maintenant pour des courses. Tu as un fichier clients et une réputation de « chauffeur qui ne parle pas trop ».",
+    "choices": [
+      { "label": "Lancer ta petite entreprise", "outcomes": [
+        { "chance": 0.6, "text": "Tu as fait faire des cartes de visite. Les affaires tournent, tes lombaires aussi.", "effects": { "money": 2500, "health": -3, "stress": 4 } },
+        { "chance": 0.4, "text": "Un contrôle fiscal a trouvé ton compteur en carton. Ils l'ont gardé comme pièce à conviction.", "effects": { "money": -1500, "happiness": -5 } }
+      ]},
+      { "label": "Arrêter tant qu'il est temps", "outcomes": [
+        { "text": "Tu as rangé le compteur. Tes amis ont recommencé à t'appeler gratuitement. Le cycle reprend.", "effects": { "happiness": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0009",
+    "on": "event:rep_per_0007",
+    "chance": 0.6,
+    "delay": [10, 20],
+    "unique": true,
+    "minAge": 30,
+    "text": "Des années après tes débuts de taxi des amis, {ami} se marie et t'a invité{e}. Sur le carton, sous ton nom, il est écrit en petit : « + navette aéroport ».",
+    "effects": { "happiness": -2, "relationships": { "friend": 3 }, "money": -60 }
+  },
+  {
+    "id": "rep_per_0010",
+    "on": "permis_obtenu",
+    "chance": 0.5,
+    "delay": [0, 2],
+    "unique": true,
+    "conditions": { "flags": ["permis_en_poche"] },
+    "text": "Premier accrochage : en manœuvre sur un parking, tu as embrassé un poteau à 4 km/h. Le poteau n'a rien. Ton pare-chocs fait la moue.",
+    "choices": [
+      { "label": "Laisser un mot au poteau", "outcomes": [
+        { "text": "Tu as laissé un mot d'excuse scotché au poteau. Quelqu'un a répondu au stylo : « T'inquiète. »", "effects": { "karma": 3, "money": -250, "happiness": 1 } }
+      ]},
+      { "label": "Partir discrètement", "outcomes": [
+        { "text": "Tu es parti{e} en regardant droit devant. Une caméra de supermarché, elle, regardait droit vers toi.", "effects": { "karma": -3, "money": -250, "setFlags": ["fuite_du_poteau"] } }
+      ]},
+      { "label": "Accuser le poteau", "outcomes": [
+        { "text": "Tu as expliqué à ton assurance que le poteau « avait avancé ». Ils ont classé ton dossier dans « humour ».", "effects": { "money": -400, "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0011",
+    "on": "event:rep_per_0010",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [5, 15],
+    "unique": true,
+    "text": "Des années plus tard, le poteau que tu avais embouti est toujours là, avec la marque de ton pare-chocs. Tu détournes le regard chaque fois que tu passes devant. Lui ne détourne jamais le sien.",
+    "effects": { "karma": -1, "happiness": -2 }
+  },
+  {
+    "id": "rep_per_0012",
+    "on": "accident_voiture",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "Après l'accident, ton airbag t'a laissé une marque en forme de cœur sur le front. Les gens te trouvent touchant{e}. C'est la seule chose positive de l'année.",
+    "effects": { "health": -4, "looks": -1, "happiness": -3 }
+  },
+  {
+    "id": "rep_per_0013",
+    "on": "accident_voiture",
+    "chance": 0.6,
+    "delay": [1, 1],
+    "conditions": { "tags": ["adult"] },
+    "text": "Ton assureur t'écrit, un an après ton accident. La lettre commence par « Cher client à risque » et finit par un chiffre que tu as dû relire assis{e}.",
+    "choices": [
+      { "label": "Payer la nouvelle prime", "outcomes": [
+        { "text": "Ta prime a augmenté de 60 %. Ta voiture vaut moins cher que son assurance.", "effects": { "money": -700, "happiness": -3 } }
+      ]},
+      { "label": "Changer d'assureur", "outcomes": [
+        { "chance": 0.5, "text": "Tu as trouvé moins cher ! Petite ligne en bas du contrat : ils ne couvrent ni la pluie ni les jeudis.", "effects": { "money": -250, "smarts": 1 } },
+        { "chance": 0.5, "text": "Le nouvel assureur connaissait déjà ton dossier. Il a ri au téléphone, puis s'est excusé, puis a ri encore.", "effects": { "money": -900, "happiness": -4 } }
+      ]},
+      { "label": "Passer au vélo", "outcomes": [
+        { "text": "Tu as vendu la voiture et acheté un vélo. Ton assureur t'a envoyé une carte « Vous nous manquez ».", "effects": { "money": 1500, "health": 3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0014",
+    "on": "event:rep_per_0013",
+    "choice": 2,
+    "chance": 0.7,
+    "delay": [1, 3],
+    "text": "Depuis que tu as abandonné la voiture pour le vélo, tes mollets ont pris une telle ampleur que tu dois acheter tes pantalons au rayon « coupe spéciale ». Tu en es secrètement fier, et c'est mérité.",
+    "effects": { "health": 6, "looks": 2, "happiness": 3 }
+  },
+  {
+    "id": "rep_per_0015",
+    "on": "accident_voiture",
+    "requires": { "minCounters": { "accident_voiture": 3 }, "excludeFlags": ["chauffard"] },
+    "delay": [0, 0],
+    "unique": true,
+    "setFlags": ["chauffard"],
+    "text": "Troisième accident. Ton assureur t'a classé{e} dans une catégorie qu'il a dû créer spécialement. Le garagiste du quartier t'appelle par ton prénom et a ouvert un compte à ton nom.",
+    "effects": { "happiness": -5, "money": -500 }
+  },
+  {
+    "id": "rep_per_0016",
+    "on": "accident_voiture",
+    "chance": 0.4,
+    "delay": [2, 6],
+    "text": "Séquelle de ton vieil accident : tu ne peux tourner la tête que vers la gauche quand il pleut. Lors des dîners, tu choisis ta place selon la météo.",
+    "effects": { "health": -2, "happiness": -1 }
+  },
+  {
+    "id": "rep_per_0017",
+    "on": "accident_voiture",
+    "chance": 0.5,
+    "delay": [1, 3],
+    "conditions": { "flags": ["chauffard"] },
+    "text": "Vu ton palmarès de chauffard, la préfecture t'« invite » à un stage de conduite défensive. Le formateur a tiqué en lisant ton nom sur la liste.",
+    "choices": [
+      { "label": "Suivre le stage sérieusement", "outcomes": [
+        { "chance": 0.6, "text": "Tu as appris à regarder dans les rétroviseurs. Une révélation. Ils servaient donc à ça.", "effects": { "smarts": 2, "money": -230, "clearFlags": ["chauffard"] } },
+        { "chance": 0.4, "text": "Pendant l'exercice de freinage, tu as embouti la voiture du formateur. Il a pleuré dans les toilettes.", "effects": { "money": -900, "happiness": -4 } }
+      ]},
+      { "label": "Envoyer un sosie à ta place", "outcomes": [
+        { "text": "Ton sosie a eu une excellente évaluation. Tu n'as rien appris. Lui conduit très bien, maintenant.", "effects": { "money": -400, "karma": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0018",
+    "on": "amende_vitesse",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "La photo du radar est arrivée. On te voit flashé{e} à 97 au lieu de 80, la bouche grande ouverte, en plein refrain. Le cadrage est franchement réussi.",
+    "choices": [
+      { "label": "L'encadrer", "outcomes": [
+        { "text": "Elle trône dans l'entrée. Les invités pensent que c'est une photo de concert. C'en était un.", "effects": { "money": -135, "happiness": 3 } }
+      ]},
+      { "label": "Contester : « ce n'est pas moi »", "outcomes": [
+        { "chance": 0.3, "text": "Ils ont accepté qu'on ne reconnaissait pas ton visage, déformé par le contre-ut. Amende annulée.", "effects": { "happiness": 6 } },
+        { "chance": 0.7, "text": "Contestation rejetée. Ils ont ajouté au dossier : « chante faux ».", "effects": { "money": -180, "happiness": -3 } }
+      ]},
+      { "label": "En faire ta carte de vœux", "outcomes": [
+        { "text": "Toute la famille a reçu ta carte « Bonne année à toute vitesse ». {mere} l'a aimantée sur le frigo.", "effects": { "money": -135, "happiness": 4, "relationships": { "mother": 2 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0019",
+    "on": "event:rep_per_0018",
+    "choice": 2,
+    "chance": 0.7,
+    "delay": [1, 1],
+    "remember": ["tradition_carte_radar"],
+    "text": "Ta carte de vœux « radar » a eu un tel succès que la famille réclame la suite. {fratrie} demande si tu comptes « te faire flasher exprès » cette année. La question mérite réflexion.",
+    "choices": [
+      { "label": "Te faire flasher exprès, en costume", "outcomes": [
+        { "text": "Déguisé{e} en renne, tu as franchi le radar à 54 au lieu de 50. Photo parfaite. Amende parfaite aussi.", "effects": { "money": -68, "happiness": 6, "relationships": { "sibling": 3 } } }
+      ]},
+      { "label": "Envoyer une carte normale", "outcomes": [
+        { "text": "Carte avec un sapin. La famille a été polie, mais déçue. Tu as senti le froid.", "effects": { "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0020",
+    "on": "event:rep_per_0019",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [10, 20],
+    "unique": true,
+    "text": "Ça fait des années que tu envoies tes cartes de vœux photographiées par les radars. La Sécurité routière t'a écrit : ils voudraient en exposer une sélection. En contrepartie, ils te retirent deux points.",
+    "effects": { "happiness": 5, "fame": 2 }
+  },
+  {
+    "id": "rep_per_0021",
+    "on": "amende_vitesse",
+    "requires": { "minCounters": { "amende_vitesse": 3 } },
+    "chance": 0.7,
+    "delay": [0, 0],
+    "unique": true,
+    "text": "Troisième excès de vitesse : il te reste deux points sur ton permis. Tu les protèges comme deux derniers bonbons dans une boîte.",
+    "effects": { "happiness": -4, "stress": 4 }
+  },
+  {
+    "id": "rep_per_0022",
+    "on": "amende_vitesse",
+    "requires": { "minCounters": { "amende_vitesse": 5 } },
+    "remember": ["chauffard"],
+    "chance": 0.7,
+    "delay": [0, 1],
+    "unique": true,
+    "text": "Cinq amendes pour vitesse. Le facteur ne sonne plus : il glisse les avis directement en souriant. Un stage de récupération de points te tend les bras.",
+    "choices": [
+      { "label": "Faire le stage", "outcomes": [
+        { "text": "Deux jours dans une salle avec onze inconnus pressés. Vous êtes tous arrivés en retard. Tu as récupéré quatre points.", "effects": { "money": -250, "smarts": 1, "clearFlags": ["chauffard"] } }
+      ]},
+      { "label": "Ralentir, tout simplement", "outcomes": [
+        { "chance": 0.5, "text": "Tu roules désormais à la limite exacte. Les autres conducteurs te klaxonnent. Tu ne les entends pas, tu es en paix.", "effects": { "happiness": 3, "stress": -3, "clearFlags": ["chauffard"] } },
+        { "chance": 0.5, "text": "Tu as tenu jusqu'à la première autoroute.", "effects": { "money": -135, "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0023",
+    "on": "amende_vitesse",
+    "chance": 0.35,
+    "delay": [0, 0],
+    "text": "L'avis de contravention est arrivé pile le jour de ton anniversaire. C'était le seul courrier. Tu l'as presque trouvé attentionné.",
+    "effects": { "happiness": -2 }
+  },
+  {
+    "id": "rep_per_0024",
+    "on": "permis_retire",
+    "remember": ["permis_suspendu"],
+    "forget": ["permis_en_poche", "taxi_des_amis"],
+    "delay": [0, 0],
+    "text": "Ton permis t'a été retiré. Le gendarme l'a rangé dans une enveloppe avec la délicatesse d'un vétérinaire qui emporte un hamster. Tu es redevenu{e} piéton{e}... non, piéton. On ne s'accorde pas avec ça.",
+    "effects": { "happiness": -6 }
+  },
+  {
+    "id": "rep_per_0025",
+    "on": "permis_retire",
+    "chance": 0.7,
+    "delay": [0, 1],
+    "conditions": { "flags": ["permis_suspendu"] },
+    "text": "Sans permis, il faut bien se déplacer. Le vendeur de trottinettes électriques te regarde comme un pêcheur regarde un poisson qui saute tout seul dans la barque.",
+    "choices": [
+      { "label": "Trottinette électrique", "outcomes": [
+        { "text": "Tu fends {ville} à 25 km/h, casque sur la tête, dignité dans la poche. Le vent dans les cheveux, et dans les yeux.", "effects": { "money": -450, "happiness": 2, "setFlags": ["trottinettiste"] } }
+      ]},
+      { "label": "Vélo de {parent}", "outcomes": [
+        { "text": "Le vélo de {parent} date d'une autre époque. Il a trois vitesses : lent, plus lent, et à pied.", "effects": { "health": 3, "relationships": { "parent": 2 } } }
+      ]},
+      { "label": "Supplier {ami} de te conduire", "outcomes": [
+        { "text": "{ami} accepte, mais met sa musique. Toute sa musique. À fond.", "effects": { "relationships": { "friend": -2 }, "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0026",
+    "on": "event:rep_per_0025",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [1, 2],
+    "conditions": { "flags": ["trottinettiste"] },
+    "text": "Ta trottinette, achetée après le retrait de ton permis, a changé ta vie. Tu as maintenant un avis sur les nids-de-poule et un ennemi juré : le livreur à vélo de la rue d'à côté.",
+    "choices": [
+      { "label": "Le défier en duel de vitesse", "outcomes": [
+        { "chance": 0.4, "text": "Victoire au feu rouge suivant, d'un pneu. Toute la terrasse du café a applaudi.", "effects": { "happiness": 7, "fame": 1 } },
+        { "chance": 0.6, "text": "Défaite, puis chute dans une haie municipale. La haie aussi a porté plainte.", "effects": { "health": -5, "money": -120, "happiness": -3 } }
+      ]},
+      { "label": "Proposer une trêve", "outcomes": [
+        { "text": "Le livreur a accepté. Vous vous saluez d'un hochement de casque. C'est beau, une paix entre deux roues.", "effects": { "karma": 3, "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0027",
+    "on": "permis_retire",
+    "chance": 0.7,
+    "delay": [2, 4],
+    "patience": 3,
+    "conditions": { "flags": ["permis_suspendu"], "tags": ["adult"] },
+    "text": "Ta période sans permis touche à sa fin. Pour le récupérer, il faut repasser l'examen, comme à dix-huit ans, mais avec les rides en plus.",
+    "choices": [
+      { "label": "Repasser l'examen", "outcomes": [
+        { "chance": 0.6, "text": "Réussi ! L'inspecteur t'a dit « on se reverra ». Tu as préféré ne pas demander ce qu'il voulait dire.", "effects": { "money": -300, "happiness": 7, "clearFlags": ["permis_suspendu"], "setFlags": ["permis_en_poche"] } },
+        { "chance": 0.4, "text": "Raté. Tu as calé au démarrage, puis une deuxième fois en essayant de faire comme si c'était voulu.", "effects": { "money": -300, "happiness": -6 } }
+      ]},
+      { "label": "Garder la vie sans voiture", "outcomes": [
+        { "text": "Finalement, tu n'en as plus besoin. Tu as gagné en mollets ce que tu as perdu en liberté.", "effects": { "health": 3, "happiness": 1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0028",
+    "on": "permis_retire",
+    "requires": { "flags": ["taxi_des_amis"] },
+    "delay": [0, 0],
+    "text": "Tes amis ont appris que tu n'avais plus le permis. Ton téléphone s'est tu en quarante-huit heures. Tu as compris beaucoup de choses sur l'amitié, et sur les canapés.",
+    "effects": { "happiness": -4, "smarts": 1, "relationships": { "friend": -3 } }
+  },
+  {
+    "id": "rep_per_0029",
+    "on": "permis_code_rate",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "Au code, tu as répondu C à toutes les questions, par principe. Statistiquement, c'était audacieux. Résultat : 12 sur 40. Tu restes convaincu{e} que le C est sous-estimé.",
+    "effects": { "happiness": -3 }
+  },
+  {
+    "id": "rep_per_0030",
+    "on": "permis_code_obtenu",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "Code obtenu ! Pendant une semaine, tu as commenté à voix haute chaque panneau croisé en voiture. {parent} a envisagé de te laisser au bord de la route.",
+    "effects": { "happiness": 5, "relationships": { "parent": -1 } }
+  },
+  {
+    "id": "rep_per_0031",
+    "on": "permis_code_obtenu",
+    "chance": 0.3,
+    "delay": [10, 20],
+    "unique": true,
+    "text": "Des décennies après ton code, tu peux toujours réciter la distance de freinage sur chaussée mouillée. En revanche, tu as oublié la date d'anniversaire de {mere}. Elle l'a remarqué.",
+    "effects": { "smarts": 1, "relationships": { "mother": -3 } }
+  },
+  {
+    "id": "rep_per_0032",
+    "on": "permis_code_rate",
+    "requires": { "minCounters": { "permis_code_rate": 3 } },
+    "delay": [0, 0],
+    "unique": true,
+    "text": "Troisième échec au code. La gérante de l'auto-école te propose un « forfait fidélité » : la dixième tentative est offerte. Elle a l'air sincèrement de penser que tu iras jusque-là.",
+    "choices": [
+      { "label": "Prendre le forfait", "outcomes": [
+        { "chance": 0.7, "text": "Tu as eu le code à la quatrième. Le forfait est encore valable pour six tentatives. Tu l'as offert à {fratrie}.", "effects": { "money": -150, "happiness": 4, "relationships": { "sibling": 2 } } },
+        { "chance": 0.3, "text": "Tu as pris le forfait. Tu te rapproches dangereusement de la dixième.", "effects": { "money": -150, "happiness": -3 } }
+      ]},
+      { "label": "Réviser seul{e} avec une appli", "outcomes": [
+        { "text": "L'appli t'a félicité{e} 400 fois. L'examen, lui, n'a pas lu l'appli.", "effects": { "smarts": 2, "happiness": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0033",
+    "on": "permis_rate",
+    "requires": { "minCounters": { "permis_rate": 3 } },
+    "delay": [0, 0],
+    "unique": true,
+    "setFlags": ["legende_auto_ecole"],
+    "text": "Troisième échec au permis. Ta photo est désormais punaisée au mur de l'auto-école, entre le tableau des priorités et une affiche « Restez calme ». Les nouveaux élèves la touchent pour se porter chance.",
+    "effects": { "happiness": -5, "fame": 1 }
+  },
+  {
+    "id": "rep_per_0034",
+    "on": "permis_rate",
+    "requires": { "minCounters": { "permis_rate": 5 } },
+    "delay": [0, 0],
+    "unique": true,
+    "conditions": { "flags": ["legende_auto_ecole"] },
+    "text": "Cinquième échec. L'auto-école a baptisé sa voiture d'apprentissage à ton nom. Ton moniteur, Didier, te propose une solution désespérée.",
+    "choices": [
+      { "label": "Accepter les cours de nuit de Didier", "outcomes": [
+        { "text": "Didier t'a fait conduire sur un parking désert à 23 h en écoutant de la musique d'ascenseur « pour l'apaisement ». Étrangement, ça marche.", "effects": { "money": -400, "happiness": 3, "smarts": 1 } }
+      ]},
+      { "label": "Abandonner pour toujours", "outcomes": [
+        { "text": "Tu as rendu ton livret d'apprentissage. Didier a fait une minute de silence. Puis il a pris des vacances.", "effects": { "happiness": -2, "setFlags": ["renonce_au_permis"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0035",
+    "on": "event:rep_per_0034",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [15, 25],
+    "unique": true,
+    "text": "Plus de quinze ans après tes cours de nuit, l'auto-école fête ses trente ans. Tu es invité{e} d'honneur. Didier fait un discours sur toi, avec diapositives, et toute la salle pleure de rire.",
+    "effects": { "happiness": 5, "fame": 2 }
+  },
+  {
+    "id": "rep_per_0036",
+    "on": "permis_obtenu",
+    "requires": { "minCounters": { "permis_rate": 3 } },
+    "delay": [0, 0],
+    "unique": true,
+    "text": "Après tous ces échecs, tu as enfin le permis ! L'auto-école a sorti le mousseux, ton moniteur a pleuré dans ses mains, et on a décroché ta photo du mur. Pour la mettre dans un cadre doré.",
+    "effects": { "happiness": 10, "fame": 1 }
+  },
+  {
+    "id": "rep_per_0037",
+    "on": "achat_voiture",
+    "chance": 0.5,
+    "delay": [1, 2],
+    "text": "La voiture que tu as achetée « en excellent état, jamais roulé sous la pluie » émet un bruit nouveau : une sorte de soupir mécanique, puis plus rien. Elle s'est arrêtée au milieu d'un rond-point.",
+    "choices": [
+      { "label": "Garagiste", "outcomes": [
+        { "text": "Le garagiste a ouvert le capot, sifflé longuement et dit « ah, quand même ». Ça a coûté cher, ce sifflement.", "effects": { "money": -1100, "happiness": -3 } }
+      ]},
+      { "label": "Réparer toi-même avec un tutoriel", "outcomes": [
+        { "chance": 0.4, "text": "Elle redémarre ! Il te reste trois pièces en trop dans la main, mais elle redémarre.", "effects": { "money": -80, "smarts": 2, "happiness": 4, "setFlags": ["mecano_du_dimanche"] } },
+        { "chance": 0.6, "text": "Tu as démonté la moitié du moteur dans la cour. Elle ne redémarre pas, et ne repartira plus de la cour.", "effects": { "money": -900, "happiness": -5 } }
+      ]},
+      { "label": "Retrouver le vendeur", "outcomes": [
+        { "text": "Le numéro du vendeur est maintenant celui d'une pizzeria. Tu as pris une margherita pour te consoler.", "effects": { "money": -12, "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0038",
+    "on": "event:rep_per_0037",
+    "choice": 1,
+    "outcome": 0,
+    "chance": 0.7,
+    "delay": [1, 3],
+    "conditions": { "flags": ["mecano_du_dimanche"] },
+    "text": "Depuis ta réparation maison, ta voiture chante comme une baleine à chaque virage à gauche. Tu as appris à ne tourner qu'à droite. Tu fais trois tours de quartier pour rentrer.",
+    "effects": { "happiness": 2, "stress": 2 }
+  },
+  {
+    "id": "rep_per_0039",
+    "on": "achat_voiture",
+    "chance": 0.45,
+    "delay": [0, 0],
+    "text": "Ta nouvelle voiture d'occasion sent encore le chien de l'ancien propriétaire. Tu n'as jamais vu ce chien. Tu sais pourtant qu'il était grand, et heureux.",
+    "effects": { "happiness": 2 }
+  },
+  {
+    "id": "rep_per_0040",
+    "on": "achat_voiture",
+    "chance": 0.4,
+    "delay": [10, 15],
+    "unique": true,
+    "text": "La voiture achetée il y a plus de dix ans a maintenant un bruit pour chaque humeur, une rayure pour chaque souvenir et une odeur qu'aucun désodorisant ne peut vaincre. Il est peut-être temps.",
+    "choices": [
+      { "label": "La vendre", "outcomes": [
+        { "text": "Vendue 600 € à un étudiant ravi. Tu as eu un pincement au cœur en la voyant tourner au coin de la rue sans clignotant.", "effects": { "money": 600, "happiness": -2 } }
+      ]},
+      { "label": "La garder jusqu'au bout", "outcomes": [
+        { "text": "Tu lui as promis qu'elle finirait sa vie avec toi. Elle a répondu par un raté d'allumage, ému.", "effects": { "happiness": 3, "money": -300, "setFlags": ["vieille_guimbarde"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0041",
+    "on": "event:rep_per_0040",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [15, 25],
+    "unique": true,
+    "conditions": { "flags": ["vieille_guimbarde"] },
+    "text": "Ta vieille guimbarde que tu as refusé de vendre est devenue, contre toute logique, une voiture de collection. Un passionné en moustache t'en propose 14 000 €. Il a les larmes aux yeux.",
+    "choices": [
+      { "label": "Vendre au passionné", "outcomes": [
+        { "text": "Tu as encaissé 14 000 €. Il est reparti en la caressant comme un chat. Tu as été vengé{e} de toutes ces pannes.", "effects": { "money": 14000, "happiness": 6, "clearFlags": ["vieille_guimbarde"] } }
+      ]},
+      { "label": "Refuser, elle fait partie de la famille", "outcomes": [
+        { "text": "Il a laissé sa carte « au cas où ». Il repasse tous les ans. La voiture et toi vieillissez ensemble.", "effects": { "happiness": 4, "karma": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0042",
+    "on": "achat_voiture",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "conditions": { "requiresPartner": true },
+    "text": "Tu voulais choisir la voiture, {partenaire} voulait choisir la couleur. Résultat : une voiture que tu adores, d'une couleur que le vendeur appelle « aubergine poétique ».",
+    "effects": { "happiness": 1, "relationships": { "partner": 2 } }
+  },
+  {
+    "id": "rep_per_0043",
+    "on": "achat_voiture",
+    "requires": { "flags": ["taxi_des_amis"] },
+    "delay": [0, 0],
+    "text": "Tes amis ont appris que tu avais acheté une voiture plus grande. Trois appels dans l'heure. L'un d'eux déménage. Encore.",
+    "effects": { "happiness": -2, "relationships": { "friend": 2 } }
+  },
+  {
+    "id": "rep_per_0044",
+    "on": "permis_obtenu",
+    "requires": { "flags": ["randonneur"] },
+    "chance": 0.6,
+    "delay": [0, 1],
+    "text": "Grâce au permis, tu peux enfin rejoindre seul{e} les départs de randonnée. Ta voiture contient désormais quatre paires de chaussures de marche, une carte de 1994 et des cailloux de collection.",
+    "effects": { "happiness": 4, "health": 1 }
+  },
+  {
+    "id": "rep_per_0045",
+    "on": "permis_obtenu",
+    "chance": 0.6,
+    "delay": [45, 60],
+    "unique": true,
+    "minAge": 72,
+    "patience": 10,
+    "conditions": { "flags": ["permis_en_poche"] },
+    "text": "Après plus de cinquante ans de permis, ta famille organise une réunion « au sujet de la voiture ». Il y a un diaporama. La dernière diapositive montre ta boîte aux lettres, très enfoncée.",
+    "choices": [
+      { "label": "Rendre les clés avec dignité", "outcomes": [
+        { "text": "Tu as rendu les clés. Tu as gardé le porte-clés. Personne n'a osé te le prendre.", "effects": { "happiness": -3, "karma": 3, "clearFlags": ["permis_en_poche"] } }
+      ]},
+      { "label": "Refuser : « je conduis mieux qu'eux »", "outcomes": [
+        { "chance": 0.6, "text": "Tu continues de conduire, à 40 km/h, au milieu de la route. Tout le village connaît ta voiture et s'écarte.", "effects": { "happiness": 4, "relationships": { "child": -3 } } },
+        { "chance": 0.4, "text": "Tu as pris le rond-point dans le mauvais sens pour prouver que tu maîtrisais. Démonstration peu concluante.", "effects": { "health": -4, "money": -800, "happiness": -3 } }
+      ]},
+      { "label": "Négocier : seulement le dimanche", "outcomes": [
+        { "text": "Accord signé : la boulangerie, le dimanche, sans autoroute. Tu en profites pour faire 60 km de détour.", "effects": { "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0046",
+    "on": "amende_vitesse",
+    "requires": { "flags": ["permis_suspendu"] },
+    "delay": [0, 0],
+    "text": "Flashé{e} par un radar alors que tu n'as plus de permis. Le radar, lui, ne fait pas la différence. Le tribunal, si.",
+    "effects": { "money": -750, "happiness": -5, "karma": -2 }
+  },
+  {
+    "id": "rep_per_0047",
+    "on": "permis_code_obtenu",
+    "chance": 0.4,
+    "delay": [4, 5],
+    "patience": 0,
+    "conditions": { "excludeFlags": ["permis_en_poche"], "tags": ["adult"] },
+    "text": "Ton code, obtenu il y a presque cinq ans, va expirer. Tu n'as toujours pas passé la conduite. Tu n'as pas vraiment d'excuse, à part tout.",
+    "choices": [
+      { "label": "Passer la conduite en urgence", "outcomes": [
+        { "chance": 0.5, "text": "Vingt heures de conduite en trois semaines. Réussi de justesse. L'inspecteur avait l'air pressé, lui aussi.", "effects": { "money": -1200, "happiness": 6 } },
+        { "chance": 0.5, "text": "Raté. Le code a expiré la semaine suivante. Tu repars de zéro, avec les panneaux.", "effects": { "money": -1200, "happiness": -5 } }
+      ]},
+      { "label": "Laisser expirer", "outcomes": [
+        { "text": "Le code est mort sans bruit. Tu as allumé une bougie pour lui. Tu as aussi acheté un abonnement de bus.", "effects": { "money": -40, "happiness": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0048",
+    "on": "accident_voiture",
+    "requires": { "flags": ["taxi_des_amis"] },
+    "chance": 0.6,
+    "delay": [0, 0],
+    "text": "L'accident a eu lieu pendant une de tes courses de taxi pour les amis. {ami}, à l'arrière, a hurlé « je le savais » au moment de l'impact. Il ne savait rien.",
+    "choices": [
+      { "label": "Annoncer ta retraite de taxi", "outcomes": [
+        { "text": "Tu as officiellement pris ta retraite de chauffeur bénévole. Les amis ont fait une pétition. Huit signatures, aucune pour payer l'essence.", "effects": { "happiness": 3, "relationships": { "friend": -2 }, "clearFlags": ["taxi_des_amis"] } }
+      ]},
+      { "label": "Faire comme si de rien n'était", "outcomes": [
+        { "text": "Tu as continué. {ami} monte maintenant avec un casque de moto. À l'arrière d'une Clio.", "effects": { "happiness": -2, "relationships": { "friend": -1 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0049",
+    "on": "permis_suspendu",
+    "remember": ["permis_suspendu"],
+    "forget": ["permis_en_poche"],
+    "chance": 0.6,
+    "delay": [0, 0],
+    "text": "Permis suspendu. Ta voiture reste au garage et te regarde, chaque matin, comme un chien qu'on n'emmène plus en promenade.",
+    "effects": { "happiness": -5 }
+  },
+  {
+    "id": "rep_per_0050",
+    "on": "permis_suspendu",
+    "chance": 0.5,
+    "delay": [1, 1],
+    "conditions": { "flags": ["permis_suspendu"] },
+    "text": "Un an après la suspension de ton permis, tu connais les horaires de tous les bus de {ville} par cœur. Le chauffeur de la ligne 7 t'a même gardé une place.",
+    "effects": { "smarts": 1, "happiness": 1, "newFriend": true }
+  },
+  {
+    "id": "rep_per_0051",
+    "on": "permis_annule",
+    "remember": ["permis_annule"],
+    "forget": ["permis_en_poche", "permis_suspendu", "taxi_des_amis"],
+    "delay": [0, 0],
+    "text": "Permis annulé. Pas suspendu : annulé. La préfecture a utilisé un tampon spécial, plus gros que les autres. Tu ne savais pas qu'ils en avaient un.",
+    "effects": { "happiness": -8 }
+  },
+  {
+    "id": "rep_per_0052",
+    "on": "permis_annule",
+    "chance": 0.6,
+    "delay": [2, 5],
+    "patience": 3,
+    "conditions": { "flags": ["permis_annule"], "tags": ["adult"] },
+    "text": "Ton permis a été annulé il y a quelques années. Pour le repasser, il faut tout recommencer : visite médicale, test psychotechnique, code, conduite. Le psychologue te tend un cube à faire tourner dans ta tête.",
+    "choices": [
+      { "label": "Tout repasser", "outcomes": [
+        { "chance": 0.55, "text": "Tu as tout réussi, même le cube. Tu es redevenu{e} un conducteur débutant, avec le A rouge à l'arrière et des cheveux gris.", "effects": { "money": -1500, "happiness": 8, "clearFlags": ["permis_annule"], "setFlags": ["permis_en_poche"] } },
+        { "chance": 0.45, "text": "Échec au test psychotechnique. Le cube a gagné.", "effects": { "money": -400, "happiness": -5 } }
+      ]},
+      { "label": "Renoncer à la voiture", "outcomes": [
+        { "text": "Tu as accepté ton destin de piéton. Ta silhouette et ton compte en banque te remercient.", "effects": { "health": 4, "money": 300 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0053",
+    "on": "permis_points_recuperes",
+    "delay": [0, 0],
+    "chance": 0.6,
+    "forget": ["chauffard"],
+    "text": "Tes points de permis sont revenus. Tu les as accueillis comme des enfants prodigues. Tu as même fait un tour du pâté de maisons à 30 km/h pour fêter ça.",
+    "effects": { "happiness": 5, "stress": -2 }
+  },
+  {
+    "id": "rep_per_0054",
+    "on": "faux_permis_achete",
+    "remember": ["faux_permis"],
+    "chance": 0.6,
+    "delay": [0, 0],
+    "text": "Ton faux permis est arrivé par la poste. Ton nom est mal orthographié, la photo est celle d'un autre et le hologramme a été dessiné au feutre. Le vendeur t'a mis cinq étoiles.",
+    "effects": { "money": -300, "karma": -3 }
+  },
+  {
+    "id": "rep_per_0055",
+    "on": "faux_permis_achete",
+    "chance": 0.5,
+    "delay": [1, 3],
+    "patience": 2,
+    "conditions": { "flags": ["faux_permis"] },
+    "text": "Contrôle routier. Le gendarme examine ton faux permis, puis toi, puis le permis, longuement. Il demande : « Vous êtes bien… Jean-Phillipe Duran ? »",
+    "choices": [
+      { "label": "Répondre « oui » avec aplomb", "outcomes": [
+        { "chance": 0.3, "text": "Il t'a souhaité bonne route, « Jean-Phillipe ». Tu as gardé ce prénom un mois, pour la cohérence.", "effects": { "happiness": 4, "karma": -2 } },
+        { "chance": 0.7, "text": "Il a sorti son carnet. Puis un deuxième carnet. Ça s'annonce mal pour Jean-Phillipe.", "effects": { "money": -1500, "happiness": -6, "setFlags": ["casier_judiciaire"] } }
+      ]},
+      { "label": "Avouer tout de suite", "outcomes": [
+        { "text": "Il a apprécié ta franchise. Il t'a quand même verbalisé{e}, mais avec un sourire.", "effects": { "money": -900, "karma": 2, "clearFlags": ["faux_permis"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0056",
+    "on": "faux_permis_demasque",
+    "forget": ["faux_permis", "permis_en_poche"],
+    "delay": [1, 2],
+    "chance": 0.6,
+    "text": "Depuis l'affaire du faux permis, ta photo circule dans la brigade du coin avec l'annotation « hologramme au feutre ». Les gendarmes te saluent par ton vrai prénom. Ils insistent dessus.",
+    "effects": { "happiness": -3, "fame": 1 }
+  },
+  {
+    "id": "rep_per_0057",
+    "on": "conduite_sans_permis_arretee",
+    "remember": ["conduit_sans_permis"],
+    "chance": 0.6,
+    "delay": [1, 3],
+    "text": "Depuis ton arrestation pour conduite sans permis, ta voiture dort à la fourrière. Tu vas lui rendre visite le samedi. Le gardien t'appelle « le parent du mardi ».",
+    "choices": [
+      { "label": "Payer la fourrière", "outcomes": [
+        { "text": "Avec les frais de garde, tu as payé plus cher que la voiture. Elle avait l'air contente de te revoir.", "effects": { "money": -1600, "happiness": 2 } }
+      ]},
+      { "label": "La laisser là-bas", "outcomes": [
+        { "text": "La voiture a été vendue aux enchères. Tu l'as croisée deux ans plus tard, avec un autre conducteur. Elle a fait semblant de ne pas te voir.", "effects": { "happiness": -4 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0058",
+    "on": "corruption_examinateur",
+    "remember": ["permis_achete_sous_la_table"],
+    "chance": 0.5,
+    "delay": [3, 10],
+    "text": "Le permis que tu avais « facilité » avec une enveloppe te revient en mémoire : l'examinateur vient d'être arrêté. Les journaux parlent de « dizaines de bénéficiaires ». Tu relis l'article trois fois en cherchant ton nom.",
+    "choices": [
+      { "label": "Te dénoncer", "outcomes": [
+        { "text": "Tu as tout avoué. On t'a retiré le permis et rendu ta conscience. L'échange te paraît honnête.", "effects": { "karma": 6, "happiness": -3, "clearFlags": ["permis_en_poche", "permis_achete_sous_la_table"] } }
+      ]},
+      { "label": "Faire profil bas", "outcomes": [
+        { "chance": 0.7, "text": "Personne n'est venu. Tu sursautes toujours quand on sonne, même le facteur.", "effects": { "stress": 5, "happiness": -2 } },
+        { "chance": 0.3, "text": "Tes initiales figuraient dans son carnet, juste à côté de « enveloppe trop fine ».", "effects": { "money": -3000, "happiness": -7, "setFlags": ["casier_judiciaire"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_per_0059",
+    "on": "corruption_ratee",
+    "delay": [0, 0],
+    "text": "L'examinatrice a ouvert ton enveloppe, compté les billets à voix haute, puis écrit « tentative de corruption » en majuscules. En plus, tu as calé au démarrage.",
+    "effects": { "happiness": -6, "karma": -3 }
+  },
+  {
+    "id": "rep_per_0060",
+    "on": "corruption_ratee",
+    "chance": 0.5,
+    "delay": [5, 15],
+    "unique": true,
+    "text": "Bien après ta tentative de corruption ratée au permis, tu retrouves l'examinatrice à un dîner chez des amis. Elle te présente à tout le monde comme « la personne de l'enveloppe ». Le surnom prend.",
+    "effects": { "happiness": -3, "fame": 1, "relationships": { "friend": -1 } }
+  }
+]

@@ -1,0 +1,2883 @@
+[
+  {
+    "id": "rep_amo_0001",
+    "on": "mariage",
+    "remember": [
+      "marie"
+    ],
+    "forget": [
+      "coeur_brise",
+      "celibataire_endurci"
+    ]
+  },
+  {
+    "id": "rep_amo_0002",
+    "on": "divorce",
+    "remember": [
+      "divorce"
+    ],
+    "forget": [
+      "marie"
+    ]
+  },
+  {
+    "id": "rep_amo_0003",
+    "on": "veuvage",
+    "remember": [
+      "en_veuvage"
+    ],
+    "forget": [
+      "marie"
+    ]
+  },
+  {
+    "id": "rep_amo_0004",
+    "on": "tromperie",
+    "remember": [
+      "a_trompe_partenaire"
+    ]
+  },
+  {
+    "id": "rep_amo_0005",
+    "on": "largue",
+    "remember": [
+      "coeur_brise"
+    ]
+  },
+  {
+    "id": "rep_amo_0006",
+    "on": "rencontre",
+    "chance": 0.35,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Quelque temps après votre rencontre, la personne croisée ce jour-là t'a envoyé une demande d'ami. Sur sa photo de profil, elle tient un poisson à bout de bras. Le poisson a l'air plus sûr de lui que toi.",
+    "effects": {
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_amo_0007",
+    "on": "rencontre",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ],
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "text": "Fin d'année : tu repenses à la personne rencontrée il y a quelques mois. Ta tante, qui ne l'a jamais vue, a déjà réservé un traiteur.",
+    "choices": [
+      {
+        "label": "Relancer avec un message parfaitement calibré",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as mis quarante minutes à écrire « coucou ». Réponse en trois secondes : « coucou ». Vous êtes sur la bonne voie.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton message est parti à ta tante. Elle a annulé le traiteur, puis l'a re-réservé par principe.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser le destin faire son travail",
+        "outcomes": [
+          {
+            "text": "Le destin a pris des congés. Tu as eu une très belle année avec ton canapé.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0008",
+    "on": "rencontre",
+    "requires": {
+      "flags": [
+        "celibataire_endurci"
+      ]
+    },
+    "chance": 0.6,
+    "delay": [
+      0,
+      0
+    ],
+    "clearFlags": [
+      "celibataire_endurci"
+    ],
+    "text": "Toi qui avais juré de ne vivre que pour ta plante verte, tu as souri à quelqu'un cette année. La plante a perdu deux feuilles par jalousie.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_amo_0009",
+    "on": "rendez_vous",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Le restaurant de ton dernier rendez-vous t'a laissé un avis en ligne : « Client{e} correct{e}, rit trop fort au moment du dessert. » Trois étoiles.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_amo_0010",
+    "on": "rendez_vous",
+    "requires": {
+      "minCounters": {
+        "rendez_vous": 5
+      }
+    },
+    "chance": 0.5,
+    "delay": [
+      1,
+      1
+    ],
+    "unique": true,
+    "setFlags": [
+      "habitue_des_premiers_rdv"
+    ],
+    "text": "À force d'enchaîner les premiers rendez-vous dans le même bistrot, le serveur te salue par ton prénom et apporte d'office deux verres et un paquet de mouchoirs.",
+    "effects": {
+      "happiness": 1,
+      "money": -40
+    }
+  },
+  {
+    "id": "rep_amo_0011",
+    "on": "rendez_vous_rate",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Ton rendez-vous raté de cette année circule en capture d'écran dans un groupe de 214 personnes. Tu y es désigné{e} comme « le cas n°3 ».",
+    "effects": {
+      "happiness": -4,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_amo_0012",
+    "on": "rendez_vous_rate",
+    "requires": {
+      "minCounters": {
+        "rendez_vous_rate": 3
+      }
+    },
+    "chance": 0.7,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "unique": true,
+    "text": "Après ta série de rendez-vous ratés, {ami} t'a inscrit{e} à une soirée de speed dating « spécial causes perdues ». Il y a un badge.",
+    "choices": [
+      {
+        "label": "Y aller, badge compris",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Huit minutes avec une personne qui collectionne les tickets de métro. Vous avez échangé vos numéros, et trois tickets.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton premier speed date était ton ancien prof de techno. Huit minutes, c'est très long.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et adopter une plante verte",
+        "outcomes": [
+          {
+            "text": "Elle ne te pose aucune question. C'est la relation la plus saine de ta vie.",
+            "effects": {
+              "happiness": 2,
+              "setFlags": [
+                "celibataire_endurci"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0013",
+    "on": "rendez_vous_rate",
+    "chance": 0.2,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Des années après ce rendez-vous raté, la personne en face t'envoie son faire-part de mariage. Au dos, un petit mot : « Merci, grâce à toi je sais ce que je ne veux pas. »",
+    "effects": {
+      "happiness": -2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_amo_0014",
+    "on": "rendez_vous",
+    "requires": {
+      "flags": [
+        "coeur_brise"
+      ]
+    },
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Encore le cœur en miettes, tu as parlé de ton ex pendant tout ton rendez-vous. Deux heures dix. La personne en face a pris des notes et t'a envoyé une facture de séance.",
+    "effects": {
+      "happiness": -3,
+      "money": -60
+    }
+  },
+  {
+    "id": "rep_amo_0015",
+    "on": "couple",
+    "chance": 0.4,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Un an avec {partenaire}. Vous avez désormais une blague privée que personne ne comprend, pas même vous.",
+    "effects": {
+      "happiness": 3,
+      "relationships": {
+        "partner": 3
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0016",
+    "on": "couple",
+    "chance": 0.35,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "patience": 1,
+    "text": "Après quelque temps ensemble, {partenaire} propose d'emménager à deux. Sa collection de bougies parfumées n'a pas été consultée, mais elle viendra aussi.",
+    "choices": [
+      {
+        "label": "Emménager ensemble",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les cartons sont faits, les bougies allumées. Ton appartement sent désormais « Brise de vanille sur pneu neuf ».",
+            "effects": {
+              "happiness": 5,
+              "money": -500,
+              "relationships": {
+                "partner": 5
+              },
+              "setFlags": [
+                "vit_en_couple"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Vous vous êtes disputés dès le premier carton. Il ne contenait que des câbles. Vous avez emménagé quand même, en silence.",
+            "effects": {
+              "happiness": -2,
+              "money": -500,
+              "relationships": {
+                "partner": -3
+              },
+              "setFlags": [
+                "vit_en_couple"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder chacun son chez-soi",
+        "outcomes": [
+          {
+            "text": "{partenaire} a dit « je comprends » avec la voix de quelqu'un qui ne comprend pas.",
+            "effects": {
+              "happiness": 2,
+              "relationships": {
+                "partner": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0017",
+    "on": "couple",
+    "requires": {
+      "minCounters": {
+        "couple": 4
+      }
+    },
+    "chance": 0.6,
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "text": "{mere} a arrêté d'apprendre les prénoms de tes partenaires. Elle dit simplement « la personne », et ça marche très bien.",
+    "effects": {
+      "happiness": -1,
+      "relationships": {
+        "mother": -1
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0018",
+    "on": "couple",
+    "chance": 0.25,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "patience": 2,
+    "text": "Des années de couple plus tard, {partenaire} et toi ne parlez plus que de ce qu'il y a à manger ce soir. Et vous n'êtes même pas d'accord là-dessus.",
+    "choices": [
+      {
+        "label": "Thérapie de couple",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La thérapeute vous a fait jouer une pièce sur vos disputes. Vous avez ri. C'est un début.",
+            "effects": {
+              "money": -600,
+              "happiness": 4,
+              "relationships": {
+                "partner": 8
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Au bout de trois séances, c'est la thérapeute qui a annoncé son divorce. Vous l'avez consolée. Ça vous a rapprochés.",
+            "effects": {
+              "money": -600,
+              "happiness": 2,
+              "relationships": {
+                "partner": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Week-end surprise à la mer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il a plu deux jours. Vous avez joué au Scrabble dans la voiture. Meilleur week-end depuis des années.",
+            "effects": {
+              "money": -400,
+              "happiness": 5,
+              "relationships": {
+                "partner": 6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Vous vous êtes disputés sur l'itinéraire, puis sur le Scrabble, puis sur la mer.",
+            "effects": {
+              "money": -400,
+              "happiness": -3,
+              "relationships": {
+                "partner": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien faire, ça passera",
+        "outcomes": [
+          {
+            "text": "Ça n'est pas passé. Mais vous avez trouvé un plat sur lequel vous êtes d'accord : les nouilles.",
+            "effects": {
+              "happiness": -2,
+              "relationships": {
+                "partner": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0019",
+    "on": "couple",
+    "requires": {
+      "flags": [
+        "s_est_fait_tromper"
+      ]
+    },
+    "chance": 0.4,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Depuis que tu t'es fait tromper autrefois, le téléphone de {partenaire} posé face contre la table te donne des sueurs froides.",
+    "choices": [
+      {
+        "label": "Fouiller, juste un peu",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu n'as rien trouvé, à part 4 000 photos de pigeons. Tu préfères ne pas poser de question.",
+            "effects": {
+              "happiness": 1,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{partenaire} t'a surpris{e} en pleine fouille. Le silence a duré jusqu'au dessert du lendemain.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "partner": -10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire confiance",
+        "outcomes": [
+          {
+            "text": "Tu as respiré, posé ton propre téléphone, et dormi comme un bébé pour la première fois depuis des années.",
+            "effects": {
+              "happiness": 4,
+              "karma": 2,
+              "clearFlags": [
+                "s_est_fait_tromper"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0020",
+    "on": "couple",
+    "requires": {
+      "flags": [
+        "divorce"
+      ]
+    },
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Ton ex a appris ta relation avec {partenaire} en moins de quatre heures. Le réseau de renseignement des ex fait passer les services secrets pour des amateurs.",
+    "effects": {
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_amo_0021",
+    "on": "couple",
+    "requires": {
+      "flags": [
+        "en_veuvage"
+      ]
+    },
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "clearFlags": [
+      "en_veuvage"
+    ],
+    "text": "Après ton deuil, tu as présenté {partenaire} à ton ancienne belle-famille. Ils ont été adorables, puis ont discrètement recompté l'argenterie.",
+    "effects": {
+      "happiness": 3,
+      "relationships": {
+        "partner": 2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0022",
+    "on": "rupture",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Quelque temps après votre rupture, tu vois ton ex porter ton sweat préféré sur une photo de mariage. Pas son mariage. Ton sweat est plus invité que toi.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_amo_0023",
+    "on": "rupture",
+    "requires": {
+      "minCounters": {
+        "rupture": 3
+      }
+    },
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "setFlags": [
+      "briseur_de_coeurs"
+    ],
+    "text": "Trois ruptures à ton actif : dans {ville}, on parle de toi comme d'une moissonneuse-batteuse sentimentale. Une appli de rencontre affiche un petit triangle jaune à côté de ton profil.",
+    "effects": {
+      "fame": 2,
+      "karma": -2
+    }
+  },
+  {
+    "id": "rep_amo_0024",
+    "on": "rupture",
+    "requires": {
+      "minCounters": {
+        "rupture": 5
+      },
+      "flags": [
+        "briseur_de_coeurs"
+      ]
+    },
+    "chance": 0.8,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "text": "Ta réputation te précède : tes ex ont fondé un groupe de soutien. Ils se réunissent le jeudi, et t'invitent à « venir t'expliquer ».",
+    "choices": [
+      {
+        "label": "Y aller avec des croissants",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tout le monde a pleuré, toi compris. Quelqu'un t'a demandé ton numéro à la sortie. Tu ne changeras jamais.",
+            "effects": {
+              "happiness": 3,
+              "karma": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "On t'a remis un trophée en carton : « Pire rupture de la décennie ». Il trône sur ton buffet.",
+            "effects": {
+              "happiness": -3,
+              "fame": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer l'invitation",
+        "outcomes": [
+          {
+            "text": "Ils ont fait la réunion devant chez toi. Avec des pancartes.",
+            "effects": {
+              "karma": -3,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0025",
+    "on": "rupture",
+    "chance": 0.2,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "patience": 3,
+    "text": "Des années après votre rupture, ton ex t'écrit à deux heures du matin : « tu dors ? ». Tu ne dormais pas.",
+    "choices": [
+      {
+        "label": "Répondre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous avez parlé jusqu'à l'aube de gens que vous détestez tous les deux. C'était étrangement doux.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le message suivant était : « t'as toujours l'appareil à raclette ? »",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas répondre et fixer le plafond",
+        "outcomes": [
+          {
+            "text": "Tu as fixé le plafond jusqu'à 5 h. Victoire morale, défaite oculaire.",
+            "effects": {
+              "happiness": 1,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bloquer et finir les chips",
+        "outcomes": [
+          {
+            "text": "Blocage effectué. Chips terminées. Paix intérieure : 70 %.",
+            "effects": {
+              "happiness": 2,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0026",
+    "on": "event:rep_amo_0025",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "setFlags": [
+      "ex_toxique"
+    ],
+    "text": "Depuis cette nuit de messages, ton ex t'écrit à chaque pleine lune. Tu connais maintenant le calendrier lunaire par cœur.",
+    "choices": [
+      {
+        "label": "Couper les ponts pour de bon",
+        "outcomes": [
+          {
+            "text": "Numéro bloqué, réseaux bloqués, pigeon voyageur refoulé. Tu respires.",
+            "effects": {
+              "happiness": 4,
+              "clearFlags": [
+                "ex_toxique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer, c'est presque un hobby",
+        "outcomes": [
+          {
+            "text": "Tu as installé une appli d'astronomie pour anticiper. Ton entourage s'inquiète.",
+            "effects": {
+              "happiness": -3,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0027",
+    "on": "event:rep_amo_0026",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "ex_toxique"
+      ]
+    },
+    "text": "Toutes ces années de messages nocturnes ont porté leurs fruits : ton ex publie un livre, « Lettres à quelqu'un qui répondait toujours ». Tu es les chapitres 4 à 11.",
+    "choices": [
+      {
+        "label": "Le lire en cachette",
+        "outcomes": [
+          {
+            "text": "Tu y es décrit{e} comme « lunaire mais attachant ». Tu as souligné « attachant ».",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Menacer d'un procès",
+        "outcomes": [
+          {
+            "text": "Ton avocat a lu le livre et t'a demandé si le chapitre 7 était vrai. Il l'était. Procès abandonné.",
+            "effects": {
+              "money": -400,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire ta propre version",
+        "outcomes": [
+          {
+            "text": "Tu as écrit tout l'été, en pyjama. Le manuscrit s'appelle « Je ne dormais pas ».",
+            "effects": {
+              "smarts": 3,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0028",
+    "on": "event:rep_amo_0027",
+    "choice": 2,
+    "chance": 0.7,
+    "delay": [
+      10,
+      20
+    ],
+    "clearFlags": [
+      "ex_toxique"
+    ],
+    "text": "Ta réponse au livre de ton ex a fini par être publiée. Une maison d'édition vend désormais les deux en coffret, « Nous deux, en pire ». Tu touches 3 % des droits et ton ex t'envoie un message, à deux heures du matin.",
+    "effects": {
+      "money": 1500,
+      "fame": 3,
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_amo_0029",
+    "on": "largue",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Depuis que tu t'es fait quitter, tu as écouté la même chanson 412 fois. Ton appli de musique t'a envoyé un message de soutien et un numéro d'écoute.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_amo_0030",
+    "on": "largue",
+    "chance": 0.35,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu croises ton ex au supermarché, rayon surgelés, avec quelqu'un qui te ressemble beaucoup, en mieux coiffé.",
+    "choices": [
+      {
+        "label": "Faire coucou",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Échange poli. Tu as dit « super » onze fois et « trop bien » quatre fois.",
+            "effects": {
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as fait coucou avec la main qui tenait les poireaux. Personne ne l'oubliera.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te cacher derrière le bac à pizzas",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vingt minutes à -18 °C. Ton orgueil est intact, tes doigts un peu moins.",
+            "effects": {
+              "happiness": 1,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton ex t'a vu{e} quand même et t'a fait un petit signe triste. Le pire des signes.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Foncer en caisse avec un panier vide",
+        "outcomes": [
+          {
+            "text": "Tu es reparti{e} avec un paquet de piles et ta dignité. Les piles, tu ne sais pas pourquoi.",
+            "effects": {
+              "money": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0031",
+    "on": "largue",
+    "requires": {
+      "minCounters": {
+        "largue": 3
+      }
+    },
+    "chance": 0.8,
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "text": "Troisième fois que tu te fais quitter. Ton horoscope ne prend même plus la peine de tourner autour du pot : il écrit juste « courage ».",
+    "effects": {
+      "happiness": -3,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_amo_0032",
+    "on": "largue",
+    "requires": {
+      "minCounters": {
+        "largue": 5
+      }
+    },
+    "chance": 0.8,
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "setFlags": [
+      "coeur_en_beton"
+    ],
+    "text": "Cinq fois qu'on te quitte. Tu as développé une méthode : tu prépares toi-même un carton avec tes affaires avant le premier rendez-vous. Gain de temps considérable.",
+    "effects": {
+      "happiness": -2,
+      "smarts": 2
+    }
+  },
+  {
+    "id": "rep_amo_0033",
+    "on": "largue",
+    "chance": 0.3,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "setFlags": [
+      "s_est_fait_tromper"
+    ],
+    "text": "Un an après t'être fait quitter, tu découvres sur les réseaux que ton ex te trompait depuis le début. Avec son prof de salsa.",
+    "choices": [
+      {
+        "label": "Laisser un commentaire assassin",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "3 000 mentions « j'aime ». Tu es une légende locale du commentaire.",
+            "effects": {
+              "happiness": 5,
+              "fame": 3,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Une faute de frappe dans ta pique. Ton ex t'a corrigé{e}, poliment. C'est fini pour toi.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre des cours de salsa à ton tour",
+        "outcomes": [
+          {
+            "text": "Tu danses mieux que ton ex au bout de trois mois. Tu ne le sauras jamais, mais tu le sens.",
+            "effects": {
+              "happiness": 4,
+              "health": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0034",
+    "on": "largue",
+    "chance": 0.25,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "patience": 2,
+    "text": "Des années après t'avoir quitté{e}, ton ex t'invite à son mariage. Tu es placé{e} à la table 14, entre les enfants et une fontaine à chocolat.",
+    "choices": [
+      {
+        "label": "Y aller, la tête haute",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as fait le plus beau discours de la soirée. Personne ne te l'avait demandé.",
+            "effects": {
+              "happiness": 3,
+              "fame": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as trébuché dans la fontaine à chocolat pendant la première danse. Il y a une vidéo. Sous trois angles.",
+            "effects": {
+              "happiness": -4,
+              "looks": -2,
+              "fame": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un cadeau douteux",
+        "outcomes": [
+          {
+            "text": "Un robot aspirateur d'occasion qui fonctionne encore, plus ou moins. Le message est passé.",
+            "effects": {
+              "money": -60,
+              "happiness": 2,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner poliment",
+        "outcomes": [
+          {
+            "text": "Tu as passé la journée en pyjama. Ton ex a remarqué ton absence, c'est l'essentiel.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0035",
+    "on": "event:rep_amo_0034",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.6,
+    "delay": [
+      10,
+      20
+    ],
+    "text": "Tu te souviens de la fontaine à chocolat au mariage de ton ex ? La vidéo vient de ressortir dans une compilation « Les pires invités de mariage de tous les temps ». Tu es en miniature.",
+    "effects": {
+      "fame": 3,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_amo_0036",
+    "on": "largue",
+    "chance": 0.3,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "flags": [
+        "coeur_brise"
+      ],
+      "excludeTags": [
+        "partner"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Un an après, ton cœur est toujours en miettes. {ami} t'a inscrit{e} d'office à un atelier poterie « pour réparer avec tes mains ».",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton premier vase ressemble vaguement à ton ex. Tu l'as cassé. Thérapeutique.",
+            "effects": {
+              "happiness": 5,
+              "clearFlags": [
+                "coeur_brise"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as rencontré quelqu'un au tour de potier, les mains pleines d'argile. Très film des années 90.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true,
+              "clearFlags": [
+                "coeur_brise"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester sous la couette",
+        "outcomes": [
+          {
+            "text": "La couette ne juge pas. La couette ne quitte pas.",
+            "effects": {
+              "happiness": -3,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0037",
+    "on": "tromperie",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Depuis ton écart, tu sursautes à chaque vibration du téléphone de {partenaire}. Ton cœur bat maintenant au rythme des notifications.",
+    "effects": {
+      "health": -2,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_amo_0038",
+    "on": "tromperie",
+    "chance": 0.35,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "a_trompe_partenaire"
+      ]
+    },
+    "text": "Ton écart d'il y a quelque temps refait surface : un message « je pense encore à nous ». Il y a un cœur, et une faute d'orthographe dans « nous ».",
+    "choices": [
+      {
+        "label": "Répondre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vous vous revoyez. En secret. Tu as acheté une deuxième carte SIM.",
+            "effects": {
+              "happiness": 3,
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La conversation s'affichait aussi sur la tablette du salon. {partenaire} l'a lue en entier, à voix haute.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "partner": -15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Supprimer et mal dormir",
+        "outcomes": [
+          {
+            "text": "Message supprimé. Tu dors mal, mais tu dors seul{e} dans ton mensonge.",
+            "effects": {
+              "happiness": -2,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout avouer à {partenaire}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{partenaire} a mis trois jours à te reparler, puis a exigé les détails. Tous.",
+            "effects": {
+              "karma": 5,
+              "relationships": {
+                "partner": -10
+              },
+              "clearFlags": [
+                "a_trompe_partenaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{partenaire} a dormi dans la voiture. Par choix. Avec ton oreiller.",
+            "effects": {
+              "karma": 4,
+              "happiness": -4,
+              "relationships": {
+                "partner": -20
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0039",
+    "on": "event:rep_amo_0038",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.7,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "a_trompe_partenaire"
+      ]
+    },
+    "setFlags": [
+      "double_vie"
+    ],
+    "text": "Ta double vie dure depuis ce fameux message. Deux agendas, deux numéros, trois excuses par semaine : ton cerveau demande un congé.",
+    "choices": [
+      {
+        "label": "Tout arrêter",
+        "outcomes": [
+          {
+            "text": "Tu as rendu la carte SIM à la nature. Tu dors de nouveau la nuit.",
+            "effects": {
+              "happiness": 3,
+              "karma": 3,
+              "clearFlags": [
+                "double_vie"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer, tu gères",
+        "outcomes": [
+          {
+            "chance": 0.65,
+            "text": "Tu tiens. Pour l'instant. Tes cheveux, eux, ne tiennent plus.",
+            "effects": {
+              "happiness": -3,
+              "health": -3,
+              "looks": -2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tout a éclaté à cause d'un ticket de restaurant pour deux, un mardi midi, retrouvé par {partenaire} dans ta veste.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "partner": -25
+              },
+              "clearFlags": [
+                "double_vie"
+              ]
+            }
+          },
+          {
+            "chance": 0.05,
+            "text": "Ta double vie s'arrête net.",
+            "effects": {
+              "death": "dans un placard où tu t'étais caché pendant un dîner de famille qui a duré onze heures"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0040",
+    "on": "tromperie",
+    "requires": {
+      "minCounters": {
+        "tromperie": 3
+      }
+    },
+    "chance": 0.7,
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "setFlags": [
+      "menteur_notoire"
+    ],
+    "text": "Trois écarts au compteur. Ton entourage tient désormais un tableur de tes histoires. Il y a des onglets, et un graphique.",
+    "effects": {
+      "karma": -4,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_amo_0041",
+    "on": "tromperie_decouverte",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Depuis que ton infidélité a éclaté au grand jour, tout le quartier est au courant. La boulangère te rend la monnaie sans te regarder dans les yeux.",
+    "effects": {
+      "happiness": -3,
+      "karma": -2
+    }
+  },
+  {
+    "id": "rep_amo_0042",
+    "on": "tromperie_decouverte",
+    "chance": 0.4,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Un an après la découverte de ton écart, tu es toujours avec {partenaire}. Mais chaque soir, {partenaire} relit tes messages de la journée à voix haute, comme un conte.",
+    "choices": [
+      {
+        "label": "Accepter, c'est le prix",
+        "outcomes": [
+          {
+            "text": "Tu as pris l'habitude d'écrire des messages plus intéressants. Ta mère n'a jamais reçu de si beaux textos.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "partner": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une thérapie de couple",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Au bout de six mois, vous lisez les messages ensemble, et vous riez. Un peu.",
+            "effects": {
+              "money": -800,
+              "happiness": 3,
+              "relationships": {
+                "partner": 10
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le thérapeute a pris le parti de {partenaire} dès la première séance. Et a facturé la deuxième.",
+            "effects": {
+              "money": -800,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te rebeller",
+        "outcomes": [
+          {
+            "text": "Tu as changé ton code. {partenaire} a changé la serrure.",
+            "effects": {
+              "happiness": 1,
+              "relationships": {
+                "partner": -12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0043",
+    "on": "tromperie_decouverte",
+    "chance": 0.2,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu croyais l'histoire enterrée : ton infidélité d'il y a des années vient d'être racontée au repas de famille par un neveu qui a retrouvé de vieux messages sur un téléphone à clapet.",
+    "effects": {
+      "happiness": -5,
+      "relationships": {
+        "parent": -2,
+        "sibling": -2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0044",
+    "on": "demande_mariage",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "La vidéo de ta demande en mariage tourne sur les réseaux, surtout pour le pigeon qui traverse l'image au moment crucial. Le pigeon a désormais plus d'abonnés que toi.",
+    "effects": {
+      "fame": 2,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_amo_0045",
+    "on": "demande_mariage",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "excludeFlags": [
+        "marie"
+      ]
+    },
+    "text": "Depuis vos fiançailles, la famille de {partenaire} prépare un mariage pour 300 personnes, dont 280 que vous n'avez jamais vues.",
+    "choices": [
+      {
+        "label": "Accepter les 300",
+        "outcomes": [
+          {
+            "text": "Tu as serré 300 mains. Un cousin t'a appelé{e} « Jean-Pierre » toute la soirée. Tu as fini par répondre.",
+            "effects": {
+              "money": -3000,
+              "happiness": -2,
+              "relationships": {
+                "partner": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Imposer 30 invités maximum",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Mariage intime et parfait. La famille ne t'a pas pardonné, mais elle a gardé le traiteur.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "partner": 2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Une grand-tante rayée de la liste a juré de te hanter. Elle est encore vivante, c'est pire.",
+            "effects": {
+              "happiness": -2,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de vous enfuir à Las Vegas",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{partenaire} a dit oui en riant. Vos familles, elles, ne rient pas.",
+            "effects": {
+              "money": -1500,
+              "happiness": 6,
+              "relationships": {
+                "partner": 6,
+                "parent": -5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{partenaire} n'a pas trouvé ça drôle. Personne, en fait.",
+            "effects": {
+              "relationships": {
+                "partner": -5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0046",
+    "on": "demande_refusee",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "La bague de ta demande refusée est toujours dans ta poche. Le bijoutier, en la voyant revenir, a eu un petit rire nerveux et propose de la reprendre au tiers du prix.",
+    "choices": [
+      {
+        "label": "Accepter l'offre",
+        "outcomes": [
+          {
+            "text": "300 € et un regard de pitié professionnelle.",
+            "effects": {
+              "money": 300,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "La garder pour la prochaine fois",
+        "outcomes": [
+          {
+            "text": "Elle dort dans un tiroir, entre les piles usagées et ton orgueil.",
+            "effects": {
+              "happiness": -1,
+              "setFlags": [
+                "bague_en_attente"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0047",
+    "on": "event:rep_amo_0046",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "bague_en_attente"
+      ]
+    },
+    "patience": 4,
+    "text": "La bague de ta demande refusée attend toujours dans son tiroir. Elle a vécu des choses. Tu la ressors pour {partenaire} ?",
+    "choices": [
+      {
+        "label": "Oui, elle a de l'expérience",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{partenaire} a dit oui. Personne ne saura jamais rien.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "partner": 8
+              },
+              "clearFlags": [
+                "bague_en_attente"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{partenaire} a trouvé le prénom de ton ex gravé à l'intérieur. Le dîner a été court.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "partner": -15
+              },
+              "clearFlags": [
+                "bague_en_attente"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Non, la jeter dans un lac",
+        "outcomes": [
+          {
+            "text": "Geste magnifique. Un canard l'a avalée. Tu te sens libre, le canard moins.",
+            "effects": {
+              "happiness": 3,
+              "clearFlags": [
+                "bague_en_attente"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0048",
+    "on": "demande_refusee",
+    "requires": {
+      "minCounters": {
+        "demande_refusee": 2
+      }
+    },
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "text": "Deuxième demande en mariage refusée. Le bijoutier t'a proposé une carte de fidélité. Au dixième refus, l'écrin est offert.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_amo_0049",
+    "on": "demande_refusee",
+    "chance": 0.3,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "La personne qui a refusé ta demande vient d'accepter celle de quelqu'un d'autre, après trois semaines de relation. Le faire-part est imprimé sur du papier recyclé. Un peu comme toi.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_amo_0050",
+    "on": "mariage",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Les photos de ton mariage sont arrivées : le photographe a cadré l'oncle Gérard sur 60 % des clichés. Sur les autres, il est flou, mais présent.",
+    "choices": [
+      {
+        "label": "Exiger un remboursement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Remboursé à moitié, avec une photo bonus de l'oncle Gérard, encadrée.",
+            "effects": {
+              "money": 400,
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le photographe a répondu par une facture pour « frais de contestation ».",
+            "effects": {
+              "money": -150,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les encadrer quand même",
+        "outcomes": [
+          {
+            "text": "L'oncle Gérard trône dans votre salon. Il a l'air ému. Il est surtout partout.",
+            "effects": {
+              "happiness": 2,
+              "setFlags": [
+                "photos_mariage_ratees"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0051",
+    "on": "event:rep_amo_0050",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "flags": [
+        "photos_mariage_ratees"
+      ]
+    },
+    "text": "Tu te souviens des photos de mariage ratées ? L'une d'elles, l'oncle Gérard en gros plan, est devenue un mème mondial légendé « Quand tu réalises que c'est lundi ». Tu n'as droit à aucun centime.",
+    "effects": {
+      "fame": 4,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_amo_0052",
+    "on": "mariage",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Le discours de ton témoin a duré 42 minutes, dont 30 sur ses vacances en Crète. Tu ne l'as toujours pas digéré, le discours ni le buffet.",
+    "choices": [
+      {
+        "label": "Pardonner",
+        "outcomes": [
+          {
+            "text": "Tu as pardonné. Ton témoin t'a envoyé les photos de Crète, en remerciement.",
+            "effects": {
+              "karma": 3,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jurer de te venger à son propre mariage",
+        "outcomes": [
+          {
+            "text": "Tu as ouvert un document intitulé « Discours. Version longue. »",
+            "effects": {
+              "happiness": 2,
+              "setFlags": [
+                "vengeance_temoin"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0053",
+    "on": "event:rep_amo_0052",
+    "choice": 1,
+    "chance": 0.7,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "flags": [
+        "vengeance_temoin"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "patience": 3,
+    "text": "Le grand jour est venu : ton ancien témoin se marie et t'a choisi{e} comme témoin à son tour. Ta vengeance de 45 minutes est prête, avec diapositives.",
+    "choices": [
+      {
+        "label": "Faire le discours complet",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Standing ovation. Plus long que le sien, mais meilleur. La vengeance est un plat qui se sert avec un rétroprojecteur.",
+            "effects": {
+              "happiness": 5,
+              "fame": 2,
+              "relationships": {
+                "friend": -3
+              },
+              "clearFlags": [
+                "vengeance_temoin"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "On t'a coupé le micro à la 38e minute, pendant la diapo sur la Crète.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "friend": -6
+              },
+              "clearFlags": [
+                "vengeance_temoin"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renoncer, tu vaux mieux que ça",
+        "outcomes": [
+          {
+            "text": "Discours de deux minutes, sobre et touchant. Ton ancien témoin a pleuré, de honte.",
+            "effects": {
+              "karma": 4,
+              "happiness": 2,
+              "relationships": {
+                "friend": 4
+              },
+              "clearFlags": [
+                "vengeance_temoin"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0054",
+    "on": "mariage",
+    "chance": 0.45,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "marie"
+      ]
+    },
+    "patience": 1,
+    "text": "Depuis le mariage, la mère de {partenaire} a un double de vos clés. Elle passe « juste déposer un gratin » trois fois par semaine.",
+    "choices": [
+      {
+        "label": "Changer la serrure",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Nouvelle serrure, nouvelle vie. {partenaire} a boudé une semaine, puis a avoué un immense soulagement.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "partner": -4
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle est entrée par la fenêtre de la cuisine. Avec le gratin. Encore chaud.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter, le gratin est bon",
+        "outcomes": [
+          {
+            "text": "Tu manges très bien. Tu n'as plus jamais été seul{e} chez toi.",
+            "effects": {
+              "health": 1,
+              "happiness": -1,
+              "setFlags": [
+                "belle_famille_envahissante"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "En parler à {partenaire}",
+        "outcomes": [
+          {
+            "text": "{partenaire} t'a écouté{e} longuement, a hoché la tête, et a fait faire un double de la cave pour sa mère.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "partner": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0055",
+    "on": "event:rep_amo_0054",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "marie",
+        "belle_famille_envahissante"
+      ]
+    },
+    "patience": 2,
+    "text": "Après des années de gratins, la mère de {partenaire} t'appelle « mon trésor » et te consulte avant {partenaire} pour les décisions importantes. Tu as gagné la guerre. Tu as aussi pris sept kilos.",
+    "effects": {
+      "happiness": 4,
+      "health": -3,
+      "relationships": {
+        "partner": 2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0056",
+    "on": "mariage",
+    "chance": 0.3,
+    "delay": [
+      1,
+      4
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "marie"
+      ]
+    },
+    "text": "Le père de {partenaire} s'est installé chez vous « le temps de refaire sa salle de bains ». Ça fait huit mois. Personne ne refait de salle de bains.",
+    "effects": {
+      "happiness": -4,
+      "relationships": {
+        "partner": -2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0057",
+    "on": "mariage",
+    "chance": 0.6,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "marie"
+      ]
+    },
+    "text": "Un an de mariage avec {partenaire} : noces de coton. Tu as offert un paquet de cotons-tiges premium, {partenaire} une croisière. L'ambiance est particulière.",
+    "effects": {
+      "happiness": 2,
+      "relationships": {
+        "partner": -2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0058",
+    "on": "mariage",
+    "requires": {
+      "maxCounters": {
+        "mariage": 1
+      }
+    },
+    "chance": 0.5,
+    "delay": [
+      5,
+      5
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "marie"
+      ],
+      "maxCounters": {
+        "divorce": 0,
+        "veuvage": 0
+      }
+    },
+    "text": "Cinq ans de mariage avec {partenaire} : noces de bois. Faute d'idée, vous avez fêté ça chez un menuisier. Il vous a vendu une étagère.",
+    "effects": {
+      "happiness": 3,
+      "money": -120,
+      "relationships": {
+        "partner": 3
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0059",
+    "on": "mariage",
+    "requires": {
+      "maxCounters": {
+        "mariage": 1
+      }
+    },
+    "chance": 0.6,
+    "delay": [
+      10,
+      10
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "marie"
+      ],
+      "maxCounters": {
+        "divorce": 0,
+        "veuvage": 0
+      }
+    },
+    "text": "Dix ans de mariage avec {partenaire}. Vous renouvelez vos vœux ?",
+    "choices": [
+      {
+        "label": "Grande fête, comme la première fois",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Magnifique soirée. Vous avez dansé jusqu'à trois heures, puis dormi jusqu'à mardi.",
+            "effects": {
+              "money": -2500,
+              "happiness": 6,
+              "relationships": {
+                "partner": 8
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton témoin a refait son discours. En version augmentée, avec dix ans de plus de vacances.",
+            "effects": {
+              "money": -2500,
+              "happiness": -2,
+              "relationships": {
+                "partner": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un dîner à deux, tranquille",
+        "outcomes": [
+          {
+            "text": "Vous avez commandé les mêmes plats qu'il y a dix ans. Le restaurant, lui, a changé trois fois de propriétaire.",
+            "effects": {
+              "money": -100,
+              "happiness": 3,
+              "relationships": {
+                "partner": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Oublier complètement la date",
+        "outcomes": [
+          {
+            "text": "{partenaire}, en revanche, n'a pas oublié. {partenaire} n'oubliera jamais.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "partner": -12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0060",
+    "on": "mariage",
+    "requires": {
+      "maxCounters": {
+        "mariage": 1
+      }
+    },
+    "chance": 0.7,
+    "delay": [
+      25,
+      25
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "marie"
+      ],
+      "maxCounters": {
+        "divorce": 0,
+        "veuvage": 0
+      }
+    },
+    "unique": true,
+    "text": "Noces d'argent : vingt-cinq ans avec {partenaire}. Vous vous comprenez sans parler, ce qui tombe bien, vous avez épuisé tous les sujets vers la quatorzième année.",
+    "effects": {
+      "happiness": 6,
+      "relationships": {
+        "partner": 6
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0061",
+    "on": "mariage",
+    "chance": 0.25,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "marie"
+      ]
+    },
+    "patience": 3,
+    "text": "Après des années de mariage, {partenaire} et toi faites chambre à part « à cause des ronflements ». Personne ne ronfle.",
+    "choices": [
+      {
+        "label": "Thérapie de couple",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous avez réappris à vous parler. Puis à vous disputer. C'est bon signe, paraît-il.",
+            "effects": {
+              "money": -900,
+              "happiness": 4,
+              "relationships": {
+                "partner": 10
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le thérapeute s'endort pendant les séances. Lui, il ronfle.",
+            "effects": {
+              "money": -900,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter un lit immense",
+        "outcomes": [
+          {
+            "text": "Un lit de 2,40 m. Vous dormez de nouveau ensemble, à une distance raisonnable.",
+            "effects": {
+              "money": -1200,
+              "happiness": 2,
+              "relationships": {
+                "partner": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à {partenaire} ce qui se passe vraiment",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Longue conversation sincère. Vous avez pleuré, puis commandé des pizzas. Tout va mieux.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "partner": 8
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La réponse a été « rien ». Ce « rien » contenait beaucoup de choses.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "partner": -5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0062",
+    "on": "mariage",
+    "requires": {
+      "minCounters": {
+        "mariage": 3
+      }
+    },
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "text": "Troisième mariage. À la mairie, on a gardé ta fiche, et le maire t'a demandé si tu voulais « la formule habituelle ».",
+    "effects": {
+      "happiness": 2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_amo_0063",
+    "on": "mariage",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Bilan des cadeaux de mariage : quatre appareils à fondue, un tableau représentant un cerf, et une enveloppe vide signée « avec tout notre amour ».",
+    "effects": {
+      "happiness": 1,
+      "money": 150
+    }
+  },
+  {
+    "id": "rep_amo_0064",
+    "on": "mariage",
+    "requires": {
+      "flags": [
+        "s_est_fait_tromper"
+      ]
+    },
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Échaudé{e} par ton passé, tu as fait signer à {partenaire} un contrat de fidélité de 40 pages le jour du mariage. Clause 12 : interdiction formelle des cours de salsa.",
+    "effects": {
+      "happiness": 2,
+      "relationships": {
+        "partner": -2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0065",
+    "on": "divorce",
+    "chance": 0.8,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "La facture de Maître Pélissier, ton avocat de divorce, est arrivée. Elle contient une ligne « écoute active : 14 h » à 180 € l'heure.",
+    "choices": [
+      {
+        "label": "Payer sans discuter",
+        "outcomes": [
+          {
+            "text": "2 520 € pour avoir pleuré dans un bureau qui sentait le cuir. C'est le prix de la reconstruction.",
+            "effects": {
+              "money": -2520,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contester la facture",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Facture réduite de moitié. Maître Pélissier t'a facturé la contestation, mais ça reste rentable.",
+            "effects": {
+              "money": -1400
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Maître Pélissier a ajouté une ligne « contestation : 6 h ». Il a été très à l'écoute.",
+            "effects": {
+              "money": -3600,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0066",
+    "on": "divorce",
+    "chance": 0.55,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Depuis le divorce, la pension alimentaire part chaque mois chez ton ex. Ta banque a renommé le virement « habitude ».",
+    "effects": {
+      "money": -2400,
+      "happiness": -2,
+      "relationships": {
+        "child": 2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0067",
+    "on": "divorce",
+    "chance": 0.4,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "excludeTags": [
+        "children"
+      ]
+    },
+    "text": "Un an après le divorce, tu verses toujours une prestation compensatoire à ton ex. Le juge a estimé que ton ex avait « beaucoup souffert de ta façon de mâcher ».",
+    "effects": {
+      "money": -1800,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_amo_0068",
+    "on": "divorce",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Depuis le divorce, vos amis communs ont choisi leur camp. Ton ex a gardé les drôles. Toi, ceux qui ont une camionnette.",
+    "effects": {
+      "happiness": -2,
+      "relationships": {
+        "friend": 2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0069",
+    "on": "divorce",
+    "chance": 0.35,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "excludeTags": [
+        "partner"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Après ton divorce, tu t'es réinscrit{e} sur une appli de rencontre. Ta bio dit « divorcé{e}, mais drôle ».",
+    "choices": [
+      {
+        "label": "Assumer et swiper",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Premier rendez-vous très sympa : vous avez comparé vos avocats. Le tien était plus cher.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton premier match est le cousin de ton ex. Il a envoyé une capture d'écran à toute la famille.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Supprimer l'appli au bout d'une heure",
+        "outcomes": [
+          {
+            "text": "Une heure, 112 profils, un vertige existentiel. Tu as préféré faire un puzzle.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0070",
+    "on": "divorce",
+    "chance": 0.25,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Des années après votre divorce, ton ex se remarie. Le faire-part précise « cette fois, c'est la bonne ». Tu le prends personnellement.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_amo_0071",
+    "on": "divorce",
+    "requires": {
+      "minCounters": {
+        "divorce": 2
+      }
+    },
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "text": "Deuxième divorce. Maître Pélissier t'a envoyé son calendrier de fin d'année. Tu es le mois de mars.",
+    "effects": {
+      "happiness": -2,
+      "money": -300
+    }
+  },
+  {
+    "id": "rep_amo_0072",
+    "on": "divorce",
+    "requires": {
+      "minCounters": {
+        "divorce": 3
+      }
+    },
+    "delay": [
+      1,
+      1
+    ],
+    "unique": true,
+    "text": "Troisième divorce : Maître Pélissier s'est fait construire une piscine. Il l'a baptisée « {prenom} », en ton honneur.",
+    "effects": {
+      "happiness": -3,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_amo_0073",
+    "on": "divorce",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Ton ex et toi vous disputez la garde du chat. Le chat, lui, a déjà choisi la voisine.",
+    "choices": [
+      {
+        "label": "Aller au tribunal pour le chat",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as obtenu la garde exclusive. Le chat vit toujours chez la voisine, mais légalement il est à toi.",
+            "effects": {
+              "money": -1500,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La garde a été confiée à la voisine. Elle n'avait rien demandé, elle a gagné quand même.",
+            "effects": {
+              "money": -1500,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser le chat décider",
+        "outcomes": [
+          {
+            "text": "Le chat a choisi. Ce n'est ni toi ni ton ex. Leçon d'humilité.",
+            "effects": {
+              "happiness": -1,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0074",
+    "on": "divorce",
+    "chance": 0.2,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "patience": 2,
+    "text": "Des années après votre divorce, ton ex et toi vous retrouvez au même enterrement. Au bout de dix minutes, vous vous chamaillez sur le buffet, comme au bon vieux temps.",
+    "choices": [
+      {
+        "label": "Aller boire un verre ensemble",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vous avez ri. Beaucoup. Ça ne veut rien dire. Si ?",
+            "effects": {
+              "happiness": 5,
+              "setFlags": [
+                "flamme_ravivee"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Au deuxième verre, vous avez re-divorcé, sans papiers cette fois.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir avant le dessert",
+        "outcomes": [
+          {
+            "text": "Tu es parti{e} avec une part de quiche dans une serviette. Tu ne regrettes rien.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0075",
+    "on": "event:rep_amo_0074",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "flamme_ravivee"
+      ]
+    },
+    "text": "Depuis ce verre après l'enterrement, ton ex t'appelle tous les dimanches. {ami} te demande si tu es bien sûr{e} de toi.",
+    "choices": [
+      {
+        "label": "Rester « les meilleurs ex du monde »",
+        "outcomes": [
+          {
+            "text": "Vous avez même fait faire des mugs. Vos avocats respectifs en ont reçu un.",
+            "effects": {
+              "happiness": 4,
+              "clearFlags": [
+                "flamme_ravivee"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Arrêter de décrocher le dimanche",
+        "outcomes": [
+          {
+            "text": "Le dimanche est redevenu calme. Un peu trop calme.",
+            "effects": {
+              "happiness": -1,
+              "clearFlags": [
+                "flamme_ravivee"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0076",
+    "on": "veuvage",
+    "chance": 0.7,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Depuis ton deuil, les voisins déposent des plats devant ta porte. Tu as désormais quatorze lasagnes, et aucune idée de la provenance de neuf d'entre elles.",
+    "effects": {
+      "happiness": 1,
+      "health": 1
+    }
+  },
+  {
+    "id": "rep_amo_0077",
+    "on": "veuvage",
+    "chance": 0.6,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "flags": [
+        "en_veuvage"
+      ]
+    },
+    "text": "Un an de deuil. Tu parles encore à la photo sur le buffet. Elle t'écoute mieux que la plupart des vivants.",
+    "choices": [
+      {
+        "label": "Rejoindre un groupe de parole",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Des gens bien, du café tiède, des biscuits secs. Tu y retournes la semaine suivante.",
+            "effects": {
+              "happiness": 5,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le groupe de parole était en fait un club de belote. Tu es resté{e}. Tu es très fort{e}.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer à parler à la photo",
+        "outcomes": [
+          {
+            "text": "La photo n'a rien répondu, mais tu jurerais qu'elle a levé un sourcil quand tu as parlé de repeindre le salon.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir en voyage",
+        "outcomes": [
+          {
+            "text": "Tu as vu la mer, mangé seul{e} au restaurant et trouvé ça étonnamment bien.",
+            "effects": {
+              "money": -1500,
+              "happiness": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0078",
+    "on": "event:rep_amo_0077",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "en_veuvage"
+      ],
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "patience": 2,
+    "text": "Au groupe de parole, quelqu'un te garde une chaise depuis des mois et t'apporte un café sans sucre, comme tu l'aimes. Ça commence à se voir.",
+    "choices": [
+      {
+        "label": "Proposer un dîner",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu as ri pour la première fois depuis longtemps, puis tu t'es senti{e} coupable, puis tu as repris du dessert.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true,
+              "clearFlags": [
+                "en_veuvage"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as appelé cette personne par le prénom de ton ancien amour. Deux fois. Elle a été très gentille.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pas encore prêt{e}",
+        "outcomes": [
+          {
+            "text": "Tu as dit merci pour le café. On te garde toujours la chaise.",
+            "effects": {
+              "happiness": 1,
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0079",
+    "on": "event:rep_amo_0078",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [
+      5,
+      15
+    ],
+    "text": "Des années après ce premier dîner, vous retournez au groupe de parole pour fêter ça. Il est devenu un club de belote. Vous gagnez le tournoi.",
+    "effects": {
+      "happiness": 6
+    }
+  },
+  {
+    "id": "rep_amo_0080",
+    "on": "veuvage",
+    "chance": 0.3,
+    "delay": [
+      2,
+      6
+    ],
+    "text": "Ta belle-famille t'invite encore à Noël malgré le deuil. Ils te placent toujours à côté de la chaise vide, « par délicatesse ».",
+    "effects": {
+      "happiness": -2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_amo_0081",
+    "on": "veuvage",
+    "chance": 0.25,
+    "delay": [
+      10,
+      20
+    ],
+    "text": "Des années après ton deuil, tu retrouves un mot glissé dans un vieux livre de cuisine, à la page du gratin : « Arrête de mettre autant de sel. »",
+    "effects": {
+      "happiness": 6,
+      "health": 1
+    }
+  },
+  {
+    "id": "rep_amo_0082",
+    "on": "veuvage",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "L'assurance-vie est arrivée après ton deuil, avec une clause surprenante : tu dois garder le perroquet.",
+    "choices": [
+      {
+        "label": "Garder le perroquet",
+        "outcomes": [
+          {
+            "text": "8 000 € et un perroquet qui te juge depuis son perchoir. Marché conclu.",
+            "effects": {
+              "money": 8000,
+              "happiness": 1,
+              "setFlags": [
+                "perroquet_herite"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser la clause",
+        "outcomes": [
+          {
+            "text": "Pas d'argent, mais pas de perroquet. Tu dors enfin sans qu'on te siffle dessus.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0083",
+    "on": "event:rep_amo_0082",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "perroquet_herite"
+      ]
+    },
+    "text": "Le perroquet dont tu as hérité a fini par apprendre ton rire. Il le fait aux enterrements, et uniquement aux enterrements.",
+    "effects": {
+      "happiness": 2,
+      "fame": 1
+    }
+  }
+]

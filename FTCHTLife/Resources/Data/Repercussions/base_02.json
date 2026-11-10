@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "rep_base_0004",
+    "on": "event:base_0001",
+    "chance": 0.3,
+    "delay": [12, 16],
+    "minAge": 13,
+    "text": "Au repas de Noël, {mere} a ressorti l'histoire de la crotte de nez en public, devant la personne que tu avais invitée. Elle n'avait rien oublié. Les mères n'oublient rien.",
+    "effects": { "happiness": -4, "relationships": { "mother": -2 } }
+  },
+  {
+    "id": "rep_base_0005",
+    "on": "event:base_0001",
+    "chance": 0.25,
+    "delay": [20, 30],
+    "conditions": { "tags": ["children"] },
+    "patience": 5,
+    "text": "Ton enfant a mangé une crotte de nez au supermarché. Tu as fait semblant de ne pas le connaître, exactement comme {mere} à l'époque. La boucle est bouclée.",
+    "effects": { "happiness": 2, "relationships": { "child": 1 } }
+  },
+  {
+    "id": "rep_base_0006",
+    "on": "event:base_0002",
+    "chance": 0.35,
+    "delay": [8, 15],
+    "text": "En débouchant les toilettes, {parent} a retrouvé la télécommande que tu y avais mise bébé. Elle marche encore. Un regard très long se pose sur toi.",
+    "choices": [
+      { "label": "Avouer, enfin", "outcomes": [
+        { "chance": 0.6, "text": "Tout le monde rit. Il y a prescription familiale.", "effects": { "happiness": 3, "relationships": { "parent": 3 } } },
+        { "chance": 0.4, "text": "On te facture quinze ans de piles.", "effects": { "money": -30, "happiness": -2 } }
+      ]},
+      { "label": "Accuser le chat de l'époque", "outcomes": [
+        { "text": "Le chat est mort depuis longtemps. Tu salis sa mémoire et tout le monde le sait.", "effects": { "karma": -2, "relationships": { "parent": -2 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0007",
+    "on": "event:base_0002",
+    "remember": ["a_noye_la_telecommande"]
+  },
+  {
+    "id": "rep_base_0008",
+    "on": "event:base_0003",
+    "chance": 0.35,
+    "delay": [15, 25],
+    "minAge": 18,
+    "maxAge": 30,
+    "patience": 3,
+    "conditions": { "tags": ["adult"] },
+    "text": "Une fromagerie de {ville} cherche quelqu'un. {pere} jure que c'est ton destin depuis ton premier mot, « fromage ».",
+    "choices": [
+      { "label": "Postuler", "outcomes": [
+        { "chance": 0.5, "text": "Pris{e} ! Tu sens le comté en permanence et ça te va très bien.", "effects": { "money": 300, "happiness": 5, "relationships": { "father": 3 } } },
+        { "chance": 0.5, "text": "Tu découvres ton intolérance au lactose le premier jour, devant les clients.", "effects": { "health": -4, "happiness": -3 } }
+      ]},
+      { "label": "Refuser", "outcomes": [
+        { "text": "{pere} est déçu. Il comptait sur la réduction employé.", "effects": { "relationships": { "father": -3 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0009",
+    "on": "event:base_0003",
+    "remember": ["premier_mot_fromage"]
+  },
+  {
+    "id": "rep_base_0010",
+    "on": "event:base_0004",
+    "choice": 0,
+    "outcome": 0,
+    "remember": ["ami_des_chiens"],
+    "chance": 0.6,
+    "delay": [4, 6],
+    "text": "Des années plus tard, le chien du voisin, celui que tu avais léché en retour, t'a reconnu{e} dans la rue. Il t'a léché{e} pendant onze minutes : il tenait à battre son record.",
+    "effects": { "happiness": 5 }
+  },
+  {
+    "id": "rep_base_0011",
+    "on": "event:base_0004",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [10, 14],
+    "minAge": 13,
+    "conditions": { "flags": ["ami_des_chiens"] },
+    "text": "Le vieux chien du voisin, ton tout premier ami, est très malade. Le voisin te demande si tu veux venir lui dire au revoir.",
+    "choices": [
+      { "label": "Y aller", "outcomes": [
+        { "text": "Il a remué la queue une dernière fois en te voyant. Tu as pleuré comme à trois ans, et personne ne s'est moqué.", "effects": { "happiness": -5, "karma": 4 } }
+      ]},
+      { "label": "Je n'en ai pas la force", "outcomes": [
+        { "text": "Tu n'y es pas allé{e}. Tu y penses quand même tous les jours pendant un mois.", "effects": { "happiness": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0012",
+    "on": "event:rep_base_0011",
+    "choice": 0,
+    "chance": 0.5,
+    "delay": [1, 3],
+    "patience": 6,
+    "conditions": { "tags": ["adult"] },
+    "text": "Depuis les adieux au vieux chien du voisin, tu ralentis devant chaque refuge. Aujourd'hui, un chiot t'a regardé{e} exactement de la même façon.",
+    "choices": [
+      { "label": "L'adopter", "outcomes": [
+        { "text": "Tu l'appelles Fromage. Il te lèche le visage. Le cycle continue.", "effects": { "happiness": 8, "money": -200, "karma": 2, "setFlags": ["a_un_chien"] } }
+      ]},
+      { "label": "Passer ton chemin", "outcomes": [
+        { "text": "Le chiot t'a jugé{e} jusqu'au coin de la rue. Tu as senti son regard dans ton dos.", "effects": { "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0013",
+    "on": "event:base_0004",
+    "choice": 0,
+    "outcome": 1,
+    "remember": ["ne_leche_plus_rien"],
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "Depuis ta gastro canine, {mere} te désinfecte le visage chaque fois qu'un animal passe à moins de trois mètres. Même un pigeon. Même en photo.",
+    "effects": { "happiness": -1 }
+  },
+  {
+    "id": "rep_base_0014",
+    "on": "event:base_0004",
+    "choice": 1,
+    "remember": ["peur_des_chiens"],
+    "chance": 0.4,
+    "delay": [3, 8],
+    "text": "Tu changes encore de trottoir quand tu vois un chien, depuis celui qui t'avait léché pendant dix minutes. Même les caniches. Surtout les caniches.",
+    "effects": { "happiness": -2 }
+  },
+  {
+    "id": "rep_base_0015",
+    "on": "event:base_0005",
+    "choice": 0,
+    "outcome": 0,
+    "remember": ["a_mordu_a_la_maternelle"],
+    "chance": 0.35,
+    "delay": [22, 28],
+    "patience": 5,
+    "unique": true,
+    "conditions": { "requiresJob": true },
+    "text": "Ton nouveau chef s'appelle Kévin Morel. Il a une petite cicatrice en forme de dents sur l'avant-bras, et il te fixe comme quelqu'un qui n'a jamais digéré ce goûter de maternelle.",
+    "choices": [
+      { "label": "Faire comme si de rien n'était", "outcomes": [
+        { "chance": 0.5, "text": "Il te confie tous les dossiers du vendredi soir. Tous.", "effects": { "happiness": -6 } },
+        { "chance": 0.5, "text": "Il n'a rien remarqué. Ou alors il attend son heure.", "effects": { "happiness": -1 } }
+      ]},
+      { "label": "Lui apporter un goûter en signe de paix", "outcomes": [
+        { "chance": 0.6, "text": "Il a ri. Vous déjeunez ensemble le jeudi maintenant.", "effects": { "happiness": 5, "karma": 2, "newFriend": true } },
+        { "chance": 0.4, "text": "Il a mangé le goûter, puis il t'a mordu{e}. Les RH ont ouvert un dossier « réciprocité ».", "effects": { "health": -2, "happiness": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0016",
+    "on": "event:rep_base_0015",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [1, 2],
+    "conditions": { "requiresJob": true },
+    "text": "Kévin, ton chef mordu en maternelle, t'a refusé ta promotion. Dans la case « motif », il a écrit un seul mot : « goûter ».",
+    "effects": { "happiness": -5, "karma": 1 }
+  },
+  {
+    "id": "rep_base_0017",
+    "on": "event:base_0005",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.3,
+    "delay": [7, 10],
+    "text": "Le gamin de maternelle qui t'avait mordu{e} plus fort que toi est devenu le roi de la cour du collège. Il te salue d'un claquement de dents. Tu frissonnes encore.",
+    "effects": { "happiness": -2 }
+  },
+  {
+    "id": "rep_base_0018",
+    "on": "event:base_0005",
+    "choice": 2,
+    "remember": ["pote_du_gouter"],
+    "chance": 0.5,
+    "delay": [15, 25],
+    "minAge": 20,
+    "text": "Le copain de maternelle avec qui tu avais partagé ton goûter t'invite à son mariage. Tu es à la table d'honneur, entre sa grand-mère et la pièce montée.",
+    "choices": [
+      { "label": "Faire un discours", "outcomes": [
+        { "chance": 0.7, "text": "Tu racontes l'histoire du goûter. Toute la salle pleure, même le traiteur.", "effects": { "happiness": 6, "relationships": { "friend": 5 } } },
+        { "chance": 0.3, "text": "Tu racontes l'histoire du goûter. Personne ne voit le rapport avec le mariage.", "effects": { "happiness": -3 } }
+      ]},
+      { "label": "Juste manger", "outcomes": [
+        { "text": "Tu reprends trois fois du dessert. Par tradition.", "effects": { "happiness": 3, "health": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0019",
+    "on": "event:base_0005",
+    "choice": 1,
+    "remember": ["rapporteur"],
+    "chance": 0.4,
+    "delay": [6, 9],
+    "text": "Au collège, quelqu'un a retrouvé ton vieux cahier de liaison de maternelle : « {prenom} a dénoncé un voleur de goûter ». Depuis, on t'appelle l'Inspecteur.",
+    "effects": { "happiness": -2, "karma": 1 }
+  },
+  {
+    "id": "rep_base_0020",
+    "on": "event:base_0006",
+    "choice": 0,
+    "remember": ["voulait_etre_astronaute"]
+  },
+  {
+    "id": "rep_base_0021",
+    "on": "event:base_0006",
+    "choice": 1,
+    "remember": ["voulait_etre_president"]
+  },
+  {
+    "id": "rep_base_0022",
+    "on": "event:base_0006",
+    "choice": 2,
+    "remember": ["voulait_dormir"]
+  },
+  {
+    "id": "rep_base_0023",
+    "on": "event:base_0006",
+    "choice": 0,
+    "chance": 0.5,
+    "delay": [20, 24],
+    "minAge": 28,
+    "maxAge": 34,
+    "patience": 2,
+    "text": "Pour tes 30 ans, ton ancienne maîtresse t'a retrouvé{e} en ligne. Elle veut savoir si tu es allé{e} dans l'espace, finalement.",
+    "choices": [
+      { "label": "Dire la vérité", "outcomes": [
+        { "text": "Elle répond « Comme les 400 autres ». Elle a gardé la liste.", "effects": { "happiness": -3 } }
+      ]},
+      { "label": "Mentir : « Deux fois »", "outcomes": [
+        { "chance": 0.7, "text": "Elle est si fière qu'elle l'a raconté à sa classe. Tu es une légende pour vingt-six CE2.", "effects": { "happiness": 4, "karma": -2, "setFlags": ["menteur_notoire"] } },
+        { "chance": 0.3, "text": "Elle a vérifié. Aucune agence spatiale n'a entendu parler de toi.", "effects": { "happiness": -5 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0024",
+    "on": "event:base_0006",
+    "choice": 1,
+    "chance": 0.35,
+    "delay": [25, 35],
+    "patience": 5,
+    "conditions": { "tags": ["adult"] },
+    "text": "La mairie cherche des candidats pour le conseil municipal. Ta maîtresse de primaire a donné ton nom, « vu ce que tu avais annoncé en classe ».",
+    "choices": [
+      { "label": "Se présenter", "outcomes": [
+        { "chance": 0.4, "text": "Élu{e}, avec 61 voix ! Tu gères désormais les ronds-points.", "effects": { "happiness": 6, "fame": 3, "setFlags": ["elu_municipal"] } },
+        { "chance": 0.6, "text": "Battu{e} par un boulanger qui distribuait des croissants devant le bureau de vote.", "effects": { "happiness": -4 } }
+      ]},
+      { "label": "Décliner", "outcomes": [
+        { "text": "Elle t'écrit « Je suis déçue. » Trente ans après, ça marche encore.", "effects": { "happiness": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0025",
+    "on": "event:rep_base_0024",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [3, 6],
+    "conditions": { "flags": ["elu_municipal"] },
+    "text": "Depuis ton élection au conseil municipal, tu as installé une statue d'astronaute sur le rond-point principal. Tout le monde déteste. Les prochaines élections approchent.",
+    "choices": [
+      { "label": "Viser la mairie", "outcomes": [
+        { "chance": 0.35, "text": "Tu es maire de {ville}. Ta maîtresse de primaire pleure au premier rang.", "effects": { "happiness": 10, "fame": 5, "setFlags": ["maire"] } },
+        { "chance": 0.65, "text": "Battu{e} à nouveau par le boulanger. Il a des croissants, tu as des idées. Les croissants gagnent toujours.", "effects": { "happiness": -5 } }
+      ]},
+      { "label": "Rester au conseil", "outcomes": [
+        { "text": "Tu continues à gérer les ronds-points. C'est une vie.", "effects": { "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0026",
+    "on": "event:base_0006",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [20, 25],
+    "minAge": 28,
+    "text": "Tu as enfin réalisé le rêve annoncé à ta maîtresse : seize heures de sommeil d'affilée. Ton téléphone affiche 43 appels manqués. Tu te rendors.",
+    "effects": { "happiness": 6, "health": 2 }
+  },
+  {
+    "id": "rep_base_0027",
+    "on": "event:base_0007",
+    "choice": 0,
+    "outcome": 1,
+    "remember": ["racket_cour_recre"],
+    "chance": 0.35,
+    "delay": [12, 20],
+    "conditions": { "tags": ["adult"] },
+    "text": "Ton nouveau conseiller bancaire, c'est le grand de 6e qui t'avait pris les 20 € de la cour de récré. Il te refuse un découvert de 20 €. Il sourit.",
+    "choices": [
+      { "label": "Lui rappeler l'histoire", "outcomes": [
+        { "chance": 0.5, "text": "Il rougit, sort un billet de 20 € de son portefeuille et te le tend. Dette réglée.", "effects": { "money": 20, "happiness": 5 } },
+        { "chance": 0.5, "text": "Il ne s'en souvient pas. Toi, tu t'en souviendras jusqu'à ta mort.", "effects": { "happiness": -3 } }
+      ]},
+      { "label": "Changer de banque", "outcomes": [
+        { "text": "Frais de clôture du compte : 20 €. Le destin a le sens de l'humour.", "effects": { "money": -20, "happiness": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0028",
+    "on": "event:base_0007",
+    "choice": 1,
+    "remember": ["honnete_depuis_tout_petit"],
+    "chance": 0.3,
+    "delay": [15, 25],
+    "text": "Au pot de départ à la retraite de ton ancien directeur d'école, il a payé sa tournée avec un très vieux billet de 20 €. Tu as compris. Il a vu que tu avais compris.",
+    "effects": { "happiness": -3, "karma": 2 }
+  },
+  {
+    "id": "rep_base_0029",
+    "on": "event:base_0008",
+    "choice": 1,
+    "remember": ["fratrie_doit_une_faveur"],
+    "chance": 0.5,
+    "delay": [10, 20],
+    "patience": 3,
+    "conditions": { "tags": ["siblings", "adult"] },
+    "text": "{fratrie} t'appelle : « Je te dois une faveur depuis le vase de maman. Je veux être quitte. Qu'est-ce qu'il te faut ? »",
+    "choices": [
+      { "label": "De l'argent", "outcomes": [
+        { "chance": 0.6, "text": "Virement de 500 € avec le libellé « VASE ». Quittes.", "effects": { "money": 500, "relationships": { "sibling": -2 }, "clearFlags": ["fratrie_doit_une_faveur"] } },
+        { "chance": 0.4, "text": "Virement de 12 € et un émoji de vase. Tu t'attendais à mieux.", "effects": { "money": 12, "happiness": -1, "clearFlags": ["fratrie_doit_une_faveur"] } }
+      ]},
+      { "label": "Un coup de main pour ton déménagement", "outcomes": [
+        { "text": "{fratrie} a débarqué avec un camion et repart avec une tendinite. Respect.", "effects": { "happiness": 4, "relationships": { "sibling": 5 }, "clearFlags": ["fratrie_doit_une_faveur"] } }
+      ]},
+      { "label": "Garder la faveur en réserve", "outcomes": [
+        { "text": "Tu la gardes comme une arme de dissuasion familiale.", "effects": { "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0030",
+    "on": "event:base_0008",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.4,
+    "delay": [15, 25],
+    "patience": 5,
+    "conditions": { "tags": ["mother", "siblings"] },
+    "text": "Au mariage d'un cousin, {fratrie} a avoué pour le vase, un peu éméché. {mere} t'a fait des excuses avec vingt ans de retard et une boîte de lasagnes.",
+    "effects": { "happiness": 6, "relationships": { "mother": 4, "sibling": -2 } }
+  },
+  {
+    "id": "rep_base_0031",
+    "on": "event:base_0008",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.35,
+    "delay": [5, 10],
+    "conditions": { "tags": ["siblings"] },
+    "text": "{fratrie} ne t'a jamais pardonné la semaine sans dessert à cause du vase. Pour ton anniversaire, tu as reçu une assiette à dessert. Vide.",
+    "effects": { "happiness": -2, "relationships": { "sibling": -2 } }
+  },
+  {
+    "id": "rep_base_0032",
+    "on": "event:base_0009",
+    "choice": 0,
+    "outcome": 0,
+    "remember": ["faussaire_en_herbe"],
+    "chance": 0.5,
+    "delay": [2, 4],
+    "conditions": { "tags": ["school"] },
+    "text": "Depuis ta première signature imitée, tu as monté un petit commerce : 2 € le mot d'absence, 5 € le bulletin. À la récré, on t'appelle « le Notaire ».",
+    "choices": [
+      { "label": "Monter les prix", "outcomes": [
+        { "chance": 0.6, "text": "Affaires florissantes. Tu imites désormais quatorze parents différents.", "effects": { "money": 80, "karma": -3, "setFlags": ["expert_en_faux"] } },
+        { "chance": 0.4, "text": "Un client t'a dénoncé{e}. Conseil de discipline, et {parent} a dû venir.", "effects": { "happiness": -6, "relationships": { "parent": -5 } } }
+      ]},
+      { "label": "Prendre ta retraite", "outcomes": [
+        { "text": "Tu raccroches le stylo. Une carrière brève mais légendaire.", "effects": { "karma": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0033",
+    "on": "event:rep_base_0032",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [8, 15],
+    "patience": 4,
+    "conditions": { "tags": ["adult"], "flags": ["expert_en_faux"] },
+    "text": "Toi qui imitais les signatures au collège, tu es devenu{e} expert{e} en faux. Un inconnu en imperméable te propose 3 000 € pour un « petit document officiel ».",
+    "choices": [
+      { "label": "Accepter", "outcomes": [
+        { "chance": 0.6, "text": "Travail impeccable. Tu ne sais pas à quoi il a servi, et c'est mieux comme ça.", "effects": { "money": 3000, "karma": -6 } },
+        { "chance": 0.4, "text": "L'imperméable cachait un policier. Ton talent a impressionné le juge, mais pas assez.", "effects": { "money": -1000, "happiness": -10, "setFlags": ["casier_judiciaire"] } }
+      ]},
+      { "label": "Refuser", "outcomes": [
+        { "text": "Tu le regardes partir. Ton poignet a un petit pincement de nostalgie.", "effects": { "karma": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0034",
+    "on": "event:rep_base_0033",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [5, 15],
+    "text": "Les archives de la préfecture ont un problème : un document très officiel porte une signature trop belle pour être vraie. Ils cherchent un expert. Tu reconnais ton coup de stylo.",
+    "choices": [
+      { "label": "Proposer tes services d'expert", "outcomes": [
+        { "text": "Tu conclus, après une longue loupe, que c'est un vrai. Facture : 2 000 €.", "effects": { "money": 2000, "karma": -3 } }
+      ]},
+      { "label": "Tout avouer", "outcomes": [
+        { "chance": 0.5, "text": "Ils sont furieux, puis ils t'embauchent pour repérer les faux. L'ironie paie bien.", "effects": { "money": 1500, "karma": 4, "clearFlags": ["expert_en_faux"] } },
+        { "chance": 0.5, "text": "Tu fais la page 3 du journal régional, rubrique faits divers.", "effects": { "fame": 4, "happiness": -5, "setFlags": ["casier_judiciaire"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0035",
+    "on": "event:base_0009",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.3,
+    "delay": [20, 30],
+    "patience": 5,
+    "conditions": { "tags": ["children"] },
+    "text": "Ton enfant t'a montré un contrôle raté signé « de ta main ». Tu reconnais la technique du spaghetti. Ta technique.",
+    "choices": [
+      { "label": "Gronder sévèrement", "outcomes": [
+        { "text": "Tu fais la leçon. Ton hypocrisie t'attend tranquillement dans le miroir.", "effects": { "karma": -1, "relationships": { "child": -3 } } }
+      ]},
+      { "label": "Lui apprendre à mieux faire", "outcomes": [
+        { "chance": 0.5, "text": "Ton enfant progresse vite. Trop vite.", "effects": { "karma": -3, "relationships": { "child": 6 } } },
+        { "chance": 0.5, "text": "Aucun progrès. C'est héréditaire, apparemment.", "effects": { "relationships": { "child": 3 }, "happiness": 1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0036",
+    "on": "event:base_0009",
+    "choice": 0,
+    "remember": ["a_imite_une_signature"]
+  },
+  {
+    "id": "rep_base_0037",
+    "on": "event:base_0010",
+    "chance": 0.35,
+    "delay": [10, 20],
+    "conditions": { "tags": ["adult"] },
+    "text": "Ta photo de classe avec le bouton géant a refait surface sur le groupe des anciens élèves. 214 réactions. Ton bouton a plus d'amis que toi.",
+    "effects": { "happiness": -4 }
+  },
+  {
+    "id": "rep_base_0038",
+    "on": "event:base_0010",
+    "chance": 0.25,
+    "delay": [15, 25],
+    "minAge": 28,
+    "text": "Une dermatologue de {ville} veut ta photo de classe, celle du bouton, pour une campagne de prévention. Elle propose 300 €.",
+    "choices": [
+      { "label": "Accepter", "outcomes": [
+        { "text": "Ton bouton s'affiche sur tous les abribus. Il a enfin la carrière qu'il méritait.", "effects": { "money": 300, "fame": 2, "happiness": -2 } }
+      ]},
+      { "label": "Refuser", "outcomes": [
+        { "text": "Elle a choisi le bouton de quelqu'un d'autre. Il était moins réussi. Tu es un peu vexé{e}.", "effects": { "happiness": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0039",
+    "on": "event:base_0011",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.3,
+    "delay": [15, 25],
+    "conditions": { "tags": ["adult"] },
+    "text": "Le prof qui t'avait surpris{e} avec ta première cigarette fume maintenant devant la grille du collège. Il t'a demandé du feu. Vous avez ri, un peu jaune.",
+    "effects": { "happiness": 2 }
+  },
+  {
+    "id": "rep_base_0040",
+    "on": "event:base_0011",
+    "choice": 1,
+    "remember": ["n_a_jamais_fume"],
+    "chance": 0.35,
+    "delay": [20, 30],
+    "minAge": 35,
+    "patience": 5,
+    "conditions": { "excludeFlags": ["fume"] },
+    "text": "Ton médecin a regardé la radio de tes poumons et a sifflé d'admiration. Tu avais refusé ta première cigarette au collège, et ça se voit.",
+    "effects": { "health": 4, "happiness": 3 }
+  },
+  {
+    "id": "rep_base_0041",
+    "on": "event:base_0012",
+    "choice": 0,
+    "remember": ["ami_du_crush"],
+    "chance": 0.4,
+    "delay": [10, 15],
+    "minAge": 24,
+    "text": "Ton crush du lycée, celui des devoirs, t'invite à boire un verre. Il t'a fallu quinze ans pour réussir à ne pas répondre en 0,2 seconde.",
+    "choices": [
+      { "label": "Tout avouer", "outcomes": [
+        { "chance": 0.4, "text": "Un silence. Puis : « Moi aussi. Mais tu répondais si vite que ça faisait peur. »", "effects": { "happiness": 8, "setFlags": ["crush_du_lycee_reciproque"] } },
+        { "chance": 0.6, "text": "« Ah. Moi, j'avais juste besoin des devoirs. » Clair. Net. Définitif.", "effects": { "happiness": -6 } }
+      ]},
+      { "label": "Parler des devoirs, par nostalgie", "outcomes": [
+        { "text": "Vous comparez vos vieilles notes de maths. Soirée étrangement géniale.", "effects": { "happiness": 4, "relationships": { "friend": 3 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0042",
+    "on": "event:rep_base_0041",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.7,
+    "delay": [0, 1],
+    "conditions": { "excludeTags": ["partner"] },
+    "text": "Depuis l'aveu au bar, ton crush du lycée et toi vous écrivez tous les jours. Tu réponds toujours en 0,2 seconde. Cette fois, ça plaît.",
+    "effects": { "happiness": 6, "setFlags": ["en_contact_crush_lycee"] }
+  },
+  {
+    "id": "rep_base_0043",
+    "on": "event:base_0012",
+    "choice": 1,
+    "outcome": 1,
+    "chance": 0.3,
+    "delay": [8, 15],
+    "minAge": 22,
+    "text": "Ton crush de l'époque a épousé la personne qui lui avait passé les devoirs à ta place. Tu l'as appris en ligne, trois heures après tout le monde. Ironique.",
+    "effects": { "happiness": -3 }
+  },
+  {
+    "id": "rep_base_0044",
+    "on": "event:base_0012",
+    "choice": 1,
+    "outcome": 0,
+    "remember": ["joue_les_mysterieux"],
+    "chance": 0.4,
+    "delay": [1, 3],
+    "conditions": { "tags": ["mother"] },
+    "text": "Depuis l'histoire des devoirs, tu attends trois heures avant de répondre à qui que ce soit. Même à {mere}. Elle a failli appeler les secours.",
+    "effects": { "happiness": 1, "relationships": { "mother": -3 } }
+  },
+  {
+    "id": "rep_base_0045",
+    "on": "event:base_0013",
+    "choice": 0,
+    "remember": ["cheveux_bleus"],
+    "chance": 0.6,
+    "delay": [0, 1],
+    "text": "Ta coloration bleu électrique ne veut pas partir. Sur la photo de classe, tu es la seule tache de couleur. Le photographe a demandé si c'était un filtre.",
+    "effects": { "happiness": 1, "fame": 1 }
+  },
+  {
+    "id": "rep_base_0046",
+    "on": "event:base_0013",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.35,
+    "delay": [15, 25],
+    "patience": 5,
+    "conditions": { "tags": ["children"] },
+    "text": "Tes enfants ont trouvé tes photos de lycée, période bleu électrique. À la maison, ton surnom est désormais « le Schtroumpf ». Il a survécu à tes cheveux.",
+    "effects": { "happiness": -2, "relationships": { "child": 3 } }
+  },
+  {
+    "id": "rep_base_0047",
+    "on": "event:base_0013",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.3,
+    "delay": [3, 8],
+    "minAge": 18,
+    "text": "Un salon de coiffure de {ville} est tombé sur une vieille photo de toi aux cheveux bleu électrique. Ils veulent faire de toi leur égérie.",
+    "choices": [
+      { "label": "Accepter", "outcomes": [
+        { "chance": 0.7, "text": "Ta tête est en vitrine. Des inconnus te saluent et tu ne sais jamais pourquoi.", "effects": { "money": 400, "fame": 3, "looks": 2 } },
+        { "chance": 0.3, "text": "Ils ont raté la teinte. Tu es en vitrine, en vert.", "effects": { "money": 400, "looks": -4 } }
+      ]},
+      { "label": "Refuser", "outcomes": [
+        { "text": "Ils ont pris quelqu'un d'autre. Moins bleu. Tant pis pour eux.", "effects": { "happiness": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0048",
+    "on": "event:base_0013",
+    "choice": 1,
+    "outcome": 1,
+    "remember": ["surnomme_poussin"],
+    "chance": 0.5,
+    "delay": [1, 2],
+    "text": "Ta coloration blond platine ratée a fini par repousser. Pas ton surnom : « Poussin » t'a suivi{e} jusque dans un autre établissement.",
+    "effects": { "happiness": -3 }
+  },
+  {
+    "id": "rep_base_0049",
+    "on": "event:base_0013",
+    "choice": 1,
+    "outcome": 0,
+    "chance": 0.3,
+    "delay": [1, 3],
+    "text": "Depuis ton blond platine, on te prend pour une célébrité en terrasse. Un touriste t'a demandé un autographe. Tu as signé « Personne ».",
+    "effects": { "happiness": 4, "fame": 1 }
+  },
+  {
+    "id": "rep_base_0050",
+    "on": "event:base_0014",
+    "choice": 0,
+    "outcome": 0,
+    "remember": ["a_fait_le_road_trip"],
+    "chance": 0.5,
+    "delay": [8, 15],
+    "patience": 3,
+    "conditions": { "tags": ["friend"] },
+    "text": "{ami} t'envoie une photo de la station-service où vous aviez dormi pendant votre road trip. Elle ferme. {ami} propose de remettre ça « une dernière fois ».",
+    "choices": [
+      { "label": "Repartir sans plan", "outcomes": [
+        { "chance": 0.6, "text": "Vous avez dormi sur le parking de l'ancienne station. Magnifique quand même.", "effects": { "happiness": 10, "relationships": { "friend": 6 } } },
+        { "chance": 0.4, "text": "Vos dos ne supportent plus les nuits en voiture. Trois séances d'ostéo.", "effects": { "health": -5, "money": -150, "happiness": 2 } }
+      ]},
+      { "label": "Avec un plan, cette fois", "outcomes": [
+        { "text": "Hôtels réservés, itinéraire imprimé. C'était bien. Juste bien.", "effects": { "happiness": 3, "relationships": { "friend": 2 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0051",
+    "on": "event:rep_base_0050",
+    "choice": 0,
+    "chance": 0.4,
+    "delay": [10, 20],
+    "patience": 5,
+    "conditions": { "tags": ["friend"] },
+    "text": "Pour tes quarante ans passés, {ami} t'offre la carte routière froissée de vos deux road trips, encadrée. Elle occupe tout un mur. Tu la regardes souvent.",
+    "effects": { "happiness": 6, "relationships": { "friend": 5 } }
+  },
+  {
+    "id": "rep_base_0052",
+    "on": "event:base_0014",
+    "choice": 0,
+    "outcome": 1,
+    "remember": ["panne_au_km_12"],
+    "chance": 0.4,
+    "delay": [5, 10],
+    "text": "La voiture du road trip, tombée en panne au kilomètre 12, est toujours au bord de la route. Quelqu'un en a fait une jardinière. Tu t'arrêtes à chaque fois que tu passes devant.",
+    "effects": { "happiness": 3 }
+  },
+  {
+    "id": "rep_base_0053",
+    "on": "event:base_0014",
+    "choice": 1,
+    "remember": ["a_rate_le_road_trip"],
+    "chance": 0.45,
+    "delay": [3, 10],
+    "conditions": { "tags": ["friend"] },
+    "text": "{ami} parle encore du road trip que tu as refusé. À chaque soirée. Avec diaporama. Tu connais par cœur des photos où tu n'es pas.",
+    "choices": [
+      { "label": "Proposer un nouveau road trip", "outcomes": [
+        { "chance": 0.7, "text": "{ami} a les larmes aux yeux. Vous partez cet été, toujours sans plan.", "effects": { "happiness": 8, "relationships": { "friend": 8 }, "clearFlags": ["a_rate_le_road_trip"] } },
+        { "chance": 0.3, "text": "« Non merci, j'ai déjà fait le mien. » Touché, coulé.", "effects": { "happiness": -4 } }
+      ]},
+      { "label": "Faire semblant d'y avoir été", "outcomes": [
+        { "text": "Tu racontes si bien que {ami} doute. Grâce à un montage, tu es désormais sur une photo.", "effects": { "happiness": 3, "karma": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0054",
+    "on": "event:base_0015",
+    "choice": 0,
+    "chance": 0.4,
+    "delay": [2, 5],
+    "conditions": { "flags": ["victime_arnaque"] },
+    "text": "Une « agence de récupération des fonds d'arnaque » te contacte : pour 500 € seulement, elle récupère l'argent du prince nigérian. Son logo est une couronne.",
+    "choices": [
+      { "label": "Payer", "outcomes": [
+        { "text": "Ils ont bien récupéré ton argent. Et ils l'ont gardé. Efficaces, à leur manière.", "effects": { "money": -500, "happiness": -6, "smarts": -2 } }
+      ]},
+      { "label": "Raccrocher", "outcomes": [
+        { "text": "Tu progresses. Lentement, mais tu progresses.", "effects": { "smarts": 2, "clearFlags": ["victime_arnaque"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0055",
+    "on": "event:base_0015",
+    "choice": 1,
+    "remember": ["flaire_les_arnaques"],
+    "chance": 0.2,
+    "delay": [5, 15],
+    "text": "Tu as signalé tellement de faux princes que la gendarmerie t'appelle pour des conseils. Tu n'es pas payé{e}, mais tu as un badge en carton.",
+    "effects": { "smarts": 2, "happiness": 3 }
+  },
+  {
+    "id": "rep_base_0056",
+    "on": "event:base_0016",
+    "choice": 1,
+    "remember": ["zumba_de_6h"],
+    "chance": 0.5,
+    "delay": [1, 3],
+    "text": "Ta voisine du dessus t'a inscrit{e} à un concours régional de zumba. Vous dansez en duo sous le nom « Les Plafonds Tremblants ».",
+    "choices": [
+      { "label": "Y aller à fond", "outcomes": [
+        { "chance": 0.5, "text": "Médaille de bronze ! Tout l'immeuble a voté pour vous, par peur.", "effects": { "happiness": 8, "health": 3, "fame": 2 } },
+        { "chance": 0.5, "text": "Claquage en direct au deuxième refrain. Elle a fini seule et elle a gagné.", "effects": { "health": -6, "happiness": -3 } }
+      ]},
+      { "label": "Te désister", "outcomes": [
+        { "text": "Elle a trouvé un autre partenaire : le voisin du dessous. Tu les entends répéter des deux côtés.", "effects": { "happiness": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0057",
+    "on": "event:base_0016",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.4,
+    "delay": [0, 1],
+    "text": "La guerre du balai a dégénéré : ta voisine fait maintenant de la zumba ET des claquettes. Tu as acheté un deuxième balai. Ça ne sert à rien, mais ça soulage.",
+    "effects": { "happiness": -3, "money": -15 }
+  },
+  {
+    "id": "rep_base_0058",
+    "on": "event:base_0016",
+    "choice": 2,
+    "chance": 0.3,
+    "delay": [2, 5],
+    "text": "Tes bouchons d'oreilles anti-zumba sont si efficaces que tu n'as pas entendu l'alarme incendie. Les pompiers t'ont réveillé{e}. Très beaux. Très fâchés.",
+    "effects": { "health": -2, "happiness": 1 }
+  },
+  {
+    "id": "rep_base_0059",
+    "on": "event:base_0017",
+    "choice": 0,
+    "outcome": 0,
+    "remember": ["vengeur_du_yaourt"],
+    "chance": 0.5,
+    "delay": [1, 2],
+    "conditions": { "requiresJob": true },
+    "text": "Depuis le yaourt au piment, plus personne ne touche à ta nourriture au bureau. Ni à toi, d'ailleurs. On t'évite à la machine à café.",
+    "choices": [
+      { "label": "Assumer ta réputation", "outcomes": [
+        { "text": "Tu étiquettes tout « PIMENTÉ », même ta bouteille d'eau. Paix totale.", "effects": { "happiness": 4 } }
+      ]},
+      { "label": "Apporter des croissants pour te racheter", "outcomes": [
+        { "chance": 0.6, "text": "Personne n'y touche. Tout le monde pense que c'est un piège.", "effects": { "money": -15, "happiness": -2 } },
+        { "chance": 0.4, "text": "Le voleur de yaourt en prend un en premier. Puis tout le monde suit. Réconciliation.", "effects": { "money": -15, "happiness": 4, "karma": 2, "newFriend": true } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0060",
+    "on": "event:base_0017",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.4,
+    "delay": [0, 1],
+    "conditions": { "requiresJob": true },
+    "text": "Ton collègue amateur de piment t'offre un pot de sauce maison pour te remercier du yaourt. Étiquette : « Niveau 11 ». Tu as goûté. Tu as vu tes ancêtres.",
+    "effects": { "health": -3, "happiness": 2 }
+  },
+  {
+    "id": "rep_base_0061",
+    "on": "event:base_0017",
+    "choice": 1,
+    "remember": ["roi_du_post_it"],
+    "chance": 0.35,
+    "delay": [2, 5],
+    "conditions": { "requiresJob": true },
+    "text": "Tes post-it du frigo ont été encadrés par la direction et exposés dans le hall, sous le titre « Communication : ce qu'il ne faut pas faire ».",
+    "effects": { "happiness": -2, "fame": 1 }
+  },
+  {
+    "id": "rep_base_0062",
+    "on": "event:base_0018",
+    "chance": 0.25,
+    "delay": [0, 2],
+    "text": "Le pigeon qui t'avait visé{e} est revenu. Même pigeon, tu en es sûr{e} : il a un regard.",
+    "choices": [
+      { "label": "Lui donner du pain", "outcomes": [
+        { "text": "Il accepte le pain, puis vise une voiture garée à côté. C'est sa façon de dire merci.", "effects": { "happiness": 2, "karma": 1, "setFlags": ["ami_des_pigeons"] } }
+      ]},
+      { "label": "Fuir", "outcomes": [
+        { "text": "Il te suit sur deux rues. Puis il frappe.", "effects": { "happiness": -3, "looks": -1, "setFlags": ["ennemi_des_pigeons"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0063",
+    "on": "event:rep_base_0062",
+    "choice": 0,
+    "chance": 0.4,
+    "delay": [5, 10],
+    "conditions": { "flags": ["ami_des_pigeons"] },
+    "text": "Depuis que tu as nourri ce pigeon vengeur, toute sa descendance te salue sur la place. Tu as une escorte de quarante pigeons. Les gens s'écartent sur ton passage.",
+    "effects": { "happiness": 3, "fame": 1 }
+  },
+  {
+    "id": "rep_base_0064",
+    "on": "event:base_0018",
+    "requires": { "minCounters": { "event:base_0018": 3 } },
+    "remember": ["cible_des_pigeons"],
+    "unique": true,
+    "delay": [0, 0],
+    "text": "Troisième pigeon sur ta tête. Les statisticiens parlent d'un cas d'école. Les pigeons, eux, parlent de toi.",
+    "effects": { "happiness": -3, "looks": -1 }
+  },
+  {
+    "id": "rep_base_0065",
+    "on": "event:base_0019",
+    "choice": 0,
+    "outcome": 1,
+    "remember": ["chanceux_des_vestes"],
+    "chance": 0.5,
+    "delay": [0, 1],
+    "text": "Depuis le billet gagnant de la vieille veste, tu fouilles toutes tes poches. Butin : 3 €, un bonbon fossile et la clé d'un appartement où tu n'habites plus.",
+    "effects": { "money": 3, "happiness": 2 }
+  },
+  {
+    "id": "rep_base_0066",
+    "on": "event:base_0019",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.25,
+    "delay": [1, 3],
+    "text": "Tu as racheté un billet de loterie, « pour la veste ». Tu l'as glissé dans une poche et tu as oublié lequel. Le cycle recommence.",
+    "effects": { "money": -2 }
+  },
+  {
+    "id": "rep_base_0067",
+    "on": "event:rep_base_0065",
+    "chance": 0.4,
+    "delay": [1, 3],
+    "conditions": { "flags": ["chanceux_des_vestes"] },
+    "text": "Depuis le billet trouvé dans ta veste, tu achètes des vestes d'occasion en espérant y trouver des billets gagnants. Tu en as 47.",
+    "choices": [
+      { "label": "Les revendre", "outcomes": [
+        { "text": "Revendues 2 € pièce. Bilan de l'opération : -380 €.", "effects": { "money": -380, "happiness": -2, "clearFlags": ["chanceux_des_vestes"] } }
+      ]},
+      { "label": "Une dernière veste", "outcomes": [
+        { "chance": 0.15, "text": "Billet gagnant : 2 000 € ! La méthode est scientifiquement validée.", "effects": { "money": 2000, "happiness": 10 } },
+        { "chance": 0.85, "text": "Un ticket de cinéma périmé et un mouchoir. Merci, la veste.", "effects": { "money": -30, "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0068",
+    "on": "event:base_0020",
+    "choice": 1,
+    "remember": ["dos_en_papier_bulle"],
+    "chance": 0.5,
+    "delay": [1, 4],
+    "text": "Ton dos, ignoré depuis les bruits de papier bulle, s'est bloqué pendant que tu ramassais une chaussette. Tu es resté{e} plié{e} vingt minutes à négocier avec elle.",
+    "choices": [
+      { "label": "Ostéo, enfin", "outcomes": [
+        { "text": "« Il fallait venir avant. » Ils disent tous ça. Il avait raison.", "effects": { "health": 4, "money": -90, "clearFlags": ["dos_en_papier_bulle"] } }
+      ]},
+      { "label": "Ignorer encore", "outcomes": [
+        { "chance": 0.6, "text": "Tu marches désormais en forme de point d'interrogation.", "effects": { "health": -6, "looks": -2 } },
+        { "chance": 0.4, "text": "Ton dos s'est débloqué tout seul. Il prépare sa vengeance.", "effects": { "health": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0069",
+    "on": "event:base_0020",
+    "choice": 0,
+    "chance": 0.35,
+    "delay": [1, 1],
+    "text": "Ton ostéo t'a envoyé une carte de vœux personnalisée : « À mon plus beau craquage de l'année. » Tu l'as mise sur le frigo.",
+    "effects": { "happiness": 2 }
+  },
+  {
+    "id": "rep_base_0070",
+    "on": "event:base_0021",
+    "choice": 0,
+    "outcome": 0,
+    "remember": ["motard_rouge"],
+    "chance": 0.5,
+    "delay": [1, 2],
+    "text": "Ta moto rouge de crise de la quarantaine prend la poussière au garage. Tu l'as sortie deux fois, dont une pour la photo.",
+    "choices": [
+      { "label": "La revendre", "outcomes": [
+        { "text": "Revendue 4 500 €. Tu as perdu 3 500 € et gagné de la place pour un vélo électrique.", "effects": { "money": 4500, "happiness": -2, "clearFlags": ["motard_rouge"] } }
+      ]},
+      { "label": "Partir en virée", "outcomes": [
+        { "chance": 0.6, "text": "Tu as roulé jusqu'à la mer et tu as pleuré sous ton casque. De joie, a priori.", "effects": { "happiness": 8 } },
+        { "chance": 0.4, "text": "Amende pour conduite trop lente sur la voie de gauche. Une première.", "effects": { "money": -135, "happiness": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0071",
+    "on": "event:rep_base_0070",
+    "choice": 1,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [2, 5],
+    "conditions": { "flags": ["motard_rouge"] },
+    "text": "Depuis ta virée à la mer, tu fais partie d'un club de motards de ton âge, les « Genoux Grinçants ». Vous roulez à 70 et vous vous arrêtez toutes les demi-heures.",
+    "effects": { "happiness": 6, "newFriend": true }
+  },
+  {
+    "id": "rep_base_0072",
+    "on": "event:base_0021",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.5,
+    "delay": [0, 1],
+    "text": "Tu te souviens de ta chute devant le magasin, le jour de la moto rouge ? La vidéo de surveillance circule : deux millions de vues. Le magasin s'en sert comme pub.",
+    "choices": [
+      { "label": "Réclamer ta part", "outcomes": [
+        { "chance": 0.3, "text": "Ils te donnent 500 € et un casque neuf. Avec ta tête dessus.", "effects": { "money": 500, "fame": 4, "happiness": 2 } },
+        { "chance": 0.7, "text": "Ils te donnent un porte-clés en forme de moto. Tombée.", "effects": { "fame": 4, "happiness": -3 } }
+      ]},
+      { "label": "Faire profil bas", "outcomes": [
+        { "text": "Tu portes des lunettes de soleil pendant trois mois. On te reconnaît quand même.", "effects": { "fame": 3, "happiness": -4 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0073",
+    "on": "event:base_0021",
+    "choice": 1,
+    "remember": ["bonnet_rouge"],
+    "chance": 0.35,
+    "delay": [2, 6],
+    "text": "Tu portes toujours le bonnet rouge de ta crise de la quarantaine. Il a traversé deux étés. Tes proches ont lancé une pétition.",
+    "effects": { "happiness": 2, "looks": -1 }
+  },
+  {
+    "id": "rep_base_0074",
+    "on": "event:base_0022",
+    "choice": 1,
+    "remember": ["a_combattu_un_dragon"],
+    "chance": 0.5,
+    "delay": [1, 2],
+    "text": "Les petits-voisins à qui tu as raconté ton combat contre le dragon ont fait un exposé à l'école. La maîtresse t'invite à venir « témoigner ».",
+    "choices": [
+      { "label": "Y aller avec une épée en carton", "outcomes": [
+        { "chance": 0.8, "text": "Triomphe. Une classe entière veut ton autographe et la recette pour tuer un dragon.", "effects": { "happiness": 8, "fame": 1 } },
+        { "chance": 0.2, "text": "Un élève demande la taille exacte du dragon. Tu réponds « moyenne ». Le doute s'installe.", "effects": { "happiness": -2 } }
+      ]},
+      { "label": "Avouer que c'était inventé", "outcomes": [
+        { "text": "Trois enfants pleurent. Un parent t'applaudit discrètement au fond.", "effects": { "karma": 3, "happiness": -3, "clearFlags": ["a_combattu_un_dragon"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0075",
+    "on": "event:rep_base_0074",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.35,
+    "delay": [5, 12],
+    "text": "Un des enfants de l'exposé sur le dragon est devenu écrivain. Son premier roman s'intitule « La Légende de {prenom} et du dragon ». Tu es en couverture, en beaucoup mieux.",
+    "effects": { "happiness": 8, "fame": 3 }
+  },
+  {
+    "id": "rep_base_0076",
+    "on": "event:base_0022",
+    "choice": 0,
+    "chance": 0.3,
+    "delay": [1, 2],
+    "text": "Les parents des petits-voisins te supplient de recommencer à raconter « comment c'était avant ». Leurs enfants n'avaient jamais dormi aussi bien.",
+    "effects": { "happiness": 3, "karma": 1 }
+  },
+  {
+    "id": "rep_base_0077",
+    "on": "event:base_0023",
+    "remember": ["inspecteur_des_travaux"],
+    "chance": 0.35,
+    "delay": [0, 1],
+    "text": "Le chef du chantier que tu commentais t'a offert un casque à ton nom. Il dit que tes conseils ont retardé les travaux de trois semaines, mais que l'ambiance était meilleure.",
+    "effects": { "happiness": 5 }
+  },
+  {
+    "id": "rep_base_0078",
+    "on": "event:base_0023",
+    "requires": { "minCounters": { "event:base_0023": 2 } },
+    "unique": true,
+    "chance": 0.6,
+    "delay": [1, 2],
+    "text": "À force de commenter tous les chantiers du quartier, la mairie t'a nommé{e} « référent travaux » bénévole. Tu as un gilet fluo officiel. Tu ne l'enlèves plus, même pour dormir.",
+    "effects": { "happiness": 6, "fame": 1 },
+    "setFlags": ["referent_travaux"]
+  },
+  {
+    "id": "rep_base_0079",
+    "on": "event:base_0024",
+    "chance": 0.4,
+    "delay": [0, 1],
+    "conditions": { "tags": ["children"] },
+    "text": "Ton message vocal de quatorze minutes a été remixé par un de tes petits-enfants. Il est numéro un d'une playlist dont tu ne comprends pas le nom.",
+    "effects": { "happiness": 4, "fame": 2 }
+  },
+  {
+    "id": "rep_base_0080",
+    "on": "event:base_0024",
+    "chance": 0.3,
+    "delay": [1, 2],
+    "text": "Depuis le vocal de quatorze minutes, la famille a créé un nouveau groupe de discussion. Sans toi. Tu l'as appris parce que quelqu'un y a transféré ton vocal.",
+    "choices": [
+      { "label": "Protester par un vocal de vingt minutes", "outcomes": [
+        { "text": "Le groupe a été dissous. Ils en ont créé un autre. Toujours sans toi.", "effects": { "happiness": -2, "relationships": { "child": -2 } } }
+      ]},
+      { "label": "Faire comme si de rien n'était", "outcomes": [
+        { "text": "Tu as gagné en dignité ce que tu as perdu en potins.", "effects": { "happiness": 1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0081",
+    "on": "event:base_0025",
+    "choice": 0,
+    "outcome": 0,
+    "remember": ["ami_des_ours"]
+  },
+  {
+    "id": "rep_base_0082",
+    "on": "event:base_0025",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [1, 3],
+    "text": "À ta visite suivante au zoo, l'ours câlin t'a reconnu{e}. Il s'est levé sur ses pattes arrière et t'a fait signe. Le gardien a démissionné le soir même.",
+    "effects": { "happiness": 6, "fame": 1 }
+  },
+  {
+    "id": "rep_base_0083",
+    "on": "event:rep_base_0082",
+    "chance": 0.5,
+    "delay": [2, 6],
+    "conditions": { "flags": ["ami_des_ours"] },
+    "text": "Le zoo te propose de parrainer officiellement l'ours qui t'avait fait un câlin : 50 € par mois et une plaque à ton nom.",
+    "choices": [
+      { "label": "Accepter", "outcomes": [
+        { "text": "La plaque dit « {prenom}, ami{e} des ours ». L'ours a mangé la plaque. C'est de l'affection.", "effects": { "money": -600, "happiness": 6, "karma": 3 } }
+      ]},
+      { "label": "Refuser", "outcomes": [
+        { "text": "L'ours a boudé tout l'hiver. Il hibernait, mais on sentait bien qu'il boudait.", "effects": { "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_base_0084",
+    "on": "event:base_0025",
+    "choice": 1,
+    "remember": ["phobie_des_ours"]
+  },
+  {
+    "id": "rep_base_0085",
+    "on": "event:base_0025",
+    "choice": 1,
+    "chance": 0.5,
+    "delay": [0, 1],
+    "conditions": { "flags": ["phobie_des_ours"] },
+    "text": "Depuis que tu as vu l'ours du zoo de trop près, tu en rêves toutes les nuits. Tu as jeté ton nounours d'enfance. Il n'avait rien fait.",
+    "effects": { "happiness": -3, "health": -1 }
+  },
+  {
+    "id": "rep_base_0086",
+    "on": "randonnee_animal",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "conditions": { "flags": ["phobie_des_ours"] },
+    "text": "En randonnée, tu as aperçu une grosse forme brune. Depuis l'ours du zoo, ton corps sait quoi faire : tu as couru quatre kilomètres. C'était une vache.",
+    "effects": { "health": 3, "happiness": -3 }
+  },
+  {
+    "id": "rep_base_0087",
+    "on": "randonnee_animal",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "unique": true,
+    "conditions": { "flags": ["ami_des_ours"] },
+    "text": "En randonnée, tu tombes nez à nez avec un ours sauvage. Par réflexe, depuis celui du zoo, tu ouvres grand les bras.",
+    "choices": [
+      { "label": "Le câliner", "outcomes": [
+        { "chance": 0.3, "text": "Il te rend ton câlin. Les ours se passent le mot, apparemment.", "effects": { "happiness": 12, "fame": 3 } },
+        { "chance": 0.7, "text": "Cet ours-là n'avait jamais entendu parler de toi.", "effects": { "death": "en confondant un ours sauvage avec un vieil ami" } }
+      ]},
+      { "label": "Reculer lentement", "outcomes": [
+        { "text": "Il te regarde partir, l'air déçu. Tous les ours ne se valent pas, et tu viens de l'apprendre.", "effects": { "happiness": -2, "clearFlags": ["ami_des_ours"] } }
+      ]}
+    ]
+  }
+]
