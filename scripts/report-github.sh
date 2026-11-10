@@ -3,6 +3,10 @@
 # pour que les fils de travail puissent lire le résultat sans accès à CircleCI.
 # Nécessite la variable d'environnement GH_TOKEN (token GitHub : Commit statuses + Contents en écriture).
 set -uo pipefail
+# Résumé des erreurs dans la console (lisible directement dans Codemagic).
+echo "===== ERREURS DE COMPILATION ====="
+grep -E "error:|JSON invalide|fatal" build.log 2>/dev/null | sort -u | head -80 || true
+echo "=================================="
 [ -z "${GH_TOKEN:-}" ] && { echo "GH_TOKEN absent, pas de rapport GitHub."; exit 0; }
 
 # Fonctionne sur CircleCI et sur Codemagic.
@@ -42,7 +46,7 @@ body = "**Compilation CircleCI : échec** ([log](%s))\n\n```\n%s\n```\n" % (
 print(json.dumps({"body": body[:60000]}))
 PY
   curl -sS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
-    "https://api.github.com/repos/$REPO/commits/$SHA/comments" -d @/tmp/comment.json > /dev/null
+    "https://api.github.com/repos/$REPO/commits/$SHA/comments" -d @/tmp/comment.json -o /dev/null -w "Commentaire GitHub : HTTP %{http_code}\n"
 fi
 echo "Rapport GitHub envoyé : $STATE"
 
