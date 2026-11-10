@@ -1,0 +1,191 @@
+[
+  {
+    "id": "parent_connait",
+    "nom": "Un parent qui « connaît quelqu'un »",
+    "description": "Ton parent a joué au foot avec le cousin d'un greffier en 1994.",
+    "condition": "parent",
+    "lienMin": 70,
+    "chance": 0.3,
+    "graviteMax": "delit",
+    "lienEchec": -8,
+    "succes": [
+      "{contact} a passé un coup de fil à « Jean-Paul ». Personne ne sait qui est Jean-Paul, mais « {infraction} » a disparu de ton casier.",
+      "{contact} a apporté une tarte aux pommes au tribunal. Le lendemain, « {infraction} » n'était plus là."
+    ],
+    "echecs": [
+      "Le « quelqu'un » que connaissait {contact} est à la retraite depuis 2003. Ambiance au repas de famille.",
+      "{contact} a appelé le mauvais numéro et a parlé dix minutes à un livreur de sushis. Rien n'a changé."
+    ]
+  },
+  {
+    "id": "ami_greffe",
+    "nom": "Un ami qui bosse au greffe",
+    "description": "Un pote fidèle, un tampon, un moment d'inattention.",
+    "condition": "ami",
+    "lienMin": 80,
+    "chance": 0.45,
+    "graviteMax": "delit",
+    "risque": 0.12,
+    "infractionRisque": "complicité de soustraction de documents publics",
+    "lienEchec": -15,
+    "succes": [
+      "{contact} a renversé « par accident » un café sur ton dossier. Le dossier n'a pas survécu. « {infraction} » non plus.",
+      "{contact} a tamponné ton dossier avec le tampon « classé ». Il n'aurait pas dû. Tu ne diras rien."
+    ],
+    "echecs": [
+      "{contact} a eu trop peur au dernier moment. Il t'en veut de lui avoir demandé.",
+      "{contact} s'est fait surprendre la main dans le classeur. Il a dit qu'il cherchait ses lunettes. Il ne t'adresse plus la parole."
+    ],
+    "scandales": [
+      "Une caméra a filmé {contact} en train de déchirer ton dossier. Vous voilà tous les deux au tribunal.",
+      "{contact} a tout avoué à sa cheffe dès le premier regard sévère. Tu es convoqué{e}."
+    ]
+  },
+  {
+    "id": "partenaire_famille",
+    "nom": "La belle-famille influente",
+    "description": "Les parents de ton ou ta partenaire dînent avec des gens importants le jeudi.",
+    "condition": "partenaire",
+    "lienMin": 75,
+    "chance": 0.4,
+    "graviteMax": "delit",
+    "lienEchec": -12,
+    "succes": [
+      "Les parents de {contact} ont glissé ton nom entre le fromage et le dessert. « {infraction} » a disparu. Tu leur dois désormais tous les repas de Noël.",
+      "Ta belle-famille a « parlé à quelqu'un ». « {infraction} » est effacé, et on te le rappellera jusqu'à la fin de tes jours."
+    ],
+    "echecs": [
+      "Les parents de {contact} ont découvert ton casier pendant le dîner. Ambiance glaciale, rien de fait.",
+      "Ton beau-père a refusé en disant « dans ma famille on assume ». {contact} est gêné{e} pour toi."
+    ]
+  },
+  {
+    "id": "fratrie_flic",
+    "nom": "Ton frère ou ta sœur dans la police",
+    "description": "La famille, c'est sacré. Le règlement aussi, en théorie.",
+    "condition": "fratrie",
+    "lienMin": 75,
+    "chance": 0.35,
+    "graviteMax": "contravention",
+    "lienEchec": -15,
+    "succes": [
+      "{contact} a « oublié » de transmettre ton dossier. « {infraction} » n'existe plus. Il ne faudra plus jamais en parler.",
+      "{contact} a soupiré très fort, puis a cliqué sur « supprimer ». « {infraction} » a disparu."
+    ],
+    "echecs": [
+      "{contact} t'a fait la morale pendant une heure, puis t'a raccroché au nez.",
+      "{contact} a refusé et l'a raconté à toute la famille pendant le barbecue."
+    ]
+  },
+  {
+    "id": "collegue_justice",
+    "nom": "Un collègue au palais de justice",
+    "description": "Quand on travaille dans le milieu, on finit par connaître les bonnes portes.",
+    "condition": "metier",
+    "metiers": ["avocat", "juge", "policier", "greffier", "notaire", "huissier", "gendarme", "procureur"],
+    "chance": 0.5,
+    "graviteMax": "crime",
+    "risque": 0.15,
+    "infractionRisque": "abus de fonction",
+    "succes": [
+      "Un collègue a glissé ton dossier sous une pile de 4 000 autres. Il n'en ressortira jamais. « {infraction} » est enterré.",
+      "Entre collègues, on se rend service. « {infraction} » a disparu de ton casier. Tu paies les croissants pendant un an."
+    ],
+    "echecs": [
+      "Ton collègue a fait semblant de ne pas comprendre. Il comprenait très bien.",
+      "Ton collègue a refusé net et te regarde maintenant bizarrement à la machine à café."
+    ],
+    "scandales": [
+      "L'inspection a trouvé ton dossier dans le tiroir à chaussettes de ton collègue. Vous êtes tous les deux dans la presse.",
+      "Ton collègue a été promu… en te dénonçant. Tu es poursuivi{e}."
+    ]
+  },
+  {
+    "id": "diner_depute",
+    "nom": "Un dîner avec un député",
+    "description": "Une table de restaurant gastronomique, une bouteille hors de prix, une conversation très vague.",
+    "condition": "riche",
+    "prix": 25000,
+    "chance": 0.55,
+    "graviteMax": "crime",
+    "risque": 0.2,
+    "infractionRisque": "trafic d'influence",
+    "succes": [
+      "Le député a commandé trois desserts et a dit « je vais voir ce que je peux faire ». Deux semaines plus tard, « {infraction} » a disparu.",
+      "Entre la poire et le fromage, ton casier s'est allégé de « {infraction} ». Le député, lui, s'est alourdi de deux kilos."
+    ],
+    "echecs": [
+      "Le député a mangé, bu, promis, puis a changé de numéro.",
+      "Le député a perdu son siège la semaine suivante. Ton dossier n'a pas bougé."
+    ],
+    "scandales": [
+      "Un journaliste était assis à la table d'à côté. Ton dîner fait la une : « Le menu à 25 000 € ».",
+      "Le député était sur écoute. Ta voix aussi, maintenant."
+    ]
+  },
+  {
+    "id": "don_fondation",
+    "nom": "Un « don » à la fondation du procureur",
+    "description": "Une fondation pour les dauphins. Le procureur n'a jamais vu de dauphin.",
+    "condition": "riche",
+    "prix": 80000,
+    "chance": 0.75,
+    "graviteMax": "crime",
+    "risque": 0.25,
+    "infractionRisque": "corruption de magistrat",
+    "succes": [
+      "Les dauphins te remercient. Le procureur aussi. « {infraction} » a disparu de ton casier.",
+      "Ton don a financé une piscine « pour les dauphins » chez le procureur. « {infraction} » est effacé."
+    ],
+    "echecs": [
+      "La fondation a encaissé ton chèque, puis a été dissoute. Les dauphins n'ont rien vu, toi non plus.",
+      "Le procureur a été muté avant d'avoir pu t'aider. Il garde le don, par principe."
+    ],
+    "scandales": [
+      "La fondation pour les dauphins faisait l'objet d'une enquête. Ton chèque est la pièce numéro 1.",
+      "Un dauphin aurait été plus discret que toi. Enquête ouverte pour corruption."
+    ]
+  },
+  {
+    "id": "pote_hacker",
+    "nom": "Un pote « informaticien »",
+    "description": "Il porte une capuche en plein été et dit « je suis dans le système » à chaque phrase.",
+    "condition": "ami",
+    "lienMin": 60,
+    "prix": 3000,
+    "chance": 0.25,
+    "graviteMax": "crime",
+    "risque": 0.35,
+    "infractionRisque": "piratage d'un fichier de l'État",
+    "lienEchec": -10,
+    "succes": [
+      "{contact} a tapé très vite sur un clavier lumineux en disant « je suis dans le système ». Et en effet, « {infraction} » a disparu.",
+      "{contact} a supprimé ton dossier, puis a supprimé la sauvegarde du dossier, puis a mangé une chips. « {infraction} » n'existe plus."
+    ],
+    "echecs": [
+      "{contact} a passé six heures à « hacker », puis t'a avoué qu'il avait juste réinstallé un jeu.",
+      "{contact} a piraté le site de la mairie de {ville} par erreur et a changé le menu de la cantine. Ton casier est intact."
+    ],
+    "scandales": [
+      "{contact} s'est connecté depuis ton wifi. Les gendarmes sont venus le lendemain matin. Chez toi.",
+      "{contact} a laissé son pseudo « TonCasierJeLeSupprime » dans les fichiers de l'État. Vous êtes vite retrouvés."
+    ]
+  },
+  {
+    "id": "voyante_maire",
+    "nom": "La voyante du maire",
+    "description": "Le maire ne prend aucune décision sans elle. Elle accepte les espèces et les cartes de fidélité.",
+    "condition": "aucune",
+    "prix": 1500,
+    "chance": 0.15,
+    "graviteMax": "contravention",
+    "succes": [
+      "La voyante a vu dans sa boule de cristal que « {infraction} » devait disparaître. Le maire a obéi.",
+      "La voyante a dit au maire que ton casier portait malheur. Il l'a fait effacer dans la journée."
+    ],
+    "echecs": [
+      "La voyante a regardé sa boule et a dit « non ». Elle a gardé les 1 500 €. Elle l'avait sûrement vu venir.",
+      "La voyante t'a prédit un grand voyage. Tu repars avec ton casier et un porte-clés."
+    ]
+  }
+]

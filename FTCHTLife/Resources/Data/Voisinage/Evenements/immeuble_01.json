@@ -1,0 +1,306 @@
+[
+  {
+    "id": "vsn_imm_0001",
+    "minAge": 18, "maxAge": 99, "weight": 3, "unique": false,
+    "conditions": { "tags": ["adult"] },
+    "quartier": { "logements": ["appartement"], "chezParents": false },
+    "cible": { "archetypes": ["etudiant_fetard", "colocation_dj"], "maxLien": 80 },
+    "text": "Mardi, 3 h 12. Chez {voisin}, {voisin_qui}, quelqu'un hurle « ENCORE UNE ! » au rythme des basses. Ton verre d'eau fait des vaguelettes sur la table de nuit.",
+    "choices": [
+      {
+        "label": "Taper au plafond avec un balai",
+        "outcomes": [
+          { "chance": 2, "text": "Les basses s'arrêtent, puis reprennent en rythme avec tes coups de balai. Tu fais maintenant partie du morceau.",
+            "effects": { "happiness": -3 }, "voisin": { "lien": -3, "compteurs": { "plaintes_bruit": 1 } } },
+          { "chance": 1, "text": "Silence immédiat. Le lendemain, un mot sous ta porte : « Désolé, on croyait que c'était l'ascenseur. »",
+            "effects": { "happiness": 3 }, "voisin": { "lien": 5 } }
+        ]
+      },
+      {
+        "label": "Monter rejoindre la fête",
+        "outcomes": [
+          { "chance": 2, "text": "Tu montes en pyjama pour râler. Tu redescends à 7 h, toujours en pyjama, avec six nouveaux amis dont tu ignores les prénoms.",
+            "effects": { "happiness": 7, "health": -5 }, "voisin": { "lien": 15, "souvenir": ["a_fait_la_fete_avec_toi"] } },
+          { "chance": 1, "text": "{voisin} t'ouvre, regarde ton pyjama à moutons et referme la porte : « Soirée privée. » Tu restes sur le palier, humilié{e}.",
+            "effects": { "happiness": -5 }, "voisin": { "lien": -5 } }
+        ]
+      },
+      {
+        "label": "Appeler la police",
+        "outcomes": [
+          { "chance": 2, "text": "Les policiers montent et repartent avec deux bières. {voisin} a vu ta fenêtre allumée. {Il} sait.",
+            "effects": { "happiness": 2 }, "voisin": { "lien": -20, "statut": "ennemi", "signaux": ["voisin_ennemi"], "compteurs": { "plaintes_bruit": 1 } } },
+          { "chance": 1, "text": "La police ne vient jamais. La fête, si : elle dure jusqu'à jeudi.",
+            "effects": { "happiness": -6, "health": -2 }, "voisin": { "compteurs": { "plaintes_bruit": 1 } } }
+        ]
+      },
+      {
+        "label": "Boules Quies et méditation",
+        "outcomes": [
+          { "text": "Tu dors trois heures. Ta rancune, elle, ne dort pas du tout.",
+            "effects": { "happiness": -2, "health": -2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vsn_imm_0002",
+    "minAge": 18, "maxAge": 99, "weight": 3, "unique": false,
+    "conditions": { "tags": ["adult"] },
+    "quartier": { "logements": ["appartement"], "chezParents": false },
+    "text": "Selon l'appli, ton colis est « livré, remis en main propre ». Dans le hall, tu trouves un carton vide, éventré, avec ton nom dessus et une trace de chaussure en prime.",
+    "choices": [
+      {
+        "label": "Coller un avis de recherche dans le hall",
+        "outcomes": [
+          { "chance": 2, "text": "Ton affiche « RENDEZ-MOI MON MIXEUR » est arrachée en deux heures. Quelqu'un a écrit « non » au crayon dessus.",
+            "effects": { "happiness": -4 }, "voisin": { "compteurs": { "colis_voles": 1 }, "signaux": ["colis_vole"], "ambiance": -3 } },
+          { "chance": 1, "text": "Le lendemain, ton mixeur réapparaît devant ta porte, avec un reste de soupe dedans. Le mystère s'épaissit, la soupe aussi.",
+            "effects": { "happiness": 2 }, "voisin": { "compteurs": { "colis_voles": 1 }, "signaux": ["colis_vole"] } }
+        ]
+      },
+      {
+        "label": "Réclamer au transporteur",
+        "outcomes": [
+          { "chance": 1, "text": "Après 47 minutes de musique d'attente, on te rembourse. Tu as maintenant la musique d'attente dans la tête pour toujours.",
+            "effects": { "money": 40, "happiness": -1 }, "voisin": { "compteurs": { "colis_voles": 1 }, "signaux": ["colis_vole"] } },
+          { "chance": 2, "text": "Le service client t'envoie la photo de preuve de livraison : un paillasson qui n'est pas le tien, dans une ville qui n'est pas la tienne.",
+            "effects": { "happiness": -5 }, "voisin": { "compteurs": { "colis_voles": 1 }, "signaux": ["colis_vole"] } }
+        ]
+      },
+      {
+        "label": "Renifler les paillassons pour enquêter",
+        "outcomes": [
+          { "text": "Ton enquête ne donne rien, sauf la réputation de « la personne qui renifle les paillassons ».",
+            "effects": { "smarts": 2, "happiness": -2 }, "voisin": { "compteurs": { "colis_voles": 1 }, "signaux": ["colis_vole"], "lienTous": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vsn_imm_0003",
+    "minAge": 20, "maxAge": 99, "weight": 3, "unique": false,
+    "conditions": { "tags": ["adult"] },
+    "quartier": { "logements": ["appartement"], "chezParents": false, "proprietaire": true },
+    "text": "Assemblée générale de copro, 19 h, salle polyvalente. Il est 23 h 40 et l'on débat toujours de la couleur des boîtes aux lettres. Le représentant du syndic {syndic} dort les yeux ouverts.",
+    "choices": [
+      {
+        "label": "Proposer de tout voter à main levée",
+        "outcomes": [
+          { "chance": 2, "text": "Tout est voté en six minutes, y compris des boîtes aux lettres « taupe consensuel » que personne ne voulait vraiment.",
+            "effects": { "happiness": 5 }, "voisin": { "travaux": "Boîtes aux lettres couleur « taupe consensuel »", "charges": 60, "lienTous": 3 } },
+          { "chance": 1, "text": "Ta proposition déclenche un débat de 50 minutes sur la validité juridique des mains levées.",
+            "effects": { "happiness": -5, "health": -2 } }
+        ]
+      },
+      {
+        "label": "S'éclipser discrètement",
+        "outcomes": [
+          { "text": "Tu pars. En ton absence, l'AG vote une fontaine décorative dans le local vélos. Ta quote-part arrive le mois prochain.",
+            "effects": { "happiness": 3 }, "voisin": { "travaux": "Fontaine décorative dans le local vélos", "charges": 350 } }
+        ]
+      },
+      {
+        "label": "Relancer le débat sur le tri sélectif",
+        "outcomes": [
+          { "text": "Erreur stratégique. Tu rentres chez toi à 2 h 15, avec un nouveau règlement de 4 pages sur les pots de yaourt.",
+            "effects": { "happiness": -6, "smarts": 2 }, "voisin": { "lienTous": -3, "ambiance": -2 } }
+        ]
+      },
+      {
+        "label": "Dormir sur ta chaise",
+        "outcomes": [
+          { "text": "Tu te réveilles élu{e} trésorier adjoint du comité « Embellissement de la cage d'escalier ». Personne ne t'a demandé ton avis.",
+            "effects": { "happiness": -2, "health": 2 }, "voisin": { "lienTous": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vsn_imm_0004",
+    "minAge": 18, "maxAge": 99, "weight": 3, "unique": false,
+    "conditions": { "tags": ["adult"] },
+    "quartier": { "logements": ["appartement"], "chezParents": false },
+    "cible": { "archetypes": ["retraite_curieux", "complotiste", "commere", "sportif_matinal", "prof_yoga", "dame_aux_chats", "influenceur", "voisin_mysterieux", "ancien_militaire"] },
+    "text": "L'ascenseur s'arrête entre le 3e et le 4e. Tu es coincé{e} avec {voisin}, {voisin_qui}. Le bouton d'alarme sonne dans le vide, comme depuis 1998.",
+    "choices": [
+      {
+        "label": "Faire la conversation",
+        "outcomes": [
+          { "chance": 2, "text": "Deux heures plus tard, tu connais toute la vie de {voisin}, y compris le prénom de son premier poisson rouge. Vous ressortez presque amis.",
+            "effects": { "happiness": 3 }, "voisin": { "lien": 15, "souvenir": ["coince_dans_ascenseur_avec_toi"] } },
+          { "chance": 1, "text": "{voisin} t'explique sa théorie sur les ascenseurs pendant 2 h 40. Tu envisages sérieusement de passer par la trappe du plafond.",
+            "effects": { "happiness": -5 }, "voisin": { "lien": 5, "souvenir": ["coince_dans_ascenseur_avec_toi"] } }
+        ]
+      },
+      {
+        "label": "Forcer les portes",
+        "outcomes": [
+          { "chance": 1, "text": "Les portes cèdent. Tu sors à quatre pattes sous les applaudissements du 4e. Tu es un héros de palier.",
+            "effects": { "happiness": 6, "health": -2 }, "voisin": { "lien": 10, "lienTous": 4 } },
+          { "chance": 2, "text": "Les portes ne bougent pas. Ton dos, si. {voisin} filme toute la scène pour « les assurances ».",
+            "effects": { "health": -5, "happiness": -3 }, "voisin": { "lien": -3 } }
+        ]
+      },
+      {
+        "label": "Paniquer",
+        "outcomes": [
+          { "text": "Tu hyperventiles. {voisin} te fait respirer dans un sac de pain et te tient la main sans rien dire. Ce silence-là, tu ne l'oublieras pas.",
+            "effects": { "happiness": -3 }, "voisin": { "lien": 10, "souvenir": ["coince_dans_ascenseur_avec_toi"] } }
+        ]
+      },
+      {
+        "label": "Fixer le plafond en silence",
+        "outcomes": [
+          { "text": "Deux heures de silence absolu. Quand les portes s'ouvrent, vous partez chacun de votre côté sans un mot. Vous ne vous direz plus jamais bonjour.",
+            "effects": { "happiness": -2 }, "voisin": { "lien": -8 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vsn_imm_0005",
+    "minAge": 18, "maxAge": 99, "weight": 2, "unique": false,
+    "conditions": { "tags": ["adult"] },
+    "quartier": { "logements": ["appartement"], "chezParents": false },
+    "text": "« Coupure d'eau générale de 8 h à 18 h », annonce un papier scotché à l'envers dans le hall. À 18 h, rien. À 22 h, l'immeuble sent la solidarité et un peu la transpiration.",
+    "choices": [
+      {
+        "label": "Douche à l'eau minérale",
+        "outcomes": [
+          { "text": "Six bouteilles d'eau de source pour te laver. Tu n'as jamais été aussi propre, ni aussi pauvre en eau gazeuse.",
+            "effects": { "money": -12, "happiness": -2 } }
+        ]
+      },
+      {
+        "label": "Aller à la piscine municipale",
+        "outcomes": [
+          { "chance": 2, "text": "Douche chaude, 20 longueurs, et tu croises la moitié de l'immeuble dans les vestiaires. Moment de complicité en serviette.",
+            "effects": { "health": 4, "happiness": 3 }, "voisin": { "lienTous": 3, "ambiance": 3 } },
+          { "chance": 1, "text": "La piscine est fermée. Pour cause de coupure d'eau.",
+            "effects": { "happiness": -4 } }
+        ]
+      },
+      {
+        "label": "Récupérer l'eau de pluie du balcon",
+        "outcomes": [
+          { "text": "Tu te laves avec une bassine d'eau de pluie et un gant de toilette. Quelque part, un ancêtre est fier de toi.",
+            "effects": { "happiness": 1, "health": -1, "karma": 2 } }
+        ]
+      },
+      {
+        "label": "Organiser une chaîne de bidons",
+        "outcomes": [
+          { "text": "Tu montes une noria de bidons depuis la fontaine du square. Les voisins t'appellent « le préfet de l'eau » pendant un an.",
+            "effects": { "health": 2, "happiness": 4 }, "voisin": { "lienTous": 6, "ambiance": 6 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vsn_imm_0006",
+    "minAge": 18, "maxAge": 99, "weight": 3, "unique": false,
+    "conditions": { "tags": ["adult"] },
+    "quartier": { "logements": ["appartement"], "chezParents": false },
+    "cible": { "archetypes": ["bricoleur_dimanche"] },
+    "text": "Dimanche, 8 h 02. La perceuse de {voisin}, {voisin_qui}, attaque ton mur. Vu le bruit, {il} perce directement jusqu'à ton oreiller.",
+    "choices": [
+      {
+        "label": "Sonner chez {lui} en peignoir",
+        "outcomes": [
+          { "chance": 2, "text": "{voisin} t'ouvre, ravi{ve} d'avoir du public, et te fait visiter son chantier de 2011 « bientôt fini ». Tu repars avec un niveau à bulle prêté.",
+            "effects": { "happiness": 1 }, "voisin": { "lien": 8, "compteurs": { "plaintes_bruit": 1 } } },
+          { "chance": 1, "text": "{voisin} n'entend pas la sonnette. À cause de la perceuse.",
+            "effects": { "happiness": -4 }, "voisin": { "compteurs": { "plaintes_bruit": 1 } } }
+        ]
+      },
+      {
+        "label": "Répliquer avec ton aspirateur contre le mur",
+        "outcomes": [
+          { "text": "Duel acoustique. À 9 h, l'immeuble entier est réveillé et vous déteste tous les deux.",
+            "effects": { "happiness": 3 }, "voisin": { "lien": -10, "lienTous": -4, "ambiance": -4 } }
+        ]
+      },
+      {
+        "label": "Couper son disjoncteur au compteur du palier",
+        "outcomes": [
+          { "chance": 2, "text": "Silence. Puis un juron. Puis le silence revient. Personne ne saura jamais. Sauf ton karma.",
+            "effects": { "happiness": 5, "karma": -4 } },
+          { "chance": 1, "text": "Mauvais disjoncteur : tu viens de couper le congélateur de la voisine du 2e. {voisin} reprend la perceuse dans la joie.",
+            "effects": { "happiness": -3, "karma": -3 }, "voisin": { "lienTous": -3 } }
+        ]
+      },
+      {
+        "label": "Te lever et en profiter pour faire ton ménage",
+        "outcomes": [
+          { "text": "Ton appartement n'a jamais été aussi propre. Tu es un peu déçu{e} de toi.",
+            "effects": { "happiness": 2, "health": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vsn_imm_0007",
+    "minAge": 18, "maxAge": 99, "weight": 2, "unique": false,
+    "conditions": { "tags": ["adult"] },
+    "quartier": { "logements": ["appartement"], "chezParents": false },
+    "cible": { "archetypes": ["famille_bruyante", "etudiant_fetard", "bricoleur_dimanche", "musicien_rate", "dame_aux_chats", "voisin_mysterieux", "influenceur", "colocation_dj"] },
+    "text": "Une auréole brune grandit au plafond de ta salle de bain. Elle a la forme de la Corse, puis de l'Australie. Juste au-dessus, c'est chez {voisin}, {voisin_qui}.",
+    "choices": [
+      {
+        "label": "Monter avec un constat amiable",
+        "outcomes": [
+          { "chance": 2, "text": "{voisin} est désolé{ve} : sa baignoire déborde depuis mardi. Les assurances se renvoient la balle, mais tu finis remboursé{e}.",
+            "effects": { "money": 150, "happiness": -2 }, "voisin": { "lien": 5, "signaux": ["degat_des_eaux"] } },
+          { "chance": 1, "text": "{voisin} refuse de signer : « Chez moi tout est sec. » Derrière {lui}, un canard en plastique flotte dans le couloir.",
+            "effects": { "money": -300, "happiness": -5 }, "voisin": { "lien": -15, "signaux": ["degat_des_eaux"] } }
+        ]
+      },
+      {
+        "label": "Installer un seau et attendre",
+        "outcomes": [
+          { "text": "Le seau devient une bassine, la bassine une baignoire. Un champignon pousse au-dessus du miroir. Tu l'as appelé Gérard.",
+            "effects": { "health": -4, "happiness": -4 } }
+        ]
+      },
+      {
+        "label": "Tambouriner à sa porte en criant « INONDATION »",
+        "outcomes": [
+          { "text": "Tout l'étage sort sur le palier en pyjama. {voisin} coupe l'eau, humilié{ve}, sous les regards de tout le monde.",
+            "effects": { "happiness": 2 }, "voisin": { "lien": -12, "ambiance": -2, "signaux": ["degat_des_eaux"] } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vsn_imm_0008",
+    "minAge": 6, "maxAge": 11, "weight": 3, "unique": false,
+    "quartier": { "logements": ["appartement"], "chezParents": true },
+    "text": "En rentrant de l'école, tu contemples le panneau de l'interphone : 24 boutons. 24 adultes qui ne se doutent de rien.",
+    "choices": [
+      {
+        "label": "Appuyer sur tous les boutons",
+        "outcomes": [
+          { "chance": 2, "text": "24 voix d'adultes fâchés crient « ALLÔ ? » en même temps. C'est le plus beau concert de ta vie. Tu t'enfuis en riant.",
+            "effects": { "happiness": 8, "karma": -2 }, "voisin": { "ambiance": -2 } },
+          { "chance": 1, "text": "Tes parents rentraient des courses juste derrière toi. Tu passes le week-end à écrire « Je ne joue pas avec l'interphone » cent fois.",
+            "effects": { "happiness": -4, "smarts": 1, "relationships": { "parent": -3 } } }
+        ]
+      },
+      {
+        "label": "Imiter un livreur de pizza",
+        "outcomes": [
+          { "text": "« Pizza pour M. Personne ! » Quelqu'un t'ouvre. Tu n'as pas de pizza. Tu restes planté{e} dans le hall, gêné{e} par ton propre génie.",
+            "effects": { "happiness": 4, "smarts": 2 } }
+        ]
+      },
+      {
+        "label": "Rentrer sagement",
+        "outcomes": [
+          { "text": "Tu rentres sans rien toucher. Tes parents ne remarquent rien. Être sage, c'est ingrat.",
+            "effects": { "karma": 2, "happiness": -1 } }
+        ]
+      }
+    ]
+  }
+]

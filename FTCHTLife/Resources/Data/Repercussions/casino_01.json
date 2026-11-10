@@ -1,0 +1,3416 @@
+[
+  {
+    "id": "rep_cas_0001",
+    "on": "casino_gain",
+    "remember": [
+      "joueur_du_casino"
+    ],
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Depuis ton petit gain au casino, tu racontes à tout le monde que tu as « une méthode ». Résultat : c'est toi qui paies toutes les tournées.",
+    "effects": {
+      "money": -150,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_cas_0002",
+    "on": "casino_gain",
+    "chance": 0.4,
+    "delay": [
+      1,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_gain": 3
+      }
+    },
+    "unique": true,
+    "text": "L'année d'après, le casino t'envoie un cadeau de fidélité : un peignoir brodé à ton nom. Ton nom est mal orthographié, mais le peignoir est très doux.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_cas_0003",
+    "on": "casino_gain",
+    "chance": 0.6,
+    "delay": [
+      1,
+      2
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_gain": 5
+      }
+    },
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "text": "Tu passes tellement de temps au casino que le directeur te propose la carte de membre VIP. Elle est dorée, lourde, et sent légèrement le cigare.",
+    "choices": [
+      {
+        "label": "Accepter la carte VIP",
+        "outcomes": [
+          {
+            "text": "Tu as désormais ta place réservée à la roulette et un serveur qui connaît ta boisson préférée. Ta famille, elle, ne connaît plus ta tête.",
+            "effects": {
+              "happiness": 6,
+              "setFlags": [
+                "membre_vip_casino"
+              ],
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu refuses. Le directeur range la carte avec la dignité d'un homme qui vient de se faire larguer.",
+            "effects": {
+              "karma": 2,
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu refuses. Il te l'envoie quand même par la poste, avec une lettre qui commence par « On sait que tu reviendras ».",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0004",
+    "on": "event:rep_cas_0003",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "membre_vip_casino"
+      ]
+    },
+    "patience": 2,
+    "text": "Avantage de ta carte VIP : pour ton anniversaire, le casino t'envoie une limousine. Elle ne peut t'emmener qu'à un seul endroit, devine lequel.",
+    "choices": [
+      {
+        "label": "Monter dans la limousine",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Soirée magique : tu repars avec 2 500 € et un chauffeur qui te tutoie.",
+            "effects": {
+              "money": 2500,
+              "happiness": 7
+            }
+          },
+          {
+            "chance": 0.55,
+            "text": "Tu as perdu 4 000 €. Le chauffeur t'a raccompagné{e} en silence, comme un corbillard de luxe.",
+            "effects": {
+              "money": -4000,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fêter ton anniversaire en famille",
+        "outcomes": [
+          {
+            "text": "La limousine est restée garée devant chez toi toute la soirée. Les voisins pensent que tu es devenu{e} quelqu'un.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 3
+              },
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0005",
+    "on": "casino_gain",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "chaussettes_porte_bonheur"
+      ]
+    },
+    "unique": true,
+    "text": "Tu as remarqué que tu portais tes chaussettes vertes le soir où tu as gagné au casino. Coïncidence ? Ton cerveau dit oui. Ton cœur dit « non, jamais ».",
+    "choices": [
+      {
+        "label": "Ne plus jamais les laver",
+        "outcomes": [
+          {
+            "text": "Ce sont désormais tes chaussettes porte-bonheur. Elles ne quittent plus tes pieds les soirs de jeu. Les croupiers non plus ne te quittent plus des yeux, par méfiance olfactive.",
+            "effects": {
+              "happiness": 3,
+              "looks": -2,
+              "setFlags": [
+                "chaussettes_porte_bonheur"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les laver, tu es une personne rationnelle",
+        "outcomes": [
+          {
+            "text": "Tu les as lavées. Tu as perdu 30 € au jeu à grattage la semaine suivante. Tu ne diras jamais à personne ce que tu en as conclu.",
+            "effects": {
+              "money": -30,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0006",
+    "on": "event:rep_cas_0005",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "chaussettes_porte_bonheur"
+      ]
+    },
+    "text": "Tu portes toujours les chaussettes porte-bonheur du casino, des années plus tard. Elles ont désormais plus de trous que de tissu, et une odeur qui a sa propre adresse postale.",
+    "choices": [
+      {
+        "label": "Les faire encadrer",
+        "outcomes": [
+          {
+            "text": "Elles trônent au-dessus de la cheminée. Les invités pensent que c'est de l'art contemporain. Tu les laisses penser.",
+            "effects": {
+              "happiness": 4,
+              "money": -90,
+              "clearFlags": [
+                "chaussettes_porte_bonheur"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les enterrer dans le jardin",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Petite cérémonie, trois personnes, une minute de silence. Tu as eu du mal à retenir tes larmes.",
+            "effects": {
+              "happiness": -2,
+              "clearFlags": [
+                "chaussettes_porte_bonheur"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "En creusant, tu as trouvé une pièce de 2 €. Les chaussettes ont fait un dernier miracle.",
+            "effects": {
+              "money": 2,
+              "happiness": 5,
+              "clearFlags": [
+                "chaussettes_porte_bonheur"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0007",
+    "on": "casino_perte",
+    "remember": [
+      "joueur_du_casino"
+    ],
+    "chance": 0.35,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Après ta défaite au casino, le distributeur de billets dans le hall t'a affiché « Courage ». Tu ne savais pas qu'il pouvait faire ça.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cas_0008",
+    "on": "casino_perte",
+    "chance": 0.7,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_perte": 3
+      },
+      "excludeFlags": [
+        "sevre_du_jeu",
+        "accro_au_jeu"
+      ]
+    },
+    "conditions": {
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "unique": true,
+    "text": "Tu remarques que tu connais le prénom de tous les croupiers, mais plus celui de ton cousin. Ta banque, elle, connaît très bien le tien.",
+    "choices": [
+      {
+        "label": "Faire une pause avec le casino",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu as tenu. Tu as redécouvert le dimanche après-midi, une invention fascinante.",
+            "effects": {
+              "happiness": 3,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as tenu onze jours. Le douzième, tu « passais juste devant ».",
+            "effects": {
+              "happiness": -2,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Non, la chance va tourner",
+        "outcomes": [
+          {
+            "text": "La chance a tourné. Dans le mauvais sens, comme d'habitude. Mais tu y crois encore plus fort.",
+            "effects": {
+              "money": -800,
+              "happiness": -3,
+              "setFlags": [
+                "accro_au_jeu"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0009",
+    "on": "casino_perte",
+    "remember": [
+      "accro_au_jeu"
+    ],
+    "chance": 0.8,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_perte": 5
+      },
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "conditions": {
+      "tags": [
+        "friend"
+      ],
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "patience": 2,
+    "unique": true,
+    "text": "Après ta cinquième grosse perte au casino, {ami} te traîne de force à un groupe de parole pour joueurs. Il y a du café tiède et des chaises en cercle.",
+    "choices": [
+      {
+        "label": "Y aller vraiment",
+        "outcomes": [
+          {
+            "text": "Tu t'es levé{e} et tu as dit ton prénom. Tout le monde a applaudi. Ça faisait longtemps qu'on ne t'avait pas applaudi sans que tu aies misé quelque chose.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, tu « gères »",
+        "outcomes": [
+          {
+            "text": "Tu gères tellement bien que tu as perdu 1 200 € la semaine suivante. {ami} ne te propose plus rien.",
+            "effects": {
+              "money": -1200,
+              "happiness": -4,
+              "relationships": {
+                "friend": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parier sur la durée de la réunion",
+        "outcomes": [
+          {
+            "text": "Tu as pris les paris sur la durée de la réunion. Tu as gagné. Tu as été exclu{e} du groupe en trente-huit minutes, un record.",
+            "effects": {
+              "money": 20,
+              "happiness": 1,
+              "karma": -3,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0010",
+    "on": "event:rep_cas_0009",
+    "choice": 0,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "text": "Six mois au groupe de parole. Ton parrain s'appelle Bernard, il n'a pas joué depuis 1997 et il compte encore les jours sur ses doigts, ce qui prend du temps.",
+    "choices": [
+      {
+        "label": "Continuer, une semaine après l'autre",
+        "outcomes": [
+          {
+            "text": "Tu continues. Tu commences à penser à autre chose qu'aux machines. Tu as même un loisir : le macramé. C'est horrible, mais c'est gratuit.",
+            "effects": {
+              "happiness": 4,
+              "health": 2,
+              "money": 500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parier avec Bernard sur qui craquera en premier",
+        "outcomes": [
+          {
+            "text": "Vous avez craqué tous les deux le même soir, au même casino, à la même table. Bernard t'en veut beaucoup.",
+            "effects": {
+              "money": -1500,
+              "happiness": -6,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0011",
+    "on": "event:rep_cas_0010",
+    "choice": 0,
+    "delay": [
+      1,
+      2
+    ],
+    "setFlags": [
+      "sevre_du_jeu"
+    ],
+    "clearFlags": [
+      "accro_au_jeu"
+    ],
+    "text": "Un an sans miser un centime depuis le groupe de parole. Bernard t'offre un porte-clés « 1 an ». Ton compte en banque t'offre enfin un solde positif.",
+    "choices": [
+      {
+        "label": "Fêter ça avec un gâteau",
+        "outcomes": [
+          {
+            "text": "Tu as mangé un gâteau entier, seul{e}, à 23 h. C'est une addiction beaucoup moins chère.",
+            "effects": {
+              "happiness": 7,
+              "health": -1,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fêter ça avec un petit ticket à gratter",
+        "outcomes": [
+          {
+            "text": "C'était « juste pour fêter ». Tu as gratté quarante tickets. Bernard a pleuré au téléphone.",
+            "effects": {
+              "money": -120,
+              "happiness": -6,
+              "clearFlags": [
+                "sevre_du_jeu"
+              ],
+              "setFlags": [
+                "accro_au_jeu"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0012",
+    "on": "casino_perte",
+    "remember": [
+      "accro_au_jeu"
+    ],
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_perte": 10
+      },
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "text": "Dixième grosse perte au casino. Tu as vendu la télé, le canapé et le grille-pain. Tu manges tes tartines froides, devant le mur, en pensant à la roulette.",
+    "choices": [
+      {
+        "label": "Entrer en cure de sevrage",
+        "outcomes": [
+          {
+            "text": "Tu as signé l'admission. La clinique est calme, sans horloge, comme un casino, mais sans le plaisir.",
+            "effects": {
+              "happiness": -3,
+              "health": 3,
+              "money": -2000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Hypothéquer ce qui reste pour te refaire",
+        "outcomes": [
+          {
+            "chance": 0.15,
+            "text": "Miracle : tu as tout regagné en une nuit. Tu as aussitôt tout reperdu en une autre nuit. L'équilibre est rétabli.",
+            "effects": {
+              "happiness": -4,
+              "stress": 10
+            }
+          },
+          {
+            "chance": 0.85,
+            "text": "Tu as tout perdu. Tu dors dans ta voiture. Ta voiture, elle, appartient à la banque depuis mardi.",
+            "effects": {
+              "money": -15000,
+              "happiness": -10,
+              "health": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0013",
+    "on": "event:rep_cas_0012",
+    "choice": 0,
+    "delay": [
+      1,
+      1
+    ],
+    "setFlags": [
+      "sevre_du_jeu"
+    ],
+    "clearFlags": [
+      "accro_au_jeu"
+    ],
+    "text": "Sortie de cure, un an après. Tu ne sursautes plus quand une machine fait « ding ». Tu as même pu entrer dans une boulangerie sans demander la cote du croissant.",
+    "effects": {
+      "happiness": 8,
+      "health": 5,
+      "karma": 3
+    }
+  },
+  {
+    "id": "rep_cas_0014",
+    "on": "casino_perte",
+    "requires": {
+      "flags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "forget": [
+      "sevre_du_jeu"
+    ],
+    "remember": [
+      "accro_au_jeu"
+    ],
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Rechute. Tu t'étais juré{e} de ne plus jamais remettre les pieds au casino, et tu as tenu parole : tu y es entré{e} en marchant sur les mains. Tu as tout perdu quand même.",
+    "effects": {
+      "happiness": -8,
+      "karma": -2,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_cas_0015",
+    "on": "event:rep_cas_0011",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "flags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "patience": 3,
+    "text": "Ça fait plus de dix ans que tu n'as pas misé un centime. Au groupe de parole, c'est désormais toi qu'on appelle parrain. Tu comptes les jours sur ta calculatrice, comme une personne moderne.",
+    "effects": {
+      "happiness": 10,
+      "karma": 6,
+      "health": 3
+    }
+  },
+  {
+    "id": "rep_cas_0016",
+    "on": "casino_perte",
+    "requires": {
+      "flags": [
+        "accro_au_jeu"
+      ]
+    },
+    "chance": 0.4,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "accro_au_jeu"
+      ]
+    },
+    "text": "{partenaire} a trouvé le relevé bancaire que tu cachais dans le congélateur, derrière les petits pois. Il est très, très rouge. Le relevé, et le visage de {partenaire}.",
+    "choices": [
+      {
+        "label": "Tout avouer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Longue discussion, larmes, promesses. {partenaire} gère désormais tes cartes bancaires. Tu as droit à 10 € d'argent de poche par semaine.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "partner": 2
+              },
+              "karma": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{partenaire} a fait une valise. Pas la sienne : la tienne.",
+            "effects": {
+              "happiness": -10,
+              "relationships": {
+                "partner": -20
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est une erreur de la banque",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "{partenaire} t'a cru{e}. Tu ne sais pas si c'est de l'amour ou de la fatigue.",
+            "effects": {
+              "karma": -4,
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "{partenaire} a appelé la banque devant toi, en haut-parleur. La conseillère t'a salué{e} par ton prénom, avec un soupir.",
+            "effects": {
+              "relationships": {
+                "partner": -12
+              },
+              "happiness": -6,
+              "karma": -3,
+              "setFlags": [
+                "menteur_notoire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0017",
+    "on": "casino_perte",
+    "requires": {
+      "flags": [
+        "accro_au_jeu"
+      ]
+    },
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ],
+      "flags": [
+        "accro_au_jeu"
+      ]
+    },
+    "unique": true,
+    "text": "Pour te refaire au casino, tu as « emprunté » la tirelire de ton enfant. Ton enfant a exigé un reçu, des intérêts et la garde partagée du chat.",
+    "effects": {
+      "money": 45,
+      "karma": -6,
+      "happiness": -4,
+      "relationships": {
+        "child": -8
+      }
+    }
+  },
+  {
+    "id": "rep_cas_0018",
+    "on": "casino_perte",
+    "chance": 0.3,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_perte": 2
+      },
+      "excludeFlags": [
+        "dette_louche"
+      ]
+    },
+    "conditions": {
+      "tags": [
+        "adult"
+      ],
+      "excludeFlags": [
+        "dette_louche"
+      ]
+    },
+    "unique": true,
+    "text": "À la sortie du casino, un homme en mocassins blancs qui se présente comme « Tonton Gégé » te propose de te prêter 3 000 € « entre amis ». Tu ne l'as jamais vu de ta vie.",
+    "choices": [
+      {
+        "label": "Accepter l'argent de Gégé",
+        "outcomes": [
+          {
+            "text": "Gégé te tend une enveloppe et te tapote la joue. Il te dit que tu as « un visage dont on se souvient ». Ce n'est pas un compliment.",
+            "effects": {
+              "money": 3000,
+              "happiness": 2,
+              "setFlags": [
+                "dette_louche"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et rentrer en courant",
+        "outcomes": [
+          {
+            "text": "Tu as couru jusqu'à chez toi. Gégé n'a pas couru. Gégé ne court jamais, il attend.",
+            "effects": {
+              "karma": 2,
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0019",
+    "on": "event:rep_cas_0018",
+    "choice": 0,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ]
+    },
+    "text": "Gégé est revenu, un an après son « prêt entre amis ». Avec les intérêts, tu lui dois 7 000 €. Il a apporté un ami silencieux qu'il appelle « Le Frigo ».",
+    "choices": [
+      {
+        "label": "Rembourser, coûte que coûte",
+        "outcomes": [
+          {
+            "text": "Tu as vidé ton livret, vendu ta guitare et ta dignité. Gégé t'a fait un câlin. C'était pire que tout le reste.",
+            "effects": {
+              "money": -7000,
+              "happiness": -5,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir à l'autre bout du pays",
+        "outcomes": [
+          {
+            "text": "Tu as tout quitté en une nuit. Nouvelle ville, nouvelle coupe de cheveux, mêmes cauchemars de mocassins blancs.",
+            "effects": {
+              "happiness": -6,
+              "stress": 10,
+              "relationships": {
+                "friend": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de travailler pour Gégé",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu passes six mois à livrer des « colis » dont tu ne veux pas connaître le contenu. Dette effacée, conscience moins.",
+            "effects": {
+              "karma": -8,
+              "clearFlags": [
+                "dette_louche"
+              ],
+              "stress": 8
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Gégé t'a embauché{e} comme comptable. Tu es si doué{e} qu'il t'a augmenté{e}. Ta famille pense que tu travailles dans « l'import-export ».",
+            "effects": {
+              "karma": -5,
+              "money": 2000,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0020",
+    "on": "event:rep_cas_0019",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ]
+    },
+    "patience": 3,
+    "text": "Des années après ta fuite, quelqu'un frappe chez toi. C'est Gégé, voûté, en mocassins usés. Il t'a retrouvé{e}. Il ne se souvient plus du tout du montant.",
+    "choices": [
+      {
+        "label": "Lui proposer un café",
+        "outcomes": [
+          {
+            "text": "Vous avez parlé trois heures. Gégé est veuf, seul et passionné d'orchidées. Vous êtes amis maintenant. La dette ? Quelle dette ?",
+            "effects": {
+              "happiness": 6,
+              "karma": 5,
+              "newFriend": true,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui dire que c'est lui qui te doit de l'argent",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Gégé, confus, t'a donné 200 € et s'est excusé. Tu as honte. Un peu. Pas assez pour rendre les 200 €.",
+            "effects": {
+              "money": 200,
+              "karma": -5,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Gégé a soudain retrouvé la mémoire. Et Le Frigo, qui attendait dans la voiture, aussi.",
+            "effects": {
+              "money": -9000,
+              "health": -8,
+              "happiness": -6,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0021",
+    "on": "casino_perte",
+    "chance": 0.3,
+    "delay": [
+      1,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_perte": 4
+      }
+    },
+    "unique": true,
+    "text": "Pour te remercier de ta fidélité (et de tes pertes), le casino t'envoie un panier garni : du foie gras, du champagne, et un mot du directeur qui dit « À très vite ». Ça sonne comme une menace très polie.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_cas_0022",
+    "on": "casino_perte",
+    "chance": 0.25,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "poor"
+      ]
+    },
+    "text": "Ta perte au casino t'a laissé{e} à sec. Ce mois-ci, tu as mangé des pâtes au beurre. Sans beurre.",
+    "effects": {
+      "happiness": -3,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_cas_0023",
+    "on": "casino_jackpot",
+    "remember": [
+      "joueur_du_casino"
+    ],
+    "chance": 0.7,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Ton jackpot est passé dans le journal local. Dans la semaine, onze cousins dont tu ignorais l'existence sont venus sonner chez toi. L'un d'eux s'appelle aussi {prenom}, ce qui est louche.",
+    "choices": [
+      {
+        "label": "Donner 2 000 € à chacun",
+        "outcomes": [
+          {
+            "text": "Les cousins sont repartis ravis. Ils t'ont promis de revenir à Noël. Tous les Noëls. Avec leurs propres cousins.",
+            "effects": {
+              "money": -22000,
+              "karma": 6,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer la porte et éteindre la lumière",
+        "outcomes": [
+          {
+            "text": "Ils ont campé deux jours dans ton jardin, puis sont partis en emportant tes nains de jardin. Le prix de la tranquillité.",
+            "effects": {
+              "karma": -2,
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Leur faire passer un quiz sur la famille",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Aucun ne connaissait le deuxième prénom de ta grand-mère. Tous éliminés. Tu es ravi{e} de ton idée.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le faux {prenom} a eu 20/20. Tu as dû l'adopter comme cousin. Il dort dans ta chambre d'amis depuis.",
+            "effects": {
+              "money": -3000,
+              "happiness": -2,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0024",
+    "on": "casino_jackpot",
+    "chance": 0.6,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Depuis ton jackpot, {ami} t'appelle tous les jours. Aujourd'hui, c'est pour te demander 10 000 € pour lancer un food truck de raclette sur la plage.",
+    "choices": [
+      {
+        "label": "Prêter l'argent",
+        "outcomes": [
+          {
+            "text": "{ami} t'a serré dans ses bras et promis de te rembourser « dès la première saison ». Tu as entendu ça dans ses bras, donc ça compte.",
+            "effects": {
+              "money": -10000,
+              "relationships": {
+                "friend": 8
+              },
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "{ami} a dit qu'il n'y avait aucun problème. Puis {ami} t'a retiré{e} de tous ses groupes de discussion.",
+            "effects": {
+              "relationships": {
+                "friend": -10
+              },
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0025",
+    "on": "event:rep_cas_0024",
+    "choice": 0,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "patience": 2,
+    "text": "Le food truck de raclette sur la plage, financé grâce à ton jackpot, a fêté sa dernière saison. Il fait 34 degrés à l'ombre et {ami} vend du fromage fondu.",
+    "choices": [
+      {
+        "label": "Demander à être remboursé{e}",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Surprise : le concept a cartonné auprès des touristes allemands. {ami} t'a rendu 15 000 €. Tu ne comprends rien au monde.",
+            "effects": {
+              "money": 15000,
+              "happiness": 8,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "{ami} t'a remboursé en nature : 40 kilos de raclette. Ton frigo a déposé plainte.",
+            "effects": {
+              "happiness": -3,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Effacer la dette, au nom de l'amitié",
+        "outcomes": [
+          {
+            "text": "{ami} a pleuré dans ton cou. Ça sentait le fromage, mais c'était sincère.",
+            "effects": {
+              "karma": 6,
+              "relationships": {
+                "friend": 10
+              },
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0026",
+    "on": "casino_jackpot",
+    "chance": 0.6,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Un an après ton jackpot, ta conseillère bancaire t'appelle, inquiète : il ne reste presque rien. Tu as acheté un jet-ski, un perroquet, une montre en or et une deuxième montre en or pour la première.",
+    "choices": [
+      {
+        "label": "Placer le reste sagement",
+        "outcomes": [
+          {
+            "text": "Tu as placé les 4 000 € restants sur un livret. Dans quarante ans, ça fera 4 600 €. Le perroquet, lui, aura toujours plus de personnalité.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout remettre sur le rouge",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Rouge ! Tu as doublé la mise. Ta conseillère t'a demandé de ne plus jamais l'appeler pour ce genre de nouvelle.",
+            "effects": {
+              "money": 4000,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.55,
+            "text": "Noir. Il te reste un jet-ski sans permis, un perroquet qui dit « rien ne va plus » et zéro euro.",
+            "effects": {
+              "money": -4000,
+              "happiness": -7
+            }
+          }
+        ]
+      },
+      {
+        "label": "Revendre le perroquet",
+        "outcomes": [
+          {
+            "text": "Le perroquet est parti contre 900 €. En partant, il a crié ton code de carte bancaire à tout l'immeuble.",
+            "effects": {
+              "money": 900,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0027",
+    "on": "casino_jackpot",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Après ton jackpot, le casino a accroché ta photo dans le hall, avec un gros chèque en carton. Tu as l'air hagard{e}, mais riche.",
+    "effects": {
+      "fame": 3,
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_cas_0028",
+    "on": "casino_jackpot",
+    "chance": 0.4,
+    "delay": [
+      5,
+      15
+    ],
+    "unique": true,
+    "text": "Des années après ton jackpot, le casino renouvelle ses machines. La tienne, celle qui avait tout craché, est mise aux enchères. Elle te fait de l'œil depuis le catalogue.",
+    "choices": [
+      {
+        "label": "L'acheter pour le salon",
+        "outcomes": [
+          {
+            "text": "Elle trône dans ton salon, clignotante. Tes invités jouent avec. Tu leur reprends leurs pièces. Tu es devenu{e} le casino.",
+            "effects": {
+              "money": -2500,
+              "happiness": 6,
+              "setFlags": [
+                "machine_a_sous_maison"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser le passé où il est",
+        "outcomes": [
+          {
+            "text": "Tu as tourné la page. Le soir, il t'arrive encore d'entendre le « ding-ding-ding » en rêve.",
+            "effects": {
+              "happiness": -1,
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0029",
+    "on": "event:rep_cas_0028",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "machine_a_sous_maison"
+      ]
+    },
+    "text": "La vieille machine à sous de ton salon n'avait rien donné depuis des années. Ce soir, elle a fait « ding » et craché trois pièces de 1 €. Tu as pleuré comme au premier jour.",
+    "effects": {
+      "money": 3,
+      "happiness": 8
+    }
+  },
+  {
+    "id": "rep_cas_0030",
+    "on": "casino_jackpot",
+    "chance": 0.35,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Depuis ton jackpot, {partenaire} s'est découvert une passion pour l'équitation, le golf et les sacs en cuir d'autruche. L'autruche, elle, n'a rien demandé.",
+    "effects": {
+      "money": -9000,
+      "relationships": {
+        "partner": 4
+      },
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_cas_0031",
+    "on": "casino_jackpot",
+    "chance": 0.3,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "Une lettre officielle arrive peu après ton jackpot. Ce n'est pas le fisc. C'est pire : c'est l'association des anciens élèves de ton collège, qui « pense justement à toi » pour rénover le gymnase.",
+    "choices": [
+      {
+        "label": "Financer le gymnase",
+        "outcomes": [
+          {
+            "text": "Le gymnase porte ton nom. Il y a une plaque. Les élèves y dessinent des moustaches. Tu es immortel{e}.",
+            "effects": {
+              "money": -20000,
+              "fame": 4,
+              "karma": 6,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un ballon dégonflé",
+        "outcomes": [
+          {
+            "text": "Ton ballon dégonflé a été exposé dans le hall avec une étiquette « Don de {prenom} {nom} ». Ta réputation aussi s'est dégonflée.",
+            "effects": {
+              "fame": -2,
+              "karma": -2,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0032",
+    "on": "casino_ruine",
+    "remember": [
+      "accro_au_jeu",
+      "ruine_au_casino"
+    ],
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Ruiné{e}. Complètement. Le casino t'a offert une dernière boisson « de la part de la maison ». C'était un verre d'eau du robinet.",
+    "choices": [
+      {
+        "label": "Demander de l'aide à ta famille",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta famille t'a aidé{e}. Tu dors dans ta chambre d'enfant, sous un poster que tu aurais préféré oublier.",
+            "effects": {
+              "money": 1500,
+              "happiness": -4,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta famille t'a envoyé un livre : « Gérer son budget pour les nuls ». Avec une dédicace sèche.",
+            "effects": {
+              "happiness": -5,
+              "smarts": 1,
+              "relationships": {
+                "parent": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre tout ce qui a de la valeur",
+        "outcomes": [
+          {
+            "text": "Tu as tout vendu sur internet. Quelqu'un a même acheté ta vieille brosse à dents, et tu préfères ne pas savoir pourquoi.",
+            "effects": {
+              "money": 2000,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Miser ton ticket de métro sur une dernière partie",
+        "outcomes": [
+          {
+            "chance": 0.1,
+            "text": "Le croupier a accepté, par pitié. Tu as gagné 500 €. Tu rentres à pied, car tu n'as plus de ticket de métro.",
+            "effects": {
+              "money": 500,
+              "happiness": 5,
+              "health": 1
+            }
+          },
+          {
+            "chance": 0.9,
+            "text": "Le croupier a refusé ton ticket de métro, puis appelé la sécurité. Tu rentres à pied, escorté{e} jusqu'au parking.",
+            "effects": {
+              "happiness": -6,
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0033",
+    "on": "casino_ruine",
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "flags": [
+        "ruine_au_casino"
+      ]
+    },
+    "text": "Depuis ta ruine au casino, tu comptes tout. Tu connais par cœur le prix du kilo de lentilles dans quatre supermarchés différents. C'est devenu ton seul talent.",
+    "effects": {
+      "smarts": 2,
+      "happiness": -3,
+      "money": 300
+    }
+  },
+  {
+    "id": "rep_cas_0034",
+    "on": "casino_ruine",
+    "chance": 0.4,
+    "delay": [
+      5,
+      15
+    ],
+    "unique": true,
+    "text": "Des années après ta ruine au casino, tu racontes l'histoire en soirée. À chaque fois elle est plus drôle, et le montant perdu plus énorme. Tu en es à « une petite île ».",
+    "effects": {
+      "happiness": 5,
+      "fame": 1,
+      "clearFlags": [
+        "ruine_au_casino"
+      ]
+    }
+  },
+  {
+    "id": "rep_cas_0035",
+    "on": "casino_ruine",
+    "requires": {
+      "flags": [
+        "dette_louche"
+      ]
+    },
+    "chance": 0.7,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ]
+    },
+    "unique": true,
+    "text": "Gégé a appris ta ruine au casino. Il est passé « prendre des nouvelles » avec Le Frigo, qui fait craquer ses doigts un par un, très lentement.",
+    "choices": [
+      {
+        "label": "Proposer de laver sa voiture pendant un an",
+        "outcomes": [
+          {
+            "text": "Gégé a accepté. Sa voiture est une limousine blanche de neuf mètres. Tu connais désormais chaque centimètre de chrome.",
+            "effects": {
+              "happiness": -4,
+              "health": 2,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sauter par la fenêtre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu étais au rez-de-chaussée. Tu as atterri dans les géraniums et tu as couru jusqu'à la gare. Gégé a été presque impressionné.",
+            "effects": {
+              "health": -3,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.37,
+            "text": "Tu t'es tordu la cheville dans les géraniums. Le Frigo t'a aidé{e} à te relever, puis à vider ton portefeuille.",
+            "effects": {
+              "health": -10,
+              "money": -500
+            }
+          },
+          {
+            "chance": 0.03,
+            "text": "Tu as raté ton saut de manière spectaculaire.",
+            "effects": {
+              "death": "en sautant d'une fenêtre de rez-de-chaussée pour fuir un créancier, ce qui reste un mystère pour la médecine"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0036",
+    "on": "casino_ruine",
+    "chance": 0.6,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Après ta ruine au casino, {partenaire} a fait les comptes à la table de la cuisine. Ça a duré deux heures. Le stylo a craqué avant {partenaire}.",
+    "choices": [
+      {
+        "label": "Promettre d'arrêter et entrer en cure",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu as tenu ta promesse. Cure, groupe de parole, macramé. {partenaire} a retrouvé le sourire, puis la confiance, dans cet ordre.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "partner": 6
+              },
+              "setFlags": [
+                "sevre_du_jeu"
+              ],
+              "clearFlags": [
+                "accro_au_jeu"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as tenu trois semaines. {partenaire} t'a retrouvé{e} au casino, en pyjama. Le sien.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "partner": -12
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser le croupier",
+        "outcomes": [
+          {
+            "text": "Selon toi, le croupier « avait un regard qui porte malheur ». {partenaire} a dormi chez sa sœur. Pendant un mois.",
+            "effects": {
+              "relationships": {
+                "partner": -15
+              },
+              "happiness": -5,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0037",
+    "on": "casino_triche",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Tu as compté les cartes toute la soirée sans te faire prendre. Tu as gagné 600 € et une migraine de trois jours. Tu vois des as partout, même dans ta soupe.",
+    "effects": {
+      "money": 600,
+      "health": -2,
+      "smarts": 2
+    }
+  },
+  {
+    "id": "rep_cas_0038",
+    "on": "casino_triche",
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_triche": 3
+      },
+      "excludeFlags": [
+        "interdit_de_casino"
+      ]
+    },
+    "conditions": {
+      "tags": [
+        "adult"
+      ],
+      "excludeFlags": [
+        "interdit_de_casino"
+      ]
+    },
+    "unique": true,
+    "text": "Tes petites tricheries n'ont pas échappé à tout le monde. Un homme en costume trop bien coupé t'aborde : il monte une équipe de compteurs de cartes et il cherche « un talent comme toi ».",
+    "choices": [
+      {
+        "label": "Rejoindre l'équipe",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Six mois de tournée dans les casinos du pays, fausses moustaches et codes secrets. Ta part : 12 000 €. Ta famille croit que tu étais en séminaire.",
+            "effects": {
+              "money": 12000,
+              "happiness": 7,
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Toute l'équipe s'est fait coincer le premier soir. Ta photo circule désormais dans tous les casinos de la région.",
+            "effects": {
+              "money": -1000,
+              "happiness": -6,
+              "karma": -3,
+              "setFlags": [
+                "interdit_de_casino",
+                "reputation_de_tricheur"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, tu triches en artisan",
+        "outcomes": [
+          {
+            "text": "Tu as refusé. L'homme en costume t'a laissé sa carte. Elle est vierge. Ça t'empêche de dormir.",
+            "effects": {
+              "karma": 1,
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0039",
+    "on": "casino_triche_attrape",
+    "remember": [
+      "interdit_de_casino",
+      "reputation_de_tricheur"
+    ],
+    "chance": 0.7,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Après ta triche attrapée, le casino a affiché ta photo à l'entrée, avec la mention « NE PAS SERVIR ». Elle est plus flatteuse que celle de ton passeport.",
+    "effects": {
+      "happiness": -3,
+      "looks": 1,
+      "karma": -2
+    }
+  },
+  {
+    "id": "rep_cas_0040",
+    "on": "casino_triche_attrape",
+    "chance": 0.5,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "interdit_de_casino"
+      ],
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "patience": 2,
+    "text": "Interdit{e} de casino depuis ta triche, tu fixes l'entrée depuis le trottoir d'en face comme un enfant devant une pâtisserie. Une idée germe.",
+    "choices": [
+      {
+        "label": "Entrer déguisé{e} avec une fausse moustache",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Ça a marché. Tu as joué toute la nuit. Tu as perdu 400 €, mais avec une moustache magnifique.",
+            "effects": {
+              "money": -400,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "Le vigile t'a reconnu{e} immédiatement. Il a juste dit « Bonsoir {prenom} » et gardé la moustache en souvenir.",
+            "effects": {
+              "happiness": -4,
+              "looks": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer {ami} jouer à ta place",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{ami} a gagné 800 € avec ta méthode. {ami} a gardé les 800 €. Tu as appris quelque chose sur l'amitié.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{ami} a tout perdu en dix minutes et t'envoie maintenant la facture. Ta méthode n'était pas transmissible.",
+            "effects": {
+              "money": -300,
+              "relationships": {
+                "friend": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter ton bannissement",
+        "outcomes": [
+          {
+            "text": "Tu as tourné le dos au casino. Le trottoir d'en face te manque un peu, mais ton compte en banque te fait des clins d'œil.",
+            "effects": {
+              "karma": 4,
+              "money": 500,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0041",
+    "on": "casino_triche_attrape",
+    "chance": 0.5,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "reputation_de_tricheur"
+      ]
+    },
+    "text": "Ta réputation de tricheur au casino te précède. Au loto de la paroisse, deux bénévoles fouillent tes manches avant de te donner ton carton. La sœur Marthe t'a à l'œil.",
+    "effects": {
+      "happiness": -2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_cas_0042",
+    "on": "casino_triche_attrape",
+    "chance": 0.5,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "flags": [
+        "interdit_de_casino"
+      ]
+    },
+    "unique": true,
+    "text": "Vingt ans après ta triche, le casino lève enfin ton interdiction. Ils t'envoient même un bon pour un verre offert. Sans alcool. Ils n'ont pas tout pardonné.",
+    "clearFlags": [
+      "interdit_de_casino"
+    ],
+    "choices": [
+      {
+        "label": "Y retourner, pour la nostalgie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Rien n'a changé, sauf la moquette et les croupiers. Tu as gagné 150 € honnêtement, pour la première fois de ta vie.",
+            "effects": {
+              "money": 150,
+              "happiness": 6,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as passé la soirée à expliquer aux jeunes croupiers comment tu trichais « à l'époque ». On t'a raccompagné{e} poliment.",
+            "effects": {
+              "happiness": 3,
+              "setFlags": [
+                "interdit_de_casino"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, par principe",
+        "outcomes": [
+          {
+            "text": "Tu as renvoyé le bon avec un mot : « Trop tard ». C'est la phrase la plus classe que tu aies jamais écrite.",
+            "effects": {
+              "happiness": 4,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0043",
+    "on": "casino_triche_attrape",
+    "chance": 0.35,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "Ton patron a lu l'article sur ta triche au casino dans le journal local. Il t'a convoqué{e}, puis t'a confié la comptabilité de l'entreprise, « puisque tu sais compter ».",
+    "effects": {
+      "smarts": 1,
+      "happiness": 2,
+      "karma": -1,
+      "stress": 5
+    }
+  },
+  {
+    "id": "rep_cas_0044",
+    "on": "casino_triche_attrape",
+    "chance": 0.3,
+    "delay": [
+      1,
+      2
+    ],
+    "unique": true,
+    "text": "Le club de magie de {ville} a entendu parler de ta triche au casino. Le président t'écrit : « Vos mains nous intéressent. » Tu as relu trois fois pour être sûr{e}.",
+    "choices": [
+      {
+        "label": "Rejoindre le club de magie",
+        "outcomes": [
+          {
+            "text": "Tu apprends à faire disparaître une pièce, un foulard et ton passé. Les autres membres ont tous plus de 70 ans et t'adorent.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 2,
+              "newFriend": true,
+              "setFlags": [
+                "magicien_amateur"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner, tu n'es pas un lapin",
+        "outcomes": [
+          {
+            "text": "Tu as décliné. Le président t'a répondu en faisant apparaître une carte dans ta boîte aux lettres. C'était le 7 de pique. C'était flippant.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0045",
+    "on": "event:rep_cas_0044",
+    "choice": 0,
+    "chance": 0.8,
+    "delay": [
+      3,
+      8
+    ],
+    "conditions": {
+      "flags": [
+        "magicien_amateur"
+      ]
+    },
+    "text": "Depuis que l'ancien tricheur de casino s'est reconverti dans la magie, tu donnes des spectacles. Ce soir, salle des fêtes de {ville}, 140 personnes. Ton grand numéro t'attend.",
+    "choices": [
+      {
+        "label": "Faire disparaître un lapin",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le lapin a disparu, la salle a hurlé de joie. Tu ne sais toujours pas où il est passé. Le lapin non plus.",
+            "effects": {
+              "happiness": 7,
+              "fame": 3,
+              "money": 400
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le lapin a disparu… dans la salle. Il a fallu quarante minutes pour le retrouver sous la scène. Standing ovation, quand même.",
+            "effects": {
+              "happiness": 4,
+              "fame": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire disparaître le portefeuille d'un spectateur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu l'as fait réapparaître, bien sûr. Presque entier. Le spectateur n'a pas remarqué les 20 € manquants. Tes vieux réflexes.",
+            "effects": {
+              "money": 20,
+              "karma": -4,
+              "fame": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le spectateur était le vigile du casino qui t'avait attrapé{e} jadis. Il a souri. Toi, moins.",
+            "effects": {
+              "happiness": -5,
+              "fame": 1,
+              "karma": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0046",
+    "on": "casino_perte",
+    "chance": 0.12,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "flags": [
+        "joueur_du_casino"
+      ]
+    },
+    "unique": true,
+    "text": "Des années après tes soirées au casino, le caissier du supermarché, c'est l'ancien croupier. Il te rend la monnaie en murmurant « Rien ne va plus ». Il t'a reconnu{e}.",
+    "choices": [
+      {
+        "label": "Lui dire bonjour chaleureusement",
+        "outcomes": [
+          {
+            "text": "Vous avez parlé du bon vieux temps. Il se souvient de chacune de tes pertes, au centime près, avec la date. C'est émouvant et terrifiant.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire semblant de ne pas le connaître",
+        "outcomes": [
+          {
+            "text": "Il a scanné ton paquet de pâtes en disant « Les jeux sont faits ». Tu as changé de supermarché.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0047",
+    "on": "casino_triche_attrape",
+    "chance": 0.3,
+    "delay": [
+      15,
+      25
+    ],
+    "unique": true,
+    "text": "Tu te souviens de ce vigile du casino qui t'avait attrapé{e} en train de tricher ? Il vit dans ta maison de retraite. Il te surveille pendant les parties de belote.",
+    "minAge": 60,
+    "effects": {
+      "happiness": -1,
+      "karma": 1
+    },
+    "patience": 10
+  },
+  {
+    "id": "rep_cas_0048",
+    "on": "loterie_ticket",
+    "chance": 0.25,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Pour ta grille de loterie, tu as joué les dates de naissance de toute ta famille. Personne dans ta famille n'est né le 49. Tu leur en veux un peu.",
+    "effects": {
+      "money": -3,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_cas_0049",
+    "on": "loterie_ticket",
+    "chance": 0.5,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "loterie_ticket": 5
+      }
+    },
+    "unique": true,
+    "text": "À force de jouer à la loterie, le buraliste te réserve ton ticket chaque semaine. Il te jure que tes numéros vont « finir par tomber ». Il dit ça à tout le monde.",
+    "choices": [
+      {
+        "label": "Garder les mêmes numéros pour toujours",
+        "outcomes": [
+          {
+            "text": "Ce sont désormais TES numéros. Tu les as tatoués sur ton cœur. Pas au sens figuré : tu as un tatouage 7-14-22-31-40.",
+            "effects": {
+              "happiness": 3,
+              "looks": -1,
+              "setFlags": [
+                "numeros_fetiches"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de numéros chaque semaine",
+        "outcomes": [
+          {
+            "text": "Tu laisses le hasard choisir. Le buraliste te regarde comme un traître.",
+            "effects": {
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0050",
+    "on": "event:rep_cas_0049",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "numeros_fetiches"
+      ]
+    },
+    "text": "Ça fait des années que tu joues tes numéros fétiches à la loterie. Cette semaine, pour la première fois, tu as oublié d'aller chez le buraliste. Le tirage passe à la télé dans dix minutes.",
+    "choices": [
+      {
+        "label": "Regarder le tirage",
+        "outcomes": [
+          {
+            "chance": 0.25,
+            "text": "7, 14, 22, 31, 40. Tous. Tu as hurlé si fort que les voisins ont appelé les pompiers. Ton tatouage te nargue.",
+            "effects": {
+              "happiness": -15,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.75,
+            "text": "Aucun de tes numéros. Tu as poussé un soupir de soulagement plus satisfaisant que n'importe quel gain.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Éteindre la télé, ne jamais savoir",
+        "outcomes": [
+          {
+            "text": "Tu ne sauras jamais. Tu dors comme un bébé. Le buraliste, lui, sait. Et il ne dit rien.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0051",
+    "on": "loterie_ticket",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "loterie_ticket": 20
+      }
+    },
+    "unique": true,
+    "text": "Tu as fait le calcul : depuis le temps que tu joues à la loterie, tu as dépensé en tickets l'équivalent d'une voiture d'occasion. Tu as gagné l'équivalent d'un rétroviseur.",
+    "effects": {
+      "happiness": -4,
+      "smarts": 2
+    }
+  },
+  {
+    "id": "rep_cas_0052",
+    "on": "loterie_ticket",
+    "chance": 0.2,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "text": "Au marché, une voyante qui a vu ton ticket de loterie dépasser de ta poche te propose les « vrais numéros gagnants » pour 50 €. Elle a une boule de cristal Made in Taïwan.",
+    "choices": [
+      {
+        "label": "Payer la voyante",
+        "outcomes": [
+          {
+            "chance": 0.75,
+            "text": "Ses numéros n'ont rien donné. Elle t'a assuré que c'était à cause de « ton aura ». Ton aura lui doit désormais 50 €.",
+            "effects": {
+              "money": -50,
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Trois bons numéros ! Tu as gagné 12 €. Tu es en perte, mais tu crois désormais aux voyantes, ce qui va te coûter bien plus.",
+            "effects": {
+              "money": -38,
+              "happiness": 3,
+              "smarts": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "text": "La voyante t'a prédit « un grand malheur ». Le lendemain, tu t'es cogné{e} le petit orteil. Elle avait raison.",
+            "effects": {
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0053",
+    "on": "loterie_ticket",
+    "chance": 0.15,
+    "delay": [
+      0,
+      1
+    ],
+    "unique": true,
+    "text": "Tu gardes un vieux ticket de loterie perdant dans ton portefeuille, « comme porte-bonheur ». Tu ne sais plus pourquoi. Il est désormais ton porte-bonheur officiel.",
+    "setFlags": [
+      "ticket_porte_bonheur"
+    ],
+    "effects": {
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_cas_0054",
+    "on": "event:rep_cas_0053",
+    "chance": 0.6,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "flags": [
+        "ticket_porte_bonheur"
+      ]
+    },
+    "text": "Ton ticket de loterie porte-bonheur est toujours là, jaune, plié en seize, illisible. Un collectionneur d'objets « vintage » t'en propose 200 €.",
+    "choices": [
+      {
+        "label": "Le vendre",
+        "outcomes": [
+          {
+            "text": "Tu as vendu ton porte-bonheur 200 €. Ton premier vrai gain à la loterie, en quelque sorte. Et ta première malchance juste après : tu as perdu tes clés.",
+            "effects": {
+              "money": 200,
+              "happiness": 1,
+              "clearFlags": [
+                "ticket_porte_bonheur"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le garder, il n'a pas de prix",
+        "outcomes": [
+          {
+            "text": "Le collectionneur est reparti vexé. Ton ticket et toi, vous avez vieilli ensemble. C'est une belle histoire, si on ne regarde pas de trop près.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0055",
+    "on": "loterie_gain",
+    "remember": [
+      "a_gagne_loterie"
+    ],
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Ton ticket de loterie est gagnant ! Le buraliste te regarde avec un amour tout neuf. Il te demande, l'air de rien, si tu as toujours rêvé d'avoir un ami buraliste.",
+    "choices": [
+      {
+        "label": "Rester discret",
+        "outcomes": [
+          {
+            "text": "Tu n'as rien dit à personne. Tu souris tout seul{e} dans le bus. Les gens s'écartent, mais c'est un prix raisonnable.",
+            "effects": {
+              "happiness": 5,
+              "karma": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'annoncer à tout le monde",
+        "outcomes": [
+          {
+            "text": "Tu l'as crié sur les réseaux, à ta famille, à ton coiffeur. Ton téléphone n'a pas cessé de sonner depuis. Des numéros inconnus, surtout.",
+            "effects": {
+              "happiness": 6,
+              "fame": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un message à ton patron",
+        "outcomes": [
+          {
+            "text": "Tu as écrit à ton patron tout ce que tu pensais de lui. Puis tu as relu le montant de ton gain. Ce n'était peut-être pas assez pour ça.",
+            "effects": {
+              "happiness": 4,
+              "stress": 10,
+              "karma": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0056",
+    "on": "event:rep_cas_0055",
+    "choice": 1,
+    "delay": [
+      0,
+      1
+    ],
+    "text": "Depuis que tu as annoncé ton gain à la loterie, ta famille s'est agrandie de 34 personnes. Une petite-cousine par alliance de ton ancien voisin vient d'appeler pour « reprendre contact ».",
+    "choices": [
+      {
+        "label": "Donner un peu à chacun",
+        "outcomes": [
+          {
+            "text": "Tu as donné 500 € à chacun. Tu as maintenant 34 personnes qui t'aiment beaucoup, jusqu'au prochain coup de fil.",
+            "effects": {
+              "money": -17000,
+              "karma": 5,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Créer un formulaire de candidature",
+        "outcomes": [
+          {
+            "text": "Formulaire en ligne, lettre de motivation, pièce justificative de lien de parenté. Personne n'a postulé. Tu as remporté la manche.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 4,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déménager sans laisser d'adresse",
+        "outcomes": [
+          {
+            "text": "Tu as déménagé en pleine nuit. Ta nouvelle maison a des volets épais. Personne ne te trouvera. Probablement.",
+            "effects": {
+              "money": -3000,
+              "happiness": 3,
+              "relationships": {
+                "friend": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0057",
+    "on": "event:rep_cas_0056",
+    "choice": 2,
+    "chance": 0.7,
+    "delay": [
+      2,
+      6
+    ],
+    "text": "Malgré ton déménagement secret après la loterie, un cousin éloigné a retrouvé ta nouvelle adresse. Il a apporté une valise et un gâteau, dans cet ordre de priorité.",
+    "choices": [
+      {
+        "label": "L'accueillir pour une semaine",
+        "outcomes": [
+          {
+            "text": "Une semaine est devenue trois ans. Il a sa clé, son mug et sa place sur le canapé. Il fait d'excellents gratins, au moins.",
+            "effects": {
+              "money": -4000,
+              "happiness": 1,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le gâteau, refuser la valise",
+        "outcomes": [
+          {
+            "text": "Il est reparti sans son gâteau. Il était à la framboise. Tu ne regrettes rien.",
+            "effects": {
+              "happiness": 3,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0058",
+    "on": "loterie_gain",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Tu as fait encadrer ton ticket de loterie gagnant. Il est accroché dans l'entrée, entre la photo de mariage de tes parents et un diplôme de natation de ton enfance. Ta plus belle réussite, de loin.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_cas_0059",
+    "on": "loterie_gain",
+    "chance": 0.4,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "a_gagne_loterie"
+      ]
+    },
+    "unique": true,
+    "text": "Une émission de télé, « Les gagnants : que sont-ils devenus ? », veut faire un reportage sur toi, des années après ton gain à la loterie.",
+    "choices": [
+      {
+        "label": "Accepter le reportage",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le reportage te présente comme un génie de la gestion. Tu as juste eu la flemme de dépenser. La télé a ses raisons.",
+            "effects": {
+              "fame": 5,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le reportage a montré ta piscine vide, ton jet-ski rouillé et ton perroquet. Titre : « La chute ». Ta famille a enregistré l'émission.",
+            "effects": {
+              "fame": 4,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "Tu as refusé. Ils ont interviewé ton buraliste à la place. Il a dit que vous étiez « très proches ». Vous ne vous êtes jamais revus.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0060",
+    "on": "loterie_gain",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "Tes collègues ont appris ton gain à la loterie. Tu as dû organiser un pot. Ils ont commandé du champagne et des huîtres, pour un mardi à 10 h.",
+    "effects": {
+      "money": -600,
+      "happiness": 2,
+      "relationships": {
+        "friend": 2
+      }
+    }
+  },
+  {
+    "id": "rep_cas_0061",
+    "on": "pari_sportif_gain",
+    "chance": 0.35,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Depuis ton pari sportif gagnant, tu expliques à qui veut l'entendre que tu « lis le jeu ». Tu as misé sur l'équipe au plus joli maillot.",
+    "effects": {
+      "happiness": 3,
+      "smarts": -1
+    }
+  },
+  {
+    "id": "rep_cas_0062",
+    "on": "pari_sportif_gain",
+    "chance": 0.4,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "pari_sportif_gain": 3
+      }
+    },
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Après tes paris sportifs gagnants, {ami} te supplie de lui donner tes pronostics pour le match de samedi.",
+    "choices": [
+      {
+        "label": "Donner tes pronostics",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "{ami} a gagné 300 € grâce à toi et t'a offert un restaurant. Tu es désormais un oracle.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 6
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "{ami} a perdu 300 € à cause de toi. Tu as reçu un message vocal de quatre minutes qui commence par un long silence.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "friend": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ton secret",
+        "outcomes": [
+          {
+            "text": "Tu as dit que tu ne pouvais pas révéler ta méthode. Ta méthode, c'est le joli maillot.",
+            "effects": {
+              "happiness": 1,
+              "relationships": {
+                "friend": -2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0063",
+    "on": "pari_sportif_gain",
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "requires": {
+      "minCounters": {
+        "pari_sportif_gain": 5
+      }
+    },
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "text": "Le site de paris sportifs a limité tes mises : il te soupçonne d'être un génie. Tes amis te poussent à lancer une chaîne de pronostics en ligne.",
+    "choices": [
+      {
+        "label": "Lancer la chaîne",
+        "outcomes": [
+          {
+            "text": "Ta chaîne « Le Prono de {prenom} » est en ligne. Tu as trois abonnés : {parent}, toi, et un robot.",
+            "effects": {
+              "happiness": 3,
+              "fame": 1,
+              "setFlags": [
+                "chaine_de_pronos"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester humble",
+        "outcomes": [
+          {
+            "text": "Tu as gardé ton génie pour toi. De toute façon, ton génie est parti en vacances le mois suivant.",
+            "effects": {
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0064",
+    "on": "event:rep_cas_0063",
+    "choice": 0,
+    "chance": 0.8,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "flags": [
+        "chaine_de_pronos"
+      ]
+    },
+    "text": "Ta chaîne de pronostics sportifs compte maintenant 40 000 abonnés. Petit problème : tu n'as pas eu un seul bon pronostic depuis deux ans.",
+    "choices": [
+      {
+        "label": "Avouer en direct",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta vidéo d'aveux est devenue ta plus vue. On t'invite à la télé pour parler d'honnêteté. Tu as fait un pronostic en plateau. Il était faux.",
+            "effects": {
+              "fame": 4,
+              "karma": 4,
+              "happiness": 4,
+              "clearFlags": [
+                "chaine_de_pronos"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tes abonnés t'ont désabonné en masse, et certains t'ont envoyé leurs tickets perdants par la poste. Ta boîte aux lettres déborde.",
+            "effects": {
+              "fame": -2,
+              "happiness": -5,
+              "karma": 2,
+              "clearFlags": [
+                "chaine_de_pronos"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Confier les pronostics à un poulpe",
+        "outcomes": [
+          {
+            "text": "Le poulpe Gaston a 58 % de bons pronostics. C'est mieux que toi. Il a désormais plus d'abonnés que toi sur sa propre chaîne.",
+            "effects": {
+              "fame": 3,
+              "money": 1500,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0065",
+    "on": "pari_sportif_perte",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Tu as parié sur l'équipe de {ville}. Par loyauté. Ta ville t'a coûté 80 € et une soirée entière à crier sur un écran.",
+    "effects": {
+      "money": -80,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cas_0066",
+    "on": "pari_sportif_perte",
+    "chance": 0.6,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "pari_sportif_perte": 5
+      },
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "conditions": {
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "unique": true,
+    "text": "Après tous tes paris sportifs perdus, tu en es à miser sur des matchs de curling estonien à 3 h du matin. Tu connais le nom de la mère du capitaine.",
+    "choices": [
+      {
+        "label": "Désinstaller l'application",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu l'as désinstallée. Tu as retrouvé tes nuits. Tu suis encore un peu le curling estonien, par pure tendresse.",
+            "effects": {
+              "happiness": 4,
+              "health": 3,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu l'as réinstallée le lendemain, puis désinstallée, puis réinstallée. Ton téléphone est fatigué.",
+            "effects": {
+              "happiness": -3,
+              "money": -200
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parier gros pour te refaire",
+        "outcomes": [
+          {
+            "chance": 0.2,
+            "text": "L'Estonie a gagné ! Tu as tout récupéré. Tu as la certitude dangereuse d'avoir un don.",
+            "effects": {
+              "money": 1500,
+              "happiness": 5,
+              "setFlags": [
+                "accro_au_jeu"
+              ]
+            }
+          },
+          {
+            "chance": 0.8,
+            "text": "L'Estonie a perdu à la dernière pierre. Tu as perdu 2 000 € et ta foi dans le curling.",
+            "effects": {
+              "money": -2000,
+              "happiness": -7,
+              "setFlags": [
+                "accro_au_jeu"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0067",
+    "on": "pari_sportif_perte",
+    "chance": 0.25,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Ton enfant t'a demandé pourquoi tu hurlais sur un match de tennis de table à 2 h du matin. Tu n'as pas eu de réponse satisfaisante. Ton pari perdu non plus.",
+    "effects": {
+      "happiness": -2,
+      "relationships": {
+        "child": -2
+      }
+    }
+  },
+  {
+    "id": "rep_cas_0068",
+    "on": "pari_sportif_perte",
+    "chance": 0.2,
+    "delay": [
+      0,
+      1
+    ],
+    "unique": true,
+    "text": "Tu avais parié avec ton voisin que le perdant se raserait la tête. Ton équipe a perdu. Tu as désormais la tête lisse et le voisin a pris des photos sous tous les angles.",
+    "effects": {
+      "looks": -4,
+      "happiness": -2,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_cas_0069",
+    "on": "casino_gain",
+    "chance": 0.5,
+    "delay": [
+      5,
+      15
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_gain": 3
+      }
+    },
+    "conditions": {
+      "tags": [
+        "retired"
+      ],
+      "excludeFlags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "patience": 15,
+    "unique": true,
+    "text": "Tes vieux réflexes de casino ne t'ont jamais quitté{e}. En maison de retraite, tu as monté un tripot clandestin de belote dans la buanderie. Tu as raflé les économies de Mme Pujol.",
+    "choices": [
+      {
+        "label": "Rendre l'argent à Mme Pujol",
+        "outcomes": [
+          {
+            "text": "Mme Pujol a refusé : elle veut sa revanche jeudi. Elle a 94 ans et des yeux de requin.",
+            "effects": {
+              "karma": 4,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Agrandir le tripot",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Deux tables, un croupier en déambulateur, des jetons en biscottes. Tu es le parrain de l'étage.",
+            "effects": {
+              "money": 800,
+              "happiness": 7,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La directrice a découvert le tripot. Tu es privé{e} de dessert pendant un mois. C'est la pire sanction de ta vie.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0070",
+    "on": "casino_jackpot",
+    "chance": 0.3,
+    "delay": [
+      10,
+      20
+    ],
+    "unique": true,
+    "text": "Tu te souviens de ce jackpot ? Le croupier de l'époque t'écrit une lettre. Après des années d'analyse, il a enfin compris comment tu avais gagné : par pur hasard. Il tenait à te le dire.",
+    "effects": {
+      "happiness": -1,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_cas_0071",
+    "on": "casino_ruine",
+    "requires": {
+      "flags": [
+        "a_gagne_loterie"
+      ]
+    },
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "text": "Tu as réussi l'exploit de gagner à la loterie puis de tout perdre au casino. Les statisticiens du pays veulent t'étudier. Tu es une anomalie.",
+    "effects": {
+      "happiness": -5,
+      "fame": 2,
+      "smarts": -1
+    }
+  },
+  {
+    "id": "rep_cas_0072",
+    "on": "casino_gain",
+    "requires": {
+      "flags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "forget": [
+      "sevre_du_jeu"
+    ],
+    "remember": [
+      "accro_au_jeu"
+    ],
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Tu étais sevré{e} du jeu. Tu es entré{e} au casino « juste pour aller aux toilettes ». Tu as gagné 200 €. C'était la pire chose qui pouvait t'arriver.",
+    "effects": {
+      "happiness": -4,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_cas_0073",
+    "on": "casino_perte",
+    "chance": 0.3,
+    "delay": [
+      1,
+      2
+    ],
+    "requires": {
+      "flags": [
+        "accro_au_jeu"
+      ]
+    },
+    "conditions": {
+      "flags": [
+        "accro_au_jeu"
+      ]
+    },
+    "text": "Ton addiction au jeu commence à se voir : cernes, teint gris, tu sursautes au bruit d'une pièce qui tombe. Ton médecin t'a demandé si tu dormais « parfois ».",
+    "effects": {
+      "health": -5,
+      "happiness": -4,
+      "looks": -2
+    }
+  },
+  {
+    "id": "rep_cas_0074",
+    "on": "casino_usurier",
+    "remember": [
+      "dette_louche"
+    ],
+    "chance": 0.6,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Tonton Gégé t'a prêté l'argent avec une poignée de main moite. Le contrat tient sur un sous-bock. Taux d'intérêt : « on verra bien ».",
+    "effects": {
+      "happiness": -1,
+      "stress": 5
+    }
+  },
+  {
+    "id": "rep_cas_0075",
+    "on": "casino_usurier",
+    "remember": [
+      "dette_louche"
+    ],
+    "chance": 0.7,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ]
+    },
+    "text": "Un an après ton emprunt, Tonton Gégé t'envoie son relevé : intérêts, frais de dossier, « taxe de sympathie » et location de la poignée de main. Tu lui dois trois fois la somme.",
+    "choices": [
+      {
+        "label": "Rembourser d'un coup",
+        "outcomes": [
+          {
+            "text": "Tu as tout payé. Tonton Gégé a déchiré le sous-bock devant toi, très ému. Il t'a dit que sa porte te serait toujours ouverte. C'était une menace affectueuse.",
+            "effects": {
+              "money": -6000,
+              "happiness": 3,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tonton Gégé accepte d'être payé en confiture maison. Quarante pots. Tu fais désormais des confitures la nuit, en tremblant.",
+            "effects": {
+              "money": -300,
+              "happiness": -1,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tonton Gégé a ri, longtemps. Puis il a ajouté des « frais de négociation ». Tu dois maintenant quatre fois la somme.",
+            "effects": {
+              "money": -2000,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer 10 € par mois",
+        "outcomes": [
+          {
+            "text": "Tonton Gégé a accepté avec un sourire inquiétant. Il a sorti un carnet et y a écrit ton nom, en majuscules.",
+            "effects": {
+              "happiness": -2,
+              "stress": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0076",
+    "on": "event:rep_cas_0075",
+    "choice": 2,
+    "chance": 0.8,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ]
+    },
+    "patience": 3,
+    "text": "Tu paies toujours Tonton Gégé 10 € par mois. D'après son carnet, tu auras fini dans 340 ans. Il t'envoie une carte à chaque Noël, avec ton solde restant écrit au dos.",
+    "effects": {
+      "money": -1200,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cas_0077",
+    "on": "casino_usurier",
+    "chance": 0.6,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_usurier": 3
+      }
+    },
+    "unique": true,
+    "text": "Tu empruntes si souvent chez Tonton Gégé qu'il t'a fait une carte de fidélité. Au dixième tampon, un de ses neveux te porte tes courses. Tu ne veux pas atteindre le dixième tampon.",
+    "effects": {
+      "happiness": -3,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_cas_0078",
+    "on": "casino_usurier_violence",
+    "remember": [
+      "dette_louche"
+    ],
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Deux « neveux » de Tonton Gégé sont passés te voir, dont Le Frigo. Ils ne ressemblent ni à Gégé ni l'un à l'autre, mais ils ont le même regard.",
+    "choices": [
+      {
+        "label": "Payer ce que tu peux",
+        "outcomes": [
+          {
+            "text": "Tu as vidé ton portefeuille, ta tirelire et le pot à monnaie de la cuisine. Les neveux ont compté devant toi, en remuant les lèvres.",
+            "effects": {
+              "money": -1500,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Leur offrir un café",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le Frigo adore ton café. Il est revenu le lendemain, juste pour le café. Puis pour la dette.",
+            "effects": {
+              "happiness": 1,
+              "money": -500
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils ont bu le café, mangé tes biscuits, puis t'ont soulevé{e} par le col pour discuter « de famille ».",
+            "effects": {
+              "health": -6,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "T'enfermer dans la salle de bain",
+        "outcomes": [
+          {
+            "text": "Ils ont attendu quatre heures dans ton salon en regardant ta télé. En partant, ils ont emporté la télé.",
+            "effects": {
+              "happiness": -5,
+              "money": -400
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0079",
+    "on": "casino_usurier_violence",
+    "chance": 0.7,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_usurier_violence": 2
+      }
+    },
+    "text": "Les neveux de Tonton Gégé sont revenus. Ils sont quatre cette fois. Tonton Gégé a manifestement une très grande famille, et elle a très faim.",
+    "effects": {
+      "health": -6,
+      "happiness": -5,
+      "stress": 8
+    }
+  },
+  {
+    "id": "rep_cas_0080",
+    "on": "casino_usurier_violence",
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "casino_usurier_violence": 3
+      }
+    },
+    "unique": true,
+    "text": "Huit neveux de Tonton Gégé dans ton salon, dont un en poussette qui te fixe d'un air menaçant. Ça ne peut plus durer.",
+    "choices": [
+      {
+        "label": "Tout vendre pour solder la dette",
+        "outcomes": [
+          {
+            "text": "Voiture, bijoux, collection de timbres : tout y est passé. Le bébé neveu t'a fait un petit signe de la main en partant. Tu es libre.",
+            "effects": {
+              "money": -8000,
+              "happiness": 2,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La police a pris ta plainte très au sérieux. Le policier a pâli au nom de « Gégé ». Les neveux ne sont jamais revenus. Toi non plus, au commissariat.",
+            "effects": {
+              "karma": 4,
+              "happiness": 3,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le policier qui a pris ta plainte s'appelle aussi « neveu ». Il a juste dit « je transmets à Tonton ».",
+            "effects": {
+              "health": -5,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à entrer dans la famille",
+        "outcomes": [
+          {
+            "text": "Tonton Gégé t'a pris{e} dans ses bras : te voilà « neveu honoraire ». Ta dette est effacée. Ta conscience, beaucoup moins.",
+            "effects": {
+              "karma": -6,
+              "happiness": 2,
+              "clearFlags": [
+                "dette_louche"
+              ],
+              "setFlags": [
+                "neveu_de_gege"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0081",
+    "on": "event:rep_cas_0080",
+    "choice": 2,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "neveu_de_gege"
+      ]
+    },
+    "text": "Depuis que tu es neveu honoraire de Tonton Gégé, on t'a confié ta première mission : aller « rendre visite » à un joueur qui doit 800 €. Il a l'air aussi terrifié que toi il y a quelques années.",
+    "choices": [
+      {
+        "label": "Faire le travail",
+        "outcomes": [
+          {
+            "text": "Tu as fait les gros yeux. Le joueur a payé, en pleurant. Tu as pleuré aussi, dans la voiture, en comptant les billets.",
+            "effects": {
+              "money": 200,
+              "karma": -6,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le prévenir et payer à sa place",
+        "outcomes": [
+          {
+            "text": "Tu lui as glissé « Fuis, et arrête le casino ». Tu as payé les 800 € toi-même. Tonton Gégé n'a rien remarqué, ou a fait semblant.",
+            "effects": {
+              "money": -800,
+              "karma": 8,
+              "happiness": 3,
+              "clearFlags": [
+                "neveu_de_gege"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0082",
+    "on": "casino_usurier",
+    "chance": 0.4,
+    "delay": [
+      10,
+      20
+    ],
+    "unique": true,
+    "patience": 3,
+    "conditions": {
+      "excludeFlags": [
+        "dette_louche"
+      ]
+    },
+    "text": "Tu te souviens de Tonton Gégé, l'usurier du casino ? Il t'invite à son 80e anniversaire. Le carton dit « Venez nombreux ». Il souligne « nombreux » trois fois.",
+    "choices": [
+      {
+        "label": "Y aller avec un cadeau",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Cinquante neveux, un buffet immense, un karaoké. Tonton Gégé a chanté une chanson d'amour en te regardant. Tu as passé une soirée étrangement merveilleuse.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true,
+              "money": -60
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Au dessert, Tonton Gégé a sorti son vieux carnet. Ton nom y était encore, avec « 3 € » à côté. Tu as payé devant tout le monde. Applaudissements.",
+            "effects": {
+              "happiness": 4,
+              "money": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer une carte, de loin",
+        "outcomes": [
+          {
+            "text": "Tu as envoyé une carte sans adresse d'expéditeur. La semaine suivante, un neveu t'a apporté une part de gâteau. Ils savent toujours où tu habites.",
+            "effects": {
+              "happiness": 1,
+              "stress": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0083",
+    "on": "casino_usurier_violence",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "C'est {partenaire} qui a ouvert la porte aux neveux de Tonton Gégé. Ils ont été très polis. {partenaire} voudrait maintenant savoir qui est « Tonton ».",
+    "choices": [
+      {
+        "label": "Tout expliquer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{partenaire} a écouté, soupiré, puis sorti son carnet de chèques. Vous en reparlerez. Souvent.",
+            "effects": {
+              "money": -2000,
+              "relationships": {
+                "partner": -5
+              },
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{partenaire} a pris ses affaires et la voiture. Il te reste les neveux.",
+            "effects": {
+              "relationships": {
+                "partner": -20
+              },
+              "happiness": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est un oncle très affectueux",
+        "outcomes": [
+          {
+            "text": "{partenaire} a fait semblant d'y croire. Au repas de famille suivant, quelqu'un a demandé des nouvelles de « Tonton ». Silence de mort.",
+            "effects": {
+              "relationships": {
+                "partner": -8
+              },
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cas_0084",
+    "on": "casino_usurier_violence",
+    "chance": 0.35,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Après la visite des neveux de Tonton Gégé, tu as passé la nuit aux urgences. L'interne a demandé « Gégé ? » sans même lever les yeux de son dossier.",
+    "effects": {
+      "health": -8,
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_cas_0085",
+    "on": "casino_usurier",
+    "requires": {
+      "flags": [
+        "sevre_du_jeu"
+      ]
+    },
+    "forget": [
+      "sevre_du_jeu"
+    ],
+    "remember": [
+      "accro_au_jeu"
+    ],
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Toi qui étais sevré{e} du jeu, te voilà dans l'arrière-boutique de Tonton Gégé. Bernard, ton ancien parrain du groupe de parole, était dans la file juste devant toi. Vous n'avez rien dit.",
+    "effects": {
+      "happiness": -6,
+      "karma": -2
+    }
+  }
+]

@@ -1,0 +1,2081 @@
+[
+  {
+    "id": "rep_cri_0001",
+    "on": "prison_entree",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "remember": [
+      "casier_judiciaire",
+      "en_prison"
+    ],
+    "text": "La Gazette de {ville} annonce ton incarcération en page 4, sous le titre « On l'avait bien dit ». Ton ancien prof de gym est cité comme expert.",
+    "effects": {
+      "happiness": -3,
+      "fame": 2
+    }
+  },
+  {
+    "id": "rep_cri_0002",
+    "on": "prison_entree",
+    "chance": 0.4,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ]
+    },
+    "text": "Après un an derrière les barreaux, tu as été élu{e} responsable de la bibliothèque de la prison. Ta première réforme : interdire la tranche de jambon comme marque-page.",
+    "effects": {
+      "smarts": 3,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_cri_0003",
+    "on": "prison_entree",
+    "chance": 0.35,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ton voisin de cellule te propose un tatouage fait maison, avec un stylo et un trombone. Il dit avoir « fait les Beaux-Arts », au sens de « cambriolé ».",
+    "choices": [
+      {
+        "label": "Un aigle sur le torse",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "C'est un aigle. Ou un poulet rôti. Ça dépend de l'angle.",
+            "effects": {
+              "looks": -2,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Infection. L'infirmière te félicite pour ton courage et ton absence totale de jugement.",
+            "effects": {
+              "health": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Juste « Maman » sur le bras",
+        "outcomes": [
+          {
+            "text": "Il a écrit « Mamna ». Tu diras que c'est une langue ancienne.",
+            "effects": {
+              "happiness": 2,
+              "relationships": {
+                "mother": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "text": "Il range son trombone, vexé. Il ne te prêtera plus jamais ses mots fléchés.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0004",
+    "on": "event:rep_cri_0003",
+    "choice": 0,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 5,
+    "text": "Ton tatouage de prison a vieilli : l'aigle (ou le poulet) s'est affaissé et ressemble maintenant à la carte de la Bretagne. Des Bretons t'arrêtent dans la rue pour te féliciter.",
+    "effects": {
+      "happiness": 3,
+      "looks": -1
+    }
+  },
+  {
+    "id": "rep_cri_0005",
+    "on": "prison_entree",
+    "chance": 0.4,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ],
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "Au parloir, {mere} t'apporte un gâteau. Les gardiens le découpent en 48 morceaux pour chercher une lime. Il n'y en avait pas. Tu étais presque déçu{e}.",
+    "effects": {
+      "relationships": {
+        "mother": 5
+      },
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_cri_0006",
+    "on": "prison_entree",
+    "chance": 0.25,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ]
+    },
+    "text": "Sous ton lit de prison, tu découvres un tunnel commencé par un ancien détenu. Il reste « environ deux mètres », d'après un petit mot à la craie.",
+    "choices": [
+      {
+        "label": "Finir de creuser",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu débouches dans la cellule d'à côté. Ton voisin te regarde, en pyjama. Vous êtes amis maintenant, c'est ça ou le signaler.",
+            "effects": {
+              "newFriend": true,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu débouches dans le bureau du directeur. Il t'offre un café et une semaine au mitard.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reboucher et laisser un mot au suivant",
+        "outcomes": [
+          {
+            "text": "Tu écris « Il reste environ trois mètres ». La tradition continue.",
+            "effects": {
+              "karma": 2,
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0007",
+    "on": "prison_entree",
+    "chance": 0.8,
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "prison_entree": 2
+      }
+    },
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ]
+    },
+    "text": "Retour en prison. Ta cellule t'attendait : ton nom est encore gravé sous le lit. Quelqu'un a corrigé ta faute d'orthographe.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_cri_0008",
+    "on": "prison_entree",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "prison_entree": 3
+      }
+    },
+    "unique": true,
+    "text": "Troisième séjour en prison. Les gardiens t'accueillent avec une banderole « Bon retour ». Tu ne sais pas si c'est de l'ironie. Eux non plus.",
+    "effects": {
+      "happiness": 1,
+      "karma": -2
+    }
+  },
+  {
+    "id": "rep_cri_0009",
+    "on": "prison_sortie",
+    "chance": 0.6,
+    "delay": [
+      0,
+      0
+    ],
+    "remember": [
+      "ancien_detenu"
+    ],
+    "forget": [
+      "en_prison"
+    ],
+    "text": "À ta sortie de prison, tu découvres que la baguette a augmenté et que ton téléphone est devenu un objet de collection. Le monde a continué sans toi, l'ingrat.",
+    "effects": {
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_cri_0010",
+    "on": "prison_sortie",
+    "chance": 0.6,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Depuis ta sortie de prison, ton conseiller de réinsertion te propose trois pistes. Il a l'air de croire en toi, c'est assez déstabilisant.",
+    "choices": [
+      {
+        "label": "L'atelier de menuiserie",
+        "outcomes": [
+          {
+            "text": "Tu fabriques un tabouret. Il est bancal, mais il est à toi, et personne ne l'a volé.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 4,
+              "setFlags": [
+                "rachete"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le bénévolat à la soupe populaire",
+        "outcomes": [
+          {
+            "text": "Tu sers 300 assiettes par jour. Un ancien gardien de ta prison fait la queue. Double portion, par grandeur d'âme.",
+            "effects": {
+              "karma": 6,
+              "setFlags": [
+                "rachete"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rappeler tes anciens contacts",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils t'avaient gardé ta place. Et ta dette.",
+            "effects": {
+              "money": 2000,
+              "karma": -5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tous tes anciens contacts sont en prison. Tu tombes sur leur répondeur collectif.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0011",
+    "on": "event:rep_cri_0010",
+    "choice": 0,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "rachete"
+      ]
+    },
+    "patience": 3,
+    "text": "Des années après l'atelier de menuiserie, tu ouvres ta propre boutique de meubles. Ton premier client est le juge qui t'avait condamné{e}. Il veut une table de nuit.",
+    "choices": [
+      {
+        "label": "Lui faire un prix",
+        "outcomes": [
+          {
+            "text": "Il revient chaque année. Vous ne parlez jamais du procès, uniquement de chêne massif.",
+            "effects": {
+              "karma": 3,
+              "money": 300,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui faire payer le triple",
+        "outcomes": [
+          {
+            "text": "Il paie sans discuter. Il sait que tu sais qu'il sait.",
+            "effects": {
+              "money": 900,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0012",
+    "on": "event:rep_cri_0011",
+    "choice": 0,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 45,
+    "patience": 5,
+    "text": "Le vieux juge, ton client le plus fidèle, est mort en te léguant sa collection de marteaux. Le notaire précise : « Il a dit que vous sauriez quoi en faire, cette fois. »",
+    "effects": {
+      "happiness": 5,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_cri_0013",
+    "on": "event:rep_cri_0010",
+    "choice": 1,
+    "chance": 0.7,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "flags": [
+        "rachete"
+      ]
+    },
+    "text": "La Gazette de {ville} te consacre un portrait : « De la cellule à la louche ». Ils ont mis la photo d'un autre bénévole, mais le titre est bon.",
+    "effects": {
+      "fame": 3,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_cri_0014",
+    "on": "prison_sortie",
+    "chance": 0.45,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Momo, ton ancien codétenu, te retrouve. Il est sorti aussi, il a « un plan en béton » et une valise qui sent la sardine.",
+    "choices": [
+      {
+        "label": "Écouter le plan",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Le plan marche. Tu ne poseras jamais de questions sur les sardines.",
+            "effects": {
+              "money": 3000,
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "Le plan en béton consistait à voler du béton. Vous avez poussé une bétonnière sur quatre kilomètres avant d'abandonner.",
+            "effects": {
+              "health": -4,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui offrir un café, sans le plan",
+        "outcomes": [
+          {
+            "text": "Il n'avait pas vraiment de plan. Il voulait juste voir quelqu'un. Vous parlez de la cantine pendant trois heures.",
+            "effects": {
+              "karma": 3,
+              "happiness": 3,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de trottoir",
+        "outcomes": [
+          {
+            "text": "Il te fait coucou depuis l'autre trottoir pendant deux kilomètres.",
+            "effects": {
+              "happiness": -1,
+              "karma": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0015",
+    "on": "event:rep_cri_0014",
+    "choice": 1,
+    "delay": [
+      10,
+      20
+    ],
+    "patience": 3,
+    "text": "Momo, ton ancien codétenu, se marie et te choisit comme témoin. Dans son discours, il raconte votre cellule avec beaucoup trop de détails. La belle-famille prend des notes.",
+    "effects": {
+      "happiness": 6,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_cri_0016",
+    "on": "event:rep_cri_0015",
+    "chance": 0.6,
+    "delay": [
+      5,
+      15
+    ],
+    "patience": 3,
+    "text": "Momo a donné un surnom à son premier petit-enfant : « {prenom}-la-Sardine ». Il dit que c'est en ton honneur. Tu ne sais pas comment le prendre.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_cri_0017",
+    "on": "prison_sortie",
+    "chance": 0.4,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "flags": [
+        "ancien_detenu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 3,
+    "text": "Des années après ta sortie de prison, tu fais toujours ton lit au carré et tu manges en quatre minutes chrono. Tes proches trouvent ça admirable, puis inquiétant.",
+    "effects": {
+      "health": 2,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_cri_0018",
+    "on": "prison_sortie",
+    "chance": 0.3,
+    "delay": [
+      2,
+      8
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ],
+      "flags": [
+        "ancien_detenu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 5,
+    "text": "Ton enfant fait un exposé sur « le métier de mes parents ». Il a choisi de parler de ta prison. 18/20, et un rendez-vous chez la psychologue scolaire.",
+    "effects": {
+      "relationships": {
+        "child": 3
+      },
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_cri_0019",
+    "on": "prison_sortie",
+    "chance": 0.35,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "flags": [
+        "rachete"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 5,
+    "text": "Le lycée de {ville} t'invite à raconter ton parcours de réinsertion. Un élève demande si c'était bien, la prison. Tu réponds « non » une seconde trop tard.",
+    "effects": {
+      "karma": 3,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_cri_0020",
+    "on": "prison_sortie",
+    "chance": 0.5,
+    "delay": [
+      1,
+      4
+    ],
+    "conditions": {
+      "tags": [
+        "adult",
+        "unemployed"
+      ],
+      "flags": [
+        "casier_judiciaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 4,
+    "text": "Entretien d'embauche. Le recruteur a imprimé ton casier judiciaire et l'a surligné en trois couleurs. Il te demande de « commenter le document ».",
+    "choices": [
+      {
+        "label": "Tout assumer avec honnêteté",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il apprécie ta franchise. Il ne t'embauche pas, mais il te recommande à son beau-frère, qui « cherche quelqu'un qui n'a peur de rien ».",
+            "effects": {
+              "happiness": 3,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Il te remercie et appelle la sécurité pour « t'aider à trouver la sortie ».",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parler d'un homonyme",
+        "outcomes": [
+          {
+            "chance": 0.25,
+            "text": "Il te croit. Tu passes le reste de l'entretien à inventer la vie de ton homonyme. Il a l'air d'être quelqu'un de bien.",
+            "effects": {
+              "happiness": 4,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.75,
+            "text": "Le casier contient ta photo. Tu parles d'un « homonyme très ressemblant ». L'entretien continue dix minutes, uniquement par curiosité.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une semaine d'essai gratuite",
+        "outcomes": [
+          {
+            "text": "Il accepte la semaine gratuite. À la fin, il te remercie chaleureusement et ne te rappelle jamais.",
+            "effects": {
+              "happiness": -2,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0021",
+    "on": "proces_perdu",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "remember": [
+      "casier_judiciaire"
+    ],
+    "text": "Ton procès perdu fait la page locale de la Gazette de {ville}, entre une citrouille record et les horaires de la déchetterie. La citrouille a une plus grande photo.",
+    "effects": {
+      "fame": 2,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_cri_0022",
+    "on": "proces_perdu",
+    "chance": 0.45,
+    "delay": [
+      0,
+      1
+    ],
+    "text": "L'avocat qui a perdu ton procès t'envoie sa facture : 3 200 €, avec une carte « Merci pour votre confiance ». Il y a même un petit cœur.",
+    "choices": [
+      {
+        "label": "Payer",
+        "outcomes": [
+          {
+            "text": "Tu paies. Il t'envoie le calendrier de son cabinet. Tu l'accroches aux toilettes.",
+            "effects": {
+              "money": -3200,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le traîner en justice à son tour",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu gagnes ! Le premier procès gagné de ta vie, et c'est contre ton propre avocat.",
+            "effects": {
+              "money": 1500,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Il se défend lui-même. Il est nettement meilleur que quand il te défendait.",
+            "effects": {
+              "money": -1200,
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0023",
+    "on": "proces_perdu",
+    "chance": 0.35,
+    "delay": [
+      1,
+      1
+    ],
+    "text": "Depuis ton procès perdu, tu paies des dommages et intérêts en 48 mensualités. Tu as mis un rappel dans ton téléphone, intitulé « Ma punition ».",
+    "effects": {
+      "money": -1500,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cri_0024",
+    "on": "proces_perdu",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "proces_perdu": 3
+      }
+    },
+    "unique": true,
+    "text": "Troisième procès perdu. Ton avocat te propose une carte de fidélité : au dixième, la plaidoirie est offerte.",
+    "effects": {
+      "happiness": -2,
+      "money": -500
+    }
+  },
+  {
+    "id": "rep_cri_0025",
+    "on": "proces_perdu",
+    "chance": 0.3,
+    "delay": [
+      5,
+      15
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ],
+      "flags": [
+        "casier_judiciaire"
+      ],
+      "excludeFlags": [
+        "rachete",
+        "en_prison"
+      ]
+    },
+    "patience": 3,
+    "text": "Ton vieux casier judiciaire te suit toujours : la banque refuse ton prêt. Le conseiller a dit « hmm » quatorze fois, puis il a rangé son stylo.",
+    "effects": {
+      "happiness": -5
+    }
+  },
+  {
+    "id": "rep_cri_0026",
+    "on": "proces_gagne",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Ton avocat a encadré le jugement de ton procès gagné dans sa salle d'attente. Ton nom est flouté, mais il a écrit ton prénom au feutre juste en dessous.",
+    "effects": {
+      "fame": 1,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_cri_0027",
+    "on": "proces_gagne",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Mme Brunoy, ton adversaire au procès que tu as gagné, t'écrit une lettre de six pages. Dernière phrase : « Ce n'est pas terminé. » Le timbre est collé à l'envers, par rage.",
+    "choices": [
+      {
+        "label": "Répondre poliment",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Elle te répond une carte de vœux, sèche mais correcte. La guerre devient une correspondance.",
+            "effects": {
+              "happiness": 2,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta politesse la rend folle. Nouvelle lettre : douze pages, recto verso.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Encadrer la lettre",
+        "outcomes": [
+          {
+            "text": "Tu l'accroches dans l'entrée. Tes invités la lisent avec plus d'intérêt que tes photos de vacances.",
+            "effects": {
+              "happiness": 4,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'ignorer",
+        "outcomes": [
+          {
+            "text": "Elle t'envoie la même lettre chaque année, comme une carte d'anniversaire maléfique.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0028",
+    "on": "event:rep_cri_0027",
+    "choice": 0,
+    "delay": [
+      10,
+      20
+    ],
+    "patience": 3,
+    "text": "Mme Brunoy, ton ancienne adversaire au procès, t'a écrit à chaque Noël depuis. Elle vient de mourir en te léguant son perroquet, qui t'insulte avec sa voix à elle.",
+    "choices": [
+      {
+        "label": "Garder le perroquet",
+        "outcomes": [
+          {
+            "text": "Il t'insulte tous les matins. Tu t'y attaches. C'est peut-être ça, le pardon.",
+            "effects": {
+              "happiness": 4,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le confier à un refuge",
+        "outcomes": [
+          {
+            "text": "Le refuge te le rapporte au bout d'une semaine. Il a insulté le directeur en citant ton nom.",
+            "effects": {
+              "karma": -1,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0029",
+    "on": "event:rep_cri_0028",
+    "choice": 0,
+    "delay": [
+      5,
+      15
+    ],
+    "patience": 3,
+    "text": "Le perroquet de Mme Brunoy a enfin appris une nouvelle phrase : « {prenom}, coupable ! ». Il la crie à la fenêtre. Tes voisins se posent des questions.",
+    "effects": {
+      "happiness": 2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_cri_0030",
+    "on": "proces_gagne",
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "proces_gagne": 3
+      }
+    },
+    "unique": true,
+    "text": "Trois procès gagnés. Un étudiant en droit fait son mémoire sur toi : « Le justiciable insubmersible ». Il a eu 19. Toi, rien.",
+    "effects": {
+      "fame": 3,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_cri_0031",
+    "on": "proces_gagne",
+    "chance": 0.3,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "La justice t'a blanchi{e}, mais tes collègues continuent de ranger leurs agrafeuses à clé quand tu passes.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cri_0032",
+    "on": "arrestation",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "flags": [
+        "en_cavale"
+      ]
+    },
+    "text": "Fin de ta cavale. Le policier qui te passe les menottes te demande un selfie : ton avis de recherche est dans son casier depuis le début.",
+    "effects": {
+      "fame": 3,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cri_0033",
+    "on": "arrestation",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "forget": [
+      "en_cavale",
+      "recherche_par_police"
+    ],
+    "text": "Ta photo d'identité judiciaire a fuité. Quelqu'un en a fait un mème avec la légende « quand la réunion aurait pu être un mail ».",
+    "choices": [
+      {
+        "label": "Assumer et vendre des t-shirts",
+        "outcomes": [
+          {
+            "text": "Tu en vends 900. Tu deviens l'égérie involontaire du lundi matin.",
+            "effects": {
+              "money": 1200,
+              "fame": 5,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger qu'on la retire",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "La photo disparaît. Il n'en reste qu'une copie, chez ta tante, encadrée.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Ta plainte fait le tour d'internet. Tu es maintenant aussi un autocollant et un filtre.",
+            "effects": {
+              "fame": 4,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0034",
+    "on": "event:rep_cri_0033",
+    "choice": 0,
+    "delay": [
+      5,
+      15
+    ],
+    "patience": 3,
+    "text": "Ton vieux mème de photo judiciaire revient à la mode. Une marque de céréales veut l'utiliser : « Le petit-déjeuner des gens qui ont passé une mauvaise nuit ».",
+    "choices": [
+      {
+        "label": "Signer le contrat",
+        "outcomes": [
+          {
+            "text": "Ta tête est sur deux millions de paquets. Ton dentiste te reconnaît. Ta mère fait semblant que non.",
+            "effects": {
+              "money": 6000,
+              "fame": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser par dignité",
+        "outcomes": [
+          {
+            "text": "Ils prennent un sosie. Il a l'air plus coupable que toi, c'est vexant.",
+            "effects": {
+              "karma": 2,
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0035",
+    "on": "event:rep_cri_0034",
+    "choice": 0,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Depuis la pub de céréales, des enfants te demandent des autographes à la sortie de l'école. Les parents, eux, appellent la police par réflexe.",
+    "effects": {
+      "fame": 2,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_cri_0036",
+    "on": "arrestation",
+    "chance": 0.5,
+    "delay": [
+      0,
+      1
+    ],
+    "text": "L'avocat de ta garde à vue t'envoie sa note d'honoraires. Ligne 4 : « soupirs professionnels », 2 h 30.",
+    "choices": [
+      {
+        "label": "Payer sans discuter",
+        "outcomes": [
+          {
+            "text": "Il te remercie d'un soupir. Celui-là est offert.",
+            "effects": {
+              "money": -1800
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contester la facture",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il retire les soupirs, mais ajoute « contestation », 1 h.",
+            "effects": {
+              "money": -1100
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il facture ta contestation au tarif de nuit.",
+            "effects": {
+              "money": -2600,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0037",
+    "on": "arrestation",
+    "chance": 0.3,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Depuis ton arrestation, ta voisine ferme à double tour quand tu passes. Elle a aussi installé un nain de jardin équipé d'une caméra. Il te fixe.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cri_0038",
+    "on": "arrestation",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "arrestation": 3
+      }
+    },
+    "unique": true,
+    "text": "Troisième arrestation. À l'accueil du commissariat, l'agent t'a gardé ta chaise préférée et prend des nouvelles de ta famille.",
+    "effects": {
+      "happiness": 1,
+      "karma": -2
+    }
+  },
+  {
+    "id": "rep_cri_0039",
+    "on": "arrestation",
+    "chance": 0.7,
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "flags": [
+        "criminel_notoire"
+      ]
+    },
+    "text": "Ton arrestation fait la une : les journaux t'appellent « l'insaisissable », ce qui tombe assez mal vu les circonstances.",
+    "effects": {
+      "fame": 5,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cri_0040",
+    "on": "arrestation",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "minAge": 16,
+    "conditions": {
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "{mere} a appris ton arrestation par les voisins. Elle ne crie pas. Elle range ta chambre d'enfant en silence, ce qui est bien pire.",
+    "effects": {
+      "relationships": {
+        "mother": -6
+      },
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_cri_0041",
+    "on": "crime_reussi",
+    "chance": 0.3,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu te souviens de ce petit coup réussi ? La victime raconte l'histoire au marché. Dans sa version, tu mesures deux mètres et tu avais un complice dressé : un furet.",
+    "effects": {
+      "happiness": 2,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_cri_0042",
+    "on": "crime_reussi",
+    "chance": 0.25,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ton complice du dernier coup s'est fait arrêter pour autre chose. Il t'appelle du commissariat : « Je dirai rien. Mais 2 000 €, ça m'aiderait à bien me taire. »",
+    "choices": [
+      {
+        "label": "Payer son silence",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il se tait. Il t'envoie même une carte de remerciement, ce qui constitue techniquement une preuve écrite.",
+            "effects": {
+              "money": -2000
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il prend l'argent et balance quand même. Chez lui, la loyauté est à taux variable.",
+            "effects": {
+              "money": -2000,
+              "happiness": -4,
+              "setFlags": [
+                "recherche_par_police"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il te balance aussitôt. Il donne ta taille, ta pointure et ton signe astrologique.",
+            "effects": {
+              "happiness": -5,
+              "setFlags": [
+                "recherche_par_police"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il bluffait. Il ne connaît même pas ton nom de famille.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0043",
+    "on": "event:rep_cri_0042",
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "flags": [
+        "recherche_par_police"
+      ]
+    },
+    "patience": 1,
+    "text": "Deux inspecteurs sonnent chez toi avec un portrait-robot dessiné d'après les souvenirs de ton ancien complice. Il te ressemble beaucoup, en plus beau.",
+    "choices": [
+      {
+        "label": "Nier en bloc",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils repartent. L'un d'eux garde le portrait-robot, « pour le souvenir ».",
+            "effects": {
+              "happiness": 3,
+              "clearFlags": [
+                "recherche_par_police"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils trouvent le butin dans ta boîte à biscuits. Amende salée et casier tout neuf.",
+            "effects": {
+              "money": -3000,
+              "happiness": -6,
+              "setFlags": [
+                "casier_judiciaire"
+              ],
+              "clearFlags": [
+                "recherche_par_police"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer avec panache",
+        "outcomes": [
+          {
+            "text": "Ta confession est si bien tournée qu'un inspecteur pleure. Amende et casier, mais standing ovation au commissariat.",
+            "effects": {
+              "money": -2500,
+              "karma": 4,
+              "fame": 2,
+              "setFlags": [
+                "casier_judiciaire"
+              ],
+              "clearFlags": [
+                "recherche_par_police"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sauter par la fenêtre",
+        "outcomes": [
+          {
+            "text": "Tu atterris dans les hortensias de la voisine et tu disparais dans la nuit. Ils t'attendent encore sur ton paillasson.",
+            "effects": {
+              "health": -3,
+              "setFlags": [
+                "en_cavale"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0044",
+    "on": "event:rep_cri_0043",
+    "choice": 2,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "flags": [
+        "recherche_par_police"
+      ]
+    },
+    "patience": 5,
+    "text": "Des années après ton saut par la fenêtre, un vieil inspecteur à la retraite sonne chez toi. Il ne veut pas t'arrêter : il veut juste savoir comment tu as fait, pour les hortensias.",
+    "choices": [
+      {
+        "label": "Tout lui expliquer",
+        "outcomes": [
+          {
+            "text": "Il prend des notes, pleure un peu, puis ferme officiellement ton dossier dans son carnet à spirale.",
+            "effects": {
+              "happiness": 6,
+              "karma": 2,
+              "clearFlags": [
+                "recherche_par_police",
+                "en_cavale"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui claquer la porte au nez",
+        "outcomes": [
+          {
+            "text": "Il revient chaque année avec un nouveau gâteau. C'est sa retraite, maintenant.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0045",
+    "on": "crime_reussi",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "flags": [
+        "rachete"
+      ]
+    },
+    "forget": [
+      "rachete"
+    ],
+    "text": "Tu croyais t'être racheté{e}, et voilà que tu recommences. Ton ancien conseiller de réinsertion l'apprend et déplace ta photo dans le tiroir « Déceptions ».",
+    "effects": {
+      "karma": -4,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_cri_0046",
+    "on": "crime_reussi",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "flags": [
+        "ancien_detenu"
+      ]
+    },
+    "text": "Ton ancien codétenu apprend ton nouveau coup et t'envoie un message : « Je te garde ta couchette au chaud ? »",
+    "effects": {
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_cri_0047",
+    "on": "crime_reussi",
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "crime_reussi": 3
+      }
+    },
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "unique": true,
+    "text": "Trois coups réussis, zéro arrestation. Dans ton quartier, on baisse la voix quand tu entres à la boulangerie. La boulangère te fait des prix sans que tu demandes rien.",
+    "effects": {
+      "fame": 2,
+      "karma": -2,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_cri_0048",
+    "on": "crime_reussi",
+    "delay": [
+      1,
+      2
+    ],
+    "requires": {
+      "minCounters": {
+        "crime_reussi": 5
+      }
+    },
+    "remember": [
+      "criminel_notoire"
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 2,
+    "unique": true,
+    "text": "Ta réputation te précède : un jeune du quartier veut devenir ton apprenti en délinquance. Il a apporté un CV, une lettre de motivation et sa mère.",
+    "choices": [
+      {
+        "label": "Le prendre sous ton aile",
+        "outcomes": [
+          {
+            "text": "Il apprend vite. Trop vite : six mois plus tard, il te pique ton territoire et ta casquette.",
+            "effects": {
+              "money": 1500,
+              "karma": -4,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui conseiller de reprendre ses études",
+        "outcomes": [
+          {
+            "text": "Il s'inscrit en comptabilité. Sa mère te serre dans ses bras pendant une durée gênante.",
+            "effects": {
+              "karma": 5,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui faire passer un test",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu lui demandes de voler un stylo à la poste. Il revient avec le guichet.",
+            "effects": {
+              "money": 300,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il se fait attraper avec le stylo et donne ton nom au guichetier, très poliment.",
+            "effects": {
+              "happiness": -4,
+              "setFlags": [
+                "recherche_par_police"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0049",
+    "on": "event:rep_cri_0048",
+    "choice": 1,
+    "delay": [
+      10,
+      20
+    ],
+    "patience": 3,
+    "text": "Ton ancien apprenti, devenu expert-comptable, fait ta déclaration d'impôts gratuitement. Il trouve 2 000 € de déductions. Le vrai crime, c'était ça depuis le début.",
+    "effects": {
+      "money": 2000,
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_cri_0050",
+    "on": "crime_reussi",
+    "delay": [
+      2,
+      6
+    ],
+    "requires": {
+      "minCounters": {
+        "crime_reussi": 8
+      }
+    },
+    "conditions": {
+      "flags": [
+        "criminel_notoire"
+      ]
+    },
+    "patience": 3,
+    "unique": true,
+    "text": "Un documentaire sur « les grandes figures du milieu de {ville} » sort en streaming. Tu n'y apparais pas. Tu le prends extrêmement mal.",
+    "choices": [
+      {
+        "label": "Écrire à la production",
+        "outcomes": [
+          {
+            "text": "Ils font une saison 2 rien que sur toi. La police la regarde aussi, en prenant des notes.",
+            "effects": {
+              "fame": 6,
+              "happiness": 4,
+              "setFlags": [
+                "recherche_par_police"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester dans l'ombre, c'est le métier",
+        "outcomes": [
+          {
+            "text": "Tu restes discret. Tellement discret que ta propre famille oublie ton anniversaire.",
+            "effects": {
+              "happiness": -3,
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0051",
+    "on": "crime_reussi",
+    "chance": 0.5,
+    "delay": [
+      5,
+      20
+    ],
+    "minAge": 65,
+    "conditions": {
+      "flags": [
+        "criminel_notoire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 10,
+    "unique": true,
+    "text": "Au club de belote, tu racontes tes exploits d'antan. Personne ne te croit, sauf l'ancien gendarme assis en face, qui pâlit et abat son atout par erreur.",
+    "effects": {
+      "happiness": 4,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_cri_0052",
+    "on": "crime_reussi",
+    "chance": 0.2,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Le butin de ton dernier coup dort sous ton matelas. Tu dors mal : la conscience, ou juste les liasses qui font des bosses.",
+    "choices": [
+      {
+        "label": "Tout dépenser d'un coup",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu t'offres une montre en or. Ton banquier demande d'où vient l'argent. Tu réponds « une tante ». Tu n'as pas de tante.",
+            "effects": {
+              "money": 1000,
+              "happiness": 4,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu t'offres un jet-ski. Tu vis à 400 km de la mer. Il est dans ton salon.",
+            "effects": {
+              "money": -500,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le donner anonymement à une association",
+        "outcomes": [
+          {
+            "text": "L'association te remercie dans le journal local, nommément, avec ton adresse. Ils sont très reconnaissants.",
+            "effects": {
+              "karma": 6,
+              "fame": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0053",
+    "on": "crime_reussi",
+    "chance": 0.2,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 2,
+    "text": "Au supermarché, quelqu'un te dévisage devant le rayon pâtes : la victime d'un de tes anciens coups. Elle a reconnu ta façon de pousser un caddie.",
+    "choices": [
+      {
+        "label": "T'excuser et rembourser",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Elle accepte, puis te raconte sa vie pendant quarante minutes. C'était ça, la vraie peine.",
+            "effects": {
+              "money": -1000,
+              "karma": 6,
+              "happiness": -1
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle prend l'argent et appelle quand même la police. Elle a le sens du cumul.",
+            "effects": {
+              "money": -1000,
+              "setFlags": [
+                "recherche_par_police"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire semblant de ne pas parler français",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle hésite et s'éloigne. Tu finis tes courses en baragouinant, par sécurité.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle te répond en espagnol, en allemand puis en italien. Tu changes de supermarché à vie.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Abandonner le caddie et fuir",
+        "outcomes": [
+          {
+            "text": "Tu as laissé là tes courses, ta carte de fidélité et ta dignité.",
+            "effects": {
+              "money": -80,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0054",
+    "on": "crime_rate",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Ton coup raté a été filmé par une caméra de surveillance. La vidéo circule sous le titre « le cambrioleur le plus lent du monde » : 400 000 vues.",
+    "effects": {
+      "fame": 3,
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_cri_0055",
+    "on": "crime_rate",
+    "chance": 0.25,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "Tu as encore mal à l'épaule depuis ta tentative ratée. Le médecin demande comment c'est arrivé. Tu dis « en jardinant ». Il ne te croit pas du tout.",
+    "effects": {
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_cri_0056",
+    "on": "crime_rate",
+    "delay": [
+      1,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "crime_rate": 3
+      }
+    },
+    "conditions": {
+      "tags": [
+        "adult"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "patience": 2,
+    "unique": true,
+    "text": "Trois coups ratés. Ta famille organise une réunion et te propose, avec beaucoup de douceur, une formation de cariste.",
+    "choices": [
+      {
+        "label": "Accepter la reconversion",
+        "outcomes": [
+          {
+            "text": "Tu conduis un chariot élévateur. Tu ne voles plus rien, sauf la vedette au pot de départ du chef.",
+            "effects": {
+              "karma": 4,
+              "happiness": 3,
+              "setFlags": [
+                "rachete"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Persévérer : les grands ont tous raté au début",
+        "outcomes": [
+          {
+            "text": "Ta famille t'ajoute à sa liste de prières. Elle n'en avait pas d'autre.",
+            "effects": {
+              "happiness": 1,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0057",
+    "on": "event:rep_cri_0056",
+    "choice": 0,
+    "delay": [
+      5,
+      15
+    ],
+    "patience": 3,
+    "text": "Des années après ta reconversion, tu es élu{e} cariste de l'année. Dans ton discours, tu remercies « tous ceux qui ne m'ont jamais attrapé{e} ».",
+    "effects": {
+      "happiness": 6,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_cri_0058",
+    "on": "crime_rate",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "crime_rate": 5
+      }
+    },
+    "unique": true,
+    "text": "Cinq coups ratés. La police de {ville} projette tes vidéos aux nouvelles recrues : « Voilà ce qu'on aimerait arrêter tous les jours. »",
+    "effects": {
+      "fame": 2,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_cri_0059",
+    "on": "evasion",
+    "delay": [
+      0,
+      0
+    ],
+    "remember": [
+      "en_cavale",
+      "recherche_par_police"
+    ],
+    "forget": [
+      "en_prison"
+    ],
+    "text": "Après ton évasion, ton avis de recherche est placardé dans tout {ville}. Ils ont choisi la pire photo, celle où tu clignes des yeux.",
+    "choices": [
+      {
+        "label": "Te teindre les cheveux",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Méconnaissable. Même ton reflet te demande tes papiers.",
+            "effects": {
+              "looks": -1,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Roux flamboyant. Tu es désormais la personne en fuite la plus visible du pays.",
+            "effects": {
+              "looks": 2,
+              "fame": 3,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te cacher chez une vieille tante",
+        "outcomes": [
+          {
+            "text": "Elle te cache au grenier et te nourrit de soupe aux poireaux. Tu commences à regretter la cantine de la prison.",
+            "effects": {
+              "happiness": -2,
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lire ton avis de recherche à voix haute",
+        "outcomes": [
+          {
+            "chance": 0.95,
+            "text": "Personne ne fait le lien. Un passant te dit que tu ressembles au type de l'affiche, en moins bien.",
+            "effects": {
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.05,
+            "text": "Tu pouffes, puis tu ris, puis tu ne peux plus t'arrêter.",
+            "effects": {
+              "death": "d'un fou rire incontrôlable devant ton propre avis de recherche"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0060",
+    "on": "event:rep_cri_0059",
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "flags": [
+        "en_cavale"
+      ]
+    },
+    "text": "Toujours en cavale. Tu vis désormais sous le nom de « Dominique Paysage », dans un village où, coïncidence, tout le monde s'appelle Paysage.",
+    "choices": [
+      {
+        "label": "Rester discret",
+        "outcomes": [
+          {
+            "text": "Tu jardines, tu salues, tu ne dis rien. Le village te trouve « charmant mais louche », comme tout le monde.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir une crêperie",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta crêperie marche du tonnerre. Personne ne pose de questions à quelqu'un qui fait une complète pareille.",
+            "effects": {
+              "money": 3000,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un critique gastronomique publie ta photo avec cinq étoiles. Le commissariat a beaucoup aimé l'article.",
+            "effects": {
+              "money": 1500,
+              "fame": 3,
+              "setFlags": [
+                "recherche_par_police"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0061",
+    "on": "event:rep_cri_0060",
+    "delay": [
+      5,
+      12
+    ],
+    "conditions": {
+      "flags": [
+        "en_cavale"
+      ]
+    },
+    "patience": 3,
+    "text": "Des années de cavale. Tu appelles un avocat avec une voix déguisée pour parler de prescription. Il te reconnaît à ta façon de dire « bonjour ».",
+    "choices": [
+      {
+        "label": "Te rendre pour en finir",
+        "outcomes": [
+          {
+            "text": "Le juge, ému par ton histoire, te condamne à des travaux d'intérêt général : faire des crêpes à la cantine du tribunal.",
+            "effects": {
+              "karma": 5,
+              "happiness": 4,
+              "setFlags": [
+                "casier_judiciaire"
+              ],
+              "clearFlags": [
+                "en_cavale",
+                "recherche_par_police"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer à fuir",
+        "outcomes": [
+          {
+            "text": "Tu achètes ta troisième fausse moustache. Elle est plus belle que les deux autres.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_cri_0062",
+    "on": "event:rep_cri_0061",
+    "choice": 1,
+    "delay": [
+      10,
+      20
+    ],
+    "conditions": {
+      "flags": [
+        "en_cavale"
+      ]
+    },
+    "patience": 5,
+    "clearFlags": [
+      "en_cavale",
+      "recherche_par_police"
+    ],
+    "text": "Des décennies de cavale. La police a fermé ton dossier faute de place dans les armoires. Tu l'apprends par le journal et, bizarrement, tu te sens vexé{e}.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_cri_0063",
+    "on": "evasion",
+    "chance": 0.5,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "en_cavale"
+      ]
+    },
+    "text": "En cavale, tu sursautes à chaque sirène, même celle du camion de glaces. Surtout celle du camion de glaces, en fait.",
+    "effects": {
+      "happiness": -3,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_cri_0064",
+    "on": "evasion",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "evasion": 2
+      }
+    },
+    "unique": true,
+    "text": "Deuxième évasion. Les gardiens ont ouvert une cagnotte pour parier sur la date de la troisième. Tu as été tenté{e} de miser.",
+    "effects": {
+      "fame": 3,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_cri_0065",
+    "on": "evasion",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "La presse s'enflamme pour ton évasion : un chroniqueur affirme que tu es parti{e} en deltaplane. Tu es sorti{e} par la porte de la buanderie, mais tu ne démens pas.",
+    "effects": {
+      "fame": 4,
+      "happiness": 2
+    }
+  }
+]

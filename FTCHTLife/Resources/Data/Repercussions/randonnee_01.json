@@ -1,0 +1,698 @@
+[
+  {
+    "id": "rep_ran_0001",
+    "on": "randonnee_sommet",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "remember": ["photo_du_sommet"],
+    "text": "La photo prise au sommet est devenue ta photo de profil partout. Tu as l'air héroïque, essoufflé{e} et légèrement violet.",
+    "effects": { "happiness": 4, "looks": 1 }
+  },
+  {
+    "id": "rep_ran_0002",
+    "on": "randonnee_sommet",
+    "requires": { "flags": ["photo_du_sommet"] },
+    "chance": 0.6,
+    "delay": [8, 12],
+    "unique": true,
+    "patience": 3,
+    "conditions": { "flags": ["photo_du_sommet"] },
+    "text": "Dix ans plus tard, ta photo de profil est toujours celle du sommet. Tes collègues pensent que tu es alpiniste. Ton médecin, lui, a vu ta tension.",
+    "choices": [
+      { "label": "Changer enfin de photo", "outcomes": [
+        { "chance": 0.6, "text": "Nouvelle photo, prise dans ta cuisine. Personne ne la like. Personne.", "effects": { "happiness": -3, "clearFlags": ["photo_du_sommet"] } },
+        { "chance": 0.4, "text": "Ta mère t'a appelé{e} pour te demander si tout allait bien.", "effects": { "happiness": -1, "clearFlags": ["photo_du_sommet"] } }
+      ]},
+      { "label": "La garder, c'est ton identité", "outcomes": [
+        { "text": "Tu as accepté d'être pour toujours la personne du sommet. On te demande des conseils d'alpinisme. Tu inventes.", "effects": { "happiness": 3, "karma": -1, "setFlags": ["legende_du_sommet"] } }
+      ]},
+      { "label": "Y retourner refaire la photo", "outcomes": [
+        { "text": "Tu as racheté des chaussures de marche. Elles te jugent depuis l'entrée.", "effects": { "money": -140, "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0003",
+    "on": "event:rep_ran_0002",
+    "choice": 2,
+    "delay": [1, 1],
+    "text": "Te revoilà au pied de la montagne de ta fameuse photo, dix ans et quelques kilos plus tard. Le sommet a l'air plus loin qu'avant. C'est sûrement la tectonique.",
+    "choices": [
+      { "label": "Monter à pied, par fierté", "outcomes": [
+        { "chance": 0.5, "text": "Tu es arrivé{e} en haut et tu as refait exactement la même photo. Personne n'a vu la différence. Toi si.", "effects": { "happiness": 8, "health": 3 } },
+        { "chance": 0.5, "text": "Tu t'es arrêté{e} à mi-chemin pour une « pause photo » de deux heures.", "effects": { "health": -3, "happiness": -2 } }
+      ]},
+      { "label": "Prendre le téléphérique", "outcomes": [
+        { "text": "Tu as pris le téléphérique et marché les dix derniers mètres en faisant semblant de souffler. Un enfant t'a photographié{e}.", "effects": { "happiness": 2, "karma": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0004",
+    "on": "event:rep_ran_0003",
+    "choice": 1,
+    "chance": 0.7,
+    "delay": [5, 15],
+    "unique": true,
+    "text": "Des années après ton expédition en téléphérique, la station a lancé une campagne de pub. On t'y voit en train de faire semblant de souffler, sous le slogan « Le sommet, sans l'effort ». Tu n'as jamais touché un centime.",
+    "effects": { "happiness": -4, "fame": 3 }
+  },
+  {
+    "id": "rep_ran_0005",
+    "on": "randonnee_perdu",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "remember": ["perdu_en_montagne"],
+    "text": "Quelques semaines après ta disparition en forêt, l'équipe de secours t'a envoyé la facture de l'hélicoptère : 1 840 €. Avec un petit mot : « Content de vous avoir retrouvé, moins de vous avoir cherché. »",
+    "choices": [
+      { "label": "Payer sans discuter", "outcomes": [
+        { "text": "Tu as payé. L'hélicoptère, au moins, était confortable.", "effects": { "money": -1840, "happiness": -4 } }
+      ]},
+      { "label": "Contester la facture", "outcomes": [
+        { "chance": 0.4, "text": "Ta lettre de trois pages sur « la mauvaise signalisation des sapins » a fonctionné. Facture annulée.", "effects": { "happiness": 6, "smarts": 1 } },
+        { "chance": 0.6, "text": "Contestation rejetée. Ils ont ajouté 30 € de frais de lecture de ta lettre.", "effects": { "money": -30, "happiness": -3 } }
+      ]},
+      { "label": "Proposer de payer en fromage", "outcomes": [
+        { "chance": 0.3, "text": "Le chef d'équipe a accepté une tomme entière. Tu as désormais un ami à la caserne.", "effects": { "money": -60, "happiness": 4, "newFriend": true } },
+        { "chance": 0.7, "text": "Ils ont refusé le fromage mais l'ont gardé. Facture maintenue.", "effects": { "money": -1900, "happiness": -5 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0006",
+    "on": "event:rep_ran_0005",
+    "choice": 1,
+    "outcome": 1,
+    "delay": [1, 2],
+    "text": "Tu croyais l'histoire de l'hélicoptère enterrée. Un huissier a sonné : la facture des secours a pris des intérêts, et du poids.",
+    "choices": [
+      { "label": "Payer, avec les intérêts", "outcomes": [
+        { "text": "2 600 €. Tu aurais dû rester perdu{e}, c'était moins cher.", "effects": { "money": -2600, "happiness": -5 } }
+      ]},
+      { "label": "Fuir en forêt", "outcomes": [
+        { "text": "Tu as pris la fuite par le premier sentier venu. Erreur classique.", "effects": { "happiness": -2, "health": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0007",
+    "on": "event:rep_ran_0006",
+    "choice": 1,
+    "delay": [0, 0],
+    "text": "Tu t'es perdu{e} en fuyant l'huissier. La même équipe de secours t'a retrouvé{e}, a soupiré en chœur, puis t'a tendu deux factures : l'ancienne et la nouvelle. Ta photo est maintenant affichée à la caserne.",
+    "effects": { "money": -3500, "happiness": -6, "fame": 1 }
+  },
+  {
+    "id": "rep_ran_0008",
+    "on": "randonnee_perdu",
+    "requires": { "excludeFlags": ["randonneur"] },
+    "chance": 0.5,
+    "delay": [1, 1],
+    "setFlags": ["phobie_de_la_foret"],
+    "text": "Depuis la nuit où tu t'es perdu{e} dans les bois, tu ne supportes plus les arbres. Même le sapin de Noël a dû passer l'hiver sur le balcon.",
+    "effects": { "happiness": -4, "stress": 3 }
+  },
+  {
+    "id": "rep_ran_0009",
+    "on": "event:rep_ran_0008",
+    "chance": 0.6,
+    "delay": [1, 4],
+    "patience": 2,
+    "conditions": { "flags": ["phobie_de_la_foret"] },
+    "text": "Ta phobie de la forêt empire : tu changes de trottoir devant les platanes. Une psychologue te propose une thérapie « par exposition progressive ».",
+    "choices": [
+      { "label": "Commencer par un bonsaï", "outcomes": [
+        { "chance": 0.6, "text": "Le bonsaï et toi avez appris à vous respecter. Puis tu en as acheté un deuxième.", "effects": { "happiness": 5, "money": -80, "clearFlags": ["phobie_de_la_foret"], "setFlags": ["collectionneur_de_bonsais"] } },
+        { "chance": 0.4, "text": "Tu as fait une crise de panique devant le bonsaï. Il ne mesure que vingt centimètres.", "effects": { "happiness": -3, "money": -80 } }
+      ]},
+      { "label": "Déménager dans une zone sans arbres", "outcomes": [
+        { "text": "Tu vis maintenant entre un parking et une zone commerciale. Tu dors enfin.", "effects": { "happiness": 2, "health": -2, "money": -1500 } }
+      ]},
+      { "label": "Vivre avec", "outcomes": [
+        { "text": "Tu as décidé que la forêt, c'était son problème à elle.", "effects": { "happiness": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0010",
+    "on": "event:rep_ran_0009",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.8,
+    "delay": [12, 20],
+    "unique": true,
+    "conditions": { "flags": ["collectionneur_de_bonsais"] },
+    "text": "Ça a commencé par un bonsaï pour soigner ta peur des arbres. Vingt ans plus tard, tu en possèdes cent douze. Techniquement, tu vis dans une forêt.",
+    "effects": { "happiness": 6, "money": -400, "fame": 1 }
+  },
+  {
+    "id": "rep_ran_0011",
+    "on": "randonnee",
+    "requires": { "flags": ["phobie_de_la_foret"] },
+    "delay": [0, 0],
+    "text": "Malgré ta phobie de la forêt, tu as fait une randonnée cette année. Tu as marché les yeux fermés en tenant {ami} par la manche.",
+    "choices": [
+      { "label": "Ouvrir les yeux", "outcomes": [
+        { "chance": 0.5, "text": "Les arbres n'ont rien fait. Absolument rien. Tu te sens un peu bête et beaucoup mieux.", "effects": { "happiness": 6, "clearFlags": ["phobie_de_la_foret"] } },
+        { "chance": 0.5, "text": "Un écureuil te fixait. Tu as hurlé. Il a hurlé. Retour au parking.", "effects": { "happiness": -4, "relationships": { "friend": -2 } } }
+      ]},
+      { "label": "Garder les yeux fermés jusqu'au bout", "outcomes": [
+        { "text": "Tu as raté tout le paysage mais rencontré trois racines, personnellement.", "effects": { "health": -3, "relationships": { "friend": 2 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0012",
+    "on": "randonnee_animal",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "remember": ["ennemi_des_marmottes"],
+    "text": "Lors de ta randonnée, une marmotte t'a volé ton sandwich et a sifflé en te regardant. Tu as clairement entendu le mot « minable ».",
+    "effects": { "happiness": -3 }
+  },
+  {
+    "id": "rep_ran_0013",
+    "on": "randonnee",
+    "requires": { "flags": ["ennemi_des_marmottes"] },
+    "chance": 0.4,
+    "delay": [1, 5],
+    "unique": true,
+    "conditions": { "flags": ["ennemi_des_marmottes"] },
+    "text": "Sur le sentier, une marmotte te bloque le passage. Même cicatrice sur l'oreille, même regard. C'est elle, la voleuse de sandwich d'il y a quelques années. Elle se souvient de toi.",
+    "choices": [
+      { "label": "Lui offrir un sandwich en signe de paix", "outcomes": [
+        { "text": "Elle a pris le sandwich, ta barre de céréales et ta dignité. Mais la paix est signée.", "effects": { "happiness": 3, "karma": 3, "clearFlags": ["ennemi_des_marmottes"] } }
+      ]},
+      { "label": "La fixer dans les yeux", "outcomes": [
+        { "chance": 0.5, "text": "Duel de regards de onze minutes. Elle a cligné la première. Tu le raconteras toute ta vie.", "effects": { "happiness": 6 } },
+        { "chance": 0.5, "text": "Elle a sifflé. Quarante marmottes sont sorties des rochers. Tu as couru.", "effects": { "health": -2, "happiness": -4 } }
+      ]},
+      { "label": "Faire demi-tour", "outcomes": [
+        { "text": "Tu as fait demi-tour. Elle a gardé le sentier. La montagne a un nouveau propriétaire.", "effects": { "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0014",
+    "on": "event:rep_ran_0013",
+    "choice": 1,
+    "chance": 0.7,
+    "delay": [15, 25],
+    "unique": true,
+    "text": "Des décennies après ton duel avec la marmotte, tu regardes un documentaire animalier. Une jeune marmotte fixe la caméra avec une hostilité très personnelle. Tu reconnais le regard : c'est sa petite-fille.",
+    "effects": { "happiness": -1, "smarts": 1 }
+  },
+  {
+    "id": "rep_ran_0015",
+    "on": "randonnee_animal",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "text": "Un bouquetin t'a regardé{e} de haut pendant toute la montée. Littéralement : il était sur une paroi verticale, toi sur un sentier balisé. Tu as perdu toute estime de toi.",
+    "effects": { "happiness": -2, "smarts": 1 }
+  },
+  {
+    "id": "rep_ran_0016",
+    "on": "randonnee_rencontre",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "remember": ["rencontre_au_refuge"],
+    "text": "Au refuge, tu as partagé la table de Camille, qui fait le tour des sommets avec un réchaud et une confiance inébranlable. La nuit tombe, la soupe lyophilisée aussi.",
+    "choices": [
+      { "label": "Échanger vos numéros", "outcomes": [
+        { "text": "Camille a noté ton numéro sur sa carte IGN, au crayon. Romantique et pratique.", "effects": { "happiness": 5 } }
+      ]},
+      { "label": "Partager ta soupe", "outcomes": [
+        { "text": "Tu as partagé ta soupe. Camille a partagé sa flasque de génépi. La soirée a été floue.", "effects": { "happiness": 4, "health": -1, "newFriend": true } }
+      ]},
+      { "label": "Aller te coucher tôt", "outcomes": [
+        { "text": "Tu as ronflé toute la nuit dans le dortoir. Le lendemain, Camille est parti à l'aube sans un mot. Comme tout le dortoir.", "effects": { "happiness": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0017",
+    "on": "event:rep_ran_0016",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [1, 2],
+    "text": "Camille, rencontré au refuge, t'a rappelé{e} : trois semaines de trek en autonomie complète, ça te dit ? « Autonomie complète » signifie sans douche.",
+    "choices": [
+      { "label": "Partir avec Camille", "outcomes": [
+        { "chance": 0.6, "text": "Trois semaines, deux ampoules, un coucher de soleil inoubliable. Tu es revenu{e} changé{e} et très sale.", "effects": { "happiness": 10, "health": 3, "money": -600 } },
+        { "chance": 0.4, "text": "Au jour 4, vous vous êtes disputés sur l'orientation de la carte. Au jour 5, vous ne vous parliez plus.", "effects": { "happiness": -5, "money": -600 } }
+      ]},
+      { "label": "Décliner poliment", "outcomes": [
+        { "text": "Camille est parti seul. Tu as suivi ses photos en mangeant des chips. Aucun regret, sauf un peu.", "effects": { "happiness": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0018",
+    "on": "event:rep_ran_0017",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [15, 25],
+    "unique": true,
+    "text": "Plus de quinze ans après votre grand trek, Camille t'a envoyé une carte postale du refuge où vous vous étiez rencontrés. Au dos : « Ils ont toujours ta soupe sur l'étagère. Personne n'y touche. »",
+    "effects": { "happiness": 6 }
+  },
+  {
+    "id": "rep_ran_0019",
+    "on": "randonnee_rencontre",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "conditions": { "requiresPartner": true },
+    "text": "{partenaire} a remarqué que tu parlais beaucoup d'« une personne rencontrée au refuge ». Tu as dit qu'il s'agissait d'un guide. Tu as ajouté un détail de trop sur ses mollets.",
+    "effects": { "relationships": { "partner": -4 }, "happiness": -2 }
+  },
+  {
+    "id": "rep_ran_0020",
+    "on": "champignons",
+    "chance": 0.45,
+    "delay": [0, 0],
+    "text": "Ta cueillette de champignons trône sur la table. Ils sont beaux, charnus, et ressemblent vaguement à la photo du livre. Vaguement.",
+    "choices": [
+      { "label": "En faire une omelette", "outcomes": [
+        { "chance": 0.55, "text": "Délicieux. Tu as passé la soirée à te sentir supérieur{e} aux gens qui achètent leurs champignons.", "effects": { "happiness": 5, "health": 1 } },
+        { "chance": 0.3, "text": "Trois heures plus tard, le parquet t'expliquait la philosophie de Kant. Il était convaincant.", "effects": { "happiness": 3, "health": -4, "smarts": -1 } },
+        { "chance": 0.12, "text": "Lavage d'estomac. L'interne a pris une photo du champignon pour son cours.", "effects": { "health": -10, "money": -200 } },
+        { "chance": 0.03, "text": "C'était bien le champignon de la page d'à côté.", "effects": { "death": "d'une omelette que tu avais qualifiée d'« excellente » une heure avant" } }
+      ]},
+      { "label": "Les faire vérifier à la pharmacie", "outcomes": [
+        { "text": "La pharmacienne a regardé ton panier, puis toi, puis la poubelle. Elle a pointé la poubelle.", "effects": { "smarts": 2, "happiness": -1 } }
+      ]},
+      { "label": "Les offrir au voisin", "outcomes": [
+        { "text": "Le voisin était ravi. Tu l'as surveillé par la fenêtre toute la soirée. Il va bien. Pour l'instant.", "effects": { "karma": -4 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0021",
+    "on": "event:rep_ran_0020",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.7,
+    "delay": [1, 3],
+    "setFlags": ["parle_aux_arbres"],
+    "text": "Depuis l'omelette aux champignons, il t'arrive encore d'entendre les arbres commenter tes tenues. Ils n'aiment pas ton pantalon beige.",
+    "effects": { "happiness": -2, "smarts": -1 }
+  },
+  {
+    "id": "rep_ran_0022",
+    "on": "event:rep_ran_0020",
+    "choice": 2,
+    "delay": [1, 2],
+    "text": "Le voisin à qui tu avais offert les champignons a sonné. Il va bien, et il t'apporte « en retour » un panier de sa propre cueillette. Il te regarde avec un sourire que tu n'aimes pas.",
+    "choices": [
+      { "label": "Les manger devant lui", "outcomes": [
+        { "chance": 0.6, "text": "Ils étaient parfaits. Il voulait juste te voir transpirer. Message reçu.", "effects": { "happiness": -2, "karma": 2 } },
+        { "chance": 0.4, "text": "Nuit agitée. Vous êtes quittes.", "effects": { "health": -5, "karma": 2 } }
+      ]},
+      { "label": "Les jeter discrètement", "outcomes": [
+        { "text": "Il a retrouvé les champignons dans ta poubelle. Vous ne vous parlez plus. La guerre de voisinage a officiellement commencé.", "effects": { "happiness": -3, "setFlags": ["guerre_avec_le_voisin"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0023",
+    "on": "champignons_arnaque",
+    "delay": [0, 0],
+    "text": "Le « stage de cueillette sauvage avec un chaman des bois » à 290 € s'est déroulé au rayon frais d'un supermarché. Le chaman a quand même béni ta barquette.",
+    "effects": { "money": -290, "happiness": -4, "smarts": 1 }
+  },
+  {
+    "id": "rep_ran_0024",
+    "on": "champignons",
+    "requires": { "minCounters": { "champignons": 5 } },
+    "chance": 0.5,
+    "delay": [1, 3],
+    "unique": true,
+    "text": "À force de ramasser des champignons, tu as un « coin secret ». Un inconnu en ciré t'a suivi{e} jusque-là ce matin, à vingt mètres, en faisant semblant de chercher ses clés.",
+    "choices": [
+      { "label": "Le semer dans les fourrés", "outcomes": [
+        { "chance": 0.6, "text": "Tu l'as semé en rampant sous les ronces. Ton coin est sauf. Ton pantalon, non.", "effects": { "happiness": 4, "health": -1 } },
+        { "chance": 0.4, "text": "Tu t'es semé{e} toi-même. Vous vous êtes retrouvés perdus ensemble.", "effects": { "happiness": -3, "newFriend": true } }
+      ]},
+      { "label": "Partager le coin", "outcomes": [
+        { "text": "Il t'a remercié. L'année suivante, il y avait un panneau « Cueillette guidée, 15 € ».", "effects": { "karma": 3, "happiness": -4 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0025",
+    "on": "randonnee",
+    "requires": { "minCounters": { "randonnee": 5 }, "excludeFlags": ["randonneur"] },
+    "delay": [0, 0],
+    "unique": true,
+    "setFlags": ["randonneur"],
+    "text": "Cinq randonnées au compteur : tu possèdes maintenant des bâtons de marche, un sifflet et des opinions très arrêtées sur la laine mérinos. Tu fais officiellement partie des randonneurs, et tu le fais savoir.",
+    "effects": { "happiness": 4, "health": 3 }
+  },
+  {
+    "id": "rep_ran_0026",
+    "on": "randonnee",
+    "requires": { "flags": ["randonneur"], "minCounters": { "randonnee": 10 } },
+    "chance": 0.5,
+    "delay": [1, 3],
+    "unique": true,
+    "conditions": { "flags": ["randonneur"] },
+    "text": "Le club de randonnée de {ville} te propose d'en devenir président{e}. Le poste inclut une polaire brodée et la gestion d'un conflit vieux de quinze ans sur le pique-nique de juin.",
+    "choices": [
+      { "label": "Accepter la présidence", "outcomes": [
+        { "chance": 0.6, "text": "Tu as réglé le conflit du pique-nique en interdisant les œufs durs. Ton nom est gravé sur la cabane.", "effects": { "happiness": 6, "fame": 2, "stress": 4 } },
+        { "chance": 0.4, "text": "Coup d'État au club au bout de six mois, mené par une retraitée armée de bâtons télescopiques.", "effects": { "happiness": -5, "fame": 1 } }
+      ]},
+      { "label": "Refuser, tu marches pour être seul{e}", "outcomes": [
+        { "text": "Le club a été vexé. Ils t'ont rayé{e} de la liste du covoiturage.", "effects": { "happiness": 1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0027",
+    "on": "randonnee",
+    "requires": { "minCounters": { "randonnee": 8 } },
+    "chance": 0.5,
+    "delay": [15, 25],
+    "unique": true,
+    "minAge": 45,
+    "patience": 5,
+    "text": "Tes genoux ont fait les comptes de toutes ces randonnées. Ce matin, ils ont déposé un préavis de grève et un cahier de revendications.",
+    "choices": [
+      { "label": "Genouillères et repos", "outcomes": [
+        { "text": "Tu marches désormais avec des genouillères. Tu entends un léger « scritch » à chaque pas, comme un vieux cuir.", "effects": { "health": 3, "happiness": -2, "money": -90 } }
+      ]},
+      { "label": "Opération", "outcomes": [
+        { "chance": 0.7, "text": "Genou neuf. Il est plus jeune que le reste de ton corps et te le fait sentir.", "effects": { "health": 8, "money": -1200 } },
+        { "chance": 0.3, "text": "Opération réussie, rééducation ratée : tu ne peux plus descendre un escalier sans commentaire.", "effects": { "health": 2, "money": -1200, "happiness": -3 } }
+      ]},
+      { "label": "Ignorer et repartir en montagne", "outcomes": [
+        { "text": "Tes genoux ont durci le mouvement. Tu es redescendu{e} assis{e} sur ton sac.", "effects": { "health": -7, "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0028",
+    "on": "randonnee_blessure",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "text": "Depuis ta chute en randonnée, tu racontes à tout le monde que tu as glissé sur un rocher. C'était une bouse. Tout le monde le sait. Il y a des photos.",
+    "effects": { "happiness": -3, "health": -2 }
+  },
+  {
+    "id": "rep_ran_0029",
+    "on": "randonnee_blessure",
+    "chance": 0.4,
+    "delay": [5, 15],
+    "unique": true,
+    "text": "Ta vieille cheville, souvenir de cette randonnée ratée, prévoit désormais la pluie trois jours à l'avance. Tes voisins te consultent avant d'étendre leur linge.",
+    "effects": { "happiness": 2, "health": -1, "fame": 1 }
+  },
+  {
+    "id": "rep_ran_0030",
+    "on": "randonnee_blessure",
+    "chance": 0.4,
+    "delay": [1, 2],
+    "conditions": { "tags": ["job"] },
+    "text": "Tu as gardé une légère boiterie de ta blessure en montagne. Au travail, un collègue a lancé la rumeur que tu avais combattu un ours.",
+    "choices": [
+      { "label": "Confirmer pour l'ours", "outcomes": [
+        { "chance": 0.7, "text": "Ton prestige a triplé. On te laisse passer en premier à la machine à café.", "effects": { "happiness": 5, "karma": -2, "setFlags": ["menteur_notoire"] } },
+        { "chance": 0.3, "text": "Un collègue chasseur t'a posé des questions techniques sur l'ours. Tu as dit qu'il était « grand et marron ». Démasqué{e}.", "effects": { "happiness": -5, "setFlags": ["menteur_notoire"] } }
+      ]},
+      { "label": "Dire la vérité (une bouse)", "outcomes": [
+        { "text": "Ton surnom est désormais « Bouse ». Au moins, c'est honnête.", "effects": { "happiness": -3, "karma": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0031",
+    "on": "camping",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "text": "Au camping, tu as monté ta tente à l'envers. Tu ne t'en es rendu compte qu'au lever du soleil, en voyant l'étiquette « HAUT » collée contre le sol.",
+    "effects": { "happiness": -2, "health": -1 }
+  },
+  {
+    "id": "rep_ran_0032",
+    "on": "camping_animal",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "text": "Pendant ton camping, un sanglier est entré dans ta tente, a mangé tes provisions et dormi sur ton duvet. Il est toujours là ce matin. Il ronfle.",
+    "choices": [
+      { "label": "Négocier son départ avec une saucisse", "outcomes": [
+        { "chance": 0.7, "text": "Il a pris la saucisse et la porte. Tu as gardé ton honneur, à peu près.", "effects": { "happiness": 2 } },
+        { "chance": 0.3, "text": "Il a pris la saucisse et est resté. Tu as dormi dans la voiture.", "effects": { "happiness": -3, "health": -1 } }
+      ]},
+      { "label": "Fuir en pyjama", "outcomes": [
+        { "text": "Tu as traversé tout le camping en pyjama à pois. Applaudissements au bloc sanitaire.", "effects": { "happiness": -4, "fame": 1 } }
+      ]},
+      { "label": "Le baptiser Gérard", "outcomes": [
+        { "text": "Gérard et toi avez partagé un petit-déjeuner silencieux. Une amitié est née, et une odeur aussi.", "effects": { "happiness": 5, "setFlags": ["ami_du_sanglier"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0033",
+    "on": "event:rep_ran_0032",
+    "choice": 2,
+    "chance": 0.7,
+    "delay": [2, 6],
+    "conditions": { "flags": ["ami_du_sanglier"] },
+    "text": "Tu es retourné{e} au camping de Gérard le sanglier. Il t'a reconnu{e}. Il est venu avec sa famille. Huit marcassins ont mangé tes chaussures.",
+    "choices": [
+      { "label": "Adopter la famille", "outcomes": [
+        { "text": "Le camping a renommé l'emplacement 14 « Chez Gérard et toi ». Tu es une attraction.", "effects": { "happiness": 6, "fame": 2, "money": -120 } }
+      ]},
+      { "label": "Mettre fin à cette amitié", "outcomes": [
+        { "text": "Tu as plié la tente sans te retourner. Gérard t'a regardé{e} partir. Tu as eu honte toute l'autoroute.", "effects": { "happiness": -4, "karma": -2, "clearFlags": ["ami_du_sanglier"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0034",
+    "on": "camping",
+    "requires": { "minCounters": { "camping": 4 } },
+    "chance": 0.4,
+    "delay": [1, 1],
+    "unique": true,
+    "text": "Les habitués du camping te réservent désormais « ta » place depuis plusieurs étés. Le couple de l'emplacement voisin a mis ta photo dans son album de famille, sans te demander.",
+    "effects": { "happiness": 4, "newFriend": true }
+  },
+  {
+    "id": "rep_ran_0035",
+    "on": "peche",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "text": "Ta seule prise de la saison de pêche : une chaussure. Ta pointure. Le pied droit. Tu attends désormais le gauche avec une patience de moine.",
+    "effects": { "happiness": 1 }
+  },
+  {
+    "id": "rep_ran_0036",
+    "on": "peche",
+    "requires": { "minCounters": { "peche": 5 } },
+    "chance": 0.5,
+    "delay": [1, 2],
+    "unique": true,
+    "text": "Après des années au bord de l'étang, un vieux pêcheur te parle de « la Comtesse », une carpe géante que personne n'a jamais attrapée. Il te regarde comme s'il te passait le flambeau.",
+    "choices": [
+      { "label": "Traquer la Comtesse", "outcomes": [
+        { "chance": 0.25, "text": "Tu l'as eue. Vingt-deux kilos. Tu l'as relâchée en pleurant. Le vieux pêcheur aussi.", "effects": { "happiness": 10, "fame": 2 } },
+        { "chance": 0.75, "text": "Un été entier sans la voir. Mais une nuit, tu as entendu un « plouf » très moqueur.", "effects": { "happiness": -3, "stress": 3 } }
+      ]},
+      { "label": "Laisser la légende tranquille", "outcomes": [
+        { "text": "Certaines carpes doivent rester des mystères. Le vieux pêcheur ne t'a plus jamais adressé la parole.", "effects": { "karma": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0037",
+    "on": "event:rep_ran_0036",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [15, 25],
+    "unique": true,
+    "text": "Vingt ans ont passé depuis la traque de la Comtesse. Dans ta version de l'histoire, la carpe fait maintenant deux mètres et parlait latin. Les enfants du quartier exigent de l'entendre à chaque repas.",
+    "effects": { "happiness": 5, "karma": -1 }
+  },
+  {
+    "id": "rep_ran_0038",
+    "on": "escalade_blessure",
+    "delay": [0, 0],
+    "chance": 0.6,
+    "text": "Depuis ta chute en escalade, ton doigt fait un angle que la médecine qualifie de « créatif ». Tu ne peux plus pointer quelque chose sans montrer autre chose.",
+    "effects": { "health": -3, "looks": -1 }
+  },
+  {
+    "id": "rep_ran_0039",
+    "on": "escalade_blessure",
+    "chance": 0.5,
+    "delay": [1, 3],
+    "text": "Ta blessure d'escalade est guérie. La salle de bloc t'envoie un bon pour une séance gratuite, « pour reprendre confiance ». Le mur a l'air d'avoir grandi.",
+    "choices": [
+      { "label": "Remonter sur le mur", "outcomes": [
+        { "chance": 0.7, "text": "Tu as atteint la dernière prise. Tu t'es retourné{e} pour que tout le monde voie. Personne ne regardait.", "effects": { "happiness": 6, "health": 3 } },
+        { "chance": 0.3, "text": "Même prise, même chute, même médecin. Il t'a reconnu{e} et a soupiré.", "effects": { "health": -6, "money": -100 } }
+      ]},
+      { "label": "Rester au sol, définitivement", "outcomes": [
+        { "text": "Tu as offert ton baudrier à {fratrie}. Le sol t'a toujours aimé{e}.", "effects": { "happiness": 1, "relationships": { "sibling": 2 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0040",
+    "on": "ski_blessure",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "text": "Ton plâtre de ski a été signé par un moniteur, deux pisteurs et l'homme qui t'a percuté{e}. Il a mis un smiley.",
+    "effects": { "happiness": -3, "health": -2 }
+  },
+  {
+    "id": "rep_ran_0041",
+    "on": "ski_blessure",
+    "chance": 0.5,
+    "delay": [1, 1],
+    "text": "L'hiver revient, et avec lui l'invitation au ski de {ami}. Ton genou, souvenir de l'an dernier, émet un petit grincement d'avertissement.",
+    "choices": [
+      { "label": "Y retourner, en piste verte", "outcomes": [
+        { "chance": 0.7, "text": "Tu as dévalé la piste verte avec une prudence de démineur. Les enfants de quatre ans t'ont doublé{e}. Sans casse.", "effects": { "happiness": 4, "relationships": { "friend": 3 }, "money": -350 } },
+        { "chance": 0.3, "text": "Tu t'es blessé{e} dans le télésiège. Avant même de skier.", "effects": { "health": -5, "money": -350 } }
+      ]},
+      { "label": "Rester au chalet", "outcomes": [
+        { "text": "Tu as passé la semaine au chalet avec la raclette. Bilan médical : différent, mais pas meilleur.", "effects": { "happiness": 3, "health": -2, "relationships": { "friend": 1 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0042",
+    "on": "voyage",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "remember": ["souvenir_encombrant"],
+    "text": "Tu es rentré{e} de voyage avec une girafe en bois de deux mètres. Elle a voyagé en soute, toi sur ses genoux, symboliquement. Elle trône désormais dans ton salon.",
+    "effects": { "happiness": 3, "money": -180 }
+  },
+  {
+    "id": "rep_ran_0043",
+    "on": "voyage",
+    "requires": { "flags": ["souvenir_encombrant"] },
+    "chance": 0.5,
+    "delay": [3, 8],
+    "unique": true,
+    "conditions": { "flags": ["souvenir_encombrant"] },
+    "text": "La girafe en bois rapportée de voyage occupe toujours un quart de ton salon. Tu t'es cogné{e} dedans 340 fois. Elle n'a jamais bougé.",
+    "choices": [
+      { "label": "La garder, c'est de la famille", "outcomes": [
+        { "text": "Tu lui as mis une écharpe pour l'hiver. Tes invités évitent son regard.", "effects": { "happiness": 2 } }
+      ]},
+      { "label": "La vendre en ligne", "outcomes": [
+        { "chance": 0.5, "text": "Vendue 25 €, à quelqu'un qui revenait du même pays et qui en avait déjà une. Elles se tiennent compagnie.", "effects": { "money": 25, "happiness": 1, "clearFlags": ["souvenir_encombrant"] } },
+        { "chance": 0.5, "text": "Aucune offre en deux ans. Une seule question : « Elle mange quoi ? »", "effects": { "happiness": -2 } }
+      ]},
+      { "label": "L'offrir à {parent}", "outcomes": [
+        { "text": "{parent} a dit « oh » avec une voix très neutre. La girafe a changé d'adresse.", "effects": { "relationships": { "parent": -2 }, "clearFlags": ["souvenir_encombrant"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0044",
+    "on": "event:rep_ran_0043",
+    "choice": 2,
+    "chance": 0.7,
+    "delay": [10, 20],
+    "unique": true,
+    "text": "Des années après l'avoir offerte, la girafe en bois est revenue chez toi. Personne ne sait vraiment comment. Il y a un mot attaché à son cou : « Elle est à toi. »",
+    "effects": { "happiness": -2, "setFlags": ["souvenir_encombrant"] }
+  },
+  {
+    "id": "rep_ran_0045",
+    "on": "voyage_arnaque",
+    "delay": [0, 0],
+    "text": "L'excursion « nage avec les dauphins » de ton voyage consistait à nager à côté d'un monsieur qui tenait un dauphin gonflable. Il a fait les bruits lui-même. Assez bien, d'ailleurs.",
+    "effects": { "money": -120, "happiness": -3 }
+  },
+  {
+    "id": "rep_ran_0046",
+    "on": "voyage_arnaque",
+    "chance": 0.5,
+    "delay": [1, 3],
+    "text": "L'agence qui t'avait arnaqué{e} en voyage t'écrit : « Client fidèle, profitez de -70 % sur notre circuit Mystère ! » Le mot « Mystère » est en gras.",
+    "choices": [
+      { "label": "Réserver, on ne sait jamais", "outcomes": [
+        { "chance": 0.2, "text": "Contre toute attente, c'était superbe. Tu ne comprends toujours pas comment.", "effects": { "happiness": 8, "money": -400 } },
+        { "chance": 0.8, "text": "Le circuit Mystère était un parking de zone industrielle, avec un guide. Le guide était le monsieur au dauphin.", "effects": { "happiness": -5, "money": -400 } }
+      ]},
+      { "label": "Supprimer le mail", "outcomes": [
+        { "text": "Tu as supprimé le mail. Ils t'en ont envoyé neuf autres la même semaine.", "effects": { "happiness": -1, "smarts": 1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0047",
+    "on": "voyage",
+    "chance": 0.4,
+    "delay": [1, 2],
+    "text": "Tu glisses encore dans chaque conversation les trois mots appris pendant ton voyage. Personne ne sait ce qu'ils veulent dire. Toi non plus, en vérité.",
+    "effects": { "happiness": 2, "smarts": 1, "relationships": { "friend": -1 } }
+  },
+  {
+    "id": "rep_ran_0048",
+    "on": "voyage",
+    "requires": { "minCounters": { "voyage": 5 }, "excludeFlags": ["grand_voyageur"] },
+    "delay": [0, 0],
+    "unique": true,
+    "setFlags": ["grand_voyageur"],
+    "text": "Cinq voyages : ton passeport ressemble à un carnet de timbres et tu commences toutes tes phrases par « Quand j'étais au Laos… ». Tu n'es jamais allé{e} au Laos.",
+    "effects": { "happiness": 5, "smarts": 2 }
+  },
+  {
+    "id": "rep_ran_0049",
+    "on": "randonnee_sommet",
+    "requires": { "minCounters": { "randonnee_sommet": 3 }, "flags": ["randonneur"] },
+    "chance": 0.5,
+    "delay": [1, 3],
+    "unique": true,
+    "minAge": 20,
+    "maxAge": 60,
+    "text": "Après tous ces sommets, une agence d'expéditions te contacte : « Vous avez le profil pour l'Himalaya. » Ils n'ont vu que ta photo de profil.",
+    "choices": [
+      { "label": "Partir pour l'Himalaya", "outcomes": [
+        { "chance": 0.5, "text": "Tu as atteint le camp de base, pleuré, et mangé une soupe que tu n'oublieras jamais. C'est déjà énorme.", "effects": { "happiness": 10, "health": -3, "money": -9000, "fame": 2 } },
+        { "chance": 0.45, "text": "Mal de l'altitude au bout de deux jours. Tu as vu l'Himalaya depuis une couverture de survie, ce qui compte un peu.", "effects": { "health": -8, "money": -9000 } },
+        { "chance": 0.05, "text": "Tu as voulu un selfie de trop au bord de la corniche.", "effects": { "death": "à 7 000 mètres, en pleine pose, le bras tendu vers ton meilleur profil" } }
+      ]},
+      { "label": "Rester sur les sommets de chez toi", "outcomes": [
+        { "text": "Les montagnes de chez toi te vont très bien. Elles ont du réseau.", "effects": { "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "rep_ran_0050",
+    "on": "event:rep_ran_0049",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [5, 15],
+    "unique": true,
+    "text": "Des années après le camp de base himalayen, tu racontes encore l'histoire de la soupe. Tes proches connaissent la recette par cœur sans l'avoir jamais goûtée.",
+    "effects": { "happiness": 4, "relationships": { "friend": -1 } }
+  },
+  {
+    "id": "rep_ran_0051",
+    "on": "randonnee",
+    "requires": { "flags": ["randonneur"] },
+    "chance": 0.3,
+    "delay": [0, 0],
+    "conditions": { "requiresPartner": true },
+    "text": "Tu as encore traîné {partenaire} en randonnée « juste une petite boucle de 22 kilomètres ». Le retour en voiture s'est fait dans un silence de cathédrale.",
+    "effects": { "health": 2, "relationships": { "partner": -3 } }
+  },
+  {
+    "id": "rep_ran_0052",
+    "on": "randonnee_perdu",
+    "requires": { "flags": ["randonneur"] },
+    "chance": 0.6,
+    "delay": [0, 0],
+    "text": "Un randonneur aguerri comme toi, perdu{e} ? Tu as juré au club que la carte était fausse. La carte, éditée par le club, était juste. Ton badge « Expert » a été retiré.",
+    "effects": { "happiness": -4, "fame": -1 }
+  }
+]

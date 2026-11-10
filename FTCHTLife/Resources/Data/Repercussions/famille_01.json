@@ -1,0 +1,2131 @@
+[
+  {
+    "id": "rep_fam_0001",
+    "on": "grossesse",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "Depuis l'annonce de la grossesse, la maison vit au rythme des envies : cornichons trempés dans du yaourt, à 3 h du matin, servis en silence.",
+    "effects": {"happiness": 2, "health": -1}
+  },
+  {
+    "id": "rep_fam_0002",
+    "on": "grossesse",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "text": "Avec la grossesse arrive la grande question du prénom. La famille a déjà envoyé 38 suggestions, dont douze fois « Odile », comme tante Odile.",
+    "choices": [
+      {
+        "label": "Un prénom classique",
+        "outcomes": [
+          {
+            "text": "Un prénom solide, qui ne vexera personne. Tante Odile boude quand même.",
+            "effects": {"happiness": 2}
+          }
+        ]
+      },
+      {
+        "label": "Un prénom inventé, unique au monde",
+        "outcomes": [
+          {
+            "text": "Tu as composé un prénom avec des lettres de Scrabble tirées au hasard. Il contient deux Y et un tréma.",
+            "effects": {"happiness": 4, "setFlags": ["prenom_invente"]}
+          }
+        ]
+      },
+      {
+        "label": "Laisser gagner tante Odile",
+        "outcomes": [
+          {
+            "text": "Le bébé s'appellera Odile, quoi qu'il arrive. Tante Odile t'aime de nouveau.",
+            "effects": {"happiness": -2, "karma": 2}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0003",
+    "on": "event:rep_fam_0002",
+    "choice": 1,
+    "chance": 0.7,
+    "delay": [12, 15],
+    "conditions": {"tags": ["children"], "flags": ["prenom_invente"]},
+    "patience": 3,
+    "text": "Tu te souviens du prénom composé au Scrabble ? Ton enfant l'a cherché sur Internet : zéro résultat, sauf un modèle de tondeuse lituanienne.",
+    "choices": [
+      {
+        "label": "T'excuser platement",
+        "outcomes": [
+          {
+            "text": "Excuses acceptées, contre un téléphone neuf. Les négociations ont duré une semaine.",
+            "effects": {"money": -600, "relationships": {"child": 5}}
+          }
+        ]
+      },
+      {
+        "label": "Défendre ton œuvre",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu as fait un exposé de vingt minutes sur l'originalité. La porte a claqué au bout de quatre.",
+            "effects": {"happiness": -2, "relationships": {"child": -6}}
+          },
+          {
+            "chance": 0.3,
+            "text": "Contre toute attente, ton enfant a trouvé ça classe. Le prénom est devenu une marque de sweats au lycée.",
+            "effects": {"happiness": 5, "relationships": {"child": 6}}
+          }
+        ]
+      },
+      {
+        "label": "Payer le changement d'état civil",
+        "outcomes": [
+          {
+            "text": "Huit mois de paperasse plus tard, ton enfant s'appelle Camille. Tu as perdu un procès contre ta propre créativité.",
+            "effects": {"money": -300, "clearFlags": ["prenom_invente"], "relationships": {"child": 4}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0004",
+    "on": "grossesse",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "text": "Aux cours de préparation à la naissance, tu as appris à respirer comme un petit chien. Tu le fais désormais aussi dans les embouteillages.",
+    "effects": {"happiness": 1, "stress": -2}
+  },
+  {
+    "id": "rep_fam_0005",
+    "on": "grossesse",
+    "chance": 0.35,
+    "delay": [0, 0],
+    "text": "On te pousse à organiser une fête pour révéler le sexe du bébé. Ton beau-frère a déjà acheté « de quoi faire de la fumée ».",
+    "choices": [
+      {
+        "label": "Un canon à confettis, sobre",
+        "outcomes": [
+          {
+            "text": "Les confettis étaient roses ou bleus selon l'angle. Le débat dure encore.",
+            "effects": {"happiness": 3}
+          }
+        ]
+      },
+      {
+        "label": "La fumée du beau-frère",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La fumée colorée a déclenché l'alarme de tout le quartier. Les pompiers ont applaudi.",
+            "effects": {"happiness": 2, "money": -150}
+          },
+          {
+            "chance": 0.3,
+            "text": "La fumée a mis le feu à la haie du voisin. Tu connais maintenant le sexe du bébé et le montant de la franchise.",
+            "effects": {"money": -1200, "happiness": -3}
+          }
+        ]
+      },
+      {
+        "label": "Pas de fête, on verra bien",
+        "outcomes": [
+          {
+            "text": "Personne ne t'a pardonné d'avoir privé la famille d'un prétexte à barbecue.",
+            "effects": {"happiness": -1, "karma": 2}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0006",
+    "on": "naissance_enfant",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "remember": ["parent"],
+    "text": "Pour la naissance, on t'a offert onze bodies taille 3 mois, un mobile musical qui joue faux et zéro heure de sommeil.",
+    "effects": {"happiness": 3}
+  },
+  {
+    "id": "rep_fam_0007",
+    "on": "naissance_enfant",
+    "chance": 0.7,
+    "delay": [1, 1],
+    "remember": ["parent"],
+    "text": "L'année d'après la naissance, tu as dormi en moyenne trois heures et demie par nuit. Tu as dit « bonne nuit » à la machine à café.",
+    "effects": {"health": -4, "happiness": -2, "stress": 5}
+  },
+  {
+    "id": "rep_fam_0008",
+    "on": "naissance_enfant",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "text": "Depuis la naissance, ton téléphone contient 6 000 photos du bébé, dont 5 800 identiques. Tu les montres toutes, dans l'ordre.",
+    "effects": {"happiness": 4, "relationships": {"friend": -2}}
+  },
+  {
+    "id": "rep_fam_0009",
+    "on": "naissance_enfant",
+    "chance": 0.35,
+    "delay": [0, 0],
+    "conditions": {"requiresPartner": true},
+    "text": "Depuis la naissance, tes conversations avec {partenaire} se résument à des horaires de biberon et à des débats sur la marque des couches.",
+    "effects": {"happiness": -1, "relationships": {"partner": -3}}
+  },
+  {
+    "id": "rep_fam_0010",
+    "on": "naissance_enfant",
+    "chance": 0.35,
+    "delay": [1, 1],
+    "conditions": {"tags": ["children"]},
+    "text": "Les premières dents de ton enfant sont arrivées. Ton doigt, ta télécommande et le pied de la table basse s'en souviennent.",
+    "effects": {"happiness": 1, "health": -1}
+  },
+  {
+    "id": "rep_fam_0011",
+    "on": "naissance_enfant",
+    "chance": 0.5,
+    "delay": [1, 2],
+    "conditions": {"tags": ["children"]},
+    "text": "Le premier mot de ton enfant n'a été ni « maman » ni « papa », mais « TVA ». Tu t'interroges sur l'ambiance à la maison.",
+    "effects": {"happiness": 4, "smarts": 1}
+  },
+  {
+    "id": "rep_fam_0012",
+    "on": "naissance_enfant",
+    "chance": 0.4,
+    "delay": [1, 2],
+    "conditions": {"tags": ["children"]},
+    "text": "La crèche coûte plus cher que ton loyer. En échange, ton enfant y a appris à mordre et une chanson sur un crocodile, qu'il faut écouter en boucle.",
+    "effects": {"money": -2500, "happiness": 1}
+  },
+  {
+    "id": "rep_fam_0013",
+    "on": "naissance_enfant",
+    "chance": 0.4,
+    "delay": [0, 1],
+    "conditions": {"tags": ["mother", "children"]},
+    "text": "Depuis la naissance, {mere} vient « aider » tous les jours. Ta cuisine est désormais rangée par ordre alphabétique.",
+    "choices": [
+      {
+        "label": "« Merci, reste ! »",
+        "outcomes": [
+          {
+            "text": "{mere} est restée. Elle a aussi fait faire un double des clés, « au cas où ».",
+            "effects": {"stress": 3, "relationships": {"mother": 6}}
+          }
+        ]
+      },
+      {
+        "label": "Poser des limites",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Visites le mercredi seulement. {mere} arrive désormais le mercredi à 6 h du matin.",
+            "effects": {"happiness": 2, "relationships": {"mother": -2}}
+          },
+          {
+            "chance": 0.4,
+            "text": "{mere} l'a très mal pris et a envoyé un faire-part de vexation à toute la famille.",
+            "effects": {"happiness": -2, "relationships": {"mother": -8}}
+          }
+        ]
+      },
+      {
+        "label": "Lui confier le bébé et partir en week-end",
+        "outcomes": [
+          {
+            "text": "Deux jours de sommeil. Au retour, le bébé avait une coupe au bol et une opinion sur la politique.",
+            "effects": {"happiness": 6, "relationships": {"mother": 4}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0014",
+    "on": "naissance_enfant",
+    "chance": 0.5,
+    "delay": [3, 3],
+    "conditions": {"tags": ["children"]},
+    "text": "Trois ans après la naissance, c'est la rentrée en maternelle. Ton enfant n'a pas pleuré. Toi, si, dans la voiture, pendant quarante minutes.",
+    "effects": {"happiness": -1, "relationships": {"child": 3}}
+  },
+  {
+    "id": "rep_fam_0015",
+    "on": "naissance_enfant",
+    "chance": 0.5,
+    "delay": [4, 7],
+    "conditions": {"tags": ["children"]},
+    "text": "Ton enfant a rapporté de l'école un dessin intitulé « Ma famille ». Tu y es un rectangle gris avec un téléphone à la place de la tête.",
+    "choices": [
+      {
+        "label": "L'afficher sur le frigo",
+        "outcomes": [
+          {
+            "text": "Tous les invités le voient. Tous rient un peu trop fort.",
+            "effects": {"happiness": -2, "relationships": {"child": 4}}
+          }
+        ]
+      },
+      {
+        "label": "Demander des explications",
+        "outcomes": [{"text": "« Parce que c'est toi. » Tu n'as rien trouvé à répondre.", "effects": {"happiness": -4}}]
+      },
+      {
+        "label": "Poser ton téléphone pour de bon",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as tenu une semaine. Sur le dessin suivant, tu as une vraie tête et un sourire. Tu l'as fait encadrer.",
+            "effects": {"happiness": 6, "relationships": {"child": 8}}
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as tenu une journée. Sur le dessin suivant, tu as deux téléphones.",
+            "effects": {"happiness": -3}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0016",
+    "on": "naissance_enfant",
+    "chance": 0.4,
+    "delay": [6, 7],
+    "conditions": {"tags": ["children"]},
+    "text": "Quelques années après sa naissance, ton enfant sait lire. Premier texte lu à voix haute devant des invités : ton relevé de compte, chiffres rouges compris.",
+    "effects": {"happiness": -2, "relationships": {"child": 2}}
+  },
+  {
+    "id": "rep_fam_0017",
+    "on": "naissance_enfant",
+    "chance": 0.4,
+    "delay": [7, 10],
+    "conditions": {"tags": ["children"]},
+    "text": "Ton enfant réclame un animal de compagnie et a préparé une présentation de onze diapositives, budget prévisionnel inclus.",
+    "choices": [
+      {
+        "label": "Un chien",
+        "outcomes": [
+          {
+            "text": "Le chien est arrivé. Ton enfant l'a promené deux fois. Toi, quatre mille.",
+            "effects": {"happiness": 5, "health": 2, "money": -800}
+          }
+        ]
+      },
+      {
+        "label": "Un poisson rouge",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le poisson s'appelle Président. Il a vécu sept ans, un record dans la famille.",
+            "effects": {"happiness": 2}
+          },
+          {
+            "chance": 0.4,
+            "text": "Le poisson est mort en trois jours. Tu as dû organiser des obsèques, avec chants.",
+            "effects": {"happiness": -2, "relationships": {"child": 2}}
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "Ton enfant a adopté un caillou, l'a appelé Rocky, et te fixe avec reproche à chaque repas.",
+            "effects": {"relationships": {"child": -4}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0018",
+    "on": "naissance_enfant",
+    "chance": 0.3,
+    "delay": [9, 11],
+    "conditions": {"tags": ["children"]},
+    "text": "À la réunion parents-professeurs, tu apprends que ton enfant vend des devoirs tout faits à la classe entière. Avec une carte de fidélité.",
+    "choices": [
+      {
+        "label": "Sévir",
+        "outcomes": [
+          {
+            "text": "Sermon d'une heure sur l'honnêteté. Ton enfant a pris des notes et les a revendues.",
+            "effects": {"karma": 2, "relationships": {"child": -3}}
+          }
+        ]
+      },
+      {
+        "label": "Gronder devant le prof, admirer dans la voiture",
+        "outcomes": [
+          {
+            "text": "Dans la voiture, tu as demandé les marges. Elles étaient excellentes.",
+            "effects": {"karma": -3, "relationships": {"child": 4}}
+          }
+        ]
+      },
+      {
+        "label": "Proposer d'investir",
+        "outcomes": [
+          {
+            "text": "Tu as racheté 30 % de l'affaire. Ton enfant te verse des dividendes en bonbons.",
+            "effects": {"happiness": 4, "karma": -4, "setFlags": ["actionnaire_de_ton_enfant"]}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0019",
+    "on": "event:rep_fam_0018",
+    "choice": 2,
+    "chance": 0.6,
+    "delay": [12, 16],
+    "conditions": {"tags": ["children"], "flags": ["actionnaire_de_ton_enfant"]},
+    "patience": 4,
+    "text": "Tu te souviens du trafic de devoirs où tu avais investi ? Ton enfant dirige aujourd'hui une vraie entreprise et t'a rendu tes 30 %, en actions. Elles valent 6 000 €.",
+    "effects": {
+      "money": 6000,
+      "happiness": 5,
+      "clearFlags": ["actionnaire_de_ton_enfant"],
+      "relationships": {"child": 4}
+    }
+  },
+  {
+    "id": "rep_fam_0020",
+    "on": "naissance_enfant",
+    "chance": 0.35,
+    "delay": [9, 12],
+    "conditions": {"tags": ["children"]},
+    "text": "Ton enfant te bat désormais à tous les jeux vidéo et te l'annonce avec la douceur d'un médecin qui apporte de mauvaises nouvelles.",
+    "effects": {"happiness": -1, "relationships": {"child": 3}}
+  },
+  {
+    "id": "rep_fam_0021",
+    "on": "naissance_enfant",
+    "chance": 0.6,
+    "delay": [13, 14],
+    "conditions": {"tags": ["children"]},
+    "patience": 1,
+    "text": "La crise d'adolescence a frappé : ton enfant ne communique plus que par soupirs, dont tu apprends lentement la grammaire.",
+    "choices": [
+      {
+        "label": "Imposer des règles strictes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Couvre-feu à 21 h. Ton enfant a découvert la fenêtre.",
+            "effects": {"stress": 4, "relationships": {"child": -5}}
+          },
+          {
+            "chance": 0.5,
+            "text": "Étonnamment, ça marche. Tu te méfies.",
+            "effects": {"happiness": 2, "relationships": {"child": -1}}
+          }
+        ]
+      },
+      {
+        "label": "Laisser passer l'orage",
+        "outcomes": [
+          {
+            "text": "Trois ans de soupirs. Puis un jour, un « merci » spontané. Tu as failli appeler un médecin.",
+            "effects": {"stress": 3, "relationships": {"child": 4}}
+          }
+        ]
+      },
+      {
+        "label": "Faire ta propre crise d'ado, en pire",
+        "outcomes": [
+          {
+            "text": "Cheveux verts, portes claquées, musique à fond. Face à toi, ton enfant a retrouvé la politesse, par pure gêne.",
+            "effects": {"looks": -3, "setFlags": ["parent_genant"], "relationships": {"child": 3}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0022",
+    "on": "event:rep_fam_0021",
+    "choice": 2,
+    "chance": 0.6,
+    "delay": [4, 7],
+    "conditions": {"tags": ["children"], "flags": ["parent_genant"]},
+    "text": "Tu te souviens de ta fausse crise d'ado aux cheveux verts ? Ton enfant l'a racontée dans son discours de remise de diplôme. Toute la salle s'est retournée vers toi.",
+    "effects": {"happiness": 3, "fame": 1, "relationships": {"child": 5}}
+  },
+  {
+    "id": "rep_fam_0023",
+    "on": "naissance_enfant",
+    "chance": 0.5,
+    "delay": [17, 18],
+    "conditions": {"tags": ["children"]},
+    "patience": 2,
+    "text": "C'est l'année du bac de ton enfant. Tu as plus révisé que ta progéniture, et nettement plus stressé.",
+    "choices": [
+      {
+        "label": "Coaching intensif",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Fiches, minuteurs, smoothies au saumon : bac obtenu. Tu t'attribues tout le mérite.",
+            "effects": {"happiness": 6, "stress": 5}
+          },
+          {
+            "chance": 0.4,
+            "text": "Échec au bac par saturation. On t'a prié de ne plus jamais prononcer le mot « fiche ».",
+            "effects": {"happiness": -5, "relationships": {"child": -4}}
+          }
+        ]
+      },
+      {
+        "label": "Promettre une voiture en cas de mention",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Mention très bien. Tu as découvert le prix d'une voiture.",
+            "effects": {"money": -9000, "relationships": {"child": 8}}
+          },
+          {
+            "chance": 0.5,
+            "text": "Pas de mention, mais une négociation serrée pour une trottinette.",
+            "effects": {"money": -400, "happiness": 1}
+          }
+        ]
+      },
+      {
+        "label": "Faire confiance",
+        "outcomes": [
+          {
+            "text": "Bac obtenu, sans drame. Tu n'as servi à rien et c'était merveilleux.",
+            "effects": {"happiness": 5, "relationships": {"child": 3}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0024",
+    "on": "naissance_enfant",
+    "chance": 0.8,
+    "delay": [0, 0],
+    "requires": {"minCounters": {"naissance_enfant": 3}},
+    "remember": ["famille_nombreuse"],
+    "text": "Avec un troisième enfant, la maison est passée en mode survie : tu ne sais plus qui a mangé, qui a pris son bain, ni parfois qui est à toi.",
+    "effects": {"happiness": -2, "stress": 6, "health": -2}
+  },
+  {
+    "id": "rep_fam_0025",
+    "on": "naissance_enfant",
+    "chance": 0.7,
+    "delay": [1, 1],
+    "requires": {"minCounters": {"naissance_enfant": 4}},
+    "conditions": {"flags": ["famille_nombreuse"]},
+    "text": "Quatrième enfant. Le supermarché t'a proposé sa carte de fidélité « Collectivités ».",
+    "choices": [
+      {
+        "label": "Acheter un minibus",
+        "outcomes": [
+          {
+            "text": "Neuf places, porte coulissante, odeur de goûter permanente. Tu es devenu{e} chauffeur à plein temps.",
+            "effects": {"money": -14000, "happiness": 4}
+          }
+        ]
+      },
+      {
+        "label": "Instaurer un planning militaire",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tableau magnétique, sifflet, corvées tournantes. Les enfants te saluent le matin.",
+            "effects": {"happiness": 3, "stress": -3}
+          },
+          {
+            "chance": 0.4,
+            "text": "Les enfants se sont syndiqués et ont obtenu deux jours de grève par mois.",
+            "effects": {"happiness": -3}
+          }
+        ]
+      },
+      {
+        "label": "Laisser les grands élever les petits",
+        "outcomes": [
+          {
+            "text": "Les petits ont désormais un vocabulaire étrange, appris sur Internet par les grands.",
+            "effects": {"karma": -3, "happiness": 3}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0026",
+    "on": "naissance_enfant",
+    "chance": 0.9,
+    "delay": [0, 1],
+    "requires": {"minCounters": {"naissance_enfant": 6}},
+    "unique": true,
+    "text": "Sixième enfant. La mairie t'a écrit pour savoir si tu comptais fonder ta propre commune. Tu as demandé les formulaires.",
+    "effects": {"happiness": 2, "fame": 3, "money": -500}
+  },
+  {
+    "id": "rep_fam_0027",
+    "on": "naissance_enfant",
+    "chance": 0.35,
+    "delay": [3, 6],
+    "requires": {"maxCounters": {"naissance_enfant": 1}},
+    "conditions": {"tags": ["children"], "maxCounters": {"naissance_enfant": 1, "adoption": 0}},
+    "text": "Ton enfant unique a reçu 47 cadeaux à Noël, en a ouvert trois, puis a demandé : « C'est tout ? »",
+    "choices": [
+      {
+        "label": "Continuer, rien n'est trop beau",
+        "outcomes": [
+          {
+            "text": "Tu as acheté le 48e cadeau. Il n'a pas été ouvert non plus.",
+            "effects": {"money": -1500, "setFlags": ["enfant_unique_gate"], "relationships": {"child": 3}}
+          }
+        ]
+      },
+      {
+        "label": "Apprendre la frustration",
+        "outcomes": [
+          {
+            "text": "Un Noël, un seul cadeau. Ton enfant a écrit une lettre de réclamation au Père Noël, en recommandé.",
+            "effects": {"karma": 3, "relationships": {"child": -3}}
+          }
+        ]
+      },
+      {
+        "label": "Donner les 47 cadeaux à une association",
+        "outcomes": [
+          {
+            "text": "Ton enfant a pleuré, puis a vu d'autres enfants ouvrir les paquets, et a pleuré autrement.",
+            "effects": {"karma": 8, "happiness": 3, "relationships": {"child": -2}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0028",
+    "on": "event:rep_fam_0027",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [12, 16],
+    "conditions": {"tags": ["children"], "flags": ["enfant_unique_gate"]},
+    "patience": 3,
+    "text": "Depuis tes Noëls à 47 cadeaux, ton enfant unique a grandi avec certaines attentes. Aujourd'hui : un appartement en centre-ville, « pour commencer ».",
+    "choices": [
+      {
+        "label": "Payer l'appartement",
+        "outcomes": [
+          {
+            "text": "Tu as payé. Ton enfant a fait remarquer que la vue n'était pas terrible.",
+            "effects": {"money": -30000, "relationships": {"child": 6}}
+          }
+        ]
+      },
+      {
+        "label": "Dire non, pour la première fois",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Long silence. Puis ton enfant a trouvé un travail. Tu ne sais pas si tu as gagné ou perdu.",
+            "effects": {"karma": 4, "clearFlags": ["enfant_unique_gate"], "relationships": {"child": -6}}
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton enfant a entamé une grève de la faim de quatre heures, entre deux repas.",
+            "effects": {"relationships": {"child": -3}}
+          }
+        ]
+      },
+      {
+        "label": "Proposer une colocation avec toi",
+        "outcomes": [
+          {
+            "text": "La réponse a été un rire si long qu'il a fallu ouvrir une fenêtre.",
+            "effects": {"happiness": -3}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0029",
+    "on": "naissance_enfant",
+    "delay": [0, 0],
+    "requires": {"flags": ["enfant_unique_gate"]},
+    "text": "L'arrivée du nouveau bébé a été vécue par ton enfant jusque-là unique comme une OPA hostile. Le règne des 47 cadeaux est terminé.",
+    "effects": {"happiness": 1, "clearFlags": ["enfant_unique_gate"], "relationships": {"child": -3}}
+  },
+  {
+    "id": "rep_fam_0030",
+    "on": "naissance_enfant",
+    "chance": 0.35,
+    "delay": [24, 32],
+    "minAge": 42,
+    "conditions": {"tags": ["children"], "excludeFlags": ["grand_parent"]},
+    "patience": 6,
+    "unique": true,
+    "setFlags": ["grand_parent"],
+    "text": "Ton enfant t'annonce une grande nouvelle : tu vas être grand-parent. Intérieurement, tu viens de prendre dix ans.",
+    "choices": [
+      {
+        "label": "Pleurer de joie",
+        "outcomes": [
+          {
+            "text": "Tu as pleuré si fort que le voisin a appelé pour vérifier que tout allait bien.",
+            "effects": {"happiness": 8, "relationships": {"child": 5}}
+          }
+        ]
+      },
+      {
+        "label": "Proposer des prénoms (beaucoup)",
+        "outcomes": [
+          {
+            "text": "Tu as envoyé une liste de 200 prénoms. Aucun n'a été retenu. Le bébé s'appellera Nova.",
+            "effects": {"happiness": 3, "relationships": {"child": -2}}
+          }
+        ]
+      },
+      {
+        "label": "« Déjà ?! »",
+        "outcomes": [{"text": "On t'a rappelé l'âge de ton enfant. Tu as dû t'asseoir.", "effects": {"happiness": 2}}]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0031",
+    "on": "event:rep_fam_0030",
+    "chance": 0.6,
+    "delay": [2, 4],
+    "conditions": {"flags": ["grand_parent"]},
+    "text": "Depuis que tu es grand-parent, on te confie le petit le mercredi. Le petit a décidé que tu étais un cheval.",
+    "choices": [
+      {
+        "label": "Faire le cheval",
+        "outcomes": [
+          {
+            "text": "Quatre heures de galop dans le salon. Ton dos a posé sa démission.",
+            "effects": {"health": -3, "happiness": 7}
+          }
+        ]
+      },
+      {
+        "label": "Gâter sans aucune retenue",
+        "outcomes": [
+          {
+            "text": "Bonbons, écrans, coucher à minuit : tu es la personne préférée du petit et l'ennemi public de ses parents.",
+            "effects": {"happiness": 6, "relationships": {"child": -5}}
+          }
+        ]
+      },
+      {
+        "label": "Imposer les méthodes d'autrefois",
+        "outcomes": [
+          {
+            "text": "Le petit sait désormais coudre un bouton, réciter la table de 7 et dire « de mon temps ».",
+            "effects": {"smarts": 1, "relationships": {"child": 2}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0032",
+    "on": "event:rep_fam_0031",
+    "chance": 0.6,
+    "delay": [12, 15],
+    "conditions": {"flags": ["grand_parent"]},
+    "text": "Tu te souviens des mercredis de garde ? Le petit a bien grandi, vient désormais t'expliquer ton téléphone et repart chaque fois avec un billet de 20 €.",
+    "effects": {"happiness": 5, "money": -400}
+  },
+  {
+    "id": "rep_fam_0033",
+    "on": "adoption",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "remember": ["parent"],
+    "text": "L'adoption est officielle après 412 formulaires. Tu as désormais un enfant et une crampe définitive à la main droite.",
+    "effects": {"happiness": 8, "health": -1}
+  },
+  {
+    "id": "rep_fam_0034",
+    "on": "adoption",
+    "chance": 0.4,
+    "delay": [1, 1],
+    "conditions": {"tags": ["children"]},
+    "text": "Un an après l'adoption, tu as fêté le « jour de la famille ». Ton enfant a demandé si on pouvait aussi fêter le jour du goûter. Accordé.",
+    "effects": {"happiness": 5, "relationships": {"child": 4}}
+  },
+  {
+    "id": "rep_fam_0035",
+    "on": "adoption",
+    "chance": 0.4,
+    "delay": [2, 5],
+    "conditions": {"tags": ["children"]},
+    "text": "Depuis l'adoption, des inconnus répètent que ton enfant te ressemble énormément. Vous avez cessé de les contredire : c'est devenu vrai, au niveau des sourcils.",
+    "effects": {"happiness": 4, "relationships": {"child": 3}}
+  },
+  {
+    "id": "rep_fam_0036",
+    "on": "adoption",
+    "chance": 0.5,
+    "delay": [12, 17],
+    "conditions": {"tags": ["children"]},
+    "patience": 3,
+    "text": "Ton enfant adopté veut connaître ses origines et a commencé à remplir des dossiers. Tu fais semblant que ça ne te serre pas le cœur.",
+    "choices": [
+      {
+        "label": "L'aider dans ses recherches",
+        "outcomes": [
+          {
+            "text": "Des week-ends entiers aux archives. Vous avez appris à vous disputer en chuchotant.",
+            "effects": {"happiness": 2, "relationships": {"child": 6}}
+          }
+        ]
+      },
+      {
+        "label": "Avoir peur et freiner",
+        "outcomes": [
+          {
+            "text": "Ton enfant a continué sans toi. Ça t'a fait plus mal que prévu.",
+            "effects": {"happiness": -4, "relationships": {"child": -6}}
+          }
+        ]
+      },
+      {
+        "label": "Ressortir l'histoire de la cigogne",
+        "outcomes": [
+          {
+            "text": "Ton enfant a seize ans et un abonnement à un site de généalogie. La cigogne a pris un coup.",
+            "effects": {"karma": -2, "relationships": {"child": -4}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0037",
+    "on": "event:rep_fam_0036",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [1, 3],
+    "conditions": {"tags": ["children"]},
+    "text": "Après vos recherches, ton enfant a retrouvé sa famille biologique : des gens adorables qui tiennent un camion à pizzas. Verdict au retour : sa famille, c'est toi. La pizza était excellente aussi.",
+    "effects": {"happiness": 8, "relationships": {"child": 10}}
+  },
+  {
+    "id": "rep_fam_0038",
+    "on": "event:rep_fam_0036",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [8, 12],
+    "conditions": {"tags": ["children"]},
+    "text": "Des années après avoir freiné ses recherches, tu reçois une lettre de ton enfant : « J'ai trouvé d'où je viens. Je sais aussi où je vais : dimanche, chez toi, pour le déjeuner. »",
+    "effects": {"happiness": 10, "relationships": {"child": 8}}
+  },
+  {
+    "id": "rep_fam_0039",
+    "on": "event:rep_fam_0036",
+    "choice": 2,
+    "chance": 0.8,
+    "delay": [1, 2],
+    "conditions": {"tags": ["children"]},
+    "text": "Tu te souviens de la cigogne ? Ton enfant a fait un test ADN : 0 % cigogne, 100 % rancune. Le repas de Noël a été long.",
+    "choices": [
+      {
+        "label": "Avouer et s'excuser",
+        "outcomes": [
+          {
+            "text": "Tu as tout raconté, avec les vrais papiers et de vraies larmes. La cigogne a été enterrée, symboliquement.",
+            "effects": {"happiness": 3, "relationships": {"child": 8}}
+          }
+        ]
+      },
+      {
+        "label": "Maintenir la version cigogne",
+        "outcomes": [
+          {
+            "text": "Tu as produit une fausse plume « de la cigogne ». Ton enfant l'a fait analyser : c'était un pigeon.",
+            "effects": {"karma": -3, "relationships": {"child": -8}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0040",
+    "on": "adoption",
+    "chance": 0.7,
+    "delay": [0, 0],
+    "requires": {"minCounters": {"adoption": 2}},
+    "text": "Nouvelle adoption : l'assistante sociale te tutoie, connaît le nom de ton chat et t'envoie des cartes de vœux.",
+    "effects": {"happiness": 4, "karma": 3}
+  },
+  {
+    "id": "rep_fam_0041",
+    "on": "adoption",
+    "delay": [0, 0],
+    "requires": {"flags": ["enfant_unique_gate"]},
+    "text": "L'adoption a pris de court ton enfant gâté : il faut désormais partager la télécommande. Trois jours de deuil national à la maison.",
+    "effects": {"karma": 2, "clearFlags": ["enfant_unique_gate"], "relationships": {"child": -2}}
+  },
+  {
+    "id": "rep_fam_0042",
+    "on": "enfant_majeur",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "Ton enfant est majeur. Premier acte d'adulte : ouvrir un compte en banque, le vider dans la journée, s'acheter une veste à 300 €.",
+    "effects": {"happiness": 2}
+  },
+  {
+    "id": "rep_fam_0043",
+    "on": "enfant_majeur",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "conditions": {"excludeFlags": ["enfant_unique_gate"]},
+    "text": "Pour ses 18 ans, ton enfant attend un cadeau « qui marque le passage à l'âge adulte ».",
+    "choices": [
+      {
+        "label": "Payer le permis",
+        "outcomes": [
+          {
+            "text": "Tu as payé le permis. Et chaque leçon de conduite accompagnée, en nerfs.",
+            "effects": {"money": -1500, "stress": 3, "relationships": {"child": 6}}
+          }
+        ]
+      },
+      {
+        "label": "Offrir une valise (message subtil)",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton enfant a ri. Puis a cessé de rire en voyant l'étiquette déjà remplie.",
+            "effects": {"happiness": 3, "relationships": {"child": -4}}
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton enfant a pris la valise et fait le tour de l'Europe. Tu as reçu des cartes postales.",
+            "effects": {"relationships": {"child": 5}}
+          }
+        ]
+      },
+      {
+        "label": "Un discours ému sur la vie",
+        "outcomes": [
+          {
+            "text": "Quarante minutes sur la vie, la mort et l'assurance habitation. Ton enfant a filmé, « pour plus tard ».",
+            "effects": {"happiness": 1, "relationships": {"child": 2}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0044",
+    "on": "enfant_majeur",
+    "chance": 0.8,
+    "delay": [0, 0],
+    "conditions": {"flags": ["enfant_unique_gate"]},
+    "text": "Pour sa majorité, ton enfant gâté t'a envoyé une liste de cadeaux en ligne, avec un code promo et une date limite.",
+    "effects": {"money": -2500, "happiness": -2, "relationships": {"child": 3}}
+  },
+  {
+    "id": "rep_fam_0045",
+    "on": "enfant_majeur",
+    "chance": 0.35,
+    "delay": [1, 3],
+    "text": "Ton enfant fait ses études à l'étranger et t'appelle chaque mois. Le premier mot de chaque appel est « virement ».",
+    "effects": {"money": -1200, "happiness": -1}
+  },
+  {
+    "id": "rep_fam_0046",
+    "on": "enfant_majeur",
+    "chance": 0.3,
+    "delay": [0, 1],
+    "text": "Ton enfant a voté pour la première fois et t'a expliqué au dîner pourquoi tout ce que tu penses est faux. Tu as pris des notes, par politesse.",
+    "effects": {"smarts": 1, "happiness": -1}
+  },
+  {
+    "id": "rep_fam_0047",
+    "on": "enfant_majeur",
+    "chance": 0.7,
+    "delay": [0, 0],
+    "requires": {"minCounters": {"enfant_majeur": 3}},
+    "text": "Encore un enfant majeur. Bilan : environ 4 000 signatures dans des cahiers de liaison et 200 spectacles de fin d'année, dont un sur le thème des légumes.",
+    "effects": {"happiness": 4}
+  },
+  {
+    "id": "rep_fam_0048",
+    "on": "enfant_majeur",
+    "chance": 0.3,
+    "delay": [25, 35],
+    "minAge": 72,
+    "conditions": {"tags": ["children"]},
+    "patience": 5,
+    "unique": true,
+    "text": "Ton enfant te fait visiter une maison de retraite, « juste pour voir ». Il y a une piscine, des cours de tango et un pensionnaire qui triche au loto.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "text": "Tu as rejoint le club de tango. Tu as un rival de 91 ans.",
+            "effects": {"happiness": 5, "newFriend": true}
+          }
+        ]
+      },
+      {
+        "label": "Refuser fermement",
+        "outcomes": [
+          {
+            "text": "Tu as déclaré que tu partirais d'ici « les pieds devant ». Ton enfant a pris ça pour un oui à long terme.",
+            "effects": {"happiness": 2, "relationships": {"child": -3}}
+          }
+        ]
+      },
+      {
+        "label": "Exiger de vivre chez ton enfant",
+        "outcomes": [
+          {
+            "text": "Retour de bâton : c'est toi, cette fois, qui sonnes avec trois valises et un aquarium.",
+            "effects": {"happiness": 4, "relationships": {"child": -5}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0049",
+    "on": "enfant_quitte_maison",
+    "chance": 0.7,
+    "delay": [0, 0],
+    "text": "Ton enfant a quitté la maison. Sa chambre est vide, à part une chaussette qui semble attendre quelque chose.",
+    "choices": [
+      {
+        "label": "En faire une salle de sport",
+        "outcomes": [
+          {
+            "text": "Un vélo d'appartement trône à la place du lit. Il sert de portemanteau.",
+            "effects": {"happiness": 2, "money": -600, "health": 1}
+          }
+        ]
+      },
+      {
+        "label": "La garder intacte, comme un musée",
+        "outcomes": [
+          {
+            "text": "Tu fais la poussière sur des posters d'adolescent. Parfois, tu t'assois sur le lit et tu soupires.",
+            "effects": {"happiness": -2, "setFlags": ["chambre_musee"]}
+          }
+        ]
+      },
+      {
+        "label": "La louer sur Internet",
+        "outcomes": [
+          {
+            "text": "Ton premier locataire est un retraité qui joue du saxophone. Il paie d'avance, en pièces de 2 €.",
+            "effects": {"money": 3000, "happiness": -1, "setFlags": ["chambre_louee"]}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0050",
+    "on": "event:rep_fam_0049",
+    "choice": 2,
+    "chance": 0.7,
+    "delay": [1, 2],
+    "conditions": {"flags": ["chambre_louee"]},
+    "text": "Le locataire saxophoniste de l'ancienne chambre de ton enfant a monté un groupe. Les répétitions ont lieu chez toi. Le jeudi. À 23 h.",
+    "choices": [
+      {
+        "label": "Le mettre dehors",
+        "outcomes": [
+          {
+            "text": "Il est parti en jouant une marche funèbre. Tu as trouvé ça un peu exagéré.",
+            "effects": {"money": -500, "happiness": 2, "clearFlags": ["chambre_louee"]}
+          }
+        ]
+      },
+      {
+        "label": "Rejoindre le groupe, au triangle",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le groupe s'appelle « Les Loyers Impayés ». Concert à la fête du quartier : trois personnes ont applaudi, dont toi.",
+            "effects": {"happiness": 7, "newFriend": true}
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu as été renvoyé{e} du groupe pour « ego de triangliste ».",
+            "effects": {"happiness": -2}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0051",
+    "on": "event:rep_fam_0049",
+    "choice": 1,
+    "chance": 0.5,
+    "delay": [8, 12],
+    "conditions": {"flags": ["chambre_musee"], "excludeFlags": ["enfant_revenu"]},
+    "setFlags": ["enfant_revenu"],
+    "text": "Tu avais gardé sa chambre comme un musée. Ton enfant, trentenaire, y dort de nouveau après une rupture. Rien n'a bougé, pas même la chaussette.",
+    "effects": {"happiness": 3, "relationships": {"child": 4}}
+  },
+  {
+    "id": "rep_fam_0052",
+    "on": "enfant_quitte_maison",
+    "chance": 0.35,
+    "delay": [6, 12],
+    "minAge": 45,
+    "conditions": {"tags": ["children"], "excludeFlags": ["enfant_revenu"]},
+    "patience": 3,
+    "text": "Tu croyais le nid vide pour de bon. Ton enfant, trentenaire, sonne à la porte avec trois valises et un aquarium : « Juste quelques semaines. »",
+    "choices": [
+      {
+        "label": "Accueillir à bras ouverts",
+        "outcomes": [
+          {
+            "text": "Les « quelques semaines » ont des airs de bail de quatre-vingt-dix-neuf ans.",
+            "effects": {"happiness": 2, "setFlags": ["enfant_revenu"], "relationships": {"child": 6}}
+          }
+        ]
+      },
+      {
+        "label": "Accepter, contre un loyer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton enfant paie 200 € par mois et fait remarquer que le Wi-Fi est lent pour le prix.",
+            "effects": {"money": 2400, "setFlags": ["enfant_revenu"], "relationships": {"child": -2}}
+          },
+          {
+            "chance": 0.4,
+            "text": "Le loyer a été négocié à zéro en échange de « services informatiques ». Tu ne sais toujours pas lesquels.",
+            "effects": {"happiness": -1, "setFlags": ["enfant_revenu"]}
+          }
+        ]
+      },
+      {
+        "label": "Faire semblant d'avoir déménagé",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu t'es caché{e} derrière le canapé pendant deux heures. Ton enfant avait encore les clés.",
+            "effects": {"happiness": -3, "setFlags": ["enfant_revenu"], "relationships": {"child": -5}}
+          },
+          {
+            "chance": 0.5,
+            "text": "Ça a marché. Tu vis désormais avec une culpabilité tenace et un aquarium posé sur le paillasson.",
+            "effects": {"karma": -5, "happiness": 1}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0053",
+    "on": "event:rep_fam_0052",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [3, 5],
+    "conditions": {"flags": ["enfant_revenu"]},
+    "text": "Depuis le retour de ton enfant, le garage est devenu un studio de podcast. Thème du podcast : « Vivre chez ses parents, une stratégie ».",
+    "choices": [
+      {
+        "label": "Faire une apparition",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton épisode a fait 41 écoutes : toute la famille, plus un mystérieux auditeur en Finlande.",
+            "effects": {"happiness": 4, "fame": 1}
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu es devenu{e} la vedette du podcast. Ton enfant ne te parle plus, par jalousie.",
+            "effects": {"fame": 3, "relationships": {"child": -4}}
+          }
+        ]
+      },
+      {
+        "label": "Poser un ultimatum",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Un appartement trouvé en dix jours. Tu aurais dû essayer l'ultimatum plus tôt.",
+            "effects": {"happiness": 5, "clearFlags": ["enfant_revenu"]}
+          },
+          {
+            "chance": 0.5,
+            "text": "L'ultimatum a été renégocié à « la fin de la saison 3 ».",
+            "effects": {"happiness": -2}
+          }
+        ]
+      },
+      {
+        "label": "Accepter : finalement, c'est sympa",
+        "outcomes": [
+          {
+            "text": "Vous avez instauré un apéro du jeudi. Tu ne l'avoueras jamais, mais tu redoutes le jour du départ.",
+            "effects": {"happiness": 4, "relationships": {"child": 5}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0054",
+    "on": "event:rep_fam_0053",
+    "choice": 2,
+    "chance": 0.6,
+    "delay": [5, 10],
+    "conditions": {"flags": ["enfant_revenu"]},
+    "text": "Ton enfant vit toujours chez toi. Vous avez maintenant le même dentiste, la même mutuelle et la même façon de râler contre le voisin. Au marché, on vous prend pour un vieux couple.",
+    "effects": {"happiness": 3, "relationships": {"child": 4}}
+  },
+  {
+    "id": "rep_fam_0055",
+    "on": "enfant_quitte_maison",
+    "chance": 0.5,
+    "delay": [1, 1],
+    "text": "Depuis son départ, ton enfant t'appelle tous les dimanches. Pour la recette des pâtes. Toujours la même. Depuis un an.",
+    "effects": {"happiness": 3, "relationships": {"child": 2}}
+  },
+  {
+    "id": "rep_fam_0056",
+    "on": "enfant_quitte_maison",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "conditions": {"flags": ["famille_nombreuse"]},
+    "text": "Un enfant de moins à la maison. Personne ne l'a remarqué pendant trois semaines, à part le lave-linge.",
+    "effects": {"happiness": 1, "karma": -1}
+  },
+  {
+    "id": "rep_fam_0057",
+    "on": "enfant_quitte_maison",
+    "chance": 0.4,
+    "delay": [1, 3],
+    "text": "Ton enfant a quitté la maison, mais pas ta machine à laver : un sac de linge sale arrive chaque mois, et repart avec des boîtes de restes.",
+    "effects": {"money": -100, "happiness": 2}
+  },
+  {
+    "id": "rep_fam_0058",
+    "on": "enfant_quitte_maison",
+    "chance": 0.5,
+    "delay": [0, 1],
+    "requires": {"minCounters": {"enfant_quitte_maison": 2}},
+    "text": "Depuis ce nouveau départ, la maison est si calme que tu entends le frigo réfléchir.",
+    "choices": [
+      {
+        "label": "Adopter trois poules",
+        "outcomes": [
+          {
+            "text": "Les poules portent les prénoms de tes enfants. Elles écoutent mieux.",
+            "effects": {"happiness": 5}
+          }
+        ]
+      },
+      {
+        "label": "Partir en voyage",
+        "outcomes": [
+          {
+            "text": "Tu as envoyé des photos à tes enfants, qui ont demandé qui arrosait leurs plantes.",
+            "effects": {"money": -2500, "happiness": 6}
+          }
+        ]
+      },
+      {
+        "label": "Appeler tes enfants tous les jours",
+        "outcomes": [
+          {
+            "text": "Tes enfants ont créé un groupe de discussion pour se répartir tes appels.",
+            "effects": {"happiness": 2, "relationships": {"child": -3}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0059",
+    "on": "deces_parent",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "Aux obsèques, tu as découvert que ton parent avait des amis que tu n'avais jamais vus, dont un monsieur en kilt qui connaissait toutes les chansons.",
+    "effects": {"happiness": -2, "karma": 1}
+  },
+  {
+    "id": "rep_fam_0060",
+    "on": "deces_parent",
+    "chance": 0.55,
+    "delay": [0, 1],
+    "text": "Il faut vider le grenier de tes parents : quarante ans de bocaux vides, une valise fermée à clé et ton premier dessin, annoté « bof ».",
+    "choices": [
+      {
+        "label": "Tout trier, objet par objet",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Six mois de tri. Dans la valise : des lettres d'amour et la recette secrète du gratin.",
+            "effects": {"happiness": 4, "smarts": 1}
+          },
+          {
+            "chance": 0.4,
+            "text": "Dans la valise : 3 200 € en vieux billets et un mot, « Pour les mauvais jours ». C'en était un.",
+            "effects": {"money": 3200, "happiness": 3}
+          }
+        ]
+      },
+      {
+        "label": "Tout jeter d'un coup",
+        "outcomes": [
+          {
+            "text": "Une benne de quinze mètres cubes. Une semaine plus tard, tu as rêvé de la valise. Tu en rêves encore.",
+            "effects": {"happiness": -3, "setFlags": ["valise_jetee"]}
+          }
+        ]
+      },
+      {
+        "label": "Tout garder chez toi",
+        "outcomes": [
+          {
+            "text": "Ton grenier contient désormais celui de tes parents. Une poupée russe de bric-à-brac.",
+            "effects": {"happiness": 1, "setFlags": ["grenier_plein"]}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0061",
+    "on": "event:rep_fam_0060",
+    "choice": 1,
+    "chance": 0.4,
+    "delay": [5, 15],
+    "conditions": {"flags": ["valise_jetee"]},
+    "text": "Des années après avoir vidé le grenier de tes parents, tu as vu dans une brocante une valise identique à celle que tu avais jetée. Tu l'as payée 400 €. Elle était vide. Tu l'as gardée quand même.",
+    "effects": {"money": -400, "happiness": 2, "clearFlags": ["valise_jetee"]}
+  },
+  {
+    "id": "rep_fam_0062",
+    "on": "event:rep_fam_0060",
+    "choice": 2,
+    "chance": 0.6,
+    "delay": [12, 20],
+    "conditions": {"tags": ["children"], "flags": ["grenier_plein"]},
+    "patience": 5,
+    "text": "Tu avais tout gardé du grenier de tes parents. Tes enfants y sont montés : deux générations de bocaux plus tard, leur compte « Les archives du grenier » a 12 000 abonnés.",
+    "choices": [
+      {
+        "label": "Poser fièrement à côté des bocaux",
+        "outcomes": [
+          {
+            "text": "Tu es devenu{e} « la mascotte du grenier ». Des inconnus te demandent des selfies au marché.",
+            "effects": {"fame": 4, "happiness": 4}
+          }
+        ]
+      },
+      {
+        "label": "Exiger un pourcentage",
+        "outcomes": [
+          {
+            "text": "Tes enfants t'ont proposé 5 %. De 0 €. Tu as signé.",
+            "effects": {"happiness": 1, "relationships": {"child": 2}}
+          }
+        ]
+      },
+      {
+        "label": "Enfin tout jeter",
+        "outcomes": [
+          {
+            "text": "La benne est arrivée. Tes enfants se sont allongés devant. Le grenier est désormais classé.",
+            "effects": {"happiness": -1, "relationships": {"child": -3}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0063",
+    "on": "deces_parent",
+    "chance": 0.4,
+    "delay": [1, 2],
+    "text": "Tu as gardé le dernier message de ton parent sur le répondeur. Tu l'écoutes parfois. Il dit : « Rappelle-moi, c'est pour la mutuelle. »",
+    "effects": {"happiness": 2}
+  },
+  {
+    "id": "rep_fam_0064",
+    "on": "deces_parent",
+    "chance": 0.7,
+    "delay": [0, 1],
+    "requires": {"minCounters": {"deces_parent": 2}},
+    "text": "Sans tes deux parents, tu es désormais la génération du dessus. Toute la famille te demande comment on cuit la dinde. Tu n'en as aucune idée.",
+    "effects": {"stress": 4, "happiness": -2, "smarts": 1}
+  },
+  {
+    "id": "rep_fam_0065",
+    "on": "deces_parent",
+    "chance": 0.4,
+    "delay": [0, 1],
+    "conditions": {"tags": ["siblings"]},
+    "text": "La maison de famille revient à {fratrie} et à toi. {fratrie} veut la vendre, tu veux la garder, et personne ne veut nettoyer la cave.",
+    "choices": [
+      {
+        "label": "Vendre et partager",
+        "outcomes": [
+          {
+            "text": "Vendue à un couple qui a juré de garder le cerisier. Ils l'ont coupé le lendemain.",
+            "effects": {"money": 25000, "happiness": -2}
+          }
+        ]
+      },
+      {
+        "label": "Racheter la part de {fratrie}",
+        "outcomes": [
+          {
+            "text": "Tu as maintenant une maison de famille, un crédit sur vingt ans et une cave.",
+            "effects": {"money": -30000, "happiness": 5, "relationships": {"sibling": 2}}
+          }
+        ]
+      },
+      {
+        "label": "Garder en indivision",
+        "outcomes": [
+          {
+            "text": "Vous partagez la maison, les factures, et un conflit éternel sur l'heure du barbecue.",
+            "effects": {"setFlags": ["heritage_conteste"], "relationships": {"sibling": -5}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0066",
+    "on": "deces_proche",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "text": "On t'a demandé de prononcer l'éloge funèbre. Tu as trois jours et aucune idée de ce qu'on dit dans ces moments-là.",
+    "choices": [
+      {
+        "label": "Un discours émouvant",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Toute l'assemblée a pleuré. On te réclame désormais à chaque enterrement de la famille.",
+            "effects": {"happiness": 3, "karma": 3}
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu as craqué au deuxième mot et fini en récitant une recette de crêpes. Étrangement, c'était parfait.",
+            "effects": {"happiness": 2}
+          }
+        ]
+      },
+      {
+        "label": "Glisser une petite blague",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La blague a fait rire. Le défunt l'aurait adorée : c'était la sienne.",
+            "effects": {"happiness": 4}
+          },
+          {
+            "chance": 0.5,
+            "text": "Personne n'a ri, à part un monsieur en kilt au fond.",
+            "effects": {"happiness": -4, "karma": -1}
+          }
+        ]
+      },
+      {
+        "label": "Lire la notice de la cafetière, par panique",
+        "outcomes": [
+          {
+            "text": "Lecture solennelle de la notice de la cafetière. Certaines personnes ont pris des notes.",
+            "effects": {"happiness": -2}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0067",
+    "on": "deces_proche",
+    "chance": 0.4,
+    "delay": [1, 2],
+    "text": "Le profil en ligne de ton proche disparu te souhaite toujours ton anniversaire. Tu as répondu « merci ». C'est devenu une tradition.",
+    "effects": {"happiness": 1}
+  },
+  {
+    "id": "rep_fam_0068",
+    "on": "deces_proche",
+    "chance": 0.6,
+    "delay": [0, 1],
+    "requires": {"minCounters": {"deces_proche": 3}},
+    "text": "Tu connais désormais le personnel des pompes funèbres par son prénom. On t'a proposé une carte de fidélité. Tu as hésité.",
+    "effects": {"happiness": -2}
+  },
+  {
+    "id": "rep_fam_0069",
+    "on": "deces_proche",
+    "chance": 0.35,
+    "delay": [0, 1],
+    "text": "Après ce décès, tu as hérité de la plante verte de ton proche. Tu l'arroses en lui racontant ta journée. Elle n'a jamais été aussi verte.",
+    "effects": {"happiness": 3}
+  },
+  {
+    "id": "rep_fam_0070",
+    "on": "deces_proche",
+    "chance": 0.3,
+    "delay": [0, 2],
+    "conditions": {"tags": ["adult"]},
+    "text": "Depuis ce deuil, tu as écrit la liste des choses à faire avant de mourir. Elle compte 312 entrées, dont « finir la liste ».",
+    "choices": [
+      {
+        "label": "Commencer par la plus folle",
+        "outcomes": [
+          {
+            "chance": 0.95,
+            "text": "Saut en parachute. Tu as hurlé du décollage jusqu'à la semaine suivante.",
+            "effects": {"happiness": 8, "health": -1}
+          },
+          {
+            "chance": 0.05,
+            "text": "Saut en parachute, numéro 1 sur 312.",
+            "effects": {"death": "en parachute, en criant « plus que 311 ! »"}
+          }
+        ]
+      },
+      {
+        "label": "Commencer par la plus simple",
+        "outcomes": [
+          {
+            "text": "Numéro 312 : « manger une glace en hiver ». Fait. Il en reste 311.",
+            "effects": {"happiness": 3}
+          }
+        ]
+      },
+      {
+        "label": "Jeter la liste",
+        "outcomes": [{"text": "Tu te sens libre, et un peu coupable envers le parachute.", "effects": {"happiness": 1}}]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0071",
+    "on": "heritage",
+    "chance": 0.4,
+    "delay": [0, 0],
+    "text": "Le notaire a lu le testament avec le ton d'un présentateur de loto. Personne n'a apprécié les roulements de tambour.",
+    "effects": {"happiness": -1}
+  },
+  {
+    "id": "rep_fam_0072",
+    "on": "heritage",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "conditions": {"tags": ["siblings"]},
+    "text": "L'héritage doit être partagé avec {fratrie}. Tout le monde sourit, personne ne lâche la cuillère en argent.",
+    "choices": [
+      {
+        "label": "Partager équitablement",
+        "outcomes": [
+          {
+            "text": "Partage à la petite cuillère près. Littéralement : tu as eu les petites cuillères.",
+            "effects": {"karma": 4, "money": 2000, "relationships": {"sibling": 3}}
+          }
+        ]
+      },
+      {
+        "label": "Tout réclamer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as obtenu la plus grosse part. {fratrie} t'a découpé{e} de toutes les photos de famille.",
+            "effects": {
+              "money": 15000,
+              "karma": -5,
+              "setFlags": ["heritage_conteste"],
+              "relationships": {"sibling": -20}
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{fratrie} a pris un avocat. Toi aussi. Les deux avocats, eux, s'entendent très bien.",
+            "effects": {"money": -3000, "setFlags": ["heritage_conteste"], "relationships": {"sibling": -15}}
+          }
+        ]
+      },
+      {
+        "label": "Tout léguer à la défense des pigeons",
+        "outcomes": [
+          {
+            "text": "Les pigeons te remercient. {fratrie}, un peu moins.",
+            "effects": {"karma": 10, "happiness": 3, "relationships": {"sibling": -8}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0073",
+    "on": "event:rep_fam_0072",
+    "choice": 1,
+    "chance": 0.7,
+    "delay": [2, 4],
+    "conditions": {"flags": ["heritage_conteste"]},
+    "text": "L'affaire de l'héritage n'est toujours pas réglée. Le dossier pèse quatre kilos et ne parle plus que d'un buffet Louis XV.",
+    "choices": [
+      {
+        "label": "Aller jusqu'au bout",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Victoire ! Le buffet est à toi. Il ne passe pas la porte de chez toi.",
+            "effects": {"money": -6000, "happiness": 2}
+          },
+          {
+            "chance": 0.6,
+            "text": "Défaite. {fratrie} a le buffet, et toi la facture.",
+            "effects": {"money": -9000, "happiness": -6}
+          }
+        ]
+      },
+      {
+        "label": "Tenter une médiation",
+        "outcomes": [
+          {
+            "text": "Six séances plus tard, vous avez décidé de scier le buffet en deux. Le médiateur a changé de métier.",
+            "effects": {"money": -1500, "clearFlags": ["heritage_conteste"], "relationships": {"sibling": 4}}
+          }
+        ]
+      },
+      {
+        "label": "Jouer le buffet aux cartes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as gagné le buffet au rami. {fratrie} crie à la triche depuis.",
+            "effects": {"happiness": 4, "relationships": {"sibling": -3}}
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as perdu le buffet au rami, et vous avez ri ensemble pour la première fois en deux ans.",
+            "effects": {"clearFlags": ["heritage_conteste"], "relationships": {"sibling": 6}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0074",
+    "on": "event:rep_fam_0073",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [10, 18],
+    "conditions": {"tags": ["siblings"], "flags": ["heritage_conteste"]},
+    "patience": 5,
+    "text": "Des années après l'héritage contesté, un cousin se marie. On vous a mis, {fratrie} et toi, à la même table, à côté du fameux buffet Louis XV, prêté pour l'occasion.",
+    "choices": [
+      {
+        "label": "Tendre la main",
+        "outcomes": [
+          {
+            "text": "Vous avez trinqué au-dessus du buffet. Une larme, puis une dispute sur la cuillère en argent, mais affectueuse.",
+            "effects": {"happiness": 6, "clearFlags": ["heritage_conteste"], "relationships": {"sibling": 15}}
+          }
+        ]
+      },
+      {
+        "label": "Ignorer {fratrie} toute la soirée",
+        "outcomes": [
+          {
+            "text": "Vous vous êtes ignorés avec un tel talent que les mariés ont cru à un numéro prévu.",
+            "effects": {"happiness": -2, "relationships": {"sibling": -3}}
+          }
+        ]
+      },
+      {
+        "label": "Rayer discrètement le buffet",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Personne n'a rien vu. Tu te sens mieux, et un peu mesquin{e}.",
+            "effects": {"karma": -5, "happiness": 3}
+          },
+          {
+            "chance": 0.5,
+            "text": "Tout le monde a vu. Tu es désormais la légende noire de la famille.",
+            "effects": {"karma": -6, "fame": 1, "relationships": {"sibling": -10}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0075",
+    "on": "heritage",
+    "chance": 0.3,
+    "delay": [0, 0],
+    "unique": true,
+    "text": "Dans l'héritage, il y a un perroquet de 62 ans nommé Amiral, qui ne connaît que des jurons de marin et le générique d'une vieille émission de télé.",
+    "choices": [
+      {
+        "label": "Le garder",
+        "outcomes": [
+          {
+            "text": "Amiral s'est installé chez toi. Dès le premier soir, il t'a traité{e} de « moule à gaufres ».",
+            "effects": {"happiness": 3, "setFlags": ["perroquet_herite"]}
+          }
+        ]
+      },
+      {
+        "label": "Le revendre",
+        "outcomes": [
+          {
+            "text": "Un collectionneur l'a acheté 900 €. Amiral l'a insulté jusqu'à la voiture.",
+            "effects": {"money": 900, "karma": -2}
+          }
+        ]
+      },
+      {
+        "label": "L'offrir au zoo",
+        "outcomes": [
+          {
+            "text": "Le zoo l'a accepté. Il fait rire les enfants et rougir les parents.",
+            "effects": {"karma": 3}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0076",
+    "on": "event:rep_fam_0075",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [3, 6],
+    "conditions": {"flags": ["perroquet_herite"]},
+    "text": "Amiral, le perroquet de l'héritage, a appris à imiter ta voix. Il a commandé une pizza, résilié ton abonnement internet et dit « je t'aime » à ton ancien patron.",
+    "choices": [
+      {
+        "label": "Le dresser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Amiral sait désormais dire « bonjour ». Il le dit avec un mépris remarquable.",
+            "effects": {"happiness": 3}
+          },
+          {
+            "chance": 0.5,
+            "text": "C'est Amiral qui t'a dressé{e} : tu lui sers son café tous les matins.",
+            "effects": {"happiness": -1}
+          }
+        ]
+      },
+      {
+        "label": "L'emmener à la télé locale",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Amiral a fait sensation. Ses jurons ont été bipés et il est devenu une vedette du quartier.",
+            "effects": {"fame": 3, "happiness": 4, "money": 300}
+          },
+          {
+            "chance": 0.4,
+            "text": "Amiral a insulté le présentateur en direct. Vous êtes interdits d'antenne, tous les deux.",
+            "effects": {"fame": 2, "happiness": -1}
+          }
+        ]
+      },
+      {
+        "label": "Le laisser gérer tes appels",
+        "outcomes": [{"text": "Ton banquier préfère maintenant parler à Amiral qu'à toi.", "effects": {"happiness": 2}}]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0077",
+    "on": "event:rep_fam_0076",
+    "chance": 0.5,
+    "delay": [12, 20],
+    "conditions": {"flags": ["perroquet_herite"]},
+    "patience": 5,
+    "text": "Amiral, le perroquet hérité il y a si longtemps, a plus de 80 ans et une santé de fer. Tu comprends que c'est lui qui héritera de toi, et pas l'inverse.",
+    "choices": [
+      {
+        "label": "L'inscrire sur ton testament",
+        "outcomes": [
+          {
+            "text": "Amiral est officiellement ton légataire. Le notaire a demandé à le rencontrer. Ça s'est mal passé.",
+            "effects": {"karma": 2, "happiness": 3}
+          }
+        ]
+      },
+      {
+        "label": "Lui chercher un successeur humain",
+        "outcomes": [
+          {
+            "chance": 0.95,
+            "text": "Tu as fait passer des entretiens. Amiral a recalé chaque candidat d'un juron.",
+            "effects": {"happiness": 2}
+          },
+          {
+            "chance": 0.05,
+            "text": "Pendant un entretien, Amiral a imité l'alarme incendie à la perfection.",
+            "effects": {"death": "d'une crise cardiaque, pendant qu'un perroquet imitait l'alarme incendie"}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0078",
+    "on": "heritage",
+    "chance": 0.3,
+    "delay": [0, 0],
+    "text": "Tu as hérité d'un tableau abominable : un chien en costume trois-pièces qui te fixe, quel que soit l'angle.",
+    "choices": [
+      {
+        "label": "Le faire expertiser",
+        "outcomes": [
+          {
+            "chance": 0.15,
+            "text": "Coup de théâtre : c'est l'œuvre d'un maître oublié. Le chien vaut 38 000 €.",
+            "effects": {"money": 38000, "happiness": 8}
+          },
+          {
+            "chance": 0.85,
+            "text": "L'expert l'a estimé à 12 €, « pour le cadre ».",
+            "effects": {"happiness": -2}
+          }
+        ]
+      },
+      {
+        "label": "L'accrocher au salon",
+        "outcomes": [
+          {
+            "text": "Le chien fixe tes invités. Tes invités partent plus tôt. Tu as fini par l'adorer.",
+            "effects": {"happiness": 2}
+          }
+        ]
+      },
+      {
+        "label": "Le brûler au fond du jardin",
+        "outcomes": [
+          {
+            "text": "Le tableau a mis deux heures à brûler. Le chien t'a fixé{e} jusqu'au bout.",
+            "effects": {"happiness": -1, "karma": -1}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0079",
+    "on": "heritage",
+    "chance": 0.25,
+    "delay": [0, 0],
+    "text": "Le testament te lègue une clé, sans aucune explication. Juste un mot : « Tu sauras. »",
+    "choices": [
+      {
+        "label": "Essayer toutes les serrures de la ville",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Trois semaines plus tard, la clé a ouvert un casier de gare. Dedans : une autre clé.",
+            "effects": {"happiness": 2, "setFlags": ["cle_mysterieuse"]}
+          },
+          {
+            "chance": 0.5,
+            "text": "La clé ouvrait la boîte aux lettres de tes parents. Dedans : une carte de vœux de 1998.",
+            "effects": {"happiness": 3}
+          }
+        ]
+      },
+      {
+        "label": "La porter en pendentif",
+        "outcomes": [
+          {
+            "text": "Quand on te demande ce qu'elle ouvre, tu réponds « mon cœur ». Ça fait fuir pas mal de monde.",
+            "effects": {"happiness": 1, "looks": 1}
+          }
+        ]
+      },
+      {
+        "label": "La jeter",
+        "outcomes": [
+          {
+            "text": "Tu as jeté la clé. Tu n'as jamais été aussi frustré{e} de ta vie.",
+            "effects": {"happiness": -3}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0080",
+    "on": "event:rep_fam_0079",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.8,
+    "delay": [5, 12],
+    "conditions": {"flags": ["cle_mysterieuse"]},
+    "text": "Tu avais gardé la deuxième clé du casier de gare. Elle ouvrait une cabane au fond des bois, remplie de pots de confiture de 1987, avec un mot : « Bravo. »",
+    "effects": {"happiness": 6, "clearFlags": ["cle_mysterieuse"]}
+  },
+  {
+    "id": "rep_fam_0081",
+    "on": "heritage",
+    "chance": 0.35,
+    "delay": [1, 2],
+    "text": "Tu avais juré de placer l'héritage sagement. Il a surtout financé un jacuzzi gonflable, et il fuit.",
+    "effects": {"happiness": 3, "money": -1500}
+  },
+  {
+    "id": "rep_fam_0082",
+    "on": "heritage",
+    "chance": 0.6,
+    "delay": [0, 1],
+    "requires": {"minCounters": {"heritage": 3}},
+    "text": "Troisième héritage. Ta famille commence à te regarder bizarrement quand tu prends des nouvelles de sa santé.",
+    "effects": {"karma": -2, "happiness": 2}
+  },
+  {
+    "id": "rep_fam_0083",
+    "on": "demenagement",
+    "chance": 0.5,
+    "delay": [0, 0],
+    "text": "Le déménagement a révélé que tu possédais quatorze câbles dont personne ne connaît l'usage. Tu les as emportés, évidemment.",
+    "effects": {"happiness": 1}
+  },
+  {
+    "id": "rep_fam_0084",
+    "on": "demenagement",
+    "chance": 0.3,
+    "delay": [0, 0],
+    "text": "Premier mois dans le nouveau logement : tu as cherché l'interrupteur à l'ancienne place neuf cents fois. Ta main habite encore là-bas.",
+    "effects": {"happiness": -1}
+  },
+  {
+    "id": "rep_fam_0085",
+    "on": "demenagement",
+    "chance": 0.5,
+    "delay": [0, 1],
+    "text": "Tes nouveaux voisins sont venus se présenter avec un gâteau et un règlement intérieur de douze pages, surligné au fluo.",
+    "choices": [
+      {
+        "label": "Les inviter à dîner",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Dîner charmant. Ils sont revenus le lendemain, et le surlendemain. Ils ont leur rond de serviette.",
+            "effects": {"happiness": 3, "newFriend": true}
+          },
+          {
+            "chance": 0.3,
+            "text": "Ils ont critiqué ta cuisson des pâtes avec une précision chirurgicale.",
+            "effects": {"happiness": -3}
+          }
+        ]
+      },
+      {
+        "label": "Sourire et ne plus jamais ouvrir",
+        "outcomes": [
+          {
+            "text": "Vous vous saluez de loin, comme deux pays liés par un traité fragile.",
+            "effects": {"happiness": 1}
+          }
+        ]
+      },
+      {
+        "label": "Déclarer la guerre",
+        "outcomes": [
+          {
+            "text": "Haie de thuyas de trois mètres, barbecue enfumé à 7 h du matin : la guerre est déclarée.",
+            "effects": {"happiness": 4, "karma": -3, "setFlags": ["guerre_voisins"]}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0086",
+    "on": "event:rep_fam_0085",
+    "choice": 2,
+    "chance": 0.8,
+    "delay": [1, 3],
+    "conditions": {"flags": ["guerre_voisins"]},
+    "text": "La guerre de voisinage s'intensifie : ils ont installé un nain de jardin qui te tourne le dos, en signe de mépris.",
+    "choices": [
+      {
+        "label": "Riposter avec quarante nains",
+        "outcomes": [
+          {
+            "chance": 0.95,
+            "text": "Ton jardin ressemble à un congrès de nains. Le quartier vient le prendre en photo.",
+            "effects": {"happiness": 4, "fame": 1, "money": -600}
+          },
+          {
+            "chance": 0.05,
+            "text": "Tu as voulu les empiler en pyramide.",
+            "effects": {"death": "sous une avalanche de nains de jardin, en pleine guerre de voisinage"}
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "text": "La médiatrice de la mairie vous a écoutés deux heures, puis a demandé sa mutation.",
+            "effects": {"money": -400, "happiness": -2}
+          }
+        ]
+      },
+      {
+        "label": "Hisser le drapeau blanc",
+        "outcomes": [
+          {
+            "text": "Paix signée autour du gâteau de bienvenue, resservi. Il était très sec.",
+            "effects": {"happiness": 3, "karma": 3, "clearFlags": ["guerre_voisins"]}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0087",
+    "on": "event:rep_fam_0086",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [8, 14],
+    "conditions": {"tags": ["children"], "flags": ["guerre_voisins"]},
+    "patience": 4,
+    "text": "Des années de guerre des nains plus tard, catastrophe : ton enfant et l'enfant des voisins sont en couple. Ils parlent de mariage, et d'abattre la haie.",
+    "choices": [
+      {
+        "label": "Bénir l'union",
+        "outcomes": [
+          {
+            "text": "Mariage dans les deux jardins. La haie est tombée sous les applaudissements. Les nains servaient de témoins.",
+            "effects": {"happiness": 8, "karma": 4, "clearFlags": ["guerre_voisins"], "relationships": {"child": 8}}
+          }
+        ]
+      },
+      {
+        "label": "Interdire cet amour",
+        "outcomes": [
+          {
+            "text": "Ils se sont mariés en secret, puis t'ont envoyé une photo, posant devant un nain.",
+            "effects": {"happiness": -4, "relationships": {"child": -10}}
+          }
+        ]
+      },
+      {
+        "label": "Négocier une dot en nains",
+        "outcomes": [
+          {
+            "text": "Accord historique : vingt nains contre la moitié de la haie. Le quartier en parle encore.",
+            "effects": {"happiness": 5, "clearFlags": ["guerre_voisins"], "relationships": {"child": 2}}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0088",
+    "on": "demenagement",
+    "chance": 0.4,
+    "delay": [1, 1],
+    "conditions": {"tags": ["children"]},
+    "text": "Depuis le déménagement, ton enfant parle de « l'ancienne maison » comme d'un paradis perdu. Il y avait pourtant des cafards et un voisin qui jouait du cor de chasse.",
+    "effects": {"happiness": -1, "relationships": {"child": -1}}
+  },
+  {
+    "id": "rep_fam_0089",
+    "on": "demenagement",
+    "chance": 0.35,
+    "delay": [0, 1],
+    "text": "Depuis le déménagement, tu reçois le courrier de l'ancien occupant, un certain Gérard Mouflon : abonnements, faire-part, lettres de menaces polies.",
+    "choices": [
+      {
+        "label": "Le faire suivre",
+        "outcomes": [
+          {
+            "text": "Gérard t'a envoyé une carte de remerciement… à ta propre adresse. Tu l'as fait suivre.",
+            "effects": {"karma": 3}
+          }
+        ]
+      },
+      {
+        "label": "Tout lire, par curiosité",
+        "outcomes": [
+          {
+            "text": "Gérard Mouflon a une vie passionnante : une rivalité avec un club de pétanque et trois cousines à Brest.",
+            "effects": {"happiness": 3, "karma": -2}
+          }
+        ]
+      },
+      {
+        "label": "Devenir Gérard Mouflon",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu as répondu aux faire-part au nom de Gérard. Tu es invité{e} à trois mariages.",
+            "effects": {"happiness": 5, "karma": -4}
+          },
+          {
+            "chance": 0.4,
+            "text": "Le vrai Gérard a sonné pour récupérer un colis. Le malaise a duré une heure.",
+            "effects": {"happiness": -3}
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_fam_0090",
+    "on": "demenagement",
+    "chance": 0.3,
+    "delay": [0, 1],
+    "maxAge": 40,
+    "conditions": {"tags": ["mother"]},
+    "text": "Depuis ton déménagement, {mere} t'appelle pour vérifier que tu as « bien fermé le gaz ». Tu n'as pas le gaz.",
+    "effects": {"happiness": 1, "relationships": {"mother": 2}}
+  },
+  {
+    "id": "rep_fam_0091",
+    "on": "demenagement",
+    "chance": 0.35,
+    "delay": [3, 6],
+    "text": "Plusieurs années après le déménagement, trois cartons n'ont toujours pas été ouverts. Ils sont devenus des meubles. L'un d'eux sert de table de chevet.",
+    "effects": {"happiness": 1}
+  },
+  {
+    "id": "rep_fam_0092",
+    "on": "demenagement",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "requires": {"minCounters": {"demenagement": 4}},
+    "text": "Encore un déménagement. Tes cartons portent les étiquettes de tous les précédents, empilées comme des strates géologiques.",
+    "effects": {"happiness": -1, "stress": 3}
+  },
+  {
+    "id": "rep_fam_0093",
+    "on": "demenagement",
+    "chance": 0.6,
+    "delay": [0, 0],
+    "conditions": {"flags": ["famille_nombreuse"]},
+    "text": "Déménager avec une famille nombreuse : quatre allers-retours, deux enfants oubliés temporairement dans l'ancien salon et un hamster jamais retrouvé.",
+    "effects": {"stress": 4, "happiness": -1}
+  }
+]

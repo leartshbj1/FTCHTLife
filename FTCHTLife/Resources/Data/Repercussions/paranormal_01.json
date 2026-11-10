@@ -1,0 +1,1640 @@
+[
+  {
+    "id": "rep_par_0001",
+    "on": "event:par_0001",
+    "choice": 0,
+    "delay": [
+      1,
+      2
+    ],
+    "patience": 3,
+    "unique": true,
+    "text": "Le fantôme de ton appart s'est présenté : Gérard, mort en 1974 en cherchant sa tasse préférée. Il range désormais tes chaussettes par couleur.",
+    "choices": [
+      {
+        "label": "L'aider à chercher sa tasse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous écumez les brocantes ensemble. Les vendeurs te voient parler tout{e} seul{e}. Gérard flotte d'émotion.",
+            "effects": {
+              "happiness": 4,
+              "karma": 3,
+              "setFlags": [
+                "cherche_tasse_gerard"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui faire payer un loyer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il paie en pièces de 1974. Un numismate t'en donne 900 €.",
+            "effects": {
+              "money": 900
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il refuse et fait couler tous les robinets à 3 h du matin. Ta facture d'eau pleure.",
+            "effects": {
+              "happiness": -4,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le filmer pour Internet",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La vidéo fait deux millions de vues. Gérard exige la moitié des revenus et un droit à l'image.",
+            "effects": {
+              "fame": 10,
+              "happiness": 5,
+              "money": 1500
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Sur la vidéo, on ne voit que toi en pyjama, en train de parler à un placard.",
+            "effects": {
+              "happiness": -5,
+              "looks": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0002",
+    "on": "event:par_0001",
+    "choice": 1,
+    "delay": [
+      1,
+      2
+    ],
+    "patience": 3,
+    "unique": true,
+    "text": "Le prêtre n'a servi à rien. La voix du placard s'est présentée : Gérard, mort en 1974, il cherche sa tasse. Et il est vexé qu'on ait voulu le chasser.",
+    "choices": [
+      {
+        "label": "Promettre de chercher sa tasse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Gérard accepte tes excuses. Il range tes chaussettes en signe de paix.",
+            "effects": {
+              "happiness": 3,
+              "karma": 2,
+              "setFlags": [
+                "cherche_tasse_gerard"
+              ],
+              "followUps": [
+                "rep_par_0003"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler un vrai exorciste",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'exorciste ressort au bout de dix minutes, les cheveux blancs. Facture : 1 200 €.",
+            "effects": {
+              "money": -1200,
+              "happiness": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ça marche. L'appart est silencieux. Tu découvres que Gérard te manque un peu.",
+            "effects": {
+              "money": -1200,
+              "happiness": -2,
+              "clearFlags": [
+                "maison_hantee"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0003",
+    "on": "event:rep_par_0001",
+    "choice": 0,
+    "delay": [
+      2,
+      4
+    ],
+    "patience": 4,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "maison_hantee"
+      ]
+    },
+    "text": "Dans un vide-grenier, tu trouves une tasse ébréchée marquée « GÉRARD ». En rentrant, toutes les lampes de l'appart s'allument d'un coup.",
+    "choices": [
+      {
+        "label": "La lui offrir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Gérard boit un dernier café invisible et part vers la lumière. Il laisse un mot : « Parquet, troisième latte. » Dessous : ses économies de 1974.",
+            "effects": {
+              "money": 15000,
+              "happiness": 10,
+              "karma": 5,
+              "clearFlags": [
+                "maison_hantee"
+              ],
+              "setFlags": [
+                "a_libere_un_fantome"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La garder en otage",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Gérard comprend le marché. Il devient ton majordome fantôme. Ton ménage est fait, ta conscience un peu moins.",
+            "effects": {
+              "happiness": 6,
+              "karma": -5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Gérard se vexe et déménage dans ta voiture. La radio ne passe plus que de l'accordéon.",
+            "effects": {
+              "happiness": -6,
+              "clearFlags": [
+                "maison_hantee"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0004",
+    "on": "event:rep_par_0001",
+    "choice": 1,
+    "outcome": 0,
+    "delay": [
+      1,
+      3
+    ],
+    "patience": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "maison_hantee"
+      ]
+    },
+    "text": "Gérard a trouvé un avocat fantôme. Tu es convoqué{e} devant le tribunal de l'au-delà pour « loyer abusif sur personne décédée ».",
+    "choices": [
+      {
+        "label": "Se défendre seul{e}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu gagnes : le juge est un fantôme de 1890 qui déteste les locataires.",
+            "effects": {
+              "happiness": 5,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Condamnation : hanté{e} à vie. Ton miroir te fait des grimaces quand tu te brosses les dents.",
+            "effects": {
+              "happiness": -8,
+              "setFlags": [
+                "hante_a_vie"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rembourser Gérard",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rends les 900 €. Gérard pleure de l'ectoplasme sur ton tapis et part en paix.",
+            "effects": {
+              "money": -900,
+              "karma": 6,
+              "clearFlags": [
+                "maison_hantee"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0005",
+    "on": "event:rep_par_0001",
+    "choice": 2,
+    "outcome": 0,
+    "delay": [
+      1,
+      2
+    ],
+    "patience": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "maison_hantee"
+      ]
+    },
+    "text": "Ta vidéo de Gérard a attiré une émission de chasseurs de fantômes. Ils veulent tourner un épisode spécial dans ton salon.",
+    "choices": [
+      {
+        "label": "Faire l'émission",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Gérard apparaît en direct, salue sa mère et réclame sa tasse. Audience record.",
+            "effects": {
+              "fame": 15,
+              "money": 3000,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Gérard refuse de se montrer. Tout le pays te voit parler à un placard vide, à une heure de grande écoute.",
+            "effects": {
+              "fame": 5,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Protéger Gérard",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu jures que c'était un montage. Gérard te fait un câlin glacé. Rhume pendant trois semaines, mais quel câlin.",
+            "effects": {
+              "karma": 5,
+              "health": -3,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0010",
+    "on": "event:par_0002",
+    "choice": 0,
+    "delay": [
+      3,
+      6
+    ],
+    "patience": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "prediction_voyante"
+      ]
+    },
+    "text": "Tu croises un homme en chapeau jaune. Puis un deuxième. Tu te souviens de la voyante : « Quand trois chapeaux jaunes croiseront ta route… » Elle n'avait pas fini sa phrase.",
+    "choices": [
+      {
+        "label": "Fuir tous les chapeaux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu changes de trottoir quarante fois par jour. Tu as de meilleurs mollets et beaucoup moins d'amis.",
+            "effects": {
+              "happiness": -5,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter un chapeau jaune",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu deviens toi-même le troisième chapeau. Tu as cassé la prophétie, ou tu l'as accomplie. Personne ne sait.",
+            "effects": {
+              "happiness": 3,
+              "looks": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retourner voir la voyante",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle a doublé ses tarifs. « Inflation de l'au-delà. » Elle te confirme que l'enveloppe est toujours valable.",
+            "effects": {
+              "money": -100,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0011",
+    "on": "event:rep_par_0010",
+    "delay": [
+      3,
+      8
+    ],
+    "patience": 6,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "prediction_voyante"
+      ]
+    },
+    "text": "Ce matin, l'enveloppe de la voyante s'est ouverte toute seule sur la table de la cuisine. Dedans, un seul mot : « Aujourd'hui. »",
+    "choices": [
+      {
+        "label": "Rester au lit toute la journée",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "À minuit, tu es toujours en vie. La voyante t'envoie un SMS : « Pardon, mauvaise enveloppe, c'était pour M. Rocher. »",
+            "effects": {
+              "happiness": 6,
+              "clearFlags": [
+                "prediction_voyante"
+              ]
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le lit s'effondre. Tu survis, avec une côte fêlée et une profonde méfiance envers l'ameublement.",
+            "effects": {
+              "health": -15,
+              "clearFlags": [
+                "prediction_voyante"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vivre la journée à fond",
+        "outcomes": [
+          {
+            "chance": 0.62,
+            "text": "Saut en parachute, karaoké, tu déclares ton amour à ton boulanger. À minuit, tu es toujours là, plus vivant{e} que jamais.",
+            "effects": {
+              "happiness": 15,
+              "money": -1500,
+              "clearFlags": [
+                "prediction_voyante"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu survis. Ton compte en banque, lui, n'a pas survécu.",
+            "effects": {
+              "happiness": 8,
+              "money": -6000,
+              "clearFlags": [
+                "prediction_voyante"
+              ]
+            }
+          },
+          {
+            "chance": 0.08,
+            "text": "Tu voulais prouver qu'elle avait tort en montant sur le toit de la mairie. Elle n'avait pas tort.",
+            "effects": {
+              "death": "le jour exact prédit par une voyante de marché, en essayant de prouver qu'elle se trompait"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller voir la voyante",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Sa boutique est fermée. Sur la porte : « Fermé pour cause imprévue. » Tu ris nerveusement pendant une heure. Il ne t'arrive rien.",
+            "effects": {
+              "happiness": 3,
+              "clearFlags": [
+                "prediction_voyante"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0012",
+    "on": "event:par_0002",
+    "choice": 2,
+    "delay": [
+      2,
+      4
+    ],
+    "patience": 3,
+    "unique": true,
+    "text": "Le journal de {ville} raconte qu'une voyante a échappé de justesse à la chute d'un piano. Un mardi. Elle te cherche partout pour te proposer de t'associer.",
+    "choices": [
+      {
+        "label": "Ouvrir un cabinet ensemble",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu prédis surtout la pluie. Ça marche à tous les coups. Les clients adorent.",
+            "effects": {
+              "money": 8000,
+              "karma": -3,
+              "setFlags": [
+                "voyant_professionnel"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta deuxième prédiction (« tu vas gagner au loto ») finit au tribunal. Fin de carrière.",
+            "effects": {
+              "money": -2000,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, tu es une personne rationnelle",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle soupire : « Je savais que tu dirais ça. » Évidemment.",
+            "effects": {
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0020",
+    "on": "event:par_0003",
+    "delay": [
+      1,
+      3
+    ],
+    "patience": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "enleve_par_aliens"
+      ]
+    },
+    "text": "Depuis ton enlèvement, ton micro-ondes capte une radio extraterrestre. Ce soir, l'émission parle de toi.",
+    "choices": [
+      {
+        "label": "Répondre dans le micro-ondes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dis bonjour à l'univers en réchauffant des lasagnes. L'univers répond : « Ça sent bon. »",
+            "effects": {
+              "happiness": 5,
+              "setFlags": [
+                "contact_alien"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout raconter aux journalistes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le journal titre : « Un habitant de {ville} parle à son micro-ondes. » Tu deviens une légende. Pas la bonne.",
+            "effects": {
+              "fame": 8,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un astrophysicien te croit. Il est renvoyé le lendemain. Vous devenez amis.",
+            "effects": {
+              "newFriend": true,
+              "smarts": 2,
+              "setFlags": [
+                "contact_alien"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Débrancher le micro-ondes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le grille-pain prend le relais. On ne leur échappe pas si facilement.",
+            "effects": {
+              "happiness": -2,
+              "setFlags": [
+                "contact_alien"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0021",
+    "on": "event:rep_par_0020",
+    "delay": [
+      3,
+      10
+    ],
+    "patience": 6,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "contact_alien"
+      ]
+    },
+    "text": "La lumière verte est revenue. Cette fois, ils te proposent un aller simple pour leur planète : logé{e}, nourri{e}, mutuelle comprise.",
+    "choices": [
+      {
+        "label": "Partir avec eux",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils te renvoient au bout d'une semaine : allergie à leur atmosphère. Tu rapportes un aimant de frigo intergalactique.",
+            "effects": {
+              "happiness": 6,
+              "clearFlags": [
+                "contact_alien"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu montes sans te retourner. Sur Terre, on organise des funérailles sans corps. Là-haut, tu fais pousser des tomates bleues.",
+            "effects": {
+              "death": "officiellement. Officieusement, tu fais pousser des tomates bleues à quarante années-lumière d'ici"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester sur Terre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils comprennent. En cadeau d'adieu, ils effacent tes dettes… et un petit bout de ta mémoire. Tu ne sais plus faire tes lacets.",
+            "effects": {
+              "money": 20000,
+              "smarts": -3,
+              "happiness": 4,
+              "clearFlags": [
+                "contact_alien"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer {fratrie} à ta place",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils acceptent ! {fratrie} revient trois jours plus tard avec un bronzage bizarre et quatre langues mortes en plus.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "sibling": -10
+              },
+              "clearFlags": [
+                "contact_alien"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils refusent : « Déjà testé. Retour à l'expéditeur. »",
+            "effects": {
+              "happiness": 2,
+              "clearFlags": [
+                "contact_alien"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0030",
+    "on": "event:par_0004",
+    "delay": [
+      1,
+      3
+    ],
+    "patience": 4,
+    "unique": true,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "carte_au_tresor"
+      ]
+    },
+    "text": "Tu remarques que la carte au trésor a un verso codé. On dirait du latin écrit par un pirate pressé.",
+    "choices": [
+      {
+        "label": "Déchiffrer seul{e}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Après six mois et deux migraines, tu comprends : « Creuser à minuit sous le troisième platane. »",
+            "effects": {
+              "smarts": 5,
+              "setFlags": [
+                "code_dechiffre"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu déchiffres « ACHETEZ DU SAVON ». C'était une publicité de 1920. Ou un message très profond.",
+            "effects": {
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à {ami}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{ami} décode tout en dix minutes et réclame la moitié du trésor par écrit.",
+            "effects": {
+              "relationships": {
+                "friend": 5
+              },
+              "setFlags": [
+                "code_dechiffre"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{ami} jure que c'est une recette de crêpes. Vous la testez. Elles sont délicieuses.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer un expert",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un expert en cartes anciennes te prend 800 € et confirme : « C'est un vrai. » Il a les yeux qui brillent un peu trop.",
+            "effects": {
+              "money": -800,
+              "setFlags": [
+                "code_dechiffre"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0031",
+    "on": "event:rep_par_0030",
+    "delay": [
+      1,
+      4
+    ],
+    "patience": 5,
+    "unique": true,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "code_dechiffre"
+      ]
+    },
+    "text": "Minuit. Le troisième platane derrière le rond-point. Ta pelle, ton courage, et un voisin qui t'observe depuis sa fenêtre.",
+    "choices": [
+      {
+        "label": "Creuser",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Un coffre ! Pièces d'or, bijoux, et une lettre : « Bravo. Tu as la patience de la famille. » Tu ne sais pas de quelle famille.",
+            "effects": {
+              "money": 250000,
+              "happiness": 20,
+              "clearFlags": [
+                "carte_au_tresor",
+                "code_dechiffre"
+              ],
+              "setFlags": [
+                "a_trouve_un_tresor"
+              ]
+            }
+          },
+          {
+            "chance": 0.35,
+            "text": "Un coffre ! Dedans, une autre carte. Le pirate était surtout un farceur.",
+            "effects": {
+              "happiness": -5,
+              "smarts": 1,
+              "clearFlags": [
+                "carte_au_tresor",
+                "code_dechiffre"
+              ]
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Tu perces une canalisation. Le rond-point devient une fontaine. La mairie t'envoie la facture.",
+            "effects": {
+              "money": -4000,
+              "happiness": -6,
+              "clearFlags": [
+                "carte_au_tresor",
+                "code_dechiffre"
+              ]
+            }
+          },
+          {
+            "chance": 0.1,
+            "text": "La police municipale t'interpelle pour « creusage nocturne non déclaré ». Le platane est désormais sous surveillance.",
+            "effects": {
+              "money": -500,
+              "happiness": -4,
+              "clearFlags": [
+                "carte_au_tresor",
+                "code_dechiffre"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Abandonner, c'est ridicule",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rentres te coucher. Le lendemain, le voisin roule en voiture de sport.",
+            "effects": {
+              "happiness": -10,
+              "karma": 1,
+              "clearFlags": [
+                "carte_au_tresor",
+                "code_dechiffre"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0040",
+    "on": "event:par_0005",
+    "delay": [
+      4,
+      8
+    ],
+    "patience": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "poupee_maudite"
+      ]
+    },
+    "text": "Ginette, la poupée du grenier, avait disparu depuis des années. Ce matin, elle est assise sur ton bureau avec un petit mot : « Tu m'as manqué. »",
+    "choices": [
+      {
+        "label": "La brûler",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle ne brûle pas. Le barbecue, si.",
+            "effects": {
+              "money": -200,
+              "happiness": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle brûle. Le soir, tu entends un petit rire dans la cheminée. Tu n'as pas de cheminée.",
+            "effects": {
+              "happiness": -6,
+              "clearFlags": [
+                "poupee_maudite"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La vendre en ligne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vendue 120 € à un certain « Ginette_Fan_1952 ». Pour la première fois depuis longtemps, tu dors.",
+            "effects": {
+              "money": 120,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui parler gentiment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ginette te fait un clin d'œil. Tu as l'impression d'avoir signé quelque chose.",
+            "effects": {
+              "karma": 2,
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0041",
+    "on": "event:rep_par_0040",
+    "delay": [
+      5,
+      15
+    ],
+    "patience": 10,
+    "unique": true,
+    "minAge": 25,
+    "conditions": {
+      "flags": [
+        "poupee_maudite"
+      ]
+    },
+    "text": "Des années plus tard, en vidant ton grenier, tu retrouves une poupée en porcelaine. Ginette. Elle a l'air de t'attendre depuis longtemps.",
+    "choices": [
+      {
+        "label": "La garder pour de bon",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ginette trône au salon. Les cambrioleurs évitent ta maison. Les invités aussi.",
+            "effects": {
+              "happiness": 3,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'offrir à un musée",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le musée l'accepte. Trois gardiens démissionnent la première semaine. Toi, tu as ta plaque à l'entrée.",
+            "effects": {
+              "fame": 3,
+              "happiness": 6,
+              "clearFlags": [
+                "poupee_maudite"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le musée te la renvoie en colis express. Sans timbre. Sans expéditeur.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander ce qu'elle veut",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle veut une petite sœur. Tu fermes le grenier à clé et tu déménages dans la semaine.",
+            "effects": {
+              "money": -3000,
+              "happiness": 2,
+              "clearFlags": [
+                "poupee_maudite"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0050",
+    "on": "event:par_0006",
+    "delay": [
+      6,
+      15
+    ],
+    "patience": 8,
+    "unique": true,
+    "minAge": 18,
+    "conditions": {
+      "flags": [
+        "montre_du_temps"
+      ]
+    },
+    "text": "Un 14 août, au restaurant, le serveur pose devant toi une casserole de moules. Une voix au fond de ta tête hurle : « LES MOULES ! »",
+    "choices": [
+      {
+        "label": "Ne pas les manger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Toute la salle tombe malade, sauf toi. Tu repenses au vieil homme et à son nez.",
+            "effects": {
+              "health": 3,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les manger quand même",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Trois jours aux toilettes. Le vieil homme avait raison. Il a toujours raison.",
+            "effects": {
+              "health": -10,
+              "happiness": -5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elles sont délicieuses. Peut-être que le futur s'est trompé, pour une fois.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0051",
+    "on": "event:rep_par_0050",
+    "delay": [
+      1,
+      5
+    ],
+    "patience": 80,
+    "unique": true,
+    "minAge": 70,
+    "conditions": {
+      "flags": [
+        "montre_du_temps"
+      ]
+    },
+    "text": "Ce matin, dans le miroir, tu remarques que ton nez ressemble beaucoup à celui du vieil homme de ton enfance. Sur la table de nuit, la montre à gousset fait tic-tac pour la première fois.",
+    "choices": [
+      {
+        "label": "Ouvrir la montre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu te retrouves dans une rue de ton enfance, face à un enfant qui a ton nez. Tu sais exactement quoi lui dire. La boucle est bouclée.",
+            "effects": {
+              "happiness": 15,
+              "smarts": 5,
+              "clearFlags": [
+                "montre_du_temps"
+              ],
+              "setFlags": [
+                "boucle_temporelle_bouclee"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La vendre à un antiquaire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'antiquaire t'en donne 40 000 €. En sortant, tu te croises toi-même, plus jeune, l'air très déçu.",
+            "effects": {
+              "money": 40000,
+              "happiness": -3,
+              "karma": -3,
+              "clearFlags": [
+                "montre_du_temps"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La donner à un enfant au hasard",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'enfant l'ouvre immédiatement. Quelque part, à une autre époque, quelqu'un soupire très fort.",
+            "effects": {
+              "karma": 4,
+              "happiness": 2,
+              "clearFlags": [
+                "montre_du_temps"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0060",
+    "on": "event:par_0007",
+    "delay": [
+      1,
+      3
+    ],
+    "patience": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "a_vu_la_bete"
+      ]
+    },
+    "text": "Un forum de chasseurs de la Bête de {ville} t'a retrouvé{e}. Ils montent une expédition et tu es leur unique témoin.",
+    "choices": [
+      {
+        "label": "Mener l'expédition",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Trois jours dans les bois. Vous trouvez une empreinte géante : celle de Patrick, du forum, qui chausse du 52.",
+            "effects": {
+              "happiness": -2,
+              "health": -3,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Vous trouvez le campement de la Bête : un hamac et une collection de sandwichs. Le forum te nomme Grand Pisteur.",
+            "effects": {
+              "fame": 5,
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Saboter l'expédition",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu envoies tout le monde dans la mauvaise forêt. La nuit suivante, un panier de champignons apparaît devant ta porte.",
+            "effects": {
+              "karma": 5,
+              "happiness": 3,
+              "setFlags": [
+                "ami_de_la_bete"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Quitter le forum",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu quittes le forum. Le forum, lui, ne te quitte pas : deux cents notifications par jour.",
+            "effects": {
+              "happiness": -3,
+              "clearFlags": [
+                "a_vu_la_bete"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0061",
+    "on": "event:rep_par_0060",
+    "delay": [
+      2,
+      6
+    ],
+    "patience": 5,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "ami_de_la_bete"
+      ]
+    },
+    "text": "Un soir d'hiver, la Bête frappe à ta porte. Elle porte un bonnet et tient une lettre de la mairie : sa forêt va devenir un parking.",
+    "choices": [
+      {
+        "label": "L'héberger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La Bête dort sur ton canapé, fait la cuisine et perd des poils partout. Meilleure colocation de ta vie.",
+            "effects": {
+              "happiness": 10,
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Se battre contre le parking",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta pétition fait le tour de la ville, la Bête signe d'une griffe. La forêt est protégée. Chaque printemps, elle passe te dire bonjour.",
+            "effects": {
+              "fame": 10,
+              "karma": 10,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le parking est construit. La Bête y travaille maintenant comme gardienne de nuit. Elle a l'air de bien s'en sortir.",
+            "effects": {
+              "happiness": -3,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler la télé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le reportage fait le tour du monde. La Bête te regarde avec une immense déception, puis disparaît pour toujours.",
+            "effects": {
+              "fame": 20,
+              "money": 10000,
+              "karma": -10,
+              "happiness": -5,
+              "clearFlags": [
+                "ami_de_la_bete"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0070",
+    "on": "event:par_0008",
+    "delay": [
+      1,
+      3
+    ],
+    "patience": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "esprit_bernard"
+      ]
+    },
+    "text": "Depuis la soirée pyjama, un esprit nommé Bernard te souffle les réponses en contrôle. Il se trompe une fois sur deux.",
+    "choices": [
+      {
+        "label": "L'écouter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Contrôle parfait. Le prof te regarde longtemps, très longtemps.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu réponds « Napoléon » à toutes les questions de maths. Bernard s'excuse.",
+            "effects": {
+              "smarts": -2,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander de partir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Bernard s'en va, vexé. Depuis, ton GPS t'envoie toujours au mauvais endroit.",
+            "effects": {
+              "happiness": -3,
+              "clearFlags": [
+                "esprit_bernard"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Devenir amis",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous regardez des séries ensemble. Bernard spoile toujours la fin : il dit qu'il « l'a déjà vue de l'autre côté ».",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0071",
+    "on": "event:rep_par_0070",
+    "delay": [
+      5,
+      15
+    ],
+    "patience": 10,
+    "unique": true,
+    "minAge": 22,
+    "conditions": {
+      "flags": [
+        "esprit_bernard"
+      ]
+    },
+    "text": "Bernard, l'esprit de ton adolescence, est de retour avec une requête : retrouver sa petite-fille et lui dire où il a caché son testament.",
+    "choices": [
+      {
+        "label": "Mener l'enquête",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu retrouves la petite-fille. Le testament était dans un bocal de cornichons. Elle hérite d'une maison et t'invite chaque année au repas de famille.",
+            "effects": {
+              "karma": 10,
+              "happiness": 8,
+              "newFriend": true,
+              "clearFlags": [
+                "esprit_bernard"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La petite-fille te prend pour un escroc et appelle la police. Bernard rit si fort que les ampoules explosent.",
+            "effects": {
+              "happiness": -5,
+              "money": -300,
+              "clearFlags": [
+                "esprit_bernard"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier une commission",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Bernard accepte 10 %. Tu touches 6 000 € et tu te sens un peu sale.",
+            "effects": {
+              "money": 6000,
+              "karma": -5,
+              "clearFlags": [
+                "esprit_bernard"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Bernard soupire et s'en va pour de bon. Les séries ne sont plus jamais pareilles.",
+            "effects": {
+              "happiness": -4,
+              "clearFlags": [
+                "esprit_bernard"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0080",
+    "on": "event:par_0009",
+    "delay": [
+      1,
+      3
+    ],
+    "patience": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "double_malefique"
+      ]
+    },
+    "text": "Ton double a commencé à vivre ta vie : ta banque te remercie pour l'achat d'un jet-ski et {parent} dit que ta visite de dimanche dernier était adorable.",
+    "choices": [
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le policier compare vos deux photos et te demande lequel il doit arrêter. Tu hésites un peu trop longtemps.",
+            "effects": {
+              "happiness": -4,
+              "money": -1500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le laisser faire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton double va au travail à ta place et décroche une augmentation. Tu restes en pyjama. Meilleure année de ta vie.",
+            "effects": {
+              "happiness": 10,
+              "money": 3000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton double se fâche avec tes amis et commande quarante pizzas à ton nom.",
+            "effects": {
+              "money": -800,
+              "relationships": {
+                "friend": -10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui tendre un piège",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu poses un gâteau au chocolat dans la cuisine et tu attends. Ton double arrive. Vous le mangez ensemble, en silence. C'était très gênant.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0081",
+    "on": "event:rep_par_0080",
+    "delay": [
+      2,
+      5
+    ],
+    "patience": 5,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "double_malefique"
+      ]
+    },
+    "text": "Ton double t'attend sur un banc. Il vient d'une dimension où tout le monde a un double, et il en a assez d'être la copie. Il veut échanger.",
+    "choices": [
+      {
+        "label": "Échanger une semaine",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Dans sa dimension, les chats parlent et les impôts n'existent pas, mais le café est interdit. Tu reviens en courant.",
+            "effects": {
+              "happiness": 5,
+              "clearFlags": [
+                "double_malefique"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Sa vie est exactement la tienne, mais avec 20 000 € de plus sur le compte. Vous oubliez de rééchanger.",
+            "effects": {
+              "money": 20000,
+              "happiness": 4,
+              "clearFlags": [
+                "double_malefique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il hausse les épaules et disparaît dans le reflet d'une flaque. Depuis, ton reflet a parfois une seconde de retard.",
+            "effects": {
+              "happiness": -2,
+              "clearFlags": [
+                "double_malefique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Devenir jumeaux officiels",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous allez à la mairie. L'employé dit qu'il a déjà vu pire. Tu as maintenant un jumeau, et les corvées sont divisées par deux.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true,
+              "clearFlags": [
+                "double_malefique"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0090",
+    "on": "event:par_0010",
+    "delay": [
+      5,
+      12
+    ],
+    "patience": 5,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "chat_immortel"
+      ]
+    },
+    "text": "Le chat immortel n'a pas pris une ride. Toi, si. Ce soir, il dépose à tes pieds un vieux parchemin : la recette de sa longévité.",
+    "choices": [
+      {
+        "label": "Suivre la recette",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ingrédients : seize heures de sieste par jour, du thon, aucun souci. Tu essaies. Tu te sens rajeunir.",
+            "effects": {
+              "health": 10,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Étape 3 : « se lécher le dos ». Tu te bloques les lombaires pour un mois.",
+            "effects": {
+              "health": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le vendre à un labo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le labo t'offre un million. Le chat te fixe. Tu refuses sans savoir pourquoi, mais tu sais que c'était la bonne réponse.",
+            "effects": {
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Brûler le parchemin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le chat soupire. Il avait mis cent cinquante ans à l'écrire.",
+            "effects": {
+              "happiness": -2,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_par_0091",
+    "on": "event:rep_par_0090",
+    "delay": [
+      5,
+      20
+    ],
+    "patience": 60,
+    "unique": true,
+    "minAge": 60,
+    "conditions": {
+      "flags": [
+        "chat_immortel"
+      ]
+    },
+    "text": "Tu as vieilli, le chat toujours pas. Ce soir, il s'assoit sur ta poitrine et te regarde avec quelque chose qui ressemble à de la tendresse. Il a déjà fait ça avec onze personnes avant toi.",
+    "choices": [
+      {
+        "label": "Le mettre dans ton testament",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lui lègues ton fauteuil préféré. Il ronronne. Quelque part, onze fantômes ronronnent avec lui.",
+            "effects": {
+              "happiness": 10,
+              "karma": 5,
+              "health": 5,
+              "clearFlags": [
+                "chat_immortel"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander de rester",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il reste. Chaque nuit où il dort à tes pieds, tu te sens un peu plus solide.",
+            "effects": {
+              "health": 15,
+              "happiness": 8
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

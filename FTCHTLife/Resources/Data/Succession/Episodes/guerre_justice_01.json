@@ -1,0 +1,5613 @@
+[
+  {
+    "id": "suc_jus_0001",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "seul",
+        "favori",
+        "egal"
+      ],
+      "minTension": 20,
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "Un huissier te tend une assignation : {rival} conteste le testament de {le_defunt} devant le tribunal. Le dossier fait 84 pages, dont 60 de photos de famille où tu n'apparais pas.",
+    "choices": [
+      {
+        "label": "Prendre un avocat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat lit le dossier en fronçant les sourcils, signe d'expertise ou de myopie. Rendez-vous à l'audience.",
+            "effects": {
+              "money": -4000,
+              "happiness": -3
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "avocat_engage"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Plaider moi-même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu révises le Code civil sur ton téléphone pendant trois nuits. Tu sais tout sur les ruches et les murs mitoyens, rien sur les successions.",
+            "effects": {
+              "smarts": 3,
+              "happiness": -4
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu rédiges tes conclusions toi-même. Le greffe te les renvoie : elles étaient au dos d'une liste de courses.",
+            "effects": {
+              "happiness": -5
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Proposer un arrangement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{Rival} accepte {pct:15} et retire sa plainte en signant avec ton stylo. Le stylo ne revient jamais.",
+            "effects": {
+              "moneyPct": -15,
+              "rival": -25,
+              "happiness": 3
+            },
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "{Rival} lit ta proposition, rit très fort et la photocopie pour la montrer à son avocat.",
+            "effects": {
+              "rival": 10,
+              "happiness": -3
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0002",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "testament": true,
+      "excludeFlags": [
+        "proces_en_cours"
+      ],
+      "beneficiaires": [
+        "enfant",
+        "partenaire",
+        "chat",
+        "oeuvre",
+        "inconnu",
+        "ami"
+      ]
+    },
+    "text": "Ton avocat est formel : même déshérité{e}, la loi te garantit une part réservataire. « On peut attaquer. Enfin, vous pouvez. Moi, je facture. »",
+    "choices": [
+      {
+        "label": "Attaquer en justice",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu lances une action en réduction contre {beneficiaire}. Le mot « réduction » te plaît, il sonne comme les soldes.",
+            "effects": {
+              "money": -5000
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "avocat_engage"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Menacer d'attaquer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Panique chez les avocats d'en face : on te propose {pct:8} pour que tu te taises. Tu te tais avec beaucoup de dignité.",
+            "effects": {
+              "moneyPct": 8,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta lettre de menace contient trois fautes d'orthographe. Personne ne la prend au sérieux, surtout pas le correcteur automatique.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser tomber",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu choisis la paix intérieure. Elle ne paie pas le loyer, mais elle sent bon.",
+            "effects": {
+              "happiness": 4,
+              "karma": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0003",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "seul",
+        "favori",
+        "egal"
+      ],
+      "supports": [
+        "serviette"
+      ]
+    },
+    "text": "{Rival} saisit le tribunal : selon lui, un testament écrit sur une serviette de pizzeria « n'a aucune valeur, et en plus il y a de l'huile pimentée dessus ».",
+    "choices": [
+      {
+        "label": "Défendre la serviette",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fais encadrer la serviette sous verre anti-UV. Elle a désormais plus de valeur que ta voiture.",
+            "effects": {
+              "money": -800
+            },
+            "next": [
+              "suc_juss_0019"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Retrouver le serveur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le serveur se souvient : {le_defunt} avait commandé une calzone et demandé un stylo. Il accepte de témoigner contre un tiramisu.",
+            "effects": {
+              "happiness": 5
+            },
+            "next": [
+              "suc_juss_0019"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Le serveur a ouvert une pizzeria en Australie. Il t'envoie un pouce levé par message, inutilisable devant un juge.",
+            "effects": {
+              "happiness": -3
+            },
+            "next": [
+              "suc_juss_0019"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Négocier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{Rival} accepte de partager si tu lui laisses aussi la serviette. Tu ne sais pas ce que cette serviette va devenir et tu préfères ne pas savoir.",
+            "effects": {
+              "moneyPct": -20,
+              "rival": -30
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0004",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "seul",
+        "favori",
+        "egal"
+      ],
+      "supports": [
+        "video"
+      ]
+    },
+    "text": "{Rival} prétend que la vidéo-testament de {le_defunt} est truquée : « Les yeux clignent trop régulièrement, c'est un robot. »",
+    "choices": [
+      {
+        "label": "Aller au procès",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu prends un avocat qui sait se servir d'un lecteur vidéo. C'est rare, et ça se paie.",
+            "effects": {
+              "money": -3000
+            },
+            "next": [
+              "suc_juss_0021"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Montrer la vidéo à tous",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Toute la famille regarde. Au moment clé, la tante Monique pose la main sur l'écran pour montrer quelque chose. On ne saura jamais ce qu'il y avait dessous.",
+            "effects": {
+              "rival": 5
+            },
+            "next": [
+              "suc_juss_0021"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "La famille est émue. {Rival} pleure aussi, puis rappelle que pleurer n'est pas renoncer.",
+            "effects": {
+              "happiness": 3,
+              "rival": -5
+            },
+            "next": [
+              "suc_juss_0021"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Faire certifier le fichier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un expert facture 900 € pour écrire « c'est bien un fichier vidéo ». Tu as maintenant un document officiel qui l'atteste.",
+            "effects": {
+              "money": -900,
+              "smarts": 2
+            },
+            "next": [
+              "suc_juss_0021"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Céder la moitié",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu cèdes {pct:25} pour ne plus jamais entendre le mot « robot ». {Rival} retire sa plainte en clignant des yeux, irrégulièrement.",
+            "effects": {
+              "moneyPct": -25,
+              "rival": -35
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0005",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "seul",
+        "favori",
+        "egal"
+      ],
+      "supports": [
+        "tatouage"
+      ]
+    },
+    "text": "Le testament de {le_defunt} était tatoué sur son mollet gauche. {Rival} conteste : le tatoueur aurait fait une faute à « légataire », ce qui changerait tout.",
+    "choices": [
+      {
+        "label": "Demander une expertise",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le tribunal ordonne l'examen du tatouage par un dermatologue légiste. Personne n'avait prévu ce métier pendant son orientation scolaire.",
+            "effects": {
+              "money": -2000
+            },
+            "next": [
+              "suc_juss_0027"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Appeler le tatoueur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le tatoueur se souvient : « Il y avait aussi un dauphin de prévu, je l'ai déconseillé. » Il témoignera.",
+            "effects": {
+              "happiness": 3
+            },
+            "next": [
+              "suc_juss_0027"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Le salon de tatouage est devenu un bar à sushis. Le patron jure que c'était déjà un bar à sushis à l'époque.",
+            "effects": {
+              "happiness": -2
+            },
+            "next": [
+              "suc_juss_0027"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Partager à l'amiable",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vous partagez. {Rival} demande une photo du mollet en souvenir. Tu refuses avec fermeté.",
+            "effects": {
+              "moneyPct": -20,
+              "rival": -25
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0006",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "roles": [
+        "seul",
+        "favori",
+        "egal"
+      ],
+      "supports": [
+        "papier",
+        "serviette"
+      ],
+      "testament": true,
+      "minTension": 15,
+      "excludeFlags": [
+        "graphologue"
+      ]
+    },
+    "text": "{Rival} affirme que la signature de {le_defunt} est fausse : « Ses boucles n'étaient jamais aussi optimistes. » Un graphologue est réclamé.",
+    "choices": [
+      {
+        "label": "Accepter l'expertise",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le tribunal nomme un graphologue. Il examine même ta liste de courses, par curiosité professionnelle.",
+            "effects": {
+              "money": -1500
+            },
+            "next": [
+              "suc_juss_0004"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "graphologue"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Fournir des échantillons",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fournis quarante cartes d'anniversaire signées. Trente-neuf signatures sont différentes. La quarantième est de toi, à 9 ans.",
+            "effects": {
+              "smarts": 2,
+              "money": -1500
+            },
+            "next": [
+              "suc_juss_0004"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "graphologue"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Accuser {rival} de faux",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu retournes l'accusation. {Rival} s'étouffe d'indignation avec un biscuit. Le graphologue examinera les deux écritures.",
+            "effects": {
+              "rival": 15,
+              "money": -1500
+            },
+            "next": [
+              "suc_juss_0004"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "graphologue"
+            ]
+          },
+          {
+            "chance": 0.6,
+            "text": "Ton accusation ne repose sur rien. Le juge te regarde comme un cadeau qu'on n'a pas demandé.",
+            "effects": {
+              "happiness": -4,
+              "rival": 10,
+              "money": -1500
+            },
+            "next": [
+              "suc_juss_0004"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "graphologue"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0007",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "testament": true,
+      "minTension": 25,
+      "excludeFlags": [
+        "faux_trouve"
+      ]
+    },
+    "text": "En vidant le congélateur de {le_defunt}, tu trouves un second testament, plus récent, qui lègue tout à {rival}. L'écriture ressemble étrangement à celle de {rival}.",
+    "choices": [
+      {
+        "label": "Porter plainte pour faux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La police place le testament sous scellés, dans un sac de congélation, ce qui est cohérent.",
+            "effects": {
+              "money": -500
+            },
+            "next": [
+              "suc_juss_0006"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "faux_trouve"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Le remettre au frais",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu le remets entre les petits pois et un rôti de 2009. Le problème est maintenant au frais, c'est déjà ça.",
+            "effects": {
+              "karma": -5,
+              "happiness": 2
+            },
+            "setFlags": [
+              "faux_trouve"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Confronter {rival}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{Rival} jure ne rien savoir, un stylo de la même encre à la main. Tu portes plainte.",
+            "effects": {
+              "rival": 15
+            },
+            "next": [
+              "suc_juss_0006"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "faux_trouve"
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "{Rival} avoue en pleurant et renonce à toute contestation pour éviter la police. Tu récupères {pct:10} au passage.",
+            "effects": {
+              "rival": -10,
+              "happiness": 8,
+              "moneyPct": 10,
+              "karma": 2
+            },
+            "setFlags": [
+              "faux_trouve"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0008",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "minPatrimoine": 30000,
+      "excludeFlags": [
+        "notaire_disparu"
+      ]
+    },
+    "text": "{notaire} ne répond plus. L'étude est vide, la plante verte a disparu aussi, et le compte de la succession affiche 0 €. Sur la porte, un post-it : « Bisous ».",
+    "choices": [
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le commissariat enregistre ta plainte. L'agent soupire : c'est la troisième de la semaine contre {notaire}.",
+            "effects": {
+              "moneyPct": -20,
+              "happiness": -10
+            },
+            "next": [
+              "suc_juss_0008"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "notaire_disparu"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Le chercher toi-même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu retrouves son profil sur un site de rencontres : « Aime les voyages, surtout sans retour ». Tu transmets à la police.",
+            "effects": {
+              "moneyPct": -20,
+              "smarts": 3
+            },
+            "next": [
+              "suc_juss_0008"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "notaire_disparu"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu planques trois nuits devant son domicile. Le seul suspect est un hérisson.",
+            "effects": {
+              "moneyPct": -20,
+              "health": -3
+            },
+            "next": [
+              "suc_juss_0008"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "notaire_disparu"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0009",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "fratrie": true,
+      "minTension": 15,
+      "excludeFlags": [
+        "mediation_tentee",
+        "proces_en_cours"
+      ]
+    },
+    "text": "Le juge vous envoie, {frere} et toi, en médiation familiale. La médiatrice a des bougies parfumées, un bâton de parole et un regard qui a déjà tout vu.",
+    "choices": [
+      {
+        "label": "Jouer le jeu",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu prends le bâton de parole. {frere} te l'arrache. Le bâton de parole va avoir besoin d'une médiation.",
+            "effects": {
+              "relationships": {
+                "sibling": -3
+              }
+            },
+            "next": [
+              "suc_juss_0010"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "mediation_tentee"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Venir avec un avocat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat entre dans la salle de médiation. La bougie s'éteint toute seule.",
+            "effects": {
+              "money": -1500
+            },
+            "next": [
+              "suc_juss_0010"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "mediation_tentee"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses. La médiatrice note « non coopératif » dans une police de caractères très sévère. Direction le tribunal.",
+            "effects": {
+              "karma": -2,
+              "rival": 5
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "mediation_tentee"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0010",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "excludeFlags": [
+        "adn_demande"
+      ]
+    },
+    "text": "Un inconnu surgit : il serait ton demi-frère, fruit d'un été 1987 dont {le_defunt} n'a jamais parlé. Il réclame sa part et un test ADN.",
+    "choices": [
+      {
+        "label": "Accepter le test",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vous crachez dans des tubes le même jour, dans la même salle. C'est votre premier moment de complicité familiale.",
+            "effects": {
+              "money": -400
+            },
+            "next": [
+              "suc_juss_0012"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "adn_demande"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu refuses. Le juge ordonne le test quand même et te fait payer les frais pour la peine.",
+            "effects": {
+              "money": -800
+            },
+            "next": [
+              "suc_juss_0012"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "adn_demande"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu refuses. L'inconnu insiste, puis disparaît en emportant ton parapluie. Tu ne sauras jamais.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'inviter à dîner",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il a ton nez, ton rire et ta manie de saler avant de goûter. Le test devient presque une formalité.",
+            "effects": {
+              "happiness": 5,
+              "karma": 5
+            },
+            "next": [
+              "suc_juss_0012"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "adn_demande"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0011",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "excludeFlags": [
+        "avocat_cher"
+      ]
+    },
+    "text": "Ton avocat t'envoie son premier relevé d'honoraires. Il facture aussi le temps passé à penser à ton dossier sous la douche.",
+    "choices": [
+      {
+        "label": "Payer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu paies. Il t'envoie un mail de remerciement, facturé 45 €.",
+            "effects": {
+              "money": -7800,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contester la facture",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu contestes. Il facture le temps passé à lire ta contestation.",
+            "effects": {
+              "money": -300
+            },
+            "next": [
+              "suc_juss_0014"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "avocat_cher"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Changer d'avocat",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le nouvel avocat est moins cher. Il est aussi moins avocat : il te demande ce qu'est un testament.",
+            "effects": {
+              "money": -1500,
+              "smarts": -1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu trouves une avocate brillante et abordable. Elle prend ton dossier, puis sa retraite, dans cet ordre.",
+            "effects": {
+              "money": -2000,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0012",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "minTension": 15
+    },
+    "text": "En pleine audience, pendant que ton avocat cite la jurisprudence, le juge s'endort. Il ronfle en rythme avec la climatisation.",
+    "choices": [
+      {
+        "label": "Toussoter fort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le juge se réveille en sursaut et dit « Accordé ! ». Personne ne sait ce qui vient d'être accordé, mais ton avocat sourit : {pct:10} pour toi.",
+            "effects": {
+              "moneyPct": 10,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le juge se réveille et te colle une amende pour trouble à l'audience. Il ne dormait pas, il « réfléchissait ».",
+            "effects": {
+              "money": -500,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander un renvoi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat demande le renvoi pour « fatigue du tribunal ». Le greffier note la formule pour la réutiliser.",
+            "effects": {
+              "money": -1000
+            },
+            "next": [
+              "suc_juss_0016"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Plaider en chuchotant",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu plaides à voix basse pour ne pas le réveiller. {Rival} fait pareil. Le procès-verbal reste vide.",
+            "effects": {
+              "happiness": 2
+            },
+            "next": [
+              "suc_juss_0016"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0013",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Coup de théâtre : la voisine de {le_defunt} demande à témoigner. Elle affirme avoir « tout entendu à travers le mur », y compris des choses sans rapport.",
+    "choices": [
+      {
+        "label": "La laisser parler",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu la laisses venir. Elle arrive au tribunal avec un coussin, un thermos et quarante ans de griefs contre l'immeuble.",
+            "next": [
+              "suc_juss_0017"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "La faire taire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu lui offres une boîte de chocolats pour qu'elle reste chez elle. Elle accepte les chocolats et vient quand même.",
+            "effects": {
+              "money": -30,
+              "karma": -3
+            },
+            "next": [
+              "suc_juss_0017"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "La faire répéter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu lui fais répéter sa déposition. Elle ajoute un cambriolage et une idylle avec le facteur. Tu arrêtes la répétition.",
+            "effects": {
+              "happiness": -2
+            },
+            "next": [
+              "suc_juss_0017"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0014",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "dettes": true,
+      "excludeFlags": [
+        "huissier_passe"
+      ]
+    },
+    "text": "Un huissier sonne : la succession de {le_defunt} est criblée de dettes et il vient dresser l'inventaire. Il a déjà collé une étiquette sur ton grille-pain.",
+    "choices": [
+      {
+        "label": "Le laisser faire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'huissier étiquette tout, y compris le chat du voisin, qui passait par là.",
+            "effects": {
+              "happiness": -5
+            },
+            "next": [
+              "suc_juss_0023"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "huissier_passe"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Cacher les objets",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu caches l'argenterie dans la machine à laver. L'huissier ouvre la machine à laver en premier, par expérience.",
+            "effects": {
+              "karma": -4,
+              "money": -300
+            },
+            "next": [
+              "suc_juss_0023"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "huissier_passe"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu caches la télé sous une couverture. L'huissier fait semblant de ne pas voir le gros rectangle. Il a des enfants, lui aussi.",
+            "effects": {
+              "happiness": 3
+            },
+            "next": [
+              "suc_juss_0023"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "huissier_passe"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Renoncer à la succession",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu renonces officiellement. Tu n'hérites de rien, pas même des dettes. L'huissier repart l'air déçu, avec son rouleau d'étiquettes.",
+            "effects": {
+              "happiness": 5
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0015",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "minPatrimoine": 80000,
+      "dettes": false,
+      "excludeFlags": [
+        "fisc_alerte"
+      ]
+    },
+    "text": "Le fisc t'écrit au sujet des droits de succession. Le formulaire fait 14 pages et la case 7 demande « la valeur sentimentale estimée, en euros ».",
+    "choices": [
+      {
+        "label": "Remplir honnêtement",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu déclares tout, au centime près. Le fisc prélève sa part sans dire merci.",
+            "effects": {
+              "moneyPct": -12,
+              "karma": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu déclares tout. Le fisc trouve ça suspect : personne ne déclare tout.",
+            "effects": {
+              "moneyPct": -10
+            },
+            "next": [
+              "suc_juss_0025"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "fisc_alerte"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Sous-estimer {bien}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu déclares {bien} à la valeur d'un abri de jardin. Le fisc ouvre un dossier avec un enthousiasme inhabituel.",
+            "effects": {
+              "karma": -5,
+              "moneyPct": -4
+            },
+            "next": [
+              "suc_juss_0025"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "fisc_alerte"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Prendre un fiscaliste",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le fiscaliste te fait économiser 4000 € et te facture 4200 €. Il appelle ça « l'optimisation ».",
+            "effects": {
+              "moneyPct": -8,
+              "money": -4200,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0016",
+    "phase": "guerre",
+    "conditions": {
+      "minHostilite": 50
+    },
+    "text": "Tu as traité {rival} de « vautour en polaire » sur les réseaux sociaux. {Rival} porte plainte pour diffamation, captures d'écran à l'appui.",
+    "choices": [
+      {
+        "label": "Assumer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu assumes. Ton avocat te demande si tu avais pensé à « rapace en doudoune », juridiquement plus prudent.",
+            "effects": {
+              "money": -2000
+            },
+            "next": [
+              "suc_juss_0030"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Supprimer le post",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu supprimes le post. Trop tard : il a été partagé 312 fois, dont 40 par ta tante.",
+            "effects": {
+              "happiness": -3
+            },
+            "next": [
+              "suc_juss_0030"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu supprimes et t'excuses publiquement. {Rival} retire sa plainte, presque à regret.",
+            "effects": {
+              "rival": -10,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Doubler la mise",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu publies un dessin du vautour en polaire. Il devient un mème local. La plainte double aussi.",
+            "effects": {
+              "happiness": 5,
+              "rival": 20
+            },
+            "next": [
+              "suc_juss_0030"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0017",
+    "phase": "guerre",
+    "conditions": {
+      "minTension": 40,
+      "excludeFlags": [
+        "sequestre"
+      ]
+    },
+    "text": "Lassé de vos disputes, le juge place {bien} sous séquestre et nomme un administrateur judiciaire. Il s'appelle Bertrand et il a déjà sa propre clé.",
+    "choices": [
+      {
+        "label": "Coopérer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu remets les clés à Bertrand. Il les range dans une boîte étiquetée « Mes clés ».",
+            "next": [
+              "suc_juss_0031"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "sequestre"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Contester la nomination",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le juge rejette ta demande en deux lignes, dont une pour te souhaiter une bonne journée.",
+            "effects": {
+              "money": -1200
+            },
+            "next": [
+              "suc_juss_0031"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "sequestre"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Camper devant l'entrée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu t'installes devant l'entrée avec un sac de couchage. Bertrand te facture l'occupation du trottoir.",
+            "effects": {
+              "money": -600,
+              "health": -3
+            },
+            "next": [
+              "suc_juss_0031"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "sequestre"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0018",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "roles": [
+        "favori",
+        "seul"
+      ],
+      "minTension": 20,
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "{Rival} t'accuse de « captation d'héritage » : tu aurais manipulé {le_defunt} en venant le dimanche avec des tartes.",
+    "choices": [
+      {
+        "label": "Prouver ta bonne foi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu rassembles les tickets de caisse des tartes. Ton avocat dit que c'est la première fois qu'il plaide la pâtisserie.",
+            "effects": {
+              "money": -3000
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Rendre la monnaie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu rappelles devant tout le monde que {rival} n'est venu que deux fois en dix ans, dont une pour récupérer une perceuse. Rendez-vous au tribunal.",
+            "effects": {
+              "rival": 15,
+              "happiness": 6
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Proposer un partage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{Rival} accepte {pct:20} et repart avec la dernière tarte, par principe.",
+            "effects": {
+              "moneyPct": -20,
+              "rival": -30
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0019",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "beneficiaires": [
+        "chat"
+      ],
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "Tout est parti au chat. Ton avocat propose de plaider l'« incapacité juridique féline » : le chat ne sait ni lire ni signer, et il le prouve chaque jour.",
+    "choices": [
+      {
+        "label": "Plaider contre le chat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le chat est convoqué au tribunal. Il ne vient pas. Ton avocat dit que c'est bon signe, le juge dit que c'est un chat.",
+            "effects": {
+              "money": -4000
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Devenir son tuteur",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le tribunal te nomme gardien du chat et de sa fortune. Tu peux puiser {pct:15} « pour son bien-être ». Il a manifestement besoin d'une voiture.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le tribunal nomme un autre tuteur, un vétérinaire retraité. Le chat a l'air plus heureux, ce qui te vexe.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser le chat tranquille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu laisses tomber. Le chat t'envoie une carte de vœux, rédigée par son avocat.",
+            "effects": {
+              "happiness": 2,
+              "karma": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0020",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "beneficiaires": [
+        "oeuvre"
+      ],
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "Tout est allé à {oeuvre}. En creusant, tu découvres que son siège social est une boîte aux lettres derrière une station de lavage.",
+    "choices": [
+      {
+        "label": "Saisir le procureur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Enquête ouverte : l'association n'a jamais eu qu'un membre, le trésorier, actuellement en croisière. Le legs est annulé, tu récupères {pct:30}.",
+            "effects": {
+              "moneyPct": 30,
+              "happiness": 12
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Enquête faite, l'association existe vraiment et fait un travail admirable. Le journal local te présente comme un monstre en page 3.",
+            "effects": {
+              "karma": -8,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attaquer en justice",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat attaque le legs. Il prévient : plaider contre une bonne cause, c'est comme plaider contre un chiot.",
+            "effects": {
+              "money": -4000
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Faire un don aussi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu donnes 20 € à {oeuvre}, par élégance. Tu reçois un stylo et une culpabilité diffuse.",
+            "effects": {
+              "money": -20,
+              "karma": 4,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0021",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "beneficiaires": [
+        "partenaire"
+      ],
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "{beneficiaire} a tout raflé après six mois de tango et deux séjours en thalasso avec {le_defunt}. Ton avocat prononce les mots « abus de faiblesse ».",
+    "choices": [
+      {
+        "label": "Attaquer en justice",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat dépose plainte. Il demande la liste des thalassos fréquentées, « pour le dossier ».",
+            "effects": {
+              "money": -5000
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Rencontrer {beneficiaire}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Autour d'un café, {beneficiaire} pleure sincèrement et te propose {pct:12}, « parce que c'est ce qu'on aurait voulu ». Tu acceptes.",
+            "effects": {
+              "moneyPct": 12,
+              "happiness": 5,
+              "rival": -20
+            },
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "{beneficiaire} arrive avec un avocat et un caniche. Seul le caniche est aimable.",
+            "effects": {
+              "rival": 10,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser faire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu laisses tomber. Tu apprends plus tard qu'il y a eu un troisième séjour en thalasso, « en hommage ».",
+            "effects": {
+              "happiness": -3,
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0022",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "beneficiaires": [
+        "inconnu"
+      ],
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "Le testament lègue tout à {beneficiaire}, un nom que personne dans la famille ne connaît. Tu engages un détective privé, qui commence par une avance sur frais.",
+    "choices": [
+      {
+        "label": "Payer le détective",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le détective découvre que {beneficiaire} se dit enfant caché de {le_defunt}. Un test ADN est ordonné.",
+            "effects": {
+              "money": -2500
+            },
+            "next": [
+              "suc_juss_0012"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "adn_demande"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Le détective revient bronzé, sans information, avec une note de frais intitulée « Marbella ».",
+            "effects": {
+              "money": -3500,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chercher sur internet",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu trouves 2400 homonymes, dont un champion de pétanque à Sète. Tu décides que c'est lui. Ce n'est pas lui.",
+            "effects": {
+              "smarts": 1,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attaquer le testament",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat attaque le testament au nom de la famille, c'est-à-dire de toi, c'est-à-dire de ton compte en banque.",
+            "effects": {
+              "money": -4000
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0023",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "beneficiaires": [
+        "personne"
+      ],
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "{Le_defunt} n'a rien laissé à personne, et tout part à l'État. Tu te retrouves à plaider contre un pays entier, qui a plus d'avocats que toi.",
+    "choices": [
+      {
+        "label": "Attaquer l'État",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu assignes l'État. L'avocat de l'État arrive avec une valise à roulettes et un sourire qui a déjà gagné mille fois.",
+            "effects": {
+              "money": -4000
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Écrire au gouvernement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu reçois une réponse type, signée par une machine, qui te remercie pour ton engagement citoyen.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lâcher l'affaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu considères que tu as payé des impôts posthumes. Tu te sens civique, et pauvre.",
+            "effects": {
+              "karma": 3,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0024",
+    "phase": "guerre",
+    "weight": 3,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "beneficiaires": [
+        "ami"
+      ],
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "Tout est allé à {beneficiaire}, le partenaire de belote de {le_defunt}. Ton avocat veut prouver qu'un partenaire de cartes n'est pas un héritier crédible.",
+    "choices": [
+      {
+        "label": "Attaquer en justice",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat prépare un dossier intitulé « Atout cœur ». Il en est très fier.",
+            "effects": {
+              "money": -4000
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Proposer une belote",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu gagnes. {beneficiaire} est beau joueur et te cède {pct:15}, par respect pour le jeu.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 8
+            },
+            "close": true
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu perds dix parties d'affilée. {beneficiaire} te paie un café, avec ton héritage.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fouiller son passé",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu découvres que {beneficiaire} a déjà hérité de trois autres partenaires de belote. Ton avocat se frotte les mains et lance la procédure.",
+            "effects": {
+              "smarts": 2,
+              "money": -3000
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0025",
+    "phase": "guerre",
+    "text": "Un avocat qui donne des conseils juridiques en vidéos de 30 secondes te propose une consultation « 100 % gagnante » pour 49 €.",
+    "choices": [
+      {
+        "label": "Payer les 49 €",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le conseil est : « Gagnez votre procès ». Tu l'as payé 49 €. Il est techniquement valable.",
+            "effects": {
+              "money": -49,
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Contre toute attente, il repère une vraie faille. Ton vrai avocat est vexé, donc efficace : tu gagnes {pct:5}.",
+            "effects": {
+              "money": -49,
+              "smarts": 3,
+              "moneyPct": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Regarder ses vidéos",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu en regardes 200. Tu connais maintenant le droit des successions de six pays, sauf du tien.",
+            "effects": {
+              "smarts": 2,
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ignores. L'algorithme t'en propose quinze autres, dont un avocat qui danse.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0026",
+    "phase": "guerre",
+    "text": "Tu reçois une mise en demeure de {rival}, rédigée en police Comic Sans, avec un smiley dessiné après « sous peine de poursuites ».",
+    "choices": [
+      {
+        "label": "Répondre en Times",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta réponse, glaciale et justifiée des deux côtés, fait trembler la famille entière.",
+            "effects": {
+              "rival": 8,
+              "happiness": 5,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre par un smiley",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu réponds par un smiley encore plus grand. L'escalade graphique est lancée.",
+            "effects": {
+              "rival": 5,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Transmettre à l'avocat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat lit la lettre, rit, puis te facture 300 € pour avoir ri.",
+            "effects": {
+              "money": -300
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0027",
+    "phase": "guerre",
+    "text": "Tu trouves un avis de passage pour une lettre recommandée que tu n'es jamais allé{e} chercher. Elle t'attend à la poste depuis trois semaines.",
+    "choices": [
+      {
+        "label": "Courir à la poste",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "C'était une convocation à une audience, qui a eu lieu hier. Tu as perdu par défaut, ce qui est une façon très reposante de perdre.",
+            "effects": {
+              "money": -3000,
+              "happiness": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "C'était une publicité pour une cuisine équipée, en recommandé. La guerre d'héritage reprend son cours normal.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas y aller",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La lettre retourne à l'expéditeur, qui t'en envoie une deuxième pour te parler de la première.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0028",
+    "phase": "guerre",
+    "text": "Tu as regardé trop de séries judiciaires. Tu meurs d'envie de crier « Objection ! », même pendant une simple réunion chez {notaire}.",
+    "choices": [
+      {
+        "label": "Crier « Objection ! »",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu cries « Objection ! » pendant la lecture d'un inventaire de vaisselle. {notaire} répond « Retenue », par réflexe.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{notaire} te prie de sortir. Tu sors en disant « Objection » à la porte.",
+            "effects": {
+              "happiness": 2,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te retenir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu te retiens. Ça sort plus tard au supermarché, quand on t'annonce qu'il n'y a plus d'avocats au rayon fruits.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0029",
+    "phase": "guerre",
+    "text": "Le greffe du tribunal a perdu ton dossier de succession. « Il est sûrement quelque part », précise la greffière en désignant une montagne de cartons.",
+    "choices": [
+      {
+        "label": "Fouiller toi-même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu retrouves ton dossier sous une machine à café de 1994. Il sent le café, mais il est complet.",
+            "effects": {
+              "happiness": 4,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu retrouves le dossier d'un procès de 1978 au sujet d'une chèvre. Pas le tien, mais tu connais la fin maintenant.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout recommencer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refais le dossier. Ça coûte 1200 € et tu découvres trois erreurs dans l'ancien. Finalement, merci.",
+            "effects": {
+              "money": -1200,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser {rival}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu accuses {rival} d'avoir volé le dossier. Aucune preuve, mais tu te sens mieux.",
+            "effects": {
+              "rival": 10,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0030",
+    "phase": "guerre",
+    "conditions": {
+      "minHostilite": 40
+    },
+    "text": "{Rival} a engagé un détective privé pour te suivre. Tu le repères vite : imperméable beige, lunettes noires, en plein mois d'août.",
+    "choices": [
+      {
+        "label": "Le semer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu entres dans un magasin de meubles en kit. Le détective n'en ressort jamais.",
+            "effects": {
+              "happiness": 5,
+              "rival": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'inviter à boire un verre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le détective te raconte tout : {rival} le paie mal et en retard. Il change de camp pour 500 €.",
+            "effects": {
+              "money": -500,
+              "rival": 10,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il accepte le verre et note dans son rapport « boit du rosé à midi, donc instable ».",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le suivre à ton tour",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu suis le détective qui te suit. Vous tournez dans le parc pendant deux heures. C'est presque une amitié.",
+            "effects": {
+              "health": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0031",
+    "phase": "guerre",
+    "conditions": {
+      "supports": [
+        "notaire"
+      ]
+    },
+    "text": "Un clerc de l'étude de {notaire} te glisse qu'il peut « égarer » quelques papiers du dossier en ta faveur, contre une enveloppe.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Les papiers s'égarent. Ta part grossit de {pct:10}. Ta conscience, elle, prend un avocat.",
+            "effects": {
+              "moneyPct": 10,
+              "money": -2000,
+              "karma": -10
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le clerc était un inspecteur de la chambre des notaires. Tu paies une amende, la honte est offerte.",
+            "effects": {
+              "money": -5000,
+              "karma": -6,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses. Le clerc dit qu'il plaisantait, en remettant très vite l'enveloppe vide dans sa poche.",
+            "effects": {
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le dénoncer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu le dénonces. Il est muté aux archives, où il égare désormais des choses sans valeur.",
+            "effects": {
+              "karma": 6,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0032",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "supports": [
+        "aucun"
+      ],
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "Pas de testament écrit, mais {rival} jure que {le_defunt} lui a tout promis à voix haute, « entre deux grilles de mots croisés ». Un témoin confirmerait.",
+    "choices": [
+      {
+        "label": "Exiger le témoin",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le témoin est convoqué. Tu apprends qu'il a déjà témoigné dans quatre autres affaires de {rival}. Audience fixée.",
+            "effects": {
+              "money": -2000
+            },
+            "next": [
+              "suc_juss_0017"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Retrouver la grille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu retrouves la grille. Le dernier mot rempli, en sept lettres, est « ESCROCS ». Tu la fais encadrer.",
+            "effects": {
+              "happiness": 6,
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Hausser les épaules",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu rappelles qu'une parole ne vaut rien sans papier. {Rival} répond que la tienne non plus.",
+            "effects": {
+              "rival": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0033",
+    "phase": "guerre",
+    "text": "Tu découvres que ton assurance habitation inclut une protection juridique. Elle couvre les litiges successoraux, sauf « en cas de famille ».",
+    "choices": [
+      {
+        "label": "Lire les petites lignes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Avec une loupe, tu trouves l'exception à l'exception. L'assurance prend en charge 4000 € de frais.",
+            "effects": {
+              "money": 4000,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les petites lignes ont elles-mêmes des petites lignes. Tu abandonnes à la page 37.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler l'assurance",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "On te met en attente avec un concerto pendant 47 minutes. Le printemps passe, puis l'été. Personne ne décroche.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0034",
+    "phase": "guerre",
+    "conditions": {
+      "minHostilite": 60
+    },
+    "text": "{Rival} fait un sit-in devant le palais de justice avec une pancarte « Justice pour moi ». Une chaîne de télé locale filme.",
+    "choices": [
+      {
+        "label": "Contre-manifester",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu arrives avec ta pancarte : « Justice pour moi aussi ». Les passants hésitent, puis photographient les deux.",
+            "effects": {
+              "happiness": 4,
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Apporter des croissants",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu offres des croissants à {rival} devant les caméras. Tu passes pour une personne magnanime au journal du soir.",
+            "effects": {
+              "karma": 5,
+              "rival": -10,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le sit-in dure quatre heures, puis il pleut. La justice attendra le beau temps.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0035",
+    "phase": "guerre",
+    "text": "Inventaire chez {notaire} : il manque l'argenterie, le service à fondue et un tableau représentant un chien. Tous les regards se tournent vers {rival}.",
+    "choices": [
+      {
+        "label": "Accuser {rival}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{Rival} nie, puis éternue. Une petite cuillère tombe de sa manche. On te rend {pct:3} de couverts.",
+            "effects": {
+              "rival": 10,
+              "happiness": 6,
+              "moneyPct": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{Rival} prouve que l'argenterie a été vendue en 2011 par {le_defunt} pour un voyage en Crète. Il y a même des photos.",
+            "effects": {
+              "rival": 5,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte contre X",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La police enregistre ta plainte pour vol de service à fondue. L'agent demande si c'est un modèle à bougie ou électrique.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser tomber",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu laisses tomber l'argenterie. Le tableau du chien, en revanche, tu le cherches encore.",
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0036",
+    "phase": "guerre",
+    "conditions": {
+      "roles": [
+        "seul",
+        "favori",
+        "egal"
+      ],
+      "testament": true,
+      "minTension": 30,
+      "excludeFlags": [
+        "proces_en_cours",
+        "graphologue"
+      ]
+    },
+    "text": "On retrouve trois testaments de {le_defunt}, rédigés la même semaine. Chacun avantage quelqu'un de différent, dont une personne que personne ne connaît.",
+    "choices": [
+      {
+        "label": "Expertiser les trois",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un graphologue est nommé. Il demande s'il peut garder le troisième, « pour sa collection ».",
+            "effects": {
+              "money": -2500
+            },
+            "next": [
+              "suc_juss_0004"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "graphologue"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Aller au tribunal",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat plaide le testament qui t'arrange. Celui de {rival} plaide l'autre. Le troisième n'a pas d'avocat.",
+            "effects": {
+              "money": -3000
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Tirer au sort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu gagnes le tirage. {Rival} conteste le tirage. Il faudra un tribunal pour le tirage.",
+            "effects": {
+              "rival": 10
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "{Rival} gagne le tirage. Tu avais accepté les règles : tu perds {pct:15}. La pièce est encadrée chez {rival}.",
+            "effects": {
+              "moneyPct": -15,
+              "happiness": -6
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0037",
+    "phase": "guerre",
+    "conditions": {
+      "flags": [
+        "a_conteste"
+      ]
+    },
+    "text": "En plein procès, le Parlement modifie la loi sur les successions. Ton avocat doit tout réapprendre et te facture sa formation.",
+    "choices": [
+      {
+        "label": "Payer sa formation",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La nouvelle loi est en ta faveur. Ton avocat prétend l'avoir prévue : {pct:8} de mieux pour toi.",
+            "effects": {
+              "money": -1500,
+              "moneyPct": 8,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La nouvelle loi est contre toi, sauf un alinéa favorable aux apiculteurs. Tu n'as pas de ruches.",
+            "effects": {
+              "money": -1500,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire à ton député",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton député répond qu'il suit le dossier de près. Le dossier, c'est la loi, pas toi.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0038",
+    "phase": "guerre",
+    "conditions": {
+      "fratrie": true,
+      "minTension": 30,
+      "flags": [
+        "a_conteste"
+      ]
+    },
+    "text": "Ton avocat veut que tu témoignes contre {frere}. Il faudrait raconter le Noël 2004, celui de la dinde et de la plainte des voisins.",
+    "choices": [
+      {
+        "label": "Tout raconter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu racontes tout. {frere} ne te regarde plus, mais le juge prend des notes passionnées. Ça te rapporte {pct:10}.",
+            "effects": {
+              "moneyPct": 10,
+              "relationships": {
+                "sibling": -15
+              },
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses. {frere} l'apprend et t'envoie une photo de la dinde de 2004, avec un cœur.",
+            "effects": {
+              "relationships": {
+                "sibling": 10
+              },
+              "rival": -10,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Raconter à moitié",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu racontes la dinde mais pas les voisins. Le juge veut absolument savoir pour les voisins.",
+            "effects": {
+              "happiness": -2,
+              "relationships": {
+                "sibling": -5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0039",
+    "phase": "guerre",
+    "conditions": {
+      "dettes": true
+    },
+    "text": "Surprise dans les comptes : le principal créancier de la succession est {rival}, pour un prêt de 1999 « avec intérêts ». Le contrat est écrit sur un ticket de loto.",
+    "choices": [
+      {
+        "label": "Contester le ticket",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le juge déclare qu'un ticket de loto n'est pas un contrat, même gagnant. {Rival} repart sans rien.",
+            "effects": {
+              "rival": 15,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le juge valide le prêt. Tu rembourses {rival}, avec les intérêts et le ticket.",
+            "effects": {
+              "money": -3000,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer pour la paix",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu paies. {Rival} réclame aussi des « intérêts moraux ». Tu raccroches.",
+            "effects": {
+              "money": -1500,
+              "rival": -20
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0040",
+    "phase": "guerre",
+    "conditions": {
+      "flags": [
+        "a_conteste"
+      ],
+      "minHostilite": 20
+    },
+    "text": "Bonne nouvelle : l'avocat de {rival} s'est trompé de tribunal. La contestation a été déposée au tribunal de commerce, entre deux faillites de pizzerias.",
+    "choices": [
+      {
+        "label": "Demander la nullité",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La procédure de {rival} est annulée et le délai pour recommencer a expiré. Tu gagnes {pct:15} grâce à une erreur de couloir.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 10,
+              "rival": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "Le juge accorde un délai pour corriger. {Rival} change d'avocat et toi d'humeur.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu attends en silence. Le tribunal de commerce place la contestation de {rival} en liquidation judiciaire, par habitude.",
+            "effects": {
+              "happiness": 8,
+              "rival": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0041",
+    "phase": "guerre",
+    "text": "{Rival} propose de régler l'affaire à pierre-feuille-ciseaux, devant huissier. L'huissier a déjà accepté, il trouve ça « rafraîchissant ».",
+    "choices": [
+      {
+        "label": "Jouer pierre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{Rival} jouait ciseaux. Tu remportes {pct:10} et un regard noir.",
+            "effects": {
+              "moneyPct": 10,
+              "rival": 10,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{Rival} jouait feuille. Tu perds {pct:10} et ta foi en la pierre.",
+            "effects": {
+              "moneyPct": -10,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer ciseaux",
+        "outcomes": [
+          {
+            "chance": 0.33,
+            "text": "{Rival} jouait feuille. Tu coupes court au débat et empoches {pct:10}.",
+            "effects": {
+              "moneyPct": 10,
+              "rival": 10,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.33,
+            "text": "{Rival} jouait pierre. Tu perds {pct:10}. L'huissier dresse un constat de ciseaux écrasés.",
+            "effects": {
+              "moneyPct": -10,
+              "happiness": -5
+            }
+          },
+          {
+            "chance": 0.34,
+            "text": "Égalité, quarante fois de suite. L'huissier facture à la manche.",
+            "effects": {
+              "money": -800
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses de jouer ta succession au hasard. {Rival} te traite de lâche, l'huissier de personne sensée.",
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0042",
+    "phase": "guerre",
+    "conditions": {
+      "maxPatrimoine": 60000,
+      "minTension": 15,
+      "excludeFlags": [
+        "proces_en_cours",
+        "avocat_engage"
+      ]
+    },
+    "text": "Faute de moyens, tu obtiens un avocat commis d'office. Il a 23 ans, une robe trop grande et un enthousiasme qui inquiète tout le monde.",
+    "choices": [
+      {
+        "label": "Lui faire confiance",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il passe trois nuits sur ton dossier et t'appelle à 4 h : « J'ai trouvé un truc ! » Rendez-vous au tribunal.",
+            "effects": {
+              "happiness": 3
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours",
+              "avocat_engage"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Le coacher",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu lui apprends à ne pas dire « genre » devant le juge. Il t'apprend que tu n'avais aucune chance. Vous progressez ensemble.",
+            "effects": {
+              "smarts": 2,
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0043",
+    "phase": "guerre",
+    "conditions": {
+      "roles": [
+        "egal",
+        "favori"
+      ],
+      "testament": true,
+      "excludeFlags": [
+        "proces_en_cours"
+      ]
+    },
+    "text": "Une phrase du testament de {le_defunt} n'a pas de virgule et peut se lire de deux façons, dont une qui t'avantage. {Rival} lit évidemment l'autre.",
+    "choices": [
+      {
+        "label": "Plaider la virgule",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat cite comme expert un professeur de grammaire. Il arrive avec un dictionnaire et des amis.",
+            "effects": {
+              "money": -2500
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Couper la poire en deux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vous partagez la différence. La virgule, elle, personne n'en veut.",
+            "effects": {
+              "moneyPct": -10,
+              "rival": -20
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Consulter une académie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu écris à une académie de la langue. Elle répondra dans six ans avec une étude passionnante et inutile.",
+            "effects": {
+              "smarts": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0044",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "testament": true,
+      "excludeFlags": [
+        "a_conteste",
+        "proces_en_cours"
+      ]
+    },
+    "text": "Ton avocat t'appelle en panique : le délai pour contester le testament expire vendredi. On est jeudi soir et il est au karaoké.",
+    "choices": [
+      {
+        "label": "Le rejoindre au karaoké",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vous rédigez le recours sur une serviette entre deux chansons. Il est déposé vendredi à 11 h 58.",
+            "effects": {
+              "money": -3000
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Il chante trop longtemps. Le délai expire pendant le refrain. Plus de recours, mais tu connais les paroles.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déposer toi-même",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu déposes un recours écrit à la main, en courant. Le greffier le tamponne à 11 h 59 avec un air de héros.",
+            "effects": {
+              "health": -2,
+              "money": -500
+            },
+            "next": [
+              "suc_juss_0028"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Laisser expirer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le délai expire. Tu te sens bizarrement léger, comme après avoir jeté un vieux canapé.",
+            "effects": {
+              "happiness": 2,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0045",
+    "phase": "guerre",
+    "conditions": {
+      "roles": [
+        "egal"
+      ],
+      "fratrie": true
+    },
+    "text": "L'expert du tribunal estime {bien} à une valeur ridicule. {frere} pense que l'expert est payé par toi. Tu penses qu'il est payé par {frere}.",
+    "choices": [
+      {
+        "label": "Contre-expertise",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La contre-expertise triple la valeur. Les deux experts ne se parlent plus, comme vous. Tu gagnes {pct:8} sur le papier.",
+            "effects": {
+              "money": -1500,
+              "moneyPct": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La contre-expertise confirme : ça ne vaut presque rien. Vous vous battiez pour rien depuis le début.",
+            "effects": {
+              "money": -1500,
+              "happiness": -5,
+              "relationships": {
+                "sibling": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Racheter sa part",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu rachètes la part de {frere} au prix de l'expert. {frere} signe en pleurant de rage, toi en souriant de honte.",
+            "effects": {
+              "moneyPct": 5,
+              "relationships": {
+                "sibling": -15
+              },
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0046",
+    "phase": "guerre",
+    "conditions": {
+      "minTension": 50,
+      "excludeFlags": [
+        "adn_demande"
+      ]
+    },
+    "text": "{Rival} demande l'exhumation de {le_defunt} pour un test ADN « qui prouvera tout ». Personne ne sait exactement quoi, pas même son avocat.",
+    "choices": [
+      {
+        "label": "T'y opposer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le juge refuse et qualifie la demande de « fantaisiste » dans un jugement que tu fais encadrer.",
+            "effects": {
+              "happiness": 6,
+              "rival": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le juge accepte. Tu passes une très mauvaise semaine.",
+            "effects": {
+              "happiness": -8
+            },
+            "next": [
+              "suc_juss_0012"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "adn_demande"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu acceptes, au nom de la vérité. Le cimetière demande une autorisation en trois exemplaires et sa propre pelle.",
+            "effects": {
+              "karma": 2,
+              "happiness": -4
+            },
+            "next": [
+              "suc_juss_0012"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "adn_demande"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0047",
+    "phase": "guerre",
+    "conditions": {
+      "minHostilite": 30,
+      "excludeFlags": [
+        "recusation"
+      ]
+    },
+    "text": "Tu découvres que le juge de ton affaire est le parrain de {rival}. Ils ont même fait une randonnée ensemble cet été, photos à l'appui.",
+    "choices": [
+      {
+        "label": "Demander la récusation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat dépose la requête avec les photos de randonnée. Le juge porte le même bob sur toutes.",
+            "effects": {
+              "money": -1000
+            },
+            "next": [
+              "suc_juss_0016"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "recusation",
+              "a_conteste"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Faire avec",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vexé d'être soupçonné, le juge te donne raison pour prouver son impartialité. {pct:10} pour toi.",
+            "effects": {
+              "moneyPct": 10,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le juge est parfaitement impartial, sauf quand il s'agit de {rival}. Ça te coûte des frais.",
+            "effects": {
+              "money": -2000,
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0048",
+    "phase": "guerre",
+    "text": "Audience de conciliation. La salle est en travaux : vous vous conciliez dans le couloir, près d'un distributeur de friandises.",
+    "choices": [
+      {
+        "label": "Faire un effort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu offres un paquet de chips à {rival}. Le geste désarme tout le monde. Vous signez un accord de principe sur un mouchoir.",
+            "effects": {
+              "rival": -20,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le distributeur avale ta pièce. Tu y vois un signe et tu refuses tout compromis.",
+            "effects": {
+              "rival": 10,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas venir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le procès-verbal note : « absent, mais présent dans les pensées de {rival} ».",
+            "effects": {
+              "rival": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0049",
+    "phase": "guerre",
+    "text": "Un ancien camarade de lycée devenu avocat te propose de t'aider gratuitement, « en souvenir du bon temps ». Tu ne te souviens pas du bon temps.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il est brillant et te fait gagner {pct:5} sur un point de détail. Puis il te rappelle que tu lui avais volé sa trousse en quatrième.",
+            "effects": {
+              "moneyPct": 5,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il est gratuit et ça se voit : il confond ton dossier avec un divorce. Tu as failli divorcer de {rival}.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il te souhaite bonne chance avec un sourire qui contient tout le lycée.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_jus_0050",
+    "phase": "guerre",
+    "conditions": {
+      "roles": [
+        "seul",
+        "favori",
+        "egal"
+      ]
+    },
+    "text": "{Rival} t'envoie un SMS à 3 h du matin : « On pourrait tout régler entre nous, sans avocats. » Puis, à 3 h 01 : « Ou pas. »",
+    "choices": [
+      {
+        "label": "Répondre « D'accord »",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Rendez-vous au café. Accord en vingt minutes : {rival} prend un peu plus, tu gardes la paix et l'addition.",
+            "effects": {
+              "moneyPct": -8,
+              "rival": -30,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{Rival} ne vient pas. Le lendemain, nouveau SMS : « C'était un test. »",
+            "effects": {
+              "rival": 5,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre « Ou pas »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu réponds « Ou pas. » à 3 h 02. Votre famille a désormais sa propre langue.",
+            "effects": {
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bloquer le numéro",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu bloques. {Rival} t'écrit depuis le compte d'un cousin, puis depuis celui de son chien.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0001",
+    "phase": "suite",
+    "text": "Jour de l'audience. Ton avocat porte sa cravate porte-bonheur. {Rival} a apporté un album photo et un mouchoir brodé.",
+    "choices": [
+      {
+        "label": "Plaider l'émotion",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Ton avocat raconte la vie de {le_defunt} si bien que le greffier pleure. Le tribunal te donne raison : {pct:20} pour toi.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 12,
+              "rival": 15
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.25,
+            "text": "Tu gagnes ! {Rival} fait appel avant même la fin du délibéré, depuis les toilettes du tribunal.",
+            "effects": {
+              "happiness": 4,
+              "rival": 15
+            },
+            "next": [
+              "suc_juss_0033"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Le tribunal donne raison à {rival}. Ton avocat murmure « appel » comme on dit « courage ».",
+            "effects": {
+              "money": -3000,
+              "happiness": -8
+            },
+            "next": [
+              "suc_juss_0002"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Présenter les preuves",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Tes preuves, classées par couleur, impressionnent la cour. Victoire : {pct:25} pour toi, et ton classeur fait école.",
+            "effects": {
+              "moneyPct": 25,
+              "happiness": 12,
+              "rival": 15
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.55,
+            "text": "Le juge écarte la moitié de tes pièces, dont la plus importante, pour une agrafe mal placée. Tu fais appel.",
+            "effects": {
+              "money": -3000,
+              "happiness": -8
+            },
+            "next": [
+              "suc_juss_0002"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Transiger à la barre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vous signez un accord dans le couloir. Les avocats repartent avec la plus grosse part, ce qui est la définition technique d'un compromis.",
+            "effects": {
+              "money": -2500,
+              "rival": -20,
+              "happiness": 2
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0002",
+    "phase": "suite",
+    "text": "Cour d'appel. Les juges sont trois, donc trois fois plus de gens à convaincre et trois fois plus de chances que l'un d'eux s'ennuie.",
+    "choices": [
+      {
+        "label": "Sortir un argument neuf",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ton avocat déniche un argument dans un vieux manuel. L'arrêt d'appel te donne raison : {pct:20} pour toi.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 12
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.35,
+            "text": "La cour confirme le premier jugement. Reste la cassation, qui juge le droit et pas les sentiments. Ça tombe bien, tu n'en as plus.",
+            "effects": {
+              "money": -4000,
+              "happiness": -6
+            },
+            "next": [
+              "suc_juss_0003"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.25,
+            "text": "La cour confirme ta défaite et te condamne aux dépens. Ton avocat t'envoie ses condoléances, facturées.",
+            "effects": {
+              "money": -6000,
+              "moneyPct": -10,
+              "happiness": -12
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Changer d'avocat",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta nouvelle avocate démonte le dossier adverse en vingt minutes. Victoire en appel : {pct:15} pour toi.",
+            "effects": {
+              "money": -5000,
+              "moneyPct": 15,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Le nouvel avocat a lu le dossier dans le taxi. Ça s'entend. Direction la cassation.",
+            "effects": {
+              "money": -5000,
+              "happiness": -5
+            },
+            "next": [
+              "suc_juss_0003"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Abandonner",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu retires ton appel. Tu as perdu, mais tu récupères tes samedis.",
+            "effects": {
+              "money": -1500,
+              "happiness": 3
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0003",
+    "phase": "suite",
+    "text": "La Cour de cassation examine ton dossier. Les conseillers parlent si doucement que tu ne sais pas si tu as gagné ou si quelqu'un est malade.",
+    "choices": [
+      {
+        "label": "Attendre l'arrêt",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Cassation ! Tu as gagné, définitivement : {pct:30} pour toi. Tu ne comprends pas un mot de l'arrêt, mais le montant est très lisible.",
+            "effects": {
+              "moneyPct": 30,
+              "happiness": 15,
+              "rival": 20
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Pourvoi rejeté. C'est fini. Ton avocat parle d'« une belle jurisprudence ». Pour lui, sûrement.",
+            "effects": {
+              "money": -8000,
+              "moneyPct": -10,
+              "happiness": -12
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.15,
+            "text": "Pourvoi rejeté. Ton avocat, les yeux brillants, murmure : « Il reste l'Europe. »",
+            "effects": {
+              "money": -5000,
+              "happiness": -4
+            },
+            "next": [
+              "suc_juss_0035"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Négocier avant l'arrêt",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Après des années de guerre, {rival} et toi signez un accord sur un banc du palais. Vous êtes trop fatigués pour vous détester.",
+            "effects": {
+              "money": -3000,
+              "rival": -40,
+              "happiness": 6
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0004",
+    "phase": "suite",
+    "text": "Le graphologue rend son rapport : 48 pages, dont une analyse de la boucle du « g » qui a fait pleurer la greffière.",
+    "choices": [
+      {
+        "label": "Lire la conclusion",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Conclusion : l'écriture est authentique et révèle « un caractère généreux ». {Rival} est débouté et te doit {pct:10}.",
+            "effects": {
+              "moneyPct": 10,
+              "happiness": 8,
+              "rival": 15
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.3,
+            "text": "Conclusion : « authenticité probable, à 51 % ». {Rival} réclame une contre-expertise sur les 49 % restants.",
+            "effects": {
+              "money": -1000
+            },
+            "next": [
+              "suc_juss_0005"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.2,
+            "text": "Conclusion : la signature est une imitation grossière. Le testament est annulé et ta part fond de {pct:20}.",
+            "effects": {
+              "moneyPct": -20,
+              "happiness": -10
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Exiger une contre-expertise",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu demandes un deuxième avis. Le premier graphologue le prend comme une insulte personnelle.",
+            "effects": {
+              "money": -1500
+            },
+            "next": [
+              "suc_juss_0005"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0005",
+    "phase": "suite",
+    "text": "Deux graphologues s'affrontent à la barre. L'un parle de « pression du stylo », l'autre de « pression familiale ». Le juge prend des notes illisibles.",
+    "choices": [
+      {
+        "label": "Faire confiance au tien",
+        "outcomes": [
+          {
+            "chance": 0.55,
+            "text": "Ton expert l'emporte : écriture authentique. Tu gardes tout, plus {pct:10} de dommages pour procédure abusive.",
+            "effects": {
+              "moneyPct": 10,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.45,
+            "text": "L'expert adverse gagne. Testament déclaré faux, tu perds {pct:25}. Ton graphologue analyse sa propre signature pour se consoler.",
+            "effects": {
+              "moneyPct": -25,
+              "happiness": -10
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Faire écrire le juge",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat demande au juge d'écrire « testament » pour comparaison. Le juge propose vite un arrangement pour qu'on oublie la demande.",
+            "effects": {
+              "money": -2000,
+              "happiness": 4
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0006",
+    "phase": "suite",
+    "text": "La police enquête sur le testament du congélateur. Un expert établit que l'encre vient d'une papeterie qui a ouvert après le décès de {le_defunt}.",
+    "choices": [
+      {
+        "label": "Laisser la police faire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'affaire est confiée à un lieutenant passionné qui l'appelle « Opération Petits Pois ». Procès en vue.",
+            "effects": {
+              "happiness": 4
+            },
+            "next": [
+              "suc_juss_0007"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Proposer un marché",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{Rival} renonce à tout contre ton silence. Tu gardes ta part, plus {pct:10}.",
+            "effects": {
+              "moneyPct": 10,
+              "karma": -4
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "{Rival} refuse : « Je n'ai rien fait, et en plus je recommencerais. » Le procès aura lieu.",
+            "effects": {
+              "rival": 10
+            },
+            "next": [
+              "suc_juss_0007"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0007",
+    "phase": "suite",
+    "text": "Procès pour faux et usage de faux. {Rival} arrive avec un avocat pénaliste, des lunettes de soleil et l'air de quelqu'un qui a lu trop de polars.",
+    "choices": [
+      {
+        "label": "Te porter partie civile",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "{Rival} est condamné : amende, sursis et interdiction d'acheter des stylos pendant un an, le juge improvise. Tu touches {pct:20}.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 10,
+              "rival": 20
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.3,
+            "text": "Relaxe au bénéfice du doute : l'expert s'était trompé de papeterie. Tu paies les frais.",
+            "effects": {
+              "money": -4000,
+              "happiness": -8
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Demander la clémence",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu demandes au juge d'être clément. Un euro symbolique et des excuses, très mal formulées. Tu récupères quand même {pct:10}.",
+            "effects": {
+              "karma": 8,
+              "rival": -30,
+              "moneyPct": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0008",
+    "phase": "suite",
+    "text": "La police a retrouvé la trace de {notaire} : un compte de location de paddles, sur une plage lointaine, ouvert avec l'argent de la succession.",
+    "choices": [
+      {
+        "label": "Attendre l'extradition",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les procédures internationales prennent du temps. Tu apprends le mot « commission rogatoire » et tu le places partout.",
+            "effects": {
+              "smarts": 2
+            },
+            "next": [
+              "suc_juss_0009"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Prendre l'avion",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu retrouves {notaire} sur la plage, entre deux paddles. Négociation éclair : tu récupères {pct:15} en liquide, et un paddle.",
+            "effects": {
+              "money": -1500,
+              "moneyPct": 15,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu te trompes de plage, puis d'île. Tu rentres bronzé{e} et ruiné{e}.",
+            "effects": {
+              "money": -3000,
+              "happiness": -3
+            },
+            "next": [
+              "suc_juss_0009"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Réclamer à la chambre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La chambre des notaires a une assurance pour ça. Elle te demande 19 formulaires, dont un pour prouver que tu existes.",
+            "effects": {
+              "happiness": -2
+            },
+            "next": [
+              "suc_juss_0009"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0009",
+    "phase": "suite",
+    "text": "{notaire} comparaît pour détournement, bronzé, et plaide le « burn-out tropical ». La salle est pleine d'héritiers furieux.",
+    "choices": [
+      {
+        "label": "Témoigner",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Condamnation ferme. L'assurance de la profession te rembourse {pct:20}. Tu reçois aussi une carte postale de la prison, sans timbre.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 8
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "Condamnation, mais l'argent est parti en paddles. Tu récupères {pct:5} et un bonnet.",
+            "effects": {
+              "moneyPct": 5,
+              "happiness": -4
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Fonder un collectif",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les héritiers floués créent une association. Chacun récupère {pct:15}, plus un groupe de discussion qui ne s'arrêtera jamais.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 5
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0010",
+    "phase": "suite",
+    "text": "Deuxième séance de médiation. La médiatrice vous fait dessiner {le_defunt}. Ton dessin est mieux, et tout le monde le sait.",
+    "choices": [
+      {
+        "label": "Faire un vrai effort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu fais un effort, {rival} aussi. L'accord trouvé est affiché dans le cabinet de la médiatrice comme un trophée.",
+            "effects": {
+              "rival": -40,
+              "happiness": 10,
+              "moneyPct": -5
+            },
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu fais un effort. {Rival} l'interprète comme un aveu de faiblesse.",
+            "effects": {
+              "rival": 10,
+              "happiness": -3
+            },
+            "next": [
+              "suc_juss_0011"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Dire ce que tu penses",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu dis enfin tout ce que tu penses. La médiatrice ouvre la fenêtre, puis la porte, puis s'en va.",
+            "effects": {
+              "rival": 15,
+              "happiness": 5
+            },
+            "next": [
+              "suc_juss_0011"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0011",
+    "phase": "suite",
+    "text": "La médiatrice démissionne et se reconvertit dans l'élevage de chèvres, « un public plus raisonnable ». Le juge reprend le dossier.",
+    "choices": [
+      {
+        "label": "Aller au procès",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le juge fixe une audience. Il soupire comme quelqu'un qui aurait aussi aimé élever des chèvres.",
+            "effects": {
+              "money": -3000
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Accord de la dernière chance",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous signez un accord minimal sur le parking. Personne n'est content, ce qui prouve que c'est équitable.",
+            "effects": {
+              "moneyPct": -8,
+              "rival": -20
+            },
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "{Rival} rature l'accord au dernier moment, avec ton stylo. Procès.",
+            "effects": {
+              "rival": 10
+            },
+            "next": [
+              "suc_juss_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_conteste",
+              "proces_en_cours"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0012",
+    "phase": "suite",
+    "text": "Les résultats du test ADN arrivent dans une enveloppe que toute la famille regarde comme une bombe. Le labo a glissé un code promo pour un test d'ascendance.",
+    "choices": [
+      {
+        "label": "Ouvrir l'enveloppe",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Négatif : aucun lien avec {le_defunt}. Le prétendant repart en déclarant que l'ADN, « c'est une opinion ».",
+            "effects": {
+              "happiness": 8
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.35,
+            "text": "Positif : c'est bien un héritier. Il prend sa part sur la tienne, {pct:12}, et propose quand même un barbecue.",
+            "effects": {
+              "moneyPct": -12,
+              "money": -800,
+              "happiness": -4
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.25,
+            "text": "Résultat « non concluant » : le labo a confondu l'échantillon avec celui d'un labrador. Il faut recommencer.",
+            "effects": {
+              "happiness": -2
+            },
+            "next": [
+              "suc_juss_0013"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "La brûler sans l'ouvrir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu brûles l'enveloppe. Le labo n'avait pas gardé de copie. Il faut tout refaire.",
+            "effects": {
+              "money": -400,
+              "happiness": 2
+            },
+            "next": [
+              "suc_juss_0013"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0013",
+    "phase": "suite",
+    "text": "Deuxième test ADN, sous le contrôle d'un huissier qui surveille les cotons-tiges comme des lingots.",
+    "choices": [
+      {
+        "label": "Attendre le verdict",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Négatif. Le prétendant était en fait le fils d'un voisin de camping. Il s'excuse et repart avec un pot de confiture.",
+            "effects": {
+              "happiness": 8
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Positif. La famille compte officiellement une personne de plus, et ta part une personne de moins : tu perds {pct:12}.",
+            "effects": {
+              "moneyPct": -12,
+              "happiness": -5
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Proposer un arrangement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu proposes {pct:8} pour qu'on arrête de prélever des gens. Tout le monde accepte avec soulagement, y compris l'huissier.",
+            "effects": {
+              "moneyPct": -8,
+              "happiness": 3
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0014",
+    "phase": "suite",
+    "text": "Tu as contesté la facture de ton avocat. Il répond par une lettre de 12 pages, facturée, pour justifier la facture.",
+    "choices": [
+      {
+        "label": "Saisir le bâtonnier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu saisis le bâtonnier, le chef des avocats. Ton avocat dit que c'est un ami. Le bâtonnier dit que non. Ambiance.",
+            "next": [
+              "suc_juss_0015"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Payer en 36 fois",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat accepte 36 mensualités, à condition de te représenter encore 36 mois.",
+            "effects": {
+              "money": -6000,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0015",
+    "phase": "suite",
+    "text": "Le bâtonnier épluche la facture ligne par ligne. Il s'arrête longuement sur « Réflexion intense sous la douche : 3 heures ».",
+    "choices": [
+      {
+        "label": "Plaider ta cause",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le bâtonnier divise la facture par deux et confisque symboliquement le pommeau de douche. Tu récupères 5000 €.",
+            "effects": {
+              "money": 5000,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le bâtonnier valide tout : la douche est « une méthode de travail reconnue ». Tes frais d'avocat dépassent désormais ce que tu as hérité.",
+            "effects": {
+              "money": -7000,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Trouver un compromis",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vous coupez la poire en deux. Ton avocat te serre la main en notant l'heure.",
+            "effects": {
+              "money": -2500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0016",
+    "phase": "suite",
+    "text": "Nouvelle audience, nouveau juge. Celui-ci boit trois cafés avant d'entrer et fixe chaque avocat sans cligner des yeux.",
+    "choices": [
+      {
+        "label": "Plaider sobrement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le juge, parfaitement éveillé, tranche en ta faveur en dix minutes : {pct:20}. Il part prendre un quatrième café.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Le juge tranche contre toi, très vite et très réveillé. Tu fais appel.",
+            "effects": {
+              "money": -3000,
+              "happiness": -6
+            },
+            "next": [
+              "suc_juss_0002"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Évoquer l'ancien juge",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le nouveau juge rit, puis te donne raison « pour l'honneur de la profession » : {pct:15} pour toi.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 8
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.7,
+            "text": "Le nouveau juge était son collègue de promotion. Défaite, amende, et regard glacial.",
+            "effects": {
+              "money": -4000,
+              "moneyPct": -10,
+              "happiness": -8
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0017",
+    "phase": "suite",
+    "text": "Le témoin surprise s'installe à la barre avec un thermos et des notes. Ton avocat se lève pour le contre-interrogatoire.",
+    "choices": [
+      {
+        "label": "Attaquer sur les détails",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le témoin se contredit sur la couleur du papier peint, puis sur l'année, puis sur l'identité du défunt. Témoignage écarté, {pct:15} pour toi.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.3,
+            "text": "Le témoin tient bon et ajoute des détails que personne ne connaissait. Le juge renvoie l'affaire pour vérifier.",
+            "next": [
+              "suc_juss_0018"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.2,
+            "text": "Le témoin est précis, émouvant, parfait. Tu perds {pct:15} et un peu de foi en l'humanité.",
+            "effects": {
+              "moneyPct": -15,
+              "happiness": -8
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Le laisser parler",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le témoin parle deux heures. Le juge renvoie l'affaire pour lire les soixante pages de transcription.",
+            "next": [
+              "suc_juss_0018"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0018",
+    "phase": "suite",
+    "text": "On découvre que le témoin a publié un livre : « Ce que j'ai entendu à travers les murs, tome 3 ». Ton avocat parle de faux témoignage.",
+    "choices": [
+      {
+        "label": "Poursuivre le témoin",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le témoin avoue avoir « un peu romancé ». Le tribunal écarte tout et te donne gain de cause : {pct:20}.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "Relaxe : le tome 3 est vrai, c'est le tome 2 qui était inventé. Tu perds le procès et {pct:10}.",
+            "effects": {
+              "moneyPct": -10,
+              "money": -2000,
+              "happiness": -8
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Acheter le livre",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Page 212, le témoin raconte que {le_defunt} voulait tout te laisser. Le juge lit, tu gagnes {pct:15}, l'éditeur réimprime.",
+            "effects": {
+              "moneyPct": 15,
+              "money": -22,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.6,
+            "text": "Le livre est mal écrit et ne parle pas de toi. Le juge tranche pendant que tu lis le chapitre 9 : défaite, {pct:10} en moins.",
+            "effects": {
+              "moneyPct": -10,
+              "money": -22,
+              "happiness": -6
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0019",
+    "phase": "suite",
+    "text": "Un laboratoire analyse la serviette-testament. Les taches de sauce tomate la datent au jour près : un mardi, jour de la pizza à moitié prix.",
+    "choices": [
+      {
+        "label": "Produire l'addition",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu retrouves l'addition du même mardi : « 1 calzone, 1 stylo prêté ». Le dossier est solide.",
+            "effects": {
+              "happiness": 5
+            },
+            "next": [
+              "suc_juss_0020"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "L'addition est illisible, il y a de la sauce dessus aussi. Le juge tranchera.",
+            "effects": {
+              "happiness": -2
+            },
+            "next": [
+              "suc_juss_0020"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Faire témoigner le pizzaïolo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le pizzaïolo témoigne en tablier. Il précise que {le_defunt} laissait toujours 2 € de pourboire, « signe d'un esprit sain ».",
+            "effects": {
+              "happiness": 3
+            },
+            "next": [
+              "suc_juss_0020"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0020",
+    "phase": "suite",
+    "text": "Jugement de la serviette. Le juge la tient à bout de bras, avec des gants, comme une pièce archéologique.",
+    "choices": [
+      {
+        "label": "Attendre le verdict",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Testament valable : rien n'interdit d'écrire ses dernières volontés sur une serviette, tant que c'est signé et daté. Victoire, {pct:15} pour toi.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.2,
+            "text": "La serviette est validée. {Rival} est condamné à te verser {pct:15}, mais ne semble pas pressé.",
+            "effects": {
+              "happiness": 5
+            },
+            "next": [
+              "suc_juss_0034"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.3,
+            "text": "Testament annulé : la date est cachée par une tache de pesto. Tu perds {pct:20}.",
+            "effects": {
+              "moneyPct": -20,
+              "happiness": -10
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Plaider la sauce",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat explique que la sauce prouve l'authenticité. Le juge, qui a faim, coupe la poire en deux.",
+            "effects": {
+              "moneyPct": -8,
+              "rival": -15
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0021",
+    "phase": "suite",
+    "text": "Le tribunal projette la vidéo-testament de {le_defunt}. Le son grésille et, à la minute 4, un chat marche clairement sur le clavier.",
+    "choices": [
+      {
+        "label": "Commenter en direct",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu commentes la vidéo comme un match de foot. Le juge te demande de te taire, mais il rit.",
+            "effects": {
+              "happiness": 4
+            },
+            "next": [
+              "suc_juss_0022"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Demander un expert",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le tribunal mandate un expert en vidéos truquées. Il a 19 ans et facture comme un chirurgien.",
+            "effects": {
+              "money": -2000
+            },
+            "next": [
+              "suc_juss_0022"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0022",
+    "phase": "suite",
+    "text": "L'expert en trucage vidéo rend ses conclusions avec une présentation de 80 diapositives sur fond de dauphins.",
+    "choices": [
+      {
+        "label": "Écouter jusqu'au bout",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vidéo authentique : le clignement régulier venait de lentilles mal posées. Victoire, {pct:15} pour toi.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "L'expert ne peut exclure un trucage à cause d'un pot de fleurs « qui se déplace ». Testament annulé, tu perds {pct:20}.",
+            "effects": {
+              "moneyPct": -20,
+              "happiness": -10
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Proposer un partage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vous partagez avant la diapositive 30. Tout le monde se sent sauvé, surtout le greffier.",
+            "effects": {
+              "moneyPct": -10,
+              "rival": -25
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0023",
+    "phase": "suite",
+    "text": "L'huissier revient pour l'inventaire complet. Il note tout, y compris « un aimant de frigo en forme de phare, état moyen ».",
+    "choices": [
+      {
+        "label": "Négocier avec lui",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'huissier accepte de rayer l'aimant de la liste. Pour le reste, vente aux enchères.",
+            "next": [
+              "suc_juss_0024"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "L'huissier découvre que la plupart des dettes sont prescrites. Il repart sans rien saisir, presque gêné.",
+            "effects": {
+              "happiness": 10
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Payer les créanciers",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu paies avec tes économies pour sauver l'honneur de {le_defunt}. L'honneur est sauf, ton compte un peu moins.",
+            "effects": {
+              "money": -5000,
+              "karma": 8
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0024",
+    "phase": "suite",
+    "text": "Vente aux enchères des biens saisis. Le commissaire-priseur présente l'appareil à raclette comme « une pièce d'exception ».",
+    "choices": [
+      {
+        "label": "Racheter un souvenir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu rachètes la vieille lampe de chevet pour 140 €. Elle en valait 3, mais elle éclaire autrement.",
+            "effects": {
+              "money": -140,
+              "happiness": 6
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Faire monter les prix",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu fais grimper les enchères sur tout. Les dettes sont épongées et il reste 2000 € pour toi.",
+            "effects": {
+              "money": 2000,
+              "happiness": 6
+            },
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu fais monter les prix et personne ne surenchérit. Tu viens d'acheter un buffet en chêne à 900 €.",
+            "effects": {
+              "money": -900,
+              "happiness": -4
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0025",
+    "phase": "suite",
+    "text": "Contrôle fiscal de la succession. L'inspectrice arrive avec une calculatrice à imprimante qui fait un bruit de mitraillette.",
+    "choices": [
+      {
+        "label": "Tout montrer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'inspectrice ne trouve rien, sauf une erreur en ta faveur. Le fisc te rembourse 600 € avec une lettre presque chaleureuse.",
+            "effects": {
+              "money": 600,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle trouve un écart sur la valeur de {bien}. Redressement en vue.",
+            "effects": {
+              "happiness": -4
+            },
+            "next": [
+              "suc_juss_0026"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Proposer un café",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle refuse et note « tentative d'influence par boisson chaude ». Redressement.",
+            "effects": {
+              "karma": -2
+            },
+            "next": [
+              "suc_juss_0026"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0026",
+    "phase": "suite",
+    "text": "Le redressement tombe : droits supplémentaires, pénalités et une amende pour « optimisme déclaratif ».",
+    "choices": [
+      {
+        "label": "Saisir la commission",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La commission annule les pénalités et garde le reste. Tu paies {pct:8}, ce qui te semble presque raisonnable.",
+            "effects": {
+              "moneyPct": -8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La commission confirme tout et ajoute des intérêts pour le temps passé à contester.",
+            "effects": {
+              "moneyPct": -15,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer et oublier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu paies. Le fisc t'envoie un accusé de réception et une brochure sur les donations, « au cas où ».",
+            "effects": {
+              "moneyPct": -12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0027",
+    "phase": "suite",
+    "text": "Le dermatologue légiste examine le mollet-testament sur photos agrandies. Il conclut : encre authentique, « orthographe discutable ».",
+    "choices": [
+      {
+        "label": "Plaider l'esprit",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le juge estime qu'une faute sur un mollet ne change pas une volonté. Victoire, {pct:15} pour toi.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "Le juge estime que « légatère » désigne quelqu'un d'autre, à identifier. En attendant, tu perds {pct:20}.",
+            "effects": {
+              "moneyPct": -20,
+              "happiness": -8
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Faire témoigner le tatoueur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le tatoueur jure que la faute vient de lui, en montrant d'autres fautes sur son propre bras. Testament validé, {pct:10} pour toi.",
+            "effects": {
+              "moneyPct": 10,
+              "happiness": 8
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Le tatoueur ne se souvient que du dauphin. Le juge coupe la poire en deux.",
+            "effects": {
+              "moneyPct": -10
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0028",
+    "phase": "suite",
+    "text": "Audience pour ton action en réduction contre {beneficiaire}. Ton avocat a préparé un tableau qui montre ta part réservataire en vert fluo.",
+    "choices": [
+      {
+        "label": "Montrer le tableau",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le juge apprécie le vert fluo. Il met l'affaire en délibéré, signe d'intérêt ou de migraine.",
+            "effects": {
+              "happiness": 3
+            },
+            "next": [
+              "suc_juss_0029"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Le projecteur tombe en panne. Ton avocat lit le tableau à voix haute, cellule par cellule. Délibéré.",
+            "effects": {
+              "happiness": -2
+            },
+            "next": [
+              "suc_juss_0029"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Plaider la mémoire",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ton avocat raconte que {le_defunt} t'a appris le vélo. Le juge, ému, t'accorde ta réserve : {pct:25}.",
+            "effects": {
+              "moneyPct": 25,
+              "happiness": 12
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.6,
+            "text": "L'avocat d'en face rappelle que tu tombais du vélo exprès pour éviter les devoirs. Délibéré.",
+            "effects": {
+              "happiness": -3
+            },
+            "next": [
+              "suc_juss_0029"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Proposer un accord",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Accord trouvé : tu récupères {pct:15} sans jugement. Tout le monde économise un an de vie.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 6,
+              "rival": -15
+            },
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "L'autre camp refuse. Le juge met l'affaire en délibéré.",
+            "next": [
+              "suc_juss_0029"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0029",
+    "phase": "suite",
+    "text": "Le jugement tombe. Ton avocat ouvre l'enveloppe avec un coupe-papier en forme d'épée, pour l'ambiance.",
+    "choices": [
+      {
+        "label": "Lire tout de suite",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Victoire : la loi protège ta part, même contre {beneficiaire}. Tu récupères {pct:25}. Ton avocat garde le coupe-papier.",
+            "effects": {
+              "moneyPct": 25,
+              "happiness": 12
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.2,
+            "text": "Victoire : on te doit {pct:25}. Reste à se faire payer, ce qui est un autre sport.",
+            "effects": {
+              "happiness": 6
+            },
+            "next": [
+              "suc_juss_0034"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.35,
+            "text": "Défaite : le juge estime que tu as déjà reçu ta part du vivant de {le_defunt}, en études et en mobylette. Tu paies les frais.",
+            "effects": {
+              "money": -5000,
+              "happiness": -10
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Attendre une semaine",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu ouvres une semaine plus tard. Tu avais gagné {pct:20}, tu aurais pu le savoir plus tôt.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu ouvres une semaine plus tard. Défaite, et le délai d'appel a expiré pendant que tu attendais.",
+            "effects": {
+              "money": -4000,
+              "happiness": -10
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0030",
+    "phase": "suite",
+    "text": "Procès en diffamation. L'avocat de {rival} projette ton post sur grand écran. Avec le recul, « vautour en polaire » était un peu fort. Et tellement juste.",
+    "choices": [
+      {
+        "label": "Plaider l'humour",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le tribunal y voit de la satire. Relaxe, et {rival} doit payer tes frais : 2000 €.",
+            "effects": {
+              "money": 2000,
+              "happiness": 8,
+              "rival": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le tribunal n'a pas d'humour. Amende de 1500 € et excuses publiques, que tu rédiges avec trop d'adjectifs.",
+            "effects": {
+              "money": -1500,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "T'excuser à l'audience",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu t'excuses sincèrement. {Rival} retire sa plainte, ému, puis te traite de « hyène en doudoune » sur le parking.",
+            "effects": {
+              "karma": 4,
+              "rival": -5,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0031",
+    "phase": "suite",
+    "text": "Un an plus tard, l'administrateur chargé de gérer {bien} envoie sa note : honoraires, déplacements et une ligne « tondeuse à gazon, usage personnel ».",
+    "choices": [
+      {
+        "label": "Contester la tondeuse",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'administrateur répond qu'il a tondu pour la succession, et qu'il a aussi un jardin. Le juge convoque tout le monde.",
+            "effects": {
+              "money": -800
+            },
+            "next": [
+              "suc_juss_0032"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Payer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu paies. L'administrateur te remercie et demande la prolongation de sa mission.",
+            "effects": {
+              "moneyPct": -5
+            },
+            "next": [
+              "suc_juss_0032"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0032",
+    "phase": "suite",
+    "text": "L'administrateur rend ses comptes au juge, avec un classeur rose et des explications très longues sur le prix des ampoules.",
+    "choices": [
+      {
+        "label": "Exiger la levée",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le juge lève le séquestre et ordonne de vendre et de partager. Tu touches {pct:20}, la guerre s'éteint faute de munitions.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 8,
+              "rival": -15
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "Le juge prolonge le séquestre indéfiniment. L'administrateur s'installe pour de bon. Il ne reste plus rien à se disputer.",
+            "effects": {
+              "moneyPct": -15,
+              "happiness": -8
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Racheter la part adverse",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu rachètes la part de {rival} au prix du juge. Tu as gagné le bien, perdu tes économies, et l'administrateur te laisse la tondeuse.",
+            "effects": {
+              "money": -10000,
+              "moneyPct": 15,
+              "happiness": 6,
+              "rival": -10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0033",
+    "phase": "suite",
+    "text": "{Rival} a fait appel de ta victoire. Son avocat plaide que tu « souriais trop » pendant la première audience.",
+    "choices": [
+      {
+        "label": "Ne plus sourire",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu restes impassible deux heures. La cour confirme ta victoire : {pct:20} pour toi, et un léger torticolis.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 10,
+              "health": -1
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton visage de marbre passe pour du mépris. La cour inverse le jugement. Cassation.",
+            "effects": {
+              "money": -4000,
+              "happiness": -8
+            },
+            "next": [
+              "suc_juss_0003"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Sourire encore plus",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton sourire désarme la cour. Victoire confirmée : {pct:20} pour toi.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 12
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "La cour trouve ton sourire provocant. Défaite en appel, frais à ta charge.",
+            "effects": {
+              "money": -6000,
+              "moneyPct": -10,
+              "happiness": -10
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0034",
+    "phase": "suite",
+    "text": "Tu as gagné, mais {rival} ne paie pas. Tu engages un huissier pour faire exécuter le jugement. Il a une moustache et beaucoup de patience.",
+    "choices": [
+      {
+        "label": "Saisir son compte",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'huissier saisit le compte bancaire de {rival}. Tu reçois {pct:20}, avec un libellé de virement très rageur.",
+            "effects": {
+              "moneyPct": 20,
+              "happiness": 10,
+              "rival": 15
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.3,
+            "text": "Le compte de {rival} contient 14 €. L'huissier saisit aussi un vélo d'appartement. Tu récupères {pct:5}.",
+            "effects": {
+              "moneyPct": 5,
+              "money": -1000,
+              "happiness": -3
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Saisir sa voiture",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'huissier embarque la voiture de {rival}. Tu récupères {pct:15} à la vente, et {rival} découvre le bus.",
+            "effects": {
+              "moneyPct": 15,
+              "rival": 20,
+              "happiness": 8
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_juss_0035",
+    "phase": "suite",
+    "text": "Ton dossier arrive devant la Cour européenne des droits de l'homme, à Strasbourg. Les juges se demandent poliment comment une dispute sur {bien} est arrivée jusqu'ici.",
+    "choices": [
+      {
+        "label": "Invoquer la vie familiale",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "La Cour te donne raison sur un point de procédure. Tu reçois {pct:10} d'indemnité, onze ans après le début de la guerre.",
+            "effects": {
+              "moneyPct": 10,
+              "happiness": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.7,
+            "text": "Requête irrecevable. Tu as perdu dans deux langues officielles.",
+            "effects": {
+              "money": -3000,
+              "happiness": -8
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Abandonner",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu abandonnes à Strasbourg, devant une tarte flambée. C'est la meilleure décision de toute l'affaire.",
+            "effects": {
+              "happiness": 6
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  }
+]

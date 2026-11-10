@@ -210,6 +210,40 @@ struct Joueur: Codable, Equatable {
     var evenementsVus: [String] = []
     var actionsAnnee: [String] = []
     var aQuitteEcole: Bool = false
+    /// Biens, logement et crédits (module Shop).
+    var possessions: Possessions?
+    /// Secrets et chantage (module Secrets, voir docs/SECRETS.md).
+    var secrets: SecretsEtat?
+    /// Module Entreprises (docs/ENTREPRISES.md).
+    var entreprises: EntreprisesEtat? = nil
+
+    // États des modules (tous optionnels : les anciennes sauvegardes restent lisibles).
+    var vie: VieEtat? = nil
+    var casier: CasierJudiciaire? = nil
+    var competences: CompetencesEtat? = nil
+    var scolarite: ScolEtat? = nil
+    var tele: TeleEtat? = nil
+    var permis: PermisEtat? = nil
+    var placements: PlacementsEtat? = nil
+    var politique: PolEtat? = nil
+    var telephone: PhoneEtat? = nil
+    var loisirs: LoisirsEtat? = nil
+    var animaux: AnimauxEtat? = nil
+    var reves: RevesDeVie? = nil
+    var monde: MondeEtat? = nil
+    var fetes: FetesEtat? = nil
+    var repercussions: RepercussionsEtat? = nil
+    var reputationFamille: RepFamilleEtat? = nil
+    var retraite: RetraiteEtat? = nil
+    var succession: SuccessionEtat? = nil
+    var voisinage: VoisinageEtat? = nil
+    /// Dernier métier exercé (gardé pour la nécrologie, car `emploi` est vidé à la mort).
+    var dernierEmploi: Emploi? = nil
+    /// Emploi du module Métiers (Careers) et CV.
+    var carriere: CareerJobState? = nil
+    var historiqueCarriere: [CareerRecord]? = nil
+    /// Module « Vivre à l'étranger » (docs/ETRANGER.md).
+    var etranger: ExpatEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
@@ -243,4 +277,9 @@ struct Joueur: Codable, Equatable {
         if age >= 65 { return g("Retraité", "Retraitée") }
         return "Sans emploi"
     }
+}
+
+extension Joueur {
+    /// État du module Étranger, créé à la volée pour les vieilles sauvegardes.
+    var etatExpat: ExpatEtat { etranger ?? ExpatEtat.naissance(pays: "fr", ville: ville, age: age) }
 }

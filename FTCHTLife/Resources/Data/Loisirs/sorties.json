@@ -1,0 +1,3843 @@
+[
+  {
+    "id": "cinema",
+    "title": "Cinéma",
+    "icon": "film",
+    "category": "sorties",
+    "description": "Payer pour s'asseoir dans le noir avec des inconnus qui mangent fort.",
+    "minAge": 4,
+    "maxAge": null,
+    "perYear": 3,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": {
+      "name": "Carte cinéma illimitée",
+      "yearlyCost": 260
+    },
+    "options": [
+      {
+        "id": "blockbuster",
+        "label": "Blockbuster en salle",
+        "description": "Explosions, pop-corn et son à fond.",
+        "cost": 12,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Explosions, poursuites, une réplique culte. Tu es sorti{e} en marchant comme dans un film.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Le film durait trois heures dix. Tu as connu deux saisons différentes dans ce fauteuil.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Quelqu'un derrière toi a commenté tout le film. Et deviné la fin à voix haute.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es trompé{e} de salle et tu as vu un documentaire sur les lichens. Pas si mal, au fond.",
+            "effects": {
+              "happiness": -1,
+              "smarts": 2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait tomber tout ton pop-corn au générique de début. Le sol a mieux mangé que toi.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as éclaté de rire à un moment pas drôle du tout. Toute la salle s'est retournée.",
+            "effects": {
+              "happiness": -1
+            },
+            "signal": "honte",
+            "key": "blockbuster_6"
+          },
+          {
+            "chance": 1,
+            "text": "Tu choisis la place parfaite à chaque fois : centrée, sans voisin, sans tête devant. C'est un art.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "auteur",
+        "label": "Film d'auteur en VO",
+        "description": "Deux heures de silence et un plan fixe sur une tasse.",
+        "cost": 9,
+        "minAge": 12,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Un plan fixe sur une tasse pendant six minutes, puis une larme. Tu as trouvé ça bouleversant. Ou alors tu as dormi.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Le film se termine sans vraie fin. Tu en parles depuis avec beaucoup d'assurance.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Endormi{e} au bout de dix minutes, réveillé{e} au générique. Tu as dit « puissant » en sortant.",
+            "effects": {
+              "happiness": -1,
+              "smarts": 1
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Les sous-titres étaient blancs sur fond de neige. Tu as vu un film dont tu ignores tout.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Au débat après la séance, tu as défendu une théorie folle. Quelqu'un était d'accord. Vous avez continué au café d'en face.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Au débat, la réalisatrice a dit que ta question était « la meilleure de la tournée ». Tu ne dors plus de fierté.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 3
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "avant_premiere",
+        "label": "Avant-première avec l'équipe du film",
+        "description": "Tapis rouge, acteurs en vrai, flashs partout.",
+        "cost": 40,
+        "minAge": 10,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tu as vu les acteurs en vrai. Ils sont plus petits qu'à l'écran et beaucoup plus bronzés.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as obtenu un autographe sur ton ticket. Tu ne sais pas qui c'est, mais il était sur l'affiche.",
+            "effects": {
+              "happiness": 3
+            },
+            "key": "avant_premiere_2"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as appelé l'actrice principale par le nom de son personnage. Elle a souri, glaciale.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Placé{e} derrière un pilier. Tu as vu tout le film, mais seulement la moitié gauche.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 2
+          },
+          {
+            "chance": 1,
+            "text": "À la sortie, tu as discuté avec le perchman du film. C'est de loin le plus drôle de l'équipe.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le réalisateur t'a demandé ton avis à la sortie et l'a noté sur son téléphone.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3,
+            "key": "avant_premiere_6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "restaurant",
+    "title": "Restaurant",
+    "icon": "fork.knife",
+    "category": "sorties",
+    "description": "Manger sans faire la vaisselle. Le luxe absolu.",
+    "minAge": 4,
+    "maxAge": null,
+    "perYear": 3,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "kebab",
+        "label": "Kebab du coin",
+        "description": "Salade, tomate, oignon, et une sauce au choix.",
+        "cost": 8,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Kebab salade-tomate-oignon, sauce blanche. Un chef-d'œuvre de la gastronomie de rue.",
+            "effects": {
+              "health": -1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Le patron t'a reconnu{e} et a ajouté des frites gratuites. C'est ça, la vraie reconnaissance.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "La sauce samouraï était vraiment samouraï. Tu as pleuré pendant tout le repas.",
+            "effects": {
+              "health": -1,
+              "happiness": -1
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as croqué trop fort : la moitié du kebab a fini sur ton pantalon.",
+            "effects": {
+              "happiness": -2,
+              "looks": -1
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Ton estomac a émis de sérieuses réserves sur ce choix, toute la nuit.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Un débat a éclaté au comptoir : « frites dedans ou à côté ? ». Tu as tranché. Respect général.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le patron prépare ta commande dès que tu passes la porte. Tu n'as plus besoin de parler.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "bistrot",
+        "label": "Bistrot de quartier",
+        "description": "Plat du jour, nappe à carreaux, serveur pressé.",
+        "cost": 30,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Plat du jour, dessert du jour, bonne humeur du jour. Le jour est réussi.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Le serveur t'a appelé{e} « chef » toute la soirée. Tu as fini par y croire.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ton steak « à point » est arrivé « à semelle ».",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as appelé le serveur en claquant des doigts. Il a mis quarante minutes à revenir. Mérité.",
+            "effects": {
+              "happiness": -2,
+              "karma": -1
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as goûté les escargots pour la première fois. Ton verdict : « C'est surtout du beurre ».",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "La table d'à côté t'a fait goûter son dessert. Vous avez fini le repas ensemble.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu fais partie des habitués : le chef sort de sa cuisine pour te saluer.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "etoile",
+        "label": "Restaurant étoilé",
+        "description": "Onze plats de la taille d'un timbre, servis avec un discours.",
+        "cost": 250,
+        "minAge": 12,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Onze plats, chacun de la taille d'un timbre. C'était sublime. Tu as mangé un kebab en rentrant.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Le serveur a décrit chaque plat pendant trois minutes. « Émulsion de souvenir d'enfance sur lit de nuage. » Tu as hoché la tête.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as bu le rince-doigts. Le maître d'hôtel t'a regardé{e} comme on regarde un pigeon dans une cathédrale.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pris la mauvaise fourchette. Il y en avait sept. Elles étaient toutes mauvaises.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as photographié chaque plat. Ton repas a refroidi pendant que tu cherchais la lumière.",
+            "effects": {
+              "happiness": 1
+            },
+            "key": "etoile_5"
+          },
+          {
+            "chance": 1,
+            "text": "L'addition est arrivée dans un petit coffret en bois. Tu aurais préféré une enveloppe vide.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as reconnu les douze épices de la sauce. Le chef est venu te serrer la main, ému.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            },
+            "minLevel": 3,
+            "trophy": "Palais d'or",
+            "signal": "sommet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "concert",
+    "title": "Concert",
+    "icon": "guitars.fill",
+    "category": "sorties",
+    "description": "Payer pour entendre en vrai une chanson que tu as déjà.",
+    "minAge": 8,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "local",
+        "label": "Petit concert local",
+        "description": "Un groupe du coin, une salle minuscule, beaucoup de cœur.",
+        "cost": 10,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Le groupe local jouait fort, faux et avec le cœur. Tu as adoré.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Vous étiez douze dans la salle. Le chanteur t'a dédié une chanson. Normal, tu étais au premier rang.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Les balances ont duré plus longtemps que le concert.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as applaudi pendant un silence au milieu d'un morceau. Seul{e}.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Le batteur tenait aussi le stand de tee-shirts et la caisse. Vous avez parlé une heure. Vous êtes potes, maintenant.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le groupe a joué une chanson sur {ville}. Elle te reste dans la tête depuis.",
+            "effects": {
+              "happiness": 2
+            },
+            "key": "local_6"
+          },
+          {
+            "chance": 1,
+            "text": "Le groupe t'a fait monter sur scène pour le tambourin. Tu étais parfaitement en rythme.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "stade",
+        "label": "Grande star dans un stade",
+        "description": "Cinquante mille personnes, un écran géant, une star minuscule.",
+        "cost": 90,
+        "minAge": 10,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Cinquante mille personnes chantent la même chanson. Frissons garantis, voix perdue.",
+            "effects": {
+              "health": -1,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu étais si loin que la star faisait la taille d'une fourmi. Une fourmi très talentueuse.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as passé le concert derrière quelqu'un de très grand qui filmait tout, bras tendus.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as perdu ton groupe dans la foule. Retrouvailles deux heures plus tard, au parking.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es trompé{e} de date. Le stade accueillait un salon de l'agriculture. Tu as vu une vache championne.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "La star a lancé sa serviette dans le public. Tu l'as attrapée.",
+            "effects": {
+              "happiness": 5
+            },
+            "signal": "victoire",
+            "key": "stade_6"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es glissé{e} jusqu'au premier rang. La star t'a regardé{e} dans les yeux pendant tout un refrain.",
+            "effects": {
+              "happiness": 7
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "backstage",
+        "label": "Pass backstage",
+        "description": "Les coulisses, les loges, la vérité.",
+        "cost": 300,
+        "minAge": 16,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "En coulisses, tu as vu la star manger des chips en peignoir. Le mythe en prend un coup, la tendresse aussi.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Le guitariste t'a parlé dix minutes de ses pédales d'effet. Tu as hoché la tête. Il t'a laissé son numéro.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as demandé un selfie à quelqu'un que tu prenais pour le chanteur. C'était l'agent de sécurité.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Ton pass backstage acheté sur internet était faux. Tu as passé la soirée au vestiaire.",
+            "effects": {
+              "happiness": -5
+            },
+            "bad": true,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as aidé à porter un ampli. On t'a pris{e} pour l'équipe technique : tu as enroulé des câbles toute la soirée.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "La star t'invite sur scène pour le rappel. Tu chantes le refrain devant vingt mille personnes.",
+            "effects": {
+              "happiness": 8
+            },
+            "minLevel": 3,
+            "trophy": "Ami des coulisses",
+            "signal": "sommet",
+            "key": "backstage_6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soiree",
+    "title": "Soirée",
+    "icon": "party.popper.fill",
+    "category": "sorties",
+    "description": "Sortir, voir du monde, rentrer trop tard.",
+    "minAge": 13,
+    "maxAge": null,
+    "perYear": 3,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "chez_pote",
+        "label": "Soirée chez un pote",
+        "description": "Pizzas, jeux de société et canapé trop petit.",
+        "cost": 10,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Pizzas, jeux de société et fous rires jusqu'à minuit. Une soirée parfaite, sans rien d'extraordinaire.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Le maître de maison a lancé un jeu de cartes dont lui seul connaissait les règles. Il a gagné six fois.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as raconté une anecdote gênante sur toi pour faire rire. Ça a marché. Trop bien.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte",
+            "key": "chez_pote_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as cassé un vase. Il était moche, mais c'était celui de la grand-mère.",
+            "effects": {
+              "happiness": -3,
+              "karma": -1,
+              "relationships": {
+                "friend": -2
+              }
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as passé la soirée à refaire le monde dans la cuisine avec quelqu'un que tu ne connaissais pas.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Une partie de loup-garou a viré au drame. Tu as été éliminé{e} en premier, injustement, comme toujours.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu es l'âme des soirées : on vérifie que tu es libre avant de fixer la date.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "friend": 2
+              }
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "bar",
+        "label": "Tournée des bars",
+        "description": "Trois bars, des verres, des conversations très importantes.",
+        "cost": 50,
+        "minAge": 18,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Trois bars, quatre verres, une conversation passionnante sur les pigeons. Bonne soirée.",
+            "effects": {
+              "health": -1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Happy hour : deux verres pour le prix d'un. Et deux maux de tête pour le prix d'un.",
+            "effects": {
+              "health": -2,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as dansé sur le comptoir. Il n'y avait pas de musique.",
+            "effects": {
+              "happiness": -3,
+              "looks": -1
+            },
+            "bad": true,
+            "signal": "honte",
+            "key": "bar_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as perdu tes clés entre le deuxième et le troisième bar. Elles sont devenues une légende.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as commandé « la même chose que d'habitude » dans un bar où tu n'avais jamais mis les pieds.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu as sympathisé avec une bande qui fêtait un anniversaire. Tu ne sais toujours pas qui était fêté.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Quelqu'un t'a offert un verre et un sourire. Vous avez échangé vos numéros sur un sous-bock.",
+            "effects": {
+              "happiness": 5
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Les barmans de la ville te connaissent tous. On t'écoute raconter des histoires, on te sert sans demander.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "boite",
+        "label": "Boîte de nuit",
+        "description": "Musique trop forte, videur trop grand, nuit trop courte.",
+        "cost": 25,
+        "minAge": 18,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as dansé jusqu'à quatre heures. Tes jambes ne te parlent plus, ta tête bourdonne, tu es content{e}.",
+            "effects": {
+              "health": -1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "La musique était si forte que vous avez communiqué par gestes toute la nuit. Tu as appris une langue.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le videur t'a refusé l'entrée à cause de tes chaussures. Tu as fini la soirée au kebab d'en face. Pas si mal.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as tenté une chorégraphie très ambitieuse. Un cercle s'est formé autour de toi. Pas pour t'admirer.",
+            "effects": {
+              "happiness": -3,
+              "looks": -1
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es tordu la cheville en descendant de l'estrade.",
+            "effects": {
+              "health": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "cheville tordue",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un slow imprévu, quelqu'un d'inattendu. Vous vous êtes revus le lendemain, à la lumière du jour. Ça tenait encore.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le vestiaire a perdu ta veste et t'en a rendu une autre, plus belle. Dilemme moral.",
+            "effects": {
+              "happiness": 1,
+              "karma": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le DJ t'a repéré{e} sur la piste et t'a fait monter près des platines. Tu as régné sur la nuit.",
+            "effects": {
+              "happiness": 6,
+              "looks": 2
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "after",
+        "label": "After jusqu'à l'aube",
+        "description": "Quand tout ferme, il reste toujours un appartement allumé.",
+        "cost": 30,
+        "minAge": 18,
+        "minLevel": 2,
+        "minHealth": 30,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tu as vu le soleil se lever en parlant de la vie avec des inconnus. Tu as oublié ce qui s'est dit, pas l'émotion.",
+            "effects": {
+              "health": -3,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "À 6 heures, quelqu'un a sorti une guitare. À 6 h 05, tout le monde a regretté.",
+            "effects": {
+              "health": -2,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Rentré{e} à 9 heures, tu as croisé tes voisins qui partaient au marché. Ils t'ont regardé{e} longtemps.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Il t'a fallu trois jours pour récupérer. Tu as l'impression d'avoir pris dix ans.",
+            "effects": {
+              "health": -5,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es réveillé{e} dans un appartement inconnu, sous un plaid en forme de requin. Personne ne savait qui tu étais.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "À l'aube, vous étiez cinq sur un toit à manger des croissants. Amis pour la vie, apparemment.",
+            "effects": {
+              "health": -2,
+              "happiness": 5,
+              "newFriend": true
+            },
+            "signal": "rencontre",
+            "key": "after_6"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as tenu jusqu'à midi, puis enchaîné sur un brunch. Ton endurance est connue dans toute la ville.",
+            "effects": {
+              "health": -3,
+              "happiness": 6
+            },
+            "minLevel": 3,
+            "trophy": "Seigneur de l'aube",
+            "signal": "sommet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "karaoke",
+    "title": "Karaoké",
+    "icon": "music.mic",
+    "category": "sorties",
+    "description": "Chanter faux, mais avec des paroles qui défilent.",
+    "minAge": 8,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "maison",
+        "label": "Karaoké à la maison",
+        "description": "Une machine, un micro, des voisins patients.",
+        "cost": 0,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as chanté un tube des années 80 dans une brosse à cheveux. Une performance sincère.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "La machine t'a donné 34 sur 100. Elle a des goûts douteux.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as poussé une note si haute que le chien est parti se cacher sous le lit.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Les voisins ont tapé au mur. En rythme, au moins.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Duo avec {ami} : tu as pris la voix aiguë. Personne n'a compris pourquoi, même pas toi.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as découvert que tu chantais juste. Pas tout le temps, mais par moments.",
+            "effects": {
+              "happiness": 3
+            },
+            "key": "maison_6"
+          },
+          {
+            "chance": 1,
+            "text": "La machine t'a donné 100 sur 100. Tu as fait encadrer une photo de l'écran.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "bar_karaoke",
+        "label": "Bar karaoké",
+        "description": "Une scène, des inconnus, aucune pitié.",
+        "cost": 15,
+        "minAge": 16,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as chanté devant des inconnus et ils ont applaudi. Par politesse, peut-être. Tu prends quand même.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as choisi une chanson que tu croyais connaître. Le couplet était en portugais.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ton micro était coupé pendant tout le refrain. Tu as fait du mime, avec passion.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "honte",
+            "key": "bar_karaoke_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pris le micro le premier pour « chauffer la salle ». La salle s'est refroidie.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Une personne inconnue t'a rejoint{e} pour un duo improvisé. Vous avez chanté faux ensemble, en harmonie.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as chanté une ballade si triste que quelqu'un au fond de la salle a pleuré. De bonheur, on espère.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le bar a organisé un concours et tu l'as gagné. Le prix : un bon de 20 euros et la gloire éternelle.",
+            "effects": {
+              "happiness": 6,
+              "money": 20
+            },
+            "minLevel": 3,
+            "trophy": "Micro d'or du quartier",
+            "signal": "victoire"
+          }
+        ]
+      },
+      {
+        "id": "tele",
+        "label": "Concours de chant télévisé",
+        "description": "Casting, jury, caméras. Ta chance, ou ta honte nationale.",
+        "cost": 50,
+        "minAge": 14,
+        "minLevel": 3,
+        "minHealth": 0,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Le jury t'a dit « tu as quelque chose ». Personne n'a précisé quoi.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu es passé{e} à la télé quarante secondes. Ta famille a enregistré l'émission et la remet à chaque repas.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 2
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ta voix a déraillé en direct sur la note finale. Le jury a fait une grimace synchronisée.",
+            "effects": {
+              "happiness": -5
+            },
+            "bad": true,
+            "signal": "honte",
+            "key": "tele_3"
+          },
+          {
+            "chance": 1,
+            "text": "Éliminé{e} au premier tour par un candidat qui chantait en duo avec son perroquet.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "En coulisses, tu t'es lié{e} d'amitié avec une candidate de 82 ans qui chante du métal.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as gagné la finale. Confettis, larmes, et un contrat avec une maison de disques qui ne rappellera jamais.",
+            "effects": {
+              "happiness": 8,
+              "money": 3000
+            },
+            "minLevel": 4,
+            "trophy": "Voix de la saison",
+            "signal": "victoire"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "musee",
+    "title": "Musée",
+    "icon": "paintpalette.fill",
+    "category": "sorties",
+    "description": "Regarder des choses anciennes en chuchotant.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "local",
+        "label": "Musée du coin",
+        "description": "Gratuit le premier dimanche du mois. Un gardien, trois salles.",
+        "cost": 0,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as vu des tableaux, des vases et un gardien qui dormait debout. Culture.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Vingt minutes devant un tableau tout bleu. Tu as fini par y voir un sens. Ou un ciel.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es assis{e} sur une œuvre d'art en pensant que c'était un banc. Le gardien ne dormait plus.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "L'alarme a sonné parce que tu t'es approché{e} trop près d'un tableau. Tout le musée t'a regardé{e}.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Le musée expose une collection de fers à repasser anciens. Tu en sais désormais beaucoup trop.",
+            "effects": {
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as dessiné le tableau principal dans un carnet.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            },
+            "key": "local_6"
+          },
+          {
+            "chance": 1,
+            "text": "Tu fais la visite mieux que le guide. Des touristes te suivent de salle en salle.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 3
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "grand",
+        "label": "Grand musée national",
+        "description": "Des kilomètres de couloirs et des chefs-d'œuvre partout.",
+        "cost": 20,
+        "minAge": 8,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Trois heures de chefs-d'œuvre. Ton cerveau est plein, tes pieds sont en grève.",
+            "effects": {
+              "health": -1,
+              "happiness": 2,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as vu le tableau le plus célèbre du musée, entre deux cents bras qui le photographiaient.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es perdu{e} dans l'aile des antiquités. Tu as tourné quarante minutes autour de la même momie.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Au café du musée, un croissant coûtait le prix d'une petite statue.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "L'audioguide parlait si lentement que tu as visité un autre étage pendant la description d'un vase.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as remarqué dans un tableau un détail caché que même le guide ignorait. Il t'a demandé ton prénom.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 4
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "nocturne",
+        "label": "Nocturne privée avec un conservateur",
+        "description": "Le musée vide, à la lampe de poche, avec quelqu'un qui sait tout.",
+        "cost": 150,
+        "minAge": 16,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Le conservateur t'a montré les réserves : des milliers d'œuvres que personne ne voit. Tu te sens dans la confidence.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Visite à la lampe de poche. Les statues ont l'air de bouger. Tu as poussé un petit cri, très digne.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as effleuré un vase étrusque. Il a vacillé. Il n'est pas tombé, mais tu as vieilli de dix ans.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Les lumières se sont éteintes alors que tu étais seul{e} dans la salle égyptienne.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Vous avez parlé jusqu'à minuit d'un peintre que personne ne connaît. Vous êtes ses deux seuls fans.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 2,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as aidé à identifier un tableau mal attribué. Ton nom figure sur le cartel, en tout petit.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 5
+            },
+            "minLevel": 3,
+            "trophy": "Mécène d'un soir",
+            "signal": "sommet",
+            "key": "nocturne_6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "parc_attractions",
+    "title": "Parc d'attractions",
+    "icon": "ticket.fill",
+    "category": "sorties",
+    "description": "Faire la queue une heure pour hurler quarante secondes.",
+    "minAge": 4,
+    "maxAge": null,
+    "perYear": 1,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "maneges",
+        "label": "Manèges pour tous",
+        "description": "Tasses qui tournent, train fantôme, barbe à papa.",
+        "cost": 40,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tasses qui tournent, train fantôme, barbe à papa. Une journée parfaite, un peu collante.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Une heure et demie de queue pour quarante secondes de manège. Les quarante meilleures secondes de ta semaine.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le train fantôme a fait peur à tout le monde. Surtout à toi.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as mangé une barbe à papa juste avant les tasses qui tournent. Mauvaise idée.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "La mascotte t'a fait un câlin. Elle sentait la fatigue, mais c'était sincère.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as la photo souvenir du manège, prise au pire moment : yeux fermés, bouche grande ouverte.",
+            "effects": {
+              "happiness": 1
+            },
+            "key": "maneges_6"
+          },
+          {
+            "chance": 1,
+            "text": "Tu optimises tes trajets entre les files d'attente comme un général. Douze manèges en une journée.",
+            "effects": {
+              "happiness": 6
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "sensations",
+        "label": "Grand huit et chute libre",
+        "description": "Loopings, vrilles et estomac en option.",
+        "cost": 55,
+        "minAge": 10,
+        "minLevel": 1,
+        "minHealth": 30,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Looping, vrille, hurlement. Tu as laissé ton estomac au sommet et tu l'as récupéré plus tard.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as fait le grand huit les bras en l'air. Puis accroché{e} à la barre, de toutes tes forces.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tes lunettes sont parties au premier looping. Quelqu'un dans la file les a attrapées au vol.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as hurlé si fort que tu as perdu ta voix pendant deux jours.",
+            "effects": {
+              "health": -1,
+              "happiness": -1
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "La chute libre t'a donné un sérieux coup du lapin.",
+            "effects": {
+              "health": -4
+            },
+            "bad": true,
+            "injury": {
+              "name": "torticolis",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Sur la photo de la chute libre, tu as la tête d'un chat qu'on sort de la baignoire.",
+            "effects": {
+              "happiness": 2
+            },
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Dix chutes libres d'affilée. Les employés t'ont applaudi{e}.",
+            "effects": {
+              "happiness": 6
+            },
+            "minLevel": 3,
+            "trophy": "Estomac en acier",
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "vip",
+        "label": "Pass coupe-file et nuit à l'hôtel du parc",
+        "description": "Aucune file d'attente, des regards jaloux partout.",
+        "cost": 350,
+        "minAge": 6,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tu doubles toutes les files d'attente sous les regards haineux. Tu ne t'en lasses pas.",
+            "effects": {
+              "happiness": 6,
+              "karma": -1
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Petit déjeuner avec les mascottes. L'écureuil géant a renversé ton chocolat chaud. Pas grave, c'est un écureuil.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ta montagne russe préférée était fermée pour maintenance. Toute la journée.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Ton pass coupe-file ne marchait que sur les manèges pour les tout-petits.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Dans la file VIP, tu as rencontré quelqu'un qui vient tous les week-ends depuis dix ans. Tu connais tous les secrets du parc.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "On t'a invité{e} à tester une nouvelle attraction avant son ouverture.",
+            "effects": {
+              "happiness": 7
+            },
+            "minLevel": 3,
+            "signal": "sommet",
+            "key": "vip_6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bowling",
+    "title": "Bowling",
+    "icon": "figure.bowling",
+    "category": "sorties",
+    "description": "Lancer une boule lourde dans des chaussures qui ne sont pas à toi.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": true,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "partie",
+        "label": "Partie entre amis",
+        "description": "Deux parties, des frites, des chaussures de location.",
+        "cost": 12,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Deux strikes, sept gouttières, des chaussures de location qui sentaient l'histoire. Bonne soirée.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 1
+              }
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as perdu, mais tu as remporté le concours de danse de la victoire. Ça compte.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ta boule est partie en arrière. Elle a failli finir au bar.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es coincé le doigt dans la boule.",
+            "effects": {
+              "health": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "doigt foulé",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un spare complètement par accident. Tu as fait semblant que c'était prévu.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as ta propre boule, avec ton nom gravé. Tu la caresses avant de lancer. Ça intimide.",
+            "effects": {
+              "happiness": 4
+            },
+            "minLevel": 3
+          },
+          {
+            "chance": 1,
+            "text": "Partie parfaite : douze strikes d'affilée. Tout le bowling s'est arrêté pour regarder le dernier lancer.",
+            "effects": {
+              "happiness": 8
+            },
+            "minLevel": 4,
+            "trophy": "Partie parfaite",
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "tournoi",
+        "label": "Tournoi du club",
+        "description": "Polos assortis, tableau des scores, ambiance de finale.",
+        "cost": 30,
+        "minAge": 12,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Troisième place du tournoi. Médaille en plastique, fierté en or.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "L'ambiance était tendue comme une finale olympique. Pour une coupe en plastique doré.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as glissé sur la piste en lançant. Glissade, roulade, gouttière.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "hanche contusionnée",
+              "years": 1,
+              "healthPerYear": -1
+            },
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un retraité de 79 ans t'a battu{e} avec un style de lancer inexplicable.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Ton équipe de tournoi t'a adopté{e}. Ils ont des polos assortis. Tu en as un, maintenant.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as gagné le tournoi. On t'a remis un trophée plus grand qu'un chien moyen.",
+            "effects": {
+              "happiness": 7,
+              "money": 100
+            },
+            "minLevel": 3,
+            "trophy": "Quille d'or",
+            "signal": "victoire",
+            "key": "tournoi_6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "escape_game",
+    "title": "Escape game",
+    "icon": "puzzlepiece.fill",
+    "category": "sorties",
+    "description": "Payer pour être enfermé dans une pièce, puis chercher la sortie.",
+    "minAge": 10,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "classique",
+        "label": "Salle « La cabane du savant fou »",
+        "description": "Une heure, des cadenas, des indices partout.",
+        "cost": 25,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Sortie avec deux minutes d'avance. Tu as trouvé le code final et tu en parles comme d'un exploit militaire.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Vous avez passé vingt minutes sur une énigme qui était en fait de la décoration.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as forcé un tiroir qui ne faisait pas partie du jeu. Le maître du jeu est intervenu par haut-parleur.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Pas de sortie à temps. Le maître du jeu vous a ouvert avec une pitié polie.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as résolu une énigme en tapant 1234 au hasard. Tu préfères ne pas en parler.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Nouveau record de la salle ! Votre photo est affichée à l'accueil.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 3
+            },
+            "minLevel": 3,
+            "signal": "victoire",
+            "key": "classique_6"
+          }
+        ]
+      },
+      {
+        "id": "horreur",
+        "label": "Salle d'horreur avec acteurs",
+        "description": "Lumière rouge, bruits de chaînes, zombie dans le placard.",
+        "cost": 35,
+        "minAge": 14,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Un zombie est sorti d'un placard. Tu as hurlé et tu t'es caché{e} derrière la plus petite personne du groupe.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu étais si concentré{e} sur les énigmes que tu n'as pas vu le zombie qui respirait dans ton cou.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as eu tellement peur que tu as donné un coup au zombie. Il a enlevé son masque et demandé une pause.",
+            "effects": {
+              "happiness": -3,
+              "karma": -1
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es enfui{e} en courant… dans le placard du zombie.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "À la sortie, le zombie t'a dit que tu étais son meilleur public de l'année. Vous avez pris un chocolat chaud. Il est adorable.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Plus rien ne te fait peur. Un acteur t'a demandé des conseils pour être plus effrayant.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "geant",
+        "label": "Escape game géant dans toute la ville",
+        "description": "Deux cents équipes, une ville entière, une seule clé en or.",
+        "cost": 60,
+        "minAge": 16,
+        "minLevel": 3,
+        "minHealth": 0,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tu as couru, déchiffré, grimpé. Tes jambes ont résolu autant d'énigmes que ta tête.",
+            "effects": {
+              "health": 2,
+              "happiness": 4,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Un indice était caché dans un jardin public. Tu as fouillé une vraie poubelle. C'était la mauvaise.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as suivi un indice jusqu'à l'autre bout de {ville}. Le suivant était à côté du départ.",
+            "effects": {
+              "health": 1,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait subir un interrogatoire de vingt minutes à un passant qui n'avait rien à voir avec le jeu.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es allié{e} avec une équipe rivale pour l'énigme finale. Vous partagez maintenant un groupe de discussion très actif.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Ton équipe a gagné devant deux cents autres. On vous a remis une clé en or.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 3
+            },
+            "minLevel": 4,
+            "trophy": "Grand Maître de l'évasion",
+            "signal": "victoire"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zoo",
+    "title": "Zoo",
+    "icon": "pawprint.fill",
+    "category": "sorties",
+    "description": "Regarder des animaux qui te regardent aussi.",
+    "minAge": 3,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "visite",
+        "label": "Visite du zoo",
+        "description": "Girafes, lions, suricates, et un panda qui dort.",
+        "cost": 25,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as passé une heure devant les suricates, qui ont passé une heure devant toi.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 2,
+            "text": "Le panda dormait. Tu as payé pour voir un panda dormir. Tu ne regrettes rien.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un singe t'a lancé quelque chose. Tu préfères ne pas savoir quoi.",
+            "effects": {
+              "happiness": -3,
+              "looks": -1
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es perdu{e} entre les reptiles et les oiseaux. Un paon a fini par te montrer la sortie.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Un perroquet t'a dit « bonjour ». Tu lui as répondu. Vous avez discuté dix minutes.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "animal",
+            "key": "visite_5"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as appris que les hippopotames ne savent pas nager. Ça a changé ta vision du monde.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu connais le nom de chaque animal. Le soigneur des girafes te fait un clin d'œil.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "soigneur",
+        "label": "Soigneur d'un jour",
+        "description": "Bottes, seau, et des animaux qui n'ont rien demandé.",
+        "cost": 150,
+        "minAge": 10,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as nourri les girafes. Leur langue est bleue, longue et pleine d'enthousiasme.",
+            "effects": {
+              "happiness": 5
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 2,
+            "text": "Tu as nettoyé l'enclos des éléphants. Un éléphant produit beaucoup. Vraiment beaucoup.",
+            "effects": {
+              "health": 1,
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un lama t'a craché dessus. Le soigneur a dit que c'était une marque d'affection. Il mentait.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Une chèvre naine a mangé ton badge, ton gant et un bout de ta manche.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Un manchot t'a pincé la main. Ça fait étonnamment mal.",
+            "effects": {
+              "health": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "doigt pincé",
+              "years": 1,
+              "healthPerYear": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Un bébé loutre s'est endormi dans tes mains. Tu n'as plus bougé pendant une heure.",
+            "effects": {
+              "happiness": 7
+            },
+            "signal": "animal",
+            "key": "soigneur_6"
+          },
+          {
+            "chance": 1,
+            "text": "Le zoo te propose de revenir comme bénévole. La girafe semble d'accord.",
+            "effects": {
+              "happiness": 6,
+              "karma": 2
+            },
+            "minLevel": 3,
+            "trophy": "Ami des girafes",
+            "signal": "sommet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "theatre",
+    "title": "Théâtre",
+    "icon": "theatermasks.fill",
+    "category": "sorties",
+    "description": "Des gens qui crient très fort des choses écrites il y a longtemps.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "spectateur",
+        "label": "Aller voir une pièce",
+        "description": "Portes qui claquent et quiproquos.",
+        "cost": 30,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Portes qui claquent, oncle caché dans le placard, quiproquos. Tu as ri aux bons moments.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Deux heures sans entracte. Tu as découvert de nouvelles positions assises.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ton téléphone a sonné pendant la scène la plus émouvante. Ta sonnerie, c'est un canard.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as applaudi à la fin du premier acte en croyant que c'était fini. Toute la salle a suivi par politesse.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un acteur a oublié son texte et improvisé un monologue sur les poireaux. Meilleur moment de la soirée.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu repères la doublure du rôle principal et tu lui fais un compliment à la sortie. Elle est très touchée.",
+            "effects": {
+              "happiness": 3,
+              "karma": 2
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "troupe",
+        "label": "Monter sur scène avec une troupe amateur",
+        "description": "Répétitions le mardi, représentation à la salle des fêtes.",
+        "cost": 80,
+        "minAge": 10,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tu jouais l'arbre numéro 2. Tu as été un arbre très convaincant.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu avais une réplique. Tu l'as dite. Bien. Tu as eu des frissons.",
+            "effects": {
+              "happiness": 4,
+              "looks": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Trou de mémoire total. Tu as récité la recette des crêpes avec beaucoup d'intensité.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "signal": "honte",
+            "key": "troupe_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait tomber le décor principal au deuxième acte. Le château était en carton, heureusement.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Les répétitions t'ont soudé{e} à la troupe. Vous vous appelez par vos noms de personnages.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Rôle principal. Ovation à la salle des fêtes : huit personnes debout, dont ta famille.",
+            "effects": {
+              "happiness": 6,
+              "looks": 2
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "festival_theatre",
+        "label": "Jouer dans un festival de théâtre",
+        "description": "Un mois de tracts, de chaleur et de salles minuscules.",
+        "cost": 400,
+        "minAge": 16,
+        "minLevel": 3,
+        "minHealth": 0,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tu as joué devant onze personnes, dont trois qui s'étaient trompées de salle. Elles sont restées.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as distribué des tracts toute la journée, en costume de Napoléon, sous 35 degrés.",
+            "effects": {
+              "health": -1,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Il a plu pendant ta représentation en plein air. Ton maquillage a coulé comme une tragédie grecque.",
+            "effects": {
+              "happiness": -3,
+              "looks": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Personne n'est venu. Tu as joué pour la technicienne lumière. Elle a beaucoup aimé.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as partagé un appartement avec six comédiens. Vous en êtes ressortis amis et sans dignité.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Un critique a écrit que tu étais « la révélation du festival ». Tu gardes l'article dans ton portefeuille.",
+            "effects": {
+              "happiness": 8,
+              "looks": 2
+            },
+            "minLevel": 4,
+            "trophy": "Révélation du festival",
+            "signal": "victoire",
+            "key": "festival_theatre_6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "festival",
+    "title": "Festival",
+    "icon": "sun.max.fill",
+    "category": "sorties",
+    "description": "De la musique, de la poussière et des toilettes douteuses.",
+    "minAge": 12,
+    "maxAge": null,
+    "perYear": 1,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "journee",
+        "label": "Une journée de festival",
+        "description": "Dix groupes, un pain-saucisse, zéro ombre.",
+        "cost": 60,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Dix groupes, de la poussière, un pain-saucisse. Tu as chanté jusqu'à ne plus avoir de voix.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as vu ton groupe préféré… sur l'écran géant, depuis la file des toilettes.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as perdu tes amis à 15 heures. Retrouvailles à la fermeture, près du stand de crêpes.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Coup de soleil historique. La forme exacte de ton tee-shirt est imprimée sur ta peau.",
+            "effects": {
+              "health": -2,
+              "looks": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu avais oublié ton billet. Tu as écouté le festival depuis le parking.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu as dansé avec une bande d'inconnus déguisés en fruits. Tu es devenu{e} la banane.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu connais tous les raccourcis du site et l'emplacement des toilettes propres. Tu es une légende vivante.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "camping",
+        "label": "Trois jours en camping au festival",
+        "description": "Tente, boue, musique, deux heures de sommeil par nuit.",
+        "cost": 180,
+        "minAge": 16,
+        "minLevel": 1,
+        "minHealth": 20,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Trois jours de musique, deux heures de sommeil. Tu es rentré{e} sale, épuisé{e} et ravi{e}.",
+            "effects": {
+              "health": -3,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Ta tente s'est envolée la première nuit. Tu as dormi chez quatre inconnus, devenus tes amis.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Il a plu trois jours. Le festival est devenu une piscine de boue. Tes chaussures y sont restées.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as dormi dans la mauvaise tente. Ses occupants étaient surpris, mais polis.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es tordu la cheville dans un trou de boue en dansant.",
+            "effects": {
+              "health": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "cheville foulée",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as gardé le bracelet du festival au poignet en rentrant.",
+            "effects": {
+              "happiness": 2
+            },
+            "key": "camping_6"
+          },
+          {
+            "chance": 1,
+            "text": "Ton campement est devenu le QG du festival : tonnelle, guirlandes, réchaud. Des inconnus viennent y prendre le petit déjeuner.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "vip",
+        "label": "Festival en pass VIP",
+        "description": "Toilettes propres, vue sur scène et bracelet doré.",
+        "cost": 500,
+        "minAge": 18,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Espace VIP : toilettes propres, champagne et vue sur la scène. Tu as un peu honte d'aimer autant ça.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as croisé une chanteuse célèbre au bar VIP. Tu lui as dit « J'adore ce que vous faites ». Elle a dit merci. Grand moment.",
+            "effects": {
+              "happiness": 5
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le « pass VIP » donnait accès à un barnum au fond du parking, avec une glacière.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Un vigile t'a refoulé{e} de ton propre espace VIP parce que ton bracelet était à l'envers.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es ennuyé{e} dans l'espace VIP et tu es retourné{e} dans la foule. C'était mieux.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Nuit en coulisses avec les artistes. Tu es sur la photo de groupe, au fond, un peu flou{e}.",
+            "effects": {
+              "happiness": 7
+            },
+            "minLevel": 3,
+            "trophy": "Backstage permanent",
+            "signal": "sommet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stand_up",
+    "title": "Stand-up",
+    "icon": "music.mic",
+    "category": "sorties",
+    "description": "Rire des autres, ou faire rire les autres. Ou essayer.",
+    "minAge": 14,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "spectateur",
+        "label": "Aller voir un spectacle",
+        "description": "Un humoriste, un micro, et toi au premier rang.",
+        "cost": 25,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "L'humoriste était drôle. Tu as ri. Tu as même fait un bruit de phoque à un moment.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Assis{e} au premier rang, tu as servi de cible à l'humoriste pendant vingt minutes.",
+            "effects": {
+              "happiness": 2
+            },
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "L'humoriste a raconté sa rupture pendant une heure. Moins un spectacle qu'une thérapie.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as crié une réponse à une question qui n'en attendait pas. L'humoriste a eu une très bonne réplique. Pas toi.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "L'humoriste t'a demandé ce que tu faisais dans la vie et en a tiré dix minutes de blagues.",
+            "effects": {
+              "happiness": 3
+            },
+            "key": "spectateur_5"
+          },
+          {
+            "chance": 1,
+            "text": "Tu sens les blagues qui vont tomber à plat avant qu'elles tombent. Tu es devenu{e} critique.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 2
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "scene_ouverte",
+        "label": "Monter sur scène à une scène ouverte",
+        "description": "Cinq minutes, un micro, aucune garantie.",
+        "cost": 0,
+        "minAge": 16,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Cinq minutes de blagues. Trois rires, dont un sincère. Tu reviens la semaine prochaine.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Ta blague sur ton dentiste a fait rire. Celle sur les impôts, beaucoup moins.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Silence total. On entendait le frigo du bar. Tu as remercié le frigo.",
+            "effects": {
+              "happiness": -5
+            },
+            "bad": true,
+            "signal": "honte",
+            "key": "scene_ouverte_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as lu tes blagues sur ton téléphone, luminosité au minimum. Cinq minutes à plisser les yeux.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un autre débutant t'a proposé d'écrire ensemble. Vous êtes nuls à deux, mais plus vite.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Toute la salle a ri, même le barman blasé. On t'a proposé un vrai passage de vingt minutes.",
+            "effects": {
+              "happiness": 6
+            },
+            "minLevel": 3,
+            "signal": "victoire"
+          }
+        ]
+      },
+      {
+        "id": "solo",
+        "label": "Jouer ton propre spectacle",
+        "description": "Une heure de toi sur scène, ton nom sur l'affiche.",
+        "cost": 300,
+        "minAge": 18,
+        "minLevel": 3,
+        "minHealth": 0,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Une heure de spectacle rien qu'à toi. La salle était à moitié pleine ou à moitié vide, selon ton humeur.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tes parents sont venus. Ils ont ri à chaque blague, même celles qui parlaient d'eux.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 2
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Une critique en ligne dit : « On a ri une fois, en sortant ». Tu l'as lue quarante fois.",
+            "effects": {
+              "happiness": -5
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "La salle avait aussi été louée à une chorale. Vous avez partagé la soirée. C'était étrange.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 2
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fini la soirée au bar avec le premier rang. Il a fallu qu'on te dise trois fois que tu étais drôle pour que tu y croies.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Complet trois soirs de suite. Un producteur t'attend à la sortie avec un contrat.",
+            "effects": {
+              "happiness": 8,
+              "money": 2500
+            },
+            "minLevel": 4,
+            "trophy": "Rire d'or",
+            "signal": "victoire",
+            "key": "solo_6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "brunch",
+    "title": "Brunch",
+    "icon": "cup.and.saucer.fill",
+    "category": "sorties",
+    "description": "Un petit déjeuner qui a fait la grasse matinée.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 3,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "maison",
+        "label": "Brunch maison",
+        "description": "Pancakes, œufs et beaucoup de vaisselle.",
+        "cost": 15,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Pancakes, œufs brouillés, jus d'orange. Tu as mangé comme quatre et dormi comme un loir.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Ton premier pancake était raté. Le deuxième aussi. Le troisième avait la forme exacte de la France.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait sauter le pancake trop fort. Il est resté collé au plafond.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "casse",
+            "key": "maison_3"
+          },
+          {
+            "chance": 1,
+            "text": "Les œufs brouillés étaient si brouillés qu'ils sont devenus une omelette, puis une semelle.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "{ami} a débarqué avec des croissants. Tu as compris que c'était le meilleur moment de ta semaine.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tes œufs bénédicte sont parfaits. On réserve ton dimanche des semaines à l'avance.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "friend": 2
+              }
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "cafe",
+        "label": "Brunch dans un café à la mode",
+        "description": "Avocat, pain au levain et latte en forme de cœur.",
+        "cost": 35,
+        "minAge": 12,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Avocat sur pain au levain, latte en forme de cœur. Trente-cinq euros pour un toast. Il était bon.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Une heure de queue pour un brunch. Le temps d'être servi{e}, c'était l'heure du goûter.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as photographié ton assiette si longtemps que le serveur a proposé de la tenir.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "On t'a proposé du lait d'avoine, de soja, de riz ou de noisette. Tu voulais juste un chocolat chaud normal.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu as partagé ta grande table avec une bande très drôle. Ils t'ont invité{e} à leur prochain brunch.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le serveur connaît ta commande et te garde la table près de la fenêtre. Tu te sens dans un film.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "palace",
+        "label": "Brunch de palace à volonté",
+        "description": "Homard, fontaine de chocolat, pâtisseries à l'infini.",
+        "cost": 120,
+        "minAge": 14,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Buffet infini : homard, pâtisseries, fontaine de chocolat. Tu as mangé jusqu'à ressembler à un ballon.",
+            "effects": {
+              "health": -2,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as voulu rentabiliser. Tu as rentabilisé. Tu le regrettes un peu.",
+            "effects": {
+              "health": -3,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as rempli ton sac de mini-viennoiseries. Un serveur t'a regardé{e} faire, sans un mot. Le regard suffisait.",
+            "effects": {
+              "happiness": -3,
+              "karma": -1
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Ta manche est passée dans la fontaine de chocolat. Ton pull est maintenant un dessert.",
+            "effects": {
+              "happiness": -2,
+              "looks": -1
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as aidé une vieille dame à atteindre les éclairs. Elle t'a raconté sa vie de cascadeuse.",
+            "effects": {
+              "happiness": 4,
+              "karma": 1,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le chef pâtissier t'a fait goûter une création en avant-première. Tu as un peu pleuré.",
+            "effects": {
+              "happiness": 6
+            },
+            "minLevel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foire",
+    "title": "Fête foraine",
+    "icon": "balloon.fill",
+    "category": "sorties",
+    "description": "Le sucre, le gasoil et les néons qui clignotent.",
+    "minAge": 4,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "maneges",
+        "label": "Manèges et barbe à papa",
+        "description": "Autos tamponneuses, pêche aux canards, churros.",
+        "cost": 20,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Autos tamponneuses, pêche aux canards, churros. Tu sens le sucre et le gasoil. Le bonheur.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as gagné une peluche géante à la pêche aux canards. Elle est plus grande que toi et un peu inquiétante.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "victoire"
+          },
+          {
+            "chance": 1,
+            "text": "Trente euros au stand de la pince pour une peluche à deux euros. Tu ne l'as pas eue.",
+            "effects": {
+              "happiness": -3,
+              "money": -30
+            },
+            "bad": true,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait le manège qui secoue juste après trois churros. Ta journée a basculé.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as gagné un poisson rouge. Tu l'as appelé Churros. Il te regarde avec dignité.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "animal",
+            "key": "maneges_5"
+          },
+          {
+            "chance": 1,
+            "text": "Aux autos tamponneuses, tu es une légende : esquives parfaites, chocs millimétrés. Les enfants t'admirent.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "tir",
+        "label": "Stand de tir à la carabine",
+        "description": "Trois plombs, des ballons, une peluche à gagner.",
+        "cost": 10,
+        "minAge": 8,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Trois tirs, trois ballons manqués. Tu soupçonnes la carabine d'avoir le canon tordu. Tu as sûrement raison.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 2,
+            "text": "Tu as éclaté deux ballons. Le forain t'a donné une petite peluche à qui il manque un œil.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as tiré sur la cible du stand d'à côté.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Le forain a dit « joli coup » sur un ton qui laissait penser le contraire.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait équipe avec une personne inconnue pour viser. Vous avez gagné une girafe en peluche, en garde alternée.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as tout éclaté. Le forain t'a remis la peluche géante en grimaçant et t'a prié de ne pas revenir.",
+            "effects": {
+              "happiness": 7
+            },
+            "minLevel": 3,
+            "trophy": "Œil de lynx",
+            "signal": "victoire"
+          }
+        ]
+      },
+      {
+        "id": "frisson",
+        "label": "Le manège qui tourne à l'envers",
+        "description": "Trois minutes la tête en bas, monté par un forain qui bâille.",
+        "cost": 12,
+        "minAge": 12,
+        "minLevel": 1,
+        "minHealth": 30,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Trois minutes la tête en bas. Tes organes ont changé de place, puis sont revenus.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Toute ta monnaie est tombée de tes poches en plein looping. Des enfants l'ont ramassée en dessous.",
+            "effects": {
+              "happiness": 1,
+              "money": -10
+            },
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as marché de travers pendant vingt minutes en descendant.",
+            "effects": {
+              "health": -1,
+              "happiness": -1
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as crié « Arrêtez tout ! » pendant tout le tour. Le forain a ajouté un tour, rien que pour toi.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es cogné la tête contre le harnais.",
+            "effects": {
+              "health": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "bosse à la tête",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait le tour sans tenir la barre, en mangeant une pomme d'amour. Le forain t'a offert le suivant.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          },
+          {
+            "chance": 0.08,
+            "text": "Le manège a fait un bruit inquiétant au troisième tour.",
+            "effects": {
+              "death": "dans un manège de fête foraine monté un peu trop vite"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "aquarium",
+    "title": "Aquarium",
+    "icon": "fish.fill",
+    "category": "sorties",
+    "description": "La mer, mais derrière une vitre et avec une boutique de souvenirs.",
+    "minAge": 3,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "visite",
+        "label": "Visite de l'aquarium",
+        "description": "Requins, méduses et poissons-clowns.",
+        "cost": 22,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Requins, méduses, poissons-clowns. Tu es resté{e} hypnotisé{e} devant les méduses une demi-heure.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 2,
+            "text": "Le tunnel sous l'eau t'a donné l'impression de marcher dans la mer. Une raie te regardait de haut.",
+            "effects": {
+              "happiness": 3
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as tapé sur la vitre. Tout le monde t'a regardé{e}, y compris le poulpe.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Il y avait tellement de monde que tu as surtout vu des nuques. Et quelques poissons entre deux.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Un poulpe t'a fixé{e} dix minutes à travers la vitre. Tu as eu l'impression qu'il lisait dans tes pensées.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 1
+            },
+            "signal": "animal",
+            "key": "visite_5"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as appris que chez les hippocampes, c'est le papa qui porte les bébés. Tu l'as raconté à tout le monde pendant une semaine.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu reconnais chaque espèce et tu fais la visite aux enfants égarés. Le personnel t'adore.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 3,
+              "karma": 1
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "plongee",
+        "label": "Plongée dans le bassin aux requins",
+        "description": "Combinaison, bouteille, et des requins plutôt polis.",
+        "cost": 180,
+        "minAge": 14,
+        "minLevel": 2,
+        "minHealth": 40,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as nagé parmi les requins. Ils t'ont complètement ignoré{e}. Rassurant ou vexant, tu hésites.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 2,
+            "text": "Une tortue géante est passée à vingt centimètres de toi, très lentement, comme une reine.",
+            "effects": {
+              "happiness": 5
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as paniqué en voyant un requin et tu es remonté{e} comme un bouchon. C'était un mérou.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Ton masque a pris l'eau. Tu as vu un requin flou et beaucoup d'eau salée.",
+            "effects": {
+              "health": -1,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es éraflé le genou sur le faux corail.",
+            "effects": {
+              "health": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "genou écorché",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Les visiteurs t'ont photographié{e} derrière la vitre. Tu leur as fait coucou avec beaucoup de bulles.",
+            "effects": {
+              "happiness": 3
+            },
+            "key": "plongee_6"
+          },
+          {
+            "chance": 1,
+            "text": "Un requin-nourrice s'est posé à côté de toi pour une sieste. Les visiteurs derrière la vitre ont applaudi.",
+            "effects": {
+              "happiness": 8
+            },
+            "minLevel": 3,
+            "trophy": "Ami des requins",
+            "signal": "sommet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "opera",
+    "title": "Opéra",
+    "icon": "music.note",
+    "category": "sorties",
+    "description": "Trois heures en italien, quelqu'un meurt à la fin.",
+    "minAge": 10,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "poulailler",
+        "label": "Place au poulailler",
+        "description": "Tout en haut, les chanteurs ont la taille d'un petit pois.",
+        "cost": 25,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu étais si haut que les chanteurs ressemblaient à des petits pois. Mais quelle voix, ces petits pois.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 2,
+            "text": "L'opéra était en italien, les sous-titres en allemand. Tu as tout compris : quelqu'un meurt à la fin.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Endormi{e} au deuxième acte, réveillé{e} en sursaut par une note aiguë. Ton voisin aussi.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "La soprano a tenu une note pendant quarante secondes. Ta patience, beaucoup moins.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pleuré à l'air final sans savoir pourquoi. La musique, elle, savait.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu fredonnes les airs avant qu'ils commencent. Les habitués te lancent des regards approbateurs.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 3
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "loge",
+        "label": "Loge de première avec jumelles",
+        "description": "Velours rouge, dorures et macarons à l'entracte.",
+        "cost": 200,
+        "minAge": 14,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Velours rouge, dorures, jumelles. Tu as observé la salle plus que la scène. La salle était passionnante.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "À l'entracte, tu as mangé un macaron au prix d'un repas. Il était presque à la hauteur.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait tomber tes jumelles dans la fosse d'orchestre. Elles ont atterri à côté du tuba.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Ta voisine de loge a commenté la mise en scène à voix basse. Pas assez basse.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 2
+          },
+          {
+            "chance": 1,
+            "text": "Dans la loge voisine, un passionné de 90 ans t'a raconté toutes les productions qu'il a vues depuis 1952.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 2,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Au salut, le ténor t'a fait un signe de la main. À toi. Tu en es sûr{e}.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3,
+            "key": "loge_6"
+          }
+        ]
+      },
+      {
+        "id": "figurant",
+        "label": "Figuration dans une production",
+        "description": "Un costume, une lance en carton, trois heures sans bouger.",
+        "cost": 0,
+        "minAge": 16,
+        "minLevel": 3,
+        "minHealth": 0,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Rôle du soldat numéro 14. Tu as tenu ta lance en carton avec une conviction admirable.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "On t'a payé{e} pour rester immobile trois heures sur scène. Le métier le plus zen du monde.",
+            "effects": {
+              "happiness": 3,
+              "money": 80
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as éternué pendant l'air le plus célèbre. Le chef d'orchestre a tourné la tête.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "signal": "honte",
+            "key": "figurant_3"
+          },
+          {
+            "chance": 1,
+            "text": "Ton costume de paysan médiéval grattait tellement que tu as dansé une gigue involontaire.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 3
+          },
+          {
+            "chance": 1,
+            "text": "En coulisses, la soprano t'a offert un bonbon à la menthe et son amitié.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le metteur en scène t'a confié une note chantée. Une seule. Tu l'as tenue parfaitement.",
+            "effects": {
+              "happiness": 8
+            },
+            "minLevel": 4,
+            "trophy": "Figurant immortel",
+            "signal": "sommet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quiz_bar",
+    "title": "Quiz au bar",
+    "icon": "pencil",
+    "category": "sorties",
+    "description": "Savoir des choses inutiles, enfin récompensé.",
+    "minAge": 16,
+    "maxAge": null,
+    "perYear": 3,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "equipe",
+        "label": "Quiz entre amis",
+        "description": "Un stylo, une feuille, un nom d'équipe ridicule.",
+        "cost": 5,
+        "minAge": 0,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Quatrièmes sur douze. Une place honorable, et pas de lot.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu étais la seule personne de ton équipe à connaître la capitale du Burkina Faso. Gloire éternelle.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as défendu avec une certitude totale une réponse fausse. Ton équipe t'a fait confiance. Grave erreur.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "friend": -1
+              }
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Vous vous êtes appelés « Les Cerveaux ». Vous avez fini derniers. L'animateur l'a beaucoup souligné.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu savais que les loutres dorment en se tenant la main. Ça n'a servi à rien, mais c'est beau.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "L'équipe d'à côté t'a recruté{e} pour la semaine prochaine. Te voilà agent libre du quiz.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Victoire ! Le lot : un bon d'achat de 50 euros et le droit de choisir le nom de la prochaine soirée.",
+            "effects": {
+              "happiness": 5,
+              "money": 50
+            },
+            "minLevel": 3,
+            "signal": "victoire",
+            "key": "equipe_7"
+          }
+        ]
+      },
+      {
+        "id": "championnat",
+        "label": "Championnat régional de quiz",
+        "description": "Buzzers, chronomètre et gens qui connaissent la liste des papes.",
+        "cost": 25,
+        "minAge": 0,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tes adversaires connaissent la liste des papes par cœur. Tu as sauvé l'honneur sur les dessins animés.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Demi-finale ! Éliminé{e} sur une question de pêche à la mouche. Tu étudieras la pêche à la mouche.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Trou noir sur une question facile. Le public a soupiré à l'unisson.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Ton adversaire trichait avec un téléphone dans la manche. Personne ne t'a cru{e}.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as passé la pause à comparer tes connaissances inutiles avec un passionné de drapeaux. Coup de foudre amical.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Titre régional ! Tu as répondu à la dernière question avant que l'animateur ait fini de la lire.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 3,
+              "money": 500
+            },
+            "minLevel": 4,
+            "trophy": "Encyclopédie sur pattes",
+            "signal": "victoire",
+            "key": "championnat_6"
+          }
+        ]
+      }
+    ]
+  }
+]

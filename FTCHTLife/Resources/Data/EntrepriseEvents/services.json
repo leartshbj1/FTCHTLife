@@ -1,0 +1,1153 @@
+[
+  {
+    "id": "ent_ser_0001",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "pressing"
+    ],
+    "text": "Un client vient chercher son costume gris au pressing {entreprise}. Il ressort rose fluo et deux tailles plus petit.",
+    "choices": [
+      {
+        "label": "Le rembourser",
+        "cost": 1500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il prend l'argent. Son fils de huit ans prend le costume, qui lui va à merveille.",
+            "business": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer la mode",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le rose rétréci devient tendance. Des gens t'apportent leurs costumes exprès.",
+            "business": {
+              "cash": 5000,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Personne ne veut du rose rétréci. Le client raconte l'histoire à chaque mariage où il est invité.",
+            "business": {
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser l'étiquette",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'étiquette dit « laver à la main, avec tendresse ». Il a gagné, et il le sait.",
+            "business": {
+              "reputation": -4
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Il expose le costume dans la vitrine de son magasin, sous un panneau : « Voilà ce qu'ils font ».",
+      "business": {
+        "reputation": -8
+      }
+    }
+  },
+  {
+    "id": "ent_ser_0002",
+    "kind": "absurde",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "pressing"
+    ],
+    "text": "En vidant les poches d'un manteau, tu trouves une carte au trésor de {ville}. La croix est pile sur ta boutique.",
+    "choices": [
+      {
+        "label": "Creuser sous la boutique",
+        "cost": 2000,
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Une boîte en fer pleine de vieux billets. Un collectionneur te les rachète à prix d'or.",
+            "business": {
+              "cash": 9000
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu débouches dans la cave du voisin. Il est dedans. Il n'est pas content.",
+            "business": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rendre la carte",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "C'était le jeu de piste d'anniversaire de sa fille. Elle cherchait ta boutique depuis trois jours.",
+            "business": {
+              "reputation": 4
+            },
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre la carte",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un chasseur de trésor te l'achète, puis revient creuser ta vitrine la nuit même.",
+            "business": {
+              "cash": -1500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0003",
+    "kind": "opportunite",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "cabinet_conseil"
+    ],
+    "text": "Une grande entreprise paie {entreprise} pour un audit. Ta conclusion tient en deux mots, « faire mieux », mais ils attendent 80 pages.",
+    "choices": [
+      {
+        "label": "Faire 80 pages",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu remplis 80 pages de flèches. Le PDG pleure d'émotion à la page 47.",
+            "business": {
+              "cash": 20000,
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un stagiaire remarque que les pages 12 et 64 sont identiques. Il le dit en réunion.",
+            "business": {
+              "cash": 5000,
+              "reputation": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une seule page",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« Faire mieux », en police 72. Le conseil d'administration est sidéré, puis convaincu.",
+            "business": {
+              "cash": 15000,
+              "reputation": 10,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils paient au prorata. Une page.",
+            "business": {
+              "cash": 800
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sous-traiter à {ami}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{ami} rend un rapport d'une sincérité terrible : « Votre boîte est nulle ». Ils adorent la franchise.",
+            "business": {
+              "cash": 12000
+            },
+            "effects": {
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0004",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "cabinet_conseil"
+    ],
+    "conditions": {
+      "minAnnees": 1
+    },
+    "text": "Un client découvre que la mission facturée par {entreprise} consistait surtout à lui recommander une autre mission de {entreprise}.",
+    "choices": [
+      {
+        "label": "Offrir la mission",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il accepte, puis te recommande de ne plus jamais l'appeler.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Facturer l'analyse",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il paie l'analyse du problème que tu as toi-même créé. C'est presque beau.",
+            "business": {
+              "cash": 6000
+            },
+            "effects": {
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Il raconte tout à un journal économique. Titre : « Le conseil du conseil ».",
+            "business": {
+              "reputation": -12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le refiler à {concurrent}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu envoies ce client furieux chez {concurrent}. Il les épuise en deux semaines.",
+            "business": {
+              "elan": 10
+            },
+            "effects": {
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0005",
+    "kind": "absurde",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "pompes_funebres"
+    ],
+    "text": "Un défunt très farceur a exigé que {entreprise} diffuse des rires enregistrés à la fin de son éloge funèbre.",
+    "choices": [
+      {
+        "label": "Respecter sa volonté",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La salle rit, pleure, puis rit encore. La plus belle cérémonie de l'année à {ville}.",
+            "business": {
+              "reputation": 8,
+              "elan": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La famille ignorait la clause. La veuve te fixe pendant tout le buffet.",
+            "business": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couper le son",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il avait prévu le coup : une deuxième enceinte, cachée sous les couronnes, prend le relais.",
+            "business": {
+              "reputation": 3
+            },
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire voter la famille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vote à main levée : égalité parfaite. On rit à moitié.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0006",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "pompes_funebres"
+    ],
+    "text": "{concurrent} lance une offre « deux enterrements pour le prix d'un ». Tes clients hésitent, et se regardent en coin.",
+    "choices": [
+      {
+        "label": "Baisser tes prix",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu brades le marbre. Tu tiens la cadence, mais tu ne dors plus.",
+            "business": {
+              "cash": -4000,
+              "elan": 5
+            },
+            "effects": {
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Miser sur le sur-mesure",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tes cercueils personnalisés font fureur. Un client commande la forme de sa voiture de sport.",
+            "business": {
+              "cash": 6000,
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un client veut un cercueil en forme de cercueil, mais en plus grand. Tu n'as rien gagné.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Alerter la mairie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La mairie juge l'offre « de mauvais goût ». Ils la renomment « duo éternel ».",
+            "business": {
+              "elan": -5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La mairie ne voit aucun problème. Le maire réserve aussitôt pour lui et sa belle-mère.",
+            "business": {
+              "elan": -6
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "L'offre marche. Des couples de retraités planifient ensemble leur départ. Chez {concurrent}.",
+      "business": {
+        "cash": -3000,
+        "elan": -10
+      }
+    }
+  },
+  {
+    "id": "ent_ser_0007",
+    "kind": "opportunite",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "pompes_funebres"
+    ],
+    "minNiveau": 1,
+    "unique": true,
+    "text": "Un vieux milliardaire veut que {entreprise} organise ses funérailles de son vivant, « pour voir ». Il veut des feux d'artifice et un orchestre de jazz.",
+    "choices": [
+      {
+        "label": "Organiser la fête",
+        "cost": 4000,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il s'amuse tellement qu'il réserve déjà la deuxième édition pour l'an prochain.",
+            "business": {
+              "cash": 20000,
+              "reputation": 6,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il trouve le jazz trop gai et ne paie qu'une partie. Il veut du jazz triste.",
+            "business": {
+              "cash": 2000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser par principe",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il appelle {concurrent}. La fête fait la une avec des dauphins gonflables.",
+            "business": {
+              "elan": -5
+            },
+            "effects": {
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0008",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "toilettage_chiens"
+    ],
+    "text": "Un caniche sort de chez {entreprise} avec exactement la même coupe que son maître. Le maître ne trouve pas ça drôle.",
+    "choices": [
+      {
+        "label": "Offrir la séance",
+        "cost": 600,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il accepte. Le caniche, lui, n'a jamais été aussi fier.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Coiffer le maître aussi",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils posent en coupe assortie. La photo fait le tour de {ville}.",
+            "business": {
+              "reputation": 6,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il t'attaque pour atteinte à sa frange.",
+            "business": {
+              "cash": -3000,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier la ressemblance",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu sors un miroir. Ils se regardent. Le silence est total.",
+            "business": {
+              "reputation": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0009",
+    "kind": "absurde",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "toilettage_chiens"
+    ],
+    "text": "Un client amène chez {entreprise} son « chien » pour un toilettage complet. C'est très clairement un mouton.",
+    "choices": [
+      {
+        "label": "Faire le toilettage",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu le tonds. Avec les quatre kilos de laine, {mere} te tricote trois pulls.",
+            "business": {
+              "cash": 1000
+            },
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le mouton s'échappe et ravage la boutique. Le client jure que « d'habitude, il est calme ».",
+            "business": {
+              "cash": -2000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Révéler la vérité",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le client s'effondre : il a payé une fortune pour ce « chien de race rare ».",
+            "business": {
+              "reputation": 2
+            },
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Créer le tarif mouton",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu inventes le tarif « mouton », trois fois plus cher. Il paie, soulagé de savoir enfin.",
+            "business": {
+              "cash": 1500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0010",
+    "kind": "opportunite",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "toilettage_chiens"
+    ],
+    "minNiveau": 1,
+    "text": "Une animatrice télé veut confier à {entreprise} son chihuahua, Prince, juste avant un concours de beauté canine.",
+    "choices": [
+      {
+        "label": "Sortir le grand jeu",
+        "cost": 800,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Prince gagne. L'animatrice te remercie à l'antenne en écorchant ton nom.",
+            "business": {
+              "reputation": 10,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Prince perd face à un bouledogue. L'animatrice accuse ton shampoing en direct.",
+            "business": {
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comme d'habitude",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Prince finit troisième. Elle dit « pas mal », ce qui chez elle est presque de l'amour.",
+            "business": {
+              "cash": 1000,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0011",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "auto_ecole"
+    ],
+    "text": "Un élève de {entreprise} rate son permis pour la neuvième fois. Il a renversé l'inspecteur. À pied, sur le parking, avant l'examen.",
+    "choices": [
+      {
+        "label": "Le rembourser",
+        "cost": 1000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il s'inscrit chez {concurrent}. Tu leur souhaites bon courage, sincèrement.",
+            "business": {
+              "reputation": 3
+            },
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Offrir des heures",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il réussit au dixième essai. L'inspecteur vient à la fête, en minerve.",
+            "business": {
+              "reputation": 8,
+              "elan": 5
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Il emboutit ta voiture-école. Puis la deuxième. Il progresse, mais dans la destruction.",
+            "business": {
+              "cash": -6000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Conseiller le vélo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il part furieux, à vélo. Il percute un inspecteur. Le même.",
+            "business": {
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0012",
+    "kind": "absurde",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "auto_ecole"
+    ],
+    "text": "Le nouvel inspecteur du permis de {ville} n'accepte que les candidats capables de chanter l'hymne régional. Il n'existe pas d'hymne régional.",
+    "choices": [
+      {
+        "label": "Composer un hymne",
+        "cost": 1000,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton hymne émeut l'inspecteur aux larmes. Taux de réussite : 92 %.",
+            "business": {
+              "reputation": 10,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il le trouve « trop commercial » et recale tes élèves au refrain.",
+            "business": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire à la préfecture",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La préfecture répond au bout de huit mois. En chanson. Personne ne comprend la décision.",
+            "business": {
+              "reputation": -2
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre sa retraite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il part à la retraite deux ans plus tard. Son remplaçant exige des claquettes.",
+            "business": {
+              "elan": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0013",
+    "kind": "opportunite",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "auto_ecole"
+    ],
+    "text": "{entreprise} peut racheter une flotte de voitures-écoles d'occasion pour presque rien. Elles sentent toutes un peu la peur.",
+    "choices": [
+      {
+        "label": "Racheter la flotte",
+        "cost": 5000,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les voitures roulent très bien. L'odeur s'en va au bout de trois ans.",
+            "business": {
+              "elan": 15,
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une des voitures freine toute seule chaque fois que la radio passe du yodel.",
+            "business": {
+              "cash": -1500,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier encore",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le vendeur baisse son prix, à condition que tu reprennes aussi sa caravane.",
+            "business": {
+              "cash": 2000,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il vend tout à {concurrent}. Leurs élèves sentent la peur, maintenant.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder tes vieilles voitures",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elles tiennent encore. La boîte de vitesses fait juste un bruit de chewing-gum mâché.",
+            "business": {
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0014",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "pressing"
+    ],
+    "minNiveau": 1,
+    "text": "La machine de nettoyage à sec de {entreprise} tombe en panne la veille de la saison des mariages. Soixante robes de mariée attendent.",
+    "choices": [
+      {
+        "label": "Louer une machine",
+        "cost": 4000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu tiens les délais. Une mariée t'invite à son mariage. Tu passes la soirée à détacher le buffet.",
+            "business": {
+              "reputation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout laver à la main",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Soixante robes dans ta baignoire. Tu n'as plus de bras, mais des clientes ravies.",
+            "business": {
+              "reputation": 8
+            },
+            "effects": {
+              "health": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Une robe rétrécit. La mariée se marie quand même, en apnée.",
+            "business": {
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prévenir les clientes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elles se marient en robes « vintage, légèrement tachées ». Cinq te maudissent sur trois générations.",
+            "business": {
+              "reputation": -8
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Des mariées furieuses font la queue devant le pressing. L'une a gardé son bouquet pour te le lancer au visage.",
+      "business": {
+        "cash": -3000,
+        "reputation": -10
+      }
+    }
+  },
+  {
+    "id": "ent_ser_0015",
+    "kind": "absurde",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "cabinet_conseil"
+    ],
+    "minNiveau": 2,
+    "text": "Un client demande à {entreprise} de l'aider à choisir la couleur de sa nouvelle salle de pause. Budget prévu : six mois et quatre consultants.",
+    "choices": [
+      {
+        "label": "Accepter la mission",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Après six mois d'ateliers, tu recommandes le beige. Ils pleurent de soulagement.",
+            "business": {
+              "cash": 15000,
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tes consultants ne s'entendent pas. L'un démissionne, l'autre repeint tout en vert.",
+            "business": {
+              "cash": 5000,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Conclure en une heure",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu dis « beige » au bout d'une heure. Trop rapide, donc suspect : ils filent chez {concurrent}, qui dira beige en six mois.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre un séminaire",
+        "cost": 2000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le séminaire « Couleur et Sens » a lieu à la montagne. Tout le monde revient bronzé. La salle est toujours blanche.",
+            "business": {
+              "cash": 9000
+            },
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0016",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "pompes_funebres"
+    ],
+    "text": "Un corbillard de {entreprise} est flashé à 140 km/h sur l'autoroute, défunt à bord. La photo est dans le journal.",
+    "choices": [
+      {
+        "label": "Payer l'amende",
+        "cost": 800,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu paies. Le chauffeur explique qu'il « voulait faire plaisir au client, un ancien pilote ».",
+            "business": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Invoquer ses dernières volontés",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La famille confirme : il adorait la vitesse. Tu deviens les pompes funèbres « des vrais ».",
+            "business": {
+              "elan": 15,
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La famille dément : il avait peur des voitures. Et de l'autoroute. Et de toi, apparemment.",
+            "business": {
+              "reputation": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contester la photo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le radar a parfaitement capturé le chauffeur, hilare, en train de faire un signe de la main.",
+            "business": {
+              "reputation": -6
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "La photo circule. Des clients demandent maintenant « la formule turbo ».",
+      "business": {
+        "elan": 5,
+        "reputation": -5
+      }
+    }
+  },
+  {
+    "id": "ent_ser_0017",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "toilettage_chiens"
+    ],
+    "conditions": {
+      "minAnnees": 2
+    },
+    "text": "Un chien s'échappe de {entreprise} en plein shampoing et traverse {ville} couvert de mousse. Une vidéo le montre sur le parvis de la mairie.",
+    "choices": [
+      {
+        "label": "Partir à sa recherche",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu le retrouves dans une fontaine, propre comme jamais. Son maître ne saura rien.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La télé locale le retrouve avant toi. Ton nom est prononcé trois fois au journal.",
+            "business": {
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prévenir son maître",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il accourt et passe par la fontaine. Il arrive plus mousseux que son chien.",
+            "business": {
+              "reputation": 2
+            },
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "En faire une pub",
+        "cost": 1000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« Chez {entreprise}, même la fuite est propre. » La mairie réclame des droits d'image.",
+            "business": {
+              "reputation": 3,
+              "elan": 15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_ser_0018",
+    "kind": "crise",
+    "secteurs": [
+      "services"
+    ],
+    "types": [
+      "auto_ecole"
+    ],
+    "conditions": {
+      "patronAbsent": true
+    },
+    "text": "Comme tu as un autre boulot, plus personne ne vérifie rien à {entreprise}. Un élève s'est fabriqué son propre permis à la photocopieuse.",
+    "choices": [
+      {
+        "label": "Le dénoncer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta loyauté envers la loi est saluée. Ta clientèle étudiante, elle, se fait plus rare.",
+            "business": {
+              "reputation": 4,
+              "elan": -5
+            },
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reprendre les choses en main",
+        "cost": 1500,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu installes un pointage par empreinte digitale. L'élève t'offre trois faux permis en souvenir.",
+            "business": {
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Épuisé{e} par tes deux boulots, tu t'endors pendant une leçon de créneau.",
+            "business": {
+              "reputation": 2
+            },
+            "effects": {
+              "health": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer les yeux",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Personne ne remarque rien. Pour l'instant.",
+            "effects": {
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il se fait contrôler avec un permis à ton nom. Littéralement à ton nom.",
+            "business": {
+              "cash": -3000,
+              "reputation": -12
+            },
+            "effects": {
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Trois autres élèves l'imitent. La photocopieuse a plus d'heures de conduite que tes moniteurs.",
+      "business": {
+        "reputation": -8
+      }
+    }
+  }
+]

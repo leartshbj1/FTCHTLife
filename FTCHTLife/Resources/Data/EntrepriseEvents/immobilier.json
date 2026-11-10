@@ -1,0 +1,792 @@
+[
+  {
+    "id": "ent_imm_0001",
+    "kind": "crise",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "agence_immobiliere"
+    ],
+    "text": "Le jour de la signature, un acheteur découvre que la « vue imprenable » annoncée par {entreprise} donne sur un mur. Imprenable, c'est vrai.",
+    "choices": [
+      {
+        "label": "Accorder une remise",
+        "cost": 2000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'acheteur signe et peint une fenêtre en trompe-l'œil sur le mur. Il la trouve plus belle que la vraie.",
+            "business": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre l'annonce",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le notaire confirme : le mur est effectivement imprenable. L'acheteur signe en grommelant.",
+            "business": {
+              "cash": 4000,
+              "reputation": -5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'acheteur annule et publie la photo du mur à côté de ton annonce.",
+            "business": {
+              "cash": -1500,
+              "reputation": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Abattre le mur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le mur tombe. Derrière, il y a un autre mur.",
+            "business": {
+              "reputation": -3
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "La photo du « mur imprenable » devient la blague préférée de toutes les agences de {ville}.",
+      "business": {
+        "reputation": -8
+      }
+    }
+  },
+  {
+    "id": "ent_imm_0002",
+    "kind": "absurde",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "agence_immobiliere"
+    ],
+    "text": "Un appartement en vente chez {entreprise} a reçu deux cents visites. Personne n'achète : les gens viennent pour câliner le chat du vendeur.",
+    "choices": [
+      {
+        "label": "Mettre le chat en avant",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Annonce : « Appartement avec chat, chat non inclus ». Un acheteur surenchérit pour le chat. Le vendeur hésite.",
+            "business": {
+              "cash": 5000,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le chat part vivre chez la sœur du vendeur. Les visites s'arrêtent net.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Visiter sans le chat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les visiteurs demandent où est le chat et repartent tristes. Un seul reste. Il achète.",
+            "business": {
+              "cash": 3000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Adopter un chat d'agence",
+        "cost": 300,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton chat d'agence vend trois appartements en un mois. Il refuse de partager la commission.",
+            "business": {
+              "cash": 6000
+            },
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_imm_0003",
+    "kind": "crise",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "agence_immobiliere"
+    ],
+    "conditions": {
+      "minAnnees": 2
+    },
+    "text": "Un vendeur découvre que {entreprise} a illustré son annonce avec les photos d'un autre appartement. Plus grand. Avec piscine.",
+    "choices": [
+      {
+        "label": "Retirer l'annonce",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les 34 acheteurs intéressés repartent, déçus par la réalité.",
+            "business": {
+              "reputation": 2,
+              "elan": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Installer une piscine",
+        "cost": 5000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Une piscine gonflable au salon. L'acheteur trouve ça « audacieux » et signe.",
+            "business": {
+              "cash": 9000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La piscine gonflable fuit chez le voisin du dessous. Lui n'est pas vendeur.",
+            "business": {
+              "cash": -3000,
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parler d'inspiration",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu évoques une « inspiration architecturale ». Le vendeur évoque un avocat.",
+            "business": {
+              "reputation": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_imm_0004",
+    "kind": "opportunite",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "agence_immobiliere"
+    ],
+    "minNiveau": 1,
+    "text": "Un riche excentrique veut acheter un immeuble entier de {ville} via {entreprise}, à condition de repeindre toutes les portes en jaune canari.",
+    "choices": [
+      {
+        "label": "Convaincre la copropriété",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Oui à l'unanimité moins une voix. Le seul opposant vit désormais derrière la dernière porte grise.",
+            "business": {
+              "cash": 20000,
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La copropriété refuse par principe. L'excentrique s'achète un phare à la place.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Promettre n'importe quoi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu promets tout, puis découvres que les portes sont classées. Il t'attaque, en jaune.",
+            "business": {
+              "cash": -2000,
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui proposer un château",
+        "cost": 1000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il achète le château et repeint tout en jaune. Les monuments historiques pleurent.",
+            "business": {
+              "cash": 25000
+            },
+            "effects": {
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il trouve le château « trop château ». Tu as payé l'essence pour rien.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_imm_0005",
+    "kind": "crise",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "agence_immobiliere"
+    ],
+    "text": "Un client de {entreprise} découvre que la maison qu'il vient d'acheter est déjà habitée, par un monsieur très gentil installé là depuis 1974.",
+    "choices": [
+      {
+        "label": "Négocier son départ",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il part s'installer au bord de la mer. Il t'envoie des coquillages tous les mois.",
+            "business": {
+              "reputation": 4
+            },
+            "effects": {
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il prend l'argent et emménage dans la cabane du jardin.",
+            "business": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une colocation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le client et le monsieur deviennent inséparables. Belote tous les jeudis.",
+            "business": {
+              "reputation": 6
+            },
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler un avocat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'avocat découvre que le monsieur est le propriétaire légal. Tu as vendu une maison qui n'était pas à vendre.",
+            "business": {
+              "cash": -10000,
+              "reputation": -12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_imm_0006",
+    "kind": "crise",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "promoteur_immobilier"
+    ],
+    "text": "Les futurs habitants d'une résidence de {entreprise} découvrent que la « salle de sport privée » de la brochure est un escalier.",
+    "choices": [
+      {
+        "label": "Créer une vraie salle",
+        "cost": 10000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils ont maintenant une salle de sport. Ils y vont en ascenseur.",
+            "business": {
+              "reputation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre l'escalier",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« Le meilleur exercice du monde. » Un coach en fait une vidéo, et les ventes repartent.",
+            "business": {
+              "elan": 10,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les habitants fondent l'Association des escaliers mensongers.",
+            "business": {
+              "reputation": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Poser un tapis de course",
+        "cost": 1500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un seul tapis, sur le palier du troisième. Il y a la queue tous les matins.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Les habitants descendent l'escalier en manifestation. C'est leur seule activité sportive.",
+      "business": {
+        "reputation": -8
+      }
+    }
+  },
+  {
+    "id": "ent_imm_0007",
+    "kind": "opportunite",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "promoteur_immobilier"
+    ],
+    "minNiveau": 1,
+    "text": "Un terrain vague de {ville} est à vendre pour une bouchée de pain. Le vendeur mentionne juste « un petit problème de sangliers ».",
+    "choices": [
+      {
+        "label": "Acheter le terrain",
+        "cost": 6000,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les sangliers déménagent. Tes appartements se vendent en un mois.",
+            "business": {
+              "cash": 25000,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les sangliers défendent leur terrain. Ton géomètre passe l'après-midi perché dans un arbre.",
+            "business": {
+              "cash": -2000,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Consulter la mairie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La mairie classe le terrain « zone sanglier protégée ». Tu as bien fait de demander.",
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir un parc animalier",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le parc aux sangliers attire les familles. Te voilà promoteur de loisirs malgré toi.",
+            "business": {
+              "cash": 10000,
+              "reputation": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les sangliers détestent être regardés. Ils le font savoir aux visiteurs.",
+            "business": {
+              "cash": -3000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_imm_0008",
+    "kind": "crise",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "promoteur_immobilier"
+    ],
+    "minNiveau": 2,
+    "text": "Les nouveaux appartements de {entreprise} ont des cloisons si fines qu'on entend les voisins réfléchir.",
+    "choices": [
+      {
+        "label": "Isoler les murs",
+        "cost": 12000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les murs sont épais désormais. Les voisins se sentent seuls et demandent une porte communicante.",
+            "business": {
+              "reputation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre de la convivialité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« Ne plus jamais être seul. » Les célibataires adorent.",
+            "business": {
+              "cash": 8000,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Depuis l'appartement témoin, les acheteurs entendent tes commerciaux se moquer de l'argument.",
+            "business": {
+              "reputation": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Offrir des bouchons d'oreilles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Chaque acheteur reçoit des bouchons brodés au nom de {entreprise}. Touchant, mais insuffisant.",
+            "business": {
+              "cash": -500,
+              "reputation": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_imm_0009",
+    "kind": "crise",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "promoteur_immobilier"
+    ],
+    "conditions": {
+      "enDifficulte": true
+    },
+    "text": "Faute d'argent, le chantier d'une résidence de {entreprise} est à l'arrêt. Les futurs propriétaires campent sous les grues avec des pancartes et un barbecue.",
+    "choices": [
+      {
+        "label": "Emprunter à la banque",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La banque prête avec un sourire de requin. Les grues redémarrent.",
+            "business": {
+              "cash": 15000,
+              "dette": 18000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre l'appartement témoin",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu vends l'appartement témoin. Les acheteurs devront imaginer leur futur logement.",
+            "business": {
+              "cash": 6000,
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rejoindre le barbecue",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu partages leurs merguez et leur colère. Ils ignorent que c'est toi, le promoteur.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ils le découvrent au dessert.",
+            "business": {
+              "reputation": -8
+            },
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Le campement devient un petit village, avec son marché du dimanche. Toujours pas d'immeuble.",
+      "business": {
+        "reputation": -10,
+        "elan": -15
+      }
+    }
+  },
+  {
+    "id": "ent_imm_0010",
+    "kind": "absurde",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "promoteur_immobilier"
+    ],
+    "minNiveau": 3,
+    "text": "Un magnat du yaourt veut que {entreprise} lui construise une tour plus haute que celle de son frère. Il ne sait pas où vit son frère.",
+    "choices": [
+      {
+        "label": "Construire très haut",
+        "cost": 10000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Du sommet, on aperçoit le frère : il habite en face, et il construit déjà plus haut.",
+            "business": {
+              "cash": 30000,
+              "elan": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le chantier dépasse les nuages, puis le budget.",
+            "business": {
+              "cash": -10000,
+              "dette": 10000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retrouver le frère",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les deux frères se réconcilient et annulent la tour. Ça te fait une belle jambe.",
+            "effects": {
+              "karma": 4,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui vendre une colline",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une tour normale sur une très grande colline. Il trouve ça malin.",
+            "business": {
+              "cash": 15000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_imm_0011",
+    "kind": "crise",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "agence_immobiliere"
+    ],
+    "text": "Un agent de {entreprise} s'est trompé de clé et a fait visiter la maison d'un couple, en plein dîner. Ils n'avaient jamais mis leur maison en vente.",
+    "choices": [
+      {
+        "label": "Envoyer des excuses",
+        "cost": 800,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Fleurs, vin et petit mot. Ils ne vendent toujours pas, mais ils sourient.",
+            "business": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Leur faire une offre",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ils réfléchissent pendant le dessert et acceptent. Tu as vendu une maison qui n'était pas à vendre.",
+            "business": {
+              "cash": 10000,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Ils lâchent le chien. Il est minuscule, mais très déterminé.",
+            "business": {
+              "reputation": -4
+            },
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Plaider l'erreur d'adresse",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils te croient. Le visiteur, lui, a adoré la maison et laisse son numéro au cas où.",
+            "business": {
+              "elan": 5
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Le couple raconte l'histoire à tout le quartier. Plus personne n'ouvre la porte à un costume-cravate.",
+      "business": {
+        "reputation": -8
+      }
+    }
+  },
+  {
+    "id": "ent_imm_0012",
+    "kind": "opportunite",
+    "secteurs": [
+      "immobilier"
+    ],
+    "types": [
+      "agence_immobiliere"
+    ],
+    "maxNiveau": 2,
+    "unique": true,
+    "text": "{mere} veut vendre la maison familiale en passant par {entreprise}. Elle exige une commission « familiale », c'est-à-dire nulle.",
+    "choices": [
+      {
+        "label": "Renoncer à la commission",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Maison vendue en deux semaines. Tu gagnes zéro euro et un dîner de remerciement trop salé.",
+            "business": {
+              "reputation": 4
+            },
+            "effects": {
+              "karma": 2,
+              "relationships": {
+                "mother": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Facturer la commission",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle paie, et te le rappellera à chaque Noël pendant vingt ans.",
+            "business": {
+              "cash": 6000
+            },
+            "effects": {
+              "relationships": {
+                "mother": -8
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle négocie comme une lionne et ne paie que la moitié.",
+            "business": {
+              "cash": 3000
+            }
+          }
+        ]
+      },
+      {
+        "label": "La dissuader de vendre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle garde la maison. Ta chambre d'enfant reste intacte, posters compris.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "mother": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -18,7 +18,21 @@ struct Effets: Codable, Equatable {
     var newFriend: Bool?
     /// Si présent, le joueur meurt avec cette cause (ex. "écrasé par un distributeur de boissons").
     var death: String?
-
+    /// Drapeaux (souvenirs) posés / retirés sur le joueur. Voir docs/REPERCUSSIONS.md.
+    var setFlags: [String]?
+    var clearFlags: [String]?
+    /// Ids de suites (Data/Repercussions) à programmer.
+    var followUps: [String]?
+    /// XP gagnée (ou perdue) par compétence, ex. {"cuisine": 6}. Voir docs/COMPETENCES.md.
+    var skills: [String: Int]?
+    /// Module amour/crime/santé (prison, maladies, grossesse…). Voir FTCHTLife/Systems.
+    var vie: VieEffets?
+    /// Module casier judiciaire. Voir docs/CASIER.md.
+    var casier: CasierEffet?
+    /// Réputation de la famille. Voir docs/REPUTATION_FAMILLE.md.
+    var familyRep: [String: Int]?
+    /// Marques des rêves de vie. Voir docs/reves-format.md.
+    var dreamMarks: [String]?
 }
 
 struct ConditionsEvenement: Codable, Equatable {
@@ -33,6 +47,11 @@ struct ConditionsEvenement: Codable, Equatable {
     var tags: [String]?
     /// Tags que le joueur ne doit pas avoir.
     var excludeTags: [String]?
+    /// Drapeaux (souvenirs) que le joueur doit tous avoir / ne doit pas avoir. Voir docs/REPERCUSSIONS.md.
+    var flags: [String]?
+    var excludeFlags: [String]?
+    /// Niveau minimum (1 à 5) exigé par compétence, ex. {"guitare": 3}. Voir docs/COMPETENCES.md.
+    var skills: [String: Int]?
 }
 
 struct Issue: Codable, Equatable {
@@ -45,6 +64,8 @@ struct Issue: Codable, Equatable {
 struct Choix: Codable, Equatable {
     var label: String
     var outcomes: [Issue]
+    /// Choix caché : visible seulement si le joueur a ces niveaux de compétence. Voir docs/COMPETENCES.md.
+    var requiresSkill: [String: Int]?
 }
 
 struct Evenement: Codable, Identifiable, Equatable {
