@@ -1,0 +1,4636 @@
+[
+  {
+    "id": "suc_fam_0001",
+    "phase": "guerre",
+    "weight": 3,
+    "text": "Un cousin dont personne n'a jamais entendu parler débarque avec un arbre généalogique plastifié. Il se place lui-même sur une branche ajoutée au stylo.",
+    "choices": [
+      {
+        "label": "Vérifier l'arbre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'arbre est faux : il a recopié celui des Habsbourg et changé les prénoms. Il repart avec son plastique.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'arbre est vrai. Il est vraiment ton cousin, et il compte bien revenir.",
+            "effects": {
+              "happiness": -4
+            },
+            "next": [
+              "suc_fams_0016"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Lui offrir un café",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il boit le café, prend le sucrier en souvenir et disparaît. Tu ne le reverras qu'au prochain décès.",
+            "effects": {
+              "money": -40,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il pleure dans ton café, raconte une enfance difficile et repart avec {pct:2}. Tu ne sais pas comment c'est arrivé.",
+            "effects": {
+              "moneyPct": -2,
+              "karma": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lâcher le chien",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le chien le lèche. Ils repartent ensemble. Tu as perdu un chien et gagné la paix.",
+            "effects": {
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le cousin s'enfuit en laissant son arbre. Tu l'encadres dans les toilettes.",
+            "effects": {
+              "happiness": 7,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0002",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "minTension": 30,
+      "roles": [
+        "egal",
+        "favori",
+        "seul"
+      ]
+    },
+    "text": "Pendant que tu pleurais aux obsèques, {rival} a vendu {bien} en douce. Les nouveaux propriétaires repeignent déjà le portail en orange.",
+    "choices": [
+      {
+        "label": "Prendre un avocat",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton avocat sent l'argent comme un requin sent un nageur. Audience fixée.",
+            "effects": {
+              "money": -4000
+            },
+            "next": [
+              "suc_fams_0001"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "maison_vendue"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Exiger la moitié",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{Rival} te verse ta moitié en soupirant, comme si c'était un cadeau.",
+            "effects": {
+              "moneyPct": 25,
+              "rival": 10
+            },
+            "setFlags": [
+              "maison_vendue"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "{Rival} jure que l'argent a « servi aux frais ». Les frais ont des jantes chromées.",
+            "effects": {
+              "happiness": -8,
+              "rival": 15
+            },
+            "setFlags": [
+              "maison_vendue"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Aller voir les acheteurs",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils t'offrent un sirop et la pendule du salon. C'est plus que ce que {rival} t'a jamais donné.",
+            "effects": {
+              "happiness": 4
+            },
+            "setFlags": [
+              "maison_vendue"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0003",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Tu passes chez {le_defunt} : les serrures ont été changées. Un mot sur la porte : « Accès réservé aux héritiers sérieux. »",
+    "choices": [
+      {
+        "label": "Appeler un serrurier",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le serrurier ouvre en 4 secondes et facture 380 €. Ça te fait réfléchir à ta propre porte.",
+            "effects": {
+              "money": -380,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le serrurier refuse : « Je connais {rival_prenom}, c'est moi qui ai posé la serrure. »",
+            "effects": {
+              "money": -90,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer par la chatière",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu passes jusqu'aux épaules. Les pompiers finissent le travail devant tout le quartier.",
+            "effects": {
+              "happiness": -8,
+              "looks": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu passes. Tu as la souplesse d'un héritier motivé.",
+            "effects": {
+              "happiness": 6,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sonner poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{Rival} ouvre en peignoir de {le_defunt}. Vous vous regardez longtemps.",
+            "effects": {
+              "happiness": -4,
+              "rival": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0004",
+    "phase": "guerre",
+    "weight": 3,
+    "text": "Partage des objets. Il reste la pendule. Elle est moche, elle sonne faux, elle fait coucou alors qu'il n'y a pas d'oiseau. Tout le monde la veut.",
+    "choices": [
+      {
+        "label": "La réclamer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu l'as. Elle sonne à 3 h 17 chaque nuit. Tu ne sais pas pourquoi, tu n'oses pas demander.",
+            "effects": {
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu l'as. Un antiquaire en propose 2 800 €. Ton cousin l'apprend et ne s'en remet pas.",
+            "effects": {
+              "money": 2800,
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "La laisser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{Rival} part avec, aux anges. Le soir même, elle tombe du mur. Tu n'y es pour rien, officiellement.",
+            "effects": {
+              "happiness": 5,
+              "karma": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un tirage",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu perds à pierre-feuille-ciseaux contre un enfant de 6 ans. Il ne voulait même pas la pendule.",
+            "effects": {
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu gagnes. Tu l'installes dans le garage, face au mur, comme une punition.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0005",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "fratrie": true
+    },
+    "text": "{frere} et toi vous disputez le service à raclette. Il manque deux poêlons, mais c'est une question de principe.",
+    "choices": [
+      {
+        "label": "Le garder",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu l'as. Tu n'invites plus personne, donc tu manges des raclettes seul{e}, à six poêlons.",
+            "effects": {
+              "happiness": 2,
+              "relationships": {
+                "sibling": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garde alternée",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le service change de maison tous les mois, avec un carnet de liaison. Il reste des traces de fromage dedans.",
+            "effects": {
+              "happiness": 3,
+              "rival": -10,
+              "relationships": {
+                "sibling": 4
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "{frere} oublie de le rendre. Ça fait trois hivers.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "sibling": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "En racheter un neuf",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dépenses 60 €. {frere} dit que ce n'est « pas pareil, il n'a pas d'âme ». C'est vrai, et ça t'énerve.",
+            "effects": {
+              "money": -60,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0006",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Il faut décider qui garde l'urne de {le_defunt}. Elle trône sur la table, et tout le monde évite de la regarder.",
+    "choices": [
+      {
+        "label": "La prendre chez toi",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu la poses sur la cheminée. Elle te juge chaque fois que tu commandes une pizza.",
+            "effects": {
+              "happiness": -2,
+              "karma": 3
+            },
+            "setFlags": [
+              "a_garde_l_urne"
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu la prends. {Rival} dit que tu « séquestres » {le_defunt}. L'affaire n'est pas finie.",
+            "effects": {
+              "rival": 15
+            },
+            "next": [
+              "suc_fams_0004"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "a_garde_l_urne"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "La laisser à {rival}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{Rival} la met dans le salon, à côté de la télé. Elle regarde le foot tous les dimanches.",
+            "effects": {
+              "rival": -10,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partager les cendres",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une louche chacun. Personne n'avait prévu de récipient. Tu repars avec un pot de confiture très sérieux.",
+            "effects": {
+              "happiness": -4,
+              "karma": 2,
+              "rival": -5
+            },
+            "setFlags": [
+              "a_garde_l_urne"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0007",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "minTension": 25
+    },
+    "text": "À 3 h du matin, tu vois un camion devant chez {le_defunt}. {Rival} déménage les meubles à la lampe frontale.",
+    "choices": [
+      {
+        "label": "Appeler la police",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La police arrive à 9 h, après le camion. Elle note « déménagement ». Une plainte est ouverte quand même.",
+            "effects": {
+              "happiness": -3
+            },
+            "next": [
+              "suc_fams_0014"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Aider à porter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu portes le buffet avec {rival}. À la fin, tu glisses le buffet dans ta propre voiture. Bien joué.",
+            "effects": {
+              "health": -3,
+              "money": 900,
+              "rival": 15
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu portes le buffet toute la nuit. Pas même un merci à la fin.",
+            "effects": {
+              "health": -5,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Filmer en silence",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta vidéo est floue mais on reconnaît le canapé. Ton avocat est ravi, ton portefeuille un peu moins.",
+            "effects": {
+              "money": -2000,
+              "moneyPct": 6,
+              "rival": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0008",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "fratrie": true,
+      "minTension": 15
+    },
+    "text": "Repas de famille pour « apaiser les choses ». Au dessert, {frere} lance une part de flan. Le flan rate sa cible et touche une tante.",
+    "choices": [
+      {
+        "label": "Calmer tout le monde",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu fais un discours sur l'amour. On t'écoute, puis on te lance le reste du flan.",
+            "effects": {
+              "happiness": -5,
+              "looks": -1
+            },
+            "next": [
+              "suc_fams_0021"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Ça marche. Tout le monde se rassoit, gêné. La tante garde le flan dans les cheveux par dignité.",
+            "effects": {
+              "happiness": 6,
+              "rival": -15,
+              "relationships": {
+                "sibling": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Riposter au gratin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le gratin vole. C'est la guerre. Quelqu'un filme.",
+            "effects": {
+              "happiness": 5,
+              "rival": 15,
+              "relationships": {
+                "sibling": -10
+              }
+            },
+            "next": [
+              "suc_fams_0021"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Partir avec le dessert",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repars avec la charlotte entière. Personne n'ose te suivre.",
+            "effects": {
+              "happiness": 7,
+              "relationships": {
+                "sibling": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0009",
+    "phase": "guerre",
+    "weight": 3,
+    "text": "Le groupe WhatsApp « Famille ❤️ » est devenu un champ de bataille. 412 messages non lus, dont 37 messages vocaux de ta tante.",
+    "choices": [
+      {
+        "label": "Écrire un long pavé",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton message est brillant. Seule ta tante répond : « Pourquoi tu cries ? » Tu n'as pas mis une majuscule.",
+            "effects": {
+              "happiness": -4,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton message est cité, recadré, transféré. Tu deviens le méchant d'un autre groupe que tu ne connais pas.",
+            "effects": {
+              "happiness": -6,
+              "rival": 10
+            },
+            "next": [
+              "suc_fams_0013"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Quitter le groupe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« {prenom} a quitté le groupe. » Ce message déclenche plus de drames que l'héritage entier.",
+            "effects": {
+              "happiness": 4,
+              "rival": 10
+            },
+            "next": [
+              "suc_fams_0013"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un GIF de chat",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le GIF calme tout le monde pendant 11 minutes. Un record.",
+            "effects": {
+              "happiness": 3,
+              "rival": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0010",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "fratrie": true,
+      "minHostilite": 40
+    },
+    "text": "Depuis la lecture du testament, {frere} ne te parle plus. Les messages passent par votre tante, ou par le chien quand elle n'est pas là.",
+    "choices": [
+      {
+        "label": "Lui écrire une lettre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu écris quatre pages. Réponse : un émoji pouce. Tu analyses ce pouce pendant des semaines.",
+            "effects": {
+              "happiness": -3,
+              "smarts": 1
+            },
+            "next": [
+              "suc_fams_0006"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "fache_avec_fratrie"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Faire pareil",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous ne vous parlez plus. Le chien est épuisé.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "sibling": -10
+              }
+            },
+            "next": [
+              "suc_fams_0006"
+            ],
+            "delay": [
+              1,
+              3
+            ],
+            "setFlags": [
+              "fache_avec_fratrie"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Débarquer chez lui",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La porte se ferme à ton nez, puis se rouvre juste pour te rendre ton pull de 1998. Message reçu.",
+            "effects": {
+              "happiness": -6,
+              "rival": 5
+            },
+            "next": [
+              "suc_fams_0006"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "fache_avec_fratrie"
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "La porte s'ouvre, vous vous regardez, et vous éclatez de rire sans savoir pourquoi. Ce n'est pas fini, mais c'est mieux.",
+            "effects": {
+              "happiness": 8,
+              "rival": -30,
+              "relationships": {
+                "sibling": 10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0011",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "minHostilite": 30,
+      "excludeFlags": [
+        "reconcilie"
+      ]
+    },
+    "text": "{Rival} t'appelle, la voix enrouée : « On pourrait peut-être arrêter, non ? » Tu entends un orchestre derrière, c'est un peu suspect.",
+    "choices": [
+      {
+        "label": "Accepter la paix",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Vous vous retrouvez au café. Personne ne s'excuse, mais tout le monde paie sa part. C'est déjà énorme.",
+            "effects": {
+              "happiness": 10,
+              "rival": -40,
+              "karma": 4
+            },
+            "next": [
+              "suc_fams_0029"
+            ],
+            "delay": [
+              1,
+              2
+            ],
+            "setFlags": [
+              "reconcilie"
+            ]
+          },
+          {
+            "chance": 0.3,
+            "text": "C'était un piège : {rival} voulait juste récupérer la pendule. Tu la donnes quand même, par lassitude.",
+            "effects": {
+              "happiness": -4,
+              "rival": -20
+            }
+          }
+        ]
+      },
+      {
+        "label": "Poser des conditions",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu exiges des excuses écrites. Tu les reçois, sur une serviette en papier. Ça a une valeur juridique, paraît-il.",
+            "effects": {
+              "happiness": 6,
+              "rival": -30
+            },
+            "setFlags": [
+              "reconcilie"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Raccrocher",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu raccroches. L'orchestre aussi s'arrête. Il y avait vraiment un orchestre.",
+            "effects": {
+              "happiness": -2,
+              "rival": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0012",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "En rangeant la bibliothèque de {le_defunt}, une lettre tombe d'un livre de cuisine. Elle commence par « Si tu lis ceci, c'est que tu as enfin ouvert un livre. »",
+    "choices": [
+      {
+        "label": "La lire en entier",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "{Le_defunt} t'explique où sont cachés les bons du Trésor : dans le congélateur, derrière les petits pois.",
+            "effects": {
+              "money": 6000,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La lettre parle surtout de la recette du clafoutis. Elle s'arrête en plein milieu. Il doit y avoir une suite.",
+            "effects": {
+              "happiness": 3
+            },
+            "next": [
+              "suc_fams_0020"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "La montrer à tous",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tout le monde l'interprète à sa façon. Trois versions de la lettre circulent, dont une en alexandrins.",
+            "effects": {
+              "happiness": -3,
+              "rival": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "La brûler",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu la brûles sans la lire. Tu ne dormiras plus jamais tout à fait bien.",
+            "effects": {
+              "happiness": -6,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0013",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Derrière un tableau de cerfs, il y a un coffre-fort. Personne n'a le code. {Le_defunt} notait tout, sauf ça.",
+    "choices": [
+      {
+        "label": "Essayer des dates",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ta date de naissance ne marche pas. Celle du chien, si. Tu prends ça très personnellement.",
+            "effects": {
+              "money": 4000,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Après 300 essais, le coffre se bloque définitivement. Il faut faire venir un spécialiste.",
+            "effects": {
+              "happiness": -4
+            },
+            "next": [
+              "suc_fams_0008"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Faire venir un perceur",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le perceur arrive avec une valise et une moustache. Rendez-vous est pris.",
+            "effects": {
+              "money": -1500
+            },
+            "next": [
+              "suc_fams_0008"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Le laisser fermé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu décides que le mystère vaut plus que le contenu. Tu mens, mais tu le fais bien.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0014",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Le détecteur de métaux de ton neveu sonne au fond du jardin de {le_defunt}, sous le rosier. Toute la famille arrive avec des pelles.",
+    "choices": [
+      {
+        "label": "Creuser tout de suite",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu trouves une boîte en fer. À l'intérieur, une autre boîte. La famille commence à se méfier de toi.",
+            "effects": {
+              "happiness": 3
+            },
+            "next": [
+              "suc_fams_0010"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Attendre la nuit",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu reviens seul{e} à minuit. Ton cousin est déjà là avec une pelle. Vous creusez en silence, côte à côte.",
+            "effects": {
+              "health": -2,
+              "rival": -10
+            },
+            "next": [
+              "suc_fams_0010"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Laisser le rosier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu protèges le rosier. Il fleurit magnifiquement l'année suivante. Tu ne sauras jamais.",
+            "effects": {
+              "happiness": 2,
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0015",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "beneficiaires": [
+        "chat"
+      ]
+    },
+    "text": "{chat} a hérité de tout. Il vit désormais dans {bien} avec un coussin chauffant et une nourrice. Toi, tu as un studio sans chauffage.",
+    "choices": [
+      {
+        "label": "Postuler comme nourrice",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu es embauché{e} : 1 900 € par mois pour brosser {chat}. C'est ton meilleur emploi.",
+            "effects": {
+              "money": 6000,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Refusé{e}. {chat} t'a griffé{e} pendant l'entretien. Le jury était composé du notaire et du chat.",
+            "effects": {
+              "happiness": -6,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contester devant le juge",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le juge rappelle qu'un chat ne peut pas témoigner. Il te donne quand même {pct:10} pour « préjudice moral ».",
+            "effects": {
+              "money": -3000,
+              "moneyPct": 10
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "{chat} assiste à l'audience. Le juge le caresse. C'est perdu.",
+            "effects": {
+              "money": -3000,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rendre visite à {chat}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{chat} te reçoit dans sa chambre, plus grande que ton appartement. Il te laisse une croquette. C'est un geste.",
+            "effects": {
+              "happiness": -2,
+              "karma": 2
+            },
+            "next": [
+              "suc_fams_0025"
+            ],
+            "delay": [
+              2,
+              4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0016",
+    "phase": "guerre",
+    "conditions": {
+      "beneficiaires": [
+        "chat"
+      ]
+    },
+    "text": "Le notaire t'informe que {chat}, héritier de {le_defunt}, va faire construire une piscine. Un chat. Une piscine.",
+    "choices": [
+      {
+        "label": "Exiger des explications",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{notaire} explique que c'est « pour la valeur du bien ». {chat} ne sait pas nager et ça te console un peu.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de gérer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu deviens administrateur des biens du chat. Tu te verses un petit salaire, raisonnable, presque.",
+            "effects": {
+              "moneyPct": 5,
+              "karma": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{chat} renverse ton café sur le contrat. Tout est à refaire, et tu dois repayer le café.",
+            "effects": {
+              "money": -4,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Venir te baigner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu te baignes dans la piscine du chat. Personne ne peut t'en empêcher : le chat ne sait pas appeler la police.",
+            "effects": {
+              "happiness": 8,
+              "health": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0017",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "beneficiaires": [
+        "oeuvre"
+      ]
+    },
+    "text": "{oeuvre} organise un gala de charité avec l'héritage de {le_defunt}. Champagne, homard, et ton invitation est à 250 € la place.",
+    "choices": [
+      {
+        "label": "Payer et y aller",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu manges pour 250 € de petits fours, par principe. Tu as mal au ventre, mais tu es rentré{e} dans tes frais.",
+            "effects": {
+              "money": -250,
+              "health": -2,
+              "happiness": 4
+            },
+            "next": [
+              "suc_fams_0024"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Manifester devant",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu brandis une pancarte « C'EST MON GRATIN ». Un journaliste local te prend en photo.",
+            "effects": {
+              "happiness": 5,
+              "looks": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu es invité{e} à entrer par pitié. Tu bois tout le champagne de ta table.",
+            "effects": {
+              "happiness": 6,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un don",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu donnes 20 €. Ton nom est lu au micro juste après celui de {le_defunt}. Tu ne sais pas quoi en penser.",
+            "effects": {
+              "money": -20,
+              "karma": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0018",
+    "phase": "guerre",
+    "conditions": {
+      "beneficiaires": [
+        "oeuvre"
+      ]
+    },
+    "text": "{oeuvre} inaugure une plaque en l'honneur de {le_defunt}. Le nom est mal orthographié et la photo est celle de quelqu'un d'autre.",
+    "choices": [
+      {
+        "label": "Demander une correction",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "On te répond que la correction coûterait 1 200 €, « donc à prélever sur les dons ». Tu lâches l'affaire.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Corriger au feutre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu corriges la plaque au feutre indélébile. L'œuvre porte plainte contre X. Tu es X.",
+            "effects": {
+              "money": -450,
+              "happiness": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Trouver ça beau",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu décides que {le_defunt} aurait ri. Tu viens chaque année saluer cet inconnu en bronze.",
+            "effects": {
+              "happiness": 5,
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0019",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "beneficiaires": [
+        "inconnu"
+      ]
+    },
+    "text": "À l'enterrement, il y avait un homme en lunettes noires que personne ne connaissait. Il hérite de tout, et il roule maintenant en Porsche.",
+    "choices": [
+      {
+        "label": "Le suivre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu le suis jusqu'à un club de tango. Il danse très bien. Tu ne sais pas si ça explique tout.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu le perds au premier rond-point. Une Porsche, c'est rapide. Ta voiture, c'est ta voiture.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander qui il est",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« J'étais un ami. » Il n'en dit pas plus, mais il te donne une carte de visite en papier épais, et {pct:3} « pour le dérangement ».",
+            "effects": {
+              "moneyPct": 3,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il te répond en italien. Il n'est pas italien.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rayer la Porsche",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu y penses très fort, puis tu rentres chez toi. Le karma, ça se garde.",
+            "effects": {
+              "karma": 4,
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0020",
+    "phase": "guerre",
+    "conditions": {
+      "beneficiaires": [
+        "inconnu"
+      ]
+    },
+    "text": "L'inconnu qui a hérité de {bien} t'invite à son anniversaire. Là-bas. Dans le salon où tu as appris à marcher.",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu y vas avec un cadeau. Il a refait la cuisine. Tu restes poli{e} et tu manges trois parts de gâteau, par vengeance.",
+            "effects": {
+              "happiness": -2,
+              "health": -1
+            },
+            "next": [
+              "suc_fams_0012"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Refuser froidement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il t'envoie quand même une part de gâteau par coursier. Elle est très bonne, c'est insupportable.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Venir avec la famille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous venez à quinze. Vous videz le bar et vous repartez avec les plantes. C'était bien.",
+            "effects": {
+              "happiness": 7,
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0021",
+    "phase": "guerre",
+    "conditions": {
+      "minTension": 15
+    },
+    "text": "Un certain Jean-Marc se présente comme le nouveau compagnon de {le_defunt}. Ils se fréquentaient depuis trois semaines. Il a déjà ses pantoufles dans l'entrée.",
+    "choices": [
+      {
+        "label": "Lui demander des preuves",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il montre 400 photos de randonnées. {Le_defunt} sourit sur toutes. Tu ne savais même pas que {le_defunt} aimait marcher.",
+            "effects": {
+              "happiness": 3,
+              "rival": -5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il n'a aucune preuve, mais un avocat. Il obtient le canapé et le mixeur.",
+            "effects": {
+              "money": -1500,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'adopter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu l'invites à dîner. Il est charmant. Il ne réclame rien, sauf la recette des lasagnes.",
+            "effects": {
+              "happiness": 6,
+              "karma": 3
+            },
+            "next": [
+              "suc_fams_0026"
+            ],
+            "delay": [
+              1,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Jeter les pantoufles",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les pantoufles volent par la fenêtre. Il les récupère en chaussettes, très digne.",
+            "effects": {
+              "happiness": 4,
+              "rival": 10,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0022",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Une voyante appelle : elle a un message de {defunt}. {Le_defunt} « souhaite » que tu lui verses 400 € pour la communication.",
+    "choices": [
+      {
+        "label": "Payer pour écouter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{Le_defunt} dit, par la voyante, que tu dois « faire attention aux pommes ». Tu n'as pas de pommes.",
+            "effects": {
+              "money": -400,
+              "happiness": -2
+            },
+            "next": [
+              "suc_fams_0017"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Le message est étonnamment précis : le livret A est dans la boîte à chaussures. Il y était.",
+            "effects": {
+              "money": 2600,
+              "happiness": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Raccrocher",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle rappelle : « Je savais que vous alliez raccrocher. » Toi aussi, tu le savais.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui poser une colle",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu demandes le surnom secret de {le_defunt}. Elle dit « Bichette ». C'était « le Commandant ». Elle rembourse.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0023",
+    "phase": "guerre",
+    "conditions": {
+      "minHostilite": 50
+    },
+    "text": "Les années passent. {Rival} ne t'adresse toujours pas la parole, sauf pour te souhaiter un bon anniversaire chaque année, par lettre recommandée.",
+    "choices": [
+      {
+        "label": "Répondre en recommandé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous échangez désormais deux recommandés par an. Le facteur suit votre relation comme une série.",
+            "effects": {
+              "money": -12,
+              "happiness": 2
+            },
+            "next": [
+              "suc_fams_0028"
+            ],
+            "delay": [
+              2,
+              4
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Passer à autre chose",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ranges les lettres dans une boîte. La boîte devient grosse. Tu n'en parles à personne.",
+            "effects": {
+              "happiness": 3,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire le premier pas",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sonnes chez {rival}. Il n'y a personne. Tu laisses un pot de confiture. Le lendemain, le pot est revenu, vide. C'est un début.",
+            "effects": {
+              "happiness": 6,
+              "rival": -30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0024",
+    "phase": "guerre",
+    "conditions": {
+      "minTension": 40,
+      "roles": [
+        "egal",
+        "favori",
+        "seul"
+      ]
+    },
+    "text": "{Rival} revient avec un avocat très bronzé qui parle de « vice de forme ». Il ne précise pas lequel.",
+    "choices": [
+      {
+        "label": "Prendre ton avocat",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton avocat est moins bronzé, mais plus méchant. Victoire nette.",
+            "effects": {
+              "money": -5000,
+              "happiness": 8,
+              "rival": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Le vice de forme existait : l'acte a été signé un jour férié. Tu rends {pct:15}.",
+            "effects": {
+              "money": -5000,
+              "moneyPct": -15
+            },
+            "setFlags": [
+              "proces_perdu"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Négocier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu cèdes {pct:8} et la tondeuse. {Rival} repart avec le sourire, l'avocat aussi, pour d'autres raisons.",
+            "effects": {
+              "moneyPct": -8,
+              "rival": -20
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander lequel",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'avocat cherche, ne trouve pas, et facture quand même sa présence à {rival}. Tu savoures.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0025",
+    "phase": "guerre",
+    "conditions": {
+      "fratrie": true,
+      "minHostilite": 30
+    },
+    "text": "Tu remarques que {frere} a découpé ta tête de toutes les photos de famille. Sur l'album de Noël 1994, tu es remplacé{e} par un sapin.",
+    "choices": [
+      {
+        "label": "Découper la sienne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu découpes. Bientôt, l'album ne contient plus que des sapins et la tante Ginette, qui survit à tout.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "sibling": -8
+              },
+              "rival": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Recoller un sourire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu recolles ta tête sur chaque photo, avec un grand sourire découpé dans un magazine. Tout le monde trouve ça flippant.",
+            "effects": {
+              "happiness": 5,
+              "looks": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "En rire ensemble",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu lui envoies la photo du sapin avec « J'ai jamais été aussi bien coiffé{e} ». Réponse : « haha ». C'est le premier mot en un an.",
+            "effects": {
+              "happiness": 6,
+              "rival": -20,
+              "relationships": {
+                "sibling": 6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Pas de réponse. Le lendemain, le sapin est découpé aussi.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0026",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Personne n'arrose les plantes de {le_defunt}. Il y en a 63. Une rumeur dit que l'une d'elles cache quelque chose.",
+    "choices": [
+      {
+        "label": "Tout prendre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton appartement devient une jungle. Dans le ficus, tu trouves 300 € enroulés. Rien dans les 62 autres.",
+            "effects": {
+              "money": 300,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton appartement devient une jungle. Il n'y avait rien. Tu arroses 63 plantes pour rien, pour toujours.",
+            "effects": {
+              "happiness": -3,
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les distribuer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chaque cousin repart avec une plante. C'est le premier partage sans cri de toute la succession.",
+            "effects": {
+              "happiness": 5,
+              "rival": -10,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les laisser mourir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu les laisses. La dernière, un cactus, survit encore aujourd'hui, seule, comme un reproche.",
+            "effects": {
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0027",
+    "phase": "guerre",
+    "text": "La vieille voiture de {le_defunt} reste dans le garage. Elle a 312 000 km, sent le cigare et contient encore une cassette d'accordéon.",
+    "choices": [
+      {
+        "label": "La garder",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu la conduis fièrement. Elle tombe en panne le jour même, en plein carrefour, cassette à fond.",
+            "effects": {
+              "money": -800,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un collectionneur s'arrête au feu et en offre 9 000 €. Il veut surtout la cassette.",
+            "effects": {
+              "money": 9000,
+              "happiness": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "La vendre au poids",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La casse t'en donne 150 €. Tu gardes la cassette. Tu l'écoutes en pleurant dans le bus.",
+            "effects": {
+              "money": 150,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "La donner à {rival}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{Rival} l'accepte avec méfiance. Elle ne démarre qu'avec toi au volant : coup de fil obligatoire à chaque trajet.",
+            "effects": {
+              "rival": -10,
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0028",
+    "phase": "guerre",
+    "conditions": {
+      "minTension": 20
+    },
+    "text": "Ta tante passe dans la maison avec un feutre et écrit ses initiales sous tous les meubles. Même sous le chien, qui dormait.",
+    "choices": [
+      {
+        "label": "Effacer ses initiales",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu frottes toute la nuit. Le feutre était indélébile, la tante aussi.",
+            "effects": {
+              "health": -2,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire les tiennes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Bientôt chaque meuble porte six paires d'initiales. On dirait un registre d'hôtel.",
+            "effects": {
+              "happiness": 3,
+              "rival": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui laisser le chien",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle part avec le chien marqué. Il revient seul trois jours plus tard. Il t'a choisi{e}.",
+            "effects": {
+              "happiness": 7,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0029",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Le voisin avait les clés « pour arroser ». Depuis la mort de {le_defunt}, il a aussi la télé, le barbecue et le vélo d'appartement.",
+    "choices": [
+      {
+        "label": "Récupérer les affaires",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il rend tout, sauf le barbecue : « C'était son souhait. » Tu n'as pas de preuve contraire.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il rend tout, et ajoute une tarte. Il se sentait seul. Tu restes une heure.",
+            "effects": {
+              "happiness": 5,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre le barbecue chez lui",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repars avec son barbecue à lui. Il ne dit rien. Il sait.",
+            "effects": {
+              "happiness": 4,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser couler",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il t'invite à ses grillades l'été. Sur le barbecue de {le_defunt}. C'est une forme d'hommage, si tu plisses les yeux.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0030",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Le vieux chien de {le_defunt} n'est mentionné dans aucun testament. Il regarde la famille se disputer, l'air de dire « et moi ? ».",
+    "choices": [
+      {
+        "label": "L'adopter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il ronfle, il pue, il t'aime. C'est le meilleur héritage, et il ne paie pas d'impôts.",
+            "effects": {
+              "happiness": 10,
+              "money": -300,
+              "karma": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le confier à {rival}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{Rival} accepte pour faire bonne figure. Le chien mange ses chaussures, une par jour, comme un rituel.",
+            "effects": {
+              "rival": -10,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser le chien choisir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le chien va directement vers le notaire. Personne n'ose contester.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0031",
+    "phase": "guerre",
+    "conditions": {
+      "minHostilite": 40
+    },
+    "text": "Noël arrive. Pour la première fois, la famille fait deux réveillons séparés. Le tien a trois invités, celui de {rival} vingt-deux.",
+    "choices": [
+      {
+        "label": "Faire mieux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu commandes un traiteur et un magicien. Tes trois invités applaudissent fort pour compenser.",
+            "effects": {
+              "money": -700,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer chez {rival}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu arrives avec une bûche. Silence. Puis quelqu'un pousse une chaise. Tu restes jusqu'au fromage.",
+            "effects": {
+              "happiness": 6,
+              "rival": -20
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu arrives avec une bûche. On la prend et on te ferme la porte. La bûche, elle, est restée.",
+            "effects": {
+              "happiness": -7
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dormir à 21 h",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dors comme un bébé. Le lendemain, tu lis 200 messages furieux sur les deux réveillons. Tu as bien fait.",
+            "effects": {
+              "happiness": 5,
+              "health": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0032",
+    "phase": "guerre",
+    "conditions": {
+      "supports": [
+        "papier",
+        "serviette"
+      ],
+      "minTension": 25
+    },
+    "text": "{Rival} produit une version « corrigée » du testament, avec des ajouts au crayon de papier. L'écriture ressemble étrangement à la sienne.",
+    "choices": [
+      {
+        "label": "Demander une expertise",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un graphologue est mandaté. Il demande d'abord une avance et un café.",
+            "effects": {
+              "money": -2500
+            },
+            "next": [
+              "suc_fams_0030"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Gommer devant lui",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gommes les ajouts en direct, lentement. {Rival} hurle. Le notaire trouve ça « juridiquement créatif ».",
+            "effects": {
+              "happiness": 7,
+              "rival": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ajouter tes lignes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ajoutes « et la Porsche à {prenom} ». Il n'y a pas de Porsche. Mais maintenant, tout le monde la cherche.",
+            "effects": {
+              "happiness": 5,
+              "karma": -2,
+              "rival": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0033",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Tu allumes l'ordinateur de {le_defunt}. Le mot de passe est « motdepasse ». Il y a 14 onglets ouverts.",
+    "choices": [
+      {
+        "label": "Lire l'historique",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Dernière recherche : « comment déshériter quelqu'un poliment ». Tu ne sauras jamais qui.",
+            "effects": {
+              "happiness": -4,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{Le_defunt} jouait au poker en ligne et a laissé 1 800 € de gains sur un compte. Joli.",
+            "effects": {
+              "money": 1800,
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Formater le disque",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu effaces tout par respect. Dans la famille, on t'accuse d'avoir effacé « le vrai testament ».",
+            "effects": {
+              "rival": 10,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Finir la partie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il y avait une partie d'échecs en cours depuis six mois. Tu la gagnes en son honneur. Ça fait du bien.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0034",
+    "phase": "guerre",
+    "conditions": {
+      "dettes": true
+    },
+    "text": "Bonne nouvelle : avec les dettes de {le_defunt}, personne ne se dispute l'héritage. Mauvaise nouvelle : tout le monde te désigne pour gérer.",
+    "choices": [
+      {
+        "label": "Accepter la charge",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes six mois au téléphone avec des créanciers. L'un d'eux t'invite à son mariage.",
+            "effects": {
+              "happiness": -5,
+              "smarts": 3,
+              "karma": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renoncer à la succession",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu signes la renonciation. Le cousin qui voulait la pendule hérite des dettes avec. Justice.",
+            "effects": {
+              "happiness": 6,
+              "money": -200
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre la pendule",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La fameuse pendule rapporte 1 200 €. Ça bouche un trou. C'était donc son vrai rôle.",
+            "effects": {
+              "money": 1200
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0035",
+    "phase": "guerre",
+    "conditions": {
+      "minTension": 35,
+      "maxHostilite": 85
+    },
+    "text": "Un médiateur familial est désigné. Il arrive avec des post-it de couleur, un bâton de parole et l'air de quelqu'un qui a déjà perdu.",
+    "choices": [
+      {
+        "label": "Jouer le jeu",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu exprimes tes besoins avec un post-it rose. {Rival} déchire le sien. Deuxième séance prévue.",
+            "effects": {
+              "money": -600,
+              "happiness": 2
+            },
+            "next": [
+              "suc_fams_0018"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Voler le bâton",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refuses de rendre le bâton de parole. Tu parles 40 minutes. C'est la meilleure séance de ta vie.",
+            "effects": {
+              "happiness": 8,
+              "rival": 10,
+              "money": -600
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas venir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "En ton absence, tout le monde tombe d'accord : c'est ta faute. Tu reçois le compte rendu par la poste.",
+            "effects": {
+              "happiness": -4,
+              "rival": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0036",
+    "phase": "guerre",
+    "conditions": {
+      "minTension": 20
+    },
+    "text": "{Rival} a fait publier un nouvel avis de décès dans le journal. Son nom y figure en gros. Ton nom n'est même pas dedans.",
+    "choices": [
+      {
+        "label": "Publier le tien",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu publies un avis plus grand, avec photo. Les deux avis se font face dans le journal comme deux tours de garde.",
+            "effects": {
+              "money": -300,
+              "happiness": 4,
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire au journal",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le journal publie un rectificatif : « {prenom} existe aussi. » Tu le découpes et tu l'encadres.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser tomber",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Personne ne lit les avis de décès, sauf ta tante. Elle a tout lu, et elle a pris ta défense. Pour une fois.",
+            "effects": {
+              "happiness": 3,
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0037",
+    "phase": "guerre",
+    "conditions": {
+      "excludeFlags": [
+        "maison_vendue"
+      ],
+      "roles": [
+        "egal",
+        "favori",
+        "seul"
+      ],
+      "minPatrimoine": 50000
+    },
+    "text": "{bien} doit être vidé avant la vente. Il y a 40 ans d'affaires, dont 112 pots de confiture vides et un kayak dans le grenier.",
+    "choices": [
+      {
+        "label": "Vider en famille",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le kayak devient l'objet d'une négociation de quatre heures. Tu repars avec une pagaie.",
+            "effects": {
+              "happiness": -2,
+              "health": -2
+            },
+            "setFlags": [
+              "maison_vendue"
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "En vidant, vous retrouvez vos dessins d'enfants. Tout le monde pleure. La vente se fait dans le calme.",
+            "effects": {
+              "happiness": 7,
+              "rival": -20
+            },
+            "setFlags": [
+              "maison_vendue"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Engager une entreprise",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils jettent tout, y compris l'enveloppe de billets cachée dans le kayak. Tu l'apprendras trop tard.",
+            "effects": {
+              "money": -1800,
+              "moneyPct": 20
+            },
+            "setFlags": [
+              "maison_vendue"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Faire un vide-grenier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu vends les 112 pots à 50 centimes. Ton cousin les rachète tous pour les revendre. Il fait une marge.",
+            "effects": {
+              "money": 56,
+              "moneyPct": 22,
+              "happiness": 4
+            },
+            "setFlags": [
+              "maison_vendue"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0038",
+    "phase": "guerre",
+    "text": "{Le_defunt} collectionnait les nains de jardin. Il y en a 217. Ta cousine affirme que l'un d'eux vaut une fortune.",
+    "choices": [
+      {
+        "label": "Les faire expertiser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'expert soulève chaque nain. Le 143e est en porcelaine allemande ancienne. Ta cousine le savait, elle a déjà mis une option dessus.",
+            "effects": {
+              "money": -200,
+              "moneyPct": 4,
+              "rival": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Aucun ne vaut rien. L'expert repart avec un nain en guise de paiement.",
+            "effects": {
+              "money": -200,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les partager à l'aveugle",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chacun pioche dans un sac. Tu tires le nain pêcheur. Il te ressemble un peu, c'est troublant.",
+            "effects": {
+              "happiness": 4,
+              "rival": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les garder tous",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton jardin devient une armée. Les voisins font des détours. Tu te sens protégé{e}.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0039",
+    "phase": "guerre",
+    "conditions": {
+      "minHostilite": 50
+    },
+    "text": "{Rival} raconte partout que tu as « accéléré » la fin de {le_defunt} en lui offrant une raclette en plein mois d'août.",
+    "choices": [
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu attaques pour diffamation. Ton avocat est ravi : c'est son premier dossier sur le fromage.",
+            "effects": {
+              "money": -3000
+            },
+            "next": [
+              "suc_fams_0023"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Rire publiquement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dis que la raclette en août était l'idée de {le_defunt}. Tout le monde confirme. La rumeur meurt de honte.",
+            "effects": {
+              "happiness": 6,
+              "rival": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Inviter {rival} à une raclette",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Refus. Puis {rival} vient quand même et mange plus que tout le monde. La rumeur s'arrête net.",
+            "effects": {
+              "happiness": 5,
+              "rival": -15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0040",
+    "phase": "guerre",
+    "weight": 2,
+    "conditions": {
+      "roles": [
+        "desherite"
+      ],
+      "beneficiaires": [
+        "enfant",
+        "partenaire",
+        "ami",
+        "inconnu"
+      ]
+    },
+    "text": "Grand gagnant du testament, {beneficiaire} te propose un « petit lot de consolation » : un parapluie, un dé à coudre et une photo dédicacée de {le_defunt}.",
+    "choices": [
+      {
+        "label": "Accepter dignement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le parapluie est très bon. Il t'abritera plus souvent que {le_defunt} ne l'a jamais fait.",
+            "effects": {
+              "happiness": 2,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier un supplément",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu obtiens en plus {pct:5} et le moulin à poivre. Tu ne savais pas que tu voulais le moulin.",
+            "effects": {
+              "moneyPct": 5,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "On te retire le dé à coudre pour te punir. Il te reste le parapluie et la honte.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refuses avec panache. Il pleut en sortant. Tu regrettes le parapluie.",
+            "effects": {
+              "happiness": -3,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0041",
+    "phase": "guerre",
+    "conditions": {
+      "roles": [
+        "seul"
+      ]
+    },
+    "text": "Tu hérites seul{e} de tout, mais six cousins réclament « un petit souvenir ». Le premier veut la maison, à titre de souvenir.",
+    "choices": [
+      {
+        "label": "Donner des babioles",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chacun repart avec un bibelot. Ils te détestent tous de façon égale, ce qui est une forme de paix.",
+            "effects": {
+              "happiness": 2,
+              "rival": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer la porte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les cousins campent dans le jardin deux jours. Puis il pleut. Ils partent.",
+            "effects": {
+              "happiness": 4,
+              "rival": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser une tombola",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Billet à 5 €. Les cousins achètent des dizaines de billets pour gagner leurs propres souvenirs. Tu encaisses.",
+            "effects": {
+              "money": 840,
+              "happiness": 6,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0042",
+    "phase": "guerre",
+    "conditions": {
+      "roles": [
+        "favori"
+      ],
+      "fratrie": true
+    },
+    "text": "Depuis que le testament t'a placé{e} en tête de liste, {frere} t'appelle « le chouchou », même devant ton patron.",
+    "choices": [
+      {
+        "label": "Assumer le titre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais imprimer un t-shirt « LE CHOUCHOU ». {frere} fulmine. Ton patron, lui, t'a augmenté{e}.",
+            "effects": {
+              "happiness": 6,
+              "money": 150,
+              "relationships": {
+                "sibling": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partager un peu",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lui reverses {pct:10}. Un merci du bout des lèvres, puis un nouveau surnom : « le chouchou généreux ».",
+            "effects": {
+              "moneyPct": -10,
+              "rival": -30,
+              "relationships": {
+                "sibling": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'ignorer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le surnom s'use au bout de deux ans. Puis revient. Puis s'use. C'est saisonnier.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0043",
+    "phase": "guerre",
+    "text": "La recette secrète du gratin de {le_defunt} est retrouvée. {Rival} l'a déjà photographiée et l'a mise en vente en ligne à 29,99 €.",
+    "choices": [
+      {
+        "label": "La publier gratuitement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta version gratuite fait 40 000 vues. {Rival} a vendu deux exemplaires, dont un à sa propre mère.",
+            "effects": {
+              "happiness": 7,
+              "rival": 10,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir un restaurant",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu ouvres « Chez {defunt} ». Le gratin est parfait. Tu fermes au bout d'un an, mais quelle année.",
+            "effects": {
+              "money": -6000,
+              "happiness": 8,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le restaurant marche. {Rival} vient incognito avec une moustache et reprend du gratin deux fois.",
+            "effects": {
+              "money": 7000,
+              "happiness": 6,
+              "rival": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer un ingrédient",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais circuler une version avec du curry. Toute la famille la teste. Personne n'ose dire que c'est raté.",
+            "effects": {
+              "happiness": 4,
+              "karma": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0044",
+    "phase": "guerre",
+    "conditions": {
+      "flags": [
+        "a_garde_l_urne"
+      ]
+    },
+    "text": "L'urne a disparu de ta cheminée. À la place, un mot : « {Le_defunt} est en sécurité. » L'écriture est celle de {rival}.",
+    "choices": [
+      {
+        "label": "Négocier la rançon",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{Rival} demande le service en argent contre l'urne. Rendez-vous sur un parking à minuit.",
+            "effects": {
+              "happiness": -3
+            },
+            "next": [
+              "suc_fams_0027"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Voler l'urne en retour",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu récupères l'urne chez {rival} pendant son footing. Vous faites ça depuis des années maintenant. C'est votre lien.",
+            "effects": {
+              "happiness": 5,
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "La laisser où elle est",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu décides que {le_defunt} aimait voyager. Tu envoies une carte postale à l'urne.",
+            "effects": {
+              "happiness": 2,
+              "karma": 2
+            },
+            "clearFlags": [
+              "a_garde_l_urne"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0045",
+    "phase": "guerre",
+    "conditions": {
+      "flags": [
+        "maison_vendue"
+      ]
+    },
+    "text": "Les nouveaux propriétaires de {bien} ont peint la façade en vert pomme et installé une statue de flamant rose. Ils t'invitent à la crémaillère.",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils ont gardé ta chambre d'enfant en « salle de yoga ». Tu fais une salutation au soleil en pleurant.",
+            "effects": {
+              "happiness": -2,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer {rival}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "C'est {rival} qui a vendu, après tout. {Rival} y va et revient avec un flamant rose miniature et une petite déprime.",
+            "effects": {
+              "happiness": 5,
+              "rival": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer devant en voiture",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ralentis devant, tous les jours. Ils finissent par te faire coucou. Ça ne t'aide pas.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0046",
+    "phase": "guerre",
+    "conditions": {
+      "flags": [
+        "reconcilie"
+      ]
+    },
+    "text": "Vous étiez réconciliés. Puis {rival} t'a rendu un Tupperware qui n'était pas le tien. Le tien avait un couvercle bleu.",
+    "choices": [
+      {
+        "label": "En faire une affaire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le Tupperware relance toute la guerre. Personne ne se souvient du début, mais tout le monde se souvient du couvercle.",
+            "effects": {
+              "happiness": -5,
+              "rival": 25
+            },
+            "clearFlags": [
+              "reconcilie"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Garder ce Tupperware",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il est meilleur que le tien. Tu ne dis rien. Tu as gagné en silence.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui en offrir dix",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu offres un lot de dix boîtes. {Rival} pleure. Personne n'avait jamais pensé à ses besoins en conservation.",
+            "effects": {
+              "money": -35,
+              "happiness": 4,
+              "rival": -15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0047",
+    "phase": "guerre",
+    "conditions": {
+      "fratrie": true,
+      "flags": [
+        "fache_avec_fratrie"
+      ]
+    },
+    "text": "Un cousin se marie. Tu découvres le plan de table : tu es assis{e} entre {frere} et la fontaine à chocolat.",
+    "choices": [
+      {
+        "label": "Changer les cartons",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu te places à la table d'honneur. Personne n'ose te déloger. Tu fais un discours non prévu.",
+            "effects": {
+              "happiness": 6,
+              "rival": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester et parler",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{frere} et toi échangez sur le chocolat. Puis sur {le_defunt}. À minuit, vous dansez le rock. Rien n'est réglé, tout va mieux.",
+            "effects": {
+              "happiness": 9,
+              "rival": -25,
+              "relationships": {
+                "sibling": 10
+              }
+            },
+            "clearFlags": [
+              "fache_avec_fratrie"
+            ]
+          },
+          {
+            "chance": 0.5,
+            "text": "Vous ne vous parlez pas de la soirée. Tu manges 40 fraises au chocolat par nervosité.",
+            "effects": {
+              "happiness": -4,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester à la fontaine",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes la soirée à la fontaine. Les enfants t'adorent. C'est ton camp, désormais.",
+            "effects": {
+              "happiness": 5,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0048",
+    "phase": "guerre",
+    "conditions": {
+      "minTension": 30
+    },
+    "text": "Un homme se présente comme ton demi-frère caché. Il a le nez de {le_defunt}, le rire de {le_defunt}, et une dent contre toi.",
+    "choices": [
+      {
+        "label": "Exiger un test ADN",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le kit est commandé. Les résultats prendront du temps, et ton sommeil aussi.",
+            "effects": {
+              "money": -150
+            },
+            "next": [
+              "suc_fams_0022"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "L'accueillir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu l'invites à dîner. Il est drôle et il a apporté un dessert. Le nez ne ment pas.",
+            "effects": {
+              "happiness": 6,
+              "karma": 4,
+              "moneyPct": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui claquer la porte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il s'en va. Le soir, tu cherches son nom sur Internet. Il a 4 000 abonnés et une vidéo sur toi.",
+            "effects": {
+              "happiness": -5,
+              "rival": 15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0049",
+    "phase": "guerre",
+    "conditions": {
+      "beneficiaires": [
+        "chat"
+      ]
+    },
+    "text": "{chat} a désormais un avocat personnel qui t'a envoyé une mise en demeure : tu dois cesser d'appeler {chat} « le gros ».",
+    "choices": [
+      {
+        "label": "Obéir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu l'appelles « Monsieur ». {chat} te regarde avec l'air de quelqu'un qui a gagné.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre par avocat",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton avocat et celui du chat se battent pendant un an. {chat} dort pendant tout ce temps.",
+            "effects": {
+              "money": -2500,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui apporter des croquettes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{chat} accepte les croquettes. L'avocat retire la plainte. Les croquettes coûtaient 3 €.",
+            "effects": {
+              "money": -3,
+              "happiness": 6
+            },
+            "next": [
+              "suc_fams_0025"
+            ],
+            "delay": [
+              2,
+              4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0050",
+    "phase": "guerre",
+    "conditions": {
+      "beneficiaires": [
+        "oeuvre"
+      ]
+    },
+    "text": "{oeuvre} t'envoie un courrier pour te demander un don. Ils utilisent la photo de {le_defunt} dans l'enveloppe. Avec l'argent de {le_defunt}.",
+    "choices": [
+      {
+        "label": "Donner 10 €",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu reçois un reçu fiscal et un porte-clés. Le porte-clés porte ton nom mal écrit. Ça devient une tradition familiale.",
+            "effects": {
+              "money": -10,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander un remboursement",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "L'œuvre te verse un « geste symbolique ». Le symbole est de {pct:4}. Tu prends.",
+            "effects": {
+              "moneyPct": 4,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "On te répond par une autre demande de don. Tu as maintenant deux porte-clés.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Devenir bénévole",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu deviens bénévole pour voir où va l'argent. Il va surtout dans des petits fours, que tu manges aussi.",
+            "effects": {
+              "happiness": 5,
+              "karma": 4,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0051",
+    "phase": "guerre",
+    "conditions": {
+      "beneficiaires": [
+        "inconnu"
+      ]
+    },
+    "text": "Tu découvres enfin qui est l'inconnu qui a tout touché : le professeur de tango de {le_defunt}, depuis 22 ans. Il t'offre un cours d'essai.",
+    "choices": [
+      {
+        "label": "Prendre le cours",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu danses mal, mais tu comprends tout. {Le_defunt} avait trouvé ici un peu de bonheur. Tu repars un peu moins en colère.",
+            "effects": {
+              "happiness": 8,
+              "health": 2,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'accuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il dit qu'il n'a rien demandé. Il te montre les lettres. Tu ne sais plus quoi penser.",
+            "effects": {
+              "happiness": -4,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui réclamer un tango",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu exiges un tango pour chaque année de ta vie. Il accepte. Tu progresses à une vitesse inquiétante.",
+            "effects": {
+              "happiness": 6,
+              "looks": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0052",
+    "phase": "guerre",
+    "conditions": {
+      "beneficiaires": [
+        "personne"
+      ]
+    },
+    "text": "{Le_defunt} n'a désigné personne, alors c'est l'État qui hérite. Le fisc t'envoie un formulaire pour « récupérer les effets personnels ». 14 pages.",
+    "choices": [
+      {
+        "label": "Remplir le formulaire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Après 6 mois, on te rend une boîte : des lunettes, un bonnet et une facture d'électricité impayée.",
+            "effects": {
+              "happiness": -2,
+              "money": -87,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller au guichet",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Une fonctionnaire te reconnaît : elle jouait au bridge avec {le_defunt}. Elle te glisse la montre en douce.",
+            "effects": {
+              "happiness": 6,
+              "money": 1200
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu attends 4 heures. On te donne un ticket pour revenir.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser l'État",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu laisses tout. Quelque part, un fonctionnaire porte le bonnet de {le_defunt}. C'est presque touchant.",
+            "effects": {
+              "happiness": 1,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0053",
+    "phase": "guerre",
+    "conditions": {
+      "beneficiaires": [
+        "ami"
+      ]
+    },
+    "text": "Le meilleur ami de {le_defunt} a tout touché. Il t'invite à une partie de pétanque « en sa mémoire ». Il joue avec les boules de {le_defunt}.",
+    "choices": [
+      {
+        "label": "Jouer pour l'honneur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu gagnes 13 à 2. Il te tend les boules : « Elles te reviennent. » Tu acceptes, ému{e}.",
+            "effects": {
+              "happiness": 8,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu perds 13 à 0. Tu embrasses le panneau de la place comme le veut la tradition, devant tout le monde.",
+            "effects": {
+              "happiness": -5,
+              "looks": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parier sur la part",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu paries {pct:10} sur une mène. Tu gagnes au mètre ruban. Il paie, beau joueur.",
+            "effects": {
+              "moneyPct": 10,
+              "happiness": 7
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu paries ta voiture. Tu rentres à pied.",
+            "effects": {
+              "happiness": -8,
+              "money": -2000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu déclines. Il joue seul, tous les dimanches, et garde une place pour toi.",
+            "effects": {
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fam_0054",
+    "phase": "guerre",
+    "weight": 2,
+    "text": "Au mariage de ta cousine, deux personnes portent la même bague de {le_defunt}. L'une d'elles est fausse. Toi, tu en as une troisième.",
+    "choices": [
+      {
+        "label": "Faire expertiser",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "La tienne est la vraie. Tu ne dis rien, tu la tournes discrètement vers le soleil.",
+            "effects": {
+              "happiness": 7,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Les trois sont fausses. La vraie, {le_defunt} l'a vendue en 1987 pour une moto.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Cacher ta main",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu manges tout le mariage la main dans la poche. Tu renverses deux verres. Le secret est sauf.",
+            "effects": {
+              "happiness": 2,
+              "looks": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Montrer ta bague",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Trois bagues, trois camps. Le mariage se termine en arbitrage. La mariée te remercie : on parle enfin d'autre chose que de son ex.",
+            "effects": {
+              "happiness": 4,
+              "rival": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0001",
+    "phase": "suite",
+    "text": "Audience pour la vente de {bien}. {Rival} arrive avec un dossier épais comme un annuaire. Le juge a l'air de vouloir partir en vacances.",
+    "choices": [
+      {
+        "label": "Plaider l'émotion",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu racontes tes étés dans {bien}. Le juge essuie une larme. Il te donne raison, mais {rival} fait appel.",
+            "effects": {
+              "happiness": 4,
+              "rival": 10
+            },
+            "next": [
+              "suc_fams_0002"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu pleures trop. Le juge s'endort. Renvoi, puis appel.",
+            "effects": {
+              "happiness": -4,
+              "money": -2000
+            },
+            "next": [
+              "suc_fams_0002"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Proposer un accord",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{Rival} te verse la moitié du prix de vente. Tu signes avec un stylo qui ne marche pas, mais ça compte.",
+            "effects": {
+              "moneyPct": 22,
+              "rival": -15,
+              "happiness": 5
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0002",
+    "phase": "suite",
+    "text": "Procès en appel. Le nouveau juge a lu le dossier, ce qui est inquiétant. Ton avocat demande une rallonge.",
+    "choices": [
+      {
+        "label": "Payer la rallonge",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton avocat est déchaîné. Il cite Victor Hugo, la Bible et un épisode de série. Délibéré dans un an.",
+            "effects": {
+              "money": -6000
+            },
+            "next": [
+              "suc_fams_0003"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Te défendre seul{e}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu plaides seul{e} avec une chemise de location. Le juge apprécie l'effort. Délibéré dans un an.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 2
+            },
+            "next": [
+              "suc_fams_0003"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Abandonner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu laisses tomber. {Rival} part en croisière avec ta moitié de {bien}. Une carte postale arrive.",
+            "effects": {
+              "happiness": -10,
+              "rival": -10
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0003",
+    "phase": "suite",
+    "text": "Le verdict tombe enfin. {Rival} a mis une cravate pour l'occasion. Toi, tu as mis tes économies.",
+    "choices": [
+      {
+        "label": "Écouter le verdict",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Gagné. {Rival} doit te verser la moitié du prix de {bien}, plus les intérêts, plus les frais. La cravate finit roulée dans une poche.",
+            "effects": {
+              "moneyPct": 28,
+              "happiness": 12,
+              "rival": 15
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "Perdu. La vente est jugée « regrettable mais valide ». Tu repars avec une grande leçon de vie, très chère.",
+            "effects": {
+              "happiness": -12,
+              "money": -3000
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0004",
+    "phase": "suite",
+    "text": "{Rival} t'envoie une lettre d'avocat : l'urne de {le_defunt} doit faire « une garde alternée », un mois chez chacun.",
+    "choices": [
+      {
+        "label": "Accepter la garde",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'urne fait des allers-retours en covoiturage. Le conducteur pose des questions. {Rival} et toi finissez par en rire.",
+            "effects": {
+              "happiness": 4,
+              "rival": -20
+            },
+            "next": [
+              "suc_fams_0005"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Refuser net",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{Rival} vient chercher l'urne avec un huissier. L'huissier refuse de porter l'urne. Tu la gardes par défaut.",
+            "effects": {
+              "money": -800,
+              "rival": 15
+            },
+            "next": [
+              "suc_fams_0005"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0005",
+    "phase": "suite",
+    "text": "La famille décide enfin de disperser les cendres de {le_defunt}, là où {le_defunt} aimait aller : un parking de supermarché, apparemment.",
+    "choices": [
+      {
+        "label": "Disperser ensemble",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il y a du vent. Tout le monde repart avec un peu de {le_defunt} sur le manteau. Vous riez enfin, tous ensemble.",
+            "effects": {
+              "happiness": 10,
+              "rival": -40,
+              "karma": 3
+            },
+            "setFlags": [
+              "reconcilie"
+            ],
+            "clearFlags": [
+              "a_garde_l_urne"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Garder un peu",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gardes une pincée dans un pendentif. {Rival} a fait pareil. Vous ne vous parlez toujours pas, mais vous avez le même bijou.",
+            "effects": {
+              "happiness": 3,
+              "rival": -10
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0006",
+    "phase": "suite",
+    "conditions": {
+      "fratrie": true
+    },
+    "text": "Un an sans un mot de {frere}. Puis une carte d'anniversaire arrive. Elle dit seulement : « Bon anniversaire. » La signature est tapée à la machine.",
+    "choices": [
+      {
+        "label": "Répondre chaleureusement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu écris une longue carte. La réponse arrive, un peu plus longue. Vous êtes à quatre lignes. C'est un progrès.",
+            "effects": {
+              "happiness": 6,
+              "rival": -20,
+              "relationships": {
+                "sibling": 6
+              }
+            },
+            "next": [
+              "suc_fams_0007"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Répondre pareil",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu envoies « Merci. » tapé à la machine. Vous êtes deux à avoir acheté une machine à écrire juste pour ça.",
+            "effects": {
+              "happiness": -1,
+              "money": -90
+            },
+            "next": [
+              "suc_fams_0007"
+            ],
+            "delay": [
+              1,
+              3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0007",
+    "phase": "suite",
+    "conditions": {
+      "fratrie": true
+    },
+    "text": "Tu croises {frere} au supermarché, rayon fromage. Vous tenez tous les deux le dernier camembert.",
+    "choices": [
+      {
+        "label": "Lui laisser",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Un temps d'hésitation, puis {frere} coupe le camembert en deux avec ses clés et t'en tend la moitié. Vous allez le manger sur le parking. C'est fini, la guerre.",
+            "effects": {
+              "happiness": 12,
+              "rival": -50,
+              "relationships": {
+                "sibling": 15
+              },
+              "karma": 3
+            },
+            "setFlags": [
+              "reconcilie"
+            ],
+            "clearFlags": [
+              "fache_avec_fratrie"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.3,
+            "text": "{frere} prend le camembert sans un mot. Tu comprends que c'est terminé, pour de bon. Tu achètes un brie, par dignité.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "sibling": -10
+              }
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Tirer plus fort",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le camembert explose. Un vigile vous sépare. Vous êtes interdits de magasin tous les deux. Ça crée un lien, bizarrement.",
+            "effects": {
+              "happiness": 3,
+              "rival": -20,
+              "relationships": {
+                "sibling": 5
+              }
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0008",
+    "phase": "suite",
+    "text": "Le perceur de coffre arrive. Il écoute le cadran avec un stéthoscope, transpire beaucoup et demande que tout le monde se taise, y compris le frigo.",
+    "choices": [
+      {
+        "label": "Le laisser travailler",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Clic. La porte s'ouvre.",
+            "next": [
+              "suc_fams_0009"
+            ],
+            "delay": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "label": "L'aider à écouter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu colles l'oreille aussi. Tu n'entends rien, mais tu as l'air très concentré{e}. Clic.",
+            "effects": {
+              "smarts": 1
+            },
+            "next": [
+              "suc_fams_0009"
+            ],
+            "delay": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0009",
+    "phase": "suite",
+    "text": "Le coffre est ouvert. Toute la famille se penche en même temps. Quelqu'un retient sa respiration un peu trop longtemps.",
+    "choices": [
+      {
+        "label": "Regarder dedans",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Des lingots. Pas beaucoup, mais des vrais. Tu ne sais pas comment {le_defunt} les avait achetés et tu ne veux pas savoir.",
+            "effects": {
+              "moneyPct": 15,
+              "happiness": 10
+            },
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Un vieux dentier, une lettre d'amour d'un inconnu et 40 € en francs. La famille se disperse en silence.",
+            "effects": {
+              "happiness": -3,
+              "money": 6
+            },
+            "close": true
+          },
+          {
+            "chance": 0.2,
+            "text": "Un deuxième coffre, plus petit. Avec un code. Tu fermes le premier coffre et tu pars en vacances.",
+            "effects": {
+              "happiness": -5
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0010",
+    "phase": "suite",
+    "text": "La boîte du jardin contient une carte, dessinée par {le_defunt}, avec une croix rouge au milieu du potager du voisin.",
+    "choices": [
+      {
+        "label": "Creuser chez le voisin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu creuses la nuit chez le voisin. Il sort avec un café et une lampe. Il veut sa part.",
+            "effects": {
+              "health": -2
+            },
+            "next": [
+              "suc_fams_0011"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Demander l'autorisation",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le voisin accepte, à condition de partager à moitié. Vous creusez ensemble un samedi.",
+            "effects": {
+              "karma": 2
+            },
+            "next": [
+              "suc_fams_0011"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Encadrer la carte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu encadres la carte. Elle est très belle. Le trésor, c'était peut-être le dessin. Non, sûrement pas.",
+            "effects": {
+              "happiness": 2
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0011",
+    "phase": "suite",
+    "text": "La pelle heurte quelque chose de métallique sous les salades. Le voisin et toi échangez un regard de pirates.",
+    "choices": [
+      {
+        "label": "Ouvrir le coffre",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Des pièces d'or. Le voisin pleure, toi aussi. Vous partagez à la lampe frontale.",
+            "effects": {
+              "money": 12000,
+              "happiness": 12
+            },
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Une capsule temporelle de {le_defunt}, enterrée en 1979 : un yo-yo, une photo, et un mot « Je savais que tu creuserais. »",
+            "effects": {
+              "happiness": 8,
+              "karma": 2
+            },
+            "close": true
+          },
+          {
+            "chance": 0.2,
+            "text": "C'est la canalisation du voisin. Il n'a plus d'eau. Tu paies le plombier.",
+            "effects": {
+              "money": -1400,
+              "happiness": -6
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0012",
+    "phase": "suite",
+    "text": "L'inconnu qui a hérité de {bien} veut tout revendre et te propose de racheter la maison de ton enfance, « à prix d'ami ».",
+    "choices": [
+      {
+        "label": "Racheter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le prix d'ami est un prix de requin poli. Tu rachètes quand même. Ta chambre d'enfant est redevenue ta chambre.",
+            "effects": {
+              "moneyPct": -40,
+              "happiness": 12
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refuses. Le soir, tu regardes des photos de la maison. Puis tu passes à autre chose, enfin.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 1
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Négocier le jardin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repars avec un pied du rosier de {le_defunt}. Il pousse sur ton balcon. C'est le meilleur deal de ta vie.",
+            "effects": {
+              "happiness": 8,
+              "karma": 3
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0013",
+    "phase": "suite",
+    "text": "Tu as été réintégré{e} dans le groupe WhatsApp « Famille ❤️ » sans ton accord. Le groupe s'appelle maintenant « Famille (sans traîtres) ».",
+    "choices": [
+      {
+        "label": "Changer le nom",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu renommes le groupe « Famille (tous traîtres) ». Personne n'ose le changer. Le groupe redevient calme, un peu honteux.",
+            "effects": {
+              "happiness": 6,
+              "rival": -10
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Mettre en silencieux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu mets le groupe en sourdine pour un an. Un an plus tard, tu découvres 3 mariages, 2 naissances et une recette de cake.",
+            "effects": {
+              "happiness": 4
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Envoyer une photo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu envoies une vieille photo de vous tous enfants à la plage. Le groupe se tait. Puis les cœurs arrivent, un par un.",
+            "effects": {
+              "happiness": 10,
+              "rival": -35,
+              "karma": 3
+            },
+            "setFlags": [
+              "reconcilie"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0014",
+    "phase": "suite",
+    "text": "Ta plainte pour le déménagement nocturne avance. La police a retrouvé le camion : il appartient au beau-frère de {rival}.",
+    "choices": [
+      {
+        "label": "Pousser l'enquête",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les meubles sont retrouvés dans un garde-meubles. {Rival} paie la location depuis deux ans. Restitution ordonnée.",
+            "effects": {
+              "happiness": 5
+            },
+            "next": [
+              "suc_fams_0015"
+            ],
+            "delay": [
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Retirer la plainte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu retires la plainte contre la moitié de la valeur des meubles. {Rival} paie en grommelant.",
+            "effects": {
+              "moneyPct": 8,
+              "rival": -10
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0015",
+    "phase": "suite",
+    "text": "Jour de la restitution. Les meubles reviennent, mais {rival} a gardé tous les tiroirs. Tu as six commodes vides de leurs tiroirs.",
+    "choices": [
+      {
+        "label": "Exiger les tiroirs",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les tiroirs arrivent par la poste, un par semaine, pendant deux ans. C'est presque une correspondance.",
+            "effects": {
+              "happiness": 3,
+              "rival": 5
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "En faire des étagères",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu inventes l'étagère « sans tiroir ». Un magazine de déco en parle. {Rival} fait une crise.",
+            "effects": {
+              "happiness": 8,
+              "money": 400
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0016",
+    "phase": "suite",
+    "text": "Le cousin à l'arbre plastifié revient. Cette fois, il a amené sa femme, ses quatre enfants et un notaire qui ressemble beaucoup à son frère.",
+    "choices": [
+      {
+        "label": "Les accueillir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils restent une semaine. Les enfants sont adorables. Le faux notaire repart avec {pct:3} et ton grille-pain.",
+            "effects": {
+              "moneyPct": -3,
+              "happiness": 4,
+              "karma": 3
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Vérifier le notaire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le notaire n'est inscrit nulle part. Ils repartent dans un monospace de location. Tu gardes l'arbre, en souvenir.",
+            "effects": {
+              "happiness": 7,
+              "smarts": 2
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0017",
+    "phase": "suite",
+    "text": "La voyante rappelle. {Le_defunt} aurait un nouveau message, urgent : il faut lui verser 800 €, « les tarifs de l'au-delà ont augmenté ».",
+    "choices": [
+      {
+        "label": "Lui dire non",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle parle d'une immense déception dans l'au-delà. Tu réponds que {le_defunt} vivait déjà dans la déception. Elle n'a rien à répondre.",
+            "effects": {
+              "happiness": 6
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Demander un reçu",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle raccroche. On ne la reverra jamais. {Le_defunt} non plus, mais ça, tu le savais.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0018",
+    "phase": "suite",
+    "text": "Deuxième séance de médiation. Le médiateur a perdu ses post-it. Il propose un exercice : « Dites une qualité de l'autre. »",
+    "choices": [
+      {
+        "label": "Dire une vraie qualité",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu dis : « Tes crêpes sont les meilleures. » Silence. Puis {rival} dit : « Tu as toujours su réparer les vélos. » Le médiateur pleure.",
+            "effects": {
+              "happiness": 9,
+              "rival": -40,
+              "karma": 3
+            },
+            "next": [
+              "suc_fams_0019"
+            ],
+            "delay": [
+              1,
+              1
+            ],
+            "setFlags": [
+              "reconcilie"
+            ]
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu dis une qualité. {Rival} dit que c'est « ironique ». Ça ne l'était pas. La séance tourne court.",
+            "effects": {
+              "happiness": -4,
+              "money": -600
+            },
+            "next": [
+              "suc_fams_0019"
+            ],
+            "delay": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Dire « sa voiture »",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le médiateur range ses affaires et démissionne. Vous êtes officiellement « non médiables ».",
+            "effects": {
+              "happiness": 3,
+              "rival": 10
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0019",
+    "phase": "suite",
+    "text": "Le médiateur envoie son rapport final, et sa facture. Il recommande « un partage, et une distance d'au moins 300 km ».",
+    "choices": [
+      {
+        "label": "Suivre ses conseils",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous partagez ce qui reste. Tu déménages à 312 km, par sécurité. Tout le monde va mieux.",
+            "effects": {
+              "moneyPct": 5,
+              "happiness": 6,
+              "money": -900
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Contester la facture",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Pour la première fois, {rival} et toi êtes d'accord : la facture est scandaleuse. Vous la contestez ensemble. La paix est née de l'ennemi commun.",
+            "effects": {
+              "happiness": 8,
+              "rival": -30
+            },
+            "setFlags": [
+              "reconcilie"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0020",
+    "phase": "suite",
+    "text": "Tu trouves la suite de la lettre de {le_defunt}, dans un autre livre. Elle dit : « Partagez tout, et soyez gentils. Sauf avec ton oncle. »",
+    "choices": [
+      {
+        "label": "Lire la lettre à tous",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tout le monde se calme, sauf l'oncle. La lettre devient la Constitution de la famille.",
+            "effects": {
+              "happiness": 8,
+              "rival": -30,
+              "karma": 3
+            },
+            "setFlags": [
+              "reconcilie"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "La garder pour toi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu la relis les soirs de déprime. Tu deviens adorable avec tout le monde, sauf ton oncle. C'est très reposant.",
+            "effects": {
+              "happiness": 6
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0021",
+    "phase": "suite",
+    "text": "La vidéo du repas de famille, flan compris, est devenue virale. 2 millions de vues. Une marque de flan vous contacte.",
+    "choices": [
+      {
+        "label": "Accepter le contrat",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Toute la famille tourne une pub. Vous êtes payés pour vous lancer du flan. C'est le premier projet commun réussi.",
+            "effects": {
+              "money": 3500,
+              "happiness": 8,
+              "rival": -25
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Faire retirer la vidéo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La vidéo est retirée. Elle est repostée 400 fois. Tu es « la personne du flan » dans ta ville.",
+            "effects": {
+              "happiness": -6,
+              "looks": -1
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0022",
+    "phase": "suite",
+    "text": "Les résultats du test ADN sont arrivés. Le demi-frère surprise attend devant chez toi, l'enveloppe à la main.",
+    "choices": [
+      {
+        "label": "Ouvrir ensemble",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Positif. Tu as un demi-frère. Il pleure, tu pleures. Il prend {pct:12} mais t'offre un barbecue chaque été.",
+            "effects": {
+              "moneyPct": -12,
+              "happiness": 7,
+              "karma": 3
+            },
+            "close": true
+          },
+          {
+            "chance": 0.5,
+            "text": "Négatif. Il est juste le fils du facteur. Il demande s'il peut quand même venir à Noël. Tu dis oui.",
+            "effects": {
+              "happiness": 6,
+              "karma": 4
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Brûler l'enveloppe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous regardez l'enveloppe brûler. Il dit : « Bon. Frères quand même ? » Tu dis oui. C'est plus simple.",
+            "effects": {
+              "happiness": 5,
+              "moneyPct": -6
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0023",
+    "phase": "suite",
+    "text": "Le procès en diffamation pour l'affaire de la raclette s'ouvre. Le juge demande d'abord de préciser le type de fromage.",
+    "choices": [
+      {
+        "label": "Témoigner sincèrement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Victoire. {Rival} doit publier des excuses dans le journal, sous la rubrique cuisine.",
+            "effects": {
+              "money": 2000,
+              "happiness": 10,
+              "rival": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          },
+          {
+            "chance": 0.4,
+            "text": "Le juge estime que « la raclette en août est un sujet légitime de débat ». Débouté{e}.",
+            "effects": {
+              "money": -1500,
+              "happiness": -8
+            },
+            "setFlags": [
+              "proces_perdu"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0024",
+    "phase": "suite",
+    "text": "{oeuvre} t'envoie la facture du gala : tu figures parmi les « mécènes » et tu dois régler le homard. Tout le homard.",
+    "choices": [
+      {
+        "label": "Contester",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Après six lettres, ils annulent. En échange, tu deviens membre d'honneur. Tu ne sais pas ce que ça implique.",
+            "effects": {
+              "happiness": 3
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Payer un homard",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu paies exactement un homard, 48 €, avec un mot : « Le reste, voyez avec {le_defunt}. »",
+            "effects": {
+              "money": -48,
+              "happiness": 6
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0025",
+    "phase": "suite",
+    "conditions": {
+      "beneficiaires": [
+        "chat"
+      ]
+    },
+    "text": "{chat} est mort à un âge très avancé, dans un panier en soie. Et {chat} avait un testament. Tu es convoqué{e} chez le notaire.",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "{chat} te lègue tout. « Pour la croquette. » Tu hérites enfin, d'un chat.",
+            "effects": {
+              "moneyPct": 40,
+              "happiness": 15,
+              "karma": 3
+            },
+            "close": true
+          },
+          {
+            "chance": 0.6,
+            "text": "{chat} a tout légué au chat du voisin. Le chat du voisin te regarde avec mépris.",
+            "effects": {
+              "happiness": -8
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Ne pas y aller",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ne vas pas te faire humilier par un chat deux fois. Tu apprendras plus tard qu'il te laissait {pct:20}. Tant pis.",
+            "effects": {
+              "happiness": -10
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0026",
+    "phase": "suite",
+    "text": "Jean-Marc, le dernier compagnon de {le_defunt}, se remarie. Il t'invite au mariage et te demande d'être témoin.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais un discours sur {le_defunt}, puis sur Jean-Marc. Tout le monde pleure. La nouvelle mariée un peu moins.",
+            "effects": {
+              "happiness": 8,
+              "karma": 4
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Décliner gentiment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu envoies un cadeau : les pantoufles. Il comprend. Il les porte encore.",
+            "effects": {
+              "happiness": 4
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0027",
+    "phase": "suite",
+    "text": "Parking du supermarché, minuit. {Rival} attend avec l'urne. Toi, tu as le service en argent dans un sac de courses.",
+    "choices": [
+      {
+        "label": "Faire l'échange",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Échange effectué. En partant, {rival} murmure : « Elle me manquait aussi. » Tu ne réponds pas, mais tu as compris.",
+            "effects": {
+              "happiness": 5,
+              "rival": -30
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Proposer un café",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous buvez un café de distributeur sur le capot, l'urne entre vous. Vous parlez de {le_defunt} jusqu'à 3 h. La guerre est finie.",
+            "effects": {
+              "happiness": 12,
+              "rival": -50,
+              "karma": 4
+            },
+            "setFlags": [
+              "reconcilie"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Arnaquer l'échange",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton sac contient des couverts en plastique. {Rival} s'en rend compte au feu rouge. Tu as l'urne, et un ennemi pour la vie.",
+            "effects": {
+              "happiness": 5,
+              "rival": 30,
+              "karma": -4
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0028",
+    "phase": "suite",
+    "text": "Dix ans ont passé. {Rival} et toi vous croisez à un enterrement, celui d'un oncle. Il y a un testament. Tout le monde vous regarde.",
+    "choices": [
+      {
+        "label": "Faire équipe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous vous alliez contre le reste de la famille. Rien ne vous arrête. Vous êtes devenus la terreur des successions.",
+            "effects": {
+              "happiness": 10,
+              "rival": -50,
+              "moneyPct": 3
+            },
+            "setFlags": [
+              "reconcilie"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Vous ignorer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous vous ignorez si fort que tout le monde ne voit que vous. Le défunt du jour est un peu oublié.",
+            "effects": {
+              "happiness": -4
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0029",
+    "phase": "suite",
+    "text": "Premier repas avec {rival} depuis la réconciliation. Le serveur demande si c'est « une addition ou deux ».",
+    "choices": [
+      {
+        "label": "Une seule, tu paies",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu paies. {Rival} insiste pour laisser le pourboire. C'est la première chose partagée sans procès depuis des années.",
+            "effects": {
+              "money": -85,
+              "happiness": 8,
+              "rival": -20,
+              "karma": 2
+            },
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Deux additions",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Deux additions, calculées au centime près. Vous avez fait la paix, mais vous restez de la même famille.",
+            "effects": {
+              "happiness": 4
+            },
+            "close": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suc_fams_0030",
+    "phase": "suite",
+    "text": "Le graphologue rend son rapport : les ajouts au crayon sont de {rival}. Mais il note aussi « une belle personnalité, généreuse et créative ».",
+    "choices": [
+      {
+        "label": "Lire le rapport au notaire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les ajouts sont annulés. {Rival} fulmine, mais garde le rapport et le montre à tout le monde pour la partie sur sa personnalité.",
+            "effects": {
+              "happiness": 8,
+              "moneyPct": 10,
+              "rival": 10
+            },
+            "setFlags": [
+              "proces_gagne"
+            ],
+            "close": true
+          }
+        ]
+      },
+      {
+        "label": "Le lui offrir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu offres le rapport à {rival}. Le mot « généreux » fait son effet : {rival} retire ses ajouts pour rester à la hauteur.",
+            "effects": {
+              "happiness": 6,
+              "rival": -35,
+              "karma": 3
+            },
+            "setFlags": [
+              "reconcilie"
+            ],
+            "close": true
+          }
+        ]
+      }
+    ]
+  }
+]
