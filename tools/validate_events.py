@@ -5,6 +5,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATS = {"happiness","health","smarts","looks","money","karma","stress","fame"}
 REL = {"mother","father","parent","sibling","friend","partner","child"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart"}
+# Tags posés par le module Placements (PlacementsMoteur.tags)
+TAGS |= {"investisseur","crypto","proprietaire_bailleur","epargnant","ruine_crypto"}
 SPECIAL = {"death","newFriend","relationships","setFlags"}
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
 COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
