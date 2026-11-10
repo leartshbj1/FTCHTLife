@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  build-ipa:
+    macos:
+      xcode: "16.2.0"
+    resource_class: m4pro.medium
+    steps:
+      - checkout
+      - run:
+          name: Fabriquer le .ipa
+          command: ./scripts/build-ipa.sh
+      - store_artifacts:
+          path: output/FTCHTLife.ipa
+          destination: FTCHTLife.ipa
+      - store_artifacts:
+          path: build.log
+          destination: build.log
+
+workflows:
+  ipa:
+    jobs:
+      - build-ipa
