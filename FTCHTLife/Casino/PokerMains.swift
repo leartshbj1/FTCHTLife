@@ -146,7 +146,7 @@ enum PokerEvaluateur {
 
     /// Valeur d'une main de 5 cartes (fonctionne aussi de 5 à 7 cartes : meilleure main possible).
     static func evaluer(_ cartes: [CasinoCarte]) -> PokerValeurMain {
-        PokerValeurMain(score: score(cartes.map(code)))
+        PokerValeurMain(score: score(cartes.map { code($0) }))
     }
 
     /// Meilleure main de 5 cartes parmi 5 à 7 (21 combinaisons pour 7 cartes).
@@ -154,7 +154,7 @@ enum PokerEvaluateur {
         guard cartes.count > 5 else {
             return PokerMeilleureMain(valeur: evaluer(cartes), cartes: cartes)
         }
-        let codes = cartes.map(code)
+        let codes = cartes.map { code($0) }
         var meilleurScore = -1
         var meilleurIndices: [Int] = []
         for combi in combinaisons(cartes.count, 5) {
@@ -329,8 +329,8 @@ enum PokerEvaluateur {
     static func equite(main: [CasinoCarte], tableau: [CasinoCarte], adversaires: Int, simulations: Int = 150) -> Double {
         guard adversaires > 0 else { return 1 }
         guard simulations > 0 else { return 0.5 }
-        let mesCodes = main.map(code)
-        let tableCodes = tableau.map(code)
+        let mesCodes = main.map { code($0) }
+        let tableCodes = tableau.map { code($0) }
         let connus = Set(mesCodes + tableCodes)
         var paquet = tousLesCodes.filter { !connus.contains($0) }
         let manque = max(0, 5 - tableCodes.count)

@@ -794,7 +794,7 @@ final class HoldemTable: ObservableObject {
             abattage()
             return
         }
-        ajouter("🃏 \(etape.nom) : " + tableau.map(nomCourt).joined(separator: " "))
+        ajouter("🃏 \(etape.nom) : " + tableau.map { nomCourt($0) }.joined(separator: " "))
         for i in sieges.indices where !sieges[i].couche {
             sieges[i].etiquette = sieges[i].jetons == 0 ? "Tapis" : nil
         }
@@ -826,7 +826,7 @@ final class HoldemTable: ObservableObject {
         }
         for i in sieges.indices.sorted(by: { ordre($0) < ordre($1) }) {
             if let d = descriptions[i] {
-                ajouter("👀 \(sieges[i].emoji) \(sieges[i].nom) montre " + sieges[i].cartes.map(nomCourt).joined(separator: " ") + " : \(d).")
+                ajouter("👀 \(sieges[i].emoji) \(sieges[i].nom) montre " + sieges[i].cartes.map { nomCourt($0) }.joined(separator: " ") + " : \(d).")
             }
         }
         conclure(gains: repartir(valeurs), parAbandon: false)
