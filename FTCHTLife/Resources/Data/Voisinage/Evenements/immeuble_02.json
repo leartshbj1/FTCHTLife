@@ -1,0 +1,212 @@
+[
+  {
+    "id": "vsn_imm_0009",
+    "minAge": 16, "maxAge": 99, "weight": 3,
+    "quartier": { "logements": ["appartement"] },
+    "cible": { "archetypes": ["voisin_mysterieux", "retraite_curieux", "commere", "voisin_parfait", "fantome_boite", "influenceur"], "sansSouvenirs": ["soupconne_de_vol_colis"] },
+    "text": "Ton colis a encore disparu du hall. Mais tu as vu un carton à ton nom dépasser de la poubelle de {voisin}, {voisin_qui}.",
+    "choices": [
+      { "label": "Frapper chez {voisin} et demander", "outcomes": [
+        { "chance": 2, "text": "{voisin} jure qu'{il} l'a « trouvé vide ». Tu ne sauras jamais ce qu'il y avait dedans. Toi non plus, d'ailleurs.", "effects": { "happiness": -4 }, "voisin": { "lien": -10, "souvenir": ["soupconne_de_vol_colis"], "compteurs": { "colis_voles": 1 }, "signaux": ["colis_vole"] } },
+        { "chance": 1, "text": "{voisin} rougit et te rend ton colis : un grille-pain. {Il} avoue qu'{il} « voulait juste voir ». C'est presque mignon.", "effects": { "happiness": 2 }, "voisin": { "lien": -3, "souvenir": ["soupconne_de_vol_colis"] } }
+      ]},
+      { "label": "Fouiller sa poubelle en pleine nuit", "outcomes": [
+        { "chance": 1, "text": "Tu retrouves ton colis… et la moitié des colis de l'immeuble depuis 2019. Tu es un héros. Un héros qui sent la poubelle.", "effects": { "happiness": 6, "karma": 2 }, "voisin": { "lien": -20, "statut": "ennemi", "lienTous": 4, "souvenir": ["soupconne_de_vol_colis"], "signaux": ["colis_vole"] } },
+        { "chance": 2, "text": "{voisin} allume la lumière. Tu es dans sa poubelle, une banane sur l'épaule. Il n'y a pas de bonne explication.", "effects": { "happiness": -8 }, "voisin": { "lien": -15, "souvenir": ["t_a_vu_dans_sa_poubelle"] } }
+      ]},
+      { "label": "Laisser tomber et faire livrer au bureau de tabac", "outcomes": [
+        { "text": "Le buraliste garde tes colis comme un dragon garde son trésor. Il te pose trois questions avant de te les rendre.", "effects": { "happiness": -1 }, "voisin": { "compteurs": { "colis_voles": 1 } } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0010",
+    "minAge": 16, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["appartement"], "minCompteurs": { "colis_voles": 2 } },
+    "text": "Troisième colis volé cette année. L'immeuble est en état de siège. Une réunion de crise est organisée dans le local à vélos.",
+    "choices": [
+      { "label": "Proposer une caméra dans le hall", "outcomes": [
+        { "chance": 2, "text": "La caméra filme le voleur : c'est un goéland. Il vole les colis par la fenêtre ouverte du hall depuis deux ans.", "effects": { "happiness": 6 }, "voisin": { "lienTous": 4, "ambiance": 5, "drapeaux": ["le_goeland_voleur"] } },
+        { "chance": 1, "text": "La caméra est volée dès le premier jour. Avec son colis d'emballage.", "effects": { "happiness": -4 }, "voisin": { "ambiance": -3, "compteurs": { "colis_voles": 1 } } }
+      ]},
+      { "label": "Monter la garde toi-même", "outcomes": [
+        { "chance": 2, "text": "Tu passes trois nuits dans le hall avec un thermos. Bilan : rien vu, mais tu connais maintenant les horaires de tout le monde.", "effects": { "health": -3, "happiness": -2 }, "voisin": { "lienTous": 2 } },
+        { "chance": 1, "text": "Tu prends le livreur la main dans le sac : il gardait les colis « pour les livrer plus tard, en mieux ». Il est muté.", "effects": { "happiness": 8, "karma": 3 }, "voisin": { "lienTous": 8, "ambiance": 8 } }
+      ]},
+      { "label": "Accuser quelqu'un au hasard", "outcomes": [
+        { "text": "Tu pointes du doigt le monsieur du 4e. Il était en croisière depuis deux mois. Il a des photos. La réunion s'achève sur un long silence.", "effects": { "happiness": -6, "karma": -5 }, "voisin": { "lienTous": -8, "ambiance": -5 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0011",
+    "minAge": 16, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["appartement"] },
+    "conditions": { "tags": ["adult"] },
+    "cible": { "sansSouvenirs": ["a_vole_un_colis"] },
+    "text": "Dans le hall, un colis pour {voisin}, {voisin_qui}, traîne depuis trois jours. Il est entrouvert. On dirait… une console de jeux neuve.",
+    "choices": [
+      { "label": "Le monter chez {voisin}", "outcomes": [
+        { "chance": 3, "text": "{voisin} te remercie chaleureusement. {Il} t'invite à jouer. Vous finissez à 3 h du matin, en criant.", "effects": { "happiness": 5, "karma": 4 }, "voisin": { "lien": 12 } },
+        { "chance": 1, "text": "{voisin} ouvre le colis devant toi : ce n'est pas une console, ce sont des cendres. Celles de tante Odette. Moment de recueillement.", "effects": { "happiness": -2, "karma": 3 }, "voisin": { "lien": 10 } }
+      ]},
+      { "label": "Le garder « en attendant »", "outcomes": [
+        { "chance": 2, "text": "Personne ne l'a réclamé. Tu as une console. Tu ne peux plus regarder {voisin} dans les yeux.", "effects": { "happiness": 4, "karma": -8 }, "voisin": { "souvenir": ["a_vole_un_colis"], "compteurs": { "colis_voles": 1 }, "signaux": ["colis_vole"] } },
+        { "chance": 1, "text": "{voisin} te croise dans l'escalier pendant que tu portes le carton. « Tiens, mon colis ! Merci ! » Tu as souri. Tu as transpiré.", "effects": { "happiness": -3, "karma": -2 }, "voisin": { "lien": 4 } }
+      ]},
+      { "label": "Ne pas y toucher", "outcomes": [
+        { "text": "Tu passes devant tous les jours. Le colis devient un membre de l'immeuble. Quelqu'un lui a mis un bonnet.", "effects": { "happiness": 1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0012",
+    "minAge": 16, "maxAge": 99, "weight": 3, "unique": true,
+    "quartier": { "logements": ["appartement"] },
+    "cible": { "souvenirs": ["a_vole_un_colis"] },
+    "text": "{voisin} affiche dans le hall : « À la personne qui a pris mon colis : je sais. Je SAIS. » Avec un dessin d'œil.",
+    "choices": [
+      { "label": "Avouer et rembourser (350 €)", "outcomes": [
+        { "text": "{voisin} accepte tes excuses. {Il} te regarde comme une déception, mais une déception honnête.", "effects": { "money": -350, "karma": 8, "happiness": -2 }, "voisin": { "lien": 5, "oublie": ["a_vole_un_colis"], "souvenir": ["a_avoue"] } }
+      ]},
+      { "label": "Ajouter « Moi aussi on m'a volé » sous l'affiche", "outcomes": [
+        { "chance": 2, "text": "Ta diversion marche. L'immeuble entier se plaint de vols, la plupart imaginaires. Le syndic envoie un vigile.", "effects": { "karma": -3, "happiness": 2 }, "voisin": { "ambiance": -4 } },
+        { "chance": 1, "text": "{voisin} reconnaît ton écriture. {Il} la compare avec ta liste de courses dans la poubelle commune. Ennemi pour la vie.", "effects": { "karma": -5, "happiness": -5 }, "voisin": { "lien": -30, "statut": "ennemi" } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0013",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["appartement"], "proprietaire": true, "president": false },
+    "text": "Le président du conseil syndical démissionne, épuisé, en pleine AG. Tout le monde baisse les yeux. {syndic} regarde dans ta direction.",
+    "choices": [
+      { "label": "Lever la main", "outcomes": [
+        { "chance": 3, "text": "Élu{e} à l'unanimité, par soulagement général. Tu reçois un trousseau de 47 clés et un classeur qui sent la cave.", "effects": { "happiness": 4 }, "voisin": { "president": true, "lienTous": 5 } },
+        { "chance": 1, "text": "Un autre candidat se lève en même temps. Débat improvisé sur le local poubelles. Tu perds de deux voix.", "effects": { "happiness": -3 } }
+      ]},
+      { "label": "Faire semblant de recevoir un appel urgent", "outcomes": [
+        { "text": "Tu quittes la salle en parlant à ton téléphone éteint. À ton retour, quelqu'un d'autre a été élu. Bien joué.", "effects": { "happiness": 3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0014",
+    "minAge": 18, "maxAge": 99, "weight": 3,
+    "quartier": { "logements": ["appartement"], "president": true },
+    "cible": { "archetypes": ["nouveau_riche", "influenceur", "couple_parfait", "commere", "bricoleur_dimanche"] },
+    "text": "En tant que président{e} du conseil syndical, tu reçois la visite de {voisin}, {voisin_qui}. Une enveloppe épaisse. {Il} voudrait « juste » une place de parking en plus.",
+    "choices": [
+      { "label": "Prendre l'enveloppe", "outcomes": [
+        { "chance": 2, "text": "500 € en liquide. Tu accordes la place. Tu as franchi une ligne. Elle était peinte en jaune, sur le parking.", "effects": { "money": 500, "karma": -8 }, "voisin": { "lien": 10, "souvenir": ["t_a_corrompu"] } },
+        { "chance": 1, "text": "L'enveloppe contient des bons de réduction pour une pizzeria. {voisin} les estime à 500 €. Ils ont expiré.", "effects": { "karma": -4, "happiness": -3 }, "voisin": { "lien": 6 } }
+      ]},
+      { "label": "Refuser avec dignité", "outcomes": [
+        { "text": "{voisin} repart vexé{ve}. Tu te sens comme un juge intègre dans un film. Mais tu es dans un local à vélos.", "effects": { "karma": 5, "happiness": 2 }, "voisin": { "lien": -8 } }
+      ]},
+      { "label": "Mettre la place aux enchères", "outcomes": [
+        { "text": "Enchères sauvages en AG. La place part à 4 000 € pour la caisse de la copro. On t'applaudit. On vote la peinture du hall.", "effects": { "happiness": 6 }, "voisin": { "ambiance": 4, "travaux": "Peinture du hall (couleur « saumon apaisé »)" } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0015",
+    "minAge": 18, "maxAge": 99, "weight": 2, "unique": true,
+    "quartier": { "logements": ["appartement"], "president": true, "minAnnees": 1 },
+    "cible": { "archetypes": ["ancien_militaire", "retraite_curieux", "complotiste"] },
+    "text": "Coup d'État au conseil syndical ! {voisin}, {voisin_qui}, a réuni les procurations de la moitié de l'immeuble pour te destituer.",
+    "choices": [
+      { "label": "Contre-attaquer : faire campagne porte à porte", "outcomes": [
+        { "chance": 2, "text": "Tu fais du porte-à-porte avec des croissants. Les procurations changent de camp. {voisin} est mis en minorité, humilié{ve}.", "effects": { "happiness": 7, "money": -40 }, "voisin": { "lien": -15, "statut": "ennemi" } },
+        { "chance": 1, "text": "{voisin} distribuait des pains au chocolat. Tu ne fais pas le poids. Destitué{e}.", "effects": { "happiness": -6, "money": -40 }, "voisin": { "president": false, "lien": -10 } }
+      ]},
+      { "label": "Lui céder la place avec élégance", "outcomes": [
+        { "text": "Tu rends les 47 clés. {voisin} fait repeindre les boîtes aux lettres en kaki dès le lendemain. Tu dors enfin.", "effects": { "happiness": 5 }, "voisin": { "president": false, "lien": 8 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0016",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["appartement"], "proprietaire": true },
+    "text": "Lettre de {syndic} : « Suite à un vote dont vous n'avez pas souvenir, les travaux d'installation d'une fontaine dans le hall commencent lundi. »",
+    "choices": [
+      { "label": "Contester par lettre recommandée", "outcomes": [
+        { "chance": 1, "text": "{syndic} répond six mois plus tard. La fontaine est déjà installée. Elle fait pipi, comme une statue belge. Tu as perdu.", "effects": { "money": -900, "happiness": -5 }, "voisin": { "charges": 150, "travaux": "Fontaine dans le hall" } },
+        { "chance": 1, "text": "Ta lettre arrive au bon moment : le vote était truqué. Les travaux sont annulés. L'immeuble te porte en triomphe jusqu'au 3e.", "effects": { "happiness": 8, "money": -6 }, "voisin": { "lienTous": 6, "ambiance": 4 } }
+      ]},
+      { "label": "Accepter : une fontaine, c'est zen", "outcomes": [
+        { "text": "La fontaine glougloute jour et nuit. Tout l'immeuble va aux toilettes plus souvent. Les charges augmentent.", "effects": { "money": -900, "happiness": 2 }, "voisin": { "charges": 150, "travaux": "Fontaine dans le hall", "ambiance": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0017",
+    "minAge": 14, "maxAge": 99, "weight": 3,
+    "quartier": { "logements": ["appartement"] },
+    "cible": { "archetypes": ["musicien_rate"] },
+    "text": "{voisin}, {voisin_qui}, répète « son » morceau au saxophone pour la 400e fois. Il s'arrête toujours au même endroit. Tu connais la suite mieux que {lui}.",
+    "choices": [
+      { "label": "Lui chanter la suite à travers le mur", "outcomes": [
+        { "chance": 2, "text": "Silence. Puis {voisin} joue la suite, enfin. On l'entend pleurer de joie. Vous composez ensemble depuis.", "effects": { "happiness": 7 }, "voisin": { "lien": 18, "souvenir": ["a_fini_son_morceau"] } },
+        { "chance": 1, "text": "{voisin} prend ça pour une provocation et passe à la cornemuse.", "effects": { "happiness": -5 }, "voisin": { "lien": -6 } }
+      ]},
+      { "label": "Lui offrir des cours de musique (200 €)", "outcomes": [
+        { "text": "{voisin} est touché{ve}, puis vexé{ve}, puis touché{ve}. Après dix cours, {il} joue toujours aussi faux, mais plus fort.", "effects": { "money": -200, "happiness": -1 }, "voisin": { "lien": 10 } }
+      ]},
+      { "label": "Mettre un casque antibruit", "outcomes": [
+        { "text": "Le casque marche si bien que tu n'entends plus ton réveil. Tu arrives en retard partout, mais en paix.", "effects": { "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0018",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["appartement"] },
+    "cible": { "archetypes": ["etudiant_fetard", "voisine_de_palier_charmante", "influenceur", "sportif_matinal", "colocation_dj"] },
+    "text": "Les murs sont fins. Très fins. Cette nuit, chez {voisin}, {voisin_qui}, on a manifestement passé une excellente soirée. Toi, beaucoup moins.",
+    "choices": [
+      { "label": "Taper au mur", "outcomes": [
+        { "chance": 2, "text": "Silence immédiat. Puis un « pardon » étouffé. Le lendemain, {voisin} ne te regarde plus dans les yeux pendant un mois.", "effects": { "happiness": 2 }, "voisin": { "lien": -4, "souvenir": ["gene_du_mur"] } },
+        { "chance": 1, "text": "On tape en retour. En rythme. Tu ne sais pas comment interpréter ça. Tu ne veux pas savoir.", "effects": { "happiness": -2 } }
+      ]},
+      { "label": "Mettre de la musique classique à fond", "outcomes": [
+        { "text": "Le Boléro de Ravel, volume maximum. Hasard malheureux : ça a plutôt encouragé tout le monde.", "effects": { "happiness": -3 } }
+      ]},
+      { "label": "Glisser un mot gentil sous la porte : « Contente pour toi, mais il est 3 h »", "outcomes": [
+        { "text": "Le lendemain, tu reçois des bouchons d'oreilles et une boîte de chocolats avec un mot : « Désolé{ve} ! Merci ! ». Belle diplomatie.", "effects": { "happiness": 4 }, "voisin": { "lien": 8 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0019",
+    "minAge": 10, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["appartement"] },
+    "text": "Alerte incendie à 4 h du matin. Tout l'immeuble se retrouve sur le trottoir, en pyjama. Tu découvres enfin la tête de tous tes voisins.",
+    "choices": [
+      { "label": "Profiter pour faire connaissance", "outcomes": [
+        { "chance": 2, "text": "Tu découvres que le monsieur du 2e est champion de tango et que la dame du 5e a un pyjama Batman. Ambiance de camp de vacances.", "effects": { "happiness": 5 }, "voisin": { "lienTous": 5, "ambiance": 6 } },
+        { "chance": 1, "text": "C'était une fausse alerte. Déclenchée par le grille-pain de quelqu'un. Tout le monde te regarde. C'était ton grille-pain.", "effects": { "happiness": -6 }, "voisin": { "lienTous": -6, "ambiance": -2 } }
+      ]},
+      { "label": "Retourner te coucher, c'est sûrement une fausse alerte", "outcomes": [
+        { "chance": 3, "text": "C'était une fausse alerte. Tu as dormi pendant que tout le monde gelait dehors. Victoire silencieuse.", "effects": { "happiness": 3 } },
+        { "chance": 1, "text": "Les pompiers t'ont trouvé{e} dans ton lit et t'ont descendu{e} sur l'épaule. Devant tout l'immeuble.", "effects": { "happiness": -5 }, "voisin": { "lienTous": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_imm_0020",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["appartement"], "chezParents": false },
+    "text": "Punaises de lit dans l'immeuble. Tout le monde accuse tout le monde. Le syndic propose une désinsectisation collective… à tes frais, car « ça a commencé chez toi » selon une rumeur.",
+    "choices": [
+      { "label": "Payer pour avoir la paix (450 €)", "outcomes": [
+        { "text": "L'immeuble est traité. On te remercie sans te le dire, et on t'évite un peu, au cas où.", "effects": { "money": -450, "happiness": -2 }, "voisin": { "ambiance": 4 } }
+      ]},
+      { "label": "Mener l'enquête pour remonter à la source", "outcomes": [
+        { "chance": 2, "text": "Enquête brillante : tout vient d'un fauteuil récupéré sur le trottoir par le 3e. Justice est faite. Tu es Sherlock.", "effects": { "happiness": 6, "smarts": 2 }, "voisin": { "ambiance": 3 } },
+        { "chance": 1, "text": "L'enquête révèle que c'était bien chez toi. Ton canapé d'occasion. Tu paies, et en plus tu as honte.", "effects": { "money": -450, "happiness": -7 }, "voisin": { "lienTous": -4 } }
+      ]}
+    ]
+  }
+]
