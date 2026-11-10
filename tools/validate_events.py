@@ -17,6 +17,8 @@ TAGS |= {"gambled","gambler","gambling_addict","gambler_recovering","casino_debt
 TAGS |= {"maison_retraite","maison_retraite_imposee","en_cavale","romance_residence","grand_parent","petits_enfants_absents","senior_voyageur","champion_loto"}
 # Tags du module Testament et héritage (docs/SUCCESSION.md)
 TAGS |= {"testament","testament_secret","testament_annonce","heritier","heritier_en_guerre","desherite","a_herite_gros"} | {"testament_"+b for b in ("egal","enfant","partenaire","chat","oeuvre","personne","inconnu","ami","aucun")}
+# Tags ajoutés par le module Loisirs (docs/LOISIRS.md).
+LOISIRS_TAG = re.compile(r"^((pratique|habitue)_[a-z0-9_]+|sportif|blesse|abonne|aventurier|trophee)$")
 SPECIAL = {"death","newFriend","relationships","setFlags"}
 SPECIAL = {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
@@ -66,6 +68,7 @@ def main():
                 elif k in ("tags","excludeTags"):
                     for t in ev["conditions"][k] or []:
                         if t not in TAGS and not t.startswith("reve_"): errs.append(f"{w}: tag inconnu {t}")
+                        if t not in TAGS and not LOISIRS_TAG.match(t): errs.append(f"{w}: tag inconnu {t}")
             check_text(ev.get("text"), w, errs)
             ch = ev.get("choices", [])
             if not ch:
