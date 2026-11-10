@@ -18,6 +18,7 @@ struct Effets: Codable, Equatable {
     var newFriend: Bool?
     /// Si présent, le joueur meurt avec cette cause (ex. "écrasé par un distributeur de boissons").
     var death: String?
+
 }
 
 struct ConditionsEvenement: Codable, Equatable {
