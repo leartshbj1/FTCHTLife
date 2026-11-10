@@ -45,3 +45,25 @@ PY
     "https://api.github.com/repos/$REPO/commits/$SHA/comments" -d @/tmp/comment.json > /dev/null
 fi
 echo "Rapport GitHub envoyé : $STATE"
+
+# Si la compilation a réussi : publier le .ipa dans une Release GitHub (téléchargeable sans compte Codemagic).
+if [ "$STATE" = success ]; then
+  BRANCHE="${CM_BRANCH:-${CIRCLE_BRANCH:-build}}"
+  TAG="ipa-$(echo "$BRANCHE" | tr '/' '-')-${SHA:0:7}"
+  python3 - "$TAG" "$SHA" "$BRANCHE" > /tmp/release.json <<'PY'
+import json, sys
+tag, sha, br = sys.argv[1:4]
+print(json.dumps({"tag_name": tag, "target_commitish": sha, "name": f"FTCHTLife {br} {sha[:7]}",
+  "body": "Fichier .ipa non signé, à signer avec Sideloadly (ou équivalent) avant installation.",
+  "prerelease": br != "main", "make_latest": "true" if br == "main" else "false"}))
+PY
+  RID=$(curl -sS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+    "https://api.github.com/repos/$REPO/releases" -d @/tmp/release.json | python3 -c "import json,sys; print(json.load(sys.stdin).get('id',''))")
+  if [ -n "$RID" ]; then
+    curl -sS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Content-Type: application/octet-stream" \
+      --data-binary @output/FTCHTLife.ipa \
+      "https://uploads.github.com/repos/$REPO/releases/$RID/assets?name=FTCHTLife.ipa" -o /dev/null -w "Upload .ipa : HTTP %{http_code}\n"
+  else
+    echo "Impossible de créer la Release GitHub."
+  fi
+fi
