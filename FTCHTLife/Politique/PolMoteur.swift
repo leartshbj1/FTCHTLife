@@ -33,7 +33,7 @@ enum PolMoteur {
         appliquerLoisAnnuelles(&j, &e, &l)
 
         // Parti
-        if let parti = PolCatalogue.parti(e.partiId) {
+        if let parti = e.parti {
             j.argent -= parti.cotisation
             e.loyaute += Int.random(in: -2...1)
         }
@@ -66,7 +66,7 @@ enum PolMoteur {
                 mandatFini = r - 1 <= 0
             }
             e.mandat = m
-            if m.poste == .ministre {
+            if m.poste == .ministre || m.poste == .premierMinistre {
                 remaniement(&j, &e, &l)
             }
         }
@@ -99,6 +99,9 @@ enum PolMoteur {
         if j.stats.karma < 25 { e.casseroles += 2 }
         if let emp = j.emploi, metiersPolitiques.contains(emp.metierId) { e.influence += 2 }
         e.borner()
+
+        // Pays, électorat, rivaux, parti, équipe, gouvernement
+        anneeProfonde(&j, &e, &l)
 
         // Justice
         justice(&j, &e, &l)
@@ -186,11 +189,14 @@ enum PolMoteur {
         if e.popularite < 30 { risque += 0.15 }
         if e.loyaute < 30 { risque += 0.15 }
         if Double.random(in: 0...1) < risque {
+            let estPM = e.mandat?.poste == .premierMinistre
             let ancien = nomMinistere(e)
             terminerMandat(&j, &e, fin: "remaniement")
             j.stats.bonheur -= 10
-            l.append("🔄 Remaniement ! Tu quittes le \(ancien) par un SMS de trois mots. Ton bureau a déjà été vidé.")
-        } else if Double.random(in: 0...1) < 0.06, var m = e.mandat,
+            l.append(estPM
+                     ? "🔄 Le chef de l'État te remplace à la tête du gouvernement « pour donner un nouveau souffle ». Tu étais le souffle."
+                     : "🔄 Remaniement ! Tu quittes le \(ancien) par un SMS de trois mots. Ton bureau a déjà été vidé.")
+        } else if Double.random(in: 0...1) < 0.06, var m = e.mandat, m.poste == .ministre,
                   let nouveau = PolCatalogue.ministeres.filter({ $0.id != m.ministereId }).randomElement() {
             m.ministereId = nouveau.id
             e.mandat = m
@@ -215,6 +221,9 @@ enum PolMoteur {
         } else {
             e.popularite -= 12
             j.stats.bonheur -= 8
+            if let proces = tirerDossier(kind: "proces", poste: "any", j, e), e.dossiers.count < 5 {
+                e.dossiers.append(PolDossierEnAttente(dossierId: proces.id, ageArrivee: j.age))
+            }
             l.append("⚖️ Tu es " + j.g("mis", "mise") + " en examen. Tu déclares avoir « toute confiance en la justice de ton pays ».")
             e.titres.append(remplir("{prenom} {nom} mis{e} en examen", j, e))
         }
@@ -227,35 +236,54 @@ enum PolMoteur {
         guard p.estElu else { return "Ce poste ne s'obtient pas par élection." }
         guard j.vivant else { return "Tu es " + j.g("mort", "morte") + "." }
         if e.candidature != nil { return "Tu es déjà en campagne." }
-        if e.ineligibilite > 0 { return "Tu es " + j.g("inéligible", "inéligible") + " encore \(e.ineligibilite) an\(e.ineligibilite > 1 ? "s" : "")." }
-        let ageMin = p == .president ? agePresident : ageCandidat
-        if j.age < ageMin { return "Il faut avoir \(ageMin) ans." }
+        if e.ineligibilite > 0 { return "Tu es inéligible encore \(e.ineligibilite) an\(e.ineligibilite > 1 ? "s" : "")." }
+        if j.age < p.ageMin { return "Il faut avoir \(p.ageMin) ans." }
         if let m = e.mandat {
-            if m.poste == .adjoint && p == .conseiller {
-                if (m.anneesRestantes ?? 0) > 1 { return "Ton mandat dure encore \(m.anneesRestantes ?? 0) ans." }
-            } else if m.poste == p {
-                if (m.anneesRestantes ?? 0) > 1 { return "Ton mandat dure encore \(m.anneesRestantes ?? 0) ans." }
+            let finProche = (m.anneesRestantes ?? 0) <= 1
+            if m.poste == p {
+                if !finProche { return "Ton mandat dure encore \(m.anneesRestantes ?? 0) ans." }
+            } else if m.poste == .adjoint && p == .conseiller {
+                if !finProche { return "Ton mandat dure encore \(m.anneesRestantes ?? 0) ans." }
+            } else if m.poste == .presidentRegion && p == .conseillerRegional {
+                if !finProche { return "Ton mandat dure encore \(m.anneesRestantes ?? 0) ans." }
+            } else if m.poste == .presidentAssemblee && p == .depute {
+                if !finProche { return "Ton mandat dure encore \(m.anneesRestantes ?? 0) ans." }
             } else if m.poste.rang >= p.rang {
                 return "Tu occupes déjà un poste plus important."
             }
         }
         switch p {
-        case .conseiller:
-            break
         case .maire:
             if !(e.aOccupe(.conseiller) || e.aOccupe(.adjoint)) && e.influence < 40 {
                 return "Il faut avoir été conseiller municipal, ou 40 d'influence."
             }
-        case .depute:
-            if !(e.aOccupe(.maire) || e.aOccupe(.adjoint)) && e.influence < 55 {
-                return "Il faut avoir été maire ou adjoint, ou 55 d'influence."
+        case .conseillerRegional:
+            if !(e.aOccupe(.conseiller) || e.aOccupe(.adjoint) || e.aOccupe(.maire)) && e.influence < 30 {
+                return "Il faut avoir été élu municipal, ou 30 d'influence."
             }
+        case .presidentRegion:
+            if e.mandat?.poste != .conseillerRegional { return "Il faut siéger au conseil régional." }
+        case .depute:
+            if !(e.aOccupe(.maire) || e.aOccupe(.adjoint) || e.aOccupe(.conseillerRegional)) && e.influence < 55 {
+                return "Il faut avoir été maire, adjoint ou élu régional, ou 55 d'influence."
+            }
+        case .senateur:
+            if !(e.aOccupe(.maire) || e.aOccupe(.conseillerRegional) || e.aOccupe(.presidentRegion)) && e.influence < 60 {
+                return "Les grands électeurs ne connaissent que les maires et les élus régionaux (ou 60 d'influence)."
+            }
+        case .presidentAssemblee:
+            if e.mandat?.poste != .depute && e.mandat?.poste != .presidentAssemblee { return "Il faut être député." }
         case .president:
-            if !(e.aOccupe(.depute) || e.aOccupe(.ministre)) { return "Il faut avoir été député ou ministre." }
+            if !(e.aOccupe(.depute) || e.aOccupe(.ministre) || e.aOccupe(.premierMinistre) || e.aOccupe(.senateur)) {
+                return "Il faut avoir été député, sénateur ou ministre."
+            }
             if e.influence < 60 { return "Il faut 60 d'influence." }
             if e.parrainages < parrainagesRequis { return "Il faut \(parrainagesRequis) parrainages (tu en as \(e.parrainages))." }
             if e.mandatsPresident >= 2 && regleSomme("mandatsIllimites", e) < 1 { return "Deux mandats maximum. La Constitution est formelle (pour l'instant)." }
-        case .adjoint, .ministre:
+        case .secretaireGeneral:
+            if !(e.aOccupe(.president) || e.aOccupe(.commissaire)) { return "Il faut avoir été président ou commissaire." }
+            if e.influence < 70 { return "Il faut 70 d'influence." }
+        default:
             break
         }
         if j.argent + e.caisse < p.caution { return "La caution coûte \(Format.argent(p.caution))." }
@@ -266,11 +294,28 @@ enum PolMoteur {
     static func seDeclarer(_ p: PolPoste, _ j: inout Joueur, _ e: inout PolEtat) -> PolResultat {
         if let raison = empechementCandidature(p, j, e) { return PolResultat(texte: raison) }
         payer(p.caution, &j, &e)
-        let g = Genre.allCases.randomElement()!
-        let adv = "\(Donnees.prenom(g)) \(Donnees.noms.randomElement()!)"
-        let partiAdv = PolCatalogue.partis.filter { $0.id != e.partiId }.randomElement()
+        let rival = choisirAdversaire(p, &e)
+        let adv = rival.nomComplet
+        let partiAdv = PolCatalogue.parti(rival.partiId)
         let reelection = e.mandat?.poste == p
-        e.candidature = PolCandidature(poste: p, adversaire: adv, adversairePartiId: partiAdv?.id, reelection: reelection)
+        var dissident = false
+        var noteParti = ""
+        if besoinInvestiture(p, e) {
+            if e.investiture == p.rawValue {
+                noteParti = " Ton parti t'a officiellement investi" + j.g("", "e") + "."
+            } else if let parti = e.parti {
+                dissident = true
+                e.partiId = nil
+                e.rangParti = 0
+                e.influence -= 6
+                noteParti = " Sans investiture, tu pars en dissidence : le \(parti.nom) t'exclut dans l'heure."
+            }
+        }
+        e.investiture = nil
+        var cand = PolCandidature(poste: p, adversaire: adv, adversairePartiId: partiAdv?.id, reelection: reelection)
+        cand.rivalId = rival.id
+        cand.dissident = dissident
+        e.candidature = cand
         e.parrainages = p == .president ? e.parrainages - parrainagesRequis : e.parrainages
         e.titres.append(remplir("{prenom} {nom} candidat{e} : « J'y ai beaucoup réfléchi en me rasant »", j, e))
         let advTexte = adv + (partiAdv.map { " (\($0.sigle))" } ?? "")
@@ -279,26 +324,38 @@ enum PolMoteur {
             : "Tu es " + j.g("candidat", "candidate") + " au poste de \(p.nom(j.genre).lowercased()) !"
         t += " Ton adversaire principal : \(advTexte). L'élection aura lieu à la fin de l'année."
         if p.caution > 0 { t += " Caution versée : \(Format.argent(p.caution))." }
+        t += noteParti
+        if rival.duels > 0 { t += " Vous vous êtes déjà affrontés \(rival.duels) fois. Il y a de la rancune dans l'air." }
         return PolResultat(texte: t)
     }
 
     static func scoreElection(_ c: PolCandidature, _ j: Joueur, _ e: PolEtat, depense: Int) -> Double {
         let p = c.poste
         var s = 15 + p.facilite
-        s += Double(e.popularite) * 0.42
-        s += Double(e.influence) * 0.22
-        s += min(14, Double(depense) / Double(max(1, p.budgetReference)) * 12)
-        if let parti = PolCatalogue.parti(e.partiId) {
+        if p.electionIndirecte {
+            // Les élus votent : réseau, loyauté, rang déjà atteint.
+            s += Double(e.influence) * 0.45 + Double(e.loyaute) * 0.12 + Double(e.popularite) * 0.12
+            s += Double(max(0, e.rangMax)) * 2.5
+            if e.estChefDeParti { s += 5 }
+        } else {
+            s += popularitePonderee(e) * 0.42
+            s += Double(e.influence) * 0.22
+            s += min(14, Double(depense) / Double(max(1, p.budgetReference)) * 12)
+            s += Double(j.stats.apparence - 50) * 0.08
+            if let d = e.equipe.first(where: { $0.role == .directeur }) { s += Double(d.competence) / 12 }
+        }
+        if let parti = e.parti {
             s += parti.bonusElection
+            if e.partiPerso?.id == parti.id { s += Double(min(6, e.electionsGagnees)) - 3 }
         } else {
             s -= p == .conseiller ? 1 : 4
         }
-        s += Double(j.stats.apparence - 50) * 0.08
         s += Double(j.stats.intelligence - 50) * 0.05
         s += Double(j.stats.karma - 50) * 0.03
         s += max(-15, min(20, c.points))
         s -= Double(e.casseroles) * 0.25
         if c.reelection { s += 6 }
+        if c.dissident == true { s -= 3 }
         s += regleSomme("elections", e)
         return s
     }
@@ -327,17 +384,25 @@ enum PolMoteur {
                 let perdu = max(22, min(49.9, 50 + (score - 50) * 0.7))
                 detail = "Premier tour : \(pourcentage(tour1)). Second tour : \(pourcentage(gagne ? tour2 : perdu))."
             }
+        } else if p.electionIndirecte {
+            let electeurs = p == .secretaireGeneral ? "pays membres" : (p == .senateur ? "grands électeurs" : (p == .presidentAssemblee ? "députés" : "conseillers régionaux"))
+            let pct = gagne ? max(50.1, min(97, 50 + (score - 50) * 0.7)) : max(0.4, min(49.9, 50 + (score - 50) * 0.7))
+            detail = "Vote des \(electeurs) : \(pourcentage(pct))."
         } else {
             let pct = gagne ? max(50.1, min(97, 50 + (score - 50) * 0.7)) : max(0.4, min(49.9, 50 + (score - 50) * 0.7))
             detail = "Résultat : \(pourcentage(pct))."
         }
+        majRivalApresElection(c, gagne: gagne, &e)
 
         if gagne {
             e.electionsGagnees += 1
             e.popularite += 5
             e.influence += 6 + p.rang * 2
             j.stats.bonheur += 15
-            if p == .president { e.mandatsPresident += 1 }
+            if p == .president {
+                e.mandatsPresident += 1
+                apresVictoirePresidentielle(score: score, &j, &e, &l)
+            }
             if c.reelection, var m = e.mandat {
                 m.anneesRestantes = p.duree
                 m.numero += 1
@@ -455,7 +520,7 @@ enum PolMoteur {
     }
 
     static func quitterParti(_ j: inout Joueur, _ e: inout PolEtat) -> PolResultat {
-        guard let p = PolCatalogue.parti(e.partiId) else { return PolResultat(texte: "Tu n'as pas de parti.") }
+        guard let p = e.parti else { return PolResultat(texte: "Tu n'as pas de parti.") }
         e.partiId = nil
         e.influence -= 8
         e.popularite += Int.random(in: -4...4)
@@ -498,11 +563,12 @@ enum PolMoteur {
     static func leverFonds(_ j: inout Joueur, _ e: inout PolEtat) -> PolResultat {
         guard j.age >= ageCandidat else { return PolResultat(texte: "Personne ne fait de chèque à un mineur, même pour la démocratie.") }
         guard marquer("fonds", &j) else { return dejaFait }
-        let rang = max(0, e.rangMax)
+        let rang = min(5, max(0, e.rangMax))
         let base = Double(e.influence * 150 + e.popularite * 80 + 500)
-        let montant = Int(base * pow(2.6, Double(rang)) * Double.random(in: 0.6...1.4))
+        let tresorier = e.equipe.first { $0.role == .tresorier }
+        let montant = Int(base * pow(2.6, Double(rang)) * Double.random(in: 0.6...1.4) * (1 + Double(tresorier?.competence ?? 0) / 100))
         e.caisse += montant
-        if Double.random(in: 0...1) < 0.25 {
+        if Double.random(in: 0...1) < (tresorier == nil ? 0.25 : 0.12) {
             e.casseroles += Int.random(in: 4...10)
             return PolResultat(texte: "Ton dîner de levée de fonds rapporte \(Format.argent(montant)). Un des donateurs a payé en lingots, ce qui pose question.")
         }
@@ -716,7 +782,15 @@ enum PolMoteur {
         case .adjoint?, .depute?: c -= 0.05
         case .ministre?: c += 0.05
         case .president?: c += 0.1
+        case .premierMinistre?: c += 0.08
+        case .presidentRegion?: c += 0.05
+        case .presidentAssemblee?: c += 0.03
+        case .senateur?: c -= 0.05
+        case .commissaire?, .secretaireGeneral?: c -= 0.08
         default: break
+        }
+        if loi.niveau == "national", e.mandat?.poste.gouverne == true {
+            c += Double(e.majorite - 50) / 200
         }
         return max(0.03, min(0.95, c))
     }
@@ -734,6 +808,8 @@ enum PolMoteur {
             if let a = loi.adoption { appliquerPol(a, &j, &e) }
             e.titres.append(remplir(loi.headline, j, e))
             if let flash = loi.monde { e.flashsMonde.append(flash) }
+            if let dp = loi.adoption?.popularite, dp < 0 { e.mobilisation += -dp * 2 }
+            e.borner()
             return PolResultat(texte: "✅ \(loi.titre) : adoptée ! " + remplir(loi.texteAdoption, j, e))
         }
         e.popularite -= 2
@@ -793,7 +869,15 @@ enum PolMoteur {
         if let eff = issue.effects {
             if let a = appliquer { a(eff, &j) } else { appliquerSimple(eff, &j) }
         }
-        if let p = issue.pol { appliquerPol(p, &j, &e) }
+        if var p = issue.pol {
+            if d.kind == "scandale", let com = e.equipe.first(where: { $0.role == .com }), let dp = p.popularite, dp < 0 {
+                p.popularite = dp + Int(Double(-dp) * Double(com.competence) / 200)
+            }
+            if d.kind == "debat", let plume = e.equipe.first(where: { $0.role == .plume }), let c = p.campagne, c > 0 {
+                p.campagne = c + Double(plume.competence) / 40
+            }
+            appliquerPol(p, &j, &e)
+        }
         e.borner()
         j.stats.borner()
         return texte
@@ -808,6 +892,9 @@ enum PolMoteur {
 
     static func appliquerPol(_ p: PolEffets, _ j: inout Joueur, _ e: inout PolEtat) {
         e.popularite += p.popularite ?? 0
+        if let dp = p.popularite, dp != 0 {
+            for s in PolSegment.allCases { e.segments[s.rawValue] = Stats.borne(e.opinion(s) + dp / 2) }
+        }
         e.influence += p.influence ?? 0
         e.casseroles += p.casseroles ?? 0
         e.loyaute += p.loyaute ?? 0
@@ -823,6 +910,7 @@ enum PolMoteur {
             if let flash = loi.monde { e.flashsMonde.append(flash) }
         }
         if let id = p.abroger { e.loisActives.removeAll { $0 == id } }
+        appliquerPolProfond(p, &e)
         if p.exclusionParti == true, e.partiId != nil {
             e.partiId = nil
             e.influence -= 5
@@ -897,6 +985,9 @@ enum PolMoteur {
         }
         if e.candidature != nil { t.insert("pol_candidat") }
         if e.casseroles >= 50 { t.insert("pol_scandale") }
+        if e.estChefDeParti { t.insert("pol_chef_parti") }
+        if e.mandat?.poste.gouverne == true { t.insert("pol_gouverne") }
+        if e.mandat == nil && e.rangMax >= 2 { t.insert("pol_ancien") }
         for id in e.loisActives { if let tag = PolCatalogue.loi(id)?.tag { t.insert(tag) } }
         return t
     }
@@ -933,7 +1024,7 @@ enum PolMoteur {
         guard let e = e else { return nil }
         let postes = ([e.mandat?.poste].compactMap { $0 } + e.historique.map { $0.poste })
         guard let top = postes.max(by: { $0.rang < $1.rang }) else {
-            if let p = PolCatalogue.parti(e.partiId) { return (genre == .femme ? "Militante" : "Militant") + " fidèle du \(p.nom)" }
+            if let p = e.parti { return (genre == .femme ? "Militante" : "Militant") + " fidèle du \(p.nom)" }
             return nil
         }
         var t = (e.mandat?.poste == top ? "" : (genre == .femme ? "Ancienne " : "Ancien ")) + top.nom(genre).lowercased()
@@ -961,7 +1052,7 @@ enum PolMoteur {
     }
 
     /// Paie d'abord avec la caisse de campagne, puis avec l'argent du joueur.
-    private static func payer(_ montant: Int, _ j: inout Joueur, _ e: inout PolEtat) {
+    static func payer(_ montant: Int, _ j: inout Joueur, _ e: inout PolEtat) {
         let deCaisse = min(e.caisse, montant)
         e.caisse -= deCaisse
         j.argent -= montant - deCaisse
@@ -971,11 +1062,12 @@ enum PolMoteur {
         guard let m = e.mandat else { return }
         e.historique.append(PolMandatPasse(poste: m.poste, ministereId: m.ministereId, ageDebut: m.ageDebut, ageFin: j.age, fin: fin))
         e.mandat = nil
-        e.dossiers.removeAll { PolCatalogue.dossier($0.dossierId)?.kind == "dossier" }
+        if m.poste == .president { e.premierMinistrePNJ = nil }
+        e.dossiers.removeAll { ["dossier", "crise", "lobby"].contains(PolCatalogue.dossier($0.dossierId)?.kind ?? "") }
     }
 
     static func nomParti(_ e: PolEtat) -> String {
-        PolCatalogue.parti(e.partiId)?.nom ?? "ton parti"
+        e.parti?.nom ?? "ton parti"
     }
 
     static func nomMinistere(_ e: PolEtat) -> String {
@@ -1000,6 +1092,8 @@ enum PolMoteur {
         t = t.replacingOccurrences(of: "{poste}", with: e?.mandat?.poste.nom(j.genre).lowercased() ?? j.g("militant", "militante"))
         t = t.replacingOccurrences(of: "{adversaire}", with: e?.candidature?.adversaire ?? "ton adversaire")
         t = t.replacingOccurrences(of: "{ministere}", with: e.map(nomMinistere) ?? "ton ministère")
+        t = t.replacingOccurrences(of: "{rival}", with: e?.rivalPrincipal?.nomComplet ?? "ton vieux rival")
+        t = t.replacingOccurrences(of: "{pm}", with: e?.premierMinistrePNJ?.nomComplet ?? "le Premier ministre")
         t = t.replacingOccurrences(of: "{e}", with: j.genre == .femme ? "e" : "")
         return t
     }

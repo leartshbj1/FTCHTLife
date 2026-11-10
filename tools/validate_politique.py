@@ -11,16 +11,23 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent / "FTCHTLife" / "Resources" / "Data" / "Politique"
 
-POSTES = {"militant", "conseiller", "adjoint", "maire", "depute", "ministre", "president", "any"}
-KINDS = {"dossier", "scandale", "debat", "campagne", "militant"}
-PREFIXES = {"dossier": "dos_", "scandale": "sca_", "debat": "deb_", "campagne": "cam_", "militant": "mil_"}
+POSTES = {"militant", "conseiller", "adjoint", "maire", "depute", "ministre", "president", "any",
+          "conseillerRegional", "presidentRegion", "senateur", "presidentAssemblee", "premierMinistre",
+          "commissaire", "secretaireGeneral", "chef_parti", "ancien"}
+KINDS = {"dossier", "scandale", "debat", "campagne", "militant", "lobby", "proces", "crise", "parti", "apres"}
+PREFIXES = {"dossier": "dos_", "scandale": "sca_", "debat": "deb_", "campagne": "cam_", "militant": "mil_",
+            "lobby": "lob_", "proces": "pro_", "crise": "cri_", "parti": "par_", "apres": "apr_"}
+SEGMENTS = {"jeunes", "retraites", "ruraux", "urbains", "patrons", "fonctionnaires"}
+PAYS = {"dette": 15, "chomage": 3, "croissance": 2, "securite": 15, "moral": 15}
+NIVEAUX = {"municipal": "mun_", "regional": "reg_", "national": "nat_", "international": "int_"}
 EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame",
           "relationships", "newFriend", "death"}
 RELATIONS = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
 POL = {"popularite", "influence", "casseroles", "loyaute", "caisse", "parrainages", "campagne",
-       "finMandat", "ineligibilite", "loi", "abroger", "exclusionParti"}
+       "finMandat", "ineligibilite", "loi", "abroger", "exclusionParti",
+       "segments", "pays", "mobilisation", "majorite", "rival"}
 VARIABLES = {"prenom", "nom", "ville", "e", "parti", "poste", "adversaire", "ministere",
-             "mere", "pere", "partenaire", "ami"}
+             "mere", "pere", "partenaire", "ami", "rival", "pm"}
 CLES_PRIX = {"immobilier", "voitures", "bateaux", "avions", "bijoux", "voyages", "nourriture", "tech",
              "luxe", "animaux", "sante", "etudes", "loisirs", "vetements", "tout"}
 CLES_SALAIRES = {"restauration", "commerce", "transport", "batiment", "beaute", "securite", "administration",
@@ -92,12 +99,30 @@ def verifier_pol(f, ou, p, ids_lois):
         elif k == "exclusionParti":
             if not isinstance(v, bool):
                 err(f, f"{ou}: exclusionParti doit être true/false")
+        elif k == "segments":
+            if not isinstance(v, dict):
+                err(f, f"{ou}: segments doit être un objet")
+                continue
+            for sk, sv in v.items():
+                if sk not in SEGMENTS:
+                    err(f, f"{ou}: segment inconnu « {sk} »")
+                elif not isinstance(sv, int) or abs(sv) > 20:
+                    err(f, f"{ou}: segment {sk} doit être un entier entre -20 et 20")
+        elif k == "pays":
+            if not isinstance(v, dict):
+                err(f, f"{ou}: pays doit être un objet")
+                continue
+            for pk, pv in v.items():
+                if pk not in PAYS:
+                    err(f, f"{ou}: indicateur de pays inconnu « {pk} »")
+                elif not isinstance(pv, (int, float)) or abs(pv) > PAYS[pk]:
+                    err(f, f"{ou}: pays.{pk} doit être un nombre entre -{PAYS[pk]} et {PAYS[pk]}")
         elif k == "campagne":
             if not isinstance(v, (int, float)):
                 err(f, f"{ou}: campagne doit être un nombre")
         elif not isinstance(v, int):
             err(f, f"{ou}: {k} doit être un entier")
-    for k in ("popularite", "influence", "casseroles", "loyaute"):
+    for k in ("popularite", "influence", "casseroles", "loyaute", "mobilisation", "majorite", "rival"):
         if isinstance(p.get(k), int) and abs(p[k]) > 40:
             err(f, f"{ou}: {k}={p[k]} trop fort (max ±40)")
 
@@ -139,9 +164,9 @@ def main():
         for k in ("id", "niveau", "titre", "description", "difficulte", "headline", "texteAdoption", "texteRejet"):
             if k not in l:
                 err(f, f"{i}: champ manquant {k}")
-        if l.get("niveau") not in ("municipal", "national"):
-            err(f, f"{i}: niveau doit être municipal ou national")
-        pref = "mun_" if l.get("niveau") == "municipal" else "nat_"
+        if l.get("niveau") not in NIVEAUX:
+            err(f, f"{i}: niveau doit être municipal, regional, national ou international")
+        pref = NIVEAUX.get(l.get("niveau"), "?")
         if not i.startswith(pref):
             err(f, f"{i}: l'id doit commencer par {pref}")
         if l.get("monde") is not None and not re.fullmatch(r"mon_\d{4}", str(l["monde"])):

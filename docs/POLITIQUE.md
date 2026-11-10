@@ -131,3 +131,41 @@ Chaque fichier contient un **tableau**. Sous-dossiers :
    - Métiers : les métiers politiques du fil métiers (`attache_parlementaire`, `lobbyiste`…, liste dans `PolMoteur.metiersPolitiques`) donnent +2 d'influence par an.
    - Nécrologie : `PolMoteur.resumeCarriere(j.politique, genre: j.genre)` (« Ancien maire de Lyon, auteur de 3 lois absurdes »).
    - Profil : `j.politique?.mandat` pour afficher le mandat en cours.
+
+## Deuxième couche : politique très poussée
+
+### Nouveaux postes (`postes` des dossiers)
+
+| Poste (id) | Comment | Lois |
+|---|---|---|
+| `conseillerRegional` | élection directe, dès 18 ans | aucune |
+| `presidentRegion` | élu par les conseillers régionaux (il faut être conseiller régional) | `regional` |
+| `senateur` | élu par les grands électeurs (24 ans, avoir été maire ou élu régional, ou influence ≥ 60) | `national` |
+| `presidentAssemblee` | élu par les députés (il faut être député) | `national` |
+| `premierMinistre` | nomination | `national` |
+| `commissaire` | nomination à l'Union des Pays Voisins (après ministre ou Premier ministre) | `international` |
+| `secretaireGeneral` | élu par les pays des Nations Pas Très Unies (après président ou commissaire) | `international` |
+
+Autres valeurs de `postes` : `chef_parti` (le joueur dirige un parti), `ancien` (plus de mandat, mais a été au moins maire).
+
+### Nouveaux `kind` de dossiers
+
+- `lobby` (id `lob_`) : un lobby fait une offre à un élu (argent, voyage, cadeau) contre une faveur. Postes : les postes d'élus.
+- `proces` (id `pro_`) : procès après une mise en examen. Postes : `any`. Les pires issues : `finMandat`, `ineligibilite`, grosse amende.
+- `crise` (id `cri_`) : crise nationale à gérer (grève, catastrophe, panne, crise diplomatique). Postes : `president`, `premierMinistre`, `ministre`.
+- `parti` (id `par_`) : vie interne quand on dirige un parti. Postes : `["chef_parti"]`.
+- `apres` (id `apr_`) : la vie d'ancien élu (mémoires, plateaux télé, conférences, retour raté). Postes : `["ancien"]`.
+
+### Nouveaux niveaux de lois
+
+`regional` (id `reg_`, votées par un président de région) et `international` (id `int_`, portées par un commissaire ou le secrétaire général).
+
+### Nouvelles clés `pol` (et `adoption` des lois)
+
+- `segments` : opinion de six groupes d'électeurs, ±20 max : `{"jeunes": 5, "retraites": -8, "ruraux": 0, "urbains": 3, "patrons": -4, "fonctionnaires": 6}`.
+- `pays` : indicateurs du pays : `dette` (points de PIB, ±15), `chomage` (points, ±3), `croissance` (points, ±2), `securite` (±15), `moral` (±15).
+- `mobilisation` : colère sociale (grèves, manifestations), ±40.
+- `majorite` : sièges du camp du joueur à l'Assemblée, en points, ±40.
+- `rival` : rancune du rival principal envers le joueur, ±40.
+
+Variables en plus : `{rival}` (un rival du joueur), `{pm}` (le Premier ministre).
