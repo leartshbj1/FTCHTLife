@@ -26,9 +26,9 @@ enum PolPoste: String, Codable, CaseIterable, Identifiable {
         case .presidentAssemblee: return f ? "Présidente de l'Assemblée" : "Président de l'Assemblée"
         case .ministre: return "Ministre"
         case .premierMinistre: return f ? "Première ministre" : "Premier ministre"
-        case .commissaire: return "Commissaire de l'Union des Pays Voisins"
+        case .commissaire: return f ? "Commissaire européenne" : "Commissaire européen"
         case .president: return f ? "Présidente de la République" : "Président de la République"
-        case .secretaireGeneral: return f ? "Secrétaire générale des Nations Pas Très Unies" : "Secrétaire général des Nations Pas Très Unies"
+        case .secretaireGeneral: return f ? "Secrétaire générale de l'Organisation des Nations" : "Secrétaire général de l'Organisation des Nations"
         }
     }
 
@@ -592,7 +592,7 @@ struct PolDossier: Codable, Identifiable, Equatable {
     var choices: [PolChoix]
 }
 
-/// Loi, arrêté ou décret absurde (Data/Politique/Lois/*.json).
+/// Loi, arrêté ou décret (Data/Politique/Lois/*.json).
 struct PolLoi: Codable, Identifiable, Equatable {
     var id: String
     /// "municipal", "regional", "national" ou "international".
