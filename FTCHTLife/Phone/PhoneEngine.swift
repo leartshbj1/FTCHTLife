@@ -155,10 +155,13 @@ enum PhoneEngine {
         if !detox && t.contrats.count < maxContrats && Double.random(in: 0...1) < 0.6 {
             let total = t.abonnesTotal
             let dejaProposes = Set(t.messages.compactMap { $0.reponse == nil ? $0.sponsorId : nil })
-            let possibles = PhoneBibliotheque.sponsors.filter { sp in
-                total >= sp.minAbonnes && j.age >= (sp.minAge ?? 16)
-                    && !t.sponsorsVus.contains(sp.id) && !dejaProposes.contains(sp.id)
-                    && (sp.app == nil || sp.app == "any" || t.compte(PhoneApp(rawValue: sp.app!) ?? .pozz).abonnes >= sp.minAbonnes)
+            let ageJoueur = j.age
+            let etat = t
+            let possibles = PhoneBibliotheque.sponsors.filter { (sp: PhoneSponsor) -> Bool in
+                if total < sp.minAbonnes || ageJoueur < (sp.minAge ?? 16) { return false }
+                if etat.sponsorsVus.contains(sp.id) || dejaProposes.contains(sp.id) { return false }
+                guard let cle = sp.app, let app = PhoneApp(rawValue: cle) else { return true }
+                return etat.compte(app).abonnes >= sp.minAbonnes
             }
             if let sp = possibles.randomElement() {
                 t.sponsorsVus.append(sp.id)
@@ -469,6 +472,7 @@ enum PhoneEngine {
 
     static func lancerLive(_ j: inout Joueur, _ t: inout PhoneEtat, engine: GameEngine) -> String {
         guard peutFaireLive(j, t) else {
+            if t.detoxCetteAnnee { return "Tu es en détox numérique cette année. Pas de live." }
             return "Il faut au moins 500 abonnés sur Trémousse pour un live, et un seul live par an."
         }
         t.actionsAnnee.append("live")
@@ -642,7 +646,7 @@ enum PhoneEngine {
             return "💘 C'est un match avec \(p.prenom) ! Tu peux lui proposer un rendez-vous."
         }
         return ["Pas de match. \(p.prenom) a swipé à gauche. Ça arrive aux meilleurs.",
-                "Rien. \(p.prenom) t'a vu" + (j.genre == .femme ? "e" : "") + " et a choisi la solitude.",
+                "Rien. \(p.prenom) t'a vu\(j.g("", "e")) et a choisi la solitude.",
                 "Pas de match. L'algorithme dit que ce n'est « pas le moment ». Il dit ça à tout le monde."].randomElement()!
     }
 
