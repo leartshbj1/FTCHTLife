@@ -14,6 +14,7 @@ TAGS |= {"investisseur","crypto","proprietaire_bailleur","epargnant","ruine_cryp
 # Étiquettes ajoutées par le module casino (CasinoSysteme.tags).
 TAGS |= {"gambled","gambler","gambling_addict","gambler_recovering","casino_debt","casino_vip","casino_banned","casino_winner","casino_ruined"}
 SPECIAL = {"death","newFriend","relationships","setFlags"}
+SPECIAL = {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
 COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags","skills"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart",
@@ -59,7 +60,7 @@ def main():
                 if k not in COND: errs.append(f"{w}: condition inconnue {k}")
                 elif k in ("tags","excludeTags"):
                     for t in ev["conditions"][k] or []:
-                        if t not in TAGS: errs.append(f"{w}: tag inconnu {t}")
+                        if t not in TAGS and not t.startswith("reve_"): errs.append(f"{w}: tag inconnu {t}")
             check_text(ev.get("text"), w, errs)
             ch = ev.get("choices", [])
             if not ch:
