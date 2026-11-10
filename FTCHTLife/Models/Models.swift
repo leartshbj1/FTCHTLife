@@ -210,6 +210,8 @@ struct Joueur: Codable, Equatable {
     var evenementsVus: [String] = []
     var actionsAnnee: [String] = []
     var aQuitteEcole: Bool = false
+    /// Biens, logement et crédits (module Shop).
+    var possessions: Possessions?
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
