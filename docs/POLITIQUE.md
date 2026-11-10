@@ -124,6 +124,8 @@ Chaque fichier contient un **tableau**. Sous-dossiers :
    `PolitiqueView(etat: \.politique)`. La vue lit et écrit l'état par ce chemin, via `engine.modifier`.
 5. Optionnel :
    - Journal du monde : `PolMoteur.titresActualite(j.politique)` pour les titres, `PolMoteur.facteursPrix(j.politique)` et `PolMoteur.facteursSalaires(j.politique)` à passer en `extra:`.
-   - Autres modules : `PolMoteur.regle("prison", j.politique)` renvoie le produit des multiplicateurs des lois en vigueur (1 par défaut).
+   - Autres modules : `PolMoteur.regle("prison", j.politique)` renvoie le produit des multiplicateurs des lois en vigueur (1 par défaut) ;
+     pour une règle additive (`ageRetraite`), `PolMoteur.regleSomme("ageRetraite", j.politique)` (0 par défaut).
+   - Métiers : les métiers politiques du fil métiers (`attache_parlementaire`, `lobbyiste`…, liste dans `PolMoteur.metiersPolitiques`) donnent +2 d'influence par an.
    - Nécrologie : `PolMoteur.resumeCarriere(j.politique, genre: j.genre)` (« Ancien maire de Lyon, auteur de 3 lois absurdes »).
    - Profil : `j.politique?.mandat` pour afficher le mandat en cours.
