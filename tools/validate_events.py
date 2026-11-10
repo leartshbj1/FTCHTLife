@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""Valide tous les fichiers FTCHTLife/Resources/Data/Events/*.json. Usage: python3 tools/validate_events.py [fichiers...]"""
+import json, sys, glob, os, re
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATS = {"happiness","health","smarts","looks","money","karma","stress","fame"}
+REL = {"mother","father","parent","sibling","friend","partner","child"}
+TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart"}
+SPECIAL = {"death","newFriend","relationships","setFlags"}
+PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
+COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
+def check_effects(e, where, errs):
+    if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
+    for k,v in e.items():
+        if k in STATS:
+            if not isinstance(v,int) or isinstance(v,bool): errs.append(f"{where}: {k} doit être un entier")
+            elif k!="money" and abs(v)>100: errs.append(f"{where}: {k} hors bornes")
+        elif k == "relationships":
+            if not isinstance(v, dict) or any(r not in REL for r in v): errs.append(f"{where}: relationships invalide {v}")
+        elif k not in SPECIAL: errs.append(f"{where}: clé d'effet inconnue {k}")
+def check_text(t, where, errs):
+    if not isinstance(t,str) or not t.strip(): errs.append(f"{where}: texte vide"); return
+    for p in re.findall(r"\{(\w+)\}", t):
+        if p not in PH: errs.append(f"{where}: placeholder inconnu {{{p}}}")
+def main():
+    files = sys.argv[1:] or sorted(glob.glob(os.path.join(ROOT,"FTCHTLife/Resources/Data/Events/*.json")))
+    ids, errs, n = {}, [], 0
+    for f in files:
+        try: data = json.load(open(f, encoding="utf-8"))
+        except Exception as ex: errs.append(f"{f}: JSON invalide: {ex}"); continue
+        if not isinstance(data, list): errs.append(f"{f}: pas un tableau"); continue
+        for ev in data:
+            n += 1; i = ev.get("id","?"); w=f"{os.path.basename(f)}:{i}"
+            for k in ("id","category","minAge","maxAge","weight","text","choices"):
+                if k not in ev: errs.append(f"{w}: champ manquant {k}")
+            if i in ids: errs.append(f"{w}: id dupliqué (aussi dans {ids[i]})")
+            ids[i]=os.path.basename(f)
+            if not (0 <= ev.get("minAge",0) <= ev.get("maxAge",0) <= 120): errs.append(f"{w}: âges invalides")
+            for k in (ev.get("conditions") or {}):
+                if k not in COND: errs.append(f"{w}: condition inconnue {k}")
+                elif k in ("tags","excludeTags"):
+                    for t in ev["conditions"][k] or []:
+                        if t not in TAGS: errs.append(f"{w}: tag inconnu {t}")
+            check_text(ev.get("text"), w, errs)
+            ch = ev.get("choices", [])
+            if not ch:
+                check_effects(ev.get("effects", {}), w, errs)
+                if "resultText" in ev: errs.append(f"{w}: resultText non supporté, mets le texte dans text")
+            if len(ch) > 4: errs.append(f"{w}: plus de 4 choix")
+            for ci,c in enumerate(ch):
+                cw=f"{w}/choix{ci}"; check_text(c.get("label"), cw, errs)
+                outs=c.get("outcomes") or []
+                if not outs: errs.append(f"{cw}: aucun outcome")
+                s=sum(o.get("chance",0) for o in outs)
+                if abs(s-1)>0.011: errs.append(f"{cw}: somme des chances = {s}")
+                for oi,o in enumerate(outs):
+                    check_text(o.get("text"), f"{cw}/o{oi}", errs); check_effects(o.get("effects",{}), f"{cw}/o{oi}", errs)
+    for e in errs[:200]: print("ERREUR", e)
+    print(f"{n} événements, {len(files)} fichiers, {len(errs)} erreurs")
+    sys.exit(1 if errs else 0)
+if __name__=="__main__": main()
