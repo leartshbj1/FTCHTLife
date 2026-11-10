@@ -15,6 +15,8 @@ TAGS |= {"investisseur","crypto","proprietaire_bailleur","epargnant","ruine_cryp
 TAGS |= {"gambled","gambler","gambling_addict","gambler_recovering","casino_debt","casino_vip","casino_banned","casino_winner","casino_ruined"}
 # Tags du module Retraite (RetraiteSysteme.tags, voir docs/RETRAITE.md).
 TAGS |= {"maison_retraite","maison_retraite_imposee","en_cavale","romance_residence","grand_parent","petits_enfants_absents","senior_voyageur","champion_loto"}
+# Tags du module Testament et héritage (docs/SUCCESSION.md)
+TAGS |= {"testament","testament_secret","testament_annonce","heritier","heritier_en_guerre","desherite","a_herite_gros"} | {"testament_"+b for b in ("egal","enfant","partenaire","chat","oeuvre","personne","inconnu","ami","aucun")}
 SPECIAL = {"death","newFriend","relationships","setFlags"}
 SPECIAL = {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
