@@ -5,6 +5,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATS = {"happiness","health","smarts","looks","money","karma","stress","fame"}
 REL = {"mother","father","parent","sibling","friend","partner","child"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart"}
+# Tags du module Retraite (RetraiteSysteme.tags, voir docs/RETRAITE.md).
+TAGS |= {"maison_retraite","maison_retraite_imposee","en_cavale","romance_residence","grand_parent","petits_enfants_absents","senior_voyageur","champion_loto"}
 SPECIAL = {"death","newFriend","relationships","setFlags","skills"}
 SKILLS = {"anglais","espagnol","allemand","italien","albanais","japonais","guitare","piano","chant","danse","dessin","photo","cuisine","bricolage","mecanique","jardinage","sport","survie","code","echecs","seduction","eloquence","humour","marchandage","magie"}
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
