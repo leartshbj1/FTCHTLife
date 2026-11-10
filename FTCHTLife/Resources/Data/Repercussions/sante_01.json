@@ -1,0 +1,1369 @@
+[
+  {
+    "id": "rep_san_0001",
+    "on": "maladie",
+    "chance": 0.45,
+    "delay": [
+      0,
+      1
+    ],
+    "minAge": 14,
+    "text": "Depuis ta maladie, ton médecin t'impose un régime : sans sel, sans sucre, sans gras et, d'après ton expérience, sans joie.",
+    "choices": [
+      {
+        "label": "Suivre le régime à la lettre",
+        "outcomes": [
+          {
+            "text": "Tu manges du céleri vapeur devant des émissions de cuisine. C'est devenu ton film d'horreur préféré.",
+            "effects": {
+              "health": 6,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tricher en cachette",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu caches du saucisson dans une boîte de tisane. Personne ne soupçonne rien.",
+            "effects": {
+              "happiness": 3,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton médecin te croise à la fromagerie, un camembert sous chaque bras. Il ne dit rien. Il note.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0002",
+    "on": "event:rep_san_0001",
+    "choice": 0,
+    "delay": [
+      5,
+      15
+    ],
+    "patience": 2,
+    "text": "Des années de régime sans sel. À un anniversaire, tu goûtes une chips par accident et tu as une révélation mystique.",
+    "choices": [
+      {
+        "label": "Finir le paquet",
+        "outcomes": [
+          {
+            "text": "Tu finis le paquet, puis celui des enfants. Tu pleures de bonheur, et un peu de sodium.",
+            "effects": {
+              "happiness": 6,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester fort",
+        "outcomes": [
+          {
+            "text": "Tu recraches la chips dans une serviette, avec dignité. Tout le monde a vu.",
+            "effects": {
+              "health": 2,
+              "happiness": -2,
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0003",
+    "on": "event:rep_san_0002",
+    "choice": 1,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 55,
+    "patience": 10,
+    "text": "Le régime de toute une vie a payé : ton médecin dit que tu as « des artères de vingt ans ». Tu ne connais toujours pas le goût du beurre salé.",
+    "effects": {
+      "health": 5,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_san_0004",
+    "on": "maladie",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "Pendant ta maladie, tes collègues t'envoient une carte de prompt rétablissement signée « L'équipe ». Personne n'a voulu s'engager personnellement.",
+    "effects": {
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_san_0005",
+    "on": "maladie",
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "maladie": 4
+      }
+    },
+    "unique": true,
+    "text": "Encore malade. Ta pharmacienne t'envoie une carte de vœux : tu es son meilleur client depuis des années, ta photo est derrière le comptoir.",
+    "effects": {
+      "happiness": 2,
+      "money": -100
+    }
+  },
+  {
+    "id": "rep_san_0006",
+    "on": "maladie",
+    "chance": 0.3,
+    "delay": [
+      1,
+      2
+    ],
+    "minAge": 16,
+    "conditions": {
+      "excludeFlags": [
+        "hypocondriaque"
+      ]
+    },
+    "text": "Depuis ta dernière maladie, tu lis des forums médicaux la nuit. Tu as maintenant trois maladies rares, dont une qui ne touche que les koalas.",
+    "choices": [
+      {
+        "label": "Consulter, par précaution",
+        "outcomes": [
+          {
+            "text": "Le médecin te trouve en parfaite santé. Tu en conclus qu'il est de mèche avec les koalas.",
+            "effects": {
+              "money": -80,
+              "happiness": -2,
+              "setFlags": [
+                "hypocondriaque"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer l'ordinateur",
+        "outcomes": [
+          {
+            "text": "Tu fermes l'ordinateur. Tu le rouvres six minutes plus tard pour vérifier un grain de beauté.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0007",
+    "on": "event:rep_san_0006",
+    "choice": 0,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "hypocondriaque"
+      ]
+    },
+    "text": "Ton médecin a fait installer une chaise à ton nom dans sa salle d'attente. Il dit que c'est « pour gagner du temps ».",
+    "choices": [
+      {
+        "label": "Prendre un abonnement",
+        "outcomes": [
+          {
+            "text": "Un rendez-vous par semaine. Comme la salle de sport, sauf que tu y vas vraiment.",
+            "effects": {
+              "money": -300,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Essayer une thérapie contre l'hypocondrie",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ça marche. Tu ne t'inquiètes plus que trois fois par jour, le minimum légal.",
+            "effects": {
+              "happiness": 5,
+              "clearFlags": [
+                "hypocondriaque"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu développes une peur des thérapeutes. Et de leurs plantes vertes.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0008",
+    "on": "event:rep_san_0007",
+    "choice": 0,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 60,
+    "conditions": {
+      "flags": [
+        "hypocondriaque"
+      ]
+    },
+    "patience": 10,
+    "text": "Des décennies d'hypocondrie et une santé de fer. Ton médecin part à la retraite et t'offre ta chaise en souvenir. Tu demandes si elle a été désinfectée.",
+    "effects": {
+      "happiness": 3,
+      "health": 2
+    }
+  },
+  {
+    "id": "rep_san_0009",
+    "on": "maladie",
+    "chance": 0.25,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'a rendu visite pendant ta maladie, avec des fleurs, puis a mangé tous tes chocolats en racontant ses vacances.",
+    "effects": {
+      "relationships": {
+        "friend": 2
+      },
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_san_0010",
+    "on": "maladie",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "minAge": 18,
+    "conditions": {
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "{mere} a appris ta maladie et t'envoie un colis : de la soupe, des chaussettes et un article découpé sur « les pouvoirs du gingembre ».",
+    "effects": {
+      "relationships": {
+        "mother": 3
+      },
+      "health": 1,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_san_0011",
+    "on": "maladie",
+    "delay": [
+      0,
+      2
+    ],
+    "requires": {
+      "minCounters": {
+        "maladie": 6
+      }
+    },
+    "minAge": 70,
+    "patience": 5,
+    "unique": true,
+    "text": "Encore une maladie. Ton médecin te prescrit « du repos, du vrai ». Tu lui demandes ce qu'il entend exactement par « du vrai ».",
+    "choices": [
+      {
+        "label": "Obéir et rester au lit",
+        "outcomes": [
+          {
+            "text": "Tu dors dix-huit heures par jour. Tu te sens rajeuni{e} de deux semaines.",
+            "effects": {
+              "health": 5,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller danser pour lui prouver qu'il a tort",
+        "outcomes": [
+          {
+            "chance": 0.85,
+            "text": "Tu danses toute la nuit. Il avait tort. Tu le lui écris sur une carte postale.",
+            "effects": {
+              "happiness": 6,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.15,
+            "text": "C'était un tango de trop.",
+            "effects": {
+              "death": "au milieu d'une piste de danse, en plein tango, en ayant prouvé ton point de vue"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0012",
+    "on": "maladie",
+    "chance": 0.3,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "sick"
+      ]
+    },
+    "text": "Tu es toujours malade. Tes plantes vertes dépérissent par solidarité.",
+    "effects": {
+      "happiness": -1,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_san_0013",
+    "on": "maladie",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "flags": [
+        "convalescent"
+      ]
+    },
+    "text": "À peine guéri{e}, déjà re-malade. Tu n'as même pas eu le temps de rendre le plaid.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_san_0014",
+    "on": "maladie",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Pendant ta maladie, {partenaire} t'a soigné{e} avec dévouement, en notant chaque service rendu dans un carnet. Le carnet fait quarante pages et a une colonne « intérêts ».",
+    "effects": {
+      "relationships": {
+        "partner": 2
+      },
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_san_0015",
+    "on": "guerison",
+    "chance": 0.6,
+    "delay": [
+      0,
+      0
+    ],
+    "remember": [
+      "convalescent"
+    ],
+    "text": "Te voilà guéri{e}, mais en convalescence. Tout le monde t'apporte du bouillon. Tu en as maintenant quatorze litres.",
+    "choices": [
+      {
+        "label": "Tout boire",
+        "outcomes": [
+          {
+            "text": "Tu bois tout. Tu clapotes en marchant, mais ton médecin est ravi.",
+            "effects": {
+              "health": 4,
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir un stand de bouillon",
+        "outcomes": [
+          {
+            "text": "Tu revends le bouillon devant chez toi. Ta première cliente est la voisine qui te l'avait apporté.",
+            "effects": {
+              "money": 120,
+              "karma": -2,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0016",
+    "on": "guerison",
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "flags": [
+        "convalescent"
+      ]
+    },
+    "clearFlags": [
+      "convalescent"
+    ],
+    "text": "Fin de ta convalescence. Tu dois rendre le plaid, la clochette et le droit de choisir la chaîne de télé. C'est un deuil.",
+    "effects": {
+      "happiness": -2,
+      "health": 2
+    }
+  },
+  {
+    "id": "rep_san_0017",
+    "on": "guerison",
+    "chance": 0.35,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "flags": [
+        "convalescent"
+      ]
+    },
+    "text": "En convalescence, tu découvres les émissions de l'après-midi. Tu connais maintenant le prix exact de chaque objet du télé-achat.",
+    "effects": {
+      "smarts": -1,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_san_0018",
+    "on": "guerison",
+    "chance": 0.3,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Depuis ta guérison, tu gardes ton bracelet d'hôpital dans ton portefeuille. Tu le montres à des inconnus « pour leur donner de l'espoir ».",
+    "effects": {
+      "happiness": 2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_san_0019",
+    "on": "guerison",
+    "chance": 0.25,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "hypocondriaque"
+      ]
+    },
+    "text": "Depuis ta guérison, tu prends ta température douze fois par jour. Le thermomètre a demandé un jour de repos.",
+    "choices": [
+      {
+        "label": "Acheter un deuxième thermomètre",
+        "outcomes": [
+          {
+            "text": "Ils n'affichent pas la même température. Tu ne dors plus.",
+            "effects": {
+              "money": -20,
+              "happiness": -3,
+              "setFlags": [
+                "hypocondriaque"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jeter le thermomètre par la fenêtre",
+        "outcomes": [
+          {
+            "text": "Libération. Tu as aussi cassé la vitre du voisin, mais tu te sens en pleine forme.",
+            "effects": {
+              "money": -150,
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0020",
+    "on": "guerison",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "guerison": 3
+      }
+    },
+    "unique": true,
+    "text": "Troisième guérison. Ton corps a l'air d'aimer tomber malade juste pour le plaisir de guérir. Tu le soupçonnes de faire son intéressant.",
+    "effects": {
+      "health": 2,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_san_0021",
+    "on": "guerison",
+    "chance": 0.2,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 35,
+    "patience": 5,
+    "text": "Tu racontes encore ta grande maladie d'il y a des années à chaque repas de famille. Le récit dure maintenant quarante-cinq minutes, avec entracte.",
+    "effects": {
+      "happiness": 3,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_san_0022",
+    "on": "guerison",
+    "chance": 0.3,
+    "delay": [
+      1,
+      2
+    ],
+    "minAge": 18,
+    "maxAge": 70,
+    "text": "Guéri{e}, tu décides de « prendre ta santé en main » avec un semi-marathon. Tu n'as jamais couru plus loin que l'arrêt de bus.",
+    "choices": [
+      {
+        "label": "T'inscrire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu termines en 3 h 40, derrière un homme déguisé en frigo. C'est quand même une victoire.",
+            "effects": {
+              "health": 5,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu abandonnes au kilomètre 2, devant une boulangerie. Le destin.",
+            "effects": {
+              "health": 1,
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Courir jusqu'au bus, pour commencer",
+        "outcomes": [
+          {
+            "text": "Tu le rates. C'est un bon début.",
+            "effects": {
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0023",
+    "on": "guerison",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "flags": [
+        "hypocondriaque"
+      ]
+    },
+    "text": "Ton médecin t'annonce que tu es guéri{e}. Tu demandes un deuxième avis, puis un troisième. Le troisième, c'était son répondeur.",
+    "effects": {
+      "happiness": -1,
+      "money": -50
+    }
+  },
+  {
+    "id": "rep_san_0024",
+    "on": "hopital",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "La facture de ton séjour à l'hôpital arrive. Elle inclut 14 € de « location de fauteuil roulant » pour les trois mètres jusqu'à l'ascenseur.",
+    "effects": {
+      "money": -180,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_san_0025",
+    "on": "event:rep_san_0024",
+    "chance": 0.4,
+    "delay": [
+      1,
+      1
+    ],
+    "text": "Tu avais oublié la facture de l'hôpital. La relance arrive, avec des frais de relance, et une relance pour les frais de relance.",
+    "effects": {
+      "money": -60,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_san_0026",
+    "on": "hopital",
+    "chance": 0.25,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Tu te surprends à regretter la purée de l'hôpital. Tu essaies de la refaire chez toi : impossible, il manque l'ingrédient secret. Sans doute la résignation.",
+    "effects": {
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_san_0027",
+    "on": "hopital",
+    "chance": 0.35,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "À l'hôpital, ton voisin de chambre ronfle comme une tondeuse et raconte sa vésicule à tous ceux qui passent, livreur de pizzas compris.",
+    "choices": [
+      {
+        "label": "Mettre des bouchons d'oreilles",
+        "outcomes": [
+          {
+            "text": "Tu dors enfin. Tu rates aussi l'infirmière qui venait t'annoncer ta sortie. Une nuit de plus.",
+            "effects": {
+              "health": 2,
+              "money": -60
+            }
+          }
+        ]
+      },
+      {
+        "label": "Devenir son ami",
+        "outcomes": [
+          {
+            "text": "Vous sortez le même jour. Depuis, il t'appelle tous les dimanches pour parler de sa vésicule.",
+            "effects": {
+              "newFriend": true,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à changer de chambre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta nouvelle voisine chante de l'opéra. La nuit. Faux.",
+            "effects": {
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Chambre seule avec vue sur le parking. Le paradis.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0028",
+    "on": "event:rep_san_0027",
+    "choice": 1,
+    "delay": [
+      10,
+      20
+    ],
+    "patience": 3,
+    "text": "Ton ancien voisin de chambre d'hôpital, l'homme à la vésicule, t'a couché{e} sur son testament. Il te lègue sa vésicule, dans un bocal.",
+    "choices": [
+      {
+        "label": "La garder sur la cheminée",
+        "outcomes": [
+          {
+            "text": "Tes invités ne restent plus très longtemps. C'est pratique.",
+            "effects": {
+              "happiness": 2,
+              "fame": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'offrir au musée de la médecine",
+        "outcomes": [
+          {
+            "text": "Le musée l'expose avec une petite plaque à ton nom. Te voilà enfin dans un musée.",
+            "effects": {
+              "karma": 2,
+              "fame": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0029",
+    "on": "hopital",
+    "chance": 0.3,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "cicatrice_legendaire"
+      ]
+    },
+    "text": "Tu sors de l'hôpital avec une belle cicatrice. Reste à décider quelle histoire tu vas raconter.",
+    "choices": [
+      {
+        "label": "La vérité : une appendicite",
+        "outcomes": [
+          {
+            "text": "Tout le monde hoche poliment la tête. Personne ne retient rien. L'histoire la moins virale du monde.",
+            "effects": {
+              "karma": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un combat contre un requin",
+        "outcomes": [
+          {
+            "text": "Ton histoire de requin fait le tour du quartier. Elle gagne un requin à chaque tour.",
+            "effects": {
+              "fame": 2,
+              "karma": -1,
+              "happiness": 4,
+              "setFlags": [
+                "cicatrice_legendaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Une bagarre contre trois marins",
+        "outcomes": [
+          {
+            "text": "Tu racontes ça avec un regard lointain. On te paie des verres.",
+            "effects": {
+              "karma": -1,
+              "happiness": 4,
+              "setFlags": [
+                "cicatrice_legendaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0030",
+    "on": "event:rep_san_0029",
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "flags": [
+        "cicatrice_legendaire"
+      ]
+    },
+    "patience": 2,
+    "text": "Ta cicatrice a pris de l'ampleur avec les années : dans la dernière version, tu as sauvé un enfant, deux requins et un phare.",
+    "choices": [
+      {
+        "label": "Ajouter un troisième requin",
+        "outcomes": [
+          {
+            "text": "Un journaliste local veut faire un article. Tu dois maintenant apprendre à nager.",
+            "effects": {
+              "fame": 3,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer la vérité au mariage d'un ami",
+        "outcomes": [
+          {
+            "text": "Silence total. Puis quelqu'un dit « une appendicite, c'est courageux aussi ». C'est pire.",
+            "effects": {
+              "happiness": -4,
+              "karma": 3,
+              "clearFlags": [
+                "cicatrice_legendaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0031",
+    "on": "event:rep_san_0030",
+    "choice": 0,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 45,
+    "conditions": {
+      "flags": [
+        "cicatrice_legendaire"
+      ]
+    },
+    "patience": 5,
+    "text": "Des décennies plus tard, un enfant de ta rue raconte en classe l'histoire de « la personne qui a vaincu trois requins ». La maîtresse appelle les garde-côtes pour vérifier.",
+    "effects": {
+      "fame": 2,
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_san_0032",
+    "on": "hopital",
+    "chance": 0.7,
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "hopital": 3
+      }
+    },
+    "text": "Encore l'hôpital. À l'accueil, l'interne t'appelle par ton prénom et te demande si tu prends « comme d'habitude ».",
+    "effects": {
+      "happiness": -1,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_san_0033",
+    "on": "hopital",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "hopital": 6
+      }
+    },
+    "unique": true,
+    "text": "Sixième séjour à l'hôpital. Le service t'offre un mug « Patient de l'année ». Tu hésites entre la fierté et l'inquiétude.",
+    "effects": {
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_san_0034",
+    "on": "hopital",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Tes enfants t'ont rendu visite à l'hôpital. Ils ont surtout testé le lit électrique, dans toutes les positions, pendant une heure.",
+    "effects": {
+      "relationships": {
+        "child": 3
+      },
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_san_0035",
+    "on": "hopital",
+    "chance": 0.25,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "La blouse d'hôpital s'ouvre dans le dos. Tout le service connaît désormais ton grain de beauté le plus secret.",
+    "effects": {
+      "happiness": -2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_san_0036",
+    "on": "hopital",
+    "chance": 0.2,
+    "delay": [
+      5,
+      15
+    ],
+    "minAge": 18,
+    "patience": 3,
+    "text": "Au restaurant, quelqu'un te salue chaleureusement : le chirurgien qui t'avait opéré{e} il y a des années. Il dit qu'il te reconnaît « de l'intérieur ». La personne qui dînait avec toi demande l'addition.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_san_0037",
+    "on": "hopital",
+    "chance": 0.4,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "flags": [
+        "hypocondriaque"
+      ]
+    },
+    "text": "Ce séjour à l'hôpital t'a ravi{e} : enfin, quelqu'un te prend au sérieux. Tu as noté le nom de chaque infirmière dans un carnet.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_san_0038",
+    "on": "chirurgie_esthetique",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "Après ta chirurgie esthétique, {mere} ne te reconnaît pas à la gare. Elle te fait quand même un petit signe, par politesse, comme à un{e} inconnu{e}.",
+    "effects": {
+      "relationships": {
+        "mother": -1
+      },
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_san_0039",
+    "on": "chirurgie_esthetique",
+    "chance": 0.45,
+    "delay": [
+      10,
+      15
+    ],
+    "patience": 3,
+    "text": "Ta chirurgie esthétique d'il y a une dizaine d'années vieillit mal : ton nez est resté jeune, le reste de ton visage, non. Ils ne se parlent plus.",
+    "choices": [
+      {
+        "label": "Faire une retouche",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le chirurgien rajeunit le reste du visage. Maintenant, c'est ton cou qui fait la tête.",
+            "effects": {
+              "money": -4000,
+              "looks": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton nouveau nez est encore plus jeune que l'ancien. Le conflit de générations s'aggrave.",
+            "effects": {
+              "money": -4000,
+              "looks": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Assumer ton visage en patchwork",
+        "outcomes": [
+          {
+            "text": "Tu dis que c'est un choix artistique. Un galeriste veut t'exposer.",
+            "effects": {
+              "happiness": 3,
+              "fame": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0040",
+    "on": "chirurgie_esthetique",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "chirurgie_esthetique": 3
+      }
+    },
+    "remember": [
+      "refait_de_partout"
+    ],
+    "unique": true,
+    "text": "Troisième passage au bloc. Ton chirurgien t'a ouvert une carte de fidélité : au cinquième, le lifting est offert.",
+    "effects": {
+      "happiness": 2,
+      "money": -200
+    }
+  },
+  {
+    "id": "rep_san_0041",
+    "on": "chirurgie_esthetique",
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "chirurgie_esthetique": 5
+      }
+    },
+    "unique": true,
+    "text": "Cinq opérations esthétiques. Le portique de l'aéroport sonne quand tu passes, et le douanier te demande s'il y a « quelqu'un d'autre » là-dedans.",
+    "effects": {
+      "looks": 1,
+      "happiness": -2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_san_0042",
+    "on": "chirurgie_esthetique",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "flags": [
+        "refait_de_partout"
+      ]
+    },
+    "text": "À force d'opérations, ton visage ne bouge plus beaucoup. Ton entourage ne sait jamais si tu es en colère, ravi{e} ou endormi{e}.",
+    "choices": [
+      {
+        "label": "Une opération de plus, pour l'expressivité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu peux de nouveau froncer un sourcil. Un seul. Tu l'utilises avec parcimonie.",
+            "effects": {
+              "money": -3500,
+              "looks": 2,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as maintenant un sourire permanent. Aux enterrements, c'est délicat.",
+            "effects": {
+              "money": -3500,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Communiquer avec des panneaux",
+        "outcomes": [
+          {
+            "text": "Tu as un panneau « content{e} » et un panneau « pas content{e} ». Tes relations n'ont jamais été aussi claires.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0043",
+    "on": "event:rep_san_0042",
+    "choice": 1,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 45,
+    "patience": 5,
+    "text": "Tes vieux panneaux « content{e} » et « pas content{e} » sont exposés dans un musée d'art moderne, sous le titre « Visage, XXIe siècle ». Le gardien te demande si tu es l'artiste ou l'œuvre.",
+    "effects": {
+      "happiness": 4,
+      "fame": 3
+    }
+  },
+  {
+    "id": "rep_san_0044",
+    "on": "chirurgie_esthetique",
+    "chance": 0.3,
+    "delay": [
+      5,
+      15
+    ],
+    "patience": 2,
+    "text": "Tu retrouves une photo de toi d'avant ta chirurgie esthétique. Tu te trouves étonnamment bien. Tu ranges vite la photo et tu fais comme si de rien n'était.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_san_0045",
+    "on": "chirurgie_esthetique",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "minAge": 18,
+    "text": "Depuis ta chirurgie esthétique, quelqu'un à une soirée te demande : « Tu as changé quelque chose ? » C'est le moment de vérité.",
+    "choices": [
+      {
+        "label": "Avouer l'opération",
+        "outcomes": [
+          {
+            "text": "On te demande l'adresse du chirurgien, puis le prix, puis on te regarde différemment.",
+            "effects": {
+              "fame": 1,
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est le yoga",
+        "outcomes": [
+          {
+            "text": "Toute la soirée s'inscrit au yoga. Le prof te verse une commission.",
+            "effects": {
+              "money": 150,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est l'amour",
+        "outcomes": [
+          {
+            "text": "Tout le monde soupire, attendri. Ton chirurgien, s'il savait, serait vexé.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0046",
+    "on": "chirurgie_esthetique",
+    "delay": [
+      0,
+      0
+    ],
+    "requires": {
+      "minCounters": {
+        "chirurgie_esthetique": 8
+      }
+    },
+    "minAge": 55,
+    "unique": true,
+    "text": "Huitième passage au bloc. Le chirurgien te demande, très doucement, s'il te reste quelque chose d'origine à part les oreilles.",
+    "choices": [
+      {
+        "label": "Faire les oreilles, tant qu'à faire",
+        "outcomes": [
+          {
+            "chance": 0.85,
+            "text": "Tes oreilles ont maintenant vingt-cinq ans. Elles entendent même les compliments qu'on ne te fait pas.",
+            "effects": {
+              "looks": 2,
+              "money": -3000
+            }
+          },
+          {
+            "chance": 0.15,
+            "text": "Une opération de trop.",
+            "effects": {
+              "death": "sur la table d'opération, pendant un lifting des oreilles, avec une peau magnifique"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder tes oreilles comme témoins",
+        "outcomes": [
+          {
+            "text": "Tes oreilles sont le dernier souvenir de ton ancien visage. Tu leur parles le soir.",
+            "effects": {
+              "happiness": 2,
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_san_0047",
+    "on": "chirurgie_esthetique",
+    "chance": 0.5,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 70,
+    "conditions": {
+      "flags": [
+        "refait_de_partout"
+      ]
+    },
+    "patience": 10,
+    "unique": true,
+    "text": "Au club du troisième âge, on te demande une pièce d'identité : personne ne croit que tu as l'âge. Ton visage a quarante ans, tes genoux quatre-vingt-dix, et ils ne se parlent plus.",
+    "effects": {
+      "happiness": 3,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_san_0048",
+    "on": "chirurgie_esthetique",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Après ta chirurgie esthétique, ton plus jeune enfant t'a regardé{e} longtemps, puis a demandé où était passé son vrai parent.",
+    "effects": {
+      "relationships": {
+        "child": -2
+      },
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_san_0049",
+    "on": "chirurgie_esthetique",
+    "chance": 0.3,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "{partenaire} n'a toujours pas remarqué ta chirurgie esthétique. Ça fait trois mois. Tu ne sais pas si c'est de l'amour ou de la myopie.",
+    "effects": {
+      "happiness": -3,
+      "relationships": {
+        "partner": -2
+      }
+    }
+  },
+  {
+    "id": "rep_san_0050",
+    "on": "chirurgie_esthetique",
+    "chance": 0.3,
+    "delay": [
+      1,
+      1
+    ],
+    "text": "Ton chirurgien esthétique t'envoie ses vœux avec la photo de son nouveau bateau. Il s'appelle « Rhinoplastie III ». Tu as payé au moins la coque.",
+    "effects": {
+      "happiness": -1
+    }
+  }
+]

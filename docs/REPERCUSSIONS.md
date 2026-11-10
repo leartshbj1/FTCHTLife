@@ -140,5 +140,5 @@ Conventions de noms de drapeaux : minuscules, `_`, au passé ou à l'état (`a_t
 ## Drapeaux communs
 
 `fume`, `casier_judiciaire`, `ancien_detenu`, `permis_en_poche`, `permis_suspendu`, `joueur_du_casino`,
-`accro_au_jeu`, `sevre_du_jeu`, `a_trompe_partenaire`, `s_est_fait_tromper`, `divorce`, `marie`, `parent`,
+`accro_au_jeu`, `sevre_du_jeu`, `en_prison` (posé à prison_entree, retiré à prison_sortie/evasion), `a_trompe_partenaire`, `s_est_fait_tromper`, `divorce`, `marie`, `parent`,
 `randonneur`, `phobie_de_la_foret`, `a_gagne_loterie`, `celebre_localement`, `menteur_notoire`.
