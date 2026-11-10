@@ -21,7 +21,7 @@ TAGS |= {"testament","testament_secret","testament_annonce","heritier","heritier
 LOISIRS_TAG = re.compile(r"^((pratique|habitue)_[a-z0-9_]+|sportif|blesse|abonne|aventurier|trophee)$")
 # Tags du module « Vivre à l'étranger » (docs/ETRANGER_EVENTS.md), plus pays_xx, loi_xx, zone_xx.
 TAGS |= {"etranger","expat_nouveau","expat_installe","langue_faible","bilingue","polyglotte","binational","de_retour"}
-TAG_PREFIXES = ("pays_","loi_","zone_")
+TAG_PREFIXES = ("pays_","loi_","zone_","origine_")
 SPECIAL = {"death","newFriend","relationships","setFlags"}
 SPECIAL = {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}

@@ -100,6 +100,7 @@ extension GameEngine {
         var t: Set<String> = []
         t.formUnion(VieSysteme.tags(j))
         t.formUnion(ExpatMoteur.tags(j.etatExpat, j))
+        t.insert("origine_\(j.etatExpat.paysNaissance)")
         t.formUnion(CasierSysteme.tags(j.casier))
         t.formUnion(Competences.tags(j))
         t.formUnion(EntrepriseMoteur.tags(j.entreprises))
