@@ -20,7 +20,9 @@ for lid, nom, art, pays, ville in [
         ("allemand", "allemand", "l'", "en Allemagne", "Fribourg-en-Brisgau"),
         ("italien", "italien", "l'", "en Italie", "Bologne"),
         ("albanais", "albanais", "l'", "au Kosovo", "Prishtina"),
-        ("japonais", "japonais", "le ", "au Japon", "Osaka")]:
+        ("japonais", "japonais", "le ", "au Japon", "Osaka"),
+        ("portugais", "portugais", "le ", "au Portugal", "Porto"),
+        ("arabe", "arabe", "l'", "au Maroc", "Fès")]:
     K.append(cours(f"cc_{lid}_appli", lid, f"Appli de {nom}", "Un hibou numérique qui te culpabilise chaque soir.", 60, [5, 8],
         [f"Tu as fait ta série de 30 jours sur l'appli. Le hibou est fier, ta famille inquiète.",
          f"L'appli t'a appris à dire « le canard boit du lait » en {nom}. Indispensable.",

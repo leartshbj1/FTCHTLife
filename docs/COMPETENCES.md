@@ -1,6 +1,6 @@
 # Compétences
 
-25 talents (langues, musique, cuisine, bricolage, sport, code, séduction…) notés de 0 à 100 XP, avec 5 niveaux.
+27 talents (langues, musique, cuisine, bricolage, sport, code, séduction…) notés de 0 à 100 XP, avec 5 niveaux.
 Ils montent en pratiquant et **débloquent des choix cachés** dans les événements.
 
 - Code : `FTCHTLife/Competences/` (`Competences.swift` règles, `CompetencesModele.swift` types, `CompetencesActions.swift` actions du moteur, `CompetencesView.swift` écran).
@@ -28,7 +28,7 @@ au-dessus de 20 XP perd 2 XP par an (3 pour les langues et le sport, 1 pour le j
 
 ## Ids
 
-- Langues : `anglais`, `espagnol`, `allemand`, `italien`, `albanais`, `japonais`
+- Langues : `anglais`, `espagnol`, `allemand`, `italien`, `albanais`, `japonais`, `portugais`, `arabe`
 - Arts : `guitare`, `piano`, `chant`, `danse`, `dessin`, `photo`
 - Pratique : `cuisine`, `bricolage`, `mecanique`, `jardinage`
 - Corps : `sport`, `survie`

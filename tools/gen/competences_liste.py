@@ -124,6 +124,45 @@ C.append(langue("japonais", "Japonais", 8,
      "Tu as écrit un haïku. Cinq, sept, cinq syllabes. Ton chat l'a lu, il est ému.",
      "Tu as fait une cérémonie du thé parfaite. Elle a duré deux heures pour une tasse."]))
 
+
+C.append(langue("portugais", "Portugais", 4,
+    "Des sons nasaux, de la saudade et des cousins à Lisbonne, Porto ou São Paulo.",
+    "Parler avec la famille portugaise, comprendre le fado, te débrouiller de Lisbonne à Rio.",
+    ["« Obrigado » (avec le nez)", "Prononce « pão » sans s'étouffer", "Comprend les voisins de palier", "Chante le fado sans pleurer (presque)", "Pessoa te prend pour un collègue"],
+    ["Tu sais dire « obrigado » et « bom dia ». Ta voisine portugaise t'a offert un pastel de nata.",
+     "Tu prononces les sons nasaux. Ton nez travaille plus que ta bouche.",
+     "Tu comprends les conversations de la famille de ton ami. Elles parlent surtout de morue.",
+     "Tu as écouté un fado et tu as tout compris. Tu en es ressorti{e} triste et heureux, c'est la saudade.",
+     "À Lisbonne, on t'a demandé de quel quartier tu venais. Tu as répondu « d'ici ». C'est presque vrai."],
+    ["Tu as appris à dire « je voudrais une bica ». C'est un café. Tu en as bu quatre pour t'entraîner.",
+     "Tu as essayé de prononcer « coração ». Ta langue a fait un nœud.",
+     "Tu as regardé un match en portugais. Le commentateur a crié « golo » pendant une minute entière."],
+    ["Tu as discuté avec le patron du café portugais du quartier. Il t'a parlé de son village pendant deux heures.",
+     "Tu as lu un roman en portugais. Il y avait beaucoup de mer et de mélancolie.",
+     "Tu as appris la différence entre le portugais du Portugal et celui du Brésil. Les deux te comprennent à moitié."],
+    ["Tu as traduit une lettre de la grand-mère d'un ami. Tout le monde a pleuré, toi compris{e}.",
+     "Tu as chanté un fado au restaurant. Le patron a éteint la lumière pour l'ambiance et t'a offert le dîner.",
+     "Tu as gagné un débat sur la meilleure morue contre trois oncles portugais. Exploit historique."]))
+
+C.append(langue("arabe", "Arabe", 4,
+    "Un alphabet qui se lit de droite à gauche, des sons qui viennent du fond de la gorge et une poésie immense.",
+    "Parler avec la famille et les voisins, négocier dans les souks, comprendre les chansons et les séries.",
+    ["« Choukran » (avec conviction)", "Écrit son prénom de droite à gauche", "Suit une conversation au marché", "Négocie au souk en VO", "Récite de la poésie classique"],
+    ["Tu sais dire merci et bonjour. Le marchand du coin t'a donné une datte en plus.",
+     "Tu écris ton prénom en arabe. Tu l'as écrit sur tous tes cahiers.",
+     "Tu suis une conversation au marché. Tu as compris que le vendeur te trouvait sympathique et radin.",
+     "Tu as négocié au souk de Marrakech en arabe. Le marchand t'a offert le thé et une remise par respect.",
+     "Tu récites des vers anciens par cœur. Les grands-pères du café hochent la tête, émus."],
+    ["Tu as révisé l'alphabet. Tu as confondu deux lettres qui ne diffèrent que d'un point. Le point a gagné.",
+     "Tu as essayé le son « ع ». Ta gorge a fait un bruit de chameau surpris.",
+     "Tu as appris à compter. Les chiffres arabes ne ressemblent pas aux chiffres arabes. Tu as besoin d'un moment."],
+    ["Tu as regardé une série en arabe. Il y avait un mariage, une trahison et un oncle très en colère.",
+     "Tu as discuté avec l'épicier du quartier. Il t'a appris trois expressions et corrigé ton accent avec tendresse.",
+     "Tu as lu une page de journal en arabe, de droite à gauche. Ta tête a tourné dans l'autre sens."],
+    ["Tu as fait un discours en arabe à un mariage. La mariée a pleuré, sa grand-mère aussi.",
+     "Tu as calligraphié un poème. Il est accroché dans le salon de ta voisine, à côté des photos des petits-enfants.",
+     "Tu as tenu tête à un marchand de tapis pendant une heure. Vous êtes devenus amis. Tu as acheté trois tapis."]))
+
 def comp(id, nom, icone, cat, minAge, desc, debloque, titres, paliers, verbe, debut, milieu, maitre, effects, accidents=None, cout=None, bonusEnfant=None, oubli=None):
     p = dict(verbe=verbe, debut=debut, milieu=milieu, maitre=maitre, effects=effects)
     if accidents: p["accidents"] = accidents
