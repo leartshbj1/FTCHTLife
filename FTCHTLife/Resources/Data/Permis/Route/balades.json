@@ -1,0 +1,118 @@
+[
+  {"id": "pbr_001", "permis": ["route"], "text": "Une route de campagne déserte, ligne droite à perte de vue. Ton pied droit te démange.", "choices": [
+    {"label": "Rester à 80, profiter du paysage", "success": "Tu as vu un faucon, deux vaches et un tracteur. Paix intérieure.", "onSuccess": {"happiness": 4}},
+    {"label": "Voir ce que la voiture a dans le ventre", "chance": 0.45, "success": "Tu as atteint une vitesse que ta mère ne doit jamais connaître. Aucun radar. Adrénaline pure.", "failure": "Un radar caché derrière une botte de foin t'a flashé à 156 km/h.", "onSuccess": {"happiness": 8}, "onFailure": {"money": -750, "points": 4, "suspension": 1, "infraction": "Grand excès de vitesse", "signal": "amende_vitesse", "happiness": -8}}
+  ]},
+  {"id": "pbr_002", "permis": ["route"], "text": "Contrôle de police au rond-point. Un agent te fait signe de te garer.", "choices": [
+    {"label": "Se garer et sortir les papiers avec le sourire", "success": "Tout est en règle. L'agent t'a souhaité bonne route, presque gentiment.", "onSuccess": {"controle": true}},
+    {"label": "Faire comme si tu n'avais pas vu", "chance": 0.15, "success": "Il ne t'a pas suivi{e}. Tu as eu chaud. Très chaud.", "failure": "Ils t'ont suivi{e} sirène hurlante sur trois kilomètres. Refus d'obtempérer.", "onSuccess": {"karma": -5}, "onFailure": {"money": -1500, "points": 6, "infraction": "Refus d'obtempérer", "suspension": 2, "karma": -10}}
+  ]},
+  {"id": "pbr_003", "permis": ["route"], "text": "Ton téléphone vibre. Notification : « {partenaire} t'a envoyé un message ».", "choices": [
+    {"label": "Attendre d'être garé{e}", "success": "C'était une photo de chat. Ça pouvait attendre.", "onSuccess": {"happiness": 2}},
+    {"label": "Jeter un œil rapide", "chance": 0.55, "success": "Tu as lu « on doit parler ». Tu as passé le reste du trajet dans l'angoisse, mais sans accident.", "failure": "Un motard de la police roulait juste à côté. Il a tout vu.", "onSuccess": {"happiness": -3}, "onFailure": {"money": -135, "points": 3, "infraction": "Téléphone au volant", "happiness": -4}}
+  ]},
+  {"id": "pbr_004", "permis": ["voiture", "moto", "scooter"], "text": "Sortie de soirée. Tu as bu « deux ou trois » verres. Tes amis te tendent les clés.", "choices": [
+    {"label": "Appeler un taxi", "success": "Le taxi t'a coûté 45 €. Ta vie vaut plus que ça, normalement.", "onSuccess": {"money": -45, "karma": 3}},
+    {"label": "Dormir sur le canapé d'un ami", "success": "Tu t'es réveillé{e} avec un chat sur la figure et un mal de dos. Mais vivant{e}.", "onSuccess": {"health": -1, "happiness": 1}},
+    {"label": "Rentrer en voiture, « ça va, je gère »", "chance": 0.35, "success": "Tu es rentré{e} sans encombre. Tu ne te souviens de rien. Ce n'est pas une victoire.", "failure": "Contrôle d'alcoolémie à la sortie du village. Le ballon a viré au violet.", "onSuccess": {"karma": -8}, "onFailure": {"money": -1500, "points": 6, "suspension": 2, "infraction": "Conduite en état d'ivresse", "karma": -10, "happiness": -15}}
+  ]},
+  {"id": "pbr_005", "permis": ["route"], "text": "Tu cherches une place depuis 20 minutes. Il reste une place handicapé, juste devant.", "choices": [
+    {"label": "Continuer à tourner", "success": "Tu as trouvé une place à 800 mètres. Tes mollets te remercient.", "onSuccess": {"karma": 2, "health": 1}},
+    {"label": "Juste cinq minutes, c'est rien", "chance": 0.4, "success": "Personne n'a rien vu. Ton karma, si.", "failure": "Cinq minutes ont suffi. Amende salée et un mot très sec sur le pare-brise.", "onSuccess": {"karma": -6}, "onFailure": {"money": -135, "karma": -8, "infraction": "Stationnement sur place handicapé"}}
+  ]},
+  {"id": "pbr_006", "permis": ["route"], "text": "Un automobiliste te fait une queue de poisson puis t'insulte par la fenêtre.", "choices": [
+    {"label": "Respirer et le laisser partir", "success": "Il est parti. Toi, tu es zen. Tu te sens supérieur{e}, et c'est délicieux.", "onSuccess": {"happiness": 3, "karma": 2}},
+    {"label": "Le suivre en lui faisant des appels de phares", "chance": 0.5, "success": "Il a fini par tourner. Tu as gagné. Quoi, on ne sait pas.", "failure": "Il s'est arrêté net. Accrochage. Constat. Engueulade. Journée gâchée.", "onSuccess": {"happiness": 2, "karma": -3}, "onFailure": {"money": -600, "health": -3, "happiness": -10, "signal": "accident_voiture"}},
+    {"label": "Lui chanter une chanson d'amour fenêtre ouverte", "chance": 0.7, "success": "Il ne savait plus où se mettre. Il a ri, puis il a pleuré. Belle rencontre.", "failure": "Il n'a pas entendu. Tu as chanté seul{e}, comme un{e} idiot{e}.", "onSuccess": {"happiness": 6}, "onFailure": {"happiness": -1}}
+  ]},
+  {"id": "pbr_007", "permis": ["route"], "text": "Neige et verglas. Le GPS te propose un raccourci par un col de montagne.", "choices": [
+    {"label": "Prendre l'autoroute, même plus longue", "success": "Trajet long mais sans histoire. Tu es arrivé{e} en un seul morceau.", "onSuccess": {"happiness": 1}},
+    {"label": "Le col, ça passe", "chance": 0.6, "success": "Les paysages étaient magnifiques. Tes mains ont serré le volant pendant deux heures.", "failure": "La voiture a glissé dans le fossé. Une dépanneuse t'a sauvé{e} trois heures plus tard.", "onSuccess": {"happiness": 5}, "onFailure": {"money": -900, "health": -8, "signal": "accident_voiture", "happiness": -8}}
+  ]},
+  {"id": "pbr_008", "permis": ["voiture"], "text": "Ton ami {ami} te demande de l'emmener à l'aéroport à 4 h du matin.", "choices": [
+    {"label": "Accepter, c'est ça l'amitié", "success": "Tu as fait le trajet en pyjama. {ami} te doit une vie.", "onSuccess": {"happiness": 3, "karma": 4}},
+    {"label": "Refuser et lui conseiller un taxi", "success": "{ami} a fait la tête. Toi, tu as dormi.", "onSuccess": {"happiness": 2, "karma": -2}}
+  ]},
+  {"id": "pbr_009", "permis": ["route"], "text": "Un auto-stoppeur avec un panneau « N'importe où sauf ici ».", "choices": [
+    {"label": "Le prendre", "chance": 0.75, "success": "Il s'appelait Gérard, il était poète et il t'a récité 40 minutes d'alexandrins. Tu as adoré, contre toute attente.", "failure": "Il a mangé tout ce qu'il y avait dans la boîte à gants et il est parti avec tes lunettes de soleil.", "onSuccess": {"happiness": 5, "karma": 4}, "onFailure": {"money": -80, "happiness": -4}},
+    {"label": "Passer ton chemin", "success": "Tu ne sauras jamais où il allait. Ça te travaille un peu.", "onSuccess": {"happiness": -1}}
+  ]},
+  {"id": "pbr_010", "permis": ["moto", "scooter"], "text": "Embouteillage monstre. Entre les files, il reste un petit couloir.", "choices": [
+    {"label": "Remonter doucement entre les files", "chance": 0.8, "success": "Tu es passé{e} devant tout le monde avec élégance. Les automobilistes te détestent.", "failure": "Une portière s'est ouverte. Rétroviseur arraché, genou abîmé.", "onSuccess": {"happiness": 5}, "onFailure": {"health": -10, "money": -200, "signal": "accident_voiture"}},
+    {"label": "Attendre comme tout le monde", "success": "Tu as attendu 45 minutes sous un soleil de plomb dans ton blouson en cuir.", "onSuccess": {"happiness": -3, "health": -1}}
+  ]},
+  {"id": "pbr_011", "permis": ["moto"], "text": "Un virage magnifique en montagne. Tu pourrais poser le genou.", "choices": [
+    {"label": "Rester raisonnable", "success": "Tu as pris le virage proprement. Le panorama était sublime.", "onSuccess": {"happiness": 5}},
+    {"label": "Genou au sol, comme les pros", "chance": 0.55, "success": "Genou au sol, étincelles, frisson. Tu te sens invincible (tu ne l'es pas).", "failure": "Tu as posé le genou, puis le coude, puis tout le reste. Dans les graviers.", "onSuccess": {"happiness": 10}, "onFailure": {"health": -25, "money": -1200, "happiness": -10, "signal": "accident_voiture"}}
+  ]},
+  {"id": "pbr_012", "permis": ["poidsLourd"], "text": "Long trajet de nuit avec ton camion. Il te reste 2 heures de route et tes yeux se ferment.", "choices": [
+    {"label": "S'arrêter sur une aire et dormir", "success": "Tu as dormi dans la cabine au son des autres camions. Repos mérité.", "onSuccess": {"health": 3}},
+    {"label": "Boire trois cafés et continuer", "chance": 0.6, "success": "Tu es arrivé{e} les yeux grands ouverts et le cœur à 140.", "failure": "Micro-sommeil. Ton camion a terminé dans un champ de tournesols. Personne n'est blessé, sauf les tournesols.", "onSuccess": {"health": -3}, "onFailure": {"health": -12, "money": -2500, "points": 3, "infraction": "Défaut de maîtrise", "signal": "accident_voiture"}}
+  ]},
+  {"id": "pbr_013", "permis": ["bus"], "text": "Tu conduis un bus plein. Un passager hurle que tu as raté son arrêt.", "choices": [
+    {"label": "T'excuser et le déposer au prochain arrêt", "success": "Il a grommelé. Les autres passagers t'ont trouvé{e} pro.", "onSuccess": {"karma": 2}},
+    {"label": "Le déposer en plein milieu de la route", "chance": 0.5, "success": "Il est descendu ravi. Personne n'a rien vu.", "failure": "Une voiture a pilé derrière toi. Plainte, rapport et blâme.", "onSuccess": {"karma": 1}, "onFailure": {"money": -300, "points": 2, "infraction": "Arrêt dangereux"}}
+  ]},
+  {"id": "pbr_014", "permis": ["bateau"], "text": "Sortie en bateau sur le lac. Le ciel devient noir, l'orage approche.", "choices": [
+    {"label": "Rentrer au port immédiatement", "success": "Tu es rentré{e} juste avant le déluge. Capitaine prudent{e}.", "onSuccess": {"happiness": 2}},
+    {"label": "Rester, c'est beau un orage", "chance": 0.45, "success": "Spectacle grandiose. Tu es trempé{e} mais tu as vécu un truc.", "failure": "Les vagues ont retourné le bateau. Tu as été repêché{e} par un pêcheur qui ne t'a pas laissé{e} oublier.", "onSuccess": {"happiness": 8}, "onFailure": {"health": -15, "money": -3000, "happiness": -10}}
+  ]},
+  {"id": "pbr_015", "permis": ["bateau"], "text": "Tu croises un yacht immense. Ses passagers te regardent de haut avec ton petit bateau.", "choices": [
+    {"label": "Les saluer avec dignité", "success": "Ils t'ont invité{e} à bord pour un apéro. Le champagne était tiède, mais gratuit.", "onSuccess": {"happiness": 6}},
+    {"label": "Faire des vagues exprès en passant à toute vitesse", "chance": 0.5, "success": "Leur champagne s'est renversé. Victoire de classe.", "failure": "La police du lac était là. Amende pour excès de vitesse sur l'eau.", "onSuccess": {"happiness": 7, "karma": -4}, "onFailure": {"money": -400, "karma": -4, "infraction": "Excès de vitesse sur un lac"}}
+  ]},
+  {"id": "pbr_016", "permis": ["avion"], "text": "Vol solo au-dessus des Alpes. La vue est sublime, le carburant un peu juste.", "choices": [
+    {"label": "Faire demi-tour pour être sûr{e}", "success": "Tu es rentré{e} avec 20 minutes de marge. Pilote sage.", "onSuccess": {"happiness": 4}},
+    {"label": "Encore un petit tour du Mont-Blanc", "chance": 0.6, "success": "Le Mont-Blanc au coucher du soleil. Tu as pleuré un peu dans ton casque.", "failure": "Panne sèche. Atterrissage d'urgence dans un pré. Les vaches n'en reviennent pas.", "onSuccess": {"happiness": 12}, "onFailure": {"health": -15, "money": -8000, "retrait": true, "happiness": -10}}
+  ]},
+  {"id": "pbr_017", "permis": ["avion", "helicoptere"], "text": "Ton crush {partenaire} accepte de monter avec toi pour un vol romantique.", "choices": [
+    {"label": "Vol tranquille au coucher du soleil", "success": "C'était magique. Tu as marqué des points, et pas sur ton permis.", "onSuccess": {"happiness": 10}},
+    {"label": "Faire un looping pour impressionner", "chance": 0.35, "success": "Looping parfait. {partenaire} a crié de joie. Ou de peur, difficile à dire.", "failure": "{partenaire} a vomi partout dans le cockpit. Ambiance.", "onSuccess": {"happiness": 8}, "onFailure": {"happiness": -8, "money": -300}}
+  ]},
+  {"id": "pbr_018", "permis": ["helicoptere"], "text": "Tu survoles la ville en hélicoptère. Tu aperçois la maison de ton ex.", "choices": [
+    {"label": "Continuer ta route", "success": "Tu as tourné la page. Et la tête.", "onSuccess": {"happiness": 3}},
+    {"label": "Faire du stationnaire au-dessus de son jardin", "chance": 0.3, "success": "Toutes ses chaises de jardin se sont envolées. Satisfaction mesquine.", "failure": "Ton ex a filmé et porté plainte. Licence retirée.", "onSuccess": {"happiness": 8, "karma": -8}, "onFailure": {"retrait": true, "money": -2000, "karma": -8, "infraction": "Survol à basse altitude"}}
+  ]},
+  {"id": "pbr_019", "permis": ["chasse"], "text": "Battue au sanglier. Quelque chose bouge dans les buissons.", "choices": [
+    {"label": "Attendre de bien voir ce que c'est", "success": "C'était un randonneur qui faisait pipi. Tout le monde a eu peur, personne n'a eu mal.", "onSuccess": {"karma": 3}},
+    {"label": "Tirer", "chance": 0.4, "success": "C'était un sanglier. Tu es le héros du repas des chasseurs.", "failure": "C'était le 4x4 du président de la société de chasse. Permis retiré.", "onSuccess": {"happiness": 6, "karma": -2}, "onFailure": {"retrait": true, "money": -4000, "karma": -10, "infraction": "Tir dangereux"}},
+    {"label": "Lancer ton sandwich pour voir", "chance": 0.5, "success": "Un sanglier est sorti, a mangé le sandwich et est reparti. Vous êtes amis maintenant.", "failure": "Rien n'est sorti. Tu n'as plus de sandwich.", "onSuccess": {"happiness": 5, "karma": 3}, "onFailure": {"happiness": -2}}
+  ]},
+  {"id": "pbr_020", "permis": ["peche"], "text": "Après six heures sans touche, ton bouchon plonge enfin.", "choices": [
+    {"label": "Ferrer doucement", "chance": 0.6, "success": "Un brochet énorme ! Photo, relâche, légende vivante.", "failure": "C'était une botte. La même que la dernière fois, tu en es sûr{e}.", "onSuccess": {"happiness": 10}, "onFailure": {"happiness": -2}},
+    {"label": "Tirer de toutes tes forces", "chance": 0.3, "success": "Le poisson a volé par-dessus ta tête et a atterri dans ton seau. Comme prévu, bien sûr.", "failure": "La canne a cassé et tu es tombé{e} à l'eau. Les poissons rient.", "onSuccess": {"happiness": 8}, "onFailure": {"happiness": -5, "health": -2, "money": -60}}
+  ]},
+  {"id": "pbr_021", "permis": ["drone"], "text": "Ton drone survole le quartier. Tu vois le voisin enterrer quelque chose au fond de son jardin, de nuit.", "choices": [
+    {"label": "Ne pas te mêler de ça", "success": "Tu as rangé ton drone. Tu dors mal, mais tu dors.", "onSuccess": {"happiness": -2}},
+    {"label": "Filmer et appeler la police", "chance": 0.5, "success": "C'était un trésor de pièces anciennes volées. Tu touches une récompense !", "failure": "C'était son hamster, Monsieur Moustache. Le voisin ne te parle plus.", "onSuccess": {"money": 2000, "karma": 5}, "onFailure": {"karma": -3, "happiness": -4}}
+  ]},
+  {"id": "pbr_022", "permis": ["fusee"], "text": "Tu pilotes ta fusée en orbite basse. Un satellite d'une grande entreprise te barre la route.", "choices": [
+    {"label": "Le contourner prudemment", "success": "Tu as fait un détour de 2 000 km. Dans l'espace, ce n'est rien.", "onSuccess": {"happiness": 5}},
+    {"label": "Le pousser un peu", "chance": 0.4, "success": "Il a tourné sur lui-même et continué. Une partie de la planète a perdu le wifi trois minutes.", "failure": "Le satellite et toi avez fait connaissance. Violemment.", "onSuccess": {"happiness": 6, "karma": -5}, "onFailure": {"health": -40, "money": -500000, "retrait": true}}
+  ]},
+  {"id": "pbs_001", "permis": ["route"], "permisRequis": "sans", "minAge": 12, "maxAge": 17, "text": "Tes parents dorment. Les clés de la voiture sont sur la table de l'entrée.", "choices": [
+    {"label": "Faire un petit tour du quartier", "chance": 0.6, "success": "Tu as fait le tour du pâté de maisons à 20 km/h, cœur à 180. Personne ne saura jamais.", "failure": "Tu as embouti la poubelle du voisin. Ton père a tout vu depuis la fenêtre.", "onSuccess": {"happiness": 8, "karma": -2}, "onFailure": {"happiness": -10, "money": -200}},
+    {"label": "Reposer les clés", "success": "Sage décision. Tu as regardé une vidéo de voitures à la place.", "onSuccess": {"karma": 2}}
+  ]},
+  {"id": "pbs_002", "permis": ["route"], "permisRequis": "sans", "minAge": 16, "text": "Tu conduis sans permis. Un barrage de police est installé au bout de la rue.", "choices": [
+    {"label": "Faire demi-tour discrètement", "chance": 0.55, "success": "Ils ne t'ont pas vu{e}. Tu as transpiré tout ce que tu avais.", "failure": "Faire demi-tour devant un barrage, c'est tout sauf discret. Ils t'ont arrêté{e}.", "onSuccess": {"happiness": -2}, "onFailure": {"controle": true}},
+    {"label": "Passer en souriant", "chance": 0.2, "success": "Ils t'ont fait signe de passer. Tu ne joueras plus jamais au loto, tu as tout utilisé.", "failure": "« Permis et papiers, s'il vous plaît. » Le sourire n'a pas suffi.", "onSuccess": {"happiness": 3}, "onFailure": {"controle": true}},
+    {"label": "Abandonner la voiture et partir à pied", "chance": 0.7, "success": "Tu es rentré{e} à pied. Il faudra récupérer la voiture un jour.", "failure": "Ils t'ont vu{e} sortir de la voiture en courant. Ça ne fait jamais bonne impression.", "onSuccess": {"happiness": -4, "money": -150}, "onFailure": {"controle": true, "karma": -3}}
+  ]},
+  {"id": "pbs_003", "permis": ["route"], "permisRequis": "sans", "minAge": 16, "text": "Sans permis, tu proposes à {ami} de l'emmener à une soirée.", "choices": [
+    {"label": "Rouler doucement par les petites routes", "chance": 0.7, "success": "Arrivé{e}s sans encombre. {ami} ne sait pas que tu n'as pas le permis. Ça vaut mieux.", "failure": "Un gendarme à vélo vous a arrêtés. À vélo. L'humiliation est totale.", "onSuccess": {"happiness": 6}, "onFailure": {"controle": true}},
+    {"label": "Avouer que tu n'as pas le permis et prendre le bus", "success": "{ami} a ri pendant tout le trajet en bus. Mais vous êtes arrivés.", "onSuccess": {"happiness": 2, "karma": 2}}
+  ]},
+  {"id": "pbs_004", "permis": ["route"], "permisRequis": "sans", "minAge": 18, "text": "Sans permis, tu roules sur l'autoroute. Un radar fixe approche.", "choices": [
+    {"label": "Ralentir bien en dessous de la limite", "success": "Le radar ne t'a pas vu{e}. Tu as roulé à 70 sur l'autoroute, mais tu es libre.", "onSuccess": {"happiness": 1}},
+    {"label": "Accélérer, il n'a pas ton nom de toute façon", "chance": 0.5, "success": "Il ne marchait pas. Tu as eu une chance indécente.", "failure": "Flashé. La voiture est à ton nom. Ils viendront te chercher.", "onSuccess": {"happiness": 3}, "onFailure": {"controle": true, "money": -300}}
+  ]},
+  {"id": "pbs_005", "permis": ["route"], "permisRequis": "sans", "minAge": 16, "text": "Sans permis, tu recules et tu touches une voiture garée. Personne ne regarde.", "choices": [
+    {"label": "Laisser un mot avec ton numéro", "success": "Le propriétaire t'a appelé{e}. Il a été sympa. Ton karma, lui, est aux anges.", "onSuccess": {"money": -400, "karma": 8}},
+    {"label": "Partir vite", "chance": 0.6, "success": "Personne n'a rien vu. Sauf ta conscience, qui te regarde fixement.", "failure": "Une caméra de surveillance a tout filmé. Délit de fuite sans permis. Grand classique.", "onSuccess": {"karma": -8}, "onFailure": {"controle": true, "money": -1000, "karma": -10, "infraction": "Délit de fuite", "signal": "accident_voiture"}}
+  ]},
+  {"id": "pbs_006", "permis": ["route"], "permisRequis": "sans", "minAge": 18, "text": "Sans permis, tu fais une course de rue contre un type en tuning violet.", "choices": [
+    {"label": "Refuser au dernier moment", "success": "Il t'a traité{e} de poule mouillée. Tu es une poule mouillée vivante.", "onSuccess": {"happiness": -2}},
+    {"label": "Pied au plancher", "chance": 0.4, "success": "Tu as gagné ! Le type en tuning t'a donné 200 € et son respect éternel.", "failure": "Tu as fini dans une haie. La police était au bout de la rue.", "onSuccess": {"money": 200, "happiness": 10, "karma": -5}, "onFailure": {"controle": true, "health": -15, "signal": "accident_voiture"}}
+  ]}
+]

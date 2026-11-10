@@ -7,6 +7,9 @@ REL = {"mother","father","parent","sibling","friend","partner","child"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart"}
 SPECIAL = {"death","newFriend","relationships","setFlags","skills"}
 SKILLS = {"anglais","espagnol","allemand","italien","albanais","japonais","guitare","piano","chant","danse","dessin","photo","cuisine","bricolage","mecanique","jardinage","sport","survie","code","echecs","seduction","eloquence","humour","marchandage","magie"}
+# Tags du module Permis (PermisModule.tags, docs/PERMIS.md)
+TAGS |= {"permis_scooter","permis_voiture","permis_moto","permis_poids_lourd","permis_bus","permis_bateau","licence_pilote","licence_helico","permis_chasse","permis_armes","carte_peche","brevet_drone","permis_fusee","conducteur","sans_permis","permis_probatoire","permis_points_bas","permis_suspendu","permis_annule","conduit_sans_permis","faux_permis","pilote","chasseur","chauffard"}
+SPECIAL = {"death","newFriend","relationships","setFlags"}
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
 COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags","skills"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart",
