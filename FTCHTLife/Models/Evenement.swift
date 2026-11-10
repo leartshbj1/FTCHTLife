@@ -18,7 +18,8 @@ struct Effets: Codable, Equatable {
     var newFriend: Bool?
     /// Si présent, le joueur meurt avec cette cause (ex. "écrasé par un distributeur de boissons").
     var death: String?
-
+    /// XP gagnée (ou perdue) par compétence, ex. {"cuisine": 6}. Voir docs/COMPETENCES.md.
+    var skills: [String: Int]?
 }
 
 struct ConditionsEvenement: Codable, Equatable {
@@ -33,6 +34,8 @@ struct ConditionsEvenement: Codable, Equatable {
     var tags: [String]?
     /// Tags que le joueur ne doit pas avoir.
     var excludeTags: [String]?
+    /// Niveau minimum (1 à 5) exigé par compétence, ex. {"guitare": 3}. Voir docs/COMPETENCES.md.
+    var skills: [String: Int]?
 }
 
 struct Issue: Codable, Equatable {
@@ -45,6 +48,8 @@ struct Issue: Codable, Equatable {
 struct Choix: Codable, Equatable {
     var label: String
     var outcomes: [Issue]
+    /// Choix caché : visible seulement si le joueur a ces niveaux de compétence. Voir docs/COMPETENCES.md.
+    var requiresSkill: [String: Int]?
 }
 
 struct Evenement: Codable, Identifiable, Equatable {
