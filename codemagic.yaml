@@ -3,15 +3,27 @@ workflows:
   ipa-non-signe:
     name: FTCHTLife .ipa non signé
     instance_type: mac_mini_m2
+    environment:
+      groups:
+        - github
+      xcode: latest
     max_build_duration: 60
     triggering:
       events:
         - push
+      # Seulement main et les branches ci/* (tests de PR par le fil moteur), pour économiser les minutes gratuites.
       branch_patterns:
         - pattern: main
+          include: true
+        - pattern: 'ci/*'
+          include: true
     scripts:
       - name: Fabriquer le .ipa
-        script: ./scripts/build-ipa.sh
+        script: ./scripts/build-ipa.sh || true
+      - name: Envoyer le résultat sur GitHub
+        script: ./scripts/report-github.sh
+      - name: Échouer si la compilation a échoué
+        script: test -f output/FTCHTLife.ipa
     artifacts:
       - output/FTCHTLife.ipa
       - build.log
