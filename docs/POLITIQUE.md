@@ -5,7 +5,10 @@ Validateur : `python3 tools/validate_politique.py`.
 
 Le joueur adhère (ou non) à un parti, milite, lève des fonds, fait campagne, débat à la télé,
 gagne ou perd des élections, puis gouverne : dossiers sur le bureau, scandales, sondages,
-et surtout des **lois absurdes** qui changent les règles du jeu pour le reste de la vie.
+et des **lois** qui changent les règles du jeu pour le reste de la vie.
+
+**Ton** : la politique est **sérieuse à 80 %** (vrais enjeux, dilemmes crédibles, conséquences réalistes)
+et **drôle à 20 %** seulement (ironie sèche, jamais d'absurde pur). Tout nouveau contenu suit cette règle.
 
 ## Le parcours
 
@@ -129,7 +132,7 @@ Chaque fichier contient un **tableau**. Sous-dossiers :
    - Autres modules : `PolMoteur.regle("prison", j.politique)` renvoie le produit des multiplicateurs des lois en vigueur (1 par défaut) ;
      pour une règle additive (`ageRetraite`), `PolMoteur.regleSomme("ageRetraite", j.politique)` (0 par défaut).
    - Métiers : les métiers politiques du fil métiers (`attache_parlementaire`, `lobbyiste`…, liste dans `PolMoteur.metiersPolitiques`) donnent +2 d'influence par an.
-   - Nécrologie : `PolMoteur.resumeCarriere(j.politique, genre: j.genre)` (« Ancien maire de Lyon, auteur de 3 lois absurdes »).
+   - Nécrologie : `PolMoteur.resumeCarriere(j.politique, genre: j.genre)` (« Ancien maire de Lyon, auteur de 3 lois »).
    - Profil : `j.politique?.mandat` pour afficher le mandat en cours.
 
 ## Deuxième couche : politique très poussée

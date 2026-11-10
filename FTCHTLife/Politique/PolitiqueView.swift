@@ -81,7 +81,7 @@ struct PolitiqueView: View {
             }
             .sheet(isPresented: $listeForce) {
                 if let e = engine.joueur?[keyPath: etat] ?? nil {
-                    PolLoisView(titre: "Article 49-trois-quarts", lois: loisNationalesDisponibles(e),
+                    PolLoisView(titre: "Article 49.3", lois: loisNationalesDisponibles(e),
                                 info: { _ in "Adoptée à coup sûr · motion de censure possible" }) { loi in
                         resultat { PolMoteur.passerEnForce(loi.id, &$0, &$1) }
                     }
@@ -105,7 +105,7 @@ struct PolitiqueView: View {
 
         if j.age < PolMoteur.ageMilitant {
             Section {
-                Text("Tu es trop jeune pour la politique. Pour l'instant, ton seul électorat, c'est ton doudou.")
+                Text("Tu es trop jeune pour la politique. Tu pourras adhérer à un parti en grandissant.")
             }
         } else if !j.vivant {
             EmptyView()
@@ -197,7 +197,7 @@ struct PolitiqueView: View {
     private func parti(_ j: Joueur, _ e: PolEtat) -> some View {
         Section("Parti") {
             if e.partiId == nil {
-                LigneAction(titre: "Adhérer à un parti", sousTitre: "Carte, badge et tracts offerts", icone: "person.crop.circle.badge.plus") {
+                LigneAction(titre: "Adhérer à un parti", sousTitre: "Choisis une famille politique", icone: "person.crop.circle.badge.plus") {
                     listePartis = true
                 }
                 if j.age >= PolMoteur.ageCandidat {
@@ -267,7 +267,7 @@ struct PolitiqueView: View {
                 action(j.g("Viser le poste de Premier ministre", "Viser le poste de Première ministre"), "Prendre la tête du gouvernement", "building.columns.circle.fill", cle: "premier_ministre", j, PolMoteur.viserPremierMinistre)
             }
             if PolMoteur.empechementCommissaire(j, e) == nil {
-                action("Partir à l'Union des Pays Voisins", "Devenir commissaire", "globe.europe.africa.fill", cle: "commission", j, PolMoteur.partirCommission)
+                action("Partir à la Commission européenne", "Devenir commissaire", "globe.europe.africa.fill", cle: "commission", j, PolMoteur.partirCommission)
             }
             if e.mandat?.poste == .conseiller {
                 action("Demander un poste d'adjoint", "Au maire, gentiment", "person.badge.key.fill", cle: "adjoint", j, PolMoteur.briguerAdjoint)
@@ -314,7 +314,7 @@ struct PolitiqueView: View {
     @ViewBuilder
     private func argent(_ j: Joueur, _ e: PolEtat) -> some View {
         Section("Caisse de campagne") {
-            action("Organiser un dîner de levée de fonds", "Saumon tiède et chèques", "fork.knife", cle: "fonds", j, PolMoteur.leverFonds)
+            action("Organiser un dîner de levée de fonds", "Dons de sympathisants", "fork.knife", cle: "fonds", j, PolMoteur.leverFonds)
             if e.mandat == nil && e.partiId != nil {
                 action("Lâcher une petite phrase", "Buzz ou polémique", "quote.bubble.fill", cle: "phrase", j, PolMoteur.phraseChoc)
             }
@@ -585,7 +585,7 @@ struct PolLoisView: View {
         NavigationStack {
             List {
                 if lois.isEmpty {
-                    Text("Aucun texte disponible. Tu as déjà tout essayé, même le pire.")
+                    Text("Aucun texte disponible. Reviens quand la situation aura changé.")
                 }
                 ForEach(lois) { loi in
                     Button {
@@ -674,7 +674,7 @@ extension PolitiqueView {
             } else if e.rangParti == 2 {
                 action("Briguer la tête du parti au congrès", "Influence, loyauté, popularité", "crown.fill", cle: "congres", j, PolMoteur.congres)
             } else {
-                Text("Tu diriges le parti : investitures automatiques, caisse du parti, et des militants qui t'écrivent la nuit.")
+                Text("Tu diriges le parti : investitures automatiques, caisse du parti, et la responsabilité des défaites.")
                     .font(.caption).foregroundStyle(.secondary)
             }
         }
@@ -760,7 +760,7 @@ extension PolitiqueView {
                 }
             }
             if e.mandat?.poste == .premierMinistre || (e.mandat?.poste == .president && e.premierMinistrePNJ != nil) {
-                LigneAction(titre: "Passer une loi en force (49-trois-quarts)", sousTitre: "Sans vote, mais la rue et la censure guettent",
+                LigneAction(titre: "Passer une loi en force (49.3)", sousTitre: "Sans vote, mais la rue et la censure guettent",
                             icone: "bolt.trianglebadge.exclamationmark.fill", actif: !PolMoteur.dejaFaitCetteAnnee("loi", j)) {
                     listeForce = true
                 }
@@ -776,8 +776,8 @@ extension PolitiqueView {
                 agir(PolMoteur.ecrireMemoires)
             }
             action("Donner des conférences payées", "« L'art de décider »", "mic.fill", cle: "conferences", j, PolMoteur.conferences)
-            action("Devenir chroniqueur télé", "Commenter ce que tu n'as pas su faire", "tv", cle: "chroniqueur", j, PolMoteur.chroniqueur)
-            action("Rejoindre un conseil d'administration", "Jetons de présence et casseroles", "briefcase.circle.fill", cle: "conseil_admin", j, PolMoteur.conseilAdministration)
+            action("Devenir chroniqueur télé", "Commenter l'actualité politique", "tv", cle: "chroniqueur", j, PolMoteur.chroniqueur)
+            action("Rejoindre un conseil d'administration", "Jetons de présence et soupçons de pantouflage", "briefcase.circle.fill", cle: "conseil_admin", j, PolMoteur.conseilAdministration)
             LigneAction(titre: "Créer ta fondation", sousTitre: e.fondation ? "Elle existe déjà" : "50 000 €, karma et prestige",
                         icone: "building.fill", actif: !e.fondation && j.argent >= 50_000) {
                 agir(PolMoteur.creerFondation)
@@ -899,7 +899,7 @@ struct PolFonderPartiView: View {
         NavigationStack {
             Form {
                 Section("Identité") {
-                    TextField("Nom (ex. Parti du Bon Sens Relatif)", text: $nom)
+                    TextField("Nom (ex. Mouvement pour la République)", text: $nom)
                     TextField("Sigle (ex. PBSR)", text: $sigle)
                     TextField("Slogan", text: $slogan)
                 }
