@@ -60,6 +60,9 @@ struct Repercussion: Codable, Identifiable, Equatable {
     var remember: [String]?
     /// Drapeaux retirés tout de suite, au moment du signal.
     var forget: [String]?
+    /// Signaux émis tout de suite, au moment du signal (même si `chance` rate). Sert à traduire un choix
+    /// d'événement en signal commun, par ex. "event:adu_0042" choix 1 → "tromperie".
+    var emit: [String]?
     /// Drapeaux posés quand la suite arrive.
     var setFlags: [String]?
     /// Drapeaux retirés quand la suite arrive.
@@ -112,6 +115,11 @@ enum Repercussions {
     /// Pose les drapeaux immédiats et programme les suites. Ne touche pas aux stats.
     static func signaler(_ signal: String, choix: Int? = nil, issue: Int? = nil,
                          age: Int, etat: inout RepercussionsEtat) {
+        signaler(signal, choix: choix, issue: issue, age: age, etat: &etat, profondeur: 0)
+    }
+
+    private static func signaler(_ signal: String, choix: Int?, issue: Int?,
+                                 age: Int, etat: inout RepercussionsEtat, profondeur: Int) {
         etat.compteurs[signal, default: 0] += 1
         if let c = choix { etat.compteurs["\(signal)/\(c)", default: 0] += 1 }
 
@@ -123,8 +131,13 @@ enum Repercussions {
 
             for f in r.forget ?? [] { etat.flags[f] = nil }
             for f in r.remember ?? [] where etat.flags[f] == nil { etat.flags[f] = age }
+            if profondeur < 4 {
+                for autre in r.emit ?? [] where autre != signal {
+                    signaler(autre, choix: nil, issue: nil, age: age, etat: &etat, profondeur: profondeur + 1)
+                }
+            }
 
-            guard r.text != nil || r.setFlags != nil || r.clearFlags != nil else { continue }
+            guard r.text != nil || r.setFlags != nil || r.clearFlags != nil else { continue }  // règle de marquage / traduction seule
             guard Double.random(in: 0..<1) < (r.chance ?? 1) else { continue }
             programmer(r, age: age, etat: &etat)
         }

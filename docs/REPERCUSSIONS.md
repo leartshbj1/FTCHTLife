@@ -71,6 +71,7 @@ Chaque fichier de `Resources/Data/Repercussions/` est un tableau :
 | `chance` | probabilité (0 à 1) que la suite soit programmée | 1 |
 | `delay` | `[min, max]` années après le signal ; `0` = dès que possible (au prochain passage d'année, ou au passage en cours si le signal vient du moteur pendant ce passage) | `[1, 1]` |
 | `requires` | conditions **au moment du signal** : seulement `flags`, `excludeFlags`, `minCounters`, `maxCounters` | aucune |
+| `emit` | signaux émis **tout de suite** au signal (même si `chance` rate) : traduit un choix d'événement en signal commun, ex. `"on": "event:adu_0042", "choice": 1, "emit": ["tromperie"]` | aucun |
 | `remember` / `forget` | drapeaux posés / retirés **tout de suite** au signal (même si `chance` rate) | aucun |
 | `conditions` | conditions **à l'échéance** : tous les champs des événements (`gender`, `tags`, `requiresPartner`…) + `flags`, `excludeFlags`, `minCounters`, `maxCounters` | aucune |
 | `minAge`, `maxAge` | âge requis à l'échéance | aucun |

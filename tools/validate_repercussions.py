@@ -15,7 +15,7 @@ DOSSIER = os.path.join(RACINE, "FTCHTLife", "Resources", "Data", "Repercussions"
 EVENTS = os.path.join(RACINE, "FTCHTLife", "Resources", "Data", "Events")
 
 CHAMPS = {"id", "on", "choice", "outcome", "chance", "delay", "patience", "unique", "minAge", "maxAge",
-          "conditions", "requires", "remember", "forget", "setFlags", "clearFlags", "text", "effects", "choices"}
+          "conditions", "requires", "remember", "forget", "emit", "setFlags", "clearFlags", "text", "effects", "choices"}
 CONDITIONS = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner", "requiresSchool", "tags",
               "excludeTags", "flags", "excludeFlags", "minCounters", "maxCounters"}
 REQUIRES = {"flags", "excludeFlags", "minCounters", "maxCounters"}
@@ -201,11 +201,16 @@ def main(fichiers):
             for f in r.get(k) or []:
                 if not RE_FLAG.match(f):
                     erreurs.append(f"{ou} : drapeau mal formé « {f} »")
+        for sig in r.get("emit") or []:
+            if sig not in SIGNAUX:
+                avertissements.append(f"{ou} : emit vers un signal absent de la liste « {sig} »")
+            if sig == on:
+                erreurs.append(f"{ou} : emit ne peut pas réémettre son propre signal")
         texte = r.get("text")
         if texte is None:
             if r.get("effects") or r.get("choices"):
                 erreurs.append(f"{ou} : effects/choices sans text")
-            if not (r.get("remember") or r.get("forget") or r.get("setFlags") or r.get("clearFlags")):
+            if not (r.get("remember") or r.get("forget") or r.get("setFlags") or r.get("clearFlags") or r.get("emit")):
                 erreurs.append(f"{ou} : règle vide (ni texte ni drapeau)")
         else:
             verifier_texte(texte, ou, erreurs)
