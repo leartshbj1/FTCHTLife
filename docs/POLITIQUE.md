@@ -169,3 +169,16 @@ Autres valeurs de `postes` : `chef_parti` (le joueur dirige un parti), `ancien` 
 - `rival` : rancune du rival principal envers le joueur, ±40.
 
 Variables en plus : `{rival}` (un rival du joueur), `{pm}` (le Premier ministre).
+
+### Systèmes de la deuxième couche (code : `PolProfond.swift`)
+
+- **Pays** (`PolEtat.pays`) : croissance, chômage, dette, moral, sécurité évoluent chaque année. Quand le joueur gouverne (ministre, Premier ministre, président), le bilan change sa popularité.
+- **Électorat** (`PolEtat.segments`) : six groupes ; une élection directe compte moitié popularité, moitié groupes pondérés (retraités 24 %, urbains 22 %, fonctionnaires 19 %, ruraux 16 %, jeunes 12 %, patrons 7 %), plus les affinités du parti (`segments` dans `Partis/*.json`).
+- **Élections indirectes** (président de région, sénateur, président de l'Assemblée, secrétaire général) : le réseau compte plus que la popularité.
+- **Rivaux** (`PolEtat.rivaux`, 5 max) : reviennent comme adversaires, gardent rancune, peuvent faire fuiter des affaires. Actions : réconciliation, alliance, sortir un dossier.
+- **Parti** : rang (adhérent, cadre, bureau national, chef), courants, congrès, investiture et primaire (sans investiture = dissidence et exclusion), fonder son propre parti (il prend de la force à chaque élection gagnée).
+- **Équipe** : directeur de campagne, plume, conseiller com, trésorier, garde du corps ; salaires annuels ; un membre peu loyal peut trahir.
+- **Gouvernement** : le joueur président nomme un Premier ministre (5 profils), peut organiser un référendum, dissoudre (cohabitation possible), passer une loi en force (49-trois-quarts, motion de censure). Grève générale si la colère sociale dépasse 60. Destitution possible.
+- **Après-politique** : mémoires, conférences, chroniqueur télé, conseil d'administration, fondation ; dossiers `apres`.
+- **Dynastie** : `PolMoteur.heritage(j.politique)` donne un `PolEtat` de départ pour un enfant qui reprend la vie (influence selon le rang atteint).
+- Tags en plus : `pol_chef_parti`, `pol_gouverne`, `pol_ancien`.

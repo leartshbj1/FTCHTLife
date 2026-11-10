@@ -1,0 +1,1386 @@
+[
+  {
+    "id": "par_0001",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le congrès de la discorde",
+    "text": "Le congrès de {parti} s'ouvre demain. Trois motions s'affrontent, deux courants ne se parlent plus, et {rival} a réservé la plus grande salle pour « une simple réunion amicale ».",
+    "choices": [
+      {
+        "label": "Faire une synthèse de toutes les motions",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Ta synthèse fait 80 pages et ne veut rien dire. Tout le monde l'adopte, soulagé.",
+            "pol": {
+              "loyaute": 8,
+              "influence": 3,
+              "rival": -4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "La synthèse contient deux phrases contradictoires. Les deux camps crient victoire puis se battent.",
+            "pol": {
+              "loyaute": -6,
+              "rival": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Imposer ta motion par un vote",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu gagnes avec 51 %. Les 49 % restants préparent déjà le prochain congrès.",
+            "pol": {
+              "influence": 6,
+              "loyaute": -4,
+              "rival": 8
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu perds. {rival} prend la parole sous les applaudissements. Moment très pénible.",
+            "effects": {
+              "happiness": -6
+            },
+            "pol": {
+              "influence": -8,
+              "rival": -6,
+              "popularite": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Inviter {rival} à prononcer le discours de clôture",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{rival} parle 50 minutes, dont 45 sur sa propre carrière. Mais le congrès se termine dans le calme.",
+            "pol": {
+              "loyaute": 6,
+              "rival": -10,
+              "influence": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0002",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "La caisse est vide",
+    "text": "Le trésorier de {parti} t'annonce la nouvelle en tremblant : il reste 43 € dans la caisse du parti, et une facture de 200 000 € pour les ballons du dernier meeting.",
+    "choices": [
+      {
+        "label": "Lancer un grand appel aux dons",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Les militants se cotisent. Une retraitée envoie 5 000 € et un pot de confiture.",
+            "pol": {
+              "caisse": 60000,
+              "loyaute": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "L'appel rapporte 812 €. Et un bouton de manchette.",
+            "pol": {
+              "caisse": 812,
+              "influence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre le siège du parti",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le parti déménage dans un ancien vidéoclub. Les réunions se tiennent entre deux rayons poussiéreux.",
+            "pol": {
+              "caisse": 250000,
+              "loyaute": -6,
+              "influence": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mettre de ta poche",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu signes un chèque personnel. Le parti t'adore. Ton banquier beaucoup moins.",
+            "effects": {
+              "money": -50000
+            },
+            "pol": {
+              "caisse": 50000,
+              "loyaute": 12,
+              "influence": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter le prêt d'une banque de Mollusquie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le prêt arrive vite, sans questions. Les questions arrivent plus tard, de la part des juges.",
+            "effects": {
+              "karma": -5
+            },
+            "pol": {
+              "caisse": 300000,
+              "casseroles": 18
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0003",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Les courants se déchirent",
+    "text": "Le courant « Rénovation Profonde » et le courant « Surtout Ne Rien Changer » s'insultent sur les réseaux sociaux. Ils réclament tous les deux ta tête, mais pour des raisons opposées.",
+    "choices": [
+      {
+        "label": "Soutenir la Rénovation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les jeunes militants t'acclament. Les anciens rendent leur carte avec fracas.",
+            "pol": {
+              "loyaute": -6,
+              "influence": 3,
+              "segments": {
+                "jeunes": 5,
+                "retraites": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Soutenir le statu quo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le parti reste stable, comme un musée. Les jeunes partent fonder leur propre groupe.",
+            "pol": {
+              "loyaute": 4,
+              "influence": -3,
+              "segments": {
+                "retraites": 4,
+                "jeunes": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les enfermer ensemble dans un séminaire",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Trois jours, une forêt, des ateliers de confiance. Ils en ressortent amis. Personne ne comprend.",
+            "pol": {
+              "loyaute": 10,
+              "caisse": -15000
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le séminaire tourne au pugilat autour du buffet. Photos dans la presse.",
+            "pol": {
+              "loyaute": -8,
+              "popularite": -4,
+              "caisse": -15000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0004",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le dissident médiatique",
+    "text": "Un député de {parti} enchaîne les plateaux télé pour expliquer que tu es « un accident de l'histoire ». Il est très invité, car très méchant.",
+    "choices": [
+      {
+        "label": "L'exclure du parti",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il est exclu. Il devient encore plus invité, désormais en « victime ».",
+            "pol": {
+              "loyaute": 4,
+              "popularite": -3,
+              "rival": 6,
+              "majorite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui offrir un poste au bureau national",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Il se tait aussitôt. L'ambition est un excellent bâillon.",
+            "pol": {
+              "loyaute": 3,
+              "influence": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Il accepte le poste et continue de te critiquer, mais depuis l'intérieur.",
+            "pol": {
+              "loyaute": -5,
+              "influence": -3,
+              "rival": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre sur un plateau télé",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Votre débat fait un record d'audience. Tu l'emportes avec une réplique sur sa cravate.",
+            "pol": {
+              "popularite": 5,
+              "influence": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'énerves en direct. La séquence tourne en boucle.",
+            "effects": {
+              "happiness": -4
+            },
+            "pol": {
+              "popularite": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0005",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "L'alliance contre nature",
+    "text": "Le Parti Pour la Sieste te propose une alliance électorale. Leur programme est incompatible avec le tien, mais ils ont 4 % des voix et une excellente cave.",
+    "choices": [
+      {
+        "label": "Signer l'alliance",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "L'alliance gagne trois villes. Les réunions communes commencent à 15 h, après la sieste.",
+            "pol": {
+              "influence": 5,
+              "majorite": 4,
+              "loyaute": -4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tes militants découvrent l'accord dans la presse. La salle du conseil national siffle.",
+            "pol": {
+              "loyaute": -12,
+              "influence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le Parti Pour la Sieste s'allie avec {rival}. Ils dorment ensemble, électoralement parlant.",
+            "pol": {
+              "rival": 5,
+              "loyaute": 4,
+              "influence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire voter les militants",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les militants votent pour à 52 %. Ceux qui ont voté contre ne t'adressent plus la parole.",
+            "pol": {
+              "loyaute": 2,
+              "influence": 3,
+              "majorite": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0006",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Les investitures de la discorde",
+    "text": "Il faut désigner les candidats pour les législatives. 577 circonscriptions, 2 300 candidats. Chacun est persuadé d'être le meilleur. Ta boîte mail a explosé.",
+    "choices": [
+      {
+        "label": "Désigner tes fidèles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes fidèles sont investis. Les autres crient au népotisme. Ils n'ont pas tort.",
+            "pol": {
+              "loyaute": -8,
+              "influence": 6,
+              "rival": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser des primaires partout",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "577 primaires. Le parti est épuisé, ruiné, mais tout le monde se sent écouté.",
+            "pol": {
+              "loyaute": 8,
+              "caisse": -80000,
+              "influence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tirer au sort",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Le tirage désigne un boulanger, une étudiante et un ancien clown. Ils font d'excellents candidats.",
+            "pol": {
+              "popularite": 6,
+              "loyaute": -4,
+              "segments": {
+                "jeunes": 4
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le tirage désigne ton pire ennemi dans 12 circonscriptions. Pas de chance.",
+            "pol": {
+              "rival": 8,
+              "loyaute": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0007",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "L'université d'été",
+    "text": "L'université d'été de {parti} se tient dans une station balnéaire. Tu dois choisir le thème et la tête d'affiche. Les journalistes guettent la moindre fausse note.",
+    "choices": [
+      {
+        "label": "Thème sérieux : « Réinventer l'avenir »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Trois jours de tables rondes. Tout le monde a oublié l'avenir dès le dimanche, mais c'était sérieux.",
+            "pol": {
+              "influence": 4,
+              "loyaute": 3,
+              "caisse": -20000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tête d'affiche : un chanteur des années 80",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Le concert attire 6 000 personnes. Les militants dansent jusqu'à l'aube. Grand succès.",
+            "effects": {
+              "happiness": 5
+            },
+            "pol": {
+              "loyaute": 8,
+              "popularite": 4,
+              "caisse": -40000
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le chanteur fait un discours pour le parti adverse entre deux chansons.",
+            "pol": {
+              "popularite": -5,
+              "rival": 4,
+              "caisse": -40000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire ton discours en maillot de bain",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La photo fait la une. Tes conseillers en com démissionnent. Les jeunes t'adorent.",
+            "effects": {
+              "looks": 1
+            },
+            "pol": {
+              "popularite": 3,
+              "influence": -3,
+              "segments": {
+                "jeunes": 6,
+                "retraites": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0008",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "{rival} veut ta place",
+    "text": "{rival} a fait le tour des fédérations et réunit les signatures pour un vote de défiance. Le bureau national se réunit dans une semaine.",
+    "choices": [
+      {
+        "label": "Faire le tour des fédérations toi aussi",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tu serres 4 000 mains en six jours. Le vote de défiance échoue lamentablement.",
+            "effects": {
+              "health": -4
+            },
+            "pol": {
+              "loyaute": 10,
+              "rival": 6,
+              "influence": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu arrives partout une heure après {rival}. Les fédérations ont déjà choisi.",
+            "effects": {
+              "health": -4
+            },
+            "pol": {
+              "loyaute": -10,
+              "influence": -6,
+              "rival": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un ticket commun",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{rival} devient ton numéro deux. Les réunions sont glaciales, mais le parti tient.",
+            "pol": {
+              "rival": -14,
+              "loyaute": 5,
+              "influence": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sortir un dossier embarrassant sur {rival}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le dossier fait tomber {rival}. Le parti est sauvé, mais la confiance est morte.",
+            "effects": {
+              "karma": -7
+            },
+            "pol": {
+              "rival": 20,
+              "loyaute": -4,
+              "casseroles": 6
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le dossier est faux. {rival} le prouve en direct. Désastre.",
+            "effects": {
+              "karma": -7
+            },
+            "pol": {
+              "rival": 15,
+              "loyaute": -12,
+              "popularite": -6,
+              "casseroles": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0009",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le nouveau logo",
+    "text": "L'agence de com propose un nouveau logo pour {parti} : une flèche qui monte, un cercle qui rassure et un dauphin « pour la modernité ». Coût : 180 000 €.",
+    "choices": [
+      {
+        "label": "Valider le dauphin",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le dauphin devient un mème. Tout le monde parle du parti, personne de son programme.",
+            "pol": {
+              "popularite": 3,
+              "influence": 2,
+              "caisse": -180000,
+              "segments": {
+                "jeunes": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le dessiner toi-même",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Ton logo représente une poignée de main un peu tordue. Les militants le trouvent attachant.",
+            "pol": {
+              "loyaute": 5,
+              "caisse": -200
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ton logo ressemble à une marque de lessive. La marque de lessive porte plainte.",
+            "pol": {
+              "popularite": -3,
+              "casseroles": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder l'ancien logo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'agence de com est vexée. Les militants sont rassurés. La caisse aussi.",
+            "pol": {
+              "loyaute": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0010",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "La fronde des jeunes",
+    "text": "Les jeunes de {parti} occupent le siège du parti. Ils réclament un vrai débat, une vraie démocratie interne et un vrai distributeur de boissons.",
+    "choices": [
+      {
+        "label": "Accéder à toutes leurs demandes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le distributeur est installé. La démocratie interne aussi. Tout prend deux fois plus de temps.",
+            "pol": {
+              "loyaute": 6,
+              "segments": {
+                "jeunes": 8
+              },
+              "influence": -2,
+              "caisse": -5000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les recevoir dans ton bureau",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "La discussion dure jusqu'à 2 h du matin. Ils repartent avec trois postes au bureau national.",
+            "pol": {
+              "loyaute": 8,
+              "segments": {
+                "jeunes": 5
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ils filment toute la réunion et la diffusent en direct. Tu bâilles 14 fois.",
+            "pol": {
+              "popularite": -4,
+              "segments": {
+                "jeunes": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler la sécurité",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La photo des jeunes militants évacués par des vigiles fait le tour du pays.",
+            "pol": {
+              "popularite": -8,
+              "loyaute": -10,
+              "segments": {
+                "jeunes": -12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0011",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le financement mystère",
+    "text": "Un riche homme d'affaires veut financer {parti} à hauteur de 2 millions. Il demande juste « un petit amendement » plus tard, quand vous serez au pouvoir.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La caisse déborde. L'homme d'affaires vous appelle chaque matin pour « prendre des nouvelles ».",
+            "effects": {
+              "karma": -8
+            },
+            "pol": {
+              "caisse": 500000,
+              "casseroles": 20,
+              "influence": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un journaliste remonte la piste en une semaine. Gros titres.",
+            "effects": {
+              "karma": -8
+            },
+            "pol": {
+              "caisse": 500000,
+              "casseroles": 32,
+              "popularite": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter, mais sans contrepartie écrite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il n'écrit rien. Il se souvient de tout.",
+            "effects": {
+              "karma": -3
+            },
+            "pol": {
+              "caisse": 200000,
+              "casseroles": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il finance {rival} à la place. Ton parti reste pauvre mais propre.",
+            "effects": {
+              "karma": 6
+            },
+            "pol": {
+              "rival": 4,
+              "loyaute": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0012",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le cadre qui part avec la caisse",
+    "text": "Le trésorier adjoint de {parti} a disparu avec la caisse noire du parti, une valise et le perroquet de la permanence. Une carte postale arrive des îles Kroupy.",
+    "choices": [
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La presse découvre qu'il existait une caisse noire. Mauvaise surprise pour tout le monde.",
+            "pol": {
+              "casseroles": 12,
+              "popularite": -4,
+              "caisse": -30000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Étouffer l'affaire",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Personne ne remarque rien. Le perroquet manque un peu.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "casseroles": 6,
+              "caisse": -30000
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le perroquet est retrouvé. Il répète des numéros de comptes. Scandale.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "casseroles": 20,
+              "popularite": -6,
+              "caisse": -30000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller le chercher toi-même aux Kroupy",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu le retrouves sur une plage. Il rend la valise et garde le perroquet. Marché conclu.",
+            "effects": {
+              "happiness": 4
+            },
+            "pol": {
+              "caisse": 20000,
+              "loyaute": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0013",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le sondage interne",
+    "text": "Un sondage interne révèle que 62 % des adhérents de {parti} préféreraient un autre chef. Le document fuite dans la presse dans l'heure.",
+    "choices": [
+      {
+        "label": "Démentir le sondage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu affirmes qu'il s'agit d'un faux. Le sondeur publie la facture, signée par toi.",
+            "pol": {
+              "popularite": -6,
+              "loyaute": -6,
+              "rival": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annoncer une grande consultation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La consultation te donne 54 %. C'est un peu mieux. Un peu.",
+            "pol": {
+              "loyaute": 6,
+              "caisse": -20000
+            }
+          }
+        ]
+      },
+      {
+        "label": "En rire publiquement",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "« 38 % qui m'adorent, c'est déjà une belle famille. » La formule plaît.",
+            "pol": {
+              "popularite": 5,
+              "loyaute": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ta blague tombe à plat. Un éditorialiste parle de « déni joyeux ».",
+            "pol": {
+              "popularite": -3,
+              "loyaute": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0014",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "La fusion avec un autre parti",
+    "text": "L'Union Fromage et Liberté propose de fusionner avec {parti}. Ensemble, vous pèseriez beaucoup plus. Mais il faudrait trouver un nom commun, et ce n'est pas gagné.",
+    "choices": [
+      {
+        "label": "Accepter la fusion",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Le nouveau parti s'appelle « {parti} et Fromage ». Les sondages bondissent.",
+            "pol": {
+              "influence": 8,
+              "majorite": 5,
+              "loyaute": -5,
+              "segments": {
+                "ruraux": 8
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le congrès de fusion dure 19 heures et finit sans nom. Les deux partis repartent fâchés.",
+            "pol": {
+              "loyaute": -8,
+              "influence": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer juste un accord électoral",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un accord raisonnable. Le fromage est servi aux réunions communes.",
+            "pol": {
+              "influence": 3,
+              "majorite": 2,
+              "segments": {
+                "ruraux": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'Union Fromage et Liberté s'allie avec {rival}. Ça sent fort, électoralement.",
+            "pol": {
+              "rival": 4,
+              "loyaute": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0015",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le militant historique",
+    "text": "Le doyen de {parti}, 96 ans, adhérent depuis la fondation, menace de rendre sa carte si on ne remet pas l'hymne d'origine au début des meetings. L'hymne dure 14 minutes.",
+    "choices": [
+      {
+        "label": "Remettre l'hymne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les meetings commencent par 14 minutes d'hymne. Les retraités pleurent de joie, les jeunes partent fumer.",
+            "pol": {
+              "loyaute": 6,
+              "segments": {
+                "retraites": 6,
+                "jeunes": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une version courte",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Le doyen accepte une version de 3 minutes. Il la chante a cappella en entier quand même.",
+            "pol": {
+              "loyaute": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le doyen trouve ça scandaleux et le dit au journal télévisé.",
+            "pol": {
+              "loyaute": -4,
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le nommer président d'honneur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il est ravi. Il oublie l'hymne. Il fait un discours de 40 minutes à chaque congrès.",
+            "pol": {
+              "loyaute": 8,
+              "influence": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0016",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "La rentrée politique",
+    "text": "C'est la rentrée. Tous les chefs de parti font leur grand discours. Tu dois choisir ton lieu : un champ, une usine ou un plateau de télévision.",
+    "choices": [
+      {
+        "label": "Un champ, en bottes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les vaches regardent ton discours avec intérêt. Les ruraux aussi.",
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "ruraux": 8,
+                "urbains": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Une usine, en casque de chantier",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Les ouvriers t'écoutent poliment. Un d'eux te prête son casque, trop grand.",
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "fonctionnaires": 2,
+                "patrons": 2
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "L'usine ferme le lendemain. Mauvais timing.",
+            "pol": {
+              "popularite": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un plateau télé, en costume",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le discours est vu par 3 millions de personnes. Ou plutôt, il passe pendant qu'elles dînent.",
+            "pol": {
+              "popularite": 2,
+              "influence": 4,
+              "segments": {
+                "urbains": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0017",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le programme introuvable",
+    "text": "À six mois de l'élection, {parti} n'a toujours pas de programme. La commission chargée de l'écrire s'est perdue dans un débat sur la virgule.",
+    "choices": [
+      {
+        "label": "L'écrire toi-même en une nuit",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Ton programme tient sur une page. Les gens le lisent, c'est déjà une révolution.",
+            "effects": {
+              "health": -3,
+              "smarts": 2
+            },
+            "pol": {
+              "popularite": 5,
+              "loyaute": -3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le programme contient la phrase « Mettre ici une idée ». Elle est imprimée à 2 millions d'exemplaires.",
+            "effects": {
+              "health": -3
+            },
+            "pol": {
+              "popularite": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Copier le programme d'un parti étranger",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le programme promet de rénover des ports. Ton pays n'a pas de mer à cet endroit.",
+            "effects": {
+              "karma": -3
+            },
+            "pol": {
+              "popularite": -4,
+              "casseroles": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un programme participatif",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les adhérents proposent 18 000 idées. Dont 400 sur les vacances. Tout est gardé.",
+            "pol": {
+              "loyaute": 8,
+              "popularite": 2,
+              "influence": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0018",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "La porte-parole incontrôlable",
+    "text": "Ta porte-parole a dit en direct que le programme de {parti} était « pas terrible, honnêtement ». Elle est pourtant très appréciée du public.",
+    "choices": [
+      {
+        "label": "La virer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle part et écrit un livre sur toi. Il se vend très bien.",
+            "pol": {
+              "popularite": -4,
+              "rival": 5,
+              "loyaute": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "La garder et lui faire confiance",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Sa franchise devient la marque du parti. Le public adore cette sincérité inédite.",
+            "pol": {
+              "popularite": 6,
+              "loyaute": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Elle récidive : « Notre chef ? Sympathique, mais d'une lenteur… »",
+            "pol": {
+              "popularite": -3,
+              "influence": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire qu'elle faisait de l'ironie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Personne ne te croit, mais tout le monde trouve ça mignon.",
+            "pol": {
+              "popularite": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0019",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "Le changement de nom",
+    "text": "Les communicants veulent rebaptiser {parti}. Leurs propositions : « Mouvement », « En Mouvement », ou « Le Mouvement qui Bouge ».",
+    "choices": [
+      {
+        "label": "Choisir « Le Mouvement qui Bouge »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le nom plaît aux jeunes. Les anciens refusent de le prononcer.",
+            "pol": {
+              "segments": {
+                "jeunes": 5,
+                "retraites": -5
+              },
+              "loyaute": -4,
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le nom historique",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les militants sont soulagés. Les communicants envoient quand même leur facture.",
+            "pol": {
+              "loyaute": 5,
+              "caisse": -30000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire voter les adhérents",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Les adhérents choisissent de garder l'ancien nom à 91 %. Démocratie efficace.",
+            "pol": {
+              "loyaute": 6
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Les adhérents votent pour « Parti de la Patate ». Le règlement t'oblige à l'adopter.",
+            "pol": {
+              "popularite": -4,
+              "loyaute": 4,
+              "segments": {
+                "ruraux": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "par_0020",
+    "kind": "parti",
+    "postes": [
+      "chef_parti"
+    ],
+    "weight": 1,
+    "unique": false,
+    "title": "La démission de masse",
+    "text": "Après une mauvaise élection, la moitié du bureau national de {parti} démissionne en même temps, par lettre collective. Seul {rival} reste en poste et prend des notes.",
+    "choices": [
+      {
+        "label": "Démissionner aussi, pour l'honneur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu quittes la tête du parti. {rival} prend ta place avec un sourire immense.",
+            "effects": {
+              "happiness": -8
+            },
+            "pol": {
+              "popularite": 4,
+              "influence": -10,
+              "rival": -6,
+              "finMandat": "démission de la tête du parti"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reconstruire avec une équipe neuve",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Tu nommes des inconnus motivés. Le parti rajeunit. Les éditorialistes saluent ta résilience.",
+            "pol": {
+              "loyaute": 8,
+              "influence": 3,
+              "popularite": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Les inconnus restent inconnus. Le parti tourne en rond.",
+            "pol": {
+              "influence": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rendre {rival} responsable de la défaite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ça marche à moitié. Le parti se divise en deux camps pour au moins cinq ans.",
+            "pol": {
+              "loyaute": -8,
+              "rival": 15,
+              "influence": 2
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
