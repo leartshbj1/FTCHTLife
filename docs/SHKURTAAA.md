@@ -21,7 +21,7 @@ Quand le mode est coupé, toutes les fonctions renvoient la valeur d'origine.
 
 ## Branchements à faire par chaque système
 
-- **Paramètres** (moteur) : ajouter `ShkurtaaaSettingsSection()` dans le `Form`.
+- **Paramètres / Profil** (moteur) : ajouter `ShkurtaaaSettingsSection()` dans un `Form` ou une `List`.
   Optionnel : `ShkurtaaaBadge()` dans l'en-tête de l'écran principal.
 - **Argent** (boutique, salaire, amendes…) : après chaque modification,
   `argent = Shkurtaaa.argent(argent)`. Pour griser un bouton d'achat :

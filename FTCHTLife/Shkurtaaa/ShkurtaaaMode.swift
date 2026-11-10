@@ -136,11 +136,8 @@ extension Shkurtaaa {
     static func argent(_ montant: Double) -> Double {
         a(.argentInfini) ? max(montant, Double(plancherArgent)) : montant
     }
-    static func argent(_ montant: Decimal) -> Decimal {
-        a(.argentInfini) ? max(montant, Decimal(plancherArgent)) : montant
-    }
     /// Pour la boutique : vrai si le joueur peut payer `prix` avec `solde`.
-    static func peutPayer(_ prix: Int64, solde: Int64) -> Bool {
+    static func peutPayer(_ prix: Int, solde: Int) -> Bool {
         a(.argentInfini) || solde >= prix
     }
 
