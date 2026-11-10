@@ -18,6 +18,11 @@ struct Effets: Codable, Equatable {
     var newFriend: Bool?
     /// Si présent, le joueur meurt avec cette cause (ex. "écrasé par un distributeur de boissons").
     var death: String?
+    /// Drapeaux (souvenirs) posés / retirés sur le joueur. Voir docs/REPERCUSSIONS.md.
+    var setFlags: [String]?
+    var clearFlags: [String]?
+    /// Ids de suites (Data/Repercussions) à programmer.
+    var followUps: [String]?
 }
 
 struct ConditionsEvenement: Codable, Equatable {
@@ -32,6 +37,9 @@ struct ConditionsEvenement: Codable, Equatable {
     var tags: [String]?
     /// Tags que le joueur ne doit pas avoir.
     var excludeTags: [String]?
+    /// Drapeaux (souvenirs) que le joueur doit tous avoir / ne doit pas avoir. Voir docs/REPERCUSSIONS.md.
+    var flags: [String]?
+    var excludeFlags: [String]?
 }
 
 struct Issue: Codable, Equatable {
