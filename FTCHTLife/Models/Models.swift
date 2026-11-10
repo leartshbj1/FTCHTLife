@@ -210,6 +210,8 @@ struct Joueur: Codable, Equatable {
     var evenementsVus: [String] = []
     var actionsAnnee: [String] = []
     var aQuitteEcole: Bool = false
+    /// Module Entreprises (docs/ENTREPRISES.md).
+    var entreprises: EntreprisesEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
