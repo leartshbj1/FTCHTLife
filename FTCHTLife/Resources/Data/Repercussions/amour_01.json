@@ -2879,5 +2879,284 @@
       "happiness": 2,
       "fame": 1
     }
+  },
+  {
+    "id": "rep_amo_0084",
+    "on": "fiancailles_rompues",
+    "chance": 0.6,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Les fiançailles sont rompues, mais la salle des fêtes n'est pas remboursable. Tu as donc organisé une « soirée de non-mariage ». Ambiance mitigée, buffet excellent.",
+    "effects": {
+      "money": -800,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_amo_0085",
+    "on": "fiancailles_rompues",
+    "chance": 0.35,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Depuis vos fiançailles rompues, 150 dragées gravées à vos deux prénoms dorment dans ton placard. Elles te regardent.",
+    "choices": [
+      {
+        "label": "Les manger, une par soir",
+        "outcomes": [
+          {
+            "text": "Cinq mois de dragées. Ton dentiste t'appelle par ton prénom, maintenant.",
+            "effects": {
+              "health": -2,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les revendre en ligne",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Achetées par un couple qui porte exactement les mêmes prénoms. Le monde est petit et un peu inquiétant.",
+            "effects": {
+              "money": 45,
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Aucun acheteur. Une seule personne t'a écrit, pour te demander si ça allait.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les garder pour un futur mariage",
+        "outcomes": [
+          {
+            "text": "Les dragées retournent au placard. Elles ont de la patience, elles.",
+            "effects": {
+              "setFlags": [
+                "dragees_en_reserve"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0086",
+    "on": "event:rep_amo_0085",
+    "choice": 2,
+    "delay": [
+      2,
+      10
+    ],
+    "conditions": {
+      "flags": [
+        "dragees_en_reserve",
+        "marie"
+      ]
+    },
+    "patience": 15,
+    "clearFlags": [
+      "dragees_en_reserve"
+    ],
+    "text": "À ton mariage, tu as discrètement servi les dragées de tes fiançailles rompues. Personne n'a remarqué les prénoms gravés, sauf ta nouvelle belle-mère, qui n'a rien dit. Elle te tient, désormais.",
+    "effects": {
+      "happiness": 1,
+      "money": 120
+    }
+  },
+  {
+    "id": "rep_amo_0087",
+    "on": "fiancailles_rompues",
+    "requires": {
+      "minCounters": {
+        "fiancailles_rompues": 2
+      }
+    },
+    "delay": [
+      0,
+      0
+    ],
+    "unique": true,
+    "text": "Deuxièmes fiançailles rompues. Quand tu annonces quelque chose, {mere} ne dit plus « félicitations », mais « on verra ».",
+    "effects": {
+      "happiness": -3,
+      "relationships": {
+        "mother": -1
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0088",
+    "on": "meilleur_ami",
+    "chance": 0.3,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "tags": [
+        "adult"
+      ],
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "patience": 2,
+    "text": "Après des années d'amitié, {ami} t'avoue un soir avoir des sentiments pour toi. Le serveur, qui écoutait, retient son souffle.",
+    "choices": [
+      {
+        "label": "Tenter le coup",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Dîner aux chandelles : vous avez ri comme deux potes du début à la fin. C'est peut-être mieux comme ça.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Premier baiser maladroit, deuxième beaucoup moins. Le serveur a applaudi.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester amis",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ça a été bizarre pendant trois semaines, puis plus du tout.",
+            "effects": {
+              "relationships": {
+                "friend": -2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{ami} a besoin de distance. Beaucoup de distance. Un autre continent, en fait.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "friend": -8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_amo_0089",
+    "on": "meilleur_ami",
+    "chance": 0.3,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "{partenaire} trouve que tu passes plus de temps avec {ami} qu'à la maison. {partenaire} n'a pas tort, mais {ami} a une piscine.",
+    "effects": {
+      "happiness": 1,
+      "relationships": {
+        "partner": -3,
+        "friend": 2
+      }
+    }
+  },
+  {
+    "id": "rep_amo_0090",
+    "on": "meilleur_ami",
+    "chance": 0.25,
+    "delay": [
+      5,
+      15
+    ],
+    "maxAge": 48,
+    "text": "Ton amitié avec {ami} tient depuis des années. Un soir, vous signez un pacte sur une serviette en papier : « si on est encore célibataires à 50 ans, on se marie ».",
+    "effects": {
+      "happiness": 2,
+      "relationships": {
+        "friend": 3
+      },
+      "setFlags": [
+        "pacte_des_50_ans"
+      ]
+    }
+  },
+  {
+    "id": "rep_amo_0091",
+    "on": "event:rep_amo_0090",
+    "delay": [
+      1,
+      1
+    ],
+    "minAge": 50,
+    "maxAge": 52,
+    "conditions": {
+      "flags": [
+        "pacte_des_50_ans"
+      ],
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "patience": 45,
+    "clearFlags": [
+      "pacte_des_50_ans"
+    ],
+    "text": "Cinquante ans, toujours célibataire : {ami} sonne à ta porte avec une bague en plastique et la serviette du pacte, plastifiée.",
+    "choices": [
+      {
+        "label": "Honorer le pacte",
+        "outcomes": [
+          {
+            "text": "Fausse cérémonie dans le jardin, vrais témoins, vrai gâteau. Vous avez juré de vous supporter jusqu'au bout. C'est déjà le cas.",
+            "effects": {
+              "happiness": 7,
+              "relationships": {
+                "friend": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Éclater de rire et ouvrir une bouteille",
+        "outcomes": [
+          {
+            "text": "Vous avez renégocié : rendez-vous à 70 ans. Nouvelle serviette, nouvelle signature.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
   }
 ]

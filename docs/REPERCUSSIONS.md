@@ -32,6 +32,8 @@ Une suite se déclenche sur un **signal** (`"on"`) :
 | École, travail | `bac_obtenu`, `bac_rate`, `diplome`, `abandon_etudes`, `embauche`, `promotion`, `licenciement`, `demission`, `retraite` |
 | Famille, santé, argent | `deces_parent`, `deces_proche`, `heritage`, `maladie`, `guerison`, `addiction`, `cure_desintox`, `chirurgie_esthetique`, `hopital`, `achat_maison`, `demenagement`, `gros_achat`, `faillite`, `voyage`, `celebrite` |
 
+Sens précis de quelques signaux amour : `tromperie` = le joueur trompe ; `tromperie_decouverte` = la tromperie du joueur est découverte ; `demande_mariage` = demande acceptée (fiançailles), `demande_refusee` sinon ; `largue` = le joueur se fait quitter ; `meilleur_ami` = quelqu'un devient le meilleur ami du joueur (textes avec `{ami}`).
+
 `vie_suite` : signal jamais émis, réservé aux suites du module amour/crime/santé qui ne sont programmées que par `followUps`.
 
 Un module peut ajouter ses propres signaux : il suffit de les émettre et de les ajouter à ce tableau.
