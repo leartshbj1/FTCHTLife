@@ -5,7 +5,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATS = {"happiness","health","smarts","looks","money","karma","stress","fame"}
 REL = {"mother","father","parent","sibling","friend","partner","child"}
 TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart"}
-SPECIAL = {"death","newFriend","relationships","setFlags"}
+SPECIAL = {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
 COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
 def check_effects(e, where, errs):
@@ -39,7 +39,7 @@ def main():
                 if k not in COND: errs.append(f"{w}: condition inconnue {k}")
                 elif k in ("tags","excludeTags"):
                     for t in ev["conditions"][k] or []:
-                        if t not in TAGS: errs.append(f"{w}: tag inconnu {t}")
+                        if t not in TAGS and not t.startswith("reve_"): errs.append(f"{w}: tag inconnu {t}")
             check_text(ev.get("text"), w, errs)
             ch = ev.get("choices", [])
             if not ch:
