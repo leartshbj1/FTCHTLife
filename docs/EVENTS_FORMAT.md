@@ -36,3 +36,4 @@ Fichiers : `FTCHTLife/Resources/Data/Events/<categorie>_<NN>.json`, chacun un ta
 - Placeholders : `{prenom}`, `{nom}`, `{ville}`, `{mere}`, `{pere}`, `{parent}`, `{ami}`, `{fratrie}`, `{partenaire}`, `{metier}`, et `{e}` = accord féminin du joueur seulement (`content{e}`, pas `mystérieux{e}`). Pas de variable pour patron/collègue/enfant : écris « ton patron », « ta collègue Sandrine », « ton fils ».
 - Drapeaux (suites différées, voir `docs/REPERCUSSIONS.md`) : `"effects": {"setFlags": ["fume"]}` pose un drapeau ; `"conditions": {"flags": [...], "excludeFlags": [...]}` les exige ou les exclut.
 - **Une fois un événement publié, ne change plus son `id` ni l'ordre de ses choix et issues** : les répercussions s'y réfèrent par index.
+- Une variable de personne exige sa condition : {mere}→tag mother, {pere}→father, {fratrie}→siblings, {ami}→friend, {partenaire}→requiresPartner, {metier}→requiresJob (le validateur le vérifie).
