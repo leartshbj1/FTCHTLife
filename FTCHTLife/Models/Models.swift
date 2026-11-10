@@ -210,6 +210,8 @@ struct Joueur: Codable, Equatable {
     var evenementsVus: [String] = []
     var actionsAnnee: [String] = []
     var aQuitteEcole: Bool = false
+    /// Secrets et chantage (module Secrets, voir docs/SECRETS.md).
+    var secrets: SecretsEtat?
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
