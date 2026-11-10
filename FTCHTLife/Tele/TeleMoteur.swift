@@ -115,7 +115,7 @@ extension GameEngine {
         return TeleStockage.lire(j).celebrite(age: j.age)
     }
 
-    /// Tags à ajouter à `tags(_:)` pour les événements de retombées (Events/tele_*.json).
+    /// Tags à ajouter à `tags(_:)` pour les événements de retombées (Data/Tele/Evenements).
     static func teleTags(_ j: Joueur) -> Set<String> {
         let e = TeleStockage.lire(j)
         let c = e.celebrite(age: j.age)

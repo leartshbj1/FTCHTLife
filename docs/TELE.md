@@ -1,6 +1,6 @@
 # Jeux télé et téléréalité
 
-Module : `FTCHTLife/Tele/`. Données : `FTCHTLife/Resources/Data/Tele/` et `FTCHTLife/Resources/Data/Events/tele_*.json`.
+Module : `FTCHTLife/Tele/`. Données : `FTCHTLife/Resources/Data/Tele/` (`Emissions`, `Quiz`, `Offres`, `Evenements`).
 Vérification des données : `python3 tools/validate_tele.py`.
 
 Toutes les émissions sont **inventées** (noms, présentateurs, candidats, marques). On parodie le genre, pas une émission réelle.
@@ -45,7 +45,9 @@ rapportent un peu de célébrité, et ressortent dans les événements de retomb
 3. **Tags** pour les événements de retombées : dans `tags(_:)`, ajouter `t.formUnion(GameEngine.teleTags(j))`.
    Tags : `tv_candidat` (déjà passé à la télé), `tv_star` (célébrité ≥ 40), `tv_has_been` (déjà passé, célébrité < 15),
    `tv_winner` (a déjà gagné une émission), `tv_culte` (a au moins un moment culte).
-   Sans ce branchement, les événements `Events/tele_*.json` ne sortent simplement jamais.
+   Les événements de retombées sont dans `Data/Tele/Evenements` (pas dans `Events`, pour que `tools/validate_events.py` reste propre) :
+   les ajouter au tirage avec `BibliothequeEvenements.tous + TeleBibliotheque.evenements`.
+   Sans ce branchement, ils ne sortent simplement jamais.
 4. **Variable `{culte}`** dans les événements : dans `remplir`, appeler d'abord `t = GameEngine.teleRemplir(t, j)`.
 5. Optionnel : l'effet `fame` des événements peut alimenter la célébrité avec
    `var e = TeleStockage.lire(j); e.ajouterCelebrite(fame, age: j.age); TeleStockage.ecrire(&j, e)`.
@@ -146,7 +148,7 @@ Chaque fichier est un tableau d'émissions.
 
 Gain réel = tirage dans `gain` × (célébrité actuelle / 50), au moins 30 %. Une offre se prend une fois par an.
 
-## Événements de retombées (`Data/Events/tele_*.json`)
+## Événements de retombées (`Data/Tele/Evenements/*.json`)
 
 Format normal des événements (voir `docs/ARCHITECTURE.md`), ids `tel_NNNN`, catégorie `tele`,
 avec un des tags `tv_candidat`, `tv_star`, `tv_has_been`, `tv_winner`, `tv_culte` dans `conditions.tags`.

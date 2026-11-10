@@ -185,7 +185,7 @@ for nom, data in charger("Tele/Offres"):
         effets(ou, o.get("effets"))
         effets(ou, o.get("effetsRates"))
 
-for f in sorted((RACINE / "Events").glob("tele_*.json")):
+for f in sorted((RACINE / "Tele" / "Evenements").glob("*.json")):
     data = json.loads(f.read_text(encoding="utf-8"))
     for ev in data:
         ou = f"{f.name}:{ev.get('id')}"

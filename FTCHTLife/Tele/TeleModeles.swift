@@ -6,6 +6,7 @@ import Foundation
 //   FTCHTLife/Resources/Data/Tele/Emissions/*.json : un tableau de TeleEmission par fichier
 //   FTCHTLife/Resources/Data/Tele/Quiz/*.json      : un tableau de TeleQuestion par fichier
 //   FTCHTLife/Resources/Data/Tele/Offres/*.json    : un tableau de TeleOffre par fichier
+//   FTCHTLife/Resources/Data/Tele/Evenements/*.json : événements de retombées (format Evenement)
 
 // MARK: - Émissions à manches (île, villa, cuisine, télé-crochet…)
 
@@ -172,4 +173,6 @@ enum TeleBibliotheque {
     static let emissions: [TeleEmission] = DonneesJSON.chargerTableaux(dossier: "Tele/Emissions", type: TeleEmission.self)
     static let questions: [TeleQuestion] = DonneesJSON.chargerTableaux(dossier: "Tele/Quiz", type: TeleQuestion.self)
     static let offres: [TeleOffre] = DonneesJSON.chargerTableaux(dossier: "Tele/Offres", type: TeleOffre.self)
+    /// Événements de retombées (format normal des événements, tags tv_*). Le moteur les ajoute à sa bibliothèque.
+    static let evenements: [Evenement] = DonneesJSON.chargerTableaux(dossier: "Tele/Evenements", type: Evenement.self)
 }
