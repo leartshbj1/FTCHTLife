@@ -88,7 +88,7 @@ d'en déclencher un (deux au plus par an pour tous les animaux).
 | `newPet` | un nouvel animal de cette espèce arrive (ex. `"chat"` : il ramène un chaton) |
 | `trait` | l'animal change de caractère (ex. `"genie"` après un dressage miracle) |
 
-**Variables** : celles du moteur (`{prenom}`, `{ami}`, `{partenaire}`, `{e}`…) et :
+**Variables** (dans les textes, les libellés de choix et les causes de mort) : celles du moteur (`{prenom}`, `{ami}`, `{partenaire}`, `{e}`…) et :
 
 | Variable | Devient |
 |---|---|
