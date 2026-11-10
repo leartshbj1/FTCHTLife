@@ -111,7 +111,8 @@ enum PolMoteur {
             var chance = Double(e.casseroles) / 250
             if j.stats.karma < 30 { chance += 0.08 }
             if enPoste { chance += 0.05 }
-            if Double.random(in: 0...1) < chance, let s = tirerDossier(kind: "scandale", poste: posteCourant(e), j, e) {
+            if Double.random(in: 0...1) < chance,
+               let s = tirerDossier(kind: "scandale", poste: posteCourant(e), j, e) ?? tirerDossier(kind: "scandale", poste: posteVoisin(e), j, e) {
                 e.dossiers.append(PolDossierEnAttente(dossierId: s.id, ageArrivee: j.age))
                 l.append("📰 Scandale : « \(s.title) ». Ton téléphone n'arrête plus de sonner (onglet Politique).")
             }
@@ -843,6 +844,17 @@ enum PolMoteur {
     /// Poste utilisé pour filtrer dossiers et scandales.
     static func posteCourant(_ e: PolEtat) -> String {
         e.mandat?.poste.rawValue ?? "militant"
+    }
+
+    /// Poste proche, pour les postes qui n'ont pas de contenu propre d'un type donné (scandales…).
+    static func posteVoisin(_ e: PolEtat) -> String {
+        switch e.mandat?.poste {
+        case .conseillerRegional?, .presidentRegion?: return PolPoste.maire.rawValue
+        case .senateur?, .presidentAssemblee?: return PolPoste.depute.rawValue
+        case .premierMinistre?: return PolPoste.ministre.rawValue
+        case .commissaire?, .secretaireGeneral?: return PolPoste.president.rawValue
+        default: return "militant"
+        }
     }
 
     static func tirerDossier(kind: String, poste: String, _ j: Joueur, _ e: PolEtat) -> PolDossier? {
