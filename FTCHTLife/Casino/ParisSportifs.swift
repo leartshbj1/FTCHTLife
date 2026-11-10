@@ -315,7 +315,8 @@ enum ParisMoteur {
 
     /// Cote arrondie vers le bas au centime, marge du bookmaker comprise.
     static func cote(_ p: Double, marge: Double) -> Double {
-        let brute = 1 / (max(p, 0.002) * marge)
+        // Léger rabot supplémentaire sur les outsiders (le bookmaker se méfie du hasard).
+        let brute = 1 / ((max(p, 0.002) + 0.004) * marge)
         return min(500, max(1.01, (brute * 100).rounded(.down) / 100))
     }
 
