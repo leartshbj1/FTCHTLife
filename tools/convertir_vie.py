@@ -5,7 +5,8 @@ vers les formats du jeu :
 - suites (followUpOnly) -> FTCHTLife/Resources/Data/Repercussions/vie_suites.json (format docs/REPERCUSSIONS.md)
 - crimes, activités de prison, maladies, alternatives, addictions, étapes, noms, dialogues -> dossiers du module.
 
-Usage : python3 tools/convertir_vie.py <dossier_brut>
+Usage : python3 tools/convertir_vie.py <dossier_brut> [vague]
+(vague = 2, 3… : écrit des fichiers séparés vie2_*.json, crimes_2.json, ids rep_vie2_NNNN)
 Le dossier brut contient relations/, crime/, health/ (fichiers écrits par les auteurs).
 """
 import json
@@ -127,12 +128,13 @@ def evenement(e):
 
 
 REP_IDS = {}
+VAGUE = ""
 
 
 def preparer_suites(suites_brutes):
     """Donne un id de Répercussions (rep_vie_NNNN) à chaque suite."""
     for n, s in enumerate(suites_brutes, 1):
-        REP_IDS[s["id"]] = f"rep_vie_{n:04d}"
+        REP_IDS[s["id"]] = f"rep_vie{VAGUE}_{n:04d}"
 
 
 def suites(evenements_sources, suites_brutes):
@@ -163,7 +165,9 @@ def suites(evenements_sources, suites_brutes):
 
 
 def main():
+    global VAGUE
     brut = sys.argv[1]
+    VAGUE = sys.argv[2] if len(sys.argv) > 2 else ""
     for f in ["relations/followups.json", "relations/events_suites.json"]:
         d = lire(os.path.join(brut, f)) or []
         preparer_suites_liste = [e for e in d if e.get("followUpOnly")]
@@ -187,10 +191,12 @@ def main():
                        "relations/followups.json": "vie_amour_debuts.json",
                        "crime/events.json": "vie_crime.json", "crime/prison_events.json": "vie_prison.json",
                        "health/events.json": "vie_sante.json"}[f"{dossier}/{f}"]
+                if VAGUE:
+                    nom = nom.replace("vie_", f"vie{VAGUE}_", 1)
                 ecrire("Events", nom, [evenement(e) for e in normaux])
     if suites_brutes:
         print("Répercussions :")
-        ecrire("Repercussions", "vie_suites.json", suites(tous_sources, suites_brutes))
+        ecrire("Repercussions", f"vie_suites{'_' + VAGUE if VAGUE else ''}.json", suites(tous_sources, suites_brutes))
 
     print("Données du module :")
     for src, dst, nom in [("crime/crimes.json", "Crime", "crimes.json"),
@@ -203,6 +209,8 @@ def main():
                           ("relations/dialogues.json", "RelationshipsTexts", "dialogues.json")]:
         d = lire(os.path.join(brut, src))
         if d is not None:
+            if VAGUE:
+                nom = nom.replace(".json", f"_{VAGUE}.json")
             ecrire(dst, nom, d)
 
 
