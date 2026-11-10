@@ -1,0 +1,2322 @@
+[
+  {
+    "id": "ent_res_0001",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "weight": 2,
+    "text": "Un inspecteur de l'hygiène débarque à {entreprise} sans prévenir, avec des gants blancs et un sourire qui ne présage rien de bon.",
+    "choices": [
+      {
+        "label": "Tout lui montrer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il passe un doigt sur la hotte, regarde son gant, puis te regarde. Amende et nettoyage obligatoire.",
+            "business": {
+              "cash": -3000,
+              "reputation": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tout est propre. Il est presque déçu et repart sans dire au revoir.",
+            "business": {
+              "reputation": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui offrir à manger",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il goûte, ferme les yeux, et note « cuisine exemplaire ». La corruption par la sauce existe.",
+            "business": {
+              "reputation": 3
+            },
+            "effects": {
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "« Tentative d'influence sur agent assermenté. » Il mange quand même, puis double l'amende.",
+            "business": {
+              "cash": -5000,
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le retenir à l'entrée",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu lui parles météo pendant que l'équipe javellise tout. Il n'a rien vu, sauf tes yeux paniqués.",
+            "business": {
+              "reputation": 2,
+              "moral": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il entend le bruit de dix éponges en action et demande poliment à voir « la cuisine, maintenant ».",
+            "business": {
+              "cash": -2500,
+              "reputation": -5
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "L'inspecteur est revenu, sans prévenir, deux fois. Il connaît maintenant le prénom de tes cafards.",
+      "business": {
+        "cash": -4000,
+        "reputation": -8
+      }
+    }
+  },
+  {
+    "id": "ent_res_0002",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "minNiveau": 1,
+    "text": "Un client dîne seul, prend des notes, goûte le sel et photographie la carafe. Soit c'est un critique déguisé, soit quelqu'un de très seul.",
+    "choices": [
+      {
+        "label": "Le traiter en roi",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "C'était bien un critique. Son article parle d'un « accueil d'une tendresse presque inquiétante ».",
+            "business": {
+              "reputation": 10,
+              "elan": 12
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ce n'était pas un critique. Mais il revient toutes les semaines exiger le même traitement.",
+            "business": {
+              "cash": -800,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester normal",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Critique il était, et il note « service honnête, sans chichis ». Le genre de compliment qui fait mal.",
+            "business": {
+              "reputation": 4,
+              "elan": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il te laisse un pourboire énorme et un mot : « Merci de m'avoir laissé tranquille. »",
+            "business": {
+              "cash": 300
+            },
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander directement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« Critique ? Non, je suis inspecteur des impôts. » Il range son carnet en souriant.",
+            "business": {
+              "reputation": -2
+            },
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0003",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "kebab"
+    ],
+    "text": "La broche de {entreprise} s'est décrochée en plein service et roule lentement vers la sortie. Douze clients la regardent, fourchette en l'air.",
+    "choices": [
+      {
+        "label": "Plonger dessus",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu plaques la broche comme un rugbyman. Les clients applaudissent. Ton tablier ne s'en remettra pas.",
+            "business": {
+              "reputation": 6,
+              "elan": 5
+            },
+            "effects": {
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu rates la broche et glisses jusqu'au trottoir. Une vidéo de la scène fait le tour de {ville}.",
+            "business": {
+              "elan": 8,
+              "reputation": -2
+            },
+            "effects": {
+              "health": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Offrir le repas",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Repas offert à tout le monde. La broche, elle, termine sa course contre un lampadaire, très digne.",
+            "business": {
+              "cash": -1200,
+              "reputation": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comme si",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« C'est le nouveau concept : la broche voyageuse. » Personne ne te croit, mais tout le monde rit.",
+            "business": {
+              "reputation": -3,
+              "elan": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0004",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "food_truck"
+    ],
+    "text": "Ton camion a été embarqué par la fourrière en plein service, avec deux clients encore dedans en train de commander.",
+    "choices": [
+      {
+        "label": "Courir après",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu rattrapes la dépanneuse au feu rouge et finis le service en marchant à côté. Record de livraison.",
+            "business": {
+              "elan": 8,
+              "cash": -500
+            },
+            "effects": {
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu cours derrière pendant 3 kilomètres. Les deux clients te font coucou par la fenêtre.",
+            "business": {
+              "cash": -1500
+            },
+            "effects": {
+              "health": 2,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer la fourrière",
+        "cost": 500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le gardien de la fourrière te rend le camion et commande un burger. Tu lui fais payer le prix fort.",
+            "business": {
+              "cash": -800,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir à la fourrière",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu sers des repas depuis la fourrière. Les gens qui récupèrent leur voiture ont très faim, et très mauvais caractère.",
+            "business": {
+              "cash": 1500,
+              "elan": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La police municipale estime que c'est « une provocation ». Nouvelle amende.",
+            "business": {
+              "cash": -2000,
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Tu as laissé traîner. Les frais de garde ont dépassé la valeur des deux clients oubliés.",
+      "business": {
+        "cash": -3000,
+        "elan": -10
+      }
+    }
+  },
+  {
+    "id": "ent_res_0005",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "text": "Un client trouve un cheveu dans son assiette et menace de tout raconter. Le cheveu est bleu. Personne chez toi n'a les cheveux bleus.",
+    "choices": [
+      {
+        "label": "Mener l'enquête",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'enquête révèle que le client a les cheveux bleus sous sa casquette. Il s'en va sans payer, mais vaincu.",
+            "business": {
+              "reputation": 3
+            },
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le cheveu vient d'une perruque de clown oubliée dans la réserve depuis l'ouverture. Personne ne sait pourquoi.",
+            "business": {
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Offrir le dessert",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le client accepte le dessert et y trouve un second cheveu bleu. Le mystère s'épaissit.",
+            "business": {
+              "cash": -200,
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier en bloc",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu nies si fort que tu commences à douter de toi-même. Le client publie une photo très floue.",
+            "business": {
+              "reputation": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0006",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "text": "{concurrent} vend exactement ta recette phare, rebaptisée « La Pas Du Tout Copiée ». Même la faute d'orthographe du menu est identique.",
+    "choices": [
+      {
+        "label": "Attaquer en justice",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le juge goûte les deux plats et te donne raison. Il commande aussi à emporter.",
+            "business": {
+              "cash": 3000,
+              "reputation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer la recette",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta nouvelle recette est meilleure. {concurrent} la copie le lendemain. C'est un cycle.",
+            "business": {
+              "elan": 6,
+              "cash": -800
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta nouvelle recette est ratée. {concurrent} ne la copie pas. C'est pire.",
+            "business": {
+              "elan": -6,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Afficher la comparaison",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une affiche « L'original, c'est ici » attire les curieux. Ils goûtent les deux et choisissent... chacun son camp.",
+            "business": {
+              "elan": 8,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Les clients pensent maintenant que c'est toi qui as copié {concurrent}.",
+      "business": {
+        "reputation": -7,
+        "elan": -6
+      }
+    }
+  },
+  {
+    "id": "ent_res_0007",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "restaurant_gastro"
+    ],
+    "minNiveau": 1,
+    "unique": true,
+    "conditions": {
+      "minReputation": 60
+    },
+    "text": "Rumeur : un grand guide gastronomique pourrait accorder une étoile à {entreprise}. Il faudrait un dernier effort, et une nappe sans tache.",
+    "choices": [
+      {
+        "label": "Tout rénover",
+        "cost": 12000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'étoile tombe ! Tu pleures dans la chambre froide pour ne pas abîmer ton maquillage ou ta dignité.",
+            "business": {
+              "reputation": 20,
+              "elan": 25
+            },
+            "effects": {
+              "happiness": 10,
+              "fame": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Pas d'étoile cette année. Mais les nappes sont magnifiques et les clients le remarquent.",
+            "business": {
+              "reputation": 5,
+              "elan": 5
+            },
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester soi-même",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "L'inspecteur adore l'authenticité. Étoile. Tu n'en reviens pas, ton banquier non plus.",
+            "business": {
+              "reputation": 18,
+              "elan": 20
+            },
+            "effects": {
+              "happiness": 10
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le guide salue « une maison sincère, à revoir ». Sincère, c'est déjà ça.",
+            "business": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer les guides",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu déclares publiquement « mépriser les étoiles ». Les journalistes adorent ce genre de chef.",
+            "business": {
+              "reputation": 4,
+              "elan": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0008",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "minNiveau": 0,
+    "maxNiveau": 4,
+    "text": "Les livreurs à vélo qui apportent tes commandes font grève devant {entreprise}. Ils ont faim, et l'odeur ne les aide pas.",
+    "choices": [
+      {
+        "label": "Nourrir les grévistes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu offres à manger aux grévistes. Ils tiennent dix jours de plus et écrivent ton nom sur leurs pancartes, en gentil.",
+            "business": {
+              "cash": -1500,
+              "reputation": 8
+            },
+            "effects": {
+              "karma": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Livrer toi-même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu livres à vélo, en tablier. Les clients te donnent des pourboires par pitié.",
+            "business": {
+              "elan": 4,
+              "cash": 300
+            },
+            "effects": {
+              "health": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu te perds dans {ville} avec trois commandes froides et un mollet en feu.",
+            "business": {
+              "reputation": -4
+            },
+            "effects": {
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une semaine sans livraisons. Le chiffre baisse, mais tu as enfin le temps de nettoyer les plinthes.",
+            "business": {
+              "elan": -10,
+              "cash": -1000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0009",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "boulangerie",
+      "pizzeria"
+    ],
+    "text": "Pénurie de farine dans toute la région. Ton fournisseur te propose un « substitut » dont il refuse de révéler l'origine.",
+    "choices": [
+      {
+        "label": "Prendre le substitut",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ça fonctionne. Personne ne voit la différence, sauf un client qui jure entendre ses {produit} chuchoter.",
+            "business": {
+              "cash": 1000,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le « substitut » était de la sciure de luxe. Tu fais un rappel de produits en catastrophe.",
+            "business": {
+              "cash": -4000,
+              "reputation": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter au prix fort",
+        "cost": 4000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu paies la farine au prix de l'or. Tes {produit} sont les seuls de {ville}. Tu les vends au prix de l'or aussi.",
+            "business": {
+              "cash": 1500,
+              "elan": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réduire la production",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu vends moitié moins, en jouant la rareté : « édition limitée ». Les gens font la queue à 6 h.",
+            "business": {
+              "cash": -1500,
+              "reputation": 4,
+              "elan": 5
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Plus de farine, plus de {produit}. Tu vends des bouteilles d'eau et des regrets.",
+      "business": {
+        "cash": -5000,
+        "elan": -15
+      }
+    }
+  },
+  {
+    "id": "ent_res_0010",
+    "kind": "absurde",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "bar"
+    ],
+    "text": "Un habitué du bar a une ardoise de trois ans. Pour l'effacer, il te propose sa collection de 4 000 capsules de bière.",
+    "choices": [
+      {
+        "label": "Accepter les capsules",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu tapisses le mur avec les capsules. Un décorateur de magazine passe et adore « le concept ».",
+            "business": {
+              "reputation": 6,
+              "cash": -1500
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as 4 000 capsules et un trou de 1 500 € dans la caisse. Il revient le lendemain, avec une nouvelle ardoise.",
+            "business": {
+              "cash": -1500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger l'argent",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il paie, par virements de 3 €, avec un petit mot à chaque fois. Ça va durer 500 virements.",
+            "business": {
+              "cash": 500
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Vexé, il part chez {concurrent} avec sa soif et tous ses amis.",
+            "business": {
+              "elan": -6,
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Effacer par amitié",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il pleure, t'embrasse et commande une tournée générale. Sur l'ardoise.",
+            "business": {
+              "cash": -2000,
+              "reputation": 4
+            },
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0011",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "bar",
+      "brasserie"
+    ],
+    "text": "La finale de la coupe approche. Un fournisseur te propose un écran géant à crédit, « pour transformer {entreprise} en stade ».",
+    "choices": [
+      {
+        "label": "Écran géant",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Salle comble, ambiance de folie. L'équipe locale perd, mais tu vends 900 {produit}.",
+            "business": {
+              "cash": 5000,
+              "elan": 10,
+              "dette": 3000
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'écran s'éteint à la 89e minute. Tu commentes la fin du match toi-même, à voix haute. Huées.",
+            "business": {
+              "cash": -1000,
+              "dette": 3000,
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Petit écran",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les clients se serrent devant une télé de 80 cm. Ils sont collés, heureux et assoiffés.",
+            "business": {
+              "cash": 1500,
+              "elan": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Soirée anti-foot",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta « soirée sans foot » attire tous les gens qui détestent le foot. Ils sont nombreux et très calmes.",
+            "business": {
+              "cash": 1000,
+              "reputation": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0012",
+    "kind": "absurde",
+    "secteurs": [
+      "restauration"
+    ],
+    "text": "Un inconnu entre et commande « comme d'habitude ». Personne ne l'a jamais vu. Il a l'air très sûr de lui.",
+    "choices": [
+      {
+        "label": "Improviser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu lui sers un plat au hasard. « Parfait, comme toujours. » Tu as désormais un habitué que tu ne connais pas.",
+            "business": {
+              "elan": 3
+            },
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "« Ce n'est pas mon habitude. » Il te raconte en détail une habitude que tu n'as jamais eue.",
+            "business": {
+              "reputation": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer ne pas savoir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il te regarde, blessé. « Après toutes ces années. » Il part. Tu culpabilises sans savoir pourquoi.",
+            "business": {
+              "reputation": -2
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Créer « L'Habitude »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu inventes un plat appelé « L'Habitude ». Il devient le plus vendu de la carte.",
+            "business": {
+              "elan": 8,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0013",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "text": "Un client a filmé une souris qui traverse la salle de {entreprise}. La vidéo s'appelle « Le serveur le plus rapide de {ville} ».",
+    "choices": [
+      {
+        "label": "Dératiser",
+        "cost": 1500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le dératiseur trouve une famille de douze souris et leur nom sur la boîte aux lettres. Tout est réglé.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Adopter un chat",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le chat fait le travail. Il devient aussi la mascotte de {entreprise} et a plus d'abonnés que toi.",
+            "business": {
+              "reputation": 4,
+              "elan": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le chat et la souris sont devenus amis. Ils se promènent ensemble dans la salle.",
+            "business": {
+              "reputation": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Démentir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu affirmes qu'il s'agissait d'un « jouet mécanique de décoration ». Même la souris est gênée.",
+            "business": {
+              "reputation": -7
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "La souris est restée. Elle a fait des petits, et une deuxième vidéo.",
+      "business": {
+        "reputation": -10,
+        "elan": -6
+      }
+    }
+  },
+  {
+    "id": "ent_res_0014",
+    "kind": "absurde",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "boulangerie"
+    ],
+    "text": "Une cliente exige une baguette « pas trop cuite, mais pas pas cuite, tu vois ? ». Elle revient tous les jours depuis six mois et repart toujours déçue.",
+    "choices": [
+      {
+        "label": "Cuisson sur mesure",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Après 183 essais, elle sourit enfin. Tu as presque envie de pleurer. Elle ne reviendra plus jamais, elle a gagné.",
+            "business": {
+              "reputation": 4
+            },
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Elle trouve la baguette « trop sur mesure ». Tu ne savais pas que c'était possible.",
+            "business": {
+              "cash": -300
+            },
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui donner le four",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu la laisses cuire sa propre baguette. Elle est déçue par elle-même. Tu ressens une immense paix.",
+            "business": {
+              "reputation": 2
+            },
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer « La Pas Pas »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu vends la « baguette Pas Pas Cuite ». Personne ne comprend, tout le monde en achète.",
+            "business": {
+              "elan": 7
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0015",
+    "kind": "absurde",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "pizzeria"
+    ],
+    "text": "Un client commande une pizza ananas-chocolat-anchois et menace d'un avis négatif si tu refuses de la faire.",
+    "choices": [
+      {
+        "label": "Faire la pizza",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il la mange en entier, en fermant les yeux. « Exactement ce que j'imaginais. » Tu ne veux pas savoir.",
+            "business": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il la photographie et elle devient la pizza la plus détestée d'internet. Les ventes explosent par curiosité.",
+            "business": {
+              "elan": 12,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser fièrement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avis négatif dit : « Pizzaiolo intransigeant ». Les puristes se ruent chez toi.",
+            "business": {
+              "reputation": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer pire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu proposes un supplément sardines-marshmallow. Le client recule, impressionné, et commande une margherita.",
+            "business": {
+              "reputation": 3
+            },
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0016",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "restaurant_gastro"
+    ],
+    "text": "Ton plat signature, une « émulsion de nuage sur lit de silence », est accusé par un client d'être « juste de l'air dans une assiette ».",
+    "choices": [
+      {
+        "label": "Expliquer le concept",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu parles vingt minutes de « vide signifiant ». Le client finit par pleurer d'émotion ou de faim.",
+            "business": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le client publie ton explication. Elle devient un mème intitulé « le menu à 180 € de rien ».",
+            "business": {
+              "reputation": -8,
+              "elan": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ajouter du pain",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ajoutes une tranche de pain sous le nuage. Les critiques parlent d'un « retour courageux au réel ».",
+            "business": {
+              "reputation": 5,
+              "elan": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rembourser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu rembourses le nuage. Le client garde l'assiette en souvenir.",
+            "business": {
+              "cash": -500,
+              "reputation": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0017",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "food_truck"
+    ],
+    "text": "Un grand festival de musique te propose un emplacement pour ton food truck. Le prix est indécent, mais 40 000 personnes affamées aussi.",
+    "choices": [
+      {
+        "label": "Prendre l'emplacement",
+        "cost": 6000,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Trois jours de folie, 7 000 burgers vendus, une odeur de friture qui ne quittera jamais tes cheveux.",
+            "business": {
+              "cash": 12000,
+              "elan": 12
+            },
+            "effects": {
+              "health": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il pleut trois jours. Les festivaliers mangent leurs chaussettes mouillées plutôt que ta nourriture.",
+            "business": {
+              "cash": -2000,
+              "elan": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier le prix",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu obtiens une place moins chère, à côté des toilettes. Les clients y passent beaucoup, dans les deux sens.",
+            "business": {
+              "cash": 4000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'organisateur se vexe et donne la place à {concurrent}. Tu suis le festival sur les réseaux.",
+            "business": {
+              "elan": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu restes en ville. C'est calme. Trop calme. Tu entends le festival au loin.",
+            "business": {
+              "elan": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0018",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "kebab"
+    ],
+    "text": "Une célébrité locale débarque à 3 h du matin, très, très joyeuse, et veut absolument une photo avec la broche.",
+    "choices": [
+      {
+        "label": "Prendre la photo",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La photo fait le tour de la région : « La nuit où la star a épousé la broche ». Ton chiffre s'envole.",
+            "business": {
+              "elan": 15,
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La célébrité, très joyeuse, embrasse la broche. Elle est brûlante. Tu passes la nuit aux urgences avec elle.",
+            "business": {
+              "reputation": 3,
+              "elan": 6
+            },
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui servir un café",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Café, eau, sandwich. La célébrité te remercie le lendemain sur les réseaux : « Le seul adulte de la soirée ».",
+            "business": {
+              "reputation": 8,
+              "elan": 6
+            },
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer le rideau",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fermes. Elle chante devant le rideau jusqu'à l'aube. Les voisins portent plainte, contre toi.",
+            "business": {
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0019",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "weight": 2,
+    "text": "Le frigo principal de {entreprise} a rendu l'âme en pleine canicule. Il reste quatre heures avant que ton stock devienne une expérience scientifique.",
+    "choices": [
+      {
+        "label": "Frigo neuf en urgence",
+        "cost": 3500,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le réparateur arrive en 3 h 50. Tu paies le prix de l'urgence, et celui de tes nerfs.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Grande promo flash",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "« Tout doit disparaître avant 18 h ! » Tout disparaît. Tu n'as jamais autant vendu à perte.",
+            "business": {
+              "cash": -1000,
+              "elan": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Personne ne vient. Tu manges seul{e} 40 kilos de stock en sueur.",
+            "business": {
+              "cash": -3500
+            },
+            "effects": {
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Emprunter un frigo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le voisin te prête son frigo. Tu retrouves tes produits à côté de son fromage qui coule. Ça sent l'amitié.",
+            "business": {
+              "cash": -500
+            },
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Tu n'as rien fait. La cuisine a développé un écosystème. Un biologiste veut l'étudier.",
+      "business": {
+        "cash": -5000,
+        "reputation": -10
+      }
+    }
+  },
+  {
+    "id": "ent_res_0020",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "minNiveau": 0,
+    "maxNiveau": 3,
+    "text": "Un couple te demande d'assurer le repas de son mariage pour 250 invités. Pendant la dégustation, les mariés ne se parlent déjà plus.",
+    "choices": [
+      {
+        "label": "Accepter le mariage",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le mariage est magnifique, le repas aussi. Ils divorcent six mois plus tard et te recommandent pour la fête.",
+            "business": {
+              "cash": 8000,
+              "reputation": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le mariage est annulé la veille. Tu as 250 repas et un gâteau à trois étages.",
+            "business": {
+              "cash": -3000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger un acompte",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils paient 50 %. Le mariage a lieu dans une ambiance glaciale, mais ta sauce, elle, est chaude.",
+            "business": {
+              "cash": 5000,
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses. Le jour du mariage, tu les croises : ils mangent un kebab sur le parvis, réconciliés.",
+            "business": {
+              "reputation": 1
+            },
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0021",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "conditions": {
+      "minAnnees": 1
+    },
+    "text": "Le voisin du dessus menace de porter plainte : l'odeur de cuisine imprègne ses rideaux, son chat et son âme.",
+    "choices": [
+      {
+        "label": "Installer une hotte",
+        "cost": 4000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La hotte avale toutes les odeurs. Le voisin est presque déçu : son chat sentait bon.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le nourrir gratuitement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le voisin mange gratuitement tous les soirs et ne se plaint plus de rien. Il a pris dix kilos.",
+            "business": {
+              "cash": -1500
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il mange gratuitement ET porte plainte. Il est très doué.",
+            "business": {
+              "cash": -3000,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contre-attaquer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu portes plainte pour « tapage de chat ». Le juge rit, puis vous condamne tous les deux à vous parler.",
+            "business": {
+              "cash": -1500,
+              "reputation": -2
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0022",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "conditions": {
+      "enDifficulte": true
+    },
+    "text": "Un fournisseur propose de la viande à moitié prix, livrée de nuit dans une camionnette sans plaque. Il refuse de préciser l'animal.",
+    "choices": [
+      {
+        "label": "Accepter l'offre",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "C'était du bœuf de qualité, volé à un mariage. Tu ne poses plus de questions.",
+            "business": {
+              "cash": 3000
+            },
+            "effects": {
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Les services sanitaires saisissent la camionnette, puis ta cuisine. Le fournisseur a disparu dans la nuit.",
+            "business": {
+              "cash": -6000,
+              "reputation": -12
+            },
+            "effects": {
+              "karma": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser fermement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il repart en marmonnant. Le lendemain, {concurrent} affiche des prix imbattables.",
+            "business": {
+              "elan": -3
+            },
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler la police",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La police intercepte la camionnette. Le journal local parle d'« une adresse intègre ». Ça fait plaisir.",
+            "business": {
+              "reputation": 8
+            },
+            "effects": {
+              "karma": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0023",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "text": "Un client fait une réaction allergique à un plat de {entreprise} qui ne devait contenir aucune cacahuète. Selon la cuisine, il y en avait « juste un soupçon ».",
+    "choices": [
+      {
+        "label": "Assumer et payer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu payes les frais et une nouvelle carte avec tous les allergènes. Elle fait douze pages.",
+            "business": {
+              "cash": -3000,
+              "reputation": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Former la cuisine",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Formation obligatoire pour toute l'équipe. On n'y parle que de cacahuètes. Certains en rêvent la nuit.",
+            "business": {
+              "cash": -1500,
+              "reputation": 2,
+              "moral": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Minimiser l'incident",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« Un soupçon, ce n'est rien. » L'avocat du client trouve que si.",
+            "business": {
+              "cash": -6000,
+              "reputation": -10
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Le client a récupéré, mais il a écrit un livre. Le chapitre 4 parle de toi.",
+      "business": {
+        "reputation": -8,
+        "cash": -2000
+      }
+    }
+  },
+  {
+    "id": "ent_res_0024",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "text": "{ville} organise le concours du meilleur produit local. Le jury : le maire, son coiffeur et son chien.",
+    "choices": [
+      {
+        "label": "Séduire le chien",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le chien vote pour toi, en aboyant trois fois. Le maire suit son chien. Premier prix !",
+            "business": {
+              "reputation": 10,
+              "elan": 12
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le chien mange ton plat avant la dégustation. Disqualification, mais le chien t'aime.",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer la qualité",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Deuxième place. Le coiffeur a trouvé ton plat « sans fantaisie ». Le diplôme est quand même joli.",
+            "business": {
+              "reputation": 6,
+              "elan": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Premier prix ! Le maire te remet une médaille en chocolat, que le chien mange aussi.",
+            "business": {
+              "reputation": 10,
+              "elan": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas participer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{concurrent} gagne. Sa photo avec le chien est partout. Tu n'as pas de regrets, à part ceux-là.",
+            "business": {
+              "elan": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0025",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "bar",
+      "brasserie"
+    ],
+    "text": "Deux clients se battent pour savoir qui a inventé la frite. Les tabourets volent, le juke-box saigne.",
+    "choices": [
+      {
+        "label": "S'interposer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu calmes tout le monde avec une tournée générale. Les deux ennemis repartent bras dessus bras dessous.",
+            "business": {
+              "cash": -400,
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu prends un tabouret dans le dos. Les deux clients s'unissent pour te consoler.",
+            "business": {
+              "cash": -800
+            },
+            "effects": {
+              "health": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler la police",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La police arrive et prend parti dans le débat. Il faut maintenant aussi la séparer.",
+            "business": {
+              "cash": -1200,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Arbitrer le débat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu organises un débat avec micro et chronomètre. Le « Grand Débat de la Frite » devient un rendez-vous mensuel.",
+            "business": {
+              "elan": 8,
+              "reputation": 3,
+              "cash": -600
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0026",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "text": "Coupure de gaz dans le quartier un samedi soir. Ta salle est pleine et ta cuisine est froide.",
+    "choices": [
+      {
+        "label": "Menu froid improvisé",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Carpaccio de tout, salades créatives. Les clients appellent ça « la soirée crue ». Ils reviennent.",
+            "business": {
+              "reputation": 5,
+              "elan": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les clients découvrent ce qu'est une « salade de pâtes crues ». Ils ne reviennent pas.",
+            "business": {
+              "reputation": -6,
+              "cash": -800
+            }
+          }
+        ]
+      },
+      {
+        "label": "Barbecue sur le trottoir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu cuisines dehors. La rue entière vient. Les pompiers aussi, mais pour manger.",
+            "business": {
+              "elan": 10,
+              "cash": 800
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La police municipale n'apprécie pas. Amende pour « grillades non déclarées ».",
+            "business": {
+              "cash": -1500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout rembourser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fermes et rembourses tout. Les clients partent déçus mais polis. Tu manges les desserts, seul{e}.",
+            "business": {
+              "cash": -2000
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0027",
+    "kind": "absurde",
+    "secteurs": [
+      "restauration"
+    ],
+    "minNiveau": 0,
+    "maxNiveau": 3,
+    "text": "Une vidéo d'un client qui pleure de bonheur devant tes {produit} devient virale. En réalité, il pleurait à cause d'une rupture.",
+    "choices": [
+      {
+        "label": "Surfer sur le buzz",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "« Les {produit} qui font pleurer » : les gens viennent de loin pour pleurer chez toi. Mouchoirs en supplément.",
+            "business": {
+              "elan": 18,
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le client révèle la vérité. Les gens viennent quand même, mais pour le consoler.",
+            "business": {
+              "elan": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire la vérité",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton honnêteté émeut internet. Le client reçoit 300 propositions de rendez-vous. Tu reçois 3 commandes.",
+            "business": {
+              "reputation": 6,
+              "elan": 4
+            },
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Inviter le client",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu lui offres un repas et une épaule. Il revient chaque semaine. Il va mieux. Tu t'inquiètes un peu.",
+            "business": {
+              "cash": -300,
+              "reputation": 4
+            },
+            "effects": {
+              "karma": 2,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0028",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "boulangerie"
+    ],
+    "unique": true,
+    "text": "Ta baguette est sélectionnée au concours départemental. Le règlement interdit « toute forme de pain magique ». Ta recette contient un ingrédient secret.",
+    "choices": [
+      {
+        "label": "Révéler l'ingrédient",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'ingrédient secret, c'est l'amour. Et un peu de sucre. Le jury est ému. Médaille de bronze.",
+            "business": {
+              "reputation": 8,
+              "elan": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le secret",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Médaille d'or ! Le jury exige de goûter ta pâte crue. Tu la caches dans ton tablier.",
+            "business": {
+              "reputation": 14,
+              "elan": 15
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le jury soupçonne de la magie. Tu es disqualifié{e} pour « excès de croustillant ».",
+            "business": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tricher un peu",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu achètes une baguette chez {concurrent} et la présentes. Elle gagne. Tu ne dormiras plus jamais bien.",
+            "business": {
+              "reputation": 10
+            },
+            "effects": {
+              "karma": -5,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0029",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "conditions": {
+      "minAnnees": 1
+    },
+    "text": "La mairie de {ville} t'accorde enfin une terrasse. Elle mesure 60 centimètres de large, entre un lampadaire et une borne de recharge.",
+    "choices": [
+      {
+        "label": "Une table, deux chaises",
+        "cost": 600,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La table « Romantique » devient la plus réservée de {ville}. On s'y embrasse pour ne pas tomber.",
+            "business": {
+              "elan": 8,
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un client tombe du trottoir avec sa soupe. Il est plus vexé que mouillé.",
+            "business": {
+              "cash": -500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Terrasse debout",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les clients boivent debout, collés au lampadaire. C'est devenu un lieu « branché ». Le lampadaire aussi.",
+            "business": {
+              "elan": 6,
+              "cash": 800
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contester la décision",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Après six mois de procédure, la mairie t'accorde 65 centimètres. Victoire !",
+            "business": {
+              "cash": -800,
+              "reputation": 2
+            },
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0030",
+    "kind": "opportunite",
+    "secteurs": [
+      "restauration"
+    ],
+    "minNiveau": 0,
+    "maxNiveau": 2,
+    "text": "Une plateforme de livraison te propose de rejoindre son appli. Elle prend 35 % de commission et t'appelle « partenaire ».",
+    "choices": [
+      {
+        "label": "Signer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les commandes affluent. Tu travailles deux fois plus pour gagner un peu plus. Tu es partenaire, en effet.",
+            "business": {
+              "cash": 4000,
+              "elan": 10
+            },
+            "effects": {
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'appli met ta boutique en page 47. Ton seul client est un livreur qui se trompe d'adresse.",
+            "business": {
+              "cash": -500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier 25 %",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Accepté. Tu as l'impression d'avoir gagné, ce qui est leur stratégie.",
+            "business": {
+              "cash": 5000,
+              "elan": 8
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La plateforme t'envoie un émoji qui pleure de rire. C'est un non.",
+            "business": {
+              "elan": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Livrer toi-même",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu lances ta propre livraison avec un scooter d'occasion qui démarre une fois sur deux.",
+            "business": {
+              "cash": -1500,
+              "elan": 6,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0031",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "bar",
+      "brasserie"
+    ],
+    "text": "La tireuse à bière tombe en panne le jour de la fête du quartier. Deux cents personnes assoiffées te regardent comme un traître.",
+    "choices": [
+      {
+        "label": "Réparateur d'urgence",
+        "cost": 1200,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le réparateur arrive, répare, puis reste boire avec tout le monde. Il ne facture que la moitié.",
+            "business": {
+              "cash": 3000,
+              "reputation": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bouteilles au détail",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu vends des bouteilles tièdes à prix d'or. Les gens râlent, mais ils boivent.",
+            "business": {
+              "cash": 1500,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il n'y a pas assez de bouteilles. Une émeute gentille mais déterminée éclate.",
+            "business": {
+              "cash": -800,
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de la limonade",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta limonade maison fait un flop retentissant. Un enfant de six ans, lui, est ravi.",
+            "business": {
+              "reputation": -5
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Les assoiffés sont partis chez {concurrent} et ont découvert que sa tireuse marchait.",
+      "business": {
+        "elan": -10,
+        "reputation": -6
+      }
+    }
+  },
+  {
+    "id": "ent_res_0032",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "food_truck"
+    ],
+    "text": "{concurrent} vient de garer son camion pile devant le tien et joue de l'accordéon pour attirer tes clients.",
+    "choices": [
+      {
+        "label": "Jouer plus fort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu sors une trompette. Duel musical. La foule se masse et achète chez vous deux. Personne n'a dormi.",
+            "business": {
+              "elan": 8,
+              "cash": 1000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu ne sais pas jouer de la trompette. Les clients fuient vers l'accordéon.",
+            "business": {
+              "elan": -6,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer d'emplacement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu déménages trois rues plus loin. L'accordéon te suit. C'est devenu personnel.",
+            "business": {
+              "elan": -4,
+              "cash": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une alliance",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vous formez un duo burger-accordéon. Les mariages s'arrachent votre service.",
+            "business": {
+              "elan": 10,
+              "reputation": 5
+            },
+            "effects": {
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "L'accordéon est resté tout l'été. Tu connais toutes les valses. Tu as perdu la moitié de tes clients.",
+      "business": {
+        "elan": -12
+      }
+    }
+  },
+  {
+    "id": "ent_res_0033",
+    "kind": "absurde",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "brasserie"
+    ],
+    "text": "Ton dernier brassin a un arrière-goût de chaussette. Un amateur de bières artisanales le trouve « audacieux, presque sportif ».",
+    "choices": [
+      {
+        "label": "Vendre en édition limitée",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La « Vestiaire » se vend à prix d'or chez les amateurs. Tu n'oses pas dire que c'était un accident.",
+            "business": {
+              "cash": 3000,
+              "elan": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La « Vestiaire » est retirée des rayons après une plainte d'une association de consommateurs.",
+            "business": {
+              "cash": -1500,
+              "reputation": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout jeter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu vides 2 000 litres dans l'évier. Les canalisations du quartier sentent le vestiaire pendant un mois.",
+            "business": {
+              "cash": -2500,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chercher l'origine",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'enquête révèle qu'une chaussette est tombée dans la cuve. Tu ne sauras jamais à qui elle appartenait.",
+            "business": {
+              "cash": -1000
+            },
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0034",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "types": [
+      "restaurant_gastro"
+    ],
+    "minNiveau": 1,
+    "text": "Un client exige de voir le chef : il trouve sa portion « invisible à l'œil nu ». Il a apporté une loupe pour le prouver.",
+    "choices": [
+      {
+        "label": "Doubler la portion",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il obtient une portion double. Il la trouve « vulgaire ». La gastronomie est un piège.",
+            "business": {
+              "cash": -200,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre l'art",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu expliques que « l'essentiel est invisible pour les yeux ». Il est convaincu, et affamé.",
+            "business": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il publie une photo de ta portion à la loupe. L'image fait le tour du pays, avec un microscope en commentaire.",
+            "business": {
+              "reputation": -6,
+              "elan": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Offrir un kebab",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu lui fais livrer un kebab en douce. Il te laisse un avis cinq étoiles pour « l'audace ».",
+            "business": {
+              "reputation": 4
+            },
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ent_res_0035",
+    "kind": "crise",
+    "secteurs": [
+      "restauration"
+    ],
+    "text": "Une table de trente personnes réservée pour un anniversaire ne vient jamais. Le gâteau dit « Joyeux anniversaire Bernadette ».",
+    "choices": [
+      {
+        "label": "Appeler Bernadette",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Bernadette s'est trompée de restaurant. Elle fête ses 70 ans chez {concurrent}. Tu lui envoies le gâteau.",
+            "business": {
+              "cash": -1500,
+              "reputation": 3
+            },
+            "effects": {
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Bernadette n'existe pas. C'était une fausse réservation. Tu manges le gâteau, seul{e}.",
+            "business": {
+              "cash": -2000
+            },
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Facturer l'absence",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu envoies une facture. On te répond par un courrier d'avocat signé... Bernadette.",
+            "business": {
+              "cash": -1000,
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fêter Bernadette",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu offres le gâteau aux clients présents. Toute la salle chante pour une Bernadette absente. C'est beau.",
+            "business": {
+              "cash": -1500,
+              "reputation": 5
+            },
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ],
+    "ignore": {
+      "text": "Tu as tout jeté. Bernadette a appelé le lendemain pour confirmer sa réservation.",
+      "business": {
+        "cash": -2000,
+        "reputation": -2
+      }
+    }
+  }
+]

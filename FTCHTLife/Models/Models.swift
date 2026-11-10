@@ -214,6 +214,8 @@ struct Joueur: Codable, Equatable {
     var possessions: Possessions?
     /// Secrets et chantage (module Secrets, voir docs/SECRETS.md).
     var secrets: SecretsEtat?
+    /// Module Entreprises (docs/ENTREPRISES.md).
+    var entreprises: EntreprisesEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
