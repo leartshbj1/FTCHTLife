@@ -23,7 +23,11 @@ EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", 
           "newFriend", "death", "setFlags", "clearFlags", "followUps"}
 RELATIONS = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
 TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemployed", "retired", "rich",
-        "poor", "friend", "mother", "father", "siblings", "partner", "children", "sick", "attractive", "smart"}
+        "poor", "friend", "mother", "father", "siblings", "partner", "children", "sick", "attractive", "smart",
+        # module permis
+        "permis_voiture", "permis_moto", "permis_poids_lourd", "licence_pilote", "conducteur", "sans_permis",
+        "permis_suspendu", "permis_annule", "permis_probatoire", "permis_points_bas", "conduit_sans_permis",
+        "faux_permis", "pilote", "chasseur", "chauffard"}
 VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie", "partenaire", "metier", "e"}
 SIGNAUX = set("""
 rencontre rendez_vous rendez_vous_rate couple rupture largue tromperie tromperie_decouverte demande_mariage
@@ -35,6 +39,8 @@ achat_voiture crime_reussi crime_rate arrestation proces_gagne proces_perdu pris
 bac_obtenu bac_rate diplome abandon_etudes embauche promotion licenciement demission retraite deces_parent
 deces_proche heritage maladie guerison chirurgie_esthetique hopital achat_maison demenagement gros_achat faillite
 voyage celebrite fiancailles_rompues addiction cure_desintox meilleur_ami
+permis_suspendu permis_annule permis_points_recuperes faux_permis_achete faux_permis_demasque
+conduite_sans_permis_arretee corruption_examinateur corruption_ratee
 """.split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
