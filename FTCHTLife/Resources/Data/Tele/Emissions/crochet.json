@@ -1,0 +1,3883 @@
+[
+  {
+    "id": "crochet",
+    "nom": "Star d'un Soir",
+    "slogan": "Une voix, trois buzzers, zéro pitié.",
+    "icone": "music.mic",
+    "ageMin": 12,
+    "ageMax": 75,
+    "casting": {
+      "stat": "voix",
+      "difficulte": 40,
+      "acceptes": [
+        "Au casting, tu chantes trois notes. La directrice de casting lâche son sandwich. Tu es pris{e}.",
+        "On te rappelle le soir même : « Ta voix nous a donné la chair de poule. Enfin, à l'assistant. Mais il est difficile. »",
+        "Tu chantes « Joyeux anniversaire » au casting. Le stagiaire, dont c'est vraiment l'anniversaire, pleure. Accepté{e}.",
+        "La production t'appelle : tu passes à la télé samedi. Prépare ta voix, et une histoire triste si tu en as une."
+      ],
+      "refus": [
+        "Au casting, ta voix a fait fuir le pigeon qui était sur le rebord de la fenêtre. Refusé{e}.",
+        "« Ta voix a beaucoup de personnalité. Malheureusement, c'est une mauvaise personnalité. » Recalé{e}.",
+        "Tu chantes avec cœur. La directrice de casting se bouche les oreilles avec ses écouteurs. Non.",
+        "On te remercie poliment et on te propose de revenir l'année prochaine. Ou dans dix ans. Ou jamais."
+      ]
+    },
+    "prix": 60000,
+    "cachet": 1000,
+    "celebriteVictoire": 40,
+    "intro": [
+      "Bienvenue dans « {emission} » ! Brandon Strass, présentateur aux dents trop blanches, te pousse vers la scène. Trois buzzers rouges t'attendent.",
+      "Au jury : Velvetta Diamanti, diva qui ne boit que de l'eau tiède à 37 °C, Marc-Aurèle Pluchon, producteur qui n'a pas souri depuis 2003, et Gégé Tournesol, gloire de la variété des années 80.",
+      "La loge sent la laque et le stress. {rival} fait des vocalises dans le couloir en te regardant dans les yeux. La saison commence.",
+      "Un assistant te maquille comme un clown triste, une styliste te colle des paillettes partout. Le réalisateur crie « Moteur ! ». Le cauchemar, ou le rêve, commence."
+    ],
+    "manches": [
+      {
+        "titre": "Les auditions",
+        "situations": [
+          {
+            "id": "crochet_s1_01",
+            "texte": "Tu entres sur scène. Velvetta Diamanti lime ses ongles, Marc-Aurèle Pluchon bâille, et Gégé Tournesol ajuste sa veste à franges. « Tu vas nous chanter quoi, mon petit ? »",
+            "choix": [
+              {
+                "label": "Une ballade, à pleine voix",
+                "stat": "voix",
+                "difficulte": 40,
+                "reussite": [
+                  {
+                    "texte": "Ta voix remplit la salle. Gégé essuie une larme avec sa veste à franges. Velvetta pose sa lime : c'est rarissime.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Au deuxième couplet, Marc-Aurèle se réveille. Il note ton nom. Puis il le souligne. Deux fois.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta ballade part si haut qu'elle redescend en sifflement de bouilloire. Les trois buzzers sonnent en même temps.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    },
+                    "culte": "la ballade de {prenom} qui finit en bouilloire"
+                  },
+                  {
+                    "texte": "Tu chantes juste, mais dans une tonalité qui n'existe que chez toi. Velvetta te demande si tu es sûr{e} d'être humain.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Raconter une histoire triste (inventée)",
+                "stat": "charisme",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Tu racontes ton enfance dans un phare sans électricité. Gégé sanglote. Personne ne vérifie.",
+                    "points": 2,
+                    "effets": {
+                      "karma": -3,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Ton histoire de hamster disparu en mer bouleverse le public. Tu n'as jamais eu de hamster. Ni de mer.",
+                    "points": 2,
+                    "effets": {
+                      "karma": -4,
+                      "fame": 4
+                    },
+                    "culte": "le hamster disparu en mer de {prenom}"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu t'embrouilles : ton grand-père est mort deux fois en trois phrases. Marc-Aurèle hausse un sourcil.",
+                    "points": -2,
+                    "effets": {
+                      "karma": -3,
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Ta voix tremble tellement que le jury croit que tu as froid. On t'apporte un plaid. Personne ne pleure.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Une comptine en yodel",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "« Petit escargot » en yodel. La salle hésite, puis se lève. Gégé appelle ça « l'avant-garde ».",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 4
+                    },
+                    "culte": "la comptine en yodel de {prenom} aux auditions"
+                  },
+                  {
+                    "texte": "Velvetta éclate de rire, puis se reprend : « C'est atroce. J'adore. » Tu passes.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 4,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton yodel réveille un chien dans les coulisses, qui hurle avec toi. Le chien a eu plus de votes.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    },
+                    "culte": "le duo de yodel entre {prenom} et un chien de coulisses"
+                  },
+                  {
+                    "texte": "Le silence qui suit ton yodel dure onze secondes. Marc-Aurèle les a comptées.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s1_02",
+            "texte": "Le présentateur, Brandon Strass, lance ta bande-son. Rien. Le technicien hausse les épaules. Tu es seul{e} face à 800 personnes et un silence épais.",
+            "choix": [
+              {
+                "label": "Chanter a cappella",
+                "stat": "voix",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Sans musique, ta voix sonne encore mieux. Velvetta murmure « enfin quelqu'un ». Elle dit ça une fois par saison.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes seul{e}, et la salle se met à claquer des doigts en rythme. Le technicien est viré, mais toi, tu passes.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Sans repère, tu commences trop bas. Tellement bas que le sol vibre. Gégé vérifie ses plombages.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu oublies les paroles et les remplaces par « la la la » pendant deux minutes. Marc-Aurèle s'endort pour de vrai.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -4
+                    },
+                    "culte": "les deux minutes de « la la la » de {prenom}"
+                  }
+                ]
+              },
+              {
+                "label": "Faire des percussions sur ton corps",
+                "stat": "sante",
+                "difficulte": 40,
+                "reussite": [
+                  {
+                    "texte": "Tu te tapes les cuisses, le torse, les joues. Ça groove. Gégé tape dans ses mains à contretemps.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Ton solo de claquements de joues fait se lever la salle. Tu as les joues rouges, mais c'est la gloire.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 4,
+                      "health": -1
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu te donnes une gifle par erreur. En direct. Avec écho.",
+                    "points": -2,
+                    "effets": {
+                      "health": -2,
+                      "happiness": -5
+                    },
+                    "culte": "la gifle que {prenom} s'est mise tout{e} seul{e} en audition"
+                  },
+                  {
+                    "texte": "Au bout de vingt secondes, tu es essoufflé{e}. Le public t'encourage comme un marathonien. C'est pire.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Meubler en racontant des blagues",
+                "stat": "charisme",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Tu fais rire la salle le temps que la bande-son revienne. Brandon Strass te propose de présenter à sa place.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Ta blague sur les techniciens fait rire tout le monde sauf le technicien. Tu passes quand même.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta blague tombe à plat. Puis ta deuxième. Velvetta te demande si c'est une émission d'humour, et répond elle-même : « Non. »",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu racontes la blague de la vache qui fait meuh. En entier. Personne ne rit, même pas toi.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s1_03",
+            "texte": "Avant de passer, la styliste de l'émission te tend ta tenue : un costume de homard à paillettes. « C'est pour l'identité visuelle », dit-elle sans sourire.",
+            "choix": [
+              {
+                "label": "Assumer le homard",
+                "stat": "apparence",
+                "difficulte": 35,
+                "reussite": [
+                  {
+                    "texte": "Tu portes le homard avec une telle classe que Velvetta demande le nom du créateur.",
+                    "points": 2,
+                    "effets": {
+                      "looks": 2,
+                      "fame": 4
+                    },
+                    "culte": "le homard à paillettes de {prenom}"
+                  },
+                  {
+                    "texte": "Les pinces brillent sous les projecteurs. Le public scande « HO-MARD ». Tu es une icône crustacée.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Une pince se coince dans le rideau. Tu entres sur scène en le traînant derrière toi.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Tu ressembles à un homard. Juste un homard. Marc-Aurèle demande s'il y a du beurre.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5,
+                      "looks": -1
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter un air d'opéra en homard",
+                "stat": "voix",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Un aria tragique en costume de crustacé. C'est absurde, c'est puissant, Gégé est debout.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 5
+                    }
+                  },
+                  {
+                    "texte": "Ta voix est si belle qu'on oublie les antennes. Presque.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Les antennes tremblent à chaque vibrato. Le public ne regarde que ça.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Ton contre-ut se transforme en cri de homard qu'on plonge dans l'eau. Trois buzzers.",
+                    "points": -3,
+                    "effets": {
+                      "happiness": -7
+                    },
+                    "culte": "le cri de homard ébouillanté de {prenom}"
+                  }
+                ]
+              },
+              {
+                "label": "Négocier une tenue normale",
+                "stat": "intelligence",
+                "difficulte": 40,
+                "reussite": [
+                  {
+                    "texte": "Tu expliques que le homard va voler la vedette à ta voix. La styliste capitule et te donne une veste noire. Sobre, efficace.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu proposes de garder seulement le chapeau homard. Compromis génial : on ne parle que de ça sur les réseaux.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 3,
+                      "happiness": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "La négociation dure si longtemps que tu passes en dernier, à 2 h du matin, devant un jury en pyjama.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "La styliste accepte de changer : on te donne un costume de crevette. Plus petit. Plus serré.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4,
+                      "looks": -1
+                    },
+                    "culte": "{prenom} en costume de crevette trop serré"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s1_04",
+            "texte": "Dans la file d'attente, {rival} fait des vocalises qui font trembler les vitres du couloir, en te fixant droit dans les yeux.",
+            "choix": [
+              {
+                "label": "Répondre par une vocalise",
+                "stat": "voix",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Ta vocalise monte plus haut. Une ampoule du couloir explose. {rival} se tait et va boire de l'eau.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 2
+                    },
+                    "culte": "la vocalise de {prenom} qui a fait sauter une ampoule"
+                  },
+                  {
+                    "texte": "Toute la file applaudit ta vocalise. Un candidat abandonne et rentre chez lui.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta voix déraille et finit en canard. {rival} sourit. Le sourire le plus long de l'histoire.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Tu tousses au milieu de la vocalise. Une hôtesse t'apporte un sirop pour enfants.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "L'ignorer et respirer calmement",
+                "stat": "sante",
+                "difficulte": 30,
+                "reussite": [
+                  {
+                    "texte": "Respiration ventrale, épaules basses. Tu entres sur scène calme comme un lac. Le jury adore les lacs.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "health": 2
+                    }
+                  },
+                  {
+                    "texte": "Tu respires si bien que tu tiens ta première note pendant vingt secondes. Gégé applaudit avec ses pieds.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu respires tellement fort que tu fais de l'hyperventilation. Tu entres sur scène en voyant des étoiles.",
+                    "points": -2,
+                    "effets": {
+                      "health": -2,
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Tu t'endors dans la file. On te réveille en retard, avec la marque de ton bras sur la joue.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Lui offrir une pastille au miel",
+                "stat": "karma",
+                "difficulte": 40,
+                "reussite": [
+                  {
+                    "texte": "{rival} accepte la pastille, avec un regard méfiant. Vous discutez. La caméra adore ce moment de fair-play.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 4,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Ton geste est filmé. Le public te surnomme « la pastille du cœur ». Ça ne veut rien dire, mais c'est gentil.",
+                    "points": 1,
+                    "effets": {
+                      "karma": 3,
+                      "happiness": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "{rival} jette ta pastille dans un pot de fleurs en disant « je ne mange pas de sucre ». La caméra a tout vu.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "C'était une pastille à l'ail. Erreur de poche. {rival} chante mal, mais toi, tu sens l'ail.",
+                    "points": 0,
+                    "effets": {
+                      "karma": -1,
+                      "happiness": -2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s1_05",
+            "texte": "Gégé Tournesol se penche vers son micro : « Tu connais mon tube de 1986, Ma Caravane d'Amour ? Chante-le-moi. » Il a l'air très sérieux.",
+            "choix": [
+              {
+                "label": "Le chanter avec émotion",
+                "stat": "voix",
+                "difficulte": 35,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes sa caravane comme un opéra. Gégé pleure dans sa veste à franges. Il te donne son buzzer doré.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 4
+                    },
+                    "culte": "les larmes de Gégé Tournesol sur sa propre chanson chantée par {prenom}"
+                  },
+                  {
+                    "texte": "Tu y mets tellement de cœur que la caravane semble enfin avoir du sens. Velvetta, elle, lève les yeux au ciel.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu chantes juste, mais tu dis « camionnette » au lieu de « caravane ». Gégé le vit comme une trahison.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Ta voix se brise sur « amour ». Gégé dit que c'est exactement ce qui lui était arrivé en 1986.",
+                    "points": 0,
+                    "effets": {
+                      "happiness": -1
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Faire semblant de connaître",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu fredonnes au hasard. Par miracle, c'est exactement l'air. Gégé n'en revient pas.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Tu inventes des paroles. Gégé les trouve meilleures que les siennes et veut les déposer.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu chantes l'air d'une publicité pour de la lessive. Gégé dit : « Ça, c'est pas moi. »",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    },
+                    "culte": "{prenom} qui chante une pub de lessive au lieu du tube de Gégé"
+                  },
+                  {
+                    "texte": "Tu fais « na na na caravane » pendant une minute. Gégé hoche la tête, poli et triste.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Avouer que non, mais le flatter",
+                "stat": "charisme",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "« Je ne la connais pas, mais votre veste, elle, je la connais par cœur. » Gégé rit. Tu passes.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Tu lui demandes de te la chanter d'abord. Il le fait. Pendant ce temps, tu apprends. Stratège.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta flatterie sonne faux. Velvetta te dit : « Chéri{e}, même moi je ne mens pas si mal. »",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu dis que tu n'étais pas né{e} en 1986. Gégé prend un coup de vieux en direct.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s1_06",
+            "texte": "En coulisses, un assistant de production te chuchote : « Ta famille est là. Il nous faudrait des larmes. Beaucoup. Avant la pub. »",
+            "choix": [
+              {
+                "label": "Pleurer sur commande",
+                "stat": "charisme",
+                "difficulte": 40,
+                "reussite": [
+                  {
+                    "texte": "Tu pleures avec un réalisme qui inquiète l'assistant. On t'offre un mouchoir avec le logo de l'émission.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 3,
+                      "karma": -2
+                    },
+                    "culte": "les larmes sur commande de {prenom} en coulisses"
+                  },
+                  {
+                    "texte": "Ta larme coule pile au moment du ralenti. Le réalisateur t'embrasse le front.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu n'arrives pas à pleurer. On te met de l'oignon sous le nez. Tu éternues sur la caméra.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Tu ris nerveusement au lieu de pleurer. La séquence s'appelle « Le rire glaçant ».",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter une chanson pour ta famille",
+                "stat": "voix",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes « pour ceux qui sont là ». {mere} pleure, ta fratrie pleure, l'assistant pleure. Mission accomplie sans mentir.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "relationships": {
+                        "mother": 5
+                      }
+                    }
+                  },
+                  {
+                    "texte": "Ta voix est douce, sincère. Velvetta dit que ça l'a « presque » émue. Presque, c'est énorme.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "relationships": {
+                        "parent": 3
+                      }
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta voix déraille sur « maman ». {mere} fait semblant de ne pas te connaître.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4,
+                      "relationships": {
+                        "mother": -2
+                      }
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes faux mais avec cœur. Ta famille applaudit. Le jury, non.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -1,
+                      "relationships": {
+                        "parent": 2
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Refuser : tu n'es pas là pour ça",
+                "stat": "karma",
+                "difficulte": 35,
+                "reussite": [
+                  {
+                    "texte": "Tu refuses poliment. Marc-Aurèle, qui a entendu, dit « enfin quelqu'un de normal » et te met un oui.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 4,
+                      "happiness": 3
+                    }
+                  },
+                  {
+                    "texte": "La production te trouve « authentique ». Ils montent ton refus en musique dramatique. Ça marche quand même.",
+                    "points": 1,
+                    "effets": {
+                      "karma": 3,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Vexé, l'assistant coupe ton portrait au montage. On ne te voit que de dos, en train de manger un sandwich.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "On te classe dans la case « candidat froid ». Ton portrait est monté sur une musique de film d'horreur.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4,
+                      "fame": 1
+                    },
+                    "culte": "le portrait de {prenom} monté comme un film d'horreur"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Le duel",
+        "situations": [
+          {
+            "id": "crochet_s2_01",
+            "texte": "Le duel : toi et {rival}, une seule ballade, « Les Larmes du Parking », et un seul vainqueur. Brandon Strass vous place dos à dos, comme dans un western.",
+            "choix": [
+              {
+                "label": "Monter dans les aigus",
+                "stat": "voix",
+                "difficulte": 60,
+                "reussite": [
+                  {
+                    "texte": "Tu montes si haut que les chiens de la région se mettent à hurler. Velvetta applaudit, debout sur sa chaise.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 5
+                    },
+                    "culte": "l'aigu de {prenom} qui a fait hurler les chiens de la région"
+                  },
+                  {
+                    "texte": "Ta note finale dure, dure, et {rival} doit s'arrêter pour respirer. Pas toi.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta voix casse au sommet. Le bruit ressemble à une porte de grange. Gégé dit : « Ça arrive aux plus grands. » Puis il buzze.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Tu vises l'aigu et tu atteins le grave. Personne ne comprend comment.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Voler la vedette par le jeu de scène",
+                "stat": "charisme",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu tournes autour de {rival} comme un requin mélodieux. Le public ne regarde que toi.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu poses une main sur ton cœur, l'autre vers le ciel. Gégé crie « C'est du Gégé ! ». C'est un compliment, paraît-il.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "En tournant autour de {rival}, tu t'emmêles dans le fil de son micro. Vous finissez attachés ensemble.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    },
+                    "culte": "{prenom} et {rival} ficelés par un fil de micro"
+                  },
+                  {
+                    "texte": "Tu en fais tellement trop que Velvetta te demande si tu as un malaise.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter en harmonie avec {rival}",
+                "stat": "karma",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Au lieu de lutter, tu chantes la tierce au-dessus. C'est magnifique. Le jury hésite, puis te garde.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 4,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Le public parle de « moment de grâce ». {rival} serre les dents. Toi, tu souris.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 3,
+                      "happiness": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton harmonie met {rival} en valeur. Trop. Le jury garde {rival} et te remercie pour « l'accompagnement ».",
+                    "points": -2,
+                    "effets": {
+                      "karma": 2,
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Ta tierce est en fait une quarte bizarre. Le duel ressemble à deux sirènes de pompiers.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s2_02",
+            "texte": "Coup de théâtre : le duel sera un rap. Thème imposé par Marc-Aurèle, qui n'a plus d'idées : « les légumes ».",
+            "choix": [
+              {
+                "label": "Rapper vite, avec des rimes",
+                "stat": "intelligence",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "« Je suis le poireau qui monte au créneau. » Le public perd la tête. {rival} n'a trouvé qu'une rime avec carotte.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    },
+                    "culte": "le rap du poireau de {prenom}"
+                  },
+                  {
+                    "texte": "Tu fais rimer « courgette », « pirouette » et « ma dette ». Marc-Aurèle hoche la tête trois fois. Record.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "smarts": 1
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta seule rime pour « navet », c'est « navet ». Tu l'utilises quatre fois.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu rappes si vite que personne ne comprend rien, toi y compris.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter le refrain au lieu de rapper",
+                "stat": "voix",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Un refrain chanté sur les petits pois, tout en douceur. Velvetta : « C'est ridicule et c'est beau. »",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Ton refrain « Ô brocoli » est repris par toute la salle. Le producteur sent un tube de l'été.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton refrain sur l'artichaut est si triste que le public pense que quelqu'un est mort.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes « tomate » sur trois notes fausses différentes. Gégé appelle ça « du jazz ». Il buzze.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Faire du beatbox",
+                "stat": "sante",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Boum-tchak-chou-fleur. Ton beatbox est si puissant que {rival} perd le rythme.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu fais un solo de beatbox de trente secondes sans respirer. Les médecins de plateau prennent des notes.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu postillonnes sur Velvetta. Elle quitte le plateau pour « se faire désinfecter ».",
+                    "points": -3,
+                    "effets": {
+                      "happiness": -6,
+                      "karma": -1
+                    },
+                    "culte": "le postillon de {prenom} sur la diva du jury"
+                  },
+                  {
+                    "texte": "Ton beatbox ressemble à une machine à laver en fin de cycle.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s2_03",
+            "texte": "La chorégraphe impose un porté pendant le duel. Le problème : c'est toi qui dois porter {rival}.",
+            "choix": [
+              {
+                "label": "Faire le porté",
+                "stat": "sante",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu soulèves {rival} au-dessus de ta tête sur la note finale. La salle hurle. Ton dos aussi, mais en silence.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "health": -2,
+                      "fame": 4
+                    },
+                    "culte": "le porté héroïque de {prenom} en plein duel"
+                  },
+                  {
+                    "texte": "Porté réussi. {rival}, en l'air, oublie ses paroles. Toi, tu continues de chanter. Victoire tactique.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu soulèves {rival} de dix centimètres, puis vous tombez tous les deux dans le décor en carton.",
+                    "points": -2,
+                    "effets": {
+                      "health": -3,
+                      "happiness": -5
+                    },
+                    "culte": "{prenom} et {rival} écroulés dans le décor en carton"
+                  },
+                  {
+                    "texte": "Tu te bloques le dos en position accroupie. Tu finis la chanson comme ça.",
+                    "points": -2,
+                    "effets": {
+                      "health": -5,
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Improviser autre chose",
+                "stat": "charisme",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Au lieu du porté, tu fais tourner {rival} comme une toupie. La chorégraphe dit que c'était son idée.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Tu remplaces le porté par un salut théâtral. Le public applaudit le culot.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton improvisation consiste à marcher en rond. Pendant tout le refrain.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Tu proposes à {rival} de te porter à la place. {rival} refuse, en direct, avec un grand sourire.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter si fort que personne ne regarde",
+                "stat": "voix",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Ta voix est tellement présente que personne ne remarque qu'il n'y a pas eu de porté.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes debout, immobile, comme une statue qui aurait une voix d'or. Velvetta dit « Voilà. Ça. »",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu chantes fort, oui. Juste, pas vraiment. Les micros saturent, les oreilles aussi.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Pendant que tu chantes, {rival} fait le porté avec un danseur. On ne parle que de ça.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s2_04",
+            "texte": "Le coach vocal de l'émission, un homme en kimono, a une méthode révolutionnaire : chanter avec une cuillère en bois dans la bouche. Ou la tête en bas.",
+            "choix": [
+              {
+                "label": "Suivre la méthode de la cuillère",
+                "stat": "voix",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Incroyable : la cuillère fonctionne. Ta voix est plus ronde. Le coach pleure de joie, il n'y croyait pas lui-même.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes avec la cuillère pendant le duel. C'est étrange, c'est juste, le public adore.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 4
+                    },
+                    "culte": "{prenom} qui chante avec une cuillère en bois dans la bouche"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu avales presque la cuillère sur un aigu. Le coach te fait la manœuvre de secours en direct.",
+                    "points": -2,
+                    "effets": {
+                      "health": -2,
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Avec la cuillère, tes paroles deviennent « mon chœu chaigne ». Gégé demande des sous-titres.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Poliment ignorer ses conseils",
+                "stat": "intelligence",
+                "difficulte": 40,
+                "reussite": [
+                  {
+                    "texte": "Tu hoches la tête, tu dis merci, et tu chantes normalement. Le coach croit que c'est grâce à lui. Tout le monde est content.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4
+                    }
+                  },
+                  {
+                    "texte": "Tu poses des questions si précises au coach qu'il avoue avoir appris le chant sur des tutos. Tu travailles seul{e}, et mieux.",
+                    "points": 1,
+                    "effets": {
+                      "smarts": 2,
+                      "happiness": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le coach se vexe et raconte au jury que tu « refuses d'évoluer ». Marc-Aurèle note « bloqué ».",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Pour te venger, le coach te fait échauffer avec des sons de baleine pendant une heure. Tu n'as plus de voix.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter la tête en bas",
+                "stat": "sante",
+                "difficulte": 60,
+                "reussite": [
+                  {
+                    "texte": "Accroché{e} à une barre comme une chauve-souris, tu chantes ton refrain. Le jury est sans voix. Toi, non.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 5
+                    },
+                    "culte": "{prenom} qui chante la tête en bas comme une chauve-souris"
+                  },
+                  {
+                    "texte": "Le sang te monte à la tête, mais ta voix aussi. Tu redescends rouge et triomphant{e}.",
+                    "points": 2,
+                    "effets": {
+                      "health": -1,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu restes coincé{e} la tête en bas pendant toute la pub. Les techniciens te décrochent avec un escabeau.",
+                    "points": -2,
+                    "effets": {
+                      "health": -3,
+                      "happiness": -5
+                    },
+                    "culte": "{prenom} coincé{e} la tête en bas pendant la pub"
+                  },
+                  {
+                    "texte": "Ton pantalon glisse. Tu chantes en le retenant. Ça ne s'oublie pas.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6,
+                      "looks": -1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s2_05",
+            "texte": "En plein duel, le micro de {rival} tombe en panne. Il reste un seul micro qui marche : le tien.",
+            "choix": [
+              {
+                "label": "Lui tendre ton micro",
+                "stat": "karma",
+                "difficulte": 30,
+                "reussite": [
+                  {
+                    "texte": "Tu tends ton micro. La salle explose d'applaudissements. Velvetta dit : « Ça, c'est une star. »",
+                    "points": 3,
+                    "effets": {
+                      "karma": 6,
+                      "fame": 4
+                    },
+                    "culte": "le micro tendu par {prenom} à son rival"
+                  },
+                  {
+                    "texte": "{rival} chante avec ton micro, les larmes aux yeux. Le jury te garde pour ton cœur.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 5,
+                      "happiness": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "{rival} chante si bien avec ton micro que le jury te remercie et garde {rival}.",
+                    "points": -2,
+                    "effets": {
+                      "karma": 4,
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu tends ton micro, {rival} le fait tomber. Plus aucun micro ne marche. Le duel se termine en mime.",
+                    "points": -1,
+                    "effets": {
+                      "karma": 2,
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "En profiter pour chanter plus fort",
+                "stat": "voix",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes la chanson entière, puis le couplet de {rival}. Impitoyable, mais impeccable.",
+                    "points": 2,
+                    "effets": {
+                      "karma": -2,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Ta voix porte jusqu'au parking. Un vigile applaudit dehors.",
+                    "points": 2,
+                    "effets": {
+                      "karma": -1,
+                      "happiness": 5
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le public te hue pour ton manque d'élégance. Tu chantes juste sous les sifflets.",
+                    "points": -2,
+                    "effets": {
+                      "karma": -3,
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes plus fort, mais pas mieux. Gégé se bouche une oreille, puis les deux.",
+                    "points": -1,
+                    "effets": {
+                      "karma": -1,
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter en duo sur le même micro",
+                "stat": "charisme",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Épaule contre épaule, vous partagez le micro. Le public trouve ça adorable.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Vous inventez un duo improvisé. Marc-Aurèle sort son téléphone : il veut signer « les deux ».",
+                    "points": 2,
+                    "effets": {
+                      "fame": 3,
+                      "karma": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Vous vous cognez le front en vous penchant sur le micro. Le bruit sourd est diffusé en stéréo.",
+                    "points": -2,
+                    "effets": {
+                      "health": -2,
+                      "happiness": -4
+                    },
+                    "culte": "le coup de tête accidentel entre {prenom} et {rival} au micro"
+                  },
+                  {
+                    "texte": "{rival} garde le micro et ne te le rend jamais. Tu finis en faisant les chœurs de loin.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s2_06",
+            "texte": "Duel d'opéra. Ni toi ni {rival} n'avez jamais chanté d'opéra. On vous donne une cape et un air en italien intitulé « Il Fagotto Triste ».",
+            "choix": [
+              {
+                "label": "Tenter le contre-ut",
+                "stat": "voix",
+                "difficulte": 70,
+                "reussite": [
+                  {
+                    "texte": "Le contre-ut sort, pur et puissant. Un projecteur explose. Velvetta s'évanouit (un peu exprès).",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 9,
+                      "fame": 6
+                    },
+                    "culte": "le contre-ut de {prenom} qui a fait exploser un projecteur"
+                  },
+                  {
+                    "texte": "Ta note atteint un endroit que la science ignore. {rival} enlève sa cape en signe de défaite.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton contre-ut devient un contre-hoquet. Puis un contre-silence.",
+                    "points": -3,
+                    "effets": {
+                      "happiness": -7
+                    },
+                    "culte": "le contre-hoquet de {prenom} au duel d'opéra"
+                  },
+                  {
+                    "texte": "Tu y es presque, mais ta voix craque au dernier moment. Gégé dit « Courage ! » en appuyant sur le buzzer.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Jouer la tragédie à fond",
+                "stat": "charisme",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Tu meurs sur scène trois fois, avec la cape. Le public lance des roses imaginaires.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes à moitié, mais tu joues comme un acteur de tragédie. Gégé crie « Bravissimo ! » avec un accent douteux.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu te prends les pieds dans ta cape à la première mort. Tu meurs pour de faux, puis tombes pour de vrai.",
+                    "points": -2,
+                    "effets": {
+                      "health": -2,
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Ta tragédie fait rire. Pas un rire gentil.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter en faux italien",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "« Spaghettino amore ferrari tutti frutti ! » Le public y croit. Velvetta aussi, ce qui est inquiétant.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    },
+                    "culte": "le faux italien de {prenom} au duel d'opéra"
+                  },
+                  {
+                    "texte": "Par pur hasard, ton charabia rime. Marc-Aurèle croit que c'est du vrai.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Un vrai chanteur d'opéra dans le public se lève et part en pleurant.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu dis « pizza » douze fois. Douze. Le jury compte avec ses doigts.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Premier direct",
+        "situations": [
+          {
+            "id": "crochet_s3_01",
+            "texte": "Premier direct. Six millions de téléspectateurs. Pour ton entrée, la production a prévu un escalier lumineux de quarante marches, sans rampe.",
+            "choix": [
+              {
+                "label": "Descendre en chantant et en dansant",
+                "stat": "sante",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Quarante marches, quarante pas de danse, zéro chute. Brandon Strass en lâche ses fiches.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu descends en rythme, souffle intact. Tu arrives en bas pile sur la première note. Chef-d'œuvre.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu rates la troisième marche et descends les trente-sept autres sur les fesses. En rythme.",
+                    "points": -2,
+                    "effets": {
+                      "health": -3,
+                      "happiness": -6
+                    },
+                    "culte": "la descente d'escalier de {prenom} sur les fesses en direct"
+                  },
+                  {
+                    "texte": "Tu arrives en bas tellement essoufflé{e} que ton premier couplet ressemble à un message de répondeur.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Rester en haut et chanter de là",
+                "stat": "voix",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes du haut de l'escalier comme une statue antique. Le public lève la tête, bouche ouverte.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Ta voix descend les marches à ta place. Velvetta dit : « Enfin un peu de mystère. »",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le réalisateur ne te trouve pas. Pendant tout ton couplet, on filme l'escalier vide.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "D'en haut, tu n'entends pas l'orchestre. Tu chantes avec quatre secondes de retard.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Glisser sur le bord de l'escalier",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu glisses sur le côté comme un enfant sur une rampe et atterris pile au micro. Ovation.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    },
+                    "culte": "la glissade de {prenom} sur l'escalier lumineux"
+                  },
+                  {
+                    "texte": "Atterrissage parfait. Gégé lève un panneau « 10 » qu'il avait apporté de chez lui.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu glisses, tu accélères, et tu dépasses la scène. On te retrouve dans le public, entre deux mamies.",
+                    "points": -2,
+                    "effets": {
+                      "health": -2,
+                      "happiness": -5
+                    },
+                    "culte": "{prenom} qui glisse de l'escalier jusqu'au troisième rang"
+                  },
+                  {
+                    "texte": "Tu glisses à moitié et restes coincé{e} au milieu. Un technicien vient te pousser.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s3_02",
+            "texte": "La production prépare ton portrait. Problème : tu as eu une vie plutôt heureuse. « Il nous faut un drame, n'importe lequel », supplie la journaliste.",
+            "choix": [
+              {
+                "label": "Inventer un drame poignant",
+                "stat": "charisme",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu racontes que tu as grandi dans une forêt, élevé{e} par des écureuils. La France entière pleure.",
+                    "points": 2,
+                    "effets": {
+                      "karma": -4,
+                      "fame": 5
+                    },
+                    "culte": "l'enfance de {prenom} chez les écureuils"
+                  },
+                  {
+                    "texte": "Ton drame : une audition ratée en 2e année de maternelle. Raconté avec un violon, ça passe.",
+                    "points": 2,
+                    "effets": {
+                      "karma": -2,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "{mere} regarde l'émission et appelle le standard pour démentir, en direct.",
+                    "points": -2,
+                    "effets": {
+                      "karma": -3,
+                      "relationships": {
+                        "mother": -4
+                      },
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Ton drame est tellement exagéré que la journaliste te demande si tu vas bien. Pour de vrai.",
+                    "points": -1,
+                    "effets": {
+                      "karma": -2,
+                      "happiness": -2
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Dire la vérité : tout va bien",
+                "stat": "karma",
+                "difficulte": 40,
+                "reussite": [
+                  {
+                    "texte": "« Mon drame ? Aucun. J'aime juste chanter. » Le public trouve ça rafraîchissant. On t'appelle « le rayon de soleil ».",
+                    "points": 2,
+                    "effets": {
+                      "karma": 4,
+                      "happiness": 4
+                    }
+                  },
+                  {
+                    "texte": "Ta sincérité touche Marc-Aurèle, qui avoue avoir lui aussi une vie heureuse. C'est l'émotion du jour.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 3,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Au montage, ils ajoutent une musique triste sur des images de toi qui manges une glace. Ça fait bizarre.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -2
+                    }
+                  },
+                  {
+                    "texte": "Sans drame, ton portrait dure huit secondes. On voit surtout ton oreille.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter la mort de ton poisson rouge",
+                "stat": "voix",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Ta complainte pour Bubulle, poisson rouge mort en 2014, brise des cœurs. Gégé veut la sortir en single.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    },
+                    "culte": "la complainte de {prenom} pour son poisson rouge"
+                  },
+                  {
+                    "texte": "C'est absurde et magnifique. Velvetta demande qu'on lui prête un mouchoir. Puis deux.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta voix tremble tellement que les paroles deviennent « Bubulle glouglou ». Le public rit. Pas avec toi.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes faux sur « Bubulle, reviens ». Quelque part, Bubulle a honte.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s3_03",
+            "texte": "Thème de la soirée : la chanson de banquet. On t'a attribué « La Bergère et le Saucisson », version censurée, où chaque gros mot est remplacé par « saperlipopette ».",
+            "choix": [
+              {
+                "label": "La chanter façon opéra",
+                "stat": "voix",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Une chanson de banquet chantée comme un requiem. C'est un choc culturel. Velvetta parle de « génie ».",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Tes « saperlipopette » en vibrato sont repris par toute la salle. C'est beau, et très bête.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    },
+                    "culte": "les « saperlipopette » en vibrato de {prenom}"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton vibrato tremble tellement sur « saucisson » que le mot dure quarante secondes.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Le mélange opéra et saucisson ne prend pas. Marc-Aurèle te demande « pourquoi ? ». Tu ne sais pas.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Faire chanter tout le public",
+                "stat": "charisme",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Huit cents personnes chantent « saperlipopette » avec toi. Brandon Strass danse la farandole.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Même le jury tape dans les mains. Sauf Velvetta, qui tape dans un seul doigt. C'est déjà ça.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Personne ne chante avec toi. Tu agites les bras dans le vide comme un agent de circulation.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Le public chante, mais une autre chanson. Plus fort que toi.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Réécrire les paroles en direct",
+                "stat": "intelligence",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Tu transformes la bergère en astronaute et le saucisson en satellite. Gégé crie au chef-d'œuvre.",
+                    "points": 2,
+                    "effets": {
+                      "smarts": 1,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tes nouvelles paroles riment toutes. Marc-Aurèle te propose un contrat de parolier. Pour des pubs de fromage.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu oublies tes nouvelles paroles et tu reviens aux anciennes au milieu. La bergère devient astronaute charcutière.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Tes paroles sont tellement compliquées que la régie lance la pub pour souffler.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s3_04",
+            "texte": "Pour le direct, la styliste a créé ta tenue : une combinaison couverte de 400 ampoules qui pèse 12 kilos et chauffe comme un grille-pain.",
+            "choix": [
+              {
+                "label": "Porter la combinaison et danser",
+                "stat": "sante",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu danses avec tes 12 kilos d'ampoules comme si c'était de la soie. Tu brilles, au sens propre.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 5
+                    },
+                    "culte": "{prenom} qui danse dans une combinaison de 400 ampoules"
+                  },
+                  {
+                    "texte": "Tu tiens toute la chanson. Tu transpires des litres, mais tu es la chose la plus lumineuse de la télé.",
+                    "points": 2,
+                    "effets": {
+                      "health": -2,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Les ampoules grillent une à une pendant ta chanson. À la fin, tu es dans le noir.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu t'effondres de chaleur au refrain. Un pompier te refroidit avec un brumisateur.",
+                    "points": -2,
+                    "effets": {
+                      "health": -4,
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Refuser et rester sobre",
+                "stat": "apparence",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Chemise blanche, lumière simple. Au milieu des paillettes, tu es la seule personne qu'on regarde.",
+                    "points": 2,
+                    "effets": {
+                      "looks": 2,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Velvetta dit : « Enfin, de l'élégance. » Elle te prête ses lunettes de soleil. Honneur suprême.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Sans ampoules, la caméra ne te trouve pas. Le réalisateur filme un danseur à la place.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Ta tenue sobre ressemble à un uniforme de serveur. Un candidat te commande un café.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4,
+                      "looks": -1
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Tout miser sur ta voix",
+                "stat": "voix",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes immobile, comme un phare. Ta voix fait oublier qu'il y a des ampoules.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Sur la note finale, toutes les ampoules s'allument en même temps. Hasard technique ou magie ? On dira magie.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 5
+                    },
+                    "culte": "la note de {prenom} qui allume 400 ampoules d'un coup"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "La chaleur te dessèche la gorge. Ta voix sort comme un vieux disque rayé.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes correctement, mais tout le monde regarde l'ampoule qui fume sur ton épaule.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s3_05",
+            "texte": "Les votes du public sont ouverts. Brandon Strass te donne trente secondes pour convaincre les téléspectateurs. Marc-Aurèle te souffle : « Sois toi-même, mais en plus vendeur. »",
+            "choix": [
+              {
+                "label": "Faire un discours émouvant",
+                "stat": "charisme",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu parles de tes rêves, de ta ville, de ta grand-tante. Les standards téléphoniques saturent.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Tu regardes la caméra droit dans l'objectif et dis « merci ». Juste ça. Ça suffit.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu commences bien, puis tu remercies ton dentiste. Et ton boulanger. Et le chien de ton voisin.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    },
+                    "culte": "les remerciements de {prenom} au chien de son voisin"
+                  },
+                  {
+                    "texte": "Tu bafouilles et appelles à voter pour {rival} par erreur.",
+                    "points": -3,
+                    "effets": {
+                      "happiness": -7
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Chanter le numéro de vote",
+                "stat": "voix",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Ta petite mélodie avec le numéro de vote reste dans toutes les têtes. Même celle de {rival}.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    },
+                    "culte": "le jingle du numéro de vote chanté par {prenom}"
+                  },
+                  {
+                    "texte": "Les téléspectateurs votent juste pour l'entendre encore. Ça marche.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu chantes un mauvais chiffre. Des milliers de votes partent vers une émission de cuisine.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Ton jingle est si faux que la régie coupe ton micro au milieu.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Demander à {mere} de voter 500 fois",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "{mere} a ressorti trois vieux téléphones et a voté toute la nuit. Elle a des crampes, toi tu passes.",
+                    "points": 2,
+                    "effets": {
+                      "relationships": {
+                        "mother": 4
+                      },
+                      "happiness": 4
+                    }
+                  },
+                  {
+                    "texte": "{mere} a mobilisé son club de pétanque entier. Ils votent comme une armée.",
+                    "points": 2,
+                    "effets": {
+                      "relationships": {
+                        "mother": 3
+                      },
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "{mere} s'est trompée de numéro et a voté 500 fois pour {rival}.",
+                    "points": -2,
+                    "effets": {
+                      "relationships": {
+                        "mother": -2
+                      },
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "{mere} s'est endormie au dixième vote. Elle s'excuse avec une tarte.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s3_06",
+            "texte": "Problème en direct : les danseurs derrière toi ont appris la chorégraphie d'une autre chanson. Ils dansent un tango sur ta ballade.",
+            "choix": [
+              {
+                "label": "Suivre leur tango",
+                "stat": "sante",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu te lances dans le tango en chantant. Tu ne rates aucun pas, ni aucune note. Le public croit que c'était prévu.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Ton tango-ballade invente un nouveau style. Marc-Aurèle note « tangallade » sur son carnet.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    },
+                    "culte": "le tango-ballade improvisé de {prenom}"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu fais un pas de tango et marches sur le pied d'un danseur. Il crie en rythme.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu tournes trop vite et finis la chanson face au mur du décor.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Ignorer et chanter",
+                "stat": "voix",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Ta voix est si belle que personne ne remarque le tango. Enfin, presque personne.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes avec une telle intensité que les danseurs ralentissent et finissent en slow. Magique.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le tango derrière toi est trop drôle. Le public rit pendant toute ta chanson triste.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu te laisses distraire et chantes la moitié du refrain en rythme de tango.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Faire comme si c'était exprès",
+                "stat": "intelligence",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Au milieu du couplet, tu dis : « Oui, c'est un hommage aux amours impossibles. » Le jury hoche la tête, impressionné.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu expliques que c'est une performance « post-ballade ». Velvetta adore les mots qu'elle ne comprend pas.",
+                    "points": 2,
+                    "effets": {
+                      "smarts": 1,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton explication est si longue que la chanson se termine pendant que tu parles.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Personne ne te croit. Gégé dit « On n'est pas bêtes, quand même. »",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Demi-finale",
+        "situations": [
+          {
+            "id": "crochet_s4_01",
+            "texte": "Demi-finale. Velvetta Diamanti fait un caprice : elle exige que tu chantes « dans ma tonalité, celle de mon âme ». Personne ne sait laquelle c'est.",
+            "choix": [
+              {
+                "label": "Trouver sa tonalité à l'oreille",
+                "stat": "voix",
+                "difficulte": 65,
+                "reussite": [
+                  {
+                    "texte": "Tu l'écoutes soupirer, et tu cales ta voix sur son soupir. Velvetta en reste bouche bée.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 4
+                    },
+                    "culte": "{prenom} qui a chanté dans la tonalité de l'âme de Velvetta"
+                  },
+                  {
+                    "texte": "Tu trouves la tonalité. Elle dit que c'est exactement ça. Le pianiste, lui, ne comprend pas comment.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu chantes dans la tonalité de l'âme de quelqu'un d'autre. Velvetta est jalouse.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu changes de tonalité six fois pour être sûr{e}. Le pianiste abandonne.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Négocier avec la diva",
+                "stat": "charisme",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu la complimentes sur sa carrière, ses manteaux et sa tonalité. Elle te laisse choisir la tienne.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "Tu lui proposes de te diriger pendant ta chanson. Elle agite les bras comme une cheffe d'orchestre. Elle adore.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Velvetta prend ta négociation pour de l'insolence et te tourne le dos pendant toute la chanson.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    },
+                    "culte": "le dos tourné de Velvetta Diamanti pendant la demi-finale de {prenom}"
+                  },
+                  {
+                    "texte": "Tu négocies trop longtemps. Le présentateur lance la pub sur ta phrase.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Faire un caprice à ton tour",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu exiges une rose bleue et un tabouret en velours. Velvetta te regarde, puis sourit : « Enfin, une égale. »",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 4
+                    },
+                    "culte": "le caprice de diva de {prenom} en demi-finale"
+                  },
+                  {
+                    "texte": "La production cède à ton caprice. Tu chantes sur un tabouret en velours. C'est très confortable.",
+                    "points": 1,
+                    "effets": {
+                      "happiness": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton caprice fait rire Marc-Aurèle si fort qu'il s'étrangle. On fait une pause.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Velvetta te fait remarquer qu'il ne peut y avoir qu'une diva par plateau. Elle buzze trois fois.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s4_02",
+            "texte": "Épreuve imposée : le yodel. La chanson s'appelle « La Marmotte Mélancolique » et dure sept minutes.",
+            "choix": [
+              {
+                "label": "Yodeler avec passion",
+                "stat": "voix",
+                "difficulte": 65,
+                "reussite": [
+                  {
+                    "texte": "Ton yodel résonne comme dans une vraie montagne. Une marmotte, quelque part, se sent comprise.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 5
+                    },
+                    "culte": "le yodel de la marmotte mélancolique de {prenom}"
+                  },
+                  {
+                    "texte": "Tes changements de voix sont parfaits. Gégé déclare que le yodel est l'avenir de la chanson.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton yodel ressemble à quelqu'un qui descend des escaliers en criant.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu yodèles juste, mais dans le mauvais ordre. La marmotte devient très, très mélancolique.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Tenir la note finale le plus longtemps possible",
+                "stat": "sante",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu tiens la note finale quarante-deux secondes. Brandon Strass a eu le temps de boire un café.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Ta note dure si longtemps que le public se lève, s'assoit, puis se relève.",
+                    "points": 3,
+                    "effets": {
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Au bout de quinze secondes, tu deviens violet{e}. Le jury t'arrête par sécurité.",
+                    "points": -2,
+                    "effets": {
+                      "health": -3,
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Tu tiens la note, mais elle baisse lentement comme une sirène qui s'endort.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Miser sur le costume tyrolien",
+                "stat": "apparence",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Culotte de peau, chapeau à plume, chaussettes montantes : tu as l'air d'une carte postale. Le public adore.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Velvetta veut ton chapeau. Tu le lui offres. Elle te garde.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "karma": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton costume ressemble plus à un pyjama de chalet. On te propose une tisane.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  },
+                  {
+                    "texte": "Ta plume de chapeau chatouille le nez de Gégé, qui éternue sur tout le jury.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    },
+                    "culte": "la plume de chapeau tyrolien de {prenom} qui fait éternuer le jury"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s4_03",
+            "texte": "Gégé Tournesol te propose un duo surprise sur son autre tube, « Les Pantoufles du Bonheur » (1989). Il est déjà debout, micro à la main.",
+            "choix": [
+              {
+                "label": "Chanter le duo avec cœur",
+                "stat": "voix",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Vos voix s'accordent étrangement bien. Les pantoufles n'ont jamais semblé aussi émouvantes.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu sauves le duo quand Gégé oublie ses propres paroles. Il te serre dans ses bras, ému.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    },
+                    "culte": "{prenom} qui souffle à Gégé Tournesol les paroles de son propre tube"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Gégé chante faux, toi aussi. Ensemble, ça ressemble à deux pantoufles qui se disputent.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes plus fort que Gégé. Il se vexe et quitte la scène en pantoufles.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Moderniser le tube en direct",
+                "stat": "intelligence",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu ajoutes un passage rap sur les pantoufles connectées. Gégé est jeune pour la première fois depuis 1989.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Ta version ralentie et triste fait pleurer tout le plateau. Gégé ne savait pas que sa chanson était si profonde.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta modernisation est si moderne que personne ne reconnaît la chanson. Gégé non plus.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu ajoutes des effets sonores de pantoufles. Le public trouve ça long.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Danser comme en 1989",
+                "stat": "sante",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Pas chassés, épaulettes imaginaires, bras en moulinet : tu ressuscites une époque. Gégé pleure de nostalgie.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    },
+                    "culte": "la danse rétro de {prenom} avec Gégé Tournesol"
+                  },
+                  {
+                    "texte": "Tu danses si bien que Gégé se met à danser aussi. Les médecins de plateau s'inquiètent pour ses hanches.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton moulinet de bras frappe Gégé au menton. Il finit la chanson assis.",
+                    "points": -2,
+                    "effets": {
+                      "karma": -2,
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu fais un grand écart que tu n'avais pas répété. Tu restes en bas.",
+                    "points": -2,
+                    "effets": {
+                      "health": -4,
+                      "happiness": -4
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s4_04",
+            "texte": "Dans une interview, {rival} affirme que tu chantes en playback. La rumeur fait le tour des réseaux en une heure.",
+            "choix": [
+              {
+                "label": "Chanter a cappella dans le hall",
+                "stat": "voix",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes sans micro dans le hall d'entrée. Les journalistes filment. La rumeur meurt en trois notes.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Ta voix résonne dans le hall. Un agent de sécurité demande un autographe.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "L'écho du hall rend ta voix bizarre. Les réseaux disent que c'est « un playback cassé ».",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu te mets à chanter, mais le hall est en travaux. Une perceuse couvre tout.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Répondre avec élégance",
+                "stat": "karma",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "« Je souhaite à {rival} tout le bonheur du monde, et un bon ORL. » Le public t'adore.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 3,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu ne réponds rien, et tu offres un bouquet à {rival} en direct. {rival} ne sait plus où se mettre.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 5,
+                      "happiness": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton silence est interprété comme un aveu. Des complotistes analysent ta glotte au ralenti.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Ton bouquet contenait des orties. Par erreur. Tout le monde pense que c'est exprès.",
+                    "points": -1,
+                    "effets": {
+                      "karma": -2,
+                      "happiness": -3
+                    },
+                    "culte": "le bouquet d'orties offert par {prenom} à {rival}"
+                  }
+                ]
+              },
+              {
+                "label": "Préparer une contre-attaque",
+                "stat": "intelligence",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu retrouves une vidéo de {rival} qui chante faux à un mariage. Tu ne la diffuses pas. Tu la montres juste. Ça suffit.",
+                    "points": 2,
+                    "effets": {
+                      "karma": -1,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu fais vérifier ton micro par un huissier en direct. Marc-Aurèle trouve ça « génial et un peu inquiétant ».",
+                    "points": 2,
+                    "effets": {
+                      "smarts": 1,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta contre-attaque se retourne contre toi : la vidéo que tu montres, c'est toi qui chantes faux à un mariage.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Tu fais un long communiqué. Personne ne le lit. Sauf {rival}, qui en rit.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s4_05",
+            "texte": "En plein refrain, la machine à fumée s'emballe. Toute la scène disparaît dans un brouillard épais. Tu ne vois même plus tes pieds.",
+            "choix": [
+              {
+                "label": "Chanter vers le bruit du public",
+                "stat": "voix",
+                "difficulte": 60,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes à l'aveugle, guidé{e} par les applaudissements. Quand la fumée se dissipe, tu es pile face au jury.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4
+                    },
+                    "culte": "{prenom} qui chante dans le brouillard sans rien voir"
+                  },
+                  {
+                    "texte": "Ta voix sort du brouillard comme un phare. Velvetta parle de « mystère vocal ».",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu chantes avec passion face au mur des coulisses. Le public n'entend qu'un écho lointain.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu respires de la fumée au mauvais moment. Ton aigu devient une quinte de toux.",
+                    "points": -1,
+                    "effets": {
+                      "health": -2,
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Suivre le fil de ton micro à tâtons",
+                "stat": "intelligence",
+                "difficulte": 45,
+                "reussite": [
+                  {
+                    "texte": "Tu remontes le fil comme dans un labyrinthe. Tu retrouves la scène, puis la lumière. Très malin.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 4,
+                      "fame": 2
+                    }
+                  },
+                  {
+                    "texte": "En suivant le fil, tu arrives jusqu'à la régie. Tu finis ta chanson à côté du réalisateur, qui adore.",
+                    "points": 1,
+                    "effets": {
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le fil t'emmène aux toilettes des loges. Tu chantes la fin dans les toilettes. Elles ont une bonne acoustique, au moins.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    },
+                    "culte": "la fin de chanson de {prenom} dans les toilettes des loges"
+                  },
+                  {
+                    "texte": "Tu tires trop fort sur le fil. Ton micro se débranche. Silence dans le brouillard.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Grimper sur la boule à facettes pour sortir du brouillard",
+                "stat": "sante",
+                "difficulte": 75,
+                "reussite": [
+                  {
+                    "texte": "Tu grimpes, tu t'accroches, et tu chantes depuis la boule à facettes. La télé n'avait jamais vu ça.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 6
+                    },
+                    "culte": "{prenom} qui chante perché{e} sur la boule à facettes"
+                  },
+                  {
+                    "texte": "Tu atteins le sommet. Tu tournes avec la boule en chantant. Vertigineux et génial.",
+                    "points": 2,
+                    "effets": {
+                      "health": -1,
+                      "fame": 5
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu atteins à peine le premier crochet avant que la boule ne se mette à tourner. Tu glisses et tu tombes.",
+                    "points": -3,
+                    "effets": {
+                      "health": -8,
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "La boule à facettes cède sous ton poids.",
+                    "points": -3,
+                    "effets": {
+                      "death": "sous une boule à facettes géante, en pleine demi-finale d'un télé-crochet"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s4_06",
+            "texte": "Dans le public, tu reconnais ton ancien prof de musique. Celui qui t'avait dit, en sixième, de « faire plutôt du sport ».",
+            "choix": [
+              {
+                "label": "Chanter en le regardant dans les yeux",
+                "stat": "voix",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes pour lui, et il comprend. À la fin, il se lève et crie « J'avais tort ! ».",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 4
+                    },
+                    "culte": "le prof de musique qui crie « j'avais tort » devant {prenom}"
+                  },
+                  {
+                    "texte": "Ta voix est parfaite. Ton prof applaudit en essuyant ses lunettes. Petite revanche, grande joie.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le regard de ton prof te déstabilise. Tu chantes comme en sixième. Il hoche la tête, satisfait.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Tu le fixes tellement que tu oublies de chanter le premier couplet.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Le remercier en direct",
+                "stat": "karma",
+                "difficulte": 40,
+                "reussite": [
+                  {
+                    "texte": "« Merci, monsieur. Sans vous, je n'aurais jamais voulu prouver quoi que ce soit. » Standing ovation.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 4,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu le remercies sincèrement. Il pleure. Le réalisateur filme ses larmes en gros plan.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 3,
+                      "happiness": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton remerciement sonne comme un règlement de comptes. Le prof quitte la salle sous les huées.",
+                    "points": -1,
+                    "effets": {
+                      "karma": -2,
+                      "happiness": -2
+                    }
+                  },
+                  {
+                    "texte": "Tu te trompes de personne. Ce n'était pas ton prof, juste un monsieur à moustache.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Le faire monter sur scène",
+                "stat": "charisme",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu le fais monter et lui tends un tambourin. Il le joue étonnamment bien. Duo inoubliable.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Ton prof chante les chœurs avec toi. Il chante faux. Ça te fait du bien.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 2
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ton prof refuse de monter et te répond au micro : « Toujours pas convaincu. » Aïe.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Il monte, prend le micro et chante à ta place. Le public préfère.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    },
+                    "culte": "l'ancien prof de musique de {prenom} qui lui vole la vedette"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Finale",
+        "situations": [
+          {
+            "id": "crochet_s5_01",
+            "texte": "La grande finale face à {rival}. Grand orchestre, canons à confettis, et ta chanson originale : « Le Néon de mon Cœur ».",
+            "choix": [
+              {
+                "label": "Chanter à pleine puissance",
+                "stat": "voix",
+                "difficulte": 70,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes comme si ta vie en dépendait. Les canons à confettis partent tout seuls, d'émotion.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 9,
+                      "fame": 6
+                    },
+                    "culte": "« Le Néon de mon Cœur » chanté par {prenom} en finale"
+                  },
+                  {
+                    "texte": "Ta voix monte, monte, et le jury se lève en même temps. Même Marc-Aurèle. Debout. Un miracle.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 5
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta voix lâche sur le dernier refrain. L'orchestre continue sans toi, avec pitié.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes très fort, mais pas toujours juste. Les canons à confettis partent au mauvais moment.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Miser sur l'émotion",
+                "stat": "charisme",
+                "difficulte": 60,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes les yeux fermés, une main sur le cœur. Velvetta pleure, puis nie avoir pleuré.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 5
+                    },
+                    "culte": "les larmes que Velvetta Diamanti nie avoir versées pour {prenom}"
+                  },
+                  {
+                    "texte": "Tu tends les bras vers le public, qui tend les bras vers toi. On dirait une cérémonie.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Tu en fais trop. Tu t'agenouilles trois fois. Le public commence à compter.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Ton émotion est si forte que tu pleures dès la première phrase et ne peux plus chanter.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -4
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Final pyrotechnique",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Feux d'artifice, flammes, confettis dorés : le final le plus spectaculaire de l'histoire de l'émission.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 6
+                    }
+                  },
+                  {
+                    "texte": "Les flammes s'allument pile sur ta dernière note. Le public crie de joie et d'un peu de peur.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Les feux d'artifice partent pendant l'intro. À la fin, il ne reste qu'une bougie d'anniversaire.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    },
+                    "culte": "le final pyrotechnique de {prenom} réduit à une bougie d'anniversaire"
+                  },
+                  {
+                    "texte": "Une étincelle tombe sur ta chaussure. Tu chantes la fin en sautillant.",
+                    "points": -2,
+                    "effets": {
+                      "health": -2,
+                      "happiness": -4
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s5_02",
+            "texte": "Velvetta Diamanti prend le micro : « Pour gagner, tu dois tenir la note que j'ai tenue seule, en 1994. Le fa dièse de l'infini. »",
+            "choix": [
+              {
+                "label": "Tenter le fa dièse de l'infini",
+                "stat": "voix",
+                "difficulte": 80,
+                "reussite": [
+                  {
+                    "texte": "Tu l'atteins. Tu le tiens. Velvetta s'effondre dans son fauteuil et dit : « Je peux mourir tranquille. »",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 10,
+                      "fame": 7
+                    },
+                    "culte": "le fa dièse de l'infini de {prenom}"
+                  },
+                  {
+                    "texte": "Ta note est si pure qu'un verre de cristal du jury se fend. Velvetta le garde comme relique.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 5
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta voix monte, hésite, puis part en grincement de porte. Velvetta sourit : sa note reste unique.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Tu fais un fa dièse, oui, mais un fa dièse de la finitude. Ça ne compte pas.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "La laisser chanter la note elle-même",
+                "stat": "karma",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu lui tends ton micro : « Montrez-nous. » Elle chante, émue. Le public t'adore pour ton humilité.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 5,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Velvetta chante la note, puis te la fait chanter avec elle. Le duo entre dans la légende.",
+                    "points": 3,
+                    "effets": {
+                      "karma": 4,
+                      "happiness": 6,
+                      "fame": 4
+                    },
+                    "culte": "le duo improvisé entre {prenom} et Velvetta Diamanti en finale"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Velvetta chante la note pendant six minutes. Il n'y a plus de temps pour ta chanson.",
+                    "points": -2,
+                    "effets": {
+                      "karma": 2,
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Velvetta refuse : « Je ne chante plus depuis 1994. » Moment gênant. Long.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Tenir une note plus longtemps à la place",
+                "stat": "sante",
+                "difficulte": 60,
+                "reussite": [
+                  {
+                    "texte": "Tu ne tiens pas le fa dièse, mais tu tiens un sol pendant cinquante secondes. Velvetta accepte l'échange.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Ta note dure si longtemps que Brandon Strass consulte sa montre, puis applaudit.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Au bout de trente secondes, tu vois des étoiles. Tu termines la note assis{e} par terre.",
+                    "points": -2,
+                    "effets": {
+                      "health": -3,
+                      "happiness": -4
+                    }
+                  },
+                  {
+                    "texte": "Tu tiens la note, mais elle descend doucement jusqu'au ronflement.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s5_03",
+            "texte": "Pour la finale, on t'a cousu un costume de cygne lumineux avec des ailes de trois mètres. Les ailes sont commandées par une télécommande. Que tu n'as pas.",
+            "choix": [
+              {
+                "label": "Ouvrir les ailes au refrain",
+                "stat": "apparence",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Les ailes s'ouvrent pile au refrain. Tu ressembles à un ange de la variété. Gégé crie « Ma-gni-fique ! ».",
+                    "points": 3,
+                    "effets": {
+                      "looks": 2,
+                      "happiness": 7,
+                      "fame": 5
+                    },
+                    "culte": "les ailes de cygne lumineuses de {prenom} en finale"
+                  },
+                  {
+                    "texte": "Majestueux. Tu domines la scène. {rival} a l'air minuscule à côté.",
+                    "points": 2,
+                    "effets": {
+                      "looks": 1,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Une seule aile s'ouvre. Tu tournes sur toi-même comme un manège.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    },
+                    "culte": "{prenom} qui tourne en rond avec une seule aile de cygne"
+                  },
+                  {
+                    "texte": "Les ailes s'ouvrent et heurtent le présentateur. Brandon Strass finit le direct avec un sparadrap.",
+                    "points": -1,
+                    "effets": {
+                      "karma": -1,
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Ignorer le costume et chanter",
+                "stat": "voix",
+                "difficulte": 65,
+                "reussite": [
+                  {
+                    "texte": "Ta voix efface les plumes. On ne voit plus le cygne, on n'entend que toi.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 5
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes si bien que les ailes s'ouvrent toutes seules. Personne ne sait comment.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Les plumes te chatouillent le nez et tu éternues sur la note finale.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Ta voix est juste, mais le costume fait du bruit à chaque pas, comme un sac de chips.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Enlever le costume en direct",
+                "stat": "charisme",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu enlèves le cygne au premier couplet et restes en t-shirt. Le public applaudit ta liberté.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Tu lances le costume dans le public, qui se l'arrache comme une relique.",
+                    "points": 2,
+                    "effets": {
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "La fermeture éclair se coince. Tu chantes la chanson à moitié dans le cygne.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Le costume tombe sur l'orchestre. Le violoncelliste finit la chanson avec une aile sur la tête.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s5_04",
+            "texte": "Dernier choix de chanson. Marc-Aurèle propose une ballade calibrée pour les larmes. Gégé propose un de ses tubes. Toi, tu as écrit la tienne.",
+            "choix": [
+              {
+                "label": "La ballade calibrée de Marc-Aurèle",
+                "stat": "intelligence",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes la ballade avec précision, chaque soupir placé au bon moment. Les votes s'envolent.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Stratégie parfaite : le public pleure exactement où Marc-Aurèle l'avait prévu. Il sourit. Une première.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    },
+                    "culte": "le sourire de Marc-Aurèle Pluchon pendant la finale de {prenom}"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "La ballade est si calibrée que tu sembles être un robot. Le public bâille.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu respectes les consignes, mais tu oublies d'y mettre du cœur. Velvetta : « Glacial. »",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Un tube de Gégé",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes « Le Slow des Vacances Ratées ». La nostalgie fonctionne : les retraités votent en masse.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 5,
+                      "fame": 3
+                    }
+                  },
+                  {
+                    "texte": "Gégé monte sur scène et chante le dernier refrain avec toi. Le public est ravi, et Gégé encore plus.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le tube de Gégé est tellement ringard que les jeunes changent de chaîne.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Gégé interrompt ta chanson pour te corriger sur une note. Pendant la finale.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    },
+                    "culte": "la finale de {prenom} interrompue par Gégé Tournesol pour une note"
+                  }
+                ]
+              },
+              {
+                "label": "Ta propre chanson",
+                "stat": "voix",
+                "difficulte": 65,
+                "reussite": [
+                  {
+                    "texte": "Ta chanson parle de toi, de ta ville, de tes rêves. Ton public la chante déjà au deuxième refrain.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 9,
+                      "fame": 5
+                    }
+                  },
+                  {
+                    "texte": "Ta chanson n'est pas parfaite, mais ta voix la rend inoubliable. Marc-Aurèle veut les droits.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 7,
+                      "fame": 4,
+                      "money": 500
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta chanson dure neuf minutes. Tu n'avais pas compté. La régie coupe à la septième.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes ta chanson avec cœur, mais un couplet rime « amour » avec « amour ». Le jury l'a remarqué.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s5_05",
+            "texte": "Une heure avant la finale, ta voix disparaît. Plus rien. Juste un petit souffle de chaton enrhumé.",
+            "choix": [
+              {
+                "label": "Chanter quand même",
+                "stat": "voix",
+                "difficulte": 75,
+                "reussite": [
+                  {
+                    "texte": "Par miracle, ta voix revient sur la première note. Encore plus profonde. Les médecins n'expliquent pas.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 9,
+                      "fame": 5
+                    },
+                    "culte": "la voix de {prenom} revenue par miracle en finale"
+                  },
+                  {
+                    "texte": "Ta voix est cassée, mais émouvante. Velvetta appelle ça « la voix du vécu ».",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Ta voix sort comme un sifflet de train en panne. Tu finis la chanson en chuchotant.",
+                    "points": -3,
+                    "effets": {
+                      "happiness": -7
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes la première note, puis rien. L'orchestre joue seul, très gentiment.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Le remède de grand-mère de {mere}",
+                "stat": "hasard",
+                "difficulte": 50,
+                "reussite": [
+                  {
+                    "texte": "Miel, citron, gingembre et un truc vert mystérieux. Ta voix revient en dix minutes. {mere} triomphe.",
+                    "points": 2,
+                    "effets": {
+                      "relationships": {
+                        "mother": 4
+                      },
+                      "happiness": 5
+                    }
+                  },
+                  {
+                    "texte": "Le remède fonctionne, mais ta voix est un peu plus grave. Ça te va très bien.",
+                    "points": 2,
+                    "effets": {
+                      "relationships": {
+                        "mother": 3
+                      },
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le remède a un goût d'oignon. Ta voix ne revient pas, mais ton haleine, si.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Le remède fonctionne à moitié : tu chantes la moitié des notes.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Faire chanter le public à ta place",
+                "stat": "charisme",
+                "difficulte": 60,
+                "reussite": [
+                  {
+                    "texte": "Tu tends le micro vers la salle. Huit cents voix chantent ta chanson. C'est le plus beau moment de la saison.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 5
+                    },
+                    "culte": "la finale de {prenom} chantée entièrement par le public"
+                  },
+                  {
+                    "texte": "Le public chante, tu diriges. Gégé déclare que c'est « du jamais-vu depuis 1986 ».",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 4
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Le public ne connaît pas ta chanson. Il chante une comptine à la place.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Le public chante faux, très fort, et avec enthousiasme. Le jury se bouche les oreilles.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "crochet_s5_06",
+            "texte": "Dernière épreuve : le face-à-face. Toi et {rival} chantez une phrase chacun, à tour de rôle, jusqu'à ce que l'un de vous craque.",
+            "choix": [
+              {
+                "label": "Tout donner sur chaque phrase",
+                "stat": "voix",
+                "difficulte": 70,
+                "reussite": [
+                  {
+                    "texte": "Chaque phrase que tu chantes est plus belle que la précédente. {rival} finit par applaudir.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 9,
+                      "fame": 5
+                    }
+                  },
+                  {
+                    "texte": "Au dixième tour, ta voix est intacte. Celle de {rival} ressemble à un vieux klaxon.",
+                    "points": 3,
+                    "effets": {
+                      "happiness": 8,
+                      "fame": 4
+                    },
+                    "culte": "le face-à-face vocal de {prenom} contre {rival} en finale"
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "Au troisième tour, ta voix s'enroue. {rival} continue avec un sourire de vainqueur.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -6
+                    }
+                  },
+                  {
+                    "texte": "Tu chantes ta phrase deux fois par erreur. Le jury te retire un tour.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Laisser {rival} s'épuiser",
+                "stat": "intelligence",
+                "difficulte": 60,
+                "reussite": [
+                  {
+                    "texte": "Tu chantes court et précis, {rival} chante long et fort. Au huitième tour, {rival} n'a plus de souffle.",
+                    "points": 3,
+                    "effets": {
+                      "smarts": 1,
+                      "happiness": 7,
+                      "fame": 4
+                    }
+                  },
+                  {
+                    "texte": "Ta stratégie fonctionne : {rival} s'essouffle, toi tu gardes tout pour la dernière phrase.",
+                    "points": 2,
+                    "effets": {
+                      "happiness": 6,
+                      "fame": 3
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "{rival} ne s'épuise pas du tout. Toi, tu as l'air de faire des économies.",
+                    "points": -2,
+                    "effets": {
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu te retiens tellement que le jury croit que tu as abandonné.",
+                    "points": -1,
+                    "effets": {
+                      "happiness": -3
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "Tendre la main à {rival}",
+                "stat": "karma",
+                "difficulte": 55,
+                "reussite": [
+                  {
+                    "texte": "Tu proposes de chanter la dernière phrase ensemble. Le public est en larmes. Le jury aussi.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 6,
+                      "fame": 5
+                    },
+                    "culte": "la main tendue de {prenom} à {rival} en pleine finale"
+                  },
+                  {
+                    "texte": "{rival} accepte ta main. Votre duo final restera dans les mémoires.",
+                    "points": 2,
+                    "effets": {
+                      "karma": 5,
+                      "happiness": 6
+                    }
+                  }
+                ],
+                "echec": [
+                  {
+                    "texte": "{rival} refuse ta main et chante la dernière phrase en solo. Le public salue ton geste, mais vote pour l'autre.",
+                    "points": -2,
+                    "effets": {
+                      "karma": 4,
+                      "happiness": -5
+                    }
+                  },
+                  {
+                    "texte": "Tu tends la main, {rival} la serre très fort. Trop fort. Tu chantes la fin en grimaçant.",
+                    "points": -1,
+                    "effets": {
+                      "karma": 2,
+                      "happiness": -3
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "eliminations": [
+      "Les trois buzzers sonnent en même temps. Brandon Strass te raccompagne vers la sortie en te tapotant l'épaule, comme un chien qu'on dépose chez le vétérinaire.",
+      "Le public a voté. Pas pour toi. Tu repars avec un t-shirt de l'émission taille XXL et une boule dans la gorge.",
+      "Velvetta te dit : « Chéri{e}, tu as une voix. Mais ce n'est pas la bonne. » Tu rentres chez toi en chantonnant de rage.",
+      "Marc-Aurèle soupire, Gégé te souhaite « bonne route », et Velvetta lime ses ongles. C'est fini.",
+      "Éliminé{e}. Au montage, ta sortie est accompagnée d'un violon triste et d'un ralenti sur ta chaussure.",
+      "Tu sors de scène sous les applaudissements polis de quelqu'un qui veut rentrer chez lui. L'aventure s'arrête là."
+    ],
+    "victoires": [
+      "Tu gagnes « {emission} » ! {gain}, un trophée en forme de micro doré et un contrat pour un single que personne n'achètera.",
+      "Pluie de confettis : tu remportes « {emission} » ! Tu repars avec {gain}. Velvetta te serre la main du bout des doigts, ce qui est un grand honneur.",
+      "Victoire ! {gain} et une tournée de trois dates dans des centres commerciaux. Gégé te promet un duo « un jour ».",
+      "Tu es la nouvelle « Star d'un Soir » ! {gain}, et Marc-Aurèle sourit. Pour de vrai. Les médecins sont en route."
+    ],
+    "defaitesFinale": [
+      "Le public a voté : {rival} gagne la finale. Tu souris pour la caméra et tu cries de rage dans ta loge.",
+      "Finale perdue de peu face à {rival}. Velvetta murmure : « C'est toi qui aurais dû gagner. » Elle dit ça à tous les perdants.",
+      "Tu perds la finale contre {rival}. On te donne une coupe de deuxième place, en plastique, et un bon d'achat pour un karaoké.",
+      "{rival} remporte l'émission sous une pluie de confettis. Toi, tu en as un coincé dans le nez. C'est ton souvenir."
+    ]
+  }
+]
