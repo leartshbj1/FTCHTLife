@@ -255,12 +255,11 @@ final class GameEngine: ObservableObject {
         guard let j = joueur else { return }
         let t = tags(j)
         let candidats = BibliothequeEvenements.tous.filter { conditionsRemplies($0, j, tags: t) }
-        guard !candidats.isEmpty else { return }
-
         var nombre = 0
         if Double.random(in: 0...1) < 0.85 { nombre += 1 }
         if Double.random(in: 0...1) < 0.40 { nombre += 1 }
         if j.age < 3 && nombre > 1 { nombre = 1 }
+        if candidats.isEmpty { nombre = 0 }
 
         var dejaPris: Set<String> = []
         for _ in 0..<nombre {
