@@ -118,6 +118,7 @@ enum VieCrime {
         j.vieEtat = v
         VieSysteme.signaler("proces_perdu", &j)
         var lignes = ["⚖️ Coupable de « \(p.crimeNom) ». Amende de \(Format.argent(amende))."]
+        if let l = VieSysteme.condamnation?(p.crimeNom.lowercased(), mois, &j) { lignes.append(l) }
         if mois > 0 {
             lignes += emprisonner(mois, &j)
         } else {

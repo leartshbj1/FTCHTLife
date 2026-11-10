@@ -21,6 +21,12 @@ enum VieSysteme {
     /// Envoie un signal au module Répercussions (branché par le moteur).
     static var signal: ((String, inout Joueur) -> Void)?
 
+    /// Inscription au casier judiciaire (module Casier) : infraction, mois de prison.
+    /// Branchement : `VieSysteme.condamnation = { inf, mois, j in var c = j.casier ?? CasierJudiciaire();
+    /// let g: Gravite = mois == 0 ? .contravention : (mois < 60 ? .delit : .crime);
+    /// let l = CasierSysteme.condamner(&c, infraction: inf, gravite: g, age: j.age); j.casier = c; return l }`
+    static var condamnation: ((String, Int, inout Joueur) -> String?)?
+
     static func signaler(_ nom: String, _ j: inout Joueur) {
         signal?(nom, &j)
     }
@@ -106,6 +112,9 @@ enum VieSysteme {
         if let amende = fx.fine, amende > 0 {
             j.argent -= amende
             lignes.append("Amende de \(Format.argent(amende)).")
+        }
+        if fx.record == 1 || (fx.jailMonths ?? 0) > 0 && !j.vieEtat.justice.enPrison {
+            if let l = condamnation?("délit divers", max(0, fx.jailMonths ?? 0), &j) { lignes.append(l) }
         }
         if fx.record == 1 {
             var v = j.vieEtat
