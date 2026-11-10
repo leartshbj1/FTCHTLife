@@ -292,6 +292,7 @@ extension GameEngine {
             j.succession = etat
         }
         voisinageApresChoix(e, choix: index, issue: issue, &j)
+        apresChoixTravail(e, choix: index, issue: k, &j)
         revesMettreAJour(&j, etat: \.reves)
     }
 

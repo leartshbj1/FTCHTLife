@@ -239,6 +239,9 @@ struct Joueur: Codable, Equatable {
     var voisinage: VoisinageEtat? = nil
     /// Dernier métier exercé (gardé pour la nécrologie, car `emploi` est vidé à la mort).
     var dernierEmploi: Emploi? = nil
+    /// Emploi du module Métiers (Careers) et CV.
+    var carriere: CareerJobState? = nil
+    var historiqueCarriere: [CareerRecord]? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 

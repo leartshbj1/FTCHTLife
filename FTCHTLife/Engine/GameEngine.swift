@@ -189,8 +189,10 @@ final class GameEngine: ObservableObject {
             }
         }
 
-        // Emploi
-        if var e = j.emploi {
+        // Emploi (module Métiers si l'emploi vient du catalogue, sinon ancien système)
+        if j.carriere != nil {
+            lignes += anneeCarriere(&j)
+        } else if var e = j.emploi {
             let salaire = MondeJournal.salaire(e.salaire, metierId: e.metierId, titre: e.titre, etat: j.monde ?? MondeEtat())
             let net = Int(Double(salaire) * 0.75)
             j.argent += net
