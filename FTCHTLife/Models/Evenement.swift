@@ -18,6 +18,18 @@ struct Effets: Codable, Equatable {
     var newFriend: Bool?
     /// Si présent, le joueur meurt avec cette cause (ex. "écrasé par un distributeur de boissons").
     var death: String?
+
+    // Clés du module amour/crime/santé (FTCHTLife/Systems), lues par VieSysteme.
+    var jailMonths: Int?
+    var fine: Int?
+    var disease: String?
+    var cure: String?
+    var breakup: Bool?
+    var newPartner: Bool?
+    var pregnancy: Bool?
+    var addiction: String?
+    var followUp: String?
+    var followUpYears: Int?
 }
 
 struct ConditionsEvenement: Codable, Equatable {
