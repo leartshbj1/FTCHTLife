@@ -1,0 +1,3821 @@
+[
+  {
+    "id": "randonnee",
+    "title": "Randonnée",
+    "icon": "figure.hiking",
+    "category": "nature",
+    "description": "Marcher en montée de son plein gré.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": true,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "balade",
+        "label": "Balade en forêt",
+        "description": "Deux heures, un sentier plat, zéro risque. En théorie.",
+        "cost": 0,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Deux heures de marche, un écureuil, aucune crise existentielle. Une réussite.",
+            "effects": {
+              "health": 2,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as ramassé un bâton parfait. Tu ne t'en sépareras pas avant des années.",
+            "effects": {
+              "happiness": 4
+            },
+            "key": "balade_2"
+          },
+          {
+            "chance": 2,
+            "text": "Tu as croisé un chevreuil. Vous vous êtes fixés dix secondes, puis il est parti, visiblement déçu.",
+            "effects": {
+              "happiness": 3
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es perdu{e} sur un sentier plat, balisé et circulaire. Tu es ressorti{e} au parking trois heures plus tard.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as marché dans quelque chose. Tu ne sauras jamais quoi, mais tes chaussures, si.",
+            "effects": {
+              "happiness": -2,
+              "looks": -1
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Une tique t'a choisi{e} comme résidence principale.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as croisé un groupe de marcheurs très bavards. Tu connais maintenant le cholestérol de chacun.",
+            "effects": {
+              "happiness": 2,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu reconnais désormais chaque arbre par son nom latin. Les arbres ne savent toujours pas comment tu t'appelles.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 2
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "montagne",
+        "label": "Sentier de montagne",
+        "description": "Du dénivelé, des marmottes et un sandwich bien mérité.",
+        "cost": 15,
+        "minAge": 10,
+        "minLevel": 0,
+        "minHealth": 30,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Mille mètres de dénivelé, un lac turquoise au bout et un sandwich écrasé qui n'a jamais été aussi bon.",
+            "effects": {
+              "health": 3,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Une marmotte a sifflé à ton passage. Tu as décidé de le prendre comme un compliment.",
+            "effects": {
+              "happiness": 3
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Le brouillard est tombé d'un coup. Tu as suivi un cairn qui était en fait un tas de cailloux posé par un enfant.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu",
+            "key": "montagne_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as voulu descendre en courant comme un chamois. Le chamois, lui, a quatre pattes.",
+            "effects": {
+              "health": -4,
+              "happiness": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "entorse à la cheville",
+              "years": 1,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un berger t'a offert un morceau de fromage et trois heures de prévisions météo, toutes contradictoires.",
+            "effects": {
+              "happiness": 3
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu es parti{e} avec des baskets de ville et une seule gourde. Tu as découvert le vrai sens du mot « ampoule ».",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Un patou t'a raccompagné{e} jusqu'en bas du sentier. Sans te demander ton avis.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as doublé un groupe suréquipé sans même transpirer. Ils ont vérifié leurs montres connectées en panique.",
+            "effects": {
+              "health": 3,
+              "happiness": 5
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "sommet",
+        "label": "Sommet à plus de 4 000 m",
+        "description": "Réveil à 3 h, crampons, guide, et l'air qui se fait rare.",
+        "cost": 350,
+        "minAge": 16,
+        "minLevel": 2,
+        "minHealth": 60,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Départ à 3 h du matin, arête effilée, et le sommet au lever du soleil. Tu as pleuré, mais c'était le vent.",
+            "effects": {
+              "health": 4,
+              "happiness": 8
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 2,
+            "text": "Le guide a fait demi-tour à 200 mètres du sommet à cause du vent. Tu as dit « pas grave » d'une voix très grave.",
+            "effects": {
+              "health": 2,
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as atteint le sommet en tête de cordée, sans te plaindre une seule fois. Le guide t'a demandé ton numéro pour ses prochaines courses.",
+            "effects": {
+              "health": 4,
+              "happiness": 10,
+              "looks": 2
+            },
+            "minLevel": 3,
+            "trophy": "Toit des Quatre Mille",
+            "signal": "sommet",
+            "key": "sommet_3"
+          },
+          {
+            "chance": 2,
+            "text": "Le mal des montagnes t'a frappé{e} à 3 800 mètres. Tu as vomi sur un glacier millénaire. Il s'en remettra, toi moins.",
+            "effects": {
+              "health": -4,
+              "happiness": -4
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as mis des chaussettes en coton pour « faire léger ». Tes orteils ont pris une couleur inédite.",
+            "effects": {
+              "health": -5,
+              "happiness": -4
+            },
+            "bad": true,
+            "injury": {
+              "name": "gelures aux orteils",
+              "years": 2,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "La cordée s'est trompée de couloir. Nuit forcée dans un abri de bivouac, à chanter pour ne pas s'endormir.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Au refuge, tu as partagé un dortoir de vingt personnes avec un ronfleur légendaire. Vous êtes désormais inséparables.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as loué des crampons trop grands. Tu as passé l'ascension à les rattraper dans la neige.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "honte"
+          },
+          {
+            "chance": 0.12,
+            "text": "Le glacier s'est ouvert sous tes pieds, sans prévenir.",
+            "effects": {
+              "death": "au fond d'une crevasse, à plus de 4 000 mètres d'altitude, avec une vue imprenable"
+            },
+            "bad": true
+          }
+        ]
+      },
+      {
+        "id": "traversee",
+        "label": "Traversée de plusieurs jours",
+        "description": "Une semaine de refuge en refuge, le sac sur le dos.",
+        "cost": 600,
+        "minAge": 16,
+        "minLevel": 3,
+        "minHealth": 60,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Six jours, cent vingt kilomètres, quatre refuges. Tu es revenu{e} avec des mollets d'acier et une odeur très personnelle.",
+            "effects": {
+              "health": 5,
+              "happiness": 6
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 2,
+            "text": "Le troisième soir, tu as compris le sens de la vie. Le quatrième matin, tu l'avais oublié.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as bouclé la traversée en un temps record. Le gardien du dernier refuge a gravé ton nom sur une poutre, à côté de celui d'un bouquetin.",
+            "effects": {
+              "health": 4,
+              "happiness": 10
+            },
+            "minLevel": 4,
+            "trophy": "Grande Traversée",
+            "signal": "sommet",
+            "key": "traversee_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait trois jours de route avec un couple de retraités qui marchaient plus vite que toi. Ils t'ont adopté{e}.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as raté une bifurcation le deuxième jour et visité une vallée non prévue. Très jolie. Très loin.",
+            "effects": {
+              "health": -2,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu",
+            "key": "traversee_5"
+          },
+          {
+            "chance": 1,
+            "text": "Ton genou a démissionné le cinquième jour. Tu as fini la traversée en boitant, très dignement.",
+            "effects": {
+              "health": -4,
+              "happiness": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "tendinite au genou",
+              "years": 2,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Une vache a mangé ta carte. Tu as suivi la vache, faute de mieux. Elle connaissait le chemin.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 3,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Il a plu six jours sur six. Ton sac pèse maintenant le double et sent le chien mouillé.",
+            "effects": {
+              "health": -1,
+              "happiness": -4
+            },
+            "bad": true
+          },
+          {
+            "chance": 0.11,
+            "text": "L'orage t'a surpris{e} en plein milieu de la crête.",
+            "effects": {
+              "death": "sous un orage, sur la plus belle crête du parcours"
+            },
+            "bad": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "camping",
+    "title": "Camping",
+    "icon": "tent.fill",
+    "category": "nature",
+    "description": "Dormir par terre, volontairement, et appeler ça des vacances.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 1,
+    "physical": false,
+    "signal": "camping",
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "jardin",
+        "label": "Tente dans le jardin",
+        "description": "L'aventure, à six mètres de la cuisine.",
+        "cost": 0,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as dormi dans une tente à six mètres de ton lit. L'aventure à l'état pur.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as monté la tente à l'envers. Tu as dormi dans un sac de nylon très perplexe.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Un hérisson a fait le tour de la tente toute la nuit. Tu étais persuadé{e} que c'était un ours.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as regardé les étoiles pendant des heures et inventé quatre constellations, dont une en forme de frite.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Les arroseurs automatiques se sont déclenchés à 5 h. Personne n'avait prévenu la tente.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "key": "jardin_5"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as tenu jusqu'à 23 h avant de rentrer « juste chercher un oreiller ». Tu n'es jamais ressorti{e}.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as installé un bivouac digne d'une expédition polaire, à côté du barbecue. Les voisins ont pris des photos.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "municipal",
+        "label": "Camping municipal",
+        "description": "Sanitaires communs, pétanque et voisins en caravane.",
+        "cost": 60,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une semaine de camping, des sanitaires douteux et une partie de pétanque légendaire. Des vacances parfaites.",
+            "effects": {
+              "health": 1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es fait un copain à l'emplacement 42. Vous vous écrivez encore, surtout pour parler de l'emplacement 42.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tes voisins de caravane ont fêté un anniversaire jusqu'à 4 h avec un karaoké. Le même tube, quatorze fois.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Un orage a plié les arceaux de ta tente. Elle ressemble maintenant à une chips géante.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as planté ta tente dans une cuvette. À la première averse, tu as découvert le camping aquatique.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu as remporté le concours de belote du camping. Le lot : un jambon entier. Tu ne sais pas quoi en faire.",
+            "effects": {
+              "happiness": 5
+            },
+            "signal": "victoire"
+          },
+          {
+            "chance": 1,
+            "text": "Un renard a volé une chaussure. Une seule. Il avait clairement un plan.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "animal",
+            "key": "municipal_7"
+          },
+          {
+            "chance": 1,
+            "text": "Les habitués te réservent désormais ton emplacement préféré. Tu es devenu{e} une institution.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "bivouac",
+        "label": "Bivouac en pleine nature",
+        "description": "Une tente, un réchaud, personne à des kilomètres.",
+        "cost": 0,
+        "minAge": 16,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une nuit seul{e} face aux étoiles, un réchaud qui ronronne et un silence total. Tu te sens très sage.",
+            "effects": {
+              "health": 2,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un sanglier est venu renifler ta tente à 3 h. Tu as fait le mort avec beaucoup de talent.",
+            "effects": {
+              "happiness": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as oublié le réchaud. Dîner : pâtes crues trempées dans l'eau froide. Gastronomie de survie.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu es parti{e} chercher de l'eau et tu n'as plus retrouvé ta tente. Elle était à vingt mètres, derrière toi.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as dormi sur une racine sans le savoir. Ton dos, lui, le sait très bien.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "dos coincé",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un garde du parc t'a rappelé que le bivouac était interdit à cet endroit. Amende salée.",
+            "effects": {
+              "money": -135,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un autre campeur solitaire est venu partager ta lumière. Vous avez parlé toute la nuit, puis chacun est reparti de son côté.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as filtré ton eau, cuisiné une truite et prédit la météo au nuage près. Tu n'as plus besoin de la civilisation, sauf pour recharger ton téléphone.",
+            "effects": {
+              "health": 3,
+              "smarts": 2,
+              "happiness": 6
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "peche",
+    "title": "Pêche",
+    "icon": "fish.fill",
+    "category": "nature",
+    "description": "Attendre au bord de l'eau qu'un poisson fasse une erreur.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "etang",
+        "label": "Étang du coin",
+        "description": "Une canne, des asticots, beaucoup de patience.",
+        "cost": 10,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu es resté{e} quatre heures au bord de l'eau sans rien attraper. Tu n'as jamais été aussi détendu{e}.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Tu as attrapé un gardon de la taille d'un trombone. Tu l'as relâché avec émotion.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ton hameçon s'est accroché dans ton bonnet. Puis dans ton oreille. Puis dans un arbre.",
+            "effects": {
+              "health": -1,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait tomber ta canne dans l'étang. Elle flotte quelque part, libre.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Un héron s'est installé à deux mètres de toi et a pêché dix poissons pendant que tu n'en prenais aucun.",
+            "effects": {
+              "happiness": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Un vieux pêcheur t'a appris son nœud secret. Il t'a fait jurer sur sa casquette de ne jamais le révéler.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as passé la journée à démêler ton fil. Zéro poisson, mais tu maîtrises désormais le macramé.",
+            "effects": {
+              "smarts": 1,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as sorti une carpe de 15 kilos devant tout le club. La photo est affichée au café du coin.",
+            "effects": {
+              "happiness": 8
+            },
+            "minLevel": 3,
+            "trophy": "Carpe de Légende",
+            "signal": "victoire",
+            "key": "etang_8"
+          }
+        ]
+      },
+      {
+        "id": "mouche",
+        "label": "Rivière à la mouche",
+        "description": "Des lancers élégants, en théorie, et des truites méfiantes.",
+        "cost": 60,
+        "minAge": 12,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Lancer, lancer, lancer... Une truite a fini par mordre. Tu lui as fait un petit discours avant de la relâcher.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu es tombé{e} dans la rivière en voulant récupérer ta mouche. Les cuissardes se remplissent très vite.",
+            "effects": {
+              "health": -2,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Ton lancer arrière a terminé dans ton propre pouce. Les urgences ont été très professionnelles.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "hameçon dans le pouce",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Une loutre t'a observé{e} tout l'après-midi. Elle avait l'air de prendre des notes.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pêché deux heures dans une flaque à côté de la rivière. Personne ne t'a prévenu{e}.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu n'as rien pris, mais tu as fabriqué une mouche si belle que tu n'oses plus t'en servir.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le magasin t'a vendu une mouche « miraculeuse » à 18 euros. Les poissons n'ont pas été prévenus du miracle.",
+            "effects": {
+              "money": -18,
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as lu la rivière comme un livre ouvert. Six truites, six remises à l'eau, zéro effort apparent.",
+            "effects": {
+              "happiness": 6
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "mer",
+        "label": "Pêche en mer",
+        "description": "Un bateau, un capitaine bourru, et la houle.",
+        "cost": 120,
+        "minAge": 10,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une journée en mer, des maquereaux à la pelle et un barbecue sur le port. Le bonheur sent le gasoil et le poisson.",
+            "effects": {
+              "health": 1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 2,
+            "text": "Mal de mer dès la sortie du port. Tu as nourri les poissons, mais pas comme prévu.",
+            "effects": {
+              "health": -2,
+              "happiness": -4
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Des dauphins ont escorté le bateau pendant une heure. Tu as complètement oublié de pêcher.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Après deux heures de combat, tu as remonté un thon plus lourd que toi. Le capitaine a sonné la cloche du bateau.",
+            "effects": {
+              "health": 2,
+              "happiness": 10
+            },
+            "minLevel": 3,
+            "trophy": "Roi du Large",
+            "signal": "victoire"
+          },
+          {
+            "chance": 1,
+            "text": "Un poisson énorme a cassé ta canne et ta fierté d'un seul coup de queue.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as passé la journée à écouter le capitaine raconter sa vie. Il t'a invité{e} à revenir gratuitement.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as lancé ta ligne du mauvais côté et accroché la casquette du capitaine. Il l'a récupérée sans un mot. C'était pire.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte",
+            "key": "mer_7"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as vendu ta pêche du jour au restaurant du port. Le chef a dit « pas mal » et c'est apparemment énorme.",
+            "effects": {
+              "money": 40,
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "escalade",
+    "title": "Escalade",
+    "icon": "figure.climbing",
+    "category": "nature",
+    "description": "Monter sur des cailloux, puis redescendre. Le but n'est pas clair.",
+    "minAge": 8,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": true,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "salle",
+        "label": "Salle de blocs",
+        "description": "Des prises en plastique et des tapis épais.",
+        "cost": 15,
+        "minAge": 8,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as enchaîné trois blocs jaunes. Les gamins à côté en ont fait dix, mais ils trichent avec leur légèreté.",
+            "effects": {
+              "health": 2,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu es resté{e} bloqué{e} en haut d'un mur de deux mètres pendant dix minutes. Un moniteur a dû te parler doucement.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Une prise a tourné sous ton doigt. Ton doigt aussi.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "doigt foulé",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as découvert la magnésie. Tu en as maintenant partout, y compris dans des endroits inexplicables.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Quelqu'un t'a donné un conseil de placement de pied. Vous avez fini la séance ensemble.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu es retombé{e} sur le tapis comme une crêpe. Le bruit a fait se retourner toute la salle.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as sorti le bloc noir du fond de la salle. Les habitués ont applaudi avec leurs mains pleines de craie.",
+            "effects": {
+              "looks": 1,
+              "happiness": 7
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "falaise",
+        "label": "Falaise",
+        "description": "Du vrai rocher, une corde et quelqu'un qui assure.",
+        "cost": 30,
+        "minAge": 12,
+        "minLevel": 1,
+        "minHealth": 40,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une journée sur le rocher, des voies superbes et des avant-bras qui ne pourront plus jamais ouvrir un bocal.",
+            "effects": {
+              "health": 3,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ton assureur discutait pendant que tu grimpais. Tu as appris à crier très fort.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as raté un mousqueton et fait un vol de quatre mètres. Le rocher t'a accueilli{e} sans douceur.",
+            "effects": {
+              "health": -5,
+              "happiness": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "cheville tordue",
+              "years": 2,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un faucon nichait dans la voie. Tu as négocié le passage à voix basse. Il a refusé.",
+            "effects": {
+              "happiness": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu avais oublié de finir ton nœud. L'assureur l'a vu à temps. Tu as vieilli de dix ans en une seconde.",
+            "effects": {
+              "health": -1,
+              "happiness": -4
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu as enchaîné ta première voie en tête. Tu l'as racontée à tout le monde, y compris au boulanger.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as réussi une voie très dure du premier coup. Des inconnus t'ont filmé{e} pour leur chaîne d'escalade.",
+            "effects": {
+              "looks": 2,
+              "happiness": 7
+            },
+            "minLevel": 3,
+            "signal": "sommet",
+            "key": "falaise_7"
+          },
+          {
+            "chance": 1,
+            "text": "Ton téléphone est tombé de ta poche au relais. Il repose maintenant trente mètres plus bas, en plusieurs morceaux.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "casse"
+          }
+        ]
+      },
+      {
+        "id": "grande_voie",
+        "label": "Grande voie",
+        "description": "Trois cents mètres de paroi et le vide sous les talons.",
+        "cost": 200,
+        "minAge": 16,
+        "minLevel": 3,
+        "minHealth": 60,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Dix longueurs, trois cents mètres de vide et un casse-croûte au relais avec les pieds dans le ciel.",
+            "effects": {
+              "health": 3,
+              "happiness": 8
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as ouvert une nouvelle voie dans une paroi vierge. Tu as eu le droit de la baptiser.",
+            "effects": {
+              "happiness": 10
+            },
+            "minLevel": 4,
+            "trophy": "Paroi des Vautours",
+            "signal": "sommet",
+            "key": "grande_voie_2"
+          },
+          {
+            "chance": 1,
+            "text": "Sortie de la voie à la nuit tombée. La descente à la frontale a duré quatre heures.",
+            "effects": {
+              "health": -2,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Une grosse chute dans la sixième longueur. Ton épaule n'est plus tout à fait au même endroit.",
+            "effects": {
+              "health": -6,
+              "happiness": -4
+            },
+            "bad": true,
+            "injury": {
+              "name": "épaule luxée",
+              "years": 2,
+              "healthPerYear": -3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait tomber le sac avec les sandwichs. Ascension au ventre vide.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as coincé la corde de rappel. Il a fallu remonter la chercher. Deux fois.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 3
+          },
+          {
+            "chance": 1,
+            "text": "Une autre cordée vous a rejoints au relais en proposant du chocolat. Amitié scellée à deux cents mètres du sol.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 0.09,
+            "text": "Un bloc s'est détaché juste au-dessus de toi.",
+            "effects": {
+              "death": "sous un bloc de rocher qui attendait son heure depuis dix mille ans"
+            },
+            "bad": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ski",
+    "title": "Ski",
+    "icon": "figure.skiing.downhill",
+    "category": "nature",
+    "description": "Payer très cher pour glisser dans le froid.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 1,
+    "physical": true,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "verte",
+        "label": "Luge et piste verte",
+        "description": "Chasse-neige, chocolat chaud et tire-fesses.",
+        "cost": 40,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as dévalé la piste verte en chasse-neige parfait. Lentement, mais avec beaucoup de style.",
+            "effects": {
+              "health": 2,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le tire-fesses t'a lâché{e} à mi-pente. Tu as redescendu sur le dos, devant toute la file.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Ta luge a rencontré un sapin. Le sapin a gagné.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "poignet foulé",
+              "years": 1,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as eu ta première étoile. Tu l'as accrochée à ton anorak et refusé de l'enlever.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as mangé une tartiflette au sommet. Tu as dû redescendre en télésiège tellement tu étais lourd{e}.",
+            "effects": {
+              "health": -1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as perdu un gant depuis le télésiège. Il est resté accroché à un sapin, comme un drapeau de reddition.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait un bonhomme de neige au lieu de skier. Il était magnifique. Il avait un nez en bâton de ski.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as descendu la piste verte en arrière, en parlant au téléphone. Les moniteurs t'ont regardé{e} avec respect.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "station",
+        "label": "Pistes rouges et noires",
+        "description": "Une semaine en station, forfait compris.",
+        "cost": 250,
+        "minAge": 10,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une semaine de soleil, de neige fraîche et de raclette. Tes cuisses te détestent, toi tu adores.",
+            "effects": {
+              "health": 3,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Une plaque de verglas sur la noire. Ton genou a fait un bruit que tu n'oublieras jamais.",
+            "effects": {
+              "health": -6,
+              "happiness": -4
+            },
+            "bad": true,
+            "injury": {
+              "name": "ligaments du genou",
+              "years": 2,
+              "healthPerYear": -3
+            },
+            "key": "station_2"
+          },
+          {
+            "chance": 1,
+            "text": "Tu es tombé{e} à la descente du télésiège et tu as bloqué toute la remontée pendant cinq minutes.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte",
+            "key": "station_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as partagé un télésiège avec quelqu'un de très drôle. Vous avez fait toutes les pistes ensemble.",
+            "effects": {
+              "happiness": 5,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le chocolat chaud à 9 euros. La crêpe à 12. La location de casque à un prix que tu préfères oublier.",
+            "effects": {
+              "money": -40,
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as descendu ta première noire sans tomber. Tu as fait semblant que c'était normal.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 1,
+            "text": "Brouillard total. Tu as skié une journée entière en ne voyant que le bout de tes skis.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as passé les bosses de la noire en slalom parfait. Des ados t'ont demandé un autographe, ironiquement, mais quand même.",
+            "effects": {
+              "looks": 2,
+              "happiness": 7
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "hors_piste",
+        "label": "Hors-piste avec un guide",
+        "description": "De la poudreuse vierge, un détecteur d'avalanche et beaucoup d'humilité.",
+        "cost": 400,
+        "minAge": 18,
+        "minLevel": 3,
+        "minHealth": 60,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Poudreuse jusqu'aux genoux, pas une trace, juste toi et la montagne. Tu as crié de joie tout le long.",
+            "effects": {
+              "health": 3,
+              "happiness": 9
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as suivi une belle pente qui finissait dans une forêt sans issue. Deux heures de marche, skis sur l'épaule.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Un rocher caché sous la neige t'attendait. Vol plané, atterrissage douloureux.",
+            "effects": {
+              "health": -7,
+              "happiness": -4
+            },
+            "bad": true,
+            "injury": {
+              "name": "clavicule cassée",
+              "years": 2,
+              "healthPerYear": -3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un chamois a traversé la pente juste devant toi, a jugé ta technique en une seconde et a disparu.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as descendu un couloir que seuls trois skieurs avaient osé tenter. La vidéo fait le tour des stations.",
+            "effects": {
+              "looks": 3,
+              "happiness": 10
+            },
+            "minLevel": 4,
+            "trophy": "Couloir des Fous",
+            "signal": "sommet",
+            "key": "hors_piste_5"
+          },
+          {
+            "chance": 1,
+            "text": "Le guide a tout annulé à cause du risque d'avalanche. Tu as passé la journée au spa à bouder.",
+            "effects": {
+              "health": 1,
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu avais oublié de charger ton détecteur d'avalanche. Le guide t'a fait la leçon devant tout le groupe.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 3,
+            "signal": "honte"
+          },
+          {
+            "chance": 0.09,
+            "text": "Une plaque de neige s'est décrochée juste au-dessus de toi.",
+            "effects": {
+              "death": "sous une avalanche, en pleine poudreuse"
+            },
+            "bad": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kayak",
+    "title": "Kayak",
+    "icon": "water.waves",
+    "category": "nature",
+    "description": "S'asseoir dans un tube en plastique et espérer rester à l'endroit.",
+    "minAge": 8,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": true,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "lac",
+        "label": "Kayak sur le lac",
+        "description": "De l'eau plate, des canards, un gilet orange.",
+        "cost": 20,
+        "minAge": 8,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une heure à pagayer sur un lac lisse comme un miroir. Tu as souri à un canard. Il a souri aussi, probablement.",
+            "effects": {
+              "health": 2,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pagayé une heure en rond. Pas en cercle : en rond. Il y a une différence.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es retourné{e} en montant dans le kayak. Le moniteur n'avait même pas fini sa phrase.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un cygne a décidé que le lac était à lui. Tu as battu en retraite avec dignité et vitesse.",
+            "effects": {
+              "happiness": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait la course contre {ami} et gagné d'une demi-pagaie.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 2
+              }
+            },
+            "signal": "victoire"
+          },
+          {
+            "chance": 1,
+            "text": "Ta pagaie s'est cassée en deux. Tu as fini le parcours à la main, comme un canard.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait le tour du lac à la vitesse d'un hors-bord. Les pédalos ont cru à un mirage.",
+            "effects": {
+              "health": 3,
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "riviere",
+        "label": "Descente de rivière",
+        "description": "Quinze kilomètres, des petits rapides et un pique-nique.",
+        "cost": 45,
+        "minAge": 12,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Quinze kilomètres de descente, des petits rapides et un pique-nique sur une plage de galets.",
+            "effects": {
+              "health": 3,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le kayak est reparti sans toi. Tu as fini la descente à la nage, en lui courant après.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pris un rocher de face et ton poignet de côté.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "poignet tordu",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un martin-pêcheur t'a suivi{e} sur deux kilomètres. Tu as décidé qu'il s'appelait Gérard.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "animal",
+            "key": "riviere_4"
+          },
+          {
+            "chance": 1,
+            "text": "Tu avais oublié ton téléphone dans ta poche. Il est maintenant étanche, mais de l'intérieur.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Vous avez aidé un autre groupe à vider son canoë. Le soir, pique-nique commun et grandes promesses de se revoir.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait tout le parcours sans toucher un seul caillou. Le loueur a vérifié la coque deux fois, incrédule.",
+            "effects": {
+              "happiness": 6
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "eaux_vives",
+        "label": "Eaux vives",
+        "description": "Rapides, rouleaux et casque obligatoire.",
+        "cost": 90,
+        "minAge": 16,
+        "minLevel": 3,
+        "minHealth": 50,
+        "xp": 3,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Rapides énormes, rouleaux furieux, adrénaline pure. Tu es ressorti{e} trempé{e} et hilare.",
+            "effects": {
+              "health": 3,
+              "happiness": 8
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 1,
+            "text": "Un rouleau t'a retourné{e} quatre fois avant de te recracher contre un rocher.",
+            "effects": {
+              "health": -5,
+              "happiness": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "côtes fêlées",
+              "years": 2,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as raté le point de sortie et continué jusqu'au village suivant. Le minibus a mis une heure à te retrouver.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as passé le rapide de la Gueule du Loup en esquimautant deux fois. Les guides ont tapé sur leurs casques.",
+            "effects": {
+              "happiness": 10
+            },
+            "minLevel": 4,
+            "trophy": "Gueule du Loup",
+            "signal": "sommet"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as raté ton esquimautage. Trois fois. Le guide t'a repêché{e} comme une truite.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 3,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as sorti un kayakiste coincé dans un remous. Il t'a promis des cafés à vie.",
+            "effects": {
+              "karma": 4,
+              "happiness": 5,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Ton kayak s'est coincé sous un rocher et en est ressorti en deux parties. Le loueur te le facture.",
+            "effects": {
+              "money": -250,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 0.09,
+            "text": "Un siphon t'a aspiré{e} sous l'eau.",
+            "effects": {
+              "death": "dans un rapide qui n'était sur aucune carte"
+            },
+            "bad": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "champignons",
+    "title": "Cueillette de champignons",
+    "icon": "tree.fill",
+    "category": "nature",
+    "description": "Fouiller la forêt en espérant reconnaître ce qu'on mange.",
+    "minAge": 8,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "connaisseur",
+        "label": "Avec un connaisseur",
+        "description": "Quelqu'un qui sait, un panier et des bottes.",
+        "cost": 0,
+        "minAge": 8,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Un panier de cèpes, des pieds mouillés et une omelette mémorable.",
+            "effects": {
+              "health": 1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as ramassé fièrement un panier entier. Tout était vénéneux. Le connaisseur a tout jeté en soupirant.",
+            "effects": {
+              "smarts": 1,
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as appris à reconnaître une girolle. Tu le rappelles à tout le monde depuis.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es éloigné{e} pour suivre une odeur de sous-bois. On t'a retrouvé{e} une heure plus tard, couvert{e} de feuilles.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Une limace géante a mangé la moitié de ton plus beau cèpe avant toi. Elle ne s'est pas excusée.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Le connaisseur t'a montré son coin secret, puis t'a fait jurer de l'oublier.",
+            "effects": {
+              "karma": 1,
+              "happiness": 4
+            },
+            "key": "connaisseur_6"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as trouvé plus de cèpes que le connaisseur. Il a fait semblant d'être content pour toi.",
+            "effects": {
+              "happiness": 6
+            },
+            "minLevel": 3,
+            "signal": "victoire"
+          }
+        ]
+      },
+      {
+        "id": "solo",
+        "label": "Cueillette en solo",
+        "description": "Toi, la forêt, et un livre d'identification un peu flou.",
+        "cost": 0,
+        "minAge": 14,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Panier plein, identifications vérifiées deux fois, dîner délicieux. Tu te sens l'âme d'un trappeur.",
+            "effects": {
+              "health": 1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu étais sûr{e} que c'était un rosé des prés. Ton estomac avait un autre avis. Trois jours aux toilettes.",
+            "effects": {
+              "health": -6,
+              "happiness": -4
+            },
+            "bad": true,
+            "injury": {
+              "name": "intoxication aux champignons",
+              "years": 1,
+              "healthPerYear": -3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le pharmacien a examiné ton panier et n'a gardé que le panier.",
+            "effects": {
+              "smarts": 1,
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "La forêt a l'air très différente au retour. Tu as tourné deux heures avant de retrouver la route.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as posté fièrement la photo de ta récolte. Trois inconnus t'ont répondu « NE MANGE PAS ÇA ».",
+            "effects": {
+              "smarts": 2,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as croisé un sanglier qui cherchait aussi des champignons. Vous avez convenu de partager la forêt.",
+            "effects": {
+              "happiness": 2
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Après le dîner, tu as passé la soirée à discuter avec le frigo. Il est de très bon conseil.",
+            "effects": {
+              "health": -3,
+              "smarts": -1,
+              "happiness": 2
+            },
+            "bad": true,
+            "key": "solo_7"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as trouvé une morille grande comme une main. Un voisin te l'a achetée sur-le-champ.",
+            "effects": {
+              "money": 30,
+              "happiness": 6
+            },
+            "minLevel": 3
+          },
+          {
+            "chance": 0.1,
+            "text": "Tu as cuisiné une jolie amanite très sûre d'elle.",
+            "effects": {
+              "death": "après une omelette aux amanites"
+            },
+            "bad": true
+          }
+        ]
+      },
+      {
+        "id": "truffes",
+        "label": "Chasse aux truffes",
+        "description": "Avec un chien truffier loué à la journée.",
+        "cost": 150,
+        "minAge": 16,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Le chien a trouvé trois truffes. Toi, surtout de la boue, mais tu as la sensation d'avoir participé.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as trouvé une truffe noire énorme. Revendue au marché, elle a payé tes vacances.",
+            "effects": {
+              "money": 400,
+              "happiness": 8
+            },
+            "minLevel": 3,
+            "signal": "victoire",
+            "key": "truffes_2"
+          },
+          {
+            "chance": 1,
+            "text": "Le chien a mangé la seule truffe de la journée. Il ne regrette rien.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as acheté une « truffe locale » à un vendeur au bord de la route. C'était une pomme de terre roulée dans la terre.",
+            "effects": {
+              "money": -60,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as passé la journée avec un vieux trufficulteur qui parle à son chien en latin. Vous avez sympathisé.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as creusé partout où le chien s'asseyait. Il s'asseyait simplement parce qu'il était fatigué.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 2
+          },
+          {
+            "chance": 1,
+            "text": "Rien trouvé, mais l'odeur de la forêt en hiver t'a mis{e} de bonne humeur pour une semaine.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ornithologie",
+    "title": "Ornithologie",
+    "icon": "binoculars.fill",
+    "category": "nature",
+    "description": "Regarder des oiseaux qui ne te regardent pas.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "mangeoire",
+        "label": "Mangeoire au jardin",
+        "description": "Des graines, une fenêtre et un carnet.",
+        "cost": 15,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as observé des mésanges toute la matinée. Elles t'ont observé{e} aussi. Match nul.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le chat du voisin a pris ta mangeoire pour un buffet à volonté. Ambiance tragique.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Les pigeons ont colonisé la mangeoire. Ils ont fait venir de la famille.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as identifié un rouge-gorge. Tu l'as noté dans un carnet, avec la date, l'heure et ton humeur du jour.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as observé pendant une heure un oiseau magnifique. C'était un sac plastique dans un arbre.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un écureuil a volé toutes les graines en faisant des acrobaties dignes d'un cirque. Tu as applaudi.",
+            "effects": {
+              "happiness": 3
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu reconnais quarante oiseaux à leur chant. Les voisins t'entendent siffler des réponses aux merles et s'inquiètent un peu.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 4
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "sortie",
+        "label": "Sortie aux jumelles",
+        "description": "Marais, roselières et lever aux aurores.",
+        "cost": 10,
+        "minAge": 8,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une matinée dans les marais, une aigrette, deux hérons et un pique-nique beaucoup trop tôt. Bilan positif.",
+            "effects": {
+              "health": 1,
+              "smarts": 1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es levé{e} à 5 h pour voir un oiseau rare. Il était passé à 4 h 50.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as rencontré un club d'ornithologues. Ils chuchotent tout le temps, même pour commander un café.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tes jumelles sont tombées dans la vase. Elles sentent le marais pour toujours.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as confondu une buse et un aigle royal, à voix haute, devant des experts. Silence pesant.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un pic vert s'est posé à un mètre de toi. Tu as arrêté de respirer pour ne pas le déranger.",
+            "effects": {
+              "happiness": 5
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as repéré un oiseau jamais vu dans la région. Ton signalement a été validé par les experts.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 8
+            },
+            "minLevel": 3,
+            "trophy": "Fauvette Égarée",
+            "signal": "sommet",
+            "key": "sortie_7"
+          }
+        ]
+      },
+      {
+        "id": "migration",
+        "label": "Week-end migration",
+        "description": "Trois jours sur la côte à compter les migrateurs.",
+        "cost": 180,
+        "minAge": 14,
+        "minLevel": 2,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Trois jours sur la côte à compter les oiseaux migrateurs. Tu en as compté quatre mille. Un par un.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Il a plu sans arrêt. Les oiseaux sont partis plus tôt. Toi, tu as attrapé froid.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Six heures dans une cabane d'observation à chuchoter avec un inconnu. Vous êtes désormais amis.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Un macareux a atterri juste devant toi, un poisson dans le bec. Tu as failli pleurer.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu avais oublié la carte mémoire de l'appareil photo. Trois jours de photos imaginaires.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "maxLevel": 2
+          },
+          {
+            "chance": 1,
+            "text": "La marée est montée pendant que tu observais un bécasseau. Retour en pataugeant, jumelles au-dessus de la tête.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Les scientifiques t'ont confié le baguage d'un oiseau. Il t'a pincé le doigt, avec beaucoup d'affection.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "geocaching",
+    "title": "Chasse au trésor GPS",
+    "icon": "map.fill",
+    "category": "nature",
+    "description": "Chercher des boîtes cachées par des inconnus grâce à un GPS.",
+    "minAge": 8,
+    "maxAge": null,
+    "perYear": 3,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "ville",
+        "label": "Caches en ville",
+        "description": "Sous un banc, derrière un panneau, dans un pot de fleurs.",
+        "cost": 0,
+        "minAge": 8,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as trouvé une boîte cachée sous un banc. Dedans : un carnet et un petit dinosaure. Tu l'as échangé contre un trombone.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu fouillais sous une poubelle quand un passant t'a demandé si tout allait bien. Tu as dit oui, sans convaincre.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Le GPS indiquait une cache au milieu d'un rond-point. Tu as renoncé, par amour de la vie.",
+            "effects": {
+              "happiness": -1
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as cherché une heure. La cache était aimantée sous le panneau contre lequel tu t'appuyais.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu as croisé un autre chercheur devant la même cache. Vous vous êtes reconnus au premier regard suspicieux.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as découvert une ruelle de {ville} que tu ne connaissais pas, avec une boulangerie incroyable.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "La police municipale t'a demandé pourquoi tu fouillais un bac à fleurs public. L'explication a pris vingt minutes.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "honte",
+            "key": "ville_7"
+          },
+          {
+            "chance": 1,
+            "text": "Dix caches en un après-midi. La carte de tes trouvailles ressemble à un tableau abstrait.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "foret",
+        "label": "Caches en forêt",
+        "description": "Troncs creux, rochers et coordonnées approximatives.",
+        "cost": 0,
+        "minAge": 10,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "La cache était dans un tronc creux, pleine de babioles. Tu as laissé un porte-clés en forme de fromage.",
+            "effects": {
+              "health": 2,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le GPS a perdu le signal. Toi aussi, et pas seulement le signal.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fouillé un buisson d'orties à mains nues. La cache était dans le buisson d'à côté.",
+            "effects": {
+              "health": -1,
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "La cache abritait une famille de crapauds. Tu les as laissés tranquilles et noté « occupé » dans le carnet.",
+            "effects": {
+              "karma": 2,
+              "happiness": 3
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as trouvé une toute nouvelle cache en premier. Ton nom est tout en haut du carnet.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "victoire"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as oublié de bien refermer la boîte. La pluie a transformé le carnet en papier mâché.",
+            "effects": {
+              "karma": -2,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu as résolu l'énigme de la cache mystère en dix minutes. D'autres s'y cassent les dents depuis deux ans.",
+            "effects": {
+              "smarts": 4,
+              "happiness": 5
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "extreme",
+        "label": "Caches extrêmes",
+        "description": "En haut d'un arbre, au fond d'une grotte, sous un pont.",
+        "cost": 80,
+        "minAge": 16,
+        "minLevel": 3,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "La cache était en haut d'un arbre de vingt mètres. Tu y es arrivé{e} et tu as signé le carnet en tremblant.",
+            "effects": {
+              "happiness": 7
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as glissé en descendant d'un rocher pour atteindre la cache. La cache, elle, va très bien.",
+            "effects": {
+              "health": -4,
+              "happiness": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "cheville tordue",
+              "years": 1,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Quatre heures de route pour une cache disparue. Il ne reste que l'aimant.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as trouvé une cache au fond d'une grotte que personne n'avait atteinte en dix ans. Son créateur t'a envoyé une lettre de félicitations.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 10
+            },
+            "minLevel": 4,
+            "trophy": "Trésor du Gouffre Muet",
+            "signal": "sommet",
+            "key": "extreme_4"
+          },
+          {
+            "chance": 1,
+            "text": "Une équipe de chercheurs t'a aidé{e} à atteindre une cache immergée. Vous avez fini la journée autour d'une pizza.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as cherché une cache sous un pont. Tu as trouvé un pêcheur endormi qui n'a pas apprécié.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 3,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Une journée entière à décoder une énigme pour obtenir les coordonnées. Le trésor : un gâteau dans une boîte en fer.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "baignade",
+    "title": "Baignade",
+    "icon": "figure.pool.swim",
+    "category": "nature",
+    "description": "Se jeter dans une eau trop froide et dire qu'elle est bonne.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 3,
+    "physical": true,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "lac",
+        "label": "Lac",
+        "description": "Un ponton, des pédalos et une eau verte.",
+        "cost": 0,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "L'eau était fraîche, très fraîche, puis délicieuse. Tu as fait la planche en regardant les nuages.",
+            "effects": {
+              "health": 2,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as posé le pied sur quelque chose de mou au fond. Tu ne veux pas savoir. Tu ne sauras jamais.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu es entré{e} dans l'eau centimètre par centimètre pendant quarante minutes. Puis il s'est mis à pleuvoir.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Un poisson t'a mordillé l'orteil. Tu as hurlé, il a été vexé.",
+            "effects": {
+              "happiness": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as plongé du ponton en faisant une bombe parfaite. Les gens sur la plage t'ont mis 9 sur 10.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as aidé quelqu'un à rattraper une bouée licorne emportée par le vent. Vous avez passé l'après-midi ensemble.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Ton maillot est resté en partie sur le ponton après ton plongeon.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "signal": "honte",
+            "key": "lac_7"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as traversé le lac à la nage, aller et retour. Les gens des pédalos t'ont applaudi{e}.",
+            "effects": {
+              "health": 4,
+              "happiness": 6
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "riviere",
+        "label": "Rivière",
+        "description": "Galets glissants, courant et eau glacée.",
+        "cost": 0,
+        "minAge": 10,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Le courant t'a porté{e} sur cent mètres, comme une feuille heureuse.",
+            "effects": {
+              "health": 2,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Un galet glissant t'a fait tomber de tout ton long. Ton orteil a pris la mauvaise décision.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "orteil cassé",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "L'eau était à 12 degrés. Ton cri a fait s'envoler tous les oiseaux de la vallée.",
+            "effects": {
+              "health": 1,
+              "happiness": -2
+            },
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Une couleuvre a nagé tranquillement à côté de toi. Tu as découvert que tu sais marcher sur l'eau.",
+            "effects": {
+              "happiness": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as construit un barrage de galets avec beaucoup trop de sérieux. Les castors n'ont qu'à bien se tenir.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as sauté d'un rocher sans vérifier la profondeur. Il y avait quarante centimètres. Tu t'en sors bien.",
+            "effects": {
+              "health": -2,
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Le courant a emporté une de tes sandales. Elle descend probablement vers la mer, libre.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as remonté le courant à la nage jusqu'à la cascade. Un enfant t'a pris{e} pour un saumon.",
+            "effects": {
+              "health": 4,
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "mer",
+        "label": "Mer",
+        "description": "Vagues, sel, méduses et maître-nageur au sifflet.",
+        "cost": 0,
+        "minAge": 8,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu es sorti{e} de l'eau avec la peau qui pique et le cœur léger.",
+            "effects": {
+              "health": 2,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Une méduse t'a frôlé{e}. « Frôlé{e} » au sens de « brûlé{e} sur toute la jambe ».",
+            "effects": {
+              "health": -2,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Une vague t'a retourné{e} comme une chaussette et t'a rendu{e} au sable avec la moitié de la plage dans le maillot.",
+            "effects": {
+              "health": -1,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pris une vague sur le ventre jusqu'au bord. Sensation de puissance absolue.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as nagé loin sans te retourner. Le maître-nageur a sifflé pendant dix minutes et toute la plage a regardé.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un banc de petits poissons argentés a tourné autour de toi. Moment magique, gâché seulement par une algue dans ta bouche.",
+            "effects": {
+              "happiness": 5
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as prêté ton masque à quelqu'un sur la plage. Vous avez passé la semaine à explorer les rochers ensemble.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as nagé jusqu'à la bouée la plus lointaine et tu es revenu{e} avant le goûter. Les mouettes te respectent.",
+            "effects": {
+              "health": 4,
+              "happiness": 5
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "plage",
+    "title": "Plage",
+    "icon": "sun.max.fill",
+    "category": "nature",
+    "description": "S'allonger sur du sable chaud et en ramener partout.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "serviette",
+        "label": "Serviette et parasol",
+        "description": "Ne rien faire, mais au bord de la mer.",
+        "cost": 0,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une journée entière à ne rien faire sous un parasol. Ton corps a dit merci, ton cerveau a fait la sieste.",
+            "effects": {
+              "health": 1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as oublié la crème solaire. Tu as maintenant la forme exacte de ton maillot dessinée en blanc sur rouge.",
+            "effects": {
+              "health": -2,
+              "looks": -3,
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "key": "serviette_2"
+          },
+          {
+            "chance": 1,
+            "text": "Une mouette a volé ton sandwich directement dans ta main. Elle t'a regardé{e} dans les yeux en partant.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Le vent a emporté ton parasol à travers la plage. Tu l'as poursuivi devant tout le monde en criant « pardon ».",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as lu un livre entier sur ta serviette. Tu ne te souviens de rien, mais c'était agréable.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ton voisin de serviette avait la même glace que toi. Vous avez débattu des parfums pendant une heure.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as trouvé un joli coquillage. Puis cent. Ta valise sent la marée basse.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as trouvé l'emplacement parfait : de l'ombre, pas de vent, loin des enceintes. Toute la plage t'envie.",
+            "effects": {
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "jeux",
+        "label": "Châteaux de sable et jeux",
+        "description": "Seau, pelle, ballon et cerf-volant.",
+        "cost": 10,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as construit un château de sable avec douves, pont-levis et un crabe en guise de dragon.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "La marée a détruit ton château juste avant la photo. La mer n'a aucun respect pour l'art.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Ton équipe a gagné le tournoi improvisé de beach-volley. Tu as servi n'importe comment, mais avec beaucoup de cœur.",
+            "effects": {
+              "health": 2,
+              "happiness": 5
+            },
+            "signal": "victoire"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as tenté une manchette héroïque. Ton doigt a pris le ballon avant tes bras.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "doigt retourné",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es fait enterrer dans le sable jusqu'au cou. Ensuite, tout le monde est parti se baigner.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte",
+            "key": "jeux_5"
+          },
+          {
+            "chance": 1,
+            "text": "Une famille voisine t'a invité{e} dans sa partie de raquettes. Tu as gagné une famille d'été.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Ton cerf-volant est monté si haut qu'un avion a dû le contourner. Probablement.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Ton château de sable est si impressionnant que des touristes le photographient. Le journal local l'a publié.",
+            "effects": {
+              "happiness": 7
+            },
+            "minLevel": 3,
+            "signal": "victoire"
+          }
+        ]
+      },
+      {
+        "id": "paddle",
+        "label": "Paddle et pédalo",
+        "description": "Location à l'heure, gilet fourni.",
+        "cost": 30,
+        "minAge": 10,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as tenu debout sur le paddle pendant une heure. Les poissons en dessous étaient impressionnés.",
+            "effects": {
+              "health": 3,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu es tombé{e} à l'eau dès la première seconde, juste devant la terrasse du café.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Le vent t'a poussé{e} loin du bord. Retour en deux heures, à genoux, en pagayant comme un moulin.",
+            "effects": {
+              "health": -1,
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Une tortue est passée sous ta planche. Tu as fait silence comme dans une église.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait du pédalo avec {ami}. Une discussion très profonde, puis une crampe.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 2
+              }
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as perdu la pagaie. Le loueur te la facture au prix d'un rein.",
+            "effects": {
+              "money": -60,
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu fais du yoga sur ton paddle. Des gens filment. Tu ne tombes pas. Tu es devenu{e} une attraction.",
+            "effects": {
+              "looks": 2,
+              "happiness": 6
+            },
+            "minLevel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cueillette_fruits",
+    "title": "Cueillette de fruits",
+    "icon": "leaf.fill",
+    "category": "nature",
+    "description": "Ramasser des fruits et en manger la moitié en route.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "ferme",
+        "label": "Cueillette à la ferme",
+        "description": "On paie au poids à la sortie. On mange gratuitement à l'intérieur.",
+        "cost": 15,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Deux kilos de fraises cueillies, un kilo mangé sur place. Le fermier a fait semblant de ne rien voir.",
+            "effects": {
+              "health": 1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pesé ton panier à la sortie. Les fraises les plus chères de ta vie.",
+            "effects": {
+              "money": -25,
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "arnaque"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as cueilli des dizaines de tomates pas mûres. Elles ont fini en chutney de la honte.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Une guêpe a revendiqué ton panier de prunes. Tu le lui as laissé, par sagesse.",
+            "effects": {
+              "health": -1,
+              "happiness": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait des confitures avec ta récolte. Elles sont très bonnes, et un peu trop liquides.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 2
+              }
+            },
+            "key": "ferme_5"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as aidé une mamie à atteindre les cerises du haut. Elle t'a donné sa recette de clafoutis et son numéro.",
+            "effects": {
+              "karma": 2,
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Mal de ventre phénoménal après les cerises. Tu avais sous-estimé leur nombre.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu choisis le fruit parfait d'un seul regard. Le fermier t'a proposé de revenir l'aider l'été prochain.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "sauvage",
+        "label": "Mûres et fruits sauvages",
+        "description": "Les ronces au bord des chemins, gratuites mais armées.",
+        "cost": 0,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Des mûres plein les mains, plein la bouche, plein le t-shirt. Une journée de rêve.",
+            "effects": {
+              "looks": -1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Les ronces ont gagné le match. Tes bras ressemblent à une carte routière.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as ramassé de jolies baies rouges inconnues. Un passant les a jetées en hurlant. C'étaient des baies d'if.",
+            "effects": {
+              "smarts": 2,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un blaireau mangeait les mêmes mûres de l'autre côté du buisson. Vous avez fait semblant de ne pas vous voir.",
+            "effects": {
+              "happiness": 4
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as trouvé un noyer couvert de noix. Tes doigts sont marron pour deux semaines.",
+            "effects": {
+              "looks": -1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait une tarte aux mûres. Elle est ratée, mais c'est ta tarte, et tu l'aimes.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as suivi la haie de mûres de plus en plus loin. Tu as fini dans le village voisin.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Tu connais tous les bons buissons de la région, et tu emporteras leurs coordonnées dans la tombe.",
+            "effects": {
+              "karma": -1,
+              "happiness": 5
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "vendanges",
+        "label": "Vendanges",
+        "description": "Une semaine dans les vignes, sécateur en main. Et payée.",
+        "cost": 0,
+        "minAge": 16,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Une semaine à couper du raisin plié{e} en deux. Ton dos te déteste, ton compte en banque un peu moins.",
+            "effects": {
+              "money": 350,
+              "health": -1,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le cinquième jour, ton dos s'est bloqué en position sécateur.",
+            "effects": {
+              "money": 200,
+              "health": -4,
+              "happiness": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "dos bloqué",
+              "years": 1,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as sympathisé avec toute l'équipe. Repas du soir mémorables, chansons douteuses.",
+            "effects": {
+              "money": 350,
+              "happiness": 6,
+              "newFriend": true
+            },
+            "signal": "rencontre",
+            "key": "vendanges_3"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es entaillé le doigt avec le sécateur. Le chef d'équipe t'a tendu un pansement et un regard las.",
+            "effects": {
+              "money": 300,
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as mis des feuilles plein la hotte. Le vigneron a longuement parlé de tes feuilles. Devant tout le monde.",
+            "effects": {
+              "money": 280,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Des sangliers ont vendangé une parcelle la nuit avant vous. Moins de travail, salaire inchangé.",
+            "effects": {
+              "money": 300,
+              "happiness": 3
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu coupes plus vite que tout le monde. Le vigneron t'a payé une prime et t'a serré la main très longtemps.",
+            "effects": {
+              "money": 450,
+              "happiness": 6
+            },
+            "minLevel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jardin_botanique",
+    "title": "Jardin botanique",
+    "icon": "ladybug.fill",
+    "category": "nature",
+    "description": "Des plantes rares avec leur nom en latin sur une petite étiquette.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 2,
+    "physical": false,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "visite",
+        "label": "Visite libre",
+        "description": "Des allées, des bancs et des étiquettes.",
+        "cost": 8,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as lu toutes les petites étiquettes en latin. Tu n'as rien retenu, mais tu t'es senti{e} très cultivé{e}.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as reniflé une fleur de trop près. Une abeille était déjà dedans.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Un banc à l'ombre d'un cèdre de deux cents ans. Tu y as fait la meilleure sieste de l'année.",
+            "effects": {
+              "health": 1,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as touché le cactus. Malgré le panneau. Malgré le bon sens.",
+            "effects": {
+              "health": -1,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Un jardinier t'a raconté pendant une heure la vie secrète des fougères. Tu repars avec un ami et deux boutures.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Il pleuvait, la serre était fermée et le café aussi. Tu as visité les toilettes. Très propres.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Tu as discrètement pincé une minuscule bouture. Elle a pris chez toi. Tu culpabilises un peu, elle pas du tout.",
+            "effects": {
+              "karma": -2,
+              "happiness": 4
+            },
+            "key": "visite_7"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as repéré une erreur sur une étiquette. Le conservateur t'a remercié{e} et a corrigé le panneau le jour même.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 5
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "serres",
+        "label": "Serres tropicales",
+        "description": "Chaleur moite, orchidées et buée sur les lunettes.",
+        "cost": 15,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Chaleur tropicale, orchidées géantes, buée sur les lunettes : un voyage au bout du monde pour quinze euros.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu es resté{e} trop longtemps dans la serre tropicale. Tu en es ressorti{e} en sauna ambulant.",
+            "effects": {
+              "health": -1,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Un papillon bleu s'est posé sur ton épaule pendant cinq minutes. Tu n'as plus bougé, au cas où il voudrait rester.",
+            "effects": {
+              "happiness": 6
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "La fleur géante qui ne fleurit que tous les sept ans a fleuri pendant ta visite. Elle sentait le rat mort. Expérience unique.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 3
+            },
+            "signal": "sommet"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as pris une plante carnivore pour une décoration et mis ton doigt dedans. Elle n'a pas apprécié non plus.",
+            "effects": {
+              "health": -1,
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1
+          },
+          {
+            "chance": 1,
+            "text": "Tu as discuté avec une botaniste qui parle aux plantes. Elles lui répondent, apparemment.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 3,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le chef des serres t'a fait entrer dans la serre des collections, interdite au public.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 6
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "atelier",
+        "label": "Atelier de botanique",
+        "description": "Boutures, rempotage et herbier.",
+        "cost": 40,
+        "minAge": 12,
+        "minLevel": 1,
+        "minHealth": 0,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Tu as appris à faire des boutures et à rempoter sans rien casser. Presque rien.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as fait tomber le pot d'un bonsaï centenaire. Il a survécu. La confiance du formateur, non.",
+            "effects": {
+              "money": -80,
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "casse"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as créé un herbier magnifique. Ta famille l'a regardé poliment pendant trente secondes.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as rempoté ta plante la tête en bas. Les racines ont pris l'air, littéralement.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as échangé des graines rares avec un passionné. Vous vous écrivez désormais des lettres sur les tomates anciennes.",
+            "effects": {
+              "smarts": 1,
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Allergie au pollen pendant tout l'atelier. Tu as éternué sur les orchidées.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Ta variété de tomate a gagné le concours du jardin botanique. Elle porte ton nom, ou presque.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 8
+            },
+            "minLevel": 3,
+            "trophy": "Main Verte d'Or",
+            "signal": "victoire",
+            "key": "atelier_7"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "balade_chien",
+    "title": "Promener un chien",
+    "icon": "pawprint.fill",
+    "category": "nature",
+    "description": "Ton chien, ou celui du voisin si tu n'en as pas.",
+    "minAge": 6,
+    "maxAge": null,
+    "perYear": 3,
+    "physical": true,
+    "tags": [],
+    "excludeTags": [],
+    "subscription": null,
+    "options": [
+      {
+        "id": "quartier",
+        "label": "Tour du quartier",
+        "description": "Une laisse, des sacs, et chaque poteau à renifler.",
+        "cost": 0,
+        "minAge": 6,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Le chien a reniflé chaque poteau du quartier avec un sérieux de notaire. Tu as suivi, patiemment.",
+            "effects": {
+              "health": 1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as oublié les sacs. Le chien, lui, n'a rien oublié. Regards noirs des voisins.",
+            "effects": {
+              "karma": -1,
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Le chien a vu un chat. Tu as fait cent mètres de ski nautique, sans skis et sans eau.",
+            "effects": {
+              "health": -1,
+              "happiness": -2
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Le chien s'est assis devant quelqu'un et a refusé d'avancer. Vous avez discuté une heure. Il savait ce qu'il faisait.",
+            "effects": {
+              "happiness": 5,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le chien s'est roulé dans quelque chose de mort. Il est très fier. Toi, beaucoup moins.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Il pleuvait, le chien a refusé de sortir. Vous avez regardé la pluie ensemble par la fenêtre. Beau moment.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le chien a tiré d'un coup sec. Vol plané sur le trottoir.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            },
+            "bad": true,
+            "injury": {
+              "name": "poignet foulé",
+              "years": 1,
+              "healthPerYear": -1
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le chien marche au pied sans laisse et s'assoit aux passages piétons. Les passants pensent que c'est un acteur.",
+            "effects": {
+              "happiness": 6
+            },
+            "minLevel": 3,
+            "signal": "sommet"
+          }
+        ]
+      },
+      {
+        "id": "voisin",
+        "label": "Promener le chien du voisin",
+        "description": "Quelques euros et beaucoup de poils.",
+        "cost": 0,
+        "minAge": 8,
+        "minLevel": 0,
+        "minHealth": 0,
+        "xp": 1,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Le chien du voisin t'a fait la fête comme à une célébrité. Tu as gagné dix euros et un ami à quatre pattes.",
+            "effects": {
+              "money": 10,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le chien du voisin a filé après un lapin. Tu l'as cherché une heure. Il était rentré chez lui avant toi.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "signal": "perdu"
+          },
+          {
+            "chance": 1,
+            "text": "Le chien du voisin a mangé ton goûter, un de tes lacets et une partie de ta patience.",
+            "effects": {
+              "happiness": -2
+            },
+            "bad": true
+          },
+          {
+            "chance": 1,
+            "text": "Le chien du voisin a rapporté un hérisson, très fier de lui. Le hérisson, beaucoup moins.",
+            "effects": {
+              "happiness": -1
+            },
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Le voisin t'a laissé un pourboire en plus. Le chien t'a laissé un énorme coup de langue. Tu préfères le pourboire.",
+            "effects": {
+              "money": 15,
+              "karma": 1,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Tu as ramené le mauvais chien. Il ressemblait beaucoup. Le voisin a vu la différence tout de suite.",
+            "effects": {
+              "happiness": -4
+            },
+            "bad": true,
+            "maxLevel": 1,
+            "signal": "honte",
+            "key": "voisin_6"
+          },
+          {
+            "chance": 1,
+            "text": "Au parc, le chien du voisin t'a présenté{e} à tous les autres maîtres. Tu connais maintenant le quartier par le nom des chiens.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Le chien du voisin préfère maintenant te suivre plutôt que son maître. Le voisin est jaloux, mais il te paie double.",
+            "effects": {
+              "money": 20,
+              "happiness": 6
+            },
+            "minLevel": 3
+          }
+        ]
+      },
+      {
+        "id": "canicross",
+        "label": "Canicross",
+        "description": "Courir attaché à un chien qui court plus vite que toi.",
+        "cost": 25,
+        "minAge": 12,
+        "minLevel": 2,
+        "minHealth": 40,
+        "xp": 2,
+        "outcomes": [
+          {
+            "chance": 3,
+            "text": "Cinq kilomètres tracté{e} par le chien. Tu n'as jamais couru aussi vite, ni aussi peu volontairement.",
+            "effects": {
+              "health": 4,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Le chien a pris un virage serré. Toi, non.",
+            "effects": {
+              "health": -4,
+              "happiness": -3
+            },
+            "bad": true,
+            "injury": {
+              "name": "cheville tordue",
+              "years": 1,
+              "healthPerYear": -2
+            }
+          },
+          {
+            "chance": 1,
+            "text": "Vous avez fini troisièmes de la course locale. Le chien a eu la médaille, toi une bouteille d'eau.",
+            "effects": {
+              "health": 2,
+              "happiness": 6
+            },
+            "signal": "victoire"
+          },
+          {
+            "chance": 1,
+            "text": "Un écureuil a traversé le parcours. Le chien a quitté la course, et toi avec.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "signal": "animal"
+          },
+          {
+            "chance": 1,
+            "text": "Tu t'es emmêlé{e} dans la laisse au départ. Chute collective devant les spectateurs.",
+            "effects": {
+              "happiness": -3
+            },
+            "bad": true,
+            "maxLevel": 2,
+            "signal": "honte"
+          },
+          {
+            "chance": 1,
+            "text": "Tu as couru toute la course à côté d'un autre duo. Les chiens se sont fiancés, symboliquement.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            },
+            "signal": "rencontre"
+          },
+          {
+            "chance": 1,
+            "text": "Vous avez gagné la course régionale de canicross. Le chien a eu une couronne en forme d'os, toi une coupe.",
+            "effects": {
+              "health": 3,
+              "happiness": 10
+            },
+            "minLevel": 4,
+            "trophy": "Patte d'Or",
+            "signal": "victoire",
+            "key": "canicross_7"
+          }
+        ]
+      }
+    ]
+  }
+]
