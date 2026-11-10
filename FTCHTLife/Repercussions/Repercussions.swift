@@ -142,8 +142,10 @@ enum Repercussions {
         let mini = max(0, d.first ?? 1)
         let maxi = max(mini, d.count > 1 ? d[1] : mini)
         let echeance = age + Int.random(in: mini...maxi)
-        etat.programmees.append(RepercussionProgrammee(id: r.id, age: echeance,
-                                                       ageMax: echeance + max(0, r.patience ?? 0)))
+        // Les échéances ne sont vérifiées qu'au passage d'année : une suite à délai 0 signalée en cours d'année
+        // doit encore être valable au prochain passage (âge + 1), sinon elle serait oubliée.
+        let dernier = max(echeance, age + 1) + max(0, r.patience ?? 0)
+        etat.programmees.append(RepercussionProgrammee(id: r.id, age: echeance, ageMax: dernier))
         if r.unique == true { etat.uniquesVues.append(r.id) }
     }
 
