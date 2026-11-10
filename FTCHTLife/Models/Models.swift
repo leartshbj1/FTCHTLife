@@ -212,6 +212,8 @@ struct Joueur: Codable, Equatable {
     var aQuitteEcole: Bool = false
     /// Biens, logement et crédits (module Shop).
     var possessions: Possessions?
+    /// Secrets et chantage (module Secrets, voir docs/SECRETS.md).
+    var secrets: SecretsEtat?
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
