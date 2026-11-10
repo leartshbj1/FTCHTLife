@@ -1,10 +1,16 @@
 import SwiftUI
 
+/// Couleurs et petits composants partagés par tout le jeu.
+/// Les modules utilisent `Theme.accent`, `encre`, `fond`, `carte`, `couleurStat`, `BarreStat` et `LigneAction` :
+/// ne pas changer leurs noms ni leurs paramètres.
 enum Theme {
     static let accent = Color(red: 0.98, green: 0.36, blue: 0.20)
-    static let fond = Color(red: 0.96, green: 0.95, blue: 0.92)
+    static let fond = Color(red: 0.95, green: 0.94, blue: 0.91)
     static let carte = Color.white
     static let encre = Color(red: 0.12, green: 0.12, blue: 0.16)
+    static let gris = Color(red: 0.55, green: 0.55, blue: 0.60)
+    static let argentPositif = Color(red: 0.13, green: 0.58, blue: 0.32)
+    static let argentNegatif = Color(red: 0.86, green: 0.20, blue: 0.20)
 
     static func couleurStat(_ valeur: Int) -> Color {
         switch valeur {
@@ -28,12 +34,13 @@ struct BarreStat: View {
                 .foregroundStyle(Theme.couleurStat(valeur))
             Text(titre)
                 .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(Theme.encre)
                 .frame(width: 92, alignment: .leading)
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     Capsule().fill(Color.black.opacity(0.08))
                     Capsule().fill(Theme.couleurStat(valeur))
-                        .frame(width: geo.size.width * CGFloat(valeur) / 100)
+                        .frame(width: max(0, geo.size.width * CGFloat(min(100, max(0, valeur))) / 100))
                         .animation(.easeOut(duration: 0.4), value: valeur)
                 }
             }
@@ -41,6 +48,7 @@ struct BarreStat: View {
             Text("\(valeur)%")
                 .font(.system(size: 12, weight: .bold, design: .rounded))
                 .monospacedDigit()
+                .foregroundStyle(Theme.encre)
                 .frame(width: 40, alignment: .trailing)
         }
     }
@@ -72,5 +80,40 @@ struct LigneAction: View {
             }
         }
         .disabled(!actif)
+    }
+}
+
+/// Fenêtre d'alerte « FTCHTLife » qui affiche un texte de résultat.
+struct AlerteResultat: ViewModifier {
+    @Binding var message: String?
+
+    func body(content: Content) -> some View {
+        content.alert("FTCHTLife", isPresented: Binding(get: { message != nil }, set: { if !$0 { message = nil } })) {
+            Button("OK") { message = nil }
+        } message: {
+            Text(message ?? "")
+        }
+    }
+}
+
+extension View {
+    func alerteResultat(_ message: Binding<String?>) -> some View { modifier(AlerteResultat(message: message)) }
+}
+
+/// Habille un écran sans barre de navigation (liste à pousser) pour l'ouvrir en feuille, avec un bouton « Fermer ».
+struct Feuille<Contenu: View>: View {
+    @Environment(\.dismiss) private var dismiss
+    let titre: String
+    @ViewBuilder let contenu: () -> Contenu
+
+    var body: some View {
+        NavigationStack {
+            contenu()
+                .navigationTitle(titre)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) { Button("Fermer") { dismiss() } }
+                }
+        }
     }
 }

@@ -6,17 +6,16 @@ struct ContentView: View {
     var body: some View {
         Group {
             if let j = engine.joueur {
-                if j.vivant {
+                if j.vivant || engine.evenementEnCours != nil {
                     MainView()
-                } else if engine.evenementEnCours == nil {
-                    DeathView()
                 } else {
-                    MainView()
+                    DeathView()
                 }
             } else {
                 NewLifeView()
             }
         }
+        .suiviTrophees()
         .preferredColorScheme(.light)
     }
 }
