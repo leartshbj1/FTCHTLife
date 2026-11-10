@@ -2,9 +2,10 @@
 # Fabrique FTCHTLife.ipa non signé (à signer ensuite avec Sideloadly ou équivalent).
 set -euo pipefail
 
+touch build.log
 echo "== Vérification des fichiers JSON"
 find FTCHTLife/Resources/Data -name '*.json' -print0 | while IFS= read -r -d '' f; do
-  python3 -m json.tool "$f" > /dev/null || { echo "JSON invalide : $f"; exit 1; }
+  python3 -m json.tool "$f" > /dev/null || { echo "JSON invalide : $f" | tee -a build.log; exit 1; }
 done
 
 echo "== XcodeGen"
