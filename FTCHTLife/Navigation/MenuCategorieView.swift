@@ -8,6 +8,7 @@ struct MenuCategorieView: View {
 
     @State private var ouvert: ModuleJeu?
     @State private var message: String?
+    @State private var resultat: ResultatRapide?
 
     private let colonnes = [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)]
 
@@ -30,6 +31,7 @@ struct MenuCategorieView: View {
                                             if let raison = m.verrou(j) {
                                                 message = raison
                                             } else {
+                                                Vibration.legere()
                                                 ouvert = m
                                             }
                                         }
@@ -52,6 +54,10 @@ struct MenuCategorieView: View {
                     .environmentObject(engine)
             }
             .alerteResultat($message)
+            .sheet(item: $resultat) { r in
+                ResultatRapideView(resultat: r, couleur: categorie.couleur)
+                    .presentationDetents([.medium])
+            }
         }
     }
 
@@ -146,7 +152,11 @@ struct MenuCategorieView: View {
                         if let r = raison {
                             message = r
                         } else {
-                            message = engine.faireActivite(a)
+                            Vibration.legere()
+                            let avant = Instantane(stats: j.stats, argent: j.argent)
+                            let texte = engine.faireActivite(a)
+                            let apres = engine.joueur.map { ChangementStat.entre(avant, $0) } ?? []
+                            resultat = ResultatRapide(titre: a.titre, icone: a.icone, texte: texte, changements: apres)
                         }
                     }
                 }
@@ -215,6 +225,50 @@ struct TuileModule: View {
             .background(RoundedRectangle(cornerRadius: 16).fill(Theme.carte))
             .overlay(RoundedRectangle(cornerRadius: 16).stroke(ouvert ? couleur.opacity(0.25) : Color.clear, lineWidth: 1))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(StyleAppui())
+    }
+}
+
+/// Résultat d'une activité rapide, montré dans une petite fiche.
+struct ResultatRapide: Identifiable {
+    let id = UUID()
+    let titre: String
+    let icone: String
+    let texte: String
+    let changements: [ChangementStat]
+}
+
+struct ResultatRapideView: View {
+    @Environment(\.dismiss) private var dismiss
+    let resultat: ResultatRapide
+    let couleur: Color
+
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: resultat.icone)
+                .font(.system(size: 28, weight: .bold))
+                .foregroundStyle(.white)
+                .frame(width: 64, height: 64)
+                .background(Circle().fill(couleur))
+                .padding(.top, 24)
+            Text(resultat.titre)
+                .font(.system(size: 20, weight: .heavy, design: .rounded))
+                .foregroundStyle(Theme.encre)
+            Text(resultat.texte)
+                .font(.body)
+                .foregroundStyle(Theme.encre)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 24)
+            if !resultat.changements.isEmpty {
+                PastillesChangements(elements: resultat.changements)
+            }
+            Spacer(minLength: 0)
+            BoutonEvenement(titre: "OK", couleur: couleur, badge: nil, principal: true) { dismiss() }
+                .padding(.horizontal)
+                .padding(.bottom, 16)
+        }
+        .frame(maxWidth: .infinity)
+        .background(Theme.carte)
     }
 }
