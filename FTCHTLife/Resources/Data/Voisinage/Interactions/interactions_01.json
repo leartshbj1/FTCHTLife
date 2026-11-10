@@ -1,0 +1,281 @@
+[
+  {
+    "id": "vsi_discuter",
+    "titre": "Discuter",
+    "icone": "bubble.left.and.bubble.right.fill",
+    "description": "Échanger trois mots sur la météo. Ou quarante minutes sur sa sciatique.",
+    "portee": "voisin", "minAge": 5,
+    "outcomes": [
+      { "chance": 3, "trait": "gentillesse", "sens": "haut", "text": "Tu as discuté avec {voisin} de la pluie, du beau temps et du voisin d'en face. Vous êtes d'accord : il est bizarre.", "effects": { "happiness": 2 }, "voisin": { "lien": 6 } },
+      { "chance": 2, "trait": "curiosite", "sens": "haut", "text": "{voisin} t'a posé 47 questions en dix minutes. {Il} connaît maintenant ton groupe sanguin.", "voisin": { "lien": 4, "souvenir": ["connait_ta_vie"] } },
+      { "chance": 1, "trait": "gentillesse", "sens": "bas", "text": "{voisin} a répondu « hm » et a fermé sa porte. Belle conversation.", "effects": { "happiness": -2 }, "voisin": { "lien": -2 } },
+      { "chance": 1, "text": "{voisin} t'a raconté sa vie depuis 1974. Il est 22 h. Tu ne sens plus tes jambes.", "effects": { "happiness": -1 }, "voisin": { "lien": 8 } },
+      { "chance": 1, "bonusLien": 70, "text": "Avec {voisin}, la discussion a duré des heures et vous avez fini par rire aux larmes. Un vrai moment.", "effects": { "happiness": 6 }, "voisin": { "lien": 10 } }
+    ]
+  },
+  {
+    "id": "vsi_gateau",
+    "titre": "Apporter un gâteau",
+    "icone": "birthday.cake.fill",
+    "description": "Le chemin le plus court vers le cœur d'un voisin passe par son estomac.",
+    "portee": "voisin", "minAge": 8, "cout": 15,
+    "outcomes": [
+      { "chance": 4, "trait": "gentillesse", "sens": "haut", "text": "{voisin} a adoré ton gâteau. {Il} t'a rendu le plat avec une tarte dedans. La guerre des desserts commence.", "effects": { "happiness": 4 }, "voisin": { "lien": 12 } },
+      { "chance": 2, "text": "{voisin} a goûté, a souri très poliment et l'a donné à son chien. Le chien aussi a souri poliment.", "voisin": { "lien": 4 } },
+      { "chance": 1, "trait": "curiosite", "sens": "haut", "text": "{voisin} a demandé la recette, les ingrédients, l'origine des œufs et ce que tu cachais. Tu ne cachais rien. Enfin, presque.", "voisin": { "lien": 6 } },
+      { "chance": 1, "text": "{voisin} est allergique à tout ce qu'il y avait dans le gâteau. Y compris l'assiette.", "effects": { "happiness": -3 }, "voisin": { "lien": -4, "souvenir": ["a_failli_mourir_de_ton_gateau"] } }
+    ]
+  },
+  {
+    "id": "vsi_service",
+    "titre": "Rendre un service",
+    "icone": "hand.raised.fill",
+    "description": "Porter les courses, arroser les plantes, monter une armoire. Le karma te regarde.",
+    "portee": "voisin", "minAge": 10,
+    "outcomes": [
+      { "chance": 4, "text": "Tu as monté les courses de {voisin} au 5e. {Il} t'a remercié{e} avec une pièce de 2 € et une caresse sur la tête.", "effects": { "karma": 4, "health": 1, "money": 2 }, "voisin": { "lien": 10 } },
+      { "chance": 2, "text": "Tu as arrosé les plantes de {voisin} pendant ses vacances. Elles sont mortes quand même. Tu as gardé le secret.", "effects": { "karma": 1 }, "voisin": { "lien": 3, "souvenir": ["plantes_mortes_mystere"] } },
+      { "chance": 2, "trait": "gentillesse", "sens": "haut", "text": "Tu as aidé {voisin} à monter une armoire. Il reste six vis. L'armoire tient. Personne ne sait comment.", "effects": { "karma": 3, "happiness": 3 }, "voisin": { "lien": 12 } },
+      { "chance": 1, "bonusLien": 65, "text": "Après ce service, {voisin} t'a dit : « Toi, tu es comme de la famille. » Vous êtes amis pour de vrai, maintenant.", "effects": { "karma": 3, "happiness": 5 }, "voisin": { "lien": 15, "devientAmi": true } }
+    ]
+  },
+  {
+    "id": "vsi_emprunter",
+    "titre": "Emprunter du sucre",
+    "icone": "cup.and.saucer.fill",
+    "description": "Prétexte universel depuis l'invention du sucre.",
+    "portee": "voisin", "minAge": 10,
+    "outcomes": [
+      { "chance": 3, "trait": "gentillesse", "sens": "haut", "text": "{voisin} t'a donné du sucre, du café, des biscuits et un conseil de vie que tu n'avais pas demandé.", "effects": { "happiness": 2 }, "voisin": { "lien": 5 } },
+      { "chance": 2, "trait": "gentillesse", "sens": "bas", "text": "{voisin} t'a prêté exactement 12 morceaux de sucre et a noté la dette dans un carnet.", "voisin": { "lien": -1, "souvenir": ["te_doit_douze_sucres"] } },
+      { "chance": 1, "trait": "curiosite", "sens": "haut", "text": "{voisin} a demandé pour quoi faire, avec qui, et pourquoi tu n'avais pas de sucre à ton âge.", "voisin": { "lien": 2 } },
+      { "chance": 1, "text": "{voisin} n'avait pas de sucre, mais t'a proposé du sel, de la farine et un vieux trophée de bowling. Tu as pris le trophée.", "effects": { "happiness": 3 }, "voisin": { "lien": 4 } }
+    ]
+  },
+  {
+    "id": "vsi_plaindre",
+    "titre": "Se plaindre du bruit",
+    "icone": "speaker.slash.fill",
+    "description": "Frapper à sa porte avec un air fatigué et une phrase répétée devant le miroir.",
+    "portee": "voisin", "minAge": 12,
+    "outcomes": [
+      { "chance": 3, "trait": "gentillesse", "sens": "haut", "text": "{voisin} s'est excusé{ve} platement et t'a promis de faire moins de bruit. Ça a duré trois jours. C'est un record.", "effects": { "happiness": 3 }, "voisin": { "lien": -2 } },
+      { "chance": 2, "trait": "bruit", "sens": "bas", "text": "{voisin} t'a regardé{e} sans comprendre : « Quel bruit ? » Tu as réalisé que c'était ton frigo.", "effects": { "happiness": -3 }, "voisin": { "lien": -5, "souvenir": ["plainte_injuste"] } },
+      { "chance": 2, "trait": "gentillesse", "sens": "bas", "text": "{voisin} t'a claqué la porte au nez, puis a monté le son. Puis a acheté une deuxième enceinte.", "effects": { "happiness": -5 }, "voisin": { "lien": -15, "statut": "ennemi" } },
+      { "chance": 1, "text": "{voisin} t'a invité{e} à entrer pour « en discuter ». Tu es ressorti{e} avec un tambourin et une invitation pour samedi.", "effects": { "happiness": 4 }, "voisin": { "lien": 8 } }
+    ]
+  },
+  {
+    "id": "vsi_espionner",
+    "titre": "Espionner",
+    "icone": "eye.fill",
+    "description": "Derrière le rideau, comme un vrai retraité. Mais en plus jeune.",
+    "portee": "voisin", "minAge": 8,
+    "outcomes": [
+      { "chance": 3, "text": "Tu as observé {voisin} pendant deux heures. {Il} a regardé la télé. Tu as regardé {voisin} regarder la télé. Quelle soirée.", "effects": { "happiness": -1, "smarts": 1 } },
+      { "chance": 2, "text": "Tu as découvert que {voisin} danse seul{ve} dans son salon sur de la musique des années 80. Tu ne pourras plus jamais l'oublier.", "effects": { "happiness": 4 }, "voisin": { "souvenir": ["tu_sais_pour_la_danse"] } },
+      { "chance": 2, "trait": "curiosite", "sens": "haut", "text": "{voisin} t'a surpris{e}. {Il} t'espionnait aussi. Vous vous êtes fait coucou, gênés, à travers deux rideaux.", "voisin": { "lien": 3, "souvenir": ["espionnage_mutuel"] } },
+      { "chance": 1, "trait": "gentillesse", "sens": "bas", "text": "{voisin} t'a vu{e} avec tes jumelles et l'a raconté à tout le quartier. On t'appelle « le périscope ».", "effects": { "happiness": -6, "karma": -3 }, "voisin": { "lien": -12, "lienTous": -3, "souvenir": ["t_a_surpris_a_espionner"] } },
+      { "chance": 1, "text": "Tu as vu {voisin} enterrer un gros sac dans son jardin à minuit. Le lendemain, {il} t'a offert des courgettes. Tu ne veux plus savoir.", "effects": { "happiness": -2 }, "voisin": { "souvenir": ["tu_as_vu_le_sac"] } }
+    ]
+  },
+  {
+    "id": "vsi_inviter",
+    "titre": "Inviter à dîner",
+    "icone": "fork.knife",
+    "description": "Un repas, une bouteille, des sujets de conversation à éviter.",
+    "portee": "voisin", "minAge": 18, "cout": 40,
+    "outcomes": [
+      { "chance": 3, "trait": "gentillesse", "sens": "haut", "text": "Dîner réussi avec {voisin}. {Il} a apporté un dessert, des anecdotes et une bouteille de rosé pétillant douteux.", "effects": { "happiness": 6 }, "voisin": { "lien": 12 } },
+      { "chance": 2, "bonusLien": 60, "text": "Vous avez parlé jusqu'à 2 h du matin, {voisin} et toi. En partant, {il} a dit : « On remet ça ? » C'est officiel : vous êtes amis.", "effects": { "happiness": 8 }, "voisin": { "lien": 15, "devientAmi": true } },
+      { "chance": 1, "trait": "curiosite", "sens": "haut", "text": "{voisin} a ouvert tous tes placards « pour voir ». {Il} sait maintenant que tu as quatre paquets de chips entamés.", "effects": { "happiness": -2 }, "voisin": { "lien": 3, "souvenir": ["a_vu_tes_placards"] } },
+      { "chance": 1, "text": "{voisin} a parlé politique dès l'entrée. Le plat principal a été servi dans un silence de mort.", "effects": { "happiness": -5 }, "voisin": { "lien": -8 } }
+    ]
+  },
+  {
+    "id": "vsi_draguer",
+    "titre": "Draguer",
+    "icone": "heart.fill",
+    "description": "Le palier, l'ascenseur, la boîte aux lettres : tous les lieux sont romantiques si on y croit.",
+    "portee": "voisin", "minAge": 18,
+    "conditions": { "requiresPartner": false },
+    "cible": { "celibataire": true, "statuts": ["neutre", "ami"] },
+    "outcomes": [
+      { "chance": 2, "bonusLien": 60, "text": "Tu as invité {voisin} à boire un verre. {Il} a dit oui. Puis {il} a dit « enfin ». Vous êtes ensemble !", "effects": { "happiness": 12 }, "voisin": { "lien": 15, "devientPartenaire": true } },
+      { "chance": 2, "text": "Tu as dit à {voisin} que ses yeux étaient « jolis comme un digicode ». {Il} a ri. Par pitié, mais quand même.", "effects": { "happiness": 2 }, "voisin": { "lien": 4 } },
+      { "chance": 2, "text": "{voisin} t'a gentiment dit qu'{il} préférait rester « bons voisins ». Tu prendras l'escalier pendant six mois.", "effects": { "happiness": -8 }, "voisin": { "lien": -4, "souvenir": ["t_a_mis_un_rateau"] } },
+      { "chance": 1, "trait": "curiosite", "sens": "haut", "text": "{voisin} a refusé, mais tout le quartier était au courant avant même que tu remontes chez toi.", "effects": { "happiness": -10 }, "voisin": { "lien": -2, "lienTous": -2, "souvenir": ["t_a_mis_un_rateau"] } }
+    ]
+  },
+  {
+    "id": "vsi_farce",
+    "titre": "Faire une farce",
+    "icone": "theatermasks.fill",
+    "description": "Sonner et s'enfuir, du papier toilette, un nain de jardin déplacé de 30 cm. Du grand art.",
+    "portee": "voisin", "minAge": 7,
+    "outcomes": [
+      { "chance": 3, "text": "Tu as déplacé le nain de jardin de {voisin} de 30 cm chaque nuit pendant un mois. {Il} a fait appel à un prêtre.", "effects": { "happiness": 7, "karma": -2 }, "voisin": { "souvenir": ["victime_du_nain_baladeur"] } },
+      { "chance": 2, "text": "Tu as sonné chez {voisin} et tu t'es enfui{e}. Tu t'es pris{e} la porte du hall. {voisin} t'a soigné{e}, en riant beaucoup.", "effects": { "health": -3, "happiness": -2 }, "voisin": { "lien": 3 } },
+      { "chance": 2, "trait": "gentillesse", "sens": "bas", "text": "{voisin} t'a pris{e} sur le fait et t'a juré une vengeance terrible. Depuis, tu vérifies ta boîte aux lettres avec un bâton.", "effects": { "happiness": -3, "karma": -3 }, "voisin": { "lien": -18, "statut": "ennemi", "souvenir": ["victime_de_tes_farces"] } },
+      { "chance": 1, "text": "{voisin} a trouvé ta farce géniale et t'a répondu par une farce encore meilleure. Ta voiture est maintenant couverte de post-it.", "effects": { "happiness": 5 }, "voisin": { "lien": 10, "souvenir": ["guerre_des_farces"] } }
+    ]
+  },
+  {
+    "id": "vsi_rumeur",
+    "titre": "Lancer une rumeur",
+    "icone": "megaphone.fill",
+    "description": "Un petit « tu savais que… » à la bonne personne, et regarder le feu prendre.",
+    "portee": "voisin", "minAge": 12,
+    "outcomes": [
+      { "chance": 2, "text": "Tu as raconté que {voisin} élevait des autruches dans sa cave. Le quartier entier y croit. Même {voisin} a des doutes.", "effects": { "happiness": 4, "karma": -6 }, "voisin": { "lien": -6, "ambiance": -3, "souvenir": ["victime_de_ta_rumeur"] } },
+      { "chance": 2, "trait": "curiosite", "sens": "haut", "text": "{voisin} a remonté la rumeur jusqu'à toi en deux heures. Les détectives privés ont des leçons à prendre.", "effects": { "happiness": -6, "karma": -4 }, "voisin": { "lien": -20, "statut": "ennemi", "souvenir": ["sait_que_tu_mens"] } },
+      { "chance": 1, "text": "La rumeur a tellement déformé ton histoire qu'elle est revenue sur toi. Tu élèves des autruches, apparemment.", "effects": { "happiness": -4, "karma": -3 }, "voisin": { "ambiance": -2 } },
+      { "chance": 1, "text": "Personne n'a cru ta rumeur. On t'a juste regardé{e} avec un peu de pitié.", "effects": { "happiness": -2, "karma": -2 } }
+    ]
+  },
+  {
+    "id": "vsi_police",
+    "titre": "Appeler la police",
+    "icone": "phone.fill",
+    "description": "Arme nucléaire du voisinage. Utilisation déconseillée, effets durables.",
+    "portee": "voisin", "minAge": 14,
+    "outcomes": [
+      { "chance": 3, "text": "La police est venue chez {voisin}. Rien d'illégal, mais {il} sait très bien qui a appelé.", "effects": { "karma": -3 }, "voisin": { "lien": -25, "statut": "ennemi", "lienTous": -2, "souvenir": ["a_appele_la_police_sur_lui"] } },
+      { "chance": 1, "text": "Les policiers sont repartis de chez {voisin} avec un gâteau chacun et t'ont regardé{e} de travers en passant.", "effects": { "happiness": -4 }, "voisin": { "lien": -15, "souvenir": ["a_appele_la_police_sur_lui"] } },
+      { "chance": 1, "text": "La police a trouvé chez {voisin} 400 nains de jardin volés dans toute la région. Tu es la star du quartier pendant une semaine.", "effects": { "happiness": 8, "karma": 4 }, "voisin": { "demenage": true, "ambiance": 6, "signaux": ["voisin_denonce"] } },
+      { "chance": 1, "text": "La police t'a mis{e} en attente 45 minutes, puis a raccroché. Le problème s'est réglé tout seul. Dommage.", "effects": { "happiness": -2 } }
+    ]
+  },
+  {
+    "id": "vsi_paix",
+    "titre": "Faire la paix",
+    "icone": "hand.wave.fill",
+    "description": "Drapeau blanc, bouteille de vin et excuses répétées devant le miroir.",
+    "portee": "voisin", "minAge": 10,
+    "cible": { "statuts": ["ennemi"] },
+    "outcomes": [
+      { "chance": 2, "trait": "gentillesse", "sens": "haut", "text": "{voisin} a accepté tes excuses. Vous vous êtes serré la main sur le palier, sous l'œil ému de tout l'immeuble.", "effects": { "happiness": 6, "karma": 4 }, "voisin": { "lien": 20, "statut": "neutre", "ambiance": 4 } },
+      { "chance": 2, "trait": "gentillesse", "sens": "bas", "text": "{voisin} a pris ta bouteille, a dit « on verra » et a refermé la porte. La guerre continue, mais avec ton vin.", "effects": { "happiness": -3, "money": -15 }, "voisin": { "lien": 3 } },
+      { "chance": 1, "text": "{voisin} a proposé un traité de paix écrit, signé devant témoins, avec article 4 : « Interdiction de tondre avant 10 h ». Tu as signé.", "effects": { "happiness": 4 }, "voisin": { "lien": 15, "statut": "neutre", "souvenir": ["traite_de_paix"] } }
+    ]
+  },
+  {
+    "id": "vsq_fete",
+    "titre": "Organiser la fête des voisins",
+    "icone": "party.popper.fill",
+    "description": "Tables pliantes, chips, rosé tiède et réconciliations inattendues. 120 € de budget.",
+    "portee": "quartier", "minAge": 18, "cout": 120,
+    "quartier": { "chezParents": false },
+    "outcomes": [
+      { "chance": 3, "text": "La fête des voisins a été un triomphe ! Il y avait de la musique, des grillades et même le voisin que personne n'avait jamais vu.", "effects": { "happiness": 10 }, "voisin": { "lienTous": 8, "ambiance": 12, "signaux": ["fete_des_voisins"] } },
+      { "chance": 2, "text": "Trois personnes sont venues, dont toi. Vous avez mangé 2 kilos de chips en silence.", "effects": { "happiness": -5 }, "voisin": { "lienTous": 2, "ambiance": 2, "signaux": ["fete_des_voisins_ratee"] } },
+      { "chance": 1, "text": "Fête mémorable : une dispute sur le tri sélectif a dégénéré en bataille de taboulé. Le quartier en parlera pendant dix ans.", "effects": { "happiness": 4, "health": -2 }, "voisin": { "lienTous": -4, "ambiance": -6, "drapeaux": ["bataille_de_taboule"], "signaux": ["fete_des_voisins_ratee"] } },
+      { "chance": 1, "text": "Pendant la fête, il a plu des cordes. Tout le monde s'est serré sous ta tonnelle. Paradoxalement, c'était la meilleure soirée de l'année.", "effects": { "happiness": 8 }, "voisin": { "lienTous": 10, "ambiance": 10, "signaux": ["fete_des_voisins"] } }
+    ]
+  },
+  {
+    "id": "vsq_vigilants",
+    "titre": "Patrouille des voisins vigilants",
+    "icone": "flashlight.on.fill",
+    "description": "Gilet fluo, lampe torche, talkie-walkie et beaucoup trop de sérieux.",
+    "portee": "quartier", "minAge": 16,
+    "outcomes": [
+      { "chance": 2, "text": "Tu as patrouillé toute la nuit. Seul suspect : un hérisson. Tu l'as relâché après un interrogatoire musclé.", "effects": { "happiness": 2, "health": -1 } },
+      { "chance": 1, "text": "Tu as surpris un voleur de vélos ! Il s'est enfui en laissant le vélo, une chaussure et son CV. Le quartier t'adore.", "effects": { "happiness": 8, "karma": 5 }, "voisin": { "lienTous": 6, "ambiance": 6 } },
+      { "chance": 2, "text": "Tu as plaqué au sol un joggeur nocturne. C'était le maire. L'ambiance de la réunion de quartier a été tendue.", "effects": { "happiness": -6, "health": -2 }, "voisin": { "ambiance": -4 } },
+      { "chance": 1, "text": "Tu as retrouvé le chat perdu de la rue. Il était sur ton toit depuis trois jours, très fier de lui.", "effects": { "happiness": 5, "karma": 3 }, "voisin": { "lienTous": 3, "ambiance": 3 } }
+    ]
+  },
+  {
+    "id": "vsq_vide_grenier",
+    "titre": "Vide-grenier du quartier",
+    "icone": "tag.fill",
+    "description": "Vendre tes vieilleries, racheter celles des voisins, revenir avec plus de choses qu'au départ.",
+    "portee": "quartier", "minAge": 8,
+    "outcomes": [
+      { "chance": 3, "text": "Tu as vendu tes vieilles BD, une lampe moche et un vélo sans roues. 85 € de gagnés !", "effects": { "money": 85, "happiness": 4 }, "voisin": { "ambiance": 2 } },
+      { "chance": 2, "text": "Tu n'as rien vendu, mais tu as acheté un ours empaillé à 40 €. Tu ne sais pas pourquoi. Il te regarde.", "effects": { "money": -40, "happiness": 3 } },
+      { "chance": 1, "text": "Tu as vendu un vieux tableau 5 €. Le lendemain, tu apprends qu'il en valait 40 000. Le voisin qui l'a acheté a déménagé à Monaco.", "effects": { "money": 5, "happiness": -12 } },
+      { "chance": 1, "text": "Tu as passé la journée à négocier un presse-agrumes de 2 € à 1,50 €. Tu as gagné. Tu es épuisé{e}, mais tu as gagné.", "effects": { "happiness": 2, "money": -2 } }
+    ]
+  },
+  {
+    "id": "vsq_mot_hall",
+    "titre": "Coller un mot dans le hall",
+    "icone": "note.text",
+    "description": "« Certaines personnes se reconnaîtront. » La forme la plus pure de la littérature française.",
+    "portee": "quartier", "minAge": 14,
+    "quartier": { "logements": ["appartement"] },
+    "outcomes": [
+      { "chance": 2, "text": "Ton mot « Merci de fermer la porte du hall, ce n'est pas un moulin » a reçu 4 réponses manuscrites, dont une en alexandrins.", "effects": { "happiness": 3 }, "voisin": { "ambiance": -2 } },
+      { "chance": 2, "text": "Ton mot a été corrigé au stylo rouge par un voisin anonyme. Tu avais fait trois fautes. La honte.", "effects": { "happiness": -4, "smarts": 1 } },
+      { "chance": 1, "text": "Ton mot a déclenché une guerre de post-it qui a recouvert le hall entier. Un artiste local a pris des photos.", "effects": { "happiness": 2 }, "voisin": { "ambiance": -6, "lienTous": -3, "drapeaux": ["guerre_des_post_it"] } },
+      { "chance": 1, "text": "Tout le monde a respecté ton mot. Tu as ressenti un pouvoir immense. Tu as peur de toi.", "effects": { "happiness": 6 }, "voisin": { "ambiance": 3 } }
+    ]
+  },
+  {
+    "id": "vsq_ag",
+    "titre": "Aller à l'AG de copropriété",
+    "icone": "person.3.fill",
+    "description": "Quatre heures de débat sur la couleur des boîtes aux lettres. Présence obligatoire pour l'âme.",
+    "portee": "quartier", "minAge": 18,
+    "quartier": { "logements": ["appartement"], "proprietaire": true },
+    "outcomes": [
+      { "chance": 3, "text": "L'AG a duré cinq heures. On a voté le remplacement du paillasson de l'entrée. Budget : 3 400 €. Tu as dormi pendant le vote.", "effects": { "happiness": -4 }, "voisin": { "charges": 200, "travaux": "Paillasson de luxe dans l'entrée" } },
+      { "chance": 2, "text": "Tu as fait capoter le projet d'ascenseur en marbre. Les voisins du 1er t'applaudissent, ceux du 6e te maudissent.", "effects": { "happiness": 4 }, "voisin": { "lienTous": -2, "charges": -150 } },
+      { "chance": 1, "text": "Ravalement de façade voté à l'unanimité moins toi. Ta quote-part : 2 800 €. Tu as découvert le sens du mot « solidaire ».", "effects": { "money": -2800, "happiness": -6 }, "voisin": { "travaux": "Ravalement de façade", "ambiance": 3 } },
+      { "chance": 1, "text": "Personne ne voulait être secrétaire de séance. Tu as levé la main pour te gratter le nez. Tu es secrétaire de séance.", "effects": { "happiness": -3, "smarts": 2 } }
+    ]
+  },
+  {
+    "id": "vsq_candidature",
+    "titre": "Se présenter au conseil syndical",
+    "icone": "checkmark.seal.fill",
+    "description": "Le pouvoir absolu sur le local à vélos. Ne le sous-estime pas.",
+    "portee": "quartier", "minAge": 18,
+    "quartier": { "logements": ["appartement"], "proprietaire": true, "president": false },
+    "outcomes": [
+      { "chance": 2, "text": "Élu{e} président{e} du conseil syndical ! Ton programme : « Un digicode qui marche ». Les foules t'acclament (six personnes).", "effects": { "happiness": 8 }, "voisin": { "president": true, "ambiance": 3 } },
+      { "chance": 2, "text": "Battu{e} par l'ancien président, réélu pour la 23e fois. Son slogan : « On ne change pas une équipe qui ne fait rien ».", "effects": { "happiness": -5 } },
+      { "chance": 1, "text": "Élu{e} au premier tour, faute d'autre candidat. Tu découvres ta première mission : 34 mails non lus sur une fuite au 3e.", "effects": { "happiness": 2, "smarts": 1 }, "voisin": { "president": true } }
+    ]
+  },
+  {
+    "id": "vsq_demission",
+    "titre": "Démissionner du conseil syndical",
+    "icone": "door.left.hand.open",
+    "description": "Rendre le pouvoir. Et le trousseau de 47 clés dont 40 n'ouvrent rien.",
+    "portee": "quartier", "minAge": 18,
+    "quartier": { "president": true },
+    "outcomes": [
+      { "chance": 2, "text": "Tu as démissionné. Tu dors à nouveau. Tes cheveux repoussent. Ton téléphone ne sonne plus à 6 h pour une ampoule.", "effects": { "happiness": 10 }, "voisin": { "president": false } },
+      { "chance": 1, "text": "Ta démission a été refusée par l'AG. Visiblement, c'est possible. Tu restes président{e}, contre ton gré.", "effects": { "happiness": -6 } }
+    ]
+  },
+  {
+    "id": "vsq_decos",
+    "titre": "Concours des décorations de Noël",
+    "icone": "sparkles",
+    "description": "4 000 ampoules, un renne qui clignote, une facture d'électricité qui clignote aussi. 300 €.",
+    "portee": "quartier", "minAge": 18, "cout": 300,
+    "quartier": { "logements": ["maison", "villa", "campagne"], "chezParents": false },
+    "outcomes": [
+      { "chance": 2, "text": "Tu as gagné le concours ! Ta maison se voit depuis l'espace. Un avion a changé de trajectoire.", "effects": { "happiness": 10 }, "voisin": { "ambiance": 4, "drapeaux": ["champion_des_decos"] } },
+      { "chance": 2, "text": "Deuxième place, derrière le voisin qui a mis un vrai renne vivant dans son jardin. Tu crois que c'est de la triche.", "effects": { "happiness": -2 } },
+      { "chance": 1, "text": "Tes guirlandes ont fait sauter le courant de toute la rue le soir du réveillon. Tout le monde a dîné à la bougie. Personne ne t'a remercié{e}.", "effects": { "happiness": -6 }, "voisin": { "lienTous": -6, "ambiance": -5 } }
+    ]
+  },
+  {
+    "id": "vsq_petanque",
+    "titre": "Tournoi de pétanque",
+    "icone": "circle.circle.fill",
+    "description": "Boules, pastis, mauvaise foi et mesure au mètre ruban.",
+    "portee": "quartier", "minAge": 12,
+    "quartier": { "logements": ["caravane", "campagne", "maison"] },
+    "outcomes": [
+      { "chance": 2, "text": "Tu as gagné le tournoi ! Ton prix : un saucisson et le respect éternel du camping.", "effects": { "happiness": 8 }, "voisin": { "lienTous": 4, "ambiance": 3 } },
+      { "chance": 2, "text": "Tu as perdu 13 à 0. Selon la tradition, tu as dû embrasser le derrière d'une statue en carton. Une photo circule.", "effects": { "happiness": -4 }, "voisin": { "lienTous": 2 } },
+      { "chance": 1, "text": "Dispute de mesure : deux voisins ont sorti un mètre laser, un compas et un avocat. La partie est suspendue depuis trois heures.", "effects": { "happiness": 2 }, "voisin": { "ambiance": -2 } }
+    ]
+  }
+]

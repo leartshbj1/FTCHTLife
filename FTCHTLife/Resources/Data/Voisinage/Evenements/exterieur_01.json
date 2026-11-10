@@ -1,0 +1,462 @@
+[
+  {
+    "id": "vsn_ext_0001",
+    "minAge": 18, "maxAge": 99, "weight": 3,
+    "quartier": { "logements": ["maison", "villa", "campagne"], "chezParents": false, "sansDrapeaux": ["guerre_des_haies"] },
+    "cible": { "archetypes": ["jardinier_obsessionnel", "ancien_militaire", "retraite_curieux", "couple_parfait"] },
+    "text": "{voisin}, {voisin_qui}, sonne avec un mètre ruban. D'après {lui}, ta haie dépasse de 7 cm chez {lui}. {Il} a des photos datées.",
+    "choices": [
+      { "label": "Tailler la haie tout de suite", "outcomes": [
+        { "chance": 3, "text": "Tu tailles ta haie au cordeau. {voisin} mesure, hoche la tête et repart sans un mot. C'est sa façon de dire merci.", "effects": { "happiness": -1, "health": 1 }, "voisin": { "lien": 8 } },
+        { "chance": 1, "text": "Tu tailles un peu trop. Ta haie ressemble maintenant à un caniche malade. {voisin} sourit pour la première fois de l'année.", "effects": { "happiness": -4 }, "voisin": { "lien": 5, "souvenir": ["a_vu_ta_haie_ratee"] } }
+      ]},
+      { "label": "Répondre que c'est SA haie qui pousse vers toi", "outcomes": [
+        { "chance": 2, "text": "{voisin} pâlit. {Il} rentre chez {lui}, revient avec un géomètre. La guerre des haies est déclarée.", "effects": { "happiness": -3 }, "voisin": { "lien": -20, "statut": "ennemi", "drapeaux": ["guerre_des_haies"], "ambiance": -6, "signaux": ["guerre_des_haies"] } },
+        { "chance": 1, "text": "{voisin} vérifie. Tu avais raison. {Il} s'excuse, humilié{ve}, et te doit désormais une haie.", "effects": { "happiness": 5 }, "voisin": { "lien": -5, "souvenir": ["te_doit_une_haie"] } }
+      ]},
+      { "label": "Proposer un apéro pour en discuter", "outcomes": [
+        { "chance": 2, "text": "Deux rosés plus tard, vous décidez que la haie appartient aux oiseaux. Accord historique.", "effects": { "happiness": 4 }, "voisin": { "lien": 12 } },
+        { "chance": 1, "text": "{voisin} ne boit pas « avant d'avoir réglé les litiges ». Il est 11 h. Tu bois seul{e}.", "effects": { "happiness": -2 }, "voisin": { "lien": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0002",
+    "minAge": 18, "maxAge": 99, "weight": 3,
+    "quartier": { "drapeaux": ["guerre_des_haies"], "chezParents": false },
+    "cible": { "statuts": ["ennemi"] },
+    "text": "Guerre des haies, épisode 2. Ce matin, ta haie a été taillée en forme de doigt d'honneur. {voisin} arrose ses fleurs en sifflotant.",
+    "choices": [
+      { "label": "Riposter : tailler la sienne en forme de cœur brisé", "outcomes": [
+        { "chance": 2, "text": "Ton œuvre est saluée par tout le quartier. Un photographe de la presse locale passe. {voisin} déménage presque.", "effects": { "happiness": 7, "karma": -2 }, "voisin": { "lien": -10, "souvenir": ["victime_de_ta_haie_artistique"], "ambiance": -3 } },
+        { "chance": 1, "text": "Tu glisses de l'échelle en pleine nuit et tu tombes dans son bassin à carpes. {Il} filme.", "effects": { "health": -6, "happiness": -6 }, "voisin": { "lien": -5 } }
+      ]},
+      { "label": "Envoyer un huissier", "outcomes": [
+        { "chance": 1, "text": "L'huissier constate « une haie offensante ». Facture : 350 €. {voisin} reçoit un courrier recommandé et s'étrangle.", "effects": { "money": -350, "happiness": 3 }, "voisin": { "lien": -15, "souvenir": ["a_recu_ton_huissier"] } }
+      ]},
+      { "label": "Ignorer. Un doigt d'honneur végétal, c'est presque de l'art", "outcomes": [
+        { "text": "Les passants prennent des selfies devant ta haie. Elle a maintenant sa page sur les réseaux.", "effects": { "happiness": 2 }, "voisin": { "lien": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0003",
+    "minAge": 18, "maxAge": 99, "weight": 2, "unique": true,
+    "quartier": { "drapeaux": ["guerre_des_haies"], "chezParents": false },
+    "cible": { "statuts": ["ennemi"] },
+    "text": "Tu reçois une convocation au tribunal de proximité. Plaignant : {voisin}. Objet : « Haie hostile et feuilles mortes délibérées ».",
+    "choices": [
+      { "label": "Prendre un avocat", "outcomes": [
+        { "chance": 2, "text": "Ton avocat plaide 40 minutes sur la photosynthèse. Tu gagnes. Il te facture 1 200 €. La haie, elle, s'en fiche.", "effects": { "money": -1200, "happiness": 4 }, "voisin": { "lien": -10 } },
+        { "chance": 1, "text": "Ton avocat confond haie et baie vitrée. Tu perds. Tu dois tailler ta haie tous les mardis sous contrôle de {voisin}.", "effects": { "money": -1200, "happiness": -8 }, "voisin": { "lien": 5, "souvenir": ["a_gagne_au_tribunal"] } }
+      ]},
+      { "label": "Te défendre seul{e} avec une maquette de ta haie", "outcomes": [
+        { "chance": 1, "text": "Le juge adore ta maquette. Il te demande comment tu as fait les feuilles. Non-lieu, et une carte de visite.", "effects": { "happiness": 8, "smarts": 2 }, "voisin": { "lien": -8 } },
+        { "chance": 1, "text": "Ta maquette tombe en morceaux en pleine audience. Amende de 300 € pour « outrage végétal ».", "effects": { "money": -300, "happiness": -6 } }
+      ]},
+      { "label": "Proposer un traité de paix avant l'audience", "outcomes": [
+        { "chance": 2, "text": "{voisin} signe. Vous plantez ensemble un rosier « neutre » sur la frontière. La guerre des haies est finie.", "effects": { "happiness": 6, "karma": 4 }, "voisin": { "lien": 25, "statut": "neutre", "retireDrapeaux": ["guerre_des_haies"], "ambiance": 8, "souvenir": ["traite_de_paix"] } },
+        { "chance": 1, "text": "{voisin} déchire le traité, le mange, et te regarde dans les yeux. Il y aura audience.", "effects": { "happiness": -4 }, "voisin": { "lien": -5 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0004",
+    "minAge": 18, "maxAge": 99, "weight": 1,
+    "quartier": { "drapeaux": ["guerre_des_haies"], "chezParents": false, "minAnnees": 2 },
+    "text": "La guerre des haies dure depuis si longtemps que le quartier a choisi son camp. Des drapeaux sont apparus aux fenêtres.",
+    "choices": [
+      { "label": "Proposer un armistice à tout le quartier", "outcomes": [
+        { "chance": 2, "text": "Grande cérémonie de paix autour d'un barbecue. On enterre une cisaille sous un chêne. Fin de la guerre des haies.", "effects": { "happiness": 8, "karma": 5 }, "voisin": { "retireDrapeaux": ["guerre_des_haies"], "lienTous": 10, "ambiance": 15 } },
+        { "chance": 1, "text": "Personne ne vient à ta cérémonie. Ils t'en veulent de vouloir arrêter : c'était le seul sujet de conversation du quartier.", "effects": { "happiness": -4 }, "voisin": { "lienTous": -3 } }
+      ]},
+      { "label": "Recruter des alliés", "outcomes": [
+        { "text": "Tu as maintenant trois voisins dans ton camp et un sécateur de guerre. Le maire envisage une médiation.", "effects": { "happiness": 3, "karma": -2 }, "voisin": { "ambiance": -8 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0005",
+    "minAge": 18, "maxAge": 99, "weight": 3,
+    "quartier": { "logements": ["maison", "villa"], "chezParents": false },
+    "conditions": { "tags": ["adult"] },
+    "cible": { "archetypes": ["nouveau_riche", "famille_bruyante", "bricoleur_dimanche", "couple_parfait", "sportif_matinal", "influenceur"] },
+    "text": "7 h 40, tu es en retard. La voiture de {voisin}, {voisin_qui}, est garée pile devant ton portail. Encore.",
+    "choices": [
+      { "label": "Klaxonner jusqu'à ce qu'{il} sorte", "outcomes": [
+        { "chance": 2, "text": "{voisin} sort en peignoir, déplace sa voiture de 30 cm et te fait un grand sourire. Tu passes de justesse en rayant ton rétro.", "effects": { "happiness": -3, "money": -120 }, "voisin": { "lien": -6, "signaux": ["conflit_parking"] } },
+        { "chance": 1, "text": "Tout le quartier se réveille sauf {voisin}. Les autres voisins t'en veulent à toi.", "effects": { "happiness": -5 }, "voisin": { "lienTous": -4, "signaux": ["conflit_parking"] } }
+      ]},
+      { "label": "Laisser un mot sur son pare-brise", "outcomes": [
+        { "chance": 2, "text": "Le lendemain, réponse sur ton pare-brise : « Le trottoir est à tout le monde ». La guerre des post-it automobiles commence.", "effects": { "happiness": -2 }, "voisin": { "lien": -8, "souvenir": ["guerre_du_parking"], "signaux": ["conflit_parking"] } },
+        { "chance": 1, "text": "{voisin} s'excuse avec une boîte de chocolats et ne se gare plus jamais là. Le pouvoir de l'écrit.", "effects": { "happiness": 4 }, "voisin": { "lien": 6 } }
+      ]},
+      { "label": "Appeler la fourrière", "outcomes": [
+        { "chance": 2, "text": "La fourrière embarque la voiture. {voisin} a mis trois jours à la récupérer et 280 € à la payer. {Il} sait que c'est toi.", "effects": { "happiness": 5, "karma": -3 }, "voisin": { "lien": -25, "statut": "ennemi", "souvenir": ["sa_voiture_a_la_fourriere"], "signaux": ["conflit_parking"] } },
+        { "chance": 1, "text": "La fourrière arrive en même temps que {voisin}, qui démarre et s'enfuit. Le dépanneur te facture le déplacement.", "effects": { "money": -90, "happiness": -4 } }
+      ]},
+      { "label": "Prendre le vélo, finalement", "outcomes": [
+        { "text": "Tu arrives en sueur mais en avance. Tu te sens supérieur{e} toute la journée.", "effects": { "health": 3, "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0006",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "chezParents": false },
+    "cible": { "souvenirs": ["guerre_du_parking"] },
+    "text": "Guerre du parking, nouvel épisode : {voisin} a posé un plot orange « réservé » sur la place devant chez toi. Avec ton nom barré dessus.",
+    "choices": [
+      { "label": "Voler le plot", "outcomes": [
+        { "chance": 2, "text": "Le plot trône dans ton salon. Le lendemain, {voisin} en pose deux. La course aux plots est lancée.", "effects": { "happiness": 4, "karma": -2 }, "voisin": { "lien": -8, "compteurs": { "plots_voles": 1 } } },
+        { "chance": 1, "text": "Le plot était relié à une alarme. {voisin} sort avec une lampe frontale et un sifflet. Humiliation nocturne.", "effects": { "happiness": -5 }, "voisin": { "lien": -6 } }
+      ]},
+      { "label": "Proposer de partager la place un jour sur deux", "outcomes": [
+        { "chance": 2, "text": "{voisin} accepte et vous faites un planning plastifié. C'est le document le plus officiel de ta vie.", "effects": { "happiness": 3 }, "voisin": { "lien": 15, "oublie": ["guerre_du_parking"] } },
+        { "chance": 1, "text": "{voisin} veut les jours pairs, les week-ends et les jours fériés. Tu refuses. La guerre continue.", "effects": { "happiness": -2 }, "voisin": { "lien": -4 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0007",
+    "minAge": 16, "maxAge": 99, "weight": 3,
+    "quartier": { "logements": ["maison", "villa", "campagne", "caravane"] },
+    "cible": { "archetypes": ["camping_eternel", "famille_bruyante", "nouveau_riche", "bricoleur_dimanche", "ancien_militaire"] },
+    "text": "Samedi, midi. Le barbecue de {voisin}, {voisin_qui}, envoie un nuage noir pile sur ton linge propre. {Il} te fait coucou avec une pince.",
+    "choices": [
+      { "label": "Aller voir avec une bouteille, pour s'inviter", "outcomes": [
+        { "chance": 3, "text": "Tu repars quatre heures plus tard avec des chipolatas, un coup de soleil et un nouvel allié.", "effects": { "happiness": 6, "health": -1 }, "voisin": { "lien": 12 } },
+        { "chance": 1, "text": "{voisin} grille ses merguez au charbon de bois et au white-spirit. Tu perds tes sourcils, mais pas l'appétit.", "effects": { "happiness": 2, "looks": -3 }, "voisin": { "lien": 8, "souvenir": ["t_a_grille_les_sourcils"] } }
+      ]},
+      { "label": "Relaver ton linge en soupirant fort", "outcomes": [
+        { "text": "Tu soupires si fort que {voisin} l'entend. {Il} t'apporte une saucisse en guise d'excuse. Tu acceptes. Tu as des principes, mais tu as faim.", "effects": { "happiness": 1 }, "voisin": { "lien": 3 } }
+      ]},
+      { "label": "Allumer ton propre barbecue face au vent", "outcomes": [
+        { "chance": 2, "text": "Duel de fumées. Les pompiers passent, hument, et restent manger. La rue entière finit autour des deux barbecues.", "effects": { "happiness": 7 }, "voisin": { "lien": 6, "ambiance": 6 } },
+        { "chance": 1, "text": "Ta fumée part chez la famille d'à côté, dont le bébé faisait la sieste. Tout le quartier est contre toi.", "effects": { "happiness": -5 }, "voisin": { "lienTous": -4, "ambiance": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0008",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["maison", "campagne"] },
+    "cible": { "archetypes": ["bricoleur_dimanche", "jardinier_obsessionnel", "ancien_militaire", "agriculteur_bourru"] },
+    "text": "Dimanche, 8 h 03. La tondeuse de {voisin}, {voisin_qui}, rugit sous ta fenêtre. Ta grasse matinée meurt dans d'atroces souffrances.",
+    "choices": [
+      { "label": "Sortir en pyjama et protester", "outcomes": [
+        { "chance": 2, "text": "{voisin} coupe le moteur et te dit : « La pelouse n'a pas de week-end. » Puis rallume.", "effects": { "happiness": -4 }, "voisin": { "lien": -6 } },
+        { "chance": 1, "text": "{voisin} est sincèrement désolé{ve}. {Il} tondra à 10 h désormais. Tu as gagné deux heures de vie par semaine.", "effects": { "happiness": 5 }, "voisin": { "lien": 4 } }
+      ]},
+      { "label": "Riposter avec un concert de casseroles à 22 h", "outcomes": [
+        { "chance": 2, "text": "Le soir, tu tapes sur une casserole sous sa fenêtre. {voisin} comprend le message. Les autres voisins appellent la police.", "effects": { "happiness": 3, "karma": -3 }, "voisin": { "lien": -12, "lienTous": -3 } },
+        { "chance": 1, "text": "{voisin} sort avec un tambour. Vous jouez ensemble jusqu'à minuit. Un groupe est né. Il s'appelle « Tondeuse ».", "effects": { "happiness": 6 }, "voisin": { "lien": 10, "souvenir": ["groupe_tondeuse"] } }
+      ]},
+      { "label": "Mettre des bouchons d'oreilles et te rendormir", "outcomes": [
+        { "text": "Tu te rendors. Tu rêves de tondeuses. Elles sont gentilles dans ton rêve.", "effects": { "happiness": 1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0009",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["villa", "maison"], "chezParents": false },
+    "cible": { "archetypes": ["nouveau_riche", "couple_parfait", "influenceur"] },
+    "text": "{voisin}, {voisin_qui}, vient de faire creuser une piscine. Elle est plus grande que la tienne. Elle a un toboggan. Et un pont.",
+    "choices": [
+      { "label": "Faire agrandir la tienne (8 000 €)", "outcomes": [
+        { "chance": 2, "text": "Ta piscine dépasse maintenant la sienne de 50 cm. {voisin} commande un plongeoir. La course à l'armement continue.", "effects": { "money": -8000, "happiness": 5 }, "voisin": { "lien": -6, "souvenir": ["rival_de_piscine"] } },
+        { "chance": 1, "text": "Les travaux trouvent une canalisation, une nappe phréatique, puis un squelette de mammouth. Ta piscine devient un site archéologique.", "effects": { "money": -8000, "happiness": -3, "fame": 2 } }
+      ]},
+      { "label": "Te faire inviter", "outcomes": [
+        { "chance": 3, "text": "Tu passes tout l'été dans la piscine de {voisin}. {Il} commence à te facturer les serviettes.", "effects": { "happiness": 7, "health": 2 }, "voisin": { "lien": 8 } },
+        { "chance": 1, "text": "Tu fais une bombe magnifique qui vide la moitié du bassin sur le téléphone de {voisin}.", "effects": { "happiness": 4, "money": -400 }, "voisin": { "lien": -10 } }
+      ]},
+      { "label": "Prétendre que tu préfères la mer", "outcomes": [
+        { "text": "Tu le dis tellement souvent que tu finis par y croire. Tu n'es plus allé{e} à la mer depuis 2015.", "effects": { "happiness": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0010",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["maison", "villa", "campagne"], "chezParents": false },
+    "text": "Des cambriolages ont eu lieu dans la rue. Une réunion « voisins vigilants » est organisée dans un garage, avec des chips et beaucoup de paranoïa.",
+    "choices": [
+      { "label": "Devenir chef des voisins vigilants", "outcomes": [
+        { "chance": 2, "text": "Tu as un gilet fluo, un talkie-walkie et une carte du quartier punaisée au mur. Les cambriolages s'arrêtent. Les gens t'évitent un peu.", "effects": { "happiness": 5, "karma": 2 }, "voisin": { "ambiance": 5, "drapeaux": ["voisins_vigilants"] } },
+        { "chance": 1, "text": "Tu prends ton rôle trop au sérieux. Tu as contrôlé l'identité du facteur. Deux fois.", "effects": { "happiness": 2 }, "voisin": { "lienTous": -4, "drapeaux": ["voisins_vigilants"] } }
+      ]},
+      { "label": "Installer une alarme (600 €)", "outcomes": [
+        { "chance": 2, "text": "Ton alarme se déclenche au premier coup de vent. Puis au deuxième. Le quartier te déteste, mais personne ne te cambriole.", "effects": { "money": -600, "happiness": -1 }, "voisin": { "lienTous": -3 } },
+        { "chance": 1, "text": "Ton alarme marche si bien qu'elle a fait fuir un vrai voleur. Il a laissé une échelle toute neuve. Tu l'as gardée.", "effects": { "money": -600, "happiness": 6 } }
+      ]},
+      { "label": "Ne rien faire, tu n'as rien à voler", "outcomes": [
+        { "chance": 3, "text": "Tu avais raison. Les cambrioleurs sont passés, ont regardé par ta fenêtre, et t'ont laissé un billet de 10 € par pitié.", "effects": { "money": 10, "happiness": -2 } },
+        { "chance": 1, "text": "On t'a volé ta télé, ton grille-pain et ton plaid préféré. Tu te sens trahi{e} par le plaid, aussi.", "effects": { "money": -500, "happiness": -8 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0011",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["maison", "villa", "campagne"], "chezParents": false },
+    "cible": { "minLien": 50 },
+    "text": "Tu pars deux semaines en vacances. {voisin}, {voisin_qui}, propose de garder tes clés et d'arroser tes plantes.",
+    "choices": [
+      { "label": "Confier tes clés", "outcomes": [
+        { "chance": 3, "text": "À ton retour, tout est parfait. Les plantes ont même l'air plus heureuses qu'avec toi. C'est vexant.", "effects": { "happiness": 4 }, "voisin": { "lien": 8 } },
+        { "chance": 1, "text": "À ton retour, ton frigo est vide, ta télé est réglée sur une chaîne de documentaires sur les phoques, et {voisin} évite ton regard.", "effects": { "happiness": -3 }, "voisin": { "lien": -6, "souvenir": ["a_squatte_chez_toi"] } },
+        { "chance": 1, "text": "{voisin} a repeint ta cuisine « pour te faire une surprise ». Elle est vert pomme. Tu n'avais rien demandé.", "effects": { "happiness": -2 }, "voisin": { "lien": 5 } }
+      ]},
+      { "label": "Refuser poliment et installer un arrosage automatique", "outcomes": [
+        { "chance": 2, "text": "L'arrosage automatique a fonctionné. Trop bien. Ton salon est maintenant une mare. Une grenouille s'y est installée.", "effects": { "money": -300, "happiness": -4 }, "voisin": { "lien": -3 } },
+        { "text": "Tout s'est bien passé. {voisin} est un peu vexé{ve} mais ça passera.", "voisin": { "lien": -4 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0012",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["maison", "villa", "campagne"], "chezParents": false },
+    "cible": { "archetypes": ["jardinier_obsessionnel", "couple_parfait", "voisin_parfait", "nouveau_riche"] },
+    "text": "Le concours des jardins fleuris approche. {voisin}, {voisin_qui}, le gagne depuis toujours. Ce matin, {il} est venu{ve} observer ton jardin avec des jumelles.",
+    "choices": [
+      { "label": "T'inscrire et tout donner (250 € de fleurs)", "outcomes": [
+        { "chance": 1, "text": "Tu gagnes ! {voisin} fait une crise devant le jury et accuse tes géraniums de dopage.", "effects": { "money": -250, "happiness": 10 }, "voisin": { "lien": -15, "statut": "ennemi", "souvenir": ["battu_au_concours"], "drapeaux": ["champion_des_jardins"] } },
+        { "chance": 2, "text": "Deuxième. Derrière {voisin}, évidemment. {Il} vient te serrer la main avec un sourire de prédateur.", "effects": { "money": -250, "happiness": -3 }, "voisin": { "lien": 3 } }
+      ]},
+      { "label": "Demander des conseils à {voisin}", "outcomes": [
+        { "chance": 2, "text": "{voisin} est si flatté{ve} qu'{il} passe trois heures à t'expliquer le paillage. Tu n'as rien retenu, mais vous êtes copains.", "effects": { "smarts": 2, "happiness": 2 }, "voisin": { "lien": 14 } },
+        { "chance": 1, "text": "{voisin} te donne de faux conseils. Tes tulipes poussent à l'envers. Tu le soupçonnes depuis.", "effects": { "happiness": -3 }, "voisin": { "lien": -4, "souvenir": ["t_a_sabote_les_tulipes"] } }
+      ]},
+      { "label": "Saboter ses rosiers la nuit", "outcomes": [
+        { "chance": 1, "text": "Tu verses du vinaigre sur ses rosiers. Le lendemain ils sont plus beaux que jamais. Le vinaigre, c'était de l'engrais. Merci la bouteille sans étiquette.", "effects": { "karma": -4, "happiness": -3 } },
+        { "chance": 1, "text": "Pris{e} en flagrant délit par la caméra infrarouge de {voisin}. La vidéo passe à la fête des voisins.", "effects": { "karma": -6, "happiness": -8 }, "voisin": { "lien": -30, "statut": "ennemi", "lienTous": -5 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0013",
+    "minAge": 6, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["maison", "villa", "campagne"] },
+    "text": "Une taupe a déclaré la guerre à ta pelouse. Il y a 34 monticules. Elle te nargue, tu le sens.",
+    "choices": [
+      { "label": "Lui déclarer la guerre en retour", "outcomes": [
+        { "chance": 2, "text": "Après un mois de stratégie, de pièges et de nuits blanches, la taupe a gagné. Elle a même creusé sous ta cabane.", "effects": { "happiness": -4, "health": -2 } },
+        { "chance": 1, "text": "Tu la captures vivante et la relâches dans le jardin du voisin. Personne ne le saura jamais. Sauf la taupe.", "effects": { "happiness": 5, "karma": -1 } }
+      ]},
+      { "label": "Lui donner un nom et accepter la cohabitation", "outcomes": [
+        { "text": "Tu l'appelles Gérard. Gérard creuse, tu tonds autour. C'est une relation saine.", "effects": { "happiness": 4, "karma": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0014",
+    "minAge": 18, "maxAge": 99, "weight": 3,
+    "quartier": { "logements": ["campagne"] },
+    "cible": { "archetypes": ["agriculteur_bourru"] },
+    "text": "Les vaches de {voisin}, {voisin_qui}, se sont échappées. L'une d'elles est dans ta cuisine. Elle regarde ton frigo.",
+    "choices": [
+      { "label": "Ramener les vaches toi-même", "outcomes": [
+        { "chance": 2, "text": "Tu ramènes les vaches avec un balai et des encouragements. {voisin} grogne « merci ». C'est un moment très fort.", "effects": { "health": 2, "happiness": 4 }, "voisin": { "lien": 14 } },
+        { "chance": 1, "text": "Une vache te piétine le pied et mange ton chapeau. {voisin} rit pour la première fois depuis 1987.", "effects": { "health": -5, "happiness": -2 }, "voisin": { "lien": 10, "souvenir": ["a_ri_grace_a_toi"] } }
+      ]},
+      { "label": "Garder une vache en dédommagement", "outcomes": [
+        { "chance": 1, "text": "{voisin} débarque avec sa fourche et un vocabulaire impressionnant. Tu rends la vache. Et ta dignité.", "effects": { "happiness": -6 }, "voisin": { "lien": -18 } },
+        { "chance": 1, "text": "{voisin} hausse les épaules : « Celle-là, elle est bête. Garde-la. » Tu as une vache. Elle s'appelle Margot.", "effects": { "happiness": 6 }, "voisin": { "lien": 2, "souvenir": ["t_a_donne_margot"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0015",
+    "minAge": 4, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["campagne"] },
+    "text": "4 h 12. Le coq de la ferme d'à côté a décidé que le soleil se levait. Il se trompe de trois heures, mais avec conviction.",
+    "choices": [
+      { "label": "Aller discuter avec le coq", "outcomes": [
+        { "chance": 2, "text": "Tu lui expliques calmement la notion de fuseau horaire. Il te regarde. Il chante plus fort.", "effects": { "happiness": -3 } },
+        { "chance": 1, "text": "Le coq te poursuit sur 200 mètres. Tu découvres que tu cours très vite à 4 h du matin.", "effects": { "health": 3, "happiness": -2 } }
+      ]},
+      { "label": "Apprendre à aimer le coq", "outcomes": [
+        { "text": "Au bout de trois mois, tu te réveilles toute seul{e} à 4 h 11. Le coq a gagné. Tu es devenu{e} le coq.", "effects": { "happiness": 2, "health": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0016",
+    "minAge": 16, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["campagne"] },
+    "text": "C'est la fête du village : bal sous chapiteau, concours de lancer de botte de foin et élection de la plus belle vache.",
+    "choices": [
+      { "label": "Participer au lancer de botte de foin", "outcomes": [
+        { "chance": 1, "text": "Tu gagnes ! Ton nom est gravé sur une fourche en bois. Le village te respecte enfin.", "effects": { "happiness": 8, "health": 2 }, "voisin": { "lienTous": 6, "ambiance": 5 } },
+        { "chance": 2, "text": "La botte retombe sur toi. Tu sens le foin pendant une semaine, mais on t'a applaudi{e} pour l'effort.", "effects": { "health": -3, "happiness": 3 }, "voisin": { "lienTous": 3 } }
+      ]},
+      { "label": "Danser au bal", "outcomes": [
+        { "chance": 2, "text": "Tu as dansé la chenille avec des gens de 4 à 94 ans. C'était merveilleux et un peu humide.", "effects": { "happiness": 7 }, "voisin": { "lienTous": 4, "ambiance": 3 } },
+        { "chance": 1, "text": "L'accordéoniste t'a fait chanter au micro. Le village s'en souviendra. Toi aussi, malheureusement.", "effects": { "happiness": -3 }, "voisin": { "lienTous": 2 } }
+      ]},
+      { "label": "Rester chez toi", "outcomes": [
+        { "text": "Tu entends la fête de loin. Ton seul invité : une limace.", "effects": { "happiness": -2 }, "voisin": { "lienTous": -2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0017",
+    "minAge": 16, "maxAge": 99, "weight": 3,
+    "quartier": { "logements": ["caravane"] },
+    "cible": { "archetypes": ["camping_eternel", "famille_bruyante", "etudiant_fetard", "musicien_rate"] },
+    "text": "Soirée karaoké au camping. {voisin}, {voisin_qui}, t'a inscrit{e} sans te demander. Ton nom vient d'être appelé.",
+    "choices": [
+      { "label": "Chanter une ballade déchirante", "outcomes": [
+        { "chance": 2, "text": "Silence total, puis larmes. Un campeur belge te demande ton numéro. Tu es la star du camping jusqu'à la fin de l'été.", "effects": { "happiness": 9 }, "voisin": { "lien": 8, "lienTous": 5, "ambiance": 4 } },
+        { "chance": 1, "text": "Tu chantes faux du début à la fin. Le camping applaudit quand même, car ici on est gentils.", "effects": { "happiness": 2 }, "voisin": { "lienTous": 2 } }
+      ]},
+      { "label": "Proposer un duo à {voisin}", "outcomes": [
+        { "chance": 2, "text": "Votre duo des années 80 met le feu. On vous réclame tous les samedis. Vous êtes inséparables.", "effects": { "happiness": 7 }, "voisin": { "lien": 18, "souvenir": ["duo_karaoke"] } },
+        { "chance": 1, "text": "{voisin} prend le micro et ne le rend plus. Tu fais les chœurs pendant 45 minutes.", "effects": { "happiness": -1 }, "voisin": { "lien": 4 } }
+      ]},
+      { "label": "Faire semblant d'avoir une extinction de voix", "outcomes": [
+        { "text": "Tu mimes une extinction de voix. On te tend une crêpe pour te soigner. Bonne stratégie.", "effects": { "happiness": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0018",
+    "minAge": 8, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["caravane"] },
+    "text": "Les sanitaires du camping sont en panne. Il reste une seule douche chaude pour 140 personnes. La file d'attente a sa propre économie.",
+    "choices": [
+      { "label": "Te lever à 5 h pour être premier{e}", "outcomes": [
+        { "chance": 2, "text": "Tu arrives à 5 h. Il y a déjà douze personnes, dont une avec une chaise pliante et un thermos.", "effects": { "happiness": -3 } },
+        { "chance": 1, "text": "Douche chaude, silence, lever de soleil. Un moment de grâce. Tu t'en souviendras toute ta vie.", "effects": { "happiness": 6, "health": 1 } }
+      ]},
+      { "label": "Te laver au lac", "outcomes": [
+        { "text": "L'eau est à 14 degrés. Tu as crié si fort que le camping entier t'a entendu{e}. Tu es propre et respecté{e}.", "effects": { "health": 2, "happiness": 1 }, "voisin": { "lienTous": 2 } }
+      ]},
+      { "label": "Revendre ta place dans la file", "outcomes": [
+        { "text": "Tu revends ta place 8 € à un Hollandais pressé. Tu ne t'es pas lavé{e}, mais tu es riche.", "effects": { "money": 8, "looks": -1, "karma": -1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0019",
+    "minAge": 8, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["caravane"] },
+    "text": "Tempête sur le camping. L'auvent d'à côté s'envole, survole trois emplacements et atterrit sur ta caravane.",
+    "choices": [
+      { "label": "Aider à tout ranger sous la pluie", "outcomes": [
+        { "text": "Trempé{e}, mais héroïque. Le camping t'offre un pastis et le surnom de « Capitaine ».", "effects": { "karma": 4, "happiness": 4, "health": -1 }, "voisin": { "lienTous": 6, "ambiance": 5 } }
+      ]},
+      { "label": "Garder l'auvent. Il est mieux que le tien", "outcomes": [
+        { "chance": 1, "text": "Personne ne le réclame. Tu as un auvent neuf avec des rayures et un lampion. La vie est belle.", "effects": { "happiness": 4, "karma": -3 } },
+        { "chance": 1, "text": "Le propriétaire reconnaît son auvent à ses rayures. Grosse dispute au milieu des sanitaires.", "effects": { "happiness": -4, "karma": -3 }, "voisin": { "lienTous": -4 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0020",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["villa"] },
+    "text": "Un hélicoptère se pose sur la pelouse commune du quartier. Il en descend un chanteur célèbre qui vient d'acheter la villa du bout de la rue.",
+    "choices": [
+      { "label": "Aller te présenter avec un gâteau", "outcomes": [
+        { "chance": 1, "text": "Il t'invite à prendre un café. Tu repars avec un selfie, un autographe et la promesse d'une invitation à son anniversaire.", "effects": { "happiness": 8, "fame": 1 } },
+        { "chance": 2, "text": "Son garde du corps prend ton gâteau, le teste, le mange et te raccompagne. Le chanteur, tu ne l'as jamais vu.", "effects": { "happiness": -3, "money": -20 } }
+      ]},
+      { "label": "Lancer une pétition contre le bruit des hélicoptères", "outcomes": [
+        { "text": "La pétition recueille 3 signatures. Le chanteur écrit une chanson sur « les voisins jaloux ». Elle devient un tube. C'est sur toi.", "effects": { "happiness": -5, "fame": 2 }, "voisin": { "ambiance": -3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0021",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["villa", "maison"], "chezParents": false },
+    "cible": { "archetypes": ["nouveau_riche"] },
+    "text": "{voisin}, {voisin_qui}, a installé dans son jardin une statue de lion doré de 4 m. Elle regarde ta chambre. La nuit, ses yeux s'allument.",
+    "choices": [
+      { "label": "Lui demander d'éteindre les yeux du lion", "outcomes": [
+        { "chance": 2, "text": "{voisin} accepte, vexé{ve}. Le lion porte désormais des lunettes de soleil. Ce n'est pas mieux.", "effects": { "happiness": 1 }, "voisin": { "lien": -3 } },
+        { "chance": 1, "text": "{voisin} refuse et ajoute une deuxième statue : un aigle. Avec du son.", "effects": { "happiness": -5 }, "voisin": { "lien": -8 } }
+      ]},
+      { "label": "Installer une statue encore plus grande (3 000 €)", "outcomes": [
+        { "text": "Ton girafon en bronze de 5 m domine la rue. Le quartier est devenu une attraction touristique. Il y a des bus.", "effects": { "money": -3000, "happiness": 6, "fame": 1 }, "voisin": { "lien": -6, "ambiance": -4, "souvenir": ["rival_de_statue"] } }
+      ]},
+      { "label": "Acheter des rideaux occultants", "outcomes": [
+        { "text": "Tes rideaux sont si efficaces que tu ne sais plus si c'est le jour ou la nuit. Tu as raté deux rendez-vous.", "effects": { "money": -150, "happiness": 1 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0022",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["maison", "villa", "campagne"], "chezParents": false },
+    "cible": { "archetypes": ["famille_bruyante", "couple_parfait", "nouveau_riche", "voisin_parfait", "jardinier_obsessionnel", "ancien_militaire", "bricoleur_dimanche"] },
+    "text": "Décembre. {voisin}, {voisin_qui}, a éteint toute la rue : 6 000 ampoules, un traîneau grandeur nature et un Père Noël qui fait du rap.",
+    "choices": [
+      { "label": "Contre-attaquer avec tes propres décorations (400 €)", "outcomes": [
+        { "chance": 2, "text": "Ta maison brille plus fort. Un avion de ligne change de cap. {voisin} jure de faire mieux l'an prochain.", "effects": { "money": -400, "happiness": 8 }, "voisin": { "lien": -4, "souvenir": ["rival_de_noel"], "drapeaux": ["guerre_de_noel"] } },
+        { "chance": 1, "text": "Tes guirlandes font sauter le compteur de la rue. Réveillon aux bougies pour tout le monde. Ton nom est maudit.", "effects": { "money": -400, "happiness": -6 }, "voisin": { "lienTous": -8, "ambiance": -6 } }
+      ]},
+      { "label": "Féliciter {voisin}", "outcomes": [
+        { "text": "{voisin} est ému{ve}. {Il} t'offre un renne lumineux. Il clignote en rythme avec ton cœur.", "effects": { "happiness": 4 }, "voisin": { "lien": 10 } }
+      ]},
+      { "label": "Envoyer la facture d'électricité imaginaire de {voisin} au journal local", "outcomes": [
+        { "text": "Le journal publie l'article : « Noël, la folie énergétique ». {voisin} devient célèbre et ravi{ve}. Raté.", "effects": { "happiness": -2 }, "voisin": { "lien": 3 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0023",
+    "minAge": 18, "maxAge": 99, "weight": 1,
+    "quartier": { "drapeaux": ["guerre_de_noel"], "chezParents": false },
+    "cible": { "souvenirs": ["rival_de_noel"] },
+    "text": "Décembre, nouvelle saison de la guerre de Noël. {voisin} a loué une grue pour installer une étoile sur son toit. Elle se voit depuis le pays voisin.",
+    "choices": [
+      { "label": "Engager une fanfare et un vrai renne (1 500 €)", "outcomes": [
+        { "chance": 2, "text": "La fanfare joue, le renne mange la haie de {voisin}. Victoire par K.-O. Le journal titre « Le Noël de la décennie ».", "effects": { "money": -1500, "happiness": 10, "fame": 1 }, "voisin": { "lien": -8, "ambiance": 5 } },
+        { "chance": 1, "text": "Le renne s'échappe et finit dans l'église. La messe de minuit a été mémorable. Amende de 500 €.", "effects": { "money": -2000, "happiness": 3 }, "voisin": { "ambiance": 3 } }
+      ]},
+      { "label": "Proposer une décoration commune pour la rue", "outcomes": [
+        { "text": "Vous décorez toute la rue ensemble. C'est magnifique. Vous vous serrez la main sous le gui. La guerre de Noël est finie.", "effects": { "happiness": 8, "karma": 3 }, "voisin": { "lien": 20, "oublie": ["rival_de_noel"], "retireDrapeaux": ["guerre_de_noel"], "ambiance": 10 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0024",
+    "minAge": 18, "maxAge": 99, "weight": 2,
+    "quartier": { "logements": ["maison", "villa", "campagne"], "chezParents": false },
+    "text": "Deux « artisans » sonnent : ils ont « remarqué que ta toiture était en danger de mort ». Ils peuvent la réparer aujourd'hui, en liquide.",
+    "choices": [
+      { "label": "Accepter (1 800 €)", "outcomes": [
+        { "chance": 3, "text": "Ils ont repeint trois tuiles en gris et sont partis. Ta toiture n'était pas en danger. Ton compte, si.", "effects": { "money": -1800, "happiness": -8 } },
+        { "chance": 1, "text": "Contre toute attente, c'étaient de vrais couvreurs, et ton toit allait vraiment s'effondrer. Tu as eu de la chance, pour une fois.", "effects": { "money": -1800, "happiness": 3 } }
+      ]},
+      { "label": "Leur demander leur numéro de SIRET", "outcomes": [
+        { "text": "Ils te regardent comme si tu avais dit un gros mot et s'enfuient en camionnette. Tu préviens tout le quartier.", "effects": { "happiness": 4, "smarts": 1 }, "voisin": { "lienTous": 3, "ambiance": 2 } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_ext_0025",
+    "minAge": 6, "maxAge": 17, "weight": 3,
+    "quartier": { "logements": ["maison", "villa", "campagne"], "chezParents": true },
+    "cible": { "archetypes": ["jardinier_obsessionnel", "retraite_curieux", "ancien_militaire", "nouveau_riche", "dame_aux_chats"] },
+    "text": "Ton ballon vient de passer par-dessus la haie, dans le jardin de {voisin}, {voisin_qui}. Personne n'a jamais récupéré un ballon chez {voisin}.",
+    "choices": [
+      { "label": "Sonner poliment", "outcomes": [
+        { "chance": 2, "text": "{voisin} te rend le ballon avec un sermon de vingt minutes sur ses bégonias. Tu as appris le mot « bégonia ».", "effects": { "smarts": 1 }, "voisin": { "lien": 4 } },
+        { "chance": 1, "text": "{voisin} ouvre un placard rempli de ballons confisqués depuis 1982. {Il} t'en donne trois. Une légende tombe.", "effects": { "happiness": 6 }, "voisin": { "lien": 10, "souvenir": ["t_a_rendu_les_ballons"] } }
+      ]},
+      { "label": "Escalader la haie en douce", "outcomes": [
+        { "chance": 2, "text": "Mission réussie. Tu as récupéré le ballon et une tomate. Tes copains te regardent comme un héros.", "effects": { "happiness": 6 } },
+        { "chance": 1, "text": "{voisin} t'attendait. Tu as été ramené{e} chez tes parents, par l'oreille.", "effects": { "happiness": -6 }, "voisin": { "lien": -10 } }
+      ]},
+      { "label": "Acheter un nouveau ballon avec ton argent de poche", "outcomes": [
+        { "text": "Sage décision. Ton ancien ballon est visible depuis ta fenêtre, dans son jardin, pour toujours. Un mémorial.", "effects": { "money": -10, "happiness": -1 } }
+      ]}
+    ]
+  }
+]

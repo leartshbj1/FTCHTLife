@@ -1,0 +1,112 @@
+[
+  {
+    "id": "vsn_his_0001",
+    "minAge": 14, "maxAge": 99, "weight": 3,
+    "cible": { "archetypes": ["voisin_mysterieux"], "sansSouvenirs": ["mystere_1"] },
+    "text": "Le livreur s'est trompé : tu as reçu un colis pour {voisin}, {voisin_qui}. Il est froid. Il vibre légèrement. Il est écrit « NE PAS SECOUER » en sept langues.",
+    "choices": [
+      { "label": "Le lui apporter sans poser de question", "outcomes": [
+        { "text": "{voisin} ouvre la porte avant que tu frappes. {Il} prend le colis, te regarde longuement et dit : « Tu es quelqu'un de fiable. » Puis {il} referme.", "effects": { "karma": 2 }, "voisin": { "lien": 10, "souvenir": ["mystere_1", "te_fait_confiance"] } }
+      ]},
+      { "label": "Jeter un œil à l'intérieur avant", "outcomes": [
+        { "chance": 1, "text": "À l'intérieur : une boîte, dans une boîte, dans une boîte. La dernière contient un mot : « Bien essayé. » Tu ne dormiras plus jamais pareil.", "effects": { "happiness": -3 }, "voisin": { "souvenir": ["mystere_1", "sait_que_tu_es_curieux"] } },
+        { "chance": 1, "text": "Une glacière remplie de… homards vivants, avec des petits gilets de sauvetage. Tu refermes. Tu n'as rien vu.", "effects": { "happiness": 2 }, "voisin": { "souvenir": ["mystere_1"] } }
+      ]},
+      { "label": "Le secouer. Un peu.", "outcomes": [
+        { "text": "Le colis émet un bip, puis une petite voix dit « merci de ne pas secouer ». Tu le déposes devant la porte de {voisin} en courant.", "effects": { "happiness": -2 }, "voisin": { "lien": -3, "souvenir": ["mystere_1"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_his_0002",
+    "minAge": 14, "maxAge": 99, "weight": 4,
+    "cible": { "archetypes": ["voisin_mysterieux"], "souvenirs": ["mystere_1"], "sansSouvenirs": ["mystere_2"] },
+    "text": "3 h du matin. Par ta fenêtre, tu vois {voisin} dans la cour, avec une pelle, une lampe frontale et un parapluie fermé. Il ne pleut pas.",
+    "choices": [
+      { "label": "Descendre lui proposer ton aide", "outcomes": [
+        { "chance": 1, "text": "{voisin} te tend la pelle sans un mot. Vous creusez une heure. Puis {il} dit « Pas ici » et vous rebouchez. Étrange complicité.", "effects": { "health": -1, "happiness": 3 }, "voisin": { "lien": 12, "souvenir": ["mystere_2", "a_creuse_avec_toi"] } },
+        { "chance": 1, "text": "{voisin} sursaute, ouvre le parapluie et disparaît derrière. Quand il se referme, {il} n'est plus là. Tu remontes très vite.", "effects": { "happiness": -4 }, "voisin": { "souvenir": ["mystere_2"] } }
+      ]},
+      { "label": "Prendre des photos", "outcomes": [
+        { "text": "Sur toutes tes photos, {voisin} est flou. Le reste est net. Même le parapluie est net.", "effects": { "happiness": -2, "smarts": 1 }, "voisin": { "souvenir": ["mystere_2"] } }
+      ]},
+      { "label": "Fermer les volets et ne jamais en parler", "outcomes": [
+        { "text": "Le lendemain, {voisin} t'offre un pot de miel. Sur l'étiquette : « Merci pour ta discrétion. »", "effects": { "happiness": 1 }, "voisin": { "lien": 6, "souvenir": ["mystere_2", "te_fait_confiance"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_his_0003",
+    "minAge": 16, "maxAge": 99, "weight": 4,
+    "cible": { "archetypes": ["voisin_mysterieux"], "souvenirs": ["mystere_2"], "sansSouvenirs": ["mystere_3"] },
+    "text": "{voisin} frappe chez toi, une valise à la main. « Je dois partir quelque temps. Garde cette clé. Si je ne reviens pas dans un an, ouvre ma cave. »",
+    "choices": [
+      { "label": "Accepter solennellement", "outcomes": [
+        { "text": "Tu prends la clé. Elle est tiède. {voisin} te serre la main, te dit « adieu, peut-être » et part en trottinette.", "effects": { "happiness": 3 }, "voisin": { "lien": 10, "souvenir": ["mystere_3", "tu_as_la_cle"] } }
+      ]},
+      { "label": "Demander ce qu'il y a dans la cave", "outcomes": [
+        { "chance": 1, "text": "« Tout, et rien », répond {voisin}. Tu insistes. « Surtout des confitures. » Tu ne sais pas si c'est une blague.", "effects": { "happiness": 1 }, "voisin": { "souvenir": ["mystere_3", "tu_as_la_cle"] } },
+        { "chance": 1, "text": "{voisin} soupire, reprend la clé et la donne à la retraitée d'en face. Tu as raté ta chance.", "effects": { "happiness": -5 }, "voisin": { "lien": -5, "souvenir": ["mystere_3"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_his_0004",
+    "minAge": 16, "maxAge": 99, "weight": 5, "unique": true,
+    "cible": { "archetypes": ["voisin_mysterieux"], "souvenirs": ["tu_as_la_cle"] },
+    "text": "Un an a passé. Aucune nouvelle de {voisin}. La clé de la cave brûle ta poche depuis des mois.",
+    "choices": [
+      { "label": "Ouvrir la cave", "outcomes": [
+        { "chance": 1, "text": "La cave est remplie de 600 nains de jardin, chacun avec un prénom. Une lettre : « Prends soin d'eux. » Tu es maintenant responsable d'un peuple.", "effects": { "happiness": 5 }, "voisin": { "demenage": true, "drapeaux": ["gardien_des_nains"] } },
+        { "chance": 1, "text": "Un coffre, et dedans 15 000 € avec un mot : « Pour ta discrétion. Ne me cherche pas. » Tu ne le cherches pas. Enfin, un peu.", "effects": { "money": 15000, "happiness": 10 }, "voisin": { "demenage": true } },
+        { "chance": 1, "text": "Un manuscrit de 900 pages : l'histoire de ta vie, racontée par {voisin}, plus drôle que la vraie. Un éditeur veut le publier.", "effects": { "happiness": 6, "fame": 3, "money": 3000 }, "voisin": { "demenage": true } },
+        { "chance": 1, "text": "La cave est vide, à part une chaise. Assis{ve} dessus, {voisin}, qui t'attendait : « Tu as tenu un an. Bravo. » {Il} ne dira jamais à quoi c'était un test.", "effects": { "happiness": 4, "smarts": 2 }, "voisin": { "lien": 20, "devientAmi": true, "oublie": ["tu_as_la_cle"] } }
+      ]},
+      { "label": "Attendre encore, par respect", "outcomes": [
+        { "chance": 1, "text": "Le lendemain, {voisin} revient, bronzé{ve}, avec un chapeau mexicain. « Merci d'avoir attendu. » {Il} récupère la clé et t'offre une pierre qui chante.", "effects": { "happiness": 6, "karma": 4 }, "voisin": { "lien": 20, "devientAmi": true, "oublie": ["tu_as_la_cle"] } },
+        { "chance": 1, "text": "Tu attends. La clé finit sur ton porte-clés, entre celle de ta boîte aux lettres et celle d'un cadenas perdu. Le mystère restera entier.", "effects": { "happiness": -1 }, "voisin": { "demenage": true } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_his_0005",
+    "minAge": 14, "maxAge": 99, "weight": 3,
+    "cible": { "archetypes": ["fantome_boite"], "sansSouvenirs": ["fantome_1"] },
+    "text": "Un mot glissé sous ta porte, d'une écriture parfaite : « Votre plante sur le balcon manque de lumière. — {voisin_nom} ». Personne n'a jamais vu {voisin_nom}.",
+    "choices": [
+      { "label": "Déplacer la plante et répondre par un mot", "outcomes": [
+        { "text": "Tu glisses « Merci ! Qui êtes-vous ? » sous sa porte. Réponse le lendemain : « Votre voisin. » Bon.", "effects": { "happiness": 2 }, "voisin": { "lien": 10, "souvenir": ["fantome_1", "correspondance"] } }
+      ]},
+      { "label": "Attendre derrière sa porte pour le voir", "outcomes": [
+        { "text": "Tu attends six heures. Personne ne sort. Quand tu rentres chez toi, ta plante a été déplacée.", "effects": { "happiness": -3 }, "voisin": { "souvenir": ["fantome_1"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_his_0006",
+    "minAge": 14, "maxAge": 99, "weight": 4,
+    "cible": { "archetypes": ["fantome_boite"], "souvenirs": ["correspondance"], "sansSouvenirs": ["fantome_2"] },
+    "text": "Ta correspondance avec {voisin_nom} dure depuis des mois. Aujourd'hui, le mot dit : « Vous êtes la seule personne à qui je parle. Merci. »",
+    "choices": [
+      { "label": "Proposer enfin de se rencontrer", "outcomes": [
+        { "chance": 1, "text": "Réponse : « Mardi, 15 h, sur le palier. » Tu y vas. La porte s'ouvre de 3 cm. Une main te tend un thé. C'est le meilleur thé de ta vie.", "effects": { "happiness": 8 }, "voisin": { "lien": 15, "souvenir": ["fantome_2", "a_bu_le_the"] } },
+        { "chance": 1, "text": "Plus de mot pendant trois semaines. Puis : « Pas encore. Mais bientôt. » Tu as l'impression d'être dans une série.", "effects": { "happiness": 1 }, "voisin": { "lien": 5, "souvenir": ["fantome_2"] } }
+      ]},
+      { "label": "Continuer comme ça, c'est très bien", "outcomes": [
+        { "text": "Vous vous écrivez chaque semaine. Tu connais tout de {voisin_nom}, sauf sa tête. C'est ta plus belle amitié.", "effects": { "happiness": 6 }, "voisin": { "lien": 15, "devientAmi": true, "souvenir": ["fantome_2"] } }
+      ]}
+    ]
+  },
+  {
+    "id": "vsn_his_0007",
+    "minAge": 16, "maxAge": 99, "weight": 4, "unique": true,
+    "cible": { "archetypes": ["fantome_boite"], "souvenirs": ["fantome_2"] },
+    "text": "Un dernier mot sous ta porte : « Je pars vivre au bord de la mer. Ouvrez la porte de mon appartement, c'est pour vous. — {voisin_nom} »",
+    "choices": [
+      { "label": "Entrer", "outcomes": [
+        { "chance": 2, "text": "L'appartement est vide, sauf un mur entier de photos de ta plante, prises chaque jour depuis des années, et un chèque de 2 000 € « pour l'engrais ».", "effects": { "money": 2000, "happiness": 6 }, "voisin": { "demenage": true } },
+        { "chance": 1, "text": "Au milieu de la pièce, une boîte avec tous tes mots, classés par date, et une photo enfin : {voisin_nom} sourit, au bord de la mer. Tu pleures un peu.", "effects": { "happiness": 4, "karma": 3 }, "voisin": { "demenage": true } }
+      ]}
+    ]
+  }
+]
