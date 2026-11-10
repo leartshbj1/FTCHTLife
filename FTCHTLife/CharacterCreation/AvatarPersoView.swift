@@ -2,13 +2,13 @@ import SwiftUI
 
 /// Avatar dessiné en formes SwiftUI (pas d'images), à partir de l'apparence.
 /// `age` permet au moteur de faire vieillir le visage (cheveux gris, rides).
-struct AvatarView: View {
-    let appearance: Appearance
+struct AvatarPersoView: View {
+    let appearance: CreationAppearance
     var age: Int = 25
     var size: CGFloat = 120
 
     private var hairColor: Color {
-        age >= 65 && appearance.hairColor.isNatural ? HairColor.grey.color : appearance.hairColor.color
+        age >= 65 && appearance.hairColor.isNatural ? CreationHairColor.grey.color : appearance.hairColor.color
     }
 
     private var isBaby: Bool { age < 3 }
@@ -188,11 +188,11 @@ private struct SmileShape: Shape {
 }
 
 #if DEBUG
-struct AvatarView_Previews: PreviewProvider {
+struct AvatarPersoView_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
-            AvatarView(appearance: Appearance(skin: .tan, hairStyle: .long, hairColor: .red, eyes: .green, hasFreckles: true, hasGlasses: false))
-            AvatarView(appearance: Appearance(skin: .deep, hairStyle: .afro, hairColor: .black, eyes: .brown, hasFreckles: false, hasGlasses: true), age: 70)
+            AvatarPersoView(appearance: CreationAppearance(skin: .tan, hairStyle: .long, hairColor: .red, eyes: .green, hasFreckles: true, hasGlasses: false))
+            AvatarPersoView(appearance: CreationAppearance(skin: .deep, hairStyle: .afro, hairColor: .black, eyes: .brown, hasFreckles: false, hasGlasses: true), age: 70)
         }
     }
 }

@@ -34,7 +34,7 @@ struct CharacterCreationView: View {
         }
     }
 
-    private var country: Country? { catalog.country(draft.countryID) }
+    private var country: CreationCountry? { catalog.country(draft.countryID) }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -77,7 +77,7 @@ struct CharacterCreationView: View {
                 .tint(CreationPalette.accent)
             }
 
-            AvatarView(appearance: draft.appearance, age: 25, size: 110)
+            AvatarPersoView(appearance: draft.appearance, age: 25, size: 110)
                 .shadow(color: .black.opacity(0.15), radius: 8, y: 4)
 
             Text(draft.fullName.trimmingCharacters(in: .whitespaces).isEmpty ? "Sans nom" : draft.fullName)
@@ -191,7 +191,7 @@ struct CharacterCreationView: View {
             }
             section("Genre") {
                 HStack(spacing: 10) {
-                    ForEach(Gender.allCases) { g in
+                    ForEach(CreationGender.allCases) { g in
                         ChoiceChip(title: "\(g.symbol) \(g.label)", selected: draft.gender == g) {
                             draft.gender = g
                         }
@@ -239,7 +239,7 @@ struct CharacterCreationView: View {
             }
             section("Ta famille est…") {
                 VStack(spacing: 8) {
-                    ForEach(FamilyWealth.allCases) { w in
+                    ForEach(CreationWealth.allCases) { w in
                         Button {
                             draft.wealth = w
                         } label: {
@@ -265,7 +265,7 @@ struct CharacterCreationView: View {
         }
     }
 
-    private func selectCountry(_ c: Country) {
+    private func selectCountry(_ c: CreationCountry) {
         guard c.id != draft.countryID else { return }
         draft.countryID = c.id
         var rng = SystemRandomNumberGenerator()
@@ -281,20 +281,20 @@ struct CharacterCreationView: View {
         VStack(alignment: .leading, spacing: 22) {
             section("Peau") {
                 HStack(spacing: 10) {
-                    ForEach(SkinTone.allCases) { t in
+                    ForEach(CreationSkinTone.allCases) { t in
                         Swatch(color: t.color, selected: draft.appearance.skin == t) { draft.appearance.skin = t }
                     }
                 }
             }
             section("Coiffure") {
-                FlowChips(items: HairStyle.allCases.map(\.label),
+                FlowChips(items: CreationHairStyle.allCases.map(\.label),
                           selected: draft.appearance.hairStyle.label) { label in
-                    if let h = HairStyle.allCases.first(where: { $0.label == label }) { draft.appearance.hairStyle = h }
+                    if let h = CreationHairStyle.allCases.first(where: { $0.label == label }) { draft.appearance.hairStyle = h }
                 }
             }
             section("Couleur des cheveux") {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 10)], spacing: 10) {
-                    ForEach(HairColor.allCases) { h in
+                    ForEach(CreationHairColor.allCases) { h in
                         Swatch(color: h.color, selected: draft.appearance.hairColor == h) { draft.appearance.hairColor = h }
                             .accessibilityLabel(h.label)
                     }
@@ -302,7 +302,7 @@ struct CharacterCreationView: View {
             }
             section("Yeux") {
                 HStack(spacing: 10) {
-                    ForEach(EyeColor.allCases) { e in
+                    ForEach(CreationEyeColor.allCases) { e in
                         Swatch(color: e.color, selected: draft.appearance.eyes == e) { draft.appearance.eyes = e }
                             .accessibilityLabel(e.label)
                     }
@@ -336,7 +336,7 @@ struct CharacterCreationView: View {
                     }
                 }
             }
-            section("Talent inné") {
+            section("CreationTalent inné") {
                 VStack(spacing: 8) {
                     ForEach(catalog.talents) { t in
                         TraitRow(emoji: t.emoji, name: t.name, description: t.description,
@@ -395,7 +395,7 @@ struct CharacterCreationView: View {
                     summaryLine("Famille", "\(draft.wealth.label) (\(formatMoney(draft.wealth.familyMoney)))")
                     summaryLine("Traits", draft.traitIDs.compactMap { catalog.trait($0) }
                         .map { "\($0.emoji) \($0.name)" }.joined(separator: ", ").ifEmpty("Aucun"))
-                    summaryLine("Talent", draft.talentID.flatMap { catalog.talent($0) }
+                    summaryLine("CreationTalent", draft.talentID.flatMap { catalog.talent($0) }
                         .map { "\($0.emoji) \($0.name)" } ?? "Aucun")
                 }
                 .padding(14)
@@ -531,7 +531,7 @@ private struct TraitRow: View {
     let emoji: String
     let name: String
     let description: String
-    let modifiers: StatModifiers
+    let modifiers: CreationStatModifiers
     let selected: Bool
     let disabled: Bool
     let action: () -> Void

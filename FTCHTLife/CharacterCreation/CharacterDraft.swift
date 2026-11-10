@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Genre
 
-enum Gender: String, Codable, CaseIterable, Identifiable {
+enum CreationGender: String, Codable, CaseIterable, Identifiable {
     case male, female, nonBinary
 
     var id: String { rawValue }
@@ -26,7 +26,7 @@ enum Gender: String, Codable, CaseIterable, Identifiable {
 
 // MARK: - Apparence
 
-enum SkinTone: String, Codable, CaseIterable, Identifiable {
+enum CreationSkinTone: String, Codable, CaseIterable, Identifiable {
     case porcelain, light, beige, tan, brown, deep
     var id: String { rawValue }
 
@@ -42,7 +42,7 @@ enum SkinTone: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-enum HairStyle: String, Codable, CaseIterable, Identifiable {
+enum CreationHairStyle: String, Codable, CaseIterable, Identifiable {
     case bald, buzz, short, curly, long, bun, mohawk, afro
     var id: String { rawValue }
 
@@ -60,7 +60,7 @@ enum HairStyle: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-enum HairColor: String, Codable, CaseIterable, Identifiable {
+enum CreationHairColor: String, Codable, CaseIterable, Identifiable {
     case black, brown, chestnut, blond, red, grey, blue, pink
     var id: String { rawValue }
 
@@ -94,7 +94,7 @@ enum HairColor: String, Codable, CaseIterable, Identifiable {
     var isNatural: Bool { self != .blue && self != .pink }
 }
 
-enum EyeColor: String, Codable, CaseIterable, Identifiable {
+enum CreationEyeColor: String, Codable, CaseIterable, Identifiable {
     case brown, hazel, green, blue, grey
     var id: String { rawValue }
 
@@ -119,20 +119,20 @@ enum EyeColor: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-struct Appearance: Codable, Equatable {
-    var skin: SkinTone
-    var hairStyle: HairStyle
-    var hairColor: HairColor
-    var eyes: EyeColor
+struct CreationAppearance: Codable, Equatable {
+    var skin: CreationSkinTone
+    var hairStyle: CreationHairStyle
+    var hairColor: CreationHairColor
+    var eyes: CreationEyeColor
     var hasFreckles: Bool
     var hasGlasses: Bool
 
-    static func random<G: RandomNumberGenerator>(using rng: inout G) -> Appearance {
-        Appearance(
-            skin: SkinTone.allCases.randomElement(using: &rng)!,
-            hairStyle: HairStyle.allCases.filter { $0 != .bald }.randomElement(using: &rng)!,
-            hairColor: HairColor.allCases.filter(\.isNatural).randomElement(using: &rng)!,
-            eyes: EyeColor.allCases.randomElement(using: &rng)!,
+    static func random<G: RandomNumberGenerator>(using rng: inout G) -> CreationAppearance {
+        CreationAppearance(
+            skin: CreationSkinTone.allCases.randomElement(using: &rng)!,
+            hairStyle: CreationHairStyle.allCases.filter { $0 != .bald }.randomElement(using: &rng)!,
+            hairColor: CreationHairColor.allCases.filter(\.isNatural).randomElement(using: &rng)!,
+            eyes: CreationEyeColor.allCases.randomElement(using: &rng)!,
             hasFreckles: Int.random(in: 0..<5, using: &rng) == 0,
             hasGlasses: Int.random(in: 0..<6, using: &rng) == 0
         )
@@ -141,7 +141,7 @@ struct Appearance: Codable, Equatable {
 
 // MARK: - Milieu familial
 
-enum FamilyWealth: String, Codable, CaseIterable, Identifiable {
+enum CreationWealth: String, Codable, CaseIterable, Identifiable {
     case broke, modest, comfortable, rich, filthyRich
     var id: String { rawValue }
 
@@ -179,7 +179,7 @@ enum FamilyWealth: String, Codable, CaseIterable, Identifiable {
 
 // MARK: - Stats de départ
 
-struct StartingStats: Codable, Equatable {
+struct CreationStats: Codable, Equatable {
     var health: Int
     var happiness: Int
     var smarts: Int
@@ -187,7 +187,7 @@ struct StartingStats: Codable, Equatable {
 
     static func clamp(_ v: Int) -> Int { min(100, max(0, v)) }
 
-    mutating func apply(_ m: StatModifiers) {
+    mutating func apply(_ m: CreationStatModifiers) {
         health = Self.clamp(health + m.health)
         happiness = Self.clamp(happiness + m.happiness)
         smarts = Self.clamp(smarts + m.smarts)
@@ -195,7 +195,7 @@ struct StartingStats: Codable, Equatable {
     }
 }
 
-struct StatModifiers: Codable, Equatable {
+struct CreationStatModifiers: Codable, Equatable {
     var health: Int = 0
     var happiness: Int = 0
     var smarts: Int = 0
@@ -220,23 +220,23 @@ struct StatModifiers: Codable, Equatable {
 struct CharacterDraft: Codable, Equatable {
     var firstName: String
     var lastName: String
-    var gender: Gender
+    var gender: CreationGender
     var countryID: String
     var city: String
     var birthYear: Int
-    var appearance: Appearance
-    var wealth: FamilyWealth
+    var appearance: CreationAppearance
+    var wealth: CreationWealth
     var traitIDs: [String]
     var talentID: String?
     /// Stats « tirées à la naissance », avant les bonus des traits/talent.
-    var baseStats: StartingStats
+    var baseStats: CreationStats
 
     static let maxTraits = 2
 
     var fullName: String { "\(firstName) \(lastName)" }
 
     /// Stats finales = base + traits + talent.
-    func finalStats(catalog: CreationCatalog) -> StartingStats {
+    func finalStats(catalog: CreationCatalog) -> CreationStats {
         var s = baseStats
         for id in traitIDs {
             if let t = catalog.trait(id) { s.apply(t.modifiers) }
@@ -252,19 +252,19 @@ struct CharacterDraft: Codable, Equatable {
             && traitIDs.count <= Self.maxTraits
     }
 
-    static func randomStats<G: RandomNumberGenerator>(using rng: inout G) -> StartingStats {
+    static func randomStats<G: RandomNumberGenerator>(using rng: inout G) -> CreationStats {
         // Somme de deux dés : on est plus souvent moyen que génie.
         func roll() -> Int { Int.random(in: 10...55, using: &rng) + Int.random(in: 10...45, using: &rng) }
-        return StartingStats(health: StartingStats.clamp(roll() + 10), happiness: roll(), smarts: roll(), looks: roll())
+        return CreationStats(health: CreationStats.clamp(roll() + 10), happiness: roll(), smarts: roll(), looks: roll())
     }
 
     static func random<G: RandomNumberGenerator>(catalog: CreationCatalog, using rng: inout G) -> CharacterDraft {
-        let gender: Gender = Int.random(in: 0..<20, using: &rng) == 0
+        let gender: CreationGender = Int.random(in: 0..<20, using: &rng) == 0
             ? .nonBinary
             : (Bool.random(using: &rng) ? .male : .female)
         let country = catalog.countries.randomElement(using: &rng) ?? CreationCatalog.fallback.countries[0]
         let wealthRoll = Int.random(in: 0..<100, using: &rng)
-        let wealth: FamilyWealth
+        let wealth: CreationWealth
         switch wealthRoll {
         case ..<15: wealth = .broke
         case ..<55: wealth = .modest
