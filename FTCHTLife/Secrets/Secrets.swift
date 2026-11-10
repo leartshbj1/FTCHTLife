@@ -142,6 +142,7 @@ enum Secrets {
         let candidats = BibliothequeSecrets.modeles.filter {
             $0.seulementSignal != true && !dejaPris.contains($0.id) && $0.resumeJoueur != nil
                 && $0.peutEtrePorte(par: "joueur", age: j.age, genre: j.genre)
+                && proches(de: j, existent: $0.blesse ?? [])
         }
         guard let m = tirage(candidats, poids: { $0.poids ?? 1 }) else { return }
         let s = creer(m, porteur: nil, age: j.age)
@@ -729,6 +730,11 @@ enum Secrets {
         case "fratrie": return type == .frere || type == .soeur
         default: return type.rawValue == cle
         }
+    }
+
+    /// Vrai si le joueur a au moins un proche vivant de chaque type cité (ex. une liaison suppose un partenaire).
+    static func proches(de j: Joueur, existent cles: [String]) -> Bool {
+        cles.allSatisfy { cle in j.relations.contains { $0.vivant && correspond($0.type, cle) } }
     }
 
     static func hasard(_ p: Double) -> Bool { Double.random(in: 0..<1) < p }
