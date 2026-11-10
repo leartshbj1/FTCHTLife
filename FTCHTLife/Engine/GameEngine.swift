@@ -272,7 +272,7 @@ final class GameEngine: ObservableObject {
         "de vieillesse, en râlant contre la météo",
     ]
 
-    static func chanceDeces(age: Int, sante: Int) -> Double {
+    nonisolated static func chanceDeces(age: Int, sante: Int) -> Double {
         let base: Double
         if age < 50 { base = 0.0005 }
         else { base = pow(Double(age - 50) / 50, 4) * 0.6 }
@@ -372,7 +372,7 @@ final class GameEngine: ObservableObject {
     }
 
     /// Tire un élément au hasard en tenant compte de son poids.
-    static func tirage<T>(_ liste: [T], poids: (T) -> Double) -> T? {
+    nonisolated static func tirage<T>(_ liste: [T], poids: (T) -> Double) -> T? {
         let total = liste.reduce(0.0) { $0 + max(0, poids($1)) }
         guard total > 0 else { return liste.first }
         var r = Double.random(in: 0..<total)
@@ -383,7 +383,7 @@ final class GameEngine: ObservableObject {
         return liste.last
     }
 
-    static func tirage(_ issues: [Issue]) -> Issue? {
+    nonisolated static func tirage(_ issues: [Issue]) -> Issue? {
         tirage(issues) { $0.chance ?? 1 }
     }
 
@@ -419,7 +419,7 @@ final class GameEngine: ObservableObject {
         }
     }
 
-    static func correspond(_ type: TypeRelation, _ cle: String) -> Bool {
+    nonisolated static func correspond(_ type: TypeRelation, _ cle: String) -> Bool {
         switch cle {
         case "mother": return type == .mere
         case "father": return type == .pere

@@ -116,7 +116,7 @@ extension GameEngine {
     }
 
     /// Tags à ajouter à `tags(_:)` pour les événements de retombées (Data/Tele/Evenements).
-    static func teleTags(_ j: Joueur) -> Set<String> {
+    nonisolated static func teleTags(_ j: Joueur) -> Set<String> {
         let e = TeleStockage.lire(j)
         let c = e.celebrite(age: j.age)
         var t: Set<String> = []
@@ -130,7 +130,7 @@ extension GameEngine {
 
     /// Variables du module : {emission}, {rival}, {crush}, {manche}, {gain}, {culte}, {celebrite}.
     /// Le moteur peut l'appeler dans `remplir` pour que les événements de retombées puissent utiliser {culte}.
-    static func teleRemplir(_ texte: String, _ j: Joueur, partie: TelePartie? = nil, gain: Int? = nil) -> String {
+    nonisolated static func teleRemplir(_ texte: String, _ j: Joueur, partie: TelePartie? = nil, gain: Int? = nil) -> String {
         var t = texte
         let etat = TeleStockage.lire(j)
         if let p = partie {
@@ -166,7 +166,7 @@ extension GameEngine {
     }
 
     /// Chance de réussir un test : 50 % quand la stat égale la difficulté.
-    static func teleChance(valeur: Int, difficulte: Int) -> Double {
+    nonisolated static func teleChance(valeur: Int, difficulte: Int) -> Double {
         min(0.92, max(0.08, 0.5 + Double(valeur - difficulte) / 110))
     }
 
@@ -240,7 +240,7 @@ extension GameEngine {
         return (partie, intro)
     }
 
-    static func teleNomCandidat(_ g: Genre) -> String {
+    nonisolated static func teleNomCandidat(_ g: Genre) -> String {
         (g == .homme ? teleCandidatsH : teleCandidatsF).randomElement()!
     }
 
@@ -494,7 +494,7 @@ extension GameEngine {
     }
 
     /// Joker « Le public » : pourcentages par réponse, dans l'ordre donné.
-    static func teleQuizPublic(_ q: TeleQuestion, reponses: [String]) -> [Int] {
+    nonisolated static func teleQuizPublic(_ q: TeleQuestion, reponses: [String]) -> [Int] {
         let force = q.niveau == 1 ? 55.0 : (q.niveau == 2 ? 38.0 : 24.0)
         var poids = reponses.map { $0 == q.bonne ? force + Double.random(in: 0...25) : Double.random(in: 5...30) }
         let total = poids.reduce(0, +)

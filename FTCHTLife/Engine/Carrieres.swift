@@ -15,7 +15,7 @@ extension GameEngine {
         return Self.profilCarriere(j)
     }
 
-    static func profilCarriere(_ j: Joueur) -> CareerProfile {
+    nonisolated static func profilCarriere(_ j: Joueur) -> CareerProfile {
         var p = CareerProfile(firstName: j.prenom, isFemale: j.genre == .femme, age: j.age,
                               education: CareerEducation(diplomeRaw: j.diploma))
         if let f = j.filiereDiplome { p.majors = CareerMajorMapping.majors(forFiliereRaw: f.rawValue) }
@@ -109,7 +109,7 @@ extension GameEngine {
     }
 
     /// Transforme un événement de travail du module en événement ordinaire (affiché comme les autres).
-    static func evenementTravail(_ ev: CareerWorkEvent, _ c: CareerJobState, _ p: CareerProfile) -> Evenement {
+    nonisolated static func evenementTravail(_ ev: CareerWorkEvent, _ c: CareerJobState, _ p: CareerProfile) -> Evenement {
         let moteur = CareerEngine()
         let career = moteur.catalog.career(c.careerId)
         let choix = ev.choices.map { ch in

@@ -21,18 +21,20 @@ TAGS |= {"testament","testament_secret","testament_annonce","heritier","heritier
 LOISIRS_TAG = re.compile(r"^((pratique|habitue)_[a-z0-9_]+|sportif|blesse|abonne|aventurier|trophee)$")
 # Tags du module « Vivre à l'étranger » (docs/ETRANGER_EVENTS.md), plus pays_xx, loi_xx, zone_xx.
 TAGS |= {"etranger","expat_nouveau","expat_installe","langue_faible","bilingue","polyglotte","binational","de_retour"}
-TAG_PREFIXES = ("pays_","loi_","zone_","origine_")
-SPECIAL = {"death","newFriend","relationships","setFlags"}
-SPECIAL = {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
+TAG_PREFIXES = ("pays_","loi_","zone_","origine_","famille_")
+# Modules Casier et Réputation familiale.
+TAGS |= {"casier","tig","casier_lourd","casier_efface"}
+SPECIAL |= {"death","newFriend","relationships","setFlags"}
+SPECIAL |= {"death","newFriend","relationships","setFlags","dreamMarks"}  # dreamMarks : voir docs/reves-format.md
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
 COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags","skills"}
-TAGS = {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart",
+TAGS |= {"male","female","baby","school","university","job","adult","unemployed","retired","rich","poor","friend","mother","father","siblings","partner","children","sick","attractive","smart",
         # module vie (FTCHTLife/Systems/VieSysteme.swift, tags)
         "prison","record","malade","bien_portant","addiction","pregnant","ex","parents","grandparents","grandchildren","dating","engaged","married","single"}
-SPECIAL = {"death","newFriend","relationships","setFlags","clearFlags","followUps","vie"}
-PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e","enfant","ex","codetenu","grandparent"}
-COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
-SPECIAL = {"death","newFriend","relationships","setFlags","skills"}  # skills : docs/COMPETENCES.md
+SPECIAL |= {"death","newFriend","relationships","setFlags","clearFlags","followUps","vie"}
+PH |= {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e","enfant","ex","codetenu","grandparent"}
+COND |= {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
+SPECIAL |= {"death","newFriend","relationships","setFlags","skills"}  # skills : docs/COMPETENCES.md
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
     for k,v in e.items():
@@ -88,7 +90,7 @@ def main():
                 if abs(s-1)>0.011: errs.append(f"{cw}: somme des chances = {s}")
                 for oi,o in enumerate(outs):
                     check_text(o.get("text"), f"{cw}/o{oi}", errs); check_effects(o.get("effects",{}), f"{cw}/o{oi}", errs)
-    for e in errs[:200]: print("ERREUR", e)
+    for e in errs: print("ERREUR", e)
     print(f"{n} événements, {len(files)} fichiers, {len(errs)} erreurs")
     sys.exit(1 if errs else 0)
 if __name__=="__main__": main()
