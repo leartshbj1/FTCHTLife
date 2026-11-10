@@ -145,6 +145,8 @@ Tout le code est dans `FTCHTLife/Shop/`. Le seul changement hors de ce dossier e
   - `ShopHooks.happiness` / `ShopHooks.health` pour borner bonheur et santé ;
   - `ShopHooks.priceMultiplier = { MondeJournal.multiplicateurPrix($0, etat: …) }` (Journal du monde),
     avec les clés de `ShopCategory.mondeKey` et `"voyages"`.
+- **Voisinage** : `ShopHooks.emmenagement = { nom, _, proprio in engine.voisinageEmmenager(logement: .depuis(nom), proprietaire: proprio) }`
+    (appelé sur le fil principal à chaque achat de logement, location ou emménagement).
 - **Cadeaux** : `ShopEngine.removeForGift(id, &j)` retire un bijou, une montre, un vêtement, un gadget ou une œuvre
   pour l'offrir (module amour).
 

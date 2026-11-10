@@ -295,11 +295,13 @@ struct ShopItemDetailView: View {
     }
 
     private func acheter(_ mode: ShopEngine.PaymentMode) {
+        let avant = engine.joueur?.possessions?.residence
         var resultat = ShopResult(ok: false, message: "")
         engine.modifier { j in
             resultat = ShopEngine.buy(item, listing: listing, mode: mode, &j)
             if resultat.ok { engine.ajouterLigne(&j, resultat.message) }
         }
+        engine.notifierEmmenagementBoutique(avant: avant)
         achatReussi = resultat.ok
         message = resultat.message
     }
@@ -469,8 +471,10 @@ struct ShopOwnedDetailView: View {
     }
 
     private func faire(_ action: (inout Joueur) -> ShopResult) {
+        let avant = engine.joueur?.possessions?.residence
         var r = ShopResult(ok: false, message: "")
         engine.modifier { r = action(&$0) }
+        engine.notifierEmmenagementBoutique(avant: avant)
         message = r.message
     }
 
@@ -565,10 +569,12 @@ struct ShopHousingView: View {
 
     private func faire(_ residence: ShopResidence) {
         var r = ShopResult(ok: false, message: "")
+        let avant = engine.joueur?.possessions?.residence
         engine.modifier { j in
             r = ShopEngine.moveInto(residence, &j)
             if r.ok { engine.ajouterLigne(&j, r.message) }
         }
+        engine.notifierEmmenagementBoutique(avant: avant)
         message = r.message
     }
 }

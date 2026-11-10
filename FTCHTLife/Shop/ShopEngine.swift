@@ -9,6 +9,9 @@ enum ShopHooks {
     static var canAfford: (_ price: Int, _ balance: Int) -> Bool = { $0 <= $1 }
     /// Multiplicateur de prix selon l'actualité (Journal du monde). Clé : `ShopCategory.mondeKey` ou "voyages".
     static var priceMultiplier: (_ categorie: String) -> Double = { _ in 1 }
+    /// Appelé quand le joueur change de logement (achat, location, emménagement).
+    /// Ex. module Voisinage : `ShopHooks.emmenagement = { nom, _, proprio in engine.voisinageEmmenager(logement: .depuis(nom), proprietaire: proprio) }`.
+    static var emmenagement: @MainActor (_ nom: String, _ id: String, _ proprietaire: Bool) -> Void = { _, _, _ in }
 }
 
 /// Toute la logique argent et biens. Sans état : tout est dans `Possessions`.
