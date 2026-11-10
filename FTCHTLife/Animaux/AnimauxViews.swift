@@ -321,7 +321,7 @@ struct AnimalEvenementView: View {
                 Spacer()
                 VStack(spacing: 10) {
                     ForEach(Array(choix.enumerated()), id: \.offset) { i, c in
-                        bouton(c.label) { engine.choisirAnimal(aff.id, choix: i, cle: cle) }
+                        bouton(engine.libelleChoixAnimal(c.label, animalId: aff.animalId, cle: cle)) { engine.choisirAnimal(aff.id, choix: i, cle: cle) }
                     }
                 }
             } else {

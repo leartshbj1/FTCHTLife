@@ -235,6 +235,12 @@ extension GameEngine {
         joueur?[keyPath: cle]?.enAttente.first { $0.id == id }
     }
 
+    /// Libellé d'un choix avec les variables remplacées ({animal}, {espece}…).
+    func libelleChoixAnimal(_ label: String, animalId: UUID, cle: CleAnimaux) -> String {
+        guard let j = joueur, let a = j[keyPath: cle]?.animaux.first(where: { $0.id == animalId }) else { return label }
+        return remplirAnimal(label, a, j)
+    }
+
     /// Le joueur répond à un événement d'animal.
     func choisirAnimal(_ attenteId: UUID, choix index: Int, cle: CleAnimaux) {
         guard var j = joueur, var etat = j[keyPath: cle],
@@ -252,7 +258,7 @@ extension GameEngine {
         let c = choix[index]
         let issue = Animaux.tirer(c.outcomes, poids: { $0.chance ?? 1 })
         let resultat = remplirAnimal(issue?.text ?? "Il ne s'est rien passé.", a, j)
-        ajouterLigne(&j, "🐾 " + attente.texte + " → " + c.label + ". " + resultat)
+        ajouterLigne(&j, "🐾 " + attente.texte + " → " + remplirAnimal(c.label, a, j) + ". " + resultat)
         etat.enAttente[k].resultat = resultat
         appliquerEffetsAnimal(issue?.pet, animalId: a.id, etat: &etat, j: &j)
         if let eff = issue?.effects { appliquer(eff, &j) }
