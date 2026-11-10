@@ -99,6 +99,7 @@ extension GameEngine {
     func tagsModules(_ j: Joueur) -> Set<String> {
         var t: Set<String> = []
         t.formUnion(VieSysteme.tags(j))
+        t.formUnion(ExpatMoteur.tags(j.etatExpat, j))
         t.formUnion(CasierSysteme.tags(j.casier))
         t.formUnion(Competences.tags(j))
         t.formUnion(EntrepriseMoteur.tags(j.entreprises))
@@ -142,6 +143,9 @@ extension GameEngine {
         var deces: String?
 
         lignes += scolPasserAnnee(&j, actionsPassees: actionsPassees)
+        var expat = j.etatExpat
+        lignes += ExpatMoteur.finAnnee(&j, &expat)
+        j.etranger = expat
         lignes += VieSysteme.vieillir(&j)
         if var c = j.casier {
             lignes += CasierSysteme.passerAnnee(&c, joueur: j, enPrison: j.vie?.justice.enPrison ?? false)

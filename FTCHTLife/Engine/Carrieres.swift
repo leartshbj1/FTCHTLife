@@ -190,6 +190,7 @@ extension GameEngine {
             }
         }
         if !draft.city.isEmpty { j.ville = draft.city }
+        if !draft.countryID.isEmpty { j.etranger = ExpatEtat.naissance(pays: draft.countryID, ville: j.ville) }
         let s = draft.finalStats(catalog: .shared)
         j.stats.sante = Shkurtaaa.statNaissance(s.health)
         j.stats.bonheur = Shkurtaaa.statNaissance(s.happiness)

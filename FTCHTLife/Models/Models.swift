@@ -242,6 +242,8 @@ struct Joueur: Codable, Equatable {
     /// Emploi du module Métiers (Careers) et CV.
     var carriere: CareerJobState? = nil
     var historiqueCarriere: [CareerRecord]? = nil
+    /// Module « Vivre à l'étranger » (docs/ETRANGER.md).
+    var etranger: ExpatEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
@@ -275,4 +277,9 @@ struct Joueur: Codable, Equatable {
         if age >= 65 { return g("Retraité", "Retraitée") }
         return "Sans emploi"
     }
+}
+
+extension Joueur {
+    /// État du module Étranger, créé à la volée pour les vieilles sauvegardes.
+    var etatExpat: ExpatEtat { etranger ?? ExpatEtat.naissance(pays: "fr", ville: ville, age: age) }
 }
