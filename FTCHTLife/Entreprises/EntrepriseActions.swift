@@ -149,7 +149,7 @@ extension GameEngine {
     }
 
     static func iconeEvenementEntreprise(_ kind: String?) -> String {
-        switch kind {
+        switch kind ?? "crise" {
         case "opportunite": return "✨"
         case "equipe": return "👥"
         case "absurde": return "🌀"

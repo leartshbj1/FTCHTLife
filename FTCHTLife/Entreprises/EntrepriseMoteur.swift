@@ -93,12 +93,14 @@ enum EntrepriseMoteur {
         var lignes: [String] = []
         for e in etat.actives {
             let type = EntrepriseCatalogue.type(e.typeId)
-            lignes.append("Fondateur·rice de « \(e.nom) » (\(type?.nom.lowercased() ?? "entreprise")), \(type?.nomNiveau(e.niveau) ?? "") au moment de sa mort.")
+            lignes.append("A fondé « \(e.nom) » (\(type?.nom.lowercased() ?? "entreprise")), toujours en activité.")
         }
         for a in etat.archives {
             let type = EntrepriseCatalogue.type(a.typeId)?.nom.lowercased() ?? "entreprise"
             if a.fin == "vendue" {
                 lignes.append("A revendu « \(a.nom) » (\(type)) pour \(Format.argent(a.montant)).")
+            } else if a.fin == "fermee" {
+                lignes.append("A fermé « \(a.nom) » (\(type)) après \(a.ageFin - a.ageDebut) an\(a.ageFin - a.ageDebut > 1 ? "s" : "") sans trop de casse.")
             } else {
                 lignes.append("A mené « \(a.nom) » (\(type)) droit à la faillite en \(a.ageFin - a.ageDebut) an\(a.ageFin - a.ageDebut > 1 ? "s" : "").")
             }
@@ -205,7 +207,7 @@ enum EntrepriseMoteur {
         "Ton banquier t'a serré la main en souriant. Méfie-toi.",
         "Tu as imprimé 5 000 cartes de visite. Il y a une faute dans ton nom.",
         "Ta famille trouve que c'est « courageux ». Ça veut dire « idiot », mais poli.",
-        "Tu t'es auto-proclamé·e PDG. Personne n'a applaudi, mais toi si.",
+        "Tu t'es auto-proclamé{e} PDG. Personne n'a applaudi, sauf toi.",
     ]
 
     static let phrasesPub = [
