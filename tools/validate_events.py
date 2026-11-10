@@ -11,6 +11,8 @@ SKILLS = {"anglais","espagnol","allemand","italien","albanais","japonais","guita
 TAGS |= {"permis_scooter","permis_voiture","permis_moto","permis_poids_lourd","permis_bus","permis_bateau","licence_pilote","licence_helico","permis_chasse","permis_armes","carte_peche","brevet_drone","permis_fusee","conducteur","sans_permis","permis_probatoire","permis_points_bas","permis_suspendu","permis_annule","conduit_sans_permis","faux_permis","pilote","chasseur","chauffard"}
 # Tags posés par le module Placements (PlacementsMoteur.tags)
 TAGS |= {"investisseur","crypto","proprietaire_bailleur","epargnant","ruine_crypto"}
+# Étiquettes ajoutées par le module casino (CasinoSysteme.tags).
+TAGS |= {"gambled","gambler","gambling_addict","gambler_recovering","casino_debt","casino_vip","casino_banned","casino_winner","casino_ruined"}
 SPECIAL = {"death","newFriend","relationships","setFlags"}
 PH = {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e"}
 COND = {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags","skills"}
