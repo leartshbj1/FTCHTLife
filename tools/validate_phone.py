@@ -6,14 +6,21 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = os.path.join(ROOT, "FTCHTLife/Resources/Data/Phone")
 STATS = {"happiness", "health", "smarts", "looks", "money", "karma", "stress", "fame"}
 REL = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
-SPECIAL = {"newFriend", "relationships", "death", "followers", "followersPct"}
+SPECIAL = {"newFriend", "relationships", "death", "followers", "followersPct", "coeur", "setFlags", "clearFlags", "followUps"}
 TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemployed", "retired", "rich", "poor",
         "friend", "mother", "father", "siblings", "partner", "children", "sick", "attractive", "smart",
-        "phone", "influencer", "star_reseaux", "bad_buzz", "sponsorise"}
+        "phone", "influencer", "star_reseaux", "bad_buzz", "sponsorise",
+        # module vie et module Cœur (docs/COEUR.md), tags des réseaux
+        "dating", "engaged", "married", "single", "ex", "pregnant", "parents",
+        "liaison", "liaison_longue", "liaison_ultimatum", "liaison_soupcon", "liaison_hetero", "ancien_amant",
+        "grossesse_liaison", "enfant_cache", "enfant_cache_adulte", "paternite_douteuse", "partenaire_infidele",
+        "soupcon_partenaire", "trahi", "crise_couple", "therapie_couple", "relation_libre", "ecart_secret", "infidele",
+        "infidele_recidiviste", "voustubeur", "tiktaceur", "onlyfesses", "onlyfesses_star", "onlyfesses_ancien",
+        "onlyfesses_connu"}
 COND = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner", "requiresSchool", "tags", "excludeTags"}
 PH = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie", "partenaire", "metier", "e",
-      "app", "abonnes", "gain", "marque", "montant", "match"}
-APPS_POST = {"pozz", "tremousse", "ronchon"}
+      "app", "abonnes", "gain", "marque", "montant", "match", "amant", "amant_role", "amant_il", "enfant_cache", "ex", "enfant"}
+APPS_POST = {"pozz", "tremousse", "ronchon", "voustube", "onlyfesses"}
 APPS = APPS_POST | {"pecho", "any"}
 POST_STATS = {"looks", "smarts", "happiness", "karma", "none"}
 PALIERS = ["flop", "moyen", "succes", "buzz", "badbuzz"]
@@ -68,6 +75,12 @@ def effets(e, w):
         elif k == "death":
             if not isinstance(v, str):
                 err(w, "death doit être un texte")
+        elif k == "coeur":
+            if not isinstance(v, dict):
+                err(w, "coeur doit être un objet")
+        elif k in ("setFlags", "clearFlags", "followUps"):
+            if not isinstance(v, list):
+                err(w, f"{k} doit être une liste")
         else:
             err(w, f"clé d'effet inconnue {k}")
 

@@ -5,38 +5,46 @@ import Foundation
 
 // MARK: - Applis
 
-/// Les applis inventées du téléphone.
+/// Les applis inventées du téléphone (noms parodiques).
+/// Les identifiants d'origine (pozz, tremousse, ronchon) restent pour les sauvegardes et les données.
 enum PhoneApp: String, Codable, CaseIterable, Identifiable {
-    case pozz, tremousse, ronchon, pecho
+    case pozz, tremousse, ronchon, pecho, voustube, onlyfesses
 
     var id: String { rawValue }
 
     /// Les applis où l'on publie (Pécho est une appli de rencontre).
-    static let reseaux: [PhoneApp] = [.pozz, .tremousse, .ronchon]
+    static let reseaux: [PhoneApp] = [.pozz, .tremousse, .ronchon, .voustube, .onlyfesses]
+
+    /// Les réseaux publics : leurs abonnés comptent dans le total (OnlyFesses a des abonnés payants, à part).
+    static let publics: [PhoneApp] = [.pozz, .tremousse, .ronchon, .voustube]
 
     var nom: String {
         switch self {
-        case .pozz: return "Pozz"
-        case .tremousse: return "Trémousse"
-        case .ronchon: return "Ronchon"
+        case .pozz: return "Instaglam"
+        case .tremousse: return "TikTac"
+        case .ronchon: return "Twitteur"
         case .pecho: return "Pécho"
+        case .voustube: return "VousTube"
+        case .onlyfesses: return "OnlyFesses"
         }
     }
 
     var icone: String {
         switch self {
         case .pozz: return "camera.aperture"
-        case .tremousse: return "play.rectangle.fill"
-        case .ronchon: return "exclamationmark.bubble.fill"
+        case .tremousse: return "music.note"
+        case .ronchon: return "bird.fill"
         case .pecho: return "heart.circle.fill"
+        case .voustube: return "play.rectangle.fill"
+        case .onlyfesses: return "lock.heart.fill"
         }
     }
 
     var ageMin: Int {
         switch self {
-        case .pozz, .tremousse: return 13
+        case .pozz, .tremousse, .voustube: return 13
         case .ronchon: return 15
-        case .pecho: return 18
+        case .pecho, .onlyfesses: return 18
         }
     }
 
@@ -46,6 +54,8 @@ enum PhoneApp: String, Codable, CaseIterable, Identifiable {
         case .tremousse: return "15 secondes de gloire, renouvelables."
         case .ronchon: return "Dis ce que tu penses. Tout le monde s'en fiche, mais fort."
         case .pecho: return "L'amour à portée de pouce."
+        case .voustube: return "Diffuse-toi toi-même."
+        case .onlyfesses: return "Le contenu que ta grand-mère ne doit jamais voir."
         }
     }
 
@@ -56,8 +66,13 @@ enum PhoneApp: String, Codable, CaseIterable, Identifiable {
         case .tremousse: return "Ici, il faut de l'énergie (bonheur)."
         case .ronchon: return "Ici, il faut de l'esprit (intelligence)."
         case .pecho: return "Ici, l'apparence aide. Beaucoup."
+        case .voustube: return "Ici, il faut du fond (intelligence) et du bon matériel."
+        case .onlyfesses: return "Ici, l'apparence paie. Mais tout finit par se savoir."
         }
     }
+
+    /// Mot pour les abonnés de cette appli.
+    var motAbonnes: String { self == .onlyfesses ? "abonnés payants" : "abonnés" }
 }
 
 // MARK: - Données JSON (Resources/Data/Phone)
@@ -272,21 +287,30 @@ struct PhoneEtat: Codable, Equatable {
     var paliersAnnonces: Int = 0
     /// Meilleur total d'abonnés atteint dans la vie.
     var recordAbonnes: Int = 0
+    /// VousTube : niveau du matériel (0 à 3).
+    var materielTube: Int = 0
+    /// OnlyFesses : prix de l'abonnement mensuel en euros, compte fermé, qui l'a découvert.
+    var prixOnly: Int = 10
+    var onlyFerme: Bool = false
+    var onlyDecouvertPar: [String] = []
 
     enum CodingKeys: String, CodingKey {
         case aTelephone, comptes, publications, messages, contrats, matchs, recherche
         case messagesVus, sponsorsVus, postsAnnee, actionsAnnee, badBuzzRestant, detoxCetteAnnee
-        case paliersAnnonces, recordAbonnes
+        case paliersAnnonces, recordAbonnes, materielTube, prixOnly, onlyFerme, onlyDecouvertPar
     }
 
     func compte(_ app: PhoneApp) -> PhoneCompte { comptes[app.rawValue] ?? PhoneCompte() }
 
-    var abonnesTotal: Int { PhoneApp.reseaux.reduce(0) { $0 + compte($1).abonnes } }
+    var abonnesTotal: Int { PhoneApp.publics.reduce(0) { $0 + compte($1).abonnes } }
 
-    /// Le compte qui a le plus d'abonnés (Pozz par défaut).
+    /// Le compte public qui a le plus d'abonnés (Instaglam par défaut).
     var appPrincipale: PhoneApp {
-        PhoneApp.reseaux.max { compte($0).abonnes < compte($1).abonnes } ?? .pozz
+        PhoneApp.publics.max { compte($0).abonnes < compte($1).abonnes } ?? .pozz
     }
+
+    /// Compte OnlyFesses ouvert (au moins une publication) et pas fermé.
+    var onlyActif: Bool { !onlyFerme && compte(.onlyfesses).posts > 0 }
 
     var nonLus: Int { messages.filter { !$0.lu }.count }
 
@@ -313,6 +337,10 @@ extension PhoneEtat {
         detoxCetteAnnee = try c.decodeIfPresent(Bool.self, forKey: .detoxCetteAnnee) ?? false
         paliersAnnonces = try c.decodeIfPresent(Int.self, forKey: .paliersAnnonces) ?? 0
         recordAbonnes = try c.decodeIfPresent(Int.self, forKey: .recordAbonnes) ?? 0
+        materielTube = try c.decodeIfPresent(Int.self, forKey: .materielTube) ?? 0
+        prixOnly = try c.decodeIfPresent(Int.self, forKey: .prixOnly) ?? 10
+        onlyFerme = try c.decodeIfPresent(Bool.self, forKey: .onlyFerme) ?? false
+        onlyDecouvertPar = try c.decodeIfPresent([String].self, forKey: .onlyDecouvertPar) ?? []
     }
 }
 

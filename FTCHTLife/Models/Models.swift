@@ -246,6 +246,8 @@ struct Joueur: Codable, Equatable {
     var etranger: ExpatEtat? = nil
     /// Module « Jeu vivant » : jalons, projets, photo de l'an passé (docs/VIVANT.md).
     var jeuVivant: JeuVivantEtat? = nil
+    /// Module « Cœur » : liaisons, infidélités, enfants cachés, crises de couple (docs/COEUR.md).
+    var coeur: CoeurEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 

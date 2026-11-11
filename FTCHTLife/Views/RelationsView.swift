@@ -48,6 +48,9 @@ struct ListeRelationsView: View {
                             ForEach(vivants) { r in lien(r) }
                         }
                     }
+                    if filtre == .amour {
+                        CoeurSection()
+                    }
                     if filtre == .famille || filtre == .amour {
                         VieFamilleSection()
                     }

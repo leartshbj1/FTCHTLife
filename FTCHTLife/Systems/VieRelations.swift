@@ -380,12 +380,12 @@ enum VieRelations {
         guard let p = j.partenaireActuel, let i = j.relations.firstIndex(where: { $0.id == p.id }) else { return [] }
         var v = j.vieEtat
         let etaitMarie = v.statutCouple == .marie
+        let etaitFiance = v.statutCouple == .fiance
         j.relations[i].type = .ex
         j.relations[i].lien = min(p.lien, etaitMarie ? 15 : 25)
         v.statutCouple = nil
         v.anneesEnsemble = 0
         var lignes: [String] = []
-        let etaitFiance = v.statutCouple == .fiance
         if etaitMarie {
             v.divorces += 1
             let perte = max(0, j.argent / 2)

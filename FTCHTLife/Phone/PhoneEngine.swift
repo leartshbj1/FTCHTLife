@@ -15,7 +15,8 @@ enum PhoneEngine {
 
     // MARK: - Tags et infos
 
-    /// Tags à ajouter à GameEngine.tags(_:) : phone, influencer, star_reseaux, bad_buzz, sponsorise.
+    /// Tags à ajouter à GameEngine.tags(_:) : phone, influencer, star_reseaux, bad_buzz, sponsorise,
+    /// voustubeur, tiktaceur, onlyfesses, onlyfesses_star, onlyfesses_ancien, onlyfesses_connu.
     static func tags(_ t: PhoneEtat?) -> Set<String> {
         guard let t = t, t.aTelephone else { return [] }
         var s: Set<String> = ["phone"]
@@ -24,6 +25,12 @@ enum PhoneEngine {
         if total >= 1_000_000 { s.insert("star_reseaux") }
         if t.badBuzzRestant > 0 { s.insert("bad_buzz") }
         if !t.contrats.isEmpty { s.insert("sponsorise") }
+        if t.compte(.voustube).abonnes >= 1_000 { s.insert("voustubeur") }
+        if t.compte(.tremousse).abonnes >= 10_000 { s.insert("tiktaceur") }
+        if t.onlyActif { s.insert("onlyfesses") }
+        if t.onlyActif && t.compte(.onlyfesses).abonnes >= 5_000 { s.insert("onlyfesses_star") }
+        if t.onlyFerme && t.compte(.onlyfesses).posts > 0 { s.insert("onlyfesses_ancien") }
+        if !t.onlyDecouvertPar.isEmpty { s.insert("onlyfesses_connu") }
         return s
     }
 
@@ -97,8 +104,11 @@ enum PhoneEngine {
             guard var c = t.comptes[app.rawValue] else { continue }
             let a = Double(c.abonnes)
             let posts = t.postsAnnee[app.rawValue] ?? 0
-            if posts == 0 {
-                c.abonnes = max(0, c.abonnes - Int(a * Double.random(in: 0.03...0.12)))
+            if app == .onlyfesses && t.onlyFerme {
+                c.abonnes = 0
+            } else if posts == 0 {
+                let perte = app == .onlyfesses ? Double.random(in: 0.3...0.5) : Double.random(in: 0.03...0.12)
+                c.abonnes = max(0, c.abonnes - Int(a * perte))
             } else {
                 c.abonnes += Int(a * Double.random(in: 0...0.02) * Double(posts))
             }
@@ -118,15 +128,16 @@ enum PhoneEngine {
             t.comptes[app.rawValue] = c
         }
 
-        // Revenus de Trémousse.
+        // Revenus de TikTac.
         let tre = t.compte(.tremousse).abonnes
         if tre >= 10_000 {
             let revenu = Int(Double(tre) * Double.random(in: 0.002...0.006))
             if revenu > 0 {
                 j.argent += revenu
-                lignes.append("📱 Trémousse te verse \(Format.argent(revenu)) pour tes vidéos. Tu appelles ça « mon salaire » devant tes oncles.")
+                lignes.append("📱 TikTac te verse \(Format.argent(revenu)) pour tes vidéos. Tu appelles ça « mon salaire » devant tes oncles.")
             }
         }
+        lignes += revenusSpeciaux(&j, &t, engine: engine)
 
         // Contrats de sponsors.
         var restants: [PhoneContrat] = []
@@ -310,6 +321,7 @@ enum PhoneEngine {
         if !j.vivant { return "Les morts ne postent pas. Enfin, pas encore." }
         if j.age < app.ageMin { return "\(app.nom) est interdit aux moins de \(app.ageMin) ans." }
         if t.detoxCetteAnnee { return "Tu es en détox numérique cette année. Courage." }
+        if app == .onlyfesses && t.onlyFerme { return "Ton compte OnlyFesses est fermé. Tu peux le rouvrir plus bas." }
         if postsRestants(app, t) == 0 { return "Tu as déjà posté \(postsParAnEtParAppli) fois sur \(app.nom) cette année. Laisse respirer tes abonnés." }
         if let cout = m.cout, cout > 0, j.argent < cout { return "Il te faut \(Format.argent(cout)) pour ce post." }
         return nil
@@ -329,7 +341,8 @@ enum PhoneEngine {
         case "karma": valeurStat = j.stats.karma
         default: valeurStat = 50
         }
-        let qualite = 0.55 * Double(valeurStat) / 100 + 0.45 * Double.random(in: 0...1)
+        var qualite = 0.55 * Double(valeurStat) / 100 + 0.45 * Double.random(in: 0...1)
+        qualite += bonusQualite(app, t)
         let pBad = min(0.6, m.risque * (1.5 - Double(j.stats.karma) / 100) + (c.certifie ? 0.02 : 0))
         let pBuzz = min(0.25, (0.01 + 0.05 * qualite) * m.viralite * (app == .tremousse ? 1.3 : 1))
         let r = Double.random(in: 0..<1)
@@ -450,6 +463,7 @@ enum PhoneEngine {
     static func acheterFauxAbonnes(_ app: PhoneApp, _ j: inout Joueur, _ t: inout PhoneEtat, engine: GameEngine) -> String {
         let cle = "faux_" + app.rawValue
         guard t.aTelephone, app != .pecho else { return "Impossible." }
+        guard app != .onlyfesses else { return "Les abonnés payants ne s'achètent pas. C'est un peu le principe." }
         guard j.age >= 16 else { return "Le vendeur d'abonnés demande une carte bancaire. Celle de tes parents ne compte pas." }
         guard t.nombreActions(cle) == 0 else { return "Tu en as déjà acheté cette année. Même les bots ont des limites." }
         guard j.argent >= prixFauxAbonnes else { return "Il te faut \(Format.argent(prixFauxAbonnes)). Les faux abonnés, eux, ne sont pas gratuits." }
@@ -473,7 +487,7 @@ enum PhoneEngine {
     static func lancerLive(_ j: inout Joueur, _ t: inout PhoneEtat, engine: GameEngine) -> String {
         guard peutFaireLive(j, t) else {
             if t.detoxCetteAnnee { return "Tu es en détox numérique cette année. Pas de live." }
-            return "Il faut au moins 500 abonnés sur Trémousse pour un live, et un seul live par an."
+            return "Il faut au moins 500 abonnés sur TikTac pour un live, et un seul live par an."
         }
         t.actionsAnnee.append("live")
         var c = t.compte(.tremousse)
@@ -492,7 +506,7 @@ enum PhoneEngine {
             "Un viewer t'a envoyé un don accompagné du message « pour ta coupe de cheveux ». Tu ne sais pas si c'est gentil.",
             "Ton wifi a coupé au meilleur moment. Le chat a cru que tu étais mort{e}.",
         ].randomElement()!, j)
-        var texte = "Live sur Trémousse ! " + anecdote
+        var texte = "Live sur TikTac ! " + anecdote
         if j.age >= 16 {
             texte += " Dons reçus : \(Format.argent(dons))."
         } else {
@@ -676,13 +690,27 @@ enum PhoneEngine {
         switch issue {
         case "lapin": j.stats.bonheur -= 6
         case "catastrophe": j.stats.bonheur -= 4
-        case "bien": j.stats.bonheur += 6
+        case "bien":
+            j.stats.bonheur += 6
+            // En couple, un « bon » rendez-vous peut aller trop loin.
+            if let p = j.partenaireActuel, j.coeurEtat.liaison == nil, Double.random(in: 0...1) < 0.4 {
+                texte += " La soirée se prolonge. Beaucoup. Tu rentres à 4 h en racontant à \(p.prenom) une histoire de pneu crevé."
+                for l in CoeurSysteme.ecart(&j) { texte += " " + l }
+            }
         case "coupdefoudre":
             j.stats.bonheur += 12
-            if let p = j.relations.firstIndex(where: { $0.type == .partenaire && $0.vivant }) {
-                j.relations[p].lien = Stats.borne(j.relations[p].lien - 15)
-                j.stats.karma -= 5
-                texte += " Petit détail : tu es déjà en couple avec \(j.relations[p].prenom). Ambiance."
+            if let p = j.partenaireActuel {
+                if j.coeurEtat.liaison == nil {
+                    let lignes = CoeurSysteme.debuterLiaison(&j, via: "pecho", prenom: match.prenom, genre: match.genre,
+                                                             age: match.age + (j.age - match.ageDuMatch))
+                    texte += " Petit détail : tu es en couple avec \(p.prenom). " + lignes.joined(separator: " ")
+                } else {
+                    if let i = j.relations.firstIndex(where: { $0.id == p.id }) {
+                        j.relations[i].lien = Stats.borne(j.relations[i].lien - 15)
+                    }
+                    j.stats.karma -= 5
+                    texte += " Petit détail : tu es déjà en couple avec \(p.prenom), et tu as déjà une liaison. Ton agenda est une œuvre d'art."
+                }
             } else {
                 let partenaire = Relation(prenom: match.prenom, nom: Donnees.noms.randomElement()!, genre: match.genre,
                                           type: .partenaire, age: match.age + (j.age - match.ageDuMatch),

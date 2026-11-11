@@ -27,6 +27,8 @@ extension PhoneApp {
         case .tremousse: return Color(red: 0.08, green: 0.68, blue: 0.70)
         case .ronchon: return Color(red: 0.93, green: 0.60, blue: 0.08)
         case .pecho: return Color(red: 0.86, green: 0.18, blue: 0.24)
+        case .voustube: return Color(red: 0.90, green: 0.12, blue: 0.10)
+        case .onlyfesses: return Color(red: 0.05, green: 0.62, blue: 0.95)
         }
     }
 }
@@ -194,10 +196,11 @@ struct TelephoneView: View {
 
     private func grilleApplis(_ j: Joueur, _ t: PhoneEtat) -> some View {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 3), spacing: 18) {
-            ForEach(PhoneApp.reseaux) { app in
+            // OnlyFesses n'apparaît même pas avant 18 ans.
+            ForEach(PhoneApp.reseaux.filter { $0 != .onlyfesses || j.age >= 18 }) { app in
                 NavigationLink(value: PhoneEcran.reseau(app)) {
                     tuile(app.nom, app.icone, app.couleur, badge: 0, verrou: j.age < app.ageMin,
-                          sousTitre: PhoneFormat.court(t.compte(app).abonnes))
+                          sousTitre: app == .onlyfesses && t.onlyFerme ? "fermé" : PhoneFormat.court(t.compte(app).abonnes))
                 }
             }
             NavigationLink(value: PhoneEcran.pecho) {

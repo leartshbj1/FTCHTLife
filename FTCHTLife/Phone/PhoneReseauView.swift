@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Une appli de réseau social (Pozz, Trémousse, Ronchon) : compte, publier, fil des posts.
+/// Une appli de réseau social (Instaglam, TikTac, Twitteur, VousTube, OnlyFesses) : compte, publier, actions, fil des posts.
 @MainActor
 struct PhoneReseauView: View {
     @EnvironmentObject var engine: GameEngine
@@ -44,7 +44,7 @@ struct PhoneReseauView: View {
                 .overlay(Image(systemName: app.icone).font(.system(size: 24, weight: .semibold)).foregroundStyle(.white))
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 4) {
-                    Text(PhoneFormat.nombre(c.abonnes) + (c.abonnes > 1 ? " abonnés" : " abonné"))
+                    Text(PhoneFormat.nombre(c.abonnes) + " " + (c.abonnes > 1 ? app.motAbonnes : "abonné"))
                         .font(.headline)
                     if c.certifie {
                         Image(systemName: "checkmark.seal.fill").foregroundStyle(.blue)
@@ -113,12 +113,21 @@ struct PhoneReseauView: View {
                     }
                 }
             }
-            LigneAction(titre: "Acheter \(PhoneFormat.nombre(PhoneEngine.nombreFauxAbonnes)) abonnés",
-                        sousTitre: "\(Format.argent(PhoneEngine.prixFauxAbonnes)) · des vrais faux comptes, risque de scandale",
-                        icone: "cart.fill",
-                        actif: j.age >= 16 && t.nombreActions("faux_" + app.rawValue) == 0) {
-                alerte = engine.telephoneModifier(chemin) { j, t in
-                    PhoneEngine.acheterFauxAbonnes(app, &j, &t, engine: engine)
+            ForEach(PhoneEngine.actionsSpeciales(app, j, t)) { a in
+                LigneAction(titre: a.titre, sousTitre: a.sousTitre, icone: a.icone, actif: a.actif) {
+                    alerte = engine.telephoneModifier(chemin) { j, t in
+                        PhoneEngine.faireAction(a.id, app, &j, &t, engine: engine)
+                    }
+                }
+            }
+            if app != .onlyfesses {
+                LigneAction(titre: "Acheter \(PhoneFormat.nombre(PhoneEngine.nombreFauxAbonnes)) abonnés",
+                            sousTitre: "\(Format.argent(PhoneEngine.prixFauxAbonnes)) · des vrais faux comptes, risque de scandale",
+                            icone: "cart.fill",
+                            actif: j.age >= 16 && t.nombreActions("faux_" + app.rawValue) == 0) {
+                    alerte = engine.telephoneModifier(chemin) { j, t in
+                        PhoneEngine.acheterFauxAbonnes(app, &j, &t, engine: engine)
+                    }
                 }
             }
         }

@@ -1,20 +1,35 @@
 # Téléphone et réseaux sociaux (module `FTCHTLife/Phone/`)
 
-Dès 13 ans, le joueur reçoit un téléphone (écran déjà fissuré, évidemment). Il contient quatre applis
-inventées et une messagerie :
+Dès 13 ans, le joueur reçoit un téléphone (écran déjà fissuré, évidemment). Il contient cinq réseaux aux noms
+parodiques, une appli de rencontre et une messagerie. Les identifiants internes (`pozz`, `tremousse`, `ronchon`) n'ont
+pas changé : les sauvegardes et les données restent valables, seuls les noms affichés ont changé.
 
-| Appli (id) | Nom | Âge | Ce qu'on y fait | Stat qui aide |
-|---|---|---|---|---|
-| `pozz` | **Pozz** | 13+ | photos (selfies, plats, vacances…) | apparence |
-| `tremousse` | **Trémousse** | 13+ | vidéos courtes, danses, défis, lives | bonheur (énergie) |
-| `ronchon` | **Ronchon** | 15+ | messages courts, avis tranchés, clashs | intelligence |
-| `pecho` | **Pécho** | 18+ | appli de rencontre (swipe, match, rendez-vous) | apparence |
-| messagerie | **Messages** | 13+ | messages bizarres, arnaques, famille, haters, fans, offres de sponsors | — |
+| Appli (id) | Nom | Âge | Ce qu'on y fait | Stat qui aide | Actions propres |
+|---|---|---|---|---|---|
+| `pozz` | **Instaglam** | 13+ | photos (selfies, plats, vacances…) | apparence | shooting photo pro (meilleurs posts toute l'année), photo de couple |
+| `tremousse` | **TikTac** | 13+ | vidéos courtes, danses, défis, lives | bonheur (énergie) | live avec dons, lancer un challenge (buzz, urgences ou bad buzz), revenus dès 10 000 abonnés |
+| `ronchon` | **Twitteur** | 15+ | messages courts, avis tranchés, clashs | intelligence | clasher une célébrité (tout ou rien, procès possible), supprimer ses vieux messages |
+| `voustube` | **VousTube** | 13+ | longues vidéos : vlogs, tutos, gaming, documentaires | intelligence | matériel (3 niveaux), collab, vidéo d'excuses ; revenus pub dès 1 000 abonnés (16+) |
+| `onlyfesses` | **OnlyFesses** | 18+ (invisible avant) | contenu « exclusif » suggéré, jamais explicite | apparence | prix de l'abonnement (5 à 50 €/mois), demande personnalisée, fermer / rouvrir le compte |
+| `pecho` | **Pécho** | 18+ | appli de rencontre (swipe, match, rendez-vous) | apparence | en couple, un bon rendez-vous peut finir en écart ou en liaison (docs/COEUR.md) |
+| messagerie | **Messages** | 13+ | messages bizarres, arnaques, famille, haters, fans, offres de sponsors, messages de l'amant·e | — | |
 
 Mécaniques : poster (3 posts par appli et par an), abonnés par appli, buzz et bad buzz,
 compte certifié à 100 000 abonnés, sponsors payés chaque année selon les abonnés (avec scandale possible
 si la marque est louche), haters à gérer, faux abonnés à acheter (risqué), lives avec dons,
 détox numérique, et les rendez-vous de Pécho qui peuvent finir en couple.
+
+**OnlyFesses** : abonnés payants (ils ne comptent pas dans le total d'abonnés), revenus = abonnés × prix × 12 × 80 %
+× fidélité. Sans post dans l'année, 30 à 50 % des abonnés partent. Chaque année, quelqu'un peut découvrir le compte :
+le/la partenaire (crise de couple, ou il/elle gère ta compta), la famille (lien −20), le travail (drapeau
+`honte_publique`), les enfants de 12 ans et plus (lien −15).
+
+Tags : `phone`, `influencer` (≥ 10 000 abonnés publics), `star_reseaux` (≥ 1 000 000), `bad_buzz`, `sponsorise`,
+`voustubeur` (≥ 1 000 sur VousTube), `tiktaceur` (≥ 10 000 sur TikTac), `onlyfesses` (compte actif),
+`onlyfesses_star` (≥ 5 000 abonnés payants), `onlyfesses_ancien` (compte fermé), `onlyfesses_connu` (quelqu'un l'a découvert).
+
+Code : `PhoneModels.swift` (applis, état), `PhoneEngine.swift` (année, posts, messages, Pécho),
+`PhoneSpecial.swift` (actions propres à chaque réseau, revenus VousTube et OnlyFesses, découverte du compte).
 
 ## Branchement par le fil moteur
 
@@ -53,7 +68,7 @@ Variables de texte : celles du moteur (`{prenom}`, `{nom}`, `{ville}`, `{mere}`,
 `{ami}`, `{fratrie}`, `{partenaire}`, `{metier}`, `{e}`) plus celles du téléphone :
 `{app}` (nom de l'appli), `{abonnes}` (abonnés de l'appli, ex. « 12 400 »), `{gain}` (abonnés gagnés ou
 perdus par ce post, toujours positif), `{marque}` (sponsor), `{montant}` (paiement du sponsor, ex. « 3 000 € »),
-`{match}` (prénom de la personne rencontrée sur Pécho).
+`{match}` (prénom de la personne rencontrée sur Pécho), et celles du module Cœur (`{amant}`, `{amant_role}`, `{amant_il}`, `{enfant_cache}`).
 
 ### `Posts/` : types de publication
 
@@ -79,7 +94,7 @@ perdus par ce post, toujours positif), `{marque}` (sponsor), `{montant}` (paieme
   }
 }
 ```
-- `app` : `pozz`, `tremousse` ou `ronchon`.
+- `app` : `pozz`, `tremousse`, `ronchon`, `voustube` ou `onlyfesses` (posts OnlyFesses : `minAge` 18, jamais explicites).
 - `stat` : `looks`, `smarts`, `happiness`, `karma` ou `none` (la stat qui fait réussir le post).
 - `risque` (0 à 0,5) : chance de base de bad buzz. `viralite` (0,5 à 3) : potentiel de buzz. `cout` en euros.
 - `conditions` (optionnel) : mêmes clés que les événements (`gender`, `minMoney`, `tags`, `excludeTags`…).
@@ -121,6 +136,7 @@ perdus par ce post, toujours positif), `{marque}` (sponsor), `{montant}` (paieme
   `relationships`, `newFriend`…) plus deux clés propres au téléphone :
   `followers` (variation d'abonnés du compte principal, entier) et `followersPct` (variation en fraction,
   ex. `-0.2` = perd 20 %).
+  Le sous-objet `coeur` (docs/COEUR.md) marche aussi : un message de l'amant·e peut faire monter les soupçons ou finir la liaison.
 
 ### `Sponsors/` : marques qui proposent un contrat
 

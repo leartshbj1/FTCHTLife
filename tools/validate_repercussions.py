@@ -21,7 +21,7 @@ CONDITIONS = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner"
 REQUIRES = {"flags", "excludeFlags", "minCounters", "maxCounters", "flagMinYears", "flagMaxYears"}
 EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame", "relationships",
           "newFriend", "death", "setFlags", "clearFlags", "followUps",
-          "vie", "entourage", "skills"}  # "entourage" : docs/ENTOURAGE.md ; "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
+          "vie", "entourage", "skills", "coeur"}  # "coeur" : docs/COEUR.md  # "entourage" : docs/ENTOURAGE.md ; "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
 RELATIONS = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
 TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemployed", "retired", "rich",
         "poor", "friend", "mother", "father", "siblings", "partner", "children", "sick", "attractive", "smart",
@@ -39,6 +39,13 @@ VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"prison", "gang", "gang_haut", "dealer", "sous_enquete", "chaleur", "ancien_gang", "balance", "argent_sale"}
 VARIABLES |= {"organisation", "chef", "rival", "rang"}
+# Module Cœur (docs/COEUR.md)
+VARIABLES |= {"amant", "amant_role", "amant_il", "enfant_cache"}
+TAGS |= {"liaison", "liaison_longue", "liaison_ultimatum", "liaison_soupcon", "liaison_hetero", "ancien_amant",
+         "grossesse_liaison", "enfant_cache", "enfant_cache_adulte", "paternite_douteuse", "partenaire_infidele",
+         "soupcon_partenaire", "trahi", "crise_couple", "therapie_couple", "relation_libre", "ecart_secret", "infidele",
+         "infidele_recidiviste", "phone", "influencer", "star_reseaux", "bad_buzz", "sponsorise", "voustubeur",
+         "tiktaceur", "onlyfesses", "onlyfesses_star", "onlyfesses_ancien", "onlyfesses_connu"}
 SIGNAUX = set("""
 rencontre rendez_vous rendez_vous_rate couple rupture largue tromperie tromperie_decouverte demande_mariage
 demande_refusee mariage divorce veuvage grossesse naissance_enfant adoption enfant_majeur enfant_quitte_maison
@@ -52,6 +59,8 @@ voyage celebrite fiancailles_rompues addiction cure_desintox meilleur_ami
 permis_suspendu permis_annule permis_points_recuperes faux_permis_achete faux_permis_demasque
 conduite_sans_permis_arretee corruption_examinateur corruption_ratee casino_usurier casino_usurier_violence
 vie_suite entourage_suite chaque_annee
+coeur_suite liaison_debut liaison_fin liaison_officialisee grossesse_liaison enfant_cache_ne enfant_cache_reconnu
+enfant_cache_revele tromperie_subie relation_libre therapie_couple
 """.split())
 SIGNAUX |= set("""gang_entree gang_promotion gang_trahison gang_sortie gang_chef trafic_debut trafic_saisie
 enquete_ouverte enquete_classee guerre_territoire blanchiment balance mission_reussie mission_ratee""".split())
@@ -87,7 +96,7 @@ def verifier_effets(eff, ou, erreurs, ids):
     for k, v in eff.items():
         if k not in EFFETS:
             erreurs.append(f"{ou} : effet inconnu « {k} »")
-        elif k in ("vie", "entourage", "skills"):
+        elif k in ("vie", "entourage", "skills", "coeur"):
             if not isinstance(v, dict):
                 erreurs.append(f"{ou} : {k} doit être un objet")
         elif k == "relationships":

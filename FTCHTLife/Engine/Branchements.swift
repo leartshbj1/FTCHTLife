@@ -124,6 +124,7 @@ extension GameEngine {
         t.formUnion(vivantTags(j))
         if let v = VoisinageStockage.lire(j) { t.formUnion(VoisinageMoteur.tags(v)) }
         t.formUnion(EntourageTags.tags(j))
+        t.formUnion(CoeurSysteme.tags(j))
         return t
     }
 
@@ -152,6 +153,7 @@ extension GameEngine {
         lignes += ExpatMoteur.finAnnee(&j, &expat)
         j.etranger = expat
         lignes += VieSysteme.vieillir(&j)
+        lignes += CoeurSysteme.passerAnnee(&j)
         if var c = j.casier {
             lignes += CasierSysteme.passerAnnee(&c, joueur: j, enPrison: j.vie?.justice.enPrison ?? false)
             j.casier = c
@@ -294,6 +296,7 @@ extension GameEngine {
             j.reputationFamille = rf
         }
         if let m = eff.dreamMarks { RevesMoteur.marquer(&j.reves, m) }
+        for ligne in CoeurSysteme.appliquer(eff.coeur, &j) { ajouterLigne(&j, ligne) }
         j.argent = Shkurtaaa.argent(j.argent)
     }
 
@@ -334,6 +337,7 @@ extension GameEngine {
         guard texte.contains("{") else { return texte }
         var t = ReputationFamille.remplir(texte, etat: j.reputationFamille)
         t = VieSysteme.remplir(t, j)
+        t = CoeurSysteme.remplir(t, j)
         t = GameEngine.teleRemplir(t, j)
         return t
     }

@@ -65,6 +65,25 @@ TAGS |= {"entrepreneur","patron","magnat","ancien_entrepreneur","failli","phone"
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"gang","gang_haut","dealer","sous_enquete","chaleur","ancien_gang","balance","argent_sale"}
 PH |= {"organisation","chef","rival","rang"}
+# Module Cœur (docs/COEUR.md) : liaisons, tromperies, enfants cachés, crises de couple ; tags réseaux (docs/PHONE.md).
+TAGS |= {"liaison","liaison_longue","liaison_ultimatum","liaison_soupcon","liaison_hetero","ancien_amant","grossesse_liaison",
+         "enfant_cache","enfant_cache_adulte","paternite_douteuse","partenaire_infidele","soupcon_partenaire","trahi",
+         "crise_couple","therapie_couple","relation_libre","ecart_secret","infidele","infidele_recidiviste",
+         "voustubeur","tiktaceur","onlyfesses","onlyfesses_star","onlyfesses_ancien","onlyfesses_connu"}
+SPECIAL |= {"coeur"}
+PH |= {"amant","amant_role","amant_il","enfant_cache"}
+COEUR = {"ecart":bool,"liaison":str,"via":str,"intensite":int,"soupcon":int,"decouverte":bool,"grossesse":bool,"enfantCache":str,
+         "partenaireInfidele":bool,"soupconJoueur":int,"trahisonDecouverte":bool,"pardon":bool,"crise":int,"therapie":int,
+         "relationLibre":bool,"scandale":int}
+COEUR_VALEURS = {"liaison":{"debut","fin","officialiser","avouer"},
+                 "via":{"travail","ex","soiree","ami","voyage","sport","voisin","pecho","reseaux","fan","autre"},
+                 "enfantCache":{"reconnaitre","pension","cacher","reveler"}}
+def check_coeur(v, where, errs):
+    if not isinstance(v, dict): errs.append(f"{where}: coeur doit être un objet"); return
+    for k, x in v.items():
+        if k not in COEUR: errs.append(f"{where}: clé coeur inconnue {k}"); continue
+        if not isinstance(x, COEUR[k]) or (COEUR[k] is int and isinstance(x, bool)): errs.append(f"{where}: coeur.{k} mauvais type")
+        elif k in COEUR_VALEURS and x not in COEUR_VALEURS[k]: errs.append(f"{where}: coeur.{k} valeur inconnue {x}")
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
@@ -77,6 +96,7 @@ def check_effects(e, where, errs):
         elif k == "skills":
             if not isinstance(v, dict) or any(x not in SKILLS for x in v): errs.append(f"{where}: skills invalide {v}")
         elif k == "entourage": check_entourage(v, where, errs)
+        elif k == "coeur": check_coeur(v, where, errs)
         elif k not in SPECIAL: errs.append(f"{where}: clé d'effet inconnue {k}")
 def check_text(t, where, errs):
     if not isinstance(t,str) or not t.strip(): errs.append(f"{where}: texte vide"); return
