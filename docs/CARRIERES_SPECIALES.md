@@ -105,6 +105,31 @@ Variables : celles des événements (`{prenom}`, `{e}`, `{partenaire}`, `{mere}`
 
 Ids : préfixe = carrière (`mma_`, `spo_`, `man_`, `cin_`, `mus_`, `mee_`, `inv_`, `sal_`) + 4 chiffres. Ne jamais renuméroter.
 
+## Bilan de l'année et cartes de réaction
+
+Au passage d'année, `SpeMoteur.passerAnnee` construit `SpeEtat.bilan` (`SpeBilanAnnee`) : une section par carrière
+spéciale (rang, réputation, argent gagné, grand chiffre : combats, note de saison, entrées du film, écoutes, abonnés),
+musée (visiteurs, résultat, prestige), investissements (variation de chaque part) et emploi normal (salaire,
+performance, promotion). `SpeBilanAuto` (`.speBilanAuto()` sur `MainView`) l'affiche en pop-up avant les événements.
+Le mode rapide s'arrête sur un bilan `important` (carrière spéciale, musée, investissements) ; pour un emploi normal,
+le pop-up ne s'affiche que s'il y a du neuf (promotion, augmentation, nouveau poste, performance basse).
+
+Le bilan pose aussi des **marqueurs** (`SpeEtat.marqueurs`), valables l'année qui suit. Une carte avec `"marqueurs": [...]`
+n'arrive que si l'un d'eux est posé, et passe avant les autres cartes (cartes de réaction au bilan) :
+
+| Carrière | Marqueurs |
+|---|---|
+| toutes (mma, sport, mannequin, cinema, musique) | `promotion`, `retrogradation`, `reputation_baisse`, `blessure` |
+| mma | `victoire`, `defaite`, `defaite_ko`, `titre_gagne`, `inactif` |
+| sport | `saison_top`, `saison_ratee`, `titre`, `selection`, `transfert` |
+| mannequin | `campagne`, `baisse` |
+| cinema | `court_sorti`, `court_prix`, `film_succes`, `film_flop`, `film_moyen`, `film_prix`, `critique_bonne`, `critique_mauvaise`, `sans_film` |
+| musique | `album_certifie`, `album_succes`, `album_flop`, `fans_baisse`, `offre_label`, `clip_viral` |
+| musee | `record`, `deficit` |
+| invest | `invest_succes`, `invest_echec` |
+
+Cartes de réaction : fichiers `<prefixe>_reac.json`, ids `<prefixe>_0101` et suivants.
+
 ## Ton
 
 Sérieux avec une touche d'humour (environ 80 / 20). Blessures, dopage, pression sur le poids, contrats abusifs,

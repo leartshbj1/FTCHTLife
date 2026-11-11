@@ -1,0 +1,437 @@
+[
+  {
+    "id": "inv_0101",
+    "carriere": "invest",
+    "marqueurs": [
+      "invest_succes"
+    ],
+    "minAge": 18,
+    "text": "{projet} t'a rapporté gros cette année. Ton banquier t'appelle personnellement pour la première fois de ta vie, d'une voix soudain très chaleureuse.",
+    "choices": [
+      {
+        "label": "Réinvestir les gains dans {projet}",
+        "outcomes": [
+          {
+            "chance": 0.55,
+            "text": "La dynamique continue. Tu as eu du flair.",
+            "effects": {
+              "happiness": 6,
+              "money": -20000
+            },
+            "spe": {
+              "investPct": 20
+            }
+          },
+          {
+            "chance": 0.45,
+            "text": "Le marché se retourne juste après ton réinvestissement. Tu as acheté au plus haut.",
+            "effects": {
+              "happiness": -6,
+              "money": -20000
+            },
+            "spe": {
+              "investPct": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Encaisser une partie des gains",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sécurises un joli bénéfice. Prudent, et ça fait du bien de voir l'argent sur ton compte.",
+            "effects": {
+              "happiness": 6,
+              "money": 25000
+            },
+            "spe": {
+              "investPct": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne toucher à rien",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu laisses travailler ton argent. Ton banquier rappelle quand même trois fois.",
+            "effects": {
+              "happiness": 3
+            },
+            "spe": {
+              "investPct": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "inv_0102",
+    "carriere": "invest",
+    "marqueurs": [
+      "invest_succes"
+    ],
+    "minAge": 18,
+    "text": "Ton succès avec {projet} se sait. Des amis, des cousins et un voisin que tu n'as jamais vu viennent te demander d'investir dans leurs idées.",
+    "choices": [
+      {
+        "label": "Financer le projet d'un ami",
+        "cost": 15000,
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Son food-truck de crêpes marche du tonnerre. Vous fêtez ça avec des crêpes.",
+            "effects": {
+              "happiness": 8,
+              "money": 25000,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "Le projet ferme au bout de huit mois. L'argent est perdu, et l'amitié est un peu abîmée.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment à tout le monde",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ils comprennent. Certains un peu moins que d'autres.",
+            "effects": {
+              "happiness": -1
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un cousin raconte au repas de famille que l'argent t'a changé{e}. Ambiance.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire du mentorat plutôt que donner de l'argent",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes quelques soirées à les conseiller. C'est gratuit et ça vaut parfois plus qu'un chèque.",
+            "effects": {
+              "happiness": 5,
+              "karma": 4,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "inv_0103",
+    "carriere": "invest",
+    "marqueurs": [
+      "invest_succes"
+    ],
+    "minAge": 18,
+    "text": "Grisé{e} par la réussite de {projet}, tu te surprends à passer tes nuits à regarder des graphiques. Un conseiller te propose un placement « garanti à 30 % ».",
+    "choices": [
+      {
+        "label": "Investir une grosse somme",
+        "cost": 50000,
+        "outcomes": [
+          {
+            "chance": 0.2,
+            "text": "Contre toute logique, ça marche. Tu ne recommenceras pas.",
+            "effects": {
+              "happiness": 6,
+              "money": 65000
+            }
+          },
+          {
+            "chance": 0.8,
+            "text": "Le conseiller a disparu avec la caisse. Rien n'est jamais garanti à 30 %.",
+            "effects": {
+              "happiness": -12,
+              "stress": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et faire une pause",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fermes les graphiques, tu sors marcher. L'argent est un outil, pas un mode de vie.",
+            "effects": {
+              "happiness": 4,
+              "stress": -6,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Signaler ce conseiller",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il était déjà connu des services de fraude. Ton signalement aide à boucler le dossier.",
+            "effects": {
+              "happiness": 4,
+              "karma": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "inv_0104",
+    "carriere": "invest",
+    "marqueurs": [
+      "invest_echec"
+    ],
+    "minAge": 18,
+    "text": "{projet} a perdu beaucoup de valeur cette année. Tu regardes ta part fondre, et tu as du mal à penser à autre chose.",
+    "choices": [
+      {
+        "label": "Remettre de l'argent pour sauver {projet}",
+        "cost": 30000,
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Ton apport arrive au bon moment. Le projet se redresse.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "investPct": 25
+            }
+          },
+          {
+            "chance": 0.55,
+            "text": "Tu as jeté de l'argent dans un puits. Le projet continue de couler.",
+            "effects": {
+              "happiness": -8,
+              "stress": 6
+            },
+            "spe": {
+              "investPct": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre ta part et limiter la casse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu acceptes la perte. Ça fait mal, mais tu dors mieux.",
+            "effects": {
+              "happiness": -3,
+              "money": 10000,
+              "stress": -4
+            },
+            "spe": {
+              "investPct": -20
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre que ça remonte",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La patience paie : l'année suivante, la valeur remonte doucement.",
+            "effects": {
+              "happiness": 3
+            },
+            "spe": {
+              "investPct": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ça ne remonte pas. Mais au moins tu n'as rien ajouté.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "investPct": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "inv_0105",
+    "carriere": "invest",
+    "marqueurs": [
+      "invest_echec"
+    ],
+    "minAge": 18,
+    "text": "Après les pertes de {projet}, les autres associés se réunissent. Ils cherchent un coupable, et plusieurs regards se tournent vers toi.",
+    "choices": [
+      {
+        "label": "Exiger un audit indépendant",
+        "cost": 8000,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'audit révèle une gestion catastrophique du directeur. Tu es blanchi{e}, et il est remplacé.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            },
+            "spe": {
+              "investPct": 12
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "L'audit ne trouve rien de précis : juste un mauvais marché. Tout le monde est un peu responsable.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un plan de redressement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton plan convainc. On te confie la direction pour un an.",
+            "effects": {
+              "happiness": 6,
+              "stress": 5
+            },
+            "spe": {
+              "investPct": 15
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils écoutent poliment, puis votent autre chose.",
+            "effects": {
+              "happiness": -3
+            },
+            "spe": {
+              "investPct": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Claquer la porte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu revends ta part à prix cassé. Fini les réunions pénibles.",
+            "effects": {
+              "happiness": 2,
+              "money": 5000
+            },
+            "spe": {
+              "investPct": -25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "inv_0106",
+    "carriere": "invest",
+    "marqueurs": [
+      "invest_echec"
+    ],
+    "minAge": 18,
+    "text": "Les pertes de {projet} pèsent sur ton moral. Tu as caché les chiffres à tes proches, et le mensonge devient lourd à porter.",
+    "choices": [
+      {
+        "label": "Tout raconter à tes proches",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "On te reproche de l'avoir caché, pas d'avoir perdu. Le poids sur ta poitrine disparaît.",
+            "effects": {
+              "happiness": 6,
+              "stress": -8,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La conversation est tendue. Mais au moins, tout est sur la table.",
+            "effects": {
+              "happiness": -2,
+              "stress": -4,
+              "relationships": {
+                "friend": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenter de te refaire avec un pari risqué",
+        "cost": 20000,
+        "outcomes": [
+          {
+            "chance": 0.25,
+            "text": "Le pari paie. Tu récupères tes pertes, et tu te jures de ne jamais recommencer.",
+            "effects": {
+              "happiness": 6,
+              "money": 45000
+            }
+          },
+          {
+            "chance": 0.75,
+            "text": "Tu perds encore. Le trou est plus grand, et le secret aussi.",
+            "effects": {
+              "happiness": -12,
+              "stress": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Voir un conseiller financier",
+        "cost": 1000,
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il remet de l'ordre dans tes finances. Tu découvres que la situation est grave, mais pas désespérée.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 3,
+              "stress": -5
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

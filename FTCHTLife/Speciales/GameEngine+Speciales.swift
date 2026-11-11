@@ -93,6 +93,20 @@ extension GameEngine {
         j.speciales = e
     }
 
+    // MARK: - Bilan de l'année
+
+    /// Le bilan à montrer en pop-up (nil s'il n'y en a pas).
+    var speBilanEnAttente: SpeBilanAnnee? { joueur?.vivant == true ? joueur?.speciales?.bilan : nil }
+
+    /// Le joueur a fermé le bilan.
+    func speBilanVu() {
+        guard var j = joueur, var e = j.speciales, e.bilan != nil else { return }
+        e.bilan = nil
+        j.speciales = e
+        joueur = j
+        sauvegarder()
+    }
+
     // MARK: - Outils d'action
 
     func speFaire(_ corps: (inout SpeEtat, inout Joueur) -> SpeResultat) -> String {
@@ -265,6 +279,7 @@ extension GameEngine {
                     ? "🎸 Tu montes \(c.nomScene) avec des potes (\(SpeCatalogue.nomGenreMusique(genre).lowercased())). Première répétition dans un garage. Les voisins ne sont pas fans. Pas encore."
                     : "🎤 Tu te lances en solo sous le nom de \(c.nomScene) (\(SpeCatalogue.nomGenreMusique(genre).lowercased())). Cinquante abonnés, dont ta famille."
             }
+            c.instantane = SpeMoteur.instantane(c)
             e.carriere = c
             SignauxModules.signaler("spe_debut_" + t.rawValue, &j)
             return .ok(texte)
@@ -370,6 +385,8 @@ extension GameEngine {
                     c.club = SpeCatalogue.club(c.sport, niveau: c.niveau, cle: j.age &+ 1)
                     c.palmares.append("\(SpeCatalogue.rang(c, femme: j.genre == .femme)) à \(j.age) ans")
                     SignauxModules.signaler("spe_promotion", &j)
+                    e.marquer("transfert")
+                    c.faits = (c.faits ?? []) + ["✍️ Transfert vers \(c.club)"]
                     return .ok("✍️ Transfert bouclé : tu quittes \(ancien) pour \(c.club). Le salaire change d'échelle.")
                 }
                 c.reputation -= 3
@@ -571,6 +588,8 @@ extension GameEngine {
                     let g = max(5_000, c.fans)
                     c.fans += g
                     c.reputation += 6
+                    e.marquer("clip_viral")
+                    c.faits = (c.faits ?? []) + ["🎥 Clip viral : +\(g) fans"]
                     return .ok("🎥 Ton clip devient viral : une chorégraphie reprise partout. +\(g) fans en deux semaines. (\(Format.argent(prix)))")
                 }
                 c.fans += c.fans / 20 + 100

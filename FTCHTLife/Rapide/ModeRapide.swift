@@ -82,6 +82,7 @@ extension GameEngine {
             guard let k = joueur, k.vivant else { break }
             if evenementEnCours != nil || flashMonde != nil { break }
             if !entreprisesAvecRapportNonLu.isEmpty { break }
+            if k.speciales?.bilan?.important == true { break }
             if !etatAnimaux(\.animaux).enAttente.isEmpty { break }
             let tachesApres = Set((scolEtat?.aFaire ?? []).map { "\($0.id)" })
             if !tachesApres.subtracting(tachesAvant).isEmpty { break }
