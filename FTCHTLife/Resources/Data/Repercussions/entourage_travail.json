@@ -1,0 +1,2662 @@
+[
+ {
+  "id": "rep_ent_job_0001",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Jour de l'entretien chez le concurrent. Trois personnes face à toi, une plante verte, et une question : « Pourquoi vous, et pas un robot ? »",
+  "choices": [
+   {
+    "label": "Répondre sincèrement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu parles de ton travail avec une passion qui te surprend toi-même. Ils prennent des notes. Beaucoup de notes.",
+      "effects": {
+       "happiness": 5,
+       "smarts": 1,
+       "followUps": [
+        "rep_ent_job_0002"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu es sincère, et ils préfèrent visiblement le robot. Le courriel de refus arrive avant que tu sois rentré{e}.",
+      "effects": {
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Répondre en anglais",
+    "requiresSkill": {
+     "anglais": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trois expressions anglaises bien placées. Le directeur dit « amazing » deux fois. L'offre est pour toi.",
+      "effects": {
+       "happiness": 7,
+       "followUps": [
+        "rep_ent_job_0002"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Bluffer à fond",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu prétends avoir « piloté une transformation ». Ils adorent. Personne ne vérifie.",
+      "effects": {
+       "happiness": 6,
+       "karma": -2,
+       "followUps": [
+        "rep_ent_job_0002"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu prétends parler mandarin. Le DRH te répond en mandarin. Long silence.",
+      "effects": {
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas y aller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu poses un lapin au concurrent. Le chasseur de têtes te raye de son carnet d'un trait très appuyé.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0002",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le concurrent t'envoie une offre écrite. Le lendemain, ton patron, qui a « eu vent de quelque chose », t'invite à déjeuner et sort une contre-offre griffonnée sur une serviette en papier.",
+  "choices": [
+   {
+    "label": "Partir chez le concurrent",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rends ta serviette, au sens propre. Nouveau badge, nouveau salaire, nouvelle machine à café.",
+      "effects": {
+       "happiness": 8,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 25
+       },
+       "followUps": [
+        "rep_ent_job_0003"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester pour la serviette",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ton patron tient parole : augmentation, bureau près de la fenêtre et une poignée de main qui dure trop longtemps.",
+      "effects": {
+       "money": 3000,
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Il tient parole trois mois. Puis il « réorganise », et ton augmentation devient une prime exceptionnelle qui ne revient jamais.",
+      "effects": {
+       "money": 800,
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire monter les enchères",
+    "requiresSkill": {
+     "marchandage": 2
+    },
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu fais rebondir les deux offres comme au marché aux puces. Le concurrent craque en premier.",
+      "effects": {
+       "happiness": 12,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 40
+       },
+       "followUps": [
+        "rep_ent_job_0003"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Les deux patrons jouent au golf ensemble. Ils comparent leurs serviettes. Tu perds l'offre et le respect du tien.",
+      "effects": {
+       "happiness": -10
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0003",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an chez le concurrent. Ton ancien patron t'appelle : ton remplaçant a mis le feu au serveur (au sens propre) et il te supplie de revenir.",
+  "choices": [
+   {
+    "label": "Revenir en héros",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu reviens avec une augmentation et une haie d'honneur jusqu'à la machine à café.",
+      "effects": {
+       "happiness": 10,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 30
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu reviens. Le serveur n'a pas été réparé, et c'est désormais ton problème.",
+      "effects": {
+       "happiness": -4,
+       "health": -3,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 20
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester où tu es",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu déclines avec une politesse délicieuse. Tu dors comme un bébé.",
+      "effects": {
+       "happiness": 6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le dépanner contre facture",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu factures trois soirées de dépannage au prix d'un week-end à Rome. Il paie sans discuter.",
+      "effects": {
+       "money": 2500,
+       "happiness": 4,
+       "health": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0004",
+  "on": "event:ent_job_0001",
+  "choice": 3,
+  "outcome": 1,
+  "chance": 0.6,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis l'appel du chasseur de têtes que ton patron a surpris, il te confie des missions « pour tester ta motivation » : l'inventaire des trombones, puis celui des agrafes.",
+  "effects": {
+   "happiness": -4
+  }
+ },
+ {
+  "id": "rep_ent_job_0005",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an à Montréal. Tu as survécu à -32 °C, tu dis « tabarnak » sans le vouloir et tu donnes des prénoms aux écureuils. Mais les dimanches en famille te manquent.",
+  "choices": [
+   {
+    "label": "T'intégrer à fond",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Hockey amateur, chorale, club de raquette : tu as soudain quinze amis et un bleu au tibia.",
+      "effects": {
+       "happiness": 8,
+       "newFriend": true,
+       "followUps": [
+        "rep_ent_job_0006"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu t'inscris partout, tu ne dors plus, et tu attrapes une grippe québécoise de compétition.",
+      "effects": {
+       "health": -6,
+       "happiness": 2,
+       "vie": {
+        "disease": "grippe"
+       },
+       "followUps": [
+        "rep_ent_job_0006"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler chaque soir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Six heures de décalage, des appels à minuit, des cernes de visioconférence. Mais tu tiens.",
+      "effects": {
+       "happiness": 2,
+       "health": -2,
+       "followUps": [
+        "rep_ent_job_0006"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rentrer plus tôt",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rentres avec un bonnet et une petite honte. Ta boîte te recase dans le même secteur, sans le bonus.",
+      "effects": {
+       "happiness": 3,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0006",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta mission à Montréal touche à sa fin. La filiale te propose de rester pour de bon, avec plus de responsabilités. Le siège, lui, te propose un retour au pays.",
+  "choices": [
+   {
+    "label": "Rester pour de bon",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Tu signes un contrat local, tu achètes des bottes sérieuses et tu dis « chez nous » en parlant de Montréal.",
+      "effects": {
+       "happiness": 8,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 35
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Tu restes. Le jour de la signature, tu as le cœur partagé en deux, de part et d'autre de l'océan.",
+      "effects": {
+       "happiness": -4,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 35
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rentrer au pays",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rentres avec une expérience internationale sur ton CV et un accent que personne ne te pardonne. Le poste du retour est meilleur que celui d'avant.",
+      "effects": {
+       "happiness": 6,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 20,
+        "signaux": [
+         "demenagement"
+        ]
+       },
+       "followUps": [
+        "rep_ent_job_0007"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Repartir ailleurs",
+    "requiresSkill": {
+     "anglais": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "On te propose Singapour. Tu dis oui avant d'avoir regardé la météo.",
+      "effects": {
+       "happiness": 7,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 40,
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0007",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "De retour depuis un moment, tu constates que personne n'écoute tes histoires de Montréal plus de trente secondes. Ton patron, lui, veut te confier tous les clients étrangers.",
+  "choices": [
+   {
+    "label": "Prendre les clients",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu deviens la personne « international » de la boîte, avec les voyages et la prime qui vont avec.",
+      "effects": {
+       "money": 3000,
+       "happiness": 5
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Les clients étrangers appellent à 3 h du matin. Tous.",
+      "effects": {
+       "money": 3000,
+       "health": -4,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Fonder un club d'anciens expats",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous vous retrouvez une fois par mois pour vous plaindre que le pain d'ici est trop bon. C'est merveilleux.",
+      "effects": {
+       "happiness": 6,
+       "newFriend": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0008",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "complice_fraude"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des auditeurs débarquent avec des cartons vides et des regards pleins. Ils ont trouvé ta signature sur les factures de la société fantôme. Ils veulent te voir, seul{e}.",
+  "choices": [
+   {
+    "label": "Tout avouer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu racontes tout : le bureau, les stores, la prime. Ta coopération est notée. Le procès arrive.",
+      "effects": {
+       "happiness": -6,
+       "karma": 6,
+       "followUps": [
+        "rep_ent_job_0010"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Nier en bloc",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Tu nies. Ton patron aussi. Les auditeurs repartent bredouilles. Tu gardes la prime et l'estomac noué.",
+      "effects": {
+       "happiness": -4,
+       "health": -3
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Tu nies. Ton patron, lui, avoue tout et te présente comme le cerveau de l'affaire. Le procès arrive, et tu es en première ligne.",
+      "effects": {
+       "happiness": -12,
+       "followUps": [
+        "rep_ent_job_0010"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Sortir les courriels",
+    "requiresSkill": {
+     "eloquence": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu sors les courriels gardés « au cas où ». Les auditeurs se tournent vers ton patron. Tu restes poursuivi{e}, mais en position de force.",
+      "effects": {
+       "happiness": 2,
+       "karma": 2,
+       "followUps": [
+        "rep_ent_job_0010"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0009",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "flags": [
+    "lanceur_alerte"
+   ],
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton signalement a fait son chemin : une enquête est ouverte. Ton patron sait que c'est toi. Tes dossiers disparaissent un à un et ton bureau a été déménagé à côté des toilettes.",
+  "choices": [
+   {
+    "label": "Tenir bon",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu viens chaque matin, la tête haute et un désodorisant à la main. Tu attends le procès.",
+      "effects": {
+       "happiness": -6,
+       "health": -3,
+       "karma": 3,
+       "followUps": [
+        "rep_ent_job_0011"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre le chèque",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "On te propose 30 000 € et une clause de silence. Tu signes, tu pars, tu te tais. L'enquête continue sans toi.",
+      "effects": {
+       "money": 30000,
+       "happiness": -2,
+       "karma": -4,
+       "entourage": {
+        "demission": true
+       },
+       "clearFlags": [
+        "lanceur_alerte"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Alerter la presse",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton visage flouté passe au journal télévisé. Des inconnus t'écrivent pour te remercier.",
+      "effects": {
+       "fame": 10,
+       "happiness": 4,
+       "karma": 4,
+       "followUps": [
+        "rep_ent_job_0011"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'article sort, ton nom aussi, mal flouté. Ton patron porte plainte pour diffamation.",
+      "effects": {
+       "fame": 5,
+       "happiness": -8,
+       "followUps": [
+        "rep_ent_job_0011"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0010",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "complice_fraude"
+   ]
+  },
+  "text": "Le procès de la fraude s'ouvre. Ton ancien patron est assis à trois mètres, en costume neuf. Ton avocate te glisse : « Tout se joue maintenant. »",
+  "choices": [
+   {
+    "label": "Plaider coupable",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le tribunal tient compte de ta coopération : 6 000 € d'amende et du sursis. Tu sors libre, avec un casier et une leçon.",
+      "effects": {
+       "money": -6000,
+       "happiness": -6,
+       "karma": 4,
+       "setFlags": [
+        "casier_judiciaire"
+       ],
+       "clearFlags": [
+        "complice_fraude"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le juge est clément : 3 000 € d'amende. Ton ancien patron, lui, part en prison ferme.",
+      "effects": {
+       "money": -3000,
+       "happiness": 2,
+       "clearFlags": [
+        "complice_fraude"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout mettre sur lui",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton avocate est brillante. Relaxe. Ses honoraires, eux, ne sont pas relaxés.",
+      "effects": {
+       "happiness": 10,
+       "money": -4000,
+       "clearFlags": [
+        "complice_fraude"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le juge n'y croit pas une seconde : 10 000 € d'amende et du sursis.",
+      "effects": {
+       "money": -10000,
+       "happiness": -10,
+       "setFlags": [
+        "casier_judiciaire"
+       ],
+       "clearFlags": [
+        "complice_fraude"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rembourser la prime",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rends les 8 000 € avant l'audience. Le juge apprécie : dispense de peine. Tu as payé cher le droit de dormir.",
+      "effects": {
+       "money": -8000,
+       "happiness": 6,
+       "karma": 6,
+       "clearFlags": [
+        "complice_fraude"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0011",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "lanceur_alerte"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Procès de ton ancien patron, grâce à ton signalement. À la barre, son avocat te décrit comme « une personne aigrie en quête de vengeance ». C'est ton tour de parler.",
+  "choices": [
+   {
+    "label": "Rester factuel",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Dates, montants, documents. Ton calme est implacable. Il est condamné, et la justice reconnaît ton statut de lanceur d'alerte.",
+      "effects": {
+       "happiness": 12,
+       "karma": 8,
+       "setFlags": [
+        "heros_local"
+       ],
+       "clearFlags": [
+        "lanceur_alerte"
+       ],
+       "followUps": [
+        "rep_ent_job_0012"
+       ]
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Malgré tes preuves, il s'en tire avec une amende. Tu avais raison, et ça ne suffit pas toujours.",
+      "effects": {
+       "happiness": -6,
+       "karma": 6,
+       "clearFlags": [
+        "lanceur_alerte"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser parler ta colère",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ta colère est sincère, et le tribunal le sent. Condamnation.",
+      "effects": {
+       "happiness": 8,
+       "karma": 5,
+       "clearFlags": [
+        "lanceur_alerte"
+       ],
+       "followUps": [
+        "rep_ent_job_0012"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu t'emportes, son avocat jubile : « Vous voyez ? » Simple amende pour lui.",
+      "effects": {
+       "happiness": -8,
+       "clearFlags": [
+        "lanceur_alerte"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0012",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison",
+    "retired"
+   ]
+  },
+  "text": "Ton histoire de lanceur d'alerte a fait du chemin. Une entreprise qui veut « une vraie culture de l'éthique » te propose un poste, et une maison d'édition te propose un livre.",
+  "choices": [
+   {
+    "label": "Accepter le poste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu deviens la personne qu'on appelle quand quelque chose sent mauvais. Bien payé{e}, enfin.",
+      "effects": {
+       "happiness": 8,
+       "entourage": {
+        "offreEmploi": "auto",
+        "salaireBonus": 20
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Écrire le livre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton livre se vend bien. Tu passes à la radio un dimanche matin.",
+      "effects": {
+       "money": 8000,
+       "fame": 8,
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ton livre se vend à 312 exemplaires, dont 40 à ta famille.",
+      "effects": {
+       "happiness": -2,
+       "money": 500
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tourner la page",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu veux juste un boulot normal, une vie normale et des nuits complètes. Tu les retrouves.",
+      "effects": {
+       "happiness": 5,
+       "health": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0013",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta mission d'intérim à l'usine dure depuis des mois. Le chef d'équipe, un colosse moustachu nommé Serge, t'observe depuis sa cabine. Il te convoque.",
+  "choices": [
+   {
+    "label": "Montrer ta motivation",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu proposes trois améliorations du poste. Serge en note deux et présente la troisième comme son idée. Il parle de toi à la direction.",
+      "effects": {
+       "happiness": 5,
+       "smarts": 1,
+       "followUps": [
+        "rep_ent_job_0014"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu en fais trop et tu bloques la chaîne en voulant l'améliorer. Serge soupire, mais parle quand même de toi.",
+      "effects": {
+       "happiness": -2,
+       "followUps": [
+        "rep_ent_job_0014"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester discret",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Serge dit que tu fais « du bon travail, sans bruit ». Ta mission est renouvelée, sans plus.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Réparer la machine",
+    "requiresSkill": {
+     "mecanique": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La machine 4 tombe en panne, tu la répares avec un trombone. Serge te regarde comme on regarde un miracle.",
+      "effects": {
+       "happiness": 8,
+       "followUps": [
+        "rep_ent_job_0014"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0014",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Sur la recommandation de Serge, l'usine te propose un CDI. Il y a une mutuelle, des tickets-restaurant et un pot tous les vendredis.",
+  "choices": [
+   {
+    "label": "Signer le CDI",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu signes. Pour la première fois depuis longtemps, tu fais des projets à plus de trois mois.",
+      "effects": {
+       "happiness": 10,
+       "entourage": {
+        "offreEmploi": "operateur_agroalimentaire",
+        "niveau": 1
+       },
+       "followUps": [
+        "rep_ent_job_0015"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier le salaire",
+    "requiresSkill": {
+     "marchandage": 2
+    },
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu obtiens 10 % de plus. Serge dit que tu as « du culot », sur le ton d'un compliment.",
+      "effects": {
+       "happiness": 10,
+       "entourage": {
+        "offreEmploi": "operateur_agroalimentaire",
+        "niveau": 1,
+        "salaireBonus": 10
+       },
+       "followUps": [
+        "rep_ent_job_0015"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "La DRH ne négocie pas avec les intérimaires. Elle prend quelqu'un d'autre.",
+      "effects": {
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester intérimaire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu gardes ta liberté et ta prime de précarité. Serge ne comprend pas, mais respecte.",
+      "effects": {
+       "happiness": 3,
+       "money": 1000
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0015",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Serge part à la retraite. Au pot de départ, entre deux parts de quiche, il annonce qu'il a recommandé quelqu'un pour le remplacer : toi.",
+  "choices": [
+   {
+    "label": "Prendre sa place",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu deviens chef d'équipe. Tu comprends enfin pourquoi Serge soupirait autant.",
+      "effects": {
+       "money": 3000,
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tes anciens collègues de chaîne te testent pendant six mois. Tu tiens.",
+      "effects": {
+       "money": 3000,
+       "happiness": -2,
+       "health": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser la place",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses le poste à Malika, plus ancienne. Elle t'offre une boîte de chocolats et ta tranquillité.",
+      "effects": {
+       "happiness": 3,
+       "karma": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0016",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un mardi, en pleine réunion, tes mains se mettent à trembler et le mot « tableau » t'échappe. Le soir même, ton médecin prononce le mot que tu redoutais.",
+  "choices": [
+   {
+    "label": "Accepter l'arrêt",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trois mois d'arrêt. Les premières semaines, tu dors quatorze heures par jour et tu pleures devant les pubs de yaourt.",
+      "effects": {
+       "happiness": -5,
+       "health": 4,
+       "setFlags": [
+        "burn_out"
+       ],
+       "vie": {
+        "disease": "burn_out"
+       },
+       "followUps": [
+        "rep_ent_job_0017"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Serrer les dents",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Tu tiens encore quelques mois à coups de café. Puis tu t'effondres sur le parking.",
+      "effects": {
+       "health": -15,
+       "happiness": -10,
+       "setFlags": [
+        "burn_out"
+       ],
+       "vie": {
+        "disease": "burn_out"
+       },
+       "followUps": [
+        "rep_ent_job_0017"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Tu tiens. Tu ne sais pas comment. Ton corps, lui, tient un registre.",
+      "effects": {
+       "health": -8,
+       "happiness": -6,
+       "setFlags": [
+        "anxieux"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Démissionner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu poses ta démission sur le bureau de ton patron et tu sors t'acheter des fleurs. Pour toi.",
+      "effects": {
+       "happiness": 6,
+       "health": 3,
+       "entourage": {
+        "demission": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0017",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des mois après ton effondrement, la question du retour se pose. Ta boîte propose un mi-temps thérapeutique. Ta psy, elle, te demande ce que tu veux, toi.",
+  "choices": [
+   {
+    "label": "Mi-temps thérapeutique",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu reviens doucement. Tu dis « non » pour la première fois en réunion. Le monde ne s'écroule pas.",
+      "effects": {
+       "happiness": 6,
+       "health": 5,
+       "clearFlags": [
+        "burn_out",
+        "anxieux"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le mi-temps devient vite un plein temps payé à moitié. Les vieux symptômes reviennent.",
+      "effects": {
+       "happiness": -6,
+       "health": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer de métier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu quittes tout pour un métier qui te ressemble plus. Salaire en baisse, sourire en hausse.",
+      "effects": {
+       "happiness": 8,
+       "health": 4,
+       "entourage": {
+        "offreEmploi": "auto"
+       },
+       "clearFlags": [
+        "burn_out"
+       ],
+       "followUps": [
+        "rep_ent_job_0018"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Reprendre comme avant",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Tu reprends à plein temps. Ça va. Pour l'instant.",
+      "effects": {
+       "happiness": 1,
+       "health": -2
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Six semaines plus tard, tes mains tremblent de nouveau.",
+      "effects": {
+       "happiness": -10,
+       "health": -8
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0018",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an dans ta nouvelle vie. Un ancien collègue t'appelle, à bout, pour te demander « comment on fait pour s'en sortir ».",
+  "choices": [
+   {
+    "label": "Raconter ton histoire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous parlez trois heures. Il prend rendez-vous chez un médecin le lendemain. Tu as peut-être évité une chute.",
+      "effects": {
+       "happiness": 7,
+       "karma": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le faire venir chez toi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu le recommandes dans ta nouvelle boîte. Il commence le mois suivant, et il sourit déjà.",
+      "effects": {
+       "happiness": 6,
+       "karma": 4,
+       "newFriend": true
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder tes distances",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu l'écoutes un peu, puis tu raccroches. Ce passé-là, tu ne veux plus y toucher.",
+      "effects": {
+       "happiness": 2,
+       "health": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0019",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "flags": [
+    "associe_startup"
+   ],
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La start-up de Karim a un an. Les salaires ont trois semaines de retard, le bureau sent la pizza froide et Karim dit « pivot » toutes les dix minutes.",
+  "choices": [
+   {
+    "label": "Tenir bon",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu serres les dents et le budget. Vous décrochez un premier gros client.",
+      "effects": {
+       "happiness": 2,
+       "money": -1500,
+       "followUps": [
+        "rep_ent_job_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prêter 10 000 €",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton argent paie trois mois de salaires. Karim t'appelle « mon ange gardien ».",
+      "effects": {
+       "money": -10000,
+       "happiness": 4,
+       "followUps": [
+        "rep_ent_job_0020"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton argent disparaît en deux mois, dans un salon professionnel à Las Vegas.",
+      "effects": {
+       "money": -10000,
+       "happiness": -8,
+       "followUps": [
+        "rep_ent_job_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Quitter le navire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu retrouves un poste stable dans le secteur. Karim ne répond plus à tes messages.",
+      "effects": {
+       "happiness": -2,
+       "entourage": {
+        "offreEmploi": "meme_secteur"
+       },
+       "clearFlags": [
+        "associe_startup"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0020",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "associe_startup"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un grand groupe veut racheter la start-up. Karim veut refuser : « On peut devenir énormes. » L'offre, elle, est énorme tout de suite.",
+  "choices": [
+   {
+    "label": "Vendre tes parts",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Tu vends tes parts pour 60 000 €. Karim garde les siennes et te traite de « traître riche ».",
+      "effects": {
+       "money": 60000,
+       "happiness": 8,
+       "clearFlags": [
+        "associe_startup"
+       ]
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Tu vends. Un an plus tard, la start-up vaut dix fois plus. Tu t'achètes une voiture et une rancune.",
+      "effects": {
+       "money": 60000,
+       "happiness": -2,
+       "clearFlags": [
+        "associe_startup"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Suivre Karim",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Vous refusez. Deux ans plus tard, vous revendez pour trois fois plus. Karim te le rappelle à chaque repas.",
+      "effects": {
+       "money": 180000,
+       "happiness": 15,
+       "clearFlags": [
+        "associe_startup"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Vous refusez. La boîte coule en dix-huit mois. Il te reste un sweat à capuche avec le logo.",
+      "effects": {
+       "money": -2000,
+       "happiness": -12,
+       "clearFlags": [
+        "associe_startup"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier pour tous",
+    "requiresSkill": {
+     "marchandage": 3
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu arraches un rachat qui satisfait Karim, les salariés et ton compte en banque. Un miracle diplomatique.",
+      "effects": {
+       "money": 90000,
+       "happiness": 12,
+       "clearFlags": [
+        "associe_startup"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0021",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "flags": [
+    "patron_de_sa_boite"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta fromagerie avec {ami} a six mois. Les clients adorent, le banquier propose un prêt pour agrandir, et la chambre froide fait un bruit de fin du monde.",
+  "choices": [
+   {
+    "label": "Emprunter pour grandir",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Nouvelle chambre froide, deuxième vitrine. Le comté se sent enfin respecté.",
+      "effects": {
+       "money": -3000,
+       "happiness": 6,
+       "setFlags": [
+        "endette"
+       ],
+       "followUps": [
+        "rep_ent_job_0022"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Prêt accordé, mais les travaux prennent un an de retard. Le comté, lui, n'attend pas.",
+      "effects": {
+       "money": -6000,
+       "happiness": -6,
+       "setFlags": [
+        "endette"
+       ],
+       "followUps": [
+        "rep_ent_job_0022"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester petit",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous gardez votre petite boutique qui sent fort. Pas de dettes, pas de folie.",
+      "effects": {
+       "happiness": 3,
+       "money": 2000,
+       "followUps": [
+        "rep_ent_job_0022"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser tomber",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rends ton tablier et retournes au salariat. La boutique continue sans toi, et ton frigo sent toujours un peu le fromage.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "friend": -6
+       },
+       "entourage": {
+        "offreEmploi": "auto"
+       },
+       "clearFlags": [
+        "patron_de_sa_boite"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0022",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "flags": [
+    "patron_de_sa_boite"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Dispute à la fromagerie : {ami} veut ouvrir une deuxième boutique, toi tu veux dormir. Vous vous parlez désormais à travers les clients.",
+  "choices": [
+   {
+    "label": "Racheter ses parts",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rachètes ses parts. La boutique est toute à toi, et plus personne ne rit avec toi des bruits de la chambre froide.",
+      "effects": {
+       "money": -15000,
+       "happiness": 2,
+       "relationships": {
+        "friend": -10
+       },
+       "followUps": [
+        "rep_ent_job_0023"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Céder à {ami}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Deuxième boutique ouverte. Soixante-dix heures par semaine. Vous riez de nouveau, de fatigue.",
+      "effects": {
+       "happiness": 3,
+       "health": -4,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_job_0023"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Trouver un compromis",
+    "requiresSkill": {
+     "eloquence": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une boutique, plus un camion qui fait les marchés. {ami} t'embrasse sur les deux joues.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "friend": 8
+       },
+       "followUps": [
+        "rep_ent_job_0023"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0023",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "patron_de_sa_boite"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le grand moment : une chaîne de supermarchés veut vos fromages dans 200 magasins. Il faudrait tripler la production, et tout risquer.",
+  "choices": [
+   {
+    "label": "Tout risquer",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Pari gagné : vos fromages sont partout. Tu gagnes enfin bien ta vie.",
+      "effects": {
+       "money": 40000,
+       "happiness": 12
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La chaîne paie à 120 jours. Votre trésorerie meurt à 90. Liquidation.",
+      "effects": {
+       "money": -15000,
+       "happiness": -15,
+       "setFlags": [
+        "endette"
+       ],
+       "clearFlags": [
+        "patron_de_sa_boite"
+       ],
+       "entourage": {
+        "signaux": [
+         "faillite"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester artisan",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous refusez. Vous restez petits, connus de tout {ville}, et fiers.",
+      "effects": {
+       "happiness": 6,
+       "money": 5000
+      }
+     }
+    ]
+   },
+   {
+    "label": "Vendre l'affaire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu vends ta part à la chaîne pour un joli chèque. Tu regardes la boutique une dernière fois, la gorge serrée.",
+      "effects": {
+       "money": 50000,
+       "happiness": 2,
+       "clearFlags": [
+        "patron_de_sa_boite"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0024",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "flags": [
+    "meneur_greve"
+   ],
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Cinquième jour de grève. Le directeur te convoque seul{e} et propose un compromis : la moitié de la prime. Il ajoute, plus bas, qu'il pourrait y avoir « une petite enveloppe pour toi ».",
+  "choices": [
+   {
+    "label": "Accepter le compromis",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu ramènes la moitié de la prime. La moitié de l'équipe applaudit, l'autre te traite de « mou ».",
+      "effects": {
+       "money": 400,
+       "happiness": 2,
+       "followUps": [
+        "rep_ent_job_0025"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le compromis passe de justesse. Tu as l'impression d'avoir trahi et réussi en même temps.",
+      "effects": {
+       "money": 400,
+       "happiness": -2,
+       "followUps": [
+        "rep_ent_job_0025"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tenir jusqu'au bout",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Douze jours de grève. La direction cède sur toute la ligne. On te porte en triomphe sur une palette.",
+      "effects": {
+       "money": -500,
+       "happiness": 12,
+       "followUps": [
+        "rep_ent_job_0025"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Douze jours de grève, et la direction ne cède rien. Les salaires perdus pèsent lourd.",
+      "effects": {
+       "money": -900,
+       "happiness": -8,
+       "followUps": [
+        "rep_ent_job_0025"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre l'enveloppe",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu prends l'enveloppe et tu vends le compromis. Personne ne le sait. Toi, si.",
+      "effects": {
+       "money": 3000,
+       "karma": -12,
+       "happiness": -4,
+       "clearFlags": [
+        "meneur_greve"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Une secrétaire t'a vu{e}. Toute l'usine le sait avant midi.",
+      "effects": {
+       "money": 3000,
+       "karma": -12,
+       "happiness": -15,
+       "setFlags": [
+        "honte_publique"
+       ],
+       "clearFlags": [
+        "meneur_greve"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0025",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "meneur_greve"
+   ],
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis la grève, la direction ne t'a pas oublié{e}. Congés refusés, prime individuelle évaporée, et on te confie tous les dossiers dont personne ne veut.",
+  "choices": [
+   {
+    "label": "Aller aux prud'hommes",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Discrimination syndicale reconnue. La boîte te verse des dommages et intérêts, et la direction change de ton.",
+      "effects": {
+       "money": 8000,
+       "happiness": 8,
+       "clearFlags": [
+        "meneur_greve"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La procédure dure deux ans. Tu gagnes, mais tu en sors épuisé{e}.",
+      "effects": {
+       "money": 3000,
+       "health": -5,
+       "happiness": -3,
+       "clearFlags": [
+        "meneur_greve"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir la tête haute",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un concurrent a entendu parler de toi et t'embauche. « Ici, on aime les gens qui parlent. »",
+      "effects": {
+       "happiness": 6,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 10
+       },
+       "clearFlags": [
+        "meneur_greve"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Encaisser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais le dos rond. Tes collègues te soutiennent en silence, avec des croissants.",
+      "effects": {
+       "happiness": -4,
+       "health": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0026",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le « recruteur des Maldives » te rappelle, ravi : tu es pris{e} ! Il ne manque plus que 1 200 € pour le « visa de travail express ». Il a une voix très bronzée.",
+  "choices": [
+   {
+    "label": "Payer le visa",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu paies. On t'envoie un billet d'avion en PDF, pour un vol qui n'existe pas.",
+      "effects": {
+       "money": -1200,
+       "happiness": -10,
+       "followUps": [
+        "rep_ent_job_0027"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Porter plainte",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu vas au commissariat avec tes captures d'écran. L'agente soupire : « Encore les Maldives. »",
+      "effects": {
+       "happiness": -2,
+       "smarts": 2,
+       "followUps": [
+        "rep_ent_job_0027"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui faire perdre son temps",
+    "requiresSkill": {
+     "humour": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui envoies de faux justificatifs, des photos de ton chat et un poème. Il finit par te bloquer, épuisé.",
+      "effects": {
+       "happiness": 8
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0027",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La police démantèle le réseau des « Maldives ». L'enquêtrice t'appelle : une partie de l'argent a été retrouvée, et elle cherche des victimes prêtes à témoigner.",
+  "choices": [
+   {
+    "label": "Témoigner",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu témoignes. Tu récupères une partie de ton argent, et le plaisir de voir l'arnaqueur très pâle.",
+      "effects": {
+       "money": 800,
+       "happiness": 6,
+       "karma": 3
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "L'argent a déjà fini en hors-bord. Tu repars avec ta dignité.",
+      "effects": {
+       "happiness": 2,
+       "karma": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser tomber",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tournes la page. Tu te méfies désormais de toute offre avec un palmier.",
+      "effects": {
+       "happiness": -1,
+       "smarts": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0028",
+  "on": "entourage_suite",
+  "minAge": 17,
+  "maxAge": 19,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison",
+    "university"
+   ]
+  },
+  "text": "Le patron de la brasserie de la plage te rappelle : tu as laissé un bon souvenir. Il te veut tous les week-ends de l'année, « pour les extras ». Le bac approche.",
+  "choices": [
+   {
+    "label": "Accepter les week-ends",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu as de l'argent de poche toute l'année. Tes révisions se font entre deux tables.",
+      "effects": {
+       "money": 1500,
+       "smarts": -3,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Service et devoirs s'enchaînent. Tes notes plongent ; ton patron t'offre un tablier à ton nom pour te consoler.",
+      "effects": {
+       "money": 1500,
+       "smarts": -6,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Juste l'été prochain",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il te garde ta place pour l'été. Tu révises tranquille.",
+      "effects": {
+       "smarts": 3,
+       "happiness": 2,
+       "followUps": [
+        "rep_ent_job_0029"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu te concentres sur le bac. Il te souhaite bonne chance avec un café offert.",
+      "effects": {
+       "smarts": 2,
+       "happiness": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0029",
+  "on": "entourage_suite",
+  "minAge": 18,
+  "maxAge": 24,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "requiresJob": false,
+   "excludeTags": [
+    "prison",
+    "university"
+   ]
+  },
+  "text": "Ton ancien patron de la brasserie ouvre un deuxième restaurant. Il veut quelqu'un de confiance en salle, à l'année : « J'y pense depuis tes premières assiettes. »",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu signes ton premier vrai contrat, avec la mer en face.",
+      "effects": {
+       "happiness": 8,
+       "entourage": {
+        "offreEmploi": "serveur",
+        "niveau": 1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu le remercies. Il restera ton premier bon souvenir de travail.",
+      "effects": {
+       "happiness": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0030",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "retired"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta « petite mission » de conseil dure depuis un an. Tu as de nouveau un badge, un bureau et des réunions. Tes proches commencent à demander si tu es vraiment à la retraite.",
+  "choices": [
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu te sens utile, un peu fatigué{e}. La boîte te verse une belle enveloppe.",
+      "effects": {
+       "money": 8000,
+       "happiness": 4,
+       "health": -2,
+       "followUps": [
+        "rep_ent_job_0031"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ton dos te rappelle ton âge à chaque escalier. Mais quel plaisir.",
+      "effects": {
+       "money": 8000,
+       "happiness": 2,
+       "health": -5,
+       "followUps": [
+        "rep_ent_job_0031"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout arrêter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rends ton badge, pour de bon. Tu dors jusqu'à 8 h et tu trouves ça scandaleusement agréable.",
+      "effects": {
+       "happiness": 7,
+       "health": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un jour par semaine",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Assez pour te sentir utile, pas assez pour t'agacer.",
+      "effects": {
+       "money": 3000,
+       "happiness": 6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0031",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "retired"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La boîte t'offre un siège au conseil d'administration : quatre réunions par an, des jetons de présence et le droit de dire « de mon temps » avec autorité.",
+  "choices": [
+   {
+    "label": "Accepter le siège",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Tu dis « de mon temps » à chaque réunion. On t'écoute, parfois.",
+      "effects": {
+       "money": 6000,
+       "happiness": 7
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Ta première réunion dure sept heures. Tu dors pendant la troisième.",
+      "effects": {
+       "money": 6000,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Passer la main",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses la place aux jeunes. Ils t'invitent quand même au pot de Noël.",
+      "effects": {
+       "happiness": 4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0032",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Yanis, que tu avais couvert pour son match de foot, recommence. Cette fois, il veut que tu dises qu'il était au bureau pendant qu'il passait un entretien… chez le concurrent.",
+  "choices": [
+   {
+    "label": "Le couvrir encore",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il décroche le poste et, en partant, te recommande là-bas. Le concurrent t'appelle.",
+      "effects": {
+       "happiness": 6,
+       "karma": -2,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ton patron découvre tout. « Loyauté mal placée » : ta prime saute.",
+      "effects": {
+       "money": -1500,
+       "happiness": -6,
+       "karma": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dire stop",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Yanis comprend et t'offre un café. Le dernier avant son départ.",
+      "effects": {
+       "happiness": 2,
+       "karma": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger un renvoi d'ascenseur",
+    "requiresSkill": {
+     "marchandage": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu le couvres contre la promesse d'être recommandé{e}. Il tient parole : on te propose un poste là-bas.",
+      "effects": {
+       "happiness": 7,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 15
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0033",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des mois après son licenciement, tu croises Josiane au marché. Elle tient un stand de confitures et a l'air plus heureuse que jamais. Elle t'offre un pot de figues.",
+  "effects": {
+   "happiness": 4
+  }
+ },
+ {
+  "id": "rep_ent_job_0034",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton ancienne boîte te poursuit pour le fichier clients emporté. À l'audience, l'avocat adverse brandit la clé USB en forme de canard comme une pièce à conviction.",
+  "choices": [
+   {
+    "label": "Négocier un accord",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu paies 8 000 € pour clore l'affaire. Le canard reste au tribunal.",
+      "effects": {
+       "money": -8000,
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aller au procès",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Ton avocat démontre que les contacts étaient publics. Relaxe. On te rend le canard.",
+      "effects": {
+       "happiness": 8,
+       "money": -3000
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Condamnation : 20 000 € de dommages et intérêts. Ton nouveau patron fait semblant de ne pas lire la presse.",
+      "effects": {
+       "money": -20000,
+       "happiness": -10
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire payer ton patron",
+    "requiresSkill": {
+     "eloquence": 2
+    },
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu rappelles à ton nouveau patron que c'est lui qui voulait le fichier. Il paie l'avocat et l'accord, en grimaçant.",
+      "effects": {
+       "happiness": 3,
+       "karma": -1
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il refuse et te pousse vers la sortie. Tu paies l'accord seul{e}.",
+      "effects": {
+       "money": -8000,
+       "happiness": -10,
+       "entourage": {
+        "demission": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0035",
+  "on": "event:ent_job_0011",
+  "choice": 0,
+  "chance": 0.5,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Les week-ends passés au bureau ont laissé des traces : ton dos est en vrac et tes amis ont pris l'habitude de ne plus t'inviter.",
+  "effects": {
+   "happiness": -4,
+   "health": -3
+  }
+ },
+ {
+  "id": "rep_ent_job_0036",
+  "on": "event:ent_job_0056",
+  "choice": 1,
+  "outcome": 0,
+  "chance": 0.4,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Les 3 000 prospectus jetés dans la benne ont été retrouvés par le journal du quartier, en manque de sujets. Ta silhouette floue fait la une : « Le mystère de la benne à pizzas ».",
+  "effects": {
+   "happiness": -5,
+   "karma": -1
+  }
+ },
+ {
+  "id": "rep_ent_job_0037",
+  "on": "entourage_suite",
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami}, qui t'avait fait entrer dans sa boîte, vient te demander un service en retour : te porter garant pour son nouvel appartement.",
+  "choices": [
+   {
+    "label": "Te porter garant",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "{ami} paie son loyer rubis sur l'ongle et t'invite à pendre la crémaillère.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "friend": 6
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Trois mois plus tard, {ami} perd son travail et tu paies deux loyers.",
+      "effects": {
+       "money": -1800,
+       "happiness": -6,
+       "relationships": {
+        "friend": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Je ne fais jamais ça, même pour ma famille. » {ami} fait semblant de comprendre.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "friend": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aider au dossier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu aides à monter un dossier en béton. Il passe sans garant.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "friend": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_job_0038",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "complice_fraude"
+   ]
+  },
+  "text": "Chaque fois qu'un inconnu en costume entre dans ton bâtiment, ton cœur fait un salto. La fraude que tu as signée dort dans un tiroir ; toi, beaucoup moins.",
+  "effects": {
+   "happiness": -3,
+   "health": -2
+  }
+ },
+ {
+  "id": "rep_ent_job_0039",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "a_vendu_son_ame"
+   ],
+   "requiresJob": true
+  },
+  "text": "Encore une année à fabriquer des pubs qui hurlent. Tu as baissé le son de ta conscience, mais elle reste réglée sur fort.",
+  "effects": {
+   "happiness": -3
+  }
+ },
+ {
+  "id": "rep_ent_job_0040",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "clearFlags": [
+   "a_vendu_son_ame"
+  ],
+  "conditions": {
+   "flags": [
+    "a_vendu_son_ame"
+   ],
+   "flagMinYears": {
+    "a_vendu_son_ame": 3
+   }
+  },
+  "text": "Tu as fini par t'habituer aux pubs qui hurlent : tu en as même trouvé une drôle. Ton âme a négocié son départ en douceur.",
+  "effects": {
+   "happiness": 2
+  }
+ },
+ {
+  "id": "rep_ent_job_0041",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "patron_de_sa_boite"
+   ]
+  },
+  "text": "Être ton propre patron a ses avantages : personne ne te dit quoi faire. Et ses inconvénients : personne ne te dit quoi faire, et tout le monde t'appelle le dimanche.",
+  "effects": {
+   "happiness": 2,
+   "health": -2,
+   "money": 1500
+  }
+ },
+ {
+  "id": "rep_ent_job_0042",
+  "on": "embauche",
+  "forget": [
+   "patron_de_sa_boite"
+  ]
+ }
+]

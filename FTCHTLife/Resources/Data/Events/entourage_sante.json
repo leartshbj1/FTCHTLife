@@ -1,0 +1,6568 @@
+[
+ {
+  "id": "ent_san_0001",
+  "category": "sante",
+  "minAge": 40,
+  "maxAge": 80,
+  "weight": 5,
+  "conditions": {
+   "flags": [
+    "fume"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta toux du matin a pris de l'ampleur : elle dure maintenant le temps d'un café, et les voisins la reconnaissent à travers le mur. Ta pharmacienne te tend un sirop en ajoutant : « Et un rendez-vous, aussi. »",
+  "choices": [
+   {
+    "label": "Voir un pneumologue",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le pneumologue t'écoute respirer longtemps, fait « hmm » trois fois et demande une radio. Il te rappellera.",
+      "effects": {
+       "health": 2,
+       "money": -60,
+       "followUps": [
+        "rep_ent_san_0001"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre le sirop",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le sirop calme la toux. Pas la cause : elle attend son heure.",
+      "effects": {
+       "health": -2,
+       "money": -9,
+       "followUps": [
+        "rep_ent_san_0004"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le sirop a un goût de fraise industrielle et ne change rien. Tu tousses désormais en sentant la fraise.",
+      "effects": {
+       "health": -3,
+       "happiness": -2,
+       "followUps": [
+        "rep_ent_san_0004"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Fumer moins",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Tu passes de vingt à douze cigarettes par jour. La toux fait de même, au prorata.",
+      "effects": {
+       "health": 3,
+       "money": 300
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Tu tiens neuf jours. Le dixième, tu rattrapes le retard.",
+      "effects": {
+       "health": -3,
+       "happiness": -2,
+       "followUps": [
+        "rep_ent_san_0004"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Inhalation au thym",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La tête sous une serviette au-dessus d'un bol de thym, tu sens la garrigue. Tes poumons, eux, sentent toujours le cendrier.",
+      "effects": {
+       "happiness": 2,
+       "health": -1,
+       "followUps": [
+        "rep_ent_san_0004"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0002",
+  "category": "sante",
+  "minAge": 28,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} déménage au cinquième sans ascenseur et t'a promis des pizzas. Au troisième carton de livres, ton dos fait un bruit de biscotte qu'on écrase.",
+  "choices": [
+   {
+    "label": "Arrêter tout de suite",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu passes l'après-midi allongé{e} sur le canapé emballé de {ami}, à diriger les opérations. Ton dos te remercie, {ami} un peu moins.",
+      "effects": {
+       "health": -2,
+       "happiness": -1,
+       "relationships": {
+        "friend": -3
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu t'arrêtes, mais le mal est fait : lumbago, trois jours à marcher comme un cow-boy fatigué.",
+      "effects": {
+       "health": -4,
+       "setFlags": [
+        "dos_fragile"
+       ],
+       "followUps": [
+        "rep_ent_san_0005"
+       ],
+       "vie": {
+        "disease": "mal_de_dos"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Finir le déménagement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu finis, plié{e} en deux, sous les applaudissements. Trois semaines de lumbago, une amitié renforcée.",
+      "effects": {
+       "health": -6,
+       "setFlags": [
+        "dos_fragile"
+       ],
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_san_0005"
+       ],
+       "vie": {
+        "disease": "mal_de_dos"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Héroïque, tu montes l'armoire en serrant les dents. Le lendemain, tu ne peux plus enfiler tes chaussettes, et ta jambe fourmille.",
+      "effects": {
+       "health": -10,
+       "setFlags": [
+        "dos_fragile"
+       ],
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_san_0005"
+       ],
+       "vie": {
+        "disease": "hernie_discale"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le rebouteux de {ami}",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le rebouteux fait craquer ton dos dans son garage, pour 40 €. Miracle : tu repars droit{e} comme un i.",
+      "effects": {
+       "money": -40,
+       "health": 3,
+       "happiness": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le rebouteux fait craquer quelque chose qui n'aurait pas dû craquer. Ton médecin est furieux, ton dos aussi.",
+      "effects": {
+       "money": -40,
+       "health": -7,
+       "setFlags": [
+        "dos_fragile"
+       ],
+       "followUps": [
+        "rep_ent_san_0005"
+       ],
+       "vie": {
+        "disease": "mal_de_dos"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0003",
+  "category": "sante",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton patron entre dans ton bureau avec un troisième dossier « ultra-prioritaire » et le sourire de quelqu'un qui part en vacances demain. Ça fait deux mois que tu dors mal et que ton œil gauche tremble tout seul.",
+  "choices": [
+   {
+    "label": "Accepter, encore",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu acceptes. Tu travailles le soir, le week-end et dans tes rêves. Ton œil tremble désormais en rythme.",
+      "effects": {
+       "money": 300,
+       "health": -6,
+       "happiness": -6,
+       "setFlags": [
+        "anxieux"
+       ],
+       "followUps": [
+        "rep_ent_san_0007"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu boucles les trois dossiers. Ton patron te félicite d'un pouce levé. Tu ne ressens plus rien, ce qui t'inquiète un peu.",
+      "effects": {
+       "money": 500,
+       "health": -5,
+       "happiness": -4,
+       "setFlags": [
+        "anxieux"
+       ],
+       "followUps": [
+        "rep_ent_san_0007"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier les délais",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu exposes calmement ta charge de travail, graphique à l'appui. Ton patron recule d'un dossier. Victoire rare, à encadrer.",
+      "effects": {
+       "happiness": 6,
+       "health": 3
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   },
+   {
+    "label": "Dire non",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu dis non. Silence. Puis « d'accord ». Tu ignorais que c'était possible.",
+      "effects": {
+       "happiness": 5,
+       "health": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu dis non. Ton patron note quelque chose dans un carnet. Tu n'as jamais su quoi, mais tu dors mieux.",
+      "effects": {
+       "happiness": 2,
+       "health": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Voir ton médecin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton médecin t'écoute dix minutes, puis te dit doucement : « Vous êtes au bord. » Deux semaines d'arrêt. Tu culpabilises les deux premiers jours, puis tu dors.",
+      "effects": {
+       "health": 6,
+       "happiness": 3,
+       "money": -100
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0004",
+  "category": "sante",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 2,
+  "conditions": {
+   "tags": [
+    "mother",
+    "adult"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{mere} t'appelle un dimanche, d'une voix trop légère : le médecin a vu « une petite ombre » sur sa mammographie, « sûrement rien ». Elle a rendez-vous jeudi pour une biopsie et compte y aller en bus, seule.",
+  "choices": [
+   {
+    "label": "L'accompagner jeudi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu poses ta journée. Dans la salle d'attente, elle te parle de tout sauf de ça, et te tient la main sans s'en rendre compte.",
+      "effects": {
+       "happiness": -3,
+       "money": -100,
+       "relationships": {
+        "mother": 10
+       },
+       "followUps": [
+        "rep_ent_san_0009"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui payer un taxi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui commandes un taxi et tu l'appelles le soir. Elle dit que « c'était très bien ». Elle dit toujours ça.",
+      "effects": {
+       "money": -60,
+       "happiness": -2,
+       "relationships": {
+        "mother": 3
+       },
+       "followUps": [
+        "rep_ent_san_0009"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Elle s'inquiète trop",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui dis qu'elle s'inquiète pour rien. Elle répond « tu as raison » et raccroche un peu vite.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "mother": -6
+       },
+       "followUps": [
+        "rep_ent_san_0009"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0005",
+  "category": "sante",
+  "minAge": 35,
+  "maxAge": 75,
+  "weight": 2,
+  "conditions": {
+   "tags": [
+    "father",
+    "parent_age"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Au téléphone, {pere} parle bizarrement : ses mots s'emmêlent, il dit « fourchette » à la place de « mardi » et rit de lui-même. Il dit qu'il est juste fatigué et qu'il va faire une sieste.",
+  "choices": [
+   {
+    "label": "Appeler le 15",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu appelles les secours sans discuter. AVC, pris en charge en moins d'une heure. Le neurologue te dit que ces minutes-là ont tout changé.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "father": 10
+       },
+       "followUps": [
+        "rep_ent_san_0013"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le laisser dormir",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu le rappelles deux heures plus tard. Il ne décroche pas. Les voisins le trouvent : AVC, et les heures perdues ont laissé des traces.",
+      "effects": {
+       "happiness": -12,
+       "relationships": {
+        "father": -2
+       },
+       "followUps": [
+        "rep_ent_san_0014"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il dort, se réveille, va mieux. Le lendemain, le médecin parle d'un « AVC d'avertissement » et le met sous traitement. Il a eu de la chance.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "father": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Chercher sur Internet",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le temps de lire trois forums, tu as compris. Tu appelles les secours avec quarante minutes de retard. {pere} s'en sort, mais pas indemne.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "father": 4
+       },
+       "followUps": [
+        "rep_ent_san_0014"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0006",
+  "category": "sante",
+  "minAge": 28,
+  "maxAge": 75,
+  "weight": 4,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} n'a plus d'énergie depuis des mois, perd du poids sans régime et s'endort devant le dîner. Quand tu parles de médecin, la réponse ne change pas : « C'est le boulot, ça va passer. »",
+  "choices": [
+   {
+    "label": "Prendre le rendez-vous",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu prends rendez-vous en douce et tu y conduis {partenaire} en prétextant un brunch. Trahison mineure, colère de dix minutes, et des analyses à faire.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "partner": -2
+       },
+       "followUps": [
+        "rep_ent_san_0016"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le piège du faux brunch est éventé dans la voiture. Dispute, puis {partenaire} accepte, à condition d'avoir quand même le brunch.",
+      "effects": {
+       "money": -40,
+       "happiness": 3,
+       "relationships": {
+        "partner": 2
+       },
+       "followUps": [
+        "rep_ent_san_0016"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Trouver les mots",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu dis simplement que tu as peur. {partenaire} te regarde, et prend rendez-vous dans la foulée.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 6
+       },
+       "followUps": [
+        "rep_ent_san_0016"
+       ]
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   },
+   {
+    "label": "Insister",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu insistes trois soirs de suite. Au quatrième, {partenaire} cède, « pour que tu arrêtes ».",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "partner": -1
+       },
+       "followUps": [
+        "rep_ent_san_0016"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ça tourne à la dispute. Tu dors sur le canapé, avec ta conscience pour toi.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "partner": -6
+       },
+       "followUps": [
+        "rep_ent_san_0017"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Respecter son choix",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses faire. Les mois passent, la fatigue aussi, en apparence.",
+      "effects": {
+       "happiness": -2,
+       "followUps": [
+        "rep_ent_san_0017"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0007",
+  "category": "sante",
+  "minAge": 50,
+  "maxAge": 80,
+  "weight": 1,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton médecin traitant t'appelle lui-même, un vendredi à 18 h, à propos du test de dépistage que tu avais fait presque par hasard. Il voudrait te voir « rapidement, pour en parler ».",
+  "choices": [
+   {
+    "label": "Y aller lundi",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Coloscopie. On a trouvé quelque chose, tôt : la meilleure des mauvaises nouvelles.",
+      "effects": {
+       "health": -6,
+       "happiness": -10,
+       "followUps": [
+        "rep_ent_san_0019"
+       ],
+       "vie": {
+        "disease": "cancer_colon"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Coloscopie : quelques polypes retirés à temps, rien de méchant. Tu sors en jurant de faire tous les dépistages de la Terre.",
+      "effects": {
+       "health": 4,
+       "happiness": 8,
+       "money": -50
+      }
+     }
+    ]
+   },
+   {
+    "label": "Après les vacances",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Deux mois plus tard, le diagnostic tombe, un peu plus avancé qu'il n'aurait dû. Le chirurgien ne fait aucun reproche ; ses sourcils, si.",
+      "effects": {
+       "health": -12,
+       "happiness": -12,
+       "followUps": [
+        "rep_ent_san_0019"
+       ],
+       "vie": {
+        "disease": "cancer_colon"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Après les vacances, on te retire des polypes. Rien de grave, cette fois. Tu as eu de la chance, et tu le sais.",
+      "effects": {
+       "health": 2,
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout lire sur Internet",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu passes le week-end sur des forums et tu arrives lundi avec un classeur. Diagnostic : un cancer, pris tôt. Les forums avaient tort sur tout le reste.",
+      "effects": {
+       "health": -6,
+       "happiness": -14,
+       "setFlags": [
+        "anxieux"
+       ],
+       "followUps": [
+        "rep_ent_san_0019"
+       ],
+       "vie": {
+        "disease": "cancer_colon"
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Trois nuits blanches à lire le pire. Lundi : des polypes bénins. Tu as vieilli de cinq ans pour rien.",
+      "effects": {
+       "happiness": -4,
+       "health": -1,
+       "setFlags": [
+        "hypocondriaque"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0008",
+  "category": "sante",
+  "minAge": 40,
+  "maxAge": 75,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu as soif tout le temps, tu te lèves trois fois par nuit pour aller aux toilettes et tes paupières pèsent une tonne dès 15 h. Ta voisine dit que c'est « l'âge ». Ton pharmacien dit « prise de sang ».",
+  "choices": [
+   {
+    "label": "Faire la prise de sang",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Glycémie trop haute : diabète de type 2, débutant. Le médecin dit que c'est rattrapable, si tu t'y mets vraiment.",
+      "effects": {
+       "health": -3,
+       "money": -30,
+       "followUps": [
+        "rep_ent_san_0023"
+       ],
+       "vie": {
+        "disease": "diabete_type2"
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Glycémie limite, pas encore de diabète. Le médecin te donne un an pour la faire redescendre.",
+      "effects": {
+       "health": -1,
+       "happiness": -2,
+       "money": -30,
+       "followUps": [
+        "rep_ent_san_0023"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Boire moins le soir",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu bois moins le soir, et tu as soif la nuit. Le problème a juste changé d'horaire.",
+      "effects": {
+       "health": -5,
+       "happiness": -3,
+       "followUps": [
+        "rep_ent_san_0024"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Les symptômes se calment un peu, par hasard. Tu oublies l'affaire ; elle ne t'oublie pas.",
+      "effects": {
+       "health": -3,
+       "followUps": [
+        "rep_ent_san_0024"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Cure de cannelle",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un site affirme que la cannelle soigne tout. Ta cuisine sent Noël en plein mois d'août. Ton sang, lui, reste sucré.",
+      "effects": {
+       "health": -4,
+       "money": -20,
+       "happiness": 1,
+       "followUps": [
+        "rep_ent_san_0024"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0009",
+  "category": "sante",
+  "minAge": 12,
+  "maxAge": 55,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "grandparents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{grandparent} t'a appelé{e} trois fois cette semaine pour te souhaiter ton anniversaire. Ce n'est pas ton anniversaire. Et ce matin, la voisine a encore trouvé une casserole oubliée sur le feu.",
+  "choices": [
+   {
+    "label": "En parler à la famille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lances la conversation que tout le monde évitait. Rendez-vous chez un neurologue, et une famille qui se met enfin d'accord, à peu près.",
+      "effects": {
+       "happiness": -3,
+       "smarts": 1,
+       "followUps": [
+        "rep_ent_san_0025"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Passer plus souvent",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes chaque semaine. Vous jouez aux cartes ; {grandparent} triche toujours aussi bien, ce qui te rassure un peu.",
+      "effects": {
+       "happiness": 4,
+       "followUps": [
+        "rep_ent_san_0025"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "C'est l'âge",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tout le monde oublie des choses, non ? La casserole suivante brûle pour de bon, et les pompiers passent.",
+      "effects": {
+       "happiness": -6,
+       "followUps": [
+        "rep_ent_san_0025"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0010",
+  "category": "sante",
+  "minAge": 38,
+  "maxAge": 65,
+  "weight": 4,
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Visite à la médecine du travail. Le médecin prend ta tension, la reprend, change de bras, tapote l'appareil et dit « tiens, tiens ».",
+  "choices": [
+   {
+    "label": "Consulter ton médecin",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Hypertension confirmée. Un petit comprimé, moins de sel, plus de marche : rien d'insurmontable.",
+      "effects": {
+       "health": -1,
+       "money": -30,
+       "followUps": [
+        "rep_ent_san_0027"
+       ],
+       "vie": {
+        "disease": "hypertension"
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Chez ton médecin, ta tension est parfaite. C'était l'effet blouse blanche, plus la machine à café du service.",
+      "effects": {
+       "happiness": 3,
+       "money": -25
+      }
+     }
+    ]
+   },
+   {
+    "label": "C'est le café",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu décides que c'est le café. Tu en prends un pour fêter ça.",
+      "effects": {
+       "health": -3,
+       "setFlags": [
+        "tension_haute"
+       ],
+       "followUps": [
+        "rep_ent_san_0028"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "C'était peut-être vraiment le café. Peut-être.",
+      "effects": {
+       "health": -1,
+       "happiness": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Acheter un tensiomètre",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu te mesures matin et soir pendant un mois : les chiffres sont hauts. Ton médecin confirme et te félicite pour le tableau Excel.",
+      "effects": {
+       "money": -50,
+       "health": 1,
+       "followUps": [
+        "rep_ent_san_0027"
+       ],
+       "vie": {
+        "disease": "hypertension"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu te mesures douze fois par jour. Ta tension monte à chaque mesure, par anxiété.",
+      "effects": {
+       "money": -50,
+       "happiness": -3,
+       "setFlags": [
+        "hypocondriaque"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0011",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} ne répond plus à tes messages depuis des semaines. Quand tu sonnes enfin, {ami} t'ouvre en pyjama à 16 h, volets fermés, et te dit : « Ça va, juste un peu de fatigue. »",
+  "choices": [
+   {
+    "label": "Rester et écouter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ouvres les volets, tu fais des pâtes et tu écoutes. Tard dans la nuit, {ami} finit par prononcer le mot « dépression ».",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "friend": 10
+       },
+       "followUps": [
+        "rep_ent_san_0029"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Emmener chez le médecin",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu prends le rendez-vous et tu y conduis {ami}. Le médecin parle de dépression et d'un suivi. Le plus dur est fait : le premier pas.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "friend": 8
+       },
+       "followUps": [
+        "rep_ent_san_0029"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{ami} se braque : « Je ne suis pas fou. » Personne n'a dit ça. Tu laisses la porte ouverte, et un sac de courses.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "friend": -3
+       },
+       "followUps": [
+        "rep_ent_san_0029"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser de l'espace",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu respectes son besoin d'espace. Les semaines passent, le silence aussi.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "friend": -5
+       },
+       "followUps": [
+        "rep_ent_san_0030"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0012",
+  "category": "sante",
+  "minAge": 22,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "adult"
+   ],
+   "excludeFlags": [
+    "sans_mutuelle"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta mutuelle augmente encore, de 18 %. Tu fais le compte : cette année, tu as consulté une fois, pour une écharde. Le formulaire de résiliation te regarde avec insistance.",
+  "choices": [
+   {
+    "label": "Résilier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Résiliée ! Tu économises de quoi partir un week-end. Tu te sens invincible, ce qui est exactement l'humeur idéale pour tomber malade.",
+      "effects": {
+       "money": 700,
+       "happiness": 4,
+       "setFlags": [
+        "sans_mutuelle"
+       ],
+       "followUps": [
+        "rep_ent_san_0031"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire jouer la concurrence",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu menaces de partir, tu compares, tu obtiens un rabais. Ton conseiller te déteste avec respect.",
+      "effects": {
+       "money": 400,
+       "happiness": 3
+      }
+     }
+    ],
+    "requiresSkill": {
+     "marchandage": 2
+    }
+   },
+   {
+    "label": "Garder la mutuelle",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu la gardes en râlant, comme tout le monde.",
+      "effects": {
+       "money": -300,
+       "happiness": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0013",
+  "category": "sante",
+  "minAge": 3,
+  "maxAge": 11,
+  "weight": 6,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton oreille te lance comme si un pivert s'y était installé. Problème : samedi, c'est l'anniversaire de Lucas à la piscine.",
+  "choices": [
+   {
+    "label": "Le dire à tes parents",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Médecin, gouttes, antibiotique au goût de banane chimique. Tu rates la piscine, mais tu gardes l'oreille.",
+      "effects": {
+       "happiness": -4,
+       "health": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Cacher la douleur",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu plonges. L'eau entre, la douleur explose, et tu passes la fête à pleurer dans une serviette à paillettes.",
+      "effects": {
+       "health": -5,
+       "happiness": -6,
+       "vie": {
+        "disease": "otite"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu tiens toute la fête en penchant la tête sur le côté. Le lundi, otite carabinée.",
+      "effects": {
+       "health": -4,
+       "happiness": 2,
+       "vie": {
+        "disease": "otite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Bouillotte de mamie",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La bouillotte soulage un peu. L'otite, elle, prend son temps.",
+      "effects": {
+       "health": -2,
+       "happiness": -1,
+       "vie": {
+        "disease": "otite"
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Miracle, ou hasard : la douleur passe en une nuit. Tu deviens fan absolu de la bouillotte.",
+      "effects": {
+       "happiness": 4,
+       "health": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0014",
+  "category": "sante",
+  "minAge": 3,
+  "maxAge": 10,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "mother"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{mere} a appris que ta cousine a la varicelle. Son plan : t'emmener jouer avec elle tout l'après-midi, « comme ça, ce sera fait ». On ne t'a pas demandé ton avis.",
+  "choices": [
+   {
+    "label": "Y aller",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Mission accomplie : deux semaines plus tard, tu ressembles à un dalmatien. {mere} est ravie, toi beaucoup moins.",
+      "effects": {
+       "health": -3,
+       "happiness": -4,
+       "relationships": {
+        "mother": 2
+       },
+       "vie": {
+        "disease": "varicelle"
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Tu passes l'après-midi collé{e} à ta cousine et tu n'attrapes rien. Ton système immunitaire est têtu.",
+      "effects": {
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Simuler une fièvre",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu chauffes le thermomètre sur le radiateur. {mere} n'est pas dupe : tu y vas quand même, punition en prime, et tu l'attrapes.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "mother": -2
+       },
+       "vie": {
+        "disease": "varicelle"
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le thermomètre affiche 52 degrés. {mere} rit tellement qu'elle annule tout.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "mother": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te cacher au placard",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu restes deux heures dans le placard à chaussures. On te retrouve à l'odeur. Pas de varicelle, mais pas de dessert non plus.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "mother": -3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0015",
+  "category": "sante",
+  "minAge": 5,
+  "maxAge": 12,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta gorge gratte comme du papier de verre, et demain, c'est la sortie scolaire au zoo, avec les girafes.",
+  "choices": [
+   {
+    "label": "Le dire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pas de zoo. Mais une angine soignée à temps, du sirop à la fraise et deux jours de dessins animés.",
+      "effects": {
+       "health": 2,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Serrer les dents",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu vois les girafes à travers 39 de fièvre. Elles avaient l'air de compatir.",
+      "effects": {
+       "health": -5,
+       "happiness": 2,
+       "vie": {
+        "disease": "angine"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu tiens toute la journée, puis tu t'écroules dans le car du retour. Une semaine de lit.",
+      "effects": {
+       "health": -6,
+       "happiness": -3,
+       "vie": {
+        "disease": "angine"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Gargarisme au sel",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu gargarises comme ta grand-mère t'a appris. Ça pique, ça marche à moitié, et tu vas voir les girafes.",
+      "effects": {
+       "happiness": 4,
+       "health": -1
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le sel n'a rien fait. Angine, et en plus tu as soif.",
+      "effects": {
+       "health": -4,
+       "happiness": -2,
+       "vie": {
+        "disease": "angine"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0016",
+  "category": "sante",
+  "minAge": 4,
+  "maxAge": 12,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "grandparents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu as un gros rhume, et {grandparent} débarque avec son remède secret : un sirop d'oignon et de miel, préparé « comme en 1952 ».",
+  "choices": [
+   {
+    "label": "Boire le sirop",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "C'est infect, mais ton nez se débouche. {grandparent} en parlera pendant trois repas de famille.",
+      "effects": {
+       "health": 2,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Aucun effet, sauf que tu sens l'oignon pendant trois jours. À l'école, on change de place.",
+      "effects": {
+       "happiness": -3,
+       "looks": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le verser dans la plante",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La plante verte meurt dans la semaine. {grandparent} ne comprend pas ; toi, si.",
+      "effects": {
+       "happiness": 2,
+       "karma": -2,
+       "health": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un câlin à la place",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{grandparent} accepte l'échange. Ton rhume dure exactement pareil, mais en mieux.",
+      "effects": {
+       "happiness": 5
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0017",
+  "category": "sante",
+  "minAge": 8,
+  "maxAge": 16,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "grandparents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{grandparent} est à l'hôpital, et ta famille hésite à t'y emmener : « Ce n'est pas un endroit pour un enfant. »",
+  "choices": [
+   {
+    "label": "Insister pour y aller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu y vas. {grandparent} s'illumine en te voyant et te présente à toutes les infirmières, deux fois.",
+      "effects": {
+       "happiness": 6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un dessin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton dessin est accroché au-dessus du lit. Les infirmières disent que c'est le plus beau du service.",
+      "effects": {
+       "happiness": 4,
+       "smarts": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester à la maison",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu restes à la maison avec une boule au ventre. On te dit que {grandparent} a demandé de tes nouvelles.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0018",
+  "category": "sante",
+  "minAge": 12,
+  "maxAge": 17,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Chaque dimanche soir, tu as mal au ventre. Le lundi matin, c'est pire. Le samedi, plus rien du tout. Curieux.",
+  "choices": [
+   {
+    "label": "En parler à tes parents",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu finis par dire que l'école te stresse énormément. Tes parents écoutent vraiment, et ton ventre se détend déjà.",
+      "effects": {
+       "happiness": 6,
+       "health": 3,
+       "relationships": {
+        "parent": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tes parents pensent à une gastro et te donnent du riz. Le riz ne soigne pas le lundi.",
+      "effects": {
+       "health": -1,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Voir l'infirmière scolaire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'infirmière comprend tout de suite et t'oriente vers la psychologue scolaire, qui a des bonbons et du temps.",
+      "effects": {
+       "happiness": 4,
+       "health": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Endurer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu serres les dents chaque lundi. Le mal de ventre devient une habitude, puis une angoisse.",
+      "effects": {
+       "happiness": -6,
+       "health": -3,
+       "setFlags": [
+        "anxieux"
+       ],
+       "vie": {
+        "disease": "anxiete"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0019",
+  "category": "sante",
+  "minAge": 14,
+  "maxAge": 19,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis la grosse soirée de la rentrée, tu dors quatorze heures par jour, ta gorge brûle et tes ganglions ont la taille de billes. Chez toi, on pense que c'est « la flemme ».",
+  "choices": [
+   {
+    "label": "Aller chez le médecin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Prise de sang : mononucléose, la « maladie du baiser ». Tout le monde se regarde de travers au lycée.",
+      "effects": {
+       "health": -3,
+       "happiness": -2,
+       "vie": {
+        "disease": "mononucleose"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Boissons énergisantes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trois canettes par jour pour tenir. Ton cœur fait des claquettes, et la mono s'installe pour de bon.",
+      "effects": {
+       "health": -8,
+       "happiness": -3,
+       "vie": {
+        "disease": "mononucleose"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dormir tout le mois",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu dors un mois. Ça passe tout seul, mais tu as raté trois contrôles.",
+      "effects": {
+       "health": 2,
+       "smarts": -4
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu dors, mais ça ne passe pas : mononucléose, et deux mois de fatigue.",
+      "effects": {
+       "health": -5,
+       "smarts": -3,
+       "vie": {
+        "disease": "mononucleose"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0020",
+  "category": "sante",
+  "minAge": 13,
+  "maxAge": 17,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis quelques mois, tu as mal à la tête presque tous les soirs, souvent après six heures de téléphone et un litre de soda.",
+  "choices": [
+   {
+    "label": "Consulter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Lunettes ! Tu voyais flou depuis deux ans sans le savoir. Le monde a des détails.",
+      "effects": {
+       "health": 4,
+       "looks": -1,
+       "happiness": 3
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le médecin parle de migraine. Moins d'écrans, plus de sommeil, et un carnet pour noter les crises.",
+      "effects": {
+       "health": -2,
+       "happiness": -2,
+       "vie": {
+        "disease": "migraine_chronique"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Baisser la luminosité",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu baisses la luminosité et continues six heures par jour. Ta tête trouve l'astuce insuffisante.",
+      "effects": {
+       "health": -3,
+       "happiness": 1,
+       "setFlags": [
+        "accro_aux_ecrans"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Couper à 21 h",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Les deux premières soirées sont un désert. La troisième, tu lis un livre. Les maux de tête disparaissent.",
+      "effects": {
+       "health": 5,
+       "smarts": 3,
+       "happiness": -1
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu tiens une soirée, puis tu rallumes en cachette sous la couette. La migraine apprécie le geste.",
+      "effects": {
+       "health": -3,
+       "vie": {
+        "disease": "migraine_chronique"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0021",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 26,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "university"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta colocataire a la grippe, tousse dans toute la cuisine, et tes partiels commencent dans dix jours.",
+  "choices": [
+   {
+    "label": "T'exiler à la bibliothèque",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu vis à la bibliothèque jusqu'à la fermeture. Partiels réussis, grippe évitée.",
+      "effects": {
+       "smarts": 4,
+       "happiness": 1
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu attrapes la grippe quand même, à la bibliothèque, d'un inconnu.",
+      "effects": {
+       "health": -4,
+       "smarts": -2,
+       "vie": {
+        "disease": "grippe"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Soigner ta coloc",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Bouillon, mouchoirs, séries. Ta coloc te doit tout, et tu attrapes la grippe trois jours avant l'examen.",
+      "effects": {
+       "health": -4,
+       "smarts": -3,
+       "happiness": 2,
+       "vie": {
+        "disease": "grippe"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu soignes ta coloc sans tomber malade. Vous devenez inséparables.",
+      "effects": {
+       "newFriend": true,
+       "happiness": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Masque et vitamine C",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu révises masqué{e}, en avalant des comprimés orange. Tu ne sais pas si ça marche, mais tu ne tombes pas malade.",
+      "effects": {
+       "happiness": 2,
+       "health": 1,
+       "money": -15
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0022",
+  "category": "sante",
+  "minAge": 22,
+  "maxAge": 64,
+  "weight": 6,
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Fièvre à 39, courbatures, la tête comme une citrouille. Problème : demain, tu présentes le projet de l'année devant la direction.",
+  "choices": [
+   {
+    "label": "Arrêt et lit",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ta collègue présente à ta place, très bien, trop bien. Toi, tu guéris sous ta couette.",
+      "effects": {
+       "health": 3,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Y aller quand même",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu présentes en transpirant comme un fromage. La direction apprécie ton dévouement, puis attrape ta grippe.",
+      "effects": {
+       "health": -7,
+       "money": 200,
+       "karma": -2,
+       "vie": {
+        "disease": "grippe"
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu t'évanouis entre deux diapositives. On retiendra surtout la chute.",
+      "effects": {
+       "health": -8,
+       "happiness": -6,
+       "vie": {
+        "disease": "grippe"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Visio depuis le lit",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu présentes en visio, chemise en haut, pyjama en bas, voix de crapaud. Ça passe, de justesse.",
+      "effects": {
+       "health": -3,
+       "happiness": 2,
+       "money": 100,
+       "vie": {
+        "disease": "grippe"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0023",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 70,
+  "weight": 6,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta gorge brûle comme si tu avais avalé un cactus, et tes amygdales ont la taille de deux clémentines.",
+  "choices": [
+   {
+    "label": "Médecin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Test rapide : angine bactérienne. Antibiotiques, et glace à la vanille sur ordonnance morale.",
+      "effects": {
+       "health": 3,
+       "money": -25
+      }
+     }
+    ]
+   },
+   {
+    "label": "Chercher sur Internet",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Internet hésite entre angine, peste et « malédiction ancienne ». Tu ne dors pas de la nuit, puis tu vas chez le médecin quand même.",
+      "effects": {
+       "happiness": -4,
+       "money": -25,
+       "setFlags": [
+        "hypocondriaque"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Un forum conseille le jus d'ail pur. Tu en bois un verre. L'angine reste, tes amis s'éloignent.",
+      "effects": {
+       "health": -4,
+       "happiness": -3,
+       "vie": {
+        "disease": "angine"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Miel et thym",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Du thym du jardin, du miel, trois jours de patience : ça passe. Ta grand-mère avait raison sur un point.",
+      "effects": {
+       "health": 2,
+       "happiness": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le miel ne suffit pas : l'angine s'installe et la fièvre monte.",
+      "effects": {
+       "health": -5,
+       "vie": {
+        "disease": "angine"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0024",
+  "category": "sante",
+  "minAge": 10,
+  "maxAge": 55,
+  "weight": 3,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Une douleur sourde autour du nombril a glissé en bas à droite de ton ventre. Marcher fait mal, tousser aussi, et tu n'as plus faim du tout, ce qui ne t'arrive jamais.",
+  "choices": [
+   {
+    "label": "Urgences",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Appendicite. Opération le soir même, cicatrice de trois centimètres et une histoire à raconter pendant des années.",
+      "effects": {
+       "health": -3,
+       "money": -150,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Bouillotte et lit",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Ça passe tout seul : une indigestion carabinée. Tu as eu de la chance.",
+      "effects": {
+       "health": -1,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "La douleur explose dans la nuit. Péritonite évitée de justesse, une semaine d'hôpital.",
+      "effects": {
+       "health": -15,
+       "money": -400,
+       "vie": {
+        "disease": "appendicite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre lundi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Lundi, ton médecin t'envoie aux urgences en courant. Opération en urgence, et un chirurgien qui te demande : « Pourquoi lundi ? »",
+      "effects": {
+       "health": -10,
+       "happiness": -4,
+       "vie": {
+        "disease": "appendicite"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0025",
+  "category": "sante",
+  "minAge": 28,
+  "maxAge": 75,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Une douleur atroce te plie en deux, côté flanc, et descend vers le bas-ventre. Tu ne tiens ni assis{e}, ni debout, ni couché{e}.",
+  "choices": [
+   {
+    "label": "Urgences",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Calcul rénal. Antidouleurs puissants, puis le calcul sort tout seul trois jours plus tard. Tu le gardes dans un flacon, comme un trophée.",
+      "effects": {
+       "health": -4,
+       "money": -100,
+       "happiness": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Boire trois litres d'eau",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu bois comme un chameau. Le calcul finit par passer, dans une douleur que tu raconteras toute ta vie.",
+      "effects": {
+       "health": -5,
+       "happiness": -3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "L'eau ne suffit pas, le calcul est coincé. Lithotripsie au laser.",
+      "effects": {
+       "health": -8,
+       "money": -200,
+       "vie": {
+        "disease": "calculs_renaux"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Serrer les dents",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Deux jours à serrer les dents, puis tu finis aux urgences en rampant. Un autre calcul attend son tour.",
+      "effects": {
+       "health": -10,
+       "happiness": -6,
+       "vie": {
+        "disease": "calculs_renaux"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0026",
+  "category": "sante",
+  "minAge": 16,
+  "maxAge": 80,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis ce matin, aller aux toilettes est devenu une épreuve : ça brûle, tu y vas toutes les dix minutes et tu as l'impression d'y habiter.",
+  "choices": [
+   {
+    "label": "Médecin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Infection urinaire. Un antibiotique en une prise, et tu redeviens libre de tes mouvements.",
+      "effects": {
+       "health": 3,
+       "money": -25
+      }
+     }
+    ]
+   },
+   {
+    "label": "Jus de canneberge",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Un litre de jus de canneberge : ça aide un peu, et c'est plutôt bon.",
+      "effects": {
+       "health": 1,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "La canneberge ne fait pas le poids. L'infection remonte, avec de la fièvre et mal dans le dos.",
+      "effects": {
+       "health": -6,
+       "happiness": -3,
+       "vie": {
+        "disease": "cystite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ignorer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu l'ignores. Elle, non.",
+      "effects": {
+       "health": -6,
+       "happiness": -4,
+       "vie": {
+        "disease": "cystite"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0027",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 80,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton nez coule depuis trois semaines et ton front pèse un parpaing dès que tu te penches. Ton pharmacien te tend une seringue de lavage de nez avec un regard encourageant.",
+  "choices": [
+   {
+    "label": "Le lavage de nez",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "L'eau salée ressort par l'autre narine, ce qui est à la fois horrible et miraculeux. Tu respires.",
+      "effects": {
+       "health": 4,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu t'étouffes, tu en mets partout, et rien ne se débouche. Sinusite.",
+      "effects": {
+       "health": -3,
+       "happiness": -2,
+       "vie": {
+        "disease": "sinusite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Médecin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Sinusite. Antibiotiques et spray : en une semaine, ton front redevient un front.",
+      "effects": {
+       "health": 3,
+       "money": -25
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ça passe tout seul, au bout d'un mois. Un mois.",
+      "effects": {
+       "health": -2,
+       "happiness": -3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ça ne passe pas : sinusite, et des maux de tête en prime.",
+      "effects": {
+       "health": -4,
+       "happiness": -3,
+       "vie": {
+        "disease": "sinusite"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0028",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 80,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le test que tu as fait « pour rien » affiche deux traits bien nets. Le mariage de ta cousine a lieu demain, et tu es témoin.",
+  "choices": [
+   {
+    "label": "Rester chez toi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu suis le mariage en visio, en pyjama, une coupe à la main. Ta cousine te remercie : personne n'a été malade.",
+      "effects": {
+       "health": -3,
+       "happiness": -3,
+       "karma": 4,
+       "vie": {
+        "disease": "covid"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Y aller masqué{e}",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu fais ton discours derrière un masque. Le discours est raté, mais personne n'est contaminé, apparemment.",
+      "effects": {
+       "health": -3,
+       "happiness": 2,
+       "karma": -1,
+       "vie": {
+        "disease": "covid"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La moitié du banquet tombe malade la semaine suivante. Ta cousine n'oubliera jamais son mariage, pour de mauvaises raisons.",
+      "effects": {
+       "health": -4,
+       "happiness": -6,
+       "karma": -6,
+       "vie": {
+        "disease": "covid"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refaire un test",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le deuxième test n'a qu'un trait. Tu y vas avec un doute, sans tousser.",
+      "effects": {
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Deuxième test : deux traits, très francs. Tu restes chez toi.",
+      "effects": {
+       "health": -3,
+       "happiness": -3,
+       "vie": {
+        "disease": "covid"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0029",
+  "category": "sante",
+  "minAge": 20,
+  "maxAge": 75,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu te réveilles à 4 h 12 tous les matins depuis deux mois. Pile. Tu connais maintenant les bruits de chaque voisin et l'horaire du premier camion poubelle.",
+  "choices": [
+   {
+    "label": "Somnifères",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton médecin te prescrit un somnifère. Tu dors comme un loir et tu te réveilles comme un loir écrasé.",
+      "effects": {
+       "health": 2,
+       "happiness": 1,
+       "money": -15
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Les somnifères marchent… tant que tu en prends. Sans eux, plus rien.",
+      "effects": {
+       "health": -2,
+       "setFlags": [
+        "insomniaque"
+       ],
+       "vie": {
+        "disease": "insomnie"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le téléphone au lit",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu scrolles de 4 h à 7 h. Ton insomnie s'installe confortablement dans la lumière bleue.",
+      "effects": {
+       "health": -4,
+       "happiness": -3,
+       "setFlags": [
+        "insomniaque",
+        "accro_aux_ecrans"
+       ],
+       "vie": {
+        "disease": "insomnie"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Sport et tisane",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Footing le soir, tilleul, chambre fraîche. Au bout de trois semaines, tu dors jusqu'au réveil.",
+      "effects": {
+       "health": 5,
+       "happiness": 4,
+       "setFlags": [
+        "sportif_regulier"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Malgré le sport et la tisane, 4 h 12 reste ton heure. Au moins, tu fais tes courses très tôt.",
+      "effects": {
+       "health": -2,
+       "happiness": -2,
+       "vie": {
+        "disease": "insomnie"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0030",
+  "category": "sante",
+  "minAge": 8,
+  "maxAge": 80,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Une de tes dents hurle dès que tu bois quelque chose de froid. Ou de chaud. Ou que tu respires un peu fort.",
+  "choices": [
+   {
+    "label": "Dentiste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Carie profonde, mais rattrapée. Une heure de roulette, et ta dent se tait.",
+      "effects": {
+       "health": 2,
+       "money": -60,
+       "happiness": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Clou de girofle",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le clou de girofle endort la douleur. Ta bouche sent le pain d'épice, et la carie continue.",
+      "effects": {
+       "happiness": 2,
+       "health": -1,
+       "vie": {
+        "disease": "carie"
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ça calme deux jours, puis ta joue gonfle comme un ballon : abcès.",
+      "effects": {
+       "health": -6,
+       "money": -150,
+       "looks": -3,
+       "vie": {
+        "disease": "carie"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mâcher de l'autre côté",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu mâches à gauche pendant six mois. À droite, la carie progresse en paix.",
+      "effects": {
+       "health": -4,
+       "happiness": -2,
+       "vie": {
+        "disease": "carie"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0031",
+  "category": "sante",
+  "minAge": 52,
+  "maxAge": 90,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Une bande de petits boutons douloureux est apparue en ceinture, d'un seul côté de ton torse. Ça brûle comme un coup de soleil sous la peau.",
+  "choices": [
+   {
+    "label": "Médecin, vite",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Zona. Les antiviraux pris tôt raccourcissent tout : deux semaines de douleur au lieu de deux mois.",
+      "effects": {
+       "health": -2,
+       "money": -30,
+       "vie": {
+        "disease": "zona"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le guérisseur de ta tante",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ta tante t'emmène « faire charmer le zona ». Ça ne fait rien, sauf une note de 50 €.",
+      "effects": {
+       "health": -6,
+       "money": -50,
+       "happiness": -3,
+       "vie": {
+        "disease": "zona"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "C'est le stress",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu mets ça sur le compte du stress. Le zona, vexé, dure tout l'hiver et laisse des douleurs.",
+      "effects": {
+       "health": -8,
+       "happiness": -5,
+       "vie": {
+        "disease": "zona"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0032",
+  "category": "sante",
+  "minAge": 52,
+  "maxAge": 90,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton genou droit gonfle, craque comme un vieux parquet et prédit la pluie mieux que la météo.",
+  "choices": [
+   {
+    "label": "Rhumatologue",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Arthrose. Infiltration, kiné et conseils de marche. Ton genou reste bavard, mais moins douloureux.",
+      "effects": {
+       "health": 1,
+       "money": -60,
+       "happiness": 1,
+       "vie": {
+        "disease": "arthrose"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "La crème de la voisine",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La voisine jure par sa pommade au camphre. Ça chauffe, ça sent fort, ça ne soigne rien. Ton genou gagne surtout en odeur.",
+      "effects": {
+       "health": -2,
+       "happiness": 1,
+       "vie": {
+        "disease": "arthrose"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Marche douce",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu marches tous les jours, doucement. Le genou proteste puis s'habitue. Tes mollets te remercient.",
+      "effects": {
+       "health": 4,
+       "happiness": 3,
+       "setFlags": [
+        "sportif_regulier"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu marches, mais l'arthrose s'installe quand même. Au moins, tu as de bons mollets.",
+      "effects": {
+       "health": 1,
+       "vie": {
+        "disease": "arthrose"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0033",
+  "category": "sante",
+  "minAge": 62,
+  "maxAge": 95,
+  "weight": 5,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu vois le monde comme à travers une vitre de salle de bain. Les phares font des étoiles la nuit, et hier, tu as salué le portemanteau.",
+  "choices": [
+   {
+    "label": "Ophtalmo",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Cataracte. Une opération de vingt minutes, et soudain les couleurs ! Tu découvres que ta cuisine est jaune.",
+      "effects": {
+       "health": 5,
+       "happiness": 8,
+       "money": -200
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Cataracte confirmée, mais six mois d'attente pour l'opération. Tu plisses les yeux en patientant.",
+      "effects": {
+       "happiness": -3,
+       "vie": {
+        "disease": "cataracte"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Conduire quand même",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu conduis en plissant les yeux. Un rond-point te garde prisonnier trois tours de suite.",
+      "effects": {
+       "happiness": -3,
+       "money": -100,
+       "vie": {
+        "disease": "cataracte"
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu accroches la boîte aux lettres du voisin. Tu acceptes enfin d'aller voir l'ophtalmo, et de voir tout court.",
+      "effects": {
+       "money": -600,
+       "health": -2,
+       "vie": {
+        "disease": "cataracte"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Loupes de pharmacie",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Des loupes à 9 € : tu vois encore plus flou, mais en plus grand.",
+      "effects": {
+       "money": -9,
+       "happiness": -2,
+       "vie": {
+        "disease": "cataracte"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0034",
+  "category": "sante",
+  "minAge": 66,
+  "maxAge": 95,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "children",
+    "retired"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} a glissé dans ton sac une brochure intitulée « Mémoire : quand faut-il s'inquiéter ? ». Tu l'as trouvée en cherchant tes clés. Dans le frigo.",
+  "choices": [
+   {
+    "label": "Consulter",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Bilan mémoire : fatigue, stress et carence en vitamine B12. Des comprimés, et tu retrouves tes clés.",
+      "effects": {
+       "health": 3,
+       "happiness": 4,
+       "money": -40
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le neurologue parle d'un début de maladie d'Alzheimer, pris tôt, avec un suivi. Tu notes tout dans un carnet, et tu notes où est le carnet.",
+      "effects": {
+       "health": -3,
+       "happiness": -10,
+       "vie": {
+        "disease": "alzheimer"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mots croisés",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mots croisés, sudokus, bridge : ton cerveau fait des pompes et s'en porte très bien.",
+      "effects": {
+       "smarts": 4,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Jeter la brochure",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Tu jettes la brochure. Tu oublies ensuite que tu l'as jetée, ce qui t'arrange.",
+      "effects": {
+       "happiness": 1,
+       "relationships": {
+        "child": -3
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Tu jettes la brochure. Deux ans plus tard, le diagnostic tombe quand même, plus tard qu'il n'aurait fallu.",
+      "effects": {
+       "health": -5,
+       "happiness": -8,
+       "relationships": {
+        "child": -2
+       },
+       "vie": {
+        "disease": "alzheimer"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0035",
+  "category": "sante",
+  "minAge": 45,
+  "maxAge": 85,
+  "weight": 1,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "En montant l'escalier du métro, une douleur serre ta poitrine comme un étau, et ton bras gauche s'engourdit. Les gens passent autour de toi sans s'arrêter.",
+  "choices": [
+   {
+    "label": "Appeler les secours",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Crise cardiaque, prise à temps. Un stent, quelques jours de soins intensifs, et un cardiologue qui te parle comme à un ami qu'il ne veut pas perdre.",
+      "effects": {
+       "health": -12,
+       "happiness": -6,
+       "vie": {
+        "disease": "crise_cardiaque"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Une angine de poitrine : le cœur a tiré la sonnette d'alarme. Traitement, régime, et la plus grande peur de ta vie.",
+      "effects": {
+       "health": -4,
+       "happiness": -4,
+       "vie": {
+        "disease": "hypertension"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "S'asseoir et attendre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La douleur passe. Tu rentres, secoué{e}. Le lendemain, ton médecin te dit que tu as joué à pile ou face.",
+      "effects": {
+       "health": -5,
+       "happiness": -4,
+       "setFlags": [
+        "tension_haute"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La douleur ne passe pas. Quelqu'un finit par appeler les secours pour toi : infarctus, avec des dégâts sur le muscle.",
+      "effects": {
+       "health": -20,
+       "happiness": -10,
+       "vie": {
+        "disease": "crise_cardiaque"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rentrer à pied",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rentres à pied en t'arrêtant tous les dix mètres. Infarctus, découvert le lendemain, avec des séquelles.",
+      "effects": {
+       "health": -22,
+       "happiness": -8,
+       "vie": {
+        "disease": "crise_cardiaque"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0036",
+  "category": "sante",
+  "minAge": 55,
+  "maxAge": 95,
+  "weight": 1,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Au petit-déjeuner, ta tasse t'échappe des mains. Ta bouche tombe d'un côté et les mots sortent dans le désordre. Tu sens que quelque chose ne va pas du tout.",
+  "choices": [
+   {
+    "label": "Appeler le 15",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu arrives à composer le numéro. AVC traité dans l'heure : quelques semaines de rééducation, presque aucune séquelle.",
+      "effects": {
+       "health": -10,
+       "happiness": -5,
+       "vie": {
+        "disease": "avc"
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Les secours arrivent vite. AVC, avec une main qui restera paresseuse. Mais tu es là.",
+      "effects": {
+       "health": -15,
+       "happiness": -8,
+       "looks": -2,
+       "vie": {
+        "disease": "avc"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "S'allonger un peu",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu t'allonges en attendant que ça passe. Ça ne passe pas. Quand on te trouve, les heures ont fait leur œuvre.",
+      "effects": {
+       "health": -25,
+       "happiness": -12,
+       "vie": {
+        "disease": "avc"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0037",
+  "category": "sante",
+  "minAge": 32,
+  "maxAge": 80,
+  "weight": 4,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} t'a filmé{e} pendant ton sommeil : tu ronfles, tu t'arrêtes de respirer de longues secondes, puis tu repars dans un bruit de tondeuse qui démarre. La vidéo est très inquiétante, et un peu drôle.",
+  "choices": [
+   {
+    "label": "Consulter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Apnée du sommeil. Tu dors désormais avec un masque relié à une machine, comme un pilote de chasse, et tu te réveilles reposé{e} pour la première fois depuis des années.",
+      "effects": {
+       "health": 4,
+       "looks": -2,
+       "relationships": {
+        "partner": 4
+       },
+       "vie": {
+        "disease": "apnee_sommeil"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "La balle de tennis",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Une balle de tennis cousue dans le dos du pyjama, pour t'empêcher de dormir sur le dos. Ça marche, à moitié.",
+      "effects": {
+       "health": 1,
+       "happiness": -1,
+       "relationships": {
+        "partner": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La balle de tennis te réveille, toi, mais pas tes apnées. Tu dors de plus en plus mal.",
+      "effects": {
+       "health": -4,
+       "happiness": -3,
+       "vie": {
+        "disease": "apnee_sommeil"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Nier en bloc",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu affirmes que la vidéo est truquée. {partenaire} dort désormais avec des bouchons d'oreilles et un regard de reproche.",
+      "effects": {
+       "health": -3,
+       "relationships": {
+        "partner": -6
+       },
+       "vie": {
+        "disease": "apnee_sommeil"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0038",
+  "category": "sante",
+  "minAge": 30,
+  "maxAge": 75,
+  "weight": 6,
+  "conditions": {
+   "flags": [
+    "mange_mal"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta prise de sang revient avec le cholestérol en gras et souligné deux fois. Ton médecin te regarde comme s'il avait lu tes relevés de carte bancaire, rayon fromages.",
+  "choices": [
+   {
+    "label": "Régime sérieux",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Moins de fromage, plus de légumes, du poisson le vendredi. Six mois plus tard, tes chiffres redescendent et tu as appris à aimer le fenouil.",
+      "effects": {
+       "health": 6,
+       "happiness": -2,
+       "clearFlags": [
+        "mange_mal"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu tiens trois semaines, puis une raclette te reprend. Le cholestérol s'installe.",
+      "effects": {
+       "health": -2,
+       "happiness": 2,
+       "vie": {
+        "disease": "cholesterol"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Comprimés et c'est tout",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un comprimé par jour, et tu gardes ton camembert. Ton médecin hausse les épaules : « C'est votre corps. »",
+      "effects": {
+       "money": -40,
+       "happiness": 2,
+       "vie": {
+        "disease": "cholesterol"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le fromage, c'est culturel",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu défends le patrimoine. Ton cholestérol aussi.",
+      "effects": {
+       "health": -5,
+       "happiness": 3,
+       "vie": {
+        "disease": "cholesterol"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0039",
+  "category": "sante",
+  "minAge": 22,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu as froid même en été, tu prends du poids sans manger plus et tu t'endors dans le bus. Ton entourage a fini par te surnommer « la marmotte ».",
+  "choices": [
+   {
+    "label": "Prise de sang",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Hypothyroïdie. Un petit comprimé chaque matin, à vie, et en quelques semaines tu revis. Tu ne savais pas que tu étais si fatigué{e}.",
+      "effects": {
+       "health": 5,
+       "happiness": 5,
+       "money": -30,
+       "vie": {
+        "disease": "hypothyroidie"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Triple café",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu compenses au café. Te voilà marmotte nerveuse. La fatigue, elle, reste.",
+      "effects": {
+       "health": -5,
+       "happiness": -3,
+       "vie": {
+        "disease": "hypothyroidie"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ça passe avec le printemps. C'était peut-être juste l'hiver.",
+      "effects": {
+       "health": -1,
+       "happiness": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "C'est le moral",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu te dis que c'est le moral. Le moral trouve que tu exagères, et la fatigue s'aggrave.",
+      "effects": {
+       "health": -6,
+       "happiness": -5,
+       "setFlags": [
+        "deprime"
+       ],
+       "vie": {
+        "disease": "hypothyroidie"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0040",
+  "category": "sante",
+  "minAge": 22,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "requiresJob": true,
+   "tags": [
+    "poste_nouveau"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis ton nouveau poste, des plaques rouges qui grattent ont envahi tes coudes et ton cuir chevelu. Ton col de chemise a de la neige en plein mois de juin.",
+  "choices": [
+   {
+    "label": "Dermatologue",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Psoriasis, réveillé par le stress. Crèmes, soleil doux, et un dermato qui te conseille de « lâcher prise ». Ton patron, lui, ne lâche rien.",
+      "effects": {
+       "health": 1,
+       "money": -50,
+       "looks": -1,
+       "vie": {
+        "disease": "psoriasis"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Gratter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu grattes en réunion. Les plaques s'étendent, et tes collègues gardent leurs distances, à tort.",
+      "effects": {
+       "looks": -4,
+       "happiness": -4,
+       "vie": {
+        "disease": "psoriasis"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un remède d'Internet",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un forum conseille l'huile de coco et le vinaigre de cidre. Tu sens la salade exotique, et tes plaques s'en moquent.",
+      "effects": {
+       "looks": -2,
+       "happiness": -2,
+       "vie": {
+        "disease": "psoriasis"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0041",
+  "category": "sante",
+  "minAge": 8,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Une verrue s'est installée sous ton pied, pile là où tu poses tout ton poids. Ta tante propose de t'emmener chez un « charmeur de verrues » qui officie dans son garage.",
+  "choices": [
+   {
+    "label": "Le charmeur",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Il murmure trois phrases à ton pied, encaisse 20 €, et la verrue disparaît dans le mois. Personne ne peut l'expliquer, surtout pas ton médecin.",
+      "effects": {
+       "money": -20,
+       "health": 2,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Il murmure, il encaisse, la verrue reste. Elle a même l'air amusée.",
+      "effects": {
+       "money": -20,
+       "happiness": -2,
+       "vie": {
+        "disease": "verrues"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dermatologue",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Azote liquide. Ça brûle, ça cloque, et ça marche à la deuxième séance.",
+      "effects": {
+       "health": 2,
+       "money": -40,
+       "happiness": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'ignorer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu l'ignores. Elle invite des copines.",
+      "effects": {
+       "health": -2,
+       "looks": -1,
+       "happiness": -2,
+       "vie": {
+        "disease": "verrues"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0042",
+  "category": "sante",
+  "minAge": 20,
+  "maxAge": 64,
+  "weight": 5,
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton poignet droit te lance à chaque clic. Huit heures par jour sur ta souris, et ton bras a décidé de faire grève.",
+  "choices": [
+   {
+    "label": "Attelle et repos",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une attelle et des séances de kiné. Tu apprends à te servir de la souris de la main gauche, avec la précision d'un pied.",
+      "effects": {
+       "health": 3,
+       "happiness": -2,
+       "money": -40
+      }
+     }
+    ]
+   },
+   {
+    "label": "Matériel ergonomique",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Souris verticale, clavier incliné, bureau réglé : ton poignet revit. Tes collègues te regardent comme un pilote de drone.",
+      "effects": {
+       "health": 4,
+       "money": -120,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le matériel arrive trop tard : tendinite installée, quelques semaines de patience.",
+      "effects": {
+       "health": -2,
+       "money": -120,
+       "vie": {
+        "disease": "tendinite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu continues de cliquer en grimaçant. Tendinite, puis arrêt de travail.",
+      "effects": {
+       "health": -5,
+       "happiness": -3,
+       "vie": {
+        "disease": "tendinite"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0043",
+  "category": "sante",
+  "minAge": 28,
+  "maxAge": 80,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis quelques jours, t'asseoir est devenu un art délicat qui demande de la préparation et une grimace. Et cet après-midi, tu as trois heures de mariage à l'église, sur un banc en bois.",
+  "choices": [
+   {
+    "label": "Pharmacie, discrètement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu chuchotes ta demande au pharmacien, qui répond très fort. Toute la file est au courant, mais la pommade marche.",
+      "effects": {
+       "health": 3,
+       "money": -15,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Bouée gonflable",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu t'assois sur une bouée en forme de canard pendant toute la cérémonie. Les photos sont mémorables.",
+      "effects": {
+       "happiness": -3,
+       "looks": -2,
+       "vie": {
+        "disease": "hemorroides"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Serrer les dents",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tiens toute la cérémonie au bord du banc. L'affaire empire, et en silence.",
+      "effects": {
+       "health": -3,
+       "happiness": -3,
+       "vie": {
+        "disease": "hemorroides"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0044",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis des mois, une migraine te cloue au lit deux fois par mois, toujours le vendredi soir, jamais le lundi matin. C'est presque vexant.",
+  "choices": [
+   {
+    "label": "Neurologue",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Migraine chronique. Un traitement de crise, un carnet et la liste de tes déclencheurs : vin rouge, manque de sommeil et ton beau-frère.",
+      "effects": {
+       "health": 2,
+       "money": -60,
+       "vie": {
+        "disease": "migraine_chronique"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lunettes de soleil partout",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu vis en lunettes de soleil. On te prend pour une star incognito, mais les migraines continuent.",
+      "effects": {
+       "looks": 2,
+       "happiness": -2,
+       "vie": {
+        "disease": "migraine_chronique"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Moins d'écrans",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Moins d'écrans, plus de sommeil : les crises s'espacent nettement.",
+      "effects": {
+       "health": 4,
+       "happiness": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Malgré tes efforts, les migraines s'installent.",
+      "effects": {
+       "health": -3,
+       "vie": {
+        "disease": "migraine_chronique"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0045",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "À ton âge, ton corps découvre le printemps : yeux qui pleurent, éternuements en rafale, nez en robinet. {partenaire} croit que les fleurs t'ont ému{e}.",
+  "choices": [
+   {
+    "label": "Allergologue",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tests cutanés : allergie aux graminées. Antihistaminiques, et une liste de plantes ennemies affichée sur le frigo.",
+      "effects": {
+       "health": 2,
+       "money": -50,
+       "vie": {
+        "disease": "allergie_pollen"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester enfermé{e}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes le printemps volets fermés. Ton nez va mieux, ta vie sociale beaucoup moins.",
+      "effects": {
+       "happiness": -5,
+       "vie": {
+        "disease": "allergie_pollen"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Miel local",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "Une cuillère de miel du coin chaque matin, pour « habituer le corps ». Étrangement, ça a l'air d'aider.",
+      "effects": {
+       "happiness": 3,
+       "health": 2
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "Le miel local est délicieux. Ton nez, lui, s'en moque complètement.",
+      "effects": {
+       "health": -2,
+       "happiness": 1,
+       "vie": {
+        "disease": "allergie_pollen"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0046",
+  "category": "sante",
+  "minAge": 20,
+  "maxAge": 64,
+  "weight": 3,
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tous les lundis matin, tu éternues, tes yeux pleurent et ta gorge se serre. Le vendredi soir, plus rien. Ton médecin a une théorie, et elle n'est pas tout à fait médicale.",
+  "choices": [
+   {
+    "label": "Écouter sa théorie",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Diagnostic officieux : allergie aux lundis. Il te prescrit « un travail qui te plaît ». Tu ris jaune.",
+      "effects": {
+       "happiness": -2,
+       "smarts": 2,
+       "vie": {
+        "disease": "allergie_lundis"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer d'équipe",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu demandes à changer d'équipe. Les lundis redeviennent des jours presque normaux.",
+      "effects": {
+       "happiness": 6,
+       "health": 2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Nouvelle équipe, mêmes lundis. Le problème n'était peut-être pas l'équipe.",
+      "effects": {
+       "happiness": -3,
+       "vie": {
+        "disease": "allergie_lundis"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Antihistaminiques",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Les antihistaminiques te rendent somnolent{e}, et les lundis restent des lundis.",
+      "effects": {
+       "health": -1,
+       "happiness": -2,
+       "vie": {
+        "disease": "allergie_lundis"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0047",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Impossible d'avoir un rendez-vous avant trois semaines pour ta toux qui traîne. Une appli propose une téléconsultation en dix minutes, avec un médecin qui a l'air d'être dans sa cuisine.",
+  "choices": [
+   {
+    "label": "Téléconsulter",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Le médecin écoute ta toux à travers le micro, hoche la tête et prescrit un sirop. Ça marche, et tu n'as pas quitté ton pyjama.",
+      "effects": {
+       "health": 3,
+       "money": -25,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "La connexion coupe au milieu du diagnostic. Tu as l'ordonnance à moitié, et une bronchite entière.",
+      "effects": {
+       "health": -4,
+       "money": -25,
+       "vie": {
+        "disease": "bronchite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre trois semaines",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le jour du rendez-vous, tu es guéri{e}. Tu y vas quand même, pour le principe, et vous parlez du temps.",
+      "effects": {
+       "health": 1,
+       "money": -25
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Trois semaines, c'est long pour une toux. Bronchite.",
+      "effects": {
+       "health": -5,
+       "vie": {
+        "disease": "bronchite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aux urgences",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Six heures d'attente pour une toux. Le médecin, épuisé, te regarde comme un rhume qui aurait pu rester chez lui.",
+      "effects": {
+       "happiness": -5,
+       "karma": -2,
+       "health": -1,
+       "vie": {
+        "disease": "rhume"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0048",
+  "category": "sante",
+  "minAge": 35,
+  "maxAge": 75,
+  "weight": 5,
+  "conditions": {
+   "flags": [
+    "fume"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton médecin regarde ta radio, puis toi, puis ta radio. « Soit vous arrêtez de fumer cette année, soit on reprendra cette conversation dans un service où je n'ai pas envie de vous voir. »",
+  "choices": [
+   {
+    "label": "Arrêter cette année",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu fixes une date, tu préviens tout le monde, tu tiens. Tu redécouvres le goût du pain et l'odeur de ton propre appartement.",
+      "effects": {
+       "clearFlags": [
+        "fume"
+       ],
+       "health": 8,
+       "money": 800,
+       "happiness": -2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu tiens quatre mois, puis tu craques à un mariage. Mais tu fumes deux fois moins : c'est un début.",
+      "effects": {
+       "health": 2,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Passer à la vapoteuse",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes à la vapoteuse goût mangue givrée. Tes poumons respirent un peu mieux ; ton entourage sent un fruit inconnu.",
+      "effects": {
+       "clearFlags": [
+        "fume"
+       ],
+       "health": 4,
+       "money": -100
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer de médecin",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu trouves un médecin qui fume aussi. Vous parlez de tout sauf de ça. Tes poumons, eux, n'ont pas changé de médecin.",
+      "effects": {
+       "health": -4,
+       "happiness": 2,
+       "setFlags": [
+        "poumons_goudronnes"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le nouveau médecin regarde ta radio et te dit exactement la même chose, en plus sec.",
+      "effects": {
+       "health": -2,
+       "happiness": -3,
+       "money": -25
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0049",
+  "category": "sante",
+  "minAge": 35,
+  "maxAge": 75,
+  "weight": 5,
+  "conditions": {
+   "flags": [
+    "boit_trop"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta prise de sang revient avec des chiffres sur le foie que ton médecin lit à voix haute, lentement, comme un tirage de loto qu'on n'a pas envie de gagner.",
+  "choices": [
+   {
+    "label": "Arrêter l'alcool",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Un an sans alcool. Tu dors mieux, tu maigris, et tu découvres que tes amis sont drôles même à jeun. Enfin, la plupart.",
+      "effects": {
+       "clearFlags": [
+        "boit_trop"
+       ],
+       "health": 10,
+       "happiness": 2,
+       "money": 600
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu tiens jusqu'aux fêtes. Puis l'apéro revient, timidement, puis plus du tout timidement.",
+      "effects": {
+       "health": 1,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Réduire un peu",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes au verre unique. Le verre unique devient très grand.",
+      "effects": {
+       "health": -3,
+       "happiness": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "C'est convivial",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu ris de ces chiffres à l'apéro. Ton foie ne rit pas.",
+      "effects": {
+       "health": -6,
+       "setFlags": [
+        "foie_fatigue"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Quelques années plus tard, ces chiffres s'appellent cirrhose. Ton médecin n'a plus besoin de lire à voix haute.",
+      "effects": {
+       "health": -15,
+       "happiness": -8,
+       "vie": {
+        "disease": "cirrhose"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0050",
+  "category": "sante",
+  "minAge": 30,
+  "maxAge": 75,
+  "weight": 5,
+  "conditions": {
+   "flags": [
+    "sedentaire"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton médecin te tend une ordonnance : « Marche, trente minutes par jour. » Le pharmacien la retourne dans tous les sens en se demandant quoi te donner.",
+  "choices": [
+   {
+    "label": "S'y mettre",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu marches tous les jours. Au bout de trois mois, tu fais des détours exprès. Ton médecin est ravi, ton canapé jaloux.",
+      "effects": {
+       "clearFlags": [
+        "sedentaire"
+       ],
+       "setFlags": [
+        "sportif_regulier"
+       ],
+       "health": 8,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Trois jours de marche, puis il pleut. Puis il fait trop chaud. Puis c'est lundi.",
+      "effects": {
+       "health": -1,
+       "happiness": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Acheter un tapis de course",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un tapis de course à 600 €. Il fait un excellent étendoir à linge.",
+      "effects": {
+       "money": -600,
+       "happiness": -2,
+       "health": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Marcher jusqu'au frigo",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu fais le minimum syndical. Ta tension commence à se plaindre.",
+      "effects": {
+       "health": -4,
+       "setFlags": [
+        "tension_haute"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Rien ne change, et un beau matin ton dos décide pour toi.",
+      "effects": {
+       "health": -4,
+       "setFlags": [
+        "dos_fragile"
+       ],
+       "vie": {
+        "disease": "mal_de_dos"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0051",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 55,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "flags": [
+    "mange_mal"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} rentre de l'école avec un exposé sur « la malbouffe », et t'a choisi{e} comme exemple principal, photos du frigo à l'appui.",
+  "choices": [
+   {
+    "label": "Changer les menus",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Légumes au dîner, eau à table, fruits au goûter. {enfant} te regarde comme un héros, puis comme un traître quand arrive le brocoli.",
+      "effects": {
+       "clearFlags": [
+        "mange_mal"
+       ],
+       "health": 6,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu tiens trois semaines, puis, un soir de fatigue, pizza. {enfant} note tout dans un carnet.",
+      "effects": {
+       "health": 1,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Les frites sont des légumes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu expliques que les frites sont des légumes. {enfant} te croit, et le répète à la maîtresse, qui te convoque.",
+      "effects": {
+       "happiness": -2,
+       "health": -2,
+       "karma": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Cuisiner ensemble",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous faites une soupe ensemble. Elle est verte, trop salée et délicieuse. C'est le début d'une tradition.",
+      "effects": {
+       "health": 4,
+       "happiness": 5,
+       "clearFlags": [
+        "mange_mal"
+       ],
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0052",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 75,
+  "weight": 5,
+  "conditions": {
+   "flags": [
+    "deprime"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} te dit doucement que tu n'as plus l'air toi-même depuis des mois : tu annules tout, tu ne ris plus, tu dors mal. Tu réponds « ça va », par réflexe.",
+  "choices": [
+   {
+    "label": "Prendre rendez-vous",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu prends rendez-vous chez un médecin, puis chez un psy. Ce n'est pas magique, mais c'est un début, et le dire fait déjà du bien.",
+      "effects": {
+       "health": 2,
+       "happiness": 6,
+       "clearFlags": [
+        "deprime"
+       ],
+       "relationships": {
+        "friend": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre que ça passe",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Ça finit par passer, lentement, avec le printemps.",
+      "effects": {
+       "happiness": 2,
+       "clearFlags": [
+        "deprime"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Ça ne passe pas. La tristesse prend toute la place, et a maintenant un nom médical.",
+      "effects": {
+       "health": -5,
+       "happiness": -10,
+       "vie": {
+        "disease": "depression"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir loin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu pars à l'autre bout du monde. Le paysage change, toi pas vraiment. Mais tu reviens avec l'envie d'en parler.",
+      "effects": {
+       "money": -900,
+       "happiness": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0053",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "flags": [
+    "anxieux"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Sur le canapé, ton cœur s'emballe d'un coup, tes mains picotent et tu es certain{e} que c'est une crise cardiaque. Tu as trente-huit secondes pour décider, d'après Internet.",
+  "choices": [
+   {
+    "label": "Urgences",
+    "outcomes": [
+     {
+      "chance": 0.85,
+      "text": "Électrocardiogramme parfait : c'était une crise d'angoisse. L'urgentiste est gentil ; tu te sens bête et soulagé{e} à parts égales.",
+      "effects": {
+       "money": -50,
+       "health": 1,
+       "happiness": -1
+      }
+     },
+     {
+      "chance": 0.15,
+      "text": "Le cardiologue trouve un petit trouble du rythme, sans gravité, à surveiller. Bien vu d'être venu{e}.",
+      "effects": {
+       "health": 2,
+       "money": -80
+      }
+     }
+    ]
+   },
+   {
+    "label": "Respirer lentement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu respires sur quatre temps. Ça passe. Tu as appris quelque chose sur toi.",
+      "effects": {
+       "happiness": 3,
+       "health": 1
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ça passe, mais ça revient, de plus en plus souvent. Trouble anxieux.",
+      "effects": {
+       "happiness": -6,
+       "health": -2,
+       "vie": {
+        "disease": "anxiete"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Chercher sur Internet",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Internet te diagnostique quatorze maladies mortelles en six minutes. Ton cœur accélère encore, par principe.",
+      "effects": {
+       "happiness": -6,
+       "setFlags": [
+        "hypocondriaque"
+       ],
+       "vie": {
+        "disease": "anxiete"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0054",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "requiresPartner": true,
+   "flags": [
+    "burn_out"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} t'a trouvé{e} endormi{e} sur ton ordinateur à 2 h du matin, un mail à moitié écrit. Au petit-déjeuner, {partenaire} te propose de tout poser et de partir une semaine au vert.",
+  "choices": [
+   {
+    "label": "Partir au vert",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une semaine sans réseau dans une cabane. Le troisième jour, tu ris d'une blague nulle. C'est un signe.",
+      "effects": {
+       "happiness": 8,
+       "health": 5,
+       "money": -600,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Après ce dossier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Après ce dossier. » Il y a toujours un autre dossier. {partenaire} commence à perdre patience.",
+      "effects": {
+       "health": -5,
+       "happiness": -4,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Consulter un psy",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Un psychologue t'aide à démêler le travail, la fatigue et la culpabilité. Lentement, les nœuds se défont.",
+      "effects": {
+       "happiness": 5,
+       "health": 3,
+       "money": -300,
+       "clearFlags": [
+        "burn_out"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le premier psy ne te convient pas. Tu en essaies un deuxième. C'est long, mais tu continues.",
+      "effects": {
+       "happiness": 1,
+       "money": -300
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0055",
+  "category": "sante",
+  "minAge": 22,
+  "maxAge": 64,
+  "weight": 5,
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton médecin t'arrête dix jours pour une bronchite. Le deuxième jour, ton chef t'écrit : « Désolé de te déranger, juste un petit fichier rapide, rien de méchant. »",
+  "choices": [
+   {
+    "label": "Faire le fichier",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le petit fichier cachait un gros dossier. Ta bronchite traîne trois semaines de plus.",
+      "effects": {
+       "health": -6,
+       "money": 100,
+       "happiness": -3,
+       "vie": {
+        "disease": "bronchite"
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu fais le fichier en toussant sur le clavier. Ton chef te répond « top ». Ta guérison prend du retard.",
+      "effects": {
+       "health": -3,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Couper le téléphone",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu coupes tout. Tu guéris en huit jours, ce qui t'en laisse deux pour regarder des documentaires sur les loutres.",
+      "effects": {
+       "health": 6,
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rappeler la loi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rappelles poliment qu'un arrêt maladie est un arrêt. Ton chef s'excuse, et toute l'équipe reçoit la semaine suivante un mail de rappel des règles.",
+      "effects": {
+       "health": 4,
+       "happiness": 6,
+       "karma": 2
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0056",
+  "category": "sante",
+  "minAge": 20,
+  "maxAge": 64,
+  "weight": 5,
+  "conditions": {
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton collègue Thierry arrive au bureau avec 39 de fièvre parce qu'il est « indispensable ». Il te tend la main. Une main moite. Une main de grippe.",
+  "choices": [
+   {
+    "label": "Serrer la main",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Politesse oblige. Trois jours plus tard, tu es aussi indispensable que lui, au fond de ton lit.",
+      "effects": {
+       "health": -5,
+       "happiness": -3,
+       "vie": {
+        "disease": "grippe"
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu serres, puis tu files te laver les mains en courant. Ton immunité tient bon.",
+      "effects": {
+       "happiness": 1,
+       "health": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le renvoyer chez lui",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui expliques, avec douceur et fermeté, que l'entreprise survivra trois jours sans lui. Il rentre. Tout l'étage te remercie en silence.",
+      "effects": {
+       "happiness": 4,
+       "health": 2,
+       "karma": 3
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   },
+   {
+    "label": "Prévenir la direction",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La direction renvoie Thierry chez lui. Il sait que c'est toi et te boude, mais tu restes en bonne santé.",
+      "effects": {
+       "health": 1,
+       "happiness": -1
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La direction répond : « Il est très investi, Thierry. » Tout le service tombe malade.",
+      "effects": {
+       "health": -4,
+       "happiness": -4,
+       "vie": {
+        "disease": "grippe"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Check du coude",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu proposes un check du coude. Thierry te tousse dans le coude, par souci d'équité.",
+      "effects": {
+       "health": -2,
+       "happiness": 1,
+       "vie": {
+        "disease": "rhume"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0057",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 64,
+  "weight": 4,
+  "conditions": {
+   "requiresJob": true,
+   "tags": [
+    "malade"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Malade depuis un moment, tu reçois un appel des ressources humaines. On te propose trois options, avec une voix très douce : poste aménagé, mi-temps thérapeutique ou rupture conventionnelle.",
+  "choices": [
+   {
+    "label": "Poste aménagé",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un bureau près de l'ascenseur et des horaires souples. Tu travailles à ton rythme, et ton rythme est respecté.",
+      "effects": {
+       "happiness": 4,
+       "health": 2,
+       "money": -200
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mi-temps thérapeutique",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mi-temps, salaire réduit, pleine récupération. Ton corps te remercie, ton banquier un peu moins.",
+      "effects": {
+       "health": 6,
+       "money": -1200,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rupture conventionnelle",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu signes et tu pars avec un chèque. Ta santé d'abord, ta carrière plus tard.",
+      "effects": {
+       "entourage": {
+        "demission": true
+       },
+       "money": 5000,
+       "happiness": 3,
+       "health": 4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0058",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 90,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "malade"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta voisine a appris que tu étais malade et débarque avec sa spécialité : un cataplasme à la moutarde, « qui a sauvé tout le village en 1974 ».",
+  "choices": [
+   {
+    "label": "Essayer",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "Ça brûle, ça sent le hot-dog, et étrangement, tu te sens mieux.",
+      "effects": {
+       "health": 3,
+       "happiness": 3,
+       "vie": {
+        "cure": true
+       }
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "Ça brûle, ça sent le hot-dog, et ça ne soigne rien. Mais ta voisine est ravie, c'est déjà ça.",
+      "effects": {
+       "happiness": 2,
+       "health": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Remercier poliment",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu remercies et ranges le cataplasme au frigo, à côté de la moutarde normale. Ta voisine revient le lendemain avec une soupe : le vrai remède, c'était elle.",
+      "effects": {
+       "happiness": 4,
+       "health": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Suivre ton traitement",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu t'en tiens sagement à ton traitement. Ça fonctionne.",
+      "effects": {
+       "health": 5,
+       "vie": {
+        "cure": true
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu suis ton traitement. C'est long, mais tu sens que ça avance.",
+      "effects": {
+       "health": 2,
+       "happiness": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0059",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 90,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "sick"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton médecin trouve que ton corps est « à bout de souffle » et te propose trois semaines dans un centre de convalescence à la montagne. La mutuelle n'en rembourse que la moitié.",
+  "choices": [
+   {
+    "label": "Y aller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Air pur, repas à heure fixe, siestes obligatoires. Tu reviens avec des joues roses et l'envie de prendre soin de toi.",
+      "effects": {
+       "health": 12,
+       "happiness": 6,
+       "money": -1500,
+       "setFlags": [
+        "convalescent"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pas le temps",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu n'as pas le temps. Ton corps, lui, prend le sien.",
+      "effects": {
+       "health": -6,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "La version maison",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu organises ta cure à la maison : téléphone éteint, soupe, lit. Moins efficace, mais gratuit.",
+      "effects": {
+       "health": 5,
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0060",
+  "category": "sante",
+  "minAge": 70,
+  "maxAge": 100,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "retired"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton pilulier à vingt-huit compartiments te nargue : tu ne sais plus si tu as pris le cachet du mardi midi. Ni si on est mardi.",
+  "choices": [
+   {
+    "label": "Le reprendre",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu le reprends, par sécurité. Ça allait : ta tension a juste fait un petit saut.",
+      "effects": {
+       "health": -1,
+       "happiness": 1
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Double dose. Tête qui tourne, chute dans le couloir, nuit aux urgences.",
+      "effects": {
+       "health": -8,
+       "money": -50,
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler la pharmacienne",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ta pharmacienne te connaît par cœur. Elle te rassure et règle sur ton téléphone un rappel qui sonne avec une musique de harpe.",
+      "effects": {
+       "health": 3,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Sauter la dose",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu sautes. Rien de grave, cette fois. Tu décides de tout noter dans un carnet. Tu oublies le carnet.",
+      "effects": {
+       "health": -1,
+       "happiness": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0061",
+  "category": "sante",
+  "minAge": 72,
+  "maxAge": 100,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "retired"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta bronchite traîne depuis trois semaines, tu as le souffle court après trois marches et un peu de fièvre le soir. Tu ne veux surtout pas « déranger le médecin pour un rhume ».",
+  "choices": [
+   {
+    "label": "Appeler le médecin",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le médecin passe : début de pneumonie. Antibiotiques et repos, et tu évites l'hôpital de justesse.",
+      "effects": {
+       "health": -3,
+       "money": -50
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Pneumonie. Une semaine d'hôpital, la purée, les infirmières, et tu rentres chez toi un peu plus fragile.",
+      "effects": {
+       "health": -10,
+       "money": -200,
+       "vie": {
+        "disease": "pneumonie"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Grog et couette",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le grog ne soigne rien, mais aide à ne pas s'en soucier. La pneumonie s'installe.",
+      "effects": {
+       "health": -14,
+       "happiness": -4,
+       "vie": {
+        "disease": "pneumonie"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0062",
+  "category": "sante",
+  "minAge": 55,
+  "maxAge": 90,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "grandchildren"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un de tes petits-enfants a la varicelle, s'ennuie à mourir et te réclame pour la journée. Toi, tu as eu la varicelle il y a des décennies, et ton médecin t'a déjà parlé du zona.",
+  "choices": [
+   {
+    "label": "Y aller quand même",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous passez la journée à jouer aux dominos et à compter les boutons. Merveilleuse journée, sans conséquence.",
+      "effects": {
+       "happiness": 8
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Merveilleuse journée. Trois semaines plus tard, ton vieux virus se réveille : zona.",
+      "effects": {
+       "happiness": 4,
+       "health": -5,
+       "vie": {
+        "disease": "zona"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder en visio",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lis des histoires en visio. On te fait savoir que c'est nul. Tu es en bonne santé, et un peu vexé{e}.",
+      "effects": {
+       "happiness": -2,
+       "health": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te faire vacciner d'abord",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu te fais vacciner contre le zona et tu y vas la semaine suivante, blindé{e}. Le petit malade est guéri, évidemment.",
+      "effects": {
+       "health": 2,
+       "money": -20,
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0063",
+  "category": "sante",
+  "minAge": 68,
+  "maxAge": 95,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte",
+    "retired"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} insiste pour que tu arrêtes de monter sur l'escabeau pour changer les ampoules. Tu as répondu que tu faisais ça depuis cinquante ans.",
+  "choices": [
+   {
+    "label": "Obéir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses {enfant} changer les ampoules. Tu supervises, ce qui est presque aussi bien.",
+      "effects": {
+       "happiness": 1,
+       "health": 1,
+       "relationships": {
+        "child": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le faire en cachette",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu changes l'ampoule en cachette. Personne n'en saura rien, sauf l'ampoule.",
+      "effects": {
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu tombes de l'escabeau. Poignet cassé, et un « je te l'avais dit » de six semaines.",
+      "effects": {
+       "health": -10,
+       "happiness": -6,
+       "relationships": {
+        "child": -2
+       },
+       "vie": {
+        "disease": "fracture"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Des ampoules éternelles",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ampoules garanties vingt-cinq ans. Tu les as mises au défi.",
+      "effects": {
+       "money": -60,
+       "happiness": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0064",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 55,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} se réveille avec les yeux rouges et collés, puis vient te les frotter sur les joues en guise de bonjour.",
+  "choices": [
+   {
+    "label": "Tout désinfecter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Taies d'oreiller à 60 degrés, serviettes séparées, mains lavées toutes les heures : tu passes au travers !",
+      "effects": {
+       "happiness": 2,
+       "health": 1
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Malgré ta guerre bactériologique, tu te réveilles le lendemain avec les mêmes yeux que {enfant}.",
+      "effects": {
+       "health": -2,
+       "looks": -3,
+       "vie": {
+        "disease": "conjonctivite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un câlin quand même",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Câlin malgré tout. Le lendemain, vous avez les mêmes yeux de lapin. Photo de famille assortie.",
+      "effects": {
+       "looks": -3,
+       "relationships": {
+        "child": 6
+       },
+       "vie": {
+        "disease": "conjonctivite"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le vieux collyre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ressors un collyre ouvert depuis un an. Ça pique et ça ne soigne rien. Le pharmacien te fait la leçon.",
+      "effects": {
+       "health": -3,
+       "money": -8,
+       "vie": {
+        "disease": "conjonctivite"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0065",
+  "category": "sante",
+  "minAge": 28,
+  "maxAge": 55,
+  "weight": 5,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'école de {enfant} signale une épidémie de gastro. Ce soir, tu reçois toute la famille de {partenaire} pour un grand dîner, et {enfant} a le teint un peu vert.",
+  "choices": [
+   {
+    "label": "Annuler le dîner",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu annules, la belle-famille boude. Cette nuit-là, {enfant} est malade à 2 h, 3 h et 4 h. Tu avais raison, et tu y passes aussi.",
+      "effects": {
+       "health": -3,
+       "relationships": {
+        "partner": 2
+       },
+       "vie": {
+        "disease": "gastro"
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu annules, la belle-famille boude. {enfant} est malade toute la nuit, mais toi, tu passes au travers.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "partner": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Maintenir le dîner",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le dîner est réussi. Trois jours plus tard, toute la belle-famille est malade, et elle sait d'où ça vient.",
+      "effects": {
+       "health": -4,
+       "happiness": -3,
+       "relationships": {
+        "partner": -6
+       },
+       "vie": {
+        "disease": "gastro"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le dîner est réussi, et personne n'est malade. {enfant} avait juste mangé un feutre vert.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Quarantaine à l'étage",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{enfant} dîne à l'étage devant un dessin animé, aux anges. Le dîner se passe bien, et c'est toi qui attrapes la gastro en allant faire le bisou du soir.",
+      "effects": {
+       "health": -3,
+       "relationships": {
+        "child": 4,
+        "partner": 2
+       },
+       "vie": {
+        "disease": "gastro"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0066",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 55,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} a 40 de fièvre la veille du départ en vacances. La voiture est chargée, le gîte est payé et le chat est déjà chez les voisins.",
+  "choices": [
+   {
+    "label": "Médecin de garde",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le médecin de garde diagnostique une otite et donne le feu vert pour le lendemain soir. Les vacances commencent avec un jour de retard et beaucoup de sirop.",
+      "effects": {
+       "money": -60,
+       "happiness": 2,
+       "relationships": {
+        "child": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir quand même",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Vous partez. {enfant} dort tout le trajet et se réveille en pleine forme au bord de la mer.",
+      "effects": {
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Vous partez. La fièvre monte, et votre premier jour se passe aux urgences de la ville voisine. Belle vue sur le parking.",
+      "effects": {
+       "happiness": -6,
+       "money": -100,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout annuler",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous annulez. La fièvre tombe le lendemain, évidemment. Le gîte ne rembourse pas.",
+      "effects": {
+       "money": -800,
+       "happiness": -5,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0067",
+  "category": "sante",
+  "minAge": 22,
+  "maxAge": 50,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} en est à sa septième otite de l'année. L'ORL propose de poser des « yoyos » dans les oreilles : une petite opération, sous anesthésie.",
+  "choices": [
+   {
+    "label": "Accepter l'opération",
+    "outcomes": [
+     {
+      "chance": 0.85,
+      "text": "Vingt minutes au bloc, et les otites s'arrêtent. {enfant} entend même ce que tu chuchotes dans la cuisine, ce qui n'est pas forcément un avantage.",
+      "effects": {
+       "money": -150,
+       "happiness": 6,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.15,
+      "text": "L'opération se passe bien, mais les otites continuent encore un peu. Il faudra de la patience.",
+      "effects": {
+       "money": -150,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre encore un an",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Les otites s'espacent d'elles-mêmes. Vous avez bien fait d'attendre.",
+      "effects": {
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Huit, neuf, dix otites. Les nuits blanches s'enchaînent et tu finis par tomber malade d'épuisement.",
+      "effects": {
+       "health": -5,
+       "happiness": -6,
+       "vie": {
+        "disease": "rhume"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ostéopathe",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'ostéopathe manipule doucement la tête de {enfant} pour 60 €. {enfant} adore. Les otites, elles, s'en fichent.",
+      "effects": {
+       "money": -60,
+       "happiness": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0068",
+  "category": "sante",
+  "minAge": 16,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "À la soirée de {ami}, tout le monde se fait la bise. {ami} précise, en reniflant, que « ce n'est plus contagieux depuis hier ».",
+  "choices": [
+   {
+    "label": "Faire la bise",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Bise générale. Une semaine plus tard, la moitié de la soirée tousse dans un groupe de discussion baptisé « Merci {ami} ».",
+      "effects": {
+       "health": -2,
+       "happiness": 1,
+       "vie": {
+        "disease": "rhume"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Bise générale, et tu passes au travers. Ton système immunitaire mérite une médaille.",
+      "effects": {
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Saluer de loin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu salues tout le monde de loin, comme une star sur un balcon. On te trouve distant{e}, mais tu restes en forme.",
+      "effects": {
+       "health": 1,
+       "happiness": -1,
+       "relationships": {
+        "friend": -1
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0069",
+  "category": "sante",
+  "minAge": 22,
+  "maxAge": 65,
+  "weight": 5,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} a une angine carabinée et réclame bouillon, mouchoirs et présence constante. Toi, tu pars demain pour le week-end entre amis prévu depuis six mois.",
+  "choices": [
+   {
+    "label": "Annuler le week-end",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu restes de garde au chevet. {partenaire} n'oubliera pas ce bouillon ; tes amis non plus, dans un autre registre.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "partner": 8,
+        "friend": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir quand même",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu pars. Le week-end est génial, les messages de {partenaire} beaucoup moins.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "partner": -8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu pars, avec l'angine en bonus dans ta valise. Tu passes le week-end sous la couette d'un gîte.",
+      "effects": {
+       "health": -4,
+       "happiness": -4,
+       "relationships": {
+        "partner": -4
+       },
+       "vie": {
+        "disease": "angine"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dormir sur le canapé",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu soignes {partenaire} à distance de sécurité, et tu pars en pleine forme. Compromis parfait.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Malgré le canapé, l'angine te trouve. Ni week-end, ni sommeil.",
+      "effects": {
+       "health": -4,
+       "happiness": -5,
+       "vie": {
+        "disease": "angine"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0070",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "siblings"
+   ],
+   "minMoney": 2000,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{fratrie} a besoin d'un traitement que la sécurité sociale ne rembourse qu'à moitié. Il manque 4 000 €. Au téléphone, {fratrie} ne demande rien, mais le silence en dit long.",
+  "choices": [
+   {
+    "label": "Tout payer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais le virement le soir même. {fratrie} pleure au téléphone, et toi aussi, un peu.",
+      "effects": {
+       "money": -4000,
+       "happiness": 4,
+       "setFlags": [
+        "genereux"
+       ],
+       "relationships": {
+        "sibling": 15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer la moitié",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu donnes 2 000 € et tu lances une cagnotte pour le reste. Des cousins oubliés réapparaissent avec des billets.",
+      "effects": {
+       "money": -2000,
+       "happiness": 2,
+       "relationships": {
+        "sibling": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas pouvoir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu expliques que tu ne peux pas. {fratrie} répond « je comprends », sur un ton qui dit l'inverse.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "sibling": -8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0071",
+  "category": "sante",
+  "minAge": 35,
+  "maxAge": 60,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "siblings"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{fratrie} t'annonce que son cardiologue a trouvé une anomalie cardiaque héréditaire, et que toute la fratrie devrait se faire dépister.",
+  "choices": [
+   {
+    "label": "Se faire dépister",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Examens complets : tu n'as rien hérité de tout ça, à part le nez de la famille.",
+      "effects": {
+       "money": -80,
+       "happiness": 6,
+       "relationships": {
+        "sibling": 4
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu portes la même anomalie. Repérée tôt, elle sera surveillée chaque année, et ça change tout. Merci {fratrie}.",
+      "effects": {
+       "health": 2,
+       "money": -150,
+       "happiness": -3,
+       "relationships": {
+        "sibling": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas vouloir savoir",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Tu préfères ne pas savoir. Tu y penses pourtant chaque fois que tu montes un escalier.",
+      "effects": {
+       "happiness": -3
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Tu ne voulais pas savoir. Un malaise en plein match de foot te l'apprend quand même.",
+      "effects": {
+       "health": -15,
+       "happiness": -8,
+       "vie": {
+        "disease": "crise_cardiaque"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler {fratrie} souvent",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu appelles {fratrie} chaque semaine. Vous parlez cardiologie, puis souvenirs d'enfance.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "sibling": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0072",
+  "category": "sante",
+  "minAge": 35,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "mother",
+    "parent_age"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{mere} boite depuis un an mais refuse l'opération de la hanche : « À mon âge, on ne se fait pas découper. » Elle a pourtant de très grands projets pour son potager.",
+  "choices": [
+   {
+    "label": "La convaincre",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Arguments, témoignages, chirurgien du quartier : elle cède. Six mois plus tard, elle bêche comme à quarante ans.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "mother": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Elle ne cède pas. Vous vous fâchez pour une hanche, ce qui est absurde, et chacun le sait.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "mother": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Offrir un déambulateur",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui offres un déambulateur rouge vif. Elle l'appelle « la Ferrari » et refuse de s'en servir devant les voisins.",
+      "effects": {
+       "money": -150,
+       "happiness": 2,
+       "relationships": {
+        "mother": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Respecter son choix",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "C'est son corps, sa décision. Tu l'aides au potager, à genoux à sa place.",
+      "effects": {
+       "health": -2,
+       "happiness": 1,
+       "relationships": {
+        "mother": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0073",
+  "category": "sante",
+  "minAge": 28,
+  "maxAge": 65,
+  "weight": 4,
+  "conditions": {
+   "requiresJob": true,
+   "tags": [
+    "father"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{pere} est hospitalisé à l'autre bout du pays pour une opération du cœur. Ton patron refuse tes congés : « Pas en pleine clôture des comptes. »",
+  "choices": [
+   {
+    "label": "Partir quand même",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu pars sans attendre l'accord. Tu es là au réveil de {pere}. Ton patron te le reprochera ; toi, jamais.",
+      "effects": {
+       "happiness": 4,
+       "money": -300,
+       "relationships": {
+        "father": 12
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu pars, et ton patron te fait payer cette absence pendant des mois.",
+      "effects": {
+       "happiness": -2,
+       "money": -800,
+       "relationships": {
+        "father": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Y aller le week-end",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Aller-retour le week-end : dix heures de train pour quatre heures à son chevet. Il fait semblant de ne pas être ému.",
+      "effects": {
+       "health": -2,
+       "money": -200,
+       "relationships": {
+        "father": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler tous les jours",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu appelles chaque jour. {pere} commente ses repas d'hôpital avec la précision d'un critique gastronomique.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "father": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0074",
+  "category": "sante",
+  "minAge": 45,
+  "maxAge": 75,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "parents",
+    "parent_tres_age"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{parent} a fait une chute dans la salle de bain et a attendu six heures au sol que la voisine s'inquiète. Rien de cassé, mais plus personne n'a envie que ça recommence.",
+  "choices": [
+   {
+    "label": "Une téléalarme",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un bracelet d'alerte. {parent} le trouve « moche comme tout » et le porte quand même, parfois.",
+      "effects": {
+       "money": -300,
+       "happiness": 2,
+       "relationships": {
+        "parent": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'accueillir chez toi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{parent} emménage chez toi avec ses meubles, ses horaires et sa télé à plein volume. Vous vous redécouvrez, pour le meilleur et pour le bruyant.",
+      "effects": {
+       "happiness": -2,
+       "health": -2,
+       "setFlags": [
+        "aidant_familial"
+       ],
+       "relationships": {
+        "parent": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Résidence médicalisée",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une résidence, des soignants, des activités. {parent} t'en veut un peu, puis se fait des amis au loto.",
+      "effects": {
+       "money": -3000,
+       "happiness": -1,
+       "relationships": {
+        "parent": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0075",
+  "category": "sante",
+  "minAge": 40,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "father",
+    "parent_age"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{pere} tousse comme un vieux moteur et fume toujours son paquet quotidien. D'après lui, à son âge, « arrêter, ça tue ».",
+  "choices": [
+   {
+    "label": "L'emmener au pneumologue",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Bronchite chronique, à surveiller. {pere} promet de réduire. Il réduit le nombre de briquets.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "father": 4
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le scanner montre une tache, repérée tôt grâce à toi. Le chemin sera long, mais {pere} le commence à tes côtés.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "father": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui offrir des patchs",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Il colle d'abord les patchs sur son paquet, par provocation. Puis, un matin, il arrête vraiment.",
+      "effects": {
+       "money": -100,
+       "happiness": 5,
+       "relationships": {
+        "father": 6
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Les patchs finissent dans un tiroir, à côté des cigarettes.",
+      "effects": {
+       "money": -100,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Respecter ses choix",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "C'est sa vie. Tu le laisses fumer ; tu ouvres juste la fenêtre, et tu tousses un peu aussi.",
+      "effects": {
+       "happiness": -2,
+       "health": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0076",
+  "category": "sante",
+  "minAge": 20,
+  "maxAge": 70,
+  "weight": 2,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} commence une chimiothérapie la semaine prochaine. Les cheveux vont tomber, alors {ami} te tend une tondeuse : « Je préfère que ce soit toi qui le fasses. »",
+  "choices": [
+   {
+    "label": "Raser vos deux têtes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rases {ami}, puis tu te rases aussi. Deux crânes au soleil, un fou rire, et une photo que vous garderez longtemps.",
+      "effects": {
+       "looks": -4,
+       "happiness": 6,
+       "relationships": {
+        "friend": 15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le faire avec soin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes la tondeuse doucement en racontant des bêtises. {ami} se regarde dans le miroir : « Pas mal, en fait. »",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "friend": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas pouvoir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tes mains tremblent trop. {ami} prend la tondeuse et le fait, pendant que tu restes à côté. C'est déjà quelque chose.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "friend": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0077",
+  "category": "sante",
+  "minAge": 60,
+  "maxAge": 90,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "friend",
+    "retired"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} s'effondre en pleine partie de pétanque. Personne ne bouge. Tu as fait une formation aux premiers secours… il y a très longtemps.",
+  "choices": [
+   {
+    "label": "Massage cardiaque",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu comptes, tu appuies, tu tiens jusqu'aux pompiers. {ami} s'en sort. Le club te remet une médaille en chocolat ; {ami}, une amitié pour la vie.",
+      "effects": {
+       "happiness": 10,
+       "karma": 8,
+       "relationships": {
+        "friend": 15
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu fais tout ce qu'il faut jusqu'aux pompiers. {ami} part à l'hôpital dans un état grave et s'en remet très lentement. Les médecins disent que tes gestes ont compté.",
+      "effects": {
+       "happiness": -4,
+       "karma": 6,
+       "relationships": {
+        "friend": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler les pompiers",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu appelles et tu guides les autres au téléphone. {ami} est pris en charge à temps.",
+      "effects": {
+       "happiness": 4,
+       "karma": 4,
+       "relationships": {
+        "friend": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0078",
+  "category": "sante",
+  "minAge": 28,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} doit se faire opérer du genou : six semaines de béquilles, beaucoup de besoins et une patience très limitée.",
+  "choices": [
+   {
+    "label": "Poser des congés",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu poses des congés et tu deviens majordome. {partenaire} a trouvé une clochette dont tu ignorais l'existence.",
+      "effects": {
+       "money": -500,
+       "happiness": -2,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Engager une aide",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une aide à domicile passe tous les matins. {partenaire} la trouve formidable, un peu trop à ton goût.",
+      "effects": {
+       "money": -1200,
+       "happiness": 1,
+       "relationships": {
+        "partner": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Se débrouiller",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous vous débrouillez. Les béquilles finissent couvertes d'autocollants et vous riez beaucoup.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Six semaines de stress, de courses oubliées et de disputes sur le bon usage des béquilles.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0079",
+  "category": "sante",
+  "minAge": 25,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} pleure dans la voiture avant d'aller travailler, tous les matins depuis deux semaines, puis entre au bureau avec un grand sourire.",
+  "choices": [
+   {
+    "label": "Pousser à consulter",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "{partenaire} accepte de voir un médecin : burn-out, arrêt de travail. Tu deviens la personne qui dit « repose-toi » vingt fois par jour.",
+      "effects": {
+       "money": -300,
+       "happiness": -2,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "{partenaire} refuse : « Ça va passer. » Ça ne passe pas, et vous le savez tous les deux.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer de tout arrêter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu proposes de prendre le relais financier le temps qu'il faudra. Démission, soulagement immense, budget serré.",
+      "effects": {
+       "money": -3000,
+       "happiness": 3,
+       "relationships": {
+        "partner": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien dire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ne sais pas quoi dire, alors tu ne dis rien. {partenaire} l'a remarqué.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0080",
+  "category": "sante",
+  "minAge": 65,
+  "maxAge": 95,
+  "weight": 4,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} n'entend presque plus rien et refuse l'appareil auditif, « un truc de vieux ». Vous avez la télé à fond et des conversations en décalé.",
+  "choices": [
+   {
+    "label": "Insister",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "L'appareil est enfin adopté. {partenaire} redécouvre le chant des oiseaux, et certaines de tes remarques qu'il valait peut-être mieux ne pas entendre.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{partenaire} refuse net. Vous communiquez désormais par post-it.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Parler plus fort",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu parles plus fort. Toute la rue connaît désormais le menu de la semaine, et ta voix s'éraille.",
+      "effects": {
+       "happiness": -2,
+       "health": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un modèle invisible",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un modèle haut de gamme, presque invisible. {partenaire} l'accepte, à condition que personne ne le sache.",
+      "effects": {
+       "money": -1800,
+       "happiness": 3,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0081",
+  "category": "sante",
+  "minAge": 48,
+  "maxAge": 56,
+  "weight": 3,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Pour tes cinquante ans, {partenaire} t'offre… un bilan de santé complet. Avec un ruban. Tu cherches encore où se trouve la partie cadeau.",
+  "choices": [
+   {
+    "label": "Y aller",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tout est normal, à part une légère carence. Tu reçois un certificat de bonne santé, que tu encadres.",
+      "effects": {
+       "health": 3,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le bilan révèle un cholestérol à surveiller. {partenaire} avait bien fait, et te le rappelle.",
+      "effects": {
+       "health": 2,
+       "relationships": {
+        "partner": 3
+       },
+       "vie": {
+        "disease": "cholesterol"
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Le bilan détecte une hypertension silencieuse. Rien d'urgent, tout à traiter. Ce cadeau était en fait très romantique.",
+      "effects": {
+       "health": 2,
+       "relationships": {
+        "partner": 6
+       },
+       "vie": {
+        "disease": "hypertension"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'échanger",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu négocies un week-end en amoureux à la place. {partenaire} accepte, à condition que tu fasses le bilan l'an prochain.",
+      "effects": {
+       "happiness": 6,
+       "money": -400,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0082",
+  "category": "sante",
+  "minAge": 35,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} t'offre une montre connectée. Depuis, elle vibre toutes les heures : « Rythme cardiaque élevé ». Tu ne sais plus si c'est ton cœur ou la montre qui s'inquiète.",
+  "choices": [
+   {
+    "label": "Consulter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le médecin confirme : tension un peu haute. Un traitement léger, et moins de café.",
+      "effects": {
+       "health": 1,
+       "money": -30,
+       "vie": {
+        "disease": "hypertension"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le médecin trouve tout normal. Le bracelet était juste trop serré.",
+      "effects": {
+       "happiness": 3,
+       "money": -25
+      }
+     }
+    ]
+   },
+   {
+    "label": "Désactiver l'alerte",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu coupes les alertes. La montre se venge en te félicitant pour tes 312 pas quotidiens.",
+      "effects": {
+       "health": -2,
+       "happiness": 1,
+       "setFlags": [
+        "tension_haute"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu coupes les alertes, et la vie continue, en silence.",
+      "effects": {
+       "happiness": 2,
+       "health": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Courir pour la calmer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu cours pour faire baisser ton rythme cardiaque. La montre ne comprend plus rien ; toi non plus, mais tu as couru.",
+      "effects": {
+       "health": 4,
+       "happiness": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0083",
+  "category": "sante",
+  "minAge": 35,
+  "maxAge": 60,
+  "weight": 2,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{enfant} ne finit plus jamais son assiette, fait du sport deux fois par jour et porte des pulls larges en plein été. Ton instinct te dit que ce n'est pas qu'une phase.",
+  "choices": [
+   {
+    "label": "En parler doucement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu choisis un moment calme, sans reproche. {enfant} pleure, puis parle. Vous prenez rendez-vous ensemble avec un spécialiste.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": 10
+       },
+       "followUps": [
+        "rep_ent_san_0032"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{enfant} se ferme et claque la porte. Mais le message est passé : tu es là.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": -2
+       },
+       "followUps": [
+        "rep_ent_san_0032"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le médecin de famille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu emmènes {enfant} chez le médecin « pour un certificat de sport ». Le médecin comprend vite et oriente vers une équipe spécialisée.",
+      "effects": {
+       "happiness": -2,
+       "money": -30,
+       "relationships": {
+        "child": -3
+       },
+       "followUps": [
+        "rep_ent_san_0032"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Surveiller ses repas",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu surveilles chaque bouchée. Les repas deviennent des interrogatoires, et {enfant} mange encore moins.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": -10
+       },
+       "followUps": [
+        "rep_ent_san_0032"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0084",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 80,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "prison"
+   ]
+  },
+  "text": "Ton codétenu tousse toute la nuit depuis une semaine, et l'infirmerie ne prend les rendez-vous que le mardi, par écrit, en trois exemplaires.",
+  "choices": [
+   {
+    "label": "Remplir ses formulaires",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu remplis les trois formulaires pour lui. Le mardi suivant, il est soigné. Il te doit une faveur, et ici, ça vaut de l'or.",
+      "effects": {
+       "health": 1,
+       "karma": 4,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "La tête sous l'oreiller",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "L'oreiller filtre le bruit, pas les microbes. Bronchite pour vous deux.",
+      "effects": {
+       "health": -5,
+       "vie": {
+        "disease": "bronchite"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu passes au travers, avec des cernes jusqu'aux genoux.",
+      "effects": {
+       "health": -2,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander à changer de cellule",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Accordé. Ton nouveau codétenu ne tousse pas : il chante.",
+      "effects": {
+       "happiness": -2,
+       "health": 1
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Refusé, et tu es mal vu{e} pour avoir demandé. La toux t'attrape quand même.",
+      "effects": {
+       "health": -4,
+       "happiness": -3,
+       "vie": {
+        "disease": "grippe"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_san_0085",
+  "category": "sante",
+  "minAge": 18,
+  "maxAge": 80,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "prison"
+   ]
+  },
+  "text": "Une rage de dent t'empêche de dormir. Le dentiste de la prison passe une fois par mois ; ton voisin de cellule propose une méthode « avec du fil et une porte ».",
+  "choices": [
+   {
+    "label": "Attendre le dentiste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trois semaines de douleur, puis le dentiste arrache la dent en quatre minutes. Tu dors enfin.",
+      "effects": {
+       "health": -4,
+       "looks": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "La méthode du fil",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Un coup de porte, une dent en moins, un cri entendu jusqu'au parloir. Ça a marché.",
+      "effects": {
+       "health": -2,
+       "looks": -3,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La porte claque, la dent reste, ta dignité s'en va. Infection.",
+      "effects": {
+       "health": -7,
+       "happiness": -4,
+       "vie": {
+        "disease": "carie"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Troquer des antidouleurs",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu échanges ton paquet de café contre des antidouleurs. La douleur s'endort, la carie non.",
+      "effects": {
+       "health": -2,
+       "happiness": 1,
+       "vie": {
+        "disease": "carie"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

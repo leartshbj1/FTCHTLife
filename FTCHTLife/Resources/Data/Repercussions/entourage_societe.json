@@ -1,0 +1,2294 @@
+[
+ {
+  "id": "rep_ent_soc_0001",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "minMoney": 100000
+  },
+  "text": "Gilbert revient, accompagné d'une avocate en tailleur moutarde. Selon lui, ta fortune vient « en partie » d'un terrain de Mémé Odette vendu en 1987, et il en réclame 15 %. Il a apporté des madeleines.",
+  "choices": [
+   {
+    "label": "Négocier à l'amiable",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Trois réunions et une crise de larmes (la sienne) plus tard, vous signez : 40 000 €, et il renonce à tout le reste. Il garde le droit de t'envoyer des cartes de vœux.",
+      "effects": {
+       "money": -40000,
+       "happiness": -3,
+       "followUps": [
+        "rep_ent_soc_0003"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il accepte 25 000 €, puis revient le lendemain : son avocate a « recalculé ». Tu signes à 45 000 € en serrant les dents.",
+      "effects": {
+       "money": -45000,
+       "happiness": -8,
+       "followUps": [
+        "rep_ent_soc_0003"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aller au tribunal",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton avocat sourit comme un requin qui aperçoit un plongeur : « On va gagner. Ça prendra du temps. » Il facture le sourire.",
+      "effects": {
+       "money": -8000,
+       "happiness": -3,
+       "followUps": [
+        "rep_ent_soc_0002"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger l'arbre généalogique",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La généalogiste est formelle : Gilbert descend d'un voisin de Mémé Odette, pas de sa sœur. Il repart sans un mot, avec son avocate et ton stylo.",
+      "effects": {
+       "happiness": 10,
+       "smarts": 3,
+       "clearFlags": [
+        "cousin_gilbert"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "L'arbre est formel : Gilbert est bien ton cousin, et Mémé Odette avait bien vendu un terrain. Tu as payé 1 200 € pour confirmer ses dires.",
+      "effects": {
+       "money": -1200,
+       "happiness": -5,
+       "followUps": [
+        "rep_ent_soc_0002"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0002",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "text": "Audience au tribunal judiciaire. L'avocate de Gilbert parle de « liens du sang », la tienne de « prescription ». Gilbert te fait un petit coucou de la main depuis l'autre banc.",
+  "choices": [
+   {
+    "label": "Laisser parler ton avocat",
+    "outcomes": [
+     {
+      "chance": 0.65,
+      "text": "Prescription acquise depuis des années : Gilbert est débouté et condamné aux frais. En sortant, il te demande s'il est quand même invité à Noël.",
+      "effects": {
+       "money": 3000,
+       "happiness": 10,
+       "followUps": [
+        "rep_ent_soc_0003"
+       ]
+      }
+     },
+     {
+      "chance": 0.35,
+      "text": "Le juge coupe la poire en deux : 30 000 € pour Gilbert. Ton avocat parle de « victoire partielle ». Toi, de défaite complète.",
+      "effects": {
+       "money": -30000,
+       "happiness": -10,
+       "followUps": [
+        "rep_ent_soc_0003"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un accord dans le couloir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Entre deux distributeurs de café, vous tombez d'accord sur 20 000 €. Le greffier vous regarde comme deux enfants qui se partagent des billes.",
+      "effects": {
+       "money": -20000,
+       "happiness": 3,
+       "followUps": [
+        "rep_ent_soc_0003"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Plaider toi-même",
+    "requiresSkill": {
+     "eloquence": 3
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu racontes Mémé Odette, ses confitures et ses coups de canne. Le juge sourit, Gilbert pleure. Débouté, mais ému.",
+      "effects": {
+       "happiness": 12,
+       "smarts": 3,
+       "followUps": [
+        "rep_ent_soc_0003"
+       ],
+       "skills": {
+        "eloquence": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0003",
+  "on": "entourage_suite",
+  "clearFlags": [
+   "cousin_gilbert"
+  ],
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Au mariage d'une petite-cousine, le plan de table t'a placé{e} à côté de Gilbert. Il a apporté des photos de Mémé Odette jeune, et un air penaud.",
+  "choices": [
+   {
+    "label": "Faire la paix",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Vous riez de toute l'affaire. Gilbert devient le cousin qu'on appelle pour les déménagements. Il vient toujours, il repart toujours avec un lampadaire.",
+      "effects": {
+       "happiness": 8,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Au dessert, il évoque une « petite idée de restaurant » qui aurait besoin d'un investisseur. Certaines choses ne changent jamais.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer de table",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu échanges ta place avec une grand-tante dure d'oreille. Elle et Gilbert passent une soirée merveilleuse. Toi, tu manges froid près des toilettes.",
+      "effects": {
+       "happiness": -4,
+       "karma": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0004",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "flags": [
+    "jure_assises"
+   ]
+  },
+  "text": "Salle des délibérations. Les faits sont établis : il y a eu des coups, et un mort. Reste la question qui pèse : voulait-il tuer ? Six jurés, trois magistrats, et bientôt ton tour de voter, à bulletin secret.",
+  "choices": [
+   {
+    "label": "Voter le meurtre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ta main tremble un peu sur le bulletin. La majorité suit : dix-huit ans de réclusion. Dans la salle, les deux familles pleurent.",
+      "effects": {
+       "happiness": -5,
+       "smarts": 3,
+       "stress": 6,
+       "followUps": [
+        "rep_ent_soc_0005"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Voter les violences mortelles",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu as retenu le doute sur l'intention. La cour condamne à huit ans pour violences ayant entraîné la mort. Dans le couloir, le frère de la victime te cherche du regard.",
+      "effects": {
+       "happiness": -4,
+       "smarts": 3,
+       "karma": 2,
+       "followUps": [
+        "rep_ent_soc_0005"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Défendre le doute",
+    "requiresSkill": {
+     "eloquence": 3
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu reprends le dossier pièce par pièce, calmement. Pendant trois heures, tout le monde réfléchit vraiment. La présidente te remercie : « C'est exactement ce qu'on attend d'un juré. »",
+      "effects": {
+       "smarts": 6,
+       "happiness": 2,
+       "karma": 4,
+       "followUps": [
+        "rep_ent_soc_0005"
+       ],
+       "skills": {
+        "eloquence": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Suivre la majorité",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu votes comme la majorité semble vouloir voter. Le soir, tu n'arrives plus à te souvenir de ce que, toi, tu pensais.",
+      "effects": {
+       "happiness": -6,
+       "karma": -2,
+       "followUps": [
+        "rep_ent_soc_0005"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0005",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Un an après le verdict, tu apprends que l'affaire est rejugée en appel. Le visage de l'accusé, celui de la veuve, les photos du dossier : tout revient d'un coup, au supermarché, entre les yaourts.",
+  "choices": [
+   {
+    "label": "Assister à l'appel",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La cour d'appel confirme presque ta décision. Tu repars avec l'impression d'avoir fait, honnêtement, ce qu'on t'avait demandé.",
+      "effects": {
+       "happiness": 5,
+       "smarts": 2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Les nouveaux jurés tranchent autrement. Tu comprends que la justice est rendue par des gens comme toi, avec leurs doutes. C'est rassurant et vertigineux à la fois.",
+      "effects": {
+       "happiness": -3,
+       "smarts": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "En parler à un psy",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Quelques séances suffisent à poser des mots sur ces deux semaines. Tu dors de nouveau.",
+      "effects": {
+       "happiness": 6,
+       "health": 3,
+       "money": -150
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout garder pour toi",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu n'en parles à personne. Ça passe, doucement, comme un caillou dans une chaussure qu'on finit par oublier.",
+      "effects": {
+       "happiness": -2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Les cauchemars reviennent chaque semaine. Tu sursautes quand quelqu'un hausse le ton.",
+      "effects": {
+       "happiness": -8,
+       "health": -4,
+       "setFlags": [
+        "anxieux"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0006",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "flags": [
+    "endette"
+   ]
+  },
+  "text": "Le courrier que tu n'ouvrais plus a fini par agir sans toi : saisie sur ton compte bancaire. Ta banque bloque une partie de ton argent et ajoute 98 € de « frais de saisie », pour la peine.",
+  "choices": [
+   {
+    "label": "Déposer enfin un dossier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu déposes enfin le dossier de surendettement. La dame du guichet te dit que tu n'es ni le premier ni le dernier. Étrangement, ça aide.",
+      "effects": {
+       "money": -900,
+       "happiness": -3,
+       "followUps": [
+        "rep_ent_soc_0007"
+       ],
+       "setFlags": [
+        "surendette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Emprunter pour boucher",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Un crédit pour rembourser un crédit. Ça tient six mois, puis tout s'effondre en plus grand.",
+      "effects": {
+       "money": 3000,
+       "happiness": -6,
+       "health": -3,
+       "followUps": [
+        "rep_ent_soc_0007"
+       ],
+       "setFlags": [
+        "surendette"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Aucune banque ne veut te prêter. Tu le prends mal, puis tu comprends qu'elles t'ont peut-être rendu service.",
+      "effects": {
+       "money": -900,
+       "happiness": -5,
+       "followUps": [
+        "rep_ent_soc_0007"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0007",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "flags": [
+    "endette"
+   ]
+  },
+  "text": "La commission de surendettement examine ton dossier. Une conseillère t'explique qu'il est recevable, mais que ton budget va être passé à la loupe, jusqu'au moindre abonnement.",
+  "choices": [
+   {
+    "label": "Tout déclarer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le plan est validé : des années de remboursements calculés au plus juste, et une partie des intérêts effacée. Tu respires mieux. Ton budget, lui, est au régime.",
+      "effects": {
+       "happiness": 4,
+       "money": -1200,
+       "followUps": [
+        "rep_ent_soc_0008"
+       ],
+       "setFlags": [
+        "plan_surendettement"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Cacher ta petite épargne",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Personne ne voit les 2 000 € planqués sur un livret. Le plan passe. Tu gardes un secret et une boule au ventre.",
+      "effects": {
+       "happiness": -2,
+       "karma": -4,
+       "followUps": [
+        "rep_ent_soc_0008"
+       ],
+       "setFlags": [
+        "plan_surendettement"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La commission découvre le livret. Dossier rejeté pour mauvaise foi. Tu repars avec tes dettes et une leçon.",
+      "effects": {
+       "happiness": -10,
+       "money": -2000,
+       "setFlags": [
+        "surendette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander un accompagnement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une conseillère en économie sociale t'apprend à tenir un budget. Tu découvres que tu dépensais 63 € par mois en burgers livrés.",
+      "effects": {
+       "smarts": 4,
+       "happiness": 3,
+       "money": -800,
+       "followUps": [
+        "rep_ent_soc_0008"
+       ],
+       "setFlags": [
+        "plan_surendettement",
+        "econome"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0008",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "plan_surendettement"
+   ]
+  },
+  "text": "En plein plan de remboursement, ton téléphone vibre : « Bonne nouvelle ! Vous êtes présélectionné{e} pour un crédit de 3 000 €, sans justificatif ! » Noël est dans trois semaines.",
+  "choices": [
+   {
+    "label": "Résister",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu supprimes le message. Noël sera fait maison : biscuits, bons pour des massages, et une fierté toute neuve.",
+      "effects": {
+       "happiness": 3,
+       "smarts": 2,
+       "followUps": [
+        "rep_ent_soc_0009"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Juste cette fois",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Les cadeaux sont superbes. En janvier, la commission découvre le nouveau crédit et annule ton plan. Tout est à refaire.",
+      "effects": {
+       "money": -500,
+       "happiness": -10,
+       "setFlags": [
+        "surendette"
+       ],
+       "clearFlags": [
+        "plan_surendettement"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0009",
+  "on": "entourage_suite",
+  "patience": 4,
+  "clearFlags": [
+   "endette",
+   "surendette",
+   "plan_surendettement"
+  ],
+  "delay": [
+   2,
+   4
+  ],
+  "conditions": {
+   "flags": [
+    "plan_surendettement"
+   ]
+  },
+  "text": "Dernière mensualité du plan de surendettement. Ta conseillère t'envoie un courriel avec trois émojis de fête. Ta banque, elle, t'envoie une offre de carte « premium ». Tu éclates de rire.",
+  "effects": {
+   "happiness": 15,
+   "health": 3,
+   "smarts": 2
+  }
+ },
+ {
+  "id": "rep_ent_soc_0010",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Le juge t'a donné raison : l'expulsion de M. Ferrand est autorisée. Mais on est en février, en pleine trêve hivernale, et il a écrit au tribunal que sa fille est asthmatique. Le 1er avril approche.",
+  "choices": [
+   {
+    "label": "Expulser le 1er avril",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le 1er avril : des déménageurs, un serrurier, une petite fille qui serre son doudou. Tu récupères ton logement. Pas ta tranquillité.",
+      "effects": {
+       "money": 2000,
+       "happiness": -8,
+       "karma": -6,
+       "followUps": [
+        "rep_ent_soc_0012"
+       ],
+       "setFlags": [
+        "bailleur_echaude"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer son déménagement",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu lui proposes 2 000 € pour partir proprement. Il accepte, rend les clés et te serre la main longtemps.",
+      "effects": {
+       "money": -2000,
+       "happiness": 5,
+       "karma": 4,
+       "followUps": [
+        "rep_ent_soc_0012"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Il prend les 2 000 €… et reste. Ton avocat soupire si fort que tu le sens dans ton portefeuille.",
+      "effects": {
+       "money": -3500,
+       "happiness": -8,
+       "setFlags": [
+        "bailleur_echaude"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Saisir le fonds d'aide",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Avec une assistante sociale, vous montez un dossier d'aide au logement. Une partie de la dette est payée, il reste, et tout le monde respire.",
+      "effects": {
+       "money": 1500,
+       "happiness": 4,
+       "smarts": 2,
+       "karma": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0011",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Six mois après ton geste, M. Ferrand sonne chez toi, une enveloppe à la main et sa fille accrochée à sa veste.",
+  "choices": [
+   {
+    "label": "Ouvrir l'enveloppe",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il a retrouvé du travail : tout l'arriéré est là, avec une boîte de chocolats et un dessin de ta maison sous un soleil à neuf rayons.",
+      "effects": {
+       "money": 3000,
+       "happiness": 10,
+       "karma": 3
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Un mot : il ne pourra pas payer, il part s'installer chez sa sœur. Les clés sont dedans, l'appartement est impeccable. Tu perds de l'argent, pas ta foi en l'humanité.",
+      "effects": {
+       "money": -1500,
+       "happiness": -3,
+       "karma": 2,
+       "followUps": [
+        "rep_ent_soc_0012"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0012",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Tu fais visiter le logement remis à neuf. Deux dossiers sortent du lot : une candidate parfaite, CDI et garants en béton ; une mère seule avec deux enfants, petit salaire, et une lettre qui te serre le cœur.",
+  "choices": [
+   {
+    "label": "La candidate parfaite",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle paie le 1er de chaque mois, à 8 h 02. Tu t'ennuies presque.",
+      "effects": {
+       "money": 2000,
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "La mère et ses enfants",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Elle ne rate jamais un loyer, et ses enfants te font un dessin chaque Noël.",
+      "effects": {
+       "money": 1500,
+       "happiness": 8,
+       "karma": 5
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Les fins de mois sont serrées, les retards reviennent. Mais elle prévient toujours, et finit toujours par payer.",
+      "effects": {
+       "money": 500,
+       "happiness": 2,
+       "karma": 4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0013",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "benevole"
+   ]
+  },
+  "text": "Assemblée générale des Cahiers du Quartier. Mme Benali déménage. Quinze personnes regardent leurs chaussures, puis toutes se tournent vers toi : il faut quelqu'un pour présider l'association.",
+  "choices": [
+   {
+    "label": "Accepter la présidence",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Élu{e} à l'unanimité moins une voix, la tienne. Tu hérites d'un tampon, d'une clé et d'un classeur rempli de factures.",
+      "effects": {
+       "happiness": 4,
+       "stress": 5,
+       "smarts": 2,
+       "followUps": [
+        "rep_ent_soc_0014"
+       ],
+       "setFlags": [
+        "president_asso"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tenir seulement les comptes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu prends la trésorerie. Le budget tient dans une boîte à biscuits, mais tu sais exactement combien il y a de biscuits.",
+      "effects": {
+       "smarts": 3,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester simple bénévole",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu refuses poliment. Un intérimaire de 84 ans, très motivé, prend la présidence. Il fait des miracles avec un fax.",
+      "effects": {
+       "happiness": 1,
+       "karma": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0014",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "president_asso"
+   ]
+  },
+  "text": "Coup dur : la mairie supprime la subvention des Cahiers du Quartier. Il manque 12 000 € pour finir l'année, et quarante enfants sont inscrits.",
+  "choices": [
+   {
+    "label": "Organiser un grand loto",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Loto, tombola et gâteaux des parents : 9 400 € en une soirée. Le reste suivra. Tu as perdu ta voix à force d'annoncer les numéros.",
+      "effects": {
+       "happiness": 8,
+       "health": -2,
+       "followUps": [
+        "rep_ent_soc_0015"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le loto rapporte 1 300 €. Tu complètes de ta poche, la mort dans l'âme et le compte dans le rouge.",
+      "effects": {
+       "money": -4000,
+       "happiness": -3,
+       "followUps": [
+        "rep_ent_soc_0015"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Plaider au conseil municipal",
+    "requiresSkill": {
+     "eloquence": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu viens avec trois enfants et leurs bulletins. La subvention est rétablie à l'unanimité, et le maire s'en attribue le mérite au micro.",
+      "effects": {
+       "happiness": 10,
+       "karma": 4,
+       "fame": 2,
+       "followUps": [
+        "rep_ent_soc_0015"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mettre de ta poche",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu verses 12 000 €. L'année est sauvée. Ton banquier trouve que le bénévolat coûte cher.",
+      "effects": {
+       "money": -12000,
+       "happiness": 5,
+       "karma": 6,
+       "followUps": [
+        "rep_ent_soc_0015"
+       ],
+       "setFlags": [
+        "genereux"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Fermer l'association",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu annonces la fermeture aux parents. Une maman te remercie quand même. C'est pire.",
+      "effects": {
+       "happiness": -12,
+       "clearFlags": [
+        "president_asso",
+        "benevole"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0015",
+  "on": "entourage_suite",
+  "delay": [
+   2,
+   4
+  ],
+  "conditions": {
+   "flags": [
+    "president_asso"
+   ]
+  },
+  "text": "Un jeune homme en costume frappe à la porte de la salle : c'est Ilyes, le gamin des fractions. Il vient d'obtenir son diplôme d'ingénieur et veut animer l'aide aux devoirs du mardi.",
+  "choices": [
+   {
+    "label": "Lui passer le flambeau",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui confies le tampon, la clé et le classeur. Il en prend soin comme d'un trésor. Tu pleures un peu, dans le parking.",
+      "effects": {
+       "happiness": 15,
+       "karma": 5,
+       "clearFlags": [
+        "president_asso"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer ensemble",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous coprésidez. Il a des idées folles, toi l'expérience. Les inscriptions doublent.",
+      "effects": {
+       "happiness": 12,
+       "smarts": 2,
+       "karma": 3,
+       "stress": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0016",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "flags": [
+    "candidat_municipales"
+   ],
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Campagne municipale. Au marché, une habitante t'attrape par la manche : « Et le passage piéton devant l'école, où deux enfants ont failli se faire renverser, vous allez faire quoi ? » Tes colistiers ont filé vers le stand de fromages.",
+  "choices": [
+   {
+    "label": "Promettre un feu rouge",
+    "outcomes": [
+     {
+      "chance": 0.55,
+      "text": "Ta liste l'emporte avec 52 % des voix. Le soir des résultats, la dame du passage piéton t'attend à la sortie : « Alors, ce feu ? »",
+      "effects": {
+       "happiness": 10,
+       "fame": 2,
+       "followUps": [
+        "rep_ent_soc_0017"
+       ],
+       "setFlags": [
+        "elu_municipal"
+       ],
+       "clearFlags": [
+        "candidat_municipales"
+       ]
+      }
+     },
+     {
+      "chance": 0.45,
+      "text": "Ta liste perd de 300 voix. La dame a voté pour l'autre camp, qui promettait deux feux rouges.",
+      "effects": {
+       "happiness": -6,
+       "clearFlags": [
+        "candidat_municipales"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Répondre honnêtement",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu expliques qu'il faut une étude, un budget et un vote. Elle apprécie la franchise. Ta liste gagne de justesse.",
+      "effects": {
+       "happiness": 10,
+       "smarts": 2,
+       "followUps": [
+        "rep_ent_soc_0017"
+       ],
+       "setFlags": [
+        "elu_municipal"
+       ],
+       "clearFlags": [
+        "candidat_municipales"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La franchise ne paie pas : ta liste perd. Mais trois personnes t'écrivent que tu étais « la seule personne qui n'avait pas l'air de mentir ».",
+      "effects": {
+       "happiness": -3,
+       "karma": 3,
+       "clearFlags": [
+        "candidat_municipales"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'inviter à une réunion",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Elle vient avec vingt parents d'élèves, qui font ensuite campagne pour toi. Victoire !",
+      "effects": {
+       "happiness": 12,
+       "newFriend": true,
+       "followUps": [
+        "rep_ent_soc_0017"
+       ],
+       "setFlags": [
+        "elu_municipal"
+       ],
+       "clearFlags": [
+        "candidat_municipales"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Elle vient avec vingt parents d'élèves, qui cuisinent ta tête de liste pendant deux heures. La réunion tourne au procès. Défaite.",
+      "effects": {
+       "happiness": -5,
+       "stress": 4,
+       "clearFlags": [
+        "candidat_municipales"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0017",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "flags": [
+    "elu_municipal"
+   ]
+  },
+  "text": "Premier conseil municipal. On te confie une délégation, et le premier dossier tombe aussitôt : fermer la piscine municipale, vétuste et ruineuse, ou augmenter les impôts locaux de 3 %.",
+  "choices": [
+   {
+    "label": "Fermer la piscine",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le budget est sauvé. Les nageurs du matin te tournent le dos au marché, en peignoir, par principe.",
+      "effects": {
+       "happiness": -4,
+       "smarts": 3,
+       "followUps": [
+        "rep_ent_soc_0018"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Augmenter les impôts",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La piscine reste ouverte. Le courrier des lecteurs te traite de « Robin des bois à l'envers ». Les enfants apprennent à nager.",
+      "effects": {
+       "happiness": 2,
+       "karma": 3,
+       "money": -300,
+       "followUps": [
+        "rep_ent_soc_0018"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Chercher des subventions",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Huit mois de dossiers, et la région finance la rénovation. À l'inauguration, on t'applaudit. Le maire coupe le ruban.",
+      "effects": {
+       "happiness": 10,
+       "smarts": 3,
+       "fame": 2,
+       "followUps": [
+        "rep_ent_soc_0018"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Huit mois de dossiers pour rien. La piscine ferme quand même, en retard, et tout le monde est fâché.",
+      "effects": {
+       "happiness": -6,
+       "stress": 5,
+       "followUps": [
+        "rep_ent_soc_0018"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0018",
+  "on": "entourage_suite",
+  "patience": 3,
+  "delay": [
+   5,
+   6
+  ],
+  "conditions": {
+   "flags": [
+    "elu_municipal"
+   ]
+  },
+  "text": "Six ans ont passé. Ton mandat s'achève, et Bernard Lemoine te demande si tu repars pour six ans de plus. Les réunions du mardi soir, les permanences du samedi, les appels du dimanche.",
+  "choices": [
+   {
+    "label": "Repartir pour un mandat",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Réélu{e}. Tu connais désormais le prénom de chaque agent municipal et de chaque nid-de-poule.",
+      "effects": {
+       "happiness": 6,
+       "fame": 2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Battu{e}. Après six ans, tu redécouvres les dimanches libres. C'est vertigineux.",
+      "effects": {
+       "happiness": -4,
+       "clearFlags": [
+        "elu_municipal"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Arrêter là",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rends ton écharpe. Au pot de départ, la dame du passage piéton te remercie : le feu rouge a été installé la quatrième année.",
+      "effects": {
+       "happiness": 8,
+       "clearFlags": [
+        "elu_municipal"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0019",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Ton conseiller en patrimoine t'appelle, euphorique : ton placement a déjà pris 14 %. Il te propose de « doubler la mise » et de lui présenter des amis : il y a une commission pour chaque nouveau client.",
+  "choices": [
+   {
+    "label": "Doubler la mise",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu vires 50 000 € de plus. Le relevé suivant est toujours aussi beau. Il t'envoie une bouteille de champagne.",
+      "effects": {
+       "money": -50000,
+       "happiness": 4,
+       "followUps": [
+        "rep_ent_soc_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Récupérer ton argent",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il rechigne, parle de « frais de sortie anticipée », puis te rend 45 000 €. Un mois plus tard, son bureau est vide.",
+      "effects": {
+       "money": 45000,
+       "happiness": 4,
+       "smarts": 3
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il promet le virement « sous huitaine ». La huitaine dure toujours.",
+      "effects": {
+       "happiness": -6,
+       "followUps": [
+        "rep_ent_soc_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui présenter des amis",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui présentes ta voisine et ton dentiste. Tu touches 3 000 € de commission et une vague nausée.",
+      "effects": {
+       "money": 3000,
+       "karma": -5,
+       "happiness": -1,
+       "followUps": [
+        "rep_ent_soc_0020"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0020",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Le journal télévisé ouvre sur une « vaste escroquerie » : 340 victimes, 60 millions envolés. À l'écran, menotté, ton conseiller en patrimoine. Il porte toujours sa montre.",
+  "choices": [
+   {
+    "label": "Rejoindre la plainte",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Après quatre ans de procédure, tu récupères 30 % de ta mise. L'avocat, lui, a récupéré 100 % de ses honoraires.",
+      "effects": {
+       "money": 20000,
+       "happiness": -4,
+       "smarts": 3,
+       "setFlags": [
+        "victime_arnaque_financiere"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "La procédure s'enlise. Tu ne reverras presque rien, et un courrier de dix-huit pages te le confirme chaque année.",
+      "effects": {
+       "money": -2000,
+       "happiness": -10,
+       "setFlags": [
+        "victime_arnaque_financiere"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tourner la page",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'argent est perdu, mais tu refuses de perdre aussi tes nuits.",
+      "effects": {
+       "happiness": -8,
+       "setFlags": [
+        "victime_arnaque_financiere"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Témoigner à la télé",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton témoignage, flouté mais pas assez, passe au journal de 20 h. Tout {ville} reconnaît ta veste. Des gens te remercient : grâce à toi, ils n'ont pas signé.",
+      "effects": {
+       "happiness": -2,
+       "fame": 4,
+       "karma": 4,
+       "setFlags": [
+        "victime_arnaque_financiere"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0021",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Visite d'un deux-pièces : quarante-trois candidats dans l'escalier, un agent qui exige des revenus égaux à trois fois le loyer, et un dossier « complet » de onze pièces justificatives.",
+  "choices": [
+   {
+    "label": "Le studio loin du centre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu signes pour un studio à quarante minutes de tout. Le loyer est doux, le trajet beaucoup moins.",
+      "effects": {
+       "happiness": -3,
+       "money": -1500,
+       "health": -1,
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Une colocation",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu emménages avec trois inconnus et un tableau des tâches plastifié. Tu as l'impression d'avoir dix-neuf ans, en moins souple.",
+      "effects": {
+       "happiness": 2,
+       "money": -800,
+       "followUps": [
+        "rep_ent_soc_0022"
+       ],
+       "setFlags": [
+        "en_colocation"
+       ],
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lettre de motivation",
+    "requiresSkill": {
+     "eloquence": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ta lettre fait rire, puis pleurer l'agent immobilier. L'appartement est à toi, devant quarante-deux personnes jalouses.",
+      "effects": {
+       "happiness": 10,
+       "money": -1500,
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       },
+       "skills": {
+        "eloquence": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0022",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "flags": [
+    "en_colocation"
+   ]
+  },
+  "text": "Réunion de colocation d'urgence : Maxime n'a pas payé sa part depuis deux mois, Inès a peint le salon en violet sans prévenir, et le chat de personne a fait ses besoins dans ton placard.",
+  "choices": [
+   {
+    "label": "Recadrer tout le monde",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton discours est si ferme que Maxime paie, Inès repeint et le chat change de placard.",
+      "effects": {
+       "happiness": 5
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le recadrage tourne au règlement de comptes. Maxime part en claquant la porte, avec sa dette.",
+      "effects": {
+       "money": -900,
+       "happiness": -5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre un studio",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu trouves un petit studio rien qu'à toi. Le silence est merveilleux, les factures un peu moins.",
+      "effects": {
+       "money": -1200,
+       "happiness": 6,
+       "clearFlags": [
+        "en_colocation"
+       ],
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Adopter le chat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Personne ne réclame le chat. Il s'appelle désormais Litige. Il dort sur ta tête.",
+      "effects": {
+       "happiness": 8,
+       "money": -150
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0023",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Convocation au tribunal correctionnel, comme témoin du délit de fuite. L'avocat du conducteur, sourire de vendeur de cuisines, te demande si tu es vraiment certain{e} de la plaque, de nuit, à vingt mètres.",
+  "choices": [
+   {
+    "label": "Maintenir ton témoignage",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ta voix ne tremble pas. Le conducteur est condamné. Au fond de la salle, le livreur en béquilles te fait un signe de tête.",
+      "effects": {
+       "happiness": 8,
+       "karma": 5,
+       "smarts": 2
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "L'avocat sème le doute, le conducteur est relaxé. Tu sors en colère contre lui, puis contre toi.",
+      "effects": {
+       "happiness": -6,
+       "stress": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Admettre un doute",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu reconnais ne pas être sûr{e} à cent pour cent. C'est honnête. Le conducteur est relaxé au bénéfice du doute.",
+      "effects": {
+       "happiness": -4,
+       "karma": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Démonter ses questions",
+    "requiresSkill": {
+     "eloquence": 3
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Il faisait nuit, maître, mais les réverbères fonctionnent très bien dans ma ville. » La salle sourit, le juge aussi. Condamnation.",
+      "effects": {
+       "happiness": 10,
+       "karma": 4,
+       "skills": {
+        "eloquence": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0024",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Ton portrait sort en kiosque : « De {ville} au sommet : l'ascension de {prenom} {nom} ». Le lendemain, tu reçois 87 lettres de demande d'argent et une demande en mariage.",
+  "choices": [
+   {
+    "label": "Aider les plus touchantes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu finances la formation d'une aide-soignante et les vestiaires d'un club de rugby. Les 85 autres lettres continuent d'arriver.",
+      "effects": {
+       "money": -15000,
+       "happiness": 8,
+       "karma": 6,
+       "setFlags": [
+        "mecene"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Engager une assistante",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton assistante trie, répond et classe. Elle ne te montre qu'une lettre sur dix, surtout les drôles.",
+      "effects": {
+       "money": -6000,
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout jeter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu jettes tout, y compris, sans le savoir, la lettre d'un ami d'enfance qui voulait juste te dire bravo.",
+      "effects": {
+       "happiness": -2,
+       "karma": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0025",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "requiresPartner": true
+  },
+  "text": "Un an avec {partenaire}. Ce matin, sur la table du petit-déjeuner, une pile de factures à son nom : 48 000 € de dettes, « une broutille », et une question : « Tu pourrais m'aider, mon cœur ? »",
+  "choices": [
+   {
+    "label": "Payer ses dettes",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu paies. {partenaire} t'embrasse, pleure, et te fait des crêpes pendant un mois. C'était peut-être de l'amour, finalement.",
+      "effects": {
+       "money": -48000,
+       "happiness": 4,
+       "relationships": {
+        "partner": 10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu paies. Deux mois plus tard, {partenaire} part avec ton prof de golf et la voiture.",
+      "effects": {
+       "money": -48000,
+       "happiness": -15,
+       "vie": {
+        "breakup": true
+       },
+       "setFlags": [
+        "coeur_brise"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rompre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu poses les factures, tu prends ton manteau et tu pars. Le cœur lourd, le portefeuille intact.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer un plan",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu proposes de l'aider à bâtir un plan de remboursement. {partenaire} se vexe : « Je ne suis pas un dossier. » Ambiance glaciale jusqu'au printemps.",
+      "effects": {
+       "happiness": -3,
+       "smarts": 2,
+       "relationships": {
+        "partner": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0026",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Ton crédit renouvelable a fait des petits : avec les intérêts, tu dois maintenant 4 600 €. Le minimum mensuel ne rembourse presque que les intérêts. Ton conseiller te propose… d'augmenter la réserve.",
+  "choices": [
+   {
+    "label": "Augmenter la réserve",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes à 6 000 € de réserve. Ça soulage trois mois. Ensuite, ça étouffe.",
+      "effects": {
+       "money": 1500,
+       "happiness": -6,
+       "setFlags": [
+        "endette",
+        "panier_perce"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rembourser coûte que coûte",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu revends ta console, tu supprimes les sorties et tu rembourses en un an. Pénible, mais tu en sors.",
+      "effects": {
+       "money": -4600,
+       "happiness": -4,
+       "smarts": 3,
+       "setFlags": [
+        "econome"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander conseil",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un point conseil budget t'aide à renégocier. Le taux baisse, l'échéancier est clair. Tu respires.",
+      "effects": {
+       "money": -2500,
+       "smarts": 4,
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0027",
+  "on": "entourage_suite",
+  "clearFlags": [
+   "accompagne_social"
+  ],
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "flags": [
+    "accompagne_social"
+   ],
+   "tags": [
+    "adult"
+   ],
+   "requiresJob": false
+  },
+  "text": "Mme Kadri te rappelle : un chantier d'insertion cherche quelqu'un pour rénover une vieille école, avec un vrai salaire et un contrat au bout. Ou bien une formation qualifiante de neuf mois, rémunérée.",
+  "choices": [
+   {
+    "label": "Le chantier d'insertion",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rénoves l'école avec une équipe aussi cabossée que toi. À la fin de l'année, on te propose un vrai poste.",
+      "effects": {
+       "happiness": 8,
+       "health": -2,
+       "entourage": {
+        "offreEmploi": "auto"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "La formation",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Neuf mois sur les bancs, avec des stagiaires de 19 ans qui t'appellent « le sage ». Tu décroches le certificat.",
+      "effects": {
+       "smarts": 8,
+       "happiness": 6,
+       "money": 1500
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pas maintenant",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mme Kadri ne te juge pas. Elle note seulement « à relancer » dans la marge.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0028",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "6 h du matin : la police frappe chez Kévin, puis chez toi. Un enquêteur te montre une photo : « Vous avez déjà vu ce sac ? »",
+  "choices": [
+   {
+    "label": "Dire la vérité",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu racontes tout. L'enquêteur note, soupire, et te convoque pour une déposition. Tu t'en tires avec une grosse frayeur.",
+      "effects": {
+       "happiness": -4,
+       "karma": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Nier",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Jamais vu ce sac. L'enquêteur te dévisage trop longtemps, puis s'en va. Ton cœur cogne pendant une semaine.",
+      "effects": {
+       "happiness": -5,
+       "karma": -3,
+       "health": -2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Kévin t'a cité dans sa déposition. Recel : rappel à la loi, avocat à payer, et une frayeur mémorable.",
+      "effects": {
+       "happiness": -10,
+       "karma": -4,
+       "money": -800
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0029",
+  "on": "event:ent_soc_0012",
+  "choice": 2,
+  "chance": 0.6,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Retour de week-end : la baie vitrée est fracturée. Bijoux, deux montres et télévision ont disparu. Les cambrioleurs ont aussi mangé tes yaourts, ce qui paraît gratuit.",
+  "choices": [
+   {
+    "label": "Plainte et assurance",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "L'assurance rembourse après onze formulaires et la visite d'un expert. Tu fais enfin installer l'alarme.",
+      "effects": {
+       "money": -6000,
+       "happiness": -6
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'assurance refuse : ta baie vitrée n'avait pas la serrure exigée en page 47 du contrat. Tu perds tout.",
+      "effects": {
+       "money": -25000,
+       "happiness": -12
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mener l'enquête",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "Tu retrouves une de tes montres sur un site de revente. La police remonte la piste. Tu te sens dans une série policière, la bonne saison.",
+      "effects": {
+       "happiness": 10,
+       "money": -2000,
+       "smarts": 3
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "Ton enquête ne mène nulle part, sauf chez un voisin innocent que tu as accusé à tort. Ambiance.",
+      "effects": {
+       "happiness": -8,
+       "money": -8000
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0030",
+  "on": "event:ent_soc_0023",
+  "choice": 1,
+  "chance": 0.35,
+  "patience": 3,
+  "delay": [
+   2,
+   6
+  ],
+  "conditions": {
+   "flags": [
+    "donneur_moelle"
+   ],
+   "excludeTags": [
+    "malade"
+   ]
+  },
+  "text": "Un appel du registre des donneurs : tu es compatible avec un patient atteint de leucémie. Tu ne sauras jamais qui c'est. Il faut un prélèvement, deux jours d'hôpital, et dire oui.",
+  "choices": [
+   {
+    "label": "Dire oui",
+    "outcomes": [
+     {
+      "chance": 0.9,
+      "text": "Deux jours d'hôpital, une fatigue tenace, un dos endolori. Un an plus tard, une carte anonyme : « Merci. Je suis vivant. »",
+      "effects": {
+       "happiness": 15,
+       "karma": 10,
+       "health": -4
+      }
+     },
+     {
+      "chance": 0.1,
+      "text": "L'anesthésie se passe mal et la convalescence est longue. Tu ne regrettes rien, mais tu as dérouillé.",
+      "effects": {
+       "happiness": 8,
+       "karma": 10,
+       "health": -10
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "On te répond qu'on comprend, et qu'on va chercher quelqu'un d'autre. Tu y penses longtemps.",
+      "effects": {
+       "happiness": -8,
+       "karma": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0031",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "plan_surendettement"
+   ]
+  },
+  "text": "Le plan de surendettement continue : tu comptes chaque euro et tu connais le prix du beurre dans quatre supermarchés. C'est dur, mais la dette baisse.",
+  "effects": {
+   "happiness": -2,
+   "money": -500,
+   "smarts": 1
+  }
+ },
+ {
+  "id": "rep_ent_soc_0032",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "president_asso"
+   ]
+  },
+  "text": "Présider les Cahiers du Quartier te prend tes soirées, et ton téléphone sonne même le dimanche. Mais en juin, quatre de « tes » élèves passent en seconde générale.",
+  "effects": {
+   "happiness": 5,
+   "stress": 3,
+   "health": -1
+  }
+ },
+ {
+  "id": "rep_ent_soc_0033",
+  "on": "chaque_annee",
+  "chance": 0.25,
+  "clearFlags": [
+   "president_asso"
+  ],
+  "setFlags": [
+   "burn_out"
+  ],
+  "conditions": {
+   "flags": [
+    "president_asso"
+   ],
+   "flagMinYears": {
+    "president_asso": 4
+   }
+  },
+  "text": "Quatre ans de présidence sans pause : tu t'endors sur les dossiers de subvention et tu pleures devant la photocopieuse. Ton médecin est formel : tu passes la main.",
+  "effects": {
+   "happiness": -8,
+   "health": -5
+  }
+ },
+ {
+  "id": "rep_ent_soc_0034",
+  "on": "chaque_annee",
+  "chance": 0.25,
+  "conditions": {
+   "flags": [
+    "mecene"
+   ]
+  },
+  "text": "Ta générosité est connue dans tout {ville} : cette année, tes dons ont financé une salle de classe, une ambulance et une chorale de quartier. On t'invite partout, tu ne vas nulle part.",
+  "effects": {
+   "money": -15000,
+   "happiness": 5,
+   "karma": 3
+  }
+ },
+ {
+  "id": "rep_ent_soc_0035",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Ton conseiller en patrimoine t'appelle : tes 5 000 € ont pris 14 %. Il insiste pour que tu places enfin « quelque chose de sérieux », disons 80 000 €.",
+  "choices": [
+   {
+    "label": "Placer 80 000 €",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu signes. Le relevé suivant est magnifique. Tu ne remarques pas que l'adresse du siège a changé trois fois.",
+      "effects": {
+       "money": -80000,
+       "happiness": 4,
+       "followUps": [
+        "rep_ent_soc_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Récupérer tes 5 700 €",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Il te rend 5 700 € en soupirant. Un an plus tard, tu lis son nom dans la rubrique des faits divers.",
+      "effects": {
+       "money": 5700,
+       "happiness": 6,
+       "smarts": 3
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le virement n'arrive jamais. Le numéro ne répond plus. 5 000 € la leçon, c'est cher, mais formateur.",
+      "effects": {
+       "happiness": -5,
+       "smarts": 3,
+       "setFlags": [
+        "victime_arnaque_financiere"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0036",
+  "on": "event:ent_soc_0076",
+  "choice": 1,
+  "chance": 0.5,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Le parquet financier enquête sur l'attribution du marché du gymnase. Un enquêteur te convoque : l'entrepreneur a parlé, et il a une excellente mémoire des enveloppes.",
+  "choices": [
+   {
+    "label": "Tout avouer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu avoues et rends l'argent. Condamnation avec sursis, démission du conseil municipal, et l'article que tu redoutais.",
+      "effects": {
+       "money": -20000,
+       "happiness": -12,
+       "fame": 3,
+       "setFlags": [
+        "casier_judiciaire",
+        "honte_publique"
+       ],
+       "clearFlags": [
+        "elu_municipal"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Nier en bloc",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "Faute de preuves, l'enquête est classée. Tu gardes ton siège, et un pli au front qui ne partira plus.",
+      "effects": {
+       "happiness": -4,
+       "karma": -4
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "Les billets portaient des numéros relevés. Condamnation, inéligibilité, une photo de toi dans le journal à la sortie du tribunal.",
+      "effects": {
+       "money": -30000,
+       "happiness": -18,
+       "fame": 4,
+       "setFlags": [
+        "casier_judiciaire",
+        "honte_publique"
+       ],
+       "clearFlags": [
+        "elu_municipal"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_soc_0037",
+  "on": "event:ent_soc_0055",
+  "choice": 0,
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "adult"
+   ]
+  },
+  "text": "Ta banque bloque ton compte et la police t'envoie une convocation : l'argent qui a transité chez toi venait d'une arnaque aux faux placements. Pour la loi, tu es une « mule ».",
+  "choices": [
+   {
+    "label": "Coopérer pleinement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu donnes tous les messages et les noms. Tu échappes aux poursuites, mais ta banque ferme ton compte et tu dois rembourser une partie des victimes.",
+      "effects": {
+       "money": -1500,
+       "happiness": -8,
+       "smarts": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Jouer l'innocence",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "On te croit naïf ou naïve plutôt que complice. Rappel à la loi, compte fermé, honte durable.",
+      "effects": {
+       "money": -500,
+       "happiness": -8
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Les messages prouvent que tu savais. Blanchiment : condamnation avec sursis et remboursement des sommes.",
+      "effects": {
+       "money": -2000,
+       "happiness": -14,
+       "setFlags": [
+        "casier_judiciaire"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

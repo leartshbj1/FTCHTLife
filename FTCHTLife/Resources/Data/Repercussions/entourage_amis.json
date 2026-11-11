@@ -1,0 +1,3060 @@
+[
+ {
+  "id": "rep_ent_ami_0001",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 2,
+  "maxAge": 19,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} dort dans ton placard à couettes depuis trois jours. Ce soir, ses parents sonnent chez toi, les yeux rouges : « Tu sais où est {ami} ? »",
+  "choices": [
+   {
+    "label": "Mentir",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ils repartent. Deux jours plus tard, {ami} rentre de soi-même et te raconte enfin ce qui se passe là-bas. Tu es la seule personne au courant.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "friend": 8
+       },
+       "followUps": [
+        "rep_ent_ami_0021"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ta mère trouve {ami} en cherchant une couette. Scandale, punitions et réunion de crise entre les deux familles.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "parent": -8,
+        "friend": 4
+       },
+       "followUps": [
+        "rep_ent_ami_0021"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ouvrir le placard",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{ami} sort, ses parents pleurent. Tout le monde parle enfin. Une éducatrice passe ensuite chaque semaine, et ce n'est pas du luxe.",
+      "effects": {
+       "happiness": 3,
+       "karma": 4,
+       "relationships": {
+        "friend": -2
+       },
+       "followUps": [
+        "rep_ent_ami_0021"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0002",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   6,
+   10
+  ],
+  "patience": 2,
+  "minAge": 20,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des années après la nuit du sac de sport, {ami} t'écrit : « Tu as bien fait d'appeler tes parents ce soir-là. Je ne te l'avais jamais dit. »",
+  "effects": {
+   "happiness": 6,
+   "karma": 2,
+   "relationships": {
+    "friend": 10
+   }
+  }
+ },
+ {
+  "id": "rep_ent_ami_0003",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "maxAge": 19,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Les soirées de révisions avec {ami} ont payé : {ami} décroche son examen et débarque chez toi avec un gâteau en forme de calculatrice. Les touches sont en smarties.",
+  "effects": {
+   "happiness": 7,
+   "smarts": 2,
+   "relationships": {
+    "friend": 8
+   }
+  }
+ },
+ {
+  "id": "rep_ent_ami_0004",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "maxAge": 21,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis l'affaire de la photo, la bande est coupée en deux. {ami} et Clara fêtent leur anniversaire le même soir, dans deux appartements du même immeuble. Il faut choisir un étage.",
+  "choices": [
+   {
+    "label": "Monter chez {ami}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu montes chez {ami}. À minuit, quelqu'un descend chercher des glaçons chez Clara. Ils ne reviennent jamais. La bande se recoud, lentement.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "friend": 6
+       },
+       "setFlags": [
+        "bande_du_lycee"
+       ],
+       "followUps": [
+        "rep_ent_ami_0022"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Descendre chez Clara",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Chez Clara, l'ambiance est meilleure. Tu entends la musique de {ami} à travers le plafond toute la nuit, comme un reproche.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "friend": -6
+       },
+       "setFlags": [
+        "bande_du_lycee"
+       ],
+       "followUps": [
+        "rep_ent_ami_0022"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire les deux étages",
+    "requiresSkill": {
+     "humour": 1
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais l'ascenseur toute la soirée avec des parts de gâteau. À 2 h, les deux fêtes fusionnent dans l'escalier. Légendaire.",
+      "effects": {
+       "happiness": 10,
+       "karma": 3,
+       "relationships": {
+        "friend": 6
+       },
+       "setFlags": [
+        "bande_du_lycee"
+       ],
+       "followUps": [
+        "rep_ent_ami_0022"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0005",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "temoin_mariage_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "En tant que témoin, tu dois organiser l'enterrement de vie de célibataire de {ami}. Le groupe de discussion compte quatorze personnes et quatorze avis.",
+  "choices": [
+   {
+    "label": "Camping et kayak",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Deux jours de rivière, de feu de camp et de chansons fausses. {ami} dit que c'est le plus beau week-end de sa vie.",
+      "effects": {
+       "happiness": 8,
+       "health": 2,
+       "money": -200,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_ami_0023"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le kayak de {ami} chavire dans la seule rivière à 9 degrés de France. Rhume collectif, souvenirs impérissables.",
+      "effects": {
+       "happiness": 3,
+       "money": -200,
+       "relationships": {
+        "friend": 4
+       },
+       "vie": {
+        "disease": "rhume"
+       },
+       "followUps": [
+        "rep_ent_ami_0023"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Week-end à Lisbonne",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tramways jaunes, pasteis de nata, karaoké en portugais. Un sans-faute.",
+      "effects": {
+       "happiness": 10,
+       "money": -900,
+       "relationships": {
+        "friend": 8
+       },
+       "followUps": [
+        "rep_ent_ami_0023"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Un invité rate l'avion du retour. Puis celui d'après. Il vit désormais à Lisbonne.",
+      "effects": {
+       "happiness": 4,
+       "money": -1100,
+       "relationships": {
+        "friend": 5
+       },
+       "followUps": [
+        "rep_ent_ami_0023"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Soirée jeux chez toi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ambiance calme et tisanes. {ami} adore. Le reste du groupe te le reproche jusqu'au mariage.",
+      "effects": {
+       "happiness": 1,
+       "money": -50,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_ami_0023"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0006",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "pret_a_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Les « six mois » sont devenus un an. {ami} ne parle jamais des 3 000 € et vient de s'acheter une trottinette électrique. Neuve.",
+  "choices": [
+   {
+    "label": "Relancer gentiment",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{ami} rougit, s'excuse et rembourse la moitié tout de suite, le reste au printemps. Le printemps arrive, le reste aussi.",
+      "effects": {
+       "money": 3000,
+       "happiness": 6,
+       "relationships": {
+        "friend": 4
+       },
+       "clearFlags": [
+        "pret_a_ami"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{ami} promet « la semaine prochaine ». Puis ne répond plus. Puis change de numéro.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "friend": -10
+       },
+       "setFlags": [
+        "ami_en_froid"
+       ],
+       "followUps": [
+        "rep_ent_ami_0026"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger l'argent",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Ton ton glacial fait effet : virement le soir même. L'amitié, elle, reste dans le rouge.",
+      "effects": {
+       "money": 3000,
+       "happiness": -2,
+       "relationships": {
+        "friend": -12
+       },
+       "clearFlags": [
+        "pret_a_ami"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "{ami} te traite de rapace et disparaît de ta vie, avec la trottinette.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "friend": -15
+       },
+       "setFlags": [
+        "ami_en_froid"
+       ],
+       "followUps": [
+        "rep_ent_ami_0026"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Effacer la dette",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu décides que votre amitié vaut 3 000 €. {ami} pleure, toi aussi un peu.",
+      "effects": {
+       "happiness": 4,
+       "karma": 8,
+       "relationships": {
+        "friend": 10
+       },
+       "clearFlags": [
+        "pret_a_ami"
+       ],
+       "setFlags": [
+        "genereux"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0007",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "investi_startup_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "« Garé! » brûle de l'argent plus vite que prévu. {ami} t'appelle à 23 h : « On est à trois mois de la faillite ou de la gloire. Il me faut 10 000 € de plus. »",
+  "choices": [
+   {
+    "label": "Remettre 10 000 €",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu vides ton épargne. {ami} jure que c'est le dernier tour de piste. Ta part grossit, ton sommeil rétrécit.",
+      "effects": {
+       "money": -10000,
+       "happiness": -3,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_ami_0027"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien remettre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{ami} trouve l'argent ailleurs. Ta part est diluée jusqu'à devenir minuscule.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "friend": -2
+       },
+       "followUps": [
+        "rep_ent_ami_0028"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Revendre tes parts",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Un investisseur te rachète tes parts 6 000 €. Tu sors avec un petit bénéfice et la conscience tranquille.",
+      "effects": {
+       "money": 6000,
+       "happiness": 4,
+       "relationships": {
+        "friend": -2
+       },
+       "clearFlags": [
+        "investi_startup_ami"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Personne n'en veut. {ami} te les rachète 2 000 €, en soupirant très fort.",
+      "effects": {
+       "money": 2000,
+       "happiness": -4,
+       "relationships": {
+        "friend": -6
+       },
+       "clearFlags": [
+        "investi_startup_ami"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0008",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} a perdu son permis, puis son travail. Sa sœur t'appelle : elle organise une réunion avec les proches pour pousser {ami} à se faire aider, et compte sur toi pour parler en premier.",
+  "choices": [
+   {
+    "label": "Participer et parler",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu lis ta lettre d'une voix tremblante. {ami} pleure, se met en colère, puis accepte d'entrer en cure.",
+      "effects": {
+       "happiness": -2,
+       "karma": 6,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_ami_0031"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{ami} claque la porte en criant que vous êtes tous des traîtres. Tu restes debout, ta lettre à la main.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "friend": -8
+       },
+       "followUps": [
+        "rep_ent_ami_0032"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Parler seul{e} à seul{e}",
+    "requiresSkill": {
+     "eloquence": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pas de cercle de chaises : juste {ami} et toi sur un banc. {ami} t'écoute jusqu'au bout et accepte de se faire aider.",
+      "effects": {
+       "happiness": 3,
+       "karma": 6,
+       "relationships": {
+        "friend": 10
+       },
+       "followUps": [
+        "rep_ent_ami_0031"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre tes distances",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu n'as plus la force. Tu t'éloignes, et la culpabilité te suit comme une ombre.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "friend": -10
+       },
+       "followUps": [
+        "rep_ent_ami_0032"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0009",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} va toujours mal mais refuse de voir un médecin : « C'est juste une mauvaise passe, ça va passer tout seul. »",
+  "choices": [
+   {
+    "label": "Accompagner {ami} chez un médecin",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu prends le rendez-vous, tu conduis, tu attends en salle d'attente avec un magazine de 2016. C'est un début.",
+      "effects": {
+       "happiness": 2,
+       "karma": 6,
+       "relationships": {
+        "friend": 8
+       },
+       "setFlags": [
+        "pilier_des_amis"
+       ],
+       "followUps": [
+        "rep_ent_ami_0034"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "{ami} annule deux fois, puis y va. Tu as gagné par épuisement.",
+      "effects": {
+       "happiness": -2,
+       "karma": 4,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_ami_0034"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prévenir sa famille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La famille débarque. {ami} t'en veut quelque temps, mais n'affronte plus ça sans personne.",
+      "effects": {
+       "happiness": -2,
+       "karma": 4,
+       "relationships": {
+        "friend": -4
+       },
+       "followUps": [
+        "rep_ent_ami_0034"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Respecter son choix",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ça passe, lentement. Mais tu sens que quelque chose s'est fêlé entre vous.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "friend": -2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ça ne passe pas. {ami} quitte son travail et coupe les ponts avec tout le monde, toi compris{e}.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "friend": -10
+       },
+       "setFlags": [
+        "ami_en_froid"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0010",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Les « quelques nuits » de {ami} durent depuis quatre mois. {ami} a repeint ta cuisine et propose de rendre ça officiel : une vraie colocation, loyer partagé.",
+  "choices": [
+   {
+    "label": "Signer la coloc",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Bail à deux noms, frigo à deux étages. Ton loyer est divisé par deux, ta tranquillité aussi.",
+      "effects": {
+       "money": 2400,
+       "happiness": 5,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_ami_0035"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Chercher un appart pour {ami}",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Vous visitez neuf studios ; le dixième est le bon. {ami} part avec le cactus, tu gardes la cuisine repeinte.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "friend": 5
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "{ami} ne trouve rien et reste deux mois de plus, en boudant.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "friend": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Poser un ultimatum",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{ami} part le week-end suivant. Tu as récupéré ton canapé, mais il est un peu froid.",
+      "effects": {
+       "happiness": 1,
+       "relationships": {
+        "friend": -8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0011",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   3
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami}, toujours à Melbourne, t'envoie un billet d'avion aller-retour : « Tu avais promis. »",
+  "choices": [
+   {
+    "label": "Y aller deux semaines",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Koalas, plages, et la crêperie de {ami} pleine à craquer. Tu vis en décalage horaire pendant un mois, sans le moindre regret.",
+      "effects": {
+       "happiness": 12,
+       "money": -800,
+       "health": -2,
+       "relationships": {
+        "friend": 10
+       },
+       "entourage": {
+        "signaux": [
+         "voyage"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Annuler encore",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rends le billet. {ami} ne répond pas. Les cartes postales s'arrêtent pour de bon.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "friend": -12
+       },
+       "setFlags": [
+        "ami_en_froid"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0012",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Fin de la rééducation : {ami} remarche et organise une fête pour remercier ceux qui étaient là. Le kiné, Malik, te propose un apéro « entre gens qui ont tenu bon ».",
+  "choices": [
+   {
+    "label": "Accepter l'apéro",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Malik est drôle, passionné de randonnée, et connaît tous les bons bars de {ville}. Un ami de plus.",
+      "effects": {
+       "happiness": 6,
+       "newFriend": true
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un discours pour {ami}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu racontes les chouquettes de contrebande. {ami} se lève, sans béquilles, pour t'applaudir.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "friend": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0013",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "secret_lourd"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le trou dans la caisse du club de foot est découvert. Les enquêteurs interrogent l'entourage de {ami} et te demandent si tu savais quelque chose.",
+  "choices": [
+   {
+    "label": "Mentir pour {ami}",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ils te croient. {ami} écope d'une peine avec sursis. Toi, de nuits blanches.",
+      "effects": {
+       "happiness": -6,
+       "karma": -4,
+       "relationships": {
+        "friend": 6
+       },
+       "clearFlags": [
+        "secret_lourd"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton mensonge ne tient pas : on t'accuse de complicité. Amende et grosse honte au club.",
+      "effects": {
+       "happiness": -10,
+       "karma": -4,
+       "vie": {
+        "fine": 2000
+       },
+       "clearFlags": [
+        "secret_lourd"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dire la vérité",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu racontes tout. Ça soulage autant que ça déchire. {ami} ne te parle plus.",
+      "effects": {
+       "happiness": -4,
+       "karma": 4,
+       "relationships": {
+        "friend": -15
+       },
+       "clearFlags": [
+        "secret_lourd"
+       ],
+       "setFlags": [
+        "ami_en_froid"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder le silence",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu invoques ton droit de ne rien dire. Les enquêteurs n'insistent pas. Le secret reste en toi, bien au chaud et bien lourd.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "friend": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0014",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   3
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "garant_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le propriétaire de {ami} t'écrit : six mois de loyers impayés, et c'est toi le garant. {ami} ne répond plus au téléphone.",
+  "choices": [
+   {
+    "label": "Payer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu paies 4 500 €. Le propriétaire te remercie. {ami}, non.",
+      "effects": {
+       "money": -4500,
+       "happiness": -8,
+       "relationships": {
+        "friend": -12
+       },
+       "clearFlags": [
+        "garant_ami"
+       ],
+       "setFlags": [
+        "ami_en_froid"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Débarquer chez {ami}",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{ami} ouvre, en larmes : licenciement, honte, silence. Vous faites un plan ensemble. Tu avances l'argent, {ami} rembourse en deux ans.",
+      "effects": {
+       "money": -1500,
+       "happiness": -2,
+       "relationships": {
+        "friend": 6
+       },
+       "clearFlags": [
+        "garant_ami"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{ami} a déménagé sans laisser d'adresse. Tu paies, la rage au ventre.",
+      "effects": {
+       "money": -4500,
+       "happiness": -10,
+       "relationships": {
+        "friend": -15
+       },
+       "clearFlags": [
+        "garant_ami"
+       ],
+       "setFlags": [
+        "ami_en_froid",
+        "rancunier"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre un avocat",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "L'avocat trouve une faille dans l'acte de caution. Tu ne paies que ses honoraires.",
+      "effects": {
+       "money": -1200,
+       "happiness": 2,
+       "smarts": 1,
+       "clearFlags": [
+        "garant_ami"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "L'avocat est formel : la caution est solide. Tu paies les loyers et les honoraires.",
+      "effects": {
+       "money": -5700,
+       "happiness": -10,
+       "clearFlags": [
+        "garant_ami"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0015",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "single",
+    "ex"
+   ],
+   "requiresPartner": false,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le café avec {ex} a duré six heures. {ex} a un chien, une thérapie et un travail stable. Au moment de partir : « Et si on réessayait ? »",
+  "choices": [
+   {
+    "label": "Retenter le coup",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous recommencez à vous voir, sans le dire à personne. Ça a le goût d'avant, en mieux rangé.",
+      "effects": {
+       "happiness": 8,
+       "setFlags": [
+        "seconde_chance_ex"
+       ],
+       "followUps": [
+        "rep_ent_ami_0036"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester amis",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous vous voyez de temps en temps, pour un café. C'est étrangement apaisant.",
+      "effects": {
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Fermer la porte",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rentres d'un pas léger. Certaines portes sont mieux fermées, même quand elles ont été repeintes.",
+      "effects": {
+       "happiness": 3,
+       "smarts": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0016",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "ex"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ex} insiste : un verre, « juste pour parler ». Jeudi, dans un bar loin de chez toi. {partenaire} te croira au sport.",
+  "choices": [
+   {
+    "label": "Y aller",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Un verre, deux, des souvenirs. Il ne se passe rien, mais tu rentres avec un drôle de goût dans la bouche.",
+      "effects": {
+       "happiness": -2,
+       "karma": -3,
+       "setFlags": [
+        "flirt_ex"
+       ],
+       "followUps": [
+        "rep_ent_ami_0037"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Vous vous embrassez à la sortie du bar. Le monde s'arrête, puis repart, en plus lourd.",
+      "effects": {
+       "happiness": 3,
+       "karma": -6,
+       "setFlags": [
+        "flirt_ex",
+        "a_trompe_partenaire"
+       ],
+       "followUps": [
+        "rep_ent_ami_0037"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Annuler et bloquer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu bloques {ex} et tu vas vraiment au sport. Tu as mal partout, mais tu as la conscience propre.",
+      "effects": {
+       "happiness": 2,
+       "health": 2,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout raconter à {partenaire}",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "{partenaire} t'écoute, te remercie de ta franchise, et supprime le numéro de {ex} à ta place. Avec un certain plaisir.",
+      "effects": {
+       "happiness": 3,
+       "karma": 4,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "{partenaire} apprécie ta franchise, mais se met à surveiller ton téléphone pendant des mois.",
+      "effects": {
+       "happiness": -3,
+       "karma": 4,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0017",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend",
+    "ex"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} et {ex}, c'est fini. {ami} débarque chez toi avec une bouteille : « Tu étais la seule personne à pouvoir comprendre. »",
+  "choices": [
+   {
+    "label": "Ouvrir la bouteille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous comparez vos souvenirs de {ex} jusqu'à 3 h du matin. Vous n'avez jamais autant ri. Le froid entre vous fond.",
+      "effects": {
+       "happiness": 6,
+       "health": -2,
+       "relationships": {
+        "friend": 10
+       },
+       "clearFlags": [
+        "ami_en_froid"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rappeler que tu l'avais prévu",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu avais raison, et tu le dis. {ami} repart avec la bouteille, à moitié vide.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "friend": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser d'en parler",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Je ne veux rien savoir. » Vous parlez de foot, de météo, de rien. C'est plus sain, sans doute.",
+      "effects": {
+       "happiness": 1,
+       "relationships": {
+        "friend": -2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0018",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   3
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Chaque année depuis la greffe, {ami} t'envoie une carte « Joyeux anniversaire à notre rein ». Cette année, il y a aussi deux billets pour une semaine au soleil.",
+  "effects": {
+   "happiness": 10,
+   "health": 3,
+   "relationships": {
+    "friend": 10
+   }
+  }
+ },
+ {
+  "id": "rep_ent_ami_0019",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après l'annonce de son cancer, {ami} t'appelle à la sortie d'un rendez-vous à l'hôpital. Tu entends sa respiration avant sa voix.",
+  "choices": [
+   {
+    "label": "Décrocher tout de suite",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "« Rémission. » Tu cries dans la rue. Un passant crie avec toi, par solidarité.",
+      "effects": {
+       "happiness": 12,
+       "relationships": {
+        "friend": 10
+       },
+       "clearFlags": [
+        "secret_lourd"
+       ]
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "« Ça continue. Ils changent de traitement. » Tu poses de nouveaux congés sans réfléchir.",
+      "effects": {
+       "happiness": -6,
+       "karma": 4,
+       "relationships": {
+        "friend": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Foncer à l'hôpital",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Tu arrives essoufflé{e} : « Rémission ! » Vous dansez dans le hall devant l'accueil, qui a l'habitude.",
+      "effects": {
+       "happiness": 14,
+       "health": -1,
+       "relationships": {
+        "friend": 12
+       },
+       "clearFlags": [
+        "secret_lourd"
+       ]
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Les nouvelles ne sont pas bonnes, mais tu es là, et {ami} te serre la main très fort.",
+      "effects": {
+       "happiness": -5,
+       "karma": 5,
+       "relationships": {
+        "friend": 12
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0020",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta visite hebdomadaire à {ami}, en maison de retraite, est devenue un rituel. Aujourd'hui, {ami} t'annonce avoir monté une évasion avec deux pensionnaires : direction la fête foraine.",
+  "choices": [
+   {
+    "label": "Faire le chauffeur",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Autos tamponneuses, barbe à papa, et trois octogénaires hilares. Retour avant le dîner, personne n'a rien vu.",
+      "effects": {
+       "happiness": 12,
+       "health": -1,
+       "relationships": {
+        "friend": 10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le directeur vous rattrape au stand de tir. Interdiction de visite pendant un mois. Ça valait le coup.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "friend": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prévenir le personnel",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'évasion est déjouée. {ami} te traite de « collabo » jusqu'au goûter, puis te pardonne pour une madeleine.",
+      "effects": {
+       "happiness": -2,
+       "karma": 2,
+       "relationships": {
+        "friend": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0021",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   9,
+   14
+  ],
+  "patience": 5,
+  "minAge": 24,
+  "maxAge": 55,
+  "unique": true,
+  "conditions": {
+   "excludeTags": [
+    "school",
+    "university",
+    "retired",
+    "prison"
+   ],
+   "tags": [
+    "friend"
+   ]
+  },
+  "text": "{ami}, la personne du placard à couettes, dirige aujourd'hui une entreprise et t'appelle : « Je te dois une fière chandelle. J'ai un poste pour toi, si tu veux. »",
+  "choices": [
+   {
+    "label": "Accepter le poste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu signes. Le premier jour, {ami} t'offre une couette en guise de cadeau de bienvenue. Personne d'autre ne comprend.",
+      "effects": {
+       "happiness": 10,
+       "relationships": {
+        "friend": 10
+       },
+       "entourage": {
+        "offreEmploi": "auto",
+        "niveau": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Juste un dîner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pas de poste, mais un dîner où vous riez jusqu'à minuit de vos raviolis froids. Une vieille dette s'efface.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "friend": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser poliment",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tiens à ne rien devoir à personne. {ami} insiste, puis respecte. Une bouteille arrive quand même à ton anniversaire.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "friend": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0022",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   15,
+   22
+  ],
+  "patience": 4,
+  "minAge": 32,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "bande_du_lycee"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Vingt ans plus tard, {ami} organise les retrouvailles de la bande du lycée. Clara et Yanis seront là. Ils ne se parlent toujours pas, apparemment.",
+  "choices": [
+   {
+    "label": "Y aller",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Au troisième verre, Clara et Yanis rient ensemble de la fameuse photo. Vingt ans de brouille réglés en trois minutes. Tu en pleures de rire.",
+      "effects": {
+       "happiness": 10,
+       "relationships": {
+        "friend": 8
+       },
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Clara et Yanis se disputent de nouveau, pour la même photo. Certaines choses ne vieillissent jamais.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "friend": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Apporter les vieilles photos",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton diaporama de 2008 fait hurler la salle : coupes de cheveux, appareils dentaires, sérénades ratées. Tout le monde se réconcilie dans la honte.",
+      "effects": {
+       "happiness": 12,
+       "relationships": {
+        "friend": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas y aller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{ami} t'envoie une photo de groupe avec un trou à l'endroit où tu aurais dû être.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "friend": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0023",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "temoin_mariage_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Veille du mariage, minuit. {ami} t'appelle en panique : « Et si je faisais une énorme erreur ? » La salle est réservée, le traiteur payé, la tante arrive de Guadeloupe.",
+  "choices": [
+   {
+    "label": "Rassurer {ami}",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Le lendemain, {ami} dit oui en pleurant. Ton discours de témoin fait rire toute la salle, tante comprise.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "friend": 8
+       },
+       "followUps": [
+        "rep_ent_ami_0024"
+       ]
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "{ami} se marie… et te glisse au dessert : « Tu aurais peut-être dû m'écouter. »",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "friend": 4
+       },
+       "followUps": [
+        "rep_ent_ami_0025"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dire d'écouter son cœur",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{ami} annule à 8 h du matin. Tu passes la journée à rendre les cadeaux et à consoler la tante.",
+      "effects": {
+       "happiness": -6,
+       "money": -200,
+       "karma": 3,
+       "relationships": {
+        "friend": 8
+       },
+       "clearFlags": [
+        "temoin_mariage_ami"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{ami} réfléchit toute la nuit… et dit oui avec un sourire immense. Tu as eu chaud.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "friend": 6
+       },
+       "followUps": [
+        "rep_ent_ami_0024"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire diversion",
+    "requiresSkill": {
+     "humour": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu racontes des souvenirs absurdes jusqu'à 3 h. {ami} rit, s'endort, et se marie le lendemain sans trembler.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "friend": 8
+       },
+       "followUps": [
+        "rep_ent_ami_0024"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0024",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   3,
+   5
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "temoin_mariage_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Cinq ans de mariage : {ami} organise une fête et te supplie de refaire ton discours de témoin, « exactement le même ». Tu ne t'en souviens plus du tout.",
+  "choices": [
+   {
+    "label": "Improviser",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu inventes un discours tout neuf. {ami} jure que c'est mot pour mot celui de l'époque. Personne ne vérifie.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "friend": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu mélanges les prénoms et racontes l'anecdote d'un autre mariage. Fou rire général, un peu gêné.",
+      "effects": {
+       "happiness": -2,
+       "looks": -1,
+       "relationships": {
+        "friend": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Retrouver la vidéo",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu retrouves la vidéo et la diffuses sur grand écran. La moitié des invités ont pris dix ans, l'autre moitié des cheveux blancs. Émotion garantie.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "friend": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Avouer ton trou de mémoire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Je ne me souviens de rien, mais je vous aime toujours autant. » C'est court. C'est parfait.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "friend": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0025",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   2,
+   5
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "temoin_mariage_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{ami} divorce. Au téléphone : « Tu te souviens de la veille du mariage ? Tu aurais pu me dire de fuir. »",
+  "choices": [
+   {
+    "label": "Assumer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Je voulais ton bonheur, je me suis trompé{e}. » {ami} met longtemps à répondre, puis : « Moi aussi. »",
+      "effects": {
+       "happiness": -2,
+       "karma": 3,
+       "relationships": {
+        "friend": 4
+       },
+       "clearFlags": [
+        "temoin_mariage_ami"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer un verre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un verre, puis trois, puis un fou rire sur la pièce montée qui penchait. Le divorce sera moins lourd à deux.",
+      "effects": {
+       "happiness": 3,
+       "health": -1,
+       "relationships": {
+        "friend": 8
+       },
+       "clearFlags": [
+        "temoin_mariage_ami"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te défendre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« C'est toi qui as dit oui ! » Le ton monte. {ami} raccroche et ne t'invite pas à son deuxième mariage.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "friend": -10
+       },
+       "clearFlags": [
+        "temoin_mariage_ami"
+       ],
+       "setFlags": [
+        "ami_en_froid"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0026",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   3,
+   7
+  ],
+  "patience": 4,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "pret_a_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des années sans nouvelles. Puis un message de {ami} : « Je suis en bas de chez toi. » {ami} sort d'une voiture de luxe, une enveloppe à la main.",
+  "choices": [
+   {
+    "label": "Descendre",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Dans l'enveloppe : 15 000 €. « Avec les intérêts. Et les excuses. » {ami} a fait fortune dans le recyclage de pneus. Vous dînez comme avant.",
+      "effects": {
+       "money": 15000,
+       "happiness": 12,
+       "relationships": {
+        "friend": 15
+       },
+       "clearFlags": [
+        "pret_a_ami",
+        "ami_en_froid"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Dans l'enveloppe : 3 000 € en billets bien comptés et un mot, « Je te dois plus que ça ». Vous parlez deux heures sur le trottoir.",
+      "effects": {
+       "money": 3000,
+       "happiness": 8,
+       "relationships": {
+        "friend": 10
+       },
+       "clearFlags": [
+        "pret_a_ami",
+        "ami_en_froid"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas descendre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'enveloppe atterrit dans ta boîte aux lettres : 3 000 € et une photo de vous deux à vingt ans. Tu la regardes longtemps.",
+      "effects": {
+       "money": 3000,
+       "happiness": -2,
+       "relationships": {
+        "friend": -5
+       },
+       "clearFlags": [
+        "pret_a_ami"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0027",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "investi_startup_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Jour décisif : un géant du numérique veut racheter « Garé! », mais exige une dernière démonstration en direct. {ami} panique et te veut à ses côtés.",
+  "choices": [
+   {
+    "label": "Faire la démo avec {ami}",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le rachat est signé : 40 000 € pour toi. {ami} pleure sur le parking, devant une place libre, évidemment.",
+      "effects": {
+       "money": 40000,
+       "happiness": 15,
+       "relationships": {
+        "friend": 10
+       },
+       "setFlags": [
+        "startup_ami_jackpot"
+       ],
+       "clearFlags": [
+        "investi_startup_ami"
+       ],
+       "followUps": [
+        "rep_ent_ami_0029"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La démo plante : l'appli envoie le PDG dans un champ de betteraves. Liquidation judiciaire le mois suivant.",
+      "effects": {
+       "happiness": -10,
+       "relationships": {
+        "friend": 4
+       },
+       "clearFlags": [
+        "investi_startup_ami"
+       ],
+       "followUps": [
+        "rep_ent_ami_0030"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pitcher toi-même",
+    "requiresSkill": {
+     "eloquence": 3
+    },
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Tu racontes l'histoire de « Garé! » comme une épopée. Rachat signé : 40 000 € pour toi.",
+      "effects": {
+       "money": 40000,
+       "happiness": 18,
+       "relationships": {
+        "friend": 12
+       },
+       "setFlags": [
+        "startup_ami_jackpot"
+       ],
+       "clearFlags": [
+        "investi_startup_ami"
+       ],
+       "followUps": [
+        "rep_ent_ami_0029"
+       ]
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Ton pitch est magnifique. L'appli, non. Liquidation le mois suivant.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "friend": 6
+       },
+       "clearFlags": [
+        "investi_startup_ami"
+       ],
+       "followUps": [
+        "rep_ent_ami_0030"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser {ami} gérer",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "{ami} assure la démo. Rachat signé : 40 000 € pour toi, sans même avoir enfilé une chemise.",
+      "effects": {
+       "money": 40000,
+       "happiness": 12,
+       "relationships": {
+        "friend": 4
+       },
+       "setFlags": [
+        "startup_ami_jackpot"
+       ],
+       "clearFlags": [
+        "investi_startup_ami"
+       ],
+       "followUps": [
+        "rep_ent_ami_0029"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Sans soutien, {ami} perd ses moyens. Liquidation. Tu apprends la nouvelle par un communiqué.",
+      "effects": {
+       "happiness": -10,
+       "relationships": {
+        "friend": -4
+       },
+       "clearFlags": [
+        "investi_startup_ami"
+       ],
+       "followUps": [
+        "rep_ent_ami_0030"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0028",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "investi_startup_ami"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un courrier arrive au sujet de « Garé! », la start-up de {ami}. Ta part est minuscule, mais elle existe encore.",
+  "choices": [
+   {
+    "label": "Ouvrir le courrier",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "« Garé! » a été rachetée par un géant du numérique. Ta part diluée te rapporte 4 000 €. {ami} t'envoie un selfie depuis un yacht.",
+      "effects": {
+       "money": 4000,
+       "happiness": 4,
+       "relationships": {
+        "friend": 2
+       },
+       "clearFlags": [
+        "investi_startup_ami"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Avis de liquidation judiciaire. Tes 5 000 € sont partis rejoindre les places de parking imaginaires.",
+      "effects": {
+       "happiness": -5,
+       "clearFlags": [
+        "investi_startup_ami"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0029",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "startup_ami_jackpot"
+   ],
+   "excludeTags": [
+    "prison"
+   ],
+   "tags": [
+    "friend"
+   ]
+  },
+  "text": "Riche et un peu célèbre, {ami} lance une deuxième boîte et t'appelle : « Cette fois, tu es dans l'équipe dès le premier jour. Et je paie mieux que ton patron. »",
+  "choices": [
+   {
+    "label": "Rejoindre l'équipe",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Bureau avec vue, tireuse à bière, et {ami} comme patron. Ça promet.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "friend": 8
+       },
+       "entourage": {
+        "offreEmploi": "secteur:tech",
+        "niveau": 2,
+        "salaireBonus": 25
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Réinvestir 15 000 €",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Deuxième succès : 35 000 € de plus. Tu commences à dire « mon portefeuille » au lieu de « mes sous ».",
+      "effects": {
+       "money": 20000,
+       "happiness": 8,
+       "relationships": {
+        "friend": 6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La deuxième boîte fait un flop. Le jackpot fond de moitié.",
+      "effects": {
+       "money": -15000,
+       "happiness": -8,
+       "relationships": {
+        "friend": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester spectateur",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu gardes ton argent et ta tranquillité. {ami} te nomme « conseiller honoraire », ce qui consiste à manger au restaurant.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "friend": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0030",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après la faillite de « Garé! », {ami} t'invite à dîner et pose un chèque de 1 000 € sur la table : « C'est tout ce que j'ai. Je te rembourserai le reste un jour. »",
+  "choices": [
+   {
+    "label": "Accepter le chèque",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu prends le chèque. {ami} respire mieux, d'avoir pu réparer un peu. Vous parlez d'autre chose.",
+      "effects": {
+       "money": 1000,
+       "happiness": 2,
+       "relationships": {
+        "friend": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Déchirer le chèque",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu déchires le chèque devant {ami}. « Tu m'as fait rêver deux ans, c'est payé. » {ami} paie le dessert en pleurant.",
+      "effects": {
+       "happiness": 6,
+       "karma": 6,
+       "relationships": {
+        "friend": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger un échéancier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous signez un échéancier sur une serviette en papier. {ami} le respecte, mais le cœur n'y est plus.",
+      "effects": {
+       "money": 3000,
+       "happiness": -2,
+       "relationships": {
+        "friend": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0031",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an de sobriété. {ami} t'invite à la petite cérémonie de son groupe de soutien et te tend un gâteau au chocolat : « Sans toi, je ne serais pas là. »",
+  "choices": [
+   {
+    "label": "Faire un discours",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu parles trois minutes, la gorge nouée. Toute la salle applaudit, {ami} le plus fort.",
+      "effects": {
+       "happiness": 10,
+       "relationships": {
+        "friend": 12
+       },
+       "setFlags": [
+        "pilier_des_amis"
+       ],
+       "followUps": [
+        "rep_ent_ami_0033"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Serrer {ami} dans tes bras",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pas besoin de mots. Le gâteau est délicieux, le moment aussi.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "friend": 10
+       },
+       "setFlags": [
+        "pilier_des_amis"
+       ],
+       "followUps": [
+        "rep_ent_ami_0033"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0032",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   3
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le téléphone sonne à 2 h. {ami}, depuis un service d'urgences : « J'ai touché le fond. Tu veux bien venir ? »",
+  "choices": [
+   {
+    "label": "Y aller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu restes jusqu'au matin. Le lendemain, {ami} entre en cure, en te tenant la main jusqu'à la porte.",
+      "effects": {
+       "happiness": -3,
+       "health": -1,
+       "karma": 6,
+       "relationships": {
+        "friend": 12
+       },
+       "followUps": [
+        "rep_ent_ami_0031"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas décrocher",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses sonner. Tu apprendras des mois plus tard que {ami} a fini par s'en sortir, sans toi.",
+      "effects": {
+       "happiness": -10,
+       "karma": -3,
+       "relationships": {
+        "friend": -10
+       },
+       "setFlags": [
+        "ami_en_froid"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0033",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   4,
+   6
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Cinq ans sans une goutte. {ami} court son premier marathon et t'a inscrit{e} d'office : « On a traversé pire, non ? »",
+  "choices": [
+   {
+    "label": "Courir le marathon",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous franchissez la ligne main dans la main, en 4 h 52. Tu ne sens plus tes jambes, mais tu sens tout le reste.",
+      "effects": {
+       "happiness": 12,
+       "health": 5,
+       "relationships": {
+        "friend": 10
+       },
+       "setFlags": [
+        "sportif_regulier"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Abandon au 30e kilomètre, crampes. {ami} finit et t'apporte sa médaille à l'infirmerie.",
+      "effects": {
+       "happiness": 5,
+       "health": -3,
+       "relationships": {
+        "friend": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Encourager au bord",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tiens une pancarte « Cinq ans ! » au 35e kilomètre. {ami} la voit et se met à pleurer en courant.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "friend": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0034",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an plus tard, {ami} t'invite à dîner. Un traitement qui marche, une nouvelle routine, un chien adopté. Au dessert : « Cette nuit-là, tu m'as tenu la tête hors de l'eau. »",
+  "effects": {
+   "happiness": 10,
+   "relationships": {
+    "friend": 12
+   }
+  }
+ },
+ {
+  "id": "rep_ent_ami_0035",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Bilan de la colocation : {ami} t'avoue avoir oublié de payer sa part du loyer depuis trois mois et, pour se faire pardonner, a invité tous ses collègues à dîner. Chez vous. Ce soir.",
+  "choices": [
+   {
+    "label": "Profiter du dîner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu avances les loyers, mais tu rencontres une collègue de {ami} hilarante. Vous vous voyez toutes les semaines depuis.",
+      "effects": {
+       "money": -1200,
+       "happiness": 5,
+       "newFriend": true,
+       "relationships": {
+        "friend": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger les loyers",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "{ami} vide son livret le lendemain. Les comptes sont soldés, l'ambiance un peu moins.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "friend": -4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{ami} n'a pas l'argent. Tu paies, et tu notes tout dans un carnet que {ami} appelle « le carnet de la honte ».",
+      "effects": {
+       "money": -1200,
+       "happiness": -6,
+       "relationships": {
+        "friend": -8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mettre fin à la coloc",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Chacun reprend ses meubles. Vous restez amis, à une distance raisonnable, dans deux appartements différents.",
+      "effects": {
+       "happiness": -3,
+       "money": -1200,
+       "relationships": {
+        "friend": -6
+       },
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0036",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "seconde_chance_ex"
+   ],
+   "tags": [
+    "single",
+    "ex"
+   ],
+   "requiresPartner": false,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an de seconde chance avec {ex}. Ce soir, {ex} oublie ton anniversaire. Exactement comme il y a des années.",
+  "choices": [
+   {
+    "label": "Pardonner",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{ex} se rattrape avec un dîner surprise et une lettre de quatre pages. Cette fois, on dirait que c'est la bonne.",
+      "effects": {
+       "happiness": 10
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Les vieilles disputes reviennent, mot pour mot. Vous vous quittez, définitivement cette fois.",
+      "effects": {
+       "happiness": -10,
+       "clearFlags": [
+        "seconde_chance_ex"
+       ],
+       "setFlags": [
+        "coeur_brise"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout arrêter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu pars avant la rechute complète. Leçon retenue : les gens changent de chien, rarement de défauts.",
+      "effects": {
+       "happiness": -2,
+       "smarts": 2,
+       "clearFlags": [
+        "seconde_chance_ex"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0037",
+  "category": "amitie",
+  "on": "entourage_suite",
+  "delay": [
+   0,
+   1
+  ],
+  "patience": 2,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "flirt_ex"
+   ],
+   "requiresPartner": true,
+   "tags": [
+    "ex"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "{partenaire} tombe sur tes messages avec {ex}. Le téléphone posé sur la table entre vous fait le bruit d'une bombe à retardement.",
+  "choices": [
+   {
+    "label": "Tout avouer",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{partenaire} pleure, crie, puis décide de rester. Il faudra des mois pour reconstruire.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "partner": -15
+       },
+       "clearFlags": [
+        "flirt_ex"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{partenaire} fait ses valises le soir même.",
+      "effects": {
+       "happiness": -15,
+       "clearFlags": [
+        "flirt_ex"
+       ],
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Nier en bloc",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "{partenaire} te croit, ou fait semblant. Le doute s'installe pour longtemps.",
+      "effects": {
+       "happiness": -5,
+       "karma": -3,
+       "relationships": {
+        "partner": -8
+       },
+       "clearFlags": [
+        "flirt_ex"
+       ]
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Le mensonge ne tient pas une minute. Rupture, et réputation en miettes.",
+      "effects": {
+       "happiness": -15,
+       "karma": -4,
+       "clearFlags": [
+        "flirt_ex"
+       ],
+       "setFlags": [
+        "menteur_notoire"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer une thérapie de couple",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Douze séances, beaucoup de mouchoirs, et un couple qui tient debout, autrement.",
+      "effects": {
+       "money": -800,
+       "happiness": -2,
+       "relationships": {
+        "partner": -4
+       },
+       "clearFlags": [
+        "flirt_ex"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "À la troisième séance, {partenaire} annonce son départ. La thérapeute n'est pas surprise.",
+      "effects": {
+       "money": -300,
+       "happiness": -12,
+       "clearFlags": [
+        "flirt_ex"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_ami_0038",
+  "category": "amitie",
+  "on": "chaque_annee",
+  "chance": 0.2,
+  "conditions": {
+   "flags": [
+    "ami_en_froid"
+   ],
+   "flagMinYears": {
+    "ami_en_froid": 3
+   },
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "clearFlags": [
+   "ami_en_froid"
+  ],
+  "text": "Après des années de froid, {ami} t'envoie un simple message : « Je pense à toi. » Vous prenez un café. Rien n'est réglé, tout est apaisé.",
+  "effects": {
+   "happiness": 6,
+   "relationships": {
+    "friend": 8
+   }
+  }
+ },
+ {
+  "id": "rep_ent_ami_0039",
+  "category": "amitie",
+  "on": "chaque_annee",
+  "chance": 0.12,
+  "conditions": {
+   "flags": [
+    "pilier_des_amis"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "On dit de toi que tu réponds toujours présent. Cette année, ce sont tes amis qui sont là pour toi : un dîner surprise, sans raison particulière.",
+  "effects": {
+   "happiness": 4,
+   "relationships": {
+    "friend": 3
+   }
+  }
+ },
+ {
+  "id": "rep_ent_ami_0040",
+  "category": "amitie",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "secret_lourd"
+   ],
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le secret que t'a confié {ami} te réveille certaines nuits. Tu n'as personne à qui en parler.",
+  "effects": {
+   "happiness": -3,
+   "health": -1
+  }
+ },
+ {
+  "id": "rep_ent_ami_0041",
+  "category": "amitie",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "secret_lourd"
+   ],
+   "flagMinYears": {
+    "secret_lourd": 4
+   },
+   "tags": [
+    "friend"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "clearFlags": [
+   "secret_lourd"
+  ],
+  "text": "Le temps a fait son travail : le secret de {ami} ne te pèse plus. C'est devenu une chose que vous portez à deux, sans en parler.",
+  "effects": {
+   "happiness": 3,
+   "relationships": {
+    "friend": 3
+   }
+  }
+ },
+ {
+  "id": "rep_ent_ami_0042",
+  "category": "amitie",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "vieil_amour_retrouve"
+   ],
+   "tags": [
+    "single",
+    "ex"
+   ],
+   "requiresPartner": false,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Les jeudis au club des aînés avec {ex} sont devenus sacrés. Vous vous disputez toujours pour la vaisselle, mais en riant.",
+  "effects": {
+   "happiness": 4,
+   "health": 1
+  }
+ }
+]

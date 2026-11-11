@@ -68,6 +68,28 @@ Si le joueur se marie lui-même entre-temps (menu Relations) ou rompt, la chaîn
 - Environ un événement sur trois laisse une trace (drapeau ou suite). Les histoires en plusieurs étapes passent par
   `followUps` vers des suites `rep_ent_*` qui ont elles-mêmes des choix.
 
+## Contenu (11/11)
+
+| Fichier | Événements | Suites |
+|---|---|---|
+| `entourage_mariage` | 4 (`ent_cpl_0001-0004`) | 27 (`rep_ent_mar_*`) |
+| `entourage_couple` | 90 (`ent_cpl_0010-0099`) | 41 |
+| `entourage_famille` | 90 | 44 |
+| `entourage_enfants` | 80 | 39 |
+| `entourage_amis` | 85 | 42 |
+| `entourage_travail` | 90 | 42 |
+| `entourage_sante` | 85 | 40 |
+| `entourage_societe` | 80 | 37 |
+
+Les suites programmées par `followUps` ont `"on": "entourage_suite"` (jamais émis), pour ne pas arriver deux fois.
+
+## Limites connues du moteur
+
+- `{enfant}`, `{ami}`, `{fratrie}`, `{parent}`, `{grandparent}` sont tirés au hasard à chaque texte : avec plusieurs enfants ou amis,
+  le prénom peut changer entre la question et la réponse, et une carte `enfant_ado` peut nommer le bébé. Correction souhaitable
+  côté moteur : choisir la personne une fois par carte (et l'enfant qui correspond au tag d'âge).
+- `"vie": {"cure": true}` guérit une maladie non chronique au hasard, pas forcément celle de l'histoire.
+
 ## Branchement (fait dans ce module, à vérifier par le fil moteur)
 
 - `Models/Evenement.swift`, `Effets` : `var entourage: EntourageEffets?`.

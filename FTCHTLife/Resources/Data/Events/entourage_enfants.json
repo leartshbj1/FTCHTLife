@@ -1,0 +1,6169 @@
+[
+ {
+  "id": "ent_enf_0001",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 7,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ],
+   "requiresJob": true
+  },
+  "text": "La crèche t'écrit : {enfant} est 214e sur la liste d'attente. Tu reprends le travail dans trois semaines, et ton chef a déjà calé ta « réunion de retour ».",
+  "choices": [
+   {
+    "label": "Prendre une nounou",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Mme Ferreira, trente ans de métier, regarde le bébé et déclare : « On va s'entendre. » Elle coûte un bras, mais elle chante juste.",
+      "effects": {
+       "money": -7000,
+       "happiness": 4,
+       "followUps": [
+        "rep_ent_enf_0022"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "La première nounou facture des « frais de câlin ». La deuxième est parfaite. Ton compte, beaucoup moins.",
+      "effects": {
+       "money": -8500,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester à la maison",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu quittes ton poste pour t'occuper du bébé. Ton chef fait une tête d'enterrement. Toi, tu découvres le parc un mardi à 10 h, et c'est magnifique.",
+      "effects": {
+       "happiness": 8,
+       "money": -3000,
+       "setFlags": [
+        "parent_au_foyer"
+       ],
+       "followUps": [
+        "rep_ent_enf_0018"
+       ],
+       "entourage": {
+        "demission": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Plaider à la mairie",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ton discours sur « l'avenir du pays en couche-culotte » émeut l'adjointe. Une place se libère, comme par miracle.",
+      "effects": {
+       "happiness": 6,
+       "money": -1500
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "L'adjointe applaudit, puis te fait passer 213e. C'est un progrès.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   },
+   {
+    "label": "Bricoler avec la famille",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Lundi mamie, mardi un oncle, mercredi toi en visio avec le bébé sur les genoux. Ça tient avec du scotch.",
+      "effects": {
+       "money": -500,
+       "health": -4,
+       "happiness": 1
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Au bout d'un mois, le planning s'effondre. Tu arrives en réunion avec une compote dans la poche de ta veste.",
+      "effects": {
+       "health": -6,
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0002",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ],
+   "requiresPartner": true
+  },
+  "text": "{partenaire} arrive avec un tableau imprimé : « Nuits de {enfant} : une sur deux, chacun son tour. » Il y a des couleurs, une légende et une colonne « réclamations ».",
+  "choices": [
+   {
+    "label": "Signer le tableau",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ça marche. Vous dormez une nuit sur deux, ce qui, pour de jeunes parents, s'appelle des vacances.",
+      "effects": {
+       "health": 4,
+       "happiness": 3,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{partenaire} dort avec des bouchons d'oreilles pendant ses propres nuits de garde. Le tableau finit froissé dans la poubelle à couches.",
+      "effects": {
+       "health": -3,
+       "happiness": -4,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout prendre sur toi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Héroïque. Au bout de trois mois, tu dis bonjour au grille-pain. {partenaire} t'adore, ton corps beaucoup moins.",
+      "effects": {
+       "health": -8,
+       "looks": -3,
+       "relationships": {
+        "partner": 8
+       },
+       "setFlags": [
+        "insomniaque"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer une aide de nuit",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une puéricultrice vient trois nuits par semaine. Vous redécouvrez le sommeil… et votre relevé bancaire.",
+      "effects": {
+       "money": -2400,
+       "health": 5,
+       "happiness": 4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0003",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ]
+  },
+  "text": "Premier rhume de {enfant}. Tu as appelé la pédiatre, la pharmacie de garde et la moitié de ton répertoire. Il est 2 h. Le bébé dort comme un ange ; toi, tu comptes ses respirations.",
+  "choices": [
+   {
+    "label": "Filer aux urgences",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Quatre heures d'attente pour entendre « c'est un rhume ». L'interne était adorable. Tu as dormi sur une chaise en plastique.",
+      "effects": {
+       "health": -3,
+       "happiness": -2,
+       "money": -30
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Bonne intuition : un début de bronchiolite, pris à temps. Tu repars rassuré{e}, avec du sérum et une médaille imaginaire.",
+      "effects": {
+       "happiness": 6,
+       "health": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lire des forums",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "À 4 h, tu as diagnostiqué dix-sept maladies rares, dont une qui ne touche que les lamas. Tu ne dormiras plus jamais tranquille.",
+      "effects": {
+       "happiness": -5,
+       "health": -3,
+       "setFlags": [
+        "anxieux"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dormir à côté",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Joue contre joue, vous dormez tous les deux. Au matin, le bébé va mieux. Toi, tu as le rhume.",
+      "effects": {
+       "happiness": 4,
+       "health": -2,
+       "vie": {
+        "disease": "rhume"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Nuit paisible. Au réveil, le bébé te sourit, la morve au nez. Le plus beau sourire du monde.",
+      "effects": {
+       "happiness": 6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0004",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ],
+   "requiresJob": true
+  },
+  "text": "Ton chef t'appelle en plein congé de naissance : « Juste deux jours, pour le dossier Lambert. » Derrière toi, {enfant} hurle comme une sirène d'usine.",
+  "choices": [
+   {
+    "label": "Revenir deux jours",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Deux jours deviennent deux semaines. Le dossier est sauvé. Tu as raté le premier vrai sourire du bébé, filmé par quelqu'un d'autre.",
+      "effects": {
+       "money": 800,
+       "happiness": -8
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu boucles le dossier en 48 h et rentres en héros. Ton chef s'en souviendra. Peut-être.",
+      "effects": {
+       "money": 500,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser poliment",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "« Je suis en congé. » Silence, puis : « Évidemment. » Tu raccroches, le cœur battant. Le bébé agite les bras, ce que tu prends pour des applaudissements.",
+      "effects": {
+       "happiness": 5
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ton chef note ta réponse dans un carnet. À ton retour, le dossier Lambert est passé à ton rival, la prime avec.",
+      "effects": {
+       "happiness": -6,
+       "money": -500
+      }
+     }
+    ]
+   },
+   {
+    "label": "Bosser depuis le canapé",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Visio avec le bébé en écharpe. Tu présentes le budget en chuchotant et en te balançant d'un pied sur l'autre. Personne n'ose rien dire.",
+      "effects": {
+       "money": 300,
+       "health": -3,
+       "happiness": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0005",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ]
+  },
+  "text": "Une agence a repéré {enfant} sur une photo de famille : elle veut ce visage pour une pub de couches. 800 € la séance, goûter compris.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le bébé sourit pile au bon moment, trois fois. 800 € sur un livret, et une affiche dans toutes les pharmacies du pays.",
+      "effects": {
+       "money": 800,
+       "happiness": 5
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Six heures de séance, une crise de larmes (la tienne), et la photo retenue montre surtout ton coude. 800 € quand même.",
+      "effects": {
+       "money": 800,
+       "happiness": -4,
+       "health": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pas de pub. Ce visage restera sur le frigo, là où il a sa place.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier 2 000 €",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "« Ce regard, c'est une marque à lui tout seul. » L'agence cède. Ton bébé gagne plus à l'heure que toi.",
+      "effects": {
+       "money": 2000,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'agence prend le bébé d'à côté. Il a moins de charisme, selon toi.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ],
+    "requiresSkill": {
+     "marchandage": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0006",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe",
+    "mother"
+   ]
+  },
+  "text": "{mere} propose de garder {enfant} tous les mercredis, gratuitement. Petit détail : selon elle, « un peu de miel dans le biberon, ça n'a jamais tué personne ». (Avant un an, si, ça peut.)",
+  "choices": [
+   {
+    "label": "Accepter les yeux fermés",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tout se passe bien et tu économises une fortune. Le bébé revient le mercredi soir avec un bonnet tricoté et un air de pacha.",
+      "effects": {
+       "money": 2000,
+       "happiness": 4,
+       "relationships": {
+        "mother": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu trouves un pot de miel ouvert dans le sac à langer. Dispute, larmes, promesse. Le bébé, lui, va très bien.",
+      "effects": {
+       "money": 1500,
+       "happiness": -5,
+       "relationships": {
+        "mother": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Écrire des règles",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu imprimes une charte en douze points. {mere} la plastifie et l'affiche dans sa cuisine, vexée mais appliquée.",
+      "effects": {
+       "money": 1800,
+       "happiness": 3,
+       "relationships": {
+        "mother": -2
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "{mere} plie la charte en avion et te la renvoie : « J'ai élevé un enfant, figure-toi. » Toi, en l'occurrence.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "mother": -8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser gentiment",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu gardes la nounou payante. {mere} raconte à tout le quartier qu'on « ne lui fait pas confiance ».",
+      "effects": {
+       "money": -1500,
+       "happiness": -2,
+       "relationships": {
+        "mother": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0007",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ],
+   "requiresJob": true
+  },
+  "text": "Depuis que {enfant} va à la crèche, la maison a hébergé onze virus. Ce matin, nouveau message : « Fièvre, merci de venir le plus vite possible. » Ton chef te regarde ranger ton sac pour la neuvième fois.",
+  "choices": [
+   {
+    "label": "Partir le chercher",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu files. Le soir, le virus a changé d'hôte : c'est toi qui grelottes sous la couette.",
+      "effects": {
+       "happiness": -3,
+       "health": -5,
+       "vie": {
+        "disease": "gastro"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Juste un pic de fièvre, déjà passé à ton arrivée. Le bébé mange un biscuit et te regarde comme si tu exagérais.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler à l'aide",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Une voisine retraitée accepte de dépanner contre un pot de confiture par an. Tu viens d'inventer la monnaie de quartier.",
+      "effects": {
+       "happiness": 4,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Personne ne répond. Tu pars quand même, une heure plus tard, couvert{e} de culpabilité.",
+      "effects": {
+       "happiness": -5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander le télétravail",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Ton plan est béton : deux jours de télétravail par semaine. Les virus continuent, mais à domicile.",
+      "effects": {
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Accepté « à l'essai ». L'essai s'arrête à ta première réunion interrompue par un biberon.",
+      "effects": {
+       "happiness": 1
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0008",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ],
+   "maxMoney": 2000
+  },
+  "text": "Couches, lait, vêtements trop petits au bout de six semaines… Ton compte affiche -340 €. Ta banque te propose, avec un grand sourire, un « crédit naissance » à 9 %.",
+  "choices": [
+   {
+    "label": "Signer le crédit",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "3 000 € d'un coup. Tu respires… jusqu'aux trois ans de mensualités.",
+      "effects": {
+       "money": 3000,
+       "happiness": 2,
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout en seconde main",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Vide-greniers, applis d'occasion, cousine généreuse : le bébé porte des bodies de trois cousins différents. Personne ne s'en plaint, surtout pas le bébé.",
+      "effects": {
+       "money": 400,
+       "happiness": 3
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le lot de quarante bodies « parfait état » sent la cave et le hamster. Tu en gardes trois.",
+      "effects": {
+       "money": -60,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander de l'aide",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "La famille organise une collecte : couches, petits pots, et une poussette à trois roues (la quatrième est « en option »).",
+      "effects": {
+       "money": 600,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Une assistante sociale t'aide à toucher des aides dont tu ignorais l'existence. Tu repars avec un dossier épais et un peu d'air.",
+      "effects": {
+       "money": 900,
+       "happiness": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0009",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ],
+   "requiresPartner": true
+  },
+  "text": "Tes amis sans enfants t'invitent à un week-end à Barcelone. Ils parlent de « grasse matinée » comme d'un détail. {enfant} a huit mois et {partenaire} te regarde.",
+  "choices": [
+   {
+    "label": "Partir, {partenaire} gère",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Deux nuits complètes, des tapas, du silence. Tu rentres neuf. {partenaire} t'ouvre la porte avec des cernes jusqu'au menton.",
+      "effects": {
+       "happiness": 8,
+       "health": 3,
+       "money": -450,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu passes le week-end à regarder des vidéos du bébé en terrasse. Tes amis finissent par confisquer ton téléphone.",
+      "effects": {
+       "happiness": 2,
+       "money": -450
+      }
+     }
+    ]
+   },
+   {
+    "label": "Venir avec le bébé",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Poussette dans les ruelles en pente, sieste à 15 h, coucher à 20 h. Tes amis comprennent enfin pourquoi tu ne réponds plus à leurs messages.",
+      "effects": {
+       "money": -500,
+       "happiness": 1,
+       "health": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Décliner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu dis non. Ils t'envoient 140 photos de sangria. Le bébé te tient le doigt pendant que tu les regardes.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0010",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ]
+  },
+  "text": "La pédiatre l'a dit : {enfant} marchera « quand ce sera le moment ». Mais au square, un bébé de dix mois fait déjà des sprints, et sa mère te l'a fait remarquer deux fois.",
+  "choices": [
+   {
+    "label": "Multiplier les rendez-vous",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Kiné, ostéo, psychomotricienne : 600 € plus tard, tout le monde confirme que tout va bien. Le lendemain, trois pas, rien que pour toi.",
+      "effects": {
+       "money": -600,
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser faire",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Un dimanche, le bébé se lève, traverse le salon et s'assoit sur le chat. Le moment est venu.",
+      "effects": {
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Ça prend encore quatre mois. Tu évites le square. Puis un matin : premiers pas, direction la poubelle.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Comparer encore",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ouvres un tableau des étapes « normales » du développement. Tu le remplis tous les soirs. Tu ne dors plus.",
+      "effects": {
+       "happiness": -4,
+       "health": -2,
+       "setFlags": [
+        "anxieux"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0011",
+  "category": "famille",
+  "minAge": 18,
+  "maxAge": 50,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ]
+  },
+  "text": "Ta voisine du dessous glisse un mot sous ta porte : « Votre bébé pleure à 3 h, 4 h et 5 h. Je travaille à 6 h. Merci de faire quelque chose. » {enfant} vient justement de se réveiller.",
+  "choices": [
+   {
+    "label": "Apporter un gâteau",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu sonnes avec un fondant et des excuses. Elle fond aussi : elle a eu trois enfants. Elle te donne une astuce de berceuse qui marche.",
+      "effects": {
+       "money": -15,
+       "happiness": 4,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Elle prend le gâteau, te remercie et claque la porte. Le bébé pleure à 3 h, 4 h et 5 h. Elle le mange sans doute à 6 h.",
+      "effects": {
+       "money": -15,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Insonoriser la chambre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Panneaux acoustiques, tapis épais, rideaux lourds : 900 €. La chambre ressemble à un studio d'enregistrement. Le bébé y enregistre ses meilleurs cris.",
+      "effects": {
+       "money": -900,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Répondre sèchement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu glisses à ton tour un mot : « C'est un bébé. » Guerre froide dans l'escalier pendant deux ans.",
+      "effects": {
+       "happiness": -4,
+       "karma": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0012",
+  "category": "famille",
+  "minAge": 22,
+  "maxAge": 50,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_bebe",
+    "carriere"
+   ],
+   "requiresJob": true
+  },
+  "text": "Un concurrent te propose un poste mieux payé… à Lyon, à 450 km. {enfant} vient tout juste de s'habituer à sa crèche, et toi à tes nuits de quatre heures.",
+  "choices": [
+   {
+    "label": "Accepter et déménager",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Nouvelle ville, nouveau poste, cartons partout. Le bébé s'adapte en deux jours. Toi, en deux mois.",
+      "effects": {
+       "happiness": 3,
+       "money": -2000,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 20,
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le déménagement avec un bébé est une épreuve olympique. Mais la paie suit, et le parc d'en bas est très bien.",
+      "effects": {
+       "happiness": -3,
+       "health": -4,
+       "money": -2500,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 20,
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu restes. Pas de hausse de salaire, mais pas de cartons non plus. Le bébé dort, ce qui vaut toutes les primes.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier le télétravail",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu obtiens le poste, quatre jours sur cinq depuis chez toi. Le bébé t'aperçoit en visio dans la pièce d'à côté.",
+      "effects": {
+       "happiness": 6,
+       "entourage": {
+        "offreEmploi": "meme_secteur",
+        "salaireBonus": 15
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "« Le poste est à Lyon, ou il n'est pas. » Il n'est pas.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0013",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "{enfant} a préparé un exposé de six pages, avec dessins : « Pourquoi il nous faut un chien ». Il y a un graphique. Il y a même la signature de la maîtresse.",
+  "choices": [
+   {
+    "label": "Adopter au refuge",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Biscotte, croisé de quelque chose avec quelque chose d'autre, rejoint la famille. Ton enfant jure de le sortir « tous les jours, même quand il pleut ».",
+      "effects": {
+       "money": -350,
+       "happiness": 8,
+       "relationships": {
+        "child": 8
+       },
+       "setFlags": [
+        "enf_chien"
+       ],
+       "followUps": [
+        "rep_ent_enf_0025"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer un poisson",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le poisson s'appelle Chien. Compromis accepté, rancune notée.",
+      "effects": {
+       "money": -30,
+       "happiness": -1,
+       "relationships": {
+        "child": -3
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Refus net : « Un poisson ne rapporte pas la balle. » Argument imparable.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger des preuves",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pendant un an, ton enfant doit arroser les plantes chaque jour. Les plantes meurent en mars. Le dossier chien est classé.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0014",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 62,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "Depuis un mois, {enfant} a mal au ventre tous les matins à 7 h 50. Jamais le week-end. Jamais pendant les vacances.",
+  "choices": [
+   {
+    "label": "Prendre le temps d'écouter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu éteins la télé, tu attends. Ça sort par morceaux : des moqueries, un surnom, un groupe qui attend à la grille. Tu as le cœur serré.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": 8
+       },
+       "setFlags": [
+        "enf_harcele"
+       ],
+       "followUps": [
+        "rep_ent_enf_0007"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Voir le médecin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le médecin ne trouve rien au ventre. En vous raccompagnant, il glisse : « Demandez comment ça se passe à l'école. Vraiment. »",
+      "effects": {
+       "money": -30,
+       "happiness": -3,
+       "setFlags": [
+        "enf_harcele"
+       ],
+       "followUps": [
+        "rep_ent_enf_0007"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "« C'est de la comédie »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu envoies ton enfant à l'école quand même. Le soir, son silence pèse plus lourd que d'habitude.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -8
+       },
+       "setFlags": [
+        "enf_harcele"
+       ],
+       "followUps": [
+        "rep_ent_enf_0007"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0015",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit",
+    "poor"
+   ]
+  },
+  "text": "{enfant} rentre de l'école en traînant le cartable : « Pourquoi Mathis va au ski et pas nous ? On est pauvres ? »",
+  "choices": [
+   {
+    "label": "Dire la vérité, doucement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu expliques que l'argent est serré, mais pas l'amour. Ton enfant réfléchit, puis propose de vendre ses dessins. Tu en achètes un, 2 €.",
+      "effects": {
+       "happiness": 3,
+       "money": -2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Promettre le ski",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Tu économises toute l'année. Une journée de luge dans le Jura, chocolat chaud compris : le plus beau jour de l'année.",
+      "effects": {
+       "money": -400,
+       "happiness": 8,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Tu n'y arrives pas. Ton enfant n'en reparle jamais, ce qui fait plus mal qu'un reproche.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "« Le ski, c'est nul »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu décris le ski comme un sport de froid, de queue et de jambes cassées. Ton enfant n'est pas dupe, mais apprécie l'effort.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0016",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit",
+    "rich"
+   ]
+  },
+  "text": "La maîtresse veut te voir : {enfant} a annoncé à toute la classe que ta famille « possède l'argent » et a proposé de payer la cantine de ceux qui « sont gentils ».",
+  "choices": [
+   {
+    "label": "Parler de l'argent",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Longue discussion sur la chance, le travail et la discrétion. Conclusion de ton enfant : « Donc on ne le dit pas, mais on l'a. » C'est un début.",
+      "effects": {
+       "happiness": 2,
+       "karma": 2,
+       "relationships": {
+        "child": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Financer la cantine solidaire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu verses anonymement de quoi payer la cantine des familles qui galèrent. Ton enfant ne le saura jamais. La maîtresse, si.",
+      "effects": {
+       "money": -5000,
+       "karma": 8,
+       "happiness": 5,
+       "setFlags": [
+        "genereux"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Trouver ça drôle",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu ris. La maîtresse non. Au portail, les autres parents te surnomment « la banque ».",
+      "effects": {
+       "happiness": -3,
+       "karma": -3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu ris. Le lendemain, ton enfant fonde un « club des gentils », avec cotisation. La pomme ne tombe jamais loin.",
+      "effects": {
+       "happiness": 2,
+       "karma": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0017",
+  "category": "famille",
+  "minAge": 22,
+  "maxAge": 60,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "{enfant} veut faire du foot en club. Licence 220 €, crampons, maillot, et chaque samedi un match à 8 h 30 à l'autre bout du département.",
+  "choices": [
+   {
+    "label": "Inscrire au club",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu deviens chauffeur, supporter et laveur de maillots. Ton enfant marque contre son camp et fait quand même une danse de victoire.",
+      "effects": {
+       "money": -450,
+       "happiness": 5,
+       "health": -1,
+       "relationships": {
+        "child": 6
+       },
+       "followUps": [
+        "rep_ent_enf_0036"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pas cette année",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton enfant joue au foot dans la cour avec une bouteille d'eau en guise de ballon. Le message est passé.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Entraîner l'équipe",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu reprends les moins de 9 ans. Bilan : zéro victoire, une ambiance incroyable et des mollets retrouvés.",
+      "effects": {
+       "health": 5,
+       "happiness": 6,
+       "money": -220,
+       "relationships": {
+        "child": 8
+       },
+       "followUps": [
+        "rep_ent_enf_0036"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Claquage au premier sprint. Tu coaches depuis un pliant, une poche de glace sur la cuisse.",
+      "effects": {
+       "health": -6,
+       "happiness": 2,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ],
+    "requiresSkill": {
+     "sport": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0018",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "{enfant} a entendu du piano à la radio et ne parle plus que de ça. La prof du quartier demande 900 € par an. Il faut aussi… un piano.",
+  "choices": [
+   {
+    "label": "Piano d'occasion",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Un piano droit de 1962, monté au troisième par quatre déménageurs en sueur. Il sonne un peu faux, ton enfant joue un peu faux : harmonie parfaite.",
+      "effects": {
+       "money": -2500,
+       "happiness": 5,
+       "relationships": {
+        "child": 8
+       },
+       "followUps": [
+        "rep_ent_enf_0033"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le piano est superbe… et plein de mites. Il faut tout refaire. Mais ton enfant joue déjà « Au clair de la lune » par cœur.",
+      "effects": {
+       "money": -3400,
+       "happiness": 2,
+       "relationships": {
+        "child": 8
+       },
+       "followUps": [
+        "rep_ent_enf_0033"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Clavier numérique",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un clavier avec trois cents sons, dont « chien qui aboie ». La sonate du chien qui aboie résonne tous les soirs.",
+      "effects": {
+       "money": -1350,
+       "happiness": 2,
+       "relationships": {
+        "child": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Enseigner toi-même",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vingt minutes ensemble au clavier chaque soir. C'est le meilleur moment de ta journée, et ton enfant progresse vite.",
+      "effects": {
+       "happiness": 8,
+       "skills": {
+        "piano": 3
+       },
+       "relationships": {
+        "child": 10
+       },
+       "followUps": [
+        "rep_ent_enf_0033"
+       ]
+      }
+     }
+    ],
+    "requiresSkill": {
+     "piano": 2
+    }
+   },
+   {
+    "label": "Plus tard",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu proposes d'attendre « d'être sûr ». Ton enfant tape les notes sur la table du salon. Tous les soirs.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0019",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "Le père d'un camarade t'appelle, très remonté : {enfant} aurait cassé les lunettes de son fils pendant une bagarre à la récré. Il veut 450 € et des excuses « devant témoins ».",
+  "choices": [
+   {
+    "label": "Payer et s'excuser",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu paies. Le soir, ton enfant t'explique en larmes que l'autre avait poussé en premier. Tu n'avais pas posé la question.",
+      "effects": {
+       "money": -450,
+       "happiness": -5,
+       "relationships": {
+        "child": -6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu paies. Ton enfant écrit une lettre d'excuses illustrée. Le camarade la trouve « trop stylée ».",
+      "effects": {
+       "money": -450,
+       "happiness": 2,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Écouter sa version",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Version de ton enfant : « Il a dit que tu étais moche. » Tout le monde a tort. Vous partagez les frais et une leçon sur les mots.",
+      "effects": {
+       "money": -225,
+       "happiness": 3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Après enquête, ton enfant défendait une petite de CP. Le père raccroche, gêné. Tu as envie d'encadrer ton gamin.",
+      "effects": {
+       "happiness": 6,
+       "karma": 3,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rencontrer ce père",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Autour d'un café, vous découvrez que vos enfants se sont réconciliés depuis longtemps. Il paie les croissants. Vous devenez presque amis.",
+      "effects": {
+       "happiness": 5,
+       "newFriend": true
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0020",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "La maîtresse te convoque : {enfant} s'ennuie, lit le dictionnaire pendant la récré et corrige ses fautes au tableau. Elle propose de sauter une classe.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Nouvelle classe, nouveaux défis. Ton enfant revit et ramène des questions que tu ne comprends pas.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le niveau suit, mais pas la récré : plus petit que tout le monde, ton enfant vit mal la première année.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu préfères garder ton enfant avec ses copains. La maîtresse lui donne des fiches bonus, dévorées en dix minutes.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un bilan",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un bilan chez une psychologue confirme une tête qui va très vite et un énorme besoin de bouger. Vous ajoutez échecs et judo.",
+      "effects": {
+       "money": -220,
+       "happiness": 3,
+       "smarts": 1,
+       "relationships": {
+        "child": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0021",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "{enfant} réclame un téléphone. « Tout le monde en a. » Après enquête, « tout le monde » désigne Kenzo, qui en a deux.",
+  "choices": [
+   {
+    "label": "Offrir un smartphone",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton enfant devient champion des danses filmées et oublie que l'herbe existe.",
+      "effects": {
+       "money": -300,
+       "happiness": -2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Contrôle parental, horaires stricts : ça se passe étonnamment bien. Tu reçois des messages remplis de cœurs.",
+      "effects": {
+       "money": -300,
+       "happiness": 4,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un téléphone à clapet",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il appelle, il envoie des SMS, c'est tout. Ton enfant le cache honteusement… puis devient le roi du jeu du serpent.",
+      "effects": {
+       "money": -40,
+       "happiness": 2,
+       "relationships": {
+        "child": 1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pas avant le collège",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Crise, porte claquée, discours sur l'injustice. Trois jours plus tard, ton enfant a oublié et construit une cabane.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0022",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "{enfant} a inscrit votre duo au spectacle de l'école : un numéro de magie. Dans le rôle de la personne sciée en deux : toi.",
+  "choices": [
+   {
+    "label": "Jouer le jeu",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu sors de la boîte en deux morceaux de carton sous un tonnerre d'applaudissements. Ton enfant salue comme une star.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La boîte se coince. Tu restes plié{e} dans le carton pendant le numéro suivant, une chorale de flûtes.",
+      "effects": {
+       "health": -3,
+       "happiness": -2,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un vrai tour",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais disparaître la directrice (derrière un rideau, mais quand même). La salle hurle. Ton enfant raconte depuis que tu as « des pouvoirs ».",
+      "effects": {
+       "happiness": 9,
+       "fame": 1,
+       "relationships": {
+        "child": 10
+       }
+      }
+     }
+    ],
+    "requiresSkill": {
+     "magie": 2
+    }
+   },
+   {
+    "label": "Se faire porter pâle",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un autre parent te remplace. Ton enfant le présente au public comme « mon parent de secours ».",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0023",
+  "category": "famille",
+  "minAge": 26,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "La maîtresse conseille un bilan chez l'orthophoniste : {enfant} inverse les lettres, se décourage et répète « je suis bête » plusieurs fois par jour.",
+  "choices": [
+   {
+    "label": "Faire le bilan",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Diagnostic : dyslexie. Séances, aménagements, police d'écriture adaptée. Six mois plus tard, ton enfant lit un livre en entier, sans aide.",
+      "effects": {
+       "money": -150,
+       "happiness": 7,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre que ça passe",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ça ne passe pas. Les notes baissent, la confiance aussi. Tu prends finalement le rendez-vous un an plus tard.",
+      "effects": {
+       "happiness": -5,
+       "money": -150,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "« J'étais pareil »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pendant le bilan, l'orthophoniste te pose deux questions… et toi aussi, tu es dyslexique. Quarante ans d'énigme résolus en une après-midi.",
+      "effects": {
+       "smarts": 3,
+       "happiness": 6,
+       "money": -150,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0024",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "maxMoney": 1500
+  },
+  "text": "Classe verte dans le Jura : une semaine, 380 €. {enfant} a déjà fait son sac. Ton compte, lui, a déjà fait sa crise.",
+  "choices": [
+   {
+    "label": "Payer quand même",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu serres la ceinture tout le mois. Ton enfant revient avec un caillou « du Jura », de la boue jusqu'aux genoux et des souvenirs pour dix ans.",
+      "effects": {
+       "money": -380,
+       "happiness": 5,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander une aide",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "La coopérative scolaire et la mairie prennent les deux tiers en charge. Personne ne l'a su. Tu respires.",
+      "effects": {
+       "money": -120,
+       "happiness": 4,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Le dossier d'aide est accepté… deux semaines après le départ du car. Ton enfant regarde les photos sur le site de l'école.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dire non",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton enfant reste à l'école avec une autre classe. Le soir, une question tombe : « C'est à cause de l'argent ? »",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0025",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "{enfant} a vendu des bracelets brésiliens faits maison à toute l'école. Il y a 140 € dans sa trousse et une liste d'attente.",
+  "choices": [
+   {
+    "label": "Féliciter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton enfant ouvre une succursale au centre de loisirs. Le lendemain, la directrice interdit le commerce dans la cour.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Un parent se plaint : sa fille a payé un bracelet 30 €. Tu rembourses ; ton enfant découvre le service après-vente.",
+      "effects": {
+       "money": -30,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout faire rembourser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton enfant rend chaque euro, la mort dans l'âme, et note dans un carnet : « Pas à l'école. »",
+      "effects": {
+       "happiness": -2,
+       "karma": 3,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ouvrir un livret",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Les 140 € dorment sur un livret. Ton enfant consulte son relevé chaque mois avec le sérieux d'un banquier suisse.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0026",
+  "category": "famille",
+  "minAge": 26,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "{enfant} te demande de l'aide pour les devoirs de maths de CM2. Tu lis l'énoncé trois fois. Tu ne comprends pas. La méthode a changé depuis ton époque, et toi aussi.",
+  "choices": [
+   {
+    "label": "Avouer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Je ne sais pas. » Ton enfant te regarde comme une idole tombée de son socle, puis t'explique la méthode. Vous apprenez ensemble.",
+      "effects": {
+       "smarts": 2,
+       "happiness": 3,
+       "relationships": {
+        "child": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Regarder des tutos",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trois heures de vidéos plus tard, tu maîtrises la division « nouvelle génération ». Ton enfant dort depuis longtemps.",
+      "effects": {
+       "smarts": 3,
+       "health": -2,
+       "happiness": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer du soutien",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un étudiant en maths vient deux fois par semaine. Les notes montent. Ton compte descend, à la même vitesse.",
+      "effects": {
+       "money": -900,
+       "happiness": 2,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0027",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "Après un documentaire sur les cochons, {enfant} refuse de manger de la viande et décrète que toute la famille doit suivre, « par solidarité avec Gaston ». Gaston est le cochon du documentaire.",
+  "choices": [
+   {
+    "label": "Suivre le mouvement",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Lentilles, pois chiches, curry de légumes : la famille découvre la cuisine. Ta santé te dit merci.",
+      "effects": {
+       "health": 5,
+       "happiness": 2,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Trois semaines de tofu mal cuit. Tu manges du saucisson en cachette dans la voiture, comme en cavale.",
+      "effects": {
+       "happiness": -3,
+       "health": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Accord signé : viande deux fois par semaine, jamais de cochon. Gaston est sauvé, symboliquement.",
+      "effects": {
+       "happiness": 3,
+       "health": 2,
+       "relationships": {
+        "child": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Ici, on mange de tout. » Ton enfant mange les frites autour du steak en te fixant dans les yeux.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0028",
+  "category": "famille",
+  "minAge": 26,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "requiresJob": true
+  },
+  "text": "Pour la fête des parents, {enfant} t'offre un dessin : toi, très grand, qui cries sur un ordinateur. Titre : « Mon parent au travail ». Dans le coin, le soleil pleure.",
+  "choices": [
+   {
+    "label": "Lever le pied",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu réduis tes heures et rentres pour le goûter deux fois par semaine. Moins d'argent, plus de crêpes.",
+      "effects": {
+       "money": -3000,
+       "happiness": 8,
+       "health": 3,
+       "relationships": {
+        "child": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "En rire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ris. Ton enfant ne rit pas. Le dessin finit aimanté sur le frigo, comme un avertissement.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'afficher au bureau",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ta cheffe voit le dessin et te libère tes vendredis après-midi. Elle a des enfants, elle aussi.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tes collègues adorent le dessin. Ils le trouvent très ressemblant.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0029",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 44,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "requiresPartner": true,
+   "excludeTags": [
+    "pregnant"
+   ]
+  },
+  "text": "{enfant} a fait sa lettre au Père Noël. En tête, souligné trois fois : « un petit frère ou une petite sœur (PAS un chat) ». {partenaire} lit par-dessus ton épaule et ne dit rien. Vraiment rien.",
+  "choices": [
+   {
+    "label": "En parler sérieusement",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Longue discussion, puis une décision. L'année suivante, la ligne de la lettre est barrée : commande en cours.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "partner": 6
+       },
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Vous décidez ensemble que la famille est complète. Ton enfant reçoit un hamster, à titre de dédommagement.",
+      "effects": {
+       "happiness": 2,
+       "money": -60,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer un chat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« J'ai écrit PAS UN CHAT. » Tu as sous-estimé ton adversaire.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer de sujet",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu proposes une partie de cartes. {partenaire} te regarde comme quelqu'un qui vient de fuir un débat important. Ce qui est le cas.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "partner": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0030",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "Il est 21 h. Le copain que {enfant} a invité à jouer est toujours là et ses parents ne répondent pas. Le petit dit tout bas : « Des fois, maman rentre tard. »",
+  "choices": [
+   {
+    "label": "Le garder pour la nuit",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Sa mère arrive à 23 h, en blouse d'aide-soignante, épuisée et mortifiée. Vous convenez d'un mercredi sur deux chez toi.",
+      "effects": {
+       "karma": 6,
+       "happiness": 3,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Personne ne vient avant le matin. Tu préviens l'école, avec douceur. Une assistante sociale prend le relais.",
+      "effects": {
+       "karma": 5,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le raccompagner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Porte fermée. Une voisine le prend chez elle et soupire : « Ça arrive souvent. » Tu rentres avec un nœud dans le ventre.",
+      "effects": {
+       "happiness": -4,
+       "karma": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler la police",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Les agents sont gentils, le petit pleure, sa mère arrive en courant pendant qu'ils remplissent le papier. Tu as fait ce qu'il fallait, et ça fait mal quand même.",
+      "effects": {
+       "happiness": -5,
+       "karma": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0031",
+  "category": "famille",
+  "minAge": 26,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "minMoney": 5000
+  },
+  "text": "{enfant} veut suivre son meilleur ami à l'école privée Saint-Machin : 4 200 € par an, uniforme bordeaux, devise en latin.",
+  "choices": [
+   {
+    "label": "Inscrire",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "L'uniforme gratte, la devise reste mystérieuse, mais ton enfant est heureux. Ton banquier, moins.",
+      "effects": {
+       "money": -4200,
+       "happiness": 4,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Trois mois plus tard, le meilleur ami change d'école. Il reste à ton enfant l'uniforme bordeaux et des devoirs en latin.",
+      "effects": {
+       "money": -4200,
+       "happiness": -4,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester au public",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une semaine de bouderie, puis trois nouveaux copains, dont un qui sait roter l'alphabet.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0032",
+  "category": "famille",
+  "minAge": 22,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ]
+  },
+  "text": "Aéroport, porte 34, vol de onze heures dans vingt minutes. {enfant} vient de comprendre que Doudou Lapin est resté au contrôle de sécurité. Les hurlements commencent.",
+  "choices": [
+   {
+    "label": "Courir le chercher",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Sprint olympique dans le terminal. Tu reviens avec le lapin, en nage, sous les applaudissements de la porte 34.",
+      "effects": {
+       "happiness": 6,
+       "health": -2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le temps de revenir, l'embarquement est clos. Vol suivant, 180 € de supplément. Mais Doudou Lapin voyage.",
+      "effects": {
+       "money": -180,
+       "happiness": -3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Inventer une histoire",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Doudou Lapin est parti en mission secrète et enverra des cartes postales. Tu en écris une par jour de vacances.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 5
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "L'histoire ne prend pas. Onze heures de vol avec un enfant inconsolable et 180 passagers qui te détestent.",
+      "effects": {
+       "happiness": -8,
+       "health": -3
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   },
+   {
+    "label": "Acheter un remplaçant",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Un lapin en peluche à 34 € en duty free. Ton enfant le renifle, le juge, et l'adopte. Il s'appelle Doudou Lapin 2.",
+      "effects": {
+       "money": -34,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "« Il sent pas pareil. » Le lapin à 34 € finit dans le filet du siège. Les hurlements reprennent.",
+      "effects": {
+       "money": -34,
+       "happiness": -5
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0033",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit",
+    "unemployed"
+   ],
+   "requiresSchool": false,
+   "excludeTags": [
+    "retired"
+   ]
+  },
+  "text": "{enfant} doit présenter en classe le métier de ses parents. « Je dis quoi pour toi ? Chômeur, c'est un métier ? »",
+  "choices": [
+   {
+    "label": "Dire la vérité",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu expliques que tu cherches du travail, que ça arrive à plein de gens et que ce n'est pas une honte. Ton enfant le répète mot pour mot en classe. Avec fierté.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Inventer un métier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu deviens « dresseur de nuages » le temps d'un exposé. La maîtresse t'envoie un petit mot amusé, et une annonce d'emploi.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Venir en classe",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu parles de ton ancien métier et de la recherche d'emploi. Un parent d'élève dans le public te tend sa carte à la fin.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "child": 6
+       },
+       "entourage": {
+        "offreEmploi": "auto"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu parles vingt minutes devant vingt-six enfants qui t'écoutent bouche bée. C'est la première fois depuis des mois qu'on t'écoute autant.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0034",
+  "category": "famille",
+  "minAge": 24,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit",
+    "ex"
+   ]
+  },
+  "text": "{ex} t'annonce vouloir s'installer à 700 km avec {enfant}, pour un nouveau travail. La garde alternée deviendrait « un week-end sur deux, en train ».",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu acceptes, pour la paix. Les week-ends en train deviennent votre rituel. Les dimanches soir sur le quai sont les plus durs de ta vie.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Saisir le juge",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le juge fixe la résidence chez toi, avec de longues vacances chez {ex}. Tu as gagné, et pourtant tu n'as pas envie de fêter ça.",
+      "effects": {
+       "money": -3000,
+       "happiness": 3,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le juge autorise le départ. 3 000 € d'avocat, et une relation glaciale avec {ex} pour longtemps.",
+      "effects": {
+       "money": -3000,
+       "happiness": -8,
+       "setFlags": [
+        "rancunier"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Déménager aussi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais tes cartons pour rester près de ton enfant. Nouvelle ville, tout à reconstruire, mais pas de quai de gare le dimanche.",
+      "effects": {
+       "money": -3000,
+       "happiness": 4,
+       "relationships": {
+        "child": 10
+       },
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0035",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "excludeFlags": [
+    "enf_decroche"
+   ]
+  },
+  "text": "{enfant} pose son bulletin sur la table : 7 de moyenne. « De toute façon, à 16 ans j'arrête. L'école, ça sert à rien. Je veux bosser. »",
+  "choices": [
+   {
+    "label": "Écouter son projet",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ne cries pas. Ton ado parle de garages, de moteurs, de « faire des trucs avec ses mains ». Votre première vraie conversation depuis des mois.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": 8
+       },
+       "setFlags": [
+        "enf_decroche"
+       ],
+       "followUps": [
+        "rep_ent_enf_0001"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Interdire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Tu iras au lycée, point. » Porte claquée, casque sur les oreilles. Les notes, elles, ne remontent pas toutes seules.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -8
+       },
+       "setFlags": [
+        "enf_decroche"
+       ],
+       "followUps": [
+        "rep_ent_enf_0001"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer des cours",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Soutien scolaire deux fois par semaine. Ton ado y va en traînant les pieds, mais y va.",
+      "effects": {
+       "money": -1200,
+       "happiness": 1,
+       "relationships": {
+        "child": -2
+       },
+       "setFlags": [
+        "enf_decroche"
+       ],
+       "followUps": [
+        "rep_ent_enf_0001"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0036",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "{enfant} veut un scooter pour ses 15 ans : « C'est écologique, et c'est pour aller au lycée. » Le lycée est à 600 mètres.",
+  "choices": [
+   {
+    "label": "Acheter le scooter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton ado file au lycée en quarante secondes au lieu de huit minutes. Tu entends le moteur dans tes cauchemars.",
+      "effects": {
+       "money": -2200,
+       "happiness": -1,
+       "relationships": {
+        "child": 10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Chute au premier rond-point, sur du gravier. Plus de peur que de mal : un bras dans le plâtre, et un scooter revendu.",
+      "effects": {
+       "money": -1800,
+       "happiness": -8,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un vélo électrique",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Compromis à 1 100 €. Ton ado le trouve « moins stylé », puis l'adore en découvrant qu'il monte les côtes sans effort.",
+      "effects": {
+       "money": -1100,
+       "happiness": 3,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "La marche, c'est la santé",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Six cents mètres de soupirs, matin et soir. Ses mollets te remercieront dans vingt ans. Pas avant.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0037",
+  "category": "famille",
+  "minAge": 32,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "{enfant}, 17 ans, veut partir dix jours à la mer avec cinq copains, sans adulte. Le plan tient au dos d'une serviette en papier.",
+  "choices": [
+   {
+    "label": "Dire oui",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ton ado revient avec un coup de soleil, un bracelet en coquillages pour toi et zéro euro. Les meilleures vacances de sa vie.",
+      "effects": {
+       "money": -500,
+       "happiness": 2,
+       "relationships": {
+        "child": 10
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Troisième jour, appel en larmes : tente envolée, portefeuille volé. Tu fais 600 km pour aller récupérer tout le monde.",
+      "effects": {
+       "money": -700,
+       "happiness": -5,
+       "health": -3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Oui, avec des règles",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Appel tous les soirs à 21 h, localisation activée, liste de numéros d'urgence. Ton ado lève les yeux au ciel et accepte. Tout se passe bien.",
+      "effects": {
+       "money": -400,
+       "happiness": 3,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Non",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton ado passe l'été à te citer les cinq copains « qui ont des parents cool ». À chaque repas.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0038",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "{enfant} ne mange plus depuis quatre jours. Premier chagrin d'amour : une rupture par message, avec un émoji.",
+  "choices": [
+   {
+    "label": "Glace et films tristes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Deux pots de glace, trois films qui finissent mal, un câlin. Ton ado finit par rire. Cœur réparé à 40 %, c'est déjà ça.",
+      "effects": {
+       "happiness": 3,
+       "health": -1,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Raconter le tien",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu racontes ta première rupture, pathétique à souhait. Ton ado rit aux larmes. Ça soigne.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton histoire déprime encore plus ton ado : « Donc ça ne s'arrête jamais ? »",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser de l'espace",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu poses une assiette devant la porte, sans un mot. Elle revient vide. C'est un langage.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0039",
+  "category": "famille",
+  "minAge": 32,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "{enfant}, 17 ans, te tend une autorisation parentale. Pour un tatouage. Un dragon. Sur tout l'avant-bras. « Dans un an, je n'aurai plus besoin de ta signature, de toute façon. »",
+  "choices": [
+   {
+    "label": "Signer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le dragon est superbe, avec des écailles d'une finesse incroyable. Tu dois admettre qu'il a de l'allure. Le dragon.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le dragon ressemble à un lézard déprimé. Ton ado assume bravement. Tu mets déjà de côté pour le recouvrement.",
+      "effects": {
+       "money": -300,
+       "happiness": -2,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton ado attend ses 18 ans. Le jour même : le dragon. En plus grand.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Se faire tatouer aussi",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Vous vous faites tatouer le même petit dragon sur la cheville. Ton ado trouve ça gênant et magnifique.",
+      "effects": {
+       "money": -300,
+       "happiness": 6,
+       "looks": 2,
+       "relationships": {
+        "child": 10
+       },
+       "setFlags": [
+        "tatoue"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu tournes de l'œil à la première piqûre. Le tatoueur termine un dragon de la taille d'un timbre.",
+      "effects": {
+       "money": -150,
+       "health": -2,
+       "happiness": 2,
+       "setFlags": [
+        "tatoue"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0040",
+  "category": "famille",
+  "minAge": 34,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "Il est 23 h 40. Les vœux d'orientation de {enfant} ferment à minuit. Ton ado hésite encore entre le droit, la cuisine et « peut-être une année au Canada ».",
+  "choices": [
+   {
+    "label": "Laisser choisir",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "À 23 h 58, clic sur cuisine. Sourire immense. C'était évident depuis le début.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ton ado coche tout. Absolument tout. Tu verras bien en juin.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Imposer le droit",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton ado obéit. Admission en droit, sourire forcé. Tu sens que la conversation n'est pas terminée.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": -8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ton ado coche le droit… et la cuisine, en douce. C'est la cuisine qui répond en premier.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pile ou face",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pile : le droit. Ton ado regarde la pièce et lâche : « Ah non. » Voilà, le choix est fait : cuisine.",
+      "effects": {
+       "happiness": 4,
+       "smarts": 1,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0041",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "Le CPE t'appelle : {enfant} a manqué quatorze heures de cours ce mois-ci. Les justificatifs portent ta signature. Une signature très, très approximative.",
+  "choices": [
+   {
+    "label": "Avoir une explication",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton ado avoue : la peur d'un exposé, puis l'engrenage. Vous trouvez une solution ensemble.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton ado nie tout en bloc, avec un aplomb que tu reconnais : c'est le tien.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Escorter jusqu'à la grille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Chaque matin, tu déposes ton ado et attends que la porte se referme. La honte suprême. Les absences cessent net.",
+      "effects": {
+       "happiness": -1,
+       "health": -2,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Voir la psychologue scolaire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Derrière les absences, une grosse anxiété. Un suivi se met en place. Ton ado retourne en cours, doucement.",
+      "effects": {
+       "money": -200,
+       "happiness": 3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0042",
+  "category": "famille",
+  "minAge": 32,
+  "maxAge": 70,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "Le club de basket veut {enfant} en sport-études, dans un internat à 400 km. Entraînement deux fois par jour, avenir « peut-être pro ».",
+  "choices": [
+   {
+    "label": "Laisser partir",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ton ado part avec un sac trop lourd et un sourire trop grand. Tu regardes les matchs en streaming en criant seul{e} dans le salon.",
+      "effects": {
+       "happiness": 2,
+       "money": -1500,
+       "relationships": {
+        "child": 10
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Blessure au genou au deuxième trimestre. Retour à la maison, rêve en pause. Tu es là pour recoller les morceaux.",
+      "effects": {
+       "happiness": -6,
+       "money": -1500,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton ado reste au club local et en devient la star. Une petite amertume demeure.",
+      "effects": {
+       "happiness": 1,
+       "relationships": {
+        "child": -8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Déménager tous ensemble",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Toute la famille déménage près de l'internat. Folie ou génie ? En fin d'année, ton ado est capitaine.",
+      "effects": {
+       "money": -5000,
+       "happiness": 6,
+       "relationships": {
+        "child": 12
+       },
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le déménagement coûte cher et ton ado arrête le basket au bout de six mois. Mais la nouvelle ville vous plaît bien.",
+      "effects": {
+       "money": -5000,
+       "happiness": -2,
+       "relationships": {
+        "child": 4
+       },
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0043",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "{enfant} organise le blocage du lycée pour le climat et te demande de peindre des pancartes. Et d'appeler le journal local, « parce que toi, ils te répondent ».",
+  "choices": [
+   {
+    "label": "Peindre des pancartes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu peins toute la nuit. Ton slogan finit en photo dans le journal. Ton ado te serre dans ses bras devant tout le monde, ce qui n'arrive pas tous les jours.",
+      "effects": {
+       "happiness": 6,
+       "fame": 1,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer un projet concret",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu organises une rencontre avec le proviseur et la mairie. Résultat : des panneaux solaires sur le gymnase d'ici deux ans. Ton ado trouve ça mou, mais réel.",
+      "effects": {
+       "happiness": 3,
+       "smarts": 2,
+       "karma": 2,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Interdire le blocage",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton ado y va quand même. Le soir, il y a un mot du proviseur et un regard de défi.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ton ado reste en cours, furieux, mais lit tout sur le sujet. Le débat du dîner dure un mois.",
+      "effects": {
+       "happiness": -2,
+       "smarts": 1,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0044",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "Tu rentres d'un week-end plus tôt que prévu. La maison est pleine d'ados, une piñata pend au lustre, et {enfant} te regarde comme on regarde un fantôme.",
+  "choices": [
+   {
+    "label": "Arrêter la fête",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Lumière, musique coupée. En quatre minutes, trente ados s'évaporent. Ton ado ne te parle plus pendant une semaine, mais nettoie tout.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser finir à minuit",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu t'enfermes avec des bouchons d'oreilles. À minuit pile, tout le monde part et ton ado passe l'aspirateur. Réputation de parent cool assurée.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "À 2 h, la police municipale sonne pour tapage. Amende de 68 €, et un voisin qui ne te dit plus bonjour.",
+      "effects": {
+       "money": -68,
+       "happiness": -5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rejoindre la fête",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Démonstration de danse d'une autre époque. Les ados filment. La vidéo fait le tour du lycée. Ton ado veut changer de nom.",
+      "effects": {
+       "happiness": 4,
+       "fame": 1,
+       "relationships": {
+        "child": -8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0045",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado",
+    "poor"
+   ]
+  },
+  "text": "{enfant} a trouvé un job d'été à la boulangerie et veut te donner la moitié de chaque paie, « pour le loyer ». Ton ado a déjà tout calculé.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu acceptes, la gorge serrée. Chaque mois, l'enveloppe arrive avec un petit dessin dessus. Tu les gardes toutes.",
+      "effects": {
+       "money": 600,
+       "happiness": 4,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Cet argent est à toi. » Ton ado insiste, tu insistes plus fort. Les courses se retrouvent payées en cachette.",
+      "effects": {
+       "money": 150,
+       "happiness": 5,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mettre de côté",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous ouvrez un livret pour ses études. L'argent dort pour plus tard. Toi aussi, tu dors mieux.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0046",
+  "category": "famille",
+  "minAge": 32,
+  "maxAge": 70,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "minMoney": 6000
+  },
+  "text": "La candidature de {enfant} pour une année d'échange aux États-Unis est acceptée : famille d'accueil dans l'Ohio, 9 000 €, départ en août.",
+  "choices": [
+   {
+    "label": "Payer l'année",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ton ado revient un an plus tard bilingue, avec l'accent du Midwest et une passion pour les pancakes. Tu ne reconnais ni son anglais, ni sa coupe de cheveux.",
+      "effects": {
+       "money": -9000,
+       "happiness": 6,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Mal du pays, famille d'accueil glaciale : retour en décembre. Mais avec un anglais impeccable et la fierté d'avoir essayé.",
+      "effects": {
+       "money": -9000,
+       "happiness": -2,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un été seulement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trois semaines au lieu d'un an, 3 000 €. Ton ado râle, puis revient avec des amis pour la vie dans trois pays.",
+      "effects": {
+       "money": -3000,
+       "happiness": 4,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trop cher. Ton ado regarde longtemps l'Ohio sur une carte, comme une porte qui se ferme.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0047",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 65,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "requiresJob": true
+  },
+  "text": "{enfant} doit faire un stage d'observation et a choisi… ton travail. Une semaine entière à te regarder exercer ton métier de {metier}.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le vendredi, ton ado conclut : « En fait, tu gères. » Tu le notes quelque part pour les jours difficiles.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton ado raconte à tes collègues que tu chantes sous la douche. Ta réputation professionnelle ne s'en remettra pas.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Trouver ailleurs",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu pistonnes ton ado chez une amie vétérinaire. Une semaine à tenir des chats furieux. Une vocation est née.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0048",
+  "category": "famille",
+  "minAge": 32,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "excludeFlags": [
+    "enf_artiste"
+   ]
+  },
+  "text": "{enfant} a pris sa décision : après le bac, ce sera une école de théâtre. Pas de plan B. Le concours est dans six mois et la prépa coûte 2 800 €.",
+  "choices": [
+   {
+    "label": "Payer la prépa",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Six mois de monologues dans la salle de bain. Admission sur liste principale. Tu connais la tirade du nez par cœur, par osmose.",
+      "effects": {
+       "money": -2800,
+       "happiness": 8,
+       "relationships": {
+        "child": 10
+       },
+       "setFlags": [
+        "enf_artiste"
+       ],
+       "followUps": [
+        "rep_ent_enf_0015"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Liste d'attente, puis un appel en août : une place se libère. Ton ado hurle de joie dans tout l'immeuble.",
+      "effects": {
+       "money": -2800,
+       "happiness": 6,
+       "relationships": {
+        "child": 10
+       },
+       "setFlags": [
+        "enf_artiste"
+       ],
+       "followUps": [
+        "rep_ent_enf_0015"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger un plan B",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Accord : une licence de lettres ET une troupe amateur. Ton ado accepte, mais le cœur est ailleurs, ça se voit.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -4
+       },
+       "setFlags": [
+        "enf_artiste"
+       ],
+       "followUps": [
+        "rep_ent_enf_0015"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dire non",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Pas question de financer une vie de misère. » Ton ado passe le concours quand même, en payant la prépa avec des baby-sittings. Ça laisse un froid.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": -10
+       },
+       "setFlags": [
+        "enf_artiste"
+       ],
+       "followUps": [
+        "rep_ent_enf_0015"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0049",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "excludeFlags": [
+    "enf_ennuis_justice"
+   ]
+  },
+  "text": "Le commissariat t'appelle à 23 h. {enfant} est en garde à vue avec deux copains : un scooter « emprunté » et un policier qui n'a pas trouvé ça drôle.",
+  "choices": [
+   {
+    "label": "Foncer au commissariat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une nuit sur une chaise en plastique. À 4 h, ton ado sort, les yeux rouges, sans un mot. Dans la voiture, enfin : « Pardon. »",
+      "effects": {
+       "health": -3,
+       "happiness": -6,
+       "relationships": {
+        "child": 4
+       },
+       "setFlags": [
+        "enf_ennuis_justice"
+       ],
+       "followUps": [
+        "rep_ent_enf_0023"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre un avocat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un avocat pénaliste à minuit coûte le prix d'un week-end à Rome. Ton ado ressort avec une convocation devant le juge et une sacrée frousse.",
+      "effects": {
+       "money": -1500,
+       "happiness": -3,
+       "relationships": {
+        "child": 2
+       },
+       "setFlags": [
+        "enf_ennuis_justice"
+       ],
+       "followUps": [
+        "rep_ent_enf_0023"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre le matin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ne viens qu'au matin, « pour la leçon ». Ton ado l'a retenue. Et autre chose aussi : tu n'es pas venu{e}.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": -10
+       },
+       "setFlags": [
+        "enf_ennuis_justice"
+       ],
+       "followUps": [
+        "rep_ent_enf_0023"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0050",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 75,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "{enfant} te demande de t'asseoir. Les mains tremblent un peu. « Je voulais te le dire depuis longtemps : j'aime quelqu'un. Une personne du même sexe que moi. » Puis plus rien : ton enfant attend.",
+  "choices": [
+   {
+    "label": "Serrer dans tes bras",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu serres ton enfant très fort et dis la seule chose qui compte : « Je t'aime, et ça ne change rien. » Les épaules se relâchent d'un coup.",
+      "effects": {
+       "happiness": 6,
+       "karma": 2,
+       "relationships": {
+        "child": 15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "« Je m'en doutais »",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Éclat de rire : « Sérieux ? Depuis quand ? » Vous parlez jusqu'à tard, et la soirée finit en fou rire.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "child": 10
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Petite vexation : « Tu aurais pu me le dire, alors ! » Mais le sourire est revenu.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander du temps",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu dis avoir besoin de temps pour comprendre. Ton enfant hoche la tête et quitte la pièce sans un mot. Ce silence te reste sur le cœur.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": -8
+       },
+       "followUps": [
+        "rep_ent_enf_0037"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0051",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "excludeFlags": [
+    "fume"
+   ]
+  },
+  "text": "En rangeant le linge, tu trouves une cigarette électronique goût « barbe à papa glacée » dans le sweat de {enfant}.",
+  "choices": [
+   {
+    "label": "En parler franchement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Discussion sans cris. Ton ado avoue et accepte d'arrêter. Le sweat sent enfin la lessive.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton ado jure que c'est celle d'un copain. Le même copain que pour le briquet de l'an dernier.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Confisquer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu confisques. Elle disparaît de ton tiroir deux jours plus tard. Une longue partie d'échecs commence.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Montrer des photos de poumons",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu sors des images de poumons goudronnés. Ton ado blêmit, puis te demande pourquoi tu as de telles photos dans ton téléphone.",
+      "effects": {
+       "happiness": 1,
+       "relationships": {
+        "child": -1
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0052",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "flags": [
+    "fume"
+   ]
+  },
+  "text": "Tu trouves une cigarette électronique dans le sac de {enfant}. Avant que tu ouvres la bouche, ton ado désigne ton paquet de cigarettes : « On jette les deux ensemble ? »",
+  "choices": [
+   {
+    "label": "Marché conclu",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous jetez tout, avec cérémonie. Trois semaines de nervosité plus tard, vous tenez, tous les deux.",
+      "effects": {
+       "health": 8,
+       "happiness": 4,
+       "relationships": {
+        "child": 10
+       },
+       "clearFlags": [
+        "fume"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton ado tient. Toi, tu craques au bout de dix jours, caché{e} derrière le garage. Tu as été vu{e}.",
+      "effects": {
+       "health": 1,
+       "happiness": -4,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "« Ce n'est pas pareil »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Moi, je suis adulte. » Ton ado hausse les épaules : l'argument ne convainc personne, pas même toi.",
+      "effects": {
+       "happiness": -3,
+       "health": -1,
+       "relationships": {
+        "child": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0053",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "Ton téléphone vibre à 2 h du matin. C'est {enfant}, depuis une soirée : « Tu peux venir me chercher ? Sans poser de questions ? »",
+  "choices": [
+   {
+    "label": "Y aller, sans questions",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu y vas en pyjama. Le trajet du retour se fait en silence. Le lendemain, ton ado raconte tout, de son plein gré. La confiance, ça se gagne comme ça.",
+      "effects": {
+       "health": -2,
+       "happiness": 4,
+       "relationships": {
+        "child": 12
+       },
+       "setFlags": [
+        "enf_confiance"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Y aller, avec sermon",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu y vas, et tu parles pendant tout le trajet. Ton ado regarde par la fenêtre. La prochaine fois, appellera-t-on encore ?",
+      "effects": {
+       "health": -2,
+       "happiness": -2,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "« Débrouille-toi »",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton ado rentre à pied, avec un copain, à 4 h. Tout va bien. Mais tu ne seras plus le premier numéro composé.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton ado monte dans la voiture d'un garçon qui a bu. Il n'arrive rien, cette fois. Tu ne dors plus jusqu'au matin.",
+      "effects": {
+       "happiness": -8,
+       "health": -3,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0054",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ],
+   "requiresPartner": true
+  },
+  "text": "{partenaire} veut envoyer {enfant} en internat « pour le cadrer ». Toi, tu n'es pas d'accord. Le débat dure depuis le dessert.",
+  "choices": [
+   {
+    "label": "Céder",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Internat. Ton ado y trouve un cadre, des amis et un 14 en maths. {partenaire} ne dit pas « je te l'avais dit », mais le pense très fort.",
+      "effects": {
+       "money": -3000,
+       "happiness": 1,
+       "relationships": {
+        "child": -2,
+        "partner": 5
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Internat. Les appels du dimanche soir sont déchirants. Tu en veux un peu à {partenaire}, et beaucoup à toi.",
+      "effects": {
+       "money": -3000,
+       "happiness": -6,
+       "relationships": {
+        "child": -6,
+        "partner": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tenir bon",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton ado reste à la maison. {partenaire} boude trois jours. Tu hérites officiellement de la surveillance des devoirs.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "child": 6,
+        "partner": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander son avis",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous posez la question à ton ado. Réponse : « Je veux bien essayer, mais seulement si je rentre le mercredi. » Personne n'y avait pensé.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 8,
+        "partner": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0055",
+  "category": "famille",
+  "minAge": 30,
+  "maxAge": 70,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "{enfant} te défie aux échecs. Enjeu : le couvre-feu. Si ton ado gagne, ce sera 1 h du matin au lieu de 23 h. Le plateau est déjà installé.",
+  "choices": [
+   {
+    "label": "Jouer sérieusement",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "Échec et mat en trente coups. Ton ado réclame une revanche. Le couvre-feu reste à 23 h.",
+      "effects": {
+       "happiness": 5,
+       "smarts": 1,
+       "relationships": {
+        "child": 2
+       }
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "Ton ado te bat en douze coups, en grignotant des chips. Couvre-feu à 1 h. Tu as élevé un monstre.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Démontrer ta maîtrise",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ouverture sicilienne, sacrifice de dame, mat. Ton ado fixe le plateau, puis te demande de lui apprendre. Le couvre-feu reste, l'admiration aussi.",
+      "effects": {
+       "happiness": 8,
+       "skills": {
+        "echecs": 2
+       },
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ],
+    "requiresSkill": {
+     "echecs": 2
+    }
+   },
+   {
+    "label": "Refuser le pari",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Le couvre-feu ne se joue pas. » Ton ado range le plateau, avec la satisfaction de t'avoir fait peur.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0056",
+  "category": "famille",
+  "minAge": 32,
+  "maxAge": 70,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_ado"
+   ]
+  },
+  "text": "{enfant} a fait ses comptes : pour ses 18 ans, ce sera une rhinoplastie. 4 000 €. « Tu ne te rends pas compte, c'est tout ce que les gens voient. »",
+  "choices": [
+   {
+    "label": "Payer l'opération",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "L'opération se passe bien. Ton ado se trouve enfin « normal », ce qui te fait un peu de peine et beaucoup de bien à la fois.",
+      "effects": {
+       "money": -4000,
+       "happiness": 2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Résultat correct, convalescence douloureuse. Six mois plus tard, ton ado avoue que le problème n'était pas vraiment le nez.",
+      "effects": {
+       "money": -4000,
+       "happiness": -5,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer d'attendre un an",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Un an de réflexion. Ton ado finit par aimer ce nez « qui a du caractère ». Le rendez-vous est annulé.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "child": 2
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Un an plus tard, l'envie est intacte. Ton ado paie l'opération avec ses économies, sans toi.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Consulter quelqu'un d'abord",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une psychologue aide ton ado à démêler ce qui relève du nez et ce qui relève du reste. Le complexe ne disparaît pas, mais il rétrécit.",
+      "effects": {
+       "money": -300,
+       "happiness": 4,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0057",
+  "category": "famille",
+  "minAge": 26,
+  "maxAge": 60,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_petit"
+   ],
+   "requiresPartner": true
+  },
+  "text": "Au coucher, {enfant} te demande à voix basse : « Pourquoi {partenaire} et toi, vous vous disputez tout le temps ? Vous allez divorcer ? »",
+  "choices": [
+   {
+    "label": "Rassurer et changer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu promets que tout va bien, puis tu en parles avec {partenaire}. Vous décidez de vous disputer moins fort, et plus loin de sa chambre.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 6,
+        "partner": 3
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu rassures, mais les disputes reprennent dès le lendemain. Ton enfant ne pose plus la question. Ton enfant écoute, c'est tout.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Consulter un thérapeute",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Thérapie de couple, une séance par semaine. Ça coûte cher et ça remue, mais la maison redevient plus calme.",
+      "effects": {
+       "money": -1200,
+       "happiness": 6,
+       "relationships": {
+        "child": 4,
+        "partner": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "La thérapie met des mots sur ce que vous évitiez. Ce n'est pas joyeux, mais c'est enfin honnête.",
+      "effects": {
+       "money": -1200,
+       "happiness": -3,
+       "relationships": {
+        "partner": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Nier en bloc",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« On ne se dispute pas, on discute. » Ton enfant hoche la tête. Personne n'est dupe, à commencer par toi.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0058",
+  "category": "famille",
+  "minAge": 42,
+  "maxAge": 85,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ],
+   "excludeFlags": [
+    "enf_revenu_maison"
+   ]
+  },
+  "text": "{enfant} t'appelle un dimanche soir : rupture, appartement à rendre, boulot en pointillé. « Je peux revenir à la maison ? Juste quelques mois, le temps de me retourner. »",
+  "choices": [
+   {
+    "label": "Oui, sans conditions",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ta chambre d'amis redevient une chambre d'ado, avec un vélo dans le couloir. Au fond, tu es content{e}.",
+      "effects": {
+       "happiness": 4,
+       "money": -500,
+       "relationships": {
+        "child": 8
+       },
+       "setFlags": [
+        "enf_revenu_maison"
+       ],
+       "followUps": [
+        "rep_ent_enf_0010"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Oui, avec un contrat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous signez un « contrat de cohabitation » : petit loyer, tâches, date de sortie. Ton enfant trouve ça ridicule et signe quand même.",
+      "effects": {
+       "money": 1200,
+       "happiness": 2,
+       "relationships": {
+        "child": 2
+       },
+       "setFlags": [
+        "enf_revenu_maison"
+       ],
+       "followUps": [
+        "rep_ent_enf_0010"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aider autrement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu paies trois mois de loyer d'un studio. Ton enfant comprend, et te remercie… dans un message un peu sec.",
+      "effects": {
+       "money": -1800,
+       "happiness": -1,
+       "relationships": {
+        "child": -2
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton enfant le prend très mal : « Tu ne veux pas de moi. » Ce n'est pas ça, mais c'est ce qui reste.",
+      "effects": {
+       "money": -1800,
+       "happiness": -5,
+       "relationships": {
+        "child": -8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0059",
+  "category": "famille",
+  "minAge": 45,
+  "maxAge": 85,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ],
+   "minMoney": 20000,
+   "excludeFlags": [
+    "enf_doit_argent"
+   ]
+  },
+  "text": "{enfant} a trouvé un appartement à acheter. Il ne manque que l'apport : 20 000 €. « Je te rembourse, promis, 300 € par mois. J'ai fait un tableau. »",
+  "choices": [
+   {
+    "label": "Prêter 20 000 €",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous signez une reconnaissance de dette sur la table de la cuisine. Ton enfant pleure en signant. Toi aussi, un peu.",
+      "effects": {
+       "money": -20000,
+       "happiness": 4,
+       "relationships": {
+        "child": 10
+       },
+       "setFlags": [
+        "enf_doit_argent"
+       ],
+       "followUps": [
+        "rep_ent_enf_0013"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Donner 10 000 €",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un don, pas un prêt : moins d'argent, mais aucune ardoise entre vous. Ton enfant achète plus petit, et t'invite en premier à la crémaillère.",
+      "effects": {
+       "money": -10000,
+       "happiness": 6,
+       "karma": 2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier avec la banque",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu accompagnes ton enfant à la banque et tu négocies comme un vieux renard. Prêt aidé débloqué, sans toucher à ton épargne.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 2
+    }
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu expliques que ton épargne, c'est ta retraite. Ton enfant dit comprendre. Dans les faits, un peu moins.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0060",
+  "category": "famille",
+  "minAge": 44,
+  "maxAge": 90,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ],
+   "excludeFlags": [
+    "enf_fiance"
+   ]
+  },
+  "text": "{enfant} débarque avec Camille, sa moitié depuis deux ans. Camille a apporté un gâteau maison et appelle déjà ton chat par son prénom. Puis l'annonce tombe : ils vont se marier.",
+  "choices": [
+   {
+    "label": "Ouvrir le champagne",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Bouchon au plafond, larmes, embrassades. Camille fait partie de la famille avant la fin de la bouteille.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "child": 6
+       },
+       "setFlags": [
+        "enf_fiance"
+       ],
+       "followUps": [
+        "rep_ent_enf_0027"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Poser des questions",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Projets, métier, ambitions : tu fais passer un vrai entretien d'embauche. Camille répond à tout, avec humour. Tu es conquis{e}.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "child": 2
+       },
+       "setFlags": [
+        "enf_fiance"
+       ],
+       "followUps": [
+        "rep_ent_enf_0027"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'interrogatoire vire au procès. Ton enfant te tire par la manche : « Tu fais peur. » Ambiance.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -6
+       },
+       "setFlags": [
+        "enf_fiance"
+       ],
+       "followUps": [
+        "rep_ent_enf_0027"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "« C'est trop tôt »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu exprimes tes doutes. Le dîner se termine en silence. Le mariage aura lieu quand même, et tu le sais.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": -10
+       },
+       "setFlags": [
+        "enf_fiance"
+       ],
+       "followUps": [
+        "rep_ent_enf_0027"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0061",
+  "category": "famille",
+  "minAge": 45,
+  "maxAge": 95,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ],
+   "excludeFlags": [
+    "enf_brouille"
+   ]
+  },
+  "text": "Ça fait huit mois que {enfant} ne répond plus. Pas de dispute, pas de drame : des messages lus, et rien en retour. Un ami commun assure que tout va bien, « mais qu'il faut laisser de l'espace ».",
+  "choices": [
+   {
+    "label": "Écrire une lettre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu écris, tu ratures, tu recommences. Trois pages, sans reproches. Tu postes la lettre et tu attends.",
+      "effects": {
+       "happiness": -2,
+       "setFlags": [
+        "enf_brouille"
+       ],
+       "followUps": [
+        "rep_ent_enf_0029"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Débarquer à l'improviste",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Tu sonnes. La porte s'ouvre, ton enfant se fige… puis te laisse entrer. Vous parlez jusqu'à 2 h du matin. Ce silence avait une histoire.",
+      "effects": {
+       "happiness": 10,
+       "relationships": {
+        "child": 12
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Personne n'ouvre, ou personne ne veut ouvrir. Tu repars avec un poids sur la poitrine.",
+      "effects": {
+       "happiness": -10,
+       "health": -2,
+       "relationships": {
+        "child": -6
+       },
+       "setFlags": [
+        "enf_brouille"
+       ],
+       "followUps": [
+        "rep_ent_enf_0029"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Respecter ce silence",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses de l'espace. Chaque semaine, tu envoies juste une photo du jardin, sans rien demander.",
+      "effects": {
+       "happiness": -4,
+       "setFlags": [
+        "enf_brouille"
+       ],
+       "followUps": [
+        "rep_ent_enf_0029"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0062",
+  "category": "famille",
+  "minAge": 40,
+  "maxAge": 64,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ],
+   "excludeTags": [
+    "retired"
+   ],
+   "requiresSchool": false
+  },
+  "text": "{enfant} a monté sa boîte et cherche quelqu'un « de confiance et pas trop cher ». Le poste est pour toi. Ton futur patron : ton propre enfant.",
+  "choices": [
+   {
+    "label": "Accepter le poste",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Premier jour : ton enfant te vouvoie en réunion pour faire sérieux. Vous éclatez de rire tous les deux.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "child": 8
+       },
+       "entourage": {
+        "offreEmploi": "auto"
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Premier conflit au bout d'une semaine : ton enfant refuse ta note de frais. Le repas de Noël promet.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -4
+       },
+       "entourage": {
+        "offreEmploi": "auto"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier le salaire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu négocies avec ton enfant comme avec un inconnu. Bouche bée, puis capitulation : 15 % de plus.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "child": 4
+       },
+       "entourage": {
+        "offreEmploi": "auto",
+        "salaireBonus": 15
+       }
+      }
+     }
+    ],
+    "requiresSkill": {
+     "marchandage": 2
+    }
+   },
+   {
+    "label": "Décliner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Travailler en famille, c'est le meilleur moyen de ne plus se parler à Noël. » Un peu de déception, beaucoup de respect.",
+      "effects": {
+       "happiness": 1,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0063",
+  "category": "famille",
+  "minAge": 45,
+  "maxAge": 85,
+  "weight": 6,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte",
+    "grandchildren"
+   ],
+   "excludeFlags": [
+    "garde_petits_enfants"
+   ]
+  },
+  "text": "{enfant} te demande de garder les petits tous les mercredis, et « éventuellement » pendant toutes les vacances. La crèche coûte trop cher.",
+  "choices": [
+   {
+    "label": "Oui à tout",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Les mercredis deviennent sacrés : crêpes, parc, siestes communes. Tu es épuisé{e} et comblé{e}.",
+      "effects": {
+       "happiness": 8,
+       "health": -3,
+       "relationships": {
+        "child": 8
+       },
+       "setFlags": [
+        "garde_petits_enfants"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Au bout d'un mois, ton dos crie grâce. Mais les dessins sur ton frigo compensent.",
+      "effects": {
+       "health": -6,
+       "happiness": 4,
+       "relationships": {
+        "child": 8
+       },
+       "setFlags": [
+        "garde_petits_enfants"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Seulement le mercredi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le mercredi, oui. Les vacances, non : tu as des projets. Ton enfant soupire, puis comprend.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 2
+       },
+       "setFlags": [
+        "garde_petits_enfants"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer la crèche",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu proposes de payer une partie de la crèche plutôt que de garder. Généreux, et un peu fuyant. Tout le monde le sait.",
+      "effects": {
+       "money": -3000,
+       "happiness": 2,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0064",
+  "category": "famille",
+  "minAge": 42,
+  "maxAge": 90,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} t'annonce une offre de travail à Melbourne. Contrat de trois ans, « peut-être plus ». Dix heures de décalage horaire.",
+  "choices": [
+   {
+    "label": "Encourager",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu dis « fonce » avec le sourire, et tu pleures dans la voiture au retour de l'aéroport. Les appels du dimanche à 7 h deviennent un rituel.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander de rester",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton enfant reste, pour toi. Tu le sais, et ça pèse plus lourd que la distance.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -4
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ton enfant part quand même, avec de la culpabilité dans la valise. C'est la tienne.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Réserver une visite",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu réserves déjà ton billet pour Noël : 1 600 €. Voir des kangourous et ton enfant le même jour, ça n'a pas de prix. Enfin si : 1 600 €.",
+      "effects": {
+       "money": -1600,
+       "happiness": 6,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0065",
+  "category": "famille",
+  "minAge": 48,
+  "maxAge": 85,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ],
+   "excludeTags": [
+    "grandchildren"
+   ]
+  },
+  "text": "Au dessert, {enfant} et sa moitié annoncent calmement qu'ils ne veulent pas d'enfants. Jamais. Tu gardais un prénom de petit-enfant en réserve depuis des années.",
+  "choices": [
+   {
+    "label": "Respecter leur choix",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« C'est votre vie. » Ton enfant te remercie d'un regard. Tu ranges le prénom dans un tiroir, avec une pointe de tristesse.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Insister un peu",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Vous changerez d'avis. » Ton enfant pose sa fourchette. La conversation est close, et le dessert aussi.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Adopter leur chat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu demandes à devenir le grand-parent officiel de leur chat. Accordé. Tu lui tricotes un pull.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0066",
+  "category": "famille",
+  "minAge": 42,
+  "maxAge": 95,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} t'appelle en larmes, un mardi à 15 h : arrêt maladie pour épuisement. « Je n'arrive plus à rien. Même à me lever. »",
+  "choices": [
+   {
+    "label": "Venir tout de suite",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Valise faite en vingt minutes. Une semaine à cuisiner, marcher ensemble, ne pas parler travail. Ton enfant dort enfin.",
+      "effects": {
+       "money": -400,
+       "happiness": 2,
+       "health": -2,
+       "relationships": {
+        "child": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer une psychologue",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu prends en charge les séances. Ton enfant n'aime pas dépendre de toi, mais y va. Et ça aide.",
+      "effects": {
+       "money": -1200,
+       "happiness": 2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "« Accroche-toi »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Tout le monde est fatigué, tiens bon. » Silence au bout du fil. Tu comprends trop tard que ce n'était pas ce qu'il fallait dire.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0067",
+  "category": "famille",
+  "minAge": 55,
+  "maxAge": 95,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} t'a pris rendez-vous chez un cardiologue, sans te demander : « Tu t'essouffles dans l'escalier. Tu iras. Je t'emmène. »",
+  "choices": [
+   {
+    "label": "Y aller",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tout va bien, à quelques kilos près. Vous fêtez ça au restaurant ; ton enfant surveille ta salade.",
+      "effects": {
+       "health": 5,
+       "happiness": 3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le cardiologue trouve une tension trop haute. Traitement, régime, et un enfant qui appelle chaque semaine pour vérifier.",
+      "effects": {
+       "health": 4,
+       "happiness": -2,
+       "relationships": {
+        "child": 8
+       },
+       "vie": {
+        "disease": "hypertension"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser net",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "« Je ne suis pas encore à l'hospice. » Ton enfant annule le rendez-vous, à contrecœur.",
+      "effects": {
+       "happiness": 1,
+       "relationships": {
+        "child": -6
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Deux mois plus tard, une douleur dans la poitrine t'envoie aux urgences. Plus de peur que de mal, mais le « je te l'avais dit » est assourdissant.",
+      "effects": {
+       "health": -10,
+       "happiness": -6,
+       "money": -300
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0068",
+  "category": "famille",
+  "minAge": 59,
+  "maxAge": 61,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} organise en secret ta fête surprise des 60 ans. Problème : tu as tout découvert en voyant le groupe de discussion « Opération Vieux Croûton » sur ton propre ordinateur.",
+  "choices": [
+   {
+    "label": "Jouer la surprise",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ton « Oh ! » mérite un César. Tout le monde y croit. Ton enfant rayonne devant le succès de l'opération.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu en fais trop : faux évanouissement, vrai gâteau renversé. Soirée mémorable.",
+      "effects": {
+       "happiness": 4,
+       "looks": -2,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Avouer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La déception se lit sur le visage de ton enfant. Puis vous organisez la fête ensemble, en vrais complices.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger un autre nom",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu exiges qu'on renomme l'opération. Elle devient « Opération Jeune Croûton ». Petit progrès.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "unique": true
+ },
+ {
+  "id": "ent_enf_0069",
+  "category": "famille",
+  "minAge": 45,
+  "maxAge": 95,
+  "weight": 3,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} se présente aux élections municipales sur une liste opposée à tes idées. Le premier tract arrive dans ta boîte aux lettres, avec la photo très sérieuse de ton enfant.",
+  "choices": [
+   {
+    "label": "Voter pour sa liste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Dans l'isoloir, tu hésites longtemps. Puis tu glisses le bulletin de ton enfant. Le cœur a parlé plus fort que le programme.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Débattre au dîner",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Deux heures de débat argumenté sur le stationnement et les impôts locaux. Personne ne change d'avis, mais tu découvres une personne brillante.",
+      "effects": {
+       "smarts": 2,
+       "happiness": 4,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le débat dégénère. Le chat quitte la pièce. On ne parle plus de politique à table jusqu'à nouvel ordre.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tracter pour sa liste",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu distribues des tracts pour des idées que tu ne partages pas. La liste obtient deux sièges, dont un pour ton enfant. Ta tête doute, ton cœur jubile.",
+      "effects": {
+       "happiness": 6,
+       "fame": 1,
+       "relationships": {
+        "child": 10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La liste fait 4 %. Ton enfant te remercie quand même d'avoir tracté sous la pluie.",
+      "effects": {
+       "happiness": 1,
+       "health": -2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0070",
+  "category": "famille",
+  "minAge": 55,
+  "maxAge": 85,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte",
+    "grandchildren"
+   ]
+  },
+  "text": "{enfant} te propose de venir habiter près de chez eux, à 500 km, « pour profiter des petits ». Il y a justement une maison à vendre au bout de leur rue.",
+  "choices": [
+   {
+    "label": "Déménager",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Nouvelle ville, nouveaux voisins, et des petits-enfants qui débarquent au goûter sans prévenir. Exactement ce que tu voulais.",
+      "effects": {
+       "money": -8000,
+       "happiness": 10,
+       "relationships": {
+        "child": 8
+       },
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu déménages… et six mois après, ils sont mutés à Bordeaux. Te voilà au bout d'une rue où tu ne connais personne.",
+      "effects": {
+       "money": -8000,
+       "happiness": -8,
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tes racines sont ici. Tu promets de venir souvent. Les petits demandent pourquoi tu habites « si loin ».",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Louer un studio là-bas",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un petit studio pour les vacances scolaires. Le meilleur des deux mondes, au prix d'un deuxième loyer.",
+      "effects": {
+       "money": -4000,
+       "happiness": 6,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0071",
+  "category": "famille",
+  "minAge": 42,
+  "maxAge": 90,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} a lancé une cagnotte en ligne pour ouvrir une brasserie artisanale. Une semaine plus tard, un seul donateur : toi, sous un pseudonyme qui ne trompe personne.",
+  "choices": [
+   {
+    "label": "Doubler la mise",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu verses 3 000 € de plus. La brasserie ouvre. La bière s'appelle « La Généreuse ». Tu as ta pinte gratuite à vie.",
+      "effects": {
+       "money": -3000,
+       "happiness": 8,
+       "relationships": {
+        "child": 10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu verses 3 000 € de plus. La brasserie ferme au bout d'un an. Il te reste douze caisses de bière ambrée et un enfant reconnaissant.",
+      "effects": {
+       "money": -3000,
+       "happiness": -3,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire tourner la cagnotte",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu harcèles tout ton répertoire. La cagnotte atteint 8 000 €. Ton cousin éloigné ne te parle plus.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser faire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses ton enfant se débrouiller. Le projet prend trois ans de plus, mais reste le sien.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0072",
+  "category": "famille",
+  "minAge": 44,
+  "maxAge": 95,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} te présente sa nouvelle moitié. Petit détail : cette personne a exactement ton âge, et vous étiez au lycée ensemble.",
+  "choices": [
+   {
+    "label": "Faire bonne figure",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu souris, tu poses des questions, tu ne dis rien du bal de fin d'année. Ton enfant t'en est très reconnaissant.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Au fromage, vous évoquez les mêmes profs et les mêmes chansons. Ton enfant se sent soudain de trop.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dire ce que tu penses",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Tu ne trouves pas ça bizarre ? » Ton enfant te répond que non. Ton enfant te répond aussi de ne plus appeler.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "child": -10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Sortir l'album du lycée",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Photo de classe, coupes de cheveux indéfendables : fou rire général. L'ambiance est sauvée, ta dignité un peu moins.",
+      "effects": {
+       "happiness": 6,
+       "looks": -1,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0073",
+  "category": "famille",
+  "minAge": 44,
+  "maxAge": 95,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} ouvre un restaurant et te demande d'être le premier client test. « Sois honnête, surtout. » Le plat signature est un tiramisu au wasabi.",
+  "choices": [
+   {
+    "label": "Être honnête",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu expliques, avec délicatesse, que le wasabi n'a rien à faire là. Le tiramisu disparaît de la carte. Le restaurant tourne bien.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "« Tu n'as jamais aimé ma cuisine. » Le wasabi reste. Le restaurant ferme au bout de huit mois. Personne n'en parle.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout trouver délicieux",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu manges trois parts en souriant. Les critiques en ligne seront moins tendres. Ton enfant te demande pourquoi tu n'as rien dit.",
+      "effects": {
+       "health": -1,
+       "happiness": -2,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Améliorer la recette",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes en cuisine. Ensemble, vous inventez un tiramisu au yuzu. Il devient le dessert le plus commandé de la maison.",
+      "effects": {
+       "happiness": 8,
+       "skills": {
+        "cuisine": 2
+       },
+       "relationships": {
+        "child": 10
+       }
+      }
+     }
+    ],
+    "requiresSkill": {
+     "cuisine": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0074",
+  "category": "famille",
+  "minAge": 40,
+  "maxAge": 68,
+  "weight": 1,
+  "conditions": {
+   "tags": [
+    "children",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} a besoin d'une greffe de rein. Les médecins ont testé la famille. Tu es compatible.",
+  "choices": [
+   {
+    "label": "Donner ton rein",
+    "outcomes": [
+     {
+      "chance": 0.9,
+      "text": "L'opération se passe bien. Quelques semaines difficiles, une cicatrice, et ton enfant qui reprend des couleurs. Tu ne regretteras jamais.",
+      "effects": {
+       "health": -15,
+       "happiness": 18,
+       "karma": 10,
+       "relationships": {
+        "child": 20
+       }
+      }
+     },
+     {
+      "chance": 0.1,
+      "text": "Des complications te gardent un mois à l'hôpital. Mais la greffe a pris. Ton enfant vient te voir tous les jours, avec ton rein.",
+      "effects": {
+       "health": -25,
+       "happiness": 12,
+       "karma": 10,
+       "relationships": {
+        "child": 20
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre un donneur",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Un donneur est trouvé au bout de huit mois. Ton enfant est sauvé. Toi, tu portes un poids que personne ne voit.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": -6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "L'attente dure, la dialyse épuise ton enfant. Tu finis par donner ton rein, deux ans plus tard.",
+      "effects": {
+       "health": -15,
+       "happiness": 6,
+       "relationships": {
+        "child": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander du temps",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu as peur, et c'est humain. Après trois semaines de réflexion, tu dis oui. L'opération réussit.",
+      "effects": {
+       "health": -15,
+       "happiness": 12,
+       "karma": 6,
+       "relationships": {
+        "child": 14
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "unique": true
+ },
+ {
+  "id": "ent_enf_0075",
+  "category": "famille",
+  "minAge": 50,
+  "maxAge": 100,
+  "weight": 5,
+  "conditions": {
+   "tags": [
+    "children",
+    "grandchildren",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} te demande, assez sèchement, d'arrêter de gâter les petits : « Ils rentrent de chez toi avec une indigestion et un drone. »",
+  "choices": [
+   {
+    "label": "Promettre de te calmer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu tiens trois semaines, puis tu craques pour un château gonflable. Mais en cachette, ça ne compte pas.",
+      "effects": {
+       "money": -200,
+       "happiness": 3,
+       "relationships": {
+        "child": -2
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu tiens bon. Les petits trouvent que tu « as changé ». Ça te pince le cœur.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer en douce",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu organises le marché noir du bonbon. Les petits t'adorent ; leurs parents t'ont à l'œil.",
+      "effects": {
+       "money": -300,
+       "happiness": 6,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ouvrir un livret",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Les cadeaux deviennent des virements sur un livret. Moins de cris de joie aujourd'hui, plus de reconnaissance dans quinze ans.",
+      "effects": {
+       "money": -1500,
+       "happiness": 2,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0076",
+  "category": "famille",
+  "minAge": 60,
+  "maxAge": 100,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "grandchildren"
+   ]
+  },
+  "text": "Ton petit-enfant entre à la fac dans ta ville et te demande une chambre chez toi. Pour trois ans.",
+  "choices": [
+   {
+    "label": "Accueillir",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu as un colocataire de 19 ans qui t'initie aux séries et mange tout ton fromage. Tu n'as jamais autant ri.",
+      "effects": {
+       "happiness": 9,
+       "money": -1200,
+       "health": 2
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Les soirées du jeudi finissent dans ton salon. Tu achètes des bouchons d'oreilles en gros.",
+      "effects": {
+       "happiness": -2,
+       "health": -3,
+       "money": -800
+      }
+     }
+    ]
+   },
+   {
+    "label": "Contre un coup de main",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le logement est gratuit en échange des courses, du jardin et de l'informatique. Le meilleur contrat de ta vie.",
+      "effects": {
+       "happiness": 6,
+       "health": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tiens à ta tranquillité. Ton petit-enfant trouve une colocation et vient déjeuner le dimanche. Parfait, finalement.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0077",
+  "category": "famille",
+  "minAge": 58,
+  "maxAge": 90,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "grandchildren"
+   ]
+  },
+  "text": "Les petits-enfants ont installé un trampoline géant dans ton jardin et exigent que tu sautes : « La mamie de Léo, elle, elle saute. »",
+  "choices": [
+   {
+    "label": "Sauter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu sautes. Tu ris comme à sept ans. Tes genoux ont bien leur âge, mais ils se taisent pour l'occasion.",
+      "effects": {
+       "happiness": 8,
+       "health": 2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Deuxième rebond, mauvaise réception. Cheville en vrac, et des petits qui signent ton attelle au feutre.",
+      "effects": {
+       "health": -8,
+       "happiness": 2,
+       "vie": {
+        "disease": "entorse"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire le jury",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu notes les figures sur une ardoise, comme aux Jeux olympiques. Les petits sautent pour toi jusqu'au coucher du soleil.",
+      "effects": {
+       "happiness": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Démonter le trampoline",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu invoques la sécurité. Les petits te regardent comme le méchant d'un dessin animé.",
+      "effects": {
+       "happiness": -3,
+       "health": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0078",
+  "category": "famille",
+  "minAge": 55,
+  "maxAge": 100,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "grandchildren",
+    "enfant_adulte"
+   ],
+   "minMoney": 20000
+  },
+  "text": "{enfant} suggère, l'air de rien, d'ouvrir une épargne pour chacun des petits-enfants : « Les études coûtent cher, et toi tu as des sous. »",
+  "choices": [
+   {
+    "label": "Ouvrir les comptes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "10 000 € répartis entre les petits. Dans quinze ans, quelqu'un fera ses études grâce à toi sans s'en souvenir. C'est parfait.",
+      "effects": {
+       "money": -10000,
+       "happiness": 6,
+       "karma": 4,
+       "relationships": {
+        "child": 8
+       },
+       "setFlags": [
+        "genereux"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "On verra plus tard",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu préfères garder la main : « On verra au moment des études. » Ton enfant sourit poliment. Très poliment.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Consulter un notaire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le notaire t'explique des subtilités fiscales passionnantes pendant deux heures. Tu repars avec un plan malin et une migraine.",
+      "effects": {
+       "money": -400,
+       "smarts": 3,
+       "happiness": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0079",
+  "category": "famille",
+  "minAge": 48,
+  "maxAge": 85,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "grandchildren",
+    "enfant_adulte"
+   ]
+  },
+  "text": "{enfant} et sa moitié partent trois jours en amoureux et te confient le dernier-né, avec un classeur de quarante pages de consignes.",
+  "choices": [
+   {
+    "label": "Suivre le classeur",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tout à la lettre, siestes chronométrées comprises. Tu rends un bébé reposé et un classeur annoté en rouge.",
+      "effects": {
+       "happiness": 6,
+       "health": -3,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire à ta façon",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Pas de classeur, juste de l'instinct. Le bébé dort comme jamais. Les parents te soupçonnent de sorcellerie.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ta méthode d'autrefois déclenche trois nuits blanches. Les parents rentrent reposés. Toi, tu as pris dix ans.",
+      "effects": {
+       "health": -6,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Décliner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu as passé l'âge des nuits blanches. Ils trouvent une baby-sitter. Petite déception de leur côté.",
+      "effects": {
+       "happiness": -1,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_enf_0080",
+  "category": "famille",
+  "minAge": 62,
+  "maxAge": 100,
+  "weight": 4,
+  "conditions": {
+   "tags": [
+    "children",
+    "grandchildren"
+   ]
+  },
+  "text": "Ton petit-enfant de dix ans te demande de lui apprendre « un truc que tu sais faire et que personne d'autre ne sait faire ».",
+  "choices": [
+   {
+    "label": "La belote",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu enseignes la belote, ses ruses et ses annonces. En trois après-midi, ton petit-enfant te bat, et triche mieux que toi.",
+      "effects": {
+       "happiness": 7,
+       "smarts": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Construire une cabane",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une cabane dans le chêne, avec une vraie fenêtre. Ton petit-enfant y dort l'été. Tu y fais la sieste en cachette.",
+      "effects": {
+       "happiness": 10,
+       "health": 2,
+       "money": -150
+      }
+     }
+    ],
+    "requiresSkill": {
+     "bricolage": 2
+    }
+   },
+   {
+    "label": "Ta recette secrète",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu transmets tes crêpes, avec le coup de poignet. Un jour, quelqu'un les fera pour ses propres petits-enfants.",
+      "effects": {
+       "happiness": 9
+      }
+     }
+    ],
+    "requiresSkill": {
+     "cuisine": 2
+    }
+   },
+   {
+    "label": "Chercher longtemps",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu réfléchis et tu ne trouves rien. Ton petit-enfant te propose de t'apprendre un truc à la place. Tu sais désormais faire des bulles de chewing-gum.",
+      "effects": {
+       "happiness": 3
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

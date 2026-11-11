@@ -1,0 +1,3538 @@
+[
+ {
+  "id": "rep_ent_cpl_0001",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "maxAge": 48,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison",
+    "children",
+    "pregnant"
+   ],
+   "flags": [
+    "projet_bebe"
+   ]
+  },
+  "text": "Un an d'essais avec {partenaire}. Votre vie tourne autour d'un calendrier, d'un thermomètre et de l'appli « Cigogne+ ». Toujours rien, et chaque mois le moral baisse d'un cran.",
+  "choices": [
+   {
+    "label": "Continuer sans pression",
+    "outcomes": [
+     {
+      "chance": 0.45,
+      "text": "La pression retombe et, évidemment, c'est là que ça marche. {partenaire} pleure dans la salle de bains, de joie cette fois.",
+      "effects": {
+       "happiness": 12,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_ent_cpl_0003"
+       ],
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     },
+     {
+      "chance": 0.55,
+      "text": "Encore rien. Tu fais semblant que ça va, {partenaire} aussi. Personne n'est dupe.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "partner": 2
+       },
+       "followUps": [
+        "rep_ent_cpl_0002"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Voir un spécialiste",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le médecin trouve un petit souci, facile à traiter. Trois mois plus tard : positif !",
+      "effects": {
+       "happiness": 12,
+       "money": -600,
+       "relationships": {
+        "partner": 6
+       },
+       "followUps": [
+        "rep_ent_cpl_0003"
+       ],
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Bilan complet, verdict flou : « Il faudra peut-être un coup de pouce. » On vous parle de FIV.",
+      "effects": {
+       "happiness": -5,
+       "money": -400,
+       "relationships": {
+        "partner": 3
+       },
+       "followUps": [
+        "rep_ent_cpl_0002"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire une pause",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous rangez le thermomètre et partez une semaine au soleil. Vous vous retrouvez, ce qui n'était plus arrivé depuis longtemps.",
+      "effects": {
+       "happiness": 6,
+       "money": -1200,
+       "relationships": {
+        "partner": 8
+       },
+       "clearFlags": [
+        "projet_bebe"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0002",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "maxAge": 48,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison",
+    "children",
+    "pregnant"
+   ],
+   "flags": [
+    "projet_bebe"
+   ]
+  },
+  "text": "Le centre de PMA vous reçoit, {partenaire} et toi. Piqûres, prises de sang, rendez-vous à 7 h 30 : le parcours est long, et chaque tentative coûte autant en argent qu'en moral.",
+  "choices": [
+   {
+    "label": "Tenter une FIV",
+    "outcomes": [
+     {
+      "chance": 0.45,
+      "text": "Deuxième tentative. Le téléphone sonne un mardi à 16 h 12 : c'est positif. Tu dois t'asseoir par terre.",
+      "effects": {
+       "happiness": 15,
+       "money": -3000,
+       "relationships": {
+        "partner": 10
+       },
+       "followUps": [
+        "rep_ent_cpl_0003"
+       ],
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     },
+     {
+      "chance": 0.55,
+      "text": "Trois tentatives, trois appels qui finissent par « je suis désolée ». Vous restez debout, serrés l'un contre l'autre. C'est déjà beaucoup.",
+      "effects": {
+       "happiness": -12,
+       "health": -3,
+       "money": -4500,
+       "relationships": {
+        "partner": 5
+       },
+       "setFlags": [
+        "deprime"
+       ],
+       "clearFlags": [
+        "projet_bebe"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Penser à l'adoption",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous déposez un dossier d'agrément. Huit entretiens, et une assistante sociale qui inspecte vos prises électriques. L'attente commence, elle sera longue.",
+      "effects": {
+       "happiness": 3,
+       "smarts": 2,
+       "relationships": {
+        "partner": 8
+       },
+       "setFlags": [
+        "projet_adoption"
+       ],
+       "clearFlags": [
+        "projet_bebe"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Vivre à deux",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous décidez que votre famille, c'est vous deux. Ça fait mal, puis ça fait du bien : vous refaites des projets qui ne tiennent pas dans un calendrier.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "partner": 12
+       },
+       "clearFlags": [
+        "projet_bebe"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0003",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "children",
+    "enfant_bebe"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "clearFlags": [
+   "projet_bebe"
+  ],
+  "text": "Le bébé est là, et {partenaire} et toi êtes deux zombies qui se croisent à 4 h du matin devant le chauffe-biberon. Ce soir, {partenaire} craque : « On ne tiendra pas comme ça. »",
+  "choices": [
+   {
+    "label": "Nuits à tour de rôle",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Une nuit sur deux, tu dors. Tu redécouvres le concept de rêve. Le couple respire.",
+      "effects": {
+       "happiness": 5,
+       "health": 5,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le bébé a compris le système et ne pleure que pendant tes nuits. Coïncidence ? Non.",
+      "effects": {
+       "happiness": -3,
+       "health": -6,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Appeler les grands-parents",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Les grands-parents débarquent avec des petits plats et des conseils de 1987. Vous dormez enfin.",
+      "effects": {
+       "happiness": 2,
+       "health": 6,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ta belle-mère reste trois semaines et réorganise tes placards. Tu dors, mais tu ne retrouves plus les cuillères.",
+      "effects": {
+       "happiness": -5,
+       "health": 4,
+       "relationships": {
+        "partner": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer une aide de nuit",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Hortense, 62 ans, endort le bébé en fredonnant du Brassens. Elle coûte une fortune et vaut chaque centime.",
+      "effects": {
+       "happiness": 6,
+       "health": 8,
+       "money": -2500,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0004",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   2,
+   2
+  ],
+  "patience": 1,
+  "maxAge": 46,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison",
+    "children",
+    "pregnant"
+   ]
+  },
+  "clearFlags": [
+   "bebe_reporte"
+  ],
+  "text": "Deux ans ont passé. {partenaire} te tend son agenda, ouvert à la page entourée en rouge : « C'est aujourd'hui. Alors ? »",
+  "choices": [
+   {
+    "label": "Cette fois, oui",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Vous vous lancez, et la nature est d'accord. Neuf mois de compte à rebours commencent.",
+      "effects": {
+       "happiness": 10,
+       "relationships": {
+        "partner": 10
+       },
+       "setFlags": [
+        "projet_bebe"
+       ],
+       "followUps": [
+        "rep_ent_cpl_0003"
+       ],
+       "vie": {
+        "pregnancy": true
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Vous vous lancez. La nature, elle, prend son temps.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 8
+       },
+       "setFlags": [
+        "projet_bebe"
+       ],
+       "followUps": [
+        "rep_ent_cpl_0001"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Encore un peu",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{partenaire} referme l'agenda très doucement. Ce calme te fait plus peur qu'une dispute.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "partner": -12
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "« Je ne vais pas attendre deux ans de plus une réponse que je connais. » {partenaire} fait ses valises.",
+      "effects": {
+       "happiness": -14,
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Avouer ton refus",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{partenaire} encaisse. Le dîner se termine en silence, mais au moins c'est la vérité.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "partner": -10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La vérité fait mal. {partenaire} part, et tu comprends que tu le savais depuis deux ans.",
+      "effects": {
+       "happiness": -12,
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0005",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "couple_a_distance"
+   ]
+  },
+  "text": "Un an de couple à distance. Tu connais par cœur le contrôleur du train de 18 h 04, et {partenaire} s'endort pendant vos appels vidéo. Hier, au téléphone, quelqu'un riait derrière.",
+  "choices": [
+   {
+    "label": "Faire confiance",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "C'était Bérénice, une collègue qui rit de tout, même des tableaux Excel. Vous tenez bon.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 6
+       },
+       "followUps": [
+        "rep_ent_cpl_0006"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu fais confiance, mais les appels raccourcissent et les silences s'allongent.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "partner": -6
+       },
+       "followUps": [
+        "rep_ent_cpl_0006"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Débarquer par surprise",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu sonnes un vendredi soir avec des croissants. {partenaire} pleure, toi aussi, les croissants sont écrasés. Meilleur week-end de l'année.",
+      "effects": {
+       "happiness": 8,
+       "money": -250,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_ent_cpl_0006"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Surprise : {partenaire} est en séminaire à Lisbonne. Tu manges les croissants sur le palier.",
+      "effects": {
+       "happiness": -8,
+       "money": -250,
+       "relationships": {
+        "partner": -2
+       },
+       "followUps": [
+        "rep_ent_cpl_0006"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Poser un ultimatum",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "« Dans un an, l'un de nous déménage. » {partenaire} accepte. Le compte à rebours est lancé.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "partner": -3
+       },
+       "followUps": [
+        "rep_ent_cpl_0006"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{partenaire} déteste les ultimatums. Vous rompez au téléphone, entre deux tunnels.",
+      "effects": {
+       "happiness": -12,
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "clearFlags": [
+        "couple_a_distance"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0006",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "couple_a_distance"
+   ]
+  },
+  "text": "Deuxième année de distance. Les billets de train te coûtent plus cher que ton loyer, et vous vous souhaitez bonne nuit par messages vocaux de quatre secondes. Il faut trancher.",
+  "choices": [
+   {
+    "label": "Je déménage",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Tu démissionnes et tu rejoins {partenaire}. Le premier matin, vous prenez le petit-déjeuner dans la même pièce. C'est bête et merveilleux.",
+      "effects": {
+       "happiness": 12,
+       "money": -2000,
+       "relationships": {
+        "partner": 12
+       },
+       "setFlags": [
+        "demenage_pour_amour"
+       ],
+       "clearFlags": [
+        "couple_a_distance"
+       ],
+       "followUps": [
+        "rep_ent_cpl_0007"
+       ],
+       "entourage": {
+        "demission": true,
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Tu emménages chez {partenaire}. Après deux ans chacun chez soi, vous découvrez vos manies. Les chaussettes sur la table basse, par exemple.",
+      "effects": {
+       "happiness": 2,
+       "health": -2,
+       "money": -2000,
+       "relationships": {
+        "partner": 4
+       },
+       "setFlags": [
+        "demenage_pour_amour"
+       ],
+       "clearFlags": [
+        "couple_a_distance"
+       ],
+       "followUps": [
+        "rep_ent_cpl_0007"
+       ],
+       "entourage": {
+        "demission": true,
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui demander de revenir",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{partenaire} lâche son poste et revient. Tu es aux anges ; {partenaire} un peu moins, et regarde parfois les annonces de là-bas.",
+      "effects": {
+       "happiness": 10,
+       "relationships": {
+        "partner": 4
+       },
+       "clearFlags": [
+        "couple_a_distance"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{partenaire} ne veut pas revenir. Toi, pas partir. Vous vous séparez sur un quai de gare, avec une annonce de retard en fond sonore.",
+      "effects": {
+       "happiness": -14,
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "clearFlags": [
+        "couple_a_distance"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Se séparer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous arrêtez, sans dispute, juste une immense fatigue. Tu résilies l'abonnement de train, et c'est ça qui te fait pleurer.",
+      "effects": {
+       "happiness": -10,
+       "money": 300,
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "clearFlags": [
+        "couple_a_distance"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0007",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "demenage_pour_amour"
+   ]
+  },
+  "clearFlags": [
+   "demenage_pour_amour"
+  ],
+  "text": "Un an que tu as tout quitté pour suivre {partenaire}. Ici, tu ne connais que la boulangère et le voisin du dessus, qui fait du trampoline à 23 h. {partenaire} voit bien que tu tournes en rond.",
+  "choices": [
+   {
+    "label": "Chercher du travail",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Un recruteur te rappelle le lendemain de ta candidature. Nouveau poste, nouvelle ville : tu commences enfin à vivre ici.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "partner": 3
+       },
+       "entourage": {
+        "offreEmploi": "auto"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Quarante candidatures, trois réponses automatiques. Tu connais tous les cafés de la ville avec Wi-Fi.",
+      "effects": {
+       "happiness": -5,
+       "money": -500
+      }
+     }
+    ]
+   },
+   {
+    "label": "Se faire des amis",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu t'inscris au club de badminton. Tu joues très mal, mais tu y gagnes un ami, Gaspard, qui joue encore plus mal.",
+      "effects": {
+       "happiness": 8,
+       "health": 2,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le club de randonnée a 74 ans de moyenne d'âge et te sème dès la première côte.",
+      "effects": {
+       "happiness": -3,
+       "health": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rentrer chez toi",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu rentres, {partenaire} reste. Ce que vous appelez une pause ressemble beaucoup à une fin.",
+      "effects": {
+       "happiness": -10,
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "vie": {
+        "breakup": true
+       },
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu fais tes valises. {partenaire} te supplie de rester six mois de plus. Tu défais les valises.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0008",
+  "on": "chaque_annee",
+  "category": "amour",
+  "chance": 0.5,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "couple_a_distance"
+   ]
+  },
+  "text": "Couple à distance : encore une année de trains, d'appels vidéo figés et de week-ends trop courts.",
+  "effects": {
+   "happiness": -3,
+   "money": -800
+  }
+ },
+ {
+  "id": "rep_ent_cpl_0009",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "dette_du_partenaire"
+   ]
+  },
+  "text": "Un an après la découverte des dettes de {partenaire}. Les relances continuent, et la banque propose un rendez-vous « pour trouver une solution ». {partenaire} te regarde : « Je fais quoi, moi ? »",
+  "choices": [
+   {
+    "label": "Rembourser à deux",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tableau sur le frigo, budget serré, plus de restaurants. C'est dur, mais vous êtes une équipe.",
+      "effects": {
+       "happiness": 3,
+       "money": -6000,
+       "relationships": {
+        "partner": 12
+       },
+       "followUps": [
+        "rep_ent_cpl_0010"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Vous remboursez ensemble. Tu remarques quand même de nouveaux colis livrés au bureau de {partenaire}.",
+      "effects": {
+       "happiness": -4,
+       "money": -6000,
+       "relationships": {
+        "partner": 4
+       },
+       "followUps": [
+        "rep_ent_cpl_0010"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dossier de surendettement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La commission étale la dette sur sept ans. {partenaire} suit un accompagnement budgétaire et découvre l'expression « reste à vivre ».",
+      "effects": {
+       "happiness": 2,
+       "smarts": 2,
+       "relationships": {
+        "partner": 4
+       },
+       "followUps": [
+        "rep_ent_cpl_0010"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Séparer vos comptes",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Comptes séparés : sa dette n'est pas la tienne. L'ambiance à la maison ressemble à une réunion de copropriété.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": -6
+       },
+       "followUps": [
+        "rep_ent_cpl_0010"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "« Tu me lâches au pire moment. » {partenaire} fait ses valises. Ta carte bleue est sauvée, ton cœur un peu moins.",
+      "effects": {
+       "happiness": -10,
+       "clearFlags": [
+        "dette_du_partenaire"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0010",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "dette_du_partenaire"
+   ]
+  },
+  "text": "Quelque temps plus tard, le remboursement des dettes de {partenaire} touche à sa fin. Ce matin, une enveloppe arrive au nom de {partenaire}.",
+  "choices": [
+   {
+    "label": "L'ouvrir toi-même",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "C'est la banque : « solde nul ». {partenaire} encadre le courrier et l'accroche dans les toilettes.",
+      "effects": {
+       "happiness": 12,
+       "relationships": {
+        "partner": 10
+       },
+       "clearFlags": [
+        "dette_du_partenaire"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Un nouveau crédit. {partenaire} jure que c'était pour ton cadeau d'anniversaire. Tu ne sais plus quoi croire.",
+      "effects": {
+       "happiness": -12,
+       "relationships": {
+        "partner": -10
+       },
+       "followUps": [
+        "rep_ent_cpl_0011"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "La lui laisser",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "{partenaire} l'ouvre, lit, et te saute au cou : dette soldée. Vous fêtez ça avec un dîner payé comptant.",
+      "effects": {
+       "happiness": 10,
+       "money": -80,
+       "relationships": {
+        "partner": 12
+       },
+       "clearFlags": [
+        "dette_du_partenaire"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{partenaire} lit, relit, puis te tend la lettre : un nouveau crédit, signé en cachette. « Je voulais t'en parler. »",
+      "effects": {
+       "happiness": -12,
+       "relationships": {
+        "partner": -12
+       },
+       "followUps": [
+        "rep_ent_cpl_0011"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0011",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "dette_du_partenaire"
+   ]
+  },
+  "text": "{partenaire} a replongé dans les crédits. Cette fois, tu sais que l'argent n'est pas le vrai problème : c'est autre chose, de plus profond.",
+  "choices": [
+   {
+    "label": "Exiger un suivi",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "{partenaire} commence un suivi chez une psychologue spécialisée dans les achats compulsifs. Premier exploit : un mois sans colis.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 6
+       },
+       "clearFlags": [
+        "dette_du_partenaire"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Trois séances, puis {partenaire} « n'a plus le temps ». Les colis reviennent.",
+      "effects": {
+       "happiness": -6,
+       "money": -2000,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu pars. Tu emportes peu de choses, et pour une fois personne ne t'envoie de facture.",
+      "effects": {
+       "happiness": -10,
+       "clearFlags": [
+        "dette_du_partenaire"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout couvrir encore",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu rembourses tout. Encore. Tu commences à comprendre que tu fais partie du problème.",
+      "effects": {
+       "happiness": -8,
+       "money": -10000,
+       "relationships": {
+        "partner": 3
+       },
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0012",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "married"
+   ],
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "therapie_de_couple"
+   ]
+  },
+  "text": "Première vraie séance chez Mme Fauvel. Elle vous demande de dire chacun une chose que l'autre fait bien. Le silence dure quarante secondes. {partenaire} se lance : « Tu… sors bien les poubelles. »",
+  "choices": [
+   {
+    "label": "Jouer le jeu",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu parles du premier voyage, de son rire, de cette nuit où {partenaire} t'a veillé{e} à l'hôpital. Mme Fauvel tend des mouchoirs aux deux.",
+      "effects": {
+       "happiness": 6,
+       "smarts": 2,
+       "money": -80,
+       "relationships": {
+        "partner": 10
+       },
+       "followUps": [
+        "rep_ent_cpl_0013"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu essaies, mais tout sort de travers. Mme Fauvel note « blocage » en souriant, ce qui t'agace.",
+      "effects": {
+       "happiness": 2,
+       "money": -80,
+       "relationships": {
+        "partner": 4
+       },
+       "followUps": [
+        "rep_ent_cpl_0013"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire rire",
+    "requiresSkill": {
+     "humour": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais rire {partenaire} pour la première fois depuis des mois. Mme Fauvel note : « Ressource : humour. À exploiter. »",
+      "effects": {
+       "happiness": 8,
+       "money": -80,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_ent_cpl_0013"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Régler des comptes",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu sors une liste de griefs remontant à 2011. Mme Fauvel arrête la séance au point 14.",
+      "effects": {
+       "happiness": -6,
+       "money": -80,
+       "relationships": {
+        "partner": -10
+       },
+       "followUps": [
+        "rep_ent_cpl_0013"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tout sort, enfin, ce qui pourrissait depuis des années. C'est violent, mais vous repartez plus légers.",
+      "effects": {
+       "happiness": 2,
+       "money": -80,
+       "relationships": {
+        "partner": -2
+       },
+       "followUps": [
+        "rep_ent_cpl_0013"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0013",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "married"
+   ],
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "therapie_de_couple"
+   ]
+  },
+  "text": "Devoir de Mme Fauvel : un dîner par semaine sans téléphone, et une vraie question à chaque fois. Ce soir, {partenaire} demande : « Tu serais encore avec moi si on se rencontrait aujourd'hui ? »",
+  "choices": [
+   {
+    "label": "Oui, sans hésiter",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu réponds oui, et tu le penses. {partenaire} sourit comme au premier rendez-vous.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "partner": 12
+       },
+       "followUps": [
+        "rep_ent_cpl_0014"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu as répondu un peu trop vite. {partenaire} sourit, mais note la vitesse.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "partner": 4
+       },
+       "followUps": [
+        "rep_ent_cpl_0014"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "La vérité, nuancée",
+    "requiresSkill": {
+     "eloquence": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu réponds honnêtement, doutes compris. {partenaire} te prend la main : la conversation la plus vraie depuis des années.",
+      "effects": {
+       "happiness": 6,
+       "smarts": 2,
+       "relationships": {
+        "partner": 10
+       },
+       "followUps": [
+        "rep_ent_cpl_0014"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Regarder ton téléphone",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu sors ton téléphone « juste pour l'heure ». {partenaire} se lève et part se coucher. Devoir raté.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "partner": -14
+       },
+       "followUps": [
+        "rep_ent_cpl_0014"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0014",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "married"
+   ],
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "therapie_de_couple"
+   ]
+  },
+  "clearFlags": [
+   "therapie_de_couple"
+  ],
+  "text": "Dernière séance chez Mme Fauvel. Elle referme son carnet : « Vous avez les outils. La suite, c'est vous. » Sur le parking, {partenaire} se tourne vers toi.",
+  "choices": [
+   {
+    "label": "Repartir pour un tour",
+    "outcomes": [
+     {
+      "chance": 0.65,
+      "text": "Vous rentrez à pied, main dans la main, sans raison. Les voisins pensent que vous avez gagné au loto.",
+      "effects": {
+       "happiness": 12,
+       "relationships": {
+        "partner": 15
+       }
+      }
+     },
+     {
+      "chance": 0.35,
+      "text": "Ce n'est plus la passion, c'est autre chose : une tendresse solide, comme un vieux fauteuil qu'on ne changerait pour rien au monde.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Se séparer en paix",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous décidez de vous quitter, sans haine. Mme Fauvel vous avait préparés à ça aussi.",
+      "effects": {
+       "happiness": -8,
+       "karma": 3,
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Encore dix séances",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous signez pour dix séances de plus. Mme Fauvel s'achète une nouvelle lampe.",
+      "effects": {
+       "happiness": 4,
+       "smarts": 1,
+       "money": -800,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0015",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "minMoney": 20000,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "maison_projet"
+   ]
+  },
+  "clearFlags": [
+   "maison_projet"
+  ],
+  "text": "Rendez-vous à la banque pour la maison au cerisier. Le conseiller, qui a l'âge de ton neveu, propose un prêt sur 25 ans avec une assurance qui couvre « tout, sauf les arbres fruitiers ».",
+  "choices": [
+   {
+    "label": "Signer sur 25 ans",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Vous signez quarante fois chez le notaire. Vous voilà propriétaires d'une maison, d'un cerisier et de 25 ans de mensualités.",
+      "effects": {
+       "happiness": 10,
+       "money": -20000,
+       "relationships": {
+        "partner": 10
+       },
+       "setFlags": [
+        "proprietaire",
+        "maison_en_travaux"
+       ],
+       "followUps": [
+        "rep_ent_cpl_0016"
+       ],
+       "entourage": {
+        "signaux": [
+         "achat_maison"
+        ]
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Prêt refusé : votre dossier « présente un risque ». {partenaire} regarde le conseiller comme on regarde une guêpe.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "partner": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier le taux",
+    "requiresSkill": {
+     "marchandage": 2
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais baisser le taux et sauter les frais de dossier. Le conseiller appelle son chef. Le chef te propose un poste.",
+      "effects": {
+       "happiness": 12,
+       "smarts": 1,
+       "money": -18000,
+       "relationships": {
+        "partner": 10
+       },
+       "setFlags": [
+        "proprietaire",
+        "maison_en_travaux"
+       ],
+       "followUps": [
+        "rep_ent_cpl_0016"
+       ],
+       "entourage": {
+        "signaux": [
+         "achat_maison"
+        ]
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Renoncer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu renonces au dernier moment. {partenaire} ne dit rien du trajet. Cette maison va vous hanter longtemps.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "partner": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0016",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "maison_en_travaux"
+   ]
+  },
+  "clearFlags": [
+   "maison_en_travaux"
+  ],
+  "text": "La rénovation « légère » dure depuis un an. Le salon n'a plus de sol, la cuisine plus de murs, et l'électricien ne répond plus depuis Pâques. {partenaire} propose de finir vous-mêmes.",
+  "choices": [
+   {
+    "label": "Tout faire soi-même",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Six week-ends de carrelage. Il n'est pas droit, mais il est à vous.",
+      "effects": {
+       "happiness": 6,
+       "health": -4,
+       "money": -4000,
+       "relationships": {
+        "partner": 6
+       },
+       "skills": {
+        "bricolage": 10
+       },
+       "followUps": [
+        "rep_ent_cpl_0017"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu tombes de l'escabeau en posant un lustre. Le lustre survit, ton dos beaucoup moins.",
+      "effects": {
+       "happiness": -6,
+       "health": -10,
+       "money": -6000,
+       "relationships": {
+        "partner": -2
+       },
+       "followUps": [
+        "rep_ent_cpl_0017"
+       ],
+       "vie": {
+        "disease": "mal_de_dos"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Bricoler en pro",
+    "requiresSkill": {
+     "bricolage": 3
+    },
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Électricité, plomberie, terrasse : tu fais tout. {partenaire} te regarde comme une star d'émission de rénovation.",
+      "effects": {
+       "happiness": 10,
+       "money": -2000,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_ent_cpl_0017"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer des artisans",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une entreprise finit tout en trois mois. Le devis a doublé, mais personne n'a divorcé.",
+      "effects": {
+       "happiness": 3,
+       "money": -15000,
+       "relationships": {
+        "partner": 4
+       },
+       "followUps": [
+        "rep_ent_cpl_0017"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0017",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La maison est enfin finie. {partenaire} veut une crémaillère et a invité « juste quelques personnes ». Il y en aura soixante, dont le voisin qui se plaint déjà du cerisier qui dépasse chez lui.",
+  "choices": [
+   {
+    "label": "Grande fête",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Fête mémorable. Le voisin finit par danser sous le cerisier et repart avec un pot de confiture. La paix est signée.",
+      "effects": {
+       "happiness": 10,
+       "money": -800,
+       "relationships": {
+        "partner": 6
+       },
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Quelqu'un renverse du vin rouge sur le carrelage neuf. Le voisin porte plainte pour le bruit, puis pour le cerisier.",
+      "effects": {
+       "happiness": -3,
+       "money": -1500,
+       "relationships": {
+        "partner": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Petit comité",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Six amis, un barbecue, et vous deux qui regardez la maison en vous disant qu'elle est vraiment à vous.",
+      "effects": {
+       "happiness": 6,
+       "money": -200,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0018",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "partenaire_au_chomage"
+   ]
+  },
+  "text": "Un an de chômage. {partenaire} ne s'habille plus avant midi, a vu l'intégrale de trois séries coréennes et ne répond plus à ses amis. Ce n'est plus de la paresse : ça ressemble à une dépression.",
+  "choices": [
+   {
+    "label": "Proposer de consulter",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Il faut trois tentatives, puis {partenaire} accepte un rendez-vous. Le mot « dépression » est posé, et étrangement, ça soulage tout le monde.",
+      "effects": {
+       "happiness": 4,
+       "money": -300,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_ent_cpl_0019"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "{partenaire} refuse : « Ça va passer. » Ça ne passe pas.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": 2
+       },
+       "followUps": [
+        "rep_ent_cpl_0019"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Porter le foyer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Heures sup, factures, courses, moral : tu gères tout. Tu tiens. Pour l'instant.",
+      "effects": {
+       "happiness": -6,
+       "health": -4,
+       "money": 2000,
+       "relationships": {
+        "partner": 6
+       },
+       "setFlags": [
+        "anxieux"
+       ],
+       "followUps": [
+        "rep_ent_cpl_0019"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "« Bouge-toi ! »",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ça sort tout seul. {partenaire} te regarde comme si tu étais devenu{e} quelqu'un d'autre.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "partner": -12
+       },
+       "followUps": [
+        "rep_ent_cpl_0019"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La dispute de trop. {partenaire} part s'installer chez sa sœur. Tu te demandes longtemps si tu aurais pu le dire autrement.",
+      "effects": {
+       "happiness": -12,
+       "clearFlags": [
+        "partenaire_au_chomage"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0019",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "partenaire_au_chomage"
+   ]
+  },
+  "clearFlags": [
+   "partenaire_au_chomage"
+  ],
+  "text": "{partenaire} va mieux. Un matin, il y a un projet sur la table du petit-déjeuner : ouvrir une librairie-café. Il faut 15 000 €, dont une partie viendrait de vos économies.",
+  "choices": [
+   {
+    "label": "Investir 10 000 €",
+    "outcomes": [
+     {
+      "chance": 0.55,
+      "text": "La librairie ouvre au printemps : « Le Marque-Page qui Fume ». Elle ne rapporte pas des fortunes, mais {partenaire} chante le matin.",
+      "effects": {
+       "happiness": 12,
+       "money": -10000,
+       "relationships": {
+        "partner": 12
+       }
+      }
+     },
+     {
+      "chance": 0.45,
+      "text": "La librairie ferme au bout de dix-huit mois. {partenaire} garde la tête haute, toi tu gardes 600 livres invendus dans le garage.",
+      "effects": {
+       "happiness": -8,
+       "money": -10000,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "La moitié seulement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous mettez 5 000 €, une banque prête le reste. Le café est imbuvable, les livres sont très bien choisis.",
+      "effects": {
+       "happiness": 5,
+       "money": -5000,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Plutôt un CDI",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "{partenaire} reprend un poste salarié, sans enthousiasme. Le projet reste dans un tiroir qui grince à chaque dispute.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": -4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{partenaire} trouve un poste… dans une librairie. Moins de risque, presque autant de bonheur.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0020",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "partenaire_malade"
+   ]
+  },
+  "text": "Les traitements de {partenaire} épuisent tout le monde. Ce soir, après une séance difficile, {partenaire} murmure : « Tu n'es pas obligé{e} de rester, tu sais. »",
+  "choices": [
+   {
+    "label": "« Je reste. Point. »",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Tu restes. Tu dors mal, tu manges debout, tu tiens bon. Les infirmières t'appellent par ton prénom.",
+      "effects": {
+       "happiness": -3,
+       "health": -4,
+       "relationships": {
+        "partner": 15
+       },
+       "followUps": [
+        "rep_ent_cpl_0021"
+       ]
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Tu restes, mais tu t'oublies complètement. Un matin, c'est toi qui fais un malaise dans la salle d'attente.",
+      "effects": {
+       "happiness": -8,
+       "health": -8,
+       "relationships": {
+        "partner": 10
+       },
+       "setFlags": [
+        "anxieux"
+       ],
+       "followUps": [
+        "rep_ent_cpl_0021"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Organiser l'entraide",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu crées un planning partagé : amis, famille, voisins. Chacun prend une soirée. Vous n'êtes plus seuls.",
+      "effects": {
+       "happiness": 3,
+       "health": 2,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_ent_cpl_0021"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Craquer et partir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu pars. Tu n'en parles plus jamais, mais tu y penses souvent.",
+      "effects": {
+       "happiness": -15,
+       "karma": -10,
+       "clearFlags": [
+        "partenaire_malade"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0021",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "partenaire_malade"
+   ]
+  },
+  "text": "Examens de contrôle de {partenaire}. Vous attendez sur les mêmes chaises en plastique que d'habitude. La porte du médecin s'ouvre.",
+  "choices": [
+   {
+    "label": "Entrer ensemble",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Rémission. Tu n'entends pas la suite, tu serres juste la main de {partenaire} jusqu'à lui faire mal.",
+      "effects": {
+       "happiness": 15,
+       "health": 3,
+       "relationships": {
+        "partner": 12
+       },
+       "clearFlags": [
+        "partenaire_malade"
+       ]
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Le traitement doit continuer encore un an. Dans la voiture, après un long silence, {partenaire} dit : « Bon. On recommence. »",
+      "effects": {
+       "happiness": -8,
+       "health": -3,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_ent_cpl_0021"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Fêter d'avance",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Tu avais réservé la mer « pour après ». C'est maintenant : rémission. L'eau est froide, personne ne s'en plaint.",
+      "effects": {
+       "happiness": 15,
+       "money": -1500,
+       "relationships": {
+        "partner": 12
+       },
+       "clearFlags": [
+        "partenaire_malade"
+       ]
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Les nouvelles ne sont pas celles espérées. Vous allez quand même à la mer. Vous en aviez besoin.",
+      "effects": {
+       "happiness": -6,
+       "money": -1500,
+       "relationships": {
+        "partner": 10
+       },
+       "followUps": [
+        "rep_ent_cpl_0021"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0022",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "tour_du_monde"
+   ]
+  },
+  "text": "Six mois de tour du monde avec {partenaire}. Vous êtes au Laos, tu as perdu six kilos et une sandale. {partenaire} veut prolonger d'un an et sous-louer l'appartement pour de bon.",
+  "choices": [
+   {
+    "label": "Prolonger l'aventure",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Cuisine au Vietnam, plongée en Indonésie, disputes silencieuses dans les bus de nuit : vous continuez, et c'est la plus belle année de votre vie.",
+      "effects": {
+       "happiness": 12,
+       "health": 3,
+       "smarts": 3,
+       "money": -8000,
+       "relationships": {
+        "partner": 10
+       },
+       "followUps": [
+        "rep_ent_cpl_0023"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Au Cambodge, une brochette douteuse te cloue au lit dix jours. {partenaire} te lit des romans à voix haute.",
+      "effects": {
+       "happiness": -3,
+       "health": -10,
+       "money": -8000,
+       "relationships": {
+        "partner": 8
+       },
+       "followUps": [
+        "rep_ent_cpl_0023"
+       ],
+       "vie": {
+        "disease": "intoxication_alimentaire"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rentrer comme prévu",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tiens au plan. {partenaire} accepte, mais fait la tête jusqu'à Bangkok.",
+      "effects": {
+       "happiness": 4,
+       "money": -2000,
+       "relationships": {
+        "partner": -4
+       },
+       "followUps": [
+        "rep_ent_cpl_0023"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0023",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "tour_du_monde"
+   ]
+  },
+  "clearFlags": [
+   "tour_du_monde"
+  ],
+  "text": "Retour du tour du monde. Plus de travail, un appartement qui sent le renfermé et 3 400 photos de couchers de soleil. {partenaire} rayonne. Toi, tu regardes les offres d'emploi avec un léger vertige.",
+  "choices": [
+   {
+    "label": "Rebondir vite",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "« Un an autour du monde » sur ton CV fascine une recruteuse. Tu signes dans la semaine.",
+      "effects": {
+       "happiness": 6,
+       "entourage": {
+        "offreEmploi": "auto"
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Les recruteurs voient surtout « un an de trou ». Tu enchaînes les entretiens et les cafés trop chers.",
+      "effects": {
+       "happiness": -5,
+       "money": -1500
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder l'esprit voyage",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous vivez petit, travaillez moins, partez souvent. Ton banquier désapprouve. Toi, tu dors très bien.",
+      "effects": {
+       "happiness": 8,
+       "smarts": 2,
+       "money": -2000,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0024",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "chien_du_couple"
+   ]
+  },
+  "text": "Raclette a un an de maison. Il a mangé une télécommande, un passeport et la moitié d'un gâteau d'anniversaire. {partenaire} veut l'inscrire à l'éducation canine, 40 € la séance.",
+  "choices": [
+   {
+    "label": "Éducation canine",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Raclette obtient son diplôme de « chien globalement poli ». Il mange le diplôme.",
+      "effects": {
+       "happiness": 6,
+       "money": -500,
+       "relationships": {
+        "partner": 4
+       },
+       "followUps": [
+        "rep_ent_cpl_0025"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'éducateur abandonne après quatre séances. Raclette, lui, n'abandonne jamais.",
+      "effects": {
+       "happiness": -2,
+       "money": -500,
+       "followUps": [
+        "rep_ent_cpl_0025"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le dresser toi-même",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Des semaines de friandises et de patience : Raclette donne la patte. Pas toujours la bonne, mais quand même.",
+      "effects": {
+       "happiness": 5,
+       "health": 2,
+       "smarts": 1,
+       "followUps": [
+        "rep_ent_cpl_0025"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Raclette apprend un seul ordre, « assis », qu'il exécute uniquement quand tu ne dis rien.",
+      "effects": {
+       "happiness": -3,
+       "followUps": [
+        "rep_ent_cpl_0025"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Il est parfait",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous rangez tout en hauteur, comme des gens qui auraient un bébé géant à poils.",
+      "effects": {
+       "happiness": 4,
+       "money": -300,
+       "relationships": {
+        "partner": -2
+       },
+       "followUps": [
+        "rep_ent_cpl_0025"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0025",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   8,
+   11
+  ],
+  "patience": 3,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "chien_du_couple"
+   ]
+  },
+  "clearFlags": [
+   "chien_du_couple"
+  ],
+  "text": "Raclette a vieilli. Il dort beaucoup, ne monte plus l'escalier et ne mange même plus les chaussures. Le vétérinaire parle doucement à {partenaire} et toi : il souffre.",
+  "choices": [
+   {
+    "label": "L'accompagner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous restez près de lui jusqu'au bout, une main chacun sur sa tête. La maison est terriblement silencieuse.",
+      "effects": {
+       "happiness": -10,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout tenter",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "L'opération lui offre un dernier été, au soleil dans le jardin. Puis il s'endort, un soir, sur ton pied.",
+      "effects": {
+       "happiness": -4,
+       "money": -2500,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "L'opération ne suffit pas. Vous le referiez cent fois quand même.",
+      "effects": {
+       "happiness": -12,
+       "money": -2500,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0026",
+  "on": "chaque_annee",
+  "category": "amour",
+  "chance": 0.3,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "chien_du_couple"
+   ]
+  },
+  "text": "Raclette t'oblige à marcher matin et soir, qu'il pleuve ou non. Ton médecin le félicite, toi un peu moins.",
+  "effects": {
+   "health": 3,
+   "happiness": 2
+  }
+ },
+ {
+  "id": "rep_ent_cpl_0027",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "sevrage"
+   ]
+  },
+  "text": "Un an sans cigarette. À un mariage, ton cousin te tend une clope « juste pour la photo ». {partenaire} est à l'autre bout de la salle, en pleine chenille.",
+  "choices": [
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu refuses. Tu viens d'arrêter de fumer pour de bon, et tu as le droit d'être insupportable de fierté.",
+      "effects": {
+       "happiness": 8,
+       "health": 8,
+       "relationships": {
+        "partner": 6
+       },
+       "clearFlags": [
+        "fume",
+        "sevrage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Juste une",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Une, puis le paquet, puis la rechute. {partenaire} sent l'odeur dans tes cheveux dès le retour.",
+      "effects": {
+       "happiness": -6,
+       "health": -4,
+       "relationships": {
+        "partner": -10
+       },
+       "clearFlags": [
+        "sevrage"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Une bouffée, une quinte de toux, et tu rends la cigarette avec dégoût. Ton corps a changé d'avis avant toi.",
+      "effects": {
+       "happiness": 3,
+       "health": 2,
+       "clearFlags": [
+        "fume",
+        "sevrage"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0028",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "dating"
+   ],
+   "excludeTags": [
+    "prison",
+    "engaged",
+    "married"
+   ],
+   "flags": [
+    "a_refuse_demande"
+   ]
+  },
+  "text": "Un an après la demande refusée au restaurant. {partenaire} n'en parle plus, mais la bague est toujours dans le tiroir de la commode. Ce soir, ton regard tombe dessus.",
+  "choices": [
+   {
+    "label": "Faire ta demande",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Un genou à terre dans la cuisine, avec la bague du tiroir. {partenaire} rit et pleure à la fois : « Il t'a fallu un an ! »",
+      "effects": {
+       "happiness": 14,
+       "relationships": {
+        "partner": 15
+       },
+       "clearFlags": [
+        "a_refuse_demande"
+       ],
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "{partenaire} referme la boîte doucement : « Pas comme ça. Pas par culpabilité. » Le tiroir reste fermé.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "partner": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "En parler franchement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous parlez enfin de mariage, d'envies, de peurs. Pas de bague, mais vous savez où vous en êtes.",
+      "effects": {
+       "happiness": 4,
+       "smarts": 1,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Vous parlez, et vous comprenez que vous ne voulez pas la même vie. Séparation douce, tristesse immense.",
+      "effects": {
+       "happiness": -10,
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refermer le tiroir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu refermes le tiroir. Les conversations qu'on repousse finissent par répondre toutes seules.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "partner": -8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0029",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   3,
+   4
+  ],
+  "patience": 2,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "reconversion_partenaire"
+   ]
+  },
+  "clearFlags": [
+   "reconversion_partenaire"
+  ],
+  "text": "Après des années d'études financées surtout par toi, {partenaire} ouvre enfin son cabinet d'ostéopathie. La plaque est vissée de travers, mais elle est là.",
+  "choices": [
+   {
+    "label": "Fêter l'ouverture",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Le cabinet se remplit vite. {partenaire} te rembourse une partie et t'offre un massage par semaine, à vie.",
+      "effects": {
+       "happiness": 12,
+       "health": 4,
+       "money": 4000,
+       "relationships": {
+        "partner": 10
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Les premiers mois, les patients se comptent sur les doigts d'une main. Mais {partenaire} a le sourire de quelqu'un qui fait enfin le bon métier.",
+      "effects": {
+       "happiness": 4,
+       "money": -1000,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Présenter la facture",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Vous signez une reconnaissance de dette, très romantique. Tu récupères 8 000 € et un regard un peu froid.",
+      "effects": {
+       "happiness": 3,
+       "money": 8000,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "« Tu me présentes la facture ? » L'inauguration se fait sans toi.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": -12
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0030",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "requiresJob": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Soirée d'entreprise avec conjoints. {partenaire} a révisé l'organigramme et repère Marion dès l'entrée. Marion, elle, arrive droit sur vous avec deux coupes de champagne.",
+  "choices": [
+   {
+    "label": "Présenter tout le monde",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Marion et {partenaire} se découvrent une passion commune pour les potins de bureau. Tu as créé un monstre à deux têtes.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{partenaire} interroge Marion sur votre « collaboration ». La conversation ressemble à une garde à vue.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Coller {partenaire}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes la soirée collé{e} à {partenaire}. Ton patron croit que vous êtes jeunes mariés et vous offre une bouteille.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Filer avant le discours",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous partez au bout de vingt minutes, avant le discours du directeur. Meilleure décision de l'année, pour ton couple et pour tes oreilles.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0031",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "food_truck"
+   ]
+  },
+  "clearFlags": [
+   "food_truck"
+  ],
+  "text": "Un an de Feu au Fromage. Le camion sent la raclette en permanence, toi aussi, et {partenaire} a des cernes jusqu'aux genoux. Le bilan est sur la table.",
+  "choices": [
+   {
+    "label": "Un deuxième camion",
+    "outcomes": [
+     {
+      "chance": 0.45,
+      "text": "Deuxième camion, troisième marché, un article dans le journal. Le fromage, c'est l'avenir.",
+      "effects": {
+       "happiness": 10,
+       "money": 12000,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     },
+     {
+      "chance": 0.55,
+      "text": "Le deuxième camion tombe en panne le jour de l'inauguration. Vous servez de la raclette froide sur un parking.",
+      "effects": {
+       "happiness": -8,
+       "money": -8000,
+       "relationships": {
+        "partner": -2
+       },
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer tranquille",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Le camion rapporte de quoi vivre, sans plus. Le samedi, les habitués t'appellent par ton prénom.",
+      "effects": {
+       "happiness": 5,
+       "money": 3000,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Hiver difficile, ventes en berne, et un concurrent ouvre une fondue juste en face.",
+      "effects": {
+       "happiness": -3,
+       "money": -2000
+      }
+     }
+    ]
+   },
+   {
+    "label": "Revendre le camion",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous revendez le camion à un couple de jeunes rêveurs. {partenaire} pleure en voyant partir la sirène.",
+      "effects": {
+       "happiness": -2,
+       "money": 7000,
+       "relationships": {
+        "partner": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0032",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "dating"
+   ],
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "en_pause"
+   ]
+  },
+  "clearFlags": [
+   "en_pause"
+  ],
+  "text": "Fin de la pause. {partenaire} te donne rendez-vous au même café, à la même table. Toi, tu as passé ces trois mois à faire du sport, de la poterie et des listes.",
+  "choices": [
+   {
+    "label": "Y aller, plein d'espoir",
+    "outcomes": [
+     {
+      "chance": 0.55,
+      "text": "{partenaire} arrive avec deux croissants : « Tu m'as manqué. Vraiment. » Vous repartez main dans la main.",
+      "effects": {
+       "happiness": 12,
+       "relationships": {
+        "partner": 12
+       }
+      }
+     },
+     {
+      "chance": 0.45,
+      "text": "{partenaire} arrive avec un carton contenant tes affaires. Cette fois, c'est toi qui laisses le croissant.",
+      "effects": {
+       "happiness": -12,
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas y aller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ne viens pas. Ces trois mois t'ont appris que tu étais mieux sans. Le texto de rupture le plus court de l'histoire.",
+      "effects": {
+       "happiness": 4,
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0033",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "sobre"
+   ]
+  },
+  "text": "Un an sans alcool. {partenaire} t'a préparé un gâteau en forme de bouteille de jus de pomme. Ce soir, pourtant, au pot de départ d'un collègue, on te tend une coupe de champagne.",
+  "choices": [
+   {
+    "label": "Rester au jus de pomme",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu trinques au jus de pomme. Tu es la seule personne à te souvenir de la soirée, et tu as les meilleures anecdotes.",
+      "effects": {
+       "happiness": 8,
+       "health": 6,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Juste une coupe",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Une coupe, et tu t'arrêtes là. Tu rentres tranquillement et tu racontes tout à {partenaire}.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Une coupe, puis cinq. {partenaire} vient te chercher à 2 h et ne dit pas un mot dans la voiture.",
+      "effects": {
+       "happiness": -8,
+       "health": -5,
+       "relationships": {
+        "partner": -10
+       },
+       "setFlags": [
+        "boit_trop"
+       ],
+       "clearFlags": [
+        "sobre"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0034",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "associe_partenaire"
+   ]
+  },
+  "clearFlags": [
+   "associe_partenaire"
+  ],
+  "text": "Un an de « Bêêêlle Pelouse ». Les chèvres ont mangé trois haies, un portail et la moitié d'un contrat. Mais une grande enseigne de jardinage veut racheter la boîte.",
+  "choices": [
+   {
+    "label": "Vendre la boîte",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous vendez. Les chèvres partent en CDI dans une grande enseigne, et vous en vacances.",
+      "effects": {
+       "happiness": 10,
+       "money": 25000,
+       "relationships": {
+        "partner": 10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le rachat est annulé à la dernière minute. Il vous reste douze chèvres et un prêt.",
+      "effects": {
+       "happiness": -8,
+       "money": -4000,
+       "relationships": {
+        "partner": -2
+       },
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer ensemble",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Vous gardez la boîte. Ça marche doucement, et vous travaillez ensemble sans vous entretuer. Un exploit.",
+      "effects": {
+       "happiness": 6,
+       "money": 4000,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Travailler ensemble, vivre ensemble, dîner en parlant de chèvres… le couple s'essouffle plus vite que le troupeau.",
+      "effects": {
+       "happiness": -6,
+       "money": 1000,
+       "relationships": {
+        "partner": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0035",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   0,
+   0
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "married"
+   ],
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "contrat_de_couple"
+   ]
+  },
+  "clearFlags": [
+   "contrat_de_couple"
+  ],
+  "text": "Six mois de contrat de couple. {partenaire} sort le document et coche les articles un par un, au stylo rouge. Moment de vérité.",
+  "choices": [
+   {
+    "label": "Assumer ton bilan",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Article 7 respecté, article 11 aussi. Tu obtiens un « très bien » et un dîner au restaurant. La flamme est relancée.",
+      "effects": {
+       "happiness": 8,
+       "money": -100,
+       "relationships": {
+        "partner": 10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Article 3 : trois rendez-vous oubliés sur vingt-six. {partenaire} rajoute une clause pénale.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Brûler le contrat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu brûles le contrat dans la cheminée, devant les yeux ronds de {partenaire}. Vous rigolez, puis vous faites un vrai dîner aux chandelles.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0036",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "belle_mere_a_la_maison"
+   ]
+  },
+  "clearFlags": [
+   "belle_mere_a_la_maison"
+  ],
+  "text": "Ta belle-mère vit chez vous depuis un an. « Juste le temps de trouver une solution » est devenu « chez moi ». Elle a repeint la salle de bains en saumon. {partenaire} te regarde, à bout.",
+  "choices": [
+   {
+    "label": "Trouver une résidence",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Vous lui trouvez une belle résidence avec atelier tricot. Elle part en grommelant, et vous rappelle trois fois par jour.",
+      "effects": {
+       "happiness": 8,
+       "money": -4000,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Elle refuse de partir et appelle tous les cousins. Toute la famille te surnomme désormais « l'expulseur ». Même au féminin, ça sonne mal.",
+      "effects": {
+       "happiness": -4,
+       "money": -4000,
+       "relationships": {
+        "partner": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "La garder",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle reste. Tu apprends à aimer le saumon et ses gratins. {partenaire} t'aime encore plus pour ça.",
+      "effects": {
+       "happiness": -3,
+       "health": -2,
+       "karma": 5,
+       "relationships": {
+        "partner": 12
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0037",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "famille_accueil"
+   ]
+  },
+  "clearFlags": [
+   "famille_accueil"
+  ],
+  "text": "Yanis vit chez vous depuis un an. Il appelle {partenaire} par son prénom et toi « l'autre », avec affection. Le juge propose qu'il reste jusqu'à sa majorité.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Yanis reste. Le soir de la décision, il vous prépare des pâtes trop cuites et vous les mangez comme un festin.",
+      "effects": {
+       "happiness": 12,
+       "money": -3000,
+       "karma": 8,
+       "relationships": {
+        "partner": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Passer le relais",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "C'est trop lourd pour vous. Yanis part dans une autre famille avec un album photo de son année chez vous. Tu pleures dans la voiture.",
+      "effects": {
+       "happiness": -10,
+       "relationships": {
+        "partner": -2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0038",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "neo_rural"
+   ]
+  },
+  "clearFlags": [
+   "neo_rural"
+  ],
+  "text": "Un an à la ferme. Tu sais traire, réparer une clôture et parler aux vaches. Mais l'hiver est rude, et la ferme perd de l'argent. {partenaire} te demande si tu veux continuer.",
+  "choices": [
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous lancez un fromage à votre nom. Il gagne une médaille au salon de l'agriculture. Tu pleures devant un camembert.",
+      "effects": {
+       "happiness": 10,
+       "health": 5,
+       "money": 3000,
+       "relationships": {
+        "partner": 10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Encore un hiver dur. Vous tenez, mais tu as le dos en compote.",
+      "effects": {
+       "happiness": -2,
+       "health": -6,
+       "money": -3000,
+       "relationships": {
+        "partner": 6
+       },
+       "setFlags": [
+        "dos_fragile"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rentrer en ville",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous vendez le troupeau et rentrez en ville. Tu gardes une cloche de vache sur ton bureau.",
+      "effects": {
+       "happiness": 2,
+       "money": 8000,
+       "relationships": {
+        "partner": -2
+       },
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ],
+        "offreEmploi": "auto"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0039",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "retraite_mer"
+   ]
+  },
+  "clearFlags": [
+   "retraite_mer"
+  ],
+  "text": "Un an au bord de la mer. Les enfants et les amis viennent moins souvent, c'est loin. {partenaire} adore le vent ; toi, tu commences à trouver le temps long.",
+  "choices": [
+   {
+    "label": "Recréer un cercle",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Club de pétanque, chorale, marché du jeudi : tu te fais une bande de copains en polaire. La mer, finalement, c'est chez toi.",
+      "effects": {
+       "happiness": 8,
+       "health": 3,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "La chorale ne t'accepte pas : tu chantes faux, d'après la cheffe de chœur. Tu te consoles avec des crêpes.",
+      "effects": {
+       "happiness": -3,
+       "health": -1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Revenir près des enfants",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous revendez et revenez près de la famille. {partenaire} garde un bocal de sable dans la cuisine.",
+      "effects": {
+       "happiness": 3,
+       "money": -3000,
+       "relationships": {
+        "partner": -4
+       },
+       "entourage": {
+        "signaux": [
+         "demenagement"
+        ]
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0040",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "engage_localement"
+   ]
+  },
+  "clearFlags": [
+   "engage_localement"
+  ],
+  "text": "Un an que {partenaire} siège au conseil municipal. Ce soir, un promoteur sonne chez vous avec une bouteille de champagne et une enveloppe « pour faciliter » son dossier.",
+  "choices": [
+   {
+    "label": "Le renvoyer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu refermes la porte au nez du promoteur. {partenaire} raconte l'histoire en séance publique. Applaudissements.",
+      "effects": {
+       "happiness": 6,
+       "karma": 6,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le dénoncer",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "L'affaire remonte au procureur. {partenaire} passe dans le journal comme un modèle d'intégrité.",
+      "effects": {
+       "happiness": 6,
+       "smarts": 1,
+       "karma": 8,
+       "fame": 3,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le promoteur porte plainte pour diffamation. Un an de procédure, pour rien.",
+      "effects": {
+       "happiness": -6,
+       "money": -2000,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder la bouteille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu gardes la bouteille, pas l'enveloppe. {partenaire} hésite entre rire et te faire la morale.",
+      "effects": {
+       "happiness": 3,
+       "karma": -2,
+       "relationships": {
+        "partner": -2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_cpl_0041",
+  "on": "entourage_suite",
+  "category": "amour",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 1,
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "partenaire_embrigade"
+   ]
+  },
+  "clearFlags": [
+   "partenaire_embrigade"
+  ],
+  "text": "Le groupe d'« éveil » de {partenaire} demande désormais un « don d'engagement » de 5 000 € et un week-end par mois dans une ferme en Ardèche. {partenaire} hésite, et te regarde.",
+  "choices": [
+   {
+    "label": "Aider à en sortir",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu contactes une association spécialisée. Il faut des mois, mais {partenaire} finit par couper les ponts. Et pleure beaucoup.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "partner": 12
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "{partenaire} se braque et part un mois en Ardèche. Au retour, vous êtes des étrangers.",
+      "effects": {
+       "happiness": -10,
+       "relationships": {
+        "partner": -14
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Poser un ultimatum",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "« Eux ou moi. » {partenaire} te choisit. Le soulagement est immense, la confiance mettra plus longtemps à revenir.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "« Eux ou moi. » {partenaire} choisit eux. Tu fais tes valises en écoutant une vidéo sur les pyramides.",
+      "effects": {
+       "happiness": -15,
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ }
+]
