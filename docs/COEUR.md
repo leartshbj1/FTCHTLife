@@ -46,6 +46,8 @@ Utilisable dans les événements, les suites (répercussions) et les messages du
 | `relationLibre` | `true` / `false` | relation libre acceptée / terminée |
 | `scandale` | entier (%) | perte d'abonnés si le joueur est un peu connu (≥ 5 000) |
 | `lienCible` | entier | lien avec la personne visée par une carte d'action ({cible}) ; cartes d'action seulement |
+| `contraception` | `"pilule"`, `"sterilet"`, `"implant"`, `"preservatif"`, `"aucune"` | contraception du couple (voir « Contraception ») |
+| `rupture` | `true` | le joueur rompt (cartes `rompre` seulement ; jamais pour un couple protégé) |
 
 Exemple : `"effects": {"karma": -8, "coeur": {"liaison": "debut", "via": "travail"}}`.
 
@@ -83,7 +85,8 @@ personne). L'action donne un petit bonus de lien, puis ouvre souvent une carte d
 (`GameEngine.resoudreCarteCoeur`, hors de la limite de 3 événements par an car c'est le joueur qui la déclenche).
 
 Une carte est un événement normal (conditions et âges = ceux du joueur) avec en plus :
-`action` (`nuit`, `avenir`, `surprise` · `jouer`, `devoirs`, `parlerVie`, `punir`, `argentPoche`, `conduite`,
+`action` (`conversation`, `nuit`, `anniversaire`, `avenir`, `surprise`, `contraception`, `therapie`, `vendre`,
+`insulter`, `rompre` · `jouer`, `devoirs`, `parlerVie`, `punir`, `argentPoche`, `conduite`,
 `conseilAdulte` · `visite` · `sortie`), `cibleMinAge` / `cibleMaxAge` (âge de la personne visée) et `cibleGenre`
 (`male` / `female`).
 
@@ -91,9 +94,35 @@ Variables : `{cible}` (prénom), `{cible_il}` (il/elle), `{cible_lui}` (lui/elle
 (accord féminin de la personne visée, seulement après une terminaison qui prend juste un « e »). Effet `"coeur":
 {"lienCible": n}` pour le lien avec cette personne.
 
-Règles : grossesse (`"vie": {"pregnancy": true}`) seulement avec le tag `couple_fertile` ; IST (`"vie": {"disease":
-"ist"}`) plutôt avec `couple_recent` ; aucune rupture ni tromperie dans les cartes avec le/la partenaire (couple
-protégé). Validation : `python3 tools/validate_coeur_cartes.py`.
+Règles : grossesse (`"vie": {"pregnancy": true}`) seulement avec le tag `couple_fertile` (ou `couple_fertile_protege`
+pour un oubli de pilule, un préservatif qui craque) ; IST (`"vie": {"disease": "ist"}`) plutôt avec `couple_recent` ;
+aucune tromperie dans les cartes avec le/la partenaire, et une rupture seulement dans une carte `rompre` (effet
+`"coeur": {"rupture": true}`). Validation : `python3 tools/validate_coeur_cartes.py`.
+
+Une issue peut avoir une suite `then` (scène en plusieurs étapes, même format que docs/SCENES.md) : la carte continue
+avec une nouvelle question.
+
+### Fiche du/de la partenaire
+
+Pour le/la partenaire, la fiche affiche une seule liste (`CoeurCoupleActions`, lignes `CoeurLigneVie` : grosse icône,
+titre gras, petite phrase) rangée en trois groupes : « Ensemble », « Les sujets sérieux », « Quand ça se gâte ». Elle
+réunit les cartes du module Cœur, les actions de `VieRelations` (rendez-vous, week-end, demande, mariage, bébé,
+divorce…) et celles du moteur (temps, cadeau).
+
+Actions à carte avec le/la partenaire : `conversation`, `nuit` (« Faire l'amour », dont de rares propositions de plan à
+trois, jamais explicites), `anniversaire` (le sien, ou celui du couple), `avenir`, `surprise`, `contraception`,
+`therapie` (150 € la séance ; une issue peut engager un suivi `"therapie": 2`), `vendre`, `insulter`, `rompre` (pas
+pour un couple marié, qui divorce, ni pour un couple protégé ; on peut retenter plusieurs fois par an).
+
+### Contraception
+
+État `CoeurEtat.contraception` (`pilule`, `sterilet`, `implant`, `preservatif`, nil = aucune) et `contraceptionDe`
+(id de la partenaire quand le joueur est un homme ; elle ne compte plus avec une autre partenaire). Effet
+`"coeur": {"contraception": "pilule" | "sterilet" | "implant" | "preservatif" | "aucune"}`. Tags :
+`contraception_possible` (couple homme-femme, la femme a 15 à 50 ans), `contraception`, `contraception_<méthode>`,
+`couple_fertile_protege` (aurait été `couple_fertile` sans la contraception), `couple_installe` (ensemble depuis
+au moins un an), `couple_10ans`. Sous contraception, `couple_fertile` disparaît (plus de cartes à grossesse) et
+« Essayer d'avoir un bébé » ne marche presque jamais.
 
 ## Couple protégé
 

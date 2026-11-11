@@ -1,0 +1,827 @@
+[
+  {
+    "id": "man_0001",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 1,
+    "unique": true,
+    "poids": 2,
+    "text": "Ton premier vrai casting. Quarante personnes dans un couloir, un numéro épinglé sur la poitrine, et une directrice de casting qui ne lève pas les yeux de son téléphone.",
+    "choices": [
+      {
+        "label": "Marcher avec assurance",
+        "outcomes": [
+          { "chance": 0.5, "text": "Elle lève enfin les yeux. Puis elle te rappelle le lendemain.", "effects": { "happiness": 10, "looks": 2 }, "spe": { "reputation": 6, "gainPct": 5 } },
+          { "chance": 0.5, "text": "« Merci, suivant. » Huit secondes en tout. C'est le métier.", "effects": { "happiness": -5 }, "spe": { "reputation": 1 } }
+        ]
+      },
+      {
+        "label": "Engager la conversation",
+        "outcomes": [
+          { "chance": 0.4, "text": "Elle apprécie qu'on la regarde dans les yeux. Elle note ton nom.", "effects": { "happiness": 6 }, "spe": { "reputation": 4 } },
+          { "chance": 0.6, "text": "« On ne t'a pas demandé de parler. » Le couloir ricane.", "effects": { "happiness": -6 }, "spe": { "reputation": -2 } }
+        ]
+      },
+      {
+        "label": "Repartir avant ton tour",
+        "outcomes": [
+          { "text": "Tu prends un café en face. Tu te demandes si ce métier est fait pour toi.", "effects": { "happiness": -3, "smarts": 2 }, "spe": { "forme": 3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0002",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 2,
+    "text": "Un photographe te contacte en message privé : il prépare un « projet artistique », sans contrat, dans son appartement, et promet de te faire « exploser ».",
+    "choices": [
+      {
+        "label": "Demander un contrat écrit",
+        "outcomes": [
+          { "chance": 0.7, "text": "Il ne répond plus. Ça en dit long. Tu as sans doute évité un piège.", "effects": { "happiness": 2, "smarts": 3 }, "spe": { "reputation": 1 } },
+          { "chance": 0.3, "text": "Il envoie un vrai contrat, avec un studio et une assistante. Le projet est sérieux.", "effects": { "happiness": 6, "looks": 2 }, "spe": { "reputation": 5, "gainPct": 4 } }
+        ]
+      },
+      {
+        "label": "Y aller avec une amie",
+        "outcomes": [
+          { "chance": 0.6, "text": "Il est contrarié de ne pas être seul avec toi. La séance tourne court.", "effects": { "happiness": -2, "smarts": 2 } },
+          { "chance": 0.4, "text": "Il est professionnel. Les photos sont belles et ton amie a fait la lumière.", "effects": { "happiness": 5 }, "spe": { "reputation": 3 } }
+        ]
+      },
+      {
+        "label": "Signaler le profil à l'agence",
+        "outcomes": [
+          { "text": "{agence} le connaît déjà : trois plaintes. Ils te remercient et préviennent les autres.", "effects": { "karma": 6, "happiness": 3 }, "spe": { "reputation": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0003",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 2,
+    "unique": true,
+    "text": "{agence} te tend un contrat de 18 pages. Page 14 : exclusivité de sept ans, 45 % de commission, et tous tes « frais de développement » avancés par l'agence, remboursables sur tes cachets.",
+    "choices": [
+      {
+        "label": "Signer sans tout lire",
+        "outcomes": [
+          { "chance": 0.5, "text": "Les frais s'accumulent : book, cours de marche, appartement. Tu travailles et tu dois encore de l'argent.", "effects": { "happiness": -8, "money": -2000 }, "spe": { "gainPct": -15, "reputation": 3 } },
+          { "chance": 0.5, "text": "Tu décroches des contrats, mais ton relevé ressemble à un roman de science-fiction.", "effects": { "happiness": -3 }, "spe": { "gainPct": 5, "reputation": 4 } }
+        ]
+      },
+      {
+        "label": "Faire relire par un avocat",
+        "costPct": 5,
+        "outcomes": [
+          { "chance": 0.7, "text": "L'avocat fait rayer la moitié des clauses. L'agence râle, mais signe.", "effects": { "happiness": 6, "smarts": 4 }, "spe": { "reputation": 2, "gainPct": 8 } },
+          { "chance": 0.3, "text": "L'agence trouve que tu « poses problème » et retire son offre.", "effects": { "happiness": -6, "smarts": 3 }, "spe": { "reputation": -2 } }
+        ]
+      },
+      {
+        "label": "Négocier toi-même",
+        "requiresSkill": { "eloquence": 3 },
+        "outcomes": [
+          { "text": "Exclusivité ramenée à deux ans, commission à 20 %. La bookeuse te regarde autrement.", "effects": { "happiness": 8, "smarts": 3 }, "spe": { "reputation": 4, "gainPct": 10 } }
+        ]
+      },
+      {
+        "label": "Refuser et partir",
+        "outcomes": [
+          { "text": "Tu repars sans agence, mais sans dette. Les débuts seront plus lents.", "effects": { "happiness": 2, "karma": 2 }, "spe": { "reputation": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0004",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 3,
+    "text": "Ta bookeuse chez {agence} sort un mètre ruban devant tout le monde. « Deux centimètres de trop aux hanches. Les clients sont précis. »",
+    "choices": [
+      {
+        "label": "Suivre un régime strict",
+        "outcomes": [
+          { "chance": 0.5, "text": "Tu perds les deux centimètres. Et l'envie de sortir, et un peu de lucidité.", "effects": { "health": -8, "happiness": -6 }, "spe": { "reputation": 3, "forme": -8 } },
+          { "chance": 0.5, "text": "Tu tiens trois semaines, puis tu craques sur un paquet de gâteaux à deux heures du matin, en pleurant.", "effects": { "health": -5, "happiness": -10 }, "spe": { "forme": -6 } }
+        ]
+      },
+      {
+        "label": "Voir un nutritionniste",
+        "costPct": 3,
+        "outcomes": [
+          { "text": "Il te dit que ton corps va très bien et te donne un programme sain. Tu te tonifies sans t'affamer.", "effects": { "health": 6, "happiness": 4 }, "spe": { "forme": 6, "reputation": 1 } }
+        ]
+      },
+      {
+        "label": "Lui dire que c'est non",
+        "outcomes": [
+          { "chance": 0.5, "text": "Elle hausse les épaules et te propose moins de castings.", "effects": { "happiness": 3, "karma": 3 }, "spe": { "reputation": -4, "gainPct": -8 } },
+          { "chance": 0.5, "text": "Elle range le mètre. « Bon. On va viser d'autres clients. » Elle s'y tient.", "effects": { "happiness": 6 }, "spe": { "reputation": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0005",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 4,
+    "text": "Ça fait des semaines que tu sautes des repas et que tu comptes tout. Ton reflet ne te va jamais. Une collègue t'attrape dans les loges : « Je vois ce que tu fais. Je suis passée par là. »",
+    "choices": [
+      {
+        "label": "Accepter de parler",
+        "outcomes": [
+          { "chance": 0.7, "text": "Elle t'oriente vers une médecin spécialisée. Le chemin sera long, mais tu n'es plus seul{e} avec ça.", "effects": { "health": 8, "happiness": 6, "karma": 2 }, "spe": { "forme": 5, "gainPct": -10 } },
+          { "chance": 0.3, "text": "Parler fait remonter beaucoup de choses. Tu prends quelques mois pour te soigner.", "effects": { "health": 10, "happiness": -2 }, "spe": { "forme": 4, "reputation": -2, "gainPct": -20 } }
+        ]
+      },
+      {
+        "label": "Nier en bloc",
+        "outcomes": [
+          { "chance": 0.6, "text": "Tu continues. Un matin, tu t'évanouis dans le métro.", "effects": { "health": -15, "happiness": -8, "setFlags": ["mange_mal"] }, "spe": { "forme": -12, "blessure": 1 } },
+          { "chance": 0.4, "text": "Tu tiens encore, mais tout devient gris. Même les beaux contrats.", "effects": { "health": -8, "happiness": -10, "setFlags": ["mange_mal"] }, "spe": { "forme": -8 } }
+        ]
+      },
+      {
+        "label": "Prendre une pause carrière",
+        "outcomes": [
+          { "text": "Tu préviens {agence} que tu t'arrêtes pour ta santé. Tu manges, tu dors, tu retrouves le goût des choses.", "effects": { "health": 12, "happiness": 5 }, "spe": { "forme": 8, "reputation": -4, "gainPct": -25 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0006",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 3,
+    "poids": 2,
+    "text": "Pendant une séance photo, le photographe congédie son assistante, s'approche trop près, et ses mains « ajustent » ta tenue là où personne ne l'a demandé.",
+    "choices": [
+      {
+        "label": "Arrêter la séance immédiatement",
+        "outcomes": [
+          { "chance": 0.6, "text": "Tu prends tes affaires et tu sors. Tu trembles dans l'escalier, mais tu es sorti{e}.", "effects": { "happiness": -6, "karma": 4 }, "spe": { "reputation": -2 } },
+          { "chance": 0.4, "text": "Il menace de dire partout que tu es « ingérable ». Tu pars quand même.", "effects": { "happiness": -8, "karma": 4 }, "spe": { "reputation": -5 } }
+        ]
+      },
+      {
+        "label": "Le signaler à l'agence",
+        "outcomes": [
+          { "chance": 0.5, "text": "{agence} te soutient et le blackliste. D'autres mannequins se manifestent après toi.", "effects": { "happiness": 4, "karma": 8 }, "spe": { "reputation": 4 } },
+          { "chance": 0.5, "text": "On te répond qu'il « est comme ça » et qu'il fait vendre. Tu comprends qui l'agence protège.", "effects": { "happiness": -10, "karma": 5, "setFlags": ["traumatise"] }, "spe": { "reputation": -2, "forme": -6 } }
+        ]
+      },
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          { "chance": 0.5, "text": "La procédure est longue et épuisante. Mais d'autres plaintes s'ajoutent à la tienne, et il ne travaille plus.", "effects": { "happiness": -3, "karma": 12 }, "spe": { "reputation": 5, "forme": -5 } },
+          { "chance": 0.5, "text": "Classement sans suite, faute de preuves. Tu as eu raison, et ça fait quand même mal.", "effects": { "happiness": -10, "karma": 8 }, "spe": { "forme": -6 } }
+        ]
+      },
+      {
+        "label": "Te taire et finir",
+        "outcomes": [
+          { "text": "Les photos sont publiées. Tu ne peux plus les regarder.", "effects": { "happiness": -14, "health": -4, "setFlags": ["traumatise"] }, "spe": { "gainPct": 4, "forme": -10 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0007",
+    "carriere": "mannequin",
+    "minNiveau": 3,
+    "maxNiveau": 3,
+    "unique": true,
+    "poids": 2,
+    "text": "Ta première semaine de la mode à l'étranger : onze castings par jour, une ville que tu ne connais pas et une carte de métro incompréhensible.",
+    "choices": [
+      {
+        "label": "Tout faire, sans dormir",
+        "outcomes": [
+          { "chance": 0.5, "text": "Tu décroches quatre défilés, dont un en ouverture. Tu dors dans le taxi.", "effects": { "happiness": 12, "health": -6 }, "spe": { "reputation": 10, "gainPct": 15, "forme": -8 } },
+          { "chance": 0.5, "text": "Tu te perds, tu arrives en retard deux fois et tu repars avec un seul défilé.", "effects": { "happiness": -4, "health": -5 }, "spe": { "reputation": 2, "gainPct": 4, "forme": -6 } }
+        ]
+      },
+      {
+        "label": "Choisir les castings importants",
+        "outcomes": [
+          { "text": "Moins de défilés, mais les bons. Tu as même vu un musée.", "effects": { "happiness": 8 }, "spe": { "reputation": 6, "gainPct": 8 } }
+        ]
+      },
+      {
+        "label": "Charmer en italien",
+        "requiresSkill": { "italien": 2 },
+        "outcomes": [
+          { "text": "Le styliste est ravi qu'on lui parle dans sa langue. Il te garde pour clôturer le défilé.", "effects": { "happiness": 12, "skills": { "italien": 4 } }, "spe": { "reputation": 12, "gainPct": 12 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0008",
+    "carriere": "mannequin",
+    "minNiveau": 4,
+    "maxNiveau": 5,
+    "unique": true,
+    "poids": 2,
+    "text": "{marque} veut faire de toi son visage pour trois ans : parfum, affiches, publicité télévisée. Le contrat est énorme. La clause de « conduite » aussi.",
+    "choices": [
+      {
+        "label": "Signer tel quel",
+        "outcomes": [
+          { "text": "Ton visage est sur tous les abribus. Ta vie privée, elle, appartient un peu à {marque}.", "effects": { "happiness": 10, "fame": 10 }, "spe": { "gainPct": 60, "reputation": 10, "signal": "egerie_marque" } }
+        ]
+      },
+      {
+        "label": "Négocier la clause",
+        "outcomes": [
+          { "chance": 0.6, "text": "Ils assouplissent la clause pour ne pas te perdre. Tu signes la tête haute.", "effects": { "happiness": 12, "smarts": 3 }, "spe": { "gainPct": 50, "reputation": 10 } },
+          { "chance": 0.4, "text": "Ils choisissent quelqu'un de plus « docile ». Tu l'apprends dans la presse.", "effects": { "happiness": -10 }, "spe": { "reputation": -3 } }
+        ]
+      },
+      {
+        "label": "Refuser, l'image ne te ressemble pas",
+        "outcomes": [
+          { "text": "Le milieu trouve ça soit admirable, soit fou. Tu dors bien.", "effects": { "happiness": 4, "karma": 5 }, "spe": { "reputation": 3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0009",
+    "carriere": "mannequin",
+    "minNiveau": 2,
+    "maxNiveau": 4,
+    "minAge": 18,
+    "text": "Un client te glisse que « le nez, un tout petit peu », et ton agent te tend la carte d'un chirurgien « très discret ».",
+    "choices": [
+      {
+        "label": "Prendre rendez-vous",
+        "costPct": 10,
+        "outcomes": [
+          { "chance": 0.5, "text": "Résultat subtil. Les clients ne voient pas la différence, mais tu la vois chaque matin.", "effects": { "looks": 4, "happiness": -2 }, "spe": { "reputation": 2 } },
+          { "chance": 0.3, "text": "Résultat raté. Il faudra retoucher. Tu ne poses pas pendant six mois.", "effects": { "looks": -10, "happiness": -12, "health": -4, "setFlags": ["refait_de_partout"] }, "spe": { "reputation": -5, "blessure": 1 } },
+          { "chance": 0.2, "text": "Un nouveau visage, de nouveaux clients. Tu ne sais plus très bien qui ils engagent.", "effects": { "looks": 8, "happiness": -4 }, "spe": { "reputation": 5, "gainPct": 10 } }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          { "chance": 0.6, "text": "Ce client-là ne te rappelle pas. Tu gardes ton nez.", "effects": { "happiness": 3 }, "spe": { "gainPct": -5 } },
+          { "chance": 0.4, "text": "Une campagne sur la « beauté singulière » te choisit justement pour ton profil.", "effects": { "happiness": 10, "looks": 2 }, "spe": { "reputation": 6, "gainPct": 8 } }
+        ]
+      },
+      {
+        "label": "En parler publiquement",
+        "outcomes": [
+          { "text": "Ton message fait réagir. Beaucoup te remercient, quelques clients te trouvent « compliqué{e} ».", "effects": { "happiness": 5, "karma": 5, "fame": 3 }, "spe": { "reputation": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0010",
+    "carriere": "mannequin",
+    "minNiveau": 1,
+    "maxNiveau": 4,
+    "minAge": 30,
+    "text": "Au casting, on te demande ton âge. Tu réponds. Silence. « On cherchait quelque chose de plus... frais. »",
+    "choices": [
+      {
+        "label": "Viser les marques matures",
+        "outcomes": [
+          { "chance": 0.6, "text": "Un marché moins tapageur mais fidèle : montres, banques, voyages haut de gamme.", "effects": { "happiness": 6, "smarts": 2 }, "spe": { "reputation": 3, "gainPct": 5 } },
+          { "chance": 0.4, "text": "Les contrats sont rares. Tu complètes avec des catalogues.", "effects": { "happiness": -4 }, "spe": { "gainPct": -10 } }
+        ]
+      },
+      {
+        "label": "Mentir sur ton âge",
+        "outcomes": [
+          { "chance": 0.5, "text": "Ça passe. Jusqu'au jour où quelqu'un retrouve tes photos de 2010.", "effects": { "happiness": -3 }, "spe": { "reputation": -4, "gainPct": 5 } },
+          { "chance": 0.5, "text": "Personne ne vérifie. Tu as officiellement 26 ans pour encore un moment.", "effects": { "happiness": 4, "karma": -2 }, "spe": { "gainPct": 6 } }
+        ]
+      },
+      {
+        "label": "Dénoncer l'âgisme du milieu",
+        "outcomes": [
+          { "text": "Ta tribune circule. Une agence spécialisée dans les profils de plus de 30 ans te contacte.", "effects": { "happiness": 7, "karma": 4, "fame": 3 }, "spe": { "reputation": 5 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0011",
+    "carriere": "mannequin",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "text": "Tes abonnés grimpent. Une marque de « thé détox minceur » t'offre une belle somme pour trois publications.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          { "chance": 0.5, "text": "Argent facile. Les commentaires, beaucoup moins : « Tu fais la promo d'un laxatif ? »", "effects": { "happiness": -2, "karma": -5 }, "spe": { "gainPct": 8, "reputation": -4 } },
+          { "chance": 0.5, "text": "Personne ne remarque rien. Ta conscience, si.", "effects": { "happiness": 2, "karma": -4 }, "spe": { "gainPct": 8 } }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          { "text": "Tu publies à la place une photo de ton petit-déjeuner, un vrai. Elle marche mieux que prévu.", "effects": { "happiness": 4, "karma": 3 }, "spe": { "reputation": 2 } }
+        ]
+      },
+      {
+        "label": "Proposer une marque que tu aimes",
+        "outcomes": [
+          { "chance": 0.5, "text": "Une petite marque de vêtements locale accepte. Moins d'argent, plus de fierté.", "effects": { "happiness": 6 }, "spe": { "gainPct": 3, "reputation": 3 } },
+          { "chance": 0.5, "text": "Personne ne répond. Mais au moins tu n'as rien vendu de douteux.", "effects": { "happiness": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0012",
+    "carriere": "mannequin",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "unique": true,
+    "poids": 2,
+    "text": "Un grand magazine de mode te veut en couverture. Le shooting a lieu dans un château, avec quatorze personnes rien que pour tes cheveux.",
+    "choices": [
+      {
+        "label": "Tout donner",
+        "outcomes": [
+          { "chance": 0.7, "text": "La couverture est magnifique. Ta mère en achète vingt exemplaires.", "effects": { "happiness": 15, "looks": 3, "fame": 8 }, "spe": { "reputation": 12, "gainPct": 10 } },
+          { "chance": 0.3, "text": "Ils ont tellement retouché la photo que ta propre famille hésite à te reconnaître.", "effects": { "happiness": 4, "fame": 6 }, "spe": { "reputation": 8, "gainPct": 8 } }
+        ]
+      },
+      {
+        "label": "Exiger aucune retouche",
+        "outcomes": [
+          { "chance": 0.6, "text": "La rédaction accepte et en fait un argument. Le numéro se vend très bien.", "effects": { "happiness": 14, "karma": 3, "fame": 8 }, "spe": { "reputation": 14, "gainPct": 10 } },
+          { "chance": 0.4, "text": "La rédaction choisit une autre personne. Tu restes dans les pages intérieures.", "effects": { "happiness": -6 }, "spe": { "reputation": 3, "gainPct": 3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0013",
+    "carriere": "mannequin",
+    "minNiveau": 2,
+    "maxNiveau": 4,
+    "text": "En coulisses, cinq minutes avant ton passage, tes chaussures ont disparu. Une rivale te sourit un peu trop gentiment.",
+    "choices": [
+      {
+        "label": "Défiler pieds nus",
+        "outcomes": [
+          { "chance": 0.5, "text": "Le public pense que c'est voulu. Le créateur aussi, après coup.", "effects": { "happiness": 10, "fame": 2 }, "spe": { "reputation": 8 } },
+          { "chance": 0.5, "text": "Le créateur est furieux. Tu ne travailleras plus pour lui.", "effects": { "happiness": -8 }, "spe": { "reputation": -4 } }
+        ]
+      },
+      {
+        "label": "Lui demander de les rendre",
+        "outcomes": [
+          { "chance": 0.4, "text": "Elle les sort de son sac, l'air innocent. Tu passes en dernière seconde.", "effects": { "happiness": 2 }, "spe": { "reputation": 1 } },
+          { "chance": 0.6, "text": "Elle nie, l'habilleuse s'en mêle, tu rates ton passage.", "effects": { "happiness": -8 }, "spe": { "reputation": -3, "gainPct": -3 } }
+        ]
+      },
+      {
+        "label": "Emprunter une paire",
+        "outcomes": [
+          { "text": "Deux pointures trop grandes. Tu marches avec une concentration de funambule, et ça donne une démarche intrigante.", "effects": { "happiness": 4 }, "spe": { "reputation": 3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0014",
+    "carriere": "mannequin",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Huit mois sans un jour de repos. Tu oublies dans quelle ville tu te réveilles, et tu pleures dans un ascenseur sans savoir pourquoi.",
+    "choices": [
+      {
+        "label": "Tout annuler un mois",
+        "outcomes": [
+          { "text": "Tu laisses tomber deux contrats. Tu dors douze heures par nuit pendant une semaine.", "effects": { "health": 10, "happiness": 8 }, "spe": { "forme": 15, "gainPct": -15, "reputation": -2 } }
+        ]
+      },
+      {
+        "label": "Tenir jusqu'à la fin de saison",
+        "outcomes": [
+          { "chance": 0.5, "text": "Tu tiens. À peine. Le repos de fin de saison ressemble à un effondrement.", "effects": { "health": -8, "happiness": -8, "setFlags": ["burn_out"] }, "spe": { "forme": -12, "gainPct": 10 } },
+          { "chance": 0.5, "text": "Tu fais un malaise sur un plateau. L'arrêt est imposé par le médecin.", "effects": { "health": -12, "happiness": -10, "setFlags": ["burn_out"] }, "spe": { "forme": -15, "blessure": 1 } }
+        ]
+      },
+      {
+        "label": "Consulter un psy",
+        "costPct": 3,
+        "outcomes": [
+          { "text": "Tu apprends à dire non à {agence}. Tu le dis deux fois cette année. C'est un début.", "effects": { "health": 5, "happiness": 7, "smarts": 2 }, "spe": { "forme": 8 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0015",
+    "carriere": "mannequin",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "Quatre villes en cinq jours, trois fuseaux horaires. À 4 h du matin, tu es parfaitement réveillé{e} et à 15 h, tu dors debout pendant un essayage.",
+    "choices": [
+      {
+        "label": "Café sur café",
+        "outcomes": [
+          { "chance": 0.6, "text": "Tu tiens, mais tes mains tremblent sur les photos de près.", "effects": { "health": -5, "happiness": -2 }, "spe": { "forme": -6, "gainPct": 5 } },
+          { "chance": 0.4, "text": "Palpitations dans l'avion. Une hôtesse te fait respirer dans un sac.", "effects": { "health": -8, "happiness": -5 }, "spe": { "forme": -8 } }
+        ]
+      },
+      {
+        "label": "Imposer une nuit de sommeil",
+        "outcomes": [
+          { "text": "Tu rates un dîner avec un client, mais tu es parfait{e} le lendemain sur le plateau.", "effects": { "health": 4, "happiness": 3 }, "spe": { "forme": 6, "reputation": 1 } }
+        ]
+      },
+      {
+        "label": "Dormir pendant l'essayage",
+        "outcomes": [
+          { "text": "Le créateur trouve ton air absent « très juste ». Il te met en ouverture. Tu ne t'en souviens pas.", "effects": { "happiness": 5, "health": -2 }, "spe": { "reputation": 4 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0016",
+    "carriere": "mannequin",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "minAge": 20,
+    "text": "Une réalisatrice t'a remarqué{e} dans une publicité et te propose un petit rôle dans son film. Trois scènes, deux répliques.",
+    "choices": [
+      {
+        "label": "Accepter et prendre des cours",
+        "costPct": 4,
+        "outcomes": [
+          { "chance": 0.6, "text": "Tu joues juste, avec beaucoup de naturel. On te propose déjà autre chose. Une nouvelle porte s'ouvre.", "effects": { "happiness": 10, "smarts": 3, "fame": 4, "setFlags": ["mannequin_acteur"] }, "spe": { "reputation": 6, "gainPct": 5 } },
+          { "chance": 0.4, "text": "Tu es raide comme un cintre. Le monteur coupe une de tes répliques.", "effects": { "happiness": -4, "smarts": 2 }, "spe": { "reputation": -1 } }
+        ]
+      },
+      {
+        "label": "Accepter sans préparation",
+        "outcomes": [
+          { "chance": 0.3, "text": "Talent brut. La critique remarque ta présence.", "effects": { "happiness": 10, "fame": 4, "setFlags": ["mannequin_acteur"] }, "spe": { "reputation": 5, "gainPct": 4 } },
+          { "chance": 0.7, "text": "Une critique écrit que tu « joues comme on pose ». Ça pique.", "effects": { "happiness": -7 }, "spe": { "reputation": -3 } }
+        ]
+      },
+      {
+        "label": "Refuser, le cinéma ce n'est pas toi",
+        "outcomes": [
+          { "text": "Tu restes dans ton couloir. Il est déjà assez rempli.", "effects": { "happiness": 1 }, "spe": { "forme": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0017",
+    "carriere": "mannequin",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "minAge": 22,
+    "text": "Après des années à porter les créations des autres, tu as un carnet plein de croquis. Un atelier te propose de lancer une petite collection.",
+    "choices": [
+      {
+        "label": "Investir tes économies",
+        "costPct": 20,
+        "outcomes": [
+          { "chance": 0.4, "text": "La collection se vend en dix jours. La presse parle d'une « première collection étonnamment maîtrisée ».", "effects": { "happiness": 14, "smarts": 4, "fame": 5, "setFlags": ["mannequin_styliste"] }, "spe": { "reputation": 8, "gainPct": 30 } },
+          { "chance": 0.6, "text": "Les pièces sont belles mais mal coupées. Il te reste beaucoup de stock et une leçon.", "effects": { "happiness": -6, "smarts": 5 }, "spe": { "gainPct": -10 } }
+        ]
+      },
+      {
+        "label": "Dessiner les modèles toi-même",
+        "requiresSkill": { "dessin": 3 },
+        "outcomes": [
+          { "text": "Tes croquis impressionnent l'atelier. Ils prennent le risque à leur charge et te versent des droits.", "effects": { "happiness": 12, "skills": { "dessin": 5 }, "setFlags": ["mannequin_styliste"] }, "spe": { "reputation": 8, "gainPct": 15 } }
+        ]
+      },
+      {
+        "label": "Attendre d'être prêt{e}",
+        "outcomes": [
+          { "text": "Le carnet retourne dans le tiroir. Tu continues à le remplir le soir.", "effects": { "happiness": -2, "smarts": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0018",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 1,
+    "text": "{agence} te loge dans un « appartement de mannequins » : six personnes, deux chambres, un loyer prélevé directement sur tes cachets. Il est trois fois trop cher.",
+    "choices": [
+      {
+        "label": "Rester, c'est pratique",
+        "outcomes": [
+          { "chance": 0.5, "text": "Tu te fais deux amis pour la vie et une ennemie qui vole ton fromage.", "effects": { "happiness": 4, "money": -1500 }, "spe": { "gainPct": -10 } },
+          { "chance": 0.5, "text": "Tu dors mal, tu manges mal, et ta dette envers l'agence grossit.", "effects": { "happiness": -5, "health": -3 }, "spe": { "gainPct": -15, "forme": -4 } }
+        ]
+      },
+      {
+        "label": "Trouver une colocation",
+        "outcomes": [
+          { "text": "{agence} est vexée, mais tu paies moitié moins pour une chambre à toi.", "effects": { "happiness": 6, "money": -800 }, "spe": { "reputation": -1 } }
+        ]
+      },
+      {
+        "label": "Contester les frais",
+        "outcomes": [
+          { "chance": 0.5, "text": "Ils baissent le loyer pour tout le monde. Tes colocataires t'offrent un gâteau.", "effects": { "happiness": 7, "karma": 4 }, "spe": { "gainPct": 5 } },
+          { "chance": 0.5, "text": "On te fait comprendre que les contestataires ont moins de castings.", "effects": { "happiness": -6 }, "spe": { "reputation": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0019",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 2,
+    "text": "Shooting de maillots de bain pour l'été prochain. On est en février, sur une plage, il fait 4 degrés et le vent souffle à 60 km/h.",
+    "choices": [
+      {
+        "label": "Sourire comme en août",
+        "outcomes": [
+          { "chance": 0.6, "text": "Personne ne devine que tes lèvres sont bleues. Le client est ravi.", "effects": { "health": -4, "happiness": 2 }, "spe": { "reputation": 4, "gainPct": 4 } },
+          { "chance": 0.4, "text": "Les photos sont parfaites. La bronchite qui suit, beaucoup moins.", "effects": { "health": -9, "happiness": -3 }, "spe": { "reputation": 3, "forme": -6 } }
+        ]
+      },
+      {
+        "label": "Exiger des pauses au chaud",
+        "outcomes": [
+          { "text": "Le photographe grogne, mais l'équipe entière te remercie. La séance dure deux heures de plus.", "effects": { "health": 2, "happiness": 3, "karma": 2 }, "spe": { "reputation": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0020",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 0,
+    "text": "Catalogue d'hiver : tu poses dans quarante-deux pulls tricotés, dont un avec un renne en relief qui clignote.",
+    "choices": [
+      {
+        "label": "Jouer le jeu à fond",
+        "outcomes": [
+          { "text": "Ton sourire de renne devient la photo de couverture du catalogue. Ta famille l'encadre.", "effects": { "happiness": 6 }, "spe": { "reputation": 3, "gainPct": 5 } }
+        ]
+      },
+      {
+        "label": "Garder un air digne",
+        "outcomes": [
+          { "text": "Tu poses comme si c'était de la haute couture. Le résultat est étrangement réussi.", "effects": { "happiness": 3, "looks": 1 }, "spe": { "reputation": 2, "gainPct": 3 } }
+        ]
+      },
+      {
+        "label": "Négocier le pull en bonus",
+        "outcomes": [
+          { "chance": 0.7, "text": "Tu repars avec le renne qui clignote. Tu l'adores en secret.", "effects": { "happiness": 5 } },
+          { "chance": 0.3, "text": "On te répond que les échantillons ne sortent pas. Le renne te regarde partir.", "effects": { "happiness": -1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0021",
+    "carriere": "mannequin",
+    "minNiveau": 2,
+    "maxNiveau": 3,
+    "text": "Un créateur veut te raser la tête pour son défilé. « C'est la vision. » Tu as deux autres contrats où tes cheveux sont précisés dans le contrat.",
+    "choices": [
+      {
+        "label": "Accepter la tondeuse",
+        "outcomes": [
+          { "chance": 0.5, "text": "Le défilé fait la une. Ta nouvelle tête aussi. On t'appelle « la révélation ».", "effects": { "happiness": 8, "fame": 3 }, "spe": { "reputation": 10, "gainPct": 8 } },
+          { "chance": 0.5, "text": "Les deux autres clients rompent leur contrat. La vision coûte cher.", "effects": { "happiness": -6 }, "spe": { "reputation": 3, "gainPct": -12 } }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          { "text": "Il trouve quelqu'un d'autre. Tes cheveux et tes autres contrats sont saufs.", "effects": { "happiness": 1 }, "spe": { "gainPct": 3 } }
+        ]
+      },
+      {
+        "label": "Proposer une perruque",
+        "outcomes": [
+          { "chance": 0.5, "text": "Il hésite, puis adore l'idée d'une perruque assumée. Compromis artistique.", "effects": { "happiness": 6, "smarts": 2 }, "spe": { "reputation": 5 } },
+          { "chance": 0.5, "text": "« Une perruque ? Tu insultes la vision. » Porte.", "effects": { "happiness": -3 }, "spe": { "reputation": -1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0022",
+    "carriere": "mannequin",
+    "minNiveau": 0,
+    "maxNiveau": 1,
+    "text": "Une marque en vogue te propose une séance « payée en visibilité ». Et en un sac en toile.",
+    "choices": [
+      {
+        "label": "Accepter pour le book",
+        "outcomes": [
+          { "chance": 0.4, "text": "Les photos sont superbes et attirent un vrai client payant.", "effects": { "happiness": 6 }, "spe": { "reputation": 5, "gainPct": 6 } },
+          { "chance": 0.6, "text": "Personne ne voit les photos. Le sac en toile, par contre, est solide.", "effects": { "happiness": -3, "money": -60 } }
+        ]
+      },
+      {
+        "label": "Demander un vrai cachet",
+        "outcomes": [
+          { "chance": 0.5, "text": "Ils trouvent un petit budget. Tu viens d'apprendre que ça se demande.", "effects": { "happiness": 5, "smarts": 2 }, "spe": { "gainPct": 3 } },
+          { "chance": 0.5, "text": "Ils prennent quelqu'un qui travaille gratuitement. Tant pis pour eux.", "effects": { "happiness": -1, "smarts": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0023",
+    "carriere": "mannequin",
+    "minNiveau": 2,
+    "maxNiveau": 4,
+    "text": "Défilé en talons de 14 cm sur un podium mouillé. Au demi-tour, ta cheville part de travers.",
+    "choices": [
+      {
+        "label": "Te relever et finir",
+        "outcomes": [
+          { "chance": 0.6, "text": "Le public applaudit ta classe. La vidéo de la chute tourne quand même en boucle.", "effects": { "happiness": 2, "health": -4, "fame": 3 }, "spe": { "reputation": 4 } },
+          { "chance": 0.4, "text": "Tu finis, mais l'entorse est grave. Plusieurs semaines sans talons.", "effects": { "health": -10, "happiness": -6 }, "spe": { "reputation": 2, "blessure": 1 } }
+        ]
+      },
+      {
+        "label": "Enlever les chaussures",
+        "outcomes": [
+          { "text": "Tu finis pieds nus, chaussures à la main. Une photographe en fait l'image de la saison.", "effects": { "happiness": 7, "health": -2 }, "spe": { "reputation": 6 } }
+        ]
+      },
+      {
+        "label": "Quitter le podium",
+        "outcomes": [
+          { "text": "Le médecin du défilé te dit que tu as bien fait. Le créateur, moins.", "effects": { "health": 2, "happiness": -3 }, "spe": { "reputation": -2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0024",
+    "carriere": "mannequin",
+    "minNiveau": 1,
+    "maxNiveau": 3,
+    "text": "Le client a payé {agence} il y a cinq mois. Toi, tu n'as toujours rien reçu. « La compta a du retard. »",
+    "choices": [
+      {
+        "label": "Attendre encore",
+        "outcomes": [
+          { "chance": 0.5, "text": "L'argent arrive au bout de huit mois, moins des « frais de virement ».", "effects": { "happiness": -3, "money": -200 }, "spe": { "gainPct": 3 } },
+          { "chance": 0.5, "text": "L'agence est en difficulté. Tu ne reverras peut-être jamais cette somme.", "effects": { "happiness": -8 }, "spe": { "gainPct": -10 } }
+        ]
+      },
+      {
+        "label": "Envoyer une mise en demeure",
+        "costPct": 2,
+        "outcomes": [
+          { "chance": 0.7, "text": "Le virement arrive en 48 heures. Magique.", "effects": { "happiness": 5, "smarts": 3 }, "spe": { "gainPct": 8, "reputation": -1 } },
+          { "chance": 0.3, "text": "Ils paient, puis arrêtent de te proposer des castings.", "effects": { "happiness": -2 }, "spe": { "gainPct": 6, "reputation": -4 } }
+        ]
+      },
+      {
+        "label": "Contacter les autres mannequins",
+        "outcomes": [
+          { "text": "Vous êtes douze dans le même cas. La plainte collective fait trembler l'agence.", "effects": { "happiness": 6, "karma": 5 }, "spe": { "gainPct": 6, "reputation": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0025",
+    "carriere": "mannequin",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "La nouvelle campagne de {marque} sort. Sur l'affiche, ta taille a été affinée, ta peau lissée et un de tes grains de beauté a disparu.",
+    "choices": [
+      {
+        "label": "Laisser couler",
+        "outcomes": [
+          { "text": "C'est le jeu. Mais en te regardant dans le miroir le soir, tu te trouves soudain « pas fini{e} ».", "effects": { "happiness": -5, "looks": -1 }, "spe": { "gainPct": 3 } }
+        ]
+      },
+      {
+        "label": "Publier l'original",
+        "outcomes": [
+          { "chance": 0.6, "text": "La comparaison fait le tour du web. Le public t'adore, {marque} beaucoup moins.", "effects": { "happiness": 8, "fame": 6, "karma": 3 }, "spe": { "reputation": 4, "gainPct": -8 } },
+          { "chance": 0.4, "text": "{marque} invoque ta clause de confidentialité. Ton avocat soupire.", "effects": { "happiness": -6 }, "spe": { "reputation": 2, "gainPct": -15 } }
+        ]
+      },
+      {
+        "label": "En parler à {marque}",
+        "outcomes": [
+          { "chance": 0.5, "text": "Ils acceptent de limiter les retouches pour la suite. Petite victoire.", "effects": { "happiness": 5 }, "spe": { "reputation": 2 } },
+          { "chance": 0.5, "text": "« C'est l'image de marque, pas toi. » Merci, c'est clair.", "effects": { "happiness": -4 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0026",
+    "carriere": "mannequin",
+    "minNiveau": 2,
+    "maxNiveau": 3,
+    "text": "Essayage de dernière minute : la robe de défilé a été coupée pour quelqu'un d'autre. Le créateur te regarde comme si c'était ta faute.",
+    "choices": [
+      {
+        "label": "Rentrer le ventre et respirer peu",
+        "outcomes": [
+          { "chance": 0.6, "text": "Tu fais le passage en apnée. Le résultat est sublime, ta tête tourne un peu.", "effects": { "health": -3, "happiness": 2 }, "spe": { "reputation": 3 } },
+          { "chance": 0.4, "text": "La couture craque au milieu du podium. Le bruit s'entend jusqu'au troisième rang.", "effects": { "happiness": -8, "fame": 2 }, "spe": { "reputation": -3 } }
+        ]
+      },
+      {
+        "label": "Demander la couturière",
+        "outcomes": [
+          { "text": "Elle fait des miracles avec trois épingles et un regard noir vers le créateur.", "effects": { "happiness": 4 }, "spe": { "reputation": 2 } }
+        ]
+      },
+      {
+        "label": "Rappeler que ce n'est pas toi le problème",
+        "outcomes": [
+          { "chance": 0.5, "text": "Il se calme et s'excuse presque. Presque.", "effects": { "happiness": 4 }, "spe": { "reputation": 1 } },
+          { "chance": 0.5, "text": "Il te remplace par la personne pour qui la robe était coupée.", "effects": { "happiness": -5 }, "spe": { "reputation": -2, "gainPct": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0027",
+    "carriere": "mannequin",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "Des photos de toi à une fête, verre à la main et chemise de travers, sortent dans un magazine people. {marque} évoque la clause de moralité.",
+    "choices": [
+      {
+        "label": "S'excuser publiquement",
+        "outcomes": [
+          { "text": "Message sobre, regard contrit. L'affaire est oubliée en une semaine.", "effects": { "happiness": -3 }, "spe": { "reputation": -1 } }
+        ]
+      },
+      {
+        "label": "Assumer avec humour",
+        "requiresSkill": { "humour": 3 },
+        "outcomes": [
+          { "text": "Ta réponse est si drôle que {marque} la reprend dans sa prochaine publicité.", "effects": { "happiness": 8, "fame": 4 }, "spe": { "reputation": 5, "gainPct": 5 } }
+        ]
+      },
+      {
+        "label": "Contester la clause",
+        "outcomes": [
+          { "chance": 0.5, "text": "Ton avocat démontre qu'une fête n'est pas une faute. {marque} recule.", "effects": { "happiness": 5, "smarts": 2 }, "spe": { "reputation": 1 } },
+          { "chance": 0.5, "text": "{marque} rompt le contrat. Le milieu retient surtout que tu as perdu.", "effects": { "happiness": -10 }, "spe": { "reputation": -6, "gainPct": -25 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0028",
+    "carriere": "mannequin",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "Quelqu'un t'écrit cent messages par jour, connaît ton adresse, et t'attendait hier devant ton immeuble avec des fleurs et une photo de toi encadrée.",
+    "choices": [
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          { "chance": 0.6, "text": "La police prend l'affaire au sérieux. Une mesure d'éloignement est prononcée.", "effects": { "happiness": 4, "health": 2 }, "spe": { "forme": 3 } },
+          { "chance": 0.4, "text": "« Il n'a rien fait de grave. » Tu vérifies trois fois ta serrure chaque soir.", "effects": { "happiness": -10, "setFlags": ["anxieux"] }, "spe": { "forme": -6 } }
+        ]
+      },
+      {
+        "label": "Engager une sécurité",
+        "costPct": 8,
+        "outcomes": [
+          { "text": "Un agent discret t'accompagne quelques mois. Tu respires de nouveau.", "effects": { "happiness": 6, "health": 3 }, "spe": { "forme": 4 } }
+        ]
+      },
+      {
+        "label": "Déménager discrètement",
+        "costPct": 5,
+        "outcomes": [
+          { "text": "Nouvelle adresse, nouveau numéro. Tu effaces ta géolocalisation de toutes tes photos.", "effects": { "happiness": 2, "smarts": 3, "money": -2000 }, "spe": { "forme": 2 } }
+        ]
+      }
+    ]
+  }
+]

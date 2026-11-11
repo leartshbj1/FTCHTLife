@@ -386,7 +386,14 @@ enum GloireMoteur {
 
     // MARK: - Année
 
+    /// Gloire apportée chaque année par une carrière spéciale (MMA, mannequin, musicien… docs/CARRIERES_SPECIALES.md).
+    static func gloireDeCarriere(_ j: Joueur) -> Int {
+        guard let c = j.speciales?.carriere, c.niveau >= 2 else { return 0 }
+        return c.niveau * 4 + c.reputation / 15
+    }
+
     static func passerAnnee(_ j: inout Joueur) -> [String] {
+        ajouterGloire(gloireDeCarriere(j), &j)
         guard var e = j.gloire else { return [] }
         var lignes: [String] = []
         var bonus = 0

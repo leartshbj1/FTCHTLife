@@ -131,6 +131,7 @@ extension GameEngine {
         t.formUnion(CoeurSysteme.tags(j))
         t.formUnion(BeauteMoteur.tags(j))
         t.formUnion(SecteMoteur.tags(j.sectes))
+        t.formUnion(SpeMoteur.tags(j.speciales))
         t.formUnion(AgenceMoteur.tags(j.agences))
         t.formUnion(VoyMoteur.tags(j.voyages, age: j.age))
         t.formUnion(GloireMoteur.tags(j))
@@ -205,6 +206,7 @@ extension GameEngine {
         lignes += bilanEntreprises(&j)
         lignes += secteAnnee(&j)
         lignes += agenceAnnee(&j)
+        lignes += specialesAnnee(&j)
         lignes += GloireMoteur.passerAnnee(&j)
         passageAnneeBoutique(&j)
 
@@ -280,6 +282,7 @@ extension GameEngine {
         ameSoeurAvantTirage()
         secteAvantTirage()
         agenceAvantTirage()
+        specialesAvantTirage()
     }
 
     /// Événements en plus de la bibliothèque (crises du monde, retombées télé).
@@ -346,6 +349,7 @@ extension GameEngine {
         vivantApresChoix(e, choix: index, issue: k, &j)
         secteApresChoix(e, choix: index, issue: k, &j)
         agenceApresChoix(e, choix: index, issue: k, &j)
+        specialesApresChoix(e, choix: index, issue: k, &j)
         revesMettreAJour(&j, etat: \.reves)
     }
 
@@ -373,6 +377,7 @@ extension GameEngine {
         if let adieu = AmeSoeur.adieu(j) { ajouterLigne(&j, adieu) }
         if j.sectes?.actuelle != nil { fermerSecte(&j, fin: "mort") }
         if j.agences?.actuelle != nil { fermerAgence(&j, fin: "mort") }
+        specialesMort(&j)
         if var rf = j.reputationFamille {
             _ = ReputationFamille.bilanDeVie(joueur: j, etat: &rf)
             j.reputationFamille = rf

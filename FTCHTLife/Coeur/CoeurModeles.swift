@@ -41,6 +41,10 @@ struct CoeurEffets: Codable, Equatable {
     var scandale: Int?
     /// Variation du lien avec la personne visée par une carte d'action ({cible}).
     var lienCible: Int?
+    /// Contraception du couple : "pilule", "sterilet", "implant", "preservatif" ou "aucune" (arrêt).
+    var contraception: String?
+    /// Le joueur rompt avec son/sa partenaire (cartes « Rompre » seulement ; jamais pour un couple protégé).
+    var rupture: Bool?
 }
 
 // MARK: - État sauvegardé
@@ -110,11 +114,15 @@ struct CoeurEtat: Codable, Equatable {
     var actionsAnnee: [String] = []
     /// Proche visé par la carte d'action en cours ({cible}, effet lienCible).
     var cibleCarte: UUID?
+    /// Contraception en cours ("pilule", "sterilet", "implant", "preservatif"), nil = aucune.
+    var contraception: String?
+    /// Partenaire qui la prend (joueur homme) ; nil = la joueuse elle-même.
+    var contraceptionDe: UUID?
 
     enum CodingKeys: String, CodingKey {
         case liaison, anciennes, grossesseLiaison, parentGrossesse, enfantsCaches, paterniteDouteuse, ecartsCaches
         case partenaireInfidele, trahi, soupconJoueur, tromperies, decouvertes, pardons, crise, therapie
-        case relationLibre, actionsAnnee, cibleCarte
+        case relationLibre, actionsAnnee, cibleCarte, contraception, contraceptionDe
     }
 
     init() {}
@@ -140,6 +148,8 @@ struct CoeurEtat: Codable, Equatable {
         relationLibre = try c.decodeIfPresent(Bool.self, forKey: .relationLibre) ?? false
         actionsAnnee = try c.decodeIfPresent([String].self, forKey: .actionsAnnee) ?? []
         cibleCarte = try c.decodeIfPresent(UUID.self, forKey: .cibleCarte)
+        contraception = try c.decodeIfPresent(String.self, forKey: .contraception)
+        contraceptionDe = try c.decodeIfPresent(UUID.self, forKey: .contraceptionDe)
     }
 
     /// Enfants cachés que le/la partenaire ne connaît pas.

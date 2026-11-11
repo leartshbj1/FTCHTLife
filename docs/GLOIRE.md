@@ -15,6 +15,7 @@ Une seule jauge pour tout le jeu, 0 à 100 % : la célébrité du module Télé 
   désormais (avant, il était ignoré). Branché dans `modulesAppliquer` et `appliquerEffetsCarriere`.
 - Barre dorée « Gloire » sous les stats de l'écran principal dès 10 % (`GloireMoteur.gloireAffichee`).
 - Statut : Parfait inconnu → Vaguement connu → Célébrité locale → Visage connu → Star nationale → Superstar → Icône mondiale.
+- Carrières spéciales (docs/CARRIERES_SPECIALES.md) : dès le rang 2, +4 par rang + réputation / 15 chaque année.
 - À 60 % : le rêve « célèbre » est marqué.
 
 ## Activités → Célébrité

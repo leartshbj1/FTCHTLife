@@ -8,10 +8,11 @@ import validate_events as V
 
 ROOT = V.ROOT
 # Âges des proches pour lesquels chaque action est proposée (CoeurActionProche.pour).
-ACTIONS = {"nuit": (18, 120), "avenir": (0, 120), "surprise": (0, 120),
+ACTIONS = {"conversation": (0, 120), "nuit": (18, 120), "anniversaire": (0, 120), "avenir": (0, 120), "surprise": (0, 120),
+           "contraception": (16, 120), "therapie": (18, 120), "vendre": (16, 120), "insulter": (0, 120), "rompre": (0, 120),
            "jouer": (0, 12), "devoirs": (6, 17), "parlerVie": (11, 20), "punir": (4, 17), "argentPoche": (8, 25),
            "conduite": (16, 22), "conseilAdulte": (18, 120), "visite": (0, 120), "sortie": (0, 120)}
-PARTENAIRE = {"nuit", "avenir", "surprise"}
+PARTENAIRE = {"conversation", "nuit", "anniversaire", "avenir", "surprise", "contraception", "therapie", "vendre", "insulter", "rompre"}
 # Pas de rupture ni de tromperie dans une carte avec le/la partenaire (couple protégé, voir docs/COEUR.md).
 INTERDIT_PARTENAIRE = {"ecart", "liaison", "decouverte", "partenaireInfidele", "relationLibre", "trahisonDecouverte"}
 V.PH |= {"cible", "cible_il", "cible_lui", "cible_le", "cible_e"}
@@ -37,15 +38,23 @@ def main():
             if c.get("cibleGenre") not in (None, "male", "female"): errs.append(f"{w}: cibleGenre invalide")
             if a in PARTENAIRE and not (c.get("conditions") or {}).get("requiresPartner"):
                 errs.append(f"{w}: une carte {a} exige requiresPartner")
-            for ch in c.get("choices", []):
-                for o in ch.get("outcomes", []):
-                    co = (o.get("effects") or {}).get("coeur") or {}
-                    if a in PARTENAIRE and INTERDIT_PARTENAIRE & set(co):
-                        errs.append(f"{w}: effet coeur interdit dans une carte avec le/la partenaire : {sorted(INTERDIT_PARTENAIRE & set(co))}")
-                    vie = (o.get("effects") or {}).get("vie") or {}
-                    if vie.get("breakup"): errs.append(f"{w}: pas de rupture dans une carte d'action")
-                    if vie.get("pregnancy") and "couple_fertile" not in ((c.get("conditions") or {}).get("tags") or []):
-                        errs.append(f"{w}: une grossesse exige le tag couple_fertile")
+            def issues(choices):
+                for ch in choices or []:
+                    for o in ch.get("outcomes", []):
+                        yield o
+                        yield from issues((o.get("then") or {}).get("choices"))
+            for o in issues(c.get("choices")):
+                co = (o.get("effects") or {}).get("coeur") or {}
+                if a in PARTENAIRE and INTERDIT_PARTENAIRE & set(co):
+                    errs.append(f"{w}: effet coeur interdit dans une carte avec le/la partenaire : {sorted(INTERDIT_PARTENAIRE & set(co))}")
+                vie = (o.get("effects") or {}).get("vie") or {}
+                if vie.get("breakup"): errs.append(f"{w}: pas de rupture dans une carte d'action (coeur.rupture, cartes rompre seulement)")
+                if co.get("rupture") and a != "rompre": errs.append(f"{w}: coeur.rupture seulement dans une carte rompre")
+                if co.get("contraception") and a not in ("contraception", "nuit", "conversation", "avenir"):
+                    errs.append(f"{w}: coeur.contraception seulement dans une carte de couple")
+                tg = (c.get("conditions") or {}).get("tags") or []
+                if vie.get("pregnancy") and "couple_fertile" not in tg and "couple_fertile_protege" not in tg:
+                    errs.append(f"{w}: une grossesse exige le tag couple_fertile (ou couple_fertile_protege)")
     for e in errs: print("ERREUR", e)
     print("Cartes par action :", ", ".join(f"{k} {par_action.get(k, 0)}" for k in ACTIONS))
     sys.argv = [sys.argv[0]] + files
