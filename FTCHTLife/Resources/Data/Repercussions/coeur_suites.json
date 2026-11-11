@@ -1,0 +1,1205 @@
+[
+  {
+    "id": "rep_coe_0001",
+    "on": "coeur_suite",
+    "delay": [
+      0,
+      0
+    ],
+    "category": "amour",
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "{partenaire} a tout découvert, et reste. Mais la confiance est en miettes : chaque retard, chaque vibration du téléphone devient une question. Que fais-tu ?",
+    "choices": [
+      {
+        "label": "Proposer une thérapie de couple",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{partenaire} accepte du bout des lèvres. Tous les mardis, vous déballez tout devant une inconnue et une boîte de mouchoirs. C'est un début.",
+            "effects": {
+              "money": -2400,
+              "happiness": -2,
+              "relationships": {
+                "partner": 5
+              },
+              "coeur": {
+                "therapie": 2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "« Tu crois qu'une inconnue va réparer ce que tu as cassé ? » Vous y allez quand même. L'ambiance dans la voiture est polaire.",
+            "effects": {
+              "money": -2400,
+              "happiness": -5,
+              "relationships": {
+                "partner": -2
+              },
+              "coeur": {
+                "therapie": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jurer que c'est fini",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{partenaire} te regarde longtemps, puis hoche la tête. « Je te crois. Ne me fais pas regretter. »",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "partner": 6
+              },
+              "setFlags": [
+                "culpabilite_amoureuse"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "« Tu as déjà juré, la dernière fois. » Tes promesses ont perdu leur valeur, comme une monnaie dévaluée.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "partner": -10
+              },
+              "setFlags": [
+                "culpabilite_amoureuse"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un geste fort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Un voyage à Lisbonne, comme au début. {partenaire} pleure au bord du Tage, de colère puis de tendresse. Un peu des deux.",
+            "effects": {
+              "money": -3000,
+              "happiness": 5,
+              "relationships": {
+                "partner": 10
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le voyage est magnifique et inutile : {partenaire} passe ses journées à demander « et là, tu penses à qui ? ».",
+            "effects": {
+              "money": -3000,
+              "happiness": -5,
+              "relationships": {
+                "partner": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir toi-même",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ne supportes plus ce regard blessé. Tu fais ta valise. Le soulagement et la honte voyagent dans le même sac.",
+            "effects": {
+              "happiness": -8,
+              "karma": -2,
+              "vie": {
+                "breakup": true
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0002",
+    "on": "coeur_suite",
+    "delay": [
+      0,
+      0
+    ],
+    "category": "amour",
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Tu sais maintenant que {partenaire} te trompe. Les excuses, les larmes, les « ça ne voulait rien dire » : tout est sur la table. À toi de décider.",
+    "choices": [
+      {
+        "label": "Pardonner",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu pardonnes. Ce n'est pas oublier, c'est décider de rester. Et il faudra redécider chaque jour.",
+            "effects": {
+              "happiness": -4,
+              "karma": 4,
+              "relationships": {
+                "partner": 6
+              },
+              "coeur": {
+                "pardon": true
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu pardonnes, mais la nuit, tu rejoues la scène en boucle. Pardonner prend plus de temps que le dire.",
+            "effects": {
+              "happiness": -8,
+              "health": -2,
+              "relationships": {
+                "partner": 2
+              },
+              "coeur": {
+                "pardon": true
+              },
+              "setFlags": [
+                "insomniaque"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Quitter {partenaire}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Une valise et ta dignité. Les premières semaines sont atroces. Puis un matin, tu respires mieux.",
+            "effects": {
+              "happiness": -12,
+              "vie": {
+                "breakup": true
+              },
+              "setFlags": [
+                "coeur_brise"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu claques la porte. Le soir même, tu manges des céréales dans le noir, libre et dévasté{e}.",
+            "effects": {
+              "happiness": -15,
+              "vie": {
+                "breakup": true
+              },
+              "setFlags": [
+                "coeur_brise"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te venger avec un écart",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une nuit avec quelqu'un d'autre, pour égaliser le score. Le score ne s'égalise pas. Il double.",
+            "effects": {
+              "happiness": -6,
+              "coeur": {
+                "ecart": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger une thérapie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes conditions : thérapie de couple, téléphone sur la table, et plus jamais de « réunion tardive ». {partenaire} signe tout.",
+            "effects": {
+              "money": -2400,
+              "happiness": -2,
+              "relationships": {
+                "partner": 4
+              },
+              "coeur": {
+                "therapie": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0003",
+    "on": "tromperie_subie",
+    "remember": [
+      "s_est_fait_tromper",
+      "mefiant_en_amour"
+    ]
+  },
+  {
+    "id": "rep_coe_0004",
+    "on": "tromperie_subie",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "setFlags": [
+      "coeur_brise"
+    ],
+    "text": "Découvrir la trahison de quelqu'un qu'on aime laisse une marque. Cette année, même les chansons d'amour à la radio te donnent envie de jeter le poste par la fenêtre.",
+    "effects": {
+      "happiness": -6
+    }
+  },
+  {
+    "id": "rep_coe_0005",
+    "on": "tromperie_subie",
+    "chance": 0.5,
+    "delay": [
+      2,
+      4
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "excludeTags": [
+        "trahi",
+        "crise_couple"
+      ]
+    },
+    "text": "Depuis la trahison d'autrefois, faire confiance est devenu un sport de combat. Quand {partenaire} annonce « je rentre tard », ton cœur fait une embardée.",
+    "choices": [
+      {
+        "label": "En parler à {partenaire}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{partenaire} écoute sans se vexer et te laisse le temps. Il existe des gens patients. Tu en as trouvé.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "partner": 8
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "« Je ne suis pas la personne qui t'a fait ça. » C'est vrai. Mais ton cœur a du mal à faire la différence.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "partner": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vérifier en douce",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Rien à signaler, à part ta propre culpabilité, qui, elle, est bien réelle.",
+            "effects": {
+              "happiness": -3,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{partenaire} te surprend téléphone en main. « Tu m'espionnes ? » Tu paies pour les fautes de quelqu'un d'autre.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "partner": -10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre sur toi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ravales l'angoisse. Elle ressort la nuit, sous forme d'insomnies.",
+            "effects": {
+              "happiness": -3,
+              "setFlags": [
+                "insomniaque"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0006",
+    "on": "tromperie_decouverte",
+    "chance": 0.5,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Depuis que ta tromperie a éclaté, tes amis choisissent leur camp. Au dernier anniversaire, la table était coupée en deux, comme un gâteau mal partagé.",
+    "choices": [
+      {
+        "label": "Appeler {ami} pour t'expliquer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{ami} écoute sans juger. « Tu as fait une bêtise, pas un crime. » Tu gardes au moins ça.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "friend": 8
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{ami} répond par un vocal de trois secondes : « Pas maintenant. » Plus douloureux qu'un long discours.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "friend": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser faire le temps",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le temps fait le tri. Tu perds la moitié du groupe, et tu découvres qui t'aimait vraiment.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Repartir de zéro ailleurs",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu t'inscris à un club de randonnée où personne ne connaît ton histoire. Le dénivelé est rude, l'anonymat délicieux.",
+            "effects": {
+              "happiness": 3,
+              "health": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0007",
+    "on": "tromperie_decouverte",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "tags": [
+        "ex"
+      ]
+    },
+    "text": "Quelque temps après le scandale, {ex}, ton ex, raconte ta tromperie à qui veut l'entendre, avec des détails inventés et un talent de conteur insoupçonné.",
+    "effects": {
+      "happiness": -6,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_coe_0008",
+    "on": "tromperie_decouverte",
+    "chance": 0.4,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "setFlags": [
+      "solitaire"
+    ],
+    "text": "Un an après que tout a éclaté, l'appartement est bien trop calme. Tu parles à ta plante verte. Elle ne répond pas, mais au moins, elle ne te juge pas.",
+    "effects": {
+      "happiness": -8
+    }
+  },
+  {
+    "id": "rep_coe_0009",
+    "on": "tromperie_decouverte",
+    "chance": 0.5,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "tags": [
+        "influencer"
+      ]
+    },
+    "setFlags": [
+      "honte_publique"
+    ],
+    "text": "Ta tromperie a fuité sur Twitteur. Le mot-dièse à ton prénom reste trois jours en tendance. Ta grand-mère l'a vu, et elle a des questions.",
+    "effects": {
+      "happiness": -10,
+      "looks": -2
+    }
+  },
+  {
+    "id": "rep_coe_0010",
+    "on": "liaison_fin",
+    "chance": 0.4,
+    "delay": [
+      2,
+      6
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "excludeTags": [
+        "liaison",
+        "relation_libre"
+      ]
+    },
+    "text": "Des années après la fin de ta liaison, un message arrive d'un numéro que tu n'as jamais effacé : « Je pense encore à nous, parfois. Et toi ? »",
+    "choices": [
+      {
+        "label": "Répondre la vérité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Quelques messages doux-amers, puis vous vous souhaitez une belle vie. Cette fois, c'est vraiment fini, et c'est bien.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu passes la nuit à relire de vieux messages. Le passé sent toujours aussi bon, et fait toujours aussi mal.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Effacer le numéro",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu effaces enfin ce numéro. Ton pouce tremble un peu. Ton cœur, beaucoup moins qu'avant.",
+            "effects": {
+              "happiness": 3,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un café",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un café, puis deux. Le passé a le chic pour revenir par la porte de service.",
+            "effects": {
+              "happiness": 4,
+              "karma": -4,
+              "coeur": {
+                "liaison": "debut",
+                "via": "autre"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0011",
+    "on": "liaison_fin",
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "L'année d'après la fin de ta liaison, tu passes devant le petit café de vos rendez-vous secrets. Ils ont changé la devanture. Tu ralentis sans le vouloir.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_coe_0012",
+    "on": "liaison_fin",
+    "chance": 0.35,
+    "delay": [
+      0,
+      0
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "excludeTags": [
+        "liaison"
+      ]
+    },
+    "text": "Ta liaison terminée, tu rentres à l'heure et tu es là le dimanche. {partenaire} trouve que tu as changé. Tu ne peux pas dire pourquoi.",
+    "effects": {
+      "happiness": 2,
+      "karma": 1,
+      "relationships": {
+        "partner": 4
+      }
+    }
+  },
+  {
+    "id": "rep_coe_0013",
+    "on": "liaison_officialisee",
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Un an après avoir tout quitté pour {partenaire}, la passion clandestine est devenue un quotidien de chaussettes sales et de factures. Sans le frisson du secret, que reste-t-il ?",
+    "choices": [
+      {
+        "label": "Tout l'essentiel",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vous riez des mêmes choses, même devant la machine à laver. Ce n'était pas qu'une histoire d'interdit.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "partner": 10
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il reste… des chaussettes. Parfois, vous vous demandez si c'était le secret que vous aimiez.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "partner": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer aux amants cachés",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous vous donnez rendez-vous dans des hôtels sous de faux noms, comme avant. C'est ridicule, et ça marche.",
+            "effects": {
+              "money": -300,
+              "happiness": 6,
+              "relationships": {
+                "partner": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Regretter ta vie d'avant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repenses à ton ancien foyer, à ses petites habitudes. L'herbe était plus verte ailleurs, mais c'était du gazon synthétique.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "partner": -5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0014",
+    "on": "liaison_officialisee",
+    "chance": 0.5,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ],
+      "requiresPartner": true
+    },
+    "text": "Tes enfants refusent de rencontrer {partenaire}. Pour eux, ce n'est pas une histoire d'amour : c'est la personne qui a cassé la famille.",
+    "effects": {
+      "happiness": -8,
+      "relationships": {
+        "child": -10
+      }
+    }
+  },
+  {
+    "id": "rep_coe_0015",
+    "on": "liaison_officialisee",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "tags": [
+        "ex"
+      ]
+    },
+    "text": "Quelque temps après ton départ, {ex} a refait sa vie. Sur les photos, le sourire est plus large qu'avec toi. Tu ne sais pas si tu dois être soulagé{e} ou vexé{e}.",
+    "effects": {
+      "happiness": -2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_coe_0016",
+    "on": "enfant_cache_ne",
+    "chance": 0.5,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "tags": [
+        "enfant_cache"
+      ]
+    },
+    "text": "On t'envoie une photo de {enfant_cache}. Ton menton, ton air buté. Aucun doute possible. Et maintenant ?",
+    "choices": [
+      {
+        "label": "Verser une pension",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chaque mois, un virement part en silence. Ce n'est pas de l'amour, mais c'est de la responsabilité.",
+            "effects": {
+              "happiness": 2,
+              "coeur": {
+                "enfantCache": "pension"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reconnaître {enfant_cache}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu signes les papiers. {enfant_cache} portera ton nom. Il va falloir l'annoncer, et ça, aucun papier ne le fait à ta place.",
+            "effects": {
+              "happiness": 4,
+              "coeur": {
+                "enfantCache": "reconnaitre"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comme si de rien",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ranges la photo au fond d'un tiroir. Elle y pèse plus lourd que tout le reste de la commode.",
+            "effects": {
+              "happiness": -5,
+              "setFlags": [
+                "anxieux"
+              ],
+              "coeur": {
+                "enfantCache": "cacher"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0017",
+    "on": "enfant_cache_ne",
+    "chance": 0.4,
+    "delay": [
+      2,
+      5
+    ],
+    "conditions": {
+      "tags": [
+        "enfant_cache"
+      ]
+    },
+    "text": "Chaque année, à l'anniversaire de {enfant_cache}, tu fixes ton téléphone sans oser écrire. Cette année encore, le message reste en brouillon.",
+    "effects": {
+      "happiness": -5
+    }
+  },
+  {
+    "id": "rep_coe_0018",
+    "on": "enfant_cache_revele",
+    "chance": 0.5,
+    "delay": [
+      0,
+      1
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Depuis la révélation de ton enfant caché, les repas de famille ont la chaleur d'un congélateur. {partenaire} veut rencontrer cet enfant : « Je veux voir à quoi ressemble ton mensonge. »",
+    "choices": [
+      {
+        "label": "Organiser la rencontre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'enfant tend la main à {partenaire}, très poliment. {partenaire} craque. De ce côté-là, il n'y a pas de coupable.",
+            "effects": {
+              "happiness": 5,
+              "karma": 3,
+              "relationships": {
+                "partner": 6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Rencontre glaciale. L'enfant ressent tout, {partenaire} aussi. Retour en voiture dans un silence de plomb.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "partner": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, c'est trop tôt",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{partenaire} y voit un nouveau secret. Ce n'en est pas un, mais ça y ressemble beaucoup.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "partner": -8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0019",
+    "on": "enfant_cache_revele",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Tes enfants ont appris l'existence d'un demi-frère ou d'une demi-sœur. Le plus jeune trouve ça génial. Le plus grand ne te parle plus.",
+    "effects": {
+      "happiness": -6,
+      "relationships": {
+        "child": -8
+      }
+    }
+  },
+  {
+    "id": "rep_coe_0020",
+    "on": "enfant_cache_revele",
+    "chance": 0.3,
+    "delay": [
+      5,
+      10
+    ],
+    "unique": true,
+    "text": "Des années après la révélation, une lettre arrive. Écriture appliquée : « Je voulais juste te dire que je ne t'en veux pas. » Tu la relis vingt fois.",
+    "effects": {
+      "happiness": 8,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_coe_0021",
+    "on": "therapie_couple",
+    "chance": 0.6,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Un an après le début de votre thérapie de couple, la thérapeute vous demande de noter votre relation sur 10, chacun sur un papier plié.",
+    "choices": [
+      {
+        "label": "Déplier en même temps",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Deux « 7 ». Fou rire. Ce n'est pas parfait, mais vous êtes enfin d'accord sur quelque chose.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "partner": 10
+              },
+              "coeur": {
+                "crise": 0
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Toi : 7. {partenaire} : 3. Le trajet du retour dure une éternité.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "partner": -6
+              }
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Toi : 3. {partenaire} : 8. Tu culpabilises de ton chiffre, puis tu comprends qu'il était honnête.",
+            "effects": {
+              "happiness": -4,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Arrêter la thérapie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vous arrêtez. Vous avez appris à vous disputer sans vous blesser. C'est déjà énorme.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "partner": 4
+              },
+              "coeur": {
+                "therapie": 0
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Vous arrêtez trop tôt. Trois semaines plus tard, la vieille dispute du lave-vaisselle revient.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "partner": -4
+              },
+              "coeur": {
+                "therapie": 0
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0022",
+    "on": "therapie_couple",
+    "chance": 0.35,
+    "delay": [
+      2,
+      3
+    ],
+    "text": "Ton ancienne thérapeute de couple t'envoie une carte de vœux : « J'espère que vous remplissez toujours le lave-vaisselle ensemble. » Tu ne sais pas si c'est de l'humour.",
+    "effects": {
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_coe_0023",
+    "on": "relation_libre",
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "tags": [
+        "relation_libre"
+      ]
+    },
+    "text": "Depuis que votre couple est ouvert, les voisins ont remarqué les allers-retours. Sur le palier, la voisine du dessous demande si « c'est un nouveau colocataire ou un cousin ».",
+    "choices": [
+      {
+        "label": "Expliquer franchement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle écoute, puis soupire : « Avec mon mari, on aurait dû essayer en 1987. » Elle t'apporte des madeleines depuis.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle fait le tour de l'immeuble avec l'information. Le syndic parle de vous en assemblée générale.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "« Un cousin. »",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le cousin change de visage tous les mois. La voisine a dessiné un arbre généalogique. Il est très large.",
+            "effects": {
+              "happiness": -2,
+              "karma": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_coe_0024",
+    "on": "relation_libre",
+    "chance": 0.4,
+    "delay": [
+      1,
+      3
+    ],
+    "conditions": {
+      "requiresPartner": true,
+      "tags": [
+        "relation_libre"
+      ]
+    },
+    "text": "Votre agenda partagé de relation libre compte maintenant trois couleurs, deux rappels et un conflit d'horaire tous les jeudis. L'amour moderne, c'est surtout de la logistique.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_coe_0025",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "mefiant_en_amour"
+      ],
+      "requiresPartner": true
+    },
+    "text": "Depuis la trahison d'autrefois, tu vérifies parfois le téléphone de {partenaire} en douce. Tu n'y trouves jamais rien, à part ta propre peur.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_coe_0026",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "mefiant_en_amour"
+      ],
+      "flagMinYears": {
+        "mefiant_en_amour": 4
+      }
+    },
+    "clearFlags": [
+      "mefiant_en_amour"
+    ],
+    "text": "Un jour, tu remarques que tu ne surveilles plus les téléphones de personne. La méfiance s'est éteinte sans bruit. Ton cœur a cicatrisé.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_coe_0027",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "culpabilite_amoureuse"
+      ],
+      "requiresPartner": true
+    },
+    "text": "La culpabilité de ton infidélité passée te rattrape au détour d'un compliment de {partenaire}. Tu souris, et ça te serre le ventre.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_coe_0028",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "culpabilite_amoureuse"
+      ],
+      "flagMinYears": {
+        "culpabilite_amoureuse": 3
+      }
+    },
+    "clearFlags": [
+      "culpabilite_amoureuse"
+    ],
+    "text": "Tu as fini par te pardonner à toi-même. Ce n'est pas une excuse : c'est juste la permission de vivre à nouveau.",
+    "effects": {
+      "happiness": 4,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_coe_0029",
+    "on": "coeur_suite",
+    "delay": [
+      1,
+      1
+    ],
+    "category": "amour",
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Un an après votre week-end de la dernière chance, {partenaire} ressort la photo floue prise sous la pluie et l'accroche dans l'entrée. Ce n'était pas la dernière chance : c'était la première d'une nouvelle série.",
+    "effects": {
+      "happiness": 6,
+      "relationships": {
+        "partner": 6
+      },
+      "coeur": {
+        "crise": 0
+      }
+    }
+  },
+  {
+    "id": "rep_coe_0030",
+    "on": "coeur_suite",
+    "delay": [
+      1,
+      1
+    ],
+    "category": "amour",
+    "conditions": {
+      "requiresPartner": true,
+      "tags": [
+        "partner",
+        "ecart_secret"
+      ]
+    },
+    "text": "Le chantage de ton ancien écart reprend : nouveau message, nouveau tarif. « 3 000 €, et je disparais pour de bon. Promis. »",
+    "choices": [
+      {
+        "label": "Payer encore",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Silence. Pour combien de temps ? Ton compte en banque te regarde comme un chien abandonné.",
+            "effects": {
+              "money": -3000,
+              "happiness": -8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu paies, et le message arrive quand même chez {partenaire}. Tu as payé pour rien, et tout perdu.",
+            "effects": {
+              "money": -3000,
+              "happiness": -15,
+              "coeur": {
+                "decouverte": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La police prend l'affaire au sérieux. Le chantage s'arrête net. Tu respires, enfin.",
+            "effects": {
+              "happiness": 3,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La convocation au commissariat arrive à la maison. {partenaire} l'ouvre.",
+            "effects": {
+              "happiness": -12,
+              "coeur": {
+                "decouverte": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout dire à {partenaire}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu coupes l'herbe sous le pied du maître chanteur. La soirée est terrible, mais plus personne ne te tient.",
+            "effects": {
+              "happiness": -10,
+              "karma": 4,
+              "coeur": {
+                "decouverte": true
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
