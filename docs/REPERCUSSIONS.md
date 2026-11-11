@@ -156,6 +156,7 @@ Au plus 3 états avec texte sont affichés par an (les règles sans texte ne com
 - Guérison / sortie : `"conditions": {"flags": ["coeur_brise"], "flagMinYears": {"coeur_brise": 2}}, "chance": 0.4, "clearFlags": ["coeur_brise"], "text": "…"`.
 - Aggravation : `flagMinYears` long → `setFlags` d'un état plus grave, ou maladie, ou mort rare.
 - `flagMinYears` / `flagMaxYears` (dans `conditions` ou `requires`) : depuis combien d'années le drapeau est posé.
+- Cartes de métier (`rep_met_`, `metiers_vie_*.json`, docs/METIERS_VIE.md) : `"conditions": {"tags": ["metier_<id>"]}` + `unique`, et drapeau `a_ete_<id>` pour les cartes d'après le métier.
 
 ### Drapeaux d'état (vocabulaire commun)
 

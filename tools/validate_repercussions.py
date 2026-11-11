@@ -124,7 +124,7 @@ def verifier_conditions(c, ou, erreurs, autorises):
             erreurs.append(f"{ou} : champ inconnu « {k} »")
         elif k in ("tags", "excludeTags"):
             for t in v or []:
-                if t not in TAGS:
+                if t not in TAGS and not t.startswith(("metier_", "secteur_")):
                     # Les modules ajoutent leurs propres tags (prison, origine_<pays>…) : simple avertissement.
                     AVERT.append(f"{ou} : tag « {t} » hors de la liste de base (tag de module ?)")
         elif k in ("flags", "excludeFlags"):
