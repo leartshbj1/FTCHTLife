@@ -35,6 +35,7 @@ Une suite se déclenche sur un **signal** (`"on"`) :
 Sens précis de quelques signaux amour : `tromperie` = le joueur trompe ; `tromperie_decouverte` = la tromperie du joueur est découverte ; `demande_mariage` = demande acceptée (fiançailles), `demande_refusee` sinon ; `largue` = le joueur se fait quitter ; `meilleur_ami` = quelqu'un devient le meilleur ami du joueur (textes avec `{ami}`).
 
 `vie_suite` : signal jamais émis, réservé aux suites du module amour/crime/santé qui ne sont programmées que par `followUps`.
+`entourage_suite` : pareil pour les suites du module entourage (`rep_ent_*`). Une suite programmée par `followUps` ne doit pas avoir en plus un `"on": "event:…"` qui correspond au même choix, sinon elle arrive deux fois.
 
 Un module peut ajouter ses propres signaux : il suffit de les émettre et de les ajouter à ce tableau.
 

@@ -37,6 +37,26 @@ SPECIAL |= {"death","newFriend","relationships","setFlags","clearFlags","followU
 PH |= {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e","enfant","ex","codetenu","grandparent"}
 COND |= {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
 SPECIAL |= {"death","newFriend","relationships","setFlags","skills"}  # skills : docs/COMPETENCES.md
+# Module entourage (docs/ENTOURAGE.md) : tags EntourageTags.tags et sous-objet "entourage".
+TAGS |= {"couple_2ans","couple_5ans","enfant_bebe","enfant_petit","enfant_ado","enfant_adulte","parent_age","parent_tres_age","poste_nouveau","poste_ancien","carriere"}
+SPECIAL |= {"entourage"}
+ENTOURAGE = {"fiancailles","mariage","offreEmploi","niveau","salaireBonus","demission","signaux"}
+def _metiers():
+    ids, secteurs = set(), set()
+    for f in glob.glob(os.path.join(ROOT, "FTCHTLife/Resources/Data/Careers/*.json")):
+        for c in json.load(open(f, encoding="utf-8")):
+            ids.add(c["id"]); secteurs.add(c["sector"])
+    return ids, secteurs
+METIERS, SECTEURS = _metiers()
+def check_entourage(v, where, errs):
+    if not isinstance(v, dict): errs.append(f"{where}: entourage doit être un objet"); return
+    for k in v:
+        if k not in ENTOURAGE: errs.append(f"{where}: clé entourage inconnue {k}")
+    o = v.get("offreEmploi")
+    if o is not None:
+        if o.startswith("secteur:"):
+            if o[8:] not in SECTEURS: errs.append(f"{where}: secteur inconnu {o}")
+        elif o not in ("auto", "meme_secteur") and o not in METIERS: errs.append(f"{where}: métier inconnu {o}")
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
@@ -48,6 +68,7 @@ def check_effects(e, where, errs):
             if not isinstance(v, dict) or any(r not in REL for r in v): errs.append(f"{where}: relationships invalide {v}")
         elif k == "skills":
             if not isinstance(v, dict) or any(x not in SKILLS for x in v): errs.append(f"{where}: skills invalide {v}")
+        elif k == "entourage": check_entourage(v, where, errs)
         elif k not in SPECIAL: errs.append(f"{where}: clé d'effet inconnue {k}")
 def check_text(t, where, errs):
     if not isinstance(t,str) or not t.strip(): errs.append(f"{where}: texte vide"); return

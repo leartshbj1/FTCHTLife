@@ -121,6 +121,7 @@ extension GameEngine {
         t.formUnion(MondeJournal.tagsJoueur(j.monde ?? MondeEtat()))
         t.formUnion(tagsAnimaux(j, cle: \.animaux))
         if let v = VoisinageStockage.lire(j) { t.formUnion(VoisinageMoteur.tags(v)) }
+        t.formUnion(EntourageTags.tags(j))
         return t
     }
 
@@ -292,6 +293,7 @@ extension GameEngine {
             for ligne in VieSysteme.apresIssue(evenementId: e.id, effets: fx, &j) { ajouterLigne(&j, ligne) }
         }
         for ligne in Competences.apresChoix(c, &j) { ajouterLigne(&j, ligne) }
+        for ligne in entourageAppliquer(issue?.effects?.entourage, &j) { ajouterLigne(&j, ligne) }
         if e.id.hasPrefix("suc_") {
             var etat = j.succession ?? SuccessionEtat()
             Successions.apresChoix(evenementId: e.id, choix: index, issue: k ?? 0, joueur: j, etat: &etat)
@@ -308,6 +310,7 @@ extension GameEngine {
         if let fx = e.effects?.vie {
             for ligne in VieSysteme.apresIssue(evenementId: e.id, effets: fx, &j) { ajouterLigne(&j, ligne) }
         }
+        for ligne in entourageAppliquer(e.effects?.entourage, &j) { ajouterLigne(&j, ligne) }
     }
 
     func modulesRemplir(_ texte: String, _ j: Joueur) -> String {

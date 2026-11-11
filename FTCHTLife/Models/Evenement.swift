@@ -33,6 +33,8 @@ struct Effets: Codable, Equatable {
     var familyRep: [String: Int]?
     /// Marques des rêves de vie. Voir docs/reves-format.md.
     var dreamMarks: [String]?
+    /// Module entourage (fiançailles, mariage, offre d'emploi…). Voir docs/ENTOURAGE.md.
+    var entourage: EntourageEffets?
 }
 
 struct ConditionsEvenement: Codable, Equatable {

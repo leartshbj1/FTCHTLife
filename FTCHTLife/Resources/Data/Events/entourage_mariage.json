@@ -1,0 +1,448 @@
+[
+ {
+  "id": "ent_cpl_0001",
+  "category": "amour",
+  "minAge": 20,
+  "maxAge": 75,
+  "weight": 7,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "dating",
+    "couple_2ans"
+   ],
+   "excludeTags": [
+    "engaged",
+    "married",
+    "prison"
+   ],
+   "excludeFlags": [
+    "mariage_promis",
+    "union_libre"
+   ]
+  },
+  "text": "Un dimanche matin, {partenaire} pose sa tasse, te regarde droit dans les yeux et dit : « Ça fait un moment qu'on est ensemble. Alors, quand est-ce qu'on se marie ? »",
+  "choices": [
+   {
+    "label": "Faire ta demande, là",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu poses un genou à terre entre le grille-pain et la poubelle, avec un anneau de canette en guise de bague. {partenaire} dit oui en pleurant dans ses céréales. La vraie bague suit la semaine d'après.",
+      "effects": {
+       "happiness": 14,
+       "money": -1500,
+       "relationships": {
+        "partner": 15
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu fais ta demande, {partenaire} éclate de rire : « Je voulais juste savoir si tu y pensais ! » Puis dit oui quand même, et appelle sa mère dans la foulée.",
+      "effects": {
+       "happiness": 10,
+       "money": -1500,
+       "relationships": {
+        "partner": 10
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "« Bientôt, promis »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} hoche la tête et note la date dans son téléphone. Tu sens que ce « bientôt » a désormais une échéance.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "partner": -6
+       },
+       "setFlags": [
+        "mariage_promis"
+       ],
+       "followUps": [
+        "rep_ent_mar_0001"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Je ne veux pas me marier",
+    "outcomes": [
+     {
+      "chance": 0.45,
+      "text": "{partenaire} encaisse, puis respecte ton choix : « Pas besoin d'un papier pour s'aimer. » Vous restez ensemble, sans mairie.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": -8
+       },
+       "setFlags": [
+        "union_libre"
+       ]
+      }
+     },
+     {
+      "chance": 0.35,
+      "text": "Le silence qui suit dure trois jours. {partenaire} dort sur le canapé et parle au chat plutôt qu'à toi.",
+      "effects": {
+       "happiness": -9,
+       "relationships": {
+        "partner": -20
+       },
+       "setFlags": [
+        "couple_en_froid"
+       ]
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "{partenaire} fait sa valise le soir même : « Je ne vais pas attendre toute ma vie quelqu'un qui ne veut pas de moi. »",
+      "effects": {
+       "happiness": -16,
+       "relationships": {
+        "partner": -30
+       },
+       "vie": {
+        "breakup": true
+       },
+       "setFlags": [
+        "coeur_brise"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Préparer une vraie surprise",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais semblant d'esquiver, puis tu organises en secret une demande au sommet de la colline où vous vous êtes rencontrés, avec un violoniste. {partenaire} dit oui avant la fin de ta phrase.",
+      "effects": {
+       "happiness": 18,
+       "money": -2500,
+       "relationships": {
+        "partner": 22
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     }
+    ],
+    "requiresSkill": {
+     "eloquence": 3
+    }
+   }
+  ]
+ },
+ {
+  "id": "ent_cpl_0002",
+  "category": "amour",
+  "minAge": 20,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "dating",
+    "couple_2ans",
+    "mother"
+   ],
+   "excludeTags": [
+    "engaged",
+    "married",
+    "prison"
+   ],
+   "excludeFlags": [
+    "mariage_promis",
+    "union_libre"
+   ]
+  },
+  "text": "Au repas de famille, entre le fromage et le dessert, {mere} lance devant tout le monde : « Bon, et vous deux, c'est pour quand le mariage ? » Douze paires d'yeux se tournent vers toi. {partenaire} aussi attend la réponse.",
+  "choices": [
+   {
+    "label": "Faire ta demande devant tous",
+    "outcomes": [
+     {
+      "chance": 0.8,
+      "text": "Tu te lèves, tu prends la main de {partenaire} et tu fais ta demande entre deux parts de tarte. Oui ! Ta mère pleure, ton oncle filme à l'envers.",
+      "effects": {
+       "happiness": 15,
+       "money": -1500,
+       "relationships": {
+        "partner": 15,
+        "mother": 10
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     },
+     {
+      "chance": 0.2,
+      "text": "Tu fais ta demande, {partenaire} dit oui, mais te glisse plus tard : « Devant ta famille, sérieusement ? » Ça reste un oui.",
+      "effects": {
+       "happiness": 8,
+       "money": -1500,
+       "relationships": {
+        "partner": 4,
+        "mother": 10
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "« C'est prévu, on en parle »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Toute la table applaudit une annonce que tu n'as pas faite. {partenaire} sourit, et compte bien te tenir à ta parole.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "mother": 5,
+        "partner": -2
+       },
+       "setFlags": [
+        "mariage_promis"
+       ],
+       "followUps": [
+        "rep_ent_mar_0001"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer de sujet",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu parles du prix de l'essence pendant vingt minutes. Personne n'est dupe, surtout pas {partenaire}, qui ne t'adresse plus la parole dans la voiture.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "partner": -10,
+        "mother": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_cpl_0003",
+  "category": "amour",
+  "minAge": 20,
+  "maxAge": 60,
+  "weight": 5,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "dating",
+    "couple_2ans",
+    "friend"
+   ],
+   "excludeTags": [
+    "engaged",
+    "married",
+    "prison"
+   ],
+   "excludeFlags": [
+    "mariage_promis",
+    "union_libre"
+   ]
+  },
+  "text": "Au mariage de {ami}, {partenaire} attrape le bouquet au vol, le serre contre son cœur… et te fixe pendant toute la chanson suivante.",
+  "choices": [
+   {
+    "label": "Faire ta demande à ton tour",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Tu demandes le micro au DJ et tu fais ta demande sur la piste. {partenaire} dit oui ; {ami} un peu moins enthousiaste qu'on lui vole la vedette.",
+      "effects": {
+       "happiness": 14,
+       "money": -1500,
+       "relationships": {
+        "partner": 15,
+        "friend": -6
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Tu fais ta demande sous la tonnelle, loin de la piste, sans voler la vedette à personne. {partenaire} dit oui en chuchotant.",
+      "effects": {
+       "happiness": 14,
+       "money": -1500,
+       "relationships": {
+        "partner": 16
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Promettre « l'an prochain »",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} te fait jurer sur la pièce montée. Tu viens de signer un contrat en chou à la crème.",
+      "effects": {
+       "happiness": 1,
+       "relationships": {
+        "partner": -3
+       },
+       "setFlags": [
+        "mariage_promis"
+       ],
+       "followUps": [
+        "rep_ent_mar_0001"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aller danser la chenille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fuis vers la chenille. {partenaire} la regarde passer, bouquet à la main, sans rire du tout.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": -12
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "ent_cpl_0004",
+  "category": "amour",
+  "minAge": 24,
+  "maxAge": 75,
+  "weight": 5,
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "dating",
+    "couple_5ans"
+   ],
+   "excludeTags": [
+    "engaged",
+    "married",
+    "prison"
+   ],
+   "excludeFlags": [
+    "mariage_promis",
+    "union_libre"
+   ]
+  },
+  "text": "Cinq ans ensemble. Ce matin, un magazine de mariage traîne ouvert sur la table, une page cornée, ton prénom entouré au feutre rouge à côté d'une robe et d'un costume. {partenaire} fait comme si de rien n'était.",
+  "choices": [
+   {
+    "label": "Faire ta demande ce soir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Dîner aux chandelles, bague dans le dessert, {partenaire} manque de l'avaler mais dit oui. Cinq ans de patience récompensés.",
+      "effects": {
+       "happiness": 15,
+       "money": -2000,
+       "relationships": {
+        "partner": 18
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Parler franchement",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous parlez enfin de l'avenir et tombez d'accord : vous vous marierez, et sans traîner. {partenaire} sort même une bague de sa poche, au cas où tu aurais encore hésité. Vous êtes fiancés.",
+      "effects": {
+       "happiness": 12,
+       "relationships": {
+        "partner": 14
+       },
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Vous parlez, et tu avoues que le mariage te fait peur. {partenaire} accepte d'attendre encore un peu, mais pas indéfiniment.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": -4
+       },
+       "setFlags": [
+        "mariage_promis"
+       ],
+       "followUps": [
+        "rep_ent_mar_0001"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ranger le magazine",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ranges le magazine sous une pile de factures. Le lendemain, il est de retour, ouvert à la même page, avec un deuxième cercle rouge.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "partner": -12
+       },
+       "setFlags": [
+        "mariage_promis"
+       ],
+       "followUps": [
+        "rep_ent_mar_0001"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

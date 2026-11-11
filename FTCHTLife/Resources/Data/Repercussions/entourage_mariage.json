@@ -1,0 +1,2002 @@
+[
+ {
+  "id": "rep_ent_mar_0001",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "dating"
+   ],
+   "excludeTags": [
+    "engaged",
+    "married"
+   ],
+   "flags": [
+    "mariage_promis"
+   ]
+  },
+  "text": "{partenaire} revient à la charge : « Tu m'avais dit bientôt. Ça fait plus d'un an. Alors ? »",
+  "choices": [
+   {
+    "label": "Faire ta demande enfin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fais ta demande, sans mise en scène mais avec le cœur. {partenaire} dit oui en soupirant de soulagement : « Il était temps. »",
+      "effects": {
+       "happiness": 12,
+       "money": -1500,
+       "relationships": {
+        "partner": 14
+       },
+       "clearFlags": [
+        "mariage_promis"
+       ],
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander encore du temps",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{partenaire} ne dit rien. Le lendemain, tu trouves un post-it sur le frigo : « Le temps, ça s'use aussi. »",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "partner": -14
+       },
+       "followUps": [
+        "rep_ent_mar_0002"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Avouer tes doutes",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu avoues que le mariage te fait peur. {partenaire} t'écoute, puis propose de rester ensemble sans se marier. Un poids tombe.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "partner": -4
+       },
+       "clearFlags": [
+        "mariage_promis"
+       ],
+       "setFlags": [
+        "union_libre"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu avoues tes doutes. {partenaire} comprend surtout que tu n'y crois pas, et vous vous séparez, tristement, mais sans cris.",
+      "effects": {
+       "happiness": -14,
+       "relationships": {
+        "partner": -25
+       },
+       "clearFlags": [
+        "mariage_promis"
+       ],
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0002",
+  "delay": [
+   1,
+   1
+  ],
+  "on": "entourage_suite",
+  "patience": 1,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "dating"
+   ],
+   "excludeTags": [
+    "engaged",
+    "married"
+   ],
+   "flags": [
+    "mariage_promis"
+   ]
+  },
+  "text": "{partenaire} a préparé un discours : « Je t'aime. Mais soit on se marie, soit on arrête. Tu as jusqu'à dimanche. »",
+  "choices": [
+   {
+    "label": "On se marie",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu dis oui avant dimanche. {partenaire} te serre si fort que tu entends ton dos craquer. Vous êtes fiancés.",
+      "effects": {
+       "happiness": 10,
+       "money": -1500,
+       "relationships": {
+        "partner": 12
+       },
+       "clearFlags": [
+        "mariage_promis"
+       ],
+       "entourage": {
+        "fiancailles": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "On arrête",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu choisis de partir. Le dimanche est long, et les suivants aussi.",
+      "effects": {
+       "happiness": -15,
+       "relationships": {
+        "partner": -40
+       },
+       "clearFlags": [
+        "mariage_promis"
+       ],
+       "setFlags": [
+        "coeur_brise"
+       ],
+       "vie": {
+        "breakup": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0003",
+  "on": "demande_mariage",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "minMoney": 20001
+  },
+  "text": "Fiançailles faites, place aux choses sérieuses : {partenaire} ouvre un tableur intitulé « MARIAGE (budget) » et tourne l'écran vers toi. Combien vous y mettez ?",
+  "choices": [
+   {
+    "label": "Mairie et barbecue (3 000 €)",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mairie le samedi matin, barbecue dans le jardin l'après-midi. {partenaire} trouve ça « simple et beau ». Ta tante trouve ça « un peu léger ».",
+      "effects": {
+       "money": -3000,
+       "happiness": 4,
+       "relationships": {
+        "partner": 3
+       },
+       "setFlags": [
+        "mariage_budget_petit"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mariage classique (15 000 €)",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Salle, traiteur, DJ, pièce montée : le grand classique. Le compte en banque grimace, mais vous êtes d'accord.",
+      "effects": {
+       "money": -15000,
+       "happiness": 6,
+       "relationships": {
+        "partner": 6
+       },
+       "setFlags": [
+        "mariage_budget_moyen"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0021"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mariage de rêve (60 000 €)",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous visez grand : orchestre, feu d'artifice, robe ou costume sur mesure. {partenaire} a des étoiles dans les yeux. Ton banquier aussi, mais pas les mêmes.",
+      "effects": {
+       "money": -60000,
+       "happiness": 9,
+       "relationships": {
+        "partner": 12
+       },
+       "setFlags": [
+        "mariage_budget_grand"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0022"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout négocier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu négocies chaque devis comme un marchand de tapis. Mariage classique pour 9 000 €, et le traiteur ajoute un plateau de fromages pour que tu partes.",
+      "effects": {
+       "money": -9000,
+       "happiness": 8,
+       "relationships": {
+        "partner": 8
+       },
+       "setFlags": [
+        "mariage_budget_moyen"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0021"
+       ]
+      }
+     }
+    ],
+    "requiresSkill": {
+     "marchandage": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0004",
+  "on": "demande_mariage",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "maxMoney": 20000
+  },
+  "text": "Fiançailles faites, {partenaire} a déjà une liste de lieux, de traiteurs et de musiciens. Problème : ton compte en banque n'a pas lu la liste. Comment vous financez le mariage ?",
+  "choices": [
+   {
+    "label": "Mairie et barbecue",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mairie, jardin, merguez. {partenaire} dit que l'important, c'est d'être ensemble. Tu sens qu'il y a une petite déception sous le sourire.",
+      "effects": {
+       "money": -2500,
+       "happiness": 3,
+       "relationships": {
+        "partner": 1
+       },
+       "setFlags": [
+        "mariage_budget_petit"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Emprunter à la banque",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Crédit de 30 000 € signé. Le conseiller vous offre un stylo « Félicitations ». Vous allez le payer très cher, ce stylo.",
+      "effects": {
+       "money": -3000,
+       "happiness": 7,
+       "relationships": {
+        "partner": 9
+       },
+       "setFlags": [
+        "mariage_budget_moyen",
+        "credit_mariage",
+        "endette"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0021"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander aux parents",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tes parents sortent le livret d'épargne « au cas où ». Le cas est arrivé. Ils paient la moitié et choisiront la moitié du menu.",
+      "effects": {
+       "money": -4000,
+       "happiness": 5,
+       "relationships": {
+        "parent": 6,
+        "partner": 5
+       },
+       "setFlags": [
+        "mariage_budget_moyen"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0021"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tes parents refusent : « On s'est mariés avec trois chaises et un poulet, nous. » Ce sera mairie et barbecue.",
+      "effects": {
+       "money": -2500,
+       "happiness": -3,
+       "relationships": {
+        "parent": -5
+       },
+       "setFlags": [
+        "mariage_budget_petit"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0020"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Organiser tout toi-même",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Déco faite main, buffet cuisiné par toi, playlist sur ton téléphone. Économie énorme, mais tu passes six mois à plier des serviettes en cygne.",
+      "effects": {
+       "money": -5000,
+       "happiness": 2,
+       "health": -3,
+       "relationships": {
+        "partner": 8
+       },
+       "setFlags": [
+        "mariage_budget_moyen"
+       ],
+       "followUps": [
+        "rep_ent_mar_0010",
+        "rep_ent_mar_0021"
+       ]
+      }
+     }
+    ],
+    "requiresSkill": {
+     "bricolage": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0010",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ]
+  },
+  "text": "La liste des invités. {partenaire} en veut « une centaine, max ». Sa famille envoie une liste de 87 cousins. La tienne demande si on invite aussi la voisine qui t'a gardé{e} en 1998.",
+  "choices": [
+   {
+    "label": "Petit comité (30)",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Trente personnes, que des gens que vous aimez vraiment. La moitié de la famille est vexée, l'autre moitié est soulagée de ne pas devoir acheter de cadeau.",
+      "effects": {
+       "money": 3000,
+       "happiness": 4,
+       "relationships": {
+        "parent": -6,
+        "partner": 2
+       },
+       "setFlags": [
+        "mariage_petit_comite"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Toute la famille (150)",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Cent cinquante invités, dont un tiers que tu n'as jamais vus. Ta grand-tante est ravie. Le traiteur aussi : il ajoute 4 000 € à la facture.",
+      "effects": {
+       "money": -4000,
+       "happiness": 3,
+       "relationships": {
+        "parent": 8,
+        "partner": 4
+       },
+       "setFlags": [
+        "mariage_grande_famille"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser {partenaire} décider",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "{partenaire} fait une liste parfaite en une soirée, avec un plan de table digne d'un traité de paix. Tu n'as qu'à signer.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "{partenaire} invite toute sa famille et trois de tes cousins seulement. Ta mère l'apprend par Facebook.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": 3,
+        "parent": -10
+       },
+       "setFlags": [
+        "mariage_grande_famille"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Couper la liste au tableur",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu classes les invités par critères objectifs (« a déjà prêté sa voiture », « danse bien »). Liste parfaite, zéro vexé, un cousin seulement soupçonne quelque chose.",
+      "effects": {
+       "happiness": 6,
+       "money": 1000,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     }
+    ],
+    "requiresSkill": {
+     "code": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0020",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_budget_petit"
+   ]
+  },
+  "text": "Où se marier avec un petit budget ? {partenaire} étale trois idées sur la table, dont une écrite au dos d'un ticket de caisse.",
+  "choices": [
+   {
+    "label": "Le jardin des parents",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le jardin de tes parents sera parfait, une fois la tondeuse passée et le nain de jardin déplacé. Ton père commence à tondre trois mois à l'avance.",
+      "effects": {
+       "happiness": 4,
+       "money": -300,
+       "relationships": {
+        "parent": 6
+       },
+       "setFlags": [
+        "mariage_lieu_jardin"
+       ],
+       "followUps": [
+        "rep_ent_mar_0030"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "La salle des fêtes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Salle des fêtes municipale réservée : néons, carrelage beige et une odeur persistante de loto. Avec des guirlandes, ça passera.",
+      "effects": {
+       "happiness": 2,
+       "money": -600,
+       "setFlags": [
+        "mariage_lieu_salle"
+       ],
+       "followUps": [
+        "rep_ent_mar_0031"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Juste la mairie, puis resto",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mairie, puis restaurant en petit comité. Simple, sobre, et personne ne dansera la macarena. C'est un plus.",
+      "effects": {
+       "happiness": 3,
+       "money": -800,
+       "relationships": {
+        "partner": 4
+       },
+       "setFlags": [
+        "mariage_lieu_resto"
+       ],
+       "followUps": [
+        "rep_ent_mar_0032"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0021",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_budget_moyen"
+   ]
+  },
+  "text": "Choix du lieu. {partenaire} a visité six endroits ce mois-ci et a un avis sur chacun, surtout sur les toilettes.",
+  "choices": [
+   {
+    "label": "Un domaine à la campagne",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un vieux domaine avec des platanes et une grange rénovée. Superbe, sauf s'il pleut. Il ne pleuvra pas. Sûrement.",
+      "effects": {
+       "happiness": 5,
+       "money": -3000,
+       "relationships": {
+        "partner": 6
+       },
+       "setFlags": [
+        "mariage_lieu_domaine"
+       ],
+       "followUps": [
+        "rep_ent_mar_0033"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "La salle des fêtes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Salle des fêtes et budget préservé : le reste ira dans la lune de miel. {partenaire} accepte, avec une légère moue.",
+      "effects": {
+       "happiness": 2,
+       "money": -800,
+       "relationships": {
+        "partner": -2
+       },
+       "setFlags": [
+        "mariage_lieu_salle"
+       ],
+       "followUps": [
+        "rep_ent_mar_0031"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Au pays, dans la famille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous vous marierez dans le village de la famille : trois jours de fête, des tantes partout et un orchestre qui ne s'arrête jamais.",
+      "effects": {
+       "happiness": 6,
+       "money": -2500,
+       "relationships": {
+        "parent": 10
+       },
+       "setFlags": [
+        "mariage_lieu_village"
+       ],
+       "followUps": [
+        "rep_ent_mar_0034"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0022",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_budget_grand"
+   ]
+  },
+  "text": "Pour un mariage de rêve, il faut un lieu de rêve. {partenaire} a créé un tableau d'inspiration de 400 photos. Il faut trancher.",
+  "choices": [
+   {
+    "label": "Un château",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un château du XVIIe, avec douves, jardins à la française et un régisseur qui vous vouvoie même quand vous êtes en jogging.",
+      "effects": {
+       "happiness": 7,
+       "money": -12000,
+       "relationships": {
+        "partner": 8
+       },
+       "setFlags": [
+        "mariage_lieu_chateau"
+       ],
+       "followUps": [
+        "rep_ent_mar_0035"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Une plage à l'étranger",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mariage sur une plage au bout du monde : sable blanc, coucher de soleil, et seulement les invités capables de se payer le billet.",
+      "effects": {
+       "happiness": 8,
+       "money": -15000,
+       "relationships": {
+        "partner": 10,
+        "parent": -4
+       },
+       "setFlags": [
+        "mariage_lieu_plage"
+       ],
+       "followUps": [
+        "rep_ent_mar_0036"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un domaine à la campagne",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un domaine somptueux, mais à 40 minutes de la première gare. Vous louez trois navettes et un tracteur décoré.",
+      "effects": {
+       "happiness": 5,
+       "money": -6000,
+       "relationships": {
+        "partner": 5
+       },
+       "setFlags": [
+        "mariage_lieu_domaine"
+       ],
+       "followUps": [
+        "rep_ent_mar_0033"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0030",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_lieu_jardin"
+   ]
+  },
+  "text": "Le grand jour, dans le jardin de tes parents. Les guirlandes tiennent, le barbecue fume, ton père a mis une cravate. {partenaire} arrive au bout de l'allée de gravier.",
+  "choices": [
+   {
+    "label": "Dire oui, simplement",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Vous dites oui sous le cerisier. Pas de chichis, que des gens qui vous aiment. Le soir, tout le monde danse pieds nus sur la pelouse.",
+      "effects": {
+       "happiness": 20,
+       "relationships": {
+        "partner": 15,
+        "parent": 8
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Vous dites oui… et l'arrosage automatique se déclenche pendant le baiser. Tout le monde est trempé et en rit encore des années après.",
+      "effects": {
+       "happiness": 16,
+       "relationships": {
+        "partner": 12,
+        "parent": 6
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un discours",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ton discours fait pleurer tout le jardin, y compris le voisin qui regardait par-dessus la haie. Ton père t'appelle « mon orateur ».",
+      "effects": {
+       "happiness": 22,
+       "relationships": {
+        "partner": 16,
+        "parent": 10
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ton discours part sur ta collection de timbres d'enfance. Ça dure. {partenaire} te sauve en t'embrassant au milieu d'une phrase.",
+      "effects": {
+       "happiness": 14,
+       "relationships": {
+        "partner": 10
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0031",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_lieu_salle"
+   ]
+  },
+  "text": "Le grand jour à la salle des fêtes. Les guirlandes cachent presque le panneau « Interdit de fumer – Arrêté de 1987 ». {partenaire} est magnifique sous les néons.",
+  "choices": [
+   {
+    "label": "Profiter à fond",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "La salle des fêtes devient la plus belle salle du monde le temps d'une nuit. Le DJ passe trois fois la même chanson ; personne ne s'en plaint.",
+      "effects": {
+       "happiness": 18,
+       "relationships": {
+        "partner": 14
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ton oncle prend le micro à 2 h du matin pour chanter. Le gardien coupe le courant à 2 h 05. Vous finissez la fête à la lampe torche, c'était parfait.",
+      "effects": {
+       "happiness": 15,
+       "relationships": {
+        "partner": 12
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout contrôler",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes la soirée à vérifier le traiteur, la sono et les toilettes. Tout est parfait, tu n'as rien vu de ton propre mariage.",
+      "effects": {
+       "happiness": 8,
+       "health": -3,
+       "relationships": {
+        "partner": 4
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ouvrir le bal en dansant",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous ouvrez le bal sur une chorégraphie répétée en secret. Standing ovation, même de la dame du ménage.",
+      "effects": {
+       "happiness": 22,
+       "relationships": {
+        "partner": 18
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ],
+    "requiresSkill": {
+     "danse": 2
+    }
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0032",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_lieu_resto"
+   ]
+  },
+  "text": "Le grand jour : mairie à 11 h, restaurant à 13 h. Le maire bafouille ton nom de famille, mais il a l'air ému.",
+  "choices": [
+   {
+    "label": "Dire oui",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous dites oui devant vos proches, puis déjeunez jusqu'à 18 h. Petit mariage, grand bonheur.",
+      "effects": {
+       "happiness": 17,
+       "relationships": {
+        "partner": 14
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lire tes propres vœux",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lis des vœux écrits la veille au dos d'un menu. La salle des mariages renifle à l'unisson. Le maire aussi.",
+      "effects": {
+       "happiness": 20,
+       "relationships": {
+        "partner": 18
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0033",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_lieu_domaine"
+   ]
+  },
+  "text": "Le grand jour au domaine. Les platanes, la grange, les lampions… et un ciel qui hésite. La météo annonçait 30 % de risque d'averse.",
+  "choices": [
+   {
+    "label": "Cérémonie dehors",
+    "outcomes": [
+     {
+      "chance": 0.65,
+      "text": "Le soleil sort au moment exact du « oui ». Les photos sont dignes d'un magazine. Tu soupçonnes {partenaire} d'avoir négocié avec la météo.",
+      "effects": {
+       "happiness": 22,
+       "relationships": {
+        "partner": 16
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     },
+     {
+      "chance": 0.35,
+      "text": "L'averse tombe au moment du « oui ». Cent invités sous la grange, robe mouillée, costume trempé : le plus beau souvenir de ta vie, et le plus humide.",
+      "effects": {
+       "happiness": 14,
+       "health": -2,
+       "relationships": {
+        "partner": 12
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout rapatrier dans la grange",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Par prudence, tout se passe dans la grange. Il ne pleut pas une goutte de la journée. {partenaire} te le rappellera à chaque anniversaire.",
+      "effects": {
+       "happiness": 15,
+       "relationships": {
+        "partner": 8
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0034",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_lieu_village"
+   ]
+  },
+  "text": "Le grand jour au village de la famille. Trois jours de fête, l'orchestre joue depuis l'aube, les tantes ont cuisiné pour 400 et il y a 400 invités, dont 150 inconnus.",
+  "choices": [
+   {
+    "label": "Danser trois jours",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu danses trois jours, tu serres 400 mains et tu reçois des enveloppes de tout le village. Tes pieds ne s'en remettent pas, ton compte en banque si.",
+      "effects": {
+       "happiness": 20,
+       "health": -4,
+       "money": 6000,
+       "relationships": {
+        "partner": 12,
+        "parent": 12
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "S'éclipser en amoureux",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous vous éclipsez le deuxième soir pour une nuit à deux. Personne ne remarque votre absence : la fête continue très bien sans les mariés.",
+      "effects": {
+       "happiness": 16,
+       "relationships": {
+        "partner": 16,
+        "parent": -3
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0035",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_lieu_chateau"
+   ]
+  },
+  "text": "Le grand jour au château. Carrosse, quatuor à cordes, pièce montée de deux mètres. Le régisseur te vouvoie, {partenaire} te tutoie avec des larmes dans les yeux.",
+  "choices": [
+   {
+    "label": "Savourer chaque minute",
+    "outcomes": [
+     {
+      "chance": 0.75,
+      "text": "Une journée de conte de fées : feu d'artifice au-dessus des douves, valse sous les lustres. Tu n'as jamais été aussi comblé{e} de toute ta vie.",
+      "effects": {
+       "happiness": 25,
+       "relationships": {
+        "partner": 20
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Le feu d'artifice met le feu à une haie taillée en cygne. Les pompiers arrivent, restent pour le dessert, et apparaissent sur toutes les photos.",
+      "effects": {
+       "happiness": 18,
+       "money": -3000,
+       "relationships": {
+        "partner": 15
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Inviter la presse locale",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le journal local consacre une page à « l'union de l'année ». Ta mère en achète cinquante exemplaires.",
+      "effects": {
+       "happiness": 18,
+       "fame": 5,
+       "relationships": {
+        "partner": 10,
+        "parent": 10
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0036",
+  "on": "entourage_suite",
+  "delay": [
+   1,
+   1
+  ],
+  "patience": 2,
+  "category": "amour",
+  "conditions": {
+   "requiresPartner": true,
+   "tags": [
+    "engaged"
+   ],
+   "excludeTags": [
+    "married",
+    "prison"
+   ],
+   "flags": [
+    "mariage_lieu_plage"
+   ]
+  },
+  "text": "Le grand jour, sur une plage au bout du monde. Pieds nus dans le sable, le soleil se couche, quarante invités ont fait le voyage. Les autres regardent le direct sur leur téléphone.",
+  "choices": [
+   {
+    "label": "Dire oui face à la mer",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Vous dites oui face à l'océan. Un dauphin saute au loin ; tout le monde jure que c'était prévu.",
+      "effects": {
+       "happiness": 24,
+       "relationships": {
+        "partner": 20,
+        "parent": 4
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Une vague géante vient saluer la cérémonie et emporte les alliances. Un plongeur du coin les retrouve contre un pourboire de 200 €.",
+      "effects": {
+       "happiness": 18,
+       "money": -200,
+       "relationships": {
+        "partner": 16
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prolonger en lune de miel",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous dites oui, puis vous restez trois semaines sur place. Lune de miel enchaînée : bronzé{e}, marié{e}, un peu ruiné{e}, et plus heureux que jamais à deux.",
+      "effects": {
+       "happiness": 24,
+       "money": -6000,
+       "health": 4,
+       "relationships": {
+        "partner": 20
+       },
+       "entourage": {
+        "mariage": true
+       },
+       "clearFlags": [
+        "mariage_budget_petit",
+        "mariage_budget_moyen",
+        "mariage_budget_grand",
+        "mariage_lieu_jardin",
+        "mariage_lieu_salle",
+        "mariage_lieu_resto",
+        "mariage_lieu_domaine",
+        "mariage_lieu_village",
+        "mariage_lieu_chateau",
+        "mariage_lieu_plage"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0040",
+  "on": "mariage",
+  "requires": {
+   "flags": [
+    "credit_mariage"
+   ]
+  },
+  "delay": [
+   1,
+   2
+  ],
+  "patience": 2,
+  "category": "argent",
+  "text": "Le crédit du mariage se rappelle à toi : 600 € par mois pour une journée dont tu as surtout retenu le gâteau. La banque propose un « rachat de crédit ».",
+  "choices": [
+   {
+    "label": "Tout rembourser d'un coup",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu vides ton épargne et tu soldes le crédit. Le conseiller a l'air presque déçu.",
+      "effects": {
+       "money": -25000,
+       "happiness": 6,
+       "clearFlags": [
+        "credit_mariage",
+        "endette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer à payer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu continues les mensualités. Encore quelques années à manger des pâtes pour honorer la pièce montée.",
+      "effects": {
+       "happiness": -3,
+       "money": -4000
+      }
+     }
+    ]
+   },
+   {
+    "label": "Accepter le rachat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Mensualités plus basses, durée plus longue : tu paieras ton mariage jusqu'à vos noces de cristal.",
+      "effects": {
+       "happiness": 1,
+       "money": -1500,
+       "setFlags": [
+        "surendette"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0041",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "category": "argent",
+  "conditions": {
+   "flags": [
+    "credit_mariage"
+   ],
+   "flagMinYears": {
+    "credit_mariage": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Mensualité du crédit du mariage prélevée. Sur le relevé, on dirait que tu te maries tous les mois.",
+  "effects": {
+   "money": -3500,
+   "happiness": -2
+  }
+ },
+ {
+  "id": "rep_ent_mar_0042",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "category": "argent",
+  "conditions": {
+   "flags": [
+    "credit_mariage"
+   ],
+   "flagMinYears": {
+    "credit_mariage": 5
+   }
+  },
+  "clearFlags": [
+   "credit_mariage"
+  ],
+  "text": "Dernière mensualité du crédit du mariage ! Vous fêtez ça avec une part de gâteau. Une petite.",
+  "effects": {
+   "happiness": 6
+  }
+ },
+ {
+  "id": "rep_ent_mar_0043",
+  "on": "mariage",
+  "requires": {
+   "flags": [
+    "mariage_petit_comite"
+   ]
+  },
+  "chance": 0.6,
+  "delay": [
+   1,
+   2
+  ],
+  "category": "famille",
+  "conditions": {
+   "requiresPartner": true
+  },
+  "text": "Ta tante Josiane n'a toujours pas digéré de ne pas avoir été invitée à ton mariage. Elle te l'a rappelé à Noël, à Pâques et par lettre recommandée.",
+  "choices": [
+   {
+    "label": "L'inviter à dîner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu l'invites à dîner, elle apporte l'album de ton baptême et fait la paix entre la poire et le fromage.",
+      "effects": {
+       "happiness": 4,
+       "karma": 3,
+       "money": -80,
+       "relationships": {
+        "parent": 4
+       },
+       "clearFlags": [
+        "mariage_petit_comite"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser bouder",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle boude. Elle boude bien. Elle boude même la famille entière sur WhatsApp.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "parent": -3
+       },
+       "clearFlags": [
+        "mariage_petit_comite"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0044",
+  "on": "mariage",
+  "requires": {
+   "flags": [
+    "mariage_grande_famille"
+   ]
+  },
+  "chance": 0.6,
+  "delay": [
+   0,
+   0
+  ],
+  "category": "famille",
+  "conditions": {
+   "requiresPartner": true
+  },
+  "text": "Bilan du mariage à 150 invités : 23 enveloppes, 6 services à raclette, et un cousin inconnu qui te demande maintenant de l'héberger « juste pour l'été ».",
+  "choices": [
+   {
+    "label": "L'héberger",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le cousin reste l'été. Puis l'automne. Il est sympa, mais il dort dans ton bureau.",
+      "effects": {
+       "happiness": -4,
+       "karma": 4,
+       "money": -600,
+       "relationships": {
+        "partner": -5
+       },
+       "clearFlags": [
+        "mariage_grande_famille"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser poliment",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu refuses. Le cousin te supprime de ses amis, que tu ne savais pas avoir.",
+      "effects": {
+       "happiness": 1,
+       "clearFlags": [
+        "mariage_grande_famille"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Revendre les raclettes",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu revends cinq appareils à raclette en ligne et gardes le meilleur. Bénéfice net : 180 € et un peu de honte.",
+      "effects": {
+       "money": 180,
+       "happiness": 3,
+       "clearFlags": [
+        "mariage_grande_famille"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0052",
+  "on": "rupture",
+  "requires": {
+   "flags": [
+    "mariage_budget_moyen"
+   ]
+  },
+  "delay": [
+   0,
+   0
+  ],
+  "chance": 1,
+  "category": "argent",
+  "text": "Mariage annulé. Le traiteur garde les arrhes, le DJ aussi, et la salle t'envoie quand même la facture du ménage.",
+  "effects": {
+   "money": -3000,
+   "happiness": -6
+  }
+ },
+ {
+  "id": "rep_ent_mar_0053",
+  "on": "rupture",
+  "requires": {
+   "flags": [
+    "mariage_budget_grand"
+   ]
+  },
+  "delay": [
+   0,
+   0
+  ],
+  "chance": 1,
+  "category": "argent",
+  "text": "Mariage de rêve annulé. Les acomptes du château, de l'orchestre et du fleuriste sont perdus. Tu gardes la robe ou le costume, en souvenir. Ou pour Halloween.",
+  "effects": {
+   "money": -12000,
+   "happiness": -10
+  }
+ },
+ {
+  "id": "rep_ent_mar_0054",
+  "on": "largue",
+  "requires": {
+   "flags": [
+    "mariage_budget_moyen"
+   ]
+  },
+  "delay": [
+   0,
+   0
+  ],
+  "category": "argent",
+  "text": "Mariage annulé. Le traiteur garde les arrhes, le DJ aussi, et la salle t'envoie quand même la facture du ménage.",
+  "effects": {
+   "money": -3000,
+   "happiness": -6
+  }
+ },
+ {
+  "id": "rep_ent_mar_0055",
+  "on": "largue",
+  "requires": {
+   "flags": [
+    "mariage_budget_grand"
+   ]
+  },
+  "delay": [
+   0,
+   0
+  ],
+  "category": "argent",
+  "text": "Mariage de rêve annulé. Les acomptes du château, de l'orchestre et du fleuriste sont perdus. Il te reste une pièce montée commandée que personne ne viendra chercher.",
+  "effects": {
+   "money": -12000,
+   "happiness": -10
+  }
+ },
+ {
+  "id": "rep_ent_mar_0050",
+  "on": "rupture",
+  "forget": [
+   "mariage_budget_petit",
+   "mariage_budget_moyen",
+   "mariage_budget_grand",
+   "mariage_lieu_jardin",
+   "mariage_lieu_salle",
+   "mariage_lieu_resto",
+   "mariage_lieu_domaine",
+   "mariage_lieu_village",
+   "mariage_lieu_chateau",
+   "mariage_lieu_plage",
+   "mariage_promis",
+   "union_libre",
+   "couple_en_froid",
+   "mariage_petit_comite",
+   "mariage_grande_famille"
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0051",
+  "on": "largue",
+  "forget": [
+   "mariage_budget_petit",
+   "mariage_budget_moyen",
+   "mariage_budget_grand",
+   "mariage_lieu_jardin",
+   "mariage_lieu_salle",
+   "mariage_lieu_resto",
+   "mariage_lieu_domaine",
+   "mariage_lieu_village",
+   "mariage_lieu_chateau",
+   "mariage_lieu_plage",
+   "mariage_promis",
+   "union_libre",
+   "couple_en_froid",
+   "mariage_petit_comite",
+   "mariage_grande_famille"
+  ]
+ },
+ {
+  "id": "rep_ent_mar_0056",
+  "on": "fiancailles_rompues",
+  "forget": [
+   "mariage_budget_petit",
+   "mariage_budget_moyen",
+   "mariage_budget_grand",
+   "mariage_lieu_jardin",
+   "mariage_lieu_salle",
+   "mariage_lieu_resto",
+   "mariage_lieu_domaine",
+   "mariage_lieu_village",
+   "mariage_lieu_chateau",
+   "mariage_lieu_plage",
+   "mariage_petit_comite",
+   "mariage_grande_famille"
+  ]
+ }
+]

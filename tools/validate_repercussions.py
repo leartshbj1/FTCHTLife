@@ -21,14 +21,19 @@ CONDITIONS = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner"
 REQUIRES = {"flags", "excludeFlags", "minCounters", "maxCounters", "flagMinYears", "flagMaxYears"}
 EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame", "relationships",
           "newFriend", "death", "setFlags", "clearFlags", "followUps",
-          "vie"}  # "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
+          "vie", "entourage", "skills"}  # "entourage" : docs/ENTOURAGE.md ; "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
 RELATIONS = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
 TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemployed", "retired", "rich",
         "poor", "friend", "mother", "father", "siblings", "partner", "children", "sick", "attractive", "smart",
         # module permis
         "permis_voiture", "permis_moto", "permis_poids_lourd", "licence_pilote", "conducteur", "sans_permis",
         "permis_suspendu", "permis_annule", "permis_probatoire", "permis_points_bas", "conduit_sans_permis",
-        "faux_permis", "pilote", "chasseur", "chauffard"}
+        "faux_permis", "pilote", "chasseur", "chauffard",
+        # module vie et module entourage
+        "prison", "record", "malade", "bien_portant", "addiction", "pregnant", "ex", "parents", "grandparents",
+        "grandchildren", "dating", "engaged", "married", "single",
+        "couple_2ans", "couple_5ans", "enfant_bebe", "enfant_petit", "enfant_ado", "enfant_adulte", "parent_age",
+        "parent_tres_age", "poste_nouveau", "poste_ancien", "carriere"}
 VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie", "partenaire", "metier", "e",
              "enfant", "ex", "grandparent"}  # module vie
 SIGNAUX = set("""
@@ -43,7 +48,7 @@ deces_proche heritage maladie guerison chirurgie_esthetique hopital achat_maison
 voyage celebrite fiancailles_rompues addiction cure_desintox meilleur_ami
 permis_suspendu permis_annule permis_points_recuperes faux_permis_achete faux_permis_demasque
 conduite_sans_permis_arretee corruption_examinateur corruption_ratee casino_usurier casino_usurier_violence
-vie_suite chaque_annee
+vie_suite entourage_suite chaque_annee
 """.split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
@@ -77,9 +82,9 @@ def verifier_effets(eff, ou, erreurs, ids):
     for k, v in eff.items():
         if k not in EFFETS:
             erreurs.append(f"{ou} : effet inconnu « {k} »")
-        elif k == "vie":
+        elif k in ("vie", "entourage", "skills"):
             if not isinstance(v, dict):
-                erreurs.append(f"{ou} : vie doit être un objet")
+                erreurs.append(f"{ou} : {k} doit être un objet")
         elif k == "relationships":
             for r in v:
                 if r not in RELATIONS:
