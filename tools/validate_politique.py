@@ -14,9 +14,10 @@ RACINE = Path(__file__).resolve().parent.parent / "FTCHTLife" / "Resources" / "D
 POSTES = {"militant", "conseiller", "adjoint", "maire", "depute", "ministre", "president", "any",
           "conseillerRegional", "presidentRegion", "senateur", "presidentAssemblee", "premierMinistre",
           "commissaire", "secretaireGeneral", "chef_parti", "ancien"}
-KINDS = {"dossier", "scandale", "debat", "campagne", "militant", "lobby", "proces", "crise", "parti", "apres", "coalition"}
+KINDS = {"dossier", "scandale", "debat", "campagne", "militant", "lobby", "proces", "crise", "parti", "apres", "coalition", "international", "guerre"}
 PREFIXES = {"dossier": "dos_", "scandale": "sca_", "debat": "deb_", "campagne": "cam_", "militant": "mil_",
-            "lobby": "lob_", "proces": "pro_", "crise": "cri_", "parti": "par_", "apres": "apr_", "coalition": "coa_"}
+            "lobby": "lob_", "proces": "pro_", "crise": "cri_", "parti": "par_", "apres": "apr_", "coalition": "coa_",
+            "international": "itl_", "guerre": "gue_"}
 SEGMENTS = {"jeunes", "retraites", "ruraux", "urbains", "patrons", "fonctionnaires"}
 PAYS = {"dette": 15, "chomage": 3, "croissance": 2, "securite": 15, "moral": 15}
 NIVEAUX = {"municipal": "mun_", "regional": "reg_", "national": "nat_", "international": "int_"}
@@ -25,14 +26,19 @@ EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", 
 RELATIONS = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
 POL = {"popularite", "influence", "casseroles", "loyaute", "caisse", "parrainages", "campagne",
        "finMandat", "ineligibilite", "loi", "abroger", "exclusionParti",
-       "segments", "pays", "mobilisation", "majorite", "rival"}
+       "segments", "pays", "mobilisation", "majorite", "rival",
+       # Scène internationale (PolSommet.swift)
+       "tension", "influenceMondiale", "relationCible", "relationAllie", "relations", "conflit"}
+DOMAINES = {"economie", "social", "securite", "ecologie", "institutions", "international", "urgence"}
 VARIABLES = {"prenom", "nom", "ville", "e", "parti", "poste", "adversaire", "ministere",
              "mere", "pere", "partenaire", "ami", "rival", "pm",
              # Institutions du pays du joueur (Systemes/systemes.json) : jamais en début de phrase.
              "pays", "au_pays", "du_pays", "capitale", "chef_etat",
              "palais", "au_palais", "du_palais", "siege_gouv", "au_siege_gouv", "du_siege_gouv",
              "parlement", "au_parlement", "du_parlement", "senat", "au_senat", "du_senat",
-             "union", "siege_union"}
+             "union", "siege_union",
+             # Pays visés par la diplomatie (le moins ami, le plus proche allié) : jamais en début de phrase.
+             "pays_cible", "au_pays_cible", "du_pays_cible", "pays_allie", "au_pays_allie", "du_pays_allie"}
 REGIMES = {"semi_presidentiel", "presidentiel", "parlementaire", "monarchie_parlementaire", "monarchie_executive",
            "directorial", "parti_unique"}
 POSTES_SYSTEME = {"conseiller", "adjoint", "conseillerRegional", "maire", "presidentRegion", "depute", "senateur",
@@ -126,12 +132,16 @@ def verifier_pol(f, ou, p, ids_lois):
                     err(f, f"{ou}: indicateur de pays inconnu « {pk} »")
                 elif not isinstance(pv, (int, float)) or abs(pv) > PAYS[pk]:
                     err(f, f"{ou}: pays.{pk} doit être un nombre entre -{PAYS[pk]} et {PAYS[pk]}")
+        elif k == "conflit":
+            if v not in (1, -1):
+                err(f, f"{ou}: conflit vaut 1 (déclenche) ou -1 (cessez-le-feu)")
         elif k == "campagne":
             if not isinstance(v, (int, float)):
                 err(f, f"{ou}: campagne doit être un nombre")
         elif not isinstance(v, int):
             err(f, f"{ou}: {k} doit être un entier")
-    for k in ("popularite", "influence", "casseroles", "loyaute", "mobilisation", "majorite", "rival"):
+    for k in ("popularite", "influence", "casseroles", "loyaute", "mobilisation", "majorite", "rival",
+              "tension", "influenceMondiale", "relationCible", "relationAllie", "relations"):
         if isinstance(p.get(k), int) and abs(p[k]) > 40:
             err(f, f"{ou}: {k}={p[k]} trop fort (max ±40)")
 
@@ -263,7 +273,66 @@ def main():
         if isinstance(a.get("money"), int) and abs(a["money"]) > 5000:
             err(f, f"{i}: argent annuel trop fort (max ±5000)")
 
+    decrets = charger("Decrets")
+    for f, d in decrets:
+        i = d.get("id", "?")
+        if i in ids:
+            err(f, f"id en double {i}")
+        ids.add(i)
+        if not i.startswith("dec_"):
+            err(f, f"{i}: l'id d'un décret doit commencer par dec_")
+        for k in ("id", "domaine", "titre", "description", "cout", "effets", "headline", "texte"):
+            if k not in d:
+                err(f, f"{i}: champ manquant {k}")
+        verifier_pays(f, i, d, ids_pays)
+        if d.get("domaine") not in DOMAINES:
+            err(f, f"{i}: domaine inconnu {d.get('domaine')}")
+        c = d.get("cout")
+        if not isinstance(c, int) or not 0 <= c <= 25:
+            err(f, f"{i}: cout (influence) entre 0 et 25")
+        ct = d.get("contestation", 0)
+        if not isinstance(ct, (int, float)) or not 0 <= ct <= 0.8:
+            err(f, f"{i}: contestation entre 0 et 0.8")
+        du = d.get("duree")
+        if du is not None and (not isinstance(du, int) or not 1 <= du <= 10):
+            err(f, f"{i}: duree entre 1 et 10 ans (ou absente)")
+        if d.get("autoritaire") is not None and not isinstance(d["autoritaire"], bool):
+            err(f, f"{i}: autoritaire doit être true/false")
+        for p in d.get("postes") or []:
+            if p not in POSTES_SYSTEME:
+                err(f, f"{i}: poste inconnu {p}")
+        for k in ("titre", "description", "headline", "texte", "texteAnnulation"):
+            if k in d:
+                verifier_texte(f, f"{i}.{k}", d[k])
+        verifier_pol(f, f"{i}.effets", d.get("effets"), ids_lois)
+        verifier_pol(f, f"{i}.annuel", d.get("annuel"), ids_lois)
+        for k, v in (d.get("annuel") or {}).items():
+            if isinstance(v, int) and abs(v) > 6:
+                err(f, f"{i}.annuel: {k}={v} trop fort pour un effet annuel (max ±6)")
+        verifier_effets(f, f"{i}.vie", d.get("vie"))
+        verifier_effets(f, f"{i}.annuelVie", d.get("annuelVie"))
+        if isinstance((d.get("vie") or {}).get("money"), int) and abs(d["vie"]["money"]) > 20000:
+            err(f, f"{i}: vie.money trop fort (max ±20000)")
+        if isinstance((d.get("annuelVie") or {}).get("money"), int) and abs(d["annuelVie"]["money"]) > 5000:
+            err(f, f"{i}: annuelVie.money trop fort (max ±5000)")
+        for k, v in (d.get("prix") or {}).items():
+            if k not in CLES_PRIX:
+                err(f, f"{i}: clé de prix inconnue {k}")
+            if not isinstance(v, (int, float)) or not 0.2 <= v <= 3:
+                err(f, f"{i}: multiplicateur de prix {k} hors de 0.2-3")
+        for k, v in (d.get("salaires") or {}).items():
+            if k not in CLES_SALAIRES:
+                err(f, f"{i}: secteur de salaire inconnu {k}")
+            if not isinstance(v, (int, float)) or not 0.2 <= v <= 3:
+                err(f, f"{i}: multiplicateur de salaire {k} hors de 0.2-3")
+        for k in (d.get("regles") or {}):
+            if k not in CLES_REGLES:
+                err(f, f"{i}: règle inconnue {k} (voir docs/POLITIQUE.md)")
+        if d.get("tag") is not None and not isinstance(d["tag"], str):
+            err(f, f"{i}: tag doit être un texte")
+
     dossiers = charger("Dossiers")
+    suites = []
     for f, d in dossiers:
         i = d.get("id", "?")
         if i in ids:
@@ -304,13 +373,30 @@ def main():
                     err(f, f"{ou}: chance doit être > 0")
                 verifier_effets(f, ou, o.get("effects"))
                 verifier_pol(f, ou, o.get("pol"), ids_lois)
-                if not o.get("effects") and not o.get("pol"):
+                if not o.get("effects") and not o.get("pol") and not o.get("suite"):
                     err(f, f"{ou}: une issue sans aucun effet")
+                if o.get("suite") is not None:
+                    suites.append((f, ou, o["suite"]))
+        if d.get("enchaine") is not None and not isinstance(d["enchaine"], bool):
+            err(f, f"{i}: enchaine doit être true/false")
+
+    par_id = {d.get("id"): d for _, d in dossiers}
+    visees = set()
+    for f, ou, s in suites:
+        if s not in par_id:
+            err(f, f"{ou}: suite vers un dossier inconnu {s}")
+        else:
+            visees.add(s)
+            if not par_id[s].get("enchaine"):
+                err(f, f"{ou}: le dossier {s} doit avoir \"enchaine\": true (il ne sort qu'en suite)")
+    for f, d in dossiers:
+        if d.get("enchaine") and d.get("id") not in visees:
+            err(f, f"{d.get('id')}: dossier enchaîné jamais atteint par une suite")
 
     from collections import Counter
     comptes = Counter(d.get("kind") for _, d in dossiers)
     niveaux = Counter(l.get("niveau") for _, l in lois)
-    print(f"Systèmes : {len(systemes)}, partis : {len(partis)}, ministères : {len(ministeres)}, lois : {len(lois)} {dict(niveaux)}, "
+    print(f"Décrets : {len(decrets)}, systèmes : {len(systemes)}, partis : {len(partis)}, ministères : {len(ministeres)}, lois : {len(lois)} {dict(niveaux)}, "
           f"dossiers : {len(dossiers)} {dict(comptes)}")
     if erreurs:
         print(f"\n{len(erreurs)} erreur(s) :")

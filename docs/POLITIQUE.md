@@ -239,3 +239,44 @@ dossier sans `pays` sort partout. Hors de France, les dossiers propres au pays o
 - `electionsControlees` : gros bonus pour le grand parti au pouvoir, malus pour les autres.
 - Changement de pays (`verifierPays`, au passage d'année) : mandat terminé, parti quitté s'il n'existe pas dans
   le nouveau pays, lois, dossiers, rivaux et réseau remis à zéro ; le passé (titres, postes occupés) reste.
+
+## Sommet de l'État : décrets, diplomatie, crises
+
+Code : `Politique/PolSommet.swift` (moteur) et `Politique/PolSommetView.swift` (écrans). Appelé depuis
+`PolMoteur.passerAnnee` (`anneeDecrets`, `anneeInternationale`), rien à brancher ailleurs.
+
+### Décrets (`Data/Politique/Decrets/*.json`, `PolDecret`)
+
+Signés sans vote par le chef de l'exécutif (président qui gouverne, Premier ministre), 2 par an, contre de
+l'influence (`cout`). La justice peut les annuler (`contestation`, réduit dans les régimes fermés).
+
+| Champ | Rôle |
+|---|---|
+| `id` (`dec_…`), `domaine` | economie, social, securite, ecologie, institutions, international, urgence |
+| `titre`, `description`, `headline`, `texte`, `texteAnnulation` | Textes (variables habituelles) |
+| `cout`, `contestation`, `autoritaire`, `duree` | Influence dépensée, risque d'annulation, décret liberticide, années en vigueur (absent = jusqu'à abrogation) |
+| `effets`, `annuel` | Clés `pol` à la signature, puis chaque année en vigueur |
+| `vie`, `annuelVie` | Effets sur la vie du joueur (format des événements) |
+| `prix`, `salaires`, `regles`, `tag` | Comme les lois : lus par le Journal du monde et les autres modules tant que le décret est en vigueur |
+| `postes`, `pays` | Restrictions facultatives |
+
+### Scène internationale (`PolEtat.international`)
+
+Relation avec chaque pays du jeu (-100 à 100, valeur de départ selon l'union et le régime), tension mondiale,
+poids mondial, accords (`PolTraiteType` : commerce, défense, climat, énergie, migration, étudiants, avec effets
+annuels), sanctions, conflit armé. Actions : visite d'État (2 par an), accord, sanctions, aide d'urgence,
+négociation de paix. Nouvelles clés `pol` : `tension`, `influenceMondiale`, `relationCible`, `relationAllie`,
+`relations`, `conflit` (1 déclenche un conflit avec le pays cible, -1 cessez-le-feu). Variables de texte :
+`{pays_cible}`, `{au_pays_cible}`, `{du_pays_cible}` (relation la plus mauvaise, ou pays en guerre) et
+`{pays_allie}`, `{au_pays_allie}`, `{du_pays_allie}`. Dossiers `kind: "international"` (`itl_`) et
+`kind: "guerre"` (`gue_`, seulement pendant un conflit). Tag joueur `pol_guerre` pendant un conflit.
+
+### Crises en plusieurs étapes
+
+Une issue peut avoir `"suite": "<id>"` : ce dossier s'ouvre juste après. Un dossier `"enchaine": true` ne sort
+jamais au hasard. Le validateur vérifie que chaque suite vise un dossier enchaîné et inversement.
+
+### Tableau de bord
+
+`PolEtat.paysPrecedent` et `popularitePrecedente` gardent l'état d'il y a un an : l'écran affiche les tendances
+(popularité, croissance, chômage, dette, criminalité, moral, sécurité).
