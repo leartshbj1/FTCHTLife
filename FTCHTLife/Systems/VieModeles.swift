@@ -49,6 +49,14 @@ struct VieEffets: Codable, Equatable {
     var tension: Int?
     /// Lots de la marchandise principale.
     var stock: Int?
+
+    // Protection et international (VieProtection.swift, VieInternational.swift)
+    /// Policiers payés, en plus ou en moins.
+    var contactPolice: Int?
+    /// Confiance des partenaires étrangers.
+    var confianceEtranger: Int?
+    /// true : toutes les cargaisons en route sont saisies.
+    var cargaisonSaisie: Bool?
 }
 
 // MARK: - État sauvegardé du module (champ `vie` de Joueur)

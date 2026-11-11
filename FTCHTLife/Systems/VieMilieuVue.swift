@@ -34,7 +34,7 @@ struct VieMilieuView: View {
             }
         }
         .navigationTitle("Le Milieu")
-        .vieAlerte($message)
+        .vieToast($message)
     }
 
     // MARK: Pas encore membre
@@ -49,9 +49,9 @@ struct VieMilieuView: View {
         Section("À ton compte") {
             lienBusiness(j, m)
             lienCoup(j, m)
-            if m.argentSale > 0 {
-                LigneAction(titre: "Blanchir \(Format.argent(m.argentSale)) d'argent sale", sousTitre: "Commission de 30 %", icone: "arrow.triangle.2.circlepath") {
-                    agir { j in VieMilieu.blanchir(VieMilieu.etat(j).argentSale, &j) }
+            if m.argentSale > 0 || m.facades != nil {
+                NavigationLink { VieBlanchimentView() } label: {
+                    Label("Blanchir \(Format.argent(m.argentSale)) d'argent sale", systemImage: "arrow.triangle.2.circlepath")
                 }
             }
         }
@@ -117,6 +117,9 @@ struct VieMilieuView: View {
             lienCoup(j, m)
         }
         Section("Argent sale : \(Format.argent(m.argentSale))") {
+            NavigationLink { VieBlanchimentView() } label: {
+                Label("Blanchiment et commerces de façade", systemImage: "building.2.fill")
+            }
             LigneAction(titre: "Tout blanchir", sousTitre: "Commission de \(m.rang >= 3 ? 15 : 30) %", icone: "arrow.triangle.2.circlepath", actif: m.argentSale > 0) {
                 agir { j in VieMilieu.blanchir(VieMilieu.etat(j).argentSale, &j) }
             }
@@ -198,12 +201,15 @@ struct VieMilieuView: View {
 
     @ViewBuilder
     private func police(_ j: Joueur, _ m: VieMilieuEtat) -> some View {
-        if m.membre || m.trafic != nil || m.coup != nil || m.chaleur > 0 || m.enquete != nil {
+        if m.membre || m.trafic != nil || m.coup != nil || m.chaleur > 0 || m.enquete != nil || m.protection != nil {
             Section("Police") {
                 BarreStat(titre: "Attention", icone: "light.beacon.max.fill", valeur: m.chaleur)
-                if let annees = m.enquete {
-                    Label("Enquête en cours depuis \(annees + 1) an\(annees > 0 ? "s" : "")", systemImage: "magnifyingglass")
+                if let e = MilieuEnquete.etape(j) {
+                    Label("Enquête en cours : \(MilieuEnquete.titre(e).lowercased())", systemImage: "magnifyingglass")
                         .foregroundStyle(.red)
+                }
+                NavigationLink { VieProtectionView() } label: {
+                    Label("Ta protection et l'enquête", systemImage: "shield.lefthalf.filled")
                 }
             }
         }

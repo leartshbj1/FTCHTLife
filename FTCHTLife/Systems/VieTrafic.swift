@@ -668,7 +668,8 @@ enum MilieuTrafic {
             }
         }
         // 2. Capacité du réseau, puis stock disponible.
-        let capacite = Double(t.reseau) * lotsParRevendeur * b.strategie.capacite
+        let profilBas = MilieuProtection.etat(j).profilBas
+        let capacite = Double(t.reseau) * lotsParRevendeur * b.strategie.capacite * (profilBas ? 0.35 : 1)
         let totalVoulu = cases.reduce(0.0) { $0 + $1.voulu }
         let facteurCapacite = totalVoulu > 0 ? min(1, capacite / totalVoulu) : 0
         var vendus = Array(repeating: 0, count: cases.count)
@@ -797,7 +798,7 @@ enum MilieuTrafic {
         }
 
         // 6. Bilan.
-        chaleur = chaleur * b.strategie.chaleur - Double(b.securite * 3)
+        chaleur = chaleur * b.strategie.chaleur * (profilBas ? 0.5 : 1) - Double(b.securite * 3)
         let deltaChaleur = min(25, max(-6, Int(chaleur)))
         let respect = min(5, lotsVendus / 4)
         modifier(&j) { b2, t in b2 = b; t.anneesActif += 1 }
@@ -818,6 +819,20 @@ enum MilieuTrafic {
         if rupture && lotsVendus > 0 { lignes.append("Tu as manqué de marchandise : des clients sont partis chez la concurrence.") }
         lignes += incidents
         if guerre { VieSysteme.signaler("trafic_guerre_prix", &j) }
+
+        // Descente de police sur les planques.
+        let policeMoy = Double(b.zones.compactMap { TraficDonnees.zone($0.zoneId)?.police }.reduce(0, +)) / Double(max(1, b.zones.count))
+        let risqueDescente = Double(VieMilieu.etat(j).chaleur) / 400 * policeMoy / 60 * (1 - 0.15 * Double(b.securite)) * MilieuProtection.facteurDescente(j)
+        if (business(j)?.stockTotal ?? 0) > 0 && VieHasard.reussi(risqueDescente) {
+            if MilieuProtection.etat(j).policiers > 0 && VieHasard.reussi(0.5) {
+                lignes.append("Un de tes policiers t'a prévenu la veille : descente dans une de tes planques. Quand la brigade arrive, il n'y a plus rien.")
+            } else {
+                saisir(&j)
+                VieMilieu.modifier(&j) { $0.chaleur += 10 }
+                VieSysteme.signaler("trafic_saisie", &j)
+                lignes.append("Descente de la brigade des stupéfiants dans tes planques. Tout ton stock est saisi. Personne n'a parlé. Pour l'instant.")
+            }
+        }
 
         // 7. Un dilemme, au plus, par an.
         if let d = TraficDecisions.tirer(&j) {
