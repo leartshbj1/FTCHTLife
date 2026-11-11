@@ -108,6 +108,7 @@ struct RelationDetailView: View {
                             }
                         }
                     }
+                    CoeurActionsProcheSection(relationId: r.id)
                     VieRelationActions(relationId: r.id)
                     SecretsRelationSection(relationId: r.id, message: $message)
                 } else {

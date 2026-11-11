@@ -20,6 +20,8 @@ Validation : `python3 tools/validate_events.py`, `tools/validate_repercussions.p
   pardonner ou partir.
 - **Thérapie de couple** (2 400 €/an), **relation libre**.
 - Écran **Amour** : sections « Liaison secrète », « Ton couple », « Enfants hors couple ».
+- **Moments ensemble** (fiche d'un proche) : une action avec le/la partenaire, un enfant, un parent, la fratrie ou un ami
+  ouvre tout de suite une carte de choix (voir « Cartes d'action »).
 
 ## Sous-objet `"coeur"` des effets
 
@@ -43,6 +45,7 @@ Utilisable dans les événements, les suites (répercussions) et les messages du
 | `therapie` | entier | années de thérapie de couple |
 | `relationLibre` | `true` / `false` | relation libre acceptée / terminée |
 | `scandale` | entier (%) | perte d'abonnés si le joueur est un peu connu (≥ 5 000) |
+| `lienCible` | entier | lien avec la personne visée par une carte d'action ({cible}) ; cartes d'action seulement |
 
 Exemple : `"effects": {"karma": -8, "coeur": {"liaison": "debut", "via": "travail"}}`.
 
@@ -53,7 +56,8 @@ Exemple : `"effects": {"karma": -8, "coeur": {"liaison": "debut", "via": "travai
 `enfant_cache`, `enfant_cache_adulte` (≥ 18 ans, toujours secret), `paternite_douteuse`, `partenaire_infidele`
 (vérité cachée : sert aux indices), `soupcon_partenaire`, `trahi` (le joueur a découvert et n'a pas tranché),
 `crise_couple`, `therapie_couple`, `relation_libre`, `ecart_secret`, `infidele` (a déjà trompé),
-`infidele_recidiviste` (≥ 3).
+`infidele_recidiviste` (≥ 3), `couple_recent` (ensemble depuis moins d'un an), `couple_fertile` (couple de sexes
+différents, la femme a 18 à 47 ans, pas de grossesse en cours).
 
 Tags des réseaux (docs/PHONE.md) : `voustubeur`, `tiktaceur`, `onlyfesses`, `onlyfesses_star`, `onlyfesses_ancien`,
 `onlyfesses_connu`.
@@ -70,6 +74,26 @@ Tags des réseaux (docs/PHONE.md) : `voustubeur`, `tiktaceur`, `onlyfesses`, `on
 `relation_libre`, `therapie_couple`. `coeur_suite` : jamais émis, pour les suites programmées seulement par
 `followUps` ou par le code (`rep_coe_0001` après une découverte où le/la partenaire reste, `rep_coe_0002` quand le
 joueur découvre une trahison).
+
+## Cartes d'action (`Resources/Data/CoeurCartes/*.json`, ids `cc_NNNN`)
+
+Code : `Coeur/CoeurActions.swift` (`CoeurActionProche`, `CoeurActionsSysteme`), vues `CoeurActionsProcheSection` et
+`CoeurCarteView`. Dans la fiche d'un proche, la section « Moments ensemble » liste des actions (une fois par an et par
+personne). L'action donne un petit bonus de lien, puis ouvre souvent une carte de choix, résolue comme un événement
+(`GameEngine.resoudreCarteCoeur`, hors de la limite de 3 événements par an car c'est le joueur qui la déclenche).
+
+Une carte est un événement normal (conditions et âges = ceux du joueur) avec en plus :
+`action` (`nuit`, `avenir`, `surprise` · `jouer`, `devoirs`, `parlerVie`, `punir`, `argentPoche`, `conduite`,
+`conseilAdulte` · `visite` · `sortie`), `cibleMinAge` / `cibleMaxAge` (âge de la personne visée) et `cibleGenre`
+(`male` / `female`).
+
+Variables : `{cible}` (prénom), `{cible_il}` (il/elle), `{cible_lui}` (lui/elle), `{cible_le}` (le/la), `{cible_e}`
+(accord féminin de la personne visée, seulement après une terminaison qui prend juste un « e »). Effet `"coeur":
+{"lienCible": n}` pour le lien avec cette personne.
+
+Règles : grossesse (`"vie": {"pregnancy": true}`) seulement avec le tag `couple_fertile` ; IST (`"vie": {"disease":
+"ist"}`) plutôt avec `couple_recent` ; aucune rupture ni tromperie dans les cartes avec le/la partenaire (couple
+protégé). Validation : `python3 tools/validate_coeur_cartes.py`.
 
 ## Couple protégé
 

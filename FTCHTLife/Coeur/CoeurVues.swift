@@ -122,3 +122,107 @@ struct CoeurSection: View {
         }
     }
 }
+
+// MARK: - Actions avec un proche qui ouvrent une carte (fiche d'un proche)
+
+struct CoeurActionsProcheSection: View {
+    @EnvironmentObject var engine: GameEngine
+    let relationId: UUID
+    @State private var carte: CoeurCartePrete?
+    @State private var message: String?
+
+    var body: some View {
+        Group {
+            if let j = engine.joueur, let r = j.relations.first(where: { $0.id == relationId }) {
+                let actions = CoeurActionProche.pour(r, j)
+                if !actions.isEmpty {
+                    Section("Moments ensemble") {
+                        ForEach(actions) { a in
+                            LigneAction(titre: a.titre,
+                                        sousTitre: CoeurActionsSysteme.dejaFait(a, r.id, j) ? "déjà fait cette année" : nil,
+                                        icone: a.icone,
+                                        actif: !CoeurActionsSysteme.dejaFait(a, r.id, j)) {
+                                lancer(a)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .sheet(item: $carte) { c in
+            CoeurCarteView(carte: c)
+                .environmentObject(engine)
+                .interactiveDismissDisabled()
+                .presentationDetents([.medium, .large])
+        }
+        .vieAlerte($message)
+    }
+
+    private func lancer(_ a: CoeurActionProche) {
+        var resultat: (texte: String, carte: CoeurCartePrete?) = ("", nil)
+        engine.modifier { j in
+            resultat = CoeurActionsSysteme.faire(a, sur: relationId, &j, engine: engine)
+        }
+        if let c = resultat.carte {
+            carte = c
+        } else if !resultat.texte.isEmpty {
+            message = resultat.texte
+        }
+    }
+}
+
+/// Carte de choix qui suit une action (même allure qu'un événement).
+struct CoeurCarteView: View {
+    @EnvironmentObject var engine: GameEngine
+    @Environment(\.dismiss) private var dismiss
+    let carte: CoeurCartePrete
+    @State private var resultat: String?
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 16) {
+                    Text(carte.intro)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                    Text(carte.texte)
+                        .font(.system(size: 19, weight: .semibold, design: .rounded))
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if let r = resultat {
+                        Text(r)
+                            .font(.body)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: 14).fill(Theme.carte))
+                        Button("Continuer") { dismiss() }
+                            .buttonStyle(.borderedProminent)
+                    } else {
+                        ForEach(Array(choixVisibles.enumerated()), id: \.offset) { _, paire in
+                            Button {
+                                resultat = engine.resoudreCarteCoeur(carte, choix: paire.0)
+                            } label: {
+                                Text(engine.joueur.map { engine.remplir(paire.1.label, $0) } ?? paire.1.label)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 6)
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                    }
+                }
+                .padding(22)
+            }
+            .navigationTitle("Et maintenant ?")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+
+    /// Les choix avec leur index d'origine ; les choix à compétence n'apparaissent qu'avec le niveau.
+    private var choixVisibles: [(Int, Choix)] {
+        let tous = Array((carte.evenement.choices ?? []).enumerated()).map { ($0.offset, $0.element) }
+        guard let j = engine.joueur else { return tous }
+        return tous.filter { Competences.aLeNiveau($0.1.requiresSkill, j) }
+    }
+}

@@ -72,9 +72,10 @@ TAGS |= {"liaison","liaison_longue","liaison_ultimatum","liaison_soupcon","liais
          "voustubeur","tiktaceur","onlyfesses","onlyfesses_star","onlyfesses_ancien","onlyfesses_connu"}
 SPECIAL |= {"coeur"}
 PH |= {"amant","amant_role","amant_il","enfant_cache"}
+TAGS |= {"couple_recent","couple_fertile"}
 COEUR = {"ecart":bool,"liaison":str,"via":str,"intensite":int,"soupcon":int,"decouverte":bool,"grossesse":bool,"enfantCache":str,
          "partenaireInfidele":bool,"soupconJoueur":int,"trahisonDecouverte":bool,"pardon":bool,"crise":int,"therapie":int,
-         "relationLibre":bool,"scandale":int}
+         "relationLibre":bool,"scandale":int,"lienCible":int}
 COEUR_VALEURS = {"liaison":{"debut","fin","officialiser","avouer"},
                  "via":{"travail","ex","soiree","ami","voyage","sport","voisin","pecho","reseaux","fan","autre"},
                  "enfantCache":{"reconnaitre","pension","cacher","reveler"}}

@@ -39,6 +39,8 @@ struct CoeurEffets: Codable, Equatable {
     var relationLibre: Bool?
     /// Scandale sur les réseaux : pourcentage d'abonnés perdus (si le joueur est un peu connu).
     var scandale: Int?
+    /// Variation du lien avec la personne visée par une carte d'action ({cible}).
+    var lienCible: Int?
 }
 
 // MARK: - État sauvegardé
@@ -106,11 +108,13 @@ struct CoeurEtat: Codable, Equatable {
     var relationLibre: Bool = false
     /// Actions limitées faites cette année (voir en cachette, fouiller le téléphone…).
     var actionsAnnee: [String] = []
+    /// Proche visé par la carte d'action en cours ({cible}, effet lienCible).
+    var cibleCarte: UUID?
 
     enum CodingKeys: String, CodingKey {
         case liaison, anciennes, grossesseLiaison, parentGrossesse, enfantsCaches, paterniteDouteuse, ecartsCaches
         case partenaireInfidele, trahi, soupconJoueur, tromperies, decouvertes, pardons, crise, therapie
-        case relationLibre, actionsAnnee
+        case relationLibre, actionsAnnee, cibleCarte
     }
 
     init() {}
@@ -135,6 +139,7 @@ struct CoeurEtat: Codable, Equatable {
         therapie = try c.decodeIfPresent(Int.self, forKey: .therapie) ?? 0
         relationLibre = try c.decodeIfPresent(Bool.self, forKey: .relationLibre) ?? false
         actionsAnnee = try c.decodeIfPresent([String].self, forKey: .actionsAnnee) ?? []
+        cibleCarte = try c.decodeIfPresent(UUID.self, forKey: .cibleCarte)
     }
 
     /// Enfants cachés que le/la partenaire ne connaît pas.

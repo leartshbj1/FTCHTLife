@@ -54,6 +54,13 @@ enum CoeurSysteme {
             if c.relationLibre { t.insert("relation_libre") }
             if c.ecartsCaches > 0 { t.insert("ecart_secret") }
         }
+        if let p = j.partenaireActuel {
+            if j.vieEtat.anneesEnsemble < 1 { t.insert("couple_recent") }
+            let ageFemme = j.genre == .femme ? j.age : (p.genre == .femme ? p.age : 0)
+            if p.genre != j.genre && (18...47).contains(ageFemme) && j.vieEtat.grossesse == nil {
+                t.insert("couple_fertile")
+            }
+        }
         if c.tromperies >= 1 { t.insert("infidele") }
         if c.tromperies >= 3 { t.insert("infidele_recidiviste") }
         return t
@@ -61,11 +68,21 @@ enum CoeurSysteme {
 
     // MARK: - Textes
 
-    /// {amant}, {amant_role} (« ton amant » / « ta maîtresse »), {amant_il} (il / elle), {enfant_cache}.
+    /// {amant}, {amant_role} (« ton amant » / « ta maîtresse »), {amant_il} (il / elle), {enfant_cache},
+    /// et pour les cartes d'action : {cible}, {cible_il} (il/elle), {cible_lui} (lui/elle), {cible_le} (le/la), {cible_e}.
     static func remplir(_ texte: String, _ j: Joueur) -> String {
-        guard texte.contains("{amant") || texte.contains("{enfant_cache}") else { return texte }
+        guard texte.contains("{amant") || texte.contains("{enfant_cache}") || texte.contains("{cible") else { return texte }
         let c = j.coeurEtat
         var t = texte
+        if texte.contains("{cible") {
+            let r = c.cibleCarte.flatMap { id in j.relations.first { $0.id == id } }
+            let femme = r?.genre == .femme
+            t = t.replacingOccurrences(of: "{cible_il}", with: femme ? "elle" : "il")
+            t = t.replacingOccurrences(of: "{cible_lui}", with: femme ? "elle" : "lui")
+            t = t.replacingOccurrences(of: "{cible_le}", with: femme ? "la" : "le")
+            t = t.replacingOccurrences(of: "{cible_e}", with: femme ? "e" : "")
+            t = t.replacingOccurrences(of: "{cible}", with: r?.prenom ?? "ton proche")
+        }
         if let l = c.liaison {
             t = t.replacingOccurrences(of: "{amant_role}", with: l.role)
             t = t.replacingOccurrences(of: "{amant_il}", with: l.pronom)
@@ -131,6 +148,9 @@ enum CoeurSysteme {
         if let a = fx.enfantCache { lignes += enfantCache(a, id: nil, &j) }
         if fx.trahisonDecouverte == true { lignes += prendreSurLeFait(&j) }
         if let s = fx.scandale, s > 0, let l = scandaleReseaux(Double(min(s, 80)) / 100, &j) { lignes.append(l) }
+        if let d = fx.lienCible, let id = j.coeurEtat.cibleCarte, let i = j.relations.firstIndex(where: { $0.id == id }) {
+            j.relations[i].lien = Stats.borne(j.relations[i].lien + d)
+        }
         j.stats.borner()
         return lignes
     }
