@@ -71,6 +71,12 @@ Tags des réseaux (docs/PHONE.md) : `voustubeur`, `tiktaceur`, `onlyfesses`, `on
 `followUps` ou par le code (`rep_coe_0001` après une découverte où le/la partenaire reste, `rep_coe_0002` quand le
 joueur découvre une trahison).
 
+## Couple protégé
+
+`CoeurSysteme.coupleProtege: ((Joueur) -> Bool)?` est un crochet branché par le moteur (par exemple le module âme
+sœur). Quand il renvoie vrai : pas d'écart ni de liaison possible (même via Pécho), et le/la partenaire ne devient
+jamais infidèle.
+
 ## Règles d'écriture
 
 - Au plus 3 événements à choix par an (le moteur s'en charge) : préférer des conditions précises (tags de situation)

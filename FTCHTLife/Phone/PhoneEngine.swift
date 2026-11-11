@@ -693,13 +693,16 @@ enum PhoneEngine {
         case "bien":
             j.stats.bonheur += 6
             // En couple, un « bon » rendez-vous peut aller trop loin.
-            if let p = j.partenaireActuel, j.coeurEtat.liaison == nil, Double.random(in: 0...1) < 0.4 {
+            if let p = j.partenaireActuel, j.coeurEtat.liaison == nil, !CoeurSysteme.estProtege(j), Double.random(in: 0...1) < 0.4 {
                 texte += " La soirée se prolonge. Beaucoup. Tu rentres à 4 h en racontant à \(p.prenom) une histoire de pneu crevé."
                 for l in CoeurSysteme.ecart(&j) { texte += " " + l }
             }
         case "coupdefoudre":
             j.stats.bonheur += 12
-            if let p = j.partenaireActuel {
+            if let p = j.partenaireActuel, CoeurSysteme.estProtege(j) {
+                j.stats.karma += 2
+                texte += " Mais au moment de l'embrasser, tu penses à \(p.prenom). Tu rentres. Personne ne remplace \(p.prenom)."
+            } else if let p = j.partenaireActuel {
                 if j.coeurEtat.liaison == nil {
                     let lignes = CoeurSysteme.debuterLiaison(&j, via: "pecho", prenom: match.prenom, genre: match.genre,
                                                              age: match.age + (j.age - match.ageDuMatch))

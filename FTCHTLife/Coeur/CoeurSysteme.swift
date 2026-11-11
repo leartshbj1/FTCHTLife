@@ -13,6 +13,12 @@ extension Joueur {
 
 enum CoeurSysteme {
 
+    /// Couple qui ne peut jamais se séparer ni être trompé (branché par le moteur, ex. module âme sœur).
+    /// Vrai = pas de tentation qui aboutit, pas d'infidélité du/de la partenaire.
+    static var coupleProtege: ((Joueur) -> Bool)?
+
+    static func estProtege(_ j: Joueur) -> Bool { coupleProtege?(j) ?? false }
+
     static let prixTherapie = 2_400
     static let pensionAnnuelle = 3_600
 
@@ -155,7 +161,7 @@ enum CoeurSysteme {
 
     /// Aventure d'un soir.
     static func ecart(_ j: inout Joueur) -> [String] {
-        guard let p = j.partenaireActuel else { return [] }
+        guard let p = j.partenaireActuel, !estProtege(j) else { return [] }
         var c = j.coeurEtat
         c.tromperies += 1
         let libre = c.relationLibre
@@ -194,7 +200,7 @@ enum CoeurSysteme {
     /// Démarre une liaison secrète (seulement si le joueur est en couple et n'en a pas déjà une).
     @discardableResult
     static func debuterLiaison(_ j: inout Joueur, via: String, prenom: String? = nil, genre: Genre? = nil, age: Int? = nil) -> [String] {
-        guard let p = j.partenaireActuel, j.age >= 16 else { return [] }
+        guard let p = j.partenaireActuel, j.age >= 16, !estProtege(j) else { return [] }
         var c = j.coeurEtat
         guard c.liaison == nil else { return [] }
         var g: Genre = genre ?? (VieHasard.reussi(0.85) ? p.genre : (p.genre == .homme ? .femme : .homme))
@@ -678,6 +684,11 @@ enum CoeurSysteme {
         guard let p = j.partenaireActuel, let i = j.relations.firstIndex(where: { $0.id == p.id }) else { return [] }
         var c = j.coeurEtat
         var lignes: [String] = []
+        if estProtege(j) && (c.partenaireInfidele || c.trahi) {
+            c.partenaireInfidele = false
+            c.trahi = false
+            j.coeurEtat = c
+        }
 
         // Le/la partenaire infidèle.
         if c.partenaireInfidele && !c.trahi {
@@ -695,7 +706,7 @@ enum CoeurSysteme {
             if p.lien < 35 { chance += 0.05 }
             if c.tromperies > 0 { chance += 0.03 }
             if c.crise > 0 { chance += 0.04 }
-            if c.relationLibre { chance = 0 }
+            if c.relationLibre || estProtege(j) { chance = 0 }
             if VieHasard.reussi(chance) { c.partenaireInfidele = true }
             j.coeurEtat = c
         }
