@@ -61,6 +61,7 @@ struct MainView: View {
                     .environmentObject(engine)
             }
             .animauxEvenements(cle: \.animaux)
+            .naissanceBebe()
             .scolPresentationAuto()
             .speBilanAuto()
         }
