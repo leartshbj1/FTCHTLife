@@ -34,6 +34,9 @@ VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"prison", "gang", "gang_haut", "dealer", "sous_enquete", "chaleur", "ancien_gang", "balance", "argent_sale"}
 VARIABLES |= {"organisation", "chef", "rival", "rang"}
+# Le Milieu, trafic et coups (vie4_trafic.json)
+TAGS |= {"dealer_gros", "guerre_prix", "rupture_stock", "independant", "coup_prepare", "braqueur", "a_revendeurs", "produit_drogue"}
+VARIABLES |= {"produit", "zone", "concurrent"}
 SIGNAUX = set("""
 rencontre rendez_vous rendez_vous_rate couple rupture largue tromperie tromperie_decouverte demande_mariage
 demande_refusee mariage divorce veuvage grossesse naissance_enfant adoption enfant_majeur enfant_quitte_maison
@@ -50,6 +53,7 @@ vie_suite chaque_annee
 """.split())
 SIGNAUX |= set("""gang_entree gang_promotion gang_trahison gang_sortie gang_chef trafic_debut trafic_saisie
 enquete_ouverte enquete_classee guerre_territoire blanchiment balance mission_reussie mission_ratee""".split())
+SIGNAUX |= set("""trafic_zone trafic_guerre_prix trafic_revendeur_arrete trafic_overdose coup_reussi coup_rate coup_trahison""".split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
 ISSUES = ["", "_sommet", "_perdu", "_blessure", "_animal", "_rencontre", "_honte", "_victoire", "_casse", "_arnaque"]

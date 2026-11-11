@@ -1,0 +1,2801 @@
+[
+ {
+  "id": "rep_trf_0001",
+  "on": "trafic_zone",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton arrivée dans {zone} n'est pas passée inaperçue. Les anciens du coin viennent te jauger, un soir, sans un mot de trop.",
+  "choices": [
+   {
+    "label": "Leur montrer du respect",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Un geste, quelques billets pour « le quartier », une poignée de main. Ils te laissent travailler.",
+      "effects": {
+       "vie": {
+        "argentSale": -800,
+        "tension": -8,
+        "milieuRespect": 2
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ils prennent le geste pour de la faiblesse. Ils reviendront demander plus.",
+      "effects": {
+       "vie": {
+        "argentSale": -800,
+        "tension": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Leur montrer que tu es là pour rester",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ils jaugent, ils reculent. Pour l'instant.",
+      "effects": {
+       "vie": {
+        "milieuRespect": 5,
+        "tension": 8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ils ne reculent pas. Les premières semaines dans {zone} seront longues.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "tension": 15
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0002",
+  "on": "trafic_zone",
+  "chance": 0.35,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelques mois après ton installation dans {zone}, une habitante t'arrête devant l'épicerie. « Avant toi, ma rue était tranquille. » Elle n'a pas peur. Elle est juste fatiguée.",
+  "effects": {
+   "happiness": -4,
+   "karma": -2,
+   "vie": {
+    "milieuChaleur": 3
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0003",
+  "on": "trafic_zone",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La police a remarqué l'activité nouvelle dans {zone}. Une patrouille de plus le soir, puis deux.",
+  "effects": {
+   "vie": {
+    "milieuChaleur": 8,
+    "clients": -2
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0004",
+  "on": "trafic_guerre_prix",
+  "chance": 0.45,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La guerre des prix contre {concurrent} use tout le monde. Tes revendeurs viennent te voir ensemble : ils veulent être payés comme avant, guerre ou pas.",
+  "choices": [
+   {
+    "label": "Les payer comme avant",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ils restent. Ta marge, elle, a presque disparu.",
+      "effects": {
+       "vie": {
+        "argentSale": -2500,
+        "milieuLoyaute": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Leur demander un effort",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ils acceptent, en râlant. Ils tiendront jusqu'à la fin du mois.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": -3
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Deux d'entre eux partent le soir même.",
+      "effects": {
+       "vie": {
+        "revendeurs": -2,
+        "milieuLoyaute": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0005",
+  "on": "trafic_guerre_prix",
+  "chance": 0.35,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Chez {concurrent}, on n'a pas digéré la guerre des prix. Ta planque a été visitée, cette nuit. Rien de cassé. Un lot en moins. Un message.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "stock": -1,
+    "tension": 10
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0006",
+  "on": "trafic_guerre_prix",
+  "chance": 0.3,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La guerre des prix est finie, mais tes clients ont pris de mauvaises habitudes. Chaque fois que tu remontes tes tarifs, certains disparaissent.",
+  "effects": {
+   "vie": {
+    "clients": -6,
+    "argentSale": -1000
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0007",
+  "on": "trafic_guerre_prix",
+  "chance": 0.25,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Longtemps après la guerre des prix, un ancien revendeur de chez {concurrent} te raconte qu'ils ont failli tout perdre, eux aussi. « On s'est ruinés pour des clients qui allaient chez le moins cher. » Il rit. Toi aussi, un peu.",
+  "effects": {
+   "happiness": 2,
+   "smarts": 1,
+   "vie": {
+    "tension": -5
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0008",
+  "on": "trafic_revendeur_arrete",
+  "delay": [
+   0,
+   0
+  ],
+  "remember": [
+   "trf_revendeur_tombe"
+  ]
+ },
+ {
+  "id": "rep_trf_0009",
+  "on": "trafic_revendeur_arrete",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La mère de ton revendeur arrêté vient frapper à ta porte. Elle a besoin d'argent pour l'avocat. Elle ne te demande pas pardon de demander.",
+  "choices": [
+   {
+    "label": "Payer l'avocat",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Elle prend l'enveloppe et s'en va sans un mot. Son fils saura qui a payé.",
+      "effects": {
+       "karma": 3,
+       "vie": {
+        "argentSale": -3000,
+        "milieuLoyaute": 6
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu paies. Les enquêteurs se demandent d'où vient l'argent d'une femme de ménage.",
+      "effects": {
+       "vie": {
+        "argentSale": -3000,
+        "milieuLoyaute": 4,
+        "milieuChaleur": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle te regarde comme on regarde quelque chose de sale. Son fils, en cellule, l'apprendra.",
+      "effects": {
+       "karma": -4,
+       "setFlags": [
+        "trf_revendeur_lache"
+       ],
+       "vie": {
+        "milieuLoyaute": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0010",
+  "on": "trafic_revendeur_arrete",
+  "chance": 0.35,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Deux ans après son arrestation, ton ancien revendeur négocie une remise de peine. Son avocat a laissé entendre qu'il « pourrait aider l'enquête ». Ton nom vaut quelques mois de liberté.",
+  "choices": [
+   {
+    "label": "Faire passer de l'argent à sa famille",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "L'argent arrive, le message aussi. Il ne dit rien.",
+      "effects": {
+       "vie": {
+        "argentSale": -4000,
+        "milieuLoyaute": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'argent arrive trop tard. Il a déjà parlé.",
+      "effects": {
+       "vie": {
+        "argentSale": -4000,
+        "milieuChaleur": 18,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre les devants : tout cloisonner",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Quand les enquêteurs arrivent, il n'y a plus rien à trouver.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 6,
+        "clients": -6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Les enquêteurs arrivent plus vite que prévu.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 20,
+        "enquete": true,
+        "saisie": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien faire",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il ne dit rien. Peut-être par loyauté. Peut-être par peur.",
+      "effects": {
+       "happiness": -4
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il parle. Garde à vue, perquisition, une longue nuit.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 25,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0011",
+  "on": "trafic_revendeur_arrete",
+  "chance": 0.4,
+  "delay": [
+   2,
+   4
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton ancien revendeur sort de prison. Il t'attend en bas de chez toi, plus maigre, plus dur. « Alors ? »",
+  "choices": [
+   {
+    "label": "Lui redonner sa place",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il reprend sa place. Il est plus prudent qu'avant, et plus fidèle.",
+      "effects": {
+       "vie": {
+        "revendeurs": 1,
+        "milieuLoyaute": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il reprend sa place. Il est surveillé depuis sa sortie, ce que tu apprends trop tard.",
+      "effects": {
+       "vie": {
+        "revendeurs": 1,
+        "milieuChaleur": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui donner de l'argent pour repartir à zéro",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il prend l'argent. Il ouvre un petit commerce, ou il essaie. Tu lui souhaites sincèrement de réussir.",
+      "effects": {
+       "karma": 5,
+       "happiness": 2,
+       "vie": {
+        "argentSale": -3000
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui dire qu'il n'y a plus rien pour lui",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il hoche la tête. Il s'en va. Il connaît encore beaucoup de monde.",
+      "effects": {
+       "setFlags": [
+        "trf_ex_revendeur"
+       ],
+       "vie": {
+        "milieuLoyaute": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0012",
+  "on": "trafic_revendeur_arrete",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis l'arrestation, tes autres revendeurs sont nerveux. L'un d'eux regarde chaque voiture qui passe comme si elle venait pour lui.",
+  "effects": {
+   "happiness": -2,
+   "vie": {
+    "milieuLoyaute": -3,
+    "clients": -2
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0013",
+  "on": "trafic_overdose",
+  "delay": [
+   0,
+   0
+  ],
+  "remember": [
+   "trf_overdose_quartier"
+  ]
+ },
+ {
+  "id": "rep_trf_0014",
+  "on": "trafic_overdose",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le frère du jeune qui a fait une overdose vient te trouver. Il ne crie pas. Il veut savoir si c'est toi qui lui as vendu.",
+  "choices": [
+   {
+    "label": "Lui dire la vérité",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il écoute. Il pleure. Il s'en va sans te toucher. Ça fait plus mal que des coups.",
+      "effects": {
+       "happiness": -12,
+       "karma": 4,
+       "setFlags": [
+        "trf_culpabilite"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il écoute. Il te frappe une fois, une seule. Tu ne te défends pas.",
+      "effects": {
+       "health": -8,
+       "happiness": -10,
+       "karma": 4,
+       "setFlags": [
+        "trf_culpabilite"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Nier",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il ne te croit pas, mais il n'a pas de preuve. Il te regarde longtemps.",
+      "effects": {
+       "happiness": -6,
+       "karma": -4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il ne te croit pas. Il va voir la police avec ce qu'il sait.",
+      "effects": {
+       "karma": -4,
+       "vie": {
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer de payer les soins",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il prend l'argent. Il ne dit pas merci. Personne ne dit merci pour ça.",
+      "effects": {
+       "karma": 6,
+       "happiness": -6,
+       "vie": {
+        "argentSale": -4000
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0015",
+  "on": "trafic_overdose",
+  "chance": 0.4,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La mère du jeune qui a fait une overdose a créé une association. Elle colle des affiches avec son visage partout dans {zone}. Tes revendeurs vendent sous ces affiches.",
+  "choices": [
+   {
+    "label": "Faire déplacer la vente",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu changes de rue. Le visage te suit sur d'autres murs.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "clients": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire un don anonyme à l'association",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "L'argent sert à des ateliers de prévention. Ça ne rachète rien. Ça fait quelque chose.",
+      "effects": {
+       "karma": 6,
+       "happiness": -2,
+       "vie": {
+        "argentSale": -2000
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Elle découvre d'où vient l'argent. Elle le rend, en public, devant les caméras.",
+      "effects": {
+       "happiness": -8,
+       "vie": {
+        "argentSale": -2000,
+        "milieuChaleur": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire arracher les affiches",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Les affiches disparaissent. Elles reviennent le lendemain, plus nombreuses. Tout le quartier sait qui les arrache.",
+      "effects": {
+       "karma": -10,
+       "vie": {
+        "milieuRespect": -5,
+        "milieuChaleur": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0016",
+  "on": "trafic_overdose",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le parquet a ouvert une enquête pour homicide involontaire après l'overdose. On cherche qui a vendu. Des enquêteurs interrogent tes clients.",
+  "choices": [
+   {
+    "label": "Tout fermer quelques mois",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Les enquêteurs ne trouvent pas de point de vente actif. L'affaire s'enlise.",
+      "effects": {
+       "vie": {
+        "clients": -10,
+        "milieuChaleur": -5
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu fermes. Un client a déjà donné ton surnom.",
+      "effects": {
+       "vie": {
+        "clients": -10,
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer un avocat d'avance",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'avocat t'explique ce que tu risques. Tu dors moins bien qu'avant de savoir.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "argentSale": -3000,
+        "milieuChaleur": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0017",
+  "on": "trafic_overdose",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après l'overdose, un de tes revendeurs vient te rendre ses téléphones. « Je peux plus. Je vois sa tête tout le temps. »",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "revendeurs": -1
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0018",
+  "on": "trafic_overdose",
+  "chance": 0.3,
+  "delay": [
+   3,
+   5
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des années après, tu croises le jeune qui avait fait une overdose. Il est en vie. Il travaille dans une boulangerie. Il ne te reconnaît pas. Ou il fait semblant, pour vous deux.",
+  "effects": {
+   "happiness": 4,
+   "karma": 2
+  }
+ },
+ {
+  "id": "rep_trf_0019",
+  "on": "coup_reussi",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après le coup, le plus jeune de l'équipe s'est acheté une voiture neuve. Payée en liquide. Il l'a garée devant chez sa mère.",
+  "choices": [
+   {
+    "label": "Aller le recadrer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il revend la voiture, à perte. Il a compris, trop tard peut-être.",
+      "effects": {
+       "vie": {
+        "milieuRespect": 3,
+        "milieuChaleur": 3
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il le prend mal. « C'est mon argent. » Le vendeur, lui, a gardé une photocopie de ses papiers.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 10,
+        "milieuLoyaute": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te tenir loin de lui",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu coupes tout lien. S'il tombe, il tombera seul. Peut-être.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": -3,
+        "milieuChaleur": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0020",
+  "on": "coup_reussi",
+  "chance": 0.4,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après le coup, une équipe spécialisée de la police judiciaire reprend le dossier. Tu l'apprends par un article de trois lignes.",
+  "choices": [
+   {
+    "label": "Te faire oublier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ne bouges plus. Tu ne dépenses plus. Tu attends.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "milieuChaleur": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prévenir l'équipe",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Chacun se tient tranquille. L'enquête piétine.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 3
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'un d'eux panique au téléphone. Le téléphone était écouté.",
+      "effects": {
+       "setFlags": [
+        "trf_coup_trace"
+       ],
+       "vie": {
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0021",
+  "on": "coup_reussi",
+  "chance": 0.3,
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "parents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta part du coup dort dans une cache. Quelqu'un de ta famille est tombé dessus en cherchant autre chose.",
+  "choices": [
+   {
+    "label": "Expliquer",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu racontes une histoire. On fait semblant de te croire. Les repas de famille changent de goût.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "parent": -6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu ne trouves pas de mots. Le silence dit tout.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "parent": -10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Déplacer l'argent sans rien dire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'argent change de cache. La question, elle, reste dans les yeux.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "parent": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0022",
+  "on": "coup_reussi",
+  "chance": 0.3,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Dans le milieu, ton coup a fait parler. Une organisation te fait savoir qu'elle aurait « du travail » pour des gens comme toi.",
+  "effects": {
+   "vie": {
+    "milieuRespect": 6,
+    "milieuChaleur": 4
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0023",
+  "on": "coup_reussi",
+  "chance": 0.3,
+  "delay": [
+   3,
+   6
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Plusieurs années après le coup, un membre de ton équipe est arrêté pour une tout autre affaire. Les enquêteurs ont fait le lien. On lui propose un marché : ton nom contre une peine plus légère.",
+  "choices": [
+   {
+    "label": "Lui faire passer un message et de l'argent",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il refuse le marché. Il prend sa peine. Tu lui dois beaucoup.",
+      "effects": {
+       "vie": {
+        "argentSale": -5000,
+        "milieuLoyaute": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il hésite longtemps. Trop longtemps pour que tu dormes.",
+      "effects": {
+       "happiness": -8,
+       "vie": {
+        "argentSale": -5000,
+        "milieuChaleur": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Préparer ta défense",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton avocat te prévient : s'il parle, ce sera long. Tu attends.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "argentSale": -3000
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0024",
+  "on": "coup_rate",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après le coup raté, l'équipe cherche un responsable. Tous les regards se tournent vers toi.",
+  "choices": [
+   {
+    "label": "Assumer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu assumes. Certains te respectent pour ça. Les autres ne te parleront plus.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "milieuRespect": -3,
+        "milieuLoyaute": 2
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu assumes. On te demande de rembourser les frais engagés.",
+      "effects": {
+       "vie": {
+        "argentSale": -4000,
+        "milieuRespect": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Accuser le chauffeur",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le chauffeur prend tout. Il ne te le pardonnera pas.",
+      "effects": {
+       "karma": -4,
+       "setFlags": [
+        "trf_coup_part_inegale"
+       ],
+       "vie": {
+        "milieuRespect": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Personne ne te croit. L'équipe se disperse en t'en voulant.",
+      "effects": {
+       "vie": {
+        "milieuRespect": -6,
+        "milieuLoyaute": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0025",
+  "on": "coup_rate",
+  "chance": 0.4,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un membre de l'équipe est en prison depuis le coup raté. Sa compagne te demande de l'aider à payer le loyer. « Il ne dit rien. Il a besoin de savoir que ça vaut le coup. »",
+  "choices": [
+   {
+    "label": "L'aider chaque mois",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une enveloppe par mois. Il le sait, en cellule. Il tient.",
+      "effects": {
+       "setFlags": [
+        "trf_coup_complice_aide"
+       ],
+       "vie": {
+        "argentSale": -3000,
+        "milieuLoyaute": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle s'en va. Il saura bientôt qu'il est seul.",
+      "effects": {
+       "setFlags": [
+        "trf_coup_complice_lache"
+       ],
+       "vie": {
+        "milieuLoyaute": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0026",
+  "on": "coup_rate",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des nuits entières, tu revois le coup raté. Les cris, les sirènes, la course. Tu te réveilles en sueur, le cœur en vrac.",
+  "effects": {
+   "happiness": -6,
+   "health": -2
+  }
+ },
+ {
+  "id": "rep_trf_0027",
+  "on": "coup_rate",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après le coup raté, la police a un signalement partiel. Il te ressemble un peu. Un peu trop.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "milieuChaleur": 10
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0028",
+  "on": "coup_trahison",
+  "chance": 0.6,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Celui qui a trahi l'équipe a disparu. Les autres le cherchent. Ils veulent savoir si tu en es.",
+  "choices": [
+   {
+    "label": "Participer aux recherches",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Vous ne le trouvez pas. Mais l'équipe sait que tu es de son côté.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 4,
+        "milieuRespect": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Vous le trouvez. Ce qui suit, tu préférerais l'oublier.",
+      "effects": {
+       "karma": -12,
+       "happiness": -10,
+       "vie": {
+        "milieuRespect": 6,
+        "milieuChaleur": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« La vengeance, ça finit toujours au tribunal. » Ils te regardent comme un suspect.",
+      "effects": {
+       "karma": 2,
+       "vie": {
+        "milieuLoyaute": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0029",
+  "on": "coup_trahison",
+  "chance": 0.4,
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le traître du coup réapparaît, dans un dossier judiciaire : il est témoin, protégé, et il a beaucoup de choses à dire.",
+  "effects": {
+   "happiness": -8,
+   "vie": {
+    "milieuChaleur": 18,
+    "enquete": true
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0030",
+  "on": "coup_trahison",
+  "chance": 0.3,
+  "delay": [
+   3,
+   8
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des années après la trahison, tu le croises dans un supermarché, à l'autre bout du pays. Il pousse un caddie avec un enfant dedans. Il te voit. Il pâlit.",
+  "choices": [
+   {
+    "label": "Passer ton chemin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu continues ta route. Il ne dormira pas cette nuit. Toi, si.",
+      "effects": {
+       "karma": 6,
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aller lui parler",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous parlez cinq minutes, entre les rayons. Il demande pardon. Tu ne sais pas si tu le lui accordes.",
+      "effects": {
+       "happiness": 1,
+       "karma": 3
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il s'enfuit en laissant le caddie. L'enfant pleure. Tu restes là, les bras ballants, avec un paquet de pâtes à la main.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0031",
+  "on": "coup_trahison",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis la trahison, une rumeur court : et si c'était toi, le traître ? Personne ne le dit en face.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "milieuRespect": -6,
+    "milieuLoyaute": -4
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0032",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "trf_client_prof"
+   ],
+   "flagMinYears": {
+    "trf_client_prof": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_client_prof"
+  ],
+  "text": "La prof de français qui t'achetait en cachette a été mutée. Le jour de son départ, elle te croise dans la rue. Elle te fait un petit signe de tête, comme à un collègue.",
+  "effects": {
+   "happiness": 1
+  }
+ },
+ {
+  "id": "rep_trf_0033",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "trf_mineur_servi"
+   ],
+   "flagMinYears": {
+    "trf_mineur_servi": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_mineur_servi"
+  ],
+  "text": "Le gamin que tu avais servi a grandi. Il vend maintenant pour d'autres, au coin de ta rue. Il te salue avec respect. C'est toi qui lui as appris le chemin.",
+  "choices": [
+   {
+    "label": "Lui parler",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu lui conseilles d'arrêter. Il rit. « Toi, tu as arrêté ? »",
+      "effects": {
+       "happiness": -5,
+       "karma": 2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il t'écoute plus que prévu. Il te demande s'il pourrait faire autre chose. Tu ne sais pas quoi lui répondre.",
+      "effects": {
+       "happiness": -3,
+       "karma": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Passer ton chemin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu passes. Il reste au coin de la rue, à ta place d'avant.",
+      "effects": {
+       "karma": -4,
+       "happiness": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0034",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "trf_mere_suppliante"
+   ],
+   "flagMinYears": {
+    "trf_mere_suppliante": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "setFlags": [
+   "trf_culpabilite"
+  ],
+  "clearFlags": [
+   "trf_mere_suppliante"
+  ],
+  "text": "Tu revois la mère qui te suppliait, autrefois, de ne plus vendre à son fils. Elle porte du noir. Elle ne te regarde pas.",
+  "effects": {
+   "happiness": -12,
+   "karma": -4
+  }
+ },
+ {
+  "id": "rep_trf_0035",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "trf_revendeur_aide"
+   ],
+   "flagMinYears": {
+    "trf_revendeur_aide": 2
+   },
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_revendeur_aide"
+  ],
+  "text": "Le revendeur dont tu avais payé l'avocat te rend la pareille : il t'appelle d'une cabine. « Ils viennent chez toi demain. » Il raccroche.",
+  "choices": [
+   {
+    "label": "Tout vider cette nuit",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le lendemain, la perquisition ne trouve rien. Tu lui dois une fière chandelle.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": -10,
+        "milieuLoyaute": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas le croire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il avait raison.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 20,
+        "saisie": true,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0036",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "trf_revendeur_lache"
+   ],
+   "flagMinYears": {
+    "trf_revendeur_lache": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_revendeur_lache"
+  ],
+  "text": "Ton ancien revendeur, celui que tu as laissé seul en prison, a eu deux ans pour ruminer. Il a parlé. Les enquêteurs ont maintenant ton nom et ton adresse.",
+  "choices": [
+   {
+    "label": "Prendre un avocat tout de suite",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "L'avocat conteste tout. La parole d'un détenu contre la tienne. Ça tient, pour l'instant.",
+      "effects": {
+       "vie": {
+        "argentSale": -4000,
+        "milieuChaleur": 10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "L'avocat fait ce qu'il peut. Les écoutes ont fait le reste.",
+      "effects": {
+       "vie": {
+        "argentSale": -4000,
+        "jailMonths": 18,
+        "record": 1,
+        "milieuChaleur": 20
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir quelque temps",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu disparais quelques mois. Ton affaire, sans toi, s'effondre à moitié.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "clients": -10,
+        "revendeurs": -1,
+        "milieuChaleur": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0037",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "trf_revendeur_consomme"
+   ],
+   "flagMinYears": {
+    "trf_revendeur_consomme": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "setFlags": [
+   "trf_culpabilite"
+  ],
+  "clearFlags": [
+   "trf_revendeur_consomme"
+  ],
+  "text": "Le revendeur qui consommait ce qu'il vendait a été retrouvé inconscient dans une cage d'escalier. Il s'en sortira. On a trouvé ton numéro dans son téléphone.",
+  "effects": {
+   "happiness": -8,
+   "karma": -2,
+   "vie": {
+    "milieuChaleur": 10
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0038",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "trf_revendeur_fidele"
+   ],
+   "flagMinYears": {
+    "trf_revendeur_fidele": 2
+   },
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_revendeur_fidele"
+  ],
+  "text": "Pendant un contrôle, ton revendeur le plus fidèle, celui à qui tu avais fait l'avance du loyer, prend tout sur lui. « C'est à moi. Que à moi. » Il part en garde à vue à ta place.",
+  "choices": [
+   {
+    "label": "Payer sa défense et aider sa mère",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu paies tout. Il ressort avec du sursis. Il ne t'a jamais rien demandé en retour.",
+      "effects": {
+       "vie": {
+        "argentSale": -4000,
+        "milieuLoyaute": 10,
+        "milieuRespect": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le laisser assumer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il assume. Tu ne sais pas comment le regarder quand il sort.",
+      "effects": {
+       "karma": -6,
+       "vie": {
+        "milieuLoyaute": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0039",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "trf_treve"
+   ],
+   "flagMinYears": {
+    "trf_treve": 1
+   },
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "clearFlags": [
+   "trf_treve"
+  ],
+  "text": "La trêve avec {concurrent} a tenu un temps. Elle vient de se briser : un de leurs hommes vend dans ta rue, sous tes fenêtres.",
+  "choices": [
+   {
+    "label": "Renégocier",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Une nouvelle trêve, moins favorable. Tu n'avais pas les moyens d'une guerre.",
+      "effects": {
+       "vie": {
+        "tension": -5,
+        "clients": -4
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "On ne renégocie pas avec quelqu'un qui recule. La guerre reprend.",
+      "effects": {
+       "vie": {
+        "tension": 20
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Répondre fermement",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ils reculent. La trêve reprend, à tes conditions.",
+      "effects": {
+       "vie": {
+        "tension": -10,
+        "milieuRespect": 6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ils ne reculent pas. La guerre reprend, plus violente qu'avant.",
+      "effects": {
+       "vie": {
+        "tension": 25,
+        "milieuChaleur": 10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0040",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "trf_transfuge"
+   ],
+   "flagMinYears": {
+    "trf_transfuge": 1
+   },
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_transfuge"
+  ],
+  "text": "Chez {concurrent}, on n'a pas oublié le revendeur que tu leur as pris. Il a été retrouvé roué de coups, une nuit, dans un parking. Il te demande ce que tu comptes faire.",
+  "choices": [
+   {
+    "label": "Le venger",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La réponse est violente. Elle coûte cher à tout le monde.",
+      "effects": {
+       "karma": -10,
+       "vie": {
+        "tension": 25,
+        "milieuRespect": 6,
+        "milieuChaleur": 15
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La réponse rate. La guerre, elle, ne rate pas.",
+      "effects": {
+       "vie": {
+        "tension": 25,
+        "milieuChaleur": 10,
+        "revendeurs": -1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Payer ses soins et faire profil bas",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il guérit. Il comprend que tu ne te battras pas pour lui. Il part.",
+      "effects": {
+       "vie": {
+        "argentSale": -2000,
+        "revendeurs": -1,
+        "tension": 5,
+        "milieuRespect": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0041",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "trf_flic_tenu"
+   ],
+   "flagMinYears": {
+    "trf_flic_tenu": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_flic_tenu"
+  ],
+  "text": "Le policier que tu avais enregistré revient. Promu, plus sûr de lui. « Tu as toujours ton petit fichier ? Moi aussi, j'en ai un sur toi. »",
+  "choices": [
+   {
+    "label": "Négocier un pacte de non-agression",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous vous tenez par la gorge, poliment. Ça peut durer longtemps.",
+      "effects": {
+       "happiness": -3,
+       "vie": {
+        "milieuChaleur": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Envoyer l'enregistrement à sa hiérarchie",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il est suspendu. Ses collègues, eux, ne t'oublieront pas.",
+      "effects": {
+       "karma": 2,
+       "vie": {
+        "milieuChaleur": 15
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "L'enregistrement est jugé irrecevable. Lui, il est furieux.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0042",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "trf_info_police"
+   ],
+   "flagMinYears": {
+    "trf_info_police": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_info_police"
+  ],
+  "text": "Une rumeur court dans le milieu : tu parlerais à la police. Personne n'a de preuve. Personne n'en a besoin.",
+  "choices": [
+   {
+    "label": "Démentir à tout le monde",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Certains te croient. D'autres trouvent que tu te défends beaucoup.",
+      "effects": {
+       "vie": {
+        "milieuRespect": -4
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Plus tu démens, plus la rumeur gonfle.",
+      "effects": {
+       "vie": {
+        "milieuRespect": -8,
+        "milieuLoyaute": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire profil bas",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu te tais. La rumeur s'use. Elle ne disparaît pas.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "milieuRespect": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0043",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "trf_magot_parents"
+   ],
+   "flagMinYears": {
+    "trf_magot_parents": 1
+   },
+   "tags": [
+    "parents"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_magot_parents"
+  ],
+  "text": "Le carton « vieux classeurs » au grenier de tes parents a été ouvert. Ta mère t'appelle. Elle ne dit qu'une phrase : « Viens le chercher. Aujourd'hui. »",
+  "choices": [
+   {
+    "label": "Y aller et t'expliquer",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu expliques. Elle t'écoute jusqu'au bout. Elle te rend le carton et ferme la porte doucement.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "parent": -10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ton père est là. Il ne dit rien. Il te tend le carton comme on tend un sac poubelle.",
+      "effects": {
+       "happiness": -10,
+       "relationships": {
+        "parent": -15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Envoyer quelqu'un le chercher",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Quelqu'un récupère le carton. Tes parents ne t'appellent plus pendant des mois.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "parent": -15
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0044",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "trf_train_de_vie"
+   ],
+   "flagMinYears": {
+    "trf_train_de_vie": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_train_de_vie"
+  ],
+  "text": "Ta belle voiture a fini par intéresser l'administration fiscale. On te demande d'expliquer comment tu l'as payée.",
+  "choices": [
+   {
+    "label": "Payer le redressement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu paies, avec de l'argent propre. Tu as acheté une deuxième fois la même voiture.",
+      "effects": {
+       "money": -8000,
+       "vie": {
+        "milieuChaleur": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Contester",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton dossier tient, de justesse.",
+      "effects": {
+       "vie": {
+        "argentSale": -2000
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le contrôleur transmet ton dossier au parquet.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0045",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "minAge": 32,
+  "conditions": {
+   "flags": [
+    "trf_enfant_sait"
+   ],
+   "flagMinYears": {
+    "trf_enfant_sait": 4
+   },
+   "tags": [
+    "children"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_enfant_sait"
+  ],
+  "text": "Ton enfant a grandi. Il a compris d'où venait l'argent du plafond. Un soir, il te demande s'il peut « travailler avec toi ».",
+  "choices": [
+   {
+    "label": "Refuser et lui dire la vérité sur ce métier",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu racontes tout. Il ne demande plus jamais.",
+      "effects": {
+       "karma": 6,
+       "happiness": -4,
+       "relationships": {
+        "child": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il ne t'écoute pas. Il ira voir ailleurs. Tu as été son exemple.",
+      "effects": {
+       "happiness": -10,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui donner une petite tâche",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une seule. Tu viens de faire ce que tu t'étais juré de ne jamais faire.",
+      "effects": {
+       "karma": -15,
+       "happiness": -8,
+       "relationships": {
+        "child": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0046",
+  "on": "chaque_annee",
+  "chance": 0.25,
+  "conditions": {
+   "flags": [
+    "trf_culpabilite"
+   ],
+   "flagMinYears": {
+    "trf_culpabilite": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "setFlags": [
+   "trf_doute"
+  ],
+  "clearFlags": [
+   "trf_culpabilite"
+  ],
+  "text": "Les visages reviennent la nuit. Tu as commencé à donner un peu de temps, en cachette, à une association qui aide les familles touchées par la drogue. Personne là-bas ne sait qui tu es.",
+  "effects": {
+   "happiness": 3,
+   "karma": 6
+  }
+ },
+ {
+  "id": "rep_trf_0047",
+  "on": "chaque_annee",
+  "chance": 0.45,
+  "conditions": {
+   "flags": [
+    "trf_taxe_payee"
+   ],
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Cette année encore, l'enveloppe pour ceux qui tiennent le secteur. Elle part chaque mois, comme un loyer.",
+  "effects": {
+   "vie": {
+    "argentSale": -1500,
+    "tension": -3
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0048",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "trf_coup_bavard"
+   ],
+   "flagMinYears": {
+    "trf_coup_bavard": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_coup_bavard"
+  ],
+  "text": "Le bavard de l'équipe a parlé à la mauvaise personne. Tu remarques une voiture garée en bas de chez toi, toujours la même, toujours avec quelqu'un dedans.",
+  "choices": [
+   {
+    "label": "Faire comme si de rien n'était",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu mènes une vie exemplaire. La voiture reste trois mois. Puis elle part.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "milieuChaleur": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prévenir l'équipe",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "L'équipe se disperse. Le bavard aussi, sous la menace.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": -4,
+        "milieuChaleur": 4
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Prévenir, c'est passer des appels. Les appels sont écoutés.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0049",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "trf_coup_part_inegale"
+   ],
+   "flagMinYears": {
+    "trf_coup_part_inegale": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_coup_part_inegale"
+  ],
+  "text": "Le membre de l'équipe qui s'estimait lésé dans le partage n'a jamais digéré. Il te fait savoir qu'il veut « ce qui lui revient », sinon il trouvera quelqu'un d'intéressé par l'histoire.",
+  "choices": [
+   {
+    "label": "Payer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il prend l'argent. Il reviendra, peut-être.",
+      "effects": {
+       "happiness": -3,
+       "vie": {
+        "argentSale": -4000
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il bluffait. Il disparaît de ta vie.",
+      "effects": {
+       "vie": {
+        "milieuRespect": 3
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il ne bluffait pas. Un enquêteur reçoit une lettre anonyme très détaillée.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0050",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "trf_coup_complice_lache"
+   ],
+   "flagMinYears": {
+    "trf_coup_complice_lache": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_coup_complice_lache"
+  ],
+  "text": "Le complice que tu avais laissé seul sort de prison. Il ne t'appelle pas. Il te fait juste savoir, par un ami commun, qu'il est dehors.",
+  "choices": [
+   {
+    "label": "Aller le voir avec une enveloppe",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il prend l'enveloppe. « C'est un début. » Il n'a pas dit la fin.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "argentSale": -5000
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il refuse l'enveloppe. Il voulait seulement que tu viennes. Vous buvez un verre en silence.",
+      "effects": {
+       "happiness": 2,
+       "karma": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'éviter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu changes de quartier, de bar, d'habitudes. Tu regardes derrière toi plus souvent.",
+      "effects": {
+       "happiness": -6,
+       "setFlags": [
+        "menace_milieu"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0051",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "trf_coup_arme"
+   ],
+   "flagMinYears": {
+    "trf_coup_arme": 1
+   },
+   "tags": [
+    "braqueur"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_coup_arme"
+  ],
+  "text": "L'arme que ton équipier avait emportée pour le coup a été retrouvée chez lui, lors d'une perquisition pour autre chose. Les enquêteurs font le lien.",
+  "effects": {
+   "happiness": -6,
+   "vie": {
+    "milieuChaleur": 15,
+    "enquete": true
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0052",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "trf_coup_balance"
+   ],
+   "flagMinYears": {
+    "trf_coup_balance": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "setFlags": [
+   "menace_milieu"
+  ],
+  "clearFlags": [
+   "trf_coup_balance"
+  ],
+  "text": "Ceux contre qui tu as témoigné n'ont pas oublié ton nom. Une carte postale arrive à ta nouvelle adresse. Pas de texte. Juste ta nouvelle adresse, écrite de leur main.",
+  "effects": {
+   "happiness": -12
+  }
+ },
+ {
+  "id": "rep_trf_0053",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "trf_coup_complice_fuyard"
+   ],
+   "flagMinYears": {
+    "trf_coup_complice_fuyard": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_coup_complice_fuyard"
+  ],
+  "text": "Tu as appris où vit celui qui est parti avec une partie du butin. Une petite maison, une femme, un chien. Il a l'air heureux.",
+  "choices": [
+   {
+    "label": "Aller réclamer ton dû",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il rend ce qu'il peut, terrorisé. Ce n'est pas grand-chose.",
+      "effects": {
+       "karma": -4,
+       "vie": {
+        "argentSale": 2000,
+        "milieuRespect": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il n'a plus rien. Juste cette petite vie. Tu repars les mains vides.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le laisser tranquille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tournes la page. Ça, personne ne te l'a volé.",
+      "effects": {
+       "happiness": 3,
+       "karma": 4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0054",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "conditions": {
+   "flags": [
+    "trf_promesse_arret"
+   ],
+   "flagMinYears": {
+    "trf_promesse_arret": 1
+   },
+   "tags": [
+    "dealer",
+    "partner"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_promesse_arret"
+  ],
+  "text": "{partenaire} a vu que tu n'as pas arrêté, malgré ta promesse. Une facture, un téléphone de trop, un mensonge de trop.",
+  "choices": [
+   {
+    "label": "Promettre encore",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "{partenaire} accepte, une dernière fois. Le mot « dernière » est prononcé lentement.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": -8
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "« Tu as déjà promis. » La porte se ferme.",
+      "effects": {
+       "happiness": -12,
+       "relationships": {
+        "partner": -25
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Arrêter pour de vrai",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu vends ce qui te reste et tu coupes tout. {partenaire} ne te croit qu'au bout de six mois. Puis te croit.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "partner": 10
+       },
+       "vie": {
+        "stock": -2,
+        "revendeurs": -2,
+        "clients": -25,
+        "milieuChaleur": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0055",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "trf_fratrie_dedans"
+   ],
+   "flagMinYears": {
+    "trf_fratrie_dedans": 1
+   },
+   "tags": [
+    "siblings"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_fratrie_dedans"
+  ],
+  "text": "{fratrie}, que tu avais fait entrer dans tes affaires, s'est fait arrêter. Ta mère t'appelle en hurlant. Elle sait très bien qui a ouvert la porte.",
+  "choices": [
+   {
+    "label": "Payer le meilleur avocat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{fratrie} prend du sursis. Ta mère ne te remercie pas.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "sibling": 4,
+        "mother": -8
+       },
+       "vie": {
+        "argentSale": -5000
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre la faute sur toi",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu te dénonces. {fratrie} sort libre ; toi, tu prends sa place.",
+      "effects": {
+       "karma": 8,
+       "relationships": {
+        "sibling": 15
+       },
+       "vie": {
+        "jailMonths": 12,
+        "record": 1,
+        "milieuChaleur": 15
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Les enquêteurs ne te croient pas. Vous voilà deux dans le dossier.",
+      "effects": {
+       "relationships": {
+        "sibling": 5
+       },
+       "vie": {
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0056",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "trf_appel_anonyme"
+   ],
+   "flagMinYears": {
+    "trf_appel_anonyme": 1
+   },
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_appel_anonyme"
+  ],
+  "text": "Chez {concurrent}, ils ont appris que c'est toi qui avais appelé la police à propos du collège. Dans le milieu, ça porte un nom.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "tension": 15,
+    "milieuRespect": -6
+   }
+  }
+ },
+ {
+  "id": "rep_trf_0057",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "trf_comptable"
+   ],
+   "flagMinYears": {
+    "trf_comptable": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_comptable"
+  ],
+  "text": "Ton comptable s'est fait arrêter pour une autre affaire. Il gardait un double de tous ses dossiers. Le tien y compris.",
+  "choices": [
+   {
+    "label": "Lui proposer de l'aide",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il refuse de parler de toi. Il préfère sa réputation à sa liberté.",
+      "effects": {
+       "happiness": -3,
+       "vie": {
+        "argentSale": -3000
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il accepte ton aide, et parle quand même.",
+      "effects": {
+       "vie": {
+        "argentSale": -3000,
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te préparer au pire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Avocat, comptes vidés, discours répété devant le miroir. Le pire, parfois, n'arrive pas. Parfois.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "argentSale": -2000,
+        "milieuChaleur": 10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_trf_0058",
+  "on": "chaque_annee",
+  "chance": 0.25,
+  "conditions": {
+   "flags": [
+    "trf_coup_trace"
+   ],
+   "flagMinYears": {
+    "trf_coup_trace": 2
+   },
+   "tags": [
+    "braqueur"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "trf_coup_trace"
+  ],
+  "text": "Les traces laissées sur ton coup ont fini par parler. Un enquêteur a recoupé un visage, un achat, une plaque. Tu es convoqué{e} comme « simple témoin ».",
+  "effects": {
+   "happiness": -8,
+   "vie": {
+    "milieuChaleur": 15,
+    "enquete": true
+   }
+  }
+ }
+]

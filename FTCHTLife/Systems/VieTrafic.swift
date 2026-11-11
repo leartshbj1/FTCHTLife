@@ -598,6 +598,8 @@ enum MilieuTrafic {
         if b.zones.contains(where: { $0.tension >= 60 && $0.concurrentId != nil }) { s.insert("guerre_prix") }
         if !b.lignes.isEmpty && b.stockTotal == 0 { s.insert("rupture_stock") }
         if !m.membre { s.insert("independant") }
+        if t.reseau >= 1 { s.insert("a_revendeurs") }
+        if let p = b.lignes.first?.produitId, ["cannabis", "ecstasy", "cocaine", "heroine", "medicaments_detournes"].contains(p) { s.insert("produit_drogue") }
         return s
     }
 

@@ -230,7 +230,7 @@ Limites : indépendant 1 marchandise, 2 quartiers, 4 revendeurs ; membre 1 + ran
 
 ### Pour les événements
 
-- Tags : `dealer`, `dealer_gros`, `guerre_prix`, `rupture_stock`, `independant`, `coup_prepare`, `braqueur`.
+- Tags : `dealer`, `dealer_gros`, `guerre_prix`, `rupture_stock`, `independant`, `a_revendeurs`, `produit_drogue` (marchandise principale = drogue), `coup_prepare`, `braqueur`.
 - Effets `vie` en plus : `clients`, `revendeurs`, `tension`, `stock` (entiers, en plus ou en moins).
 - Variables : `{produit}`, `{zone}`, `{concurrent}` (les noms de quartiers et de concurrents portent leur article : écrire « dans {zone} », « chez {concurrent} », jamais « de {zone} »).
 - Signaux : `trafic_zone`, `trafic_guerre_prix`, `trafic_revendeur_arrete`, `trafic_overdose`, `coup_reussi`, `coup_rate`, `coup_trahison`.

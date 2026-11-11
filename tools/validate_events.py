@@ -40,6 +40,9 @@ SPECIAL |= {"death","newFriend","relationships","setFlags","skills"}  # skills :
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"gang","gang_haut","dealer","sous_enquete","chaleur","ancien_gang","balance","argent_sale"}
 PH |= {"organisation","chef","rival","rang"}
+# Le Milieu, trafic et coups (vie4_trafic.json)
+TAGS |= {"dealer_gros","guerre_prix","rupture_stock","independant","coup_prepare","braqueur","a_revendeurs","produit_drogue"}
+PH |= {"produit","zone","concurrent"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
