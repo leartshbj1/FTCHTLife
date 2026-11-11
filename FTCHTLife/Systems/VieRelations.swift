@@ -293,6 +293,10 @@ enum VieRelations {
             if r.genre == j.genre { return "Vous voulez un enfant ? Pensez à l'adoption, dans le menu Famille." }
             if ageFemme > 48 { return "La nature dit non. L'adoption dit peut-être." }
             if r.lien < 40 { lien(-5); return "\(nom) n'est pas du tout d'humeur." }
+            if let m = CoeurSysteme.contraceptionActive(j) {
+                if VieHasard.reussi(0.05) { return conception(&j).joined(separator: " ") }
+                return "Avec \(CoeurSysteme.nomContraception(m)), ça risque d'être long. Parlez d'abord de contraception."
+            }
             if VieHasard.reussi(0.45) { return conception(&j).joined(separator: " ") }
             return "Pas de bébé cette fois. Mais vous avez bien rigolé."
 

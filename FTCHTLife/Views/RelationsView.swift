@@ -101,7 +101,11 @@ struct RelationDetailView: View {
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.clear)
                 }
-                if r.vivant {
+                if r.vivant && r.type == .partenaire {
+                    // Partenaire : toutes les actions de couple, rangées par thème (module Cœur).
+                    CoeurCoupleActions(relationId: r.id)
+                    SecretsRelationSection(relationId: r.id, message: $message)
+                } else if r.vivant {
                     Section("Actions") {
                         ForEach(engine.actionsPossibles(r)) { a in
                             LigneAction(titre: a.titre, icone: a.icone) {

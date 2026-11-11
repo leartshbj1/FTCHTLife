@@ -125,6 +125,50 @@ struct CoeurSection: View {
     }
 }
 
+// MARK: - Ligne d'action « grand format » (icône, titre en gras, sous-titre)
+
+/// Ligne d'action dans le style des menus du jeu : grosse icône, titre gras, petite phrase, « ••• » à droite.
+struct CoeurLigneVie: View {
+    static let bleu = Color(red: 0.05, green: 0.31, blue: 0.60)
+
+    let emoji: String
+    let titre: String
+    var sousTitre: String? = nil
+    var actif: Bool = true
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 14) {
+                Text(emoji)
+                    .font(.system(size: 34))
+                    .frame(width: 46)
+                    .opacity(actif ? 1 : 0.4)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(titre)
+                        .font(.system(size: 19, weight: .heavy, design: .rounded))
+                        .foregroundStyle(actif ? Self.bleu : .gray)
+                        .lineLimit(2)
+                    if let s = sousTitre, !s.isEmpty {
+                        Text(s)
+                            .font(.system(size: 14, weight: .regular, design: .rounded))
+                            .foregroundStyle(actif ? Self.bleu.opacity(0.85) : .gray)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+                Spacer(minLength: 4)
+                Image(systemName: "ellipsis")
+                    .font(.system(size: 18, weight: .heavy))
+                    .foregroundStyle(actif ? Self.bleu : .gray.opacity(0.5))
+            }
+            .padding(.vertical, 8)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .disabled(!actif)
+    }
+}
+
 // MARK: - Actions avec un proche qui ouvrent une carte (fiche d'un proche)
 
 struct CoeurActionsProcheSection: View {
@@ -141,10 +185,10 @@ struct CoeurActionsProcheSection: View {
                 if !actions.isEmpty {
                     Section("Moments ensemble") {
                         ForEach(actions) { a in
-                            LigneAction(titre: a.titre,
-                                        sousTitre: CoeurActionsSysteme.dejaFait(a, r.id, j) ? "déjà fait cette année" : nil,
-                                        icone: a.icone,
-                                        actif: !CoeurActionsSysteme.dejaFait(a, r.id, j)) {
+                            let fait = CoeurActionsSysteme.dejaFait(a, r.id, j)
+                            CoeurLigneVie(emoji: a.emoji, titre: a.titre,
+                                          sousTitre: fait ? "Déjà fait cette année" : a.sousTitre(r, j),
+                                          actif: !fait) {
                                 lancer(a)
                             }
                         }
@@ -176,12 +220,195 @@ struct CoeurActionsProcheSection: View {
     }
 }
 
-/// Carte de choix qui suit une action (même allure qu'un événement).
+// MARK: - Fiche du/de la partenaire : toutes les actions de couple au même endroit
+
+/// Une action de la fiche du/de la partenaire, quel que soit le module qui la fait.
+enum CoeurActionCouple: Identifiable, Hashable {
+    case carte(CoeurActionProche)
+    case vie(VieRelations.Action)
+    case moteur(GameEngine.ActionRelation)
+
+    var id: String {
+        switch self {
+        case .carte(let a): return "c_" + a.rawValue
+        case .vie(let a): return "v_" + a.rawValue
+        case .moteur(let a): return "m_" + a.rawValue
+        }
+    }
+}
+
+struct CoeurCoupleActions: View {
+    @EnvironmentObject var engine: GameEngine
+    @Environment(\.presentoir) private var presentoir
+    let relationId: UUID
+    @State private var carte: CoeurCartePrete?
+    @State private var message: String?
+
+    var body: some View {
+        Group {
+            if let j = engine.joueur, let r = j.relations.first(where: { $0.id == relationId }), r.type == .partenaire {
+                Section("Votre couple") {
+                    infos(j)
+                }
+                ForEach(groupes(r, j)) { g in
+                    Section(g.titre) {
+                        ForEach(g.actions) { a in ligne(a, r, j) }
+                    }
+                }
+            }
+        }
+        .sheet(item: $carte) { c in
+            CoeurCarteView(carte: c)
+                .environmentObject(engine)
+                .interactiveDismissDisabled()
+                .presentationDetents([.medium, .large])
+        }
+        .vieAlerte($message)
+    }
+
+    @ViewBuilder
+    private func infos(_ j: Joueur) -> some View {
+        let n = j.vieEtat.anneesEnsemble
+        HStack { Text("Statut"); Spacer(); Text(j.statutCoupleTexte).foregroundStyle(.secondary) }
+        HStack { Text("Ensemble depuis"); Spacer(); Text(n == 0 ? "moins d'un an" : "\(n) an\(n > 1 ? "s" : "")").foregroundStyle(.secondary) }
+        if CoeurSysteme.tags(j).contains("contraception_possible") {
+            HStack {
+                Text("Contraception"); Spacer()
+                Text(CoeurSysteme.contraceptionActive(j).map { CoeurSysteme.nomContraception($0).capitalisePremiere } ?? "Aucune")
+                    .foregroundStyle(.secondary)
+            }
+        }
+        if j.coeurEtat.therapie > 0 {
+            HStack { Text("Thérapie de couple"); Spacer(); Text("encore \(j.coeurEtat.therapie) an\(j.coeurEtat.therapie > 1 ? "s" : "")").foregroundStyle(.secondary) }
+        }
+    }
+
+    struct Groupe: Identifiable {
+        let titre: String
+        let actions: [CoeurActionCouple]
+        var id: String { titre }
+    }
+
+    /// Les actions rangées en trois groupes, dans l'ordre où on les cherche.
+    private func groupes(_ r: Relation, _ j: Joueur) -> [Groupe] {
+        let cartes = Set(CoeurActionProche.pour(r, j))
+        let vie = Set(VieRelations.actions(r, j))
+        let moteur = Set(engine.actionsPossibles(r))
+        func c(_ a: CoeurActionProche) -> CoeurActionCouple? { cartes.contains(a) ? .carte(a) : nil }
+        func v(_ a: VieRelations.Action) -> CoeurActionCouple? { vie.contains(a) ? .vie(a) : nil }
+        func m(_ a: GameEngine.ActionRelation) -> CoeurActionCouple? { moteur.contains(a) ? .moteur(a) : nil }
+
+        let ensemble: [CoeurActionCouple?] = [c(.conversation), m(.temps), v(.complimenter), c(.nuit), v(.rendezVous),
+                                              v(.voyageAmoureux), m(.cadeau), c(.surprise), c(.anniversaire)]
+        let serieux: [CoeurActionCouple?] = [c(.avenir), c(.contraception), v(.bebe), v(.presenterParents),
+                                             v(.demanderEnMariage), v(.seMarier), c(.therapie), c(.vendre)]
+        let gate: [CoeurActionCouple?] = [v(.disputer), c(.insulter), c(.rompre), v(.divorcer)]
+        return [Groupe(titre: "Ensemble", actions: ensemble.compactMap { $0 }),
+                Groupe(titre: "Les sujets sérieux", actions: serieux.compactMap { $0 }),
+                Groupe(titre: "Quand ça se gâte", actions: gate.compactMap { $0 })].filter { !$0.actions.isEmpty }
+    }
+
+    @ViewBuilder
+    private func ligne(_ a: CoeurActionCouple, _ r: Relation, _ j: Joueur) -> some View {
+        switch a {
+        case .carte(let x):
+            let fait = CoeurActionsSysteme.dejaFait(x, r.id, j)
+            CoeurLigneVie(emoji: x.emoji, titre: x.titre, sousTitre: fait ? "Déjà fait cette année" : x.sousTitre(r, j), actif: !fait) {
+                lancer(x)
+            }
+        case .vie(let x):
+            let fait = j.actionsAnnee.contains("vie_\(x.rawValue)_\(r.id.uuidString)")
+            CoeurLigneVie(emoji: Self.emoji(x), titre: Self.titre(x), sousTitre: fait ? "Déjà fait cette année" : Self.sousTitre(x), actif: !fait) {
+                montrer(engine.vieAction { j in VieRelations.agir(x, sur: relationId, &j) })
+            }
+        case .moteur(let x):
+            let fait = j.actionsAnnee.contains("rel_\(x.rawValue)_\(r.id.uuidString)")
+            CoeurLigneVie(emoji: x == .temps ? "🛋️" : "🎁",
+                          titre: x == .temps ? "Passer du temps ensemble" : "Offrir un cadeau",
+                          sousTitre: fait ? "Déjà fait cette année" : (x == .temps ? "Série, balade, canapé" : "100 €, et l'intention compte"),
+                          actif: !fait) {
+                montrer(engine.agir(x, sur: relationId))
+            }
+        }
+    }
+
+    static func emoji(_ a: VieRelations.Action) -> String {
+        switch a {
+        case .complimenter: return "😍"
+        case .disputer: return "⚡️"
+        case .rendezVous: return "🍷"
+        case .voyageAmoureux: return "✈️"
+        case .demanderEnMariage: return "💍"
+        case .seMarier: return "💒"
+        case .divorcer: return "📄"
+        case .bebe: return "👶"
+        case .presenterParents: return "👪"
+        case .rompre: return "💔"
+        default: return "❤️"
+        }
+    }
+
+    static func titre(_ a: VieRelations.Action) -> String {
+        switch a {
+        case .rendezVous: return "Rendez-vous romantique"
+        case .voyageAmoureux: return "Week-end en amoureux"
+        case .demanderEnMariage: return "Demander en mariage"
+        case .seMarier: return "Organiser le mariage"
+        default: return a.titre
+        }
+    }
+
+    static func sousTitre(_ a: VieRelations.Action) -> String {
+        switch a {
+        case .complimenter: return "Un mot doux, ça ne coûte rien"
+        case .disputer: return "Vider son sac"
+        case .rendezVous: return "Restaurant en tête-à-tête (150 €)"
+        case .voyageAmoureux: return "Deux jours loin de tout (900 €)"
+        case .demanderEnMariage: return "Genou à terre, bague à 2 500 €"
+        case .seMarier: return "La fête, la robe, le DJ (12 000 €)"
+        case .divorcer: return "Avocats, partage, la moitié de tout"
+        case .bebe: return "Agrandir la famille"
+        case .presenterParents: return "Le grand repas de famille"
+        default: return ""
+        }
+    }
+
+    private func lancer(_ a: CoeurActionProche) {
+        var resultat: (texte: String, carte: CoeurCartePrete?) = ("", nil)
+        engine.modifier { j in
+            resultat = CoeurActionsSysteme.faire(a, sur: relationId, &j, engine: engine)
+        }
+        if let c = resultat.carte {
+            if let p = presentoir { p.ouvrir(CoeurCarteView(carte: c)) } else { carte = c }
+        } else {
+            montrer(resultat.texte)
+        }
+    }
+
+    /// Le message passe par la racine de l'écran (une alerte posée dans la liste se refermerait aussitôt).
+    private func montrer(_ texte: String) {
+        guard !texte.isEmpty else { return }
+        if let p = presentoir { p.montrer(texte) } else { message = texte }
+    }
+}
+
+private extension String {
+    var capitalisePremiere: String { prefix(1).uppercased() + dropFirst() }
+}
+
+/// Carte de choix qui suit une action (même allure qu'un événement). Gère les scènes en plusieurs étapes (`then`).
 struct CoeurCarteView: View {
     @EnvironmentObject var engine: GameEngine
     @Environment(\.dismiss) private var dismiss
     let carte: CoeurCartePrete
     @State private var resultat: String?
+    /// Étape en cours (nil = la question de la carte).
+    @State private var etape: EtapeScene?
+    @State private var numero = 0
+    /// Étape qui suit le résultat affiché.
+    @State private var suite: EtapeScene?
+    /// Ce qui s'est déjà passé dans la scène.
+    @State private var passe: [String] = []
 
     var body: some View {
         NavigationStack {
@@ -191,7 +418,14 @@ struct CoeurCarteView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
-                    Text(carte.texte)
+                    ForEach(Array(passe.enumerated()), id: \.offset) { _, t in
+                        Text(t)
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Text(question)
                         .font(.system(size: 19, weight: .semibold, design: .rounded))
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
@@ -202,12 +436,14 @@ struct CoeurCarteView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(RoundedRectangle(cornerRadius: 14).fill(Theme.carte))
-                        Button("Continuer") { dismiss() }
+                        Button(titreBouton) { continuer() }
                             .buttonStyle(.borderedProminent)
                     } else {
                         ForEach(Array(choixVisibles.enumerated()), id: \.offset) { _, paire in
                             Button {
-                                resultat = engine.resoudreCarteCoeur(carte, choix: paire.0)
+                                let r = engine.resoudreCarteCoeur(carte, etape: etape, numero: numero, choix: paire.0)
+                                resultat = r.texte
+                                suite = r.suite
                             } label: {
                                 Text(engine.joueur.map { engine.remplir(paire.1.label, $0) } ?? paire.1.label)
                                     .frame(maxWidth: .infinity)
@@ -224,9 +460,26 @@ struct CoeurCarteView: View {
         }
     }
 
+    private var titreBouton: String { suite == nil ? "Continuer" : "Et ensuite…" }
+
+    private var question: String {
+        guard let e = etape else { return carte.texte }
+        return engine.joueur.map { engine.remplir(e.text, $0) } ?? e.text
+    }
+
+    private func continuer() {
+        guard let s = suite else { dismiss(); return }
+        passe.append(question + " " + (resultat ?? ""))
+        etape = s
+        numero += 1
+        suite = nil
+        resultat = nil
+    }
+
     /// Les choix avec leur index d'origine ; les choix à compétence n'apparaissent qu'avec le niveau.
     private var choixVisibles: [(Int, Choix)] {
-        let tous = Array((carte.evenement.choices ?? []).enumerated()).map { ($0.offset, $0.element) }
+        let liste = etape?.choices ?? carte.evenement.choices ?? []
+        let tous = Array(liste.enumerated()).map { ($0.offset, $0.element) }
         guard let j = engine.joueur else { return tous }
         return tous.filter { Competences.aLeNiveau($0.1.requiresSkill, j) }
     }
