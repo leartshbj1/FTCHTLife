@@ -1,0 +1,4319 @@
+[
+  {
+    "id": "itl_0001",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "L'attaché trop curieux",
+    "text": "Le contre-espionnage a surpris un attaché culturel de l'ambassade {du_pays_cible} en train de photographier des documents classifiés dans un ministère à {capitale}. Il bénéficie de l'immunité diplomatique. La presse n'est pas encore au courant, mais ce genre de secret tient rarement plus de quarante-huit heures.",
+    "choices": [
+      {
+        "label": "L'expulser discrètement, sans communiqué",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il quitte {capitale} par le premier vol. Le gouvernement {du_pays_cible} fait mine de ne rien savoir, ce qui, en diplomatie, ressemble à un remerciement.",
+            "pol": {
+              "relationCible": -2,
+              "tension": 1,
+              "influence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'expulser publiquement, conférence de presse à l'appui",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'opinion apprécie la fermeté. Dès le lendemain, deux de tes diplomates sont déclarés indésirables en retour. Le jeu des miroirs est lancé.",
+            "pol": {
+              "popularite": 4,
+              "relationCible": -10,
+              "tension": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'annonce fait grand bruit, mais un quotidien révèle que l'attaché avait été repéré depuis deux ans sans que personne ne bouge. On te demande pourquoi.",
+            "pol": {
+              "popularite": -2,
+              "relationCible": -8,
+              "tension": 4,
+              "casseroles": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier son départ contre la libération d'un de tes ressortissants détenu là-bas",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'échange se fait dans un aéroport, au petit matin. Ton ressortissant rentre chez lui, et personne n'a perdu la face.",
+            "pol": {
+              "popularite": 5,
+              "relationCible": 3,
+              "tension": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les autorités {du_pays_cible} nient toute détention arbitraire et dénoncent un « chantage ». L'affaire fuite dans la presse dans sa version la moins flatteuse.",
+            "pol": {
+              "popularite": -3,
+              "relationCible": -6,
+              "tension": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0002",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le ressortissant détenu",
+    "text": "Un ingénieur de ton pays est détenu depuis quatre mois {au_pays_cible}, accusé d'espionnage sur la foi d'un dossier que personne n'a vu. Sa femme et ses enfants passent tous les soirs au journal télévisé. Une pétition pour sa libération dépasse le million de signatures.",
+    "choices": [
+      {
+        "label": "Privilégier la diplomatie silencieuse",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Après des mois de discussions feutrées, il est libéré « pour raisons humanitaires ». Il atterrit à {capitale} amaigri, mais vivant. Sa famille te remercie publiquement.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 5,
+              "relationCible": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le silence n'a rien donné : il est condamné à huit ans. La famille t'accuse d'avoir sacrifié son mari à la raison d'État.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -6,
+              "relationCible": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Hausser le ton et imposer des sanctions ciblées",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Les sanctions touchent les magistrats et les responsables de la sécurité impliqués. Les autorités {du_pays_cible} durcissent leurs conditions de détention, puis finissent par l'expulser pour se débarrasser du problème.",
+            "pol": {
+              "popularite": 6,
+              "relationCible": -10,
+              "tension": 6
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La pression publique fige les positions. Personne ne peut plus reculer sans paraître céder, et ton ressortissant reste en prison.",
+            "pol": {
+              "popularite": -2,
+              "relationCible": -12,
+              "tension": 7
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un échange contre un ressortissant {du_pays_cible} condamné chez toi",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'échange a lieu. Tu as ramené un innocent, et libéré un homme condamné par ta propre justice. Les magistrats publient une tribune sévère.",
+            "pol": {
+              "popularite": 4,
+              "relationCible": 5,
+              "casseroles": 1,
+              "segments": {
+                "fonctionnaires": -4
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les autorités {du_pays_cible} refusent l'échange et le rendent public, en le présentant comme un aveu. La manœuvre se retourne contre toi.",
+            "pol": {
+              "popularite": -4,
+              "relationCible": -4,
+              "tension": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0003",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'avion dérouté",
+    "text": "Un avion de ligne parti de {capitale} a été contraint d'atterrir {au_pays_cible} par deux avions de chasse, sous prétexte d'une alerte à la bombe. À bord se trouvait un journaliste critique du gouvernement {du_pays_cible}, réfugié chez toi depuis trois ans. Il a été arrêté sur le tarmac. Les cent quarante autres passagers sont rentrés, choqués.",
+    "choices": [
+      {
+        "label": "Suspendre tous les vols entre les deux pays",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les compagnies protestent, les voyageurs aussi, mais le message est clair. Plusieurs pays t'emboîtent le pas et la décision devient un front commun.",
+            "pol": {
+              "popularite": 3,
+              "relationCible": -12,
+              "tension": 6,
+              "relations": 3,
+              "influenceMondiale": 3,
+              "pays": {
+                "croissance": -0.2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu restes seul{e} à appliquer la mesure. Les compagnies concurrentes récupèrent tes lignes, et le journaliste reste en prison.",
+            "pol": {
+              "popularite": -1,
+              "relationCible": -12,
+              "tension": 6,
+              "pays": {
+                "croissance": -0.3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Saisir l'Organisation de l'aviation civile internationale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'enquête internationale conclut à un détournement d'État. Le rapport est accablant, sobre et parfaitement inutile pour le journaliste, mais il fait jurisprudence.",
+            "pol": {
+              "influenceMondiale": 4,
+              "relations": 3,
+              "relationCible": -5,
+              "tension": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Protester par une note verbale et ne pas aller plus loin",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La note est reçue, enregistrée, classée. L'opposition t'accuse de lâcheté, et les associations de journalistes déposent une gerbe devant {palais}.",
+            "pol": {
+              "popularite": -5,
+              "relationCible": -1,
+              "influenceMondiale": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0004",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Accrochage en mer",
+    "text": "Dans les eaux internationales, un patrouilleur {du_pays_cible} a coupé la route d'une frégate de ta marine à moins de cent mètres, à pleine vitesse. Les images filmées depuis la passerelle circulent déjà. L'état-major te demande une consigne pour les prochaines rencontres, qui ne manqueront pas.",
+    "choices": [
+      {
+        "label": "Publier les images et convoquer l'attaché militaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les images font le tour du monde. Les autorités {du_pays_cible} parlent de « provocation » de ta frégate, mais l'opinion internationale a vu la vidéo.",
+            "pol": {
+              "relationCible": -6,
+              "tension": 4,
+              "influenceMondiale": 2,
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un second bâtiment en escorte sur la même route",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les deux navires croisent dans la zone pendant un mois sans incident. Tes amiraux sont ravis, ton ministère du Budget beaucoup moins.",
+            "pol": {
+              "tension": 5,
+              "relationCible": -4,
+              "pays": {
+                "dette": 1,
+                "securite": 2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un nouvel accrochage a lieu, plus sérieux : une collision légère, sans blessé. Les deux pays se rejettent la faute à la tribune de l'ONU.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "tension": 9,
+              "relationCible": -9
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un protocole de prévention des incidents en mer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les deux états-majors ouvrent une ligne directe et fixent des distances minimales. Personne n'en parle aux journaux télévisés, et c'est précisément le but.",
+            "pol": {
+              "tension": -5,
+              "relationCible": 4,
+              "influenceMondiale": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La proposition reste sans réponse. Chez toi, l'opposition y voit un aveu de faiblesse.",
+            "pol": {
+              "popularite": -2,
+              "tension": 1
+            }
+          }
+        ]
+      }
+    ],
+    "pays": [
+      "fr",
+      "be",
+      "ca",
+      "ma",
+      "dz",
+      "tn",
+      "sn",
+      "ci",
+      "al",
+      "us",
+      "gb",
+      "de",
+      "es",
+      "it",
+      "pt",
+      "br",
+      "jp",
+      "cn",
+      "in",
+      "mx",
+      "tr",
+      "ru",
+      "ng",
+      "au"
+    ]
+  },
+  {
+    "id": "itl_0005",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "La cyberattaque attribuée",
+    "text": "Pendant trois jours, une cyberattaque a paralysé les urgences de plusieurs hôpitaux et la billetterie des trains. Tes services l'attribuent « avec un haut degré de confiance » à un groupe lié aux services de renseignement {du_pays_cible}. Les preuves techniques sont solides, mais une partie ne peut pas être rendue publique sans griller tes sources.",
+    "choices": [
+      {
+        "label": "L'attribution publique, avec le soutien de tes alliés",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Plusieurs pays, dont {pays_allie}, cosignent ta déclaration. Les autorités {du_pays_cible} parlent d'« affabulations », mais l'isolement diplomatique est réel.",
+            "pol": {
+              "relationCible": -10,
+              "relationAllie": 5,
+              "tension": 5,
+              "influenceMondiale": 4,
+              "popularite": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tes alliés restent prudents et te laissent seul{e} en première ligne. Ta déclaration paraît isolée, et un expert conteste publiquement une de tes preuves.",
+            "pol": {
+              "relationCible": -10,
+              "tension": 5,
+              "influenceMondiale": -2,
+              "popularite": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Convoquer l'ambassadeur et lui remettre le dossier en privé",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'ambassadeur écoute, ne nie rien, ne confirme rien. Les attaques suivantes cessent, ou du moins se font plus discrètes.",
+            "pol": {
+              "relationCible": -3,
+              "tension": 1,
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire et investir dans la cyberdéfense",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu débloques un budget conséquent pour protéger les hôpitaux et les réseaux. Les soignants, qui ont travaillé au papier et au crayon pendant trois jours, auraient aimé entendre un coupable.",
+            "pol": {
+              "pays": {
+                "dette": 2,
+                "securite": 5
+              },
+              "popularite": -1,
+              "segments": {
+                "fonctionnaires": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0006",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le grand ménage diplomatique",
+    "text": "Le gouvernement {du_pays_cible} vient d'expulser douze de tes diplomates, accusés d'« ingérence ». Parmi eux, ton attaché commercial, qui préparait depuis deux ans un contrat important. Ton ambassade est désormais réduite à une poignée de personnes. On attend ta réponse.",
+    "choices": [
+      {
+        "label": "Réciprocité stricte : douze expulsions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Douze diplomates {du_pays_cible} quittent {capitale}. Le compte est bon, et personne n'a escaladé. C'est presque une politesse.",
+            "pol": {
+              "relationCible": -6,
+              "tension": 3,
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Frapper plus fort : vingt-cinq expulsions et fermeture d'un consulat",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le message est sans ambiguïté. La riposte suivante l'est aussi : ton ambassade est fermée jusqu'à nouvel ordre.",
+            "pol": {
+              "relationCible": -15,
+              "tension": 8,
+              "popularite": 3,
+              "influenceMondiale": -1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le gouvernement {du_pays_cible} renonce à surenchérir. Tu passes pour quelqu'un avec qui il vaut mieux ne pas jouer.",
+            "pol": {
+              "relationCible": -10,
+              "tension": 5,
+              "popularite": 4,
+              "influenceMondiale": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas répondre pour garder un canal ouvert",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes conseillers parlent de sang-froid, l'opposition de faiblesse. Le canal reste ouvert, mais il ne sert pour l'instant qu'à transmettre des protestations.",
+            "pol": {
+              "popularite": -3,
+              "relationCible": 2,
+              "tension": -1,
+              "influence": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0007",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La menace d'embargo",
+    "text": "Le gouvernement {du_pays_cible} menace de fermer son marché à tes exportations agricoles et industrielles si tu ne retires pas une déclaration récente critiquant sa politique intérieure. Les exportateurs concernés font vivre des dizaines de milliers de familles. Ta déclaration, elle, était sincère.",
+    "choices": [
+      {
+        "label": "Retirer la déclaration",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'embargo n'a pas lieu. La presse titre sur ta « génuflexion », et tes partenaires notent qu'il suffit de menacer pour te faire reculer.",
+            "pol": {
+              "relationCible": 8,
+              "tension": -3,
+              "popularite": -6,
+              "influenceMondiale": -5,
+              "segments": {
+                "patrons": 5,
+                "ruraux": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenir bon et soutenir les exportateurs touchés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'embargo tombe. Ton plan d'aide limite la casse, mais coûte cher. Les producteurs cherchent d'autres débouchés, avec plus ou moins de succès.",
+            "pol": {
+              "popularite": 4,
+              "relationCible": -10,
+              "tension": 5,
+              "influenceMondiale": 3,
+              "pays": {
+                "dette": 3,
+                "croissance": -0.4
+              },
+              "segments": {
+                "ruraux": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Menacer de taxer ses importations en retour",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le gouvernement {du_pays_cible} recule devant une guerre commerciale qu'il n'avait pas prévue. Ta fermeté devient un cas d'école.",
+            "pol": {
+              "popularite": 5,
+              "relationCible": -6,
+              "tension": 4,
+              "influenceMondiale": 4
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Personne ne recule. Les deux économies se mordent mutuellement, et les consommateurs des deux pays paient la note.",
+            "pol": {
+              "popularite": -3,
+              "relationCible": -14,
+              "tension": 8,
+              "pays": {
+                "croissance": -0.8,
+                "chomage": 0.3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter l'affaire devant l'Organisation mondiale du commerce",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La procédure prendra trois ans. Elle te donnera probablement raison, à une date où plus personne ne se souviendra de la déclaration.",
+            "pol": {
+              "relationCible": -4,
+              "tension": 2,
+              "relations": 2,
+              "pays": {
+                "croissance": -0.3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0008",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Les frontières fermées",
+    "text": "Sans préavis, le gouvernement {du_pays_cible} suspend tous les visas pour les ressortissants {du_pays} et ferme ses frontières à tes voyageurs. Près de quatre mille de tes compatriotes, étudiants, touristes et salariés, se retrouvent bloqués sur place, avec des visas qui expirent dans dix jours.",
+    "choices": [
+      {
+        "label": "Affréter des avions de rapatriement",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Le pont aérien ramène tout le monde en une semaine. Les images des retrouvailles à l'aéroport valent toutes les campagnes de communication.",
+            "pol": {
+              "popularite": 5,
+              "pays": {
+                "dette": 1
+              },
+              "relationCible": -2
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Les autorités {du_pays_cible} refusent deux des autorisations d'atterrissage. Les familles bloquées campent devant ton ambassade.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": -3,
+              "relationCible": -6,
+              "tension": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier une exemption pour raisons humanitaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une exemption est accordée aux étudiants et aux malades. Les autres attendront. La négociation ouvre un premier dialogue depuis des mois.",
+            "pol": {
+              "relationCible": 5,
+              "tension": -2,
+              "popularite": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appliquer la même mesure en retour",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les frontières sont fermées dans les deux sens. Tes compatriotes bloqués là-bas deviennent des otages de fait d'un bras de fer qui les dépasse.",
+            "pol": {
+              "popularite": -2,
+              "relationCible": -10,
+              "tension": 6,
+              "segments": {
+                "jeunes": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0009",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les otages",
+    "text": "Huit de tes ressortissants, membres d'une association humanitaire, sont retenus par une milice armée dans une zone de guerre. Tes services pensent que les autorités {du_pays_cible} ont l'oreille de cette milice et pourraient obtenir leur libération. À un prix politique, évidemment. Une vidéo des otages vient d'être diffusée.",
+    "choices": [
+      {
+        "label": "Accepter la médiation {du_pays_cible}, et son prix",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les huit otages rentrent sains et saufs. En échange, tu as assoupli ta position sur un dossier qui tenait à cœur à tes alliés. Le gouvernement {du_pays_allie} te le fait savoir sans détour.",
+            "pol": {
+              "popularite": 7,
+              "relationCible": 10,
+              "tension": -4,
+              "relationAllie": -6,
+              "influenceMondiale": -2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La médiation traîne. Le gouvernement {du_pays_cible} empoche tes concessions et les otages ne sont libérés que partiellement.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -4,
+              "relationCible": 3,
+              "relationAllie": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Autoriser une opération des forces spéciales",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'opération réussit de nuit, sans perte. Les huit otages sont libres. Tu ne dors pas pendant les six heures qu'elle dure, et ce n'est pas une image.",
+            "effects": {
+              "stress": 10
+            },
+            "pol": {
+              "popularite": 9,
+              "influenceMondiale": 3,
+              "pays": {
+                "moral": 5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'assaut tourne mal. Deux otages et un soldat sont tués. Les familles des survivants te remercient, celles des victimes te demandent des comptes.",
+            "effects": {
+              "stress": 12,
+              "happiness": -6
+            },
+            "pol": {
+              "popularite": -9,
+              "pays": {
+                "moral": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire passer une rançon par un intermédiaire discret",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les otages sont libérés. Officiellement, aucune rançon n'a été versée. Six mois plus tard, un journal d'investigation publie le montant.",
+            "pol": {
+              "popularite": 4,
+              "casseroles": 2,
+              "pays": {
+                "dette": 1
+              },
+              "relations": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'argent disparaît chez un intermédiaire qui n'en était pas un. Les otages, eux, restent détenus.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -5,
+              "casseroles": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0010",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La minorité persécutée",
+    "text": "Des rapports d'organisations de défense des droits humains décrivent des arrestations massives visant une minorité religieuse {au_pays_cible} : détentions sans procès, familles séparées, lieux de culte fermés. La diaspora manifeste chaque dimanche à {capitale}. Le gouvernement {du_pays_cible} parle de « lutte contre l'extrémisme ». Un gros contrat est en cours de négociation.",
+    "choices": [
+      {
+        "label": "Sanctionner les responsables identifiés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Gel des avoirs, interdiction de visa : la liste vise une trentaine de responsables. Le contrat est suspendu, mais ta parole sur les droits humains vaut quelque chose.",
+            "pol": {
+              "relationCible": -12,
+              "tension": 5,
+              "influenceMondiale": 5,
+              "relations": 2,
+              "popularite": 3,
+              "segments": {
+                "patrons": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir un programme d'accueil pour les persécutés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plusieurs milliers de personnes trouvent refuge chez toi. Une partie de l'opinion s'inquiète, une autre est fière. Le gouvernement {du_pays_cible} dénonce une « provocation ».",
+            "pol": {
+              "relationCible": -6,
+              "tension": 2,
+              "influenceMondiale": 4,
+              "popularite": -1,
+              "segments": {
+                "urbains": 4,
+                "ruraux": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Diplomatie discrète : soulever la question en tête-à-tête",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Quelques prisonniers sont libérés, discrètement, sans que rien ne change sur le fond. Le contrat est signé. Les associations ne te le pardonnent pas.",
+            "pol": {
+              "relationCible": 4,
+              "popularite": -3,
+              "casseroles": 1,
+              "pays": {
+                "croissance": 0.2
+              },
+              "segments": {
+                "patrons": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire : ce sont des affaires intérieures",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le contrat est signé en grande pompe. Le soir même, la diaspora manifeste devant {palais} avec les photos des disparus.",
+            "pol": {
+              "relationCible": 8,
+              "popularite": -6,
+              "influenceMondiale": -4,
+              "pays": {
+                "croissance": 0.3
+              },
+              "segments": {
+                "patrons": 6,
+                "jeunes": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0011",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "L'élection contestée",
+    "text": "Le pouvoir sortant {du_pays_cible} se proclame vainqueur des élections générales avec 71 % des voix. L'opposition dénonce des fraudes massives, les observateurs internationaux relèvent des irrégularités « graves et systématiques ». Des manifestations ont lieu dans plusieurs villes. Tes homologues attendent de voir qui bougera en premier.",
+    "choices": [
+      {
+        "label": "Féliciter le vainqueur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le pouvoir {du_pays_cible} apprécie. Tes partenaires, beaucoup moins : tu es parmi les premiers à reconnaître un résultat que personne d'autre ne reconnaît.",
+            "pol": {
+              "relationCible": 10,
+              "tension": -2,
+              "relationAllie": -6,
+              "influenceMondiale": -4,
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger un recomptage indépendant",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta position rejoint celle de la plupart des démocraties. Le pouvoir {du_pays_cible} rappelle son ambassadeur « pour consultations ».",
+            "pol": {
+              "relationCible": -8,
+              "tension": 4,
+              "relationAllie": 4,
+              "influenceMondiale": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre et s'aligner sur la position {du_pays_allie}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu prends position trois jours après tout le monde, dans les mêmes termes que {pays_allie}. Prudent, mais personne ne cite ta déclaration.",
+            "pol": {
+              "relationAllie": 4,
+              "relationCible": -3,
+              "influenceMondiale": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Recevoir le chef de l'opposition à {capitale}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La photo de la poignée de main fait la une là-bas, dans les médias d'opposition. Le pouvoir {du_pays_cible} t'accuse de soutenir un « coup d'État ».",
+            "pol": {
+              "relationCible": -14,
+              "tension": 6,
+              "influenceMondiale": 4,
+              "popularite": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0012",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le boycott sportif",
+    "text": "Une grande compétition sportive internationale s'ouvre dans trois mois {au_pays_cible}. Des associations, des athlètes et une partie de ta majorité réclament un boycott pour protester contre le traitement réservé aux opposants et aux journalistes, dénoncé par plusieurs ONG. Tes sportifs, eux, se préparent depuis quatre ans.",
+    "choices": [
+      {
+        "label": "Boycott total : aucun athlète, aucun officiel",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes athlètes pleurent devant les caméras. Le geste est fort et presque solitaire : seuls deux pays te suivent.",
+            "pol": {
+              "relationCible": -12,
+              "tension": 4,
+              "influenceMondiale": 2,
+              "popularite": -3,
+              "segments": {
+                "jeunes": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Boycott diplomatique : les athlètes y vont, les officiels non",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "C'est la solution que choisissent la plupart des démocraties. Tes athlètes reviennent avec quatre médailles, et toi avec une position défendable.",
+            "pol": {
+              "relationCible": -5,
+              "tension": 2,
+              "popularite": 2,
+              "relationAllie": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Y aller en personne pour la cérémonie d'ouverture",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu es dans la tribune officielle, à deux sièges du chef de l'État hôte. La photo te poursuivra jusqu'à la fin de ton mandat.",
+            "pol": {
+              "relationCible": 10,
+              "tension": -3,
+              "popularite": -5,
+              "influenceMondiale": -3,
+              "casseroles": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0013",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Le drone abattu",
+    "text": "Un drone de surveillance de tes armées a été abattu par la défense antiaérienne {du_pays_cible}, qui affirme qu'il avait pénétré son espace aérien. Tes relevés radar disent le contraire : il était à quarante kilomètres de la limite. L'appareil coûtait le prix d'un hôpital de taille moyenne.",
+    "choices": [
+      {
+        "label": "Publier les relevés radar",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les données sont limpides, et les experts indépendants les confirment. Le gouvernement {du_pays_cible} maintient sa version, mais presque plus personne ne la reprend.",
+            "pol": {
+              "relationCible": -6,
+              "tension": 4,
+              "influenceMondiale": 3,
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Suspendre les vols dans la zone pour éviter l'escalade",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu perds des semaines de renseignement, mais personne d'autre ne perd d'appareil. L'état-major grince des dents.",
+            "pol": {
+              "tension": -3,
+              "relationCible": 2,
+              "loyaute": -2,
+              "pays": {
+                "securite": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire escorter les prochains vols par des avions de chasse",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les vols reprennent sous escorte. Les deux armées de l'air se regardent de près, de très près, pendant un mois.",
+            "pol": {
+              "tension": 7,
+              "relationCible": -6,
+              "pays": {
+                "dette": 1,
+                "securite": 2
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un chasseur {du_pays_cible} verrouille son radar sur l'un des tiens. Personne ne tire, mais les deux pilotes s'en souviendront.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "tension": 11,
+              "relationCible": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0014",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "La ferme à trolls",
+    "text": "Une enquête de tes services révèle un réseau de quarante mille faux comptes liés à une agence {du_pays_cible}. Depuis six mois, il amplifie les rumeurs, attise les manifestations et relaie de fausses citations attribuées à des membres de ton gouvernement. Dont trois de toi, assez réussies d'ailleurs.",
+    "choices": [
+      {
+        "label": "Publier le rapport dans son intégralité",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le rapport fait la une. Il est solide, précis et un peu effrayant. Les autorités {du_pays_cible} dénoncent une « campagne de désinformation », ce qui ne manque pas de sel.",
+            "pol": {
+              "relationCible": -8,
+              "tension": 4,
+              "influenceMondiale": 3,
+              "popularite": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger des plateformes la suppression des comptes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les plateformes suppriment le réseau en trois jours. Un nouveau réseau apparaît en trois semaines.",
+            "pol": {
+              "relationCible": -3,
+              "tension": 1,
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un programme d'éducation aux médias dans les écoles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "C'est lent, peu spectaculaire, et probablement la seule réponse qui marche sur dix ans. Les jeunes trouvent les cours un peu condescendants.",
+            "pol": {
+              "pays": {
+                "dette": 1,
+                "securite": 3
+              },
+              "segments": {
+                "jeunes": -2,
+                "fonctionnaires": 3
+              },
+              "relationCible": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0015",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La demande d'extradition",
+    "text": "Le gouvernement {du_pays_cible} réclame l'extradition d'un homme d'affaires installé {au_pays} depuis cinq ans, qu'il accuse d'une fraude colossale. L'intéressé affirme être persécuté pour avoir financé l'opposition. Les deux versions sont plausibles. En échange de l'extradition, un accord commercial important pourrait être débloqué.",
+    "choices": [
+      {
+        "label": "Refuser l'extradition",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu invoques le risque de procès inéquitable. L'accord commercial est gelé, et l'homme d'affaires organise une conférence de presse pour te remercier, ce dont tu te serais passé{e}.",
+            "pol": {
+              "relationCible": -8,
+              "tension": 3,
+              "influenceMondiale": 2,
+              "pays": {
+                "croissance": -0.2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser la justice trancher, sans intervenir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La procédure durera deux ans. Le gouvernement {du_pays_cible} y voit une manière polie de dire non, et il n'a pas tout à fait tort.",
+            "pol": {
+              "relationCible": -3,
+              "influence": 2,
+              "segments": {
+                "fonctionnaires": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter l'extradition contre l'accord commercial",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'accord est signé. Un an plus tard, l'homme d'affaires est condamné à perpétuité à l'issue d'un procès de deux jours. Les ONG publient ta photo à côté de la sienne.",
+            "pol": {
+              "relationCible": 12,
+              "tension": -3,
+              "popularite": -5,
+              "casseroles": 2,
+              "influenceMondiale": -4,
+              "pays": {
+                "croissance": 0.4
+              },
+              "segments": {
+                "patrons": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0016",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le rachat du port",
+    "text": "Un fonds d'investissement très proche du gouvernement {du_pays_cible} propose de racheter la société qui gère le principal port de commerce du pays, pour un prix très au-dessus du marché. Le vendeur est ravi. Tes services de renseignement le sont beaucoup moins.",
+    "choices": [
+      {
+        "label": "Bloquer la vente au nom de la sécurité nationale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La vente est bloquée. Le vendeur te traîne devant les tribunaux, et le fonds part investir chez un voisin plus accommodant.",
+            "pol": {
+              "relationCible": -8,
+              "tension": 3,
+              "pays": {
+                "securite": 4
+              },
+              "segments": {
+                "patrons": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Autoriser avec des conditions strictes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Pas d'accès aux données douanières, un administrateur public au conseil, un droit de veto sur les sous-traitants. Le fonds accepte tout, ce qui inquiète tes services encore plus.",
+            "pol": {
+              "relationCible": 3,
+              "pays": {
+                "croissance": 0.2,
+                "securite": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser faire : le marché est libre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La vente est conclue. Les patrons saluent ton pragmatisme. Deux ans plus tard, des équipements de surveillance d'origine inconnue sont découverts sur les grues.",
+            "pol": {
+              "relationCible": 8,
+              "pays": {
+                "croissance": 0.3,
+                "securite": -6
+              },
+              "segments": {
+                "patrons": 6
+              },
+              "casseroles": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0017",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le sommet glacial",
+    "text": "Après deux ans de relations exécrables, le gouvernement {du_pays_cible} propose une rencontre au sommet dans un pays neutre. L'ordre du jour est vague, les attentes sont faibles, et l'opposition t'accuse déjà de vouloir « serrer la main de l'adversaire ».",
+    "choices": [
+      {
+        "label": "Accepter sans conditions",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La rencontre dure quatre heures au lieu d'une. Rien n'est signé, mais une ligne directe est ouverte et les deux délégations ont souri sur la photo.",
+            "pol": {
+              "relationCible": 12,
+              "tension": -6,
+              "influenceMondiale": 4,
+              "popularite": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton homologue profite de la conférence de presse pour te faire la leçon devant les caméras. Tu as été utilisé{e} comme décor.",
+            "pol": {
+              "relationCible": -4,
+              "popularite": -5,
+              "influenceMondiale": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer ton ministre des Affaires étrangères à ta place",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La rencontre a lieu à un niveau inférieur. Elle produit un communiqué de trois lignes, ce qui est trois lignes de plus que l'an dernier.",
+            "pol": {
+              "relationCible": 4,
+              "tension": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Poser des conditions préalables",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu exiges un geste sur les prisonniers politiques avant toute rencontre. La réponse ne vient pas. La porte reste entrouverte, rien de plus.",
+            "pol": {
+              "relationCible": -3,
+              "popularite": 2,
+              "influenceMondiale": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0018",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "L'exercice géant",
+    "text": "Le gouvernement {du_pays_cible} lance le plus grand exercice militaire de son histoire. Les scénarios publiés simulent des frappes contre des installations qui ressemblent beaucoup à celles d'un de tes alliés. Ton chef d'état-major veut une réponse visible.",
+    "choices": [
+      {
+        "label": "Mettre tes forces en alerte renforcée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes unités sont prêtes à partir en quarante-huit heures. L'exercice se termine comme prévu, mais la nervosité aura coûté cher.",
+            "pol": {
+              "tension": 6,
+              "relationCible": -5,
+              "pays": {
+                "dette": 1,
+                "securite": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déployer des avions {au_pays_allie}, en soutien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes avions se posent sur les bases {du_pays_allie}. Ton allié apprécie le geste ; le gouvernement {du_pays_cible} le dénonce comme une « provocation ».",
+            "pol": {
+              "relationAllie": 8,
+              "relationCible": -8,
+              "tension": 6,
+              "pays": {
+                "dette": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ton calme et activer le canal militaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les attachés militaires échangent des notes polies et des préavis précis. L'exercice reste un exercice. Ton chef d'état-major te trouve trop prudent{e}.",
+            "pol": {
+              "tension": -2,
+              "relationCible": 2,
+              "loyaute": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0019",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "La marionnette",
+    "text": "Le ministre des Affaires étrangères {du_pays_cible} t'a qualifié{e} de « marionnette » dans un message publié sur les réseaux sociaux, vu dix millions de fois. Ton équipe de communication propose trois réponses. Ton directeur de cabinet propose de ne pas en proposer.",
+    "choices": [
+      {
+        "label": "Répondre avec une ironie soigneusement dosée",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta réponse, courte et élégante, est partagée deux fois plus que l'insulte. Ton homologue supprime son message, ce qui est une forme d'aveu.",
+            "pol": {
+              "popularite": 4,
+              "relationCible": -3,
+              "influence": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta blague est mal traduite là-bas et passe pour une insulte nationale. Les diplomates passent une semaine à réparer.",
+            "pol": {
+              "relationCible": -8,
+              "tension": 3,
+              "popularite": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer : on ne répond pas à ce niveau",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'insulte s'épuise d'elle-même en trois jours. Ta dignité est intacte, tes conseillers en communication sont frustrés.",
+            "pol": {
+              "relationCible": -1,
+              "influence": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Convoquer l'ambassadeur pour une explication",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'ambassadeur présente des « regrets pour toute mauvaise interprétation », formule qui ne regrette rien. L'affaire a pris une importance qu'elle n'avait pas.",
+            "pol": {
+              "relationCible": -5,
+              "tension": 2,
+              "popularite": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0020",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'accord de libre-échange",
+    "text": "Après six ans de négociations, l'accord de libre-échange avec {pays_allie} est prêt à être signé. Les industriels promettent des milliers d'emplois, les agriculteurs annoncent des blocages de routes. Tes économistes estiment l'effet global « légèrement positif », ce qui n'a jamais fait gagner une élection.",
+    "choices": [
+      {
+        "label": "Signer en l'état",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'accord entre en vigueur. Les exportations décollent, les tracteurs bloquent les routes pendant trois semaines.",
+            "pol": {
+              "relationAllie": 12,
+              "pays": {
+                "croissance": 0.5
+              },
+              "segments": {
+                "patrons": 10,
+                "ruraux": -12
+              },
+              "mobilisation": 8,
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger des clauses miroirs sur l'environnement et l'agriculture",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les négociateurs {du_pays_allie} acceptent l'essentiel après une dernière nuit blanche. L'accord est moins ambitieux, mais défendable devant tout le monde.",
+            "pol": {
+              "relationAllie": 6,
+              "pays": {
+                "croissance": 0.3
+              },
+              "segments": {
+                "patrons": 4,
+                "ruraux": 2
+              },
+              "popularite": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le gouvernement {du_pays_allie} refuse de rouvrir le texte. L'accord est gelé, et tes industriels t'accusent d'avoir saboté six ans de travail.",
+            "pol": {
+              "relationAllie": -6,
+              "segments": {
+                "patrons": -8,
+                "ruraux": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Soumettre la ratification {au_parlement}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le débat est long, vif et finalement favorable, de justesse. Personne ne pourra dire qu'il n'a pas été consulté.",
+            "pol": {
+              "relationAllie": 8,
+              "majorite": -2,
+              "pays": {
+                "croissance": 0.4
+              },
+              "influence": 3,
+              "segments": {
+                "ruraux": -6,
+                "patrons": 6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La ratification échoue de quatre voix. Ton allié découvre les joies de ta vie parlementaire, et toi aussi.",
+            "pol": {
+              "relationAllie": -8,
+              "majorite": -5,
+              "influence": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0021",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "La base étrangère",
+    "text": "Ton pays et ton principal allié parlent depuis longtemps d'une base militaire commune. Le gouvernement {du_pays_allie} propose désormais d'installer sur ton territoire une base permanente de deux mille militaires, entièrement financée par lui. Le maire de la commune concernée est enthousiaste, ses habitants partagés.",
+    "choices": [
+      {
+        "label": "Accepter la base",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La base sort de terre en deux ans. L'alliance est scellée, l'économie locale en profite, et le gouvernement {du_pays_cible} y voit une menace directe.",
+            "pol": {
+              "relationAllie": 14,
+              "relationCible": -10,
+              "tension": 5,
+              "pays": {
+                "securite": 4,
+                "croissance": 0.1
+              },
+              "popularite": -2,
+              "segments": {
+                "jeunes": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter une base temporaire sous commandement conjoint",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Cinq ans, renouvelables, avec un drapeau de chaque côté du portail. Ton allié aurait préféré plus, ton opposition moins.",
+            "pol": {
+              "relationAllie": 7,
+              "relationCible": -4,
+              "tension": 2,
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser au nom de la souveraineté",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta décision est saluée comme un acte d'indépendance chez toi, et accueillie avec une politesse glaciale chez ton allié.",
+            "pol": {
+              "relationAllie": -10,
+              "relationCible": 3,
+              "popularite": 3,
+              "influenceMondiale": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0022",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Les avions de combat",
+    "text": "Ton armée de l'air doit remplacer ses avions de combat, à bout de souffle. L'offre {du_pays_allie} est prête, éprouvée et chère, avec des pièces détachées que tu ne maîtriseras jamais. Un consortium national promet un appareil maison, pour dans douze ans, si tout se passe bien, ce qui n'arrive jamais.",
+    "choices": [
+      {
+        "label": "Acheter les avions {du_pays_allie}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les premiers appareils sont livrés en trois ans. Ton armée est modernisée, et ta dépendance aussi.",
+            "pol": {
+              "relationAllie": 12,
+              "pays": {
+                "dette": 4,
+                "securite": 5
+              },
+              "influenceMondiale": 1,
+              "segments": {
+                "patrons": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer le programme national",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le programme est lancé avec un budget initial que tout le monde sait sous-estimé. Les bureaux d'études embauchent, ton allié boude.",
+            "pol": {
+              "relationAllie": -6,
+              "influenceMondiale": 3,
+              "pays": {
+                "dette": 7,
+                "chomage": -0.3,
+                "securite": -2
+              },
+              "segments": {
+                "patrons": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter avec des compensations industrielles",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une partie des pièces sera fabriquée chez toi. Le prix monte, mais l'accord fait des heureux dans trois régions industrielles.",
+            "pol": {
+              "relationAllie": 7,
+              "pays": {
+                "dette": 5,
+                "securite": 4,
+                "chomage": -0.2
+              },
+              "segments": {
+                "patrons": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les compensations promises fondent au fil des avenants. Deux ans plus tard, un rapport parlementaire parle de « miroir aux alouettes ».",
+            "pol": {
+              "relationAllie": 5,
+              "pays": {
+                "dette": 5,
+                "securite": 4
+              },
+              "casseroles": 1,
+              "popularite": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0023",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Le grand échange universitaire",
+    "text": "Le ministre des Affaires étrangères {du_pays_allie} te propose un programme d'échange ambitieux : dix mille étudiants par an dans chaque sens, des diplômes communs, des laboratoires partagés. Le coût est réel, le bénéfice se mesure en décennies. Ton collègue du Budget a déjà soupiré deux fois.",
+    "choices": [
+      {
+        "label": "Financer le programme complet",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le programme devient l'un des plus populaires du pays. Dans vingt ans, une génération de dirigeants aura étudié chez l'autre.",
+            "pol": {
+              "relationAllie": 8,
+              "pays": {
+                "dette": 1
+              },
+              "segments": {
+                "jeunes": 10
+              },
+              "influenceMondiale": 2,
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Une version pilote avec mille étudiants",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le pilote est un succès, et tout le monde demande déjà pourquoi il ne concerne que mille personnes.",
+            "pol": {
+              "relationAllie": 4,
+              "segments": {
+                "jeunes": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser faute de moyens",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le programme est signé avec un autre pays. Tes universités se plaignent d'être reléguées en deuxième division.",
+            "pol": {
+              "relationAllie": -4,
+              "segments": {
+                "jeunes": -5
+              },
+              "influenceMondiale": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0024",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La visite d'État",
+    "text": "Le chef de l'État {du_pays_allie} arrive pour trois jours de visite officielle. Le protocole a préparé un programme en trois versions : grandiose, sobre, ou « authentique », avec un passage dans ta ville, {ville}, et un repas chez un producteur local que ton équipe a choisi pour sa moustache.",
+    "choices": [
+      {
+        "label": "La version grandiose : défilé et dîner de gala",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le dîner est somptueux, les photos magnifiques, ton invité ému. La facture du banquet, publiée par un hebdomadaire satirique, l'est un peu moins.",
+            "pol": {
+              "relationAllie": 10,
+              "influenceMondiale": 3,
+              "popularite": -2,
+              "casseroles": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "La version sobre, centrée sur les contrats",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Quatre accords sont signés, dont un très gros. Ton invité trouve l'accueil un peu froid, mais repart avec de quoi rassurer ses propres électeurs.",
+            "pol": {
+              "relationAllie": 5,
+              "pays": {
+                "croissance": 0.3
+              },
+              "segments": {
+                "patrons": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "La version authentique, à {ville}",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ton invité adore. Il reprend deux fois du plat principal, pose avec la moustache et en parle encore dans ses discours un an plus tard.",
+            "effects": {
+              "happiness": 3
+            },
+            "pol": {
+              "relationAllie": 12,
+              "popularite": 4,
+              "influenceMondiale": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une pluie diluvienne transforme la visite en séance de séchage collective. Ton invité reste courtois, ses diplomates moins.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "relationAllie": 2,
+              "popularite": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0025",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Le vote qui compte",
+    "text": "Le gouvernement {du_pays_allie} te demande ton vote, à l'Assemblée générale des Nations unies, pour une résolution condamnant fermement le gouvernement {du_pays_cible}. Le texte est solide sur le fond, mais il contient deux paragraphes que tes juristes jugent excessifs. Ton allié compte les voix, et la tienne lui manque.",
+    "choices": [
+      {
+        "label": "Voter pour, sans réserve",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La résolution passe. Ton allié te remercie chaleureusement ; le gouvernement {du_pays_cible} note ton nom dans la colonne qu'on imagine.",
+            "pol": {
+              "relationAllie": 10,
+              "relationCible": -10,
+              "tension": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Voter pour, avec une explication de vote critique",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu votes pour, en dénonçant les deux paragraphes à la tribune. Tout le monde est un peu déçu, ce qui est le signe d'un compromis honnête.",
+            "pol": {
+              "relationAllie": 5,
+              "relationCible": -5,
+              "tension": 2,
+              "influenceMondiale": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "S'abstenir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'abstention te laisse les mains libres et ton allié un peu seul. Il s'en souviendra au prochain vote où tu auras besoin de lui.",
+            "pol": {
+              "relationAllie": -6,
+              "relationCible": 3,
+              "influenceMondiale": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Voter contre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La résolution passe quand même, sans toi. Le gouvernement {du_pays_cible} t'en sait gré ; le tien, à {capitale}, se demande ce qui t'a pris.",
+            "pol": {
+              "relationAllie": -14,
+              "relationCible": 8,
+              "tension": -2,
+              "popularite": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0026",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le prêt d'urgence",
+    "text": "Ton allié le plus proche traverse une grave crise financière et frôle le défaut de paiement. Son gouvernement te demande en urgence un prêt bilatéral de plusieurs milliards pour rassurer les marchés. Chez toi, l'idée de prêter de l'argent qu'on n'a pas à un pays qui n'en a plus fait hurler une partie de l'opinion.",
+    "choices": [
+      {
+        "label": "Accorder le prêt sans conditions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les marchés se calment. Ton allié n'oubliera jamais qui était là ce week-end-là. Tes contribuables, eux, n'oublieront pas non plus.",
+            "pol": {
+              "relationAllie": 15,
+              "influenceMondiale": 4,
+              "pays": {
+                "dette": 4
+              },
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accorder le prêt contre des réformes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le prêt est versé en trois tranches, sous conditions. Ton allié accepte, mais la rue de sa capitale brûle ton effigie.",
+            "pol": {
+              "relationAllie": 4,
+              "influenceMondiale": 3,
+              "pays": {
+                "dette": 3
+              },
+              "relations": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et renvoyer vers le Fonds monétaire international",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton allié s'en sort, seul et plus lentement. Ses dirigeants citent ton refus dans leurs mémoires, au chapitre « désillusions ».",
+            "pol": {
+              "relationAllie": -12,
+              "pays": {
+                "dette": -1
+              },
+              "popularite": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0027",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "L'exercice conjoint",
+    "text": "Ton armée doit participer à un grand exercice conjoint avec {pays_allie}. Le gouvernement {du_pays_cible} y voit une « répétition générale » dirigée contre lui et menace de « mesures appropriées ». Ton état-major tient à cet exercice, préparé depuis un an.",
+    "choices": [
+      {
+        "label": "Maintenir l'exercice tel quel",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'exercice se déroule sans incident. Les « mesures appropriées » se limitent à une série de communiqués furieux.",
+            "pol": {
+              "relationAllie": 8,
+              "relationCible": -6,
+              "tension": 4,
+              "pays": {
+                "securite": 3
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Des avions {du_pays_cible} frôlent la zone d'exercice pendant trois jours. Personne ne tire, mais tout le monde a eu chaud.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "relationAllie": 8,
+              "relationCible": -9,
+              "tension": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réduire l'exercice et le déplacer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'exercice a lieu, plus petit et plus loin. Ton allié est vexé, le gouvernement {du_pays_cible} ne se satisfait de rien.",
+            "pol": {
+              "relationAllie": -3,
+              "relationCible": 1,
+              "tension": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le reporter « pour raisons techniques »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Personne ne croit aux raisons techniques. Ton allié se demande si tu tiendrais en cas de vraie crise.",
+            "pol": {
+              "relationAllie": -8,
+              "relationCible": 4,
+              "tension": -3,
+              "loyaute": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0028",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Le partage du renseignement",
+    "text": "Le gouvernement {du_pays_allie} propose un accord de partage de renseignement très étendu : accès croisé aux bases de données, interceptions communes, échange d'analystes. Ton efficacité contre le terrorisme en serait renforcée. Tes juristes rappellent que ton allié n'a pas les mêmes règles que toi sur la vie privée.",
+    "choices": [
+      {
+        "label": "Signer l'accord complet",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Deux attentats sont déjoués la première année grâce à des informations partagées. Puis un lanceur d'alerte révèle que tes citoyens sont aussi écoutés.",
+            "pol": {
+              "relationAllie": 10,
+              "pays": {
+                "securite": 6
+              },
+              "casseroles": 1,
+              "segments": {
+                "jeunes": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Signer un accord limité, sous contrôle d'un juge",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'accord est moins ambitieux, mais encadré. Ton allié trouve tes juges très tatillons.",
+            "pol": {
+              "relationAllie": 4,
+              "pays": {
+                "securite": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu gardes ta souveraineté numérique, et ton allié garde ses informations pour ses partenaires plus coopératifs.",
+            "pol": {
+              "relationAllie": -7,
+              "pays": {
+                "securite": -2
+              },
+              "popularite": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0029",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'appel à l'aide de l'allié",
+    "text": "Le gouvernement {du_pays_allie} mène une opération militaire lointaine contre un groupe terroriste qui a frappé sur son sol. Son gouvernement te demande d'envoyer huit cents soldats. L'opération est légale, mais ce genre d'engagement dure toujours plus longtemps que prévu, et ton opinion est lasse des guerres lointaines.",
+    "choices": [
+      {
+        "label": "Envoyer les huit cents soldats",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes soldats participent à des opérations difficiles. Ton allié salue ta loyauté. Trois de tes soldats sont blessés le premier mois.",
+            "pol": {
+              "relationAllie": 14,
+              "influenceMondiale": 4,
+              "popularite": -4,
+              "pays": {
+                "dette": 2,
+                "moral": -2
+              },
+              "segments": {
+                "jeunes": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un appui logistique et du renseignement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Avions de transport, ravitaillement, images satellites. Utile, moins risqué, moins visible. Ton allié remercie, sans effusions.",
+            "pol": {
+              "relationAllie": 6,
+              "pays": {
+                "dette": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser l'engagement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton opinion approuve. Ton allié te le rappellera le jour où tu auras besoin de lui.",
+            "pol": {
+              "relationAllie": -12,
+              "popularite": 3,
+              "influenceMondiale": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0030",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Les grandes oreilles",
+    "text": "Ton contre-espionnage a découvert que les services {du_pays_allie} écoutaient les téléphones de plusieurs membres de ton gouvernement, dont le tien. Les écoutes portaient surtout sur des négociations commerciales. Ton allié ne sait pas encore que tu sais.",
+    "choices": [
+      {
+        "label": "Rendre l'affaire publique et exiger des excuses",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le scandale est mondial. Ton allié présente des excuses du bout des lèvres et promet que « cela ne se reproduira plus », phrase qui n'engage jamais personne.",
+            "pol": {
+              "relationAllie": -12,
+              "popularite": 5,
+              "influenceMondiale": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Régler l'affaire en privé et obtenir des contreparties",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu obtiens des concessions commerciales significatives contre ton silence. C'est cynique, et efficace.",
+            "pol": {
+              "relationAllie": 3,
+              "pays": {
+                "croissance": 0.3
+              },
+              "influence": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "L'affaire fuite quand même. On découvre que tu savais, et que tu as négocié ton silence.",
+            "pol": {
+              "relationAllie": -4,
+              "popularite": -5,
+              "casseroles": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire et changer de téléphone",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu changes de téléphone. Ton allié ne saura jamais que tu sais, ce qui peut servir un jour. Tes ministres, eux, trouvent les nouveaux appareils très peu pratiques.",
+            "pol": {
+              "influence": 2,
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0031",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les subventions de l'allié",
+    "text": "Le gouvernement {du_pays_allie} vient d'adopter un plan colossal de subventions pour ses industries vertes. Résultat : trois grandes usines de ton pays annoncent leur départ pour aller toucher l'argent de l'autre côté. Ton allié te répond que c'est « de la saine concurrence ».",
+    "choices": [
+      {
+        "label": "Lancer un plan de subventions équivalent",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les usines restent. Ta dette, elle, s'envole, et la course aux subventions entre amis ne fait que commencer.",
+            "pol": {
+              "pays": {
+                "dette": 6,
+                "chomage": -0.2
+              },
+              "relationAllie": -3,
+              "segments": {
+                "patrons": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier des exemptions pour tes entreprises",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Après de longues discussions, ton allié accorde quelques exemptions. Une des trois usines reste. On ne gagne pas toujours.",
+            "pol": {
+              "relationAllie": 3,
+              "pays": {
+                "chomage": 0.1
+              },
+              "segments": {
+                "patrons": 2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les négociations n'aboutissent qu'à une promesse de « groupe de travail ». Les trois usines partent.",
+            "pol": {
+              "relationAllie": -2,
+              "pays": {
+                "chomage": 0.3,
+                "croissance": -0.3
+              },
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte devant l'Organisation mondiale du commerce",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La plainte est recevable. La décision tombera dans quatre ans. Les usines, elles, partent cette année.",
+            "pol": {
+              "relationAllie": -8,
+              "pays": {
+                "chomage": 0.3
+              },
+              "relations": 1,
+              "popularite": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0032",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La dernière nuit du sommet climat",
+    "text": "Le sommet mondial sur le climat devait se terminer hier. Il est quatre heures du matin, les négociateurs dorment sur les tables, et le texte final bute sur un point : l'engagement chiffré de réduction des émissions. Ton pays peut faire basculer la négociation, dans un sens ou dans l'autre.",
+    "choices": [
+      {
+        "label": "Annoncer un engagement ambitieux, chiffré et daté",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton annonce débloque la négociation. L'accord est signé à l'aube et ton discours est cité partout. Chez toi, les industriels et une partie des campagnes font leurs comptes.",
+            "pol": {
+              "influenceMondiale": 7,
+              "relations": 5,
+              "popularite": 2,
+              "segments": {
+                "jeunes": 8,
+                "patrons": -8,
+                "ruraux": -5
+              },
+              "pays": {
+                "croissance": -0.2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Financer un fonds pour les pays les plus vulnérables",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta contribution convainc les pays du Sud de signer. L'accord est sauvé, ta dette un peu moins.",
+            "pol": {
+              "influenceMondiale": 6,
+              "relations": 7,
+              "pays": {
+                "dette": 3
+              },
+              "segments": {
+                "jeunes": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "S'aligner sur le compromis le plus prudent",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'accord final est un texte de consensus, sans grand engagement. Les militants du climat parlent d'« enterrement de première classe ».",
+            "pol": {
+              "influenceMondiale": -2,
+              "segments": {
+                "jeunes": -6,
+                "patrons": 4
+              },
+              "popularite": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bloquer le texte au nom de ton économie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu deviens, l'espace d'une nuit, le visage de l'échec du sommet. Tes industriels te remercient discrètement ; le reste du monde, beaucoup moins.",
+            "pol": {
+              "influenceMondiale": -7,
+              "relations": -6,
+              "segments": {
+                "patrons": 6,
+                "jeunes": -10
+              },
+              "popularite": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0033",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le sommet des grandes économies",
+    "text": "Au sommet annuel des grandes économies, la présidence propose un impôt minimal mondial sur les bénéfices des multinationales. Plusieurs pays y sont favorables, d'autres traînent des pieds. Les grandes entreprises de ton pays t'ont envoyé une lettre polie et très inquiète.",
+    "choices": [
+      {
+        "label": "Soutenir un taux élevé",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton soutien fait pencher la balance. L'accord est historique, et les grandes entreprises préparent déjà leurs avocats fiscalistes.",
+            "pol": {
+              "influenceMondiale": 6,
+              "relations": 4,
+              "pays": {
+                "dette": -2
+              },
+              "segments": {
+                "patrons": -8
+              },
+              "popularite": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Soutenir un taux modéré, avec des exceptions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le compromis est adopté. Il rapportera moins que prévu et sera contourné plus vite qu'annoncé, mais il existe.",
+            "pol": {
+              "influenceMondiale": 3,
+              "relations": 2,
+              "pays": {
+                "dette": -1
+              },
+              "segments": {
+                "patrons": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre la souveraineté fiscale de chaque pays",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le projet est renvoyé au prochain sommet, ce qui veut dire jamais. Tes entreprises respirent, tes partenaires s'agacent.",
+            "pol": {
+              "influenceMondiale": -3,
+              "relations": -3,
+              "segments": {
+                "patrons": 8
+              },
+              "popularite": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0034",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le nouveau virus",
+    "text": "L'Organisation mondiale de la santé signale un nouveau virus respiratoire, très contagieux, dans plusieurs pays. Les premiers cas sont confirmés chez toi. Les modèles épidémiologiques divergent, les hôpitaux s'inquiètent, et l'économie retient son souffle.",
+    "choices": [
+      {
+        "label": "Fermer immédiatement les frontières",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La propagation ralentit chez toi. Tes partenaires protestent contre une décision prise sans les consulter, et l'économie encaisse le choc.",
+            "pol": {
+              "pays": {
+                "croissance": -1,
+                "securite": 4,
+                "moral": -3
+              },
+              "relations": -4,
+              "popularite": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Coordonner la réponse internationale et partager les vaccins",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu prends la tête d'une coalition qui finance la recherche et la distribution des vaccins. La pandémie est longue, mais ton pays en sort grandi.",
+            "pol": {
+              "influenceMondiale": 7,
+              "relations": 6,
+              "pays": {
+                "dette": 4,
+                "croissance": -0.5
+              },
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Imposer des mesures sanitaires sans fermer les frontières",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Masques, tests, isolement : la réponse est mesurée. Ça marche à peu près, et ça ne satisfait personne, ce qui est souvent le signe d'une politique raisonnable.",
+            "pol": {
+              "pays": {
+                "croissance": -0.4,
+                "moral": -2
+              },
+              "popularite": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La vague est plus forte que prévu. Les hôpitaux sont débordés, et tu dois confiner en catastrophe.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "pays": {
+                "croissance": -1.2,
+                "moral": -6,
+                "dette": 3
+              },
+              "popularite": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0035",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Les réfugiés de la guerre lointaine",
+    "text": "Une guerre civile dans une région éloignée a jeté sur les routes plus de deux millions de personnes. Le Haut-Commissariat des Nations unies pour les réfugiés demande à chaque pays d'accueillir sa part. Tes services ont préparé trois scénarios, et le débat public n'en est déjà plus à la nuance.",
+    "choices": [
+      {
+        "label": "Accueillir vingt mille réfugiés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les premiers arrivent dans un mois. Des villes se portent volontaires, d'autres protestent. Ton pays est cité en exemple à Genève.",
+            "pol": {
+              "influenceMondiale": 5,
+              "relations": 5,
+              "popularite": -3,
+              "pays": {
+                "dette": 1
+              },
+              "segments": {
+                "urbains": 4,
+                "ruraux": -5
+              },
+              "mobilisation": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Financer massivement les camps sur place",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton argent nourrit et soigne des centaines de milliers de personnes là-bas. Tes partenaires saluent la générosité, en notant qu'elle reste à distance.",
+            "pol": {
+              "relations": 3,
+              "influenceMondiale": 2,
+              "pays": {
+                "dette": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser tout accueil supplémentaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une partie de l'opinion applaudit. À l'ONU, ton nom figure désormais sur la liste des pays qui « ne prennent pas leur part ».",
+            "pol": {
+              "influenceMondiale": -5,
+              "relations": -5,
+              "popularite": 2,
+              "segments": {
+                "ruraux": 4,
+                "urbains": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0036",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le baril qui s'enflamme",
+    "text": "Le prix du baril de pétrole a doublé en six semaines, après une décision surprise des grands pays producteurs. À la pompe, la colère monte. Les transporteurs menacent de bloquer les routes, les compagnies aériennes augmentent leurs tarifs, et l'inflation pointe le bout du nez.",
+    "choices": [
+      {
+        "label": "Bloquer les prix à la pompe",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les prix sont gelés. La colère retombe, et la facture atterrit sur la dette publique, où elle restera longtemps.",
+            "pol": {
+              "popularite": 5,
+              "pays": {
+                "dette": 6
+              },
+              "mobilisation": -6,
+              "segments": {
+                "ruraux": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Verser un chèque aux ménages modestes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'aide est ciblée et raisonnable. Les classes moyennes, qui n'y ont pas droit, se sentent oubliées et le font savoir.",
+            "pol": {
+              "popularite": 1,
+              "pays": {
+                "dette": 3
+              },
+              "mobilisation": -2,
+              "segments": {
+                "ruraux": 3,
+                "urbains": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Coordonner avec tes alliés une libération des stocks stratégiques",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'annonce commune fait reculer les prix de 15 %. Ce n'est pas assez, mais ton pays apparaît comme un acteur qui compte.",
+            "pol": {
+              "influenceMondiale": 4,
+              "relationAllie": 4,
+              "pays": {
+                "croissance": -0.2
+              },
+              "popularite": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les producteurs réduisent encore leur production en réponse. Les prix repartent à la hausse.",
+            "pol": {
+              "influenceMondiale": -2,
+              "pays": {
+                "croissance": -0.6
+              },
+              "popularite": -3,
+              "mobilisation": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien faire : le marché s'ajustera",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le marché s'ajuste, en effet : par une récession. Les gilets fluo sortent des boîtes à gants.",
+            "pol": {
+              "popularite": -6,
+              "mobilisation": 12,
+              "pays": {
+                "croissance": -1,
+                "chomage": 0.4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0037",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La banque qui tombe",
+    "text": "Une grande banque internationale vient de faire faillite. Les marchés paniquent, la contagion menace tes propres banques. Ton gouverneur de la banque centrale te réveille à deux heures du matin : il faut une décision avant l'ouverture des marchés asiatiques.",
+    "choices": [
+      {
+        "label": "Garantir tous les dépôts et sauver les banques",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La panique est enrayée. Les banques sont sauvées, la dette publique fait un bond, et l'opinion découvre qu'on a trouvé des milliards en une nuit.",
+            "pol": {
+              "pays": {
+                "dette": 9,
+                "croissance": -0.3
+              },
+              "popularite": -3,
+              "mobilisation": 6,
+              "segments": {
+                "patrons": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Coordonner un plan avec les autres grandes économies",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le plan commun calme les marchés. Ta signature figure en bas du communiqué historique.",
+            "pol": {
+              "influenceMondiale": 6,
+              "relations": 3,
+              "pays": {
+                "dette": 5,
+                "croissance": -0.5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les autres pays tardent à s'engager. Pendant trois jours, les marchés s'effondrent, et ta coordination ressemble à de l'indécision.",
+            "pol": {
+              "pays": {
+                "dette": 6,
+                "croissance": -1.2,
+                "chomage": 0.4
+              },
+              "popularite": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser les banques fautives faire faillite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu protèges les épargnants, pas les actionnaires. Deux banques ferment, des milliers d'emplois disparaissent, mais la morale est sauve.",
+            "pol": {
+              "pays": {
+                "croissance": -1.5,
+                "chomage": 1,
+                "dette": 2
+              },
+              "popularite": 2,
+              "segments": {
+                "patrons": -10
+              },
+              "mobilisation": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0038",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "La famine",
+    "text": "Une famine frappe une région en guerre, loin de chez toi. Quatre millions de personnes sont menacées. Les Nations unies lancent un appel de fonds d'urgence et demandent un accès humanitaire que les belligérants refusent. Les images, terribles, passent en boucle.",
+    "choices": [
+      {
+        "label": "Débloquer une contribution massive",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta contribution est la deuxième au monde. L'aide arrive, partiellement, à cause des combats. Elle sauve des vies, même si personne ne peut dire combien.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "relations": 6,
+              "influenceMondiale": 5,
+              "pays": {
+                "dette": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser un pont aérien humanitaire",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tes avions larguent des vivres dans les zones inaccessibles. C'est spectaculaire, risqué et efficace.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "relations": 5,
+              "influenceMondiale": 6,
+              "pays": {
+                "dette": 2
+              },
+              "popularite": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un de tes avions est touché par des tirs. L'équipage s'en sort, mais l'opération est suspendue.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "relations": 3,
+              "influenceMondiale": 2,
+              "pays": {
+                "dette": 2,
+                "moral": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Une contribution symbolique",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta contribution est mentionnée en bas de la liste, entre deux pays dix fois plus petits.",
+            "pol": {
+              "influenceMondiale": -3,
+              "relations": -2,
+              "pays": {
+                "dette": 0.5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0039",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Les négociations de paix chez toi",
+    "text": "Deux pays en guerre depuis trois ans, sans lien direct avec le tien, acceptent l'idée de négocier un cessez-le-feu. Leurs délégations proposent de se retrouver à {capitale}, sous ton arbitrage. Une réussite te ferait entrer dans les livres d'histoire ; un échec aussi, au chapitre d'en dessous.",
+    "choices": [
+      {
+        "label": "Accueillir les négociations et arbitrer toi-même",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Après onze jours de discussions, le cessez-le-feu est signé dans un salon de ton ministère. Les photos font le tour du monde.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "influenceMondiale": 12,
+              "relations": 8,
+              "popularite": 6
+            }
+          },
+          {
+            "chance": 0.55,
+            "text": "Les négociations échouent au neuvième jour. Les deux délégations quittent {capitale} en s'accusant mutuellement, et ton nom reste attaché à l'échec.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "influenceMondiale": -4,
+              "relations": 1,
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accueillir les négociations mais laisser l'ONU arbitrer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu offres le lieu, le café et la sécurité. Un accord partiel est trouvé, et ton pays récolte une part modeste mais sûre du mérite.",
+            "pol": {
+              "influenceMondiale": 5,
+              "relations": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner poliment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les négociations ont lieu ailleurs. Un autre pays se fait photographier à ta place.",
+            "pol": {
+              "influenceMondiale": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0040",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Le vote sur les robots tueurs",
+    "text": "L'Assemblée générale des Nations unies vote une résolution appelant à interdire les armes létales autonomes, ces drones capables de choisir et de frapper une cible sans intervention humaine. Tes alliés y sont opposés, une majorité de pays y sont favorables, et ton industrie de défense travaille justement sur le sujet.",
+    "choices": [
+      {
+        "label": "Voter pour l'interdiction",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La résolution passe à une large majorité. Tes alliés sont mécontents, tes industriels aussi, mais ton pays est du côté de la majorité morale.",
+            "pol": {
+              "relations": 5,
+              "influenceMondiale": 4,
+              "relationAllie": -6,
+              "segments": {
+                "patrons": -3,
+                "jeunes": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "S'abstenir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton abstention ne fait pas de bruit. Elle ne fait pas non plus avancer quoi que ce soit.",
+            "pol": {
+              "relations": -1,
+              "relationAllie": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Voter contre, avec tes alliés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La résolution passe quand même. Ton vote est noté, et commenté, par les ONG et les pays du Sud.",
+            "pol": {
+              "relationAllie": 6,
+              "relations": -4,
+              "influenceMondiale": -2,
+              "segments": {
+                "patrons": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0041",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le Nobel du prisonnier",
+    "text": "Le prix Nobel de la paix vient d'être attribué à un dissident {du_pays_cible}, emprisonné depuis six ans. Sa famille t'invite à assister à la cérémonie, où une chaise vide le représentera. Le gouvernement {du_pays_cible} a fait savoir que toute présence officielle serait considérée comme « un acte hostile ».",
+    "choices": [
+      {
+        "label": "Y aller en personne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta présence devant la chaise vide est l'image de la cérémonie. Le gouvernement {du_pays_cible} rappelle son ambassadeur.",
+            "pol": {
+              "relationCible": -12,
+              "tension": 5,
+              "influenceMondiale": 6,
+              "popularite": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un ambassadeur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton pays est représenté, sans éclat. La famille te remercie, le gouvernement {du_pays_cible} grogne, mais modérément.",
+            "pol": {
+              "relationCible": -4,
+              "tension": 1,
+              "influenceMondiale": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas y aller, mais demander publiquement sa libération",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu évites l'affrontement direct tout en prenant position. Les observateurs y voient une habileté, la famille une prudence excessive.",
+            "pol": {
+              "relationCible": -3,
+              "influenceMondiale": 1,
+              "popularite": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien faire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton silence est remarqué. Les éditorialistes rappellent tes beaux discours sur les droits humains, citations à l'appui.",
+            "pol": {
+              "relationCible": 4,
+              "influenceMondiale": -4,
+              "popularite": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0042",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Ton nom pour le Nobel",
+    "text": "Un journal annonce que ton nom figure parmi les favoris pour le prix Nobel de la paix, après ta participation à plusieurs médiations. Ton équipe de communication est euphorique. Ton conseiller diplomatique rappelle que le comité n'aime pas qu'on fasse campagne.",
+    "choices": [
+      {
+        "label": "Ne rien dire et continuer ton travail",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Le prix va à une organisation humanitaire, ce qui est mérité. Ta discrétion est saluée par le comité, dans une lettre que personne ne lira.",
+            "pol": {
+              "influenceMondiale": 2,
+              "influence": 2
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le prix t'est attribué. Ton discours de remerciement est sobre, et ton opposition se demande comment faire campagne contre un prix Nobel.",
+            "effects": {
+              "happiness": 10,
+              "fame": 10
+            },
+            "pol": {
+              "influenceMondiale": 15,
+              "popularite": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer en urgence une grande initiative de paix",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'initiative est transparente comme une vitrine. Les éditorialistes s'amusent de ce « Nobel en préparation », et le prix va à quelqu'un d'autre.",
+            "pol": {
+              "influenceMondiale": -3,
+              "popularite": -2,
+              "casseroles": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déclarer publiquement que tu ne le mérites pas",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta modestie est remarquée, citée, applaudie. Elle ne te fait pas gagner le prix, mais elle te vaut une très bonne semaine dans les sondages.",
+            "pol": {
+              "popularite": 4,
+              "influenceMondiale": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0043",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'attentat de la station balnéaire",
+    "text": "Un attentat a frappé une station balnéaire à l'étranger : quatorze de tes ressortissants sont parmi les victimes. Les familles attendent à l'aéroport des nouvelles qui ne viennent pas. Les autorités du pays concerné sont débordées, et la presse attend ta première prise de parole.",
+    "choices": [
+      {
+        "label": "Te rendre sur place immédiatement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu te rends au chevet des blessés et tu rapatries toi-même les corps. Les familles te remercient. Ton geste est perçu comme digne et nécessaire.",
+            "effects": {
+              "stress": 8,
+              "happiness": -4
+            },
+            "pol": {
+              "popularite": 5,
+              "relations": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décréter un deuil national et envoyer des enquêteurs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le deuil est respecté. Tes enquêteurs travaillent avec les autorités locales pour identifier les responsables.",
+            "pol": {
+              "popularite": 3,
+              "relations": 2,
+              "pays": {
+                "moral": -2,
+                "securite": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déconseiller les voyages dans toute la région",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La recommandation protège tes ressortissants, mais elle ruine les économies touristiques de toute la région, dont les gouvernements protestent vivement.",
+            "pol": {
+              "relations": -5,
+              "pays": {
+                "securite": 3
+              },
+              "popularite": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0044",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Le séisme chez l'adversaire",
+    "text": "Un séisme d'une violence rare vient de frapper {pays_cible}. Les premiers bilans parlent de milliers de morts. Malgré les relations exécrables entre vos deux pays, tes secouristes sont parmi les mieux équipés au monde et pourraient être sur place en douze heures.",
+    "choices": [
+      {
+        "label": "Envoyer immédiatement tes équipes de secours",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Tes secouristes sortent des survivants des décombres pendant dix jours. La population {du_pays_cible} ne l'oubliera pas, et les dirigeants non plus.",
+            "effects": {
+              "karma": 8
+            },
+            "pol": {
+              "relationCible": 18,
+              "tension": -8,
+              "influenceMondiale": 6,
+              "relations": 4,
+              "popularite": 3
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le gouvernement {du_pays_cible} refuse ton aide. Tes avions restent sur le tarmac, mais ton geste a été vu par le monde entier.",
+            "pol": {
+              "relationCible": 4,
+              "influenceMondiale": 4,
+              "relations": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer par les Nations unies",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton aide transite par l'ONU, discrète et efficace. Personne ne sait vraiment d'où elle vient, ce qui était le but.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "relationCible": 5,
+              "tension": -2,
+              "relations": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien faire : ce n'est pas le moment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton absence est remarquée, au milieu de dizaines de pays présents. Elle le sera pendant des années.",
+            "effects": {
+              "karma": -6
+            },
+            "pol": {
+              "relationCible": -6,
+              "influenceMondiale": -5,
+              "relations": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0045",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Les casques bleus",
+    "text": "L'ONU demande à ton pays six cents soldats pour une mission de maintien de la paix dans une région déchirée par la guerre civile. La mission est utile, dangereuse et mal financée. Ton chef d'état-major y est favorable, à condition que les règles d'engagement soient claires, ce qu'elles ne sont jamais.",
+    "choices": [
+      {
+        "label": "Envoyer les six cents soldats",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tes casques bleus protègent des camps de déplacés et des convois humanitaires. La mission tient. Ton pays gagne en respect.",
+            "pol": {
+              "influenceMondiale": 7,
+              "relations": 5,
+              "pays": {
+                "dette": 1
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Quatre de tes soldats sont tués dans une embuscade le deuxième mois. La question du retrait est posée {au_parlement}.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "influenceMondiale": 4,
+              "relations": 4,
+              "popularite": -5,
+              "pays": {
+                "dette": 1,
+                "moral": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Financer la mission sans envoyer de troupes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton chèque est apprécié. Les pays qui envoient des soldats font remarquer, poliment, que le sang ne se paie pas en chèque.",
+            "pol": {
+              "influenceMondiale": 2,
+              "relations": 2,
+              "pays": {
+                "dette": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La mission démarre avec moins de moyens. Ton absence est notée, notamment par les pays qui t'avaient soutenu{e} à l'ONU.",
+            "pol": {
+              "influenceMondiale": -4,
+              "relations": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0046",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "La campagne pour le Conseil de sécurité",
+    "text": "Ton pays brigue un siège non permanent au Conseil de sécurité des Nations unies. Le vote a lieu dans six mois. Il faut convaincre plus d'une centaine de pays, et les méthodes habituelles vont de la persuasion à l'aide au développement très ciblée.",
+    "choices": [
+      {
+        "label": "Lancer une campagne ambitieuse, aide au développement comprise",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton pays est élu au premier tour. Pendant deux ans, tu siégeras là où se prennent les décisions qui comptent.",
+            "pol": {
+              "influenceMondiale": 10,
+              "relations": 4,
+              "pays": {
+                "dette": 2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu échoues de six voix. Les promesses d'aide sont tenues quand même, pour ne pas perdre la face deux fois.",
+            "pol": {
+              "influenceMondiale": -3,
+              "relations": 2,
+              "pays": {
+                "dette": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Une campagne sobre, sur le bilan de ton pays",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La campagne est digne. Elle échoue au deuxième tour face à un concurrent plus généreux.",
+            "pol": {
+              "influenceMondiale": -1,
+              "relations": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Contre toute attente, la sobriété séduit. Tu es élu{e} avec une marge confortable.",
+            "pol": {
+              "influenceMondiale": 8,
+              "relations": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retirer la candidature",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu te retires avant le vote. On salue ton réalisme ; on oubliera bientôt que tu étais candidat{e}.",
+            "pol": {
+              "influenceMondiale": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0047",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Le budget de défense",
+    "text": "La tension internationale monte, et tes généraux réclament une hausse de 20 % du budget de défense sur trois ans. Le ministère des Finances parle de « délire ». Tes alliés, eux, te reprochent depuis des années de ne pas faire ta part.",
+    "choices": [
+      {
+        "label": "Accorder la hausse demandée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes armées se modernisent. Tes alliés applaudissent, ta dette grossit, et le gouvernement {du_pays_cible} y voit un signal hostile.",
+            "pol": {
+              "relationAllie": 8,
+              "relationCible": -4,
+              "tension": 3,
+              "pays": {
+                "dette": 5,
+                "securite": 6
+              },
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Une hausse modérée, ciblée sur les munitions et la cyberdéfense",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le budget augmente de 8 %, concentré sur l'essentiel. Personne n'est satisfait, et c'est probablement le bon dosage.",
+            "pol": {
+              "relationAllie": 3,
+              "pays": {
+                "dette": 2,
+                "securite": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Maintenir le budget actuel",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes généraux te le reprochent en privé, puis l'un d'eux dans une tribune anonyme. Tes alliés comptent les points.",
+            "pol": {
+              "relationAllie": -5,
+              "loyaute": -3,
+              "pays": {
+                "securite": -2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0048",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les métaux critiques",
+    "text": "Les métaux indispensables aux batteries et aux puces électroniques viennent à manquer. Un pays fragile, gouverné par une junte, propose un accord d'exploitation minière à long terme. Les conditions sont avantageuses, les droits humains beaucoup moins. Ton industrie a besoin de ces métaux, et tes concurrents sont déjà sur le coup.",
+    "choices": [
+      {
+        "label": "Signer l'accord",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'approvisionnement est sécurisé pour dix ans. Les ONG publient des photos des mines. Tes industriels publient leurs bénéfices.",
+            "pol": {
+              "pays": {
+                "croissance": 0.4
+              },
+              "influenceMondiale": -3,
+              "relations": -2,
+              "casseroles": 1,
+              "segments": {
+                "patrons": 6,
+                "jeunes": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Signer avec des clauses sociales et environnementales",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La junte accepte des clauses qu'elle n'appliquera qu'en partie. L'accord est moins rentable mais plus défendable.",
+            "pol": {
+              "pays": {
+                "croissance": 0.2
+              },
+              "influenceMondiale": 1,
+              "segments": {
+                "patrons": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Investir dans le recyclage et des mines chez toi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le pari est long et coûteux, mais il réduit ta dépendance. Les riverains des futures mines, eux, ne sont pas enthousiastes.",
+            "pol": {
+              "pays": {
+                "dette": 3,
+                "croissance": -0.1
+              },
+              "influenceMondiale": 2,
+              "segments": {
+                "ruraux": -4,
+                "jeunes": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0049",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les observateurs capturés",
+    "text": "Douze soldats de ton pays, membres d'une mission internationale d'observation, ont été capturés par l'armée {du_pays_cible}, qui les accuse d'espionnage. Ils sont apparus ce soir à la télévision, l'air épuisé, lisant une déclaration qu'ils n'ont visiblement pas écrite. Ton chef d'état-major a préparé un plan d'opération. Ton ministre des Affaires étrangères a préparé une liste de médiateurs.",
+    "choices": [
+      {
+        "label": "Lancer l'opération militaire de libération",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'opération dégénère en affrontement avec les forces {du_pays_cible}. Les combats s'étendent en quelques heures. Ton pays est en guerre, et les douze soldats sont toujours prisonniers.",
+            "effects": {
+              "stress": 15
+            },
+            "pol": {
+              "conflit": 1,
+              "tension": 28,
+              "relationCible": -30,
+              "popularite": -7,
+              "influenceMondiale": -4,
+              "mobilisation": 10,
+              "pays": {
+                "dette": 8,
+                "moral": -9,
+                "croissance": -1,
+                "securite": -5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'opération réussit au prix de deux blessés graves. Les douze soldats sont libres, mais le gouvernement {du_pays_cible} parle d'« agression » et rompt toute relation.",
+            "effects": {
+              "stress": 12
+            },
+            "pol": {
+              "tension": 15,
+              "relationCible": -20,
+              "popularite": 4,
+              "pays": {
+                "moral": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer une médiation par un pays tiers",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Après trois semaines de négociations discrètes, les douze soldats sont libérés et rentrent chez eux. La crise est désamorcée, même si ton opposition parle de lenteur.",
+            "pol": {
+              "tension": -6,
+              "relationCible": 5,
+              "popularite": 3,
+              "influenceMondiale": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La médiation piétine. Les soldats restent détenus, et la pression monte chaque jour sur tes épaules.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "tension": 4,
+              "popularite": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ultimatum et sanctions avec tes alliés",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les sanctions coordonnées frappent fort. Le gouvernement {du_pays_cible} libère les soldats au bout d'un mois, en se gardant bien de l'expliquer.",
+            "pol": {
+              "tension": 8,
+              "relationCible": -12,
+              "relationAllie": 5,
+              "influenceMondiale": 4,
+              "popularite": 4,
+              "pays": {
+                "croissance": -0.2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'ultimatum expire sans effet. Tu as engagé ta crédibilité, et il faut maintenant choisir entre la reculade et l'escalade.",
+            "pol": {
+              "tension": 12,
+              "relationCible": -12,
+              "popularite": -5,
+              "influence": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0050",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Les drones de la nuit",
+    "text": "Une attaque de drones a frappé cette nuit une base de ton armée à l'étranger : six soldats tués, vingt blessés. Les drones ont été tirés par une milice que le gouvernement {du_pays_cible} arme et finance ouvertement. L'état-major propose de frapper les sites de lancement, y compris ceux situés {au_pays_cible}. Il te demande ta recommandation avant la réunion de crise {au_palais}.",
+    "choices": [
+      {
+        "label": "Recommander des frappes, y compris {au_pays_cible}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les frappes détruisent les sites visés. Le gouvernement {du_pays_cible} riposte directement contre tes forces. En une semaine, la confrontation par procuration est devenue une guerre ouverte.",
+            "effects": {
+              "stress": 14
+            },
+            "pol": {
+              "conflit": 1,
+              "tension": 30,
+              "relationCible": -30,
+              "popularite": -6,
+              "influenceMondiale": -3,
+              "mobilisation": 8,
+              "pays": {
+                "dette": 9,
+                "moral": -8,
+                "croissance": -1,
+                "securite": -6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les frappes détruisent les sites de lancement. Le gouvernement {du_pays_cible} proteste violemment mais choisit de ne pas riposter. Pour cette fois.",
+            "pol": {
+              "tension": 15,
+              "relationCible": -18,
+              "popularite": 2,
+              "pays": {
+                "securite": 3,
+                "dette": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Frapper uniquement les positions de la milice, hors de son territoire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La milice est durement touchée. Le gouvernement {du_pays_cible} dénonce l'opération, mais ne franchit pas la ligne.",
+            "pol": {
+              "tension": 8,
+              "relationCible": -10,
+              "pays": {
+                "securite": 3,
+                "dette": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renforcer la défense des bases et documenter les preuves",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes bases deviennent des forteresses. Les preuves sont transmises à l'ONU. Les familles des six soldats demandent pourquoi personne n'a riposté.",
+            "pol": {
+              "tension": 2,
+              "relationCible": -4,
+              "popularite": -4,
+              "relations": 2,
+              "pays": {
+                "dette": 2,
+                "securite": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0051",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le détroit bloqué",
+    "text": "La marine {du_pays_cible} a commencé à arraisonner les cargos à destination {du_pays} dans un détroit stratégique, au motif de « contrôles de sécurité ». Trois navires sont immobilisés depuis dix jours, les assureurs refusent désormais de couvrir la route, et les prix de certains produits commencent à grimper dans tes supermarchés.",
+    "choices": [
+      {
+        "label": "Envoyer ta marine escorter les cargos de force",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta flotte force le passage. Un patrouilleur {du_pays_cible} ouvre le feu, ta frégate riposte. Il y a des morts des deux côtés. Le blocus s'est transformé en conflit armé.",
+            "effects": {
+              "stress": 15
+            },
+            "pol": {
+              "conflit": 1,
+              "tension": 30,
+              "relationCible": -30,
+              "popularite": -8,
+              "mobilisation": 10,
+              "pays": {
+                "dette": 8,
+                "moral": -8,
+                "croissance": -1.5,
+                "securite": -5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La démonstration de force suffit : les navires {du_pays_cible} se retirent sans tirer. Le passage est rouvert, mais tout le monde a vu à quel point on est passé près.",
+            "pol": {
+              "tension": 14,
+              "relationCible": -15,
+              "popularite": 4,
+              "pays": {
+                "croissance": 0.2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander une réunion d'urgence du Conseil de sécurité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La résolution est bloquée par un veto, mais l'isolement diplomatique pèse. Le gouvernement {du_pays_cible} lève les contrôles au bout d'un mois, en parlant de « mission accomplie ».",
+            "pol": {
+              "tension": -3,
+              "influenceMondiale": 4,
+              "relations": 3,
+              "pays": {
+                "croissance": -0.3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La réunion accouche d'une déclaration sans portée. Le blocus continue, et tes importateurs comptent leurs pertes.",
+            "pol": {
+              "tension": 4,
+              "pays": {
+                "croissance": -0.7
+              },
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contourner par une autre route et négocier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les cargos font un détour de dix jours. C'est coûteux, mais personne ne meurt. Une négociation discrète finit par lever les contrôles.",
+            "pol": {
+              "tension": -4,
+              "relationCible": 3,
+              "pays": {
+                "croissance": -0.5
+              },
+              "popularite": -2
+            }
+          }
+        ]
+      }
+    ],
+    "pays": [
+      "fr",
+      "be",
+      "ca",
+      "ma",
+      "dz",
+      "tn",
+      "sn",
+      "ci",
+      "al",
+      "us",
+      "gb",
+      "de",
+      "es",
+      "it",
+      "pt",
+      "br",
+      "jp",
+      "cn",
+      "in",
+      "mx",
+      "tr",
+      "ru",
+      "ng",
+      "au"
+    ]
+  },
+  {
+    "id": "itl_0052",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le grand black-out",
+    "text": "Une cyberattaque d'une ampleur inédite a plongé la moitié du pays dans le noir pendant quarante-huit heures. Trois patients sont morts dans des hôpitaux dont les générateurs ont flanché. Tes services ont identifié les auteurs : une unité militaire {du_pays_cible}. Ton état-major propose une frappe sur le centre de commandement de cette unité.",
+    "choices": [
+      {
+        "label": "Ordonner la frappe militaire",
+        "outcomes": [
+          {
+            "chance": 0.55,
+            "text": "Le centre est détruit. Le gouvernement {du_pays_cible} y voit un acte de guerre et répond en conséquence. Une crise numérique vient de devenir un conflit armé.",
+            "effects": {
+              "stress": 15
+            },
+            "pol": {
+              "conflit": 1,
+              "tension": 30,
+              "relationCible": -30,
+              "popularite": -7,
+              "influenceMondiale": -5,
+              "mobilisation": 9,
+              "pays": {
+                "dette": 8,
+                "moral": -9,
+                "croissance": -1.2,
+                "securite": -5
+              }
+            }
+          },
+          {
+            "chance": 0.45,
+            "text": "La frappe est précise et ne fait pas de victime. Le gouvernement {du_pays_cible} dément toute implication dans la cyberattaque et choisit le silence.",
+            "pol": {
+              "tension": 14,
+              "relationCible": -18,
+              "popularite": 3,
+              "pays": {
+                "securite": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Riposter dans le cyberespace, de façon proportionnée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes équipes paralysent les systèmes de l'unité responsable pendant plusieurs semaines. Pas de mort, pas d'image, et un message parfaitement reçu.",
+            "pol": {
+              "tension": 6,
+              "relationCible": -10,
+              "pays": {
+                "securite": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sanctions et plainte internationale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu publies les preuves et obtiens des sanctions de tes alliés. C'est lent, légal, et beaucoup jugent que ce n'est pas assez pour trois morts.",
+            "pol": {
+              "tension": 4,
+              "relationCible": -8,
+              "relationAllie": 4,
+              "influenceMondiale": 3,
+              "popularite": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0053",
+    "kind": "international",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "L'avion abattu",
+    "text": "Un avion de patrouille de ton armée de l'air a été abattu au-dessus d'une zone internationale par un missile tiré depuis le territoire {du_pays_cible}. Les deux pilotes sont morts. Le gouvernement {du_pays_cible} affirme que l'avion menaçait ses installations. Tes radars prouvent le contraire. L'état-major veut riposter cette nuit.",
+    "choices": [
+      {
+        "label": "Recommander de détruire la batterie de missiles",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La batterie est détruite. Le gouvernement {du_pays_cible} répond par une salve contre tes bases. L'engrenage est enclenché, et personne ne sait plus comment l'arrêter.",
+            "effects": {
+              "stress": 14
+            },
+            "pol": {
+              "conflit": 1,
+              "tension": 30,
+              "relationCible": -30,
+              "popularite": -6,
+              "mobilisation": 8,
+              "pays": {
+                "dette": 8,
+                "moral": -8,
+                "croissance": -1,
+                "securite": -6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La batterie est détruite sans que le gouvernement {du_pays_cible} riposte. Le prix de ce calme reste inconnu.",
+            "pol": {
+              "tension": 16,
+              "relationCible": -18,
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger une enquête internationale et des réparations",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'enquête internationale confirme ta version. Le gouvernement {du_pays_cible} refuse de payer, mais il est isolé. Les familles des pilotes attendent encore des excuses.",
+            "pol": {
+              "tension": 3,
+              "relationCible": -8,
+              "influenceMondiale": 4,
+              "relations": 3,
+              "popularite": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mettre tes forces en alerte et suspendre les vols de patrouille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes forces sont prêtes, tes avions restent au sol. La tension retombe lentement, et l'opposition t'accuse de ne pas honorer les morts.",
+            "pol": {
+              "tension": -2,
+              "popularite": -3,
+              "loyaute": -2,
+              "pays": {
+                "securite": -1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0054",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les ressortissants pris au piège",
+    "text": "De violentes émeutes ont éclaté dans plusieurs villes {du_pays_cible}, et certains groupes s'en prennent désormais aux étrangers. Six mille de tes ressortissants sont sur place. Le gouvernement {du_pays_cible} refuse l'atterrissage de tout avion militaire étranger et affirme maîtriser la situation. Tes ambassadeurs affirment le contraire.",
+    "choices": [
+      {
+        "label": "Lancer une évacuation militaire sans autorisation",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Tes avions se posent malgré l'interdiction. Les forces {du_pays_cible} ouvrent le feu sur l'aéroport. L'évacuation se fait sous les tirs, et le conflit est désormais ouvert.",
+            "effects": {
+              "stress": 15
+            },
+            "pol": {
+              "conflit": 1,
+              "tension": 30,
+              "relationCible": -30,
+              "popularite": -5,
+              "influenceMondiale": -3,
+              "mobilisation": 6,
+              "pays": {
+                "dette": 7,
+                "moral": -8,
+                "croissance": -1,
+                "securite": -4
+              }
+            }
+          },
+          {
+            "chance": 0.55,
+            "text": "L'évacuation réussit en quarante-huit heures, sans un coup de feu. Le gouvernement {du_pays_cible} rompt les relations diplomatiques.",
+            "effects": {
+              "stress": 10
+            },
+            "pol": {
+              "tension": 12,
+              "relationCible": -20,
+              "popularite": 7,
+              "pays": {
+                "moral": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier des couloirs d'évacuation par voie civile",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les vols commerciaux sont autorisés sous escorte locale. L'évacuation prend une semaine de plus, mais elle se fait sans affrontement.",
+            "pol": {
+              "tension": -3,
+              "relationCible": 3,
+              "popularite": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La négociation traîne, et plusieurs de tes ressortissants sont blessés pendant l'attente. L'opposition parle de « lâcheté ».",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -6,
+              "tension": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer par {pays_allie}, dont la diplomatie est mieux introduite sur place",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton allié organise l'évacuation de tes ressortissants avec les siens. Tout le monde rentre, et tu lui dois désormais un grand service.",
+            "pol": {
+              "relationAllie": 6,
+              "popularite": 3,
+              "influenceMondiale": -2,
+              "tension": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "itl_0055",
+    "kind": "international",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les missiles déployés",
+    "text": "Les satellites montrent que le gouvernement {du_pays_cible} déploie des missiles de moyenne portée capables d'atteindre une de tes bases militaires à l'étranger et deux villes {du_pays_allie}. Ton état-major estime qu'ils seront opérationnels dans trois semaines. Certains de tes conseillers parlent de « fenêtre d'opportunité » pour une frappe préventive.",
+    "choices": [
+      {
+        "label": "Ordonner une frappe préventive",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les sites sont frappés avant d'être opérationnels. Le gouvernement {du_pays_cible} riposte aussitôt. Tu as déclenché le conflit que tu voulais éviter.",
+            "effects": {
+              "stress": 16
+            },
+            "pol": {
+              "conflit": 1,
+              "tension": 32,
+              "relationCible": -30,
+              "popularite": -8,
+              "influenceMondiale": -6,
+              "relationAllie": -4,
+              "mobilisation": 12,
+              "pays": {
+                "dette": 10,
+                "moral": -9,
+                "croissance": -1.5,
+                "securite": -6
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La frappe détruit les sites. Contre toute attente, le gouvernement {du_pays_cible} ne riposte pas, mais le monde entier te regarde désormais comme un pays qui frappe le premier.",
+            "pol": {
+              "tension": 18,
+              "relationCible": -20,
+              "influenceMondiale": -5,
+              "relations": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déployer une défense antimissile avec {pays_allie}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le bouclier est installé en un mois. Ton allié est rassuré, la dissuasion fonctionne, et la facture est conséquente.",
+            "pol": {
+              "relationAllie": 10,
+              "relationCible": -8,
+              "tension": 6,
+              "pays": {
+                "dette": 4,
+                "securite": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une négociation sur le contrôle des armements",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "À la surprise générale, le gouvernement {du_pays_cible} accepte de discuter. Les missiles restent, mais leur nombre est gelé et des inspections sont prévues.",
+            "pol": {
+              "tension": -8,
+              "relationCible": 8,
+              "influenceMondiale": 6,
+              "popularite": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La proposition est rejetée avec mépris. Ton opposition dénonce ta naïveté, et les missiles sont déployés.",
+            "pol": {
+              "tension": 6,
+              "relationCible": -3,
+              "popularite": -4,
+              "pays": {
+                "securite": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

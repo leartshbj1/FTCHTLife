@@ -1,0 +1,1366 @@
+[
+  {
+    "id": "gue_0001",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le rappel des réservistes",
+    "text": "Le conflit avec {pays_cible} entre dans sa troisième semaine. L'état-major réclame la mobilisation de soixante mille réservistes pour tenir dans la durée. Ce sont des infirmiers, des mécaniciens, des professeurs, des pères et des mères de famille. Leur départ désorganiserait une partie de l'économie.",
+    "choices": [
+      {
+        "label": "Mobiliser les soixante mille réservistes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les réservistes rejoignent leurs unités. Les hôpitaux et les entreprises tournent en sous-effectif, et dans chaque ville, des familles attendent des nouvelles.",
+            "pol": {
+              "pays": {
+                "securite": 6,
+                "croissance": -0.6,
+                "moral": -4
+              },
+              "popularite": -3,
+              "segments": {
+                "jeunes": -8
+              },
+              "mobilisation": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire appel uniquement aux volontaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vingt-deux mille volontaires se présentent en dix jours, plus que prévu. L'état-major aurait voulu le triple, mais le pays tient debout.",
+            "pol": {
+              "pays": {
+                "securite": 3,
+                "moral": 3
+              },
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser la mobilisation et chercher une sortie diplomatique",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'état-major proteste par écrit. Tu fais savoir, par plusieurs canaux, que tu es prêt{e} à discuter d'un arrêt des combats.",
+            "pol": {
+              "loyaute": -4,
+              "tension": -3,
+              "relationCible": 3,
+              "pays": {
+                "securite": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0002",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le budget de guerre",
+    "text": "Chaque semaine de guerre coûte l'équivalent du budget annuel d'un ministère. Ton ministre des Finances présente trois options pour financer l'effort, et prévient qu'aucune ne sera populaire. La loi de finances rectificative doit être déposée {au_parlement} dans dix jours.",
+    "choices": [
+      {
+        "label": "Un impôt exceptionnel de solidarité sur les hauts revenus",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'impôt passe, dans une atmosphère d'union nationale qui ne survit pas à la première déclaration fiscale.",
+            "pol": {
+              "pays": {
+                "dette": 2
+              },
+              "segments": {
+                "patrons": -12,
+                "urbains": 2
+              },
+              "popularite": 1,
+              "majorite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un grand emprunt national",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les citoyens souscrivent massivement. La dette s'envole, mais le pays se sent associé à l'effort.",
+            "pol": {
+              "pays": {
+                "dette": 10,
+                "moral": 2
+              },
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Des coupes dans les dépenses sociales",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les coupes passent de justesse {au_parlement}. Les syndicats appellent à la grève, ce qui complique sérieusement l'effort de guerre.",
+            "pol": {
+              "pays": {
+                "dette": 3
+              },
+              "mobilisation": 14,
+              "segments": {
+                "fonctionnaires": -10,
+                "retraites": -6
+              },
+              "popularite": -6,
+              "majorite": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0003",
+    "kind": "guerre",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "La cible près de l'hôpital",
+    "text": "Le renseignement a localisé un centre de commandement {du_pays_cible} qui coordonne les frappes contre tes positions. Il est installé à deux cents mètres d'un hôpital en activité. Les juristes militaires estiment la frappe « légale sous conditions ». Les officiers estiment qu'elle sauverait des dizaines de vies de soldats. Personne ne peut garantir qu'elle n'en coûtera aucune à l'hôpital.",
+    "choices": [
+      {
+        "label": "Autoriser la frappe immédiate",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le centre est détruit. Les vitres de l'hôpital ont volé en éclats, mais personne n'y a été tué. Tu ne dors pas cette nuit-là.",
+            "effects": {
+              "stress": 10
+            },
+            "pol": {
+              "pays": {
+                "securite": 4
+              },
+              "tension": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le centre est détruit, et une aile de l'hôpital avec lui. Il y a des victimes civiles. Les images font le tour du monde, et ton pays doit en répondre devant la communauté internationale.",
+            "effects": {
+              "stress": 14,
+              "karma": -10
+            },
+            "pol": {
+              "pays": {
+                "securite": 3,
+                "moral": -5
+              },
+              "relations": -10,
+              "influenceMondiale": -6,
+              "casseroles": 2,
+              "popularite": -6,
+              "tension": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre une fenêtre où l'hôpital sera évacué",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu attends quatre jours. L'hôpital est partiellement évacué, la frappe a lieu sans victime civile. Pendant ces quatre jours, tes unités ont subi de lourdes pertes.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "pays": {
+                "moral": -3
+              },
+              "loyaute": -2,
+              "relations": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renoncer à la frappe",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le centre continue de fonctionner. Tu as fait un choix que tes officiers ne comprennent pas, et que les conventions internationales comprennent très bien.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "loyaute": -5,
+              "relations": 3,
+              "pays": {
+                "securite": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0004",
+    "kind": "guerre",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Les prisonniers de guerre",
+    "text": "Tes forces détiennent quatre cents prisonniers {du_pays_cible}. Un rapport interne fait état de mauvais traitements dans l'un des camps : humiliations filmées, privation de sommeil, un détenu gravement blessé. Le rapport n'est pas public. Pour l'instant.",
+    "choices": [
+      {
+        "label": "Ouvrir une enquête et donner accès au Comité international de la Croix-Rouge",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les responsables sont suspendus et poursuivis. L'affaire devient publique, mais c'est toi qui l'as rendue publique, et ça change tout.",
+            "pol": {
+              "relations": 5,
+              "influenceMondiale": 4,
+              "casseroles": 1,
+              "popularite": -2,
+              "loyaute": -2,
+              "relationCible": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Régler l'affaire en interne, sans publicité",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les responsables sont mutés. Six mois plus tard, les vidéos fuitent. On découvre que tu savais.",
+            "pol": {
+              "casseroles": 3,
+              "popularite": -7,
+              "influenceMondiale": -6,
+              "relations": -6,
+              "relationCible": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un échange général de prisonniers",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le gouvernement {du_pays_cible} accepte. Des centaines de familles, des deux côtés, retrouvent un fils ou une fille. C'est la première bonne nouvelle depuis le début de la guerre.",
+            "pol": {
+              "relationCible": 8,
+              "tension": -4,
+              "popularite": 5,
+              "pays": {
+                "moral": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le gouvernement {du_pays_cible} pose des conditions inacceptables. L'échange est reporté sans date.",
+            "pol": {
+              "popularite": -1,
+              "tension": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0005",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le médiateur",
+    "text": "Un pays neutre, respecté des deux côtés, propose ses bons offices pour une médiation entre toi et {pays_cible}. Les conditions de départ sont simples : un cessez-le-feu immédiat sur les positions actuelles, et des négociations dans un mois. Ton état-major estime que tu peux encore gagner du terrain. Ton opinion est fatiguée.",
+    "choices": [
+      {
+        "label": "Accepter la médiation et le cessez-le-feu",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les armes se taisent à minuit. Personne n'a gagné, mais les morts s'arrêtent. Tes généraux sont amers, les familles soulagées.",
+            "pol": {
+              "conflit": -1,
+              "tension": -15,
+              "relationCible": 10,
+              "influenceMondiale": 6,
+              "popularite": 4,
+              "loyaute": -3,
+              "pays": {
+                "moral": 6
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le gouvernement {du_pays_cible} rejette finalement la médiation au dernier moment. Les combats reprennent, et tu as montré ta lassitude.",
+            "pol": {
+              "tension": 3,
+              "popularite": -2,
+              "influence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger d'abord un retrait des troupes {du_pays_cible}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La condition est rejetée. La guerre continue, mais ta position est claire.",
+            "pol": {
+              "tension": 3,
+              "loyaute": 3,
+              "relationCible": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Sous la pression du médiateur, le gouvernement {du_pays_cible} accepte un retrait partiel. Un cessez-le-feu est signé.",
+            "pol": {
+              "conflit": -1,
+              "tension": -12,
+              "relationCible": 8,
+              "popularite": 6,
+              "influenceMondiale": 4,
+              "pays": {
+                "moral": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser toute médiation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La guerre continue. Le médiateur rend publique ta réponse, et plusieurs pays s'interrogent sur tes intentions.",
+            "pol": {
+              "influenceMondiale": -4,
+              "relations": -3,
+              "tension": 4,
+              "loyaute": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0006",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les sanctions alliées",
+    "text": "Le gouvernement {du_pays_allie} propose un paquet de sanctions coordonnées contre {pays_cible} : gel des avoirs, embargo sur l'énergie, exclusion des circuits financiers. Les sanctions frapperaient durement ton adversaire. Elles frapperaient aussi ton économie, qui dépend en partie de ses échanges avec lui.",
+    "choices": [
+      {
+        "label": "Adopter l'ensemble des sanctions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les sanctions sont massives. L'économie {du_pays_cible} vacille, la tienne aussi. Les factures d'énergie de tes citoyens bondissent.",
+            "pol": {
+              "relationAllie": 10,
+              "relationCible": -12,
+              "tension": 4,
+              "pays": {
+                "croissance": -0.8
+              },
+              "popularite": -3,
+              "mobilisation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Adopter les sanctions, sauf sur l'énergie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu protèges tes factures et ton industrie. Ton allié comprend, mais te le fait payer en influence dans les réunions suivantes.",
+            "pol": {
+              "relationAllie": 3,
+              "relationCible": -6,
+              "tension": 2,
+              "pays": {
+                "croissance": -0.2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser les sanctions pour garder un canal ouvert",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton allié est stupéfait. Le gouvernement {du_pays_cible}, lui, note qu'il existe encore une porte. Personne ne sait si tu as eu raison.",
+            "pol": {
+              "relationAllie": -12,
+              "relationCible": 4,
+              "tension": -2,
+              "influenceMondiale": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0007",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La foule pour la paix",
+    "text": "Trois cent mille personnes défilent à {capitale} pour exiger la fin de la guerre. Parmi elles, des mères de soldats, des étudiants, des anciens combattants. Le cortège passe sous tes fenêtres. Ton ministre de l'Intérieur propose d'interdire les prochains rassemblements « pour raisons de sécurité ».",
+    "choices": [
+      {
+        "label": "Recevoir une délégation de manifestants",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu écoutes pendant deux heures, sans caméra. Tu ne promets rien, mais tu as entendu. La délégation le dit en sortant, sobrement.",
+            "pol": {
+              "popularite": 4,
+              "mobilisation": -6,
+              "segments": {
+                "jeunes": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annoncer l'ouverture de discussions avec {pays_cible}",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ton annonce surprend tout le monde, y compris ton adversaire. Les contacts aboutissent à un cessez-le-feu dans la semaine.",
+            "pol": {
+              "conflit": -1,
+              "tension": -14,
+              "relationCible": 10,
+              "popularite": 7,
+              "mobilisation": -10,
+              "loyaute": -4,
+              "pays": {
+                "moral": 5
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Les discussions sont ouvertes, mais elles patinent. Les manifestants restent mobilisés et tes généraux t'accusent d'affaiblir le moral des troupes.",
+            "pol": {
+              "tension": -4,
+              "relationCible": 3,
+              "popularite": 1,
+              "loyaute": -4,
+              "mobilisation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Interdire les prochains rassemblements",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'interdiction est contestée devant les tribunaux et ignorée dans la rue. Les affrontements avec la police font la une.",
+            "pol": {
+              "popularite": -8,
+              "mobilisation": 15,
+              "casseroles": 1,
+              "segments": {
+                "jeunes": -10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas réagir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le cortège passe, la colère reste. Les sondages enregistrent une nouvelle baisse du soutien à la guerre.",
+            "pol": {
+              "popularite": -3,
+              "mobilisation": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0008",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La censure",
+    "text": "L'état-major te demande d'interdire la diffusion des images de soldats tués et de suspendre une chaîne d'information accusée de « miner le moral de la nation » en relayant des témoignages de soldats épuisés. Les syndicats de journalistes ont déjà prévenu : si tu cèdes, ils te combattront.",
+    "choices": [
+      {
+        "label": "Interdire les images et suspendre la chaîne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La chaîne est suspendue. Le lendemain, ses journalistes diffusent sur les réseaux sociaux, et leur audience triple. La liberté de la presse de ton pays recule dans tous les classements.",
+            "pol": {
+              "popularite": -6,
+              "casseroles": 2,
+              "influenceMondiale": -5,
+              "segments": {
+                "jeunes": -8,
+                "urbains": -6
+              },
+              "loyaute": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une charte volontaire aux médias",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La plupart des médias signent une charte sur les images de victimes, par respect pour les familles. La chaîne visée refuse, sans conséquence.",
+            "pol": {
+              "popularite": 1,
+              "loyaute": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser toute censure",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu défends publiquement la liberté de la presse, même en temps de guerre. Tes généraux s'agacent, les éditorialistes saluent ta constance.",
+            "pol": {
+              "popularite": 3,
+              "influenceMondiale": 3,
+              "loyaute": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0009",
+    "kind": "guerre",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "La fausse capitulation",
+    "text": "Une vidéo truquée circule depuis ce matin sur les réseaux : on y voit un faux toi annoncer la capitulation et ordonner aux soldats de rendre les armes. Elle a été vue quatre millions de fois. Plusieurs unités ont appelé l'état-major pour vérifier. Les experts pointent une opération {du_pays_cible}.",
+    "choices": [
+      {
+        "label": "Publier immédiatement un démenti en direct",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton démenti est diffusé partout dans l'heure. La fausse vidéo devient une blague, puis un symbole de la propagande adverse.",
+            "pol": {
+              "popularite": 3,
+              "pays": {
+                "moral": 3
+              },
+              "relationCible": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Riposter par une campagne d'information vers l'opinion {du_pays_cible}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes messages contournent la censure et atteignent une partie de la population adverse. L'efficacité est incertaine, mais l'adversaire est furieux.",
+            "pol": {
+              "relationCible": -8,
+              "tension": 3,
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger des plateformes une suppression globale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les plateformes suppriment la vidéo en six heures. Des copies circulent pendant des semaines, et la question de la régulation des réseaux revient {au_parlement}.",
+            "pol": {
+              "pays": {
+                "securite": 3
+              },
+              "influence": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0010",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les civils sur les routes",
+    "text": "Les combats ont jeté sur les routes des dizaines de milliers de civils {du_pays_cible}, qui se présentent aux postes de tes forces pour demander protection. Ce sont, pour l'essentiel, des femmes, des enfants et des personnes âgées. Une partie de ta majorité refuse d'« accueillir l'ennemi ».",
+    "choices": [
+      {
+        "label": "Les accueillir dans des camps humanitaires gérés par l'ONU",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les camps sont ouverts en dix jours. Ils sauvent des milliers de vies et donnent à ton pays une image qu'aucune campagne de communication n'aurait pu acheter.",
+            "effects": {
+              "karma": 8
+            },
+            "pol": {
+              "relations": 6,
+              "influenceMondiale": 6,
+              "relationCible": 4,
+              "popularite": -3,
+              "majorite": -2,
+              "pays": {
+                "dette": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les laisser passer vers un pays tiers",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les civils sont transférés vers un pays voisin qui accepte de les recevoir, contre une compensation financière importante.",
+            "pol": {
+              "relations": 2,
+              "pays": {
+                "dette": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer les points de passage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les civils restent bloqués entre les lignes. Les images de familles sous la pluie font la une de la presse internationale.",
+            "effects": {
+              "karma": -8
+            },
+            "pol": {
+              "relations": -8,
+              "influenceMondiale": -7,
+              "popularite": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0011",
+    "kind": "guerre",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Les livraisons d'armes",
+    "text": "Le gouvernement {du_pays_allie} propose de te livrer des systèmes d'armes modernes, rapidement et à crédit. En échange, ton allié souhaite un droit de regard sur leur emploi, une base logistique sur ton territoire pour dix ans et la priorité sur tes futurs contrats de défense. Ton état-major en a désespérément besoin.",
+    "choices": [
+      {
+        "label": "Accepter toutes les conditions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les armes arrivent en trois semaines et changent le rapport de force. Ton allié est désormais un partenaire indispensable, et un peu encombrant.",
+            "pol": {
+              "relationAllie": 12,
+              "pays": {
+                "securite": 6,
+                "dette": 3
+              },
+              "influenceMondiale": -2,
+              "tension": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter les armes mais négocier les conditions",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Après dix jours de discussions, un compromis est trouvé : pas de base, mais une coopération industrielle. Les armes arrivent un peu plus tard.",
+            "pol": {
+              "relationAllie": 6,
+              "pays": {
+                "securite": 4,
+                "dette": 3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton allié refuse de rouvrir le paquet et réduit la livraison. Tu as gagné de la souveraineté et perdu des munitions.",
+            "pol": {
+              "relationAllie": -3,
+              "pays": {
+                "securite": 1,
+                "dette": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et produire chez toi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes usines tournent jour et nuit, mais elles mettront six mois à fournir ce que ton allié pouvait livrer en trois semaines.",
+            "pol": {
+              "relationAllie": -6,
+              "pays": {
+                "dette": 5,
+                "chomage": -0.3,
+                "securite": -2
+              },
+              "segments": {
+                "patrons": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0012",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'hommage national",
+    "text": "Vingt-trois soldats ont été tués dans une embuscade. C'est la journée la plus meurtrière depuis le début du conflit avec {pays_cible}. Une cérémonie d'hommage national est prévue dans trois jours. Ton entourage te présente deux discours possibles. Les familles, elles, demandent seulement à savoir comment c'est arrivé.",
+    "choices": [
+      {
+        "label": "Un hommage sobre, centré sur les noms et les familles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu lis les vingt-trois noms, un par un. Le pays est uni dans le deuil, au moins pour quelques heures.",
+            "effects": {
+              "happiness": -6,
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "moral": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un discours de fermeté",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton discours galvanise une partie du pays et en glace une autre. Les familles, elles, n'ont pas eu la réponse qu'elles demandaient.",
+            "pol": {
+              "popularite": 1,
+              "pays": {
+                "moral": 3
+              },
+              "tension": 4,
+              "relationCible": -4,
+              "mobilisation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annoncer une enquête indépendante sur l'embuscade",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'enquête révèle des erreurs de commandement. Deux officiers supérieurs sont relevés. Les familles saluent ta transparence ; l'état-major, moins.",
+            "pol": {
+              "popularite": 5,
+              "loyaute": -4,
+              "casseroles": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0013",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le canal secret",
+    "text": "Un émissaire du gouvernement {du_pays_cible} a pris contact avec ton conseiller diplomatique, par l'intermédiaire d'un ancien ambassadeur. Il propose des négociations secrètes pour un cessez-le-feu. Personne d'autre n'est au courant, pas même {pays_allie}.",
+    "choices": [
+      {
+        "label": "Envoyer ton conseiller négocier en secret",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les négociations durent trois semaines dans un hôtel discret. Un cessez-le-feu est annoncé conjointement, à la surprise générale.",
+            "pol": {
+              "conflit": -1,
+              "tension": -16,
+              "relationCible": 12,
+              "popularite": 6,
+              "influenceMondiale": 5,
+              "relationAllie": -3,
+              "pays": {
+                "moral": 6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'émissaire n'avait pas de mandat réel. Les négociations s'effondrent, et la fuite dans la presse te met dans une position délicate vis-à-vis de ton allié.",
+            "pol": {
+              "relationAllie": -6,
+              "popularite": -3,
+              "casseroles": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Informer {pays_allie} avant toute discussion",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton allié apprécie la transparence et soutient la démarche. Les négociations commencent, plus lentement, et aboutissent à un cessez-le-feu.",
+            "pol": {
+              "conflit": -1,
+              "tension": -12,
+              "relationCible": 8,
+              "relationAllie": 6,
+              "popularite": 4,
+              "pays": {
+                "moral": 5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton allié s'oppose à toute discussion « tant que l'adversaire n'a pas reculé ». Le canal se referme.",
+            "pol": {
+              "relationAllie": 4,
+              "tension": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser : on ne négocie pas en secret",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le canal se ferme. La guerre continue, et tu as gardé les mains propres, à défaut d'avoir arrêté les combats.",
+            "pol": {
+              "tension": 2,
+              "loyaute": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0014",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le référendum sur la paix",
+    "text": "Un accord de paix avec {pays_cible} est sur la table. Il prévoit un cessez-le-feu définitif, l'échange des prisonniers et des concessions douloureuses de part et d'autre. L'opposition exige un référendum. Ton camp est divisé. L'accord doit être signé ou rejeté avant la fin du mois.",
+    "choices": [
+      {
+        "label": "Soumettre l'accord au référendum",
+        "outcomes": [
+          {
+            "chance": 0.55,
+            "text": "Le oui l'emporte avec 54 %. L'accord est signé dans la foulée. Le pays reste divisé, mais la guerre est finie.",
+            "pol": {
+              "conflit": -1,
+              "tension": -18,
+              "relationCible": 12,
+              "popularite": 6,
+              "influenceMondiale": 6,
+              "pays": {
+                "moral": 8
+              }
+            }
+          },
+          {
+            "chance": 0.45,
+            "text": "Le non l'emporte avec 52 %. L'accord est mort, ta légitimité aussi, et la guerre continue.",
+            "pol": {
+              "popularite": -10,
+              "influence": -6,
+              "tension": 3,
+              "mobilisation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire ratifier l'accord {au_parlement}",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'accord est ratifié à une courte majorité. Les combats cessent, mais l'opposition parle de « trahison » et de « confiscation du débat ».",
+            "pol": {
+              "conflit": -1,
+              "tension": -16,
+              "relationCible": 10,
+              "popularite": -2,
+              "majorite": -4,
+              "influenceMondiale": 4,
+              "pays": {
+                "moral": 6
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La ratification échoue de onze voix. Tu dois retourner à la table des négociations, en position de faiblesse.",
+            "pol": {
+              "majorite": -6,
+              "popularite": -5,
+              "tension": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rejeter l'accord et poursuivre la guerre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'accord est enterré. Tes généraux sont soulagés, les familles des soldats au front, beaucoup moins.",
+            "pol": {
+              "tension": 6,
+              "relationCible": -8,
+              "popularite": -4,
+              "loyaute": 4,
+              "pays": {
+                "moral": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0015",
+    "kind": "guerre",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "La trêve des civils",
+    "text": "Un commandant de terrain te transmet une proposition des forces {du_pays_cible} : une trêve humanitaire de soixante-douze heures pour évacuer les civils d'une ville assiégée. Ton renseignement soupçonne une manœuvre pour réorganiser leurs défenses. Plusieurs milliers de civils sont piégés sous les bombardements.",
+    "choices": [
+      {
+        "label": "Recommander d'accepter la trêve",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "La trêve tient. Huit mille civils sont évacués. À la surprise générale, aucun des deux camps ne veut être celui qui reprend le feu, et la trêve devient un cessez-le-feu.",
+            "effects": {
+              "karma": 6
+            },
+            "pol": {
+              "conflit": -1,
+              "tension": -12,
+              "relationCible": 10,
+              "relations": 5,
+              "popularite": 5,
+              "pays": {
+                "moral": 5
+              }
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "La trêve tient. Les civils sont évacués, et l'adversaire a bien utilisé le répit pour renforcer ses positions. Tes officiers te le rappellent.",
+            "effects": {
+              "karma": 6
+            },
+            "pol": {
+              "relations": 5,
+              "relationCible": 3,
+              "loyaute": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter, mais avec des observateurs internationaux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les observateurs arrivent en quarante-huit heures. La trêve est plus courte, mais plus sûre. Six mille civils sont évacués.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "relations": 4,
+              "influenceMondiale": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Recommander de refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les combats reprennent dans la ville. Les images de civils pris au piège te seront reprochées longtemps.",
+            "effects": {
+              "karma": -6
+            },
+            "pol": {
+              "relations": -6,
+              "influenceMondiale": -4,
+              "popularite": -4,
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0016",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'économie de guerre",
+    "text": "Les stocks de munitions fondent. Ton ministre de l'Industrie propose de réquisitionner plusieurs usines civiles pour les convertir à la production militaire, et de suspendre temporairement certaines règles du droit du travail pour tourner jour et nuit.",
+    "choices": [
+      {
+        "label": "Réquisitionner et suspendre les règles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La production est multipliée par trois en deux mois. Les syndicats protestent, des accidents du travail sont signalés.",
+            "pol": {
+              "pays": {
+                "securite": 5,
+                "croissance": 0.2
+              },
+              "mobilisation": 10,
+              "segments": {
+                "fonctionnaires": -4,
+                "patrons": -3
+              },
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer des contrats volontaires avec les industriels",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les industriels acceptent, à des prix qui feront les gros titres de la presse économique dans quelques mois.",
+            "pol": {
+              "pays": {
+                "securite": 3,
+                "dette": 4
+              },
+              "segments": {
+                "patrons": 6
+              },
+              "casseroles": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter à l'étranger",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les munitions arrivent plus vite, mais elles coûtent cher et dépendent de la bonne volonté des vendeurs.",
+            "pol": {
+              "pays": {
+                "dette": 5,
+                "securite": 2
+              },
+              "relationAllie": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0017",
+    "kind": "guerre",
+    "postes": [
+      "president",
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'offre d'armistice",
+    "text": "Le gouvernement {du_pays_cible} propose officiellement un armistice : arrêt des combats sur les lignes actuelles, retour des prisonniers, négociations sur le reste. C'est loin de ce que tu voulais au début de la guerre. Mais chaque semaine de combats supplémentaire se paie en vies humaines.",
+    "choices": [
+      {
+        "label": "Accepter l'armistice",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'armistice est signé. Dans les gares, des familles attendent déjà les premiers retours ; elles pleurent et respirent. Une partie du pays parle de défaite, l'autre de délivrance.",
+            "pol": {
+              "conflit": -1,
+              "tension": -18,
+              "relationCible": 12,
+              "popularite": 3,
+              "influenceMondiale": 4,
+              "loyaute": -4,
+              "pays": {
+                "moral": 7,
+                "croissance": 0.3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une contre-proposition",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le gouvernement {du_pays_cible} accepte une partie de tes demandes. L'armistice est signé deux semaines plus tard, dans de meilleures conditions.",
+            "pol": {
+              "conflit": -1,
+              "tension": -15,
+              "relationCible": 8,
+              "popularite": 6,
+              "influenceMondiale": 3,
+              "pays": {
+                "moral": 6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta contre-proposition est rejetée. L'offre est retirée et les combats redoublent.",
+            "pol": {
+              "tension": 6,
+              "popularite": -4,
+              "pays": {
+                "moral": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et poursuivre jusqu'à la victoire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu promets la victoire. Tes généraux t'applaudissent, le pays retient son souffle et compte ses morts.",
+            "pol": {
+              "tension": 6,
+              "relationCible": -10,
+              "loyaute": 4,
+              "popularite": -3,
+              "pays": {
+                "moral": -3,
+                "dette": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gue_0018",
+    "kind": "guerre",
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "armees",
+    "weight": 1,
+    "unique": false,
+    "title": "Les soldats épuisés",
+    "text": "Les unités en première ligne n'ont pas été relevées depuis trois mois. Les rapports médicaux parlent d'épuisement, de troubles psychologiques et de premiers cas de désertion. Relever ces unités imposerait de dégarnir d'autres secteurs ou d'envoyer des troupes moins expérimentées.",
+    "choices": [
+      {
+        "label": "Organiser une rotation complète, quoi qu'il en coûte",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les unités épuisées sont relevées. Le front est fragilisé pendant deux semaines, mais il tient. Les soldats rentrent chez eux, abîmés mais vivants.",
+            "pol": {
+              "pays": {
+                "moral": 3,
+                "securite": -3
+              },
+              "popularite": 3,
+              "loyaute": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer des renforts moins expérimentés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les renforts tiennent, avec des pertes plus importantes que prévu. Les familles des jeunes recrues demandent des comptes.",
+            "pol": {
+              "pays": {
+                "moral": -3
+              },
+              "popularite": -3,
+              "segments": {
+                "jeunes": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Maintenir les unités en place et sanctionner les déserteurs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le front tient, pour l'instant. Les cas de désertion se multiplient, et une lettre de soldats est publiée dans la presse.",
+            "pol": {
+              "pays": {
+                "moral": -6
+              },
+              "popularite": -5,
+              "loyaute": -3,
+              "casseroles": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
