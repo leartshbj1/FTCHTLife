@@ -195,3 +195,47 @@ Au début de l'année suivante, `GameEngine.modulesAvantTirage` appelle `PolMote
 de file un événement à choix `pol_soiree_victoire` ou `pol_soiree_defaite` (scène, scores, participation, réactions).
 Le choix applique ses effets classiques, puis `modulesApresChoix` appelle `PolMoteur.apresChoixSoiree` pour
 les effets politiques (popularité, influence, loyauté). Cet événement a la priorité maximale dans `limiterFileEvenements`.
+
+## Selon le pays
+
+La politique suit le pays où vit le personnage (`j.etatExpat.paysActuel`, module « vivre à l'étranger »).
+Code : `Politique/PolSysteme.swift`. Données : `Data/Politique/Systemes/systemes.json` (26 pays, mêmes ids
+que le module étranger).
+
+### Format d'un système (`PolSysteme`)
+
+| Champ | Rôle |
+|---|---|
+| `id`, `regime`, `resume` | `semi_presidentiel`, `presidentiel`, `parlementaire`, `monarchie_parlementaire`, `monarchie_executive`, `directorial`, `parti_unique` |
+| `chefExecutif` | `president`, `premierMinistre` ou `ministre` (collège, Suisse). Si ce n'est pas `president`, le président est symbolique. |
+| `chefEtat`, `pays`, `capitale`, `palais`, `siegeGouvernement`, `parlement`, `chambreHaute`, `union` | Textes des institutions. Les listes ont 3 formes : nom, « à … », « de … ». `union` = [nom, siège] ou null (pas de commissaire). |
+| `postes` | Noms locaux `{poste: [masculin, féminin]}`. Absent = nom français. |
+| `absents` | Postes qui n'existent pas dans ce pays (cachés, candidature refusée). |
+| `election` | `{poste: "directe" | "indirecte" | "nomination"}`. Absent = règle française. |
+| `durees`, `agesMin`, `mandatsMax` | Par poste. Absent = valeur française. |
+| `deuxTours`, `passerEnForce`, `referendum`, `dissolution`, `coalitions`, `electionsControlees`, `partiUnique`, `parrainages` | Règles de la Constitution. `passerEnForce` = nom de la procédure (« l'article 49.3 », « un décret-loi ») ou null. |
+
+### Variables de texte
+
+Dans les dossiers, lois et textes du moteur : `{pays}`, `{au_pays}`, `{du_pays}`, `{capitale}`, `{chef_etat}`,
+`{palais}`/`{au_palais}`/`{du_palais}`, `{siege_gouv}`/`{au_siege_gouv}`/`{du_siege_gouv}`,
+`{parlement}`/`{au_parlement}`/`{du_parlement}`, `{senat}`/`{au_senat}`/`{du_senat}` (chambre haute, sinon le
+parlement), `{union}`, `{siege_union}`. Elles commencent par un article minuscule : jamais en début de phrase.
+
+### Champ `pays`
+
+Sur un parti, une loi ou un dossier : `"pays": ["us", "gb"]`. Un parti sans `pays` est français ; une loi ou un
+dossier sans `pays` sort partout. Hors de France, les dossiers propres au pays ont un poids ×4.
+
+### Règles du moteur
+
+- Candidature : le poste doit exister et être électif ; il faut la nationalité (ou être citoyen européen pour les
+  municipales dans l'Union) ; âge et nombre de mandats du pays ; parrainages seulement si `parrainages`.
+- Régime parlementaire (`premierMinistre: "directe"`) : le chef d'un parti se présente aux législatives ; s'il
+  arrive en tête, il devient chef du gouvernement avec `majorite` = part des sièges. Sans majorité absolue dans
+  un pays de coalitions, un dossier `coalition` (préfixe `coa_`) arrive.
+- Président symbolique : pas de nomination de Premier ministre ni de gouvernement à diriger.
+- Parti unique : candidatures réservées aux membres, pas de parti personnel, élections par délégués.
+- `electionsControlees` : gros bonus pour le grand parti au pouvoir, malus pour les autres.
+- Changement de pays (`verifierPays`, au passage d'année) : mandat terminé, parti quitté s'il n'existe pas dans
+  le nouveau pays, lois, dossiers, rivaux et réseau remis à zéro ; le passé (titres, postes occupés) reste.
