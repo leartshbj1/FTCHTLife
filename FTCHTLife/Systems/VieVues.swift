@@ -176,6 +176,14 @@ struct VieCrimeView: View {
         List {
             if let j = engine.joueur {
                 let justice = j.vieEtat.justice
+                if j.age >= 13 {
+                    Section {
+                        NavigationLink { VieMilieuView() } label: {
+                            Label(VieMilieu.etat(j).membre ? "Le Milieu : \(VieMilieu.organisation(j)?.nom ?? "")" : "Le Milieu (gangs, mafias, trafic)",
+                                  systemImage: "person.3.sequence.fill")
+                        }
+                    }
+                }
                 if justice.enPrison {
                     Section { NavigationLink { ViePrisonView() } label: { Label("Tu es en prison", systemImage: "lock.fill") } }
                 } else if let p = justice.proces {

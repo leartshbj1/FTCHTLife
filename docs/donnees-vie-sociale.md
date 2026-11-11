@@ -146,3 +146,67 @@ Messages courts sans choix, ajoutés au journal quand une étape est atteinte :
 - `kind` : `child`, `grandchild`, `spouse`, `partner`, `fiance`, `friend`, `bestFriend`, `ex`, `mother`, `father`, `brother`, `sister`, `self`.
 - `trigger` : `age` (âge de la personne, ou du joueur pour `self`), `years` (années passées ensemble, pour `partner`/`fiance`/`spouse`), `chance` (`value` = probabilité par an, message aléatoire de vie quotidienne).
 - `{nom}` = prénom de la personne, `{prenom}` = le joueur. `effects` facultatif (même clés, `bond` vise la personne).
+
+# Le Milieu : crime organisé (drogue, gangs, mafias)
+
+Ton **sérieux** en priorité (comme la politique) : violence, peur, loyauté, argent facile qui coûte cher. Un peu d'ironie noire est permise, pas de gags. Jamais de détail réaliste de fabrication de drogue, d'armes ou de mode opératoire : on reste au niveau du récit (« tu récupères un lot », « la livraison se passe mal »). Organisations, villes et personnages fictifs.
+
+Code : `FTCHTLife/Systems/VieMilieu.swift`. État : `VieEtat.milieu` (`VieMilieuEtat?`).
+
+## Organisations (`Data/Milieu/*.json`)
+
+```json
+{
+  "id": "les_corbeaux",
+  "nom": "Les Corbeaux",
+  "type": "gang",
+  "description": "Un gang de cité qui tient trois halls d'immeubles et rêve de la ville entière.",
+  "rangs": ["Guetteur", "Vendeur", "Gérant de point", "Lieutenant", "Chef"],
+  "minAge": 14,
+  "notorieteMin": 0,
+  "dangerosite": 2,
+  "specialites": ["trafic", "racket"],
+  "rivaux": ["clan_sabatier"],
+  "textesRecrutement": ["Un grand du quartier t'observe depuis des semaines. Aujourd'hui, il te fait signe d'approcher."],
+  "textesRefus": ["« Reviens quand t'auras fait tes preuves. » La porte se referme."]
+}
+```
+
+`type` : `gang`, `mafia`, `cartel`, `clan`, `reseau`. `rangs` : exactement 5, du plus bas au chef. `dangerosite` 1–5 (risques et gains). `specialites` parmi `trafic`, `racket`, `braquage`, `contrebande`, `cyber`, `jeux`, `blanchiment`.
+
+## Missions (`Data/MilieuMissions/*.json`)
+
+```json
+{
+  "id": "livraison_nocturne",
+  "nom": "Livraison de nuit",
+  "icon": "car.fill",
+  "type": "livraison",
+  "rangMin": 0,
+  "specialite": "trafic",
+  "difficulte": 0.3,
+  "risqueArrestation": 0.15,
+  "risqueBlessure": 0.05,
+  "gainMin": 300, "gainMax": 1500,
+  "respect": 4, "chaleur": 6, "karma": -3,
+  "peineMinMois": 6, "peineMaxMois": 24,
+  "textesReussite": ["…"], "textesEchec": ["…"], "textesArrestation": ["…"], "textesBlessure": ["…"]
+}
+```
+
+`type` : `livraison`, `guet`, `vente`, `racket`, `intimidation`, `braquage`, `contrebande`, `cyber`, `recouvrement`, `guerre`, `blanchiment`, `evasion_fiscale`, `protection`. `rangMin` 0–4. `specialite` facultative (mission réservée aux organisations qui l'ont). Gains en **argent sale** (à blanchir).
+
+## Marchandises (`Data/MilieuProduits/*.json`)
+
+```json
+{ "id": "cannabis", "nom": "Cannabis", "prixLot": 2000, "reventeMin": 2600, "reventeMax": 4500, "chaleur": 8, "peineMinMois": 6, "peineMaxMois": 36, "rangMin": 1, "description": "…" }
+```
+
+## Événements du Milieu (`Data/Events/vie3_*.json`)
+
+Format commun des événements (docs/ARCHITECTURE.md). Tags ajoutés : `gang` (membre d'une organisation), `gang_haut` (lieutenant ou chef), `dealer` (a un trafic en cours), `sous_enquete` (enquête de police en cours), `chaleur` (attention policière ≥ 60), `ancien_gang` (a quitté le milieu), `balance` (a témoigné contre son organisation), `argent_sale` (≥ 10 000 € à blanchir).
+Variables en plus : `{organisation}`, `{chef}`, `{rival}`, `{rang}`.
+
+Effets en plus, dans le sous-objet `"vie"` : `milieuRespect` (±), `milieuChaleur` (±), `milieuLoyaute` (±), `argentSale` (±, euros), `enquete` (`true` ouvre une enquête, `false` la classe), `quitterMilieu` (`true`), `promotion` (`true`), `saisie` (`true` : le stock du trafic est saisi), plus les effets existants (`jailMonths`, `fine`, `record`, `targetDies`…).
+
+Signaux émis (Répercussions) : `gang_entree`, `gang_promotion`, `gang_trahison`, `gang_sortie`, `gang_chef`, `trafic_debut`, `trafic_saisie`, `enquete_ouverte`, `enquete_classee`, `guerre_territoire`, `blanchiment`, `balance`, `mission_reussie`, `mission_ratee`.

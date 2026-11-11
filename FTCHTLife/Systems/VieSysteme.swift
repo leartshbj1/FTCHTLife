@@ -49,6 +49,7 @@ enum VieSysteme {
         lignes += VieRelations.vieillir(&j)
         lignes += VieSanteSysteme.vieillir(&j)
         lignes += VieEtapes.annoncer(&j)
+        lignes += VieMilieu.vieillir(&j)
         // Enfants qui deviennent majeurs : signal pour les répercussions.
         if j.enfantsVivants.contains(where: { $0.age == 18 }) { signaler("enfant_majeur", &j) }
         j.stats.borner()
@@ -56,7 +57,8 @@ enum VieSysteme {
     }
 
     static func causeDeces(_ j: Joueur) -> String? {
-        VieSanteSysteme.causeDeces(j)
+        if let c = j.vieEtat.milieu?.causeDeces { return c }
+        return VieSanteSysteme.causeDeces(j)
     }
 
     // MARK: - Tags et filtre des événements
@@ -82,6 +84,7 @@ enum VieSysteme {
         } else {
             t.insert("single")
         }
+        t.formUnion(VieMilieu.tags(j))
         return t
     }
 
@@ -101,6 +104,7 @@ enum VieSysteme {
         t = t.replacingOccurrences(of: "{ex}", with: j.exVivants.randomElement()?.prenom ?? "ton ex")
         t = t.replacingOccurrences(of: "{codetenu}", with: j.vieEtat.codetenus.first?.prenom ?? ["Le Grand Momo", "Tonton Rasoir", "Kiki la Lime"].auHasard("Momo"))
         t = t.replacingOccurrences(of: "{grandparent}", with: j.vieEtat.grandsParents.randomElement()?.prenom ?? "Mamie")
+        t = VieMilieu.remplir(t, j)
         return t
     }
 
@@ -108,7 +112,7 @@ enum VieSysteme {
 
     static func apresIssue(evenementId: String, effets fx: VieEffets?, _ j: inout Joueur) -> [String] {
         guard let fx else { return [] }
-        var lignes: [String] = []
+        var lignes: [String] = VieMilieu.appliquer(fx, &j)
         if let amende = fx.fine, amende > 0 {
             j.argent -= amende
             lignes.append("Amende de \(Format.argent(amende)).")
