@@ -1,0 +1,3356 @@
+[
+  {
+    "id": "tdv_0251",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Au comptoir d'embarquement, l'hôtesse te propose un surclassement en première… à condition de voyager à côté d'un monsieur qui emmène son perroquet en cabine.",
+    "choices": [
+      {
+        "label": "Accepter le perroquet",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Champagne, siège-lit, et le perroquet siffle l'hymne national au décollage. Le meilleur vol de ta vie.",
+            "effects": {
+              "happiness": 10,
+              "health": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le perroquet répète « crash » toutes les dix minutes pendant onze heures. Tu atterris avec un tic à l'œil.",
+            "effects": {
+              "happiness": -8,
+              "health": -4,
+              "stress": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester en éco",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Rangée 47, entre un bébé et les toilettes. Tu regardes les rideaux de la première avec nostalgie.",
+            "effects": {
+              "happiness": -4,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier sans perroquet",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu obtiens la première, côté hublot, loin du volatile, plus un kit de soins. L'hôtesse t'admire un peu.",
+            "effects": {
+              "happiness": 12,
+              "looks": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0252",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Ta valise est partie à Oulan-Bator. Toi, tu es à Lima. L'appli de suivi affiche juste un petit cheval qui galope.",
+    "choices": [
+      {
+        "label": "Attendre patiemment",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle revient au bout de neuf jours, intacte, avec une odeur de yak. Tu as porté le même slip une semaine.",
+            "effects": {
+              "happiness": -6,
+              "looks": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle ne revient pas. La compagnie la déclare « en voyage personnel ». Tu ne la reverras peut-être jamais.",
+            "effects": {
+              "happiness": -8,
+              "money": -900,
+              "setFlags": [
+                "tdv_valise_globe_trotteuse"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout racheter sur place",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Garde-robe complète en alpaga. Tu ressembles à un lama de luxe, mais un lama propre.",
+            "effects": {
+              "money": -2200,
+              "looks": 4,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu rachètes tout, puis la valise arrive le lendemain. Tu voyages désormais avec deux valises et zéro place.",
+            "effects": {
+              "money": -2500,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réclamer en anglais",
+        "requiresSkill": {
+          "anglais": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton anglais impeccable fait trembler le guichet. Valise rapatriée en 48 h, plus 400 € d'indemnité.",
+            "effects": {
+              "money": 400,
+              "happiness": 7,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0253",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 99,
+    "weight": 6,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ],
+      "flags": [
+        "tdv_valise_globe_trotteuse"
+      ]
+    },
+    "text": "Deux ans plus tard, ta valise perdue sonne à ta porte, livrée par un coursier. Elle est couverte d'autocollants de 31 pays et elle est bien plus lourde qu'avant.",
+    "choices": [
+      {
+        "label": "L'ouvrir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Dedans : tes vêtements, un tapis persan, des épices et un carnet de voyage écrit par quelqu'un d'autre. Un trésor.",
+            "effects": {
+              "happiness": 12,
+              "smarts": 3,
+              "money": 1500,
+              "clearFlags": [
+                "tdv_valise_globe_trotteuse"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Dedans : un fromage qui a fait le tour du monde. L'odeur ne quittera jamais ton entrée.",
+            "effects": {
+              "happiness": -8,
+              "health": -5,
+              "clearFlags": [
+                "tdv_valise_globe_trotteuse"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La remettre à la police",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les douaniers l'ouvrent avec des gants. Interrogatoire de six heures sur « l'origine des épices ». Tu repars blanchi et épuisé{e}.",
+            "effects": {
+              "happiness": -6,
+              "health": -3,
+              "karma": 3,
+              "clearFlags": [
+                "tdv_valise_globe_trotteuse"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La vendre fermée",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un collectionneur de mystères t'en donne 800 €. Tu ne sauras jamais. Ça te travaille la nuit.",
+            "effects": {
+              "money": 800,
+              "happiness": -3,
+              "clearFlags": [
+                "tdv_valise_globe_trotteuse"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0254",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Ton décalage horaire est devenu chronique : tu dînes à 4 h du matin et tu dis « bonjour » aux gens à minuit. Ton corps vit dans un fuseau horaire qui n'existe pas.",
+    "choices": [
+      {
+        "label": "Mélatonine à haute dose",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu dors enfin. Seize heures d'affilée. Tu rates une réunion, mais tu as la peau d'un bébé.",
+            "effects": {
+              "health": 6,
+              "looks": 3,
+              "money": -300
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu t'endors debout dans une file d'attente et tu tombes sur un présentoir. Bosse au front.",
+            "effects": {
+              "health": -5,
+              "looks": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenir au café",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Huit expressos par jour. Tu vibres légèrement en permanence. Ton cœur t'envoie des lettres de réclamation.",
+            "effects": {
+              "health": -8,
+              "happiness": -3,
+              "setFlags": [
+                "insomniaque"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Arrêter de voyager un mois",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un mois sans aéroport. Tu redécouvres le concept de « matin ». C'est assez joli.",
+            "effects": {
+              "health": 10,
+              "happiness": 4,
+              "money": -1500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0255",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "gros_salaire"
+      ]
+    },
+    "text": "Tu as 2 millions de miles qui expirent à minuit. Le site de la compagnie plante toutes les trente secondes.",
+    "choices": [
+      {
+        "label": "Billet au hasard",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Destination : un archipel du Pacifique. Plages désertes, poisson grillé, bonheur total.",
+            "effects": {
+              "happiness": 14,
+              "health": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Destination : une zone industrielle en plein hiver, avec escale de 22 heures. Tu y vas quand même, par fierté.",
+            "effects": {
+              "happiness": -7,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre le catalogue",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "2 millions de miles contre un grille-pain, une valise cabine et un parapluie logoté. Grandiose.",
+            "effects": {
+              "happiness": -3,
+              "money": 120
+            }
+          }
+        ]
+      },
+      {
+        "label": "Offrir à une association",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes miles envoient trois familles voir leurs proches. Une lettre de remerciement te fait pleurer dans ton salon.",
+            "effects": {
+              "happiness": 9,
+              "karma": 12,
+              "setFlags": [
+                "genereux"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0256",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "gros_salaire"
+      ]
+    },
+    "text": "Le salon VIP de l'aéroport a un buffet à volonté, un bar à huîtres et des fauteuils massants. Ton vol embarque dans 15 minutes.",
+    "choices": [
+      {
+        "label": "Une dernière huître",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu cours avec une huître dans la bouche et tu passes la porte au moment où elle se ferme. Héroïque.",
+            "effects": {
+              "happiness": 6,
+              "health": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Vol raté. Nouveau billet. L'huître la plus chère de l'histoire.",
+            "effects": {
+              "money": -1800,
+              "happiness": -8
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "L'huître était douteuse. Tu passes le vol entier enfermé{e} dans les toilettes de la classe affaires.",
+            "effects": {
+              "health": -10,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Y aller tout de suite",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu arrives le premier à la porte. Le vol a deux heures de retard. Tu fixes le salon VIP à travers la vitre.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0257",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Au contrôle de sécurité, l'agent sort de ton bagage cabine un couteau à fromage, une boule à neige géante et un pot de confiture artisanale.",
+    "choices": [
+      {
+        "label": "Tout abandonner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Adieu couteau, adieu boule à neige, adieu confiture de ta grand-mère. Tu montes dans l'avion en deuil.",
+            "effects": {
+              "happiness": -6,
+              "money": -80
+            }
+          }
+        ]
+      },
+      {
+        "label": "Manger la confiture ici",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu avales 500 g de confiture devant la file. Applaudissements timides. Ton pancréas, lui, n'applaudit pas.",
+            "effects": {
+              "health": -5,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On te filme. La vidéo « le goinfre du portique » fait le tour des réseaux.",
+            "effects": {
+              "health": -4,
+              "happiness": -6,
+              "looks": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Discuter avec l'agent",
+        "outcomes": [
+          {
+            "chance": 0.2,
+            "text": "L'agent est attendri. Il te laisse passer avec la boule à neige. Tu l'adores.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.8,
+            "text": "Fouille complète, palpation intégrale, vol raté. Tu rentres chez toi avec ta confiture.",
+            "effects": {
+              "happiness": -10,
+              "money": -600
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0258",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Vol de onze heures. Ton voisin de siège commence : « Alors, tout a commencé en 1987… »",
+    "choices": [
+      {
+        "label": "Faire semblant de dormir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il continue de raconter, persuadé que tu l'écoutes en rêve. Tu connais désormais tout de son divorce.",
+            "effects": {
+              "happiness": -6,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu finis par t'endormir vraiment. Tu te réveilles la tête sur son épaule. Il te caresse les cheveux.",
+            "effects": {
+              "happiness": -4,
+              "health": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter vraiment",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Son histoire est incroyable : ancien dresseur d'ours, ruiné, devenu riche. Tu atterris inspiré{e}.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 4,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Onze heures sur la fabrication des joints de robinets. Tu as vieilli de trois ans.",
+            "effects": {
+              "happiness": -8,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le faire rire",
+        "requiresSkill": {
+          "humour": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une blague, deux, puis tout le rang se joint à vous. L'équipage vous offre le champagne. Meilleur vol de l'année.",
+            "effects": {
+              "happiness": 12,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0259",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Un marchand de rue te tend une brochette fumante d'un animal non identifié. Ton estomac, déjà fragilisé par 40 pays, te regarde avec inquiétude.",
+    "choices": [
+      {
+        "label": "Croquer bravement",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le meilleur repas de ta vie. Tu en reprends trois. Le marchand te serre dans ses bras.",
+            "effects": {
+              "happiness": 10,
+              "health": 2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Trois jours couché{e} à l'hôtel, en dialogue intime avec la plomberie locale.",
+            "effects": {
+              "health": -12,
+              "happiness": -8,
+              "money": -200
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu manges une barre de céréales importée. Le marchand te regarde comme un touriste. Ce que tu es.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0260",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "millionaire"
+      ]
+    },
+    "text": "Un guide te propose, pour 5 000 €, de visiter « en privé » un temple fermé au public depuis 300 ans.",
+    "choices": [
+      {
+        "label": "Payer la visite",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Fresques millénaires, silence absolu. Une expérience mystique. Tu te sens transformé{e}.",
+            "effects": {
+              "happiness": 14,
+              "smarts": 6,
+              "money": -5000
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le « temple » est le garage de son cousin, décoré de guirlandes. Tu as payé 5 000 € pour voir une tondeuse.",
+            "effects": {
+              "happiness": -10,
+              "money": -5000,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un don au site",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu finances la restauration officielle. Une petite plaque porte ton nom, gravé pour mille ans.",
+            "effects": {
+              "happiness": 8,
+              "karma": 12,
+              "money": -20000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prends une photo de la grille. Elle est floue.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0261",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Ton passeport n'a plus une seule page libre. Le douanier tourne les pages en soupirant, cherche un coin pour son tampon et te regarde.",
+    "choices": [
+      {
+        "label": "Proposer la couverture",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il tamponne la couverture. Ton passeport est désormais invalide. Tu passes deux jours au consulat.",
+            "effects": {
+              "happiness": -8,
+              "money": -700
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il rigole et tamponne sur ta main. Tu ne te laves plus la main pendant le séjour.",
+            "effects": {
+              "happiness": 4,
+              "looks": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Expliquer en espagnol",
+        "requiresSkill": {
+          "espagnol": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous parlez de vos voyages, il t'agrafe une page vierge et te recommande la meilleure cantine de la ville.",
+            "effects": {
+              "happiness": 9,
+              "health": 2,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire demi-tour",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Billet retour immédiat, nouveau passeport en urgence. Le voyage le plus court de ta carrière : 40 minutes.",
+            "effects": {
+              "money": -1400,
+              "happiness": -9
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0262",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Escale de 19 heures dans un aéroport immense où tout ferme à 22 h, sauf un distributeur de soupe.",
+    "choices": [
+      {
+        "label": "Dormir sur un banc",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les accoudoirs anti-sieste ont gagné. Tu te réveilles avec le dos en forme de point d'interrogation.",
+            "effects": {
+              "health": -8,
+              "happiness": -5,
+              "setFlags": [
+                "dos_fragile"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu dors finalement très bien, roulé{e} dans un plaid de compagnie aérienne. Un agent te réveille gentiment.",
+            "effects": {
+              "health": 2,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sortir visiter la ville",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Petite ville charmante, dîner incroyable, retour à temps. Escale parfaite.",
+            "effects": {
+              "happiness": 10,
+              "money": -150
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu te perds, ton taxi te dépose au mauvais terminal et tu rates la correspondance.",
+            "effects": {
+              "happiness": -10,
+              "money": -1100
+            }
+          }
+        ]
+      },
+      {
+        "label": "Hôtel capsule",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une capsule de 2 m², silence total. Tu dors comme un astronaute. Hors de prix, mais divin.",
+            "effects": {
+              "health": 5,
+              "happiness": 4,
+              "money": -220
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0263",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "gros_salaire"
+      ]
+    },
+    "text": "La compagnie t'informe que tu perds ton statut « Platine Infini » : il te manquait un seul vol. Tu redeviens un passager ordinaire.",
+    "choices": [
+      {
+        "label": "Faire un vol inutile",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Aller-retour dans la journée vers une ville où tu ne sors même pas de l'aéroport. Statut sauvé, dignité perdue.",
+            "effects": {
+              "money": -1300,
+              "happiness": 5,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter ton sort",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu fais la queue comme tout le monde. Ça te fait du bien, en fait. Humilité retrouvée.",
+            "effects": {
+              "happiness": 3,
+              "karma": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "On t'appelle « monsieur-dame en zone 5 ». Tu sombres dans une petite crise existentielle.",
+            "effects": {
+              "happiness": -10,
+              "setFlags": [
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire au PDG",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta lettre est si émouvante que le PDG te rend ton statut à vie. Elle est encadrée au siège.",
+            "effects": {
+              "happiness": 12,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0264",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 4,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Sur un marché lointain, une vieille femme te vend un masque en bois sculpté en marmonnant quelque chose qui ressemble beaucoup à un avertissement.",
+    "choices": [
+      {
+        "label": "L'acheter quand même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il est magnifique dans ton salon. Le chat refuse d'entrer dans la pièce, mais bon.",
+            "effects": {
+              "happiness": 6,
+              "money": -250,
+              "setFlags": [
+                "tdv_masque_maudit"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "En le payant, tu te tords la cheville sur un pavé. Coïncidence, évidemment.",
+            "effects": {
+              "health": -6,
+              "money": -250,
+              "setFlags": [
+                "tdv_masque_maudit"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander une traduction",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ça voulait dire « attention, peinture fraîche ». Tu as les mains vertes et tu n'achètes rien.",
+            "effects": {
+              "happiness": -2,
+              "looks": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir vite",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu files sans te retourner. Tu dors bien cette nuit-là. Prudence récompensée.",
+            "effects": {
+              "happiness": 2,
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0265",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 99,
+    "weight": 6,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ],
+      "flags": [
+        "tdv_masque_maudit"
+      ]
+    },
+    "text": "Depuis le masque, ta voiture a crevé quatre fois, ton frigo a pris feu et une mouette t'a volé tes lunettes. Le masque te sourit. Il ne souriait pas avant.",
+    "choices": [
+      {
+        "label": "Le rapporter là-bas",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu refais 9 000 km pour le rendre. La vieille femme éclate de rire et t'offre un thé. Tout s'arrête.",
+            "effects": {
+              "money": -2000,
+              "happiness": 10,
+              "health": 4,
+              "clearFlags": [
+                "tdv_masque_maudit"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le marché a disparu. Tu reviens avec le masque, plus un coup de soleil.",
+            "effects": {
+              "money": -2000,
+              "happiness": -8,
+              "looks": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le brûler",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il brûle. Une odeur de cannelle envahit le quartier. Plus jamais un malheur. Ouf.",
+            "effects": {
+              "happiness": 6,
+              "clearFlags": [
+                "tdv_masque_maudit"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il ne brûle pas. Ton barbecue, si. Sourcils compris.",
+            "effects": {
+              "health": -8,
+              "looks": -6,
+              "money": -400
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'offrir à un rival",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton rival l'adore. Le lendemain, il gagne au loto. Le masque t'a joué un tour personnel.",
+            "effects": {
+              "happiness": -10,
+              "karma": -5,
+              "clearFlags": [
+                "tdv_masque_maudit"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0266",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Vol annulé pour « raisons opérationnelles ». Pour se faire pardonner, la compagnie t'offre un bon de 12 € valable dans la boutique de l'aéroport.",
+    "choices": [
+      {
+        "label": "Prendre le bon",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Avec 12 €, tu t'offres une demi-bouteille d'eau et un porte-clés. Nuit sur un tapis roulant à l'arrêt.",
+            "effects": {
+              "happiness": -7,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger un hôtel",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Après deux heures de file, tu obtiens une chambre à 40 km, à côté d'une autoroute. Mieux que rien.",
+            "effects": {
+              "happiness": -3,
+              "health": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu cries un peu trop fort. Un agent de sécurité t'escorte « au calme ». Ton vol suivant est aussi annulé.",
+            "effects": {
+              "happiness": -10,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Citer le règlement",
+        "requiresSkill": {
+          "eloquence": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu récites les droits des passagers article par article. Indemnité de 600 €, hôtel quatre étoiles et dîner offert.",
+            "effects": {
+              "money": 600,
+              "happiness": 10,
+              "health": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0267",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "bijoux"
+      ]
+    },
+    "text": "En te lavant les mains dans les toilettes de l'avion, ta bague préférée glisse… et disparaît dans le trou aspirant. À 11 000 mètres d'altitude.",
+    "choices": [
+      {
+        "label": "Appuyer encore",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu viens de perdre aussi ta montre. Le système d'aspiration te remercie pour ce dîner.",
+            "effects": {
+              "money": -12000,
+              "happiness": -12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prévenir l'équipage",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Un mécanicien la retrouve à l'atterrissage, dans un état que tu préfères ignorer. Elle est désinfectée et à toi.",
+            "effects": {
+              "happiness": 8,
+              "money": -150
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le chef de cabine note ta réclamation sur une serviette en papier, puis s'en sert pour s'essuyer les mains.",
+            "effects": {
+              "money": -8000,
+              "happiness": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre ça avec philosophie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu décides que ta bague survole désormais le monde, libre. Ta psy trouve ça « intéressant ».",
+            "effects": {
+              "money": -8000,
+              "happiness": -3,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0268",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "grand_voyageur"
+      ]
+    },
+    "text": "Dans un dîner, une militante écologiste calcule ton bilan carbone de l'année à voix haute, sur sa calculatrice. Tout le monde arrête de manger.",
+    "choices": [
+      {
+        "label": "Assumer fièrement",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu lances « la planète, c'est fait pour être vue ». Silence de mort. La phrase circule en ligne dès le lendemain.",
+            "effects": {
+              "happiness": -8,
+              "karma": -10,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Personne ne rit, mais personne ne filme. Tu rentres seul{e}, mais sans scandale.",
+            "effects": {
+              "happiness": -5,
+              "karma": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Promettre de compenser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu finances la plantation de 3 000 arbres. La militante te serre la main, méfiante mais touchée.",
+            "effects": {
+              "money": -6000,
+              "karma": 10,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir aux toilettes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu restes quarante minutes aux toilettes. Quand tu reviens, il ne reste plus de dessert.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0269",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "avion_prive"
+      ]
+    },
+    "text": "Ton jet privé est coincé sur le tarmac derrière un charter de supporters qui chantent. La tour annonce « deux heures d'attente minimum ».",
+    "choices": [
+      {
+        "label": "Attendre au champagne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Deux heures et une bouteille et demie plus tard, tu atterris en ayant oublié pourquoi tu partais.",
+            "effects": {
+              "happiness": 3,
+              "health": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer pour passer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "40 000 € de « frais de priorité ». Tu décolles devant les supporters qui te font des gestes peu diplomatiques.",
+            "effects": {
+              "money": -40000,
+              "happiness": 4,
+              "karma": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'aéroport encaisse et te laisse quand même attendre. Tu as payé le droit d'être frustré{e}.",
+            "effects": {
+              "money": -40000,
+              "happiness": -9
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rejoindre les supporters",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu descends chanter avec eux sur le tarmac. Écharpe offerte, photos, bonne humeur. Ils t'invitent au match.",
+            "effects": {
+              "happiness": 12,
+              "karma": 5,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0270",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "gros_salaire"
+      ]
+    },
+    "text": "Safari de luxe. Un éléphant s'approche de ton 4x4 de location, le renifle, puis s'assoit tranquillement sur le capot.",
+    "choices": [
+      {
+        "label": "Ne plus bouger",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il repart après vingt minutes. Capot plié, mais tu as la photo du siècle.",
+            "effects": {
+              "happiness": 10,
+              "money": -3500
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il se roule dessus. Pare-brise éclaté, tu sors par le toit, éraflé{e} et traumatisé{e}.",
+            "effects": {
+              "health": -12,
+              "happiness": -10,
+              "money": -9000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Klaxonner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'éléphant n'apprécie pas. Il pousse la voiture dans une mare. Rapatriement sanitaire pour ta dignité.",
+            "effects": {
+              "health": -8,
+              "happiness": -12,
+              "money": -12000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser faire le guide",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le guide chuchote trois mots à l'éléphant, qui s'en va. Tu ne sauras jamais lesquels. Pourboire royal.",
+            "effects": {
+              "happiness": 7,
+              "money": -500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0271",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ]
+    },
+    "text": "Ton assistant a classé un dîner au homard à 1 400 € dans tes notes de frais, rubrique « fournitures de bureau ».",
+    "choices": [
+      {
+        "label": "Rembourser discrètement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais un virement de ta poche. Le homard t'a coûté une fortune, mais ta conscience est propre.",
+            "effects": {
+              "money": -1400,
+              "karma": 6,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser passer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Personne ne remarque. Tu prends goût aux « fournitures de bureau ». Le crustacé devient une habitude.",
+            "effects": {
+              "happiness": 5,
+              "health": -2,
+              "karma": -8,
+              "setFlags": [
+                "tdv_notes_frais_louches"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le service comptable te demande poliment « quel type de stylo est un homard ». Tu bafouilles.",
+            "effects": {
+              "happiness": -7,
+              "karma": -6,
+              "setFlags": [
+                "tdv_notes_frais_louches"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Justifier le homard",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu démontres que le dîner a sauvé une filière de pêcheurs locaux. La commission valide, émue.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 3,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0272",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 99,
+    "weight": 7,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ],
+      "flags": [
+        "tdv_notes_frais_louches"
+      ]
+    },
+    "text": "Un journaliste d'investigation t'attend devant ta permanence avec un classeur de 400 pages intitulé « Le homard et les autres ».",
+    "choices": [
+      {
+        "label": "Accorder une interview",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu reconnais des erreurs avec sincérité. L'article est sévère mais juste. Tu sauves l'essentiel.",
+            "effects": {
+              "happiness": -5,
+              "karma": 6,
+              "money": -3000,
+              "clearFlags": [
+                "tdv_notes_frais_louches"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu t'embrouilles en direct et tu dis « le homard, c'est un légume de la mer ». Une enquête est ouverte.",
+            "effects": {
+              "happiness": -14,
+              "health": -4,
+              "setFlags": [
+                "tdv_enquete_ouverte",
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir par la cuisine",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu glisses sur une flaque et tu es photographié{e} à quatre pattes entre deux poubelles. Une du lendemain.",
+            "effects": {
+              "health": -6,
+              "happiness": -12,
+              "looks": -4,
+              "setFlags": [
+                "tdv_enquete_ouverte",
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui proposer un dîner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il enregistre ta proposition. Article intitulé : « L'élu qui voulait nous inviter au homard ».",
+            "effects": {
+              "happiness": -15,
+              "karma": -8,
+              "setFlags": [
+                "tdv_enquete_ouverte",
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0273",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 99,
+    "weight": 8,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ],
+      "flags": [
+        "tdv_enquete_ouverte"
+      ]
+    },
+    "text": "Te voilà convoqué{e} devant une commission d'enquête, sous les caméras, pour expliquer tes notes de frais des quatre dernières années.",
+    "choices": [
+      {
+        "label": "Tout avouer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rembourses tout, tu t'excuses, ta voix tremble. Ta carrière est abîmée, mais tu dors à nouveau.",
+            "effects": {
+              "money": -45000,
+              "happiness": -8,
+              "health": 5,
+              "karma": 10,
+              "clearFlags": [
+                "tdv_enquete_ouverte"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne se souvenir de rien",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Ton amnésie sélective lasse la commission. Dossier classé faute de preuves. Ouf, mais personne n'est dupe.",
+            "effects": {
+              "happiness": 4,
+              "karma": -10,
+              "setFlags": [
+                "menteur_notoire"
+              ],
+              "clearFlags": [
+                "tdv_enquete_ouverte"
+              ]
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "On te montre la photo du homard, avec toi, la serviette autour du cou. Amende record et inéligibilité.",
+            "effects": {
+              "money": -80000,
+              "happiness": -20,
+              "health": -6,
+              "setFlags": [
+                "menteur_notoire"
+              ],
+              "clearFlags": [
+                "tdv_enquete_ouverte"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Plaider avec brio",
+        "requiresSkill": {
+          "eloquence": 4
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton discours sur la gastronomie comme outil diplomatique est applaudi. Rappel à l'ordre symbolique, remboursement partiel.",
+            "effects": {
+              "money": -8000,
+              "happiness": 8,
+              "smarts": 4,
+              "clearFlags": [
+                "tdv_enquete_ouverte"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0274",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ]
+    },
+    "text": "Les vacances approchent. Ta voiture de fonction, avec chauffeur, plein payé et gyrophare, est garée devant chez toi. Elle a l'air de vouloir voir la mer.",
+    "choices": [
+      {
+        "label": "Partir avec",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Trajet royal jusqu'à la plage. Personne ne remarque rien. Tu reviens bronzé{e} et un peu coupable.",
+            "effects": {
+              "happiness": 8,
+              "looks": 3,
+              "karma": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un vacancier photographie la voiture officielle garée sur le sable, une bouée sur le toit. Polémique nationale.",
+            "effects": {
+              "happiness": -12,
+              "karma": -8,
+              "money": -2500,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre le train",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Train bondé, valise sur les genoux. Un électeur te reconnaît et te félicite pour ta simplicité.",
+            "effects": {
+              "happiness": 3,
+              "karma": 5,
+              "money": -180
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0275",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_gouverne"
+      ]
+    },
+    "text": "Ta voiture blindée tombe en panne sur l'autoroute, au milieu du cortège officiel. Six motards tournent autour comme des abeilles perdues.",
+    "choices": [
+      {
+        "label": "Attendre la dépanneuse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Trois heures sur la bande d'arrêt d'urgence. Les automobilistes klaxonnent en passant. Certains moins gentiment.",
+            "effects": {
+              "happiness": -8,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire du stop",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Un routier te prend. Vous parlez du prix du gazole pendant 200 km. Meilleure consultation citoyenne de ton mandat.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 3,
+              "karma": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta sécurité panique, plaque un retraité au sol. La vidéo devient virale.",
+            "effects": {
+              "happiness": -12,
+              "karma": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réparer toi-même",
+        "requiresSkill": {
+          "mecanique": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Cravate dans le moteur, tu répares une durite en dix minutes. La photo fait la une : « Le ministre qui met les mains dans le cambouis ».",
+            "effects": {
+              "happiness": 12,
+              "looks": -2,
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0276",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ]
+    },
+    "text": "Inauguration du nouveau rond-point de {ville}. Fanfare, élus, journalistes. On te tend des ciseaux géants pour couper le ruban. Ils ne coupent pas.",
+    "choices": [
+      {
+        "label": "Insister",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu cisailles pendant deux minutes en souriant. La fanfare rejoue l'hymne quatre fois. Le ruban finit par céder.",
+            "effects": {
+              "happiness": -4,
+              "health": -1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les ciseaux se referment sur ton pouce. Inauguration terminée aux urgences, ruban intact.",
+            "effects": {
+              "health": -8,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le déchirer à mains nues",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu arraches le ruban avec un cri primal. La foule applaudit. Tu deviens « l'élu bulldozer ».",
+            "effects": {
+              "happiness": 6,
+              "looks": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une blague",
+        "requiresSkill": {
+          "humour": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« Comme le budget de la ville : ça résiste. » Éclat de rire général. Ton passage au journal télé est un triomphe.",
+            "effects": {
+              "happiness": 10,
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0277",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ]
+    },
+    "text": "Tu inaugures la piscine municipale en plongeant le premier, en maillot, devant les caméras. Un technicien te fait de grands signes inquiets.",
+    "choices": [
+      {
+        "label": "Plonger quand même",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "L'eau est là, et glaciale. Tu cries de manière très peu ministérielle. Ça fait sourire tout le pays.",
+            "effects": {
+              "happiness": 5,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La piscine n'était pas encore remplie. Fin de l'inauguration en civière, sous les flashs.",
+            "effects": {
+              "health": -18,
+              "happiness": -12,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter le technicien",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il t'explique que la piscine sera remplie dans six mois. Tu inaugures donc un trou. Photo officielle devant le trou.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0278",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 4,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ]
+    },
+    "text": "La fédération nationale du béton t'offre, « en toute amitié », une montre en or massif gravée à ton nom. Juste avant le vote sur les ronds-points.",
+    "choices": [
+      {
+        "label": "L'accepter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle est sublime et pèse 400 g. Tu la portes avec un petit pincement au ventre.",
+            "effects": {
+              "happiness": 8,
+              "looks": 4,
+              "karma": -10,
+              "setFlags": [
+                "tdv_montre_lobby"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La renvoyer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu la renvoies avec un mot sec. Le lobbyiste t'en veut, ton comité d'éthique t'adore.",
+            "effects": {
+              "happiness": 2,
+              "karma": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "La déclarer et l'exposer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle finit dans une vitrine de la mairie avec l'étiquette « cadeau du béton ». Les visiteurs ricanent. Tu gagnes en réputation.",
+            "effects": {
+              "happiness": 5,
+              "karma": 8,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0279",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 99,
+    "weight": 7,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ],
+      "flags": [
+        "tdv_montre_lobby"
+      ]
+    },
+    "text": "Une photo de toi, au balcon, montre ta fameuse montre en or. Un journaliste a zoomé : on lit « Avec l'amitié du béton ».",
+    "choices": [
+      {
+        "label": "Dire que c'est une copie",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Ça passe. Mais tu dois désormais la porter en disant « elle est fausse » à chaque dîner.",
+            "effects": {
+              "happiness": -3,
+              "karma": -6,
+              "setFlags": [
+                "menteur_notoire"
+              ],
+              "clearFlags": [
+                "tdv_montre_lobby"
+              ]
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le bijoutier qui l'a fabriquée témoigne à la télé. Tu passes pour un menteur doublé d'un corrompu.",
+            "effects": {
+              "happiness": -15,
+              "money": -15000,
+              "setFlags": [
+                "menteur_notoire",
+                "honte_publique"
+              ],
+              "clearFlags": [
+                "tdv_montre_lobby"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La vendre pour une œuvre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu la mets aux enchères au profit d'un hôpital. Le scandale se transforme presque en belle histoire.",
+            "effects": {
+              "happiness": 4,
+              "karma": 10,
+              "clearFlags": [
+                "tdv_montre_lobby"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton silence dure trois semaines et vingt-six articles. Ta cote de popularité fond comme un glaçon au soleil.",
+            "effects": {
+              "happiness": -10,
+              "health": -4,
+              "clearFlags": [
+                "tdv_montre_lobby"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0280",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_chef_parti"
+      ]
+    },
+    "text": "Pour le séminaire du parti, l'équipe a réservé un château avec piscine chauffée et dégustation de caviar. Le trésorier respire dans un sac en papier.",
+    "choices": [
+      {
+        "label": "Garder le château",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Séminaire mémorable, militants ravis, motion votée à l'unanimité entre deux blinis.",
+            "effects": {
+              "happiness": 9,
+              "money": -8000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un militant poste une vidéo de la fontaine à champagne. Titre : « Le parti du peuple fait trempette ».",
+            "effects": {
+              "happiness": -12,
+              "money": -8000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Gymnase et sandwichs",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chaises pliantes, sandwichs jambon-beurre, micro qui grésille. Les militants sont émus par tant d'authenticité.",
+            "effects": {
+              "happiness": 3,
+              "karma": 5,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0281",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_chef_parti",
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Tu prônes la sobriété dans tous tes discours. Un militant vient de découvrir que ta « petite permanence modeste » est un loft de 300 m² avec jacuzzi.",
+    "choices": [
+      {
+        "label": "Organiser une visite",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu caches le jacuzzi sous une bâche et tu le présentes comme un « bac à archives ». Ça passe, de justesse.",
+            "effects": {
+              "happiness": 3,
+              "karma": -6,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La bâche glisse pendant la visite. Les bulles dénoncent tout. Les militants rendent leur carte en direct.",
+            "effects": {
+              "happiness": -14,
+              "karma": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déménager vraiment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu loues un vrai petit bureau au-dessus d'une boulangerie. Odeur de croissant, cohérence retrouvée.",
+            "effects": {
+              "happiness": 4,
+              "karma": 6,
+              "health": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0282",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_gouverne",
+        "grand_voyageur"
+      ]
+    },
+    "text": "Dîner d'État à l'étranger. Tu manges avec enthousiasme le plat posé devant toi. L'interprète devient blanc : c'était l'offrande décorative.",
+    "choices": [
+      {
+        "label": "Finir l'assiette",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu finis, tu dis « délicieux ». Incident diplomatique de trois jours, et une indigestion de cinq.",
+            "effects": {
+              "health": -8,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "S'excuser en anglais",
+        "requiresSkill": {
+          "anglais": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes excuses sont si élégantes que ton hôte éclate de rire et mange le reste avec toi. Accord commercial signé.",
+            "effects": {
+              "happiness": 12,
+              "smarts": 3,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser ton conseiller",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton conseiller est renvoyé. Il écrit un livre sur toi l'année suivante. Il est très bien écrit, et très méchant.",
+            "effects": {
+              "happiness": -6,
+              "karma": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0283",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_gouverne",
+        "grand_voyageur"
+      ]
+    },
+    "text": "Ton cabinet a organisé un voyage officiel de trois jours avec une délégation de 140 personnes, dont deux coiffeurs et un spécialiste des nappes.",
+    "choices": [
+      {
+        "label": "Réduire à 12 personnes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Délégation légère. Tu te recoiffes seul{e} dans l'avion. La presse salue ta sobriété.",
+            "effects": {
+              "happiness": 3,
+              "karma": 6,
+              "looks": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder tout le monde",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Voyage fastueux, nappes impeccables. Personne ne compte. Pour l'instant.",
+            "effects": {
+              "happiness": 8,
+              "looks": 4,
+              "karma": -5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La facture fuite : 1,8 million d'euros. Le spécialiste des nappes devient une star des réseaux, et toi la risée du pays.",
+            "effects": {
+              "happiness": -15,
+              "karma": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0284",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "pol_gouverne",
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Tu dois annoncer un plan de rigueur budgétaire en visioconférence. Problème : tu es dans un chalet de luxe, en combinaison de ski, avec un chocolat viennois.",
+    "choices": [
+      {
+        "label": "Fond flou",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le flou tient. Le discours passe. Tu retournes skier avec soulagement.",
+            "effects": {
+              "happiness": 6,
+              "health": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le flou saute au moment où un moniteur traverse le salon en criant « la poudreuse est parfaite ! ».",
+            "effects": {
+              "happiness": -14,
+              "karma": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rentrer à Paris",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Six heures de route dans la neige pour faire un discours de quatre minutes. Tu es cohérent{e}, mais épuisé{e}.",
+            "effects": {
+              "health": -5,
+              "happiness": -4,
+              "karma": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0285",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_elu",
+        "multi_proprietaire"
+      ]
+    },
+    "text": "En remplissant ta déclaration de patrimoine, tu réalises que tu as « un peu oublié » un appartement. Et un garage. Et peut-être une île.",
+    "choices": [
+      {
+        "label": "Tout corriger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu envoies un rectificatif de onze pages. La Haute Autorité te remercie froidement. Tu paies quelques pénalités.",
+            "effects": {
+              "money": -12000,
+              "karma": 6,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser tel quel",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Personne ne vérifie. Tu oublies même que tu as oublié.",
+            "effects": {
+              "happiness": 4,
+              "karma": -8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un voisin de ton « île oubliée » écrit à la presse. Scandale, amende salée, cheveux blancs.",
+            "effects": {
+              "money": -150000,
+              "happiness": -15,
+              "looks": -4,
+              "setFlags": [
+                "honte_publique",
+                "menteur_notoire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0286",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "pol_elu",
+        "gros_salaire"
+      ]
+    },
+    "text": "En direct à la télé, une journaliste te demande le prix d'une baguette de pain. Le silence dure. La caméra zoome lentement sur ton visage.",
+    "choices": [
+      {
+        "label": "Dire « 4 € »",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La phrase tourne en boucle pendant un mois. Les boulangers t'envoient des baguettes par la poste.",
+            "effects": {
+              "happiness": -10,
+              "karma": -4,
+              "looks": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer ne pas savoir",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta franchise surprend. On te trouve presque attachant{e}. Tu vas acheter une baguette le lendemain, filmé{e}.",
+            "effects": {
+              "happiness": 3,
+              "karma": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "« Ne sait même pas le prix du pain ! » devient le slogan de l'opposition pour toute la saison.",
+            "effects": {
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retourner la question",
+        "requiresSkill": {
+          "humour": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« Ça dépend, avec ou sans le croûton du milieu ? » La journaliste rit, le plateau aussi. Moment culte.",
+            "effects": {
+              "happiness": 12,
+              "looks": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0287",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_chef_parti"
+      ]
+    },
+    "text": "Un lobbyiste très souriant t'invite à « un petit week-end de réflexion » sur son yacht de 60 mètres, avec hélicoptère et chef étoilé.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Week-end divin. Le lundi, tu te surprends à défendre un amendement dont tu ignorais l'existence.",
+            "effects": {
+              "happiness": 10,
+              "health": 3,
+              "karma": -10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un paparazzi en paddle te photographie en peignoir brodé aux initiales du lobbyiste. Couverture du magazine.",
+            "effects": {
+              "happiness": -14,
+              "karma": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes le week-end à distribuer des tracts sous la pluie. Rhume, mais tête haute.",
+            "effects": {
+              "health": -3,
+              "karma": 7,
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Y aller avec la presse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu débarques avec trois journalistes. Le lobbyiste sourit beaucoup moins. Opération transparence réussie.",
+            "effects": {
+              "happiness": 8,
+              "karma": 6,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0288",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "pol_elu",
+        "voiture_luxe"
+      ]
+    },
+    "text": "Tu viens soutenir les ouvriers d'une usine qui ferme. Tu arrives dans ton coupé sport rouge vif. Il reste 200 mètres de parking à traverser devant eux.",
+    "choices": [
+      {
+        "label": "Faire demi-tour",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repars, tu reviens en bus. Arrivée avec deux heures de retard. Les ouvriers ont déjà fini leur barbecue.",
+            "effects": {
+              "happiness": -4,
+              "money": -50
+            }
+          }
+        ]
+      },
+      {
+        "label": "Assumer",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Un ouvrier passionné de mécanique te parle moteur pendant une heure. Le dialogue social passe par les cylindres.",
+            "effects": {
+              "happiness": 6,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Photo de toi descendant du bolide devant les grévistes. Ta carrière prend un sérieux coup de frein.",
+            "effects": {
+              "happiness": -14,
+              "karma": -8,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prêter la voiture",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu proposes un tour à chaque ouvrier. Journée folle, rires, rayure sur la portière. Ils voteront pour toi.",
+            "effects": {
+              "happiness": 10,
+              "karma": 5,
+              "money": -2500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0289",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "pol_gouverne"
+      ]
+    },
+    "text": "La Cour des comptes s'étonne : ton ministère a dépensé 12 000 € de macarons l'an dernier. Le rapport contient le mot « goinfrerie » entre guillemets.",
+    "choices": [
+      {
+        "label": "Défendre les macarons",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu expliques que « le macaron, c'est le rayonnement de la France ». Personne n'est convaincu. Tu prends 3 kg de stress.",
+            "effects": {
+              "happiness": -8,
+              "health": -4,
+              "karma": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Supprimer les macarons",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les réunions se font désormais avec des biscuits secs. Ton cabinet est au bord de la mutinerie, mais les comptes sont propres.",
+            "effects": {
+              "happiness": -3,
+              "karma": 5,
+              "health": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser le prédécesseur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ça marche : la presse s'acharne sur l'ancien ministre. Tu t'en tires sans miette.",
+            "effects": {
+              "happiness": 5,
+              "karma": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il ressort tes propres factures de pâtisserie. Bataille de miettes en place publique, tu perds.",
+            "effects": {
+              "happiness": -12,
+              "karma": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0290",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "pol_elu",
+        "avion_prive"
+      ]
+    },
+    "text": "Tu es en retard pour un meeting à 45 km. Ton pilote propose de « faire un saut » en jet privé. Tu as aussi un vélo dans le garage.",
+    "choices": [
+      {
+        "label": "Prendre le jet",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Personne ne remarque. Tu arrives frais et dispos, avec un croissant de bord.",
+            "effects": {
+              "happiness": 5,
+              "money": -9000
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Un militant écolo traque les vols privés. « 45 km en jet » fait l'ouverture des journaux.",
+            "effects": {
+              "happiness": -14,
+              "money": -9000,
+              "karma": -8,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre le vélo",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu arrives en sueur, en retard, mais acclamé{e}. Ton discours sur la sobriété n'a jamais été aussi crédible.",
+            "effects": {
+              "health": 6,
+              "happiness": 6,
+              "karma": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Chute dans un rond-point (que tu as toi-même inauguré). Genou en sang, meeting annulé.",
+            "effects": {
+              "health": -9,
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0291",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_gouverne"
+      ]
+    },
+    "text": "Il est 23 h, tu rêves d'un kebab. Tes quatre gardes du corps refusent catégoriquement que tu ailles en acheter un seul{e}.",
+    "choices": [
+      {
+        "label": "Y aller à cinq",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le patron du snack, impressionné, t'offre les frites. Tu manges entouré{e} d'oreillettes. Ambiance unique.",
+            "effects": {
+              "happiness": 8,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un client te reconnaît et te demande des comptes sur la réforme des retraites, sauce blanche à la main. Indigestion politique.",
+            "effects": {
+              "happiness": -6,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire le mur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu sors par la fenêtre de la cuisine, tu reviens avec ton kebab. Liberté. Tu n'as jamais rien mangé de meilleur.",
+            "effects": {
+              "happiness": 12,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Alerte sécurité générale. Hélicoptère, chiens, gyrophares. Tout ça pour une sauce samouraï. Ça finit dans la presse.",
+            "effects": {
+              "happiness": -10,
+              "health": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Manger une soupe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Soupe de légumes du chef de la résidence. Saine, chaude, triste.",
+            "effects": {
+              "health": 3,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0292",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ]
+    },
+    "text": "Tu fais un bain de foule au marché, en costume impeccable. Une poissonnière te reproche ton « train de vie de pacha » en brandissant un maquereau.",
+    "choices": [
+      {
+        "label": "Lui serrer la main",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle te serre la main… avec le maquereau. Ton costume sent la marée pendant une semaine.",
+            "effects": {
+              "happiness": -5,
+              "looks": -4,
+              "money": -300
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle accepte, puis te vend 3 kg de poisson. Tu repars avec un sac et un électeur de plus.",
+            "effects": {
+              "happiness": 4,
+              "money": -45,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'écouter vraiment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vingt minutes sur le prix du gazole et des cagettes. Tu apprends plus qu'en un an d'hémicycle.",
+            "effects": {
+              "smarts": 5,
+              "karma": 5,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "La charmer",
+        "requiresSkill": {
+          "seduction": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un compliment sur son étal, un sourire, et elle finit par poser avec toi pour la photo. Le maquereau aussi.",
+            "effects": {
+              "happiness": 9,
+              "looks": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir vers les fromages",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le maquereau vole et t'atteint à la nuque. Tout le marché applaudit. La vidéo est vue 3 millions de fois.",
+            "effects": {
+              "health": -3,
+              "happiness": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0293",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "pol_chef_parti",
+        "millionaire"
+      ]
+    },
+    "text": "Les caisses du parti sont vides avant la campagne. Ton comptable te regarde, puis regarde ton compte personnel, puis te regarde encore.",
+    "choices": [
+      {
+        "label": "Financer toi-même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu injectes 400 000 €. Campagne flamboyante, affiches partout. Le parti t'acclame.",
+            "effects": {
+              "money": -400000,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu injectes 400 000 €, puis l'autorité de contrôle juge le montant illégal. Amende en prime.",
+            "effects": {
+              "money": -550000,
+              "happiness": -15,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer une cagnotte",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Des milliers de petits dons arrivent. Tu es touché{e} par chaque mot laissé. Campagne modeste mais sincère.",
+            "effects": {
+              "happiness": 9,
+              "karma": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La cagnotte atteint 312 €. La presse s'en amuse. Ton égo, moins.",
+            "effects": {
+              "happiness": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier un prêt",
+        "requiresSkill": {
+          "marchandage": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu obtiens un prêt à taux ridicule auprès d'une banque coopérative. Le comptable t'embrasse sur le front.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0294",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "pol_elu",
+        "gros_salaire"
+      ]
+    },
+    "text": "Un influenceur publie ta facture de coiffeur : 9 000 € par mois, payés par la collectivité. La légende : « Le brushing de la République ».",
+    "choices": [
+      {
+        "label": "Rembourser et raser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rembourses tout et tu te rases la tête en direct. Choc. Certains t'admirent, d'autres hurlent au coup de com.",
+            "effects": {
+              "money": -54000,
+              "looks": -8,
+              "karma": 6,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre ton coiffeur",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Ton coiffeur, ému, passe à la télé. Il est tellement sympathique qu'on te pardonne un peu.",
+            "effects": {
+              "happiness": 4,
+              "looks": 4,
+              "karma": -3
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le coiffeur admet que « la moitié, c'était du shampoing pour ton chien ». C'est pire.",
+            "effects": {
+              "happiness": -14,
+              "karma": -10,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te couper toi-même",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ciseaux de cuisine, miroir de salle de bain. La France découvre ta frange asymétrique au journal de 20 h.",
+            "effects": {
+              "looks": -10,
+              "happiness": -6,
+              "karma": 3,
+              "setFlags": [
+                "coupe_ratee"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0295",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_gouverne"
+      ]
+    },
+    "text": "Ton logement de fonction a 47 pièces, des lustres en cristal et un chauffage qui consomme autant qu'un petit village. Tu te perds souvent en allant aux toilettes.",
+    "choices": [
+      {
+        "label": "Vivre dans trois pièces",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fermes 44 pièces et vis dans la cuisine, le salon et une chambre. Factures divisées par dix. Les fantômes ont le reste.",
+            "effects": {
+              "happiness": 2,
+              "karma": 6,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Profiter de tout",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une pièce pour lire, une pour bouder, une pour le piano. Tu vis comme un roi, et un peu seul{e}.",
+            "effects": {
+              "happiness": 8,
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu glisses sur un parquet ciré de 40 mètres en chaussettes. Hanche froissée, rapport de l'intendant gêné.",
+            "effects": {
+              "health": -10,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir au public",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Journées portes ouvertes chaque mois. Les visiteurs t'adorent, mais un enfant a volé une petite cuillère en argent.",
+            "effects": {
+              "happiness": 6,
+              "karma": 8,
+              "money": -200
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0296",
+    "category": "train_de_vie",
+    "minAge": 22,
+    "maxAge": 70,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "gros_salaire",
+        "job"
+      ]
+    },
+    "text": "Séminaire à l'autre bout du monde : tu dois présenter les résultats annuels devant 300 personnes. Pour ton corps, il est 4 h du matin.",
+    "choices": [
+      {
+        "label": "Café et courage",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Présentation brillante, portée par l'adrénaline. Tu t'effondres dans ta chambre juste après, mais quelle gloire.",
+            "effects": {
+              "happiness": 8,
+              "health": -5,
+              "money": 3000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu confonds les diapos et présentes tes photos de vacances à la place des chiffres. Silence glacial.",
+            "effects": {
+              "happiness": -12,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Présenter en anglais",
+        "requiresSkill": {
+          "anglais": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton anglais fluide masque tes cernes. Ovation, prime et promotion sous-entendue.",
+            "effects": {
+              "happiness": 10,
+              "money": 6000,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un adjoint",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton adjoint fait un triomphe. Ta directrice te demande pourquoi tu as pris l'avion, du coup.",
+            "effects": {
+              "happiness": -6,
+              "health": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0297",
+    "category": "train_de_vie",
+    "minAge": 22,
+    "maxAge": 70,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "gros_salaire",
+        "job"
+      ]
+    },
+    "text": "Le contrôleur de gestion conteste trois lignes de tes notes de frais de voyage : un massage aux pierres chaudes, un chapeau de cow-boy et « un dromadaire (location) ».",
+    "choices": [
+      {
+        "label": "Tout justifier",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le dromadaire passe (« transport client »). Le chapeau, non. Tu rembourses 80 €.",
+            "effects": {
+              "money": -80,
+              "happiness": -2,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le contrôleur lit tes explications à voix haute en réunion. Tes collègues t'appellent « le dromadaire » pendant un an.",
+            "effects": {
+              "happiness": -9,
+              "money": -600,
+              "looks": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rembourser tout",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "600 € de ta poche. Mais tu gardes le chapeau, et ça, personne ne te l'enlèvera.",
+            "effects": {
+              "money": -600,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu échanges le chapeau contre le massage, le contrôleur accepte le dromadaire. Tu repars avec zéro remboursement à faire.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0298",
+    "category": "train_de_vie",
+    "minAge": 21,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_elu",
+        "grand_voyageur"
+      ]
+    },
+    "text": "On te propose une « mission d'étude sur l'érosion des plages » de dix jours dans un archipel tropical, en hôtel cinq étoiles, aux frais de l'assemblée.",
+    "choices": [
+      {
+        "label": "Partir étudier",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu étudies l'érosion depuis un transat, cocktail à la main. Rapport final : deux pages, dont une photo de coucher de soleil.",
+            "effects": {
+              "happiness": 12,
+              "health": 5,
+              "karma": -8,
+              "setFlags": [
+                "tdv_notes_frais_louches"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un coup de soleil phénoménal sur la photo officielle. Le surnom « l'élu homard » te suit désormais.",
+            "effects": {
+              "health": -6,
+              "looks": -6,
+              "happiness": -6,
+              "setFlags": [
+                "tdv_notes_frais_louches"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu restes travailler sous la pluie. Tes collègues reviennent bronzés et tu leur en veux un peu.",
+            "effects": {
+              "happiness": -4,
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer de ta poche",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu y vas, mais à tes frais. Tu fais vraiment des mesures sur les plages. Ton rapport est utile, rare et apprécié.",
+            "effects": {
+              "money": -4500,
+              "happiness": 7,
+              "smarts": 4,
+              "karma": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0299",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 5,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "pol_gouverne"
+      ],
+      "flags": [
+        "honte_publique"
+      ]
+    },
+    "text": "Après tes nombreuses polémiques, le président te propose « une magnifique opportunité » : ambassadeur dans un micro-État de 800 habitants, à 19 h d'avion.",
+    "choices": [
+      {
+        "label": "Accepter l'exil doré",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Plage, résidence, trois dossiers par an. On t'a oublié{e} et c'est merveilleux. Ta tension n'a jamais été aussi basse.",
+            "effects": {
+              "happiness": 10,
+              "health": 8,
+              "clearFlags": [
+                "honte_publique"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'unique bateau de ravitaillement passe tous les trois mois. Tu manges des noix de coco et tu parles aux crabes.",
+            "effects": {
+              "happiness": -10,
+              "health": -3,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et résister",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu t'accroches, tu fais un retour fracassant en interview. On parle de toi comme d'un survivant.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu es remercié{e} au remaniement suivant, par SMS. Tu apprends la nouvelle en même temps que la France.",
+            "effects": {
+              "happiness": -15,
+              "health": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0300",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 85,
+    "weight": 2,
+    "conditions": {
+      "tags": [
+        "grand_voyageur",
+        "milliardaire"
+      ]
+    },
+    "text": "Tu as tout vu sur Terre. Une société privée te propose un séjour de six minutes en apesanteur, pour 18 millions d'euros. « Taux de réussite : très bon. »",
+    "choices": [
+      {
+        "label": "Signer tout de suite",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Six minutes à flotter au-dessus de la planète. Tu pleures, tu ris, tu changes de regard sur tout. Inoubliable.",
+            "effects": {
+              "money": -18000000,
+              "happiness": 25,
+              "smarts": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu passes les six minutes à vomir dans un sac en plastique. La vidéo souvenir coûte 200 000 € de plus.",
+            "effects": {
+              "money": -18200000,
+              "happiness": -10,
+              "health": -6
+            }
+          },
+          {
+            "chance": 0.1,
+            "text": "Atterrissage brutal dans un champ de betteraves. Trois vertèbres fêlées, six mois de rééducation.",
+            "effects": {
+              "money": -18000000,
+              "health": -25,
+              "happiness": -15,
+              "setFlags": [
+                "dos_fragile"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Financer la recherche",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu donnes 18 millions à des chercheurs. Ils nomment un petit astéroïde d'après toi. Tu le regardes chaque soir au télescope.",
+            "effects": {
+              "money": -18000000,
+              "happiness": 12,
+              "karma": 15,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester sur Terre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu achètes un hamac à la place. Six minutes de balancement à 30 cm du sol. Pas mal non plus.",
+            "effects": {
+              "happiness": 4,
+              "health": 2,
+              "money": -150
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
