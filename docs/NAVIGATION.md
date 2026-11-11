@@ -31,7 +31,7 @@ la toucher explique pourquoi elle est fermée (âge, prison, diplôme…). Une p
 
 | Menu | Entrées |
 |---|---|
-| Carrière | École, Vie au bahut (#28), Université, Offres d'emploi et Mon travail (#7), Ma boîte (#23), Politique (#25), Retraite (#27) |
+| Carrière | École, Vie au bahut (#28), Université, Offres d'emploi et Mon travail (#7), Ma boîte (#23), Agence de détective et Ma secte (docs/SECTE_DETECTIVE.md), Politique (#25), Retraite (#27) |
 | Biens | Boutique et Mes biens (#5), Banque et placements (#14), Mon testament et Héritages (#30) |
 | Relations | Famille, Amour, Amis (+ famille élargie #12, secrets #17), Rencontres (#12), Téléphone (#26), Voisins (#35), Animaux (#32), Réputation du nom (#15), Carnet des secrets (#17) |
 | Activités | activités rapides du moteur, Loisirs (#31), Coiffeur et Chirurgie esthétique (docs/BEAUTE.md), Télévision (#19), Casino (#16), Santé (#12), Permis (#13), Vivre à l'étranger (#29), Crime, Prison (#12), Casier judiciaire (#11) |

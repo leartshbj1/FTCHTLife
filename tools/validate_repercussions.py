@@ -39,6 +39,8 @@ VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie
              "enfant", "ex", "grandparent"}  # module vie
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"prison", "gang", "gang_haut", "dealer", "sous_enquete", "chaleur", "ancien_gang", "balance", "argent_sale"}
+TAGS |= {"gourou", "secte_communaute", "secte_grande", "secte_enquete", "ancien_gourou", "proche_dans_secte",
+         "detective", "detective_celebre", "detective_clandestin", "ancien_detective"}  # docs/SECTE_DETECTIVE.md
 VARIABLES |= {"organisation", "chef", "rival", "rang"}
 # Module Cœur (docs/COEUR.md)
 VARIABLES |= {"amant", "amant_role", "amant_il", "enfant_cache"}
@@ -65,6 +67,11 @@ enfant_cache_revele tromperie_subie relation_libre therapie_couple
 """.split())
 SIGNAUX |= set("""gang_entree gang_promotion gang_trahison gang_sortie gang_chef trafic_debut trafic_saisie
 enquete_ouverte enquete_classee guerre_territoire blanchiment balance mission_reussie mission_ratee""".split())
+# Secte et agence de détective (docs/SECTE_DETECTIVE.md)
+SIGNAUX |= set("""secte_fondee secte_mouvement secte_proche_recrute secte_prelevement secte_regles_strictes secte_scandale
+secte_enquete secte_perquisition secte_proces secte_condamnation secte_relaxe secte_dissoute
+agence_ouverte agence_affaire_resolue agence_affaire_ratee agence_affaire_celebre agence_methode_limite agence_plainte
+agence_suspendue agence_blessure agence_menace agence_fermee""".split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
 ISSUES = ["", "_sommet", "_perdu", "_blessure", "_animal", "_rencontre", "_honte", "_victoire", "_casse", "_arnaque"]

@@ -25,6 +25,8 @@ struct EcranModule: View {
         case .offresEmploi: OffresEmploiView()
         case .monTravail: MonTravailView()
         case .entreprise: EntreprisesView().onAppear { engine.normaliserEntreprises() }
+        case .agenceDetective: AgenceView()
+        case .secte: SecteView()
         case .politique: PolitiqueView(etat: \.politique)
         case .retraite: RetraiteView(chemin: \.retraite, signaler: Self.signaler)
 

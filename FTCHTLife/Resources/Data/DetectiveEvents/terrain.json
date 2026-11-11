@@ -1,0 +1,1505 @@
+[
+  {
+    "id": "det_ter_0001",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "En pleine filature, {cible} se retourne d'un coup et te fixe longuement, au milieu du trottoir.",
+    "choices": [
+      {
+        "label": "Continuer comme si de rien n'était",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu consultes ton téléphone, l'air d'un touriste égaré. Le regard passe. Ta filature continue.",
+            "effects": {
+              "skills": {
+                "seduction": 1
+              }
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ce n'était pas un regard de hasard. Deux rues plus loin, quelqu'un te bouscule violemment contre un mur.",
+            "effects": {
+              "health": -10
+            },
+            "agence": {
+              "signal": "agence_blessure"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lâcher la filature pour aujourd'hui",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu entres dans une boulangerie et achètes un pain dont tu n'as pas besoin. Demain est un autre jour."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0002",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "sansAgrement": false
+    },
+    "text": "Troisième heure de planque. On frappe à la vitre de ta voiture : deux policiers en patrouille. « Vous attendez quelqu'un ? »",
+    "choices": [
+      {
+        "label": "Montrer ta carte professionnelle",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Ils hochent la tête et s'éloignent. L'un d'eux te souhaite bon courage, sans ironie."
+          },
+          {
+            "chance": 0.2,
+            "text": "Ils restent discuter dix minutes, gyrophare allumé. Toute la rue t'a vu{e}.",
+            "effects": {
+              "happiness": -4
+            },
+            "agence": {
+              "reputation": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Inventer une histoire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« J'attends ma sœur, elle est toujours en retard. » Ils rient. Ça marche.",
+            "effects": {
+              "skills": {
+                "eloquence": 1
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils demandent le nom de ta sœur. Tu hésites une seconde de trop. Contrôle d'identité complet.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0003",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "sansAgrement": true
+    },
+    "text": "Planque de nuit sans agrément. Une voiture de police ralentit à ta hauteur, puis s'arrête.",
+    "choices": [
+      {
+        "label": "Démarrer calmement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu pars sans te presser. Ils ne te suivent pas. Ton cœur, si.",
+            "effects": {
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils te suivent, contrôlent, trouvent ton appareil photo et tes notes sur {cible}. Rapport transmis.",
+            "effects": {
+              "happiness": -6
+            },
+            "agence": {
+              "plainte": true,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer l'amoureux transi",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "« J'attends quelqu'un qui ne viendra pas. » Le policier compatit et te conseille de passer à autre chose.",
+            "effects": {
+              "skills": {
+                "eloquence": 1
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ils ne te croient pas une seconde. Fouille de la voiture, carnet saisi.",
+            "agence": {
+              "plainte": true,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0004",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Pour photographier {cible}, tu dois longer un jardin. Un dogue de soixante kilos te regarde à travers la haie, très intéressé.",
+    "choices": [
+      {
+        "label": "Tenter le coup",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le chien bâille. Tu prends tes photos. Il n'en revient pas non plus.",
+            "effects": {
+              "skills": {
+                "photo": 2
+              }
+            },
+            "agence": {
+              "reputation": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le chien ne bâille pas. Pantalon déchiré, mollet entamé, sprint mémorable.",
+            "effects": {
+              "health": -12,
+              "happiness": -3
+            },
+            "agence": {
+              "signal": "agence_blessure"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Trouver un autre angle",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un toit d'abri de bus, une contorsion, une photo moyenne mais intacte. Toi aussi.",
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Revenir avec des croquettes",
+        "cost": 15,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Trois croquettes, un ami pour la vie. Le dogue te raccompagne presque jusqu'à la voiture.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0005",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Six heures de planque, deux litres de café, aucune toilette à moins d'un kilomètre. Et toujours aucun signe de {cible}… ou si ?",
+    "choices": [
+      {
+        "label": "Tenir bon",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu tiens. La porte s'ouvre enfin. Tu prends les photos en serrant les dents.",
+            "effects": {
+              "health": -2
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu tiens, mais rien ne se passe. Une nuit de souffrance pour une porte fermée.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Courir au café d'en face",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Trois minutes chrono. Quand tu reviens, rien n'a bougé. Victoire.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Trois minutes chrono. Juste assez pour rater le moment que tu attendais depuis six heures.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0006",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "La voisine de {cible} t'aborde, un chat sous le bras. « Vous êtes de la police ? Parce que moi, j'en sais des choses. »",
+    "choices": [
+      {
+        "label": "L'écouter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une heure de ragots, trois tasses de thé, et une information précieuse glissée entre deux recettes.",
+            "effects": {
+              "happiness": 2
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une heure sur la haie mal taillée du voisin d'en face. Rien d'utile, mais un excellent cake.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui offrir un billet",
+        "cost": 50,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Elle empoche les 50 € avec une agilité suspecte. Les informations sont bonnes.",
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle empoche les 50 € et va tout raconter à {cible} le soir même.",
+            "agence": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester discret{e}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu bredouilles une histoire de compteur d'eau. Elle te regarde partir avec un air entendu."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0007",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Les poubelles de {cible} attendent sur le trottoir. Dedans, peut-être, des relevés, des lettres, des tickets.",
+    "choices": [
+      {
+        "label": "Fouiller",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Entre des épluchures et un pot de yaourt, un relevé de banque. Le dossier avance d'un coup.",
+            "effects": {
+              "karma": -3,
+              "health": -1
+            },
+            "agence": {
+              "signal": "agence_methode_limite"
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un voisin te filme en train de fouiller. La vidéo circule dans le quartier, puis chez un avocat.",
+            "effects": {
+              "karma": -3
+            },
+            "agence": {
+              "reputation": -6,
+              "plainte": true,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer ton chemin",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il y a des limites. Celle-ci sent le poisson.",
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0008",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Pour approcher {cible}, tu pourrais te faire embaucher quelques semaines là où on travaille sur place. Un entretien d'embauche est prévu demain.",
+    "choices": [
+      {
+        "label": "Passer l'entretien",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu es pris{e}. Pendant trois semaines, tu ranges des cartons et tu écoutes tout.",
+            "effects": {
+              "health": -3,
+              "skills": {
+                "eloquence": 2
+              }
+            },
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le recruteur trouve ton CV « étrangement vague » et ne rappelle jamais.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mentir sur ton expérience",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Embauché{e}. Mais tu dois vraiment savoir conduire un chariot élévateur. Tu apprends vite.",
+            "effects": {
+              "skills": {
+                "mecanique": 2
+              }
+            },
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "On te demande une démonstration. Les palettes s'en souviennent encore.",
+            "effects": {
+              "health": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renoncer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Trop risqué. Tu gardes tes distances et ton anonymat."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0009",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Au moment crucial, alors que {cible} sort enfin, ton téléphone s'éteint. Batterie à zéro.",
+    "choices": [
+      {
+        "label": "Suivre à l'ancienne",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Carnet, stylo, mémoire. Tu notes tout comme en 1975. Ça marche.",
+            "effects": {
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu perds la trace au troisième carrefour.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander un téléphone à un passant",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Un étudiant te prête le sien. Tu prends la photo, tu te l'envoies, tu le lui rends. Il veut savoir si c'est « pour une série ».",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le passant prend ta demande pour une arnaque et s'enfuit en courant.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0010",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Quelqu'un d'autre suit {cible}. Un autre détective, moins discret que toi, avec un manteau beige de catalogue.",
+    "choices": [
+      {
+        "label": "L'aborder",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il travaille pour l'autre camp. Vous échangez des banalités et vous vous évitez soigneusement ensuite.",
+            "effects": {
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il te propose d'échanger vos informations. Ce qu'il te donne est faux. Ce que tu lui donnes, non.",
+            "effects": {
+              "happiness": -4
+            },
+            "agence": {
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le suivre lui aussi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu suis celui qui suit. Tu découvres pour qui il travaille. L'affaire prend une autre couleur.",
+            "effects": {
+              "smarts": 3
+            },
+            "agence": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien faire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu le laisses se faire repérer à ta place. Le lendemain, {cible} change ses habitudes, mais ne se méfie pas de toi."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0011",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "disparition",
+        "contrefacon",
+        "paris_truques",
+        "chantage",
+        "protection_temoin",
+        "fugue"
+      ]
+    },
+    "text": "Tu suis {cible} jusqu'à un bar où ton visage ne passera pas inaperçu. Dedans, l'ambiance n'est pas aux inconnus.",
+    "choices": [
+      {
+        "label": "Entrer quand même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu commandes au comptoir, tu écoutes. Une conversation à voix basse vaut de l'or.",
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un colosse te demande ce que tu fais là. La sortie se fait en marche arrière et en vitesse.",
+            "effects": {
+              "health": -10
+            },
+            "agence": {
+              "signal": "agence_blessure"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre dehors",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu attends. Il pleut. Évidemment, il pleut.",
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0012",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "minEquipement": 2
+    },
+    "text": "Avec un traceur GPS, tu pourrais suivre la voiture de {cible} depuis ton bureau. Il suffit de le glisser sous le pare-chocs. C'est illégal.",
+    "choices": [
+      {
+        "label": "Poser le traceur",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Trois jours, un itinéraire complet, des adresses que personne n'aurait trouvées autrement.",
+            "effects": {
+              "karma": -4
+            },
+            "agence": {
+              "reputation": 2,
+              "signal": "agence_methode_limite"
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le garagiste de {cible} trouve le boîtier pendant une vidange. Plainte.",
+            "effects": {
+              "karma": -4
+            },
+            "agence": {
+              "plainte": true,
+              "reputation": -8,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester dans la loi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu continues à l'ancienne. Plus lent, plus propre.",
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0013",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "minEquipement": 3
+    },
+    "text": "Ton drone pourrait survoler la propriété de {cible} et filmer ce qui se passe derrière le mur. Le terrain est privé.",
+    "choices": [
+      {
+        "label": "Faire décoller",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les images sont parfaites. Le dossier avance de plusieurs semaines.",
+            "effects": {
+              "skills": {
+                "photo": 3
+              }
+            },
+            "agence": {
+              "reputation": 3,
+              "signal": "agence_methode_limite"
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un jardinier abat le drone d'un coup de râteau. La carte mémoire, avec ton nom dans les réglages, est confisquée.",
+            "effects": {
+              "money": -1500
+            },
+            "agence": {
+              "plainte": true,
+              "reputation": -5,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le drone au sol",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu choisis l'angle depuis la route. Moins bien, mais défendable."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0014",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "{client} t'appelle toutes les heures pour savoir « où on en est ». Le dernier appel tombe en pleine filature.",
+    "choices": [
+      {
+        "label": "Décrocher",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu chuchotes. Personne ne t'entend. Le client est rassuré pour une heure.",
+            "effects": {
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta sonnerie résonne dans un ascenseur silencieux. Tu sors à l'étage suivant, sans la cible.",
+            "effects": {
+              "happiness": -4
+            },
+            "agence": {
+              "reputation": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fixer des règles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un rapport par semaine, pas un de plus. Ton client accepte en soupirant.",
+            "effects": {
+              "skills": {
+                "eloquence": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bloquer le numéro",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le silence est délicieux. La facture, à la fin, sera discutée ligne par ligne.",
+            "effects": {
+              "happiness": 3
+            },
+            "agence": {
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0015",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Au bar de l'hôtel, {cible} vient s'asseoir à côté de toi et engage la conversation. Tu es en pleine couverture.",
+    "choices": [
+      {
+        "label": "Jouer le jeu",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une heure de discussion légère. Tu en apprends plus qu'en une semaine de filature.",
+            "effects": {
+              "skills": {
+                "seduction": 2
+              }
+            },
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une question de trop, et tu sens le soupçon. Couverture grillée.",
+            "effects": {
+              "happiness": -3
+            },
+            "agence": {
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prétexter un appel",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu t'éclipses. La couverture tient. L'occasion, elle, est passée."
+          }
+        ]
+      },
+      {
+        "label": "Jouer le charme",
+        "requiresSkill": {
+          "seduction": 2
+        },
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Tu ris aux bons moments. Les confidences arrivent toutes seules.",
+            "effects": {
+              "skills": {
+                "seduction": 3
+              }
+            },
+            "agence": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Trop de charme : on te donne un numéro de téléphone, pas d'information.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0016",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Nuit de planque sous une pluie glaciale. Le chauffage de la voiture est en panne et {cible} ne bouge pas.",
+    "choices": [
+      {
+        "label": "Rester",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "À 4 h du matin, une silhouette entre. Tu as la photo, et un rhume.",
+            "effects": {
+              "health": -6
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Rien ne se passe. Tu attrapes une bronchite pour une porte close.",
+            "effects": {
+              "health": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rentrer dormir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu dors. Le lendemain, une voisine te dit qu'il y a eu « du passage » cette nuit-là.",
+            "effects": {
+              "health": 2,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0017",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Pendant ta planque, tu vois quelqu'un forcer la portière d'une voiture garée. Si tu interviens, ta couverture saute.",
+    "choices": [
+      {
+        "label": "Intervenir",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le voleur détale. Le propriétaire te remercie. Ta cible, elle, a tout vu depuis sa fenêtre.",
+            "effects": {
+              "karma": 8
+            },
+            "agence": {
+              "reputation": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le voleur ne détale pas. Il a un tournevis et pas d'humour.",
+            "effects": {
+              "karma": 8,
+              "health": -15
+            },
+            "agence": {
+              "signal": "agence_blessure"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Photographier et prévenir la police",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu envoies les photos aux policiers sans bouger de ta voiture. Deux affaires pour le prix d'une.",
+            "effects": {
+              "karma": 5,
+              "skills": {
+                "photo": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien faire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu restes concentré{e} sur ta cible. Tu te sens un peu moins détective, un peu plus voyeur.",
+            "effects": {
+              "karma": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0018",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Une lettre recommandée arrive à l'agence : l'avocat de {cible} te met en demeure de cesser toute surveillance.",
+    "choices": [
+      {
+        "label": "Continuer prudemment",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu changes de voiture, d'horaires, d'apparence. L'enquête continue.",
+            "effects": {
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On te repère à nouveau. L'avocat dépose plainte pour harcèlement.",
+            "agence": {
+              "plainte": true,
+              "reputation": -5,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer aux recherches documentaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plus de filature, que des registres et des archives. Moins rapide, inattaquable.",
+            "effects": {
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prévenir ton client",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton client prend peur et envisage d'arrêter. Tu le convaincs de continuer, version légale."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0019",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "adultere",
+        "chantage",
+        "espionnage_industriel"
+      ]
+    },
+    "text": "À la réception de l'hôtel, un employé te glisse qu'il pourrait te montrer le registre des chambres « pour un petit quelque chose ».",
+    "choices": [
+      {
+        "label": "Payer",
+        "cost": 200,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Nom, numéro de chambre, heure d'arrivée. Ton dossier sur {cible} est bouclé.",
+            "effects": {
+              "karma": -3
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le registre est authentique. L'employé aussi est authentique : il se fait licencier le lendemain et donne ton nom.",
+            "effects": {
+              "karma": -3
+            },
+            "agence": {
+              "plainte": true,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu prendras tes photos toi-même, sur le parking, comme une personne honnête et frigorifiée.",
+            "effects": {
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0020",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "fraude_assurance",
+        "faux_arret_maladie"
+      ]
+    },
+    "text": "Au club de sport, tu filmes {cible}, officiellement invalide, en train de soulever des haltères. Un coach te demande ce que tu fais avec ce téléphone.",
+    "choices": [
+      {
+        "label": "Prétendre filmer ta technique",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il te corrige la posture. Tu repars avec les images et un abonnement d'essai.",
+            "effects": {
+              "health": 2
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il ne te croit pas et te demande d'effacer. Tu effaces. Il ne sait pas qu'il y a une sauvegarde.",
+            "effects": {
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sortir sans discuter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu sors, les images en poche. Tu ne pourras plus revenir."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0021",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "disparition",
+        "fugue"
+      ]
+    },
+    "text": "Dans un foyer pour jeunes, une éducatrice reconnaît peut-être la photo de {cible}. Mais elle invoque le secret professionnel.",
+    "choices": [
+      {
+        "label": "Respecter son silence",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu laisses ta carte. Le lendemain, un message : « La personne que vous cherchez va bien. Elle demande du temps. »",
+            "effects": {
+              "karma": 4
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle ne rappelle pas. Tu as perdu une journée, mais pas ta dignité."
+          }
+        ]
+      },
+      {
+        "label": "Insister",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Elle cède un indice, à contrecœur. Tu sens que tu as abîmé quelque chose.",
+            "effects": {
+              "karma": -3
+            },
+            "agence": {
+              "reputation": 1
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Elle appelle le directeur, qui appelle la police.",
+            "effects": {
+              "happiness": -4
+            },
+            "agence": {
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0022",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "espionnage_industriel",
+        "contrefacon"
+      ]
+    },
+    "text": "Un informateur chez le concurrent veut 3 000 € pour te remettre une copie des courriels de {cible}.",
+    "choices": [
+      {
+        "label": "Payer",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les courriels sont réels. La preuve est obtenue illégalement, mais elle te montre où chercher.",
+            "effects": {
+              "karma": -6
+            },
+            "agence": {
+              "signal": "agence_methode_limite",
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les courriels sont faux. L'informateur a disparu avec tes 3 000 €.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ne joues pas ce jeu-là. Tu trouveras autrement.",
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le faire suivre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu découvres qu'il vend des informations aux deux camps. Ça vaut presque tous les courriels du monde.",
+            "effects": {
+              "smarts": 3
+            },
+            "agence": {
+              "reputation": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0023",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "cold_case",
+        "disparition"
+      ]
+    },
+    "text": "Un ancien gendarme à la retraite te tend une boîte à chaussures. Dedans, des copies de procès-verbaux qu'il n'aurait jamais dû garder.",
+    "choices": [
+      {
+        "label": "Prendre la boîte",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Les copies révèlent une piste jamais suivie. Tu passes la nuit à les lire.",
+            "effects": {
+              "smarts": 3
+            },
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Les copies sont incomplètes, et ton nom figure maintenant dans une affaire de documents volés.",
+            "agence": {
+              "plainte": true,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander de raconter plutôt",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il parle pendant trois heures. Ce n'est pas une preuve, c'est mieux : une direction.",
+            "effects": {
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0024",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "protection_temoin"
+      ]
+    },
+    "text": "Le témoin que tu protèges veut absolument aller à l'anniversaire de sa nièce. « Une heure. Rien qu'une heure. »",
+    "choices": [
+      {
+        "label": "Accepter, avec escorte",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu passes l'heure au fond du jardin, adossé{e} à un mur, à regarder chaque voiture. Rien ne se passe. Le témoin sourit pour la première fois.",
+            "effects": {
+              "karma": 4
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une voiture ralentit devant la maison, puis repart. Vous partez avant le gâteau.",
+            "effects": {
+              "happiness": -3
+            },
+            "agence": {
+              "signal": "agence_menace"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le témoin te déteste pendant deux jours, puis te remercie. La sécurité avant les bougies."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0025",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "animal_disparu"
+      ]
+    },
+    "text": "Le chat disparu est là, sur le toit d'en face, à deux mètres d'une gouttière très peu engageante.",
+    "choices": [
+      {
+        "label": "Escalader",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu attrapes le chat. Le chat t'attrape aussi. Tout le monde redescend, griffé mais vivant.",
+            "effects": {
+              "health": -4,
+              "happiness": 6
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La gouttière lâche. Le chat descend tout seul, dédaigneux, pendant que tu attends les pompiers.",
+            "effects": {
+              "health": -12
+            },
+            "agence": {
+              "signal": "agence_blessure"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler les pompiers",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils arrivent en dix minutes et récupèrent l'animal avec une patience infinie. Tu fais une photo pour le client.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir une boîte de thon",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le chat descend avec la dignité d'un aristocrate. Ça marche à chaque fois.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_ter_0026",
+    "kind": "terrain",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "typesAffaire": [
+        "harcelement",
+        "lettres_anonymes",
+        "chantage"
+      ]
+    },
+    "text": "Ce matin, sur ton propre téléphone, un message anonyme : « Arrête de fouiller. » Le même style que ceux que reçoit ton client.",
+    "choices": [
+      {
+        "label": "Continuer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu as fait peur à quelqu'un. C'est donc que tu chauffes.",
+            "effects": {
+              "happiness": -3
+            },
+            "agence": {
+              "signal": "agence_menace",
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le soir, tes pneus sont crevés. Le message est clair.",
+            "effects": {
+              "money": -400,
+              "happiness": -5
+            },
+            "agence": {
+              "signal": "agence_menace"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Remonter la trace du message",
+        "requiresSkill": {
+          "code": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le message part d'un forfait prépayé acheté dans un tabac. Le buraliste se souvient d'un visage.",
+            "effects": {
+              "smarts": 3,
+              "skills": {
+                "code": 1
+              }
+            },
+            "agence": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Signaler à la police",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils prennent la plainte. Ça ne règle rien, mais ça laisse une trace."
+          }
+        ]
+      }
+    ]
+  }
+]

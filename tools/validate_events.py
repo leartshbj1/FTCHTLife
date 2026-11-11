@@ -67,6 +67,7 @@ TAGS |= {"entrepreneur","patron","magnat","ancien_entrepreneur","failli","phone"
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"gang","gang_haut","dealer","sous_enquete","chaleur","ancien_gang","balance","argent_sale"}
 PH |= {"organisation","chef","rival","rang"}
+<<<<<<< HEAD
 # Module Cœur (docs/COEUR.md) : liaisons, tromperies, enfants cachés, crises de couple ; tags réseaux (docs/PHONE.md).
 TAGS |= {"liaison","liaison_longue","liaison_ultimatum","liaison_soupcon","liaison_hetero","ancien_amant","grossesse_liaison",
          "enfant_cache","enfant_cache_adulte","paternite_douteuse","partenaire_infidele","soupcon_partenaire","trahi",
@@ -90,6 +91,10 @@ def check_coeur(v, where, errs):
 # Module Beauté (docs/BEAUTE.md) : tags beaute_* (BeauteMoteur.tags) et sous-objet "beaute" des effets.
 TAG_PREFIXES += ("beaute_",)
 SPECIAL |= {"beaute"}
+=======
+# Secte et agence de détective (docs/SECTE_DETECTIVE.md)
+TAGS |= {"gourou","secte_communaute","secte_grande","secte_enquete","ancien_gourou","proche_dans_secte","detective","detective_celebre","detective_clandestin","ancien_detective"}
+>>>>>>> c40baf757f880accd4c86b962fc34d9f747e04d8
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
