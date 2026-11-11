@@ -86,6 +86,9 @@ ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_spor
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
 ISSUES = ["", "_sommet", "_perdu", "_blessure", "_animal", "_rencontre", "_honte", "_victoire", "_casse", "_arnaque"]
 SIGNAUX |= {a + i for a in ACTIVITES for i in ISSUES}
+# Gloire et procès (docs/GLOIRE.md)
+SIGNAUX |= set("""livre_publie best_seller pub_tournee pub_ratee pub_arnaque gloire_scandale gloire_fete gloire_shooting
+gloire_plateau drogue_essai poursuite_gagnee poursuite_perdue poursuite_accord poursuite_proche""".split())
 # Module Beauté (docs/BEAUTE.md)
 SIGNAUX |= set("""coiffeur coiffure_ratee coiffure_audacieuse chirurgie_ratee chirurgie_clandestine chirurgie_forfait
 injections calvitie""".split())

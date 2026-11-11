@@ -63,7 +63,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
     // Relations
     case famille, amour, amis, rencontres, telephone, voisins, animaux, reputationFamille, secrets
     // Activités
-    case loisirs, projets, coiffeur, chirurgie, sante, television, casino, permis, voyages, etranger, crime, prison, casier
+    case loisirs, projets, coiffeur, chirurgie, sante, television, casino, permis, voyages, etranger, crime, prison, casier, celebrite, proces
     // Moi
     case profil, competences, trophees, journalDuMonde, musee, reglages
 
@@ -77,7 +77,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
             return .biens
         case .famille, .amour, .amis, .rencontres, .telephone, .voisins, .animaux, .reputationFamille, .secrets:
             return .relations
-        case .loisirs, .projets, .coiffeur, .chirurgie, .sante, .television, .casino, .permis, .voyages, .etranger, .crime, .prison, .casier:
+        case .loisirs, .projets, .coiffeur, .chirurgie, .sante, .television, .casino, .permis, .voyages, .etranger, .crime, .prison, .casier, .celebrite, .proces:
             return .activites
         case .profil, .competences, .trophees, .journalDuMonde, .musee, .reglages:
             return .moi
@@ -101,6 +101,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .sante, .permis: return "Santé et démarches"
         case .voyages, .etranger: return "Voyager"
         case .crime, .prison, .casier: return "Hors-la-loi"
+        case .celebrite, .proces: return "Gloire et justice"
         case .profil, .competences, .trophees: return "Moi"
         case .journalDuMonde, .musee, .reglages: return "Le jeu"
         }
@@ -145,6 +146,8 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .crime: return "Crime"
         case .prison: return "Prison"
         case .casier: return "Casier judiciaire"
+        case .celebrite: return "Célébrité"
+        case .proces: return "Procès"
         case .profil: return "Mon profil"
         case .competences: return "Compétences"
         case .trophees: return "Trophées"
@@ -193,6 +196,8 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .crime: return "Petits larcins et gros coups."
         case .prison: return "Tu es derrière les barreaux."
         case .casier: return "Effacer ton passé judiciaire."
+        case .celebrite: return "Livre, pubs, fêtes, photos, télé : gère ta gloire."
+        case .proces: return "Poursuivre quelqu'un en justice."
         case .profil: return "Stats, rêves, réputation."
         case .competences: return "27 talents qui débloquent des choix."
         case .trophees: return "Trophées gardés d'une vie à l'autre."
@@ -241,6 +246,8 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .crime: return "theatermasks.fill"
         case .prison: return "lock.shield.fill"
         case .casier: return "doc.text.magnifyingglass"
+        case .celebrite: return "star.fill"
+        case .proces: return "scalemass.fill"
         case .profil: return "person.text.rectangle.fill"
         case .competences: return "star.circle.fill"
         case .trophees: return "trophy.fill"
@@ -264,7 +271,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
 
     /// Entrées impossibles derrière les barreaux.
     static let fermesEnPrison: [ModuleJeu] = [.offresEmploi, .entreprise, .boutique, .rencontres, .loisirs, .projets, .chirurgie,
-                                              .television, .casino, .permis, .voyages, .etranger, .crime, .ecole, .universite]
+                                              .television, .casino, .permis, .voyages, .etranger, .crime, .ecole, .universite, .celebrite]
 
     /// Raison pour laquelle l'entrée est fermée pour l'instant (nil = ouverte).
     func verrou(_ j: Joueur) -> String? {
@@ -297,6 +304,8 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .coiffeur where j.age < 2: return "Dès 2 ans. Pour l'instant, trois cheveux et un épi."
         case .chirurgie where j.age < 18: return "Dès 18 ans. Ton visage n'a pas fini de pousser."
         case .crime where j.age < 12: return "Dès 12 ans. Avant, voler des bonbons ne compte pas."
+        case .celebrite where j.age < 6: return "Dès 6 ans. Pour l'instant, tu es célèbre à la crèche."
+        case .proces where j.age < ProcesMoteur.ageMin: return "Dès \(ProcesMoteur.ageMin) ans. Avant, tu peux seulement le dire à tes parents."
         default: return nil
         }
     }

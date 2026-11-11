@@ -1,0 +1,959 @@
+{
+  "cibles": [
+    {
+      "id": "employeur",
+      "nom": "Ton employeur",
+      "emoji": "🏢",
+      "description": "Ta boîte actuelle. Ambiance garantie lundi matin.",
+      "type": "employeur",
+      "defense": 18,
+      "poche": 1.5,
+      "condition": "emploi"
+    },
+    {
+      "id": "ancien_employeur",
+      "nom": "Ton ancien employeur",
+      "emoji": "🏚️",
+      "description": "Tu es parti, mais tu n'as rien oublié.",
+      "type": "employeur",
+      "defense": 15,
+      "poche": 1.3,
+      "condition": "ancienEmploi"
+    },
+    {
+      "id": "fastfood",
+      "nom": "Burger Big Bisou",
+      "emoji": "🍔",
+      "description": "Chaîne de fast-food, 900 restaurants, 40 avocats.",
+      "type": "entreprise",
+      "defense": 25,
+      "poche": 2.0
+    },
+    {
+      "id": "hypermarche",
+      "nom": "Hypermarché Mégaprix",
+      "emoji": "🛒",
+      "description": "Le magasin où tout est moins cher, sauf les procès.",
+      "type": "entreprise",
+      "defense": 18,
+      "poche": 1.2
+    },
+    {
+      "id": "constructeur",
+      "nom": "Renaudine Automobiles",
+      "emoji": "🚗",
+      "description": "Constructeur automobile. Un service juridique grand comme un parking.",
+      "type": "entreprise",
+      "defense": 28,
+      "poche": 3.0
+    },
+    {
+      "id": "compagnie_aerienne",
+      "nom": "Air Azur",
+      "emoji": "✈️",
+      "description": "Compagnie aérienne. Tes bagages sont peut-être encore à Oslo.",
+      "type": "entreprise",
+      "defense": 20,
+      "poche": 1.5
+    },
+    {
+      "id": "banque",
+      "nom": "Banque Créditeo",
+      "emoji": "🏦",
+      "description": "Ta banque, qui « t'écoute ».",
+      "type": "entreprise",
+      "defense": 26,
+      "poche": 2.5
+    },
+    {
+      "id": "geant_tech",
+      "nom": "Orion Technologies",
+      "emoji": "📱",
+      "description": "Géant de la tech. Ils ont plus d'avocats que d'ingénieurs.",
+      "type": "entreprise",
+      "defense": 35,
+      "poche": 5.0
+    },
+    {
+      "id": "clinique",
+      "nom": "Clinique Saint-Bistouri",
+      "emoji": "🏥",
+      "description": "Clinique privée, salle d'attente en marbre.",
+      "type": "medecin",
+      "defense": 22,
+      "poche": 2.0
+    },
+    {
+      "id": "medecin",
+      "nom": "Ton médecin de famille",
+      "emoji": "🩺",
+      "description": "Le docteur qui te soigne depuis toujours.",
+      "type": "medecin",
+      "defense": 12,
+      "poche": 0.8
+    },
+    {
+      "id": "tabloid",
+      "nom": "Le magazine « Ragots Hebdo »",
+      "emoji": "🗞️",
+      "description": "Le journal qui raconte ta vie mieux que toi, et plus faux.",
+      "type": "presse",
+      "defense": 20,
+      "poche": 1.4,
+      "condition": "gloire"
+    },
+    {
+      "id": "voisin",
+      "nom": "Ton voisin du dessus",
+      "emoji": "🏠",
+      "description": "Il fait du karaoké à 2 h du matin. Tous les soirs.",
+      "type": "voisin",
+      "defense": 5,
+      "poche": 0.3
+    },
+    {
+      "id": "chien",
+      "nom": "Le maître du chien du quartier",
+      "emoji": "🐕",
+      "description": "Son chien t'a « juste mordillé ». Tu as eu six points de suture.",
+      "type": "voisin",
+      "defense": 5,
+      "poche": 0.4
+    },
+    {
+      "id": "mairie",
+      "nom": "Ta mairie",
+      "emoji": "🏛️",
+      "description": "Le maire, ses adjoints, et ses nids-de-poule.",
+      "type": "etat",
+      "defense": 20,
+      "poche": 1.0
+    },
+    {
+      "id": "etat",
+      "nom": "L'État",
+      "emoji": "⚖️",
+      "description": "Le plus gros adversaire possible. Il a tout son temps.",
+      "type": "etat",
+      "defense": 30,
+      "poche": 2.0
+    },
+    {
+      "id": "police",
+      "nom": "La police",
+      "emoji": "👮",
+      "description": "Pour ton arrestation, ta garde à vue ou ta détention.",
+      "type": "etat",
+      "defense": 30,
+      "poche": 1.5,
+      "condition": "prison"
+    }
+  ],
+  "motifs": [
+    {
+      "id": "dette",
+      "nom": "Dette non remboursée",
+      "description": "Tu as prêté de l'argent. Tu n'as jamais revu ni l'argent, ni la reconnaissance.",
+      "cibles": [
+        "proche"
+      ],
+      "solidite": 60,
+      "dommages": [
+        500,
+        20000
+      ],
+      "victoire": [
+        "Le juge ordonne à {cible} de te rembourser {montant}, intérêts compris. Les reconnaissances de dette, ça sert.",
+        "Tu avais gardé les messages. Le juge aussi les lit, et condamne {cible} à te verser {montant}."
+      ],
+      "defaite": [
+        "Sans preuve écrite, le juge ne peut rien faire. « C'était un cadeau », dit {cible}. Le juge hausse les épaules.",
+        "Le tribunal estime que le prêt n'est pas prouvé. {cible} repart avec un petit sourire."
+      ]
+    },
+    {
+      "id": "diffamation",
+      "nom": "Diffamation",
+      "description": "On raconte des mensonges sur toi, publiquement.",
+      "cibles": [
+        "proche",
+        "presse",
+        "voisin"
+      ],
+      "solidite": 40,
+      "dommages": [
+        2000,
+        40000
+      ],
+      "victoire": [
+        "Le tribunal reconnaît la diffamation. {cible} doit te verser {montant} et publier un démenti.",
+        "Les propos sont jugés mensongers et blessants. {cible} est condamné à te payer {montant}."
+      ],
+      "defaite": [
+        "Le juge estime qu'il s'agit d'une « opinion », pas d'une diffamation. Tu as perdu, et tout le monde a relu les propos.",
+        "Faute de preuves, le tribunal te déboute. L'affaire a fait plus de bruit que les propos eux-mêmes."
+      ]
+    },
+    {
+      "id": "vie_privee",
+      "nom": "Atteinte à la vie privée",
+      "description": "Tes photos, tes secrets ou ton adresse ont été diffusés sans ton accord.",
+      "cibles": [
+        "proche",
+        "presse"
+      ],
+      "solidite": 50,
+      "dommages": [
+        3000,
+        60000
+      ],
+      "victoire": [
+        "Le tribunal condamne {cible} à te verser {montant}. Ta vie privée est à toi, c'est écrit dans le jugement.",
+        "La justice te donne raison : {montant} et le retrait de toutes les publications."
+      ],
+      "defaite": [
+        "Le juge estime que tu avais toi-même rendu ces informations publiques. Il cite trois de tes propres publications.",
+        "Le tribunal te déboute : l'intérêt du public l'emporte, selon lui."
+      ]
+    },
+    {
+      "id": "coups",
+      "nom": "Coups et blessures",
+      "description": "On t'a frappé. Tu as un certificat médical et une rancune solide.",
+      "cibles": [
+        "proche",
+        "voisin"
+      ],
+      "solidite": 55,
+      "dommages": [
+        3000,
+        40000
+      ],
+      "victoire": [
+        "Le certificat médical est clair. {cible} est condamné à te verser {montant} de dommages et intérêts.",
+        "Les témoins confirment ta version. Le tribunal t'accorde {montant}."
+      ],
+      "defaite": [
+        "Les témoignages se contredisent. Le juge parle de « bagarre réciproque » et renvoie tout le monde dos à dos.",
+        "Faute de témoins, le tribunal ne peut pas trancher. Tu repars avec ton bleu et sans rien d'autre."
+      ]
+    },
+    {
+      "id": "heritage",
+      "nom": "Héritage contesté",
+      "description": "Le partage de l'héritage familial t'a semblé… créatif.",
+      "cibles": [
+        "proche"
+      ],
+      "solidite": 35,
+      "dommages": [
+        5000,
+        80000
+      ],
+      "victoire": [
+        "Le juge rétablit un partage équitable : {cible} doit te verser {montant}. Le prochain repas de famille sera glacial.",
+        "Le testament est jugé ambigu en ta faveur. Tu récupères {montant}."
+      ],
+      "defaite": [
+        "Le testament est parfaitement valable. Tu as attaqué ta propre famille pour rien, et elle s'en souviendra.",
+        "Le tribunal confirme le partage. {cible} t'envoie une carte de vœux en recommandé."
+      ]
+    },
+    {
+      "id": "pension",
+      "nom": "Pension alimentaire impayée",
+      "description": "L'argent dû pour les enfants n'arrive plus.",
+      "cibles": [
+        "proche"
+      ],
+      "solidite": 65,
+      "dommages": [
+        3000,
+        40000
+      ],
+      "victoire": [
+        "Le juge ordonne le paiement des arriérés : {montant}. Les enfants ne sauront pas tout, et c'est mieux comme ça.",
+        "{cible} est condamné à régler {montant} et à payer à l'heure désormais."
+      ],
+      "defaite": [
+        "Le juge estime que {cible} n'a pas les moyens de payer pour l'instant. Rien ne change, sauf la tension."
+      ]
+    },
+    {
+      "id": "anniversaire",
+      "nom": "Anniversaire gâché",
+      "description": "Quelqu'un a gâché ton anniversaire. Le gâteau s'en souvient.",
+      "cibles": [
+        "proche"
+      ],
+      "solidite": 5,
+      "dommages": [
+        500,
+        5000
+      ],
+      "victoire": [
+        "Contre toute attente, le juge, qui a lui-même eu un anniversaire gâché, t'accorde {montant} « de préjudice festif ».",
+        "Le juge rit pendant cinq minutes, puis t'accorde {montant} pour l'originalité."
+      ],
+      "defaite": [
+        "Le juge te regarde longtemps, puis dit : « Vraiment ? » Tu es condamné{e} pour procédure abusive.",
+        "Le tribunal juge ta plainte « puérile ». Le greffier a pris une photo de ton dossier pour la montrer à ses collègues."
+      ],
+      "frivole": true
+    },
+    {
+      "id": "licenciement",
+      "nom": "Licenciement abusif",
+      "description": "Viré du jour au lendemain, sans vraie raison.",
+      "cibles": [
+        "employeur"
+      ],
+      "solidite": 50,
+      "dommages": [
+        8000,
+        80000
+      ],
+      "victoire": [
+        "Les prud'hommes jugent ton licenciement sans cause réelle. {cible} doit te verser {montant}.",
+        "Ton ancien patron n'avait aucun dossier. Le tribunal t'accorde {montant} d'indemnités."
+      ],
+      "defaite": [
+        "Les prud'hommes valident le licenciement : tes retards étaient bien documentés. Très bien documentés.",
+        "Le tribunal estime la faute réelle. Tu repars sans indemnité."
+      ]
+    },
+    {
+      "id": "harcelement",
+      "nom": "Harcèlement moral",
+      "description": "Brimades, humiliations, pression permanente au travail.",
+      "cibles": [
+        "employeur"
+      ],
+      "solidite": 40,
+      "dommages": [
+        10000,
+        100000
+      ],
+      "victoire": [
+        "Les témoignages de tes collègues sont accablants. Le tribunal reconnaît le harcèlement et t'accorde {montant}.",
+        "{cible} est condamné à te verser {montant}. Ton ancien chef doit suivre une formation. Il déteste ça."
+      ],
+      "defaite": [
+        "Aucun collègue n'a accepté de témoigner. Sans eux, le dossier ne tient pas. Tu le vis très mal.",
+        "Le tribunal parle de « management exigeant », pas de harcèlement. Tu n'es pas d'accord, mais c'est fini."
+      ]
+    },
+    {
+      "id": "heures_sup",
+      "nom": "Heures supplémentaires impayées",
+      "description": "Tu as compté chaque soir passé au bureau.",
+      "cibles": [
+        "employeur"
+      ],
+      "solidite": 60,
+      "dommages": [
+        3000,
+        30000
+      ],
+      "victoire": [
+        "Tes relevés sont imparables. {cible} doit te payer {montant} d'heures supplémentaires.",
+        "Le tribunal recompte tout, au centime près : {montant} pour toi."
+      ],
+      "defaite": [
+        "Tes heures n'ont jamais été validées par écrit. Le tribunal ne peut rien faire.",
+        "{cible} prouve que tu jouais aux cartes en ligne pendant tes « heures sup ». Silence dans la salle."
+      ]
+    },
+    {
+      "id": "discrimination",
+      "nom": "Discrimination",
+      "description": "Tu as été traité{e} différemment à cause de qui tu es.",
+      "cibles": [
+        "employeur"
+      ],
+      "solidite": 35,
+      "dommages": [
+        15000,
+        120000
+      ],
+      "victoire": [
+        "Le tribunal reconnaît la discrimination. {cible} est condamné à te verser {montant}. Ta victoire fera jurisprudence.",
+        "Les preuves sont solides : {montant} et une condamnation publique de {cible}."
+      ],
+      "defaite": [
+        "La discrimination est difficile à prouver. Le tribunal te déboute, malgré ta conviction.",
+        "Le juge estime les éléments insuffisants. Tu sais ce que tu as vécu, mais la justice ne l'a pas vu."
+      ]
+    },
+    {
+      "id": "accident_travail",
+      "nom": "Accident du travail",
+      "description": "Blessé{e} au travail, faute de sécurité.",
+      "cibles": [
+        "employeur"
+      ],
+      "solidite": 50,
+      "dommages": [
+        10000,
+        150000
+      ],
+      "victoire": [
+        "L'enquête montre que les règles de sécurité n'étaient pas respectées. {cible} doit te verser {montant}.",
+        "Le tribunal retient la faute de l'employeur : {montant} pour toi."
+      ],
+      "defaite": [
+        "L'enquête conclut à ton imprudence. Le casque était sur le crochet, toi en dessous.",
+        "Le tribunal estime que l'accident n'est pas lié à ton employeur."
+      ]
+    },
+    {
+      "id": "regard",
+      "nom": "Ton chef t'a mal regardé",
+      "description": "Un regard. Un seul. Mais quel regard.",
+      "cibles": [
+        "employeur"
+      ],
+      "solidite": 5,
+      "dommages": [
+        500,
+        5000
+      ],
+      "victoire": [
+        "Par un miracle juridique inexpliqué, le juge t'accorde {montant} « pour regard appuyé ».",
+        "Le juge, lui aussi souvent mal regardé, t'accorde {montant}."
+      ],
+      "defaite": [
+        "Le juge te regarde. Mal. Puis te condamne pour procédure abusive.",
+        "« Le droit du travail ne couvre pas les regards. » Tu as perdu."
+      ],
+      "frivole": true
+    },
+    {
+      "id": "produit_defectueux",
+      "nom": "Produit défectueux",
+      "description": "Ce que tu as acheté t'a blessé{e} ou ruiné{e}.",
+      "cibles": [
+        "entreprise"
+      ],
+      "solidite": 45,
+      "dommages": [
+        5000,
+        200000
+      ],
+      "victoire": [
+        "Les experts confirment le défaut. {cible} est condamné à te verser {montant}. Un rappel est lancé dans tout le pays.",
+        "Le tribunal juge le produit dangereux : {montant} pour toi, et des milliers de clients te remercient."
+      ],
+      "defaite": [
+        "Les experts concluent à une mauvaise utilisation. Tu avais bien lu la notice. À l'envers.",
+        "Le tribunal ne retient pas le défaut. Les avocats de {cible} étaient quarante."
+      ]
+    },
+    {
+      "id": "intoxication",
+      "nom": "Intoxication alimentaire",
+      "description": "Trois jours malade après un repas chez eux.",
+      "cibles": [
+        "entreprise"
+      ],
+      "solidite": 45,
+      "dommages": [
+        3000,
+        60000
+      ],
+      "victoire": [
+        "L'analyse confirme la contamination. {cible} doit te verser {montant}. Tu ne remanges plus jamais là-bas.",
+        "Le tribunal t'accorde {montant}. Tes trois jours aux toilettes sont désormais dans un jugement officiel."
+      ],
+      "defaite": [
+        "Impossible de prouver que c'est leur repas. Tu avais aussi mangé un kebab à 3 h du matin.",
+        "Le tribunal te déboute. {cible} t'offre un bon de réduction, ce qui est presque pire."
+      ]
+    },
+    {
+      "id": "glissade",
+      "nom": "Glissade dans le magasin",
+      "description": "Sol mouillé, aucun panneau, ton coccyx s'en souvient.",
+      "cibles": [
+        "entreprise"
+      ],
+      "solidite": 45,
+      "dommages": [
+        2000,
+        50000
+      ],
+      "victoire": [
+        "Les caméras montrent le sol mouillé sans panneau. {cible} doit te verser {montant}.",
+        "Le tribunal t'accorde {montant}. Le panneau « sol glissant » coûtait 12 euros."
+      ],
+      "defaite": [
+        "Les caméras montrent que tu courais avec un caddie en criant « Formule 1 ». Tu as perdu.",
+        "Le panneau était bien là. Juste derrière toi."
+      ]
+    },
+    {
+      "id": "pub_mensongere",
+      "nom": "Publicité mensongère",
+      "description": "La crème promettait 10 ans de moins. Tu as vieilli normalement.",
+      "cibles": [
+        "entreprise"
+      ],
+      "solidite": 35,
+      "dommages": [
+        1000,
+        30000
+      ],
+      "victoire": [
+        "Le tribunal juge la publicité trompeuse. {cible} doit te verser {montant} et modifier sa campagne.",
+        "Victoire : {montant} et le retrait de la publicité."
+      ],
+      "defaite": [
+        "Le juge estime que « personne de raisonnable n'y croit ». Toi, tu y croyais.",
+        "Le tribunal te déboute : les petites lignes en bas de l'écran disaient tout."
+      ]
+    },
+    {
+      "id": "bagages",
+      "nom": "Vol annulé, bagages perdus",
+      "description": "Trois jours à l'aéroport, une valise jamais revue.",
+      "cibles": [
+        "entreprise"
+      ],
+      "solidite": 60,
+      "dommages": [
+        500,
+        8000
+      ],
+      "victoire": [
+        "Le droit des passagers est clair : {cible} doit te verser {montant}. Ta valise, elle, reste introuvable.",
+        "Le tribunal t'accorde {montant}. On retrouve ta valise le même jour, à Oslo."
+      ],
+      "defaite": [
+        "L'annulation était due à une tempête. Personne ne peut attaquer une tempête."
+      ]
+    },
+    {
+      "id": "frais_bancaires",
+      "nom": "Frais bancaires abusifs",
+      "description": "Des frais pour tout, même pour te dire qu'il y a des frais.",
+      "cibles": [
+        "entreprise"
+      ],
+      "solidite": 50,
+      "dommages": [
+        500,
+        10000
+      ],
+      "victoire": [
+        "Le tribunal juge les frais abusifs. {cible} doit te rembourser {montant}.",
+        "Victoire : {montant} et une lettre d'excuses de ta banque, facturée 0 €. Une première."
+      ],
+      "defaite": [
+        "Tout était dans ton contrat, page 47, en police 6. Tu as perdu."
+      ]
+    },
+    {
+      "id": "donnees",
+      "nom": "Données personnelles revendues",
+      "description": "Ton adresse, tes goûts, ta pointure : vendus.",
+      "cibles": [
+        "entreprise"
+      ],
+      "solidite": 40,
+      "dommages": [
+        2000,
+        50000
+      ],
+      "victoire": [
+        "Le tribunal condamne {cible} pour avoir revendu tes données : {montant}.",
+        "Victoire : {montant}, et l'entreprise doit tout effacer. Elle dit l'avoir fait."
+      ],
+      "defaite": [
+        "Tu avais coché « J'accepte ». Comme tout le monde. Le juge aussi, d'ailleurs."
+      ]
+    },
+    {
+      "id": "cafe_chaud",
+      "nom": "Café trop chaud",
+      "description": "Ton café était brûlant. C'était pourtant un café.",
+      "cibles": [
+        "entreprise"
+      ],
+      "solidite": 12,
+      "dommages": [
+        10000,
+        400000
+      ],
+      "victoire": [
+        "Contre toute attente, le tribunal juge la température dangereuse. {cible} doit te verser {montant}. Les gobelets portent désormais un avertissement.",
+        "Le jury est ému par tes photos de brûlure. {montant} pour toi. Le pays entier en débat."
+      ],
+      "defaite": [
+        "« Un café est chaud. » Le juge n'a eu besoin que de quatre mots. Tu es condamné{e} pour procédure abusive.",
+        "Le tribunal te déboute, et l'avocat de {cible} boit son café brûlant devant toi, en souriant."
+      ],
+      "frivole": true
+    },
+    {
+      "id": "erreur_medicale",
+      "nom": "Erreur médicale",
+      "description": "Une opération ratée, des séquelles bien réelles.",
+      "cibles": [
+        "medecin"
+      ],
+      "solidite": 45,
+      "dommages": [
+        20000,
+        500000
+      ],
+      "victoire": [
+        "Les experts reconnaissent la faute médicale. {cible} est condamné à te verser {montant}. L'argent ne répare pas tout, mais il aide.",
+        "Le tribunal retient la responsabilité de {cible} : {montant}."
+      ],
+      "defaite": [
+        "Les experts concluent à un « aléa thérapeutique », sans faute. Tu restes avec tes séquelles, et sans réponse.",
+        "Le tribunal ne retient pas la faute. Tu sors du tribunal en boitant, comme en y entrant."
+      ]
+    },
+    {
+      "id": "diagnostic",
+      "nom": "Diagnostic raté",
+      "description": "On t'a dit « c'est rien ». Ce n'était pas rien.",
+      "cibles": [
+        "medecin"
+      ],
+      "solidite": 35,
+      "dommages": [
+        10000,
+        150000
+      ],
+      "victoire": [
+        "Le tribunal juge le retard de diagnostic fautif. {cible} doit te verser {montant}.",
+        "Les experts te donnent raison : {montant} pour le temps perdu."
+      ],
+      "defaite": [
+        "Les experts estiment que n'importe quel médecin aurait pu se tromper. Le tribunal te déboute."
+      ]
+    },
+    {
+      "id": "salle_attente",
+      "nom": "Oublié{e} dans la salle d'attente",
+      "description": "Quatre heures et un magazine de 2009.",
+      "cibles": [
+        "medecin"
+      ],
+      "solidite": 8,
+      "dommages": [
+        300,
+        3000
+      ],
+      "victoire": [
+        "Le juge, lui-même patient régulier, t'accorde {montant}. Il te serre la main en sortant.",
+        "Le tribunal t'accorde {montant} « pour lecture forcée de magazines périmés »."
+      ],
+      "defaite": [
+        "« Ce n'est pas un préjudice, c'est la vie. » Procédure abusive.",
+        "Le juge a attendu ton dossier deux heures. Il n'est pas d'humeur."
+      ],
+      "frivole": true
+    },
+    {
+      "id": "photos_volees",
+      "nom": "Photos volées",
+      "description": "Des paparazzis t'ont photographié{e} chez toi, au téléobjectif.",
+      "cibles": [
+        "presse"
+      ],
+      "solidite": 55,
+      "dommages": [
+        10000,
+        150000
+      ],
+      "victoire": [
+        "Le tribunal condamne {cible} à te verser {montant} et à retirer les photos. Les ventes du numéro étaient déjà faites.",
+        "Victoire nette : {montant}. Le photographe est interdit d'approcher ta maison."
+      ],
+      "defaite": [
+        "Tu étais sur ton balcon, visible depuis la rue. Le tribunal parle de « lieu public ».",
+        "Le tribunal te déboute. Le magazine republie les photos avec le titre « Celles qu'on voulait vous cacher »."
+      ]
+    },
+    {
+      "id": "rumeur",
+      "nom": "Fausse rumeur",
+      "description": "Grossesse, rupture, faillite : ils ont tout inventé.",
+      "cibles": [
+        "presse"
+      ],
+      "solidite": 45,
+      "dommages": [
+        5000,
+        80000
+      ],
+      "victoire": [
+        "La rumeur est jugée mensongère. {cible} doit te verser {montant} et publier un démenti en une.",
+        "Victoire : {montant}. Le démenti fait la une, en tout petit, en bas à droite."
+      ],
+      "defaite": [
+        "Le magazine avait mis un point d'interrogation dans son titre. Le tribunal juge que c'était une « question »."
+      ]
+    },
+    {
+      "id": "bruit",
+      "nom": "Nuisances sonores",
+      "description": "Karaoké, perceuse, chien qui aboie : ton sommeil est mort.",
+      "cibles": [
+        "voisin"
+      ],
+      "solidite": 50,
+      "dommages": [
+        500,
+        8000
+      ],
+      "victoire": [
+        "Le juge, à la lecture de ton relevé de décibels, condamne {cible} à te verser {montant} et à se taire après 22 h.",
+        "Victoire : {montant}. Le soir même, ton voisin chante quand même, mais plus doucement."
+      ],
+      "defaite": [
+        "Tu n'avais aucune mesure. Le juge demande si tu as essayé les bouchons d'oreilles."
+      ]
+    },
+    {
+      "id": "morsure",
+      "nom": "Morsure de chien",
+      "description": "Le chien n'a « jamais mordu personne ». Sauf toi.",
+      "cibles": [
+        "voisin"
+      ],
+      "solidite": 60,
+      "dommages": [
+        1000,
+        15000
+      ],
+      "victoire": [
+        "Le certificat médical et les photos suffisent. {cible} doit te verser {montant}.",
+        "Victoire : {montant}. Le chien doit porter une muselière. Il te regarde avec haine."
+      ],
+      "defaite": [
+        "Le tribunal estime que tu étais entré{e} dans le jardin sans y être invité{e}."
+      ]
+    },
+    {
+      "id": "barbecue",
+      "nom": "Barbecue envahissant",
+      "description": "Son barbecue enfume ton salon chaque dimanche.",
+      "cibles": [
+        "voisin"
+      ],
+      "solidite": 15,
+      "dommages": [
+        300,
+        3000
+      ],
+      "victoire": [
+        "Le juge, lui-même amateur de grillades, t'accorde pourtant {montant}. Ton voisin déplace son barbecue de 50 cm.",
+        "Victoire inattendue : {montant}. Tu sens encore la merguez."
+      ],
+      "defaite": [
+        "« Le barbecue fait partie de la vie de quartier. » Procédure abusive.",
+        "Le juge te condamne, et ton voisin t'invite au barbecue suivant, pour te narguer."
+      ],
+      "frivole": true
+    },
+    {
+      "id": "erreur_admin",
+      "nom": "Erreur administrative",
+      "description": "On t'a déclaré{e} mort{e}. Tu ne l'es pas.",
+      "cibles": [
+        "etat"
+      ],
+      "solidite": 40,
+      "dommages": [
+        1000,
+        25000
+      ],
+      "victoire": [
+        "Le tribunal administratif reconnaît l'erreur. {cible} doit te verser {montant}. Tu es officiellement vivant{e}.",
+        "Victoire : {montant} et un courrier d'excuses, envoyé à ton ancienne adresse."
+      ],
+      "defaite": [
+        "Le tribunal estime que l'erreur a été corrigée à temps. Elle a mis deux ans à l'être."
+      ]
+    },
+    {
+      "id": "nid_de_poule",
+      "nom": "Route mal entretenue",
+      "description": "Un nid-de-poule a mangé ta roue.",
+      "cibles": [
+        "etat"
+      ],
+      "solidite": 40,
+      "dommages": [
+        1000,
+        15000
+      ],
+      "victoire": [
+        "Le tribunal reconnaît le défaut d'entretien. {cible} doit te verser {montant}. Le trou est rebouché le lendemain.",
+        "Victoire : {montant}. Le trou porte désormais officieusement ton nom."
+      ],
+      "defaite": [
+        "Le tribunal estime que tu roulais trop vite. Le trou, lui, est toujours là."
+      ]
+    },
+    {
+      "id": "detention",
+      "nom": "Détention abusive",
+      "description": "Tu as été enfermé{e} trop longtemps, ou à tort.",
+      "cibles": [
+        "etat"
+      ],
+      "solidite": 30,
+      "dommages": [
+        20000,
+        300000
+      ],
+      "victoire": [
+        "La justice reconnaît la détention abusive. {cible} est condamné à te verser {montant}. Ça ne rend pas les mois perdus.",
+        "Le tribunal t'accorde {montant} d'indemnisation. Un journaliste raconte ton histoire."
+      ],
+      "defaite": [
+        "La détention est jugée régulière. Tu ressors du tribunal avec un goût amer."
+      ]
+    },
+    {
+      "id": "violences_policieres",
+      "nom": "Violences policières",
+      "description": "Une interpellation qui a mal tourné.",
+      "cibles": [
+        "etat"
+      ],
+      "solidite": 30,
+      "dommages": [
+        10000,
+        200000
+      ],
+      "victoire": [
+        "Les vidéos sont accablantes. {cible} est condamné à te verser {montant}. Les agents concernés sont sanctionnés.",
+        "Le tribunal reconnaît la violence disproportionnée : {montant}."
+      ],
+      "defaite": [
+        "Sans vidéo ni témoin, ta parole contre celle des agents ne suffit pas. Le dossier est classé."
+      ]
+    }
+  ],
+  "avocats": [
+    {
+      "id": "commis",
+      "nom": "Avocat commis d'office",
+      "emoji": "🧑‍⚖️",
+      "description": "Gratuit, débordé, quarante dossiers en même temps.",
+      "honoraires": 0,
+      "bonus": -8
+    },
+    {
+      "id": "toi",
+      "nom": "Te défendre toi-même",
+      "emoji": "🎓",
+      "description": "Ton diplôme de droit (ou ta grande éloquence) sert enfin.",
+      "honoraires": 0,
+      "bonus": 2,
+      "condition": "droit"
+    },
+    {
+      "id": "quartier",
+      "nom": "Maître Dubreuil",
+      "emoji": "👔",
+      "description": "Avocat de quartier, honnête et méthodique.",
+      "honoraires": 3000,
+      "bonus": 5
+    },
+    {
+      "id": "resultat",
+      "nom": "Maître Gain",
+      "emoji": "🤑",
+      "description": "Pas de victoire, pas d'honoraires. Mais il prend 40 % si tu gagnes.",
+      "honoraires": 500,
+      "bonus": 8,
+      "pourcentage": 0.4
+    },
+    {
+      "id": "cabinet",
+      "nom": "Cabinet Lefort et Associés",
+      "emoji": "🏛️",
+      "description": "Un grand cabinet, des stagiaires qui dorment au bureau.",
+      "honoraires": 25000,
+      "bonus": 15
+    },
+    {
+      "id": "tenor",
+      "nom": "Maître Vautrin, ténor du barreau",
+      "emoji": "🦅",
+      "description": "Il n'a perdu que deux procès. Il s'en souvient encore.",
+      "honoraires": 150000,
+      "bonus": 26
+    }
+  ],
+  "strategies": [
+    {
+      "id": "faits",
+      "nom": "S'en tenir aux faits",
+      "emoji": "🧾",
+      "description": "Des preuves, des dates, des chiffres. Ça marche si tu es malin.",
+      "stat": "intelligence",
+      "amplitude": 18,
+      "textes": [
+        "Tu exposes les faits un par un, dates à l'appui. Le juge prend des notes.",
+        "{avocat} déroule un dossier précis, sans un mot de trop."
+      ]
+    },
+    {
+      "id": "emotion",
+      "nom": "Émouvoir le tribunal",
+      "emoji": "😢",
+      "description": "Raconter ce que tu as vécu, avec le cœur. Ça marche si tu as du charisme.",
+      "stat": "apparence",
+      "amplitude": 15,
+      "textes": [
+        "Ta voix tremble quand tu racontes. Quelqu'un dans la salle sort un mouchoir.",
+        "Tu regardes le juge droit dans les yeux et tu racontes tout. La salle se tait."
+      ]
+    },
+    {
+      "id": "sincerite",
+      "nom": "Jouer la sincérité",
+      "emoji": "🙏",
+      "description": "Reconnaître tes torts, défendre l'essentiel. Ça marche si tu as bon karma.",
+      "stat": "karma",
+      "amplitude": 15,
+      "textes": [
+        "Tu admets ce qui doit l'être, tu défends le reste. Le juge apprécie l'honnêteté.",
+        "Tu n'enjolives rien. C'est rare, et ça se remarque."
+      ]
+    },
+    {
+      "id": "mediatiser",
+      "nom": "Prendre l'opinion à témoin",
+      "emoji": "📣",
+      "description": "Médiatiser l'affaire pour faire pression. Ça marche si tu es célèbre.",
+      "stat": "gloire",
+      "amplitude": 20,
+      "textes": [
+        "Tu donnes une interview devant le tribunal. Les caméras sont toutes tournées vers toi.",
+        "Ton affaire est partout sur les réseaux. {cible} sent la pression."
+      ]
+    }
+  ],
+  "audiences": [
+    "L'audience s'ouvre. {cible} est là, assis de l'autre côté de la salle, et évite ton regard.",
+    "Le greffier lit l'intitulé : « {motif} ». {cible} soupire bruyamment. Le juge lui demande de se taire.",
+    "Première audience. {avocat} te glisse : « Ne dis rien sans me regarder d'abord. »",
+    "La salle est presque vide, à part un retraité qui vient voir les procès comme d'autres vont au cinéma.",
+    "Ton dossier fait 80 pages. Celui de {cible} en fait 300. Ton avocat dit que ça ne veut rien dire. Il transpire un peu."
+  ],
+  "accords": [
+    "Avant l'audience, l'avocat de {cible} t'arrête dans le couloir : « Mon client propose {montant} pour en rester là. Aujourd'hui seulement. »",
+    "{cible} te propose un arrangement à l'amiable : {montant}, et chacun rentre chez soi.",
+    "Une enveloppe arrive chez ton avocat : {cible} offre {montant} pour éviter le procès.",
+    "Pendant la suspension, on te propose {montant} pour retirer ta plainte. Ton avocat hausse les sourcils, ce qui veut dire « réfléchis »."
+  ]
+}

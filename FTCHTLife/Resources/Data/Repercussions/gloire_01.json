@@ -1,0 +1,309 @@
+[
+  {
+    "id": "rep_glo_0001",
+    "on": "livre_publie",
+    "chance": 0.35,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "Un lecteur t'écrit que ton livre l'a aidé à traverser une période difficile. Tu relis sa lettre plusieurs fois.",
+    "effects": {
+      "happiness": 6,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_glo_0002",
+    "on": "livre_publie",
+    "chance": 0.3,
+    "delay": [
+      1,
+      3
+    ],
+    "text": "Ton éditeur t'appelle : « Ton livre marche. On fait une suite ? »",
+    "choices": [
+      {
+        "label": "Signer pour une suite",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu signes. L'avance tombe : 15 000 €. Il ne reste plus qu'à l'écrire.",
+            "effects": {
+              "money": 15000,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu signes, puis la page blanche te nargue pendant des mois. L'avance fond plus vite que l'inspiration.",
+            "effects": {
+              "money": 8000,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "Tu préfères laisser ton livre vivre sa vie. Ton éditeur boude, poliment.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_glo_0003",
+    "on": "best_seller",
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "unique": true,
+    "text": "Ton best-seller est traduit en vingt langues. Tu reçois un exemplaire en japonais : tu ne sais pas lire ton propre livre.",
+    "effects": {
+      "fame": 4,
+      "happiness": 6,
+      "money": 30000
+    }
+  },
+  {
+    "id": "rep_glo_0004",
+    "on": "pub_arnaque",
+    "chance": 0.6,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "Des victimes de LunaCoin manifestent devant chez toi, avec ta photo sur leurs pancartes.",
+    "choices": [
+      {
+        "label": "Rembourser une partie",
+        "outcomes": [
+          {
+            "text": "Tu rembourses ce que tu peux. Ça ne répare pas tout, mais certains viennent te remercier.",
+            "effects": {
+              "money": -50000,
+              "karma": 8,
+              "fame": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te taire",
+        "outcomes": [
+          {
+            "text": "Tu te tais. Les pancartes restent des semaines. Tu ne sors plus que par le garage.",
+            "effects": {
+              "karma": -5,
+              "happiness": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_glo_0005",
+    "on": "gloire_scandale",
+    "chance": 0.4,
+    "delay": [
+      1,
+      1
+    ],
+    "text": "L'année d'après, chaque interview revient sur ton scandale. Tu as appris à sourire en serrant les dents.",
+    "effects": {
+      "happiness": -3,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_glo_0006",
+    "on": "gloire_scandale",
+    "chance": 0.7,
+    "delay": [
+      0,
+      1
+    ],
+    "requires": {
+      "minCounters": {
+        "gloire_scandale": 3
+      }
+    },
+    "unique": true,
+    "text": "Trois scandales : les marques te fuient et ton agent te conseille une « cure de discrétion ».",
+    "choices": [
+      {
+        "label": "Faire profil bas un an",
+        "outcomes": [
+          {
+            "text": "Tu disparais des écrans. Le calme te fait du bien, ta gloire un peu moins.",
+            "effects": {
+              "happiness": 3,
+              "karma": 3,
+              "fame": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Assumer ton image sulfureuse",
+        "outcomes": [
+          {
+            "text": "Tu assumes. Le public adore te détester, et les plateaux télé t'invitent pour ça.",
+            "effects": {
+              "fame": 4,
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_glo_0007",
+    "on": "poursuite_proche",
+    "chance": 0.6,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "Le procès contre un proche a laissé des traces. Au repas de famille, on t'a placé{e} au bout de la table, près de la porte.",
+    "effects": {
+      "happiness": -6,
+      "relationships": {
+        "parent": -5,
+        "sibling": -5
+      }
+    }
+  },
+  {
+    "id": "rep_glo_0008",
+    "on": "poursuite_proche",
+    "chance": 0.4,
+    "delay": [
+      2,
+      4
+    ],
+    "text": "Des années après le procès, un proche t'appelle : « Et si on enterrait la hache de guerre autour d'un repas ? »",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "text": "Le repas est d'abord tendu, puis quelqu'un rit, et tout le monde finit par rire. Ça fait du bien.",
+            "effects": {
+              "happiness": 8,
+              "karma": 3,
+              "relationships": {
+                "parent": 6,
+                "sibling": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "Tu n'es pas prêt{e}. Le téléphone ne sonne plus.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_glo_0009",
+    "on": "poursuite_gagnee",
+    "chance": 0.35,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "Depuis ton procès gagné, des inconnus te demandent conseil pour attaquer leur voisin, leur patron ou leur ex. Tu as une réputation.",
+    "effects": {
+      "happiness": 2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_glo_0010",
+    "on": "poursuite_perdue",
+    "chance": 0.4,
+    "delay": [
+      1,
+      1
+    ],
+    "text": "Tu repenses encore à ton procès perdu. Ton avocat t'envoie une carte de vœux, accompagnée d'une dernière facture.",
+    "effects": {
+      "happiness": -3,
+      "money": -500
+    }
+  },
+  {
+    "id": "rep_glo_0011",
+    "on": "drogue_essai",
+    "chance": 0.5,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "Depuis cette soirée, on te propose souvent « un petit quelque chose ». Tu sens que ça pourrait devenir une habitude.",
+    "choices": [
+      {
+        "label": "Couper avec ce milieu",
+        "outcomes": [
+          {
+            "text": "Tu changes de soirées et de numéro. C'est dur, tu perds des « amis », mais tu respires mieux.",
+            "effects": {
+              "happiness": -3,
+              "health": 3,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer de temps en temps",
+        "outcomes": [
+          {
+            "text": "Ça devient régulier. Tu dors mal, tu dépenses beaucoup et tu te caches de tes proches.",
+            "effects": {
+              "health": -8,
+              "happiness": -5,
+              "money": -3000,
+              "setFlags": [
+                "drogue_soirees"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_glo_0012",
+    "on": "gloire_fete",
+    "chance": 0.15,
+    "delay": [
+      1,
+      1
+    ],
+    "text": "Une photo de toi en soirée ressort dans un magazine, un an après. Légende : « Toujours la fête ? »",
+    "effects": {
+      "fame": 1,
+      "happiness": -1
+    }
+  }
+]
