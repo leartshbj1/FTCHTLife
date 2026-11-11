@@ -148,7 +148,7 @@ enum JeuVivant {
                 ?? j.relations.last { $0.type == .enfant }?.prenom
         case "premier_emploi": return j.emploi?.titre
         case "entreprise_creee": return j.entreprises?.actives.max { $0.ageCreation < $1.ageCreation }?.nom
-        case "election_gagnee": return j.politique?.mandat?.poste.nom(j.genre)
+        case "election_gagnee": return j.politique?.mandat?.poste.nom(j)
         case "expatriation":
             let id = j.etatExpat.paysActuel
             return ExpatCatalogue.shared.trouverPays(id)?.nom ?? id

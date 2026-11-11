@@ -16,6 +16,7 @@ extension PolMoteur {
         case .conseillerRegional: return Double.random(in: 32...48)
         case .depute: return Double.random(in: 42...62)
         case .president: return Double.random(in: 70...82)
+        case .premierMinistre: return Double.random(in: 55...76)
         default: return Double.random(in: 40...60)
         }
     }
@@ -55,6 +56,11 @@ extension PolMoteur {
     // MARK: - Textes
 
     private static func scene(_ s: PolSoiree, _ j: Joueur) -> String {
+        let sys = systeme(j)
+        if sys.estPartiUnique && sys.estIndirecte(s.poste) {
+            return ["🗳️ Les délégués du parti votent dans une grande salle aux rideaux rouges. Le résultat est annoncé avant même la fin du dépouillement.",
+                    "🗳️ Session des délégués. Les bulletins sont comptés en silence, sous le regard des cadres du parti."].randomElement()!
+        }
         switch s.poste {
         case .conseiller, .adjoint, .maire:
             return ["🗳️ Soirée électorale à \(j.ville). À 20 h, les bureaux ferment et le dépouillement commence à la salle des fêtes.",
@@ -66,18 +72,30 @@ extension PolMoteur {
         case .depute:
             return ["🗳️ Législatives, soir du second tour. Ta permanence de circonscription est pleine à craquer.",
                     "🗳️ 20 h, les estimations tombent pour ta circonscription. Personne n'ose parler."].randomElement()!
+        case .premierMinistre:
+            return ["🗳️ Soir de législatives \(sys.auPays). Les premières projections de sièges tombent sur toutes les chaînes.",
+                    "🗳️ Ton QG de campagne retient son souffle : c'est le parti arrivé en tête qui gouvernera."].randomElement()!
+        case .president where sys.estIndirecte(.president):
+            return "🗳️ Les grands électeurs se réunissent pour désigner \(sys.chefEtat). Le vote se fait à bulletin secret."
+        case .president where s.tour1 == nil:
+            return ["🗳️ Soir de présidentielle \(sys.auPays). Les résultats remontent bureau par bureau, région par région.",
+                    "🗳️ Ton QG attend les estimations. Une seule soirée va décider des années à venir."].randomElement()!
         case .president:
             if s.eliminePremierTour {
                 return "🗳️ Présidentielle, soir du premier tour. À 20 h, les visages des deux qualifiés s'affichent à l'écran. Le tien n'y est pas."
             }
             return ["🗳️ Présidentielle, soir du second tour. À 20 h, un visage s'affiche sur toutes les chaînes du pays.",
                     "🗳️ Le pays retient son souffle. Ton QG de campagne attend 20 h, les yeux rivés sur le compte à rebours."].randomElement()!
+        case .senateur where !sys.estIndirecte(.senateur):
+            return "🗳️ Soir d'élection pour \(sys.chambreHaute?.first ?? "la chambre haute"). Les résultats tombent circonscription par circonscription."
+        case .presidentRegion where !sys.estIndirecte(.presidentRegion):
+            return "🗳️ Soir d'élection régionale. Les écrans de ton QG affichent la carte de la région, bureau par bureau."
         case .senateur:
-            return "🗳️ Élections sénatoriales. Les grands électeurs du département ont voté toute la journée à la préfecture."
+            return "🗳️ Élections sénatoriales. Les grands électeurs, des élus locaux pour la plupart, ont voté toute la journée."
         case .presidentRegion:
             return "🗳️ Séance d'installation du conseil régional. Les élus votent pour désigner leur président."
         case .presidentAssemblee:
-            return "🗳️ Hémicycle, vote à bulletin secret pour le perchoir. Les députés défilent devant l'urne."
+            return "🗳️ Dans la salle des séances, vote à bulletin secret pour la présidence de la chambre. Les députés défilent devant l'urne."
         case .secretaireGeneral:
             return "🗳️ Le Conseil de sécurité a rendu sa recommandation, l'Assemblée générale passe au vote."
         default:
@@ -86,10 +104,18 @@ extension PolMoteur {
     }
 
     private static func resultat(_ s: PolSoiree, _ j: Joueur) -> String {
-        let nom = s.poste.nom(j.genre).lowercased()
+        let nom = s.poste.nom(j).polMinuscule()
         let adv = s.adversaire
         let advScore = pourcentage(max(0.1, 100 - s.score))
-        if s.poste == .president {
+        let sys = systeme(j)
+        if s.poste == .premierMinistre && !sys.estIndirecte(.premierMinistre) {
+            if !s.gagne {
+                return "Le parti de \(adv) arrive en tête. Le tien n'obtient que \(pourcentage(s.score)) des sièges : l'opposition t'attend."
+            }
+            return "Ton parti arrive en tête avec \(pourcentage(s.score)) des sièges, devant celui de \(adv). Tu deviens " + nom + "."
+                + (s.score < 50 ? " Sans majorité absolue, il faudra trouver des alliés." : " La majorité absolue est à toi.")
+        }
+        if s.poste == .president && (s.tour1 != nil || s.eliminePremierTour) {
             if s.eliminePremierTour {
                 return "Avec \(pourcentage(s.score)) au premier tour, tu es " + j.g("éliminé", "éliminée") + ". \(adv) se qualifie pour le second tour."
             }
@@ -98,12 +124,13 @@ extension PolMoteur {
                 ? t1 + "Second tour : \(pourcentage(s.score)) contre \(advScore) pour \(adv). Tu es " + j.g("élu", "élue") + " \(nom)" + (s.reelection ? " pour un nouveau mandat." : ".")
                 : t1 + "Second tour : \(pourcentage(s.score)) contre \(advScore) pour \(adv). \(adv) remporte la présidentielle."
         }
-        if s.poste.electionIndirecte {
+        if sys.estIndirecte(s.poste) {
             return s.gagne
                 ? "Tu obtiens \(pourcentage(s.score)) des suffrages face à \(adv). Tu es " + j.g("élu", "élue") + " \(nom)."
                 : "Tu n'obtiens que \(pourcentage(s.score)) des suffrages. \(adv) l'emporte."
         }
-        let ecart = abs(s.score - 50) < 2 ? " Il s'en est fallu de quelques centaines de voix." : ""
+        let voix = s.poste.rang >= 5 ? "quelques dizaines de milliers de voix" : "quelques centaines de voix"
+        let ecart = abs(s.score - 50) < 2 ? " Il s'en est fallu de \(voix)." : ""
         return s.gagne
             ? "Tu l'emportes avec \(pourcentage(s.score)) des voix contre \(advScore) pour \(adv). Tu es " + j.g(s.reelection ? "réélu" : "élu", s.reelection ? "réélue" : "élue") + " \(nom)." + ecart
             : "\(adv) l'emporte avec \(advScore) des voix. Tu obtiens \(pourcentage(s.score))." + ecart

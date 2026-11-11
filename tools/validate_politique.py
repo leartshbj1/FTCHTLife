@@ -184,8 +184,11 @@ def verifier_systemes():
         for k, v in (s.get("postes") or {}).items():
             if k not in POSTES_SYSTEME:
                 err(f, f"{i}: poste inconnu {k}")
-            if v is not None and (not isinstance(v, list) or len(v) != 2):
-                err(f, f"{i}: poste {k} : [masculin, féminin] ou null")
+            if not isinstance(v, list) or len(v) != 2:
+                err(f, f"{i}: poste {k} : [masculin, féminin]")
+        for k in s.get("absents") or []:
+            if k not in POSTES_SYSTEME:
+                err(f, f"{i}: poste absent inconnu {k}")
         for k, v in (s.get("election") or {}).items():
             if k not in POSTES_SYSTEME or v not in ("directe", "indirecte", "nomination"):
                 err(f, f"{i}: election {k}={v} invalide")

@@ -24,7 +24,7 @@ extension PolMoteur {
         let possibles = e.rivaux.filter { $0.niveau >= p.rang - 1 }
         if let r = possibles.randomElement(), Double.random(in: 0...1) < 0.6 { return r }
         let g = Genre.allCases.randomElement()!
-        let parti = PolCatalogue.partis.filter { $0.id != e.partiId }.randomElement()
+        let parti = PolCatalogue.partisDuPays(e.paysId).filter { $0.id != e.partiId }.randomElement()
         let nouveau = PolRival(prenom: Donnees.prenom(g), nom: Donnees.noms.randomElement()!, genre: g,
                                partiId: parti?.id, rancune: Int.random(in: 5...25), niveau: max(0, p.rang - 1))
         e.rivaux.append(nouveau)
@@ -173,6 +173,7 @@ extension PolMoteur {
         let n = nom.trimmingCharacters(in: .whitespaces)
         let s = sigle.trimmingCharacters(in: .whitespaces).uppercased()
         guard !n.isEmpty, !s.isEmpty else { return PolResultat(texte: "Il faut un nom et un sigle.") }
+        guard !systeme(j).estPartiUnique else { return PolResultat(texte: "Ici, un seul parti est autorisé. Fonder le tien te vaudrait bien plus qu'une amende.") }
         guard j.age >= ageCandidat else { return PolResultat(texte: "Il faut être majeur pour fonder un parti.") }
         guard e.influence >= 20 || j.argent >= 20_000 else { return PolResultat(texte: "Il faut 20 d'influence ou 20 000 € pour déposer les statuts.") }
         var texte = ""
@@ -214,7 +215,7 @@ extension PolMoteur {
             if p == .president { e.titres.append(remplir("Primaire du \(parti.sigle) : {prenom} {nom} l'emporte", j, e)) }
             return PolResultat(texte: p == .president
                                ? "🗳️ Tu gagnes la primaire du \(parti.nom) ! Tes concurrents te félicitent, certains du bout des lèvres."
-                               : "Le \(parti.nom) t'investit pour le poste de \(p.nom(j.genre).lowercased()). L'appareil du parti est derrière toi.")
+                               : "Le \(parti.nom) t'investit pour le poste de \(p.nom(j).polMinuscule()). L'appareil du parti est derrière toi.")
         }
         e.loyaute -= 3
         return PolResultat(texte: p == .president
@@ -264,6 +265,11 @@ extension PolMoteur {
     // MARK: - Nominations : Premier ministre, commissaire
 
     static func empechementPremierMinistre(_ j: Joueur, _ e: PolEtat) -> String? {
+        let s = systeme(j)
+        guard s.existe(.premierMinistre) else { return "Ce poste n'existe pas \(s.auPays)." }
+        guard s.modeElection(.premierMinistre) == "nomination" else {
+            return "Ici, on devient chef du gouvernement en gagnant les législatives à la tête de son parti."
+        }
         guard e.partiId != nil else { return "Il faut un parti." }
         guard let m = e.mandat, [.ministre, .depute, .presidentAssemblee, .senateur].contains(m.poste) else {
             return "Il faut être ministre, député ou sénateur."
@@ -289,10 +295,11 @@ extension PolMoteur {
         j.stats.bonheur += 15
         e.titres.append(remplir("{prenom} {nom} nommé{e} à la tête du gouvernement", j, e))
         e.borner()
-        return PolResultat(texte: "🏛️ Tu es " + j.g("nommé Premier ministre", "nommée Première ministre") + " ! Ton bureau est à Matignon. Les dossiers s'empilent déjà.")
+        return PolResultat(texte: "🏛️ Tu es " + j.g("nommé", "nommée") + " \(PolPoste.premierMinistre.nom(j).polMinuscule()) ! " + remplir("Ton bureau est {au_siege_gouv}. Les dossiers s'empilent déjà.", j, e))
     }
 
     static func empechementCommissaire(_ j: Joueur, _ e: PolEtat) -> String? {
+        if systeme(j).union == nil { return "Ton pays n'appartient à aucune union qui nomme des commissaires." }
         if !(e.aOccupe(.ministre) || e.aOccupe(.premierMinistre)) { return "Il faut avoir été ministre." }
         if let m = e.mandat, m.poste.rang >= PolPoste.commissaire.rang { return "Tu occupes déjà un poste plus élevé." }
         if e.influence < 55 { return "Il faut 55 d'influence." }
@@ -303,16 +310,17 @@ extension PolMoteur {
         if let r = empechementCommissaire(j, e) { return PolResultat(texte: r) }
         guard marquer("commission", &j) else { return dejaFait }
         let chance = (Double(e.influence) * 0.5 + Double(j.stats.intelligence) * 0.2) / 100 - Double(e.casseroles) / 300
+        let s = systeme(j)
         guard Double.random(in: 0...1) < chance else {
-            return PolResultat(texte: "L'Union des Pays Voisins a préféré un candidat plus expérimenté sur les dossiers européens.")
+            return PolResultat(texte: "\(s.commission.prefix(1).uppercased() + s.commission.dropFirst()) a préféré un candidat plus expérimenté sur les dossiers de l'Union.")
         }
-        if e.mandat != nil { terminerMandat(&j, &e, fin: "parti" + j.g("", "e") + " à la Commission européenne") }
-        e.mandat = PolMandat(poste: .commissaire, anneesRestantes: PolPoste.commissaire.duree, ageDebut: j.age)
+        if e.mandat != nil { terminerMandat(&j, &e, fin: "parti" + j.g("", "e") + " à \(s.commission)") }
+        e.mandat = PolMandat(poste: .commissaire, anneesRestantes: s.duree(.commissaire), ageDebut: j.age)
         e.loisTentees = []
         e.influence += 8
         j.stats.bonheur += 10
         e.borner()
-        return PolResultat(texte: "🇪🇺 Te voilà commissaire de la Commission européenne, chargé" + j.g("", "e") + " d'un portefeuille important à Bruxelles.")
+        return PolResultat(texte: (s.estUE ? "🇪🇺" : "🌍") + " Te voilà membre de \(s.commission), chargé" + j.g("", "e") + remplir(" d'un portefeuille important à {siege_union}.", j, e))
     }
 
     // MARK: - Gouvernement (joueur président)
@@ -354,9 +362,16 @@ extension PolMoteur {
         e.majorite = Stats.borne(Int(48 + (score - 50) * 1.2) + Int.random(in: -6...10))
         e.dissolutionFaite = false
         e.premierMinistrePNJ = nil
-        l.append(e.majorite >= 50
-                 ? "🏛️ Les législatives te donnent une majorité : \(e.majorite) % des sièges. Nomme vite ton Premier ministre (onglet Politique)."
-                 : "🏛️ Les législatives tournent mal : \(e.majorite) % des sièges seulement. Chaque texte sera une bataille.")
+        let s = systeme(j)
+        if s.existe(.premierMinistre) {
+            l.append(e.majorite >= 50
+                     ? "🏛️ Les législatives te donnent une majorité : \(e.majorite) % des sièges. Nomme vite ton gouvernement (onglet Politique)."
+                     : "🏛️ Les législatives tournent mal : \(e.majorite) % des sièges seulement. Chaque texte sera une bataille.")
+        } else {
+            l.append(e.majorite >= 50
+                     ? "🏛️ Ton camp contrôle \(s.parlementNom) avec \(e.majorite) % des sièges. Tes réformes ont une chance."
+                     : remplir("🏛️ Ton camp est minoritaire {au_parlement} (\(e.majorite) % des sièges). Chaque texte sera une négociation.", j, e))
+        }
     }
 
     /// Référendum sur une loi nationale (président, une fois par an).
@@ -364,6 +379,7 @@ extension PolMoteur {
         guard e.mandat?.poste == .president, let loi = PolCatalogue.loi(id), loi.niveau == "national", !e.loisActives.contains(id) else {
             return PolResultat(texte: "Impossible d'organiser ce référendum.")
         }
+        guard systeme(j).referendum == true else { return PolResultat(texte: "La Constitution ne prévoit pas ce type de référendum.") }
         guard marquer("referendum", &j) else { return PolResultat(texte: "Un seul référendum par an.") }
         let chance = popularitePonderee(e) / 100 * 0.9 + 0.08 - Double(loi.difficulte) / 400
         if Double.random(in: 0...1) < chance {
@@ -383,10 +399,15 @@ extension PolMoteur {
         return PolResultat(texte: "🗳️ Le « non » l'emporte à \(Int.random(in: 52...71)) %. Les éditorialistes parlent d'un « désaveu ». Ton autorité en sort affaiblie.")
     }
 
-    /// Dissoudre l'Assemblée (président, une fois par mandat).
+    /// Dissoudre la chambre (chef de l'exécutif, une fois par mandat).
     static func dissoudre(_ j: inout Joueur, _ e: inout PolEtat) -> PolResultat {
-        guard e.mandat?.poste == .president else { return PolResultat(texte: "Seul le chef de l'État peut dissoudre l'Assemblée.") }
-        guard !e.dissolutionFaite else { return PolResultat(texte: "Tu as déjà dissous l'Assemblée pendant ce mandat. Une seule dissolution par mandat.") }
+        let s = systeme(j)
+        guard s.dissolution == true else { return PolResultat(texte: "La Constitution ne permet pas de dissoudre \(s.parlementNom).") }
+        let parPM = e.mandat?.poste == .premierMinistre && s.executifParlementaire
+        guard (e.mandat?.poste == .president && !s.presidentSymbolique) || parPM else {
+            return PolResultat(texte: "Seul le chef de l'exécutif peut provoquer des élections anticipées.")
+        }
+        guard !e.dissolutionFaite else { return PolResultat(texte: "Tu as déjà dissous \(s.parlementNom) pendant ce mandat. Une seule dissolution par mandat.") }
         e.dissolutionFaite = true
         let avant = e.majorite
         e.majorite = Stats.borne(Int(popularitePonderee(e)) + Int.random(in: -12...20))
@@ -395,17 +416,34 @@ extension PolMoteur {
             e.influence += 6
             return PolResultat(texte: "🏛️ Coup de poker gagné : ta majorité passe de \(avant) % à \(e.majorite) % des sièges. Tes ministres respirent.")
         }
+        if parPM {
+            if e.majorite < 35 {
+                terminerMandat(&j, &e, fin: "battu" + j.g("", "e") + " aux élections anticipées")
+                return PolResultat(texte: "🏛️ Coup de poker perdu : ton parti tombe à \(e.majorite) % des sièges. L'opposition forme le gouvernement, tu rends les clés.")
+            }
+            var l: [String] = []
+            coalitionSiBesoin(j, &e, &l)
+            e.influence -= 4
+            return PolResultat(texte: "🏛️ Pari à moitié perdu : \(e.majorite) % des sièges. Tu gardes la tête du gouvernement, mais il faudra composer. " + l.joined(separator: " "))
+        }
+        guard s.existe(.premierMinistre) else {
+            e.influence -= 8
+            return PolResultat(texte: "🏛️ Coup de poker perdu : \(e.majorite) % des sièges. L'opposition contrôle désormais \(s.parlementNom) et bloquera tes textes.")
+        }
         e.premierMinistrePNJ = PolPNJ(prenom: Donnees.prenom(.homme), nom: Donnees.noms.randomElement()!, genre: .homme, trait: "ambitieux", loyaute: 10)
         e.influence -= 8
         return PolResultat(texte: "🏛️ Coup de poker perdu : \(e.majorite) % des sièges. C'est la cohabitation : l'opposition t'impose son Premier ministre, \(e.premierMinistrePNJ?.nomComplet ?? "un inconnu"), qui gouverne contre toi.")
     }
 
-    /// Faire passer une loi en force avec l'article 49.3 (Premier ministre, ou président qui a un Premier ministre).
+    /// Faire passer une loi en force (49.3 en France, décret ailleurs) : Premier ministre, ou président.
     static func passerEnForce(_ id: String, _ j: inout Joueur, _ e: inout PolEtat) -> PolResultat {
         let poste = e.mandat?.poste
-        guard poste == .premierMinistre || (poste == .president && e.premierMinistrePNJ != nil),
+        let s = systeme(j)
+        guard let procedure = s.passerEnForce else { return PolResultat(texte: "Aucune procédure ne permet ici d'adopter un texte sans vote.") }
+        let sansPM = !s.existe(.premierMinistre)
+        guard poste == .premierMinistre || (poste == .president && (e.premierMinistrePNJ != nil || sansPM)),
               let loi = PolCatalogue.loi(id), loi.niveau == "national", !e.loisActives.contains(id) else {
-            return PolResultat(texte: "Tu ne peux pas utiliser le 49.3 pour ce texte.")
+            return PolResultat(texte: "Tu ne peux pas utiliser \(procedure) pour ce texte.")
         }
         guard marquer("loi", &j) else { return PolResultat(texte: "Tu as déjà fait voter un texte cette année.") }
         e.loisActives.append(id)
@@ -414,8 +452,14 @@ extension PolMoteur {
         if let flash = loi.monde { e.flashsMonde.append(flash) }
         e.popularite -= 8
         e.mobilisation += 20
-        e.titres.append("49.3 : « \(loi.titre) » adoptée sans vote, la rue gronde")
-        var t = "⚡ Article 49.3 : « \(loi.titre) » est adoptée sans vote. L'opposition dépose une motion de censure."
+        e.titres.append("Adoptée sans vote : « \(loi.titre) », la rue gronde")
+        var t = "⚡ Par \(procedure), « \(loi.titre) » est adoptée sans vote."
+        if sansPM {
+            t += " L'opposition dénonce un passage en force et saisit la justice constitutionnelle."
+            e.borner()
+            return PolResultat(texte: t)
+        }
+        t += " L'opposition dépose une motion de censure."
         if e.majorite < 55 && Double.random(in: 0...1) < 0.35 {
             if poste == .premierMinistre {
                 terminerMandat(&j, &e, fin: "renversé" + j.g("", "e") + " par une motion de censure")
@@ -610,8 +654,9 @@ extension PolMoteur {
             l.append("👥 Salaires de ton équipe : \(Format.argent(salaires)).")
         }
 
-        // Gouvernement du joueur président
-        if poste == .president {
+        // Gouvernement du joueur président (régime où le président gouverne)
+        let sysAnnee = systeme(j)
+        if poste == .president && !sysAnnee.presidentSymbolique {
             if let pm = e.premierMinistrePNJ {
                 switch pm.trait {
                 case "populaire": e.popularite += 2
@@ -630,9 +675,9 @@ extension PolMoteur {
                 default:
                     e.majorite += 1
                 }
-            } else {
+            } else if sysAnnee.existe(.premierMinistre) {
                 e.popularite -= 2
-                l.append("🏛️ Le pays n'a pas de Premier ministre. Les affaires courantes paralysent l'action publique.")
+                l.append("🏛️ Le pays n'a pas de chef de gouvernement. Les affaires courantes paralysent l'action publique.")
             }
             // Destitution
             if e.casseroles >= 85 && e.majorite < 40 && Double.random(in: 0...1) < 0.25 {

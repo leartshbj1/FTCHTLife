@@ -44,7 +44,9 @@ struct PolitiqueView: View {
                     .interactiveDismissDisabled()
             }
             .sheet(isPresented: $listePartis) {
-                PolPartisView { id in resultat { PolMoteur.adherer(id, &$0, &$1) } }
+                PolPartisView(partis: PolCatalogue.partisDuPays(engine.joueur.map { PolMoteur.systeme($0).id })) { id in
+                    resultat { PolMoteur.adherer(id, &$0, &$1) }
+                }
             }
             .sheet(isPresented: $listeLois) {
                 if let e = engine.joueur?[keyPath: etat] ?? nil {
@@ -81,8 +83,8 @@ struct PolitiqueView: View {
             }
             .sheet(isPresented: $listeForce) {
                 if let e = engine.joueur?[keyPath: etat] ?? nil {
-                    PolLoisView(titre: "Article 49.3", lois: loisNationalesDisponibles(e),
-                                info: { _ in "Adoptée à coup sûr · motion de censure possible" }) { loi in
+                    PolLoisView(titre: "Adopter sans vote", lois: loisNationalesDisponibles(e),
+                                info: { _ in "Adoptée à coup sûr · l'opposition riposte" }) { loi in
                         resultat { PolMoteur.passerEnForce(loi.id, &$0, &$1) }
                     }
                 }
@@ -161,7 +163,7 @@ struct PolitiqueView: View {
                 if e.caisse > 0 {
                     HStack { Text("Caisse de campagne"); Spacer(); Text(Format.argent(e.caisse)).foregroundStyle(.secondary) }
                 }
-                if e.parrainages > 0 {
+                if e.parrainages > 0 && PolMoteur.systeme(j).parrainages == true {
                     HStack { Text("Parrainages"); Spacer(); Text("\(e.parrainages) / \(PolMoteur.parrainagesRequis)").foregroundStyle(.secondary) }
                 }
                 if let s = e.dernierSondage {
@@ -200,7 +202,7 @@ struct PolitiqueView: View {
                 LigneAction(titre: "Adhérer à un parti", sousTitre: "Choisis une famille politique", icone: "person.crop.circle.badge.plus") {
                     listePartis = true
                 }
-                if j.age >= PolMoteur.ageCandidat {
+                if j.age >= PolMoteur.ageCandidat && !PolMoteur.systeme(j).estPartiUnique {
                     LigneAction(titre: "Fonder ton propre parti", sousTitre: "20 d'influence ou 20 000 €", icone: "sparkles") {
                         fonderParti = true
                     }
@@ -218,7 +220,7 @@ struct PolitiqueView: View {
     @ViewBuilder
     private func campagne(_ j: Joueur, _ e: PolEtat) -> some View {
         if let c = e.candidature {
-            Section("Campagne : \(c.poste.nom(j.genre).lowercased())") {
+            Section("Campagne : \(c.poste.nom(j).polMinuscule())") {
                 HStack {
                     Text("Adversaire")
                     Spacer()
@@ -244,9 +246,9 @@ struct PolitiqueView: View {
     private func elections(_ j: Joueur, _ e: PolEtat) -> some View {
         Section("Élections et nominations") {
             if e.candidature == nil {
-                ForEach(PolPoste.allCases.filter { $0.estElu && $0.rang <= max(1, e.rangMax + 2) }) { p in
+                ForEach(PolPoste.allCases.filter { PolMoteur.systeme(j).estElectif($0) && $0.rang <= max(1, e.rangMax + 2) }) { p in
                     let raison = PolMoteur.empechementCandidature(p, j, e)
-                    LigneAction(titre: "Se présenter : \(p.nom(j.genre).lowercased())",
+                    LigneAction(titre: "Se présenter : \(p.nom(j).polMinuscule())",
                                 sousTitre: raison ?? sousTitreCandidature(p, e),
                                 icone: "checkmark.rectangle.stack.fill",
                                 actif: raison == nil) {
@@ -255,27 +257,27 @@ struct PolitiqueView: View {
                 }
             }
             ForEach(PolPoste.allCases.filter { PolMoteur.besoinInvestiture($0, e) && PolMoteur.empechementCandidature($0, j, e) == nil && e.investiture != $0.rawValue }) { p in
-                action(p == .president ? "Participer à la primaire du parti" : "Demander l'investiture : \(p.nom(j.genre).lowercased())",
+                action(p == .president ? "Participer à la primaire du parti" : "Demander l'investiture : \(p.nom(j).polMinuscule())",
                        "Sinon : candidature dissidente et exclusion", "person.crop.circle.badge.checkmark", cle: "investiture", j) {
                     PolMoteur.demanderInvestiture(p, &$0, &$1)
                 }
             }
             if let inv = e.investiture.flatMap({ PolPoste(rawValue: $0) }) {
-                Text("✅ Investi" + j.g("", "e") + " par ton parti pour : \(inv.nom(j.genre).lowercased())").font(.caption)
+                Text("✅ Investi" + j.g("", "e") + " par ton parti pour : \(inv.nom(j).polMinuscule())").font(.caption)
             }
             if PolMoteur.empechementPremierMinistre(j, e) == nil {
-                action(j.g("Viser le poste de Premier ministre", "Viser le poste de Première ministre"), "Prendre la tête du gouvernement", "building.columns.circle.fill", cle: "premier_ministre", j, PolMoteur.viserPremierMinistre)
+                action("Viser le poste de " + PolPoste.premierMinistre.nom(j).polMinuscule(), "Prendre la tête du gouvernement", "building.columns.circle.fill", cle: "premier_ministre", j, PolMoteur.viserPremierMinistre)
             }
             if PolMoteur.empechementCommissaire(j, e) == nil {
-                action("Partir à la Commission européenne", "Devenir commissaire", "globe.europe.africa.fill", cle: "commission", j, PolMoteur.partirCommission)
+                action("Partir à " + PolMoteur.systeme(j).commission, "Devenir commissaire", "globe.europe.africa.fill", cle: "commission", j, PolMoteur.partirCommission)
             }
             if e.mandat?.poste == .conseiller {
                 action("Demander un poste d'adjoint", "Au maire, gentiment", "person.badge.key.fill", cle: "adjoint", j, PolMoteur.briguerAdjoint)
             }
             if PolMoteur.empechementMinistere(j, e) == nil {
-                action("Proposer tes services au chef de l'État", "Pour entrer au gouvernement", "building.columns.fill", cle: "ministere", j, PolMoteur.demanderMinistere)
+                action("Proposer tes services pour un ministère", "Pour entrer au gouvernement", "building.columns.fill", cle: "ministere", j, PolMoteur.demanderMinistere)
             }
-            if (e.aOccupe(.depute) || e.aOccupe(.ministre)) && e.mandat?.poste != .president {
+            if (e.aOccupe(.depute) || e.aOccupe(.ministre)) && e.mandat?.poste != .president && PolMoteur.systeme(j).parrainages == true {
                 action("Récolter des parrainages", "\(e.parrainages)/\(PolMoteur.parrainagesRequis) pour la présidentielle", "signature", cle: "parrainages", j, PolMoteur.recolterParrainages)
             }
         }
@@ -351,7 +353,7 @@ struct PolitiqueView: View {
                 }
                 ForEach(Array(e.historique.reversed())) { h in
                     VStack(alignment: .leading, spacing: 2) {
-                        Text(h.poste == .ministre ? (PolCatalogue.ministere(h.ministereId)?.nom ?? "Ministre") : h.poste.nom(j.genre)).bold()
+                        Text(h.poste == .ministre ? (PolCatalogue.ministere(h.ministereId)?.nom ?? "Ministre") : h.poste.nom(j)).bold()
                         Text("De \(h.ageDebut) à \(h.ageFin) ans · \(h.fin)").font(.caption).foregroundStyle(.secondary)
                     }
                 }
@@ -419,7 +421,7 @@ struct PolitiqueView: View {
 
     private func texteMandat(_ j: Joueur, _ e: PolEtat) -> String {
         guard let m = e.mandat else { return "Aucun" }
-        var t = m.poste == .maire ? "Maire de \(j.ville)" : m.poste.nom(j.genre)
+        var t = m.poste == .maire ? "Maire de \(j.ville)" : m.poste.nom(j)
         if let r = m.anneesRestantes { t += " · encore \(r) an\(r > 1 ? "s" : "")" }
         if m.numero > 1 { t += " · \(m.numero)e mandat" }
         return t
@@ -526,16 +528,18 @@ struct PolDossierView: View {
 
 struct PolPartisView: View {
     @Environment(\.dismiss) private var dismiss
+    let partis: [PolParti]
     let adherer: (String) -> String
     @State private var message: String?
 
-    init(adherer: @escaping (String) -> String) {
+    init(partis: [PolParti], adherer: @escaping (String) -> String) {
+        self.partis = partis
         self.adherer = adherer
     }
 
     var body: some View {
         NavigationStack {
-            List(PolCatalogue.partis) { p in
+            List(partis) { p in
                 Button {
                     message = adherer(p.id)
                 } label: {
@@ -738,29 +742,38 @@ extension PolitiqueView {
     @ViewBuilder
     func gouvernement(_ j: Joueur, _ e: PolEtat) -> some View {
         Section("Gouverner") {
-            if e.mandat?.poste == .president {
+            let sys = PolMoteur.systeme(j)
+            let presidentGouverne = e.mandat?.poste == .president && !sys.presidentSymbolique
+            let pmElu = e.mandat?.poste == .premierMinistre && sys.executifParlementaire
+            Text(sys.resume).font(.caption).foregroundStyle(.secondary)
+            if presidentGouverne && sys.existe(.premierMinistre) {
                 if let pm = e.premierMinistrePNJ {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Premier ministre : \(pm.nomComplet)").bold()
+                        Text("\(sys.nom(.premierMinistre, pm.genre)) : \(pm.nomComplet)").bold()
                         Text(PolMoteur.descriptionTrait(pm.trait)).font(.caption).foregroundStyle(.secondary)
                     }
                 }
-                LigneAction(titre: e.premierMinistrePNJ == nil ? "Nommer un Premier ministre" : "Changer de Premier ministre",
+                LigneAction(titre: e.premierMinistrePNJ == nil ? "Nommer le chef du gouvernement" : "Changer de chef du gouvernement",
                             sousTitre: "Trois profils au choix", icone: "person.crop.rectangle.stack.fill",
                             actif: !PolMoteur.dejaFaitCetteAnnee("nommer_pm", j)) {
                     listePM = true
                 }
+            }
+            if presidentGouverne && sys.referendum == true {
                 LigneAction(titre: "Organiser un référendum", sousTitre: "Le peuple tranche, et parfois contre toi",
                             icone: "checkmark.square.fill", actif: !PolMoteur.dejaFaitCetteAnnee("referendum", j)) {
                     listeReferendum = true
                 }
-                LigneAction(titre: "Dissoudre l'Assemblée", sousTitre: e.dissolutionFaite ? "Déjà fait pendant ce mandat" : "Nouvelles législatives : quitte ou double",
+            }
+            if (presidentGouverne || pmElu) && sys.dissolution == true {
+                LigneAction(titre: "Provoquer des élections anticipées", sousTitre: e.dissolutionFaite ? "Déjà fait pendant ce mandat" : "Dissoudre \(sys.parlementNom) : quitte ou double",
                             icone: "arrow.triangle.2.circlepath", actif: !e.dissolutionFaite) {
                     agir(PolMoteur.dissoudre)
                 }
             }
-            if e.mandat?.poste == .premierMinistre || (e.mandat?.poste == .president && e.premierMinistrePNJ != nil) {
-                LigneAction(titre: "Passer une loi en force (49.3)", sousTitre: "Sans vote, mais la rue et la censure guettent",
+            if let procedure = sys.passerEnForce,
+               e.mandat?.poste == .premierMinistre || (e.mandat?.poste == .president && (e.premierMinistrePNJ != nil || !sys.existe(.premierMinistre))) {
+                LigneAction(titre: "Passer une loi en force", sousTitre: "Par \(procedure) : sans vote, mais l'opposition riposte",
                             icone: "bolt.trianglebadge.exclamationmark.fill", actif: !PolMoteur.dejaFaitCetteAnnee("loi", j)) {
                     listeForce = true
                 }

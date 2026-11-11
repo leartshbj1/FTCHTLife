@@ -111,6 +111,7 @@ enum PolPoste: String, Codable, CaseIterable, Identifiable {
         case .conseillerRegional: return 8_000
         case .maire: return 25_000
         case .depute: return 90_000
+        case .premierMinistre: return 1_200_000
         case .president: return 2_000_000
         default: return 1
         }
@@ -135,6 +136,7 @@ enum PolPoste: String, Codable, CaseIterable, Identifiable {
         case .maire: return 2
         case .depute: return -4
         case .senateur: return 5
+        case .premierMinistre: return -10
         case .president: return -14
         case .secretaireGeneral: return -10
         default: return 0
@@ -415,6 +417,8 @@ struct PolEtat: Codable, Equatable {
     var fondation: Bool = false
     /// Résultat de la dernière élection, à montrer en événement « soirée électorale » au début de l'année suivante.
     var soiree: PolSoiree?
+    /// Pays dont le système politique s'applique (id du module étranger). Change → la carrière repart de zéro.
+    var paysId: String?
 
     init() {}
 
@@ -461,6 +465,7 @@ struct PolEtat: Codable, Equatable {
         memoires = try c.decodeIfPresent(Bool.self, forKey: .memoires) ?? false
         fondation = try c.decodeIfPresent(Bool.self, forKey: .fondation) ?? false
         soiree = try c.decodeIfPresent(PolSoiree.self, forKey: .soiree)
+        paysId = try c.decodeIfPresent(String.self, forKey: .paysId)
     }
 
     mutating func borner() {
@@ -523,6 +528,8 @@ struct PolParti: Codable, Identifiable, Equatable {
     var influence: Int?
     /// Affinités avec les groupes d'électeurs (bonus au score de ce groupe).
     var segments: [String: Int]?
+    /// Pays où ce parti existe (absent = France).
+    var pays: [String]?
 }
 
 /// Ministère (Data/Politique/Ministeres/*.json).
@@ -593,6 +600,8 @@ struct PolDossier: Codable, Identifiable, Equatable {
     var title: String
     var text: String
     var choices: [PolChoix]
+    /// Pays où ce dossier peut sortir (absent = partout).
+    var pays: [String]?
 }
 
 /// Loi, arrêté ou décret (Data/Politique/Lois/*.json).
@@ -624,6 +633,8 @@ struct PolLoi: Codable, Identifiable, Equatable {
     var headline: String
     var texteAdoption: String
     var texteRejet: String
+    /// Pays où cette loi existe (absent = partout).
+    var pays: [String]?
 }
 
 // MARK: - Catalogue
