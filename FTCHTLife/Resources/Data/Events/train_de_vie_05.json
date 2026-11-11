@@ -1,0 +1,4007 @@
+[
+  {
+    "id": "tdv_0201",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 95,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "millionaire"
+      ],
+      "excludeFlags": [
+        "tdv_toile_douteuse",
+        "tdv_faux_confirme"
+      ]
+    },
+    "text": "Aux enchères, une toile « attribuée à l'atelier de » la grande Ernestine Vallouret est estimée 80 000 €. Le commissaire-priseur te fait un clin d'œil appuyé.",
+    "choices": [
+      {
+        "label": "Enchérir jusqu'au bout",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu l'emportes à 240 000 €. La salle applaudit. Tu ne sais pas trop qui elle applaudit.",
+            "effects": {
+              "money": -240000,
+              "happiness": 10,
+              "setFlags": [
+                "tdv_toile_douteuse"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un inconnu au téléphone surenchérit à chaque fois. Tu abandonnes à 300 000 €, le cœur à 180.",
+            "effects": {
+              "happiness": -6,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lever la main une fois",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu levais la main pour te gratter le nez. Tu viens d'acheter un vase de 12 000 €.",
+            "effects": {
+              "money": -12000,
+              "happiness": -5,
+              "smarts": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Personne ne te remarque. Tu repars avec le catalogue et ta dignité.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Examiner les coups de pinceau",
+        "requiresSkill": {
+          "dessin": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu remarques que la signature est au feutre. Tu le murmures à ton voisin, qui renonce aussi. Vous trinquez à votre clairvoyance.",
+            "effects": {
+              "smarts": 6,
+              "happiness": 6,
+              "skills": {
+                "dessin": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0202",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "collection_art"
+      ],
+      "flags": [
+        "tdv_toile_douteuse"
+      ]
+    },
+    "text": "Un expert en blouse examine ta Vallouret à la lampe UV. Il soupire, puis soupire encore, plus longuement.",
+    "choices": [
+      {
+        "label": "Exiger la vérité",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "C'est un faux, peint en 1987 avec un pigment qui contient du dentifrice. Ta toile vaut désormais 300 €.",
+            "effects": {
+              "happiness": -15,
+              "smarts": 3,
+              "clearFlags": [
+                "tdv_toile_douteuse"
+              ],
+              "setFlags": [
+                "tdv_faux_confirme"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "C'est une vraie, juste peinte un jour où Vallouret était très fatiguée. Une fondation te la rachète sur-le-champ 600 000 €.",
+            "effects": {
+              "money": 600000,
+              "happiness": 15,
+              "clearFlags": [
+                "tdv_toile_douteuse"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui glisser une enveloppe",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il signe un certificat d'authenticité avec un grand sourire. Toi, tu dors mal depuis.",
+            "effects": {
+              "money": -20000,
+              "karma": -10,
+              "health": -4,
+              "setFlags": [
+                "insomniaque"
+              ],
+              "clearFlags": [
+                "tdv_toile_douteuse"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il est incorruptible et le raconte à toute la profession, avec ton enveloppe en photo.",
+            "effects": {
+              "money": -20000,
+              "happiness": -12,
+              "karma": -6,
+              "setFlags": [
+                "honte_publique"
+              ],
+              "clearFlags": [
+                "tdv_toile_douteuse"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas vouloir savoir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu remets la toile au mur. Le doute te regarde tous les soirs depuis le salon.",
+            "effects": {
+              "happiness": -4,
+              "smarts": -2,
+              "clearFlags": [
+                "tdv_toile_douteuse"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0203",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "collection_art"
+      ],
+      "flags": [
+        "tdv_faux_confirme"
+      ]
+    },
+    "text": "Une lettre manuscrite : le faussaire de ta fausse Vallouret, 84 ans, voudrait la revoir « une dernière fois » et propose de la signer de son vrai nom.",
+    "choices": [
+      {
+        "label": "L'inviter chez toi",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il pleure devant la toile, puis te raconte sa vie pendant six heures. Tu repars avec des anecdotes inestimables.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 5,
+              "karma": 4,
+              "clearFlags": [
+                "tdv_faux_confirme"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Pendant que tu fais le thé, il repart avec la toile. Tu ne sais même pas si tu dois porter plainte.",
+            "effects": {
+              "happiness": -8,
+              "karma": 2,
+              "clearFlags": [
+                "tdv_faux_confirme"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le dénoncer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il est mis en examen. Les journaux t'appellent « la victime » et tu touches 40 000 € de dommages.",
+            "effects": {
+              "money": 40000,
+              "happiness": 4,
+              "karma": -4,
+              "clearFlags": [
+                "tdv_faux_confirme"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il a 84 ans et un sourire désarmant : le juge le relaxe, et la presse te traite de pingre sans cœur.",
+            "effects": {
+              "happiness": -8,
+              "karma": -6,
+              "money": -6000,
+              "clearFlags": [
+                "tdv_faux_confirme"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre « le faux du siècle »",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu vends l'histoire avec la toile. Un amateur de faux célèbres paie 90 000 €. Tu ris jusqu'à la banque.",
+            "effects": {
+              "money": 90000,
+              "happiness": 12,
+              "clearFlags": [
+                "tdv_faux_confirme"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Personne n'en veut, et le faussaire, vexé, t'attaque pour usage commercial de son œuvre.",
+            "effects": {
+              "money": -15000,
+              "happiness": -6,
+              "clearFlags": [
+                "tdv_faux_confirme"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0204",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux"
+      ],
+      "excludeFlags": [
+        "tdv_bague_perdue"
+      ]
+    },
+    "text": "Tu enlèves ta bague pour te laver les mains dans un restaurant étoilé. Elle glisse, tinte deux fois, puis disparaît dans le siphon.",
+    "choices": [
+      {
+        "label": "Démonter le lavabo",
+        "requiresSkill": {
+          "bricolage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu récupères ta bague, un cure-dent en argent et une boucle d'oreille d'inconnu. Le chef t'offre le dessert.",
+            "effects": {
+              "happiness": 8,
+              "looks": -2,
+              "skills": {
+                "bricolage": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler le personnel",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le plongeur la retrouve en vingt minutes et refuse tout pourboire. Tu insistes : 200 €.",
+            "effects": {
+              "money": -200,
+              "happiness": 5,
+              "karma": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le plombier ne vient que lundi. La bague, elle, est déjà partie vers la mer.",
+            "effects": {
+              "happiness": -12,
+              "setFlags": [
+                "tdv_bague_perdue"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser tomber",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais semblant de t'en moquer. Tu y penses chaque fois que tu entends couler un robinet.",
+            "effects": {
+              "happiness": -8,
+              "setFlags": [
+                "tdv_bague_perdue"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0205",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "bijoux"
+      ],
+      "flags": [
+        "tdv_bague_perdue"
+      ]
+    },
+    "text": "Un pêcheur de {ville} passe aux infos : il a trouvé une bague dans le ventre d'un bar. La gravure ressemble terriblement à celle de la tienne.",
+    "choices": [
+      {
+        "label": "Aller la réclamer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "C'est bien elle. Le pêcheur te la rend contre une photo avec le poisson, qui a l'air moins content que vous deux.",
+            "effects": {
+              "happiness": 12,
+              "karma": 2,
+              "clearFlags": [
+                "tdv_bague_perdue"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "C'en est une autre, et vingt personnes la réclament avant toi. Tu passes pour une personne opportuniste au journal de 20 h.",
+            "effects": {
+              "happiness": -7,
+              "karma": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une récompense",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Contre 2 000 €, il te la rend dans une boîte d'appâts. Ça sent, mais c'est ta bague.",
+            "effects": {
+              "money": -2000,
+              "happiness": 10,
+              "clearFlags": [
+                "tdv_bague_perdue"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il fait monter les enchères jusqu'à 9 000 €. Tu paies, la mort dans l'âme.",
+            "effects": {
+              "money": -9000,
+              "happiness": 3,
+              "clearFlags": [
+                "tdv_bague_perdue"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tourner la page",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu laisses le poisson tranquille. Par principe, tu manges végétarien pendant un mois et tu te sens étrangement bien.",
+            "effects": {
+              "happiness": 3,
+              "health": 3,
+              "clearFlags": [
+                "tdv_bague_perdue"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0206",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "rich"
+      ],
+      "excludeFlags": [
+        "tdv_toile_pretee"
+      ]
+    },
+    "text": "Le musée des Beaux-Arts de {ville} veut t'emprunter ta plus belle toile pour une exposition de six mois. En échange : ton nom sur un petit carton blanc.",
+    "choices": [
+      {
+        "label": "Accepter avec fierté",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ton nom est écrit en corps 8 sous la toile. Tu vas l'admirer chaque dimanche, discrètement.",
+            "effects": {
+              "happiness": 10,
+              "karma": 4,
+              "setFlags": [
+                "tdv_toile_pretee"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le carton indique « collection particulière ». Tu harcèles le conservateur jusqu'à la fin de l'expo.",
+            "effects": {
+              "happiness": -5,
+              "karma": -1,
+              "setFlags": [
+                "tdv_toile_pretee"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger un loyer",
+        "requiresSkill": {
+          "marchandage": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu obtiens 30 000 € de « frais de séparation ». Le conservateur ne te salue plus que du bout des cils.",
+            "effects": {
+              "money": 30000,
+              "happiness": 5,
+              "karma": -3,
+              "setFlags": [
+                "tdv_toile_pretee"
+              ],
+              "skills": {
+                "marchandage": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La toile reste au-dessus de ton canapé, où seuls tes invités la regardent. À peine.",
+            "effects": {
+              "happiness": -3,
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0207",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "collection_art"
+      ],
+      "flags": [
+        "tdv_toile_pretee"
+      ]
+    },
+    "text": "Ta toile revient du musée. Quelque chose cloche : la dame peinte dessus semble sourire davantage.",
+    "choices": [
+      {
+        "label": "Faire expertiser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Un restaurateur zélé l'a « rafraîchie ». Sa cote est divisée par deux, mais le musée te verse 120 000 € d'indemnités.",
+            "effects": {
+              "money": 120000,
+              "happiness": -5,
+              "clearFlags": [
+                "tdv_toile_pretee"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tout est normal. C'est toi qui souriais moins, à cause des six mois de séparation.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2,
+              "money": -3000,
+              "clearFlags": [
+                "tdv_toile_pretee"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte direct",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le musée préfère transiger : 60 000 € et une lettre d'excuses calligraphiée.",
+            "effects": {
+              "money": 60000,
+              "happiness": 5,
+              "clearFlags": [
+                "tdv_toile_pretee"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le musée produit des photos datées : tu avais mal regardé. Frais d'avocat : 18 000 €.",
+            "effects": {
+              "money": -18000,
+              "happiness": -8,
+              "smarts": -2,
+              "clearFlags": [
+                "tdv_toile_pretee"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Raccrocher sans rien dire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes invités la trouvent plus sympathique. Toi, tu n'arrives plus à dormir en face d'elle.",
+            "effects": {
+              "happiness": -3,
+              "health": -4,
+              "clearFlags": [
+                "tdv_toile_pretee"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0208",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "proprietaire"
+      ],
+      "excludeFlags": [
+        "tdv_cambriole"
+      ]
+    },
+    "text": "Tu rentres de week-end : la porte est ouverte, ton coffre à bijoux aussi. Le chat n'a rien vu, et semble s'en vanter.",
+    "choices": [
+      {
+        "label": "Appeler la police",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les policiers notent tout, boivent ton café et te souhaitent bon courage. L'assurance ne rembourse que 70 %.",
+            "effects": {
+              "money": -8000,
+              "happiness": -10,
+              "setFlags": [
+                "tdv_cambriole"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les voleurs sont arrêtés le soir même : ils revendaient tes bijoux sur un parking. Tu récupères presque tout.",
+            "effects": {
+              "money": -500,
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Enquêter toi-même",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu retrouves tes boucles d'oreilles chez un prêteur sur gages, et ton honneur avec.",
+            "effects": {
+              "happiness": 12,
+              "smarts": 4
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Tu passes trois nuits dans ta voiture à surveiller un innocent. Il finit par appeler la police. Sur toi.",
+            "effects": {
+              "happiness": -8,
+              "health": -5,
+              "money": -8000,
+              "setFlags": [
+                "tdv_cambriole",
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0209",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "bijoux"
+      ],
+      "flags": [
+        "tdv_cambriole"
+      ]
+    },
+    "text": "Depuis ton cambriolage, un vendeur insiste pour t'installer le système « Forteresse Prestige » : lasers, chiens robots et brouillard aveuglant.",
+    "choices": [
+      {
+        "label": "Tout installer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "45 000 € plus tard, plus personne n'entre chez toi. Ni toi : le brouillard se déclenche chaque fois que tu éternues.",
+            "effects": {
+              "money": -45000,
+              "health": -4,
+              "happiness": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ça marche à merveille. Tu dors comme un bébé, au milieu des lasers.",
+            "effects": {
+              "money": -45000,
+              "happiness": 8,
+              "health": 3,
+              "clearFlags": [
+                "tdv_cambriole"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Adopter un gros chien",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il s'appelle Bijou, dort sur tes bijoux et grogne même sur toi. Sécurité maximale.",
+            "effects": {
+              "money": -1500,
+              "happiness": 8,
+              "health": 2,
+              "clearFlags": [
+                "tdv_cambriole"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il avale une boucle d'oreille. Vétérinaire, radio, attente fébrile : 2 400 €.",
+            "effects": {
+              "money": -2400,
+              "happiness": -4,
+              "clearFlags": [
+                "tdv_cambriole"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout mettre à la banque",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes bijoux dorment au coffre. Tu les vois deux fois par an, comme des cousins éloignés.",
+            "effects": {
+              "money": -600,
+              "happiness": -3,
+              "clearFlags": [
+                "tdv_cambriole"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0210",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "siblings"
+      ],
+      "excludeFlags": [
+        "tdv_guerre_collier"
+      ]
+    },
+    "text": "{fratrie} débarque avec un album photo censé prouver que grand-mère lui avait promis le collier que tu portes au cou.",
+    "choices": [
+      {
+        "label": "Le rendre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{fratrie} pleure de joie, puis le revend la semaine suivante. Tu l'apprends par une petite annonce.",
+            "effects": {
+              "happiness": -8,
+              "karma": 6,
+              "relationships": {
+                "sibling": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser net",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ambiance glaciale à Noël. On te place désormais à côté de l'oncle qui parle de sa hernie.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "sibling": -15
+              },
+              "setFlags": [
+                "tdv_guerre_collier"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{fratrie} prend un avocat, toi aussi. Le collier vaut 15 000 €, les avocats en coûtent déjà 9 000.",
+            "effects": {
+              "money": -9000,
+              "happiness": -8,
+              "relationships": {
+                "sibling": -20
+              },
+              "setFlags": [
+                "tdv_guerre_collier"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer la garde alternée",
+        "requiresSkill": {
+          "eloquence": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Six mois chacun. C'est ridicule, mais tout le monde rit et la paix revient à table.",
+            "effects": {
+              "happiness": 8,
+              "karma": 4,
+              "relationships": {
+                "sibling": 10
+              },
+              "skills": {
+                "eloquence": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0211",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "siblings"
+      ],
+      "flags": [
+        "tdv_guerre_collier"
+      ]
+    },
+    "text": "Le procès du collier de grand-mère arrive au tribunal. Le juge le fait passer de main en main, comme un plateau de fromages.",
+    "choices": [
+      {
+        "label": "Plaider avec émotion",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu racontes ton dernier goûter avec grand-mère. Le juge renifle. Le collier est à toi.",
+            "effects": {
+              "happiness": 10,
+              "money": -6000,
+              "relationships": {
+                "sibling": -10
+              },
+              "clearFlags": [
+                "tdv_guerre_collier"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu en fais trop et cites grand-mère en alexandrins. Le collier va à {fratrie}, les frais de justice à toi.",
+            "effects": {
+              "money": -14000,
+              "happiness": -12,
+              "relationships": {
+                "sibling": -5
+              },
+              "clearFlags": [
+                "tdv_guerre_collier"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre et partager",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le collier part aux enchères à 22 000 €. Chacun repart avec 11 000 € et un vague regret.",
+            "effects": {
+              "money": 11000,
+              "happiness": -2,
+              "relationships": {
+                "sibling": 6
+              },
+              "clearFlags": [
+                "tdv_guerre_collier"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le faire expertiser",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Surprise : c'est du toc. Grand-mère doit bien rire là-haut. Vous ressortez ensemble, hilares.",
+            "effects": {
+              "happiness": 6,
+              "money": -3000,
+              "relationships": {
+                "sibling": 15
+              },
+              "clearFlags": [
+                "tdv_guerre_collier"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Il est vrai, et vaut encore plus cher que prévu. Le procès repart pour deux ans.",
+            "effects": {
+              "money": -8000,
+              "happiness": -8,
+              "health": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0212",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "proprietaire"
+      ],
+      "excludeFlags": [
+        "tdv_collection_envahissante"
+      ]
+    },
+    "text": "Ta collection a débordé : sculptures dans la baignoire, toiles derrière le frigo. Tu dors sur un canapé coincé entre deux bustes romains (faux).",
+    "choices": [
+      {
+        "label": "Louer un entrepôt",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un hangar climatisé à 1 000 € par mois. Tu vas y parler à tes toiles le dimanche.",
+            "effects": {
+              "money": -12000,
+              "happiness": 6,
+              "health": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer d'acheter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu achètes une statue de deux mètres. Il faut désormais passer de profil dans le couloir.",
+            "effects": {
+              "money": -25000,
+              "happiness": 5,
+              "health": -4,
+              "setFlags": [
+                "tdv_collection_envahissante",
+                "panier_perce"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu te cognes dans un mobile suspendu. Huit points de suture, et une œuvre vue de très près.",
+            "effects": {
+              "money": -5000,
+              "health": -10,
+              "setFlags": [
+                "tdv_collection_envahissante"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir la maison au public",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Des visiteurs paient 8 € pour voir ta salle de bain. L'un d'eux est critique et adore.",
+            "effects": {
+              "money": 4000,
+              "happiness": 6,
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un car de retraités renverse un vase et mange tout ton fromage.",
+            "effects": {
+              "money": -3000,
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0213",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "collection_art"
+      ],
+      "flags": [
+        "tdv_collection_envahissante"
+      ]
+    },
+    "text": "Craquement sinistre : le plancher de l'étage plie sous le poids de ta collection de bronzes.",
+    "choices": [
+      {
+        "label": "Évacuer immédiatement",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le plancher cède cinq minutes après ta sortie. Les bronzes s'en sortent, ton salon non. Travaux : 60 000 €.",
+            "effects": {
+              "money": -60000,
+              "happiness": -10,
+              "clearFlags": [
+                "tdv_collection_envahissante"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le plancher tient. Tu as passé la nuit dehors pour rien, en pyjama, devant tous les voisins.",
+            "effects": {
+              "health": -3,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sauver la plus belle pièce",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu descends l'escalier avec 80 kg de bronze dans les bras. Ton dos s'en souviendra toute ta vie.",
+            "effects": {
+              "health": -12,
+              "happiness": 4,
+              "setFlags": [
+                "dos_fragile"
+              ],
+              "clearFlags": [
+                "tdv_collection_envahissante"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le plancher cède pendant que tu portes la statue. Vous atterrissez ensemble dans la cuisine.",
+            "effects": {
+              "health": -22,
+              "money": -60000,
+              "happiness": -10,
+              "clearFlags": [
+                "tdv_collection_envahissante"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renforcer toi-même",
+        "requiresSkill": {
+          "bricolage": 4
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Trois poutres, deux jours, zéro diplôme. Ça tient. L'architecte venu vérifier en reste sans voix.",
+            "effects": {
+              "money": -4000,
+              "happiness": 10,
+              "smarts": 3,
+              "skills": {
+                "bricolage": 3
+              },
+              "clearFlags": [
+                "tdv_collection_envahissante"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0214",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 90,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux"
+      ],
+      "requiresPartner": true
+    },
+    "text": "{partenaire} essaie de rayer une vitre avec la bague en diamant que tu lui as offerte. Rien. Pas la moindre trace. Un silence s'installe.",
+    "choices": [
+      {
+        "label": "Avouer l'économie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{partenaire} rit, puis ne rit plus, puis rit encore. Tu dors deux nuits sur le canapé.",
+            "effects": {
+              "happiness": -5,
+              "karma": 3,
+              "relationships": {
+                "partner": -8
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{partenaire} apprécie la franchise et garde la bague « pour le souvenir ».",
+            "effects": {
+              "happiness": 5,
+              "karma": 3,
+              "relationships": {
+                "partner": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser la vitre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu parles d'un verre « blindé spécial ». {partenaire} vérifie sur une autre vitre. Raté.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "partner": -15
+              },
+              "setFlags": [
+                "menteur_notoire"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ça passe. Pour l'instant. Tu évites désormais toutes les fenêtres.",
+            "effects": {
+              "happiness": 2,
+              "karma": -5,
+              "setFlags": [
+                "menteur_notoire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Offrir un vrai diamant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "8 000 € plus tard, la vitre est rayée et ton couple sauvé.",
+            "effects": {
+              "money": -8000,
+              "happiness": 6,
+              "relationships": {
+                "partner": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0215",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "grand_voyageur"
+      ]
+    },
+    "text": "À la douane d'Osaka, ton sac fait hurler le détecteur : tu voyages avec sept bracelets, trois montres et un diadème « pour aller avec tout ».",
+    "choices": [
+      {
+        "label": "Tout déclarer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes trois heures en cabine à compter tes carats. Taxe : 4 500 €.",
+            "effects": {
+              "money": -4500,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer l'étourderie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le douanier te croit et te souhaite bon séjour. Tu transpires jusqu'au taxi.",
+            "effects": {
+              "happiness": 4,
+              "health": -2,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Amende de 18 000 € et fouille complète, y compris de ton tube de dentifrice.",
+            "effects": {
+              "money": -18000,
+              "happiness": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre en japonais",
+        "requiresSkill": {
+          "japonais": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ravi de ton accent, le douanier te raconte son mariage en détail. Tu passes sans rien payer, avec une invitation.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 2,
+              "skills": {
+                "japonais": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0216",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "endette"
+      ],
+      "excludeFlags": [
+        "tdv_bague_au_clou"
+      ]
+    },
+    "text": "Fin de mois difficile. Le prêteur sur gages examine ta bague de famille et en propose 400 €, en mâchouillant un cure-dent.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu paies tes dettes du mois. La bague t'attend en vitrine, entre une perceuse et une guitare.",
+            "effects": {
+              "money": 400,
+              "happiness": -6,
+              "setFlags": [
+                "tdv_bague_au_clou"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu rates la date limite. Ta bague est vendue à un touriste ravi.",
+            "effects": {
+              "money": 400,
+              "happiness": -12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu racontes l'histoire de chaque rayure. Il monte à 700 €, la larme à l'œil.",
+            "effects": {
+              "money": 700,
+              "happiness": 2,
+              "setFlags": [
+                "tdv_bague_au_clou"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il se vexe et redescend à 250 €. Tu acceptes, la tête basse.",
+            "effects": {
+              "money": 250,
+              "happiness": -8,
+              "setFlags": [
+                "tdv_bague_au_clou"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder la bague",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu manges des pâtes au beurre tout le mois en regardant ta bague. Elle brille ; toi, moins.",
+            "effects": {
+              "happiness": -3,
+              "health": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0217",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "bijoux"
+      ],
+      "flags": [
+        "tdv_bague_au_clou"
+      ]
+    },
+    "text": "Le prêteur sur gages t'appelle : tu as 48 heures pour racheter ta bague de famille, sinon elle part en vitrine.",
+    "choices": [
+      {
+        "label": "Racheter coûte que coûte",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu cours avec 700 € en petites coupures. La bague retrouve ton doigt, et ton doigt sourit.",
+            "effects": {
+              "money": -700,
+              "happiness": 10,
+              "clearFlags": [
+                "tdv_bague_au_clou"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le prix a « suivi le cours de l'or » : 1 900 €. Tu paies en trois fois, en grinçant des dents.",
+            "effects": {
+              "money": -1900,
+              "happiness": 3,
+              "clearFlags": [
+                "tdv_bague_au_clou"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser filer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes devant la vitrine chaque jour. Un matin, elle n'y est plus. Ça pique.",
+            "effects": {
+              "happiness": -10,
+              "clearFlags": [
+                "tdv_bague_au_clou"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0218",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "milliardaire",
+        "collection_art"
+      ],
+      "excludeFlags": [
+        "tdv_tache_bleue"
+      ]
+    },
+    "text": "Vente du soir : une toile composée d'une seule tache bleue démarre à 40 millions. Ton conseiller en art te donne de petits coups de coude.",
+    "choices": [
+      {
+        "label": "Lever la main",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Adjugée à 52 millions. Tu l'accroches dans ton hall ; tes invités croient à une fuite d'eau.",
+            "effects": {
+              "money": -52000000,
+              "happiness": 8,
+              "setFlags": [
+                "tdv_tache_bleue"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu l'emportes, puis la cote s'effondre quand l'artiste avoue l'avoir faite en éternuant.",
+            "effects": {
+              "money": -52000000,
+              "happiness": -15,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Peindre la tienne",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu fais une tache verte dans ta cuisine. Un galeriste la vend 300 000 €. Le marché est fou, toi aussi.",
+            "effects": {
+              "money": 300000,
+              "happiness": 12,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Ta tache verte ne trouve pas preneur et sert de dessous-de-plat. Pinceaux en poil de martre : 2 000 €.",
+            "effects": {
+              "money": -2000,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester digne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu applaudis poliment. Ton conseiller boude jusqu'au dessert.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0219",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "milliardaire"
+      ],
+      "flags": [
+        "tdv_tache_bleue"
+      ]
+    },
+    "text": "Une femme de ménage intérimaire a nettoyé ta tache bleue à 52 millions. Le cadre est impeccable. La toile aussi.",
+    "choices": [
+      {
+        "label": "Attaquer l'assurance",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'assurance paie 30 millions après deux ans d'expertises. Tu en gardes un tic à l'œil.",
+            "effects": {
+              "money": 30000000,
+              "happiness": -10,
+              "health": -4,
+              "clearFlags": [
+                "tdv_tache_bleue"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'assurance plaide « l'usure normale » et gagne. Tu perds le procès et 2 millions de frais.",
+            "effects": {
+              "money": -2000000,
+              "happiness": -15,
+              "clearFlags": [
+                "tdv_tache_bleue"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exposer la toile blanche",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu la rebaptises « Après le passage ». Un musée l'achète 80 millions. L'art, quel métier.",
+            "effects": {
+              "money": 80000000,
+              "happiness": 15,
+              "fame": 10,
+              "clearFlags": [
+                "tdv_tache_bleue"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les critiques flairent la combine. Tu deviens la risée de tout le milieu.",
+            "effects": {
+              "happiness": -12,
+              "karma": -4,
+              "clearFlags": [
+                "tdv_tache_bleue"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer sa carrière d'artiste",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle signe désormais des toiles « nettoyées ». Elle devient célèbre ; toi, tu touches 20 %.",
+            "effects": {
+              "money": 5000000,
+              "happiness": 10,
+              "karma": 8,
+              "clearFlags": [
+                "tdv_tache_bleue"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0220",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "pol_elu"
+      ]
+    },
+    "text": "Un journaliste demande pourquoi le tableau offert par un promoteur immobilier trône dans ton bureau d'élu.",
+    "choices": [
+      {
+        "label": "Le rendre publiquement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le rends devant les caméras. Le promoteur fait semblant d'être ravi.",
+            "effects": {
+              "happiness": -3,
+              "karma": 6,
+              "fame": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est une copie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le journaliste a l'expertise dans sa poche. C'est l'original. Ta soirée s'annonce longue.",
+            "effects": {
+              "happiness": -12,
+              "karma": -8,
+              "setFlags": [
+                "honte_publique",
+                "menteur_notoire"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il te croit, faute de preuve. Tu décroches le tableau le soir même, en sueur.",
+            "effects": {
+              "happiness": -4,
+              "health": -3,
+              "karma": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retourner la question",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu parles d'art pour tous pendant douze minutes et offres le tableau à l'école du quartier. Ovation.",
+            "effects": {
+              "happiness": 8,
+              "karma": 5,
+              "fame": 5,
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu t'embrouilles en direct. L'extrait tourne en boucle sur les réseaux.",
+            "effects": {
+              "happiness": -10,
+              "fame": 4,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0221",
+    "category": "train_de_vie",
+    "minAge": 22,
+    "maxAge": 80,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "gros_salaire"
+      ]
+    },
+    "text": "Ta montre hors de prix s'arrête en pleine réunion. Le service après-vente demande 2 800 € et quatre mois de patience.",
+    "choices": [
+      {
+        "label": "Payer et attendre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Quatre mois à demander l'heure à des inconnus. Tu apprends beaucoup de choses sur eux.",
+            "effects": {
+              "money": -2800,
+              "happiness": -4,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "La réparer toi-même",
+        "requiresSkill": {
+          "mecanique": 3
+        },
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu remontes 214 pièces à la pince à épiler. Il en reste trois sur la table, mais elle marche.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 4,
+              "skills": {
+                "mecanique": 2
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle marche… à l'envers. Tu adoptes l'heure miroir et arrives partout en avance.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter une montre à 15 €",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Elle donne l'heure, ne dit rien, et personne ne voit la différence. Révélation.",
+            "effects": {
+              "money": -15,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton directeur la remarque et te demande, l'air inquiet, si « ça va, financièrement ».",
+            "effects": {
+              "money": -15,
+              "happiness": -6,
+              "looks": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0222",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "multi_proprietaire"
+      ],
+      "excludeFlags": [
+        "tdv_fraude_assurance"
+      ]
+    },
+    "text": "Tu ne sais plus dans laquelle de tes maisons se trouve ton tableau préféré. Ton assistant non plus.",
+    "choices": [
+      {
+        "label": "Faire la tournée",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu le retrouves dans le chalet, où il sert de planche à découper. Restauration : 3 000 €.",
+            "effects": {
+              "money": -3000,
+              "happiness": -6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une semaine d'allers-retours pour découvrir qu'il était dans ta chambre, derrière le rideau.",
+            "effects": {
+              "happiness": -3,
+              "health": -2,
+              "smarts": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Coder un inventaire",
+        "requiresSkill": {
+          "code": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton appli avec photos et géolocalisation retrouve le tableau, plus deux autres que tu avais oubliés.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 5,
+              "skills": {
+                "code": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déclarer un vol",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'assurance paie 200 000 €. Trois mois plus tard, tu retrouves le tableau derrière le chauffe-eau.",
+            "effects": {
+              "money": 200000,
+              "happiness": 4,
+              "karma": -10,
+              "setFlags": [
+                "tdv_fraude_assurance"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'expert le trouve en dix minutes dans ton garage. Ambiance.",
+            "effects": {
+              "happiness": -10,
+              "karma": -8,
+              "setFlags": [
+                "menteur_notoire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0223",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "collection_art"
+      ],
+      "flags": [
+        "tdv_fraude_assurance"
+      ]
+    },
+    "text": "L'assureur t'envoie un enquêteur au sourire inquiétant : il veut « juste jeter un œil » à tes garages.",
+    "choices": [
+      {
+        "label": "Avouer et rembourser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rembourses avec intérêts. L'enquêteur te serre la main, déçu de ne pas t'avoir coincé.",
+            "effects": {
+              "money": -220000,
+              "happiness": -8,
+              "karma": 8,
+              "clearFlags": [
+                "tdv_fraude_assurance"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le noyer sous les cafés",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il repart après sept espressos sans rien trouver, et ne dort pas pendant trois jours. Toi non plus.",
+            "effects": {
+              "health": -4,
+              "happiness": 3,
+              "karma": -3,
+              "clearFlags": [
+                "tdv_fraude_assurance"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il trouve le tableau derrière le chauffe-eau. Plainte pour fraude et 300 000 € à rendre.",
+            "effects": {
+              "money": -300000,
+              "happiness": -15,
+              "karma": -5,
+              "clearFlags": [
+                "tdv_fraude_assurance"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Cacher le tableau",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu le caches dans une meule de foin. Il pleut. Le tableau ne s'en remet pas.",
+            "effects": {
+              "happiness": -12,
+              "karma": -6,
+              "clearFlags": [
+                "tdv_fraude_assurance"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'enquêteur te croise dans l'allée, la toile sous le bras. Silence mémorable, amende salée.",
+            "effects": {
+              "money": -300000,
+              "happiness": -15,
+              "clearFlags": [
+                "tdv_fraude_assurance"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0224",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Lors d'un gala, ta boucle d'oreille en diamant tombe dans le saladier de punch d'une baronne.",
+    "choices": [
+      {
+        "label": "Plonger la main",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu la récupères, le bras rouge jusqu'au coude. La baronne, amusée, t'invite à son prochain gala.",
+            "effects": {
+              "happiness": 5,
+              "looks": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu renverses le saladier sur la robe de la baronne. Fin de ta saison mondaine.",
+            "effects": {
+              "happiness": -10,
+              "looks": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Boire jusqu'à la trouver",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu vides le saladier verre après verre. Tu retrouves la boucle, mais pas ton équilibre.",
+            "effects": {
+              "health": -7,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un invité l'avale avec son punch. Tu le fixes toute la soirée, très mal à l'aise.",
+            "effects": {
+              "health": -4,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un tour de magie",
+        "requiresSkill": {
+          "magie": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu « fais apparaître » la boucle derrière l'oreille de la baronne. Ovation. Personne n'a vu la louche.",
+            "effects": {
+              "happiness": 12,
+              "looks": 2,
+              "skills": {
+                "magie": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0225",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "proprietaire"
+      ]
+    },
+    "text": "Un artiste de rue anonyme a peint une fresque géante sur ta façade pendant la nuit. Les voisins disent qu'elle vaut une fortune.",
+    "choices": [
+      {
+        "label": "Découper et vendre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Un collectionneur paie 180 000 € pour un pan de mur. Tu vis désormais avec un trou dans le salon.",
+            "effects": {
+              "money": 180000,
+              "happiness": 3,
+              "health": -2,
+              "karma": -6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La fresque s'effrite pendant le découpage. Il te reste un mur cassé et des gravats.",
+            "effects": {
+              "money": -15000,
+              "happiness": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "La garder",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les touristes se photographient devant chez toi toute la journée. Tu ouvres un stand de limonade.",
+            "effects": {
+              "money": 2000,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Des groupes chantent sous ta fenêtre jusqu'à 3 h du matin. Tu ne dors plus.",
+            "effects": {
+              "health": -6,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Repeindre en beige",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta façade est beige. Internet entier te déteste. Le beige, lui, te remercie.",
+            "effects": {
+              "happiness": -5,
+              "karma": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0226",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "rich"
+      ]
+    },
+    "text": "Une bijoutière te propose un saphir « à l'histoire maudite » : ses trois derniers propriétaires ont tous eu de graves soucis de plomberie.",
+    "choices": [
+      {
+        "label": "L'acheter pour rire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta chaudière explose le mois suivant. Coïncidence, dit le plombier en encaissant 6 000 €.",
+            "effects": {
+              "money": -26000,
+              "happiness": -6,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Rien ne se passe. Tu revends le saphir avec sa légende, beaucoup plus cher. La malédiction rapporte.",
+            "effects": {
+              "money": 15000,
+              "happiness": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier la malédiction",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu obtiens 40 % de remise « pour risque de fuite ». La bijoutière t'admire, à contrecœur.",
+            "effects": {
+              "money": -12000,
+              "happiness": 8,
+              "looks": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La bijoutière, superstitieuse, refuse de brader « pour ne pas vexer la pierre ».",
+            "effects": {
+              "happiness": -3,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sors à reculons. Le soir même, ton évier fuit. Tu n'oses en parler à personne.",
+            "effects": {
+              "money": -200,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0227",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art"
+      ]
+    },
+    "text": "Ton aspirateur robot a renversé un pot de peinture, puis s'est promené dedans sur une toile vierge. Le résultat est… pas mal du tout.",
+    "choices": [
+      {
+        "label": "Signer de ton nom",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Une galerie l'expose. « Une rage contenue », écrit la critique. Vendue 25 000 €.",
+            "effects": {
+              "money": 25000,
+              "happiness": 10,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un critique reconnaît des traces de roulettes. Ta carrière d'artiste naît et meurt le même jour.",
+            "effects": {
+              "happiness": -8,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Signer au nom du robot",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le robot devient une petite célébrité. Il refuse désormais de passer sous le canapé.",
+            "effects": {
+              "money": 8000,
+              "happiness": 12
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Personne n'y croit. La toile finit au garage, le robot au placard.",
+            "effects": {
+              "happiness": -2,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout nettoyer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes la journée à frotter. Le robot te regarde faire, sans aider.",
+            "effects": {
+              "happiness": -4,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0228",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "bateau"
+      ]
+    },
+    "text": "Ton bracelet en or glisse de ton poignet et tombe par-dessus bord, par trente mètres de fond.",
+    "choices": [
+      {
+        "label": "Plonger en apnée",
+        "requiresSkill": {
+          "sport": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu remontes avec le bracelet et une étoile de mer très surprise. Tes invités hurlent de joie.",
+            "effects": {
+              "happiness": 12,
+              "health": 3,
+              "skills": {
+                "sport": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sauter à l'eau",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Par miracle, tu le récupères, avec une otite qui dure un mois.",
+            "effects": {
+              "happiness": 6,
+              "health": -8
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Tu remontes à huit mètres, les tympans en feu et les mains vides.",
+            "effects": {
+              "health": -12,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Engager des plongeurs",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Deux plongeurs le retrouvent en vingt minutes, avec une canette de 1994.",
+            "effects": {
+              "money": -3000,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils trouvent une épave, des amphores et une facture de 9 000 €. Pas le bracelet.",
+            "effects": {
+              "money": -9000,
+              "happiness": -6,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer une rose",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes invités trouvent le geste magnifique, puis demandent quand on mange.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0229",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "endette"
+      ]
+    },
+    "text": "Tu dois de l'argent à tout le monde, mais ce petit tableau de brocante te fait de l'œil : 1 800 €, payable « en plusieurs fois, en confiance ».",
+    "choices": [
+      {
+        "label": "Craquer",
+        "outcomes": [
+          {
+            "chance": 0.2,
+            "text": "Un expert y reconnaît l'étude d'un maître oublié : 45 000 €. Tu pleures dans le métro.",
+            "effects": {
+              "money": 43200,
+              "happiness": 15
+            }
+          },
+          {
+            "chance": 0.8,
+            "text": "C'est une croûte. Tu la contemples entre deux lettres d'huissier.",
+            "effects": {
+              "money": -1800,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Résister",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repars avec ton argent, un vague regret, puis un vrai sandwich.",
+            "effects": {
+              "happiness": 2,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le marchander à 50 €",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le brocanteur, épuisé, cède à 60 €. Le tableau est moche, mais c'est TON moche.",
+            "effects": {
+              "money": -60,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le brocanteur te chasse avec un parapluie et vend le tableau au client suivant.",
+            "effects": {
+              "happiness": -5,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0230",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "millionaire"
+      ],
+      "excludeFlags": [
+        "tdv_originaux_melanges"
+      ]
+    },
+    "text": "Un copiste talentueux te propose de reproduire tes chefs-d'œuvre : tu accrocherais les copies et mettrais les originaux au coffre.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.75,
+            "text": "Les copies sont parfaites. Tellement que tu ne sais plus lesquelles sont au coffre.",
+            "effects": {
+              "money": -30000,
+              "happiness": -5,
+              "smarts": -2,
+              "setFlags": [
+                "tdv_originaux_melanges"
+              ]
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Le copiste disparaît avec les originaux. Il t'envoie une carte postale d'une plage lointaine.",
+            "effects": {
+              "money": -30000,
+              "happiness": -20,
+              "setFlags": [
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gardes tes originaux au mur, et tes nuits blanches avec.",
+            "effects": {
+              "happiness": 1,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Commander ton portrait",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il te peint plus beau que nature. Tu l'accroches dans l'entrée et te souris chaque matin.",
+            "effects": {
+              "money": -8000,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il te peint de façon très ressemblante. Trop. Le portrait finit au grenier.",
+            "effects": {
+              "money": -8000,
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0231",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "collection_art"
+      ],
+      "flags": [
+        "tdv_originaux_melanges"
+      ]
+    },
+    "text": "Un musée veut acheter ton plus beau tableau. Problème : tu ne sais plus si celui du salon est l'original ou la copie.",
+    "choices": [
+      {
+        "label": "Vendre celui du salon",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "C'était l'original : 400 000 € et la conscience tranquille.",
+            "effects": {
+              "money": 400000,
+              "happiness": 10,
+              "clearFlags": [
+                "tdv_originaux_melanges"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "C'était la copie. Le musée s'en aperçoit deux ans plus tard : tu rembourses tout, plus 50 000 € de dommages.",
+            "effects": {
+              "money": -50000,
+              "happiness": -15,
+              "karma": -4,
+              "clearFlags": [
+                "tdv_originaux_melanges"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout faire analyser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "12 000 € d'analyses te rendent la paix. Tu fais écrire « ORIGINAL » au dos, en très gros.",
+            "effects": {
+              "money": -12000,
+              "happiness": 6,
+              "smarts": 3,
+              "clearFlags": [
+                "tdv_originaux_melanges"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te fier à ton œil",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu repères une minuscule hésitation du copiste. Tu sais. Le musée achète l'original 400 000 €.",
+            "effects": {
+              "money": 400000,
+              "happiness": 12,
+              "smarts": 4,
+              "clearFlags": [
+                "tdv_originaux_melanges"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu te trompes avec un aplomb remarquable. Le musée achète la copie, puis te poursuit.",
+            "effects": {
+              "money": -50000,
+              "happiness": -14,
+              "clearFlags": [
+                "tdv_originaux_melanges"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0232",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 40,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "chez_parents",
+        "mother"
+      ]
+    },
+    "text": "{mere} essuie un verre en fixant ta chevalière en or. « Et le loyer, tu y penses, parfois ? »",
+    "choices": [
+      {
+        "label": "Payer un loyer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lui donnes 3 000 €. Elle refait la cuisine et parle de toi à tout le marché.",
+            "effects": {
+              "money": -3000,
+              "happiness": 3,
+              "karma": 4,
+              "relationships": {
+                "mother": 12
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prétendre que c'est du toc",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle la fait évaluer en cachette et ne t'adresse plus la parole pendant une semaine.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "mother": -12
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle te croit et te l'« emprunte » pour un mariage. Tu ne la revois jamais.",
+            "effects": {
+              "happiness": -10,
+              "relationships": {
+                "mother": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui offrir un bijou",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle pleure, puis porte le collier pour faire la vaisselle. Tous les jours.",
+            "effects": {
+              "money": -1500,
+              "happiness": 8,
+              "karma": 5,
+              "relationships": {
+                "mother": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0233",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "avion_prive"
+      ]
+    },
+    "text": "Le pilote de ton jet refuse de décoller : la sculpture en marbre que tu rapportes pèse plus lourd que deux passagers.",
+    "choices": [
+      {
+        "label": "Laisser un passager",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton assistant reste au sol avec ses valises. La sculpture voyage dans son fauteuil.",
+            "effects": {
+              "happiness": 5,
+              "karma": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le passager laissé au sol était ton fiscaliste. Il s'en souviendra au moment de ta déclaration.",
+            "effects": {
+              "money": -40000,
+              "happiness": -4,
+              "karma": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Affréter un cargo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La sculpture arrive par la mer six semaines plus tard, avec un léger goût de sel.",
+            "effects": {
+              "money": -25000,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Forcer le décollage",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "L'avion décolle en frôlant les arbres. Tout le monde applaudit à l'atterrissage, surtout le pilote.",
+            "effects": {
+              "happiness": 6,
+              "health": -5
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Atterrissage d'urgence dans un champ de betteraves. La sculpture est intacte ; ta côte, non.",
+            "effects": {
+              "health": -20,
+              "money": -300000,
+              "happiness": -12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0234",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 80,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "rich"
+      ]
+    },
+    "text": "Un photographe de mode veut photographier ta collection de bagues… sur tes mains, pour une campagne publicitaire.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tes mains font la couverture d'un magazine. Le reste de toi demeure anonyme, ce qui te vexe un peu.",
+            "effects": {
+              "money": 6000,
+              "happiness": 6,
+              "looks": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On a retouché tes mains avec des ongles de quatre centimètres. Ta famille ne te reconnaît pas.",
+            "effects": {
+              "money": 6000,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Diriger la séance",
+        "requiresSkill": {
+          "photo": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu imposes tes angles et ta lumière. Les photos sont superbes et ton nom figure au générique.",
+            "effects": {
+              "money": 9000,
+              "happiness": 10,
+              "fame": 5,
+              "skills": {
+                "photo": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes mains restent anonymes. Elles ont l'air soulagées.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0235",
+    "category": "train_de_vie",
+    "minAge": 22,
+    "maxAge": 90,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "gros_salaire"
+      ]
+    },
+    "text": "Au salon d'art contemporain, tu bouscules une œuvre composée de 300 bouteilles empilées. L'artiste regarde la scène, livide.",
+    "choices": [
+      {
+        "label": "Payer les dégâts",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« L'œuvre était unique », dit-il en tendant sa facture de 15 000 €. Toi aussi, tu te sens unique.",
+            "effects": {
+              "money": -15000,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est voulu",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'artiste trouve l'idée géniale et te crédite comme co-auteur. L'œuvre se vend le double.",
+            "effects": {
+              "money": 10000,
+              "happiness": 12,
+              "fame": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La sécurité n'a pas le sens de l'art. Escorte jusqu'au trottoir, sous les caméras, facture comprise.",
+            "effects": {
+              "money": -15000,
+              "happiness": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir dans la foule",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu disparais entre deux installations. Les vidéos de surveillance, elles, restent.",
+            "effects": {
+              "happiness": -5,
+              "karma": -8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu glisses sur une bouteille et t'écrases dans une deuxième œuvre, plus chère.",
+            "effects": {
+              "health": -8,
+              "money": -30000,
+              "happiness": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0236",
+    "category": "train_de_vie",
+    "minAge": 40,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "millionaire"
+      ],
+      "excludeFlags": [
+        "tdv_bijoutier_escroc"
+      ]
+    },
+    "text": "Ta petite-nièce de neuf ans affirme que ta broche est un faux : elle l'a vu dans une vidéo, et tient absolument à le prouver.",
+    "choices": [
+      {
+        "label": "La laisser tester",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle croque la broche. Ça casse : c'est du verre. Tu l'avais payée 35 000 €.",
+            "effects": {
+              "happiness": -10,
+              "smarts": 3,
+              "setFlags": [
+                "tdv_bijoutier_escroc"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle se casse une dent de lait dessus. La broche est vraie. Tout le monde pleure, pour des raisons différentes.",
+            "effects": {
+              "money": -300,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire expertiser",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La broche est authentique. Ta petite-nièce exige une contre-expertise.",
+            "effects": {
+              "money": -400,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Faux. Le bijoutier qui te l'a vendue ne répond plus au téléphone.",
+            "effects": {
+              "money": -400,
+              "happiness": -10,
+              "setFlags": [
+                "tdv_bijoutier_escroc"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'ignorer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle te fixe tout le repas. Tu finis par cacher la broche dans ta poche, sans savoir pourquoi.",
+            "effects": {
+              "happiness": -3,
+              "smarts": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0237",
+    "category": "train_de_vie",
+    "minAge": 40,
+    "maxAge": 100,
+    "weight": 7,
+    "conditions": {
+      "tags": [
+        "bijoux"
+      ],
+      "flags": [
+        "tdv_bijoutier_escroc"
+      ]
+    },
+    "text": "Tu reconnais le bijoutier qui t'a vendu ta broche en verre : il tient désormais un stand de crêpes, sous un faux nom et une fausse moustache.",
+    "choices": [
+      {
+        "label": "Exiger un remboursement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il tente de te rembourser en crêpes, puis en espèces quand tu sors ton téléphone : 20 000 €.",
+            "effects": {
+              "money": 20000,
+              "happiness": 8,
+              "clearFlags": [
+                "tdv_bijoutier_escroc"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il s'enfuit à pied en abandonnant son stand. Tu repars avec une crêpière.",
+            "effects": {
+              "money": 150,
+              "happiness": -4,
+              "clearFlags": [
+                "tdv_bijoutier_escroc"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Deux ans de procédure, 35 000 € rendus moins les frais. Victoire amère, mais victoire.",
+            "effects": {
+              "money": 22000,
+              "happiness": 4,
+              "health": -3,
+              "clearFlags": [
+                "tdv_bijoutier_escroc"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer l'inspecteur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu te présentes comme inspecteur des fraudes. Il rend 35 000 € et un pot de confiture en guise d'excuses.",
+            "effects": {
+              "money": 35000,
+              "happiness": 10,
+              "karma": -2,
+              "clearFlags": [
+                "tdv_bijoutier_escroc"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il demande ta carte. Tu sors ta carte de fidélité de la boulangerie. Il éclate de rire.",
+            "effects": {
+              "happiness": -6,
+              "clearFlags": [
+                "tdv_bijoutier_escroc"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0238",
+    "category": "train_de_vie",
+    "minAge": 30,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "millionaire"
+      ]
+    },
+    "text": "Les descendants d'une famille affirment que ton tableau le plus cher leur a été volé il y a quatre-vingts ans.",
+    "choices": [
+      {
+        "label": "Le restituer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le rends lors d'une cérémonie émouvante. Une arrière-petite-fille te serre longuement dans ses bras.",
+            "effects": {
+              "happiness": 10,
+              "karma": 15,
+              "setFlags": [
+                "genereux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire traîner en justice",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu gagnes sur un vice de forme. Tu gardes le tableau, mais tu n'oses plus le regarder.",
+            "effects": {
+              "money": -60000,
+              "happiness": -8,
+              "karma": -12
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu perds, rends le tableau et paies 150 000 € de frais. La presse est sans pitié.",
+            "effects": {
+              "money": -150000,
+              "happiness": -15,
+              "karma": -8,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un accord",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu leur verses 500 000 €. Le tableau reste chez toi, avec une plaque qui raconte leur histoire.",
+            "effects": {
+              "money": -500000,
+              "happiness": 6,
+              "karma": 8
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ils se sentent insultés par ton offre. Tu ajoutes la honte à la note d'avocat.",
+            "effects": {
+              "money": -40000,
+              "happiness": -8,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0239",
+    "category": "train_de_vie",
+    "minAge": 22,
+    "maxAge": 70,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "gros_salaire",
+        "job"
+      ]
+    },
+    "text": "Ta collègue Sandrine porte exactement le même collier que toi. Le sien a coûté 12 € au marché ; le tien, 3 000 €.",
+    "choices": [
+      {
+        "label": "En rire avec elle",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous éclatez de rire. Elle te donne l'adresse du marché et tu mesures l'ampleur de ta naïveté.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tout le bureau préfère le sien. Même toi, un peu.",
+            "effects": {
+              "happiness": -6,
+              "looks": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne plus jamais le porter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton collier à 3 000 € dort dans un tiroir. Il a l'air vexé.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prétendre que c'est un faux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Sandrine te regarde avec une compassion inattendue et t'offre un café.",
+            "effects": {
+              "happiness": 3,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0240",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 80,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "locataire"
+      ]
+    },
+    "text": "Ton propriétaire interdit les clous. Tes trente-quatre tableaux sont appuyés contre les murs, et tu viens d'en faire tomber un comme un domino.",
+    "choices": [
+      {
+        "label": "Planter des clous quand même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ça a une allure folle. Le jour de l'état des lieux, tu rebouches 68 trous au dentifrice.",
+            "effects": {
+              "money": -300,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu perces un tuyau. Le voisin du dessous reçoit ton exposition en avant-première, mouillée.",
+            "effects": {
+              "money": -4000,
+              "happiness": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Installer des cimaises",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Rails au plafond, fils transparents : c'est une galerie. Ton propriétaire veut te louer d'autres appartements à décorer.",
+            "effects": {
+              "money": -800,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le rail lâche à 3 h du matin. Six tableaux et ton sommeil s'effondrent en même temps.",
+            "effects": {
+              "money": -2000,
+              "happiness": -8,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ranger sous le lit",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes tableaux dorment sous le lit. Toi, tu dors mal au-dessus.",
+            "effects": {
+              "happiness": -5,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0241",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "millionaire"
+      ]
+    },
+    "text": "Un marchand te propose un diamant de 40 carats « sans papiers mais avec du caractère », à la moitié du prix du marché : 800 000 €.",
+    "choices": [
+      {
+        "label": "L'acheter",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il est vrai, magnifique et totalement volé. La police vient le saisir ; ton argent, lui, ne revient pas.",
+            "effects": {
+              "money": -800000,
+              "happiness": -15,
+              "karma": -5
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "C'est de la zircone. Le marchand a déjà changé d'adresse et de moustache.",
+            "effects": {
+              "money": -800000,
+              "happiness": -18,
+              "smarts": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le signaler",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le marchand est arrêté. La police te remercie avec un diplôme imprimé un peu de travers.",
+            "effects": {
+              "happiness": 4,
+              "karma": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le marchand file. Tu reçois un bouquet de fleurs fanées, sans carte. Tu dors avec la lumière allumée.",
+            "effects": {
+              "happiness": -6,
+              "health": -3,
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repars avec ton argent en poche et le nez propre.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0242",
+    "category": "train_de_vie",
+    "minAge": 20,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "grand_voyageur"
+      ]
+    },
+    "text": "Dans un marché lointain, tu as acheté un masque ancien. Depuis, tes rêves sont hantés par un monsieur qui te réclame son masque.",
+    "choices": [
+      {
+        "label": "Le rapporter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refais 9 000 km pour le rendre. Le vendeur le remet aussitôt en vitrine. Tu dors enfin.",
+            "effects": {
+              "money": -3000,
+              "happiness": 6,
+              "health": 4,
+              "karma": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le garder",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les rêves cessent. Il te reste juste un petit tic nerveux.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les rêves empirent. Tu ne dors plus que d'un œil, l'autre surveillant le masque.",
+            "effects": {
+              "health": -8,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'offrir à un musée",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le conservateur révèle que c'est un masque de théâtre comique. Tes rêves étaient, en fait, des répétitions.",
+            "effects": {
+              "happiness": 5,
+              "karma": 5,
+              "smarts": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0243",
+    "category": "train_de_vie",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "vie_de_luxe"
+      ],
+      "excludeFlags": [
+        "tdv_bague_perdue"
+      ]
+    },
+    "text": "Ta bague attire un pickpocket à la terrasse d'un café chic. Il est jeune, élégant et très mauvais : il te demande l'heure en fixant ton doigt.",
+    "choices": [
+      {
+        "label": "Lui donner l'heure",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il repart bredouille, désarmé par ta gentillesse.",
+            "effects": {
+              "happiness": 4,
+              "karma": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Pendant que tu regardes ta montre, il prend ta bague. Tu admires presque la technique.",
+            "effects": {
+              "happiness": -10,
+              "setFlags": [
+                "tdv_bague_perdue"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le confronter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il avoue en larmes que c'est son premier jour. Tu lui offres un café et un sermon.",
+            "effects": {
+              "happiness": 5,
+              "karma": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il te pousse dans un massif de rosiers et s'enfuit. Tu as des épines jusque dans les sourcils.",
+            "effects": {
+              "health": -6,
+              "looks": -3,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui faire peur avec humour",
+        "requiresSkill": {
+          "humour": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lui chuchotes que la bague est maudite et qu'elle mord. Il part en courant. Tu ris jusqu'au soir.",
+            "effects": {
+              "happiness": 8,
+              "skills": {
+                "humour": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0244",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "siblings"
+      ]
+    },
+    "text": "Ton neveu de six ans a « complété » ta toile abstraite à 90 000 € avec un feutre vert indélébile.",
+    "choices": [
+      {
+        "label": "Crier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il pleure. Toi aussi, mais en cachette, dans la salle de bain.",
+            "effects": {
+              "happiness": -8,
+              "karma": -3,
+              "relationships": {
+                "sibling": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire restaurer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le restaurateur retire le feutre pour 6 000 €. Ton neveu demande s'il peut recommencer.",
+            "effects": {
+              "money": -6000,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le restaurateur juge que le feutre améliore la composition et te conseille de ne rien toucher.",
+            "effects": {
+              "money": -500,
+              "happiness": 5,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le faire co-signer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu exposes une « collaboration intergénérationnelle ». Un galeriste en commande trois autres.",
+            "effects": {
+              "money": 40000,
+              "happiness": 10,
+              "relationships": {
+                "sibling": 6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le marché n'y croit pas. Ta toile vaut désormais le prix d'un feutre.",
+            "effects": {
+              "happiness": -12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0245",
+    "category": "train_de_vie",
+    "minAge": 30,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "pol_gouverne"
+      ]
+    },
+    "text": "Lors d'une visite officielle, un chef d'État étranger t'offre une parure de bijoux somptueuse. Le protocole impose de la déclarer.",
+    "choices": [
+      {
+        "label": "La déclarer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle part au musée des cadeaux d'État. Tu peux aller la voir le mardi, avec les scolaires.",
+            "effects": {
+              "happiness": -2,
+              "karma": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "La garder discrètement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Personne ne remarque rien. Tu la portes dans ta salle de bain, seul{e}, devant le miroir.",
+            "effects": {
+              "happiness": 6,
+              "karma": -8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Une photo de toi parée de la parure fuite dans la presse. Scandale diplomatique et national.",
+            "effects": {
+              "happiness": -15,
+              "karma": -8,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "La refuser élégamment",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton refus est si gracieux que le chef d'État te décerne la citoyenneté d'honneur de son pays.",
+            "effects": {
+              "happiness": 8,
+              "karma": 6,
+              "fame": 5,
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le chef d'État se vexe. Un accord commercial tombe à l'eau, ta cote de popularité aussi.",
+            "effects": {
+              "happiness": -10,
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0246",
+    "category": "train_de_vie",
+    "minAge": 30,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "milliardaire"
+      ]
+    },
+    "text": "Tu veux construire ton propre musée pour abriter ta collection. L'architecte propose un bâtiment en forme de toi.",
+    "choices": [
+      {
+        "label": "Valider le projet",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le musée ouvre. Les visiteurs entrent par ton oreille gauche. Critique mitigée, succès public total.",
+            "effects": {
+              "money": -150000000,
+              "happiness": 15,
+              "fame": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le chantier s'enlise. Huit ans plus tard, il n'y a qu'un pied en béton au milieu d'un terrain vague.",
+            "effects": {
+              "money": -200000000,
+              "happiness": -15,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un cube sobre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Sobre, élégant, et oublié de tous dès la semaine suivante.",
+            "effects": {
+              "money": -80000000,
+              "happiness": 4,
+              "karma": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout donner à l'État",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une aile du musée national porte ton nom. Ton comptable, lui, porte le deuil.",
+            "effects": {
+              "happiness": 10,
+              "karma": 20,
+              "fame": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0247",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "rich"
+      ]
+    },
+    "text": "Tu te réveilles avec ta bague coincée sur un doigt qui a doublé de volume pendant la nuit.",
+    "choices": [
+      {
+        "label": "Savon et patience",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Après quarante minutes et un demi-litre de liquide vaisselle, elle glisse. Ton doigt, lui, est vexé.",
+            "effects": {
+              "happiness": 3,
+              "health": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton doigt vire au violet. Direction les urgences, en pyjama.",
+            "effects": {
+              "health": -6,
+              "money": -200,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller chez les pompiers",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un pompier coupe ta bague à 4 000 € avec une pince minuscule. Ton doigt est sauf, ton cœur un peu moins.",
+            "effects": {
+              "happiness": -6,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Technique du fil dentaire",
+        "requiresSkill": {
+          "survie": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu enroules le fil comme dans un manuel de survie. La bague sort intacte. Tu te sens invincible.",
+            "effects": {
+              "happiness": 8,
+              "health": 2,
+              "skills": {
+                "survie": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0248",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "rich"
+      ]
+    },
+    "text": "Un artiste mystérieux, qui ne montre jamais son visage, veut t'offrir une toile, mais exige de dîner chez toi les yeux bandés.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il renverse la soupe, rit beaucoup, et te laisse une toile qu'une galerie t'achète 120 000 € dès le lendemain.",
+            "effects": {
+              "money": 120000,
+              "happiness": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il repart après le dessert… avec ton argenterie. Tu n'as jamais vu son visage, ni revu tes fourchettes.",
+            "effects": {
+              "money": -9000,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il offre la toile à ton voisin, qui la vend 120 000 € et refait sa piscine sous tes yeux.",
+            "effects": {
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dîner les yeux bandés aussi",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Deux aveugles volontaires renversent tout. Fou rire. Il te laisse deux toiles, vendues 200 000 €.",
+            "effects": {
+              "money": 200000,
+              "happiness": 12,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu confonds la carafe d'eau avec la bougie. Brûlure au menton et nappe en feu.",
+            "effects": {
+              "health": -8,
+              "looks": -4,
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0249",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "bijoux",
+        "millionaire"
+      ],
+      "excludeFlags": [
+        "tdv_cambriole"
+      ]
+    },
+    "text": "Ton assureur exige que tu photographies chaque bijou sous trois angles. Tu en possèdes 412.",
+    "choices": [
+      {
+        "label": "T'y mettre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Trois week-ends de photos. Tu redécouvres un collier oublié et une bague que tu n'as aucun souvenir d'avoir achetée.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer un photographe",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il s'en occupe pour 3 000 €. Ton dossier est parfait, tes bijoux n'ont jamais été aussi photogéniques.",
+            "effects": {
+              "money": -3000,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il repart avec deux bracelets « par erreur » et ne répond plus au téléphone.",
+            "effects": {
+              "money": -3000,
+              "happiness": -8,
+              "setFlags": [
+                "tdv_cambriole"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien faire",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Rien ne se passe. Pour l'instant.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ton assureur résilie ton contrat. Chez le suivant, la prime double.",
+            "effects": {
+              "money": -12000,
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tdv_0250",
+    "category": "train_de_vie",
+    "minAge": 25,
+    "maxAge": 100,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "collection_art",
+        "millionaire"
+      ]
+    },
+    "text": "Tu mets en vente une toile de ta collection. Le jour J, le commissaire-priseur a une extinction de voix.",
+    "choices": [
+      {
+        "label": "Mener la vente toi-même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu fais monter les enchères avec un tel bagou que la toile part au double de l'estimation : 600 000 €.",
+            "effects": {
+              "money": 600000,
+              "happiness": 12
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu adjuges par erreur à 60 000 € à ton propre cousin, qui levait la main pour te dire bonjour.",
+            "effects": {
+              "money": 60000,
+              "happiness": -12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le laisser chuchoter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Toute la salle se penche pour l'entendre. Ambiance intime, prix modeste : 180 000 €.",
+            "effects": {
+              "money": 180000,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Personne n'entend rien. Le tableau part à 40 000 € à quelqu'un qui croyait acheter une chaise.",
+            "effects": {
+              "money": 40000,
+              "happiness": -12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reporter la vente",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le marché grimpe entre-temps : tu vends 350 000 € l'année suivante.",
+            "effects": {
+              "money": 350000,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le marché s'effondre entre-temps. Tu gardes la toile, et ton amertume.",
+            "effects": {
+              "happiness": -8
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
