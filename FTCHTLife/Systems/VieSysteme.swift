@@ -97,10 +97,10 @@ enum VieSysteme {
     static func remplir(_ texte: String, _ j: Joueur) -> String {
         guard texte.contains("{") else { return texte }
         var t = texte
-        t = t.replacingOccurrences(of: "{enfant}", with: j.enfantsVivants.randomElement()?.prenom ?? "ton gamin")
-        t = t.replacingOccurrences(of: "{ex}", with: j.exVivants.randomElement()?.prenom ?? "ton ex")
+        t = t.replacingOccurrences(of: "{enfant}", with: choixStable(j.enfantsVivants, j.age)?.prenom ?? "ton gamin")
+        t = t.replacingOccurrences(of: "{ex}", with: choixStable(j.exVivants, j.age)?.prenom ?? "ton ex")
         t = t.replacingOccurrences(of: "{codetenu}", with: j.vieEtat.codetenus.first?.prenom ?? ["Le Grand Momo", "Tonton Rasoir", "Kiki la Lime"].auHasard("Momo"))
-        t = t.replacingOccurrences(of: "{grandparent}", with: j.vieEtat.grandsParents.randomElement()?.prenom ?? "Mamie")
+        t = t.replacingOccurrences(of: "{grandparent}", with: choixStable(j.vieEtat.grandsParents, j.age)?.prenom ?? "Mamie")
         return t
     }
 

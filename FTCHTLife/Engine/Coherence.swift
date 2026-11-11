@@ -133,3 +133,10 @@ extension GameEngine {
         return t
     }
 }
+
+/// Choix « stable » dans une liste : même résultat pour la même clé (l'âge du joueur),
+/// pour que {ami}, {enfant}, {fratrie}… désignent la même personne dans le texte et dans l'issue d'une carte.
+func choixStable<T>(_ liste: [T], _ cle: Int) -> T? {
+    guard !liste.isEmpty else { return nil }
+    return liste[abs(cle &* 7919 &+ 13) % liste.count]
+}

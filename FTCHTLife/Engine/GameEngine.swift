@@ -454,12 +454,12 @@ final class GameEngine: ObservableObject {
         t = t.replacingOccurrences(of: "{mere}", with: j.mere?.prenom ?? "ta mère")
         t = t.replacingOccurrences(of: "{pere}", with: j.pere?.prenom ?? "ton père")
         let parents = j.relations.filter { $0.type.estParent && $0.vivant }
-        t = t.replacingOccurrences(of: "{parent}", with: parents.randomElement()?.prenom ?? "ta tante")
+        t = t.replacingOccurrences(of: "{parent}", with: choixStable(parents, j.age)?.prenom ?? "ta tante")
         t = t.replacingOccurrences(of: "{partenaire}", with: j.relations.first { $0.type == .partenaire && $0.vivant }?.prenom ?? "ton crush")
         t = t.replacingOccurrences(of: "{metier}", with: j.emploi?.titre.lowercased() ?? "glandeur professionnel")
-        t = t.replacingOccurrences(of: "{ami}", with: j.amis.randomElement()?.prenom ?? "ton pote")
+        t = t.replacingOccurrences(of: "{ami}", with: choixStable(j.amis, j.age)?.prenom ?? "ton pote")
         let fratrie = j.relations.filter { ($0.type == .frere || $0.type == .soeur) && $0.vivant }
-        t = t.replacingOccurrences(of: "{fratrie}", with: fratrie.randomElement()?.prenom ?? "ton cousin")
+        t = t.replacingOccurrences(of: "{fratrie}", with: choixStable(fratrie, j.age)?.prenom ?? "ton cousin")
         t = t.replacingOccurrences(of: "{e}", with: j.genre == .femme ? "e" : "")
         return t
     }
