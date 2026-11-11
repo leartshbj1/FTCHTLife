@@ -26,6 +26,19 @@ struct VieEffets: Codable, Equatable {
     var addiction: String?
     /// Clé de relation ("partner", "child", "friend", "parent", "sibling", "ex") : cette personne meurt.
     var targetDies: String?
+
+    // Le Milieu (VieMilieu.swift)
+    var milieuRespect: Int?
+    var milieuChaleur: Int?
+    var milieuLoyaute: Int?
+    /// Argent sale gagné (ou perdu), à blanchir.
+    var argentSale: Int?
+    /// true ouvre une enquête de police, false la classe.
+    var enquete: Bool?
+    var quitterMilieu: Bool?
+    var promotion: Bool?
+    /// Le stock du trafic est saisi.
+    var saisie: Bool?
 }
 
 // MARK: - État sauvegardé du module (champ `vie` de Joueur)
@@ -131,6 +144,8 @@ struct VieEtat: Codable, Equatable {
     // Générations
     var generation = 1
     var ancetres: [String] = []
+    // Crime organisé (nil tant que le joueur n'y a pas touché)
+    var milieu: VieMilieuEtat?
 
     var codetenus: [VieProche] { proches.filter { $0.vivant && $0.role == .codetenu } }
     var grandsParents: [VieProche] { proches.filter { $0.vivant && $0.role == .grandParent } }
@@ -172,6 +187,12 @@ extension Joueur {
 enum VieHasard {
     static func reussi(_ chance: Double) -> Bool { Double.random(in: 0..<1) < chance }
     static func borne(_ c: Double) -> Double { min(0.98, max(0.02, c)) }
+
+    /// Chance de mourir dans l'année pour un proche âgé (santé moyenne).
+    static func chanceDeces(age: Int) -> Double {
+        guard age >= 50 else { return 0.0005 }
+        return min(0.95, pow(Double(age - 50) / 50, 4) * 0.6)
+    }
 }
 
 extension Array where Element == String {
