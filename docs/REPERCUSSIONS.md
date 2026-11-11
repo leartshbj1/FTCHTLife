@@ -105,6 +105,10 @@ plus tard un événement `"conditions": {"flags": ["fume"]}`.
 Conventions de noms de drapeaux : minuscules, `_`, au passé ou à l'état (`a_trompe_partenaire`, `casier_judiciaire`,
 `permis_en_poche`, `fume`, `phobie_des_ours`). Les drapeaux communs sont listés en bas de ce fichier.
 
+Rappels (docs/SCENES.md) : chaque suite programmée garde le souvenir de sa cause (le choix fait dans une carte, ou une phrase
+par défaut pour un signal de module) ; la carte de la suite affiche « Parce que tu as choisi « X » il y a N ans ». Pour qu'un
+nouveau signal de module ait son rappel, ajoute sa phrase dans `Souvenir.phrasesSignaux` (Engine/Souvenirs.swift).
+
 ## Style
 
 - Court, une à trois phrases. Commencer souvent par un repère de temps : « L'année d'après », « Deux ans plus tard »,
