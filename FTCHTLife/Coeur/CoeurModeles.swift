@@ -118,11 +118,13 @@ struct CoeurEtat: Codable, Equatable {
     var contraception: String?
     /// Partenaire qui la prend (joueur homme) ; nil = la joueuse elle-même.
     var contraceptionDe: UUID?
+    /// Bébés nés pendant le passage d'année dont le joueur doit encore choisir le prénom (fenêtre de naissance).
+    var bebesANommer: [UUID] = []
 
     enum CodingKeys: String, CodingKey {
         case liaison, anciennes, grossesseLiaison, parentGrossesse, enfantsCaches, paterniteDouteuse, ecartsCaches
         case partenaireInfidele, trahi, soupconJoueur, tromperies, decouvertes, pardons, crise, therapie
-        case relationLibre, actionsAnnee, cibleCarte, contraception, contraceptionDe
+        case relationLibre, actionsAnnee, cibleCarte, contraception, contraceptionDe, bebesANommer
     }
 
     init() {}
@@ -150,6 +152,7 @@ struct CoeurEtat: Codable, Equatable {
         cibleCarte = try c.decodeIfPresent(UUID.self, forKey: .cibleCarte)
         contraception = try c.decodeIfPresent(String.self, forKey: .contraception)
         contraceptionDe = try c.decodeIfPresent(UUID.self, forKey: .contraceptionDe)
+        bebesANommer = try c.decodeIfPresent([UUID].self, forKey: .bebesANommer) ?? []
     }
 
     /// Enfants cachés que le/la partenaire ne connaît pas.

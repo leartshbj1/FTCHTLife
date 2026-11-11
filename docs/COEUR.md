@@ -139,3 +139,11 @@ jamais infidèle.
 - Ton : sincère et lourd de conséquences, avec une pointe d'humour. Jamais explicite : on suggère.
 - Conséquences fortes : karma, lien avec le/la partenaire et les enfants, argent, drapeaux d'état
   (`coeur_brise`, `anxieux`, `deprime`, `menteur_notoire`, `honte_publique`).
+
+## Fenêtre de naissance (`Coeur/CoeurNaissance.swift`)
+
+Quand un bébé naît pendant le passage d'année (`VieRelations.naissanceBebe`), son id va dans
+`CoeurEtat.bebesANommer`. MainView (`.naissanceBebe()`) ouvre alors une fenêtre « C'est une fille ! / C'est un
+garçon ! » : le joueur écrit le prénom ou en prend un parmi six idées (relançables), ou laisse son/sa partenaire choisir.
+`GameEngine.nommerBebe` renomme l'enfant et écrit la ligne du journal. Des jumeaux = deux fenêtres à la suite. Le mode
+rapide s'arrête tant qu'un bébé attend son prénom.
