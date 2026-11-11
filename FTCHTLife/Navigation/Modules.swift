@@ -57,13 +57,13 @@ enum CategorieMenu: String, CaseIterable, Identifiable {
 
 enum ModuleJeu: String, CaseIterable, Identifiable {
     // Carrière
-    case ecole, vieAuBahut, universite, offresEmploi, monTravail, entreprise, agenceDetective, secte, politique, retraite
+    case ecole, vieAuBahut, universite, offresEmploi, monTravail, entreprise, carrieresSpeciales, agenceDetective, secte, politique, retraite
     // Biens
     case boutique, mesBiens, placements, testament, heritages
     // Relations
     case famille, amour, amis, rencontres, telephone, voisins, animaux, reputationFamille, secrets
     // Activités
-    case loisirs, projets, coiffeur, chirurgie, sante, television, casino, permis, voyages, etranger, crime, prison, casier
+    case loisirs, projets, salleDeSport, coiffeur, chirurgie, sante, television, casino, permis, voyages, etranger, crime, prison, casier
     // Moi
     case profil, competences, trophees, journalDuMonde, musee, reglages
 
@@ -71,13 +71,13 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
 
     var categorie: CategorieMenu {
         switch self {
-        case .ecole, .vieAuBahut, .universite, .offresEmploi, .monTravail, .entreprise, .agenceDetective, .secte, .politique, .retraite:
+        case .ecole, .vieAuBahut, .universite, .offresEmploi, .monTravail, .entreprise, .carrieresSpeciales, .agenceDetective, .secte, .politique, .retraite:
             return .carriere
         case .boutique, .mesBiens, .placements, .testament, .heritages:
             return .biens
         case .famille, .amour, .amis, .rencontres, .telephone, .voisins, .animaux, .reputationFamille, .secrets:
             return .relations
-        case .loisirs, .projets, .coiffeur, .chirurgie, .sante, .television, .casino, .permis, .voyages, .etranger, .crime, .prison, .casier:
+        case .loisirs, .projets, .salleDeSport, .coiffeur, .chirurgie, .sante, .television, .casino, .permis, .voyages, .etranger, .crime, .prison, .casier:
             return .activites
         case .profil, .competences, .trophees, .journalDuMonde, .musee, .reglages:
             return .moi
@@ -89,6 +89,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         switch self {
         case .ecole, .vieAuBahut, .universite: return "Études"
         case .offresEmploi, .monTravail, .entreprise: return "Travail"
+        case .carrieresSpeciales: return "Carrières spéciales"
         case .agenceDetective, .secte: return "À ton compte"
         case .politique, .retraite: return "Plus tard"
         case .boutique, .mesBiens: return "Acheter et posséder"
@@ -97,7 +98,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .rencontres, .telephone, .voisins, .animaux: return "Rencontrer et garder le contact"
         case .reputationFamille, .secrets: return "Réputation et secrets"
         case .loisirs, .projets, .television, .casino: return "Sorties et loisirs"
-        case .coiffeur, .chirurgie: return "Prendre soin de soi"
+        case .salleDeSport, .coiffeur, .chirurgie: return "Prendre soin de soi"
         case .sante, .permis: return "Santé et démarches"
         case .voyages, .etranger: return "Voyager"
         case .crime, .prison, .casier: return "Hors-la-loi"
@@ -114,6 +115,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .offresEmploi: return "Offres d'emploi"
         case .monTravail: return "Mon travail"
         case .entreprise: return "Ma boîte"
+        case .carrieresSpeciales: return "Carrières spéciales"
         case .agenceDetective: return "Agence de détective"
         case .secte: return "Ma secte"
         case .politique: return "Politique"
@@ -134,6 +136,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .secrets: return "Carnet des secrets"
         case .loisirs: return "Loisirs"
         case .projets: return "Projets perso"
+        case .salleDeSport: return "Salle de sport"
         case .coiffeur: return "Coiffeur"
         case .chirurgie: return "Chirurgie esthétique"
         case .sante: return "Santé"
@@ -162,6 +165,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .offresEmploi: return "Des centaines de métiers. Postule."
         case .monTravail: return "Bosser, glander, réclamer une augmentation."
         case .entreprise: return "Créer et faire tourner ta propre boîte."
+        case .carrieresSpeciales: return "MMA, sport pro, mannequin, cinéma, musique, musée, investissements."
         case .agenceDetective: return "Filatures, planques, clients et secrets."
         case .secte: return "Fonder un mouvement. Adeptes, dons, dérives."
         case .politique: return "De militant à président. Lois absurdes."
@@ -182,6 +186,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .secrets: return "Ce que tu sais… et ce qu'on sait sur toi."
         case .loisirs: return "Sport, rando, hobbies, aventure."
         case .projets: return "Un roman, un marathon, une cabane : sur plusieurs années."
+        case .salleDeSport: return "Muscu, cardio, cours de boxe. Force et technique."
         case .coiffeur: return "Coupes, couleurs, ratés mémorables."
         case .chirurgie: return "Rhino, lifting, BBL… à tes risques."
         case .sante: return "Médecin, maladies, soins."
@@ -210,6 +215,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .offresEmploi: return "magnifyingglass"
         case .monTravail: return "briefcase.fill"
         case .entreprise: return "building.2.fill"
+        case .carrieresSpeciales: return "star.fill"
         case .agenceDetective: return "magnifyingglass.circle.fill"
         case .secte: return "flame.fill"
         case .politique: return "building.columns.fill"
@@ -230,6 +236,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .secrets: return "lock.fill"
         case .loisirs: return "figure.hiking"
         case .projets: return "hammer.fill"
+        case .salleDeSport: return "dumbbell.fill"
         case .coiffeur: return "scissors"
         case .chirurgie: return "wand.and.stars"
         case .sante: return "cross.case.fill"
@@ -263,7 +270,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
     }
 
     /// Entrées impossibles derrière les barreaux.
-    static let fermesEnPrison: [ModuleJeu] = [.offresEmploi, .entreprise, .boutique, .rencontres, .loisirs, .projets, .chirurgie,
+    static let fermesEnPrison: [ModuleJeu] = [.offresEmploi, .entreprise, .boutique, .rencontres, .loisirs, .projets, .salleDeSport, .chirurgie,
                                               .television, .casino, .permis, .voyages, .etranger, .crime, .ecole, .universite]
 
     /// Raison pour laquelle l'entrée est fermée pour l'instant (nil = ouverte).
@@ -294,6 +301,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .television where j.age < 10: return "Dès 10 ans."
         case .casino where j.age < 18: return "Interdit aux mineurs. Le videur a vu ta tête."
         case .permis where j.age < 10: return "Dès 10 ans (le vélo d'abord)."
+        case .salleDeSport where j.age < SpeMoteur.ageMinSalle: return "Dès \(SpeMoteur.ageMinSalle) ans. Pour l'instant, la récré suffit."
         case .coiffeur where j.age < 2: return "Dès 2 ans. Pour l'instant, trois cheveux et un épi."
         case .chirurgie where j.age < 18: return "Dès 18 ans. Ton visage n'a pas fini de pousser."
         case .crime where j.age < 12: return "Dès 12 ans. Avant, voler des bonbons ne compte pas."

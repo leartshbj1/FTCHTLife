@@ -1,0 +1,2326 @@
+[
+  {
+    "id": "mus_0001",
+    "carriere": "musique",
+    "maxNiveau": 0,
+    "unique": true,
+    "text": "Premier passage en scène ouverte au Tonneau Percé. Douze personnes dans la salle, dont trois qui jouent aux fléchettes.",
+    "choices": [
+      {
+        "label": "Jouer tes compositions",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les fléchettes s'arrêtent au deuxième morceau. Un type te demande si tu as un CD. Tu n'as pas de CD.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "reputation": 4,
+              "fansPct": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Applaudissements polis. Le patron te paye en bière tiède.",
+            "effects": {
+              "happiness": 2
+            },
+            "spe": {
+              "reputation": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Enchaîner des reprises connues",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Toute la salle chante le refrain. Personne ne retient ton nom, mais tout le monde a passé une bonne soirée.",
+            "effects": {
+              "happiness": 5
+            },
+            "spe": {
+              "reputation": 2,
+              "gainPct": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Improviser un solo de guitare",
+        "requiresSkill": {
+          "guitare": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le solo dure quatre minutes et personne ne s'en plaint. Le barman te propose de revenir jeudi.",
+            "effects": {
+              "happiness": 10,
+              "skills": {
+                "guitare": 3
+              }
+            },
+            "spe": {
+              "reputation": 6,
+              "fansPct": 15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0002",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 2,
+    "unique": true,
+    "text": "{label} te propose un contrat de cinq albums avec une avance confortable. Les clauses de la page 14 sont écrites très, très petit.",
+    "choices": [
+      {
+        "label": "Signer tout de suite",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Champagne, photos, poignées de main. Tu liras la page 14 plus tard.",
+            "effects": {
+              "happiness": 12
+            },
+            "spe": {
+              "gainPct": 60,
+              "reputation": 5,
+              "signal": "contrat_label_abusif"
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu découvres trop tard que le label possède aussi tes futurs masters, ton nom de scène et ton chat.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "gainPct": 40,
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire relire par un avocat",
+        "costPct": 10,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'avocat fait rayer trois clauses. {label} grince mais signe quand même.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 2
+            },
+            "spe": {
+              "gainPct": 50,
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "{label} trouve que tu poses trop de questions et retire son offre.",
+            "effects": {
+              "happiness": -8
+            },
+            "spe": {
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester indépendant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gardes tes droits, ta liberté et tes dettes. Ton banquier soupire.",
+            "effects": {
+              "happiness": 3,
+              "money": -500
+            },
+            "spe": {
+              "reputation": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0003",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 3,
+    "text": "Ton relevé de droits arrive : après remboursement de l'avance, du clip et de « frais divers », tu dois encore de l'argent à {label}.",
+    "choices": [
+      {
+        "label": "Exiger un audit des comptes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'audit trouve 30 000 € de « frais divers » qui étaient en fait le séminaire du label à la montagne.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 2
+            },
+            "spe": {
+              "gainPct": 25,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tout est légal. Injuste, mais légal.",
+            "effects": {
+              "happiness": -6
+            },
+            "spe": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Encaisser et retourner travailler",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu retournes en studio. L'industrie musicale, c'est surtout de la comptabilité avec des guitares autour.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Menacer de partir chez un concurrent",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le bluff marche : on te renégocie un meilleur pourcentage.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "gainPct": 15
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "{label} te rappelle gentiment que tu leur dois encore trois albums.",
+            "effects": {
+              "happiness": -8
+            },
+            "spe": {
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0004",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 4,
+    "groupe": true,
+    "text": "Le batteur de {groupe} annonce qu'il quitte le groupe pour « se retrouver ». Il part dans trois semaines, en pleine tournée.",
+    "choices": [
+      {
+        "label": "Le supplier de finir la tournée",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il accepte, mais il joue chaque concert avec le regard d'un homme qui attend un train.",
+            "effects": {
+              "happiness": -3
+            },
+            "spe": {
+              "reputation": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il refuse. Il part même une semaine plus tôt pour un stage de yoga.",
+            "effects": {
+              "happiness": -8
+            },
+            "spe": {
+              "reputation": -4,
+              "gainPct": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Engager un batteur de studio",
+        "costPct": 15,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le remplaçant est excellent. Plusieurs fans demandent pourquoi tu ne l'as pas pris plus tôt.",
+            "effects": {
+              "happiness": 4
+            },
+            "spe": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le remplaçant ne connaît que la moitié des morceaux. Les concerts deviennent jazz par accident.",
+            "effects": {
+              "happiness": -5
+            },
+            "spe": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annuler la fin de la tournée",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les remboursements font mal, mais personne ne joue sous la contrainte.",
+            "effects": {
+              "happiness": -6,
+              "health": 4
+            },
+            "spe": {
+              "gainPct": -25,
+              "fansPct": -5,
+              "forme": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0005",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "groupe": true,
+    "text": "Le chanteur de {groupe} veut signer seul toutes les compositions. Il dit que « les idées viennent de lui ». Tu as écrit la moitié des refrains.",
+    "choices": [
+      {
+        "label": "Partager à parts égales",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Après une réunion de quatre heures, tout le monde signe. Le groupe respire.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il signe, mais il le rappelle à chaque répétition.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre un avocat",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le dossier est solide : tes droits sont reconnus. L'ambiance, elle, est morte.",
+            "effects": {
+              "happiness": 2,
+              "money": -3000
+            },
+            "spe": {
+              "gainPct": 20,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La procédure traîne et le groupe se déchire en public.",
+            "effects": {
+              "happiness": -10,
+              "money": -5000
+            },
+            "spe": {
+              "reputation": -6,
+              "fansPct": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser tomber, pour la paix",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gardes la paix et perds les droits. Chaque passage radio te pince un peu.",
+            "effects": {
+              "happiness": -6,
+              "karma": 2
+            },
+            "spe": {
+              "gainPct": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0006",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "groupe": false,
+    "text": "En solo, ce sont tes musiciens de scène qui font tourner le spectacle. Ton guitariste demande une augmentation de 40 %.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il joue mieux quand il est bien payé. C'est presque scientifique.",
+            "effects": {
+              "happiness": 3
+            },
+            "spe": {
+              "gainPct": -15,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier à 20 %",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Marché conclu, poignée de main, aucune rancune. Pour l'instant.",
+            "effects": {
+              "happiness": 2
+            },
+            "spe": {
+              "gainPct": -7
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il part chez un concurrent la semaine suivante.",
+            "effects": {
+              "happiness": -6
+            },
+            "spe": {
+              "reputation": -2,
+              "forme": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer en guitare-voix",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le format intime plaît. Les critiques parlent de « dépouillement courageux ».",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "reputation": 4,
+              "gainPct": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le public attendait des explosions et des basses. Il a eu une chaise et toi.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "fansPct": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0007",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "text": "Ça fait huit mois que tu n'as rien écrit. Pas un couplet. {label} attend l'album pour le printemps.",
+    "choices": [
+      {
+        "label": "Partir seul{e} à la campagne",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le silence, les vaches, une vieille guitare : dix chansons en trois semaines.",
+            "effects": {
+              "happiness": 10,
+              "health": 4
+            },
+            "spe": {
+              "forme": 15
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu reviens avec un bronzage et un morceau sur une vache. Un seul.",
+            "effects": {
+              "happiness": -3
+            },
+            "spe": {
+              "forme": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire appel à des coauteurs",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'album est prêt à temps. Il sonne bien, mais pas tout à fait comme toi.",
+            "effects": {
+              "happiness": 1
+            },
+            "spe": {
+              "gainPct": 10,
+              "reputation": -1
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un coauteur te débloque vraiment. Vous écrivez le meilleur titre de ta carrière.",
+            "effects": {
+              "happiness": 12
+            },
+            "spe": {
+              "forme": 15,
+              "reputation": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander un report",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{label} accepte six mois de plus, en te rappelant que le public oublie vite.",
+            "effects": {
+              "happiness": 4,
+              "health": 3
+            },
+            "spe": {
+              "forme": 8,
+              "fansPct": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Report refusé. Tu sors un album de chutes de studio, la critique est cruelle.",
+            "effects": {
+              "happiness": -10
+            },
+            "spe": {
+              "reputation": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0008",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Ton album fuite en entier trois semaines avant sa sortie. La version qui circule n'est même pas le mixage final.",
+    "choices": [
+      {
+        "label": "Sortir l'album immédiatement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Coup de poker gagnant : les fans achètent la vraie version par solidarité.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "fansPct": 10,
+              "gainPct": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le mastering est bâclé et ça s'entend. Les critiques parlent d'un album « pressé ».",
+            "effects": {
+              "happiness": -5
+            },
+            "spe": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte et chercher la source",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La fuite venait d'un stagiaire du studio. L'enquête coûte cher et ne rapporte rien.",
+            "effects": {
+              "happiness": -4,
+              "money": -4000
+            },
+            "spe": {
+              "reputation": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'enquête ne trouve rien. Tu soupçonnes tout le monde, y compris ton propre ingé son.",
+            "effects": {
+              "happiness": -8
+            },
+            "spe": {
+              "forme": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "En plaisanter publiquement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu postes « au moins vous l'aimez assez pour le voler ». Les fans adorent ta réaction.",
+            "effects": {
+              "happiness": 3
+            },
+            "spe": {
+              "fansPct": 6,
+              "reputation": 2,
+              "gainPct": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0009",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Quarante-deux dates en cinquante jours. Ce matin, ta voix ne répond plus et tu dors debout.",
+    "choices": [
+      {
+        "label": "Annuler trois dates pour te reposer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le médecin t'impose le silence. Tu communiques par post-it pendant une semaine.",
+            "effects": {
+              "health": 8,
+              "happiness": -2
+            },
+            "spe": {
+              "forme": 12,
+              "gainPct": -10,
+              "fansPct": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenir avec des corticoïdes",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La voix revient pour la scène. Elle part dès que les lumières s'éteignent.",
+            "effects": {
+              "health": -8
+            },
+            "spe": {
+              "forme": -10,
+              "gainPct": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu forces trop. Ta voix casse en plein concert devant 8 000 personnes.",
+            "effects": {
+              "health": -12,
+              "happiness": -10
+            },
+            "spe": {
+              "reputation": -5,
+              "forme": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire chanter le public",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le public connaît les paroles mieux que toi. C'est un des plus beaux concerts de la tournée.",
+            "effects": {
+              "happiness": 8,
+              "health": -2
+            },
+            "spe": {
+              "fansPct": 5,
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le public ne connaît que le refrain. Les couplets sont gênants pour tout le monde.",
+            "effects": {
+              "happiness": -4,
+              "health": -3
+            },
+            "spe": {
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0010",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Après le concert, un membre de l'équipe technique te tend un petit sachet « pour tenir le rythme ». Autour de toi, beaucoup ont l'air d'en prendre.",
+    "choices": [
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rentres à l'hôtel, épuisé{e} mais lucide. Le lendemain, tu es le seul à te souvenir du concert.",
+            "effects": {
+              "health": 3,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Essayer, juste une fois",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La nuit est blanche et euphorique. La descente dure trois jours.",
+            "effects": {
+              "health": -10,
+              "happiness": -4
+            },
+            "spe": {
+              "forme": -10,
+              "signal": "drogue_tournee"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "« Juste une fois » devient « juste en tournée ». Tu ne t'en rends pas compte tout de suite.",
+            "effects": {
+              "health": -14,
+              "happiness": 2,
+              "setFlags": [
+                "addiction_tournee"
+              ]
+            },
+            "spe": {
+              "forme": -15,
+              "signal": "drogue_tournee"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parler à ton manager de ce qui circule",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il recadre l'équipe. Certains t'en veulent, d'autres te remercient en privé.",
+            "effects": {
+              "karma": 5,
+              "happiness": 2
+            },
+            "spe": {
+              "reputation": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il hausse les épaules : « C'est la tournée. » Tu comprends que tu devras te protéger seul{e}.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0011",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Tes proches remarquent que tu bois de plus en plus après les concerts. Ta sœur te dit que tu ne ressembles plus à toi.",
+    "choices": [
+      {
+        "label": "Entrer en cure",
+        "costPct": 10,
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Six semaines loin de tout. Tu ressors fatigué{e}, mais tu te reconnais dans le miroir.",
+            "effects": {
+              "health": 12,
+              "happiness": 6,
+              "clearFlags": [
+                "addiction_tournee"
+              ]
+            },
+            "spe": {
+              "forme": 15,
+              "gainPct": -15
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu tiens un mois, puis tu rechutes en tournée. Il faudra recommencer.",
+            "effects": {
+              "health": 2,
+              "happiness": -6
+            },
+            "spe": {
+              "forme": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que tu gères",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu gères, jusqu'au soir où tu tombes de la scène.",
+            "effects": {
+              "health": -15,
+              "happiness": -8
+            },
+            "spe": {
+              "reputation": -8,
+              "forme": -15
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu gères en apparence. Ton foie, lui, ne gère plus rien.",
+            "effects": {
+              "health": -10
+            },
+            "spe": {
+              "forme": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une pause d'un an",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Pas de scène, pas de bar après la scène. Le silence fait peur, puis il fait du bien.",
+            "effects": {
+              "health": 10,
+              "happiness": 4
+            },
+            "spe": {
+              "fansPct": -8,
+              "gainPct": -30,
+              "forme": 12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0012",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 3,
+    "text": "Ton titre vient de passer le million d'écoutes sur les plateformes. Ton virement de droits : 312 €.",
+    "choices": [
+      {
+        "label": "Rire jaune et continuer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu encadres le relevé dans les toilettes. Les invités trouvent ça très drôle, toi un peu moins.",
+            "effects": {
+              "happiness": -2
+            },
+            "spe": {
+              "gainPct": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Miser sur les concerts",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les écoutes remplissent les salles : la billetterie paye ce que le streaming ne paye pas.",
+            "effects": {
+              "happiness": 6,
+              "health": -3
+            },
+            "spe": {
+              "gainPct": 20,
+              "fansPct": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les gens écoutent en boucle, mais ne sortent pas de chez eux.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "gainPct": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un vinyle collector",
+        "costPct": 8,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Mille exemplaires numérotés, partis en une matinée.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "gainPct": 25,
+              "fansPct": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il te reste 640 vinyles dans le salon. Ils font une belle table basse.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "gainPct": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0013",
+    "carriere": "musique",
+    "minNiveau": 0,
+    "maxNiveau": 2,
+    "text": "Quelqu'un t'a filmé{e} en train de chanter dans le métro. La vidéo fait quatre millions de vues en deux jours.",
+    "choices": [
+      {
+        "label": "Assumer et sortir le morceau",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le titre entre dans les classements. Les labels t'appellent par ton prénom.",
+            "effects": {
+              "happiness": 12,
+              "fame": 6
+            },
+            "spe": {
+              "fansPct": 40,
+              "reputation": 8,
+              "gainPct": 30
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le buzz retombe aussi vite qu'il est monté. Il te reste 3 000 abonnés et un souvenir.",
+            "effects": {
+              "happiness": 4,
+              "fame": 2
+            },
+            "spe": {
+              "fansPct": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester discret",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Personne ne sait qui tu es. La vidéo devient un mème avec une autre voix dessus.",
+            "effects": {
+              "happiness": -2
+            },
+            "spe": {
+              "reputation": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un duo en direct à la personne qui a filmé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle chante faux mais avec cœur. Internet adore cette amitié improbable.",
+            "effects": {
+              "happiness": 8,
+              "fame": 3
+            },
+            "spe": {
+              "fansPct": 20,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0014",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Un compositeur inconnu affirme que ton tube reprend huit mesures d'une chanson qu'il a écrite en 1987. Il a un avocat, et le son est troublant.",
+    "choices": [
+      {
+        "label": "Négocier un accord à l'amiable",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lui cèdes une partie des droits. Il s'achète une maison et t'envoie une carte de vœux.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "gainPct": -20,
+              "reputation": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller au procès",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le juge conclut que trois notes ne font pas une chanson. Victoire, et jurisprudence.",
+            "effects": {
+              "happiness": 10,
+              "money": -15000
+            },
+            "spe": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu perds. Les médias titrent « Le plagiat de l'été ».",
+            "effects": {
+              "happiness": -12,
+              "money": -20000
+            },
+            "spe": {
+              "gainPct": -40,
+              "reputation": -10,
+              "signal": "proces_plagiat"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Démontrer au piano que la suite d'accords est banale",
+        "requiresSkill": {
+          "piano": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Devant les experts, tu joues la même suite d'accords dans douze chansons célèbres. Le dossier est classé.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 3,
+              "skills": {
+                "piano": 2
+              }
+            },
+            "spe": {
+              "reputation": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0015",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 4,
+    "text": "Une star bien plus connue que toi te propose un featuring. Son équipe veut 70 % des droits et le contrôle du clip.",
+    "choices": [
+      {
+        "label": "Accepter les conditions",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le titre cartonne. On parle d'elle, mais ton nom est en petit dessous.",
+            "effects": {
+              "happiness": 6,
+              "fame": 4
+            },
+            "spe": {
+              "fansPct": 25,
+              "gainPct": 15,
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le morceau fait un flop poli. Tu as cédé tes droits pour une photo de groupe.",
+            "effects": {
+              "happiness": -5
+            },
+            "spe": {
+              "fansPct": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier 50/50",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Son équipe accepte. Tu viens d'apprendre que tout se négocie.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 2
+            },
+            "spe": {
+              "gainPct": 25,
+              "fansPct": 20
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La star choisit quelqu'un d'autre. Le titre sort sans toi et cartonne.",
+            "effects": {
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui chanter ta partie en direct au téléphone",
+        "requiresSkill": {
+          "chant": 4
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il y a un silence, puis « ok, 50/50 ». Ta voix vient de négocier pour toi.",
+            "effects": {
+              "happiness": 12,
+              "skills": {
+                "chant": 2
+              },
+              "fame": 4
+            },
+            "spe": {
+              "gainPct": 25,
+              "fansPct": 25,
+              "reputation": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0016",
+    "carriere": "musique",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "Une fan a trouvé ton adresse. Elle attend devant chez toi depuis trois jours avec des cadeaux et des lettres de plus en plus longues.",
+    "choices": [
+      {
+        "label": "Prévenir la police",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Une mesure d'éloignement est prononcée. Tu dors mieux, mais tu fermes à double tour.",
+            "effects": {
+              "happiness": -4,
+              "health": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle s'en va puis revient. La procédure prend des mois.",
+            "effects": {
+              "happiness": -10,
+              "health": -4
+            },
+            "spe": {
+              "forme": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui parler calmement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle pleure, s'excuse et repart. Tu ne la revois jamais.",
+            "effects": {
+              "happiness": 2,
+              "karma": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle interprète la conversation comme un signe. Les lettres doublent.",
+            "effects": {
+              "happiness": -10
+            },
+            "spe": {
+              "forme": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Engager un agent de sécurité",
+        "costPct": 5,
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il s'appelle Bruno, mesure deux mètres et ne parle presque pas. Tu te sens enfin en sécurité.",
+            "effects": {
+              "happiness": 4,
+              "health": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0017",
+    "carriere": "musique",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "unique": true,
+    "text": "Un intermédiaire propose une somme énorme pour chanter à l'anniversaire du président d'un petit État connu pour emprisonner ses opposants.",
+    "choices": [
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu refuses sans bruit. Personne ne le sait, à part ta conscience.",
+            "effects": {
+              "karma": 6,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une ONG apprend ton refus et le rend public. On salue ton intégrité.",
+            "effects": {
+              "karma": 6,
+              "happiness": 6
+            },
+            "spe": {
+              "reputation": 6,
+              "fansPct": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter et encaisser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le cachet est colossal. Le concert n'est filmé par personne. Pour l'instant.",
+            "effects": {
+              "karma": -10,
+              "happiness": 4
+            },
+            "spe": {
+              "gainPct": 80,
+              "signal": "concert_dictateur"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Des images fuitent. Tu chantes « joyeux anniversaire » devant un portrait géant. Polémique mondiale.",
+            "effects": {
+              "karma": -12,
+              "happiness": -12
+            },
+            "spe": {
+              "gainPct": 80,
+              "reputation": -15,
+              "fansPct": -20,
+              "signal": "concert_dictateur"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter et reverser le cachet à une ONG",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le geste est salué par certains et jugé hypocrite par d'autres. Débat sans fin.",
+            "effects": {
+              "karma": 2
+            },
+            "spe": {
+              "reputation": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le régime découvre ce que tu as fait de l'argent. Tu es interdit{e} de séjour à vie. Tu t'en remettras.",
+            "effects": {
+              "karma": 6,
+              "happiness": 4
+            },
+            "spe": {
+              "reputation": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0018",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Tu es nommé{e} aux Trophées Mélodia dans la catégorie « Album de l'année ». La cérémonie est diffusée en direct.",
+    "choices": [
+      {
+        "label": "Préparer un discours",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu gagnes ! Ton discours est sobre et touchant. Les ventes repartent à la hausse.",
+            "effects": {
+              "happiness": 15,
+              "fame": 6
+            },
+            "spe": {
+              "reputation": 10,
+              "fansPct": 15,
+              "gainPct": 20
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu perds face à un album de reprises de chants de marins. Tu applaudis avec un sourire figé.",
+            "effects": {
+              "happiness": -6
+            },
+            "spe": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas y aller",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gagnes, évidemment. Un stagiaire de {label} récupère le trophée à ta place.",
+            "effects": {
+              "happiness": 4,
+              "fame": 2
+            },
+            "spe": {
+              "reputation": 3,
+              "fansPct": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une prestation provocante",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tout le monde parle de ta prestation pendant une semaine. Tes chiffres explosent.",
+            "effects": {
+              "happiness": 8,
+              "fame": 6
+            },
+            "spe": {
+              "fansPct": 20,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La prestation est coupée au montage. Le producteur jure que tu ne reviendras jamais.",
+            "effects": {
+              "happiness": -5
+            },
+            "spe": {
+              "reputation": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0019",
+    "carriere": "musique",
+    "minNiveau": 4,
+    "maxNiveau": 5,
+    "minAge": 40,
+    "unique": true,
+    "text": "Ton manager évoque une tournée d'adieu. « Les adieux, ça remplit les stades. » Il ajoute qu'en général, les artistes reviennent ensuite.",
+    "choices": [
+      {
+        "label": "Faire une vraie tournée d'adieu",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chaque soir, des milliers de gens pleurent avec toi. Le dernier concert dure quatre heures. C'est fini, pour de vrai.",
+            "effects": {
+              "happiness": 20,
+              "health": -4,
+              "fame": 8
+            },
+            "spe": {
+              "gainPct": 120,
+              "reputation": 10,
+              "finCarriere": true,
+              "signal": "tournee_adieu"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une tournée d'adieu « provisoire »",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La tournée rapporte une fortune. Trois ans plus tard, tu annonces ton retour, comme prévu.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "gainPct": 100,
+              "reputation": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La presse ironise sur tes « adieux numéro deux ». Les salles ne sont pas pleines.",
+            "effects": {
+              "happiness": -6
+            },
+            "spe": {
+              "gainPct": 30,
+              "reputation": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer comme avant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Pas d'adieux. Tu enregistres un nouvel album et le public suit.",
+            "effects": {
+              "happiness": 4
+            },
+            "spe": {
+              "forme": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0020",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "genres": [
+      "rap"
+    ],
+    "text": "Un rappeur rival sort un morceau entier contre toi. Il cite ta mère, ton premier job et ta coupe de cheveux de 2014.",
+    "choices": [
+      {
+        "label": "Répondre par un morceau",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta réponse est brillante. Le public te sacre vainqueur du clash en 48 heures.",
+            "effects": {
+              "happiness": 12,
+              "fame": 4
+            },
+            "spe": {
+              "fansPct": 20,
+              "reputation": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta réponse est trop gentille. On en fait des montages moqueurs.",
+            "effects": {
+              "happiness": -8
+            },
+            "spe": {
+              "reputation": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ne réponds rien. Certains appellent ça de la classe, d'autres de la peur.",
+            "effects": {
+              "happiness": -2
+            },
+            "spe": {
+              "reputation": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'inviter en studio",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Vous enregistrez un titre ensemble. Le clash était peut-être un coup de pub depuis le début.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "fansPct": 25,
+              "gainPct": 20
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Il ne vient pas, mais il en parle dans un nouveau morceau.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0021",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "genres": [
+      "rock"
+    ],
+    "text": "Dans la chambre d'hôtel, un membre de l'équipe veut jeter la télévision par la fenêtre, « pour la tradition du rock ».",
+    "choices": [
+      {
+        "label": "L'en empêcher",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La télé reste en place. Le rock perd une tradition, l'hôtel garde sa télé.",
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jeter la télé toi-même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La télé atterrit dans la piscine. La facture aussi est légendaire.",
+            "effects": {
+              "happiness": 6,
+              "money": -6000
+            },
+            "spe": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le directeur de l'hôtel porte plainte et la chaîne t'interdit dans ses 40 établissements.",
+            "effects": {
+              "happiness": -4,
+              "money": -8000
+            },
+            "spe": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de jouer de la guitare sur le balcon à la place",
+        "requiresSkill": {
+          "guitare": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tout l'hôtel sort sur les balcons. Les clients applaudissent en peignoir.",
+            "effects": {
+              "happiness": 10,
+              "skills": {
+                "guitare": 2
+              }
+            },
+            "spe": {
+              "fansPct": 5,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0022",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "genres": [
+      "electro"
+    ],
+    "text": "Le club Isla Corva te propose une résidence d'été : tous les soirs de deux heures à sept heures du matin.",
+    "choices": [
+      {
+        "label": "Accepter toute la saison",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta résidence devient la plus courue de l'île. Tu ne vois plus le soleil, mais tu vois le virement.",
+            "effects": {
+              "happiness": 6,
+              "health": -10
+            },
+            "spe": {
+              "gainPct": 50,
+              "fansPct": 20,
+              "forme": -10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Trois mois sans dormir. En septembre, ton médecin te parle de tes yeux et de ton cœur.",
+            "effects": {
+              "health": -15,
+              "happiness": -4
+            },
+            "spe": {
+              "gainPct": 40,
+              "forme": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre un week-end sur deux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Moins d'argent, plus de sommeil. Ton set est meilleur parce que tu as encore envie.",
+            "effects": {
+              "happiness": 5,
+              "health": -2
+            },
+            "spe": {
+              "gainPct": 20,
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes l'été en studio et sors un EP très solide.",
+            "effects": {
+              "happiness": 2
+            },
+            "spe": {
+              "forme": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0023",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "genres": [
+      "jazz"
+    ],
+    "text": "Un club de jazz mythique t'invite à une jam session. Le pianiste a 84 ans et joue plus vite que tout le monde.",
+    "choices": [
+      {
+        "label": "Monter sur scène",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu tiens la cadence. À la fin, le vieux pianiste te fait un clin d'œil. Tu ne l'oublieras jamais.",
+            "effects": {
+              "happiness": 12
+            },
+            "spe": {
+              "reputation": 8,
+              "forme": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu te perds dans une grille d'accords. Le bassiste te sauve avec élégance.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter depuis le bar",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu apprends plus en une soirée qu'en un an de cours.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 3
+            },
+            "spe": {
+              "forme": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre le piano à quatre mains",
+        "requiresSkill": {
+          "piano": 4
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le duo dure vingt minutes. Un enregistrement pirate devient culte chez les connaisseurs.",
+            "effects": {
+              "happiness": 15,
+              "skills": {
+                "piano": 3
+              }
+            },
+            "spe": {
+              "reputation": 12,
+              "fansPct": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0024",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 4,
+    "genres": [
+      "variete",
+      "pop"
+    ],
+    "text": "Une émission de variétés du samedi soir veut que tu chantes en playback, entouré{e} de danseurs déguisés en fruits.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Six millions de téléspectateurs. Ta grand-mère est enfin fière de toi.",
+            "effects": {
+              "happiness": 4,
+              "fame": 4
+            },
+            "spe": {
+              "fansPct": 15,
+              "gainPct": 10,
+              "reputation": -2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La bande-son se décale de deux secondes. La séquence tourne sur internet pendant des années.",
+            "effects": {
+              "happiness": -8,
+              "fame": 3
+            },
+            "spe": {
+              "reputation": -5,
+              "fansPct": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger de chanter en direct",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La production cède. Ta prestation en direct est la seule chose sincère de la soirée.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "reputation": 5,
+              "fansPct": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La production te remplace par un groupe qui accepte les fruits.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gardes ta dignité. Le groupe qui t'a remplacé{e} fait un tube.",
+            "effects": {
+              "happiness": -2
+            },
+            "spe": {
+              "reputation": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0025",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 3,
+    "genres": [
+      "pop"
+    ],
+    "text": "{label} veut changer ton image : nouvelle coiffure, nouvelle garde-robe, et un nom de scène « plus vendeur ».",
+    "choices": [
+      {
+        "label": "Accepter le relooking",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La nouvelle image fonctionne. Tu te reconnais moins dans le miroir, mais plus dans les classements.",
+            "effects": {
+              "happiness": -2,
+              "looks": 6
+            },
+            "spe": {
+              "fansPct": 15,
+              "gainPct": 15
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tes anciens fans ne te reconnaissent plus, les nouveaux ne viennent pas.",
+            "effects": {
+              "happiness": -8,
+              "looks": 3
+            },
+            "spe": {
+              "fansPct": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ton nom, changer le reste",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Compromis honorable. Le coiffeur pleure un peu en coupant.",
+            "effects": {
+              "looks": 4,
+              "happiness": 2
+            },
+            "spe": {
+              "fansPct": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser tout",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton authenticité devient ta marque. Les fans t'en aiment davantage.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "reputation": 4,
+              "fansPct": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{label} réduit le budget promo de ton prochain single.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "gainPct": -15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0026",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "genres": [
+      "pop",
+      "rap",
+      "electro"
+    ],
+    "text": "Le chorégraphe de ta tournée te propose une routine très ambitieuse pour le single principal. Il te reste deux semaines de répétition.",
+    "choices": [
+      {
+        "label": "Simplifier la chorégraphie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu bouges peu, mais tu chantes juste. Les puristes approuvent.",
+            "effects": {
+              "happiness": 2
+            },
+            "spe": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout apprendre en deux semaines",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le soir de la première, tout s'enchaîne. Le public hurle.",
+            "effects": {
+              "happiness": 10,
+              "health": -4
+            },
+            "spe": {
+              "fansPct": 12,
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Entorse de la cheville à la dernière répétition.",
+            "effects": {
+              "health": -12,
+              "happiness": -8
+            },
+            "spe": {
+              "forme": -12,
+              "gainPct": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer tes propres pas",
+        "requiresSkill": {
+          "danse": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta chorégraphie devient une danse que tout le monde reproduit en ligne.",
+            "effects": {
+              "happiness": 12,
+              "skills": {
+                "danse": 3
+              },
+              "fame": 4
+            },
+            "spe": {
+              "fansPct": 25,
+              "reputation": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0027",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 4,
+    "text": "Ton stock de t-shirts de tournée vient d'arriver : 2 000 exemplaires avec une faute d'orthographe dans le nom « {groupe} ».",
+    "choices": [
+      {
+        "label": "Les vendre quand même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les fans les adorent : collector involontaire. Ils partent plus vite que les bons.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "gainPct": 8,
+              "fansPct": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils ne se vendent pas. Tu dors avec un t-shirt fautif pendant dix ans.",
+            "effects": {
+              "happiness": -3
+            },
+            "spe": {
+              "gainPct": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout refaire imprimer",
+        "costPct": 6,
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les nouveaux t-shirts sont parfaits. Les anciens servent de chiffons dans le camion.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "En faire une blague officielle",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu changes ton nom sur scène pendant un soir. Les journalistes adorent l'autodérision.",
+            "effects": {
+              "happiness": 5
+            },
+            "spe": {
+              "reputation": 3,
+              "fansPct": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0028",
+    "carriere": "musique",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Ton comptable remarque que ton manager s'est versé de grosses sommes en « frais de représentation » l'an dernier. Il te gère depuis tes débuts.",
+    "choices": [
+      {
+        "label": "Le confronter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il avoue, en larmes. Il rembourse une partie et s'en va.",
+            "effects": {
+              "happiness": -6
+            },
+            "spe": {
+              "gainPct": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il nie tout et part avec la moitié de tes contacts.",
+            "effects": {
+              "happiness": -10
+            },
+            "spe": {
+              "reputation": -4,
+              "gainPct": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'enquête prouve le détournement. Il est condamné et tu récupères une partie de l'argent.",
+            "effects": {
+              "happiness": 2,
+              "money": -5000
+            },
+            "spe": {
+              "gainPct": 20,
+              "signal": "manager_escroc"
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La procédure dure trois ans. Les médias parlent de toi pour de mauvaises raisons.",
+            "effects": {
+              "happiness": -8,
+              "money": -10000
+            },
+            "spe": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer les yeux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ne veux pas perdre la personne qui t'a lancé{e}. Les frais, eux, continuent.",
+            "effects": {
+              "happiness": -4,
+              "karma": -2
+            },
+            "spe": {
+              "gainPct": -20
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0029",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 2,
+    "text": "Un programmateur de radio laisse entendre qu'une « enveloppe » aiderait beaucoup ton titre à entrer en playlist.",
+    "choices": [
+      {
+        "label": "Payer discrètement",
+        "costPct": 20,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton titre passe toutes les heures. Tu as un goût amer chaque fois que tu l'entends.",
+            "effects": {
+              "karma": -6,
+              "happiness": 2
+            },
+            "spe": {
+              "fansPct": 20,
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un journaliste révèle le système. Ton nom est dans l'article.",
+            "effects": {
+              "karma": -6,
+              "happiness": -10
+            },
+            "spe": {
+              "reputation": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton titre ne passe pas. Mais il passe dans les petites radios associatives, et c'est déjà ça.",
+            "effects": {
+              "karma": 3
+            },
+            "spe": {
+              "fansPct": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Enregistrer la conversation",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu donnes l'enregistrement à la presse. Scandale, enquête, et un certain respect pour toi.",
+            "effects": {
+              "karma": 5,
+              "happiness": 4
+            },
+            "spe": {
+              "reputation": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'enregistrement est inaudible. Le programmateur t'a désormais blacklisté{e}.",
+            "effects": {
+              "happiness": -6
+            },
+            "spe": {
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mus_0030",
+    "carriere": "musique",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "text": "Depuis le dernier concert, un sifflement aigu ne quitte plus ton oreille gauche.",
+    "choices": [
+      {
+        "label": "Consulter un ORL",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Acouphène traumatique. Bouchons sur mesure obligatoires, et moins de volume sur les retours.",
+            "effects": {
+              "health": 4,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les dégâts sont permanents. Il faudra vivre avec ce sifflement.",
+            "effects": {
+              "health": -6,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer et continuer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le sifflement finit par se calmer.",
+            "effects": {
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ça empire. Tu entends moins bien les aigus et ça se ressent dans tes mixages.",
+            "effects": {
+              "health": -10,
+              "happiness": -6
+            },
+            "spe": {
+              "forme": -8,
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

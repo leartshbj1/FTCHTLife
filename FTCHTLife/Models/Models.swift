@@ -258,6 +258,8 @@ struct Joueur: Codable, Equatable {
     var agences: AgencesEtat? = nil
     /// Module « Voyages sur mesure » : carnet de voyages (docs/VOYAGES.md).
     var voyages: VoyagesEtat? = nil
+    /// Carrières spéciales, salle de sport, musée, investissements (docs/CARRIERES_SPECIALES.md).
+    var speciales: SpeEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
@@ -285,6 +287,7 @@ struct Joueur: Codable, Equatable {
     var occupation: String {
         if !vivant { return g("Décédé", "Décédée") }
         if let e = emploi { return e.titre }
+        if let c = speciales?.carriere { return SpeMoteur.titre(c, self) }
         if let e = etudes { return g("Étudiant", "Étudiante") + " en \(e.filiere.nom.lowercased())" }
         if let n = niveauScolaire { return n }
         if agences?.actuelle != nil { return g("Détective privé", "Détective privée") }
