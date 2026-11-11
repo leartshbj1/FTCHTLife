@@ -1,0 +1,5853 @@
+[
+  {
+    "id": "dos_jp_01",
+    "kind": "dossier",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "depute",
+      "senateur"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La consigne de la faction",
+    "text": "L'élection à la présidence du parti approche, et son vainqueur deviendra Premier ministre. Le chef de ta faction t'ordonne de voter pour un vieux baron que tu juges incapable de réformer quoi que ce soit. Il te rappelle, sans hausser la voix, qui a financé ta dernière campagne.",
+    "choices": [
+      {
+        "label": "Suivre la consigne sans discuter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu votes comme prévu. Le baron l'emporte, ta faction te remercie par une place au conseil de politique du parti.",
+            "pol": {
+              "loyaute": 8,
+              "influence": 4,
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Voter selon ta conscience",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton vote fuite dans la presse. Les jeunes élus saluent ton courage, mais tu n'es plus invité{e} aux dîners de la faction.",
+            "pol": {
+              "loyaute": -10,
+              "popularite": 5,
+              "rival": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le vote est secret et le baron perd de trois voix. Personne ne sait que tu étais du nombre, mais certains s'en doutent.",
+            "pol": {
+              "loyaute": -4,
+              "influence": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Monnayer ton vote contre un poste de vice-ministre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le chef de faction apprécie qu'on parle franchement. Ton nom figurera sur la liste du prochain remaniement.",
+            "effects": {
+              "karma": -2
+            },
+            "pol": {
+              "influence": 7,
+              "loyaute": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il te répond qu'un poste se mérite par la patience, pas par le marchandage. Tu viens de reculer de quelques places dans la file.",
+            "pol": {
+              "influence": -4,
+              "loyaute": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_jp_02",
+    "kind": "dossier",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "maire",
+      "adjoint"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La dernière école du village",
+    "text": "L'école primaire du hameau de montagne de ta commune n'a plus que sept élèves. Le bâtiment coûte cher, et la moitié des habitants ont plus de soixante-dix ans. La préfecture propose de la fermer et de payer un bus scolaire vers la ville voisine.",
+    "choices": [
+      {
+        "label": "Fermer l'école et financer le bus",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les comptes s'améliorent. Deux familles avec enfants annoncent pourtant leur départ du hameau, qui perd un peu plus de vie.",
+            "pol": {
+              "popularite": -3,
+              "segments": {
+                "ruraux": -6,
+                "fonctionnaires": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Transformer l'école en centre de jour pour les aînés, classes comprises",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les enfants et les aînés partagent la cantine et le jardin. Une télévision nationale vient filmer, et un jeune couple de citadins s'installe.",
+            "pol": {
+              "popularite": 7,
+              "influence": 2,
+              "segments": {
+                "retraites": 6,
+                "ruraux": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le projet est beau sur le papier, mais il manque deux aides-soignants. Le centre ouvre à mi-temps et l'école ferme quand même deux ans plus tard.",
+            "pol": {
+              "popularite": -1,
+              "segments": {
+                "retraites": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un programme pour attirer de jeunes familles",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Maison offerte contre dix ans de résidence : trois familles répondent. L'école passe à douze élèves, ce qui est presque une foule.",
+            "effects": {
+              "happiness": 3
+            },
+            "pol": {
+              "popularite": 6,
+              "segments": {
+                "jeunes": 5,
+                "ruraux": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les candidats viennent surtout pour la maison gratuite et repartent au bout d'un hiver. L'opposition parle d'argent jeté dans la neige.",
+            "pol": {
+              "popularite": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_jp_03",
+    "kind": "crise",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Magnitude 7,4",
+    "text": "À 3 h 12 du matin, un séisme de magnitude 7,4 frappe la côte nord-est. Une alerte au tsunami est émise, des villages sont coupés du monde et une centrale nucléaire signale une perte d'alimentation électrique sur un réacteur à l'arrêt. Les caméras attendent une première déclaration.",
+    "choices": [
+      {
+        "label": "Parler dans l'heure, en donnant tout ce que l'on sait sur la centrale",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ta transparence rassure. Quand l'exploitant confirme que le refroidissement a repris, personne ne t'accuse d'avoir caché quoi que ce soit.",
+            "pol": {
+              "popularite": 8,
+              "influence": 3,
+              "pays": {
+                "moral": 4
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu annonces une information que l'exploitant corrige deux heures plus tard. L'erreur est minime, mais les réseaux sociaux s'emballent.",
+            "pol": {
+              "popularite": -3,
+              "pays": {
+                "moral": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mobiliser immédiatement les Forces d'autodéfense",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Hélicoptères et camions atteignent les villages isolés avant midi. Les images de sauveteurs en uniforme portant des personnes âgées font le tour du pays.",
+            "effects": {
+              "health": -3
+            },
+            "pol": {
+              "popularite": 6,
+              "pays": {
+                "dette": 1,
+                "securite": 4,
+                "moral": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre les rapports techniques avant de communiquer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Pendant six heures, aucune voix officielle. Les rumeurs sur la centrale remplissent le vide et l'on te reproche une prudence de bureaucrate.",
+            "pol": {
+              "popularite": -9,
+              "pays": {
+                "moral": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter l'aide proposée par les pays voisins",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les équipes étrangères arrivent vite. Le geste détend pour quelques semaines des relations régionales d'ordinaire glaciales.",
+            "pol": {
+              "popularite": 4,
+              "influence": 4,
+              "pays": {
+                "moral": 3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'aide est utile, mais l'aile nationaliste de ton parti trouve l'image humiliante et le fait savoir.",
+            "pol": {
+              "popularite": 2,
+              "loyaute": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_jp_04",
+    "kind": "dossier",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "affaires_etrangeres",
+    "weight": 1,
+    "unique": false,
+    "title": "Le chalutier arraisonné",
+    "text": "Les garde-côtes d'un pays voisin ont arraisonné un chalutier japonais près d'îlots dont la souveraineté est disputée depuis des décennies. Le capitaine est retenu. Un sommet régional doit se tenir dans trois semaines.",
+    "choices": [
+      {
+        "label": "Protester publiquement et convoquer l'ambassadeur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta fermeté plaît dans le pays. Le voisin répond sur le même ton, le sommet est reporté et le capitaine reste détenu une semaine de plus.",
+            "pol": {
+              "popularite": 6,
+              "influence": -2,
+              "segments": {
+                "retraites": 4
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La pression fonctionne : le capitaine est libéré au bout de quatre jours. Les deux pays prétendent avoir gagné, ce qui est la définition d'un bon accord.",
+            "pol": {
+              "popularite": 7,
+              "influence": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir un canal discret avec ton homologue",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le capitaine rentre chez lui sans déclaration fracassante. Le sommet a lieu, et l'on te prête un sens de l'État certain.",
+            "pol": {
+              "influence": 6,
+              "popularite": 1
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La discrétion est prise pour de la faiblesse. Des députés de ta majorité exigent une réaction officielle.",
+            "pol": {
+              "popularite": -4,
+              "loyaute": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un accord de pêche commun dans la zone",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "L'idée surprend, puis intéresse. Un groupe de travail est créé. Les pêcheurs y voient enfin un peu de visibilité.",
+            "pol": {
+              "influence": 5,
+              "segments": {
+                "ruraux": 4
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Ton propre camp t'accuse de céder sur la souveraineté. Le projet meurt en commission avant d'avoir vécu.",
+            "pol": {
+              "popularite": -5,
+              "loyaute": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_jp_05",
+    "kind": "dossier",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "presidentRegion",
+      "conseillerRegional"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les aides-soignants venus d'ailleurs",
+    "text": "Dans ta préfecture, un établissement pour personnes âgées sur trois manque de personnel. Une association propose de recruter des aides-soignants d'Asie du Sud-Est via le programme national de travailleurs qualifiés. Les syndicats craignent une pression sur les salaires, et certains habitants s'inquiètent d'un changement trop rapide.",
+    "choices": [
+      {
+        "label": "Soutenir le recrutement avec des cours de langue financés",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les premières recrues arrivent au printemps. Les familles des résidents sont soulagées, et l'intégration se passe mieux que les inquiets ne l'annonçaient.",
+            "pol": {
+              "popularite": 5,
+              "segments": {
+                "retraites": 7,
+                "fonctionnaires": -2
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Plusieurs recrues quittent la préfecture pour Tokyo, où les salaires sont plus élevés. Tu as financé la formation des établissements de la capitale.",
+            "pol": {
+              "popularite": -2,
+              "influence": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Augmenter d'abord les salaires des soignants locaux",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Quelques anciens soignants reprennent du service. C'est utile, mais insuffisant, et le budget préfectoral en sort essoré.",
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "fonctionnaires": 5,
+                "retraites": 2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les candidats locaux ne sont tout simplement pas assez nombreux. Les listes d'attente continuent de s'allonger.",
+            "pol": {
+              "popularite": -3,
+              "segments": {
+                "retraites": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Miser sur les robots d'assistance",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une entreprise locale fournit des lits motorisés et des capteurs de chute. Le matériel est impressionnant, mais il ne parle à personne pendant les longues soirées d'hiver.",
+            "pol": {
+              "popularite": 1,
+              "influence": 2,
+              "segments": {
+                "patrons": 4,
+                "retraites": -2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sca_jp_06",
+    "kind": "scandale",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "depute",
+      "senateur"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les billets de soirée",
+    "text": "Un journal révèle que ta faction n'a pas déclaré une partie des recettes de ses soirées de collecte de fonds. Ton nom figure sur la liste : tu aurais reçu des reversements en liquide pendant trois ans. Le parquet ouvre une enquête.",
+    "choices": [
+      {
+        "label": "Présenter tes excuses en conférence de presse et rembourser",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu t'inclines longuement devant les caméras et rembourses jusqu'au dernier yen. Le geste est jugé sincère, l'affaire s'éteint lentement.",
+            "effects": {
+              "money": -20000
+            },
+            "pol": {
+              "popularite": -3,
+              "casseroles": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les excuses ne suffisent pas : on demande pourquoi tu n'as rien remarqué pendant trois ans. La question reste sans bonne réponse.",
+            "effects": {
+              "money": -20000
+            },
+            "pol": {
+              "popularite": -8,
+              "casseroles": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Quitter la faction pour marquer la rupture",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu deviens l'un des premiers à partir. La presse salue un sursaut, tes anciens camarades te considèrent désormais comme un traître.",
+            "pol": {
+              "popularite": 4,
+              "loyaute": -10,
+              "influence": -5,
+              "casseroles": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rejeter la faute sur ton secrétaire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton secrétaire endosse tout et démissionne. Tu survis, mais personne n'est vraiment dupe.",
+            "effects": {
+              "karma": -6
+            },
+            "pol": {
+              "popularite": -4,
+              "casseroles": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton ancien secrétaire donne une interview détaillée. Il a gardé tous les reçus, et ton nom revient à chaque page.",
+            "effects": {
+              "karma": -6
+            },
+            "pol": {
+              "popularite": -14,
+              "casseroles": 18
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deb_jp_07",
+    "kind": "debat",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "depute",
+      "senateur"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La taxe à la consommation",
+    "text": "Débat télévisé. La journaliste te demande : « Les dépenses de retraite et de santé explosent avec le vieillissement. Faut-il relever encore la taxe à la consommation ? » {adversaire} te regarde, prêt{e} à bondir.",
+    "choices": [
+      {
+        "label": "« Oui, il faut le dire franchement aux Japonais. »",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ta franchise impressionne les téléspectateurs âgés, qui votent beaucoup. Les plus jeunes changent de chaîne.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "retraites": 5,
+                "jeunes": -4
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "{adversaire} répète trois fois « augmentation d'impôts » dans la minute suivante. La formule fait les titres du lendemain.",
+            "pol": {
+              "campagne": -5,
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "« Non, il faut d'abord réduire les dépenses de l'État. »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La réponse est classique et passe bien. On te demande quelles dépenses, et tu restes un peu vague.",
+            "pol": {
+              "campagne": 2,
+              "segments": {
+                "patrons": 4,
+                "fonctionnaires": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une taxe plus faible sur l'alimentation",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La mesure est concrète et facile à comprendre. Les familles retiennent ton nom.",
+            "pol": {
+              "campagne": 5,
+              "segments": {
+                "jeunes": 3,
+                "retraites": 2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{adversaire} te demande le coût exact de la mesure. Tu donnes un chiffre faux de quelques milliers de milliards de yens.",
+            "pol": {
+              "campagne": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lob_jp_08",
+    "kind": "lobby",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "presidentRegion",
+      "maire"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le redémarrage",
+    "text": "L'électricien régional veut redémarrer deux réacteurs de la centrale située dans ta circonscription. L'autorité de sûreté a donné son feu vert ; il manque ton accord politique. L'entreprise propose de financer une nouvelle digue anti-tsunami et un centre de santé. Les associations rappellent qu'aucun plan d'évacuation crédible n'existe pour la péninsule.",
+    "choices": [
+      {
+        "label": "Donner ton accord contre les financements",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La digue et le centre de santé sont construits. Les emplois reviennent, et l'opposition locale reste minoritaire mais déterminée.",
+            "pol": {
+              "popularite": 2,
+              "influence": 4,
+              "segments": {
+                "patrons": 6,
+                "ruraux": 3,
+                "jeunes": -4
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un journaliste révèle que l'électricien a aussi payé un voyage d'étude à deux de tes conseillers. Le soupçon d'un accord acheté s'installe.",
+            "pol": {
+              "popularite": -6,
+              "casseroles": 9
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger d'abord un plan d'évacuation testé grandeur nature",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'exercice révèle que la route côtière serait bloquée en vingt minutes. Le redémarrage est repoussé de deux ans ; l'électricien fait grise mine, les habitants te remercient.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "popularite": 6,
+              "influence": -2,
+              "segments": {
+                "retraites": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser le redémarrage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta décision fait la une nationale. Le gouvernement est furieux, ton parti aussi, et les factures d'électricité de la région augmentent l'hiver suivant.",
+            "pol": {
+              "popularite": 3,
+              "loyaute": -8,
+              "segments": {
+                "jeunes": 5,
+                "patrons": -7
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cam_jp_09",
+    "kind": "campagne",
+    "pays": [
+      "jp"
+    ],
+    "postes": [
+      "depute",
+      "senateur",
+      "conseillerRegional"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Pas de porte-à-porte",
+    "text": "Au Japon, le porte-à-porte électoral est interdit. Ton directeur de campagne propose donc la méthode éprouvée : saluer les voyageurs à la sortie de la gare tous les matins à 6 heures, debout sur une caisse, avec ton nom en grand sur une écharpe.",
+    "choices": [
+      {
+        "label": "Être à la gare chaque matin, quoi qu'il arrive",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Au bout de deux semaines, les employés de bureau te saluent en retour. Une vieille dame t'apporte un thermos de thé. C'est ainsi qu'on gagne ici.",
+            "effects": {
+              "health": -3
+            },
+            "pol": {
+              "campagne": 6,
+              "popularite": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu attrapes une bronchite sous la pluie de juin. Ta voix éraillée devient un sujet de conversation, pas forcément à ton avantage.",
+            "effects": {
+              "health": -8
+            },
+            "pol": {
+              "campagne": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sillonner les quartiers en voiture à haut-parleur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton nom résonne dans toutes les rues, quarante fois par jour. Les électeurs le connaissent désormais, certains par pure exaspération.",
+            "pol": {
+              "campagne": 3,
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout miser sur les réseaux sociaux",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tes vidéos courtes sur la vie de la circonscription plaisent aux trentenaires. Reste à savoir s'ils iront voter.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "jeunes": 6,
+                "retraites": -2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les électeurs âgés, qui font l'élection, ne t'ont jamais vu{e}. Ton adversaire, lui, était à la gare.",
+            "pol": {
+              "campagne": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_cn_01",
+    "kind": "dossier",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'objectif de croissance",
+    "text": "La province a fixé à ta ville un objectif de croissance de 6 %. Les premiers chiffres annuels indiquent 3,8 %. Ton évaluation, et donc ta prochaine promotion, dépend largement de ce chiffre. Le directeur du bureau local des statistiques te fait comprendre qu'il existe « des marges d'interprétation ».",
+    "choices": [
+      {
+        "label": "Transmettre les vrais chiffres",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tes supérieurs notent le chiffre décevant, mais aussi ta fiabilité. Une inspection ultérieure révélera que deux villes voisines avaient gonflé les leurs.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "influence": 4,
+              "loyaute": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta ville arrive dernière du classement provincial. Ton dossier de promotion est mis de côté pour un an.",
+            "effects": {
+              "karma": 5,
+              "happiness": -3
+            },
+            "pol": {
+              "influence": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser les statisticiens « interpréter »",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le chiffre affiché est de 6,1 %. Tu reçois les félicitations de la province, et un dossier dangereux dort désormais dans un tiroir.",
+            "effects": {
+              "karma": -5
+            },
+            "pol": {
+              "influence": 6,
+              "casseroles": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les relevés de consommation électrique ne collent pas avec la croissance déclarée. Un auditeur de Pékin pose des questions précises.",
+            "effects": {
+              "karma": -5
+            },
+            "pol": {
+              "influence": -5,
+              "casseroles": 16
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un grand chantier financé par la dette locale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un nouveau périphérique et un parc industriel sortent de terre. La croissance remonte, la dette de la ville aussi, et ce sera le problème de ton successeur.",
+            "pol": {
+              "influence": 5,
+              "pays": {
+                "croissance": 0.5,
+                "dette": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_cn_02",
+    "kind": "dossier",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "presidentRegion",
+      "senateur"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La liste de la commission",
+    "text": "La commission de discipline lance une nouvelle vague de la campagne anticorruption dans ta province. Elle te demande de signaler les cadres « dont le train de vie interroge ». Parmi eux se trouve le vice-maire que tu as toi-même fait promouvoir il y a cinq ans, et qui t'a toujours été fidèle.",
+    "choices": [
+      {
+        "label": "Inscrire son nom avec les autres",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'enquête confirme des pots-de-vin sur des marchés de voirie. Ta diligence est remarquée en haut lieu, et tes autres protégés comprennent que ta protection a des limites.",
+            "effects": {
+              "karma": 1
+            },
+            "pol": {
+              "influence": 6,
+              "loyaute": 4,
+              "rival": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'avertir discrètement de se mettre en règle",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il rembourse et démissionne pour « raisons de santé ». L'affaire s'arrête là, pour l'instant.",
+            "effects": {
+              "karma": -2
+            },
+            "pol": {
+              "casseroles": 6,
+              "loyaute": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ses communications étaient surveillées. Les enquêteurs veulent maintenant savoir pourquoi tu l'as prévenu.",
+            "pol": {
+              "casseroles": 18,
+              "influence": -8,
+              "loyaute": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Omettre son nom et espérer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un autre cadre le dénonce trois mois plus tard. Ton silence figure désormais dans un rapport.",
+            "pol": {
+              "casseroles": 12,
+              "influence": -5,
+              "loyaute": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_cn_03",
+    "kind": "dossier",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'équipe d'inspection",
+    "text": "Une équipe d'inspection disciplinaire du niveau supérieur arrive lundi pour trois semaines. Elle consultera les comptes, les dossiers de nomination et recevra les doléances des habitants. Ton chef de cabinet propose d'organiser son séjour « au mieux ».",
+    "choices": [
+      {
+        "label": "Ouvrir tous les dossiers sans préparation",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'inspection relève quelques fautes de procédure, rien de grave. Son rapport mentionne ta « coopération exemplaire ».",
+            "pol": {
+              "influence": 5,
+              "loyaute": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle découvre un détournement dans un service dont tu ignorais tout. Ta responsabilité de supervision est pointée.",
+            "pol": {
+              "influence": -4,
+              "casseroles": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire « mettre de l'ordre » dans les archives avant son arrivée",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les dossiers sont impeccables, trop peut-être. Les inspecteurs ont l'habitude de ce genre de propreté.",
+            "effects": {
+              "karma": -3
+            },
+            "pol": {
+              "casseroles": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un archiviste a gardé des copies et les remet aux inspecteurs. La « mise en ordre » devient elle-même un chef d'accusation.",
+            "effects": {
+              "karma": -3
+            },
+            "pol": {
+              "casseroles": 20,
+              "influence": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prévoir un accueil chaleureux, banquet compris",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le chef de l'équipe refuse le banquet et note la proposition dans son rapport. Les règles de frugalité ne sont pas une suggestion.",
+            "pol": {
+              "influence": -6,
+              "casseroles": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_cn_04",
+    "kind": "dossier",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "maire",
+      "adjoint"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'aciérie",
+    "text": "Pour le troisième hiver consécutif, ta ville figure parmi les plus polluées du pays. La province exige une baisse de 20 % des particules fines. Le principal pollueur est une aciérie qui emploie 12 000 personnes et finance la moitié du budget local.",
+    "choices": [
+      {
+        "label": "Fermer les hauts fourneaux les plus anciens",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le ciel bleu revient certains jours. Quatre mille ouvriers perdent leur emploi, et des rassemblements silencieux se forment devant la mairie.",
+            "pol": {
+              "popularite": -4,
+              "influence": 5,
+              "mobilisation": 10,
+              "segments": {
+                "jeunes": 4,
+                "urbains": 5,
+                "patrons": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Financer la modernisation des filtres",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les émissions baissent de 18 %. Pas tout à fait l'objectif, mais la province apprécie l'effort, et l'emploi est préservé.",
+            "pol": {
+              "popularite": 4,
+              "influence": 2,
+              "pays": {
+                "dette": 1
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'entreprise chargée des travaux prend deux ans de retard. Les chiffres de l'hiver suivant sont aussi mauvais que les précédents.",
+            "pol": {
+              "influence": -4,
+              "pays": {
+                "dette": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire déplacer les capteurs de pollution",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Les mesures s'améliorent comme par magie. Personne ne respire mieux, mais le tableau de bord provincial est vert.",
+            "effects": {
+              "karma": -6
+            },
+            "pol": {
+              "influence": 3,
+              "casseroles": 10
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Un capteur indépendant installé par une université montre l'écart. L'affaire remonte jusqu'au ministère de l'Environnement.",
+            "effects": {
+              "karma": -6
+            },
+            "pol": {
+              "influence": -10,
+              "casseroles": 18
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_cn_05",
+    "kind": "dossier",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "maire",
+      "adjoint",
+      "conseiller"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'article sur le collège",
+    "text": "Un journaliste d'un média local publie en ligne une enquête sur les fissures d'un collège construit il y a quatre ans : le béton ne serait pas aux normes. Le département de la propagande te demande de faire retirer l'article avant qu'il ne circule. Les parents, eux, l'ont déjà lu.",
+    "choices": [
+      {
+        "label": "Faire retirer l'article et lancer une expertise discrète",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'article disparaît. L'expertise confirme les malfaçons, les élèves sont relogés et l'entrepreneur est poursuivi, sans que la presse en parle.",
+            "effects": {
+              "karma": 1
+            },
+            "pol": {
+              "influence": 3,
+              "loyaute": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les parents ont fait des captures d'écran. Le retrait de l'article attise la méfiance et un rassemblement se forme devant le collège.",
+            "pol": {
+              "popularite": -6,
+              "mobilisation": 8,
+              "loyaute": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser l'article en ligne et annoncer une enquête publique",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les parents saluent ta franchise. Ta hiérarchie, beaucoup moins : on te rappelle que la stabilité est une priorité.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "popularite": 7,
+              "loyaute": -8,
+              "influence": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La province reprend l'affaire à son compte et la présente comme un succès de la lutte contre les malfaçons. Tu n'es pas sanctionné{e}, mais pas félicité{e} non plus.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "popularite": 4,
+              "loyaute": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire retirer l'article et démentir les malfaçons",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Six mois plus tard, un mur intérieur s'effondre pendant les vacances. Personne n'est blessé, mais ton démenti est encore en ligne.",
+            "effects": {
+              "karma": -8
+            },
+            "pol": {
+              "popularite": -10,
+              "casseroles": 14,
+              "influence": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_cn_06",
+    "kind": "dossier",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "depute",
+      "senateur",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La séance d'étude",
+    "text": "Ton supérieur direct te demande d'intervenir en séance d'étude pour défendre une réforme du système d'enregistrement des résidents que tu juges mal préparée : elle risque de priver des millions de travailleurs migrants internes d'accès aux écoles. Ta carrière se joue aussi sur ta capacité à « tenir la ligne ».",
+    "choices": [
+      {
+        "label": "Défendre la réforme sans réserve",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton intervention est citée dans le compte rendu officiel. On te considère comme un élément sûr ; ta prochaine promotion est en bonne voie.",
+            "effects": {
+              "karma": -2
+            },
+            "pol": {
+              "loyaute": 8,
+              "influence": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre la réforme en proposant des aménagements techniques",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tes aménagements sur la scolarisation sont repris dans le texte final, présentés comme une idée de ton supérieur. Tu t'y attendais.",
+            "effects": {
+              "karma": 3
+            },
+            "pol": {
+              "loyaute": 4,
+              "influence": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton supérieur trouve que tes « aménagements » ressemblent à une critique. Il le note.",
+            "pol": {
+              "loyaute": -4,
+              "influence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exprimer tes réserves dans une note interne écrite",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "La note remonte et retient l'attention d'un dirigeant qui partage tes doutes. La réforme est ralentie, et ton nom circule.",
+            "pol": {
+              "influence": 6,
+              "loyaute": -3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La note reste sans réponse, mais elle figure désormais à ton dossier. On t'oublie lors des nominations suivantes.",
+            "pol": {
+              "influence": -6,
+              "loyaute": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_cn_07",
+    "kind": "crise",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Ouvrir les vannes",
+    "text": "Des pluies torrentielles font monter un grand fleuve à un niveau inédit depuis trente ans. Pour protéger une métropole de neuf millions d'habitants, les ingénieurs proposent d'ouvrir une zone de rétention et d'inonder volontairement des terres agricoles où vivent 300 000 personnes. Il faut décider avant la nuit.",
+    "choices": [
+      {
+        "label": "Ouvrir la zone et organiser l'évacuation",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'évacuation se fait dans l'urgence mais sans victime. La métropole est épargnée ; les paysans attendent maintenant les indemnisations promises.",
+            "pol": {
+              "popularite": 4,
+              "influence": 4,
+              "pays": {
+                "dette": 1,
+                "croissance": -0.2
+              },
+              "segments": {
+                "ruraux": -6,
+                "urbains": 5
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Certains villages ont été prévenus trop tard. Les images de familles sur les toits circulent malgré la censure.",
+            "pol": {
+              "popularite": -6,
+              "pays": {
+                "moral": -6
+              },
+              "segments": {
+                "ruraux": -10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renforcer les digues et parier sur une décrue",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "La pluie cesse dans la nuit. Les digues tiennent de justesse et tu évites un sacrifice qui aurait marqué toute une région.",
+            "pol": {
+              "popularite": 6,
+              "influence": 3,
+              "segments": {
+                "ruraux": 6
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Une digue cède dans la banlieue de la métropole. Les dégâts sont considérables, et on te reproche d'avoir hésité.",
+            "pol": {
+              "popularite": -10,
+              "influence": -6,
+              "pays": {
+                "croissance": -0.6,
+                "moral": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir la zone et annoncer des indemnisations doublées",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les familles évacuées reçoivent vite une aide inédite. Le Trésor grince des dents, mais le pays retient l'image d'un État qui tient parole.",
+            "pol": {
+              "popularite": 7,
+              "pays": {
+                "dette": 3,
+                "moral": 4
+              },
+              "segments": {
+                "ruraux": 3,
+                "urbains": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sca_cn_08",
+    "kind": "scandale",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "maire",
+      "presidentRegion",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le cousin entrepreneur",
+    "text": "Un rapport interne transmis à la commission de discipline signale qu'une entreprise de travaux publics dirigée par ton cousin a remporté quatre marchés de la ville pendant ton mandat. Tu n'es intervenu{e} dans aucun, mais les commissions d'attribution te connaissaient.",
+    "choices": [
+      {
+        "label": "Déclarer toi-même le conflit d'intérêts à la commission",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La commission prend acte de ta démarche. Ton cousin est exclu des marchés publics locaux et t'en voudra longtemps.",
+            "effects": {
+              "karma": 3,
+              "happiness": -2
+            },
+            "pol": {
+              "casseroles": 3,
+              "loyaute": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La commission estime qu'une déclaration aurait dû être faite cinq ans plus tôt. Tu reçois un avertissement inscrit au dossier.",
+            "pol": {
+              "casseroles": 8,
+              "influence": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire annuler discrètement les contrats en cours",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les contrats sont résiliés pour des « raisons techniques ». La commission note que tu sais nettoyer derrière toi, ce qui n'est pas un compliment.",
+            "pol": {
+              "casseroles": 9,
+              "influence": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier tout lien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les registres d'état civil sont publics pour les enquêteurs. Le mensonge pèse plus lourd que les marchés eux-mêmes.",
+            "effects": {
+              "karma": -5
+            },
+            "pol": {
+              "casseroles": 20,
+              "influence": -10,
+              "loyaute": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lob_cn_09",
+    "kind": "lobby",
+    "pays": [
+      "cn"
+    ],
+    "postes": [
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les terres du promoteur",
+    "text": "Un grand promoteur immobilier veut racheter les droits d'usage de terres agricoles en périphérie pour un nouveau quartier. La vente renflouerait les caisses de la ville, très endettée. Son directeur glisse qu'un appartement « au prix de revient » pourrait être réservé à ta famille.",
+    "choices": [
+      {
+        "label": "Accepter la vente et l'appartement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les recettes foncières bouclent le budget. L'appartement est au nom de ta belle-famille, et pour l'instant personne ne regarde.",
+            "effects": {
+              "money": 60000,
+              "karma": -7
+            },
+            "pol": {
+              "influence": 3,
+              "casseroles": 14
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le promoteur fait faillite deux ans plus tard, laissant des tours inachevées et des acheteurs furieux. Les enquêteurs remontent la liste de ses « amis ».",
+            "effects": {
+              "money": 60000,
+              "karma": -7
+            },
+            "pol": {
+              "influence": -8,
+              "casseroles": 24,
+              "mobilisation": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter la vente, refuser l'appartement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le quartier se construit, la ville respire. Les paysans expropriés jugent leur indemnisation insuffisante mais l'acceptent.",
+            "pol": {
+              "influence": 4,
+              "pays": {
+                "croissance": 0.2
+              },
+              "segments": {
+                "ruraux": -5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les acheteurs ne suivent pas : le marché immobilier ralentit. La moitié des tours restent vides.",
+            "pol": {
+              "influence": -3,
+              "pays": {
+                "dette": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et préserver les terres agricoles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La province rappelle l'importance de la sécurité alimentaire et salue ta prudence. Ton budget, lui, reste dans le rouge.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "influence": 2,
+              "loyaute": 3,
+              "pays": {
+                "dette": 1
+              },
+              "segments": {
+                "ruraux": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_in_01",
+    "kind": "dossier",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'allié du Sud",
+    "text": "Le chef d'un parti régional, dont les seize députés à la Lok Sabha assurent ta majorité, exige un « statut de catégorie spéciale » pour son État : des transferts fédéraux massifs pendant dix ans. Les autres États ont déjà prévenu qu'ils demanderaient la même chose.",
+    "choices": [
+      {
+        "label": "Accorder le statut",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta coalition est sauvée pour la législature. Trois autres ministres en chef réclament aussitôt le même traitement, et le ministère des Finances fait des calculs inquiets.",
+            "pol": {
+              "majorite": 8,
+              "influence": 3,
+              "pays": {
+                "dette": 2
+              },
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un plan d'investissement ciblé à la place",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Un port, une université et un corridor industriel : ton allié accepte de présenter cela comme une victoire. Tout le monde sauve la face.",
+            "pol": {
+              "majorite": 4,
+              "influence": 5,
+              "pays": {
+                "dette": 1
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il juge l'offre insultante et passe la semaine à négocier avec l'opposition. Tu dois trouver d'urgence des indépendants.",
+            "pol": {
+              "majorite": -8,
+              "influence": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et le laisser partir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu gagnes en autorité ce que tu perds en sièges. Ta majorité ne tient plus qu'à cinq voix, et chaque vote devient une négociation.",
+            "pol": {
+              "majorite": -14,
+              "popularite": 4,
+              "influence": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_in_02",
+    "kind": "dossier",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "ministre"
+    ],
+    "ministere": "agriculture",
+    "weight": 1,
+    "unique": false,
+    "title": "Le campement aux portes de la capitale",
+    "text": "Ta réforme des marchés agricoles devait libéraliser la vente des récoltes. Des dizaines de milliers d'agriculteurs du Nord campent depuis trois mois aux portes de {capitale}, persuadés qu'elle signe la fin des prix minimum garantis. L'hiver arrive et plusieurs manifestants âgés sont morts de froid.",
+    "choices": [
+      {
+        "label": "Inscrire les prix minimum garantis dans la loi",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les syndicats agricoles crient victoire et lèvent le camp. Les économistes de ton ministère jugent la réforme vidée de sa substance.",
+            "pol": {
+              "popularite": 6,
+              "mobilisation": -18,
+              "segments": {
+                "ruraux": 10,
+                "patrons": -5
+              },
+              "pays": {
+                "dette": 1
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les syndicats exigent désormais le retrait total. Ta concession est vue comme un aveu de faiblesse.",
+            "pol": {
+              "popularite": -2,
+              "mobilisation": 4,
+              "segments": {
+                "ruraux": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retirer la réforme",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le camp se transforme en fête. Ton gouvernement perd la face, mais pas les élections des États agricoles qui approchent.",
+            "pol": {
+              "popularite": 4,
+              "influence": -6,
+              "mobilisation": -25,
+              "segments": {
+                "ruraux": 12,
+                "patrons": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenir bon et attendre l'usure",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le mouvement s'enracine et gagne d'autres États. La colère agricole devient le sujet de toute la campagne à venir.",
+            "pol": {
+              "popularite": -9,
+              "mobilisation": 15,
+              "segments": {
+                "ruraux": -12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_in_03",
+    "kind": "dossier",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "presidentRegion",
+      "conseillerRegional"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La troisième langue",
+    "text": "Le gouvernement central veut rendre obligatoire l'apprentissage d'une troisième langue dans toutes les écoles, ce qui revient en pratique à imposer le hindi. Dans ton État, où la langue régionale est un pilier de l'identité, des étudiants manifestent. Mais des parents souhaitent aussi que leurs enfants puissent travailler partout dans le pays.",
+    "choices": [
+      {
+        "label": "Refuser l'obligation au nom de l'autonomie de l'État",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta fermeté fait de toi le porte-voix des États qui défendent leur langue. {capitale} menace de réduire certains crédits d'éducation.",
+            "pol": {
+              "popularite": 8,
+              "influence": 4,
+              "loyaute": -4,
+              "segments": {
+                "jeunes": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une troisième langue au choix, sans en imposer aucune",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le compromis plaît aux parents comme aux étudiants. Le gouvernement central fait mine de l'avoir voulu depuis le début.",
+            "pol": {
+              "popularite": 5,
+              "influence": 3,
+              "segments": {
+                "urbains": 4,
+                "jeunes": 3
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les militants les plus ardents y voient une capitulation déguisée. Une partie de ta base te reproche ta tiédeur.",
+            "pol": {
+              "popularite": -2,
+              "loyaute": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appliquer la directive centrale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les manifestations s'étendent à toutes les universités de l'État. Tu as obéi à {capitale} et à ton parti national, mais pas à tes électeurs.",
+            "pol": {
+              "popularite": -10,
+              "loyaute": 6,
+              "mobilisation": 12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_in_04",
+    "kind": "dossier",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "ministre",
+      "presidentRegion"
+    ],
+    "ministere": "transports",
+    "weight": 1,
+    "unique": false,
+    "title": "Le tracé de l'autoroute",
+    "text": "Une autoroute à six voies doit relier deux grandes villes en quatre heures au lieu de dix. Le tracé traverse 140 villages et des terres agricoles irriguées. Les paysans exigent une indemnisation au prix du marché, quatre fois supérieure à la valeur cadastrale.",
+    "choices": [
+      {
+        "label": "Payer le prix du marché",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'acquisition des terres se fait sans heurt. Le coût du projet augmente de 30 % et la livraison est repoussée d'un an faute de crédits.",
+            "pol": {
+              "popularite": 5,
+              "pays": {
+                "dette": 2
+              },
+              "segments": {
+                "ruraux": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Modifier le tracé pour épargner les terres irriguées",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le nouveau tracé passe par des terres arides. Il est plus long de 40 km, mais personne ne bloque les bulldozers.",
+            "pol": {
+              "popularite": 4,
+              "influence": 2,
+              "segments": {
+                "ruraux": 5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le nouveau tracé traverse une forêt protégée. Les écologistes saisissent la Cour suprême, qui suspend tout.",
+            "pol": {
+              "influence": -4,
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exproprier au prix cadastral",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les chantiers avancent vite, sous protection policière. Dans les villages concernés, ton parti vient de perdre une génération d'électeurs.",
+            "pol": {
+              "popularite": -6,
+              "mobilisation": 10,
+              "pays": {
+                "croissance": 0.3
+              },
+              "segments": {
+                "ruraux": -12,
+                "patrons": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cam_in_05",
+    "kind": "campagne",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "depute",
+      "conseillerRegional"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La septième phase",
+    "text": "Les élections générales se déroulent en sept phases sur six semaines, pour près d'un milliard d'inscrits. Ta circonscription vote dans la dernière phase, en plein mois de mai. Il fait 46 °C et ton grand rassemblement est prévu à midi.",
+    "choices": [
+      {
+        "label": "Maintenir le rassemblement à midi",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La foule est immense, malgré la chaleur. Les images tournent sur toutes les chaînes régionales.",
+            "effects": {
+              "health": -4
+            },
+            "pol": {
+              "campagne": 6,
+              "popularite": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Plusieurs personnes sont victimes d'un coup de chaleur. On te reproche de ne pas avoir prévu d'eau ni d'ombre.",
+            "pol": {
+              "campagne": -4,
+              "popularite": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le déplacer au soir, avec distribution d'eau",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le rassemblement est plus modeste, mais personne ne s'évanouit. Les anciens du village notent ta prévenance.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "retraites": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une tournée en jeep dans les villages à l'aube",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu visites quarante villages en dix jours. On te voit, on te touche la main, on se souvient de toi.",
+            "effects": {
+              "health": -3
+            },
+            "pol": {
+              "campagne": 5,
+              "segments": {
+                "ruraux": 6
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ta jeep tombe en panne dans le district le plus reculé. Tu passes la nuit chez un instituteur, qui te parle sans détour de l'état de l'école.",
+            "effects": {
+              "smarts": 2
+            },
+            "pol": {
+              "campagne": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deb_in_06",
+    "kind": "debat",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "depute",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'électricité gratuite",
+    "text": "Débat télévisé régional. {adversaire} promet l'électricité gratuite pour tous les foyers jusqu'à 300 unités par mois et te demande si tu oses en faire autant. Les finances de l'État sont déjà dans le rouge.",
+    "choices": [
+      {
+        "label": "Promettre la même chose, et même un peu plus",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La surenchère fonctionne auprès des foyers modestes. Reste à savoir qui paiera la facture du distributeur d'électricité.",
+            "pol": {
+              "campagne": 5,
+              "pays": {
+                "dette": 1
+              },
+              "segments": {
+                "ruraux": 4,
+                "patrons": -4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le présentateur te demande comment tu financeras la mesure. Ta réponse convainc surtout {adversaire}, qui sourit.",
+            "pol": {
+              "campagne": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et promettre une électricité fiable, sans coupures",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'argument porte dans les villes où les coupures sont quotidiennes. Dans les villages, on préfère le gratuit.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "urbains": 5,
+                "ruraux": -3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{adversaire} te traite de candidat des riches. La formule colle.",
+            "pol": {
+              "campagne": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer des panneaux solaires subventionnés sur les toits",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'idée est concrète et moderne. Les jeunes électeurs la retiennent.",
+            "pol": {
+              "campagne": 4,
+              "segments": {
+                "jeunes": 6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La mesure est trop technique pour un débat de vingt minutes. Personne ne s'en souvient le lendemain.",
+            "pol": {
+              "campagne": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_in_07",
+    "kind": "crise",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La canicule et les coupures",
+    "text": "Une canicule historique fait exploser la demande d'électricité. Les centrales à charbon manquent de combustible, des coupures de huit heures frappent plusieurs États et les hôpitaux tournent sur groupes électrogènes. Les ministres en chef réclament des solutions.",
+    "choices": [
+      {
+        "label": "Réquisitionner les trains de marchandises pour le charbon",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les stocks remontent en dix jours. Les industriels dont les livraisons ont été suspendues protestent, mais la lumière revient.",
+            "pol": {
+              "popularite": 6,
+              "pays": {
+                "croissance": -0.2,
+                "moral": 4
+              },
+              "segments": {
+                "patrons": -4
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le réseau ferroviaire sature. Les coupures diminuent à peine et les retards se répercutent partout.",
+            "pol": {
+              "popularite": -4,
+              "pays": {
+                "croissance": -0.3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Importer en urgence du charbon et du gaz, quel qu'en soit le prix",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les coupures cessent rapidement. La facture est colossale et pèsera sur le budget de l'année suivante.",
+            "pol": {
+              "popularite": 5,
+              "pays": {
+                "dette": 2,
+                "moral": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Imposer des délestages tournants à l'industrie, pas aux ménages",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les familles dorment avec un ventilateur. Les usines tournent à mi-régime et les chambres de commerce font leurs comptes.",
+            "pol": {
+              "popularite": 3,
+              "pays": {
+                "croissance": -0.4
+              },
+              "segments": {
+                "urbains": 4,
+                "patrons": -8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sca_in_08",
+    "kind": "scandale",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "depute",
+      "conseillerRegional",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les enveloppes de la veille",
+    "text": "La veille du vote, un militant de ton parti est filmé en train de distribuer des enveloppes de billets et des bouteilles d'alcool dans un quartier de ta circonscription. La vidéo est sur toutes les messageries. La commission électorale ouvre une enquête.",
+    "choices": [
+      {
+        "label": "Exclure le militant et coopérer avec la commission",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La commission constate que tu n'étais pas impliqué{e}. L'affaire te coûte des voix, pas ton siège.",
+            "pol": {
+              "popularite": -2,
+              "casseroles": 3,
+              "loyaute": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le militant affirme avoir agi sur instruction de ton directeur de campagne. Les enquêteurs veulent t'entendre.",
+            "pol": {
+              "popularite": -7,
+              "casseroles": 12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dénoncer une vidéo truquée par l'adversaire",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le doute s'installe, comme souvent. Ta base te croit, les autres hésitent.",
+            "pol": {
+              "popularite": -2,
+              "casseroles": 6
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Une deuxième vidéo, sous un autre angle, montre le même militant avec ton affiche. Le démenti aggrave tout.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "popularite": -10,
+              "casseroles": 16
+            }
+          }
+        ]
+      },
+      {
+        "label": "Publier tes propres comptes de campagne, ligne par ligne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le geste est inhabituel. Il ne prouve pas tout, mais il impressionne les éditorialistes et rassure une partie des électeurs urbains.",
+            "pol": {
+              "popularite": 3,
+              "casseroles": 4,
+              "segments": {
+                "urbains": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lob_in_09",
+    "kind": "lobby",
+    "pays": [
+      "in"
+    ],
+    "postes": [
+      "presidentRegion",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La zone économique spéciale",
+    "text": "Un grand conglomérat national veut créer une zone économique spéciale de 5 000 hectares dans ton État : 40 000 emplois promis. Une partie des terres appartient à des communautés adivasis dont les droits sont protégés par la loi. Le conglomérat propose aussi de financer la fondation de ton parti.",
+    "choices": [
+      {
+        "label": "Accepter le projet et le don",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La zone se construit vite. Le don apparaît dans les comptes du parti, et les journalistes font le lien en quelques semaines.",
+            "effects": {
+              "karma": -5
+            },
+            "pol": {
+              "influence": 4,
+              "casseroles": 12,
+              "pays": {
+                "croissance": 0.4
+              },
+              "segments": {
+                "patrons": 8,
+                "ruraux": -6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les communautés saisissent la justice et obtiennent la suspension du projet. Il ne reste que le don, et beaucoup de questions.",
+            "effects": {
+              "karma": -5
+            },
+            "pol": {
+              "influence": -4,
+              "casseroles": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter le projet sous condition du consentement des villages",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les assemblées villageoises négocient des parts dans les recettes et des emplois réservés. La zone sera plus petite, mais personne ne la conteste.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "influence": 5,
+              "popularite": 4,
+              "pays": {
+                "croissance": 0.2
+              },
+              "segments": {
+                "ruraux": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les villages refusent. Le conglomérat part dans l'État voisin, qui se montre moins regardant.",
+            "pol": {
+              "influence": -3,
+              "segments": {
+                "patrons": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser tout net",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les défenseurs des droits fonciers te saluent. Les chambres de commerce t'accusent de faire fuir l'investissement.",
+            "effects": {
+              "karma": 3
+            },
+            "pol": {
+              "popularite": 2,
+              "segments": {
+                "ruraux": 5,
+                "patrons": -8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_mx_01",
+    "kind": "dossier",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "president"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La succession",
+    "text": "Ton mandat unique de six ans entre dans sa dernière ligne droite et tu ne pourras pas te représenter. Dans ton parti, tout le monde attend un signe de ta part : qui doit porter ses couleurs ? Deux ministres se disputent déjà ta bénédiction, l'une compétente et indépendante, l'autre fidèle et docile.",
+    "choices": [
+      {
+        "label": "Organiser une consultation ouverte par sondages",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La ministre indépendante l'emporte. Le processus est salué comme un progrès démocratique ; ton influence sur la suite sera limitée.",
+            "pol": {
+              "popularite": 6,
+              "influence": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le perdant conteste la méthode et menace de quitter le parti avec ses soutiens.",
+            "pol": {
+              "popularite": 2,
+              "loyaute": -6,
+              "rival": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comprendre que tu soutiens le fidèle",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le parti se range derrière ton choix. Les éditorialistes parlent du retour d'une vieille tradition, celle du doigt qui désigne.",
+            "pol": {
+              "influence": 6,
+              "loyaute": 5,
+              "popularite": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester parfaitement neutre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Sans arbitre, la primaire devient une guerre ouverte entre tes deux ministres, au milieu de ton bilan.",
+            "pol": {
+              "popularite": -2,
+              "loyaute": -4,
+              "influence": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_mx_02",
+    "kind": "dossier",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "maire",
+      "conseiller"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La police municipale",
+    "text": "Un rapport confidentiel du parquet de l'État estime qu'une partie de ta police municipale renseigne un groupe criminel actif dans la région. Les commerçants paient déjà un « droit de passage ». Tu dois décider sans faire de bruit.",
+    "choices": [
+      {
+        "label": "Dissoudre la police et confier la sécurité à la Garde nationale",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La Garde nationale prend le relais en une nuit. Les extorsions diminuent, mais les habitants ne connaissent plus le visage de ceux qui patrouillent.",
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "securite": 3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les policiers renvoyés connaissent tous les dossiers et tous les noms. Tu reçois des menaces et dois vivre sous escorte.",
+            "effects": {
+              "happiness": -8,
+              "stress": 10
+            },
+            "pol": {
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire passer tous les agents au détecteur de mensonge et aux contrôles de patrimoine",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Trente agents sont écartés. La police municipale existe toujours, et elle sait désormais qu'on la regarde.",
+            "pol": {
+              "popularite": 5,
+              "influence": 3,
+              "pays": {
+                "securite": 2
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les contrôles sont annoncés trop tôt : les agents concernés démissionnent avant d'être testés, avec leurs armes de service.",
+            "pol": {
+              "popularite": -4,
+              "pays": {
+                "securite": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Transmettre au parquet fédéral et ne rien changer en attendant",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'enquête prend deux ans. Pendant ce temps, rien ne change dans les rues, et les commerçants le savent.",
+            "pol": {
+              "popularite": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_mx_03",
+    "kind": "dossier",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le journaliste menacé",
+    "text": "Un journaliste local qui enquête sur des détournements de fonds dans les hôpitaux de ton État reçoit des menaces de mort précises. Son enquête vise aussi deux fonctionnaires nommés par ton prédécesseur, de ton propre parti. Il demande ta protection.",
+    "choices": [
+      {
+        "label": "L'intégrer au mécanisme fédéral de protection des journalistes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il reçoit une escorte et un bouton d'alerte. Son enquête paraît trois mois plus tard. Elle gêne ton parti, mais tu as fait ce qu'il fallait.",
+            "effects": {
+              "karma": 6
+            },
+            "pol": {
+              "popularite": 5,
+              "loyaute": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le protéger et ouvrir toi-même une enquête sur les hôpitaux",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les deux fonctionnaires sont suspendus. La presse nationale salue un gouverneur qui fait le ménage dans sa propre maison.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "popularite": 8,
+              "influence": 3,
+              "loyaute": -6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton prédécesseur, toujours influent, te le fait payer : ton budget d'infrastructures est gelé au Congrès de l'État.",
+            "pol": {
+              "popularite": 4,
+              "influence": -5,
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui conseiller de quitter l'État quelque temps",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il part, et son enquête aussi. Une ONG de défense de la presse cite ton nom dans son rapport annuel.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "popularite": -6,
+              "casseroles": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_mx_04",
+    "kind": "dossier",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "president",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La caravane",
+    "text": "Une caravane de huit mille personnes venues d'Amérique centrale a franchi la frontière sud et remonte vers le nord. Le gouvernement du voisin septentrional menace d'imposer des droits de douane sur les exportations si tu ne les arrêtes pas. Dans les villes traversées, l'accueil oscille entre solidarité et lassitude.",
+    "choices": [
+      {
+        "label": "Déployer la Garde nationale pour contenir la caravane au sud",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le voisin renonce à ses menaces. Les organisations humanitaires dénoncent les conditions dans les camps de la frontière sud, et elles n'ont pas tort.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "popularite": 2,
+              "influence": 4,
+              "segments": {
+                "patrons": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Délivrer des visas humanitaires et des permis de travail dans le sud",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Une partie des migrants s'installe et travaille sur les chantiers et dans les plantations. Le voisin du Nord grogne mais n'agit pas.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "popularite": 1,
+              "pays": {
+                "croissance": 0.1
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les droits de douane tombent sur l'acier et l'automobile. Les gouverneurs du Nord industriel t'accusent de sacrifier leurs emplois.",
+            "pol": {
+              "popularite": -6,
+              "pays": {
+                "croissance": -0.4
+              },
+              "segments": {
+                "patrons": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier un plan régional de développement avec le voisin",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Un fonds d'investissement pour l'Amérique centrale est annoncé. C'est lent, mais c'est la première réponse qui s'attaque aux causes.",
+            "pol": {
+              "influence": 7,
+              "popularite": 2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le voisin veut des résultats immédiats, pas un plan sur dix ans. Il impose ses droits de douane en attendant.",
+            "pol": {
+              "popularite": -4,
+              "pays": {
+                "croissance": -0.3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_mx_05",
+    "kind": "dossier",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "president",
+      "ministre"
+    ],
+    "ministere": "economie",
+    "weight": 1,
+    "unique": false,
+    "title": "La compagnie pétrolière",
+    "text": "La compagnie pétrolière publique est l'une des plus endettées au monde, et sa production baisse depuis vingt ans. Elle est aussi un symbole national. Tes conseillers proposent d'ouvrir davantage la production d'électricité au privé et aux renouvelables, très rentables dans le désert du Nord.",
+    "choices": [
+      {
+        "label": "Ouvrir le secteur au privé et aux renouvelables",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les parcs solaires se multiplient et les prix de gros baissent. Ton aile gauche t'accuse de brader la souveraineté énergétique.",
+            "pol": {
+              "popularite": 1,
+              "loyaute": -5,
+              "pays": {
+                "croissance": 0.4
+              },
+              "segments": {
+                "patrons": 8,
+                "jeunes": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La réforme exige une majorité qualifiée pour modifier la Constitution. Tu ne l'as pas, et l'échec est public.",
+            "pol": {
+              "influence": -5,
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renflouer la compagnie et relancer une raffinerie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le symbole est sauvé et les syndicats applaudissent. La facture s'ajoute à la dette publique, et la raffinerie aura deux ans de retard.",
+            "pol": {
+              "popularite": 4,
+              "loyaute": 5,
+              "pays": {
+                "dette": 3
+              },
+              "segments": {
+                "fonctionnaires": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Restructurer la compagnie et réduire ses effectifs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les comptes s'assainissent lentement. Les régions pétrolières du Golfe vivent mal la suppression de dix mille emplois.",
+            "pol": {
+              "popularite": -5,
+              "mobilisation": 8,
+              "pays": {
+                "dette": -1
+              },
+              "segments": {
+                "patrons": 4,
+                "fonctionnaires": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cam_mx_06",
+    "kind": "campagne",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "maire",
+      "depute",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le meeting de la sierra",
+    "text": "Ton conseiller sécurité a reçu des informations inquiétantes : dans un district de la sierra, des candidats ont été menacés cette saison. Il recommande d'annuler ton meeting prévu là-bas. Les habitants, eux, t'attendent et disent que plus personne ne vient jamais les voir.",
+    "choices": [
+      {
+        "label": "Maintenir le meeting, avec escorte",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Le meeting se déroule sans incident. Les habitants te remercient d'être venu{e}, et le district vote en masse.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "campagne": 6,
+              "popularite": 3,
+              "segments": {
+                "ruraux": 6
+              }
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Des inconnus bloquent la route à l'entrée du village. Ton escorte fait demi-tour. Personne n'est blessé, mais le message est passé.",
+            "effects": {
+              "happiness": -6,
+              "stress": 12
+            },
+            "pol": {
+              "campagne": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annuler et parler aux habitants par radio locale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'émission est écoutée dans toute la sierra. Ce n'est pas une poignée de main, mais c'est mieux que le silence.",
+            "pol": {
+              "campagne": 2,
+              "segments": {
+                "ruraux": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Inviter des représentants du district à te rencontrer en ville",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une dizaine de responsables communautaires font le voyage. Ils te parlent d'eau, de routes et de peur. Tu prends des notes.",
+            "effects": {
+              "smarts": 2
+            },
+            "pol": {
+              "campagne": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deb_mx_07",
+    "kind": "debat",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "president"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La question de la sécurité",
+    "text": "Débat présidentiel. La modératrice cite le nombre d'homicides de l'année et te demande : « Faut-il laisser l'armée dans les rues ou revenir à une police civile ? » {adversaire} a déjà promis « la main ferme ».",
+    "choices": [
+      {
+        "label": "Défendre une police civile renforcée et la prévention",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton discours sur les causes sociales convainc les urbains. On te reproche de manquer de fermeté.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "jeunes": 5,
+                "urbains": 3,
+                "retraites": -3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{adversaire} te demande combien d'années prendra ta police civile. Tu réponds honnêtement : dix. C'est long, pour un électeur inquiet.",
+            "pol": {
+              "campagne": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Promettre de garder l'armée, sous contrôle civil strict",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La réponse est équilibrée et rassure. Elle ne fait rêver personne, mais elle ne fait fuir personne non plus.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "retraites": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parler des victimes et des disparus",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu cites les mères qui cherchent leurs enfants disparus. Le studio se tait. C'est le moment le plus commenté du débat.",
+            "pol": {
+              "campagne": 6,
+              "popularite": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le moment est sincère, mais {adversaire} t'accuse d'exploiter la douleur des familles. La polémique éclipse ton message.",
+            "pol": {
+              "campagne": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sca_mx_08",
+    "kind": "scandale",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "depute",
+      "senateur",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La maison de l'entrepreneur",
+    "text": "Une enquête révèle que ta maison a été achetée, à un prix étonnamment bas, à un entrepreneur dont la société a ensuite obtenu des contrats publics que tu avais soutenus. Les photos de la piscine font le tour des réseaux.",
+    "choices": [
+      {
+        "label": "Vendre la maison et publier tous les documents",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La transparence calme le jeu. L'affaire reste dans les mémoires, mais aucune poursuite n'est engagée.",
+            "effects": {
+              "money": -30000
+            },
+            "pol": {
+              "popularite": -3,
+              "casseroles": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les documents montrent un virement que tu avais oublié. Le parquet anticorruption s'en saisit.",
+            "effects": {
+              "money": -30000
+            },
+            "pol": {
+              "popularite": -9,
+              "casseroles": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Affirmer que l'achat était parfaitement légal",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "C'était légal, peut-être. Mais « légal » n'est pas le mot que les électeurs retiennent.",
+            "pol": {
+              "popularite": -7,
+              "casseroles": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire présenter les excuses par ton conjoint, propriétaire en titre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La vidéo d'excuses est jugée humiliante pour ton conjoint et lâche de ta part. Elle devient un mème.",
+            "effects": {
+              "happiness": -6
+            },
+            "pol": {
+              "popularite": -10,
+              "casseroles": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lob_mx_09",
+    "kind": "lobby",
+    "pays": [
+      "mx"
+    ],
+    "postes": [
+      "presidentRegion",
+      "maire"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'usine et l'eau",
+    "text": "Un groupe industriel étranger veut construire une usine de pièces automobiles dans ton territoire : trois mille emplois. Il demande une exonération fiscale de dix ans et un accès prioritaire à la nappe phréatique, alors que la région subit sa troisième année de sécheresse. Son représentant évoque un poste de consultant pour toi après ton mandat.",
+    "choices": [
+      {
+        "label": "Accepter toutes les conditions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'usine est inaugurée en grande pompe. Deux étés plus tard, des quartiers entiers sont rationnés en eau, mais pas l'usine.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "popularite": -3,
+              "casseroles": 8,
+              "pays": {
+                "croissance": 0.3
+              },
+              "segments": {
+                "patrons": 8,
+                "urbains": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter l'usine, mais imposer le recyclage de l'eau",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le groupe accepte de construire une station de traitement. Les emplois arrivent et la nappe est épargnée.",
+            "effects": {
+              "karma": 3
+            },
+            "pol": {
+              "popularite": 6,
+              "influence": 3,
+              "pays": {
+                "croissance": 0.2
+              },
+              "segments": {
+                "patrons": 3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le groupe juge les conditions trop chères et part dans l'État voisin, qui a dit oui à tout.",
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "patrons": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et le faire savoir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu passes pour le défenseur de l'eau des habitants. Les chambres patronales t'accusent d'avoir fait perdre trois mille emplois.",
+            "effects": {
+              "karma": 2
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "ruraux": 4,
+                "patrons": -7
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_tr_01",
+    "kind": "dossier",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "president",
+      "ministre"
+    ],
+    "ministere": "economie",
+    "weight": 1,
+    "unique": false,
+    "title": "L'inflation à 60 %",
+    "text": "Les prix ont augmenté de 60 % en un an. Les loyers ont doublé à Istanbul, la livre perd chaque semaine un peu plus de valeur. Le gouverneur de la banque centrale veut relever fortement les taux d'intérêt, ce qui freinerait la croissance avant les élections municipales.",
+    "choices": [
+      {
+        "label": "Laisser la banque centrale relever les taux",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'inflation ralentit au bout de huit mois, la livre se stabilise. Le crédit se raréfie et les petites entreprises souffrent, mais les investisseurs reviennent.",
+            "pol": {
+              "popularite": -4,
+              "influence": 4,
+              "pays": {
+                "croissance": -0.6,
+                "moral": 2
+              },
+              "segments": {
+                "patrons": -3,
+                "retraites": 5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La hausse est trop tardive pour convaincre les marchés. Tu paies le prix politique sans en récolter les fruits.",
+            "pol": {
+              "popularite": -7,
+              "pays": {
+                "croissance": -0.5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Maintenir des taux bas et relever le salaire minimum",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les salariés respirent quelques mois. Puis les prix rattrapent les salaires, la livre chute encore, et tout recommence.",
+            "pol": {
+              "popularite": 3,
+              "pays": {
+                "croissance": 0.3,
+                "dette": 2,
+                "moral": -3
+              },
+              "segments": {
+                "jeunes": 2,
+                "retraites": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Remplacer le gouverneur de la banque centrale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le troisième gouverneur en deux ans. Les marchés réagissent avant même la fin de ton annonce, et la livre plonge de 8 % dans la journée.",
+            "pol": {
+              "popularite": -5,
+              "influence": 2,
+              "pays": {
+                "croissance": -0.3,
+                "moral": -5
+              },
+              "segments": {
+                "patrons": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_tr_02",
+    "kind": "dossier",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "maire"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les crédits gelés",
+    "text": "Tu as gagné la mairie d'une grande ville sous les couleurs de l'opposition. Depuis, les ministères bloquent tes demandes de prêt pour le métro, et une enquête administrative vise ton prédécesseur… ou toi, ce n'est pas très clair. Les habitants veulent leur métro, pas une guerre de tranchées.",
+    "choices": [
+      {
+        "label": "Négocier discrètement avec les ministères",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Un accord est trouvé : le métro reçoit ses crédits, et le gouvernement inaugurera la ligne à tes côtés. Ton parti trouve que tu fraternises trop.",
+            "pol": {
+              "popularite": 5,
+              "loyaute": -5,
+              "influence": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tes interlocuteurs te font attendre six mois pour ne rien conclure. Le temps perdu ne se rattrape pas.",
+            "pol": {
+              "popularite": -3,
+              "influence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Trouver des financements internationaux",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une banque de développement européenne finance la ligne. Le chantier démarre et tu deviens une figure nationale de l'opposition.",
+            "pol": {
+              "popularite": 8,
+              "influence": 6,
+              "rival": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le prêt nécessite une garantie de l'État, qui la refuse. Le dossier retourne au point de départ.",
+            "pol": {
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dénoncer publiquement le blocage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes vidéos sur le métro bloqué font des millions de vues. L'enquête administrative, elle, accélère soudain.",
+            "pol": {
+              "popularite": 6,
+              "casseroles": 6,
+              "rival": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_tr_03",
+    "kind": "crise",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "president",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le séisme du Sud-Est",
+    "text": "Deux séismes successifs ont frappé dix provinces du Sud-Est. Des milliers d'immeubles se sont effondrés, dont beaucoup avaient bénéficié d'amnisties de construction votées par le passé. Les secours sont débordés et la colère monte dans les villes sinistrées.",
+    "choices": [
+      {
+        "label": "Reconnaître publiquement les failles de la réponse",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'aveu est rare et frappe les esprits. Les sinistrés ne pardonnent pas tout, mais ils écoutent ce que tu proposes ensuite.",
+            "pol": {
+              "popularite": 4,
+              "influence": 2,
+              "pays": {
+                "moral": 3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton propre camp t'accuse d'avoir donné des armes à l'opposition. La reconnaissance est utilisée contre toi.",
+            "pol": {
+              "popularite": -2,
+              "loyaute": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annoncer la reconstruction de tous les logements en un an",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les chantiers démarrent à une vitesse impressionnante. Des ingénieurs s'inquiètent de la qualité des fondations bâties à ce rythme.",
+            "pol": {
+              "popularite": 7,
+              "pays": {
+                "dette": 3,
+                "croissance": 0.2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un an plus tard, à peine un tiers des logements sont livrés. Les familles vivent toujours sous des conteneurs.",
+            "pol": {
+              "popularite": -8,
+              "pays": {
+                "dette": 3,
+                "moral": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire poursuivre les promoteurs responsables des effondrements",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des centaines de promoteurs sont arrêtés. Les sinistrés exigent que les élus qui ont signé les amnisties répondent aussi de leurs actes.",
+            "pol": {
+              "popularite": 5,
+              "pays": {
+                "moral": 3
+              },
+              "segments": {
+                "patrons": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter massivement l'aide internationale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des équipes de soixante pays arrivent, y compris de voisins avec lesquels les relations étaient froides. La diplomatie des catastrophes ouvre des portes inattendues.",
+            "pol": {
+              "popularite": 4,
+              "influence": 5,
+              "pays": {
+                "moral": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_tr_04",
+    "kind": "dossier",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "depute"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les cours en kurde",
+    "text": "Un député de l'opposition propose d'élargir les cours optionnels de langue kurde à toutes les écoles publiques qui en font la demande. Ton groupe est divisé : certains y voient un geste de réconciliation, d'autres un risque pour l'unité nationale. Dans ta circonscription vivent des électeurs des deux sensibilités.",
+    "choices": [
+      {
+        "label": "Soutenir la proposition",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La mesure passe de justesse. Les familles concernées saluent un geste concret ; une partie de ta base te reproche de « faire le jeu » de l'opposition.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "popularite": 2,
+              "loyaute": -6,
+              "influence": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La proposition est rejetée, mais ton vote est remarqué. Tu deviens un interlocuteur respecté des élus du Sud-Est, et un sujet d'inquiétude pour ton groupe.",
+            "pol": {
+              "loyaute": -8,
+              "influence": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Voter contre, avec ton groupe",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le texte est rejeté. Dans les quartiers kurdophones de ta circonscription, des électeurs qui votaient pour toi par habitude s'interrogent.",
+            "pol": {
+              "loyaute": 5,
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une commission sur l'enseignement des langues régionales",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La commission est créée. Elle ne promet rien, mais elle réunit pour la première fois des élus de tous bords autour d'une même table.",
+            "pol": {
+              "influence": 5,
+              "popularite": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tout le monde comprend que la commission sert à enterrer le sujet. Personne n'est satisfait.",
+            "pol": {
+              "popularite": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_tr_05",
+    "kind": "dossier",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "maire",
+      "conseiller"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les réfugiés de la ville",
+    "text": "Ta ville accueille depuis dix ans plus de deux cent mille réfugiés syriens. Après une rixe dans un quartier ouvrier, des appels aux « retours immédiats » se multiplient sur les réseaux. Des commerces tenus par des réfugiés ont été vandalisés la nuit dernière.",
+    "choices": [
+      {
+        "label": "Condamner fermement les violences et rencontrer les deux communautés",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les tensions retombent. Ta visite dans le quartier, sans gardes du corps envahissants, est saluée par des habitants des deux bords.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "popularite": 3,
+              "influence": 4,
+              "pays": {
+                "securite": 2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On t'accuse de prendre parti pour les étrangers. Des militants nationalistes manifestent devant ton bureau.",
+            "pol": {
+              "popularite": -5,
+              "mobilisation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Promettre un programme de retours volontaires encadrés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'annonce calme une partie des électeurs. Les associations rappellent que la situation en Syrie ne permet pas à la plupart des familles de rentrer.",
+            "effects": {
+              "karma": -1
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "retraites": 4,
+                "jeunes": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renforcer la police dans le quartier et ne rien dire de plus",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les patrouilles empêchent de nouvelles violences. Le malaise, lui, reste entier, et chacun l'interprète à sa manière.",
+            "pol": {
+              "popularite": 1,
+              "pays": {
+                "securite": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cam_tr_06",
+    "kind": "campagne",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "president",
+      "maire"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Deux minutes d'antenne",
+    "text": "Selon le décompte d'une association indépendante, la chaîne publique a consacré trente-deux heures au camp au pouvoir et deux minutes à ta campagne ce mois-ci. Ton équipe propose plusieurs façons de contourner le problème.",
+    "choices": [
+      {
+        "label": "Organiser un rassemblement géant sur une grande place",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Des centaines de milliers de personnes. Même la chaîne publique ne peut pas ignorer complètement les images, que toutes les autres reprennent.",
+            "pol": {
+              "campagne": 7,
+              "popularite": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le rassemblement est réussi, mais les autorisations sont contestées après coup, et l'on parle plus de la procédure que de ton programme.",
+            "pol": {
+              "campagne": 2,
+              "casseroles": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire campagne en direct sur les réseaux sociaux chaque soir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes directs dans les cuisines des familles attirent les jeunes et les citadins. Les électeurs âgés, devant la télévision, ne te voient toujours pas.",
+            "pol": {
+              "campagne": 4,
+              "segments": {
+                "jeunes": 8,
+                "retraites": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sceller une alliance avec un parti nationaliste d'opposition",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'alliance élargit ta base. Elle t'oblige aussi à des promesses sur l'immigration qui mettent mal à l'aise une partie de tes soutiens.",
+            "pol": {
+              "campagne": 5,
+              "loyaute": -3,
+              "segments": {
+                "retraites": 4,
+                "urbains": -3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'alliance se fissure au bout de trois semaines sur la question kurde. Le camp au pouvoir s'en régale.",
+            "pol": {
+              "campagne": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deb_tr_07",
+    "kind": "debat",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "maire",
+      "depute"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La transformation urbaine",
+    "text": "Débat local télévisé. On te demande : « Des centaines de milliers d'immeubles ne résisteraient pas à un grand séisme. Comment allez-vous les reconstruire ? » {adversaire} promet de tout démolir et reconstruire en cinq ans.",
+    "choices": [
+      {
+        "label": "« Un plan sur dix ans, quartier par quartier, avec les habitants. »",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La réponse est sérieuse et crédible. Les propriétaires inquiets d'être expulsés apprécient qu'on les associe.",
+            "pol": {
+              "campagne": 4,
+              "segments": {
+                "retraites": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Dix ans, c'est long quand la terre peut trembler demain. {adversaire} le souligne avec gravité.",
+            "pol": {
+              "campagne": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Promettre aussi cinq ans, et gratuitement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La promesse fait les titres. Les ingénieurs, interrogés le lendemain, expliquent qu'elle est irréalisable.",
+            "pol": {
+              "campagne": 3,
+              "casseroles": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attaquer les promoteurs proches du pouvoir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu cites des chiffres précis sur les marges des promoteurs. Le public applaudit.",
+            "pol": {
+              "campagne": 5,
+              "rival": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu es poursuivi{e} en diffamation le lendemain. L'affaire occupe tes avocats pendant toute la campagne.",
+            "pol": {
+              "campagne": -2,
+              "casseroles": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sca_tr_08",
+    "kind": "scandale",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "depute",
+      "ministre",
+      "maire"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le diplôme",
+    "text": "Une plainte conteste la validité de ton diplôme universitaire, obtenu il y a trente ans après un transfert entre deux universités. Ce diplôme est une condition légale de ton éligibilité à certaines fonctions. L'université, sous pression, ouvre une enquête.",
+    "choices": [
+      {
+        "label": "Publier tous les documents de ton cursus",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les documents sont en règle, même si le transfert était inhabituel. L'affaire se dégonfle.",
+            "pol": {
+              "popularite": 2,
+              "casseroles": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un relevé de notes manque. L'université annule le transfert, et tes avocats contestent la décision devant les tribunaux.",
+            "pol": {
+              "popularite": -4,
+              "casseroles": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dénoncer une manœuvre politique",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes soutiens se mobilisent devant l'université. L'affaire devient un symbole, ce qui la rend plus difficile à régler à l'amiable.",
+            "pol": {
+              "popularite": 3,
+              "casseroles": 6,
+              "mobilisation": 5,
+              "rival": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te taire et laisser faire tes avocats",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le silence nourrit les spéculations pendant des mois. Les tribunaux finissent par trancher en ta faveur, mais le soupçon est resté longtemps à la une.",
+            "pol": {
+              "popularite": -4,
+              "casseroles": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lob_tr_09",
+    "kind": "lobby",
+    "pays": [
+      "tr"
+    ],
+    "postes": [
+      "maire",
+      "conseillerRegional"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les étages supplémentaires",
+    "text": "Un grand promoteur propose de démolir et reconstruire aux normes antisismiques tout un quartier ancien, sans frais pour les propriétaires. En échange, il demande l'autorisation d'ajouter six étages à chaque immeuble. Il propose aussi de financer la rénovation du stade municipal.",
+    "choices": [
+      {
+        "label": "Accepter le projet tel quel",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le quartier est reconstruit vite. Il est sûr, mais deux fois plus dense, sans école ni parc supplémentaire.",
+            "pol": {
+              "popularite": 2,
+              "casseroles": 6,
+              "segments": {
+                "patrons": 6,
+                "urbains": -3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Des habitants découvrent que le stade a été rénové par une filiale qui appartient à un proche de ton adjoint. L'opposition saisit la justice.",
+            "pol": {
+              "popularite": -6,
+              "casseroles": 14
+            }
+          }
+        ]
+      },
+      {
+        "label": "Limiter à deux étages et imposer une école",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le promoteur accepte, en grimaçant. Le quartier est plus sûr et toujours vivable.",
+            "effects": {
+              "karma": 3
+            },
+            "pol": {
+              "popularite": 6,
+              "influence": 2,
+              "segments": {
+                "retraites": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le projet n'est plus rentable. Le promoteur part, et les immeubles fragiles restent debout, pour l'instant.",
+            "pol": {
+              "popularite": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et lancer un programme public de renforcement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le programme est plus lent et plus cher, mais les habitants restent propriétaires de leur quartier.",
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "dette": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cam_ru_01",
+    "kind": "campagne",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "conseiller",
+      "conseillerRegional",
+      "depute",
+      "maire"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les signatures rejetées",
+    "text": "Candidat{e} indépendant{e}, tu as recueilli les signatures exigées pour te présenter. La commission électorale en invalide 14 % pour « irrégularités » : écritures jugées similaires, adresses incomplètes. Le seuil toléré est de 5 %. Tu as cinq jours pour réagir.",
+    "choices": [
+      {
+        "label": "Contester devant les tribunaux",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le tribunal rétablit une partie des signatures. Tu es enregistré{e} au dernier moment, ce qui fait de toi un petit événement local.",
+            "pol": {
+              "campagne": 6,
+              "popularite": 4
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le tribunal confirme la décision de la commission. Ta candidature s'arrête là, mais ton dossier, publié en ligne, est lu par des milliers de personnes.",
+            "pol": {
+              "campagne": -6,
+              "popularite": 3,
+              "influence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rejoindre la liste d'un parti d'opposition toléré",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les partis représentés n'ont pas besoin de signatures. Tu es candidat{e}, mais sous une étiquette qui n'est pas tout à fait la tienne.",
+            "pol": {
+              "campagne": 3,
+              "loyaute": -2,
+              "popularite": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler tes soutiens à voter pour le candidat le mieux placé contre le pouvoir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ne seras pas élu{e}, mais ton appel déplace quelques milliers de voix dans la circonscription. On commence à te prendre au sérieux, des deux côtés.",
+            "pol": {
+              "influence": 4,
+              "popularite": 2,
+              "rival": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ru_02",
+    "kind": "dossier",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le gouverneur par intérim",
+    "text": "Tu as été nommé{e} gouverneur par intérim par décret présidentiel. Une élection doit confirmer ta nomination dans six mois. Pour se présenter, chaque candidat doit obtenir les signatures d'une partie des élus municipaux, presque tous issus du parti au pouvoir. Un candidat d'opposition populaire te demande s'ils seront libres de signer pour lui.",
+    "choices": [
+      {
+        "label": "Laisser les élus signer librement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il est enregistré et obtient 31 %. Tu es élu{e}, avec une vraie légitimité, et quelques appels inquiets de la capitale.",
+            "pol": {
+              "popularite": 7,
+              "influence": 3,
+              "loyaute": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il fait campagne sur les hôpitaux fermés et te pousse au second tour. Tu gagnes de peu, et l'administration présidentielle prend note.",
+            "pol": {
+              "popularite": 3,
+              "loyaute": -10,
+              "influence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comprendre aux élus qu'il vaut mieux s'abstenir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il n'obtient pas les signatures. Tu es élu{e} avec 78 % des voix et une participation de 34 %. Tout le monde sait ce que valent ces chiffres.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "loyaute": 8,
+              "influence": 4,
+              "popularite": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui proposer un poste de vice-gouverneur à la place",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il accepte. Ses électeurs s'estiment trahis, toi tu gagnes un adjoint compétent et une élection sans surprise.",
+            "pol": {
+              "influence": 5,
+              "popularite": 2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Il refuse et rend ta proposition publique. L'histoire fait le tour des médias indépendants.",
+            "pol": {
+              "popularite": -3,
+              "casseroles": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ru_03",
+    "kind": "dossier",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "depute",
+      "senateur"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'association des malades",
+    "text": "Un projet de loi élargit le statut d'« agent étranger » à toute organisation recevant le moindre financement de l'étranger. Dans ta région, une association d'aide aux enfants atteints de cancer serait concernée : elle reçoit 3 % de ses fonds d'une fondation européenne. Le groupe majoritaire attend un vote unanime.",
+    "choices": [
+      {
+        "label": "Voter le texte avec ta majorité",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La loi passe. L'association perd sa fondation européenne et réduit son activité de moitié. Sa directrice t'écrit une lettre que tu gardes dans un tiroir.",
+            "effects": {
+              "karma": -5
+            },
+            "pol": {
+              "loyaute": 8,
+              "influence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déposer un amendement exemptant les associations de santé",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "L'amendement est adopté dans une version restreinte. L'association est épargnée et la majorité te pardonne, cette fois.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "influence": 4,
+              "popularite": 4,
+              "loyaute": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "L'amendement est rejeté et ton nom est noté. Le président du groupe te fait savoir que les amendements « sentimentaux » ne sont pas appréciés.",
+            "effects": {
+              "karma": 3
+            },
+            "pol": {
+              "loyaute": -6,
+              "influence": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Être absent{e} le jour du vote",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton absence est remarquée par tout le monde, et ne satisfait personne.",
+            "pol": {
+              "loyaute": -3,
+              "popularite": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ru_04",
+    "kind": "dossier",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La grève des chauffeurs",
+    "text": "Les chauffeurs de bus de la ville sont en grève : ils n'ont pas été payés depuis deux mois, faute de subventions. Le rédacteur en chef de la télévision locale, que tu finances en partie, veut consacrer un reportage à leurs conditions de travail. Ton chef de cabinet te conseille de « suggérer d'autres sujets ».",
+    "choices": [
+      {
+        "label": "Laisser la rédaction faire son travail",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le reportage est dur mais honnête. Il t'oblige à trouver l'argent, et les bus reprennent leur service en une semaine.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "popularite": 6,
+              "loyaute": -3,
+              "mobilisation": -6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le reportage est repris par des chaînes nationales indépendantes. L'administration présidentielle te reproche de laisser filer un sujet sensible.",
+            "pol": {
+              "popularite": 4,
+              "loyaute": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Suggérer d'autres sujets",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le reportage ne passe pas. Les vidéos tournées par les chauffeurs eux-mêmes, sur les messageries, sont vues bien plus largement.",
+            "pol": {
+              "popularite": -6,
+              "casseroles": 3,
+              "mobilisation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer les salaires sur le fonds de réserve, puis accepter le reportage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le reportage montre une crise réglée. Tu as vidé une partie de ta réserve, mais tu as évité le pire.",
+            "pol": {
+              "popularite": 5,
+              "mobilisation": -10,
+              "pays": {
+                "dette": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ru_05",
+    "kind": "dossier",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": "transports",
+    "weight": 1,
+    "unique": false,
+    "title": "Les pièces détachées",
+    "text": "Les sanctions économiques occidentales privent les compagnies aériennes de pièces détachées. Les avions de ligne étrangers vieillissent, certains sont démontés pour en réparer d'autres. Les industriels proposent trois voies, aucune parfaite.",
+    "choices": [
+      {
+        "label": "Organiser des importations parallèles via des pays tiers",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les pièces arrivent par des intermédiaires d'Asie centrale et du Golfe, avec une marge de 40 %. Les avions volent.",
+            "pol": {
+              "popularite": 3,
+              "pays": {
+                "dette": 1
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un lot de pièces contrefaites est découvert lors d'une inspection. Plusieurs avions sont cloués au sol, en pleine saison des vacances.",
+            "pol": {
+              "popularite": -6,
+              "pays": {
+                "moral": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accélérer la production d'un avion national",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le programme progresse. Les premiers appareils sortiront dans trois ans, avec un retard que tout le monde avait prévu.",
+            "pol": {
+              "influence": 4,
+              "pays": {
+                "dette": 2,
+                "croissance": 0.2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le programme bute sur les moteurs, qui dépendaient eux aussi de composants importés. Les délais doublent.",
+            "pol": {
+              "influence": -3,
+              "pays": {
+                "dette": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réduire le nombre de vols intérieurs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La sécurité est préservée. Les billets pour l'Extrême-Orient doublent de prix, et les régions éloignées se sentent un peu plus loin.",
+            "pol": {
+              "popularite": -5,
+              "segments": {
+                "ruraux": -4
+              },
+              "pays": {
+                "moral": -2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_ru_06",
+    "kind": "crise",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "premierMinistre",
+      "president",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Moins trente-cinq",
+    "text": "Une conduite principale du chauffage urbain a cédé dans une ville sibérienne. Il fait −35 °C, quarante mille habitants n'ont plus de chauffage, et les réseaux montrent des appartements où l'eau gèle dans les éviers. Le réseau n'a pas été rénové depuis 1978.",
+    "choices": [
+      {
+        "label": "Envoyer le ministère des Situations d'urgence et des générateurs",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le chauffage revient en quarante-huit heures. Les habitants remercient les techniciens, pas forcément les dirigeants.",
+            "effects": {
+              "health": -2
+            },
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "moral": 3
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La réparation tient trois jours avant une nouvelle rupture. La colère gagne d'autres villes au réseau tout aussi vétuste.",
+            "pol": {
+              "popularite": -5,
+              "mobilisation": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Limoger le gouverneur et les responsables du réseau",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les limogeages font les titres. Ils ne réchauffent personne, et le nouveau gouverneur hérite d'un réseau toujours aussi usé.",
+            "pol": {
+              "popularite": 2,
+              "influence": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un plan national de rénovation des réseaux de chaleur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le plan est ambitieux et coûteux. Il ne changera rien cet hiver, mais il est enfin écrit.",
+            "pol": {
+              "popularite": 3,
+              "pays": {
+                "dette": 3
+              },
+              "segments": {
+                "retraites": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sca_ru_07",
+    "kind": "scandale",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "depute",
+      "senateur",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La vidéo du blogueur",
+    "text": "Un blogueur d'investigation publie une vidéo de quarante minutes sur les biens de ta famille : un appartement à l'étranger, une maison de campagne et une société de transport au nom de ta belle-mère. La vidéo dépasse les cinq millions de vues.",
+    "choices": [
+      {
+        "label": "Ignorer la vidéo",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les médias principaux n'en parlent pas. La vidéo vit sa vie sur internet, puis s'essouffle.",
+            "pol": {
+              "casseroles": 6,
+              "popularite": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Des électeurs t'interpellent sur la maison lors d'une réunion publique. La scène, filmée, fait plus de bruit que la vidéo.",
+            "pol": {
+              "casseroles": 10,
+              "popularite": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Publier une déclaration de patrimoine complète",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le geste est rare dans ta position. Tout n'est pas expliqué, mais tu passes pour quelqu'un qui n'a pas peur des questions.",
+            "pol": {
+              "popularite": 3,
+              "casseroles": 4,
+              "loyaute": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte en diffamation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La plainte attire l'attention sur la vidéo, qui double son audience. C'est un phénomène bien connu, et tu viens de l'illustrer.",
+            "pol": {
+              "popularite": -4,
+              "casseroles": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lob_ru_08",
+    "kind": "lobby",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "presidentRegion",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La forêt protégée",
+    "text": "Une grande compagnie de matières premières veut exploiter un gisement sous une forêt protégée de ta région. Elle propose de financer un hôpital régional neuf et une patinoire. Un écologiste local a déjà récolté vingt mille signatures contre le projet.",
+    "choices": [
+      {
+        "label": "Déclasser la forêt contre l'hôpital et la patinoire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'hôpital est construit, et il est très bien. La forêt est coupée. L'écologiste local est convoqué par la police pour une affaire d'affichage.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "influence": 5,
+              "casseroles": 5,
+              "segments": {
+                "patrons": 6,
+                "jeunes": -5
+              },
+              "pays": {
+                "croissance": 0.2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier une exploitation limitée à la lisière",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le compromis préserve la majeure partie de la forêt. L'hôpital sera plus petit, mais il sera construit.",
+            "pol": {
+              "influence": 3,
+              "popularite": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La compagnie accepte, puis étend discrètement le périmètre. Personne ne vérifie les cartes.",
+            "pol": {
+              "casseroles": 6,
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser le projet",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les habitants te remercient. La compagnie, qui a des amis haut placés, s'en souviendra lors de ta prochaine nomination.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "popularite": 5,
+              "loyaute": -6,
+              "influence": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ru_09",
+    "kind": "dossier",
+    "pays": [
+      "ru"
+    ],
+    "postes": [
+      "conseiller"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le seul élu indépendant",
+    "text": "Tu es l'un des trois élus indépendants du conseil municipal de ton arrondissement. Le chef du groupe majoritaire te propose de rejoindre le parti au pouvoir : tu obtiendrais la présidence de la commission budgétaire et des crédits pour la rénovation des cours d'immeuble que tu réclames depuis deux ans.",
+    "choices": [
+      {
+        "label": "Accepter et rejoindre la majorité",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les cours d'immeuble sont rénovées en un été. Tes électeurs sont contents des bancs neufs, un peu moins de ton changement d'étiquette.",
+            "pol": {
+              "influence": 6,
+              "popularite": -2,
+              "loyaute": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester indépendant{e}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu restes dans l'opposition, sans crédits mais libre. Tes comptes rendus de séance, publiés en ligne, gagnent des lecteurs.",
+            "effects": {
+              "karma": 3
+            },
+            "pol": {
+              "popularite": 4,
+              "influence": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton projet est bloqué. Un voisin te demande, sans méchanceté, à quoi sert un élu qui n'obtient rien.",
+            "pol": {
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester indépendant{e} mais voter son budget en échange de la rénovation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le marché est conclu sans changer d'étiquette. Les cours sont rénovées, et tes deux collègues indépendants ne te parlent plus.",
+            "pol": {
+              "influence": 3,
+              "popularite": 2,
+              "rival": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ng_01",
+    "kind": "dossier",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le tribunal électoral",
+    "text": "Ta victoire est contestée devant le tribunal électoral : ton adversaire affirme que les résultats de quarante bureaux de vote ont été falsifiés lors de leur compilation. Tes avocats sont confiants, mais le tribunal peut annuler l'élection. Dans les rues, les partisans des deux camps s'échauffent.",
+    "choices": [
+      {
+        "label": "Défendre ta victoire devant le tribunal, et seulement là",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le tribunal confirme ton élection. Ton calme pendant la procédure est salué, même par certains partisans adverses.",
+            "pol": {
+              "popularite": 5,
+              "influence": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le tribunal ordonne un nouveau scrutin dans les quarante bureaux. Tout se jouera dans trois semaines.",
+            "pol": {
+              "popularite": -2,
+              "campagne": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer à ton adversaire un gouvernement d'unité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il retire son recours en échange de trois postes de commissaire d'État. Tes partisans grincent, l'État respire.",
+            "pol": {
+              "popularite": 2,
+              "influence": 4,
+              "loyaute": -4,
+              "pays": {
+                "securite": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il rend ta proposition publique et la présente comme un aveu de fraude. L'affaire empire.",
+            "pol": {
+              "popularite": -5,
+              "casseroles": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mobiliser tes partisans dans la rue",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les rassemblements tournent aux affrontements dans deux quartiers. Le tribunal, l'opinion et ton parti te le reprochent.",
+            "effects": {
+              "karma": -5
+            },
+            "pol": {
+              "popularite": -8,
+              "mobilisation": 12,
+              "pays": {
+                "securite": -5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cam_ng_02",
+    "kind": "campagne",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "presidentRegion",
+      "senateur",
+      "depute"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le parrain",
+    "text": "Un homme d'affaires qui a fait élire les deux derniers gouverneurs de l'État te propose de financer intégralement ta campagne. En retour, il souhaite « être consulté » pour les nominations de commissaires et l'attribution des grands contrats. Tout le monde l'appelle le parrain.",
+    "choices": [
+      {
+        "label": "Accepter son soutien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'argent coule à flots, les affiches couvrent l'État et les chefs traditionnels te reçoivent. Tu sais déjà que la facture viendra après.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "campagne": 9,
+              "casseroles": 8,
+              "loyaute": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter une partie de l'argent, sans engagement écrit",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il accepte, faute de mieux. Une fois élu{e}, tu découvres que les engagements oraux ont aussi leur poids.",
+            "pol": {
+              "campagne": 5,
+              "casseroles": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il comprend vite que tu veux son argent sans ses conditions. Il finance discrètement ton adversaire.",
+            "pol": {
+              "campagne": -3,
+              "rival": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et financer ta campagne par de petits dons",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta campagne est modeste mais libre. Les jeunes électeurs urbains apprécient ; les zones rurales, que le parrain quadrille, beaucoup moins.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "campagne": 2,
+              "popularite": 4,
+              "segments": {
+                "jeunes": 7,
+                "urbains": 4,
+                "ruraux": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ng_03",
+    "kind": "dossier",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "president",
+      "ministre"
+    ],
+    "ministere": "economie",
+    "weight": 1,
+    "unique": false,
+    "title": "La subvention du carburant",
+    "text": "La subvention de l'essence engloutit une part énorme du budget fédéral, plus que la santé et l'éducation réunies. Une partie du carburant subventionné est revendue en contrebande dans les pays voisins. La supprimer ferait tripler le prix à la pompe du jour au lendemain.",
+    "choices": [
+      {
+        "label": "Supprimer la subvention d'un coup",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le budget respire. Le prix des transports et de la nourriture flambe, les syndicats appellent à la grève générale.",
+            "pol": {
+              "popularite": -10,
+              "mobilisation": 18,
+              "pays": {
+                "dette": -3,
+                "moral": -6
+              },
+              "segments": {
+                "patrons": 4,
+                "jeunes": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "La supprimer progressivement, avec des transferts aux ménages pauvres",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les transferts monétaires atteignent des millions de foyers via leur téléphone. La transition est rude mais supportable.",
+            "pol": {
+              "popularite": -2,
+              "influence": 4,
+              "pays": {
+                "dette": -2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le registre des ménages pauvres est incomplet. Beaucoup de familles ne reçoivent rien et la colère monte quand même.",
+            "pol": {
+              "popularite": -6,
+              "mobilisation": 10,
+              "pays": {
+                "dette": -1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "La maintenir et lutter contre la contrebande",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les contrôles aux frontières saisissent quelques camions-citernes. Le gouffre budgétaire reste entier.",
+            "pol": {
+              "popularite": 2,
+              "pays": {
+                "dette": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ng_04",
+    "kind": "dossier",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "presidentRegion",
+      "president"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les élèves enlevés",
+    "text": "Dans le nord-ouest, des hommes armés ont enlevé quatre-vingts élèves dans un internat. Les familles supplient qu'on agisse. Des intermédiaires proposent de négocier leur libération ; l'armée propose une opération ; d'autres rappellent que chaque rançon payée finance les enlèvements suivants.",
+    "choices": [
+      {
+        "label": "Autoriser une négociation discrète",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les élèves sont libérés au bout de trois semaines, épuisés mais vivants. Personne ne dit ce qui a été payé, et tout le monde se doute.",
+            "pol": {
+              "popularite": 6,
+              "pays": {
+                "securite": -2,
+                "moral": 5
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La négociation traîne et les ravisseurs augmentent leurs exigences. Les familles perdent confiance.",
+            "pol": {
+              "popularite": -5,
+              "pays": {
+                "moral": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ordonner une opération de sauvetage",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'opération réussit : tous les élèves sont libérés. Les images font la une de la presse internationale.",
+            "pol": {
+              "popularite": 10,
+              "influence": 4,
+              "pays": {
+                "securite": 5,
+                "moral": 6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'opération tourne mal. Plusieurs élèves sont blessés, et les ravisseurs s'enfoncent dans la forêt avec les autres.",
+            "pol": {
+              "popularite": -10,
+              "pays": {
+                "securite": -4,
+                "moral": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer les internats de la zone et sécuriser les écoles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plus aucun enlèvement scolaire cette année. Mais des milliers d'enfants, surtout des filles, ne vont plus à l'école du tout.",
+            "pol": {
+              "popularite": -2,
+              "pays": {
+                "securite": 2
+              },
+              "segments": {
+                "jeunes": -5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_ng_05",
+    "kind": "dossier",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "senateur",
+      "depute"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La part des États producteurs",
+    "text": "Une révision constitutionnelle est débattue au Sénat : les États du delta du Niger, d'où vient le pétrole, réclament que leur part des revenus pétroliers passe de 13 % à 25 %. Les États du Nord, qui n'en produisent pas, s'y opposent. Le texte propose aussi de créer des polices d'État.",
+    "choices": [
+      {
+        "label": "Soutenir la hausse de la part des États producteurs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les élus du Sud te remercient, ceux du Nord te le reprochent. Le texte n'obtient pas la majorité des deux tiers requise.",
+            "pol": {
+              "influence": 3,
+              "popularite": 1,
+              "rival": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre un fonds de développement commun pour le delta",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le compromis rassemble des élus des deux camps. Le fonds sera géré par une agence fédérale, ce qui inquiète ceux qui connaissent l'historique des agences fédérales.",
+            "pol": {
+              "influence": 6,
+              "popularite": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Personne ne veut d'un compromis. Ta proposition meurt en commission.",
+            "pol": {
+              "influence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Concentrer ton vote sur la création des polices d'État",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les gouverneurs y sont favorables, l'état-major fédéral beaucoup moins. Le débat sur le fédéralisme sécuritaire est relancé, et tu en es la figure.",
+            "pol": {
+              "influence": 5,
+              "popularite": 3,
+              "pays": {
+                "securite": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_ng_06",
+    "kind": "crise",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "president",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le pipeline",
+    "text": "Un oléoduc majeur du delta du Niger a été saboté pour la troisième fois en un mois. La production nationale chute de 300 000 barils par jour. Une marée noire touche les mangroves et les zones de pêche, et les communautés locales accusent l'État de ne s'intéresser au delta que pour son pétrole.",
+    "choices": [
+      {
+        "label": "Déployer l'armée le long des oléoducs",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les sabotages cessent. Les rapports d'abus contre des villageois se multiplient, et la défiance s'installe.",
+            "pol": {
+              "popularite": -2,
+              "pays": {
+                "croissance": 0.3,
+                "securite": 2
+              },
+              "segments": {
+                "ruraux": -4
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les sabotages se déplacent ailleurs. On ne peut pas surveiller des milliers de kilomètres de tuyaux.",
+            "pol": {
+              "popularite": -4,
+              "pays": {
+                "croissance": -0.3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Confier la surveillance à des contrats avec les communautés",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les jeunes des villages deviennent gardiens des installations. Les sabotages baissent nettement ; les critiques parlent de rente déguisée.",
+            "pol": {
+              "popularite": 3,
+              "influence": 3,
+              "pays": {
+                "croissance": 0.3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les contrats sont captés par d'anciens chefs de milice. Le système tient, mais à un prix politique gênant.",
+            "pol": {
+              "casseroles": 6,
+              "pays": {
+                "croissance": 0.2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer d'abord le nettoyage de la marée noire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le chantier de dépollution est le premier de cette ampleur. Les pêcheurs du delta y voient enfin un signe de considération.",
+            "effects": {
+              "karma": 4
+            },
+            "pol": {
+              "popularite": 5,
+              "pays": {
+                "dette": 1
+              },
+              "segments": {
+                "ruraux": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deb_ng_07",
+    "kind": "debat",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "president"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La rotation",
+    "text": "Débat présidentiel. Le modérateur te demande : « Après huit ans d'un président du Nord, beaucoup estiment que c'est au tour du Sud. Votre candidature respecte-t-elle cet équilibre ? » La question n'est écrite nulle part dans la Constitution, mais elle pèse dans tous les esprits.",
+    "choices": [
+      {
+        "label": "« Le Nigeria doit élire le plus compétent, d'où qu'il vienne. »",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La réponse séduit les jeunes urbains. Dans plusieurs régions, on y entend un refus de partager le pouvoir.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "jeunes": 6,
+                "urbains": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{adversaire} te répond que la compétence, c'est aussi savoir tenir un pays aussi divers. La salle applaudit.",
+            "pol": {
+              "campagne": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Promettre un gouvernement qui reflète toutes les régions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La réponse rassure. Ton choix de colistier sera désormais scruté sous cet angle.",
+            "pol": {
+              "campagne": 4,
+              "popularite": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ramener le débat sur l'économie et la sécurité",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu cites le prix du sac de riz et le nombre d'enlèvements. Le public te suit sur ce terrain.",
+            "pol": {
+              "campagne": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On t'accuse d'esquiver la question. Elle te poursuivra jusqu'au jour du vote.",
+            "pol": {
+              "campagne": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sca_ng_08",
+    "kind": "scandale",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "depute",
+      "senateur"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le forage fantôme",
+    "text": "Un collectif de journalistes citoyens a visité les projets financés par ton allocation de circonscription. Le forage d'eau inauguré l'an dernier n'a jamais fonctionné : la pompe a disparu une semaine après la cérémonie. Les photos du village, seau à la main, circulent partout.",
+    "choices": [
+      {
+        "label": "Te rendre au village et faire réparer le forage à tes frais",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le forage fonctionne de nouveau, cette fois avec un comité villageois chargé de l'entretien. La vidéo de ta visite rattrape en partie le mal.",
+            "effects": {
+              "money": -8000
+            },
+            "pol": {
+              "popularite": 3,
+              "casseroles": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les journalistes publient la suite de leur enquête : trois autres projets sont dans le même état.",
+            "effects": {
+              "money": -8000
+            },
+            "pol": {
+              "popularite": -6,
+              "casseroles": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser l'entrepreneur",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'entrepreneur montre qu'il a été payé à moitié. La question devient : où est passé le reste ?",
+            "pol": {
+              "popularite": -6,
+              "casseroles": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Publier la liste et l'état de tous tes projets",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu deviens le premier élu de ton État à le faire. Certains projets sont réussis, d'autres non, mais tu as l'avantage de l'avoir dit.",
+            "effects": {
+              "karma": 3
+            },
+            "pol": {
+              "popularite": 5,
+              "casseroles": 4,
+              "influence": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lob_ng_09",
+    "kind": "lobby",
+    "pays": [
+      "ng"
+    ],
+    "postes": [
+      "ministre",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les cargaisons de brut",
+    "text": "Un négociant pétrolier te propose un arrangement : obtenir pour sa société des allocations de cargaisons de brut à prix préférentiel, en échange d'un « investissement » dans une société de ton choix. Les montants évoqués représentent dix ans de ton salaire.",
+    "choices": [
+      {
+        "label": "Accepter l'arrangement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'argent arrive sur un compte à l'étranger. Pour l'instant, personne ne regarde.",
+            "effects": {
+              "money": 150000,
+              "karma": -10
+            },
+            "pol": {
+              "casseroles": 18
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La commission de lutte contre les crimes financiers enquête déjà sur le négociant. Ton nom apparaît dans ses messages.",
+            "effects": {
+              "money": 150000,
+              "karma": -10
+            },
+            "pol": {
+              "casseroles": 30,
+              "influence": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le négociant trouve un autre interlocuteur, plus accommodant. Tu dors bien, ce qui n'est pas rien.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "influence": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Signaler la proposition à la commission anticorruption",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'enquête aboutit et le réseau est démantelé. Tu gagnes une réputation, et quelques ennemis puissants.",
+            "effects": {
+              "karma": 6
+            },
+            "pol": {
+              "popularite": 7,
+              "influence": 2,
+              "rival": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'enquête s'enlise mystérieusement. Le négociant, lui, sait désormais qui l'a dénoncé.",
+            "pol": {
+              "popularite": 2,
+              "rival": 12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_au_01",
+    "kind": "dossier",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "premierMinistre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le décompte",
+    "text": "Après six mauvais sondages d'affilée, ton ministre des Finances compte les voix au sein du groupe parlementaire. En Australie, un chef de parti peut être renversé en une matinée par un vote de ses propres députés, et cela s'est vu souvent. Il te manquerait cinq voix.",
+    "choices": [
+      {
+        "label": "Convoquer toi-même un vote immédiat pour couper court",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu l'emportes de six voix. Ta position est sauve pour l'instant, mais tout le pays sait désormais que ton groupe est divisé.",
+            "pol": {
+              "loyaute": 4,
+              "influence": 3,
+              "popularite": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le vote est serré, et tu perds. Le ministre des Finances devient Premier ministre l'après-midi même.",
+            "pol": {
+              "finMandat": "renversement par ton propre parti",
+              "popularite": -5,
+              "rival": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui offrir un portefeuille plus prestigieux",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il accepte et suspend sa manœuvre. Personne ne croit que c'est fini.",
+            "pol": {
+              "loyaute": 3,
+              "influence": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il refuse : il ne veut pas un portefeuille, il veut le tien.",
+            "pol": {
+              "loyaute": -5,
+              "rival": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annoncer une réforme forte pour reprendre la main",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta réforme de la garde d'enfants fait remonter les sondages de trois points. Les rebelles rangent leur calculatrice.",
+            "pol": {
+              "popularite": 6,
+              "loyaute": 4,
+              "pays": {
+                "dette": 1
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La réforme est jugée précipitée. Les sondages ne bougent pas, et le décompte continue.",
+            "pol": {
+              "popularite": -2,
+              "loyaute": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_au_02",
+    "kind": "dossier",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "depute",
+      "senateur",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La visite du soir",
+    "text": "Un collègue frappe à la porte de ton bureau au Parlement, à 22 heures. Il prépare le renversement du Premier ministre, {pm}, chef de ton propre parti, que les sondages condamnent. Il veut savoir si tu en es. En échange, tu aurais un poste au gouvernement.",
+    "choices": [
+      {
+        "label": "Rejoindre la manœuvre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le chef est renversé au petit matin. Tu obtiens ton poste, et la réputation de quelqu'un qui sait choisir son moment.",
+            "effects": {
+              "karma": -3
+            },
+            "pol": {
+              "influence": 8,
+              "loyaute": -6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La manœuvre échoue de deux voix. Ton nom figure sur la liste des conjurés que tout le monde connaît.",
+            "effects": {
+              "karma": -3
+            },
+            "pol": {
+              "influence": -8,
+              "loyaute": -10,
+              "rival": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et rester fidèle au chef",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le chef survit. Il n'oublie pas qui l'a soutenu.",
+            "pol": {
+              "loyaute": 8,
+              "influence": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le chef tombe quand même. Le nouveau Premier ministre se souvient très bien de ceux qui ont refusé.",
+            "pol": {
+              "loyaute": 2,
+              "influence": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien promettre et attendre de voir le rapport de force",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu gardes tes options ouvertes. Les deux camps te trouvent un peu trop prudent{e}, ce qui n'empêche personne de te solliciter.",
+            "pol": {
+              "influence": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_au_03",
+    "kind": "crise",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La saison des feux",
+    "text": "Des feux de brousse d'une ampleur inédite ravagent la côte est. Des villes entières sont encerclées, la fumée atteint les grandes métropoles et les pompiers volontaires sont épuisés après trois mois de lutte. Les habitants attendent un geste du gouvernement fédéral.",
+    "choices": [
+      {
+        "label": "Déployer l'armée et payer les pompiers volontaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les réservistes arrivent en renfort et les volontaires sont indemnisés pour leurs semaines perdues. Le geste est salué, même s'il arrive tard.",
+            "pol": {
+              "popularite": 7,
+              "pays": {
+                "dette": 2,
+                "moral": 5
+              },
+              "segments": {
+                "ruraux": 7
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller sur le terrain serrer des mains",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les habitants apprécient ta présence et te parlent franchement. Tu repars avec une liste précise des besoins.",
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "ruraux": 4
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Une habitante qui a tout perdu refuse ta main devant les caméras. L'image fait le tour du monde.",
+            "pol": {
+              "popularite": -8,
+              "pays": {
+                "moral": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer une commission royale sur le climat et les feux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La commission rendra ses conclusions dans dix-huit mois. Les scientifiques saluent l'initiative ; les sinistrés auraient préféré des camions.",
+            "pol": {
+              "popularite": 1,
+              "influence": 3,
+              "segments": {
+                "jeunes": 5,
+                "urbains": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_au_04",
+    "kind": "dossier",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "presidentRegion",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La mine du bassin",
+    "text": "Un groupe minier veut ouvrir une gigantesque mine de charbon thermique dans l'arrière-pays de ton État : 1 500 emplois directs dans une région qui en manque. Le charbon serait exporté via un port proche de la Grande Barrière de corail. Des manifestants ont déjà bloqué l'accès au site.",
+    "choices": [
+      {
+        "label": "Approuver la mine",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les villes minières de l'intérieur te portent aux nues. Dans les grandes villes côtières, ton nom devient un symbole d'inaction climatique.",
+            "pol": {
+              "popularite": -2,
+              "pays": {
+                "croissance": 0.3
+              },
+              "segments": {
+                "ruraux": 8,
+                "patrons": 6,
+                "jeunes": -8,
+                "urbains": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Approuver sous conditions environnementales strictes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le groupe accepte des conditions sur l'eau et le transport maritime. Personne n'est ravi, ce qui est souvent signe d'un compromis.",
+            "pol": {
+              "popularite": 2,
+              "influence": 3,
+              "pays": {
+                "croissance": 0.2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le groupe juge les conditions inacceptables et menace de partir. Les syndicats miniers t'accusent de sabotage.",
+            "pol": {
+              "popularite": -3,
+              "segments": {
+                "ruraux": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et financer une reconversion vers l'hydrogène et le solaire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Un projet d'hydrogène vert est annoncé dans la même région. Les emplois viendront plus tard, mais ils viendront.",
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "dette": 1
+              },
+              "segments": {
+                "jeunes": 7,
+                "ruraux": -3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le projet d'hydrogène reste au stade des brochures. La région se sent abandonnée.",
+            "pol": {
+              "popularite": -4,
+              "segments": {
+                "ruraux": -8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cam_au_05",
+    "kind": "campagne",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "depute",
+      "senateur"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le jeu des préférences",
+    "text": "En Australie, le vote est obligatoire et préférentiel : chaque électeur classe tous les candidats. Un petit parti centré sur le coût de la vie te propose un accord : il recommandera de te placer en deuxième position si tu le recommandes de même. Ses positions sur l'immigration te gênent.",
+    "choices": [
+      {
+        "label": "Accepter l'échange de préférences",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ses électeurs suivent largement la consigne. Tu gagnes le siège au décompte des préférences, quatre jours après le scrutin.",
+            "pol": {
+              "campagne": 7,
+              "loyaute": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton accord est dénoncé par les associations. Tu perds au premier décompte plus de voix que tu n'en gagnes au second.",
+            "pol": {
+              "campagne": -3,
+              "popularite": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et faire campagne sur les premières préférences",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu dois convaincre seul{e}. Tu passes tes samedis devant les supermarchés et tes dimanches dans les clubs de sport locaux.",
+            "effects": {
+              "health": -2
+            },
+            "pol": {
+              "campagne": 3,
+              "popularite": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenir un barbecue devant chaque bureau de vote le jour du scrutin",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La saucisse de la démocratie est une tradition sacrée. Tes bénévoles en grillent huit mille, et les électeurs s'en souviennent avec tendresse.",
+            "effects": {
+              "money": -2000
+            },
+            "pol": {
+              "campagne": 4,
+              "popularite": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deb_au_06",
+    "kind": "debat",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "premierMinistre",
+      "depute"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le prix du logement",
+    "text": "Débat télévisé. La journaliste rappelle qu'une maison moyenne à Sydney coûte désormais quinze années de salaire et te demande : « Supprimerez-vous les avantages fiscaux accordés aux investisseurs immobiliers ? » {adversaire} sait que la question est piégée.",
+    "choices": [
+      {
+        "label": "« Oui, il faut redonner leur chance aux primo-accédants. »",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les jeunes électeurs applaudissent. Les deux millions de propriétaires investisseurs, eux, font leurs comptes.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "jeunes": 8,
+                "retraites": -6,
+                "patrons": -3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{adversaire} lance le slogan « une taxe sur ta retraite ». Il reste dans les têtes jusqu'au jour du vote.",
+            "pol": {
+              "campagne": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "« Non, il faut construire plus, pas taxer plus. »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le message est simple et rassurant. Les jeunes se demandent quand ces logements seront construits, et où.",
+            "pol": {
+              "campagne": 3,
+              "segments": {
+                "retraites": 4,
+                "patrons": 3,
+                "jeunes": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un plan massif de logement social",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le plan est chiffré et crédible. On te reconnaît du sérieux.",
+            "pol": {
+              "campagne": 4,
+              "segments": {
+                "jeunes": 4,
+                "urbains": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On te demande d'où viendra l'argent. Ta réponse est moins claire que ton plan.",
+            "pol": {
+              "campagne": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sca_au_07",
+    "kind": "scandale",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "senateur",
+      "depute"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La seconde nationalité",
+    "text": "Un journaliste découvre que ton père, né à l'étranger, t'a peut-être transmis sa nationalité à la naissance, sans que tu le saches. Or la Constitution interdit à un parlementaire d'avoir une double nationalité. Plusieurs élus ont déjà perdu leur siège pour cette raison.",
+    "choices": [
+      {
+        "label": "Saisir toi-même la Haute Cour",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La Haute Cour estime que tu n'avais pas cette nationalité, faute d'enregistrement. Ton siège est confirmé, et ta démarche saluée.",
+            "pol": {
+              "popularite": 5,
+              "casseroles": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La Haute Cour invalide ton élection. Tu renonces à l'autre nationalité et te représentes à l'élection partielle.",
+            "pol": {
+              "finMandat": "invalidation pour double nationalité",
+              "popularite": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renoncer à l'autre nationalité et ne rien dire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La renonciation ne vaut que pour l'avenir. Ton adversaire saisit la Haute Cour, et ton silence est retenu contre toi.",
+            "pol": {
+              "popularite": -6,
+              "casseroles": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Démissionner et te représenter immédiatement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton geste est jugé digne. L'élection partielle te coûte une campagne et des économies, mais tu la gagnes.",
+            "effects": {
+              "money": -15000,
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 6,
+              "influence": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lob_au_08",
+    "kind": "lobby",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "ministre",
+      "depute",
+      "senateur"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La campagne des mineurs",
+    "text": "Le gouvernement envisage une taxe sur les superprofits des grandes compagnies minières. Leur fédération prépare une campagne publicitaire de plusieurs dizaines de millions de dollars contre le projet. Son directeur t'invite à déjeuner et laisse entendre qu'un siège au conseil d'une compagnie t'attendrait après la politique.",
+    "choices": [
+      {
+        "label": "Te prononcer contre la taxe",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La taxe est abandonnée. La fédération te remercie et garde ton numéro. Les éditorialistes rappellent que les profits miniers sont au plus haut.",
+            "effects": {
+              "karma": -4
+            },
+            "pol": {
+              "influence": 4,
+              "casseroles": 6,
+              "segments": {
+                "patrons": 8,
+                "jeunes": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre une taxe plus modeste",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le compromis passe. La campagne publicitaire est annulée, chacun crie victoire.",
+            "pol": {
+              "influence": 4,
+              "popularite": 2,
+              "pays": {
+                "dette": -1
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les compagnies veulent l'abandon total. La campagne publicitaire démarre, et ton nom y figure.",
+            "pol": {
+              "popularite": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre la taxe intégrale et rendre l'invitation publique",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'histoire du déjeuner fait la une. Le public apprécie, les compagnies beaucoup moins, et ta carrière d'après-politique s'éloigne.",
+            "effects": {
+              "karma": 5
+            },
+            "pol": {
+              "popularite": 6,
+              "pays": {
+                "dette": -2
+              },
+              "segments": {
+                "patrons": -8,
+                "jeunes": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dos_au_09",
+    "kind": "dossier",
+    "pays": [
+      "au"
+    ],
+    "postes": [
+      "maire",
+      "conseiller",
+      "adjoint"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Reconstruire au même endroit",
+    "text": "Les feux ont détruit cent quarante maisons de ta commune. Les habitants veulent reconstruire à l'identique, au bord de la forêt. Les assureurs menacent de ne plus couvrir la zone, et les pompiers recommandent de nouvelles règles de construction très coûteuses.",
+    "choices": [
+      {
+        "label": "Imposer les nouvelles normes anti-incendie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les maisons reconstruites résisteront mieux. Mais beaucoup de familles ne peuvent pas payer la différence et vendent leur terrain.",
+            "effects": {
+              "karma": 2
+            },
+            "pol": {
+              "popularite": -3,
+              "influence": 2,
+              "segments": {
+                "ruraux": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser reconstruire à l'identique",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les habitants te remercient. Les assureurs relèvent leurs primes de 300 % dans toute la commune.",
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "ruraux": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer le rachat des terrains les plus exposés",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'État finance le rachat. Les familles volontaires repartent avec un capital pour s'installer ailleurs, et la zone redevient forêt.",
+            "pol": {
+              "popularite": 5,
+              "influence": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Seules quelques familles acceptent. Les autres t'accusent de vouloir vider la commune.",
+            "pol": {
+              "popularite": -4
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
