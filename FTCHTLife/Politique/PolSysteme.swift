@@ -188,6 +188,8 @@ extension PolMoteur {
         e.parrainages = 0
         e.mandatsPresident = 0
         e.dissolutionFaite = false
+        e.decrets = []
+        e.international = PolInternational()
         if avaitUneCarriere {
             l.append("🌍 Nouvelle vie politique \(s.auPays) : \(s.resume) Ton parcours passé ne compte presque plus ici, ton réseau est à reconstruire.")
         }

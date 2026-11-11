@@ -17,6 +17,10 @@ struct PolitiqueView: View {
     @State private var listeForce = false
     @State private var fonderParti = false
     @State private var recrutement: PolRole?
+    @State private var listeDecrets = false
+    @State private var listeMonde = false
+    /// Étape suivante d'une crise, ouverte dès que le dossier en cours se ferme.
+    @State private var suiteDossier: PolDossier?
 
     init(etat: WritableKeyPath<Joueur, PolEtat?>) {
         self.etat = etat
@@ -39,9 +43,15 @@ struct PolitiqueView: View {
             } message: {
                 Text(message ?? "")
             }
-            .sheet(item: $dossierOuvert) { aff in
+            .sheet(item: $dossierOuvert, onDismiss: ouvrirSuite) { aff in
                 PolDossierView(affiche: aff) { i in trancher(aff.dossier, i) }
                     .interactiveDismissDisabled()
+            }
+            .sheet(isPresented: $listeDecrets) {
+                PolDecretsView(etat: etat)
+            }
+            .sheet(isPresented: $listeMonde) {
+                PolMondeView(etat: etat)
             }
             .sheet(isPresented: $listePartis) {
                 PolPartisView(partis: PolCatalogue.partisDuPays(engine.joueur.map { PolMoteur.systeme($0).id })) { id in
@@ -114,6 +124,11 @@ struct PolitiqueView: View {
         } else {
             Group {
                 dossiers(j, e)
+                if e.mandat?.poste.gouverne == true { pays(e) }
+                if PolMoteur.peutDecreter(j, e) { decretsSection(j, e) }
+                if PolMoteur.peutVisiter(j, e) || e.international.conflit != nil { sceneInternationale(j, e) }
+            }
+            Group {
                 if e.mandat?.poste == .president || e.mandat?.poste == .premierMinistre { gouvernement(j, e) }
                 parti(j, e)
                 if e.partiId != nil { vieDeParti(j, e) }
@@ -128,7 +143,7 @@ struct PolitiqueView: View {
                     equipe(j, e)
                 }
                 if !e.rivaux.isEmpty { rivaux(j, e) }
-                if j.age >= PolMoteur.ageCandidat { pays(e) }
+                if j.age >= PolMoteur.ageCandidat && e.mandat?.poste.gouverne != true { pays(e) }
                 lois(e)
                 historique(j, e)
             }
@@ -185,7 +200,7 @@ struct PolitiqueView: View {
         if !liste.isEmpty {
             Section("Sur ton bureau (à traiter avant la fin de l'année)") {
                 ForEach(liste) { d in
-                    LigneAction(titre: d.title,
+                    LigneAction(titre: remplir(d.title),
                                 sousTitre: d.kind == "scandale" ? "Scandale" : (d.kind == "militant" ? "Vie de parti" : "Dossier"),
                                 icone: d.kind == "scandale" ? "flame.fill" : "folder.fill") {
                         ouvrir(d, intro: nil)
@@ -399,19 +414,31 @@ struct PolitiqueView: View {
     private func ouvrir(_ d: PolDossier, intro: String?) {
         guard let j = engine.joueur else { return }
         let e = j[keyPath: etat] ?? nil
-        dossierOuvert = PolDossierAffiche(dossier: d, intro: intro,
+        dossierOuvert = PolDossierAffiche(dossier: d, intro: intro, titre: PolMoteur.remplir(d.title, j, e),
                                           texte: PolMoteur.remplir(d.text, j, e),
                                           choix: d.choices.map { PolMoteur.remplir($0.label, j, e) })
     }
 
     private func trancher(_ d: PolDossier, _ i: Int) -> String {
         var t = ""
+        var suite: PolDossier?
         engine.modifier { j in
             var p = j[keyPath: etat] ?? PolEtat()
+            let avant = Set(p.dossiers.map { $0.dossierId })
             t = PolMoteur.trancher(d, choix: i, &j, &p, appliquer: { eff, jj in engine.appliquer(eff, &jj) })
+            suite = p.dossiers.map { $0.dossierId }.filter { !avant.contains($0) }
+                .compactMap { PolCatalogue.dossier($0) }.first { $0.enchaine == true }
             j[keyPath: etat] = p
         }
+        suiteDossier = suite
         return t
+    }
+
+    /// Après un dossier tranché : ouvre tout de suite l'étape suivante de la crise, s'il y en a une.
+    private func ouvrirSuite() {
+        guard let s = suiteDossier else { return }
+        suiteDossier = nil
+        ouvrir(s, intro: "La suite ne se fait pas attendre.")
     }
 
     private func remplir(_ texte: String) -> String {
@@ -450,6 +477,7 @@ struct PolDossierAffiche: Identifiable {
     let id = UUID()
     let dossier: PolDossier
     let intro: String?
+    let titre: String
     let texte: String
     let choix: [String]
 }
@@ -475,7 +503,7 @@ struct PolDossierView: View {
                     Label(etiquette, systemImage: affiche.dossier.kind == "scandale" ? "flame.fill" : "folder.fill")
                         .font(.caption.weight(.bold))
                         .foregroundStyle(Theme.accent)
-                    Text(affiche.dossier.title).font(.title3.weight(.bold))
+                    Text(affiche.titre).font(.title3.weight(.bold))
                     Text(affiche.texte).font(.body)
                     if let r = resultat {
                         Text(r)
@@ -519,6 +547,11 @@ struct PolDossierView: View {
         case "debat": return "DÉBAT TÉLÉVISÉ"
         case "campagne": return "CAMPAGNE"
         case "militant": return "VIE DE PARTI"
+        case "crise": return "CRISE"
+        case "international": return "INTERNATIONAL"
+        case "guerre": return "GUERRE"
+        case "coalition": return "COALITION"
+        case "lobby": return "LOBBY"
         default: return "DOSSIER"
         }
     }
@@ -638,12 +671,20 @@ extension PolitiqueView {
     @ViewBuilder
     func pays(_ e: PolEtat) -> some View {
         let p = e.pays
-        Section("État du pays") {
-            HStack { Text("Croissance"); Spacer(); Text("\(PolMoteur.format1(p.croissance)) %").foregroundStyle(p.croissance >= 1 ? Color.green : Color.red) }
-            HStack { Text("Chômage"); Spacer(); Text("\(PolMoteur.format1(p.chomage)) %").foregroundStyle(p.chomage <= 8 ? Color.green : Color.red) }
-            HStack { Text("Dette publique"); Spacer(); Text("\(Int(p.dette)) % du PIB").foregroundStyle(.secondary) }
-            BarreStat(titre: "Moral", icone: "face.smiling", valeur: p.moral)
-            BarreStat(titre: "Sécurité", icone: "lock.shield.fill", valeur: p.securite)
+        let a = e.paysPrecedent
+        Section("Tableau de bord du pays") {
+            HStack { Text("Popularité"); Spacer(); tendance(e.popularitePrecedente.map { Double(e.popularite - $0) }, bonSiHausse: true, entier: true)
+                Text("\(e.popularite) %").foregroundStyle(e.popularite >= 40 ? Color.green : Color.orange) }
+            HStack { Text("Croissance"); Spacer(); tendance(a.map { p.croissance - $0.croissance }, bonSiHausse: true)
+                Text("\(PolMoteur.format1(p.croissance)) %").foregroundStyle(p.croissance >= 1 ? Color.green : Color.red) }
+            HStack { Text("Chômage"); Spacer(); tendance(a.map { p.chomage - $0.chomage }, bonSiHausse: false)
+                Text("\(PolMoteur.format1(p.chomage)) %").foregroundStyle(p.chomage <= 8 ? Color.green : Color.red) }
+            HStack { Text("Dette publique"); Spacer(); tendance(a.map { p.dette - $0.dette }, bonSiHausse: false)
+                Text("\(Int(p.dette)) % du PIB").foregroundStyle(.secondary) }
+            HStack { Text("Criminalité"); Spacer(); tendance(a.map { Double($0.securite - p.securite) }, bonSiHausse: false, entier: true)
+                Text(p.securite >= 65 ? "Faible" : (p.securite >= 45 ? "Moyenne" : "Élevée")).foregroundStyle(p.securite >= 45 ? Color.green : Color.red) }
+            BarreStat(titre: "Moral", icone: "face.smiling", valeur: p.moral, delta: a.map { p.moral - $0.moral })
+            BarreStat(titre: "Sécurité", icone: "lock.shield.fill", valeur: p.securite, delta: a.map { p.securite - $0.securite })
             BarreStat(titre: "Calme social", icone: "hand.raised.slash.fill", valeur: 100 - e.mobilisation)
             if e.mandat?.poste.gouverne == true {
                 BarreStat(titre: "Majorité", icone: "building.columns.fill", valeur: e.majorite)
@@ -945,6 +986,70 @@ struct PolFonderPartiView: View {
                 Button("OK") { message = nil; dismiss() }
             } message: {
                 Text(message ?? "")
+            }
+        }
+    }
+}
+
+// MARK: - Sommet de l'État
+
+extension PolitiqueView {
+
+    /// Petite flèche de tendance depuis l'an dernier (verte si l'évolution est bonne).
+    @ViewBuilder
+    func tendance(_ delta: Double?, bonSiHausse: Bool, entier: Bool = false) -> some View {
+        if let d = delta, abs(d) >= (entier ? 1 : 0.05) {
+            let bon = (d > 0) == bonSiHausse
+            Text((d > 0 ? "▲ +" : "▼ ") + (entier ? "\(Int(d))" : PolMoteur.format1(d)))
+                .font(.caption2.weight(.bold))
+                .foregroundStyle(bon ? Color.green : Color.red)
+        }
+    }
+
+    @ViewBuilder
+    func decretsSection(_ j: Joueur, _ e: PolEtat) -> some View {
+        Section("Décrets") {
+            let restants = PolMoteur.decretsRestants(j)
+            LigneAction(titre: "Signer un décret",
+                        sousTitre: restants > 0 ? "Sans vote, effet immédiat · \(restants) signature\(restants > 1 ? "s" : "") restante\(restants > 1 ? "s" : "") cette année" : "Plus de signature cette année",
+                        icone: "signature") {
+                listeDecrets = true
+            }
+            if !e.decrets.isEmpty {
+                let titres = e.decrets.compactMap { PolCatalogue.decret($0.id)?.titre }
+                Text("En vigueur : " + titres.joined(separator: ", ")).font(.caption).foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    @ViewBuilder
+    func sceneInternationale(_ j: Joueur, _ e: PolEtat) -> some View {
+        let i = e.international
+        Section("Scène internationale") {
+            BarreStat(titre: "Poids mondial", icone: "globe.europe.africa.fill", valeur: i.influenceMondiale)
+            BarreStat(titre: "Paix dans le monde", icone: "bird.fill", valeur: 100 - i.tension)
+            if let c = i.conflit {
+                HStack {
+                    Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(.red)
+                    Text("Conflit armé avec \(PolMoteur.nomPays(c)) depuis \(max(1, i.anneesConflit)) an\(i.anneesConflit > 1 ? "s" : "")")
+                        .font(.subheadline.weight(.semibold))
+                }
+                if PolMoteur.peutDiplomatie(j, e) {
+                    action("Négocier un cessez-le-feu", "Médiation d'un pays neutre", "hand.raised.fill", cle: "paix", j, PolMoteur.negocierPaix)
+                }
+            }
+            if let a = PolMoteur.paysAllie(e) {
+                HStack { Text("Meilleur allié"); Spacer(); Text(PolMoteur.drapeau(a) + " " + PolMoteur.nomPaysMaj(a)).foregroundStyle(.secondary) }
+            }
+            if let c = PolMoteur.paysCible(e), c != i.conflit {
+                HStack { Text("Relation la plus tendue"); Spacer(); Text(PolMoteur.drapeau(c) + " " + PolMoteur.nomPaysMaj(c)).foregroundStyle(.secondary) }
+            }
+            if !i.traites.isEmpty || !i.sanctions.isEmpty {
+                Text("\(i.traites.count) accord\(i.traites.count > 1 ? "s" : "") en vigueur" + (i.sanctions.isEmpty ? "" : " · \(i.sanctions.count) pays sous sanctions"))
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+            LigneAction(titre: "Relations pays par pays", sousTitre: "Visites d'État, accords, sanctions, aide", icone: "globe") {
+                listeMonde = true
             }
         }
     }

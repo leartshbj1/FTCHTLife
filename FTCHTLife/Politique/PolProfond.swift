@@ -701,7 +701,8 @@ extension PolMoteur {
             e.dossiers.append(PolDossierEnAttente(dossierId: d.id, ageArrivee: j.age))
             l.append("💼 Un lobby demande un rendez-vous discret (onglet Politique).")
         }
-        if let m = e.mandat, m.poste.gouverne, Double.random(in: 0...1) < 0.4, e.dossiers.count < 5,
+        if let m = e.mandat, m.poste.gouverne || m.poste == .maire || m.poste == .presidentRegion,
+           Double.random(in: 0...1) < (m.poste.gouverne ? 0.4 : 0.15), e.dossiers.count < 5,
            let d = tirerDossier(kind: "crise", poste: m.poste.rawValue, j, e) {
             e.dossiers.append(PolDossierEnAttente(dossierId: d.id, ageArrivee: j.age))
             l.append("🚨 Crise : « \(d.title) ». Le pays attend ta réaction (onglet Politique).")

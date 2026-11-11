@@ -31,6 +31,7 @@ enum PolMoteur {
 
         // Pays : un déménagement remet la carrière à zéro
         verifierPays(&j, &e, &l)
+        memoriserTableauDeBord(&e)
 
         // Lois en vigueur
         appliquerLoisAnnuelles(&j, &e, &l)
@@ -105,6 +106,10 @@ enum PolMoteur {
 
         // Pays, électorat, rivaux, parti, équipe, gouvernement
         anneeProfonde(&j, &e, &l)
+
+        // Décrets en vigueur, scène internationale
+        anneeDecrets(&j, &e, &l)
+        anneeInternationale(&j, &e, &l)
 
         // Justice
         justice(&j, &e, &l)
@@ -962,7 +967,7 @@ enum PolMoteur {
     static func tirerDossier(kind: String, poste: String, _ j: Joueur, _ e: PolEtat) -> PolDossier? {
         let ministere = e.mandat?.ministereId
         let candidats = PolCatalogue.dossiers.filter { d in
-            guard d.kind == kind, d.postes.contains(poste) || d.postes.contains("any") else { return false }
+            guard d.kind == kind, d.enchaine != true, d.postes.contains(poste) || d.postes.contains("any") else { return false }
             if d.unique == true && e.dossiersVus.contains(d.id) { return false }
             if let m = d.ministere, poste == PolPoste.ministre.rawValue, m != ministere { return false }
             return autoriseDansPays(d.pays, e)
@@ -992,6 +997,9 @@ enum PolMoteur {
                 p.campagne = c + Double(plume.competence) / 40
             }
             appliquerPol(p, &j, &e)
+        }
+        if let s = issue.suite, PolCatalogue.dossier(s) != nil, !e.dossiers.contains(where: { $0.dossierId == s }) {
+            e.dossiers.append(PolDossierEnAttente(dossierId: s, ageArrivee: j.age))
         }
         e.borner()
         j.stats.borner()
@@ -1026,6 +1034,7 @@ enum PolMoteur {
         }
         if let id = p.abroger { e.loisActives.removeAll { $0 == id } }
         appliquerPolProfond(p, &e)
+        appliquerInternational(p, &j, &e)
         if p.exclusionParti == true, e.partiId != nil {
             e.partiId = nil
             e.influence -= 5
@@ -1104,6 +1113,8 @@ enum PolMoteur {
         if e.mandat?.poste.gouverne == true { t.insert("pol_gouverne") }
         if e.mandat == nil && e.rangMax >= 2 { t.insert("pol_ancien") }
         for id in e.loisActives { if let tag = PolCatalogue.loi(id)?.tag { t.insert(tag) } }
+        for a in e.decrets { if let tag = PolCatalogue.decret(a.id)?.tag { t.insert(tag) } }
+        if e.international.conflit != nil { t.insert("pol_guerre") }
         return t
     }
 
@@ -1116,22 +1127,33 @@ enum PolMoteur {
 
     /// Multiplicateurs de prix des lois en vigueur (à passer en `extra:` au Journal du monde).
     static func facteursPrix(_ e: PolEtat?) -> [[String: Double]] {
-        (e?.loisActives ?? []).compactMap { PolCatalogue.loi($0)?.prix }
+        let lois: [[String: Double]] = (e?.loisActives ?? []).compactMap { PolCatalogue.loi($0)?.prix }
+        let decrets: [[String: Double]] = (e?.decrets ?? []).compactMap { PolCatalogue.decret($0.id)?.prix }
+        return lois + decrets
     }
 
     /// Multiplicateurs de salaires des lois en vigueur (à passer en `extra:` au Journal du monde).
     static func facteursSalaires(_ e: PolEtat?) -> [[String: Double]] {
-        (e?.loisActives ?? []).compactMap { PolCatalogue.loi($0)?.salaires }
+        let lois: [[String: Double]] = (e?.loisActives ?? []).compactMap { PolCatalogue.loi($0)?.salaires }
+        let decrets: [[String: Double]] = (e?.decrets ?? []).compactMap { PolCatalogue.decret($0.id)?.salaires }
+        return lois + decrets
     }
 
     /// Produit des multiplicateurs d'une règle (prison, amendes, retraite, mortalite…). 1 si aucune loi.
     static func regle(_ cle: String, _ e: PolEtat?) -> Double {
-        (e?.loisActives ?? []).compactMap { PolCatalogue.loi($0)?.regles?[cle] }.reduce(1, *)
+        reglesEnVigueur(cle, e).reduce(1, *)
     }
 
     /// Somme d'une règle additive (ageRetraite, elections, popularite, impots, mandatsIllimites). 0 si aucune loi.
     static func regleSomme(_ cle: String, _ e: PolEtat?) -> Double {
-        (e?.loisActives ?? []).compactMap { PolCatalogue.loi($0)?.regles?[cle] }.reduce(0, +)
+        reglesEnVigueur(cle, e).reduce(0, +)
+    }
+
+    /// Valeurs d'une règle dans les lois et les décrets en vigueur.
+    static func reglesEnVigueur(_ cle: String, _ e: PolEtat?) -> [Double] {
+        let lois: [Double] = (e?.loisActives ?? []).compactMap { PolCatalogue.loi($0)?.regles?[cle] }
+        let decrets: [Double] = (e?.decrets ?? []).compactMap { PolCatalogue.decret($0.id)?.regles?[cle] }
+        return lois + decrets
     }
 
     /// Une ligne pour la nécrologie, ou nil sans carrière politique.
@@ -1210,6 +1232,7 @@ enum PolMoteur {
         t = t.replacingOccurrences(of: "{rival}", with: e?.rivalPrincipal?.nomComplet ?? "ton vieux rival")
         t = t.replacingOccurrences(of: "{pm}", with: e?.premierMinistrePNJ?.nomComplet ?? "le Premier ministre")
         t = t.replacingOccurrences(of: "{e}", with: j.genre == .femme ? "e" : "")
+        if let e = e, t.contains("_cible}") || t.contains("_allie}") { t = remplirDiplomatie(t, e) }
         if t.contains("{") { t = remplirInstitutions(t, systeme(j)) }
         return t
     }

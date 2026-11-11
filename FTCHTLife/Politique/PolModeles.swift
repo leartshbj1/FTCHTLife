@@ -419,6 +419,13 @@ struct PolEtat: Codable, Equatable {
     var soiree: PolSoiree?
     /// Pays dont le système politique s'applique (id du module étranger). Change → la carrière repart de zéro.
     var paysId: String?
+    /// Décrets en vigueur.
+    var decrets: [PolDecretActif] = []
+    /// Relations internationales, traités, sanctions, conflit.
+    var international = PolInternational()
+    /// État du pays et popularité un an plus tôt (tendances du tableau de bord).
+    var paysPrecedent: PolPays?
+    var popularitePrecedente: Int?
 
     init() {}
 
@@ -466,6 +473,10 @@ struct PolEtat: Codable, Equatable {
         fondation = try c.decodeIfPresent(Bool.self, forKey: .fondation) ?? false
         soiree = try c.decodeIfPresent(PolSoiree.self, forKey: .soiree)
         paysId = try c.decodeIfPresent(String.self, forKey: .paysId)
+        decrets = try c.decodeIfPresent([PolDecretActif].self, forKey: .decrets) ?? []
+        international = try c.decodeIfPresent(PolInternational.self, forKey: .international) ?? PolInternational()
+        paysPrecedent = try c.decodeIfPresent(PolPays.self, forKey: .paysPrecedent)
+        popularitePrecedente = try c.decodeIfPresent(Int.self, forKey: .popularitePrecedente)
     }
 
     mutating func borner() {
@@ -480,6 +491,7 @@ struct PolEtat: Codable, Equatable {
         for k in segments.keys { segments[k] = Stats.borne(segments[k] ?? 40) }
         for i in rivaux.indices { rivaux[i].rancune = Stats.borne(rivaux[i].rancune) }
         pays.borner()
+        international.borner()
     }
 
     /// A déjà occupé (ou occupe) ce poste.
@@ -569,6 +581,19 @@ struct PolEffets: Codable, Equatable {
     var majorite: Int?
     /// Rancune du rival principal.
     var rival: Int?
+    // Scène internationale (PolSommet.swift)
+    /// Tension internationale.
+    var tension: Int?
+    /// Poids du pays sur la scène mondiale.
+    var influenceMondiale: Int?
+    /// Relation avec le pays le moins ami (ou celui du conflit en cours).
+    var relationCible: Int?
+    /// Relation avec le meilleur allié.
+    var relationAllie: Int?
+    /// Relation avec tous les pays.
+    var relations: Int?
+    /// 1 : un conflit armé éclate avec le pays cible ; -1 : cessez-le-feu.
+    var conflit: Int?
 }
 
 struct PolIssue: Codable, Equatable {
@@ -577,6 +602,8 @@ struct PolIssue: Codable, Equatable {
     /// Effets classiques sur le joueur (format des événements du moteur).
     var effects: Effets?
     var pol: PolEffets?
+    /// Dossier qui s'ouvre juste après (étape suivante d'une crise).
+    var suite: String?
 }
 
 struct PolChoix: Codable, Equatable {
@@ -602,6 +629,8 @@ struct PolDossier: Codable, Identifiable, Equatable {
     var choices: [PolChoix]
     /// Pays où ce dossier peut sortir (absent = partout).
     var pays: [String]?
+    /// Étape d'une suite : ne sort jamais au hasard, seulement après un autre dossier.
+    var enchaine: Bool?
 }
 
 /// Loi, arrêté ou décret (Data/Politique/Lois/*.json).
