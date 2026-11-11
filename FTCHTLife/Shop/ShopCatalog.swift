@@ -40,7 +40,7 @@ final class ShopCatalog: @unchecked Sendable {
         tripsById = Dictionary(trips.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
     }
 
-    private static func jsonURLs(in bundle: Bundle) -> [URL] {
+    static func jsonURLs(in bundle: Bundle) -> [URL] {
         // Emplacement normal : Data/Shop copié tel quel dans l'app (voir docs/ARCHITECTURE.md).
         if let base = DonneesJSON.dossierData?.appendingPathComponent("Shop", isDirectory: true),
            let files = try? FileManager.default.contentsOfDirectory(at: base, includingPropertiesForKeys: nil) {

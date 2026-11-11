@@ -467,6 +467,9 @@ enum ShopEngine {
             report.lines.append("La banque a saisi \(name) et l'a vendu aux enchères. Un huissier a même pris ta plante verte.")
         }
 
+        // Vie de luxe : société secrète, mondanité qui retombe…
+        report.lines += LuxeMoteur.passageAnnee(&p)
+
         // Événements
         report.events = rollEvents(p, max: maxEvents, using: &rng)
         p.boutique.pendingEvents = Array((p.boutique.pendingEvents + report.events).suffix(4))
@@ -533,6 +536,7 @@ enum ShopEngine {
         }
         applyStats(happiness: e.happiness ?? 0, health: e.health ?? 0, looks: e.looks ?? 0,
                    smarts: e.smarts ?? 0, karma: e.karma ?? 0, &p)
+        if let f = e.fame, f != 0 { p.mondanite += f }
         guard let id = itemId, let idx = p.boutique.items.firstIndex(where: { $0.id == id }) else { return nil }
         if let c = e.condition { p.boutique.items[idx].condition = clamp(p.boutique.items[idx].condition + c) }
         if let v = e.valuePct {

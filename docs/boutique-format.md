@@ -153,3 +153,27 @@ Tout le code est dans `FTCHTLife/Shop/`. Le seul changement hors de ce dossier e
 ## 6. Vérifier les données
 
 `python3 scripts/validate_shop.py` vérifie champs, catégories, ids uniques et effets.
+
+## 7. Vie de luxe : `catalog_prestige.json` et `luxe_*.json`
+
+Code : `Shop/LuxeModeles.swift` (données, émojis), `Shop/LuxeMoteur.swift` (règles), `Shop/LuxeVues.swift` (écrans).
+L'écran racine `ShopView` est une liste à gros émojis (bandeau du perso, groupes « Chez toi », « Luxe et prestige »,
+« Art de vivre », « Voyages », « Magasins »). Rien à brancher en plus : tout passe par `ShopView()` et `passageAnneeBoutique`.
+
+- **Émoji d'un bien** : champ facultatif `"emoji"` dans un `catalog_*.json`. Sans lui, `LuxeEmoji.pour(item)` le déduit
+  de la catégorie et de la sous-catégorie (🏎️ supercar, 🛥️ yacht, 🚁 hélicoptère, 💍 bague…).
+- **`catalog_prestige.json`** : biens haut de gamme (tag `prestige`) vendus par les maisons.
+- **`luxe_maisons.json`** : concessions (`type` = `auto`, `bateau`, `avion`) et joailliers (`joaillier`).
+  Une maison expose les biens dont la marque est dans `brands`, ou dont la catégorie est dans `categories`,
+  la sous-catégorie dans `subcategories` (vide = toutes) et le prix ≥ `minPrice`.
+  `minPatrimoine` / `minMondanite` : accès sur rendez-vous (cadenas sinon).
+- **`luxe_services.json`** : soins de spa (`spa`) et soirées VIP (`vip`), une fois par an chacun.
+  `effects` toujours appliqués, puis un `outcomes` tiré au hasard. Prix × `ShopHooks.priceMultiplier("luxe")`.
+- **`luxe_oeuvres.json`** : œuvres de charité. Don au choix (50 € à 500 M€, ou 10 % de l'argent), anonyme ou public.
+  Karma et bonheur une fois par œuvre et par an ; un gros don public monte la mondanité ; à 1 M€ cumulé, `hommage`.
+- **`luxe_societes.json`** : sociétés secrètes. Cooptation (une demande par an, droit d'entrée, conditions de patrimoine
+  et de mondanité), cotisation annuelle (radiation si impayée), grades (`rangs` : `cout`, `anneesMin`, `reseau` = gain moyen
+  du réseau une année sur deux), réunion annuelle avec un `rituels` à choix, promotion, départ, trahison.
+- **Effet `fame`** (nouveau, dans tous les `effects`) : change `ShopActor.mondanite` (0 à 100), qui retombe un peu chaque année.
+  Par défaut gardée dans `Possessions.luxe`. Un module « célébrité » peut implémenter `var mondanite: Int { get set }`
+  sur `Joueur` pour la brancher sur sa propre jauge, sans rien changer d'autre.
