@@ -1,0 +1,4668 @@
+[
+  {
+    "id": "rep_etb_0001",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 10,
+    "conditions": {
+      "flags": [
+        "menteur_notoire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Depuis que tout le monde sait que tu mens, même ta vraie date d'anniversaire est accueillie avec des guillemets.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0002",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "menteur_notoire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta réputation de mythomane te précède : ton banquier exige une preuve écrite quand tu dis « bonjour ». Ton prêt attendra.",
+    "effects": {
+      "happiness": -2,
+      "money": -200
+    }
+  },
+  {
+    "id": "rep_etb_0003",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "menteur_notoire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu as dit la vérité cette année. Une fois. Personne ne t'a cru{e}, et tu as trouvé ça profondément injuste.",
+    "effects": {
+      "happiness": -2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_etb_0004",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "menteur_notoire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "menteur_notoire": 4
+      }
+    },
+    "text": "Une association propose un stage « Dire vrai en douze étapes ». Ta réputation de menteur arrive avant toi dans la salle.",
+    "choices": [
+      {
+        "label": "T'inscrire pour de vrai",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Douze étapes, douze semaines. À la fin, tu dis « je ne sais pas » sans transpirer. Ta réputation se répare doucement.",
+            "effects": {
+              "karma": 4,
+              "happiness": 3,
+              "clearFlags": [
+                "menteur_notoire"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu mens sur ta présence aux séances. Tu as validé le stage sans y aller. C'est presque un talent.",
+            "effects": {
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prétendre l'avoir déjà fait",
+        "outcomes": [
+          {
+            "text": "Ils te remettent un diplôme d'honneur. Personne n'est dupe, à part l'association.",
+            "effects": {
+              "karma": -2,
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0005",
+    "on": "chaque_annee",
+    "chance": 0.05,
+    "conditions": {
+      "flags": [
+        "menteur_notoire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "menteur_notoire": 8
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "setFlags": [
+      "anxieux"
+    ],
+    "text": "Tes mensonges se sont tellement empilés que tu ne sais plus toi-même dans quelle ville tu es né{e}. Un psy te facture chaque séance deux fois, « pour vérifier ».",
+    "effects": {
+      "smarts": -3,
+      "happiness": -4,
+      "money": -300
+    }
+  },
+  {
+    "id": "rep_etb_0006",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 8,
+    "conditions": {
+      "flags": [
+        "rapporteur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Depuis ton histoire de mouchardage, on se tait quand tu entres dans une pièce. Tu as l'impression d'être une réunion.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0007",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "rapporteur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "Au travail, ta réputation de balance t'a suivi{e}. Tes collègues ont créé un groupe de discussion dont tu es le sujet principal.",
+    "effects": {
+      "happiness": -3,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_etb_0008",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "rapporteur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "rapporteur": 1
+      },
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "Ton chef demande qui a mangé les yaourts du frigo commun. Tout le bureau se tourne lentement vers toi.",
+    "choices": [
+      {
+        "label": "Balancer le coupable",
+        "outcomes": [
+          {
+            "text": "Tu donnes le nom. Le chef te remercie, la machine à café ne te parle plus.",
+            "effects": {
+              "money": 150,
+              "happiness": -4,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te taire, pour une fois",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu ne dis rien. Un collègue te pose une main sur l'épaule. Ta réputation se fissure, dans le bon sens.",
+            "effects": {
+              "karma": 3,
+              "happiness": 3,
+              "clearFlags": [
+                "rapporteur"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu te tais, mais ton sourcil a parlé pour toi. Tout le monde a compris qui c'était.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0009",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "rapporteur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "rapporteur": 5
+      }
+    },
+    "clearFlags": [
+      "rapporteur"
+    ],
+    "text": "Plus personne ne se souvient vraiment de qui tu avais dénoncé, ni pourquoi. Le temps a fait ce que les excuses n'avaient jamais réussi.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0010",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "maxAge": 17,
+    "conditions": {
+      "flags": [
+        "populaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta popularité ne faiblit pas : à la cantine, on te garde une place, et parfois un dessert.",
+    "effects": {
+      "happiness": 4,
+      "looks": 1
+    }
+  },
+  {
+    "id": "rep_etb_0011",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "populaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Toujours aussi populaire : tu as été invité{e} à trois mariages cette année, dont un chez des gens que tu ne connais pas.",
+    "effects": {
+      "happiness": 4,
+      "money": -200
+    }
+  },
+  {
+    "id": "rep_etb_0012",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 13,
+    "conditions": {
+      "flags": [
+        "populaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ton téléphone vibre sans arrêt : tout le monde veut ton avis, ton numéro, ta présence. Ta batterie et ton sommeil fatiguent.",
+    "effects": {
+      "happiness": 2,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_etb_0013",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "minAge": 20,
+    "conditions": {
+      "flags": [
+        "populaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "populaire": 6
+      }
+    },
+    "clearFlags": [
+      "populaire"
+    ],
+    "text": "Ta popularité s'est évaporée sans prévenir : tes admirateurs ont maintenant des enfants, des crédits et un nouveau favori. Tu redeviens quelqu'un de normal.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0014",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "maxAge": 18,
+    "conditions": {
+      "flags": [
+        "harcele"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Encore une année difficile : ceux qui s'acharnent sur toi ont trouvé de nouveaux surnoms. Ils manquent de cœur, pas d'imagination.",
+    "effects": {
+      "happiness": -5,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_etb_0015",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 19,
+    "conditions": {
+      "flags": [
+        "harcele"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu changes de trottoir, de trajet et parfois d'avis pour éviter ceux qui te harcèlent. Ça use, à force.",
+    "effects": {
+      "happiness": -3,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_etb_0016",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "maxAge": 18,
+    "conditions": {
+      "flags": [
+        "harcele"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "harcele": 1
+      }
+    },
+    "text": "Un adulte remarque enfin que quelque chose ne va pas. Il te demande, doucement, si tout va bien.",
+    "choices": [
+      {
+        "label": "Tout raconter",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Tu racontes tout. Ça bouge enfin : convocations, excuses forcées, et un poids énorme qui tombe de tes épaules.",
+            "effects": {
+              "happiness": 8,
+              "clearFlags": [
+                "harcele"
+              ]
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Tu racontes tout. On te répond « ignore-les ». Merci pour ce conseil révolutionnaire.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que ça va",
+        "outcomes": [
+          {
+            "text": "« Ça va. » Ce n'est pas vrai, et tu le sais très bien.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0017",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 19,
+    "conditions": {
+      "flags": [
+        "harcele"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "harcele": 2
+      }
+    },
+    "clearFlags": [
+      "harcele"
+    ],
+    "text": "Changer de ville, de boulot ou d'entourage a suffi : plus personne ne te harcèle. Tu respires mieux que depuis des années.",
+    "effects": {
+      "happiness": 6,
+      "health": 1
+    }
+  },
+  {
+    "id": "rep_etb_0018",
+    "on": "chaque_annee",
+    "chance": 0.07,
+    "conditions": {
+      "flags": [
+        "harcele"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "harcele": 3
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "anxieux",
+      "complexe"
+    ],
+    "text": "Des années de harcèlement ont laissé des traces : tu sursautes quand ton téléphone vibre et tu détestes les photos de groupe.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0019",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "celebre_localement"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu es toujours la célébrité de {ville}. Le boulanger te met de côté la baguette la plus droite. C'est ça, la gloire.",
+    "effects": {
+      "happiness": 3,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_etb_0020",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "celebre_localement"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Être connu{e} à {ville} a un prix : impossible d'acheter du papier toilette sans qu'on commente la marque.",
+    "effects": {
+      "happiness": -2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_etb_0021",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "celebre_localement"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "On t'invite à inaugurer un rond-point. Tu coupes le ruban avec émotion. Le rond-point, lui, reste de marbre.",
+    "effects": {
+      "happiness": 2,
+      "money": 100,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_etb_0022",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "celebre_localement"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "celebre_localement": 5
+      }
+    },
+    "clearFlags": [
+      "celebre_localement"
+    ],
+    "text": "Une nouvelle célébrité est apparue à {ville} : un chat qui sait ouvrir les portes. La ville t'a oublié{e} en une semaine.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0023",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "honte_publique"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "On te reconnaît encore pour « l'incident ». Une inconnue te montre du doigt à son enfant, comme on montre un monument.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0024",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "honte_publique"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "La vidéo de ta honte circule toujours. Un recruteur t'a dit « on vous rappellera » avant même que tu t'assoies.",
+    "effects": {
+      "happiness": -2,
+      "money": -300
+    }
+  },
+  {
+    "id": "rep_etb_0025",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 16,
+    "conditions": {
+      "flags": [
+        "honte_publique"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "honte_publique": 1
+      }
+    },
+    "text": "Une émission de télé te propose de revenir sur ta honte publique, en direct, avec des violons.",
+    "choices": [
+      {
+        "label": "Accepter et en rire",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu ris de toi avant tout le monde. Le public t'adore, et l'incident devient une simple anecdote.",
+            "effects": {
+              "happiness": 5,
+              "fame": 3,
+              "clearFlags": [
+                "honte_publique"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu fais pire en direct. Tu as maintenant deux incidents.",
+            "effects": {
+              "happiness": -5,
+              "fame": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "text": "Tu refuses. L'émission diffuse quand même l'extrait, avec les violons.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0026",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "honte_publique"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "honte_publique": 2
+      }
+    },
+    "clearFlags": [
+      "honte_publique"
+    ],
+    "text": "Internet a trouvé quelqu'un d'autre à humilier. Ta honte publique est officiellement passée de mode.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_etb_0027",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "heros_local"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Depuis ton acte de bravoure, on te salue dans la rue et on t'offre des cafés. Ton cœur va bien, ton estomac un peu moins.",
+    "effects": {
+      "happiness": 4,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_etb_0028",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "heros_local"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "À chaque souci dans le quartier, on vient te chercher : chat dans un arbre, bocal de cornichons coincé, crise existentielle. Tu es devenu{e} un service public.",
+    "effects": {
+      "happiness": 2,
+      "karma": 2,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_etb_0029",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "heros_local"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "On attend de toi un exploit par an. Cette année, tu as seulement aidé une dame à porter ses courses. Déception générale.",
+    "effects": {
+      "happiness": -2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_etb_0030",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "heros_local"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "heros_local": 6
+      }
+    },
+    "clearFlags": [
+      "heros_local"
+    ],
+    "text": "La plaque qui racontait ton acte de bravoure a été remplacée par une publicité pour une mutuelle. La gloire est un CDD.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0031",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "casier_judiciaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton casier judiciaire refait surface à chaque entretien d'embauche. Le recruteur a surligné une ligne au fluo, puis toute la page.",
+    "effects": {
+      "money": -400,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0032",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "casier_judiciaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton casier te suit partout : même le club de pétanque a exigé un extrait avant de t'accepter.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0033",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "casier_judiciaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "casier_judiciaire": 10
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton avocat t'apprend qu'après tout ce temps, tu peux demander l'effacement de ton casier. Il faut remplir un formulaire de 38 pages.",
+    "choices": [
+      {
+        "label": "Remplir les 38 pages",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Dossier accepté. Ton casier est blanc comme neige, ou comme une feuille d'impôts avant le premier salaire.",
+            "effects": {
+              "happiness": 6,
+              "money": -300,
+              "clearFlags": [
+                "casier_judiciaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Refusé pour une case mal cochée. Rendez-vous dans quelques années.",
+            "effects": {
+              "happiness": -3,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser tomber",
+        "outcomes": [
+          {
+            "text": "Tu gardes ton casier. Il fait partie de toi, comme un vieux tatouage que tu n'aurais pas choisi.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0034",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "endette"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tes dettes te suivent comme un chien fidèle. Sauf qu'un chien ne te facture pas 19 % d'intérêts.",
+    "effects": {
+      "money": -600,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0035",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "endette"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Un huissier est passé dire bonjour. Il est reparti avec ta télé et un compliment sur ta déco.",
+    "effects": {
+      "money": -400,
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0036",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "endette"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu dors mal à cause de tes dettes : tu rêves de relevés bancaires qui te poursuivent dans un couloir sans fin.",
+    "effects": {
+      "health": -2,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0037",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "endette"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "endette": 2
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta banque te propose un plan de remboursement : trois ans de pâtes sans sauce, mais la liberté au bout.",
+    "choices": [
+      {
+        "label": "Signer le plan",
+        "outcomes": [
+          {
+            "chance": 0.75,
+            "text": "Tu tiens bon. Un matin, ton compte affiche zéro. Pas moins : zéro. Tu pleures de joie devant le distributeur.",
+            "effects": {
+              "money": -1000,
+              "happiness": 8,
+              "health": -1,
+              "clearFlags": [
+                "endette"
+              ],
+              "setFlags": [
+                "econome"
+              ]
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Tu craques au bout de six mois pour un barbecue géant. Retour à la case dettes, avec des merguez.",
+            "effects": {
+              "money": -500,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre que ça passe",
+        "outcomes": [
+          {
+            "chance": 0.2,
+            "text": "Miracle : un vieux cousin efface ta dette par pure culpabilité familiale. Tu ne sauras jamais ce qu'il a fait.",
+            "effects": {
+              "happiness": 5,
+              "clearFlags": [
+                "endette"
+              ]
+            }
+          },
+          {
+            "chance": 0.8,
+            "text": "Ça ne passe pas. Ça grossit, et ça a désormais un dossier à ton nom.",
+            "effects": {
+              "money": -800,
+              "happiness": -3,
+              "setFlags": [
+                "surendette"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0038",
+    "on": "chaque_annee",
+    "chance": 0.07,
+    "conditions": {
+      "flags": [
+        "endette"
+      ],
+      "excludeFlags": [
+        "surendette",
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "endette": 5
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "setFlags": [
+      "surendette"
+    ],
+    "text": "Tes dettes ont fait des petits. Ta banque ne t'appelle plus par ton nom, mais par ton numéro de dossier.",
+    "effects": {
+      "happiness": -5
+    }
+  },
+  {
+    "id": "rep_etb_0039",
+    "on": "chaque_annee",
+    "chance": 0.45,
+    "conditions": {
+      "flags": [
+        "surendette"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Surendetté{e} : ton dossier est si épais que la commission s'en sert pour caler une table. Toi, tu cales tes repas.",
+    "effects": {
+      "money": -500,
+      "happiness": -5,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_etb_0040",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "surendette"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "surendette": 2
+      }
+    },
+    "clearFlags": [
+      "surendette"
+    ],
+    "text": "La commission de surendettement efface une partie de tes dettes. Il ne te reste que des dettes « normales », ce qui ressemble presque à des vacances.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_etb_0041",
+    "on": "chaque_annee",
+    "chance": 1,
+    "conditions": {
+      "flags": [
+        "surendette"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "surendette": 6
+      }
+    },
+    "clearFlags": [
+      "surendette"
+    ]
+  },
+  {
+    "id": "rep_etb_0042",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "econome"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton sens de l'économie a encore frappé : tu as réutilisé le même sachet de thé onze fois. Ton compte te remercie, ton thé beaucoup moins.",
+    "effects": {
+      "money": 400,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_etb_0043",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "econome"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu épargnes avec une telle discipline que ton banquier t'a envoyé une carte de vœux manuscrite. Tes amis attendent toujours que tu paies une tournée.",
+    "effects": {
+      "money": 600,
+      "relationships": {
+        "friend": -2
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0044",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "econome"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "econome": 4
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tes amis te traînent dans un restaurant étoilé. L'addition arrive sur un petit plateau en argent.",
+    "choices": [
+      {
+        "label": "Payer ta part sans ciller",
+        "outcomes": [
+          {
+            "text": "Tu paies. Quelque chose se décoince en toi : tu découvres le plaisir de dépenser sans calculer.",
+            "effects": {
+              "money": -400,
+              "happiness": 5,
+              "clearFlags": [
+                "econome"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Calculer ce que tu as mangé à la miette près",
+        "outcomes": [
+          {
+            "text": "Tu sors la calculatrice. Tu as économisé 3,40 €. Tes amis ont économisé ta prochaine invitation.",
+            "effects": {
+              "happiness": -1,
+              "relationships": {
+                "friend": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0045",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "panier_perce"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton argent s'évapore toujours aussi vite : cette année, un appareil à raclette pour une personne et trois abonnements que tu n'utilises pas.",
+    "effects": {
+      "money": -800,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0046",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "panier_perce"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Le livreur connaît le prénom de ton chat. Tu n'as pas de chat : il connaît juste trop bien ta porte.",
+    "effects": {
+      "money": -600,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_etb_0047",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "panier_perce"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Fin de mois difficile, encore. Tu manges des pâtes en regardant les colis de la semaine dernière, toujours pas ouverts.",
+    "effects": {
+      "happiness": -3,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_etb_0048",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "panier_perce"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "panier_perce": 2
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton relevé bancaire ressemble à une scène de crime. Une appli de budget te propose son aide, avec un petit cochon qui pleure.",
+    "choices": [
+      {
+        "label": "Installer l'appli",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le cochon arrête de pleurer. Toi, tu fais tes comptes le dimanche. Qui l'eût cru ?",
+            "effects": {
+              "money": 300,
+              "happiness": 2,
+              "clearFlags": [
+                "panier_perce"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu achètes la version premium de l'appli. Le cochon pleure plus fort.",
+            "effects": {
+              "money": -50,
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer la notification",
+        "outcomes": [
+          {
+            "text": "Tu supprimes la notification, puis tu commandes un nouveau téléphone pour fêter ça.",
+            "effects": {
+              "money": -700,
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0049",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "panier_perce"
+      ],
+      "excludeFlags": [
+        "endette",
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "panier_perce": 4
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "setFlags": [
+      "endette"
+    ],
+    "text": "À force de dépenser sans compter, ton découvert est devenu une vraie dette, avec des intérêts et une personnalité.",
+    "effects": {
+      "money": -500,
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0050",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu dois toujours de l'argent à Tonton Gégé. Ses intérêts ont leurs propres intérêts, et un neveu pour les encaisser.",
+    "effects": {
+      "money": -800,
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0051",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Une voiture noire stationne devant chez toi depuis trois jours. Tu ne dors plus, tu surveilles le rideau.",
+    "effects": {
+      "health": -3,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0052",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "dette_louche": 1
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tonton Gégé te propose d'effacer ta dette contre un « petit service » : livrer un colis sans poser de questions.",
+    "choices": [
+      {
+        "label": "Livrer le colis",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le colis contenait des cannelés. Dette effacée. Tu ne sauras jamais pourquoi c'était si secret.",
+            "effects": {
+              "happiness": 4,
+              "karma": -2,
+              "clearFlags": [
+                "dette_louche"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Contrôle de police en route. Le colis ne contenait pas des cannelés.",
+            "effects": {
+              "happiness": -6,
+              "money": -1000,
+              "clearFlags": [
+                "dette_louche"
+              ],
+              "setFlags": [
+                "casier_judiciaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Gégé respecte ton refus. Il triple juste ta dette, par respect.",
+            "effects": {
+              "money": -1500,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ses neveux passent « discuter ». Tu as perdu une dent, mais gagné du temps.",
+            "effects": {
+              "health": -6,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0053",
+    "on": "chaque_annee",
+    "chance": 0.03,
+    "conditions": {
+      "flags": [
+        "dette_louche"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "dette_louche": 4
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "text": "Tonton Gégé a perdu patience, et ses neveux ont perdu leur sens de l'humour.",
+    "effects": {
+      "death": "dans un « accident de pêche » organisé par les neveux de Tonton Gégé, toi qui détestais la pêche"
+    }
+  },
+  {
+    "id": "rep_etb_0054",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "proprietaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Être propriétaire, c'est le bonheur : cette année, la chaudière, la toiture et la fosse septique se sont mises d'accord pour lâcher ensemble.",
+    "effects": {
+      "money": -1500,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0055",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "proprietaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Avis de taxe foncière reçu. Tu relis le montant trois fois, puis tu caresses un mur pour te rappeler pourquoi.",
+    "effects": {
+      "money": -1000,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_etb_0056",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "proprietaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu es chez toi, vraiment chez toi : tu as peint un mur en vert pistache sans demander la permission à personne.",
+    "effects": {
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_etb_0057",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "minAge": 7,
+    "conditions": {
+      "flags": [
+        "lecteur_assidu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu as encore dévoré une pile de livres cette année. Tu sais désormais des choses inutiles sur les phares bretons, et c'est merveilleux.",
+    "effects": {
+      "smarts": 3,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0058",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 10,
+    "conditions": {
+      "flags": [
+        "lecteur_assidu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu lis le soir, « encore un chapitre ». Il est 4 h. Ton cerveau a pris des muscles, tes cernes aussi.",
+    "effects": {
+      "smarts": 2,
+      "health": -1,
+      "looks": -1
+    }
+  },
+  {
+    "id": "rep_etb_0059",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "lecteur_assidu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta bibliothèque déborde : les livres ont colonisé le four, ce qui limite un peu la cuisine.",
+    "effects": {
+      "smarts": 2,
+      "money": -150
+    }
+  },
+  {
+    "id": "rep_etb_0060",
+    "on": "chaque_annee",
+    "chance": 0.12,
+    "minAge": 13,
+    "conditions": {
+      "flags": [
+        "lecteur_assidu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "lecteur_assidu": 5
+      }
+    },
+    "setFlags": [
+      "accro_aux_ecrans"
+    ],
+    "clearFlags": [
+      "lecteur_assidu"
+    ],
+    "text": "Tu n'as fini aucun livre cette année : ton téléphone t'a avalé{e}. Ta pile à lire te regarde avec reproche.",
+    "effects": {
+      "smarts": -1
+    }
+  },
+  {
+    "id": "rep_etb_0061",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "autodidacte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu as appris seul{e} la plomberie grâce à des vidéos. Ton évier fuit moins, ta fierté déborde.",
+    "effects": {
+      "smarts": 3,
+      "money": 200
+    }
+  },
+  {
+    "id": "rep_etb_0062",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "autodidacte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Cette année, tu t'es mis{e} à l'astronomie, au tricot et au droit fiscal. Personne ne t'a rien demandé, tu sais tout.",
+    "effects": {
+      "smarts": 3,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_etb_0063",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "autodidacte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu as corrigé un expert en public avec ce que tu avais appris sur internet. Tu avais tort. Il a été très poli.",
+    "effects": {
+      "smarts": 1,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0064",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "autodidacte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "autodidacte": 8
+      }
+    },
+    "clearFlags": [
+      "autodidacte"
+    ],
+    "text": "Tu as arrêté d'apprendre par toi-même : les tutoriels t'ennuient et ton canapé est trop confortable.",
+    "effects": {
+      "smarts": -1
+    }
+  },
+  {
+    "id": "rep_etb_0065",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 10,
+    "conditions": {
+      "flags": [
+        "polyglotte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu entretiens tes langues : cette nuit, tu as rêvé en trois langues, et dans les trois tu étais en retard.",
+    "effects": {
+      "smarts": 2,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0066",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "polyglotte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu as servi d'interprète à un touriste perdu à {ville}. Il t'a payé{e} en chocolats et en gratitude internationale.",
+    "effects": {
+      "karma": 2,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0067",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "polyglotte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "Ton patron a découvert que tu parles plusieurs langues. Tu as maintenant une prime, et tous les appels difficiles.",
+    "effects": {
+      "money": 800,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_etb_0068",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "polyglotte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "polyglotte": 10
+      }
+    },
+    "clearFlags": [
+      "polyglotte"
+    ],
+    "text": "Faute de pratique, tes langues s'évaporent : tu as dit « merci » en allemand à un Italien, puis tu t'es excusé{e} dans aucune langue connue.",
+    "effects": {
+      "smarts": -2
+    }
+  },
+  {
+    "id": "rep_etb_0069",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "minAge": 6,
+    "conditions": {
+      "flags": [
+        "curieux"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta curiosité t'a encore emmené{e} loin : une nuit entière à lire sur les poulpes. Tu as maintenant un avis tranché sur les poulpes.",
+    "effects": {
+      "smarts": 2,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0070",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 6,
+    "conditions": {
+      "flags": [
+        "curieux"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta curiosité a un coût : tu as goûté une baie inconnue « pour voir ». Tu as vu. Tu as surtout vu les toilettes.",
+    "effects": {
+      "health": -3,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_etb_0071",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "curieux"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu as posé tant de questions au garagiste qu'il t'a appris à changer une courroie, juste pour que tu te taises.",
+    "effects": {
+      "smarts": 2,
+      "money": 150
+    }
+  },
+  {
+    "id": "rep_etb_0072",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "minAge": 40,
+    "conditions": {
+      "flags": [
+        "curieux"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "curieux": 10
+      }
+    },
+    "clearFlags": [
+      "curieux"
+    ],
+    "text": "Avec l'âge, ta curiosité s'est assoupie. Tu ne demandes plus « pourquoi », tu demandes « combien ».",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0073",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "minAge": 13,
+    "conditions": {
+      "flags": [
+        "soigne_son_apparence"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta routine du matin dure 47 minutes. Le résultat est impeccable, ton retard au travail aussi.",
+    "effects": {
+      "looks": 3,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_etb_0074",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "soigne_son_apparence"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Crèmes, coiffeur, chemises repassées : tu es toujours tiré{e} à quatre épingles. Ton compte en banque, lui, est tiré à découvert.",
+    "effects": {
+      "looks": 3,
+      "money": -500
+    }
+  },
+  {
+    "id": "rep_etb_0075",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 30,
+    "conditions": {
+      "flags": [
+        "soigne_son_apparence"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "On t'a demandé ton âge et on t'a donné dix ans de moins. Tu as souri si fort que tu t'es fait une ride.",
+    "effects": {
+      "looks": 2,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0076",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "soigne_son_apparence"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "soigne_son_apparence": 5
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "clearFlags": [
+      "soigne_son_apparence"
+    ],
+    "text": "Tu t'es laissé{e} aller cette année : jogging du lundi au dimanche, coiffure en option. Bizarrement, tu n'as jamais été aussi détendu{e}.",
+    "effects": {
+      "looks": -3,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0077",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "tatoue"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "tatoue": 3
+      }
+    },
+    "text": "Ton tatouage vieillit avec toi : le dauphin ressemble désormais à une aubergine pensive.",
+    "effects": {
+      "looks": -1,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_etb_0078",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "tatoue"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Quelqu'un t'a complimenté{e} sur ton tatouage dans le métro. Tu as expliqué sa signification profonde pendant quatorze stations.",
+    "effects": {
+      "happiness": 3,
+      "looks": 1
+    }
+  },
+  {
+    "id": "rep_etb_0079",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "tatoue"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta grand-tante a vu ton tatouage au repas de famille. Elle s'est signée, puis t'a demandé l'adresse du tatoueur.",
+    "effects": {
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0080",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "tatoue"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "tatoue": 5
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu regardes ton tatouage dans le miroir et tu te demandes qui était la personne qui a voulu ça.",
+    "choices": [
+      {
+        "label": "Le faire effacer au laser",
+        "outcomes": [
+          {
+            "text": "Dix séances, beaucoup de douleur, et une ombre vague. Tu es libre, avec un petit fantôme sur la peau.",
+            "effects": {
+              "money": -1200,
+              "health": -1,
+              "happiness": 3,
+              "clearFlags": [
+                "tatoue"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'assumer et en ajouter un",
+        "outcomes": [
+          {
+            "text": "Tu en ajoutes un deuxième pour donner du contexte au premier. Ça ne donne aucun contexte.",
+            "effects": {
+              "money": -200,
+              "happiness": 3,
+              "looks": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0081",
+    "on": "chaque_annee",
+    "chance": 0.5,
+    "conditions": {
+      "flags": [
+        "coupe_ratee"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMaxYears": {
+        "coupe_ratee": 1
+      }
+    },
+    "text": "Ta coupe ratée repousse lentement. En attendant, tu portes des bonnets, y compris au mois d'août.",
+    "effects": {
+      "looks": -3,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0082",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "coupe_ratee"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMaxYears": {
+        "coupe_ratee": 1
+      }
+    },
+    "text": "Un enfant t'a demandé si tu avais perdu un pari. Ta coupe de cheveux a répondu pour toi.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0083",
+    "on": "chaque_annee",
+    "chance": 0.08,
+    "conditions": {
+      "flags": [
+        "coupe_ratee"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "unique": true,
+    "text": "Pour rattraper ta coupe ratée, tu es retourné{e} chez le même coiffeur. Erreur de débutant.",
+    "effects": {
+      "looks": -4,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0084",
+    "on": "chaque_annee",
+    "chance": 0.6,
+    "conditions": {
+      "flags": [
+        "coupe_ratee"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "coupe_ratee": 1
+      }
+    },
+    "clearFlags": [
+      "coupe_ratee"
+    ],
+    "text": "Tes cheveux ont enfin repoussé. Tu as fait une fête. Le coiffeur n'était pas invité.",
+    "effects": {
+      "looks": 4,
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_etb_0085",
+    "on": "chaque_annee",
+    "chance": 1,
+    "conditions": {
+      "flags": [
+        "coupe_ratee"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "coupe_ratee": 2
+      }
+    },
+    "clearFlags": [
+      "coupe_ratee"
+    ],
+    "text": "Plus aucune trace de ta coupe ratée. Seules les photos de cette époque s'en souviennent, et elles se taisent.",
+    "effects": {
+      "looks": 3
+    }
+  },
+  {
+    "id": "rep_etb_0086",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "refait_de_partout"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton visage refait tient bon, mais il faut l'entretenir : une retouche par-ci, une injection par-là, et une facture partout.",
+    "effects": {
+      "money": -2000,
+      "looks": 2
+    }
+  },
+  {
+    "id": "rep_etb_0087",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "refait_de_partout"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton visage ne bouge plus beaucoup : quand tu es surpris{e}, tu dois le dire à voix haute pour qu'on comprenne.",
+    "effects": {
+      "looks": -1,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0088",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "refait_de_partout"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "refait_de_partout": 4
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton chirurgien te propose un « petit rafraîchissement ». Ton miroir te supplie du regard.",
+    "choices": [
+      {
+        "label": "Arrêter les retouches",
+        "outcomes": [
+          {
+            "text": "Tu laisses ton visage vieillir tranquille. Il te remercie en retrouvant des expressions.",
+            "effects": {
+              "looks": -2,
+              "happiness": 5,
+              "clearFlags": [
+                "refait_de_partout"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Une dernière, promis",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Rafraîchi{e}. Pour l'instant.",
+            "effects": {
+              "money": -3000,
+              "looks": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le rafraîchissement a figé ton sourcil gauche en position « sceptique ». Pour toujours.",
+            "effects": {
+              "money": -3000,
+              "looks": -4,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0089",
+    "on": "chaque_annee",
+    "chance": 0.06,
+    "conditions": {
+      "flags": [
+        "refait_de_partout"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "refait_de_partout": 6
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "text": "Une retouche de trop : ta lèvre supérieure a décidé de vivre sa propre vie. Ton chirurgien est injoignable, en vacances grâce à toi.",
+    "effects": {
+      "health": -5,
+      "looks": -8,
+      "happiness": -5
+    }
+  },
+  {
+    "id": "rep_etb_0090",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "benevole"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu donnes toujours de ton temps à l'association. Les mamies du club te gardent des madeleines et des secrets.",
+    "effects": {
+      "karma": 4,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0091",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "benevole"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ton bénévolat t'a pris tous tes samedis. Tu es épuisé{e}, mais un enfant t'a dit que tu étais son « super-héros ».",
+    "effects": {
+      "karma": 3,
+      "health": -2,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0092",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "benevole"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Grâce au bénévolat, tu as rencontré quelqu'un de bien. Ou au moins quelqu'un qui sait porter des cartons.",
+    "effects": {
+      "karma": 2,
+      "newFriend": true
+    }
+  },
+  {
+    "id": "rep_etb_0093",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "benevole"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "benevole": 6
+      }
+    },
+    "clearFlags": [
+      "benevole"
+    ],
+    "text": "L'association a fermé faute de subventions. Tu gardes le gilet fluo et l'habitude de dire bonjour à tout le monde.",
+    "effects": {
+      "happiness": -3,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_etb_0094",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "minAge": 10,
+    "conditions": {
+      "flags": [
+        "voleur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu continues à « emprunter » des choses sans prévenir. Ta collection de stylos d'hôtel dépasse celle des hôtels.",
+    "effects": {
+      "money": 200,
+      "karma": -3
+    }
+  },
+  {
+    "id": "rep_etb_0095",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 10,
+    "conditions": {
+      "flags": [
+        "voleur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu as volé un truc cette année. Tu ne sais même plus quoi. Ta conscience, elle, a gardé l'étiquette.",
+    "effects": {
+      "karma": -3,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0096",
+    "on": "chaque_annee",
+    "chance": 0.12,
+    "minAge": 13,
+    "conditions": {
+      "flags": [
+        "voleur"
+      ],
+      "excludeFlags": [
+        "casier_judiciaire",
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "voleur": 2
+      }
+    },
+    "text": "Un vigile t'attrape la main dans le sac. Littéralement : c'était le sac d'une dame.",
+    "choices": [
+      {
+        "label": "Rendre et t'excuser",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La dame te pardonne, puis te fait la morale pendant vingt minutes. Ça pique plus qu'une amende.",
+            "effects": {
+              "karma": 3,
+              "happiness": -2,
+              "clearFlags": [
+                "voleur"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle porte plainte. Tes excuses figurent au procès-verbal, ça te fait une belle jambe.",
+            "effects": {
+              "money": -500,
+              "happiness": -4,
+              "setFlags": [
+                "casier_judiciaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre la fuite",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu cours vite. Ta photo floue fait la une du journal local.",
+            "effects": {
+              "happiness": -1,
+              "fame": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu cours moins vite que le vigile, qui prépare un marathon.",
+            "effects": {
+              "money": -800,
+              "happiness": -5,
+              "setFlags": [
+                "casier_judiciaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0097",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "voleur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "voleur": 3
+      }
+    },
+    "clearFlags": [
+      "voleur"
+    ],
+    "text": "Tu as rendu en douce tout ce que tu avais volé, avec un mot d'excuse anonyme. Le facteur n'y comprend rien.",
+    "effects": {
+      "karma": 5,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0098",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "minAge": 10,
+    "conditions": {
+      "flags": [
+        "rancunier"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu n'as toujours pas pardonné. Tu as ajouté trois noms à ta liste noire cette année, dont celui d'un pigeon.",
+    "effects": {
+      "happiness": -3,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_etb_0099",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "rancunier"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta rancune t'a fait refuser une invitation à un barbecue. Tout le monde y était, sauf toi et ton orgueil.",
+    "effects": {
+      "happiness": -3,
+      "relationships": {
+        "friend": -3
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0100",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "rancunier"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "rancunier": 3
+      }
+    },
+    "text": "Tu tombes nez à nez avec la personne à qui tu en veux depuis des années. Elle te sourit comme si de rien n'était.",
+    "choices": [
+      {
+        "label": "Pardonner",
+        "outcomes": [
+          {
+            "text": "Tu pardonnes. C'est comme poser un sac à dos de vingt kilos que tu portais pour rien.",
+            "effects": {
+              "happiness": 7,
+              "karma": 4,
+              "clearFlags": [
+                "rancunier"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui rappeler tout ce qu'elle t'a fait",
+        "outcomes": [
+          {
+            "text": "Tu récites ta liste. Elle en a oublié la moitié. Ta colère redouble devant sa mémoire défaillante.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0101",
+    "on": "chaque_annee",
+    "chance": 0.08,
+    "conditions": {
+      "flags": [
+        "rancunier"
+      ],
+      "excludeFlags": [
+        "solitaire",
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "rancunier": 6
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "setFlags": [
+      "solitaire"
+    ],
+    "text": "À force de rancune, ton cercle a rétréci : tu en veux à presque tout le monde, et presque tout le monde l'a remarqué.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0102",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "genereux"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta générosité ne faiblit pas : tu as payé l'addition de toute la tablée, y compris d'une table qui n'était pas la tienne.",
+    "effects": {
+      "money": -300,
+      "karma": 3,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0103",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 8,
+    "conditions": {
+      "flags": [
+        "genereux"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu as donné ton écharpe à quelqu'un qui avait froid. Tu as eu froid ensuite, mais le cœur au chaud.",
+    "effects": {
+      "karma": 3,
+      "health": -1,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0104",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "genereux"
+      ],
+      "excludeFlags": [
+        "endette",
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "genereux": 4
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "setFlags": [
+      "endette"
+    ],
+    "text": "Ta générosité a dépassé ton salaire : prêter, donner, offrir… Ton banquier te rappelle que tu n'es pas une fondation.",
+    "effects": {
+      "money": -800,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0105",
+    "on": "chaque_annee",
+    "chance": 0.12,
+    "conditions": {
+      "flags": [
+        "genereux"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "genereux": 5
+      }
+    },
+    "clearFlags": [
+      "genereux"
+    ],
+    "text": "Quelqu'un a abusé de ta gentillesse une fois de trop. Tu gardes ton cœur, mais tu as rangé ton portefeuille.",
+    "effects": {
+      "money": 200,
+      "happiness": -2,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_etb_0106",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ],
+      "tags": [
+        "prison"
+      ]
+    },
+    "text": "Encore une année derrière les barreaux. Tu comptes les jours sur le mur ; ton codétenu les compte aussi, mais en parts de pizza.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0107",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ],
+      "tags": [
+        "prison"
+      ]
+    },
+    "text": "La cantine de la prison a servi le même ragoût 312 fois cette année. Ton estomac a demandé à voir un avocat.",
+    "effects": {
+      "health": -3,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_etb_0108",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ],
+      "tags": [
+        "prison"
+      ]
+    },
+    "text": "Tu as lu toute la bibliothèque de la prison, y compris le manuel de la chaudière. Tu es la personne la plus cultivée du bloc C.",
+    "effects": {
+      "smarts": 3,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_etb_0109",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "en_prison",
+        "parent"
+      ],
+      "tags": [
+        "prison",
+        "children"
+      ]
+    },
+    "text": "Tes enfants t'ont envoyé des dessins en prison. Sur l'un d'eux, tu as des barreaux et un grand sourire. Tu le gardes sous ton oreiller.",
+    "effects": {
+      "happiness": -2,
+      "relationships": {
+        "child": 2
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0110",
+    "on": "chaque_annee",
+    "chance": 1,
+    "conditions": {
+      "flags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "en_prison": 1
+      },
+      "excludeTags": [
+        "prison"
+      ]
+    },
+    "clearFlags": [
+      "en_prison"
+    ]
+  },
+  {
+    "id": "rep_etb_0111",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "en_cavale"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Toujours en cavale : chaque sirène te fait sursauter, même celle du camion de glaces.",
+    "effects": {
+      "happiness": -4,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_etb_0112",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "en_cavale"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "La vie en fuite coûte cher : faux papiers, motels payés en liquide, troisième perruque. Tu maîtrises désormais quatre accents régionaux.",
+    "effects": {
+      "money": -800,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0113",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "en_cavale"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "en_cavale": 1
+      }
+    },
+    "text": "Un gendarme te reconnaît à la station-service, malgré ta fausse moustache et ton accent belge.",
+    "choices": [
+      {
+        "label": "Te rendre sans histoire",
+        "outcomes": [
+          {
+            "text": "Tu tends les poignets. Le juge apprécie ta politesse : bracelet électronique plutôt que cellule.",
+            "effects": {
+              "happiness": -3,
+              "karma": 2,
+              "clearFlags": [
+                "en_cavale",
+                "recherche_par_police"
+              ],
+              "setFlags": [
+                "casier_judiciaire",
+                "sous_controle_judiciaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Filer par les toilettes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu t'échappes par la lucarne. La légende de ta cavale grandit d'un chapitre.",
+            "effects": {
+              "happiness": -2,
+              "fame": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu glisses sur le carrelage fraîchement lavé. Arrêté{e} en position allongée.",
+            "effects": {
+              "health": -3,
+              "happiness": -6,
+              "money": -2000,
+              "clearFlags": [
+                "en_cavale",
+                "recherche_par_police"
+              ],
+              "setFlags": [
+                "casier_judiciaire",
+                "sous_controle_judiciaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0114",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "en_cavale",
+        "parent"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "En cavale, tu ne vois plus tes enfants qu'en cachette, au parc, déguisé{e} en jardinier. Ils trouvent ça génial ; toi, un peu moins.",
+    "effects": {
+      "happiness": -4,
+      "relationships": {
+        "child": 1
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0115",
+    "on": "chaque_annee",
+    "chance": 0.5,
+    "conditions": {
+      "flags": [
+        "sous_controle_judiciaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ton bracelet électronique bipe dès que tu t'approches du fond du jardin. Tu connais par cœur la géographie de ta liberté.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0116",
+    "on": "chaque_annee",
+    "chance": 0.5,
+    "conditions": {
+      "flags": [
+        "sous_controle_judiciaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "sous_controle_judiciaire": 2
+      }
+    },
+    "clearFlags": [
+      "sous_controle_judiciaire"
+    ],
+    "text": "Fin du contrôle judiciaire : on t'a retiré ton bracelet électronique. Ta cheville garde une drôle de marque de bronzage, comme un souvenir.",
+    "effects": {
+      "happiness": 6
+    }
+  },
+  {
+    "id": "rep_etb_0117",
+    "on": "chaque_annee",
+    "chance": 1,
+    "conditions": {
+      "flags": [
+        "sous_controle_judiciaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "sous_controle_judiciaire": 4
+      }
+    },
+    "clearFlags": [
+      "sous_controle_judiciaire"
+    ]
+  },
+  {
+    "id": "rep_etb_0118",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "recherche_par_police"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu te sais recherché{e}. Tu fermes les volets en plein jour et tu sursautes quand le facteur sonne deux fois.",
+    "effects": {
+      "happiness": -3,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_etb_0119",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "recherche_par_police"
+      ],
+      "excludeFlags": [
+        "en_cavale",
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "recherche_par_police": 6
+      }
+    },
+    "clearFlags": [
+      "recherche_par_police"
+    ],
+    "text": "Ton dossier a fini sous une pile, puis dans un carton, puis dans l'oubli. Plus personne ne te cherche, et c'est presque vexant.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_etb_0120",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "ancien_detenu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton passé en prison te suit : quand tu dis « j'ai fait de la détention », les recruteurs n'entendent jamais « détente ».",
+    "effects": {
+      "money": -500,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0121",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "ancien_detenu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "En prison, tu as appris à faire une sauce tomate avec trois sachets de ketchup. Tes amis réclament ta « recette de là-bas ».",
+    "effects": {
+      "happiness": 2,
+      "relationships": {
+        "friend": 2
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0122",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "ancien_detenu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "ancien_detenu": 8
+      }
+    },
+    "clearFlags": [
+      "ancien_detenu"
+    ],
+    "text": "Ça fait des années que tu es sorti{e}. Le quartier a fini par oublier ; toi, tu gardes juste l'habitude de manger très vite.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_etb_0123",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "accro_au_jeu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Le jeu te ronge toujours : tu as misé ton treizième mois sur un cheval nommé « Valeur Sûre ». Il porte très mal son nom.",
+    "effects": {
+      "money": -1500,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0124",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "accro_au_jeu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tu passes tes nuits sur les applis de paris. Ton pouce est musclé, ton compte en banque anémié.",
+    "effects": {
+      "money": -800,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_etb_0125",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "accro_au_jeu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "accro_au_jeu": 2
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Un ancien joueur t'invite à un groupe de parole. On y boit du café tiède et on y dit la vérité.",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 0.65,
+            "text": "Tu y retournes chaque semaine. Un jour, tu passes devant le casino sans tourner la tête.",
+            "effects": {
+              "happiness": 6,
+              "health": 2,
+              "clearFlags": [
+                "accro_au_jeu"
+              ],
+              "setFlags": [
+                "sevre_du_jeu"
+              ]
+            }
+          },
+          {
+            "chance": 0.35,
+            "text": "Tu paries avec un autre participant sur celui qui craquera le premier. Tu gagnes. C'est bien le problème.",
+            "effects": {
+              "money": -300,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tu as mieux à faire",
+        "outcomes": [
+          {
+            "text": "Tu as mieux à faire : un ticket à gratter t'attend sur la table.",
+            "effects": {
+              "money": -200,
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0126",
+    "on": "chaque_annee",
+    "chance": 0.12,
+    "conditions": {
+      "flags": [
+        "accro_au_jeu"
+      ],
+      "excludeFlags": [
+        "endette",
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "accro_au_jeu": 3
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "setFlags": [
+      "endette"
+    ],
+    "text": "Le jeu a gagné : tu as emprunté pour te refaire, puis emprunté pour rembourser l'emprunt. Te voilà endetté{e}.",
+    "effects": {
+      "money": -2000,
+      "happiness": -5
+    }
+  },
+  {
+    "id": "rep_etb_0127",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "accro_au_jeu",
+        "marie"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ],
+      "requiresPartner": true
+    },
+    "text": "{partenaire} a découvert que le compte commun finançait tes paris. La discussion a duré toute la nuit et une partie du lendemain.",
+    "effects": {
+      "happiness": -5,
+      "relationships": {
+        "partner": -10
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0128",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "sevre_du_jeu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Une année de plus sans jouer. Avec l'argent économisé, tu t'es offert un fauteuil. Il ne clignote pas, et c'est reposant.",
+    "effects": {
+      "money": 500,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0129",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "sevre_du_jeu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Une pub pour un casino en ligne est passée à la télé. Tu as changé de chaîne sans trembler. Petite victoire, grand sourire.",
+    "effects": {
+      "happiness": 2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_etb_0130",
+    "on": "chaque_annee",
+    "chance": 0.05,
+    "conditions": {
+      "flags": [
+        "sevre_du_jeu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "sevre_du_jeu": 1
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Un ami t'invite au casino, « juste pour regarder ».",
+    "choices": [
+      {
+        "label": "Proposer un bowling à la place",
+        "outcomes": [
+          {
+            "text": "Tu perds au bowling, mais seulement ta dignité. Ton compte en banque ne s'est rendu compte de rien.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Juste regarder",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu regardes. Puis tu « essaies une fois ». La roulette te reconnaît et te souhaite un bon retour.",
+            "effects": {
+              "money": -1000,
+              "happiness": -4,
+              "clearFlags": [
+                "sevre_du_jeu"
+              ],
+              "setFlags": [
+                "accro_au_jeu"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu regardes vraiment, rien de plus. Ton ami, lui, perd sa voiture. Tu le ramènes chez lui.",
+            "effects": {
+              "happiness": 3,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0131",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "marie"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "requiresPartner": true
+    },
+    "text": "Encore une année de mariage avec {partenaire}. Vous vous disputez toujours sur la bonne façon de remplir le lave-vaisselle, mais avec tendresse.",
+    "effects": {
+      "happiness": 3,
+      "relationships": {
+        "partner": 2
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0132",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "marie"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "marie": 10
+      },
+      "requiresPartner": true
+    },
+    "text": "Après des années de mariage, {partenaire} finit tes phrases. Parfois mieux que toi.",
+    "effects": {
+      "happiness": 3,
+      "relationships": {
+        "partner": 3
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0133",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "marie"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "requiresPartner": true
+    },
+    "text": "Dispute conjugale de l'année : {partenaire} a jeté ton vieux t-shirt fétiche. Tu as fait ton deuil en silence, trois semaines.",
+    "effects": {
+      "happiness": -3,
+      "relationships": {
+        "partner": -3
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0134",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "en_veuvage"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Depuis ton veuvage, la maison est trop calme. Tu parles parfois à la photo sur le buffet ; elle t'écoute mieux qu'avant.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0135",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "en_veuvage"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Le chagrin pèse sur ta santé : tu manges mal, seul{e} devant la télé, en sortant encore deux assiettes par habitude.",
+    "effects": {
+      "health": -2,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0136",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "en_veuvage"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "en_veuvage": 3
+      }
+    },
+    "clearFlags": [
+      "en_veuvage"
+    ],
+    "text": "Le deuil s'est adouci. Tu ris de nouveau aux mauvaises blagues, celles que vous aimiez à deux.",
+    "effects": {
+      "happiness": 6
+    }
+  },
+  {
+    "id": "rep_etb_0137",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "parent"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Être parent, c'est épuisant : pas une nuit complète depuis des années, mais tu sais marcher sur des Lego sans crier.",
+    "effects": {
+      "health": -2,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0138",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "parent"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "children",
+        "adult"
+      ]
+    },
+    "text": "Les enfants coûtent cher : chaussures, cantine, et un dinosaure en plastique « indispensable » qui a duré deux jours.",
+    "effects": {
+      "money": -1200,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_etb_0139",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "parent"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Ton enfant t'a dit « je t'aime » sans raison, en plein supermarché. Tu as dû faire semblant d'avoir une poussière dans l'œil.",
+    "effects": {
+      "happiness": 5,
+      "relationships": {
+        "child": 3
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0140",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "famille_nombreuse"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "children",
+        "adult"
+      ]
+    },
+    "text": "Avec ta famille nombreuse, la machine à laver tourne sans arrêt. Elle a plus d'heures de vol qu'un pilote de ligne.",
+    "effects": {
+      "money": -1500,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0141",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "famille_nombreuse"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Le repas de famille ressemble à une assemblée générale. Tu as pris la parole, personne n'a entendu, mais tout le monde a mangé.",
+    "effects": {
+      "happiness": 4,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_etb_0142",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "grand_parent"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tes petits-enfants t'ont appris à te servir de ton téléphone. Tu leur as appris à tricher aux petits chevaux. Échange équitable.",
+    "effects": {
+      "happiness": 4,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_etb_0143",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "grand_parent"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "On t'a confié les petits-enfants tout un week-end. Ton dos s'en souvient, ton cœur aussi.",
+    "effects": {
+      "health": -2,
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_etb_0144",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "grand_parent",
+        "en_veuvage"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tes petits-enfants passent plus souvent depuis ton veuvage. Ils repartent avec des gâteaux, toi avec un peu de lumière.",
+    "effects": {
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_etb_0145",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "ex_toxique"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ton ex toxique te relance encore : un « tu me manques » à 2 h du matin, puis un « laisse tomber » à 2 h 01.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_etb_0146",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "ex_toxique"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ton ex toxique a dit du mal de toi à tous vos amis communs. Il ne te reste que ceux qui avaient toujours trouvé ton ex insupportable.",
+    "effects": {
+      "happiness": -3,
+      "relationships": {
+        "friend": -2
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0147",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "ex_toxique"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "ex_toxique": 2
+      }
+    },
+    "clearFlags": [
+      "ex_toxique"
+    ],
+    "text": "Tu as bloqué ton ex partout : téléphone, réseaux, et même l'appli de la boulangerie. Tu respires enfin.",
+    "effects": {
+      "happiness": 6
+    }
+  },
+  {
+    "id": "rep_etb_0148",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "double_vie"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Mener une double vie demande une organisation de chef de gare : deux agendas, deux téléphones, deux anniversaires à ne jamais confondre.",
+    "effects": {
+      "happiness": -3,
+      "health": -2,
+      "money": -800
+    }
+  },
+  {
+    "id": "rep_etb_0149",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "double_vie"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "requiresPartner": true
+    },
+    "text": "Tu as failli appeler {partenaire} par le mauvais prénom. Tu as transformé ça en éternuement. Bravo l'artiste.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0150",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "double_vie"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "double_vie": 2
+      },
+      "requiresPartner": true
+    },
+    "text": "{partenaire} a trouvé un deuxième téléphone dans ta veste. Il sonne. Le nom affiché : « Plombier ».",
+    "choices": [
+      {
+        "label": "Tout avouer",
+        "outcomes": [
+          {
+            "text": "Tu avoues. Les cris durent une semaine, les silences une année entière.",
+            "effects": {
+              "happiness": -8,
+              "karma": 2,
+              "relationships": {
+                "partner": -25
+              },
+              "clearFlags": [
+                "double_vie"
+              ],
+              "setFlags": [
+                "a_trompe_partenaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Inventer un plombier",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu inventes un plombier très attentionné. Ça passe. Ta double vie continue, en plus fragile.",
+            "effects": {
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le « plombier » rappelle. {partenaire} décroche.",
+            "effects": {
+              "happiness": -10,
+              "relationships": {
+                "partner": -40
+              },
+              "clearFlags": [
+                "double_vie"
+              ],
+              "setFlags": [
+                "a_trompe_partenaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0151",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "double_vie"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "double_vie": 3
+      }
+    },
+    "clearFlags": [
+      "double_vie"
+    ],
+    "text": "Tu es épuisé{e}. Un matin, tu choisis une seule vie et tu ranges l'autre dans un carton, au fond du garage.",
+    "effects": {
+      "happiness": 3,
+      "health": 3
+    }
+  },
+  {
+    "id": "rep_etb_0152",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "belle_famille_envahissante"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "requiresPartner": true
+    },
+    "text": "Ta belle-famille débarque encore à l'improviste. Ta belle-mère a réorganisé tes placards « pour t'aider ». Tu ne trouves plus le sel.",
+    "effects": {
+      "happiness": -3,
+      "relationships": {
+        "partner": -1
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0153",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "belle_famille_envahissante"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ],
+      "requiresPartner": true
+    },
+    "text": "Ta belle-famille s'est invitée pour les vacances. Toutes les vacances. Tu as songé à travailler en août pour souffler.",
+    "effects": {
+      "happiness": -3,
+      "money": -400
+    }
+  },
+  {
+    "id": "rep_etb_0154",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "belle_famille_envahissante"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "belle_famille_envahissante": 2
+      },
+      "tags": [
+        "adult"
+      ],
+      "requiresPartner": true
+    },
+    "text": "Tu demandes à {partenaire} de poser des limites avec sa famille.",
+    "choices": [
+      {
+        "label": "Insister",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{partenaire} pose les limites. La belle-famille boude. Le silence est délicieux.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "partner": 2
+              },
+              "clearFlags": [
+                "belle_famille_envahissante"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{partenaire} prend leur défense. Tu dors sur le canapé, dans ta propre maison.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "partner": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déménager très loin",
+        "outcomes": [
+          {
+            "text": "Vous partez à 600 km. La belle-famille s'achète un camping-car.",
+            "effects": {
+              "money": -2000,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0155",
+    "on": "chaque_annee",
+    "chance": 1,
+    "conditions": {
+      "flags": [
+        "belle_famille_envahissante"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "requiresPartner": false
+    },
+    "clearFlags": [
+      "belle_famille_envahissante"
+    ],
+    "text": "Depuis que tu n'es plus en couple, ton ancienne belle-famille ne débarque plus. Tu as remis le sel à sa place.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0156",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "guerre_voisins"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "La guerre avec les voisins continue : ils ont planté une haie de quatre mètres, tu as acheté une tondeuse plus bruyante. L'escalade est sonore.",
+    "effects": {
+      "happiness": -3,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_etb_0157",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "guerre_voisins"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "guerre_voisins": 2
+      }
+    },
+    "text": "Ton voisin ennemi frappe à ta porte, une bouteille à la main : « Et si on arrêtait ? »",
+    "choices": [
+      {
+        "label": "Trinquer",
+        "outcomes": [
+          {
+            "text": "Vous trinquez, et découvrez que vous détestez tous les deux le voisin d'en face. Une alliance est née.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true,
+              "clearFlags": [
+                "guerre_voisins"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui claquer la porte au nez",
+        "outcomes": [
+          {
+            "text": "Il laisse la bouteille sur le paillasson. C'était du vinaigre.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0158",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "guerre_voisins",
+        "rancunier"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta rancune nourrit ta guerre de voisinage : tu tiens un registre des bruits du voisin. Il fait deux cents pages.",
+    "effects": {
+      "happiness": -3,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_etb_0159",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 10,
+    "conditions": {
+      "flags": [
+        "randonneur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu continues d'arpenter les sentiers chaque week-end. Tes mollets sont en granit et ton moral en altitude.",
+    "effects": {
+      "health": 3,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0160",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "randonneur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta passion pour la rando a un coût : chaussures neuves, gourde en titane, et une boussole que tu ne sais toujours pas lire.",
+    "effects": {
+      "money": -300,
+      "health": 2
+    }
+  },
+  {
+    "id": "rep_etb_0161",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "minAge": 55,
+    "conditions": {
+      "flags": [
+        "randonneur"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tes genoux négocient désormais chaque descente. Tu randonnes toujours, mais avec des bâtons et beaucoup de soupirs.",
+    "effects": {
+      "health": -1,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0162",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "randonneur",
+        "phobie_des_ours"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu randonnes beaucoup, mais avec ta phobie des ours, tu chantes à tue-tête pour les éloigner. Les autres marcheurs s'éloignent aussi.",
+    "effects": {
+      "health": 2,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_etb_0163",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "has_been"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu restes un peu has-been : on te reconnaît dans la rue, mais personne ne sait plus pourquoi. Un monsieur croit que tu présentais la météo.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0164",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "has_been"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "On t'a invité{e} dans une émission « Que sont-ils devenus ? ». Tu as dit oui avant la fin de la phrase.",
+    "effects": {
+      "fame": 2,
+      "money": 500,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_etb_0165",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "has_been"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "has_been": 5
+      }
+    },
+    "clearFlags": [
+      "has_been"
+    ],
+    "text": "Ton heure de gloire revient à la mode, version nostalgie : on t'invite en festival, on chante tes refrains. Tu n'es plus has-been, tu es « culte ».",
+    "effects": {
+      "fame": 4,
+      "happiness": 6,
+      "money": 1000
+    }
+  },
+  {
+    "id": "rep_etb_0166",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "chauffard"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta conduite sportive continue : tu as reçu tant d'amendes que le centre de traitement t'envoie ses vœux chaque année.",
+    "effects": {
+      "money": -500,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_etb_0167",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "chauffard"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Les voisins rentrent leurs enfants et leurs chats quand ta voiture approche. C'est presque du respect.",
+    "effects": {
+      "karma": -2,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_etb_0168",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "chauffard"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "chauffard": 3
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Un stage de récupération de points t'attend, un samedi, dans une salle qui sent le café brûlé.",
+    "choices": [
+      {
+        "label": "Écouter vraiment",
+        "outcomes": [
+          {
+            "text": "Une vidéo de crash-test t'a retourné{e}. Tu conduis désormais comme une grand-mère prudente un jour de pluie.",
+            "effects": {
+              "money": -250,
+              "karma": 3,
+              "clearFlags": [
+                "chauffard"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dormir au fond de la salle",
+        "outcomes": [
+          {
+            "text": "Tu dors comme un bébé. Tu repars plus vite que tu n'es venu{e}.",
+            "effects": {
+              "money": -250
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0169",
+    "on": "chaque_annee",
+    "chance": 0.05,
+    "conditions": {
+      "flags": [
+        "chauffard"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "chauffard": 2
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "clearFlags": [
+      "chauffard"
+    ],
+    "text": "À force de rouler trop vite, tu as fini dans un fossé. La voiture est fichue ; toi, tu es juste très, très calme maintenant.",
+    "effects": {
+      "health": -12,
+      "happiness": -5
+    }
+  },
+  {
+    "id": "rep_etb_0170",
+    "on": "chaque_annee",
+    "chance": 0.01,
+    "conditions": {
+      "flags": [
+        "chauffard"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "chauffard": 5
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta conduite de chauffard a fini par te rattraper, à 180 km/h.",
+    "effects": {
+      "death": "en doublant un tracteur dans un virage, pour gagner quatre secondes"
+    }
+  },
+  {
+    "id": "rep_etb_0171",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "phobie_de_la_foret"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta peur de la forêt te poursuit : tu as refusé un pique-nique parce qu'il y avait « trop d'arbres autour ». Il y en avait deux.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0172",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "phobie_de_la_foret"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "phobie_de_la_foret": 2
+      }
+    },
+    "text": "Un thérapeute te propose une thérapie d'exposition : commencer par une plante verte, finir par un bois.",
+    "choices": [
+      {
+        "label": "Essayer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Plante verte, parc, bosquet, forêt. Tu as tremblé à chaque étape, mais tu es allé{e} au bout.",
+            "effects": {
+              "happiness": 5,
+              "money": -300,
+              "clearFlags": [
+                "phobie_de_la_foret"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu bloques au stade du bonsaï.",
+            "effects": {
+              "happiness": -1,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "Tu restes en ville, où les arbres sont en cage, comme il se doit.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_etb_0173",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "phobie_des_ours"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ta phobie des ours ne passe pas : tu as fui le rayon peluches du supermarché. Un nounours géant t'a regardé{e} partir.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0174",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "phobie_des_ours"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "flagMinYears": {
+        "phobie_des_ours": 4
+      }
+    },
+    "clearFlags": [
+      "phobie_des_ours"
+    ],
+    "text": "Tu as regardé un documentaire entier sur les ours sans couper le son. Tu as même trouvé l'ourson mignon. Phobie vaincue, ou presque.",
+    "effects": {
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_etb_0175",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "endette",
+        "panier_perce"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Tes dettes et tes achats compulsifs font équipe : un aspirateur robot à crédit en douze fois. Il s'est coincé sous le canapé au bout de deux.",
+    "effects": {
+      "money": -900,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_etb_0176",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "econome",
+        "proprietaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Économe et propriétaire : tu as refait la salle de bains toi-même avec des tutos. Elle penche un peu, mais elle est payée.",
+    "effects": {
+      "money": 800,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_etb_0177",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "celebre_localement",
+        "honte_publique"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Être connu{e} à {ville} après ta honte publique, c'est le combo : on te reconnaît, et on se souvient de pourquoi.",
+    "effects": {
+      "happiness": -5,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_etb_0178",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "heros_local",
+        "populaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Entre ton acte de bravoure et ta popularité, on te propose de te présenter à la mairie. Tu refuses : tu préfères qu'on t'aime.",
+    "effects": {
+      "happiness": 5,
+      "fame": 2
+    }
+  },
+  {
+    "id": "rep_etb_0179",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "minAge": 16,
+    "conditions": {
+      "flags": [
+        "benevole",
+        "genereux"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Ton temps et ton argent vont toujours aux autres. Le quartier t'a organisé une fête surprise. Tu as pleuré dans le gâteau.",
+    "effects": {
+      "karma": 5,
+      "happiness": 6
+    }
+  },
+  {
+    "id": "rep_etb_0180",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "curieux",
+        "lecteur_assidu"
+      ],
+      "excludeFlags": [
+        "autodidacte",
+        "en_prison"
+      ]
+    },
+    "unique": true,
+    "setFlags": [
+      "autodidacte"
+    ],
+    "text": "Ta curiosité et tes livres ont fait des petits : tu apprends désormais tout seul{e}, de la mécanique à l'harmonica.",
+    "effects": {
+      "smarts": 4,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0181",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "lecteur_assidu",
+        "polyglotte"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Tu lis maintenant des romans en version originale, dans trois langues. Tu soupires bruyamment dès qu'on parle de traduction.",
+    "effects": {
+      "smarts": 4,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_etb_0182",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "soigne_son_apparence",
+        "coupe_ratee"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Toi qui soignes tant ton apparence, cette coupe ratée est un drame : tu as annulé deux soirées et un mariage.",
+    "effects": {
+      "happiness": -5,
+      "relationships": {
+        "friend": -2
+      }
+    }
+  },
+  {
+    "id": "rep_etb_0183",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "minAge": 16,
+    "conditions": {
+      "flags": [
+        "voleur",
+        "ancien_detenu"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "La prison ne t'a pas guéri{e} : tu voles encore. Le commissaire du quartier te salue par ton prénom.",
+    "effects": {
+      "karma": -4,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_etb_0184",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "maxAge": 25,
+    "conditions": {
+      "flags": [
+        "harcele",
+        "populaire"
+      ],
+      "excludeFlags": [
+        "en_prison"
+      ]
+    },
+    "text": "Populaire chez certains, cible pour d'autres : tu passes ta vie à sourire d'un côté et à baisser la tête de l'autre.",
+    "effects": {
+      "happiness": -3
+    }
+  }
+]

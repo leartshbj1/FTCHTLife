@@ -162,8 +162,8 @@ Posés par les événements (`effects.setFlags`), les suites ou les modules ; ch
 |---|---|
 | Hygiène de vie | `fume`, `boit_trop`, `mange_mal`, `sportif_regulier`, `sedentaire`, `insomniaque`, `dos_fragile`, `genou_fragile`, `accro_aux_ecrans`, `zen` ; aggravés : `poumons_goudronnes`, `foie_fatigue`, `tension_haute`, `hernie_discale` |
 | Moral | `deprime`, `anxieux`, `burn_out`, `coeur_brise`, `solitaire`, `optimiste`, `complexe`, `traumatise` |
-| Réputation | `menteur_notoire`, `rapporteur`, `populaire`, `harcele`, `celebre_localement`, `honte_publique`, `heros_local`, `casier_judiciaire` |
-| Argent | `endette`, `econome`, `panier_perce`, `dette_louche`, `proprietaire` |
+| Réputation | `menteur_notoire`, `rapporteur`, `populaire`, `harcele`, `celebre_localement`, `honte_publique`, `heros_local`, `casier_judiciaire`, `sous_controle_judiciaire` |
+| Argent | `endette`, `econome`, `panier_perce`, `dette_louche`, `proprietaire` ; aggravé : `surendette` |
 | Esprit | `lecteur_assidu`, `autodidacte`, `polyglotte`, `curieux` |
 | Apparence | `soigne_son_apparence`, `tatoue`, `coupe_ratee`, `refait_de_partout` |
 | Karma | `benevole`, `voleur`, `rancunier`, `genereux` |
