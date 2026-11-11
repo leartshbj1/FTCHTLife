@@ -3,6 +3,7 @@ import SwiftUI
 // Écrans du sommet de l'État : décrets à signer d'un geste, carte des relations internationales.
 
 /// Exécute une action politique sur le joueur courant et renvoie son texte.
+@MainActor
 private func polAgir(_ engine: GameEngine, _ etat: WritableKeyPath<Joueur, PolEtat?>,
                      _ f: (inout Joueur, inout PolEtat) -> PolResultat) -> String {
     var t = ""
