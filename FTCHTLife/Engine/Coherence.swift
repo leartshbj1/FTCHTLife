@@ -34,6 +34,9 @@ extension GameEngine {
     /// Activité à plein temps du joueur (agence de détective, grande secte) qui empêche d'avoir un emploi, ou nil.
     func empechementActivite(_ j: Joueur) -> String? {
         if j.agences?.actuelle != nil { return "Ton agence de détective est ton métier à plein temps." }
+        if let c = j.speciales?.carriere, SpeMoteur.pleinTemps(c) {
+            return "Ta carrière de \(c.type.nom(j.genre == .femme).lowercased()) est un temps plein."
+        }
         if let s = j.sectes?.actuelle, SecteMoteur.pleinTemps(s) {
             return "\(s.nom) occupe désormais tout ton temps."
         }

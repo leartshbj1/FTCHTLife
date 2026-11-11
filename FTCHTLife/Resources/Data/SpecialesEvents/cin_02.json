@@ -1,0 +1,774 @@
+[
+  {
+    "id": "cin_0029",
+    "carriere": "cinema",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "poids": 2,
+    "text": "Une jeune assistante de ton tournage vient te voir, la voix tremblante : l'acteur principal de {film} la harcèle depuis deux semaines, messages et gestes à l'appui.",
+    "choices": [
+      {
+        "label": "Écarter l'acteur",
+        "outcomes": [
+          { "chance": 0.6, "text": "Tu suspends le tournage, tu le remplaces et tu reprends des scènes. C'est cher, et c'est juste.", "effects": { "happiness": -3, "karma": 12 }, "spe": { "reputation": 6, "gainPct": -15 } },
+          { "chance": 0.4, "text": "Son agent menace de te faire un procès. Tu tiens bon, et d'autres témoignages arrivent.", "effects": { "happiness": -6, "karma": 12 }, "spe": { "reputation": 8, "gainPct": -20 } }
+        ]
+      },
+      {
+        "label": "Saisir la référente et un avocat",
+        "outcomes": [
+          { "text": "La procédure est lancée, l'assistante est protégée et changée de poste avec son accord. Le tournage continue sous tension.", "effects": { "happiness": -2, "karma": 8 }, "spe": { "reputation": 4 } }
+        ]
+      },
+      {
+        "label": "Lui demander d'attendre la fin",
+        "outcomes": [
+          { "text": "Elle quitte le tournage. Deux ans plus tard, son témoignage cite aussi ton silence.", "effects": { "happiness": -10, "karma": -12 }, "spe": { "reputation": -12, "signal": "silence_harcelement_tournage" } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0030",
+    "carriere": "cinema",
+    "minNiveau": 0,
+    "maxNiveau": 3,
+    "text": "Le chien qui doit traverser la rue en héros dans {film} préfère s'asseoir au milieu du plan et se lécher. Prise 34.",
+    "choices": [
+      {
+        "label": "Attendre qu'il comprenne",
+        "outcomes": [
+          { "chance": 0.4, "text": "Prise 41 : il traverse comme une star. Toute l'équipe applaudit le chien.", "effects": { "happiness": 6 }, "spe": { "reputation": 2 } },
+          { "chance": 0.6, "text": "La lumière tombe. Le chien dort. Tu reviendras demain.", "effects": { "happiness": -3 }, "spe": { "gainPct": -3 } }
+        ]
+      },
+      {
+        "label": "Garder la prise où il se lèche",
+        "outcomes": [
+          { "text": "Au montage, c'est le moment le plus drôle du film. Le public l'adore.", "effects": { "happiness": 8 }, "spe": { "reputation": 3, "gainPct": 3 } }
+        ]
+      },
+      {
+        "label": "Utiliser un saucisson",
+        "outcomes": [
+          { "text": "Il traverse au galop. Puis il revient. Puis il mange le saucisson de l'assistant caméra.", "effects": { "happiness": 4 }, "spe": { "reputation": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0031",
+    "carriere": "cinema",
+    "minNiveau": 1,
+    "maxNiveau": 4,
+    "text": "À trois semaines du mixage, le compositeur de {film} n'a livré que quatre minutes de musique. Il dit attendre « l'inspiration ».",
+    "choices": [
+      {
+        "label": "Lui laisser du temps",
+        "outcomes": [
+          { "chance": 0.5, "text": "Il livre un chef-d'œuvre la veille du mixage. Tu as perdu cinq ans d'espérance de vie.", "effects": { "happiness": 8, "health": -3 }, "spe": { "reputation": 6 } },
+          { "chance": 0.5, "text": "Il livre trop tard. La sortie est repoussée de deux mois.", "effects": { "happiness": -6 }, "spe": { "gainPct": -8 } }
+        ]
+      },
+      {
+        "label": "Prendre un autre compositeur",
+        "costPct": 5,
+        "outcomes": [
+          { "text": "La musique est efficace, sans âme particulière. Le film sort à l'heure.", "effects": { "happiness": 1 }, "spe": { "reputation": 1 } }
+        ]
+      },
+      {
+        "label": "Utiliser seulement le silence",
+        "outcomes": [
+          { "chance": 0.5, "text": "Un film presque sans musique. La critique parle d'un « silence habité ».", "effects": { "happiness": 8, "smarts": 2 }, "spe": { "reputation": 6 } },
+          { "chance": 0.5, "text": "Les spectateurs pensent que le son est en panne et vont se plaindre à la caisse.", "effects": { "happiness": -5 }, "spe": { "reputation": -2, "gainPct": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0032",
+    "carriere": "cinema",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Pendant une pause du tournage, ton acteur principal s'est cassé la jambe au ski. Il reste un tiers de {film} à tourner.",
+    "choices": [
+      {
+        "label": "Réécrire le personnage blessé",
+        "outcomes": [
+          { "chance": 0.6, "text": "Son personnage boite désormais. Ça lui donne une profondeur imprévue.", "effects": { "happiness": 6, "smarts": 3 }, "spe": { "reputation": 5 } },
+          { "chance": 0.4, "text": "Les raccords sont impossibles : il boite dans une scène et court dans la suivante.", "effects": { "happiness": -5 }, "spe": { "reputation": -3 } }
+        ]
+      },
+      {
+        "label": "Attendre sa guérison",
+        "costPct": 15,
+        "outcomes": [
+          { "text": "Trois mois d'arrêt, une équipe à garder sous contrat. Le film sera celui prévu.", "effects": { "happiness": -3 }, "spe": { "reputation": 2, "forme": -3 } }
+        ]
+      },
+      {
+        "label": "Utiliser une doublure et le numérique",
+        "outcomes": [
+          { "text": "Son visage est collé sur un autre corps. Personne ne remarque rien, sauf sa mère.", "effects": { "happiness": 2 }, "spe": { "reputation": 1, "gainPct": -4 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0033",
+    "carriere": "cinema",
+    "minNiveau": 0,
+    "maxNiveau": 3,
+    "text": "Le disque dur qui contient trois semaines de rushes de {film} ne s'allume plus. La sauvegarde ? Elle était prévue pour demain.",
+    "choices": [
+      {
+        "label": "Payer un laboratoire de récupération",
+        "costPct": 10,
+        "outcomes": [
+          { "chance": 0.7, "text": "Ils récupèrent 95 % des fichiers. Tu achètes trois disques de sauvegarde le jour même.", "effects": { "happiness": 6, "smarts": 3 }, "spe": { "forme": 2 } },
+          { "chance": 0.3, "text": "Rien à faire. Tout est perdu.", "effects": { "happiness": -12 }, "spe": { "forme": -8, "gainPct": -10 } }
+        ]
+      },
+      {
+        "label": "Retourner les scènes",
+        "outcomes": [
+          { "text": "Tu rappelles toute l'équipe. Les scènes sont moins fraîches, mais tes acteurs les connaissent par cœur maintenant.", "effects": { "happiness": -6, "health": -3 }, "spe": { "gainPct": -12, "forme": -5 } }
+        ]
+      },
+      {
+        "label": "Taper sur le disque",
+        "outcomes": [
+          { "chance": 0.1, "text": "Il redémarre. Tu ne sauras jamais pourquoi. Tu sauvegardes tout en tremblant.", "effects": { "happiness": 10 } },
+          { "chance": 0.9, "text": "Il fait maintenant un petit bruit de grelot. C'est fini.", "effects": { "happiness": -10 }, "spe": { "gainPct": -12, "forme": -6 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0034",
+    "carriere": "cinema",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "Un grand pays acheteur veut distribuer {film}, à condition de couper deux scènes qui « offensent les valeurs nationales ». C'est un marché immense.",
+    "choices": [
+      {
+        "label": "Accepter les coupes",
+        "outcomes": [
+          { "text": "Le film y fait un carton. Chez toi, la presse parle de censure acceptée.", "effects": { "happiness": -4, "karma": -5 }, "spe": { "gainPct": 30, "reputation": -6 } }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          { "text": "Le film y est interdit, ce qui lui fait une publicité énorme partout ailleurs.", "effects": { "happiness": 6, "karma": 4, "fame": 4 }, "spe": { "reputation": 6, "gainPct": 5 } }
+        ]
+      },
+      {
+        "label": "Laisser le distributeur décider",
+        "outcomes": [
+          { "text": "Tu découvres la version coupée en ligne. Il manque aussi une troisième scène.", "effects": { "happiness": -6 }, "spe": { "gainPct": 25, "reputation": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0035",
+    "carriere": "cinema",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "Pacifica Pictures, le plus gros studio américain, te propose de réaliser le septième épisode de sa saga de super-héros « Les Gardiens de l'Aube ».",
+    "choices": [
+      {
+        "label": "Accepter le chèque",
+        "outcomes": [
+          { "chance": 0.5, "text": "Le film rapporte un milliard. Tu n'as choisi ni le scénario, ni le montage, ni la couleur du costume.", "effects": { "happiness": 2, "fame": 12 }, "spe": { "gainPct": 80, "reputation": -3 } },
+          { "chance": 0.5, "text": "Le studio te remplace au milieu du tournage pour « différends artistiques ». Tu gardes le cachet.", "effects": { "happiness": -6, "fame": 4 }, "spe": { "gainPct": 40, "reputation": -4 } }
+        ]
+      },
+      {
+        "label": "Négocier en anglais tes conditions",
+        "requiresSkill": { "anglais": 4 },
+        "outcomes": [
+          { "text": "Tu obtiens le montage final et ton propre chef opérateur. Un blockbuster avec ta signature.", "effects": { "happiness": 12, "fame": 12, "skills": { "anglais": 3 } }, "spe": { "gainPct": 70, "reputation": 8 } }
+        ]
+      },
+      {
+        "label": "Décliner poliment",
+        "outcomes": [
+          { "text": "Tu préfères tes films. Le studio te renvoie une carte de Noël tous les ans.", "effects": { "happiness": 3, "karma": 2 }, "spe": { "reputation": 3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0036",
+    "carriere": "cinema",
+    "minNiveau": 0,
+    "maxNiveau": 2,
+    "text": "Ton compte est vide. Une agence de pub te propose de réaliser un spot de trente secondes pour une marque de croquettes pour chats.",
+    "choices": [
+      {
+        "label": "Accepter et soigner l'image",
+        "outcomes": [
+          { "chance": 0.6, "text": "Le chat est sublime. Le spot gagne un prix de la publicité, et ça paie ton loyer.", "effects": { "happiness": 6 }, "spe": { "gainPct": 25, "reputation": 2 } },
+          { "chance": 0.4, "text": "Le client veut 17 versions du même plan de croquettes. Ça paie quand même.", "effects": { "happiness": -2 }, "spe": { "gainPct": 20, "forme": -3 } }
+        ]
+      },
+      {
+        "label": "Refuser par principe",
+        "outcomes": [
+          { "text": "Tu manges des pâtes pendant deux mois. Ton art est intact.", "effects": { "happiness": -3, "health": -2 }, "spe": { "forme": 3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0037",
+    "carriere": "cinema",
+    "minNiveau": 0,
+    "maxNiveau": 2,
+    "text": "Une chanteuse montante te demande de réaliser son clip. Budget minuscule, idées gigantesques, et elle veut un cheval.",
+    "choices": [
+      {
+        "label": "Trouver un cheval",
+        "costPct": 5,
+        "outcomes": [
+          { "chance": 0.5, "text": "Le clip dépasse les dix millions de vues. Ton nom circule dans les maisons de disques.", "effects": { "happiness": 10, "fame": 4 }, "spe": { "reputation": 8, "gainPct": 10 } },
+          { "chance": 0.5, "text": "Le cheval s'enfuit avec la caméra fixée sur la selle. Les images sont étonnamment belles.", "effects": { "happiness": 4 }, "spe": { "reputation": 3 } }
+        ]
+      },
+      {
+        "label": "La convaincre de filmer simplement",
+        "outcomes": [
+          { "text": "Un plan-séquence dans une cuisine. Sobre, fort, remarqué.", "effects": { "happiness": 6, "smarts": 2 }, "spe": { "reputation": 5, "gainPct": 5 } }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          { "text": "Un an plus tard, elle est numéro un. Son nouveau clip a été réalisé par quelqu'un d'autre. Avec un cheval.", "effects": { "happiness": -4 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0038",
+    "carriere": "cinema",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "La meilleure école de cinéma du pays t'invite à donner une masterclass devant 300 étudiants qui connaissent tes films mieux que toi.",
+    "choices": [
+      {
+        "label": "Tout leur raconter, échecs compris",
+        "outcomes": [
+          { "text": "Tu parles de tes ratages pendant deux heures. Ils n'ont jamais autant appris. Toi non plus.", "effects": { "happiness": 10, "karma": 4, "smarts": 2 }, "spe": { "reputation": 5, "forme": 4 } }
+        ]
+      },
+      {
+        "label": "Briller et parler de toi",
+        "requiresSkill": { "eloquence": 3 },
+        "outcomes": [
+          { "text": "Tu es magnétique. La vidéo de la conférence circule partout dans le milieu.", "effects": { "happiness": 8, "fame": 4 }, "spe": { "reputation": 7 } }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          { "text": "Tu n'aimes pas parler en public. Tu préfères laisser parler tes films.", "effects": { "happiness": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0039",
+    "carriere": "cinema",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "text": "Six mois en salle de montage sur {film}, sans voir le jour. Tu dors mal, tu ne manges plus à heure fixe, et tu détestes ton propre film.",
+    "choices": [
+      {
+        "label": "Partir une semaine",
+        "outcomes": [
+          { "text": "Une semaine au bord de la mer sans écran. En rentrant, tu revois le film et tu sais quoi couper.", "effects": { "happiness": 8, "health": 6 }, "spe": { "forme": 12 } }
+        ]
+      },
+      {
+        "label": "Continuer coûte que coûte",
+        "outcomes": [
+          { "chance": 0.5, "text": "Tu finis. Le film est bon. Toi, tu t'effondres pendant un mois.", "effects": { "happiness": -8, "health": -10, "setFlags": ["burn_out"] }, "spe": { "forme": -12, "reputation": 3 } },
+          { "chance": 0.5, "text": "Tu ne vois plus rien. Tu recoupes des scènes que tu avais déjà coupées.", "effects": { "happiness": -8, "health": -6 }, "spe": { "forme": -10, "reputation": -2 } }
+        ]
+      },
+      {
+        "label": "Montrer le film à {ami}",
+        "outcomes": [
+          { "text": "{ami} pleure à la fin et te dit que c'est beau. Tu avais besoin d'entendre ça.", "effects": { "happiness": 8, "relationships": { "friend": 4 } }, "spe": { "forme": 6 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0040",
+    "carriere": "cinema",
+    "minNiveau": 1,
+    "maxNiveau": 4,
+    "text": "Fête de fin de tournage de {film}. L'ingénieur du son a pris le micro, l'actrice principale danse sur une table, et quelqu'un a lancé un karaoké.",
+    "choices": [
+      {
+        "label": "Chanter avec l'équipe",
+        "outcomes": [
+          { "chance": 0.6, "text": "Ta version massacrée d'une vieille ballade devient légendaire. L'équipe t'adore.", "effects": { "happiness": 10 }, "spe": { "reputation": 3, "forme": 4 } },
+          { "chance": 0.4, "text": "Quelqu'un filme. La vidéo fuite. Les critiques s'en servent pour titrer.", "effects": { "happiness": -3, "fame": 3 }, "spe": { "reputation": -2 } }
+        ]
+      },
+      {
+        "label": "Faire un discours de remerciements",
+        "outcomes": [
+          { "text": "Tu cites chaque technicien par son prénom. Certains ont les larmes aux yeux.", "effects": { "happiness": 8, "karma": 4 }, "spe": { "reputation": 4 } }
+        ]
+      },
+      {
+        "label": "Rentrer dormir",
+        "outcomes": [
+          { "text": "Tu dors douze heures. Le lendemain, tu découvres sur les réseaux ce que tu as manqué. Rien de bien glorieux.", "effects": { "happiness": 2, "health": 3 }, "spe": { "forme": 4 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0041",
+    "carriere": "cinema",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Trois semaines avant sa sortie, {film} fuite en ligne dans une version non étalonnée, avec un filigrane « COPIE PRESSE ».",
+    "choices": [
+      {
+        "label": "Chercher qui l'a fait fuiter",
+        "outcomes": [
+          { "chance": 0.5, "text": "C'est un critique qui a prêté son lien à son neveu. Scandale dans la profession.", "effects": { "happiness": 2, "fame": 3 }, "spe": { "reputation": 2, "gainPct": -10 } },
+          { "chance": 0.5, "text": "L'enquête ne donne rien. Le film perd une partie de son public.", "effects": { "happiness": -6 }, "spe": { "gainPct": -15 } }
+        ]
+      },
+      {
+        "label": "Avancer la sortie",
+        "outcomes": [
+          { "text": "Le film sort en urgence. La curiosité créée par la fuite remplit les salles.", "effects": { "happiness": 5 }, "spe": { "gainPct": 5, "reputation": 1 } }
+        ]
+      },
+      {
+        "label": "Demander au public d'attendre",
+        "outcomes": [
+          { "text": "Ton message sincère touche les gens. Beaucoup promettent d'attendre la vraie version. Certains tiennent parole.", "effects": { "happiness": 3, "karma": 2 }, "spe": { "reputation": 3, "gainPct": -5 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0042",
+    "carriere": "cinema",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Ton producteur propose de remplacer les seconds rôles de {film} par des acteurs générés par ordinateur. « Ils ne se plaignent pas, ils ne déjeunent pas. »",
+    "choices": [
+      {
+        "label": "Refuser catégoriquement",
+        "outcomes": [
+          { "text": "Les syndicats d'acteurs te remercient. Ton producteur, lui, fait ses comptes.", "effects": { "happiness": 4, "karma": 6 }, "spe": { "reputation": 5, "gainPct": -5 } }
+        ]
+      },
+      {
+        "label": "Essayer pour les figurants",
+        "outcomes": [
+          { "chance": 0.5, "text": "Personne ne voit la différence. C'est ça qui te fait froid dans le dos.", "effects": { "happiness": -3, "karma": -4 }, "spe": { "gainPct": 8 } },
+          { "chance": 0.5, "text": "Un figurant numérique a six doigts dans le plan final. Internet s'en délecte.", "effects": { "happiness": -5, "fame": 3 }, "spe": { "reputation": -5 } }
+        ]
+      },
+      {
+        "label": "En faire le sujet du film",
+        "outcomes": [
+          { "text": "Ton prochain scénario parle d'un acteur remplacé par son double numérique. Le producteur ne voit pas l'ironie.", "effects": { "happiness": 6, "smarts": 3 }, "spe": { "forme": 8 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0043",
+    "carriere": "cinema",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "Un studio étranger achète les droits de remake de {film}. Ils veulent changer la fin, le lieu, les personnages et le titre. Ils gardent le chien.",
+    "choices": [
+      {
+        "label": "Vendre et ne pas regarder",
+        "outcomes": [
+          { "text": "Le chèque est généreux. Le remake est ce qu'il est. Tu ne l'as jamais vu, officiellement.", "effects": { "happiness": 3 }, "spe": { "gainPct": 30 } }
+        ]
+      },
+      {
+        "label": "Demander à le réaliser toi-même",
+        "outcomes": [
+          { "chance": 0.4, "text": "Ils acceptent. Refaire son propre film est étrange, mais ta version est meilleure.", "effects": { "happiness": 8, "fame": 5 }, "spe": { "gainPct": 40, "reputation": 5 } },
+          { "chance": 0.6, "text": "Ils préfèrent un réalisateur local. Tu touches les droits, au moins.", "effects": { "happiness": -2 }, "spe": { "gainPct": 20 } }
+        ]
+      },
+      {
+        "label": "Refuser la vente",
+        "outcomes": [
+          { "text": "Ton film reste unique. Ton comptable soupire très fort.", "effects": { "happiness": 2 }, "spe": { "reputation": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0044",
+    "carriere": "cinema",
+    "minNiveau": 3,
+    "maxNiveau": 5,
+    "text": "Une plateforme veut sortir {film} en ligne le même jour qu'en salle. Les exploitants de cinéma menacent de boycotter tous tes films.",
+    "choices": [
+      {
+        "label": "Choisir les salles",
+        "outcomes": [
+          { "text": "Les exploitants te soutiennent. La plateforme se retire, et l'argent avec.", "effects": { "happiness": 4, "karma": 3 }, "spe": { "reputation": 5, "gainPct": -10 } }
+        ]
+      },
+      {
+        "label": "Choisir la plateforme",
+        "outcomes": [
+          { "text": "Des millions de vues en un week-end. Mais tes prochains films auront du mal à trouver des écrans.", "effects": { "happiness": 2 }, "spe": { "gainPct": 35, "reputation": -6 } }
+        ]
+      },
+      {
+        "label": "Négocier un délai",
+        "outcomes": [
+          { "chance": 0.6, "text": "Trois mois en salle, puis en ligne. Tout le monde râle un peu, donc c'est un bon compromis.", "effects": { "happiness": 6, "smarts": 2 }, "spe": { "gainPct": 20, "reputation": 2 } },
+          { "chance": 0.4, "text": "Personne ne veut céder. Le film reste bloqué six mois.", "effects": { "happiness": -6 }, "spe": { "gainPct": -10 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0045",
+    "carriere": "cinema",
+    "minNiveau": 0,
+    "maxNiveau": 1,
+    "text": "Pour financer ton court-métrage, tu lances une campagne de financement participatif. Il te manque 4 000 € à trois jours de la fin.",
+    "choices": [
+      {
+        "label": "Relancer tout ton entourage",
+        "outcomes": [
+          { "chance": 0.6, "text": "Ta tante, ton ancien prof de maths et trois inconnus te sauvent. Objectif atteint.", "effects": { "happiness": 10 }, "spe": { "gainPct": 40, "forme": 4 } },
+          { "chance": 0.4, "text": "Il manque 600 €. La plateforme rend tout l'argent.", "effects": { "happiness": -8 }, "spe": { "forme": -5 } }
+        ]
+      },
+      {
+        "label": "Faire une vidéo drôle",
+        "requiresSkill": { "humour": 2 },
+        "outcomes": [
+          { "text": "Ta vidéo où tu supplies un pigeon de financer ton film fait le tour des réseaux. Objectif dépassé de 200 %.", "effects": { "happiness": 12, "fame": 2 }, "spe": { "gainPct": 60, "reputation": 4 } }
+        ]
+      },
+      {
+        "label": "Combler toi-même",
+        "outcomes": [
+          { "text": "Tu vends ta guitare et ton vélo. Le film se fera.", "effects": { "happiness": 3, "money": -4000 }, "spe": { "forme": 3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0046",
+    "carriere": "cinema",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Dans une interview, un réalisateur rival qualifie ton cinéma de « publicité pour le vide avec de jolis cadrages ».",
+    "choices": [
+      {
+        "label": "Répliquer",
+        "outcomes": [
+          { "chance": 0.5, "text": "Votre querelle passionne la presse pendant un mois. Vos deux films en profitent.", "effects": { "happiness": 3, "fame": 5 }, "spe": { "reputation": 2, "gainPct": 5 } },
+          { "chance": 0.5, "text": "Ta réponse est jugée mesquine. Il a le beau rôle.", "effects": { "happiness": -5, "fame": 3 }, "spe": { "reputation": -3 } }
+        ]
+      },
+      {
+        "label": "Lui proposer un café",
+        "outcomes": [
+          { "chance": 0.5, "text": "Vous parlez cinéma toute la nuit. Il devient un ami, toujours aussi méchant dans ses interviews.", "effects": { "happiness": 8 }, "spe": { "reputation": 3, "forme": 3 } },
+          { "chance": 0.5, "text": "Il ne répond pas. Puis il raconte l'invitation dans une autre interview.", "effects": { "happiness": -3 } }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          { "text": "Tu laisses passer. Il cherche une nouvelle cible le mois suivant.", "effects": { "happiness": 1 }, "spe": { "reputation": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0047",
+    "carriere": "cinema",
+    "minNiveau": 5,
+    "maxNiveau": 5,
+    "minAge": 55,
+    "unique": true,
+    "poids": 2,
+    "text": "Les Étoiles du cinéma te remettent une Étoile d'honneur pour l'ensemble de ta carrière. La salle se lève avant même que tu aies atteint la scène.",
+    "choices": [
+      {
+        "label": "Rendre hommage à tes équipes",
+        "outcomes": [
+          { "text": "Tu cites ton premier monteur, ta première actrice, et le chien. La salle rit et pleure à la fois.", "effects": { "happiness": 15, "fame": 10, "karma": 4 }, "spe": { "reputation": 12 } }
+        ]
+      },
+      {
+        "label": "Annoncer ton prochain film",
+        "outcomes": [
+          { "text": "« Ce n'est pas un enterrement. » Rires, applaudissements. Les financiers t'appellent dès le lendemain.", "effects": { "happiness": 12, "fame": 8 }, "spe": { "reputation": 10, "gainPct": 15, "forme": 8 } }
+        ]
+      },
+      {
+        "label": "Dire ce que tu as sur le cœur",
+        "outcomes": [
+          { "text": "Un discours tranchant sur l'état du cinéma. La moitié de la salle applaudit, l'autre fixe ses chaussures.", "effects": { "happiness": 8, "fame": 8 }, "spe": { "reputation": 6 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0048",
+    "carriere": "cinema",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Une jeune diplômée d'école de cinéma t'envoie un court-métrage impressionnant et te demande de devenir ton assistante sur {film}.",
+    "choices": [
+      {
+        "label": "L'engager",
+        "outcomes": [
+          { "chance": 0.7, "text": "Elle est brillante, et ses idées améliorent le film. Tu lui confies une deuxième équipe.", "effects": { "happiness": 8, "karma": 4 }, "spe": { "reputation": 3, "forme": 6 } },
+          { "chance": 0.3, "text": "Elle a beaucoup d'avis. Sur tout. Y compris sur ta façon de tenir ton café.", "effects": { "happiness": -2 }, "spe": { "forme": 2 } }
+        ]
+      },
+      {
+        "label": "Produire son premier film",
+        "costPct": 10,
+        "outcomes": [
+          { "chance": 0.5, "text": "Son premier long est sélectionné en festival. Elle te remercie sur scène.", "effects": { "happiness": 10, "karma": 6 }, "spe": { "reputation": 6, "gainPct": 10 } },
+          { "chance": 0.5, "text": "Le film ne trouve pas son public. Elle a appris beaucoup, toi aussi.", "effects": { "happiness": 2, "karma": 4 }, "spe": { "reputation": 1 } }
+        ]
+      },
+      {
+        "label": "Ne pas répondre",
+        "outcomes": [
+          { "text": "Ton agenda est plein. Tu entendras parler d'elle dans cinq ans, quand elle te battra en compétition.", "effects": { "happiness": -1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0049",
+    "carriere": "cinema",
+    "minNiveau": 1,
+    "maxNiveau": 4,
+    "text": "L'équipe technique de {film} enchaîne les journées de quatorze heures. Le chef électricien vient te dire que tout le monde menace de s'arrêter.",
+    "choices": [
+      {
+        "label": "Réduire les journées",
+        "outcomes": [
+          { "text": "Dix heures maximum. Le tournage dure une semaine de plus, l'équipe est reposée et motivée.", "effects": { "happiness": 5, "karma": 6 }, "spe": { "reputation": 4, "gainPct": -8 } }
+        ]
+      },
+      {
+        "label": "Payer les heures supplémentaires",
+        "costPct": 8,
+        "outcomes": [
+          { "text": "Ils sont payés comme il se doit. La fatigue est toujours là, mais la colère est partie.", "effects": { "happiness": 3, "karma": 3 }, "spe": { "reputation": 2 } }
+        ]
+      },
+      {
+        "label": "Leur demander de tenir",
+        "outcomes": [
+          { "chance": 0.4, "text": "Ils tiennent, par loyauté. Mais certains ne travailleront plus jamais avec toi.", "effects": { "happiness": -3, "karma": -4 }, "spe": { "reputation": -3 } },
+          { "chance": 0.6, "text": "Grève d'une semaine. Le tournage est paralysé et les syndicats te pointent du doigt.", "effects": { "happiness": -8, "karma": -4 }, "spe": { "reputation": -6, "gainPct": -10 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0050",
+    "carriere": "cinema",
+    "minNiveau": 2,
+    "maxNiveau": 4,
+    "text": "Tournage dans le désert pour {film} : 46 degrés à l'ombre, sauf qu'il n'y a pas d'ombre. Un technicien fait un coup de chaleur.",
+    "choices": [
+      {
+        "label": "Tourner seulement à l'aube",
+        "outcomes": [
+          { "text": "Lumière magnifique, équipe en vie. Le tournage s'allonge, le film y gagne.", "effects": { "happiness": 5, "karma": 4 }, "spe": { "reputation": 4, "gainPct": -5 } }
+        ]
+      },
+      {
+        "label": "Continuer avec plus d'eau",
+        "outcomes": [
+          { "chance": 0.6, "text": "Vous tenez le calendrier. Tout le monde perd trois kilos et un peu de patience.", "effects": { "happiness": -2, "health": -5 }, "spe": { "forme": -6 } },
+          { "chance": 0.4, "text": "Deux autres malaises, dont le tien. Le médecin du tournage arrête tout.", "effects": { "happiness": -8, "health": -12 }, "spe": { "forme": -10, "gainPct": -8 } }
+        ]
+      },
+      {
+        "label": "Recréer le désert en studio",
+        "costPct": 12,
+        "outcomes": [
+          { "text": "Du sable importé, des projecteurs. Personne ne meurt de chaud. Les dunes, elles, ne bougent pas.", "effects": { "happiness": 1, "health": 2 }, "spe": { "reputation": -1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0051",
+    "carriere": "cinema",
+    "minNiveau": 1,
+    "maxNiveau": 5,
+    "text": "Ton prochain film se tourne à l'étranger pendant six mois. {partenaire} te demande calmement si tu comptes rentrer un jour.",
+    "choices": [
+      {
+        "label": "L'emmener avec toi",
+        "outcomes": [
+          { "chance": 0.5, "text": "Vous vivez une aventure à deux entre deux plateaux. C'est l'une de vos plus belles années.", "effects": { "happiness": 10, "relationships": { "partner": 10 } }, "spe": { "forme": 4 } },
+          { "chance": 0.5, "text": "{partenaire} tourne en rond dans une ville inconnue pendant que tu travailles quinze heures par jour.", "effects": { "happiness": -6, "relationships": { "partner": -8 } } }
+        ]
+      },
+      {
+        "label": "Rentrer chaque mois",
+        "costPct": 4,
+        "outcomes": [
+          { "text": "Les allers-retours t'épuisent, mais le lien tient.", "effects": { "happiness": 3, "health": -3, "relationships": { "partner": 6 } }, "spe": { "forme": -4 } }
+        ]
+      },
+      {
+        "label": "Refuser le tournage",
+        "outcomes": [
+          { "text": "Le film se fera sans toi. Le dîner de ce soir, lui, est avec toi.", "effects": { "happiness": 4, "relationships": { "partner": 12 } }, "spe": { "reputation": -3, "gainPct": -15 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0052",
+    "carriere": "cinema",
+    "minNiveau": 5,
+    "maxNiveau": 5,
+    "minAge": 60,
+    "unique": true,
+    "text": "Tu viens de finir {film}. Tu sens que c'est peut-être le dernier. Ton producteur de toujours t'attend pourtant déjà avec un nouveau scénario.",
+    "choices": [
+      {
+        "label": "Annoncer ta retraite",
+        "outcomes": [
+          { "text": "Tu poses la caméra. Les hommages affluent. Pour la première fois depuis quarante ans, tu regardes des films sans les juger.", "effects": { "happiness": 12, "health": 4, "fame": 6 }, "spe": { "reputation": 10, "finCarriere": true } }
+        ]
+      },
+      {
+        "label": "Lire le scénario",
+        "outcomes": [
+          { "chance": 0.6, "text": "Il est excellent. Tu ne peux pas résister. Tu rajeunis de dix ans en une nuit.", "effects": { "happiness": 10 }, "spe": { "forme": 12, "reputation": 3 } },
+          { "chance": 0.4, "text": "Il est moyen. Tu le fais quand même, pour ne pas t'arrêter. Tu le regretteras un peu.", "effects": { "happiness": -2, "health": -3 }, "spe": { "forme": -4, "gainPct": 10 } }
+        ]
+      },
+      {
+        "label": "Transmettre à un jeune",
+        "outcomes": [
+          { "text": "Tu produis le film d'une jeune réalisatrice que tu admires. Tu passes de l'autre côté de la caméra.", "effects": { "happiness": 10, "karma": 8 }, "spe": { "reputation": 6, "gainPct": 5 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0053",
+    "carriere": "cinema",
+    "minNiveau": 2,
+    "maxNiveau": 5,
+    "text": "Une coproduction avec une société de Madrid se présente : la moitié du budget de ton prochain film, à condition de tourner en partie en espagnol.",
+    "choices": [
+      {
+        "label": "Diriger les acteurs en espagnol",
+        "requiresSkill": { "espagnol": 3 },
+        "outcomes": [
+          { "text": "Tu diriges sans interprète. Les acteurs espagnols t'adorent, le film est un succès des deux côtés.", "effects": { "happiness": 12, "skills": { "espagnol": 5 } }, "spe": { "reputation": 8, "gainPct": 25 } }
+        ]
+      },
+      {
+        "label": "Travailler avec un interprète",
+        "outcomes": [
+          { "chance": 0.6, "text": "Ça fonctionne, avec quelques malentendus savoureux sur le plateau.", "effects": { "happiness": 5 }, "spe": { "reputation": 3, "gainPct": 15 } },
+          { "chance": 0.4, "text": "L'interprète traduit « plus de tristesse » par « plus de soupe ». Les scènes sont étranges.", "effects": { "happiness": -3 }, "spe": { "reputation": -1, "gainPct": 10 } }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          { "text": "Tu cherches l'argent ailleurs. Ça prendra un an de plus.", "effects": { "happiness": -2 }, "spe": { "forme": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0054",
+    "carriere": "cinema",
+    "minNiveau": 2,
+    "maxNiveau": 4,
+    "text": "Un investisseur très généreux, arrivé de nulle part, veut financer {film} en espèces. Il ne pose aucune question sur le scénario. Il en pose beaucoup sur les factures.",
+    "choices": [
+      {
+        "label": "Accepter l'argent",
+        "outcomes": [
+          { "chance": 0.4, "text": "Le film se fait sans souci. Tu préfères ne pas savoir d'où venait l'argent.", "effects": { "happiness": 2, "karma": -6 }, "spe": { "gainPct": 15 } },
+          { "chance": 0.6, "text": "Un an plus tard, la brigade financière t'interroge. Ton film servait à blanchir de l'argent.", "effects": { "happiness": -14, "karma": -6 }, "spe": { "reputation": -12, "gainPct": -20, "signal": "blanchiment_cinema" } }
+        ]
+      },
+      {
+        "label": "Demander l'origine des fonds",
+        "outcomes": [
+          { "text": "Il disparaît aussi vite qu'il est venu. Ton avocat te félicite.", "effects": { "happiness": 2, "smarts": 3, "karma": 3 } }
+        ]
+      },
+      {
+        "label": "Prévenir les autorités",
+        "outcomes": [
+          { "text": "Tu fais un signalement. Quelques mois plus tard, un réseau est démantelé. Ton film attend d'autres financiers.", "effects": { "happiness": 3, "karma": 8 }, "spe": { "reputation": 2, "forme": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cin_0055",
+    "carriere": "cinema",
+    "minNiveau": 0,
+    "maxNiveau": 0,
+    "unique": true,
+    "poids": 2,
+    "text": "Après cinq courts-métrages, une commission d'aide au cinéma accepte de financer ton premier long-métrage. Il reste à choisir lequel de tes trois scénarios.",
+    "choices": [
+      {
+        "label": "Le plus personnel",
+        "outcomes": [
+          { "chance": 0.6, "text": "Un film intime et juste. Il sort dans peu de salles, mais il te fait passer dans la cour des grands.", "effects": { "happiness": 14, "fame": 2 }, "spe": { "niveau": 1, "reputation": 8, "gainPct": 20 } },
+          { "chance": 0.4, "text": "Trop personnel : tu te perds dans tes souvenirs. Le film est fini, mais passe inaperçu.", "effects": { "happiness": 4 }, "spe": { "niveau": 1, "reputation": 2, "gainPct": 10 } }
+        ]
+      },
+      {
+        "label": "Le plus commercial",
+        "outcomes": [
+          { "text": "Une comédie efficace qui marche bien. Les producteurs retiennent ton nom.", "effects": { "happiness": 10 }, "spe": { "niveau": 1, "reputation": 5, "gainPct": 30 } }
+        ]
+      },
+      {
+        "label": "Le plus risqué",
+        "outcomes": [
+          { "chance": 0.4, "text": "Personne n'a jamais vu ça. Le film fait le tour des festivals.", "effects": { "happiness": 15, "fame": 4 }, "spe": { "niveau": 1, "reputation": 12, "gainPct": 15 } },
+          { "chance": 0.6, "text": "Le tournage déraille et le film est incompréhensible. Mais tu as fait un long-métrage.", "effects": { "happiness": -2, "smarts": 3 }, "spe": { "niveau": 1, "reputation": -2, "gainPct": 5 } }
+        ]
+      }
+    ]
+  }
+]
