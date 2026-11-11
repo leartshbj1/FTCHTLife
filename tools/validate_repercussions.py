@@ -30,6 +30,9 @@ TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemp
         "permis_suspendu", "permis_annule", "permis_probatoire", "permis_points_bas", "conduit_sans_permis",
         "faux_permis", "pilote", "chasseur", "chauffard"}
 VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie", "partenaire", "metier", "e"}
+# Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
+TAGS |= {"prison", "gang", "gang_haut", "dealer", "sous_enquete", "chaleur", "ancien_gang", "balance", "argent_sale"}
+VARIABLES |= {"organisation", "chef", "rival", "rang"}
 SIGNAUX = set("""
 rencontre rendez_vous rendez_vous_rate couple rupture largue tromperie tromperie_decouverte demande_mariage
 demande_refusee mariage divorce veuvage grossesse naissance_enfant adoption enfant_majeur enfant_quitte_maison
@@ -44,6 +47,8 @@ permis_suspendu permis_annule permis_points_recuperes faux_permis_achete faux_pe
 conduite_sans_permis_arretee corruption_examinateur corruption_ratee casino_usurier casino_usurier_violence
 vie_suite
 """.split())
+SIGNAUX |= set("""gang_entree gang_promotion gang_trahison gang_sortie gang_chef trafic_debut trafic_saisie
+enquete_ouverte enquete_classee guerre_territoire blanchiment balance mission_reussie mission_ratee""".split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
 ISSUES = ["", "_sommet", "_perdu", "_blessure", "_animal", "_rencontre", "_honte", "_victoire", "_casse", "_arnaque"]

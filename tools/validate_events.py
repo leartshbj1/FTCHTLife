@@ -37,6 +37,9 @@ SPECIAL |= {"death","newFriend","relationships","setFlags","clearFlags","followU
 PH |= {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e","enfant","ex","codetenu","grandparent"}
 COND |= {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
 SPECIAL |= {"death","newFriend","relationships","setFlags","skills"}  # skills : docs/COMPETENCES.md
+# Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
+TAGS |= {"gang","gang_haut","dealer","sous_enquete","chaleur","ancien_gang","balance","argent_sale"}
+PH |= {"organisation","chef","rival","rang"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return

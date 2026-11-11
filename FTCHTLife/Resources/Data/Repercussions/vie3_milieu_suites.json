@@ -1,0 +1,3426 @@
+[
+ {
+  "id": "rep_mil_0001",
+  "on": "gang_entree",
+  "delay": [
+   0,
+   0
+  ],
+  "remember": [
+   "a_ete_dans_milieu"
+  ]
+ },
+ {
+  "id": "rep_mil_0002",
+  "on": "balance",
+  "delay": [
+   0,
+   0
+  ],
+  "remember": [
+   "a_balance"
+  ]
+ },
+ {
+  "id": "rep_mil_0003",
+  "on": "gang_sortie",
+  "delay": [
+   0,
+   0
+  ],
+  "remember": [
+   "sorti_du_milieu"
+  ]
+ },
+ {
+  "id": "rep_mil_0004",
+  "on": "gang_entree",
+  "chance": 0.5,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'année d'après ton entrée dans {organisation}, ta mère trouve une photo de toi avec des gars du milieu. Elle la pose sur la table du dîner sans un mot.",
+  "choices": [
+   {
+    "label": "Lui mentir",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Elle fait semblant de te croire. Le dîner se termine en silence.",
+      "effects": {
+       "relationships": {
+        "parent": -6
+       },
+       "happiness": -4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "« Ne me prends pas pour une idiote. » Elle quitte la table.",
+      "effects": {
+       "relationships": {
+        "parent": -12
+       },
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui avouer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle pleure, puis te serre la main : « Tu peux encore sortir. Promets-moi d'y penser. »",
+      "effects": {
+       "relationships": {
+        "parent": 4
+       },
+       "happiness": -6,
+       "setFlags": [
+        "doute_milieu"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0005",
+  "on": "gang_entree",
+  "chance": 0.4,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ]
+  },
+  "text": "Quelque temps après ton entrée dans {organisation}, tes anciens amis de classe ne t'invitent plus. Une soirée a eu lieu sans toi ; tu l'apprends sur les réseaux.",
+  "effects": {
+   "happiness": -6
+  }
+ },
+ {
+  "id": "rep_mil_0006",
+  "on": "gang_entree",
+  "chance": 0.35,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Deux ans après ton entrée dans {organisation}, ton premier recruteur est arrêté. On murmure qu'il pourrait citer des noms, dont le tien.",
+  "choices": [
+   {
+    "label": "Lui envoyer de l'argent pour sa cantine",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un mandat chaque mois. Un message clair : on ne t'oublie pas, ne nous oublie pas.",
+      "effects": {
+       "vie": {
+        "argentSale": -1500,
+        "milieuLoyaute": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre tes distances avec tout ce qui le concerne",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu changes de téléphone et d'habitudes. La peur t'accompagne quelques mois.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "milieuChaleur": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0007",
+  "on": "event:rep_mil_0006",
+  "choice": 0,
+  "chance": 0.5,
+  "delay": [
+   2,
+   4
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton premier recruteur sort de prison. Il vient te remercier pour les mandats. Il a tenu sa langue.",
+  "effects": {
+   "happiness": 4,
+   "newFriend": true,
+   "vie": {
+    "milieuRespect": 4,
+    "milieuLoyaute": 4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0008",
+  "on": "event:rep_mil_0006",
+  "choice": 1,
+  "chance": 0.5,
+  "delay": [
+   2,
+   4
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton premier recruteur sort de prison. Il sait que tu l'as lâché. Il te croise et ne dit rien. Il n'a pas besoin.",
+  "effects": {
+   "happiness": -6,
+   "vie": {
+    "milieuRespect": -3
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0009",
+  "on": "gang_entree",
+  "chance": 0.3,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après ton entrée dans le milieu, ton petit voisin de dix ans t'imite : même casquette, même démarche. Sa mère te lance un regard que tu n'oublies pas.",
+  "effects": {
+   "karma": -3,
+   "happiness": -4
+  }
+ },
+ {
+  "id": "rep_mil_0010",
+  "on": "gang_entree",
+  "chance": 0.35,
+  "delay": [
+   3,
+   5
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Quelques années après ton entrée dans {organisation}, tu fais le compte : sur les six de ta promotion, deux sont morts, trois sont en prison. Il reste toi.",
+  "choices": [
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu te dis que tu es plus malin que les autres. Ils se le disaient aussi.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "milieuRespect": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Envisager de partir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Pour la première fois, l'idée de partir ressemble à un plan.",
+      "effects": {
+       "happiness": -4,
+       "setFlags": [
+        "doute_milieu"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0011",
+  "on": "gang_entree",
+  "chance": 0.3,
+  "delay": [
+   0,
+   1
+  ],
+  "requires": {
+   "flags": [
+    "approche_milieu"
+   ]
+  },
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Peu après ton entrée dans {organisation}, un ancien te prend à part : « Ici, on ne fait confiance qu'à ceux qui ont du sang sur les mains. Le tien ou celui d'un autre. »",
+  "effects": {
+   "happiness": -6,
+   "vie": {
+    "milieuRespect": 1
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0012",
+  "on": "gang_promotion",
+  "chance": 0.45,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "setFlags": [
+   "ennemi_interne"
+  ],
+  "text": "L'année qui suit ta promotion au rang de {rang}, un membre que tu as dépassé ne te salue plus. Les jaloux ont de la mémoire.",
+  "effects": {
+   "happiness": -3
+  }
+ },
+ {
+  "id": "rep_mil_0013",
+  "on": "gang_promotion",
+  "chance": 0.3,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta promotion te donne accès à des secrets de l'organisation. Un soir, un enquêteur t'aborde : il sait exactement ce que tu sais.",
+  "choices": [
+   {
+    "label": "Le renvoyer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu le renvoies. Il sourit. « On a le temps. »",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 4,
+        "milieuLoyaute": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Écouter sans rien promettre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il te laisse sa carte. Tu la caches dans ta chaussure.",
+      "effects": {
+       "happiness": -6,
+       "setFlags": [
+        "contact_police"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0014",
+  "on": "event:rep_mil_0013",
+  "choice": 1,
+  "chance": 0.6,
+  "delay": [
+   2,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'enquêteur revient, deux ans plus tard, avec un dossier plus épais. « Tu as toujours ma carte ? Maintenant, tu n'as plus le choix. »",
+  "choices": [
+   {
+    "label": "Coopérer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu parles, à demi-mot. Tu ne sais plus de quel côté tu es.",
+      "effects": {
+       "karma": -4,
+       "setFlags": [
+        "indic"
+       ],
+       "vie": {
+        "milieuChaleur": -12,
+        "milieuLoyaute": -10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser encore",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il repart. Une enquête s'ouvre sur toi le mois suivant.",
+      "effects": {
+       "vie": {
+        "enquete": true,
+        "milieuChaleur": 12
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il repart bredouille. Tu as tenu.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0015",
+  "on": "gang_promotion",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après ta promotion, {chef} t'invite chez lui pour la première fois. Ses enfants jouent dans le jardin. Il te regarde : « Voilà ce qu'on protège. »",
+  "effects": {
+   "happiness": 3,
+   "vie": {
+    "milieuLoyaute": 6
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0016",
+  "on": "gang_promotion",
+  "chance": 0.35,
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelque temps après ta promotion, ta paie a doublé et tes nuits ont raccourci. Ton médecin te parle de tension, de stress, d'ulcère.",
+  "effects": {
+   "health": -6,
+   "happiness": -3
+  }
+ },
+ {
+  "id": "rep_mil_0017",
+  "on": "gang_promotion",
+  "chance": 0.3,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta promotion fait le tour du quartier. Une mère vient frapper chez toi : son fils veut travailler « pour toi ». Elle te supplie de refuser.",
+  "choices": [
+   {
+    "label": "Refuser le garçon",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu dis non au gamin. Il te déteste. Sa mère te serre les mains en pleurant.",
+      "effects": {
+       "karma": 8,
+       "vie": {
+        "milieuRespect": -1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le prendre quand même",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il commence la semaine suivante. Sa mère ne te parle plus jamais.",
+      "effects": {
+       "karma": -10,
+       "vie": {
+        "milieuRespect": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0018",
+  "on": "gang_trahison",
+  "chance": 0.6,
+  "delay": [
+   1,
+   1
+  ],
+  "text": "Ta trahison n'est pas oubliée. Un an plus tard, une voiture stationne deux nuits de suite devant chez toi.",
+  "choices": [
+   {
+    "label": "Partir sur-le-champ",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu dors chez un ami, puis dans une autre ville. Tu ne reviendras pas.",
+      "effects": {
+       "happiness": -12,
+       "money": -1500,
+       "setFlags": [
+        "traque_milieu"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre et voir",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La voiture disparaît. Un avertissement, rien de plus. Pour cette fois.",
+      "effects": {
+       "happiness": -10
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ta porte est fracturée pendant ton absence. Rien n'est volé. Tout est retourné.",
+      "effects": {
+       "happiness": -18,
+       "setFlags": [
+        "traque_milieu"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0019",
+  "on": "event:rep_mil_0018",
+  "choice": 0,
+  "chance": 0.4,
+  "delay": [
+   3,
+   6
+  ],
+  "text": "Des années après ta fuite, une carte postale sans signature arrive à ta nouvelle adresse. Une seule phrase : « On n'oublie pas. »",
+  "effects": {
+   "happiness": -12
+  }
+ },
+ {
+  "id": "rep_mil_0020",
+  "on": "gang_trahison",
+  "chance": 0.35,
+  "delay": [
+   2,
+   3
+  ],
+  "text": "Deux ans après ta trahison, tu apprends qu'un membre de ton ancienne bande a été puni à ta place. On l'a cru complice.",
+  "choices": [
+   {
+    "label": "Envoyer de l'argent à sa famille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une enveloppe anonyme. Ça ne répare rien.",
+      "effects": {
+       "money": -2000,
+       "karma": 6,
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Vivre avec",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu n'en parles à personne. Ça te réveille la nuit.",
+      "effects": {
+       "happiness": -12,
+       "karma": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0021",
+  "on": "gang_trahison",
+  "chance": 0.4,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "mother"
+   ]
+  },
+  "text": "Ta trahison a eu des conséquences : ta famille, restée au quartier, est mise à l'écart. Ta mère ne peut plus faire ses courses sans qu'on chuchote.",
+  "effects": {
+   "relationships": {
+    "mother": -8
+   },
+   "happiness": -10
+  }
+ },
+ {
+  "id": "rep_mil_0022",
+  "on": "gang_trahison",
+  "chance": 0.35,
+  "delay": [
+   4,
+   8
+  ],
+  "text": "Des années après ta trahison, l'homme que tu as trahi sort de prison. Il ne te cherche pas. Il ne t'écrit pas. Tu ne sais pas si c'est pire.",
+  "effects": {
+   "happiness": -8
+  }
+ },
+ {
+  "id": "rep_mil_0023",
+  "on": "gang_trahison",
+  "chance": 0.25,
+  "delay": [
+   1,
+   3
+  ],
+  "setFlags": [
+   "menace_milieu"
+  ],
+  "text": "Quelque temps après ta trahison, un inconnu te bouscule dans la rue et glisse dans ta poche une balle, une seule.",
+  "effects": {
+   "happiness": -15
+  }
+ },
+ {
+  "id": "rep_mil_0024",
+  "on": "gang_sortie",
+  "chance": 0.6,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après avoir quitté le milieu, tu cherches un travail honnête. Ton CV a un trou de plusieurs années.",
+  "choices": [
+   {
+    "label": "Dire la vérité en entretien",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Un patron t'écoute et t'embauche. « Je préfère quelqu'un qui sait ce que coûte une seconde chance. »",
+      "effects": {
+       "money": 1500,
+       "happiness": 10
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Les portes se ferment, poliment.",
+      "effects": {
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Inventer une histoire",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu obtiens un poste. Chaque fois que le patron parle de vérifications, tu as des sueurs froides.",
+      "effects": {
+       "money": 1200,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Le mensonge est découvert à la période d'essai.",
+      "effects": {
+       "happiness": -10
+      }
+     }
+    ]
+   },
+   {
+    "label": "Passer par une association de réinsertion",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un éducateur t'aide à monter un dossier. Lentement, ça avance.",
+      "effects": {
+       "happiness": 4,
+       "karma": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0025",
+  "on": "event:rep_mil_0024",
+  "choice": 0,
+  "outcome": 0,
+  "chance": 0.5,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton patron, celui qui t'a donné ta chance après le milieu, te propose un poste de responsable. Tu signes ton premier vrai contrat à durée indéterminée.",
+  "effects": {
+   "money": 3000,
+   "happiness": 12,
+   "karma": 4
+  }
+ },
+ {
+  "id": "rep_mil_0026",
+  "on": "gang_sortie",
+  "chance": 0.4,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Deux ans après ta sortie du milieu, ton ancien chef te croise. Il te regarde de haut en bas. « Tu as l'air fatigué. La vie honnête, c'est dur, hein ? »",
+  "choices": [
+   {
+    "label": "Lui répondre que tu dors bien",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il rit, mais quelque chose passe dans son regard. De l'envie, peut-être.",
+      "effects": {
+       "happiness": 6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Baisser les yeux",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il passe son chemin. Tu restes là, le cœur battant.",
+      "effects": {
+       "happiness": -6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0027",
+  "on": "gang_sortie",
+  "chance": 0.45,
+  "delay": [
+   2,
+   5
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelques années après avoir quitté le milieu, tu reçois un appel : un ancien de ta bande a été tué. Tu aurais pu être à sa place.",
+  "effects": {
+   "happiness": -10,
+   "karma": 2
+  }
+ },
+ {
+  "id": "rep_mil_0028",
+  "on": "gang_sortie",
+  "chance": 0.4,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta sortie du milieu laisse une dette : un ancien associé estime que tu lui dois encore 5 000 €.",
+  "choices": [
+   {
+    "label": "Payer pour être tranquille",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu paies. Tu achètes ta liberté par mensualités.",
+      "effects": {
+       "money": -5000,
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il laisse tomber. Il a d'autres soucis.",
+      "effects": {
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il ne laisse pas tomber. Ta voiture brûle un soir de novembre.",
+      "effects": {
+       "money": -4000,
+       "happiness": -12
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prévenir la police",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une plainte, une enquête. Tu deviens, aux yeux de certains, une balance.",
+      "effects": {
+       "karma": 4,
+       "happiness": -6,
+       "setFlags": [
+        "menace_milieu"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0029",
+  "on": "gang_sortie",
+  "chance": 0.4,
+  "delay": [
+   4,
+   6
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Cinq ans après ta sortie du milieu, tu te surprends à rire sans raison, un dimanche, dans un parc. Tu ne t'en souvenais plus.",
+  "effects": {
+   "happiness": 12,
+   "health": 4
+  }
+ },
+ {
+  "id": "rep_mil_0030",
+  "on": "gang_sortie",
+  "chance": 0.35,
+  "delay": [
+   3,
+   6
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Longtemps après ta sortie du milieu, un jeune du quartier vient te voir. Il veut sortir lui aussi et ne sait pas comment.",
+  "choices": [
+   {
+    "label": "L'aider",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu lui ouvres ton carnet d'adresses : un éducateur, un patron, un logement. Il s'en sort.",
+      "effects": {
+       "karma": 12,
+       "happiness": 8
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ses anciens amis n'aiment pas que tu t'en mêles.",
+      "effects": {
+       "karma": 10,
+       "happiness": -6,
+       "setFlags": [
+        "menace_milieu"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui dire de se débrouiller",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui dis que personne ne t'a aidé. C'est faux, et tu le sais.",
+      "effects": {
+       "karma": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0031",
+  "on": "gang_chef",
+  "chance": 0.6,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après avoir pris la tête de l'organisation, tu ne dors plus deux nuits de suite au même endroit.",
+  "choices": [
+   {
+    "label": "Renforcer ta garde",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Des hommes partout, des voitures blindées. Tu vis dans une cage dorée.",
+      "effects": {
+       "money": -15000,
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire confiance à quelques fidèles",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ils te protègent bien. Pour l'instant.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 4
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "L'un de tes fidèles vend ton emploi du temps à {rival}.",
+      "effects": {
+       "health": -20,
+       "happiness": -15,
+       "setFlags": [
+        "sait_traitre"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0032",
+  "on": "gang_chef",
+  "chance": 0.4,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ]
+  },
+  "text": "Depuis que tu diriges {organisation}, ta famille ne t'invite plus aux anniversaires. Ta présence rend les enfants nerveux.",
+  "effects": {
+   "happiness": -8,
+   "relationships": {
+    "parent": -6
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0033",
+  "on": "gang_chef",
+  "chance": 0.35,
+  "delay": [
+   2,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Deux ans après être devenu le chef, une revue locale publie ton portrait sous un pseudonyme transparent. Les policiers l'affichent dans leur bureau.",
+  "effects": {
+   "fame": 5,
+   "vie": {
+    "milieuChaleur": 15,
+    "enquete": true
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0034",
+  "on": "gang_chef",
+  "chance": 0.3,
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis ta prise de pouvoir, l'ancien chef vit retiré. Il t'invite à déjeuner. « Je voulais voir à quoi ressemble mon successeur avant de mourir. »",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il te donne un seul conseil : « Sache partir avant qu'on te fasse partir. » Tu ne l'écoutes qu'à moitié.",
+      "effects": {
+       "smarts": 3,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il meurt l'hiver suivant. Tu n'iras pas à l'enterrement non plus.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0035",
+  "on": "gang_chef",
+  "chance": 0.25,
+  "delay": [
+   3,
+   6
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Des années à la tête de l'organisation ont fait de toi une cible permanente. Un soir, une moto s'arrête à ta hauteur au feu rouge.",
+  "choices": [
+   {
+    "label": "Accélérer",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu grilles le feu. Les balles touchent la carrosserie, pas toi.",
+      "effects": {
+       "health": -5,
+       "happiness": -15
+      }
+     },
+     {
+      "chance": 0.25,
+      "text": "Une balle te touche à l'épaule. Tu conduis jusqu'à l'hôpital en serrant les dents.",
+      "effects": {
+       "health": -35,
+       "happiness": -15
+      }
+     },
+     {
+      "chance": 0.05,
+      "text": "Le feu reste rouge trop longtemps.",
+      "effects": {
+       "death": "à un feu rouge, abattu par deux hommes à moto"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0036",
+  "on": "trafic_debut",
+  "chance": 0.4,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelques mois après le début de ton trafic, un client régulier ne vient plus. Tu apprends qu'il est à l'hôpital.",
+  "choices": [
+   {
+    "label": "Aller le voir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il te reconnaît à peine. Sa sœur te demande qui tu es. Tu mens.",
+      "effects": {
+       "happiness": -10,
+       "karma": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'oublier",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un client de moins. Tu as appris à compter sans penser.",
+      "effects": {
+       "karma": -6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0037",
+  "on": "trafic_debut",
+  "chance": 0.35,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après tes débuts dans le trafic, ta planque est tellement pleine d'argent liquide que tu n'arrives plus à fermer le placard.",
+  "effects": {
+   "happiness": 2,
+   "vie": {
+    "argentSale": 4000,
+    "milieuChaleur": 4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0038",
+  "on": "trafic_debut",
+  "chance": 0.45,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton trafic a attiré l'attention d'un concurrent. Un message te parvient : « Ce coin est à nous depuis dix ans. »",
+  "choices": [
+   {
+    "label": "Céder le coin",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu déplaces ton activité. Moins de clients, moins d'ennuis.",
+      "effects": {
+       "vie": {
+        "argentSale": -1500,
+        "milieuRespect": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tenir ta position",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le concurrent recule. Ton nom circule.",
+      "effects": {
+       "vie": {
+        "milieuRespect": 6,
+        "milieuChaleur": 6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Bagarre. Tu gardes le coin et une cicatrice.",
+      "effects": {
+       "health": -15,
+       "vie": {
+        "milieuRespect": 4,
+        "milieuChaleur": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0039",
+  "on": "trafic_debut",
+  "chance": 0.3,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "siblings"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Deux ans après tes débuts dans le trafic, ta sœur ou ton frère t'annonce qu'on lui a proposé de vendre pour toi. « Puisque c'est toi le patron. »",
+  "choices": [
+   {
+    "label": "Refuser net",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Jamais toi. » Tu le dis avec une violence qui te surprend.",
+      "effects": {
+       "relationships": {
+        "sibling": -3
+       },
+       "karma": 6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ta famille entière est maintenant dans le circuit. Si ça tombe, tout le monde tombe.",
+      "effects": {
+       "relationships": {
+        "sibling": 4
+       },
+       "karma": -10,
+       "vie": {
+        "argentSale": 1000
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0040",
+  "on": "event:rep_mil_0036",
+  "choice": 0,
+  "chance": 0.5,
+  "delay": [
+   1,
+   2
+  ],
+  "text": "Le client hospitalisé s'en est sorti. Il t'envoie un message : « Merci d'être venu. Je ne t'achèterai plus jamais rien. »",
+  "effects": {
+   "happiness": 4,
+   "karma": 4
+  }
+ },
+ {
+  "id": "rep_mil_0041",
+  "on": "trafic_saisie",
+  "chance": 0.6,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après la saisie de ton stock, ton fournisseur réclame quand même son argent. « Ce qui est perdu reste dû. »",
+  "choices": [
+   {
+    "label": "Payer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu travailles des mois pour rembourser une marchandise que tu n'as jamais vendue.",
+      "effects": {
+       "happiness": -8,
+       "vie": {
+        "argentSale": -6000
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier un échéancier",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il accepte, avec des intérêts.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "argentSale": -3000
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il refuse. Il envoie quelqu'un.",
+      "effects": {
+       "health": -20,
+       "happiness": -12
+      }
+     }
+    ]
+   },
+   {
+    "label": "Disparaître",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu changes de ville. Une dette de plus derrière toi.",
+      "effects": {
+       "happiness": -10,
+       "setFlags": [
+        "traque_milieu"
+       ],
+       "vie": {
+        "quitterMilieu": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0042",
+  "on": "trafic_saisie",
+  "chance": 0.45,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après la saisie, {chef} veut savoir qui a renseigné la police. Toutes les têtes se tournent vers le maillon le plus faible.",
+  "effects": {
+   "happiness": -8,
+   "vie": {
+    "milieuLoyaute": -4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0043",
+  "on": "trafic_saisie",
+  "chance": 0.3,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La saisie de ton stock fait la une du journal local : « Coup de filet dans le quartier ». Ta mère découpe l'article. Elle ne sait pas que c'est toi.",
+  "effects": {
+   "happiness": -6
+  }
+ },
+ {
+  "id": "rep_mil_0044",
+  "on": "trafic_saisie",
+  "chance": 0.35,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après la saisie, la police n'a jamais remonté jusqu'à toi. Tu commences à croire que tu as eu de la chance. Tu ne sais pas qu'ils attendent.",
+  "effects": {
+   "vie": {
+    "milieuChaleur": 6,
+    "enquete": true
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0045",
+  "on": "enquete_ouverte",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Peu après l'ouverture de l'enquête, ta banque t'appelle : ton compte fait l'objet d'une « demande d'information ».",
+  "choices": [
+   {
+    "label": "Prendre un avocat tout de suite",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il coûte cher, mais il te dit enfin ce qui se passe.",
+      "effects": {
+       "money": -3000,
+       "vie": {
+        "milieuChaleur": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Retirer tout ton argent",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu retires tout en liquide. Les enquêteurs notent le retrait. C'est exactement ce qu'ils attendaient.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Trop tard : le compte est déjà gelé.",
+      "effects": {
+       "happiness": -10
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0046",
+  "on": "enquete_ouverte",
+  "chance": 0.45,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après l'ouverture de l'enquête, un voisin te confie qu'un policier lui a posé des questions sur tes horaires.",
+  "effects": {
+   "happiness": -6,
+   "vie": {
+    "milieuChaleur": 4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0047",
+  "on": "enquete_ouverte",
+  "chance": 0.35,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "requiresPartner": true,
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'enquête te ronge. Tu ne fais plus confiance à ton téléphone, à ta voiture, à tes amis.",
+  "choices": [
+   {
+    "label": "Te confier à {partenaire}",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "{partenaire} t'écoute et te tient la main. Tu n'es pas seul{e}.",
+      "effects": {
+       "relationships": {
+        "partner": 6
+       },
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "{partenaire} panique. « Je ne veux rien savoir de tout ça. »",
+      "effects": {
+       "relationships": {
+        "partner": -10
+       },
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout garder pour toi",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu dors mal. Tu manges mal. Tu deviens dur.",
+      "effects": {
+       "happiness": -8,
+       "health": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0048",
+  "on": "event:rep_mil_0045",
+  "choice": 0,
+  "chance": 0.5,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton avocat t'appelle un soir : « Ils ont des écoutes. Tout dépend de ce que tu as dit au téléphone depuis deux ans. » Tu essaies de te souvenir.",
+  "effects": {
+   "happiness": -10
+  }
+ },
+ {
+  "id": "rep_mil_0049",
+  "on": "enquete_ouverte",
+  "chance": 0.4,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelque temps après l'ouverture de l'enquête, tu es convoqué{e} chez le juge d'instruction. Il a une photo de toi, prise de loin, avec {chef}.",
+  "choices": [
+   {
+    "label": "Garder le silence",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« C'est votre droit. » Il le note, sans émotion.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 4,
+        "milieuChaleur": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Dire que c'est un ami d'enfance",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le juge hoche la tête. Il n'y croit pas, mais il ne peut rien prouver.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il sort une deuxième photo. Puis une troisième.",
+      "effects": {
+       "happiness": -8,
+       "vie": {
+        "milieuChaleur": 12
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0050",
+  "on": "enquete_classee",
+  "chance": 0.45,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après le classement de l'enquête, le policier qui la menait est muté. Il te croise dans la rue. « Ce n'est que partie remise. »",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "milieuChaleur": 4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0051",
+  "on": "enquete_classee",
+  "chance": 0.45,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le classement de l'enquête t'a donné des ailes. Quelque temps après, tu prends des risques que tu n'aurais jamais pris avant.",
+  "choices": [
+   {
+    "label": "Ralentir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu te rappelles que la chance n'est pas une stratégie.",
+      "effects": {
+       "smarts": 1,
+       "vie": {
+        "milieuChaleur": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer sur ta lancée",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tout passe. Tu te crois intouchable.",
+      "effects": {
+       "vie": {
+        "argentSale": 3000,
+        "milieuChaleur": 8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Une nouvelle enquête s'ouvre, plus solide que la première.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0052",
+  "on": "enquete_classee",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après le classement de l'enquête, {chef} se demande comment tu t'en es sorti{e} si facilement. Trop facilement.",
+  "choices": [
+   {
+    "label": "Montrer les documents de ton avocat",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "{chef} lit tout, puis te rend les papiers. « Bien. »",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 4
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Les papiers ne suffisent pas à effacer le doute.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "T'offenser du soupçon",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ta colère paraît sincère. Elle l'est.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Trop de colère. Ça ressemble à de la culpabilité.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": -8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0053",
+  "on": "enquete_classee",
+  "chance": 0.3,
+  "delay": [
+   2,
+   4
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Longtemps après le classement de l'enquête, tu reçois le scellé qu'on te restitue : ta vieille montre et un téléphone que tu ne reconnais plus. Une autre vie dans un sachet plastique.",
+  "effects": {
+   "happiness": -2
+  }
+ },
+ {
+  "id": "rep_mil_0054",
+  "on": "guerre_territoire",
+  "chance": 0.4,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après la guerre de territoire, la mère d'un garçon tué de l'autre camp organise une marche blanche. Elle passe sous tes fenêtres.",
+  "choices": [
+   {
+    "label": "Regarder la marche",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle tient une photo. Il avait seize ans. Tu fermes les rideaux trop tard.",
+      "effects": {
+       "happiness": -12,
+       "karma": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Descendre et marcher avec eux",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Personne ne te reconnaît. Tu marches en silence jusqu'au bout.",
+      "effects": {
+       "karma": 10,
+       "happiness": -6
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Quelqu'un te reconnaît. On te demande de partir.",
+      "effects": {
+       "karma": 6,
+       "happiness": -12
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0055",
+  "on": "guerre_territoire",
+  "chance": 0.35,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après la guerre de territoire, le quartier est plus calme. Les commerces rouvrent. On dit que c'est grâce à la police. Tu sais que c'est parce qu'il n'y a plus personne à tuer.",
+  "effects": {
+   "happiness": -4
+  }
+ },
+ {
+  "id": "rep_mil_0056",
+  "on": "guerre_territoire",
+  "chance": 0.35,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La guerre de territoire a laissé des comptes à régler. Deux ans plus tard, un jeune de chez {rival} vient se venger de la mort de son frère.",
+  "choices": [
+   {
+    "label": "Fuir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu changes de ville quelques mois. La vengeance attend.",
+      "effects": {
+       "happiness": -10,
+       "setFlags": [
+        "menace_milieu"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'affronter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il recule. Pour cette fois.",
+      "effects": {
+       "happiness": -8,
+       "vie": {
+        "milieuRespect": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il ne recule pas. Une lame dans un parking.",
+      "effects": {
+       "health": -35,
+       "happiness": -15
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui parler",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "Vous parlez d'un frère que vous avez tous les deux connu. Il repart sans rien faire. Peut-être pour toujours.",
+      "effects": {
+       "karma": 12,
+       "happiness": -4
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "Il ne veut pas parler.",
+      "effects": {
+       "health": -25,
+       "happiness": -12
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0057",
+  "on": "guerre_territoire",
+  "chance": 0.35,
+  "delay": [
+   3,
+   5
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelques années après la guerre de territoire, tu tombes sur une photo de groupe de ta bande, prise juste avant. Trois visages sur huit sont encore vivants.",
+  "effects": {
+   "happiness": -10
+  }
+ },
+ {
+  "id": "rep_mil_0058",
+  "on": "guerre_territoire",
+  "chance": 0.3,
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis la guerre de territoire, tu sursautes au moindre bruit de moto. Un pot d'échappement te fait plonger au sol en pleine rue.",
+  "choices": [
+   {
+    "label": "Consulter quelqu'un",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le psychiatre parle de stress post-traumatique. Comme les soldats. Tu n'as rien d'un soldat.",
+      "effects": {
+       "happiness": 4,
+       "health": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire comme si de rien n'était",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ris pour cacher ta honte. Les cauchemars continuent.",
+      "effects": {
+       "happiness": -8,
+       "health": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0059",
+  "on": "event:rep_mil_0054",
+  "choice": 1,
+  "chance": 0.5,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La mère de la marche blanche crée une association contre la violence des bandes. Elle cherche des témoignages d'anciens.",
+  "choices": [
+   {
+    "label": "Témoigner, anonymement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ta voix enregistrée est diffusée dans les collèges. Tu ne sauras jamais qui elle a touché.",
+      "effects": {
+       "karma": 12,
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas répondre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu gardes l'affiche sur ton frigo pendant des mois.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0060",
+  "on": "blanchiment",
+  "chance": 0.4,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après ton opération de blanchiment, le gérant de la société écran se met à poser des questions. Il veut une plus grosse part.",
+  "choices": [
+   {
+    "label": "Augmenter sa part",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il est content. Pour l'instant. Les gens gourmands ne sont jamais contents longtemps.",
+      "effects": {
+       "vie": {
+        "argentSale": -3000
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le remplacer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Un nouveau gérant, plus docile.",
+      "effects": {
+       "vie": {
+        "argentSale": -1000,
+        "milieuRespect": 2
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'ancien gérant, vexé, appelle la brigade financière.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0061",
+  "on": "blanchiment",
+  "chance": 0.35,
+  "delay": [
+   2,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'argent blanchi t'a permis d'acheter un appartement à ton nom. Deux ans plus tard, un contrôle fiscal demande d'où vient l'apport.",
+  "choices": [
+   {
+    "label": "Fournir les justificatifs de la société écran",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tout tient. Le contrôleur range son dossier.",
+      "effects": {
+       "money": -2000
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le montage s'effondre. Redressement et enquête.",
+      "effects": {
+       "vie": {
+        "fine": 15000,
+        "enquete": true,
+        "milieuChaleur": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre un fiscaliste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il coûte une fortune et vaut chaque centime.",
+      "effects": {
+       "money": -8000,
+       "vie": {
+        "milieuChaleur": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0062",
+  "on": "blanchiment",
+  "chance": 0.3,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton restaurant de façade a eu une bonne critique dans le journal. Tu as presque envie qu'il marche vraiment.",
+  "effects": {
+   "happiness": 4,
+   "money": 1500,
+   "fame": 1
+  }
+ },
+ {
+  "id": "rep_mil_0063",
+  "on": "blanchiment",
+  "chance": 0.25,
+  "delay": [
+   2,
+   5
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Une fuite de documents bancaires fait la une des journaux. Des milliers de sociétés offshore exposées. Tu cherches fébrilement le nom des tiennes.",
+  "choices": [
+   {
+    "label": "Fermer les sociétés en urgence",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu fermes tout. Tu perds de l'argent mais tu dors.",
+      "effects": {
+       "vie": {
+        "argentSale": -5000,
+        "milieuChaleur": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tes sociétés ne sont pas dans la liste. Ouf.",
+      "effects": {
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Une de tes sociétés y est. Un journaliste t'appelle.",
+      "effects": {
+       "fame": 4,
+       "vie": {
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0064",
+  "on": "balance",
+  "chance": 0.6,
+  "delay": [
+   1,
+   1
+  ],
+  "text": "Un an après ton témoignage, ta nouvelle vie a un nom qui n'est pas le tien. Tu oublies parfois de te retourner quand on t'appelle.",
+  "effects": {
+   "happiness": -6
+  }
+ },
+ {
+  "id": "rep_mil_0065",
+  "on": "balance",
+  "chance": 0.45,
+  "delay": [
+   2,
+   2
+  ],
+  "conditions": {
+   "tags": [
+    "mother"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Deux ans après avoir parlé, ta mère t'écrit via ton officier de liaison. Elle dit que le quartier ne lui adresse plus la parole.",
+  "choices": [
+   {
+    "label": "Lui proposer de te rejoindre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Elle accepte. Elle quitte tout pour toi. Tu ne sauras jamais comment la remercier.",
+      "effects": {
+       "relationships": {
+        "mother": 12
+       },
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Elle refuse. « Je suis née ici, je mourrai ici. »",
+      "effects": {
+       "relationships": {
+        "mother": 2
+       },
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui écrire que tu es désolé{e}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle répond : « Je suis fière de toi. Même si c'est dur. »",
+      "effects": {
+       "relationships": {
+        "mother": 6
+       },
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0066",
+  "on": "balance",
+  "chance": 0.3,
+  "delay": [
+   3,
+   6
+  ],
+  "setFlags": [
+   "menace_milieu"
+  ],
+  "text": "Des années après ton témoignage, une émission télé retrace l'affaire. Ton ancien surnom est prononcé. Ta voisine regarde l'émission.",
+  "effects": {
+   "happiness": -8
+  }
+ },
+ {
+  "id": "rep_mil_0067",
+  "on": "balance",
+  "chance": 0.5,
+  "delay": [
+   4,
+   8
+  ],
+  "text": "Ton témoignage a fait tomber des hommes. Quelques années plus tard, le premier d'entre eux sort de prison.",
+  "choices": [
+   {
+    "label": "Demander à être déplacé{e}",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Nouvelle ville, nouveau nom. Encore.",
+      "effects": {
+       "money": -2000,
+       "happiness": -10
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Il ne te cherche pas. Ou pas encore.",
+      "effects": {
+       "happiness": -8
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Il te trouve. Il ne fait rien. Il te regarde juste, de l'autre côté de la rue.",
+      "effects": {
+       "happiness": -20
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0068",
+  "on": "balance",
+  "chance": 0.3,
+  "delay": [
+   5,
+   10
+  ],
+  "text": "Longtemps après ton témoignage, tu reçois une lettre d'un enquêteur à la retraite. « Sans vous, des enfants seraient morts. Je voulais que vous le sachiez. »",
+  "effects": {
+   "happiness": 10,
+   "karma": 6
+  }
+ },
+ {
+  "id": "rep_mil_0069",
+  "on": "event:rep_mil_0064",
+  "chance": 0.4,
+  "delay": [
+   3,
+   5
+  ],
+  "text": "Ton faux nom est devenu ton vrai nom. Un jour, tu signes un papier et tu réalises que tu ne l'as même pas hésité.",
+  "effects": {
+   "happiness": 6
+  }
+ },
+ {
+  "id": "rep_mil_0070",
+  "on": "mission_reussie",
+  "chance": 0.35,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta mission réussie a été racontée dans tout {organisation}. Un an plus tard, les jeunes recrues connaissent ton nom avant ton visage.",
+  "effects": {
+   "vie": {
+    "milieuRespect": 5
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0071",
+  "on": "mission_reussie",
+  "chance": 0.3,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Peu après ta mission réussie, une victime collatérale porte plainte : un commerçant qui a tout vu.",
+  "choices": [
+   {
+    "label": "Lui faire passer un message",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il retire sa plainte. Il ne te regarde plus dans les yeux.",
+      "effects": {
+       "karma": -8,
+       "vie": {
+        "milieuChaleur": -4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il maintient sa plainte et ajoute « menaces » à la liste.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser ton avocat gérer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La plainte suit son cours. Lentement.",
+      "effects": {
+       "money": -2000,
+       "vie": {
+        "milieuChaleur": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0072",
+  "on": "mission_reussie",
+  "chance": 0.3,
+  "delay": [
+   1,
+   3
+  ],
+  "requires": {
+   "minCounters": {
+    "mission_reussie": 3
+   }
+  },
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "setFlags": [
+   "ennemi_interne"
+  ],
+  "text": "Les missions réussies s'enchaînent. Quelque temps après, {chef} commence à te voir comme une menace plutôt qu'un atout.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "milieuLoyaute": -4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0073",
+  "on": "mission_reussie",
+  "chance": 0.3,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta mission réussie t'a rapporté gros. Un an après, tu réalises que tu n'as rien acheté qui te rende heureux.",
+  "effects": {
+   "happiness": -4,
+   "setFlags": [
+    "doute_milieu"
+   ]
+  }
+ },
+ {
+  "id": "rep_mil_0074",
+  "on": "mission_ratee",
+  "chance": 0.45,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ta mission ratée a coûté de l'argent à {organisation}. Un an plus tard, on te le rappelle encore à chaque réunion.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "milieuRespect": -4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0075",
+  "on": "mission_ratee",
+  "chance": 0.4,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après ta mission ratée, ton binôme est convaincu que c'est ta faute. Il le dit à qui veut l'entendre.",
+  "choices": [
+   {
+    "label": "Le confronter",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu le fais taire devant tout le monde. Respect retrouvé.",
+      "effects": {
+       "happiness": -2,
+       "vie": {
+        "milieuRespect": 4
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La dispute dégénère. {chef} vous sépare et vous punit tous les deux.",
+      "effects": {
+       "health": -10,
+       "vie": {
+        "milieuLoyaute": -6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prouver ta valeur autrement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu travailles deux fois plus. Les rumeurs s'éteignent lentement.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "milieuRespect": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0076",
+  "on": "mission_ratee",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "requires": {
+   "minCounters": {
+    "mission_ratee": 3
+   }
+  },
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Les missions ratées s'accumulent. {chef} te relègue à des tâches de débutant.",
+  "effects": {
+   "happiness": -8,
+   "vie": {
+    "milieuRespect": -8,
+    "milieuLoyaute": -4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0077",
+  "on": "event:rep_mil_0075",
+  "choice": 0,
+  "chance": 0.35,
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton ancien binôme, celui qui t'accusait, se fait arrêter. Tu apprends qu'il a raconté la mission ratée aux enquêteurs, avec ton nom dedans.",
+  "effects": {
+   "happiness": -8,
+   "vie": {
+    "milieuChaleur": 12,
+    "enquete": true
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0078",
+  "on": "mission_ratee",
+  "chance": 0.3,
+  "delay": [
+   1,
+   2
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La mission ratée t'a laissé une cicatrice. Chaque matin dans le miroir, elle te rappelle que la chance tourne.",
+  "effects": {
+   "happiness": -3,
+   "looks": -2
+  }
+ },
+ {
+  "id": "rep_mil_0079",
+  "on": "arrestation",
+  "chance": 0.5,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ]
+  },
+  "text": "Après ton arrestation, {chef} envoie un avocat que tu n'as pas demandé. Il connaît ton dossier mieux que toi.",
+  "choices": [
+   {
+    "label": "L'accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il est excellent. Il te rappelle aussi, à chaque visite, ce que tu dois taire.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 6,
+        "milieuChaleur": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre ton propre avocat",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{chef} n'apprécie pas. Un avocat indépendant, c'est un risque de confession.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0080",
+  "on": "arrestation",
+  "chance": 0.4,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "job"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelque temps après ton arrestation, ton patron apprend la nouvelle. Ton contrat n'est pas renouvelé.",
+  "effects": {
+   "happiness": -8,
+   "money": -1000
+  }
+ },
+ {
+  "id": "rep_mil_0081",
+  "on": "arrestation",
+  "chance": 0.35,
+  "delay": [
+   0,
+   1
+  ],
+  "requires": {
+   "flags": [
+    "a_ete_dans_milieu"
+   ]
+  },
+  "conditions": {
+   "tags": [
+    "siblings"
+   ]
+  },
+  "text": "Ton arrestation a fait le tour du quartier. Ta petite sœur ou ton petit frère se fait insulter à l'école à cause de toi.",
+  "effects": {
+   "relationships": {
+    "sibling": -6
+   },
+   "happiness": -6
+  }
+ },
+ {
+  "id": "rep_mil_0082",
+  "on": "event:rep_mil_0079",
+  "choice": 0,
+  "chance": 0.6,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'avocat envoyé par {chef} t'a sorti d'affaire. Un an plus tard, {chef} te présente la facture : une mission, une seule, « pour solde de tout compte ».",
+  "choices": [
+   {
+    "label": "Accepter la mission",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu la fais. Le compte est soldé. Jusqu'à la prochaine fois.",
+      "effects": {
+       "karma": -6,
+       "vie": {
+        "milieuLoyaute": 6,
+        "argentSale": 2000
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La mission tourne mal. Tu es de nouveau dans une cellule.",
+      "effects": {
+       "vie": {
+        "jailMonths": 12,
+        "record": 1,
+        "milieuChaleur": 15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "{chef} n'oublie jamais une dette.",
+      "effects": {
+       "setFlags": [
+        "menace_milieu"
+       ],
+       "vie": {
+        "milieuLoyaute": -12
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0083",
+  "on": "arrestation",
+  "chance": 0.35,
+  "delay": [
+   1,
+   1
+  ],
+  "requires": {
+   "flags": [
+    "a_ete_dans_milieu"
+   ]
+  },
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après ton arrestation, la police a gardé ton téléphone. Pendant un an, tu te demandes ce qu'ils ont lu dedans.",
+  "effects": {
+   "happiness": -6,
+   "vie": {
+    "milieuChaleur": 4
+   }
+  }
+ },
+ {
+  "id": "rep_mil_0084",
+  "on": "arrestation",
+  "chance": 0.25,
+  "delay": [
+   3,
+   6
+  ],
+  "requires": {
+   "flags": [
+    "a_ete_dans_milieu"
+   ]
+  },
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton arrestation a été filmée par un voisin. La vidéo refait surface des années plus tard, quand tu postules pour un emploi.",
+  "effects": {
+   "happiness": -8
+  }
+ },
+ {
+  "id": "rep_mil_0085",
+  "on": "prison_sortie",
+  "chance": 0.6,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "gang"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelques mois après ta sortie de prison, {organisation} te propose de reprendre ta place. Avec une promotion, pour ta loyauté.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu reprends tes habitudes. Ta mère pleure en silence.",
+      "effects": {
+       "relationships": {
+        "parent": -6
+       },
+       "vie": {
+        "milieuRespect": 6,
+        "milieuLoyaute": 6,
+        "promotion": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "On respecte ton choix. On te surveille quand même.",
+      "effects": {
+       "happiness": 6,
+       "vie": {
+        "quitterMilieu": true,
+        "milieuLoyaute": -10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "« On a payé ta cantine pendant des années. Tu nous dois. »",
+      "effects": {
+       "happiness": -12,
+       "setFlags": [
+        "dette_milieu"
+       ],
+       "vie": {
+        "milieuLoyaute": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0086",
+  "on": "prison_sortie",
+  "chance": 0.45,
+  "delay": [
+   1,
+   1
+  ],
+  "requires": {
+   "flags": [
+    "a_ete_dans_milieu"
+   ]
+  },
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Un an après ta sortie de prison, tu cherches un logement. Les propriétaires lisent ton dossier et ne rappellent pas.",
+  "choices": [
+   {
+    "label": "Insister",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Un propriétaire te donne ta chance. Tu ne rateras jamais un loyer.",
+      "effects": {
+       "happiness": 8,
+       "karma": 2
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Les refus s'accumulent. Tu dors chez un ami.",
+      "effects": {
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te tourner vers les anciens du milieu",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un appartement en une heure, sans dossier. Et une dette.",
+      "effects": {
+       "setFlags": [
+        "dette_milieu"
+       ],
+       "vie": {
+        "milieuRespect": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0087",
+  "on": "prison_sortie",
+  "chance": 0.4,
+  "delay": [
+   0,
+   1
+  ],
+  "requires": {
+   "flags": [
+    "a_ete_dans_milieu"
+   ]
+  },
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Depuis ta sortie, tu as du mal avec les portes fermées, les bruits de clés, les grands espaces. La liberté donne le vertige.",
+  "effects": {
+   "happiness": -6
+  }
+ },
+ {
+  "id": "rep_mil_0088",
+  "on": "prison_sortie",
+  "chance": 0.8,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "lettre_a_transmettre"
+   ]
+  },
+  "unique": true,
+  "setFlags": [
+   "lettre_transmise"
+  ],
+  "text": "Après ta sortie de prison, tu tiens ta promesse : tu vas voir la fille de ton ancien codétenu, avec sa lettre d'adieu.",
+  "choices": [
+   {
+    "label": "Lui remettre la lettre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle la lit devant toi et pleure. Puis elle te remercie. Tu as rempli ta part.",
+      "effects": {
+       "karma": 10,
+       "happiness": 6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0089",
+  "on": "event:rep_mil_0085",
+  "choice": 1,
+  "outcome": 0,
+  "chance": 0.4,
+  "delay": [
+   3,
+   4
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton refus de revenir dans {organisation} a fini par être accepté. Trois ans plus tard, tu reçois un faire-part de naissance d'un ancien de la bande. Lui aussi est sorti.",
+  "effects": {
+   "happiness": 8,
+   "karma": 2
+  }
+ },
+ {
+  "id": "rep_mil_0090",
+  "on": "prison_sortie",
+  "chance": 0.6,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "serment_vengeance"
+   ]
+  },
+  "unique": true,
+  "text": "Ta sortie de prison coïncide avec la promesse que tu as faite à un mort. Celui qui a tué ton ami est dehors, lui aussi.",
+  "choices": [
+   {
+    "label": "Tenir ta promesse",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu le trouves. Tu fais ce que tu as juré. Tu retournes là d'où tu viens, pour longtemps.",
+      "effects": {
+       "karma": -25,
+       "clearFlags": [
+        "serment_vengeance"
+       ],
+       "vie": {
+        "jailMonths": 120,
+        "record": 1,
+        "milieuRespect": 10
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il t'attendait.",
+      "effects": {
+       "health": -40,
+       "happiness": -20,
+       "clearFlags": [
+        "serment_vengeance"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Renoncer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu vas sur la tombe de ton ami et tu lui demandes pardon. Tu choisis de vivre.",
+      "effects": {
+       "karma": 12,
+       "happiness": 4,
+       "clearFlags": [
+        "serment_vengeance"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0091",
+  "on": "prison_sortie",
+  "chance": 0.25,
+  "delay": [
+   3,
+   6
+  ],
+  "requires": {
+   "flags": [
+    "a_ete_dans_milieu"
+   ]
+  },
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Des années après ta sortie de prison, un jeune que tu as conseillé en détention t'écrit : il a trouvé un travail, il a un enfant. « Grâce à toi. »",
+  "effects": {
+   "happiness": 10,
+   "karma": 6
+  }
+ },
+ {
+  "id": "rep_mil_0092",
+  "on": "prison_sortie",
+  "chance": 0.6,
+  "delay": [
+   1,
+   3
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "ecrit_en_prison"
+   ]
+  },
+  "unique": true,
+  "text": "Après ta sortie, tu fais publier le récit que tu as écrit en détention. Un petit éditeur y croit.",
+  "choices": [
+   {
+    "label": "Le signer de ton vrai nom",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le livre trouve son public. Des lecteurs t'écrivent depuis leur cellule.",
+      "effects": {
+       "fame": 5,
+       "money": 3000,
+       "happiness": 10
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton ancienne bande n'apprécie pas d'apparaître dans un livre.",
+      "effects": {
+       "fame": 4,
+       "money": 2000,
+       "setFlags": [
+        "menace_milieu"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre un pseudonyme",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Le livre vit sa vie. Toi, tu vis la tienne, discrètement.",
+      "effects": {
+       "money": 1500,
+       "happiness": 6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_mil_0093",
+  "on": "prison_sortie",
+  "chance": 0.6,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ],
+   "flags": [
+    "dette_milieu"
+   ]
+  },
+  "text": "Ta sortie de prison réveille de vieilles dettes. Le caïd qui a racheté tes dettes de cantine vient chercher sa faveur.",
+  "choices": [
+   {
+    "label": "Rendre le service",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Une livraison, une seule. Ta dette est effacée.",
+      "effects": {
+       "karma": -6,
+       "clearFlags": [
+        "dette_milieu"
+       ],
+       "vie": {
+        "milieuRespect": 2,
+        "milieuChaleur": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La livraison était surveillée.",
+      "effects": {
+       "clearFlags": [
+        "dette_milieu"
+       ],
+       "vie": {
+        "jailMonths": 12,
+        "record": 1,
+        "milieuChaleur": 15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il te fait comprendre que la prison n'était pas le seul endroit où il a des amis.",
+      "effects": {
+       "happiness": -12,
+       "health": -10,
+       "setFlags": [
+        "menace_milieu"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ }
+]
