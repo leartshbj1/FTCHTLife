@@ -244,6 +244,8 @@ struct Joueur: Codable, Equatable {
     var historiqueCarriere: [CareerRecord]? = nil
     /// Module « Vivre à l'étranger » (docs/ETRANGER.md).
     var etranger: ExpatEtat? = nil
+    /// Module « Jeu vivant » : jalons, projets, photo de l'an passé (docs/VIVANT.md).
+    var jeuVivant: JeuVivantEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 

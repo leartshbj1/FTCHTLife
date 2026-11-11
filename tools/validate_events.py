@@ -58,6 +58,10 @@ def check_entourage(v, where, errs):
         if o.startswith("secteur:"):
             if o[8:] not in SECTEURS: errs.append(f"{where}: secteur inconnu {o}")
         elif o not in ("auto", "meme_secteur") and o not in METIERS: errs.append(f"{where}: métier inconnu {o}")
+# Module Jeu vivant (docs/VIVANT.md) : tags des autres modules utilisés par ses événements, et les siens.
+TAG_PREFIXES += ("pol_", "tv_", "secteur_", "metier_")
+TAGS |= {"entrepreneur","patron","magnat","ancien_entrepreneur","failli","phone","influencer","star_reseaux","bad_buzz","sponsorise",
+         "mandat_debut","mandat_installe","bateau_oublie","avion_oublie","projet_en_cours","notable"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return

@@ -13,6 +13,7 @@ enum SignauxModules {
         Repercussions.signaler(signal, choix: choix, issue: issue, age: j.age, etat: &etat)
         j.repercussions = etat
         guard !signal.hasPrefix("event:") else { return }
+        JeuVivant.surSignal(signal, &j)
         if var rf = j.reputationFamille {
             ReputationFamille.signaler(signal, joueur: j, etat: &rf)
             j.reputationFamille = rf
@@ -120,6 +121,7 @@ extension GameEngine {
         t.formUnion(RevesMoteur.tags(j.reves))
         t.formUnion(MondeJournal.tagsJoueur(j.monde ?? MondeEtat()))
         t.formUnion(tagsAnimaux(j, cle: \.animaux))
+        t.formUnion(vivantTags(j))
         if let v = VoisinageStockage.lire(j) { t.formUnion(VoisinageMoteur.tags(v)) }
         t.formUnion(EntourageTags.tags(j))
         return t
@@ -207,6 +209,7 @@ extension GameEngine {
     /// Juste après l'écriture de l'année dans le journal.
     func modulesApresJournal(_ j: inout Joueur) {
         animauxAnnee(&j, cle: \.animaux)
+        vivantApresAnnee(&j)
         revesMettreAJour(&j, etat: \.reves)
 
         var monde = j.monde ?? MondeEtat()
@@ -254,6 +257,7 @@ extension GameEngine {
         fileEvenements += secrets.evenements.map { EvenementAffiche(evenement: $0, texte: $0.text) }
         (fetes + suites + episodes).forEach { declencher($0) }
         voisinageAnnee()
+        vivantAvantTirage()
     }
 
     /// Événements en plus de la bibliothèque (crises du monde, retombées télé).
@@ -313,6 +317,7 @@ extension GameEngine {
         }
         voisinageApresChoix(e, choix: index, issue: issue, &j)
         apresChoixTravail(e, choix: index, issue: k, &j)
+        vivantApresChoix(e, choix: index, issue: k, &j)
         revesMettreAJour(&j, etat: \.reves)
     }
 
