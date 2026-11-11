@@ -256,6 +256,8 @@ struct Joueur: Codable, Equatable {
     var sectes: SectesEtat? = nil
     /// Module Agence de détective privé (docs/SECTE_DETECTIVE.md).
     var agences: AgencesEtat? = nil
+    /// Module « Voyages sur mesure » : carnet de voyages (docs/VOYAGES.md).
+    var voyages: VoyagesEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 

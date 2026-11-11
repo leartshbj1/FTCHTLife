@@ -1,0 +1,4903 @@
+[
+  {
+    "id": "voy_sej_0301",
+    "phase": "sejour",
+    "continents": [
+      "afrique",
+      "asie",
+      "amerique"
+    ],
+    "text": "Un guide local se présente devant {hebergement}. Il connaît des endroits loin des circuits et demande un prix raisonnable.",
+    "choices": [
+      {
+        "label": "L'engager pour la journée",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Villages, marchés, une cascade cachée. Il connaît tout le monde. Ta meilleure journée.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 3,
+              "money": -40,
+              "newFriend": true
+            },
+            "souvenir": "Une journée avec un guide du coin"
+          },
+          {
+            "chance": 0.2,
+            "text": "Il passe la journée à te vendre des souvenirs de ses cousins.",
+            "effects": {
+              "happiness": -3,
+              "money": -60
+            }
+          }
+        ]
+      },
+      {
+        "label": "Explorer avec la carte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu te perds un peu, tu trouves des choses quand même.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier avec le sourire",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le guide te fait un prix d'ami et t'emmène dans le village de sa mère.",
+            "effects": {
+              "happiness": 10,
+              "money": -25,
+              "newFriend": true,
+              "skills": {
+                "marchandage": 2
+              }
+            },
+            "souvenir": "Le village de la mère de mon guide"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0302",
+    "phase": "sejour",
+    "continents": [
+      "europe",
+      "amerique"
+    ],
+    "text": "Dans une rue animée, tu sens un léger frôlement contre ton sac. Une seconde plus tard, ta fermeture éclair est ouverte.",
+    "choices": [
+      {
+        "label": "Vérifier immédiatement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tout est là. Le pickpocket a filé, bredouille.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton portefeuille a disparu. Liquide envolé, cartes à faire opposer.",
+            "effects": {
+              "happiness": -8,
+              "money": -150,
+              "setFlags": [
+                "vole_en_voyage"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Crier « Au voleur ! »",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Un passant rattrape le gamin. Tu récupères ton portefeuille, les mains tremblantes.",
+            "effects": {
+              "happiness": 3,
+              "karma": 1
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Personne ne bouge. Ton portefeuille est loin.",
+            "effects": {
+              "happiness": -8,
+              "money": -150
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0303",
+    "phase": "sejour",
+    "continents": [
+      "afrique",
+      "asie",
+      "amerique",
+      "oceanie"
+    ],
+    "unique": true,
+    "text": "En fouillant ton sac pour payer un taxi, tu réalises que ton passeport n'y est plus. Le vol retour est dans quatre jours.",
+    "choices": [
+      {
+        "label": "Aller au consulat",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Formulaires, photos, attente. On te délivre un laissez-passer à temps, mais le séjour en prend un coup.",
+            "effects": {
+              "happiness": -8,
+              "money": -120,
+              "smarts": 2,
+              "setFlags": [
+                "passeport_perdu"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le consulat est fermé pour un jour férié. Tu dois décaler ton vol, et la note grimpe.",
+            "effects": {
+              "happiness": -12,
+              "money": -480,
+              "setFlags": [
+                "passeport_perdu"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refaire tout le chemin",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Un commerçant l'avait mis de côté. Tu as envie de l'embrasser.",
+            "effects": {
+              "happiness": 8,
+              "karma": 1
+            },
+            "souvenir": "Mon passeport retrouvé par un commerçant honnête"
+          },
+          {
+            "chance": 0.6,
+            "text": "Rien. Tu perds une journée, puis tu vas quand même au consulat.",
+            "effects": {
+              "happiness": -10,
+              "money": -150,
+              "setFlags": [
+                "passeport_perdu"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0304",
+    "phase": "sejour",
+    "climats": [
+      "tropical"
+    ],
+    "weight": 1,
+    "text": "Une alerte cyclone tombe sur ton téléphone. Les autorités demandent de quitter la côte avant ce soir.",
+    "choices": [
+      {
+        "label": "Évacuer tout de suite",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes deux nuits dans un gymnase avec des familles du coin. Inconfortable, mais en sécurité, et solidaire.",
+            "effects": {
+              "happiness": -4,
+              "money": -60,
+              "karma": 2,
+              "newFriend": true
+            },
+            "souvenir": "Deux nuits dans un abri anticyclone"
+          }
+        ]
+      },
+      {
+        "label": "Rester à {hebergement}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le cyclone dévie au dernier moment. Fenêtres qui claquent, nuit blanche.",
+            "effects": {
+              "happiness": -6,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La toiture s'envole en partie. Tu passes la nuit dans la salle de bains, terrifié{e}.",
+            "effects": {
+              "happiness": -15,
+              "health": -8,
+              "money": -200,
+              "setFlags": [
+                "a_vecu_un_cyclone"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller filmer les vagues",
+        "outcomes": [
+          {
+            "chance": 0.75,
+            "text": "Les vagues sont monstrueuses. Un policier te ramène de force, avec une amende.",
+            "effects": {
+              "happiness": -5,
+              "money": -150,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Une vague balaie la digue. On ne te retrouve que le lendemain.",
+            "effects": {
+              "death": "emporté{e} par une vague en filmant un cyclone"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0305",
+    "phase": "sejour",
+    "continents": [
+      "asie",
+      "amerique",
+      "oceanie"
+    ],
+    "weight": 1,
+    "text": "Pendant la nuit, le lit se met à trembler. Un séisme, court mais net. Les murs craquent.",
+    "choices": [
+      {
+        "label": "Se mettre sous la table",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Comme on te l'a appris. Ça s'arrête vite. Le lendemain, la ville répare déjà ses fissures avec calme.",
+            "effects": {
+              "happiness": -4,
+              "smarts": 2
+            },
+            "souvenir": "La nuit où la terre a tremblé"
+          }
+        ]
+      },
+      {
+        "label": "Sortir en courant",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu te retrouves en pyjama dans la rue, avec des voisins aussi pâles que toi.",
+            "effects": {
+              "happiness": -5,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu te tords la cheville dans l'escalier. La secousse, elle, était déjà finie.",
+            "effects": {
+              "happiness": -6,
+              "health": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0306",
+    "phase": "sejour",
+    "continents": [
+      "europe"
+    ],
+    "climats": [
+      "chaud"
+    ],
+    "text": "Une canicule écrase la ville : 41 degrés à l'ombre. Les habitants restent chez eux de midi à 18 heures.",
+    "choices": [
+      {
+        "label": "Faire comme eux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Sieste aux volets fermés, sortie le soir quand la ville revit. Sage.",
+            "effects": {
+              "health": 2,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Visiter quand même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les musées climatisés deviennent ton refuge. Tu n'en as jamais vu autant.",
+            "effects": {
+              "smarts": 3,
+              "money": -30
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Malaise sur une place sans ombre. Un pharmacien te fait asseoir et boire.",
+            "effects": {
+              "happiness": -5,
+              "health": -7
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0307",
+    "phase": "sejour",
+    "climats": [
+      "froid"
+    ],
+    "text": "Une tempête de neige bloque les routes. Rien ne roule avant demain, peut-être après-demain.",
+    "choices": [
+      {
+        "label": "Profiter de l'immobilité",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chocolat chaud, jeux de société avec d'autres naufragés de la neige. Un temps suspendu.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            },
+            "souvenir": "Coincé{e} par la neige avec des inconnus"
+          }
+        ]
+      },
+      {
+        "label": "Partir quand même",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu passes, lentement. Prudence et chance à la fois.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Bloqué{e} sur le bas-côté. La dépanneuse arrive après trois heures de froid.",
+            "effects": {
+              "happiness": -8,
+              "health": -5,
+              "money": -180
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0308",
+    "phase": "sejour",
+    "climats": [
+      "tropical"
+    ],
+    "minJours": 7,
+    "text": "Le soir, des nuées de moustiques sortent. On parle de dengue dans la région depuis quelques semaines.",
+    "choices": [
+      {
+        "label": "Répulsif et manches longues",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Pas une piqûre. Tu as l'air d'un apiculteur mais tu es en pleine forme.",
+            "effects": {
+              "health": 2,
+              "money": -12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien changer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Quelques piqûres, rien de grave.",
+            "effects": {
+              "happiness": -1
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Fièvre, courbatures : la dengue. Une semaine épuisante.",
+            "effects": {
+              "happiness": -12,
+              "health": -15,
+              "setFlags": [
+                "a_eu_la_dengue"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0309",
+    "phase": "sejour",
+    "continents": [
+      "afrique",
+      "asie"
+    ],
+    "text": "Le taxi n'a pas de compteur. Le chauffeur annonce un prix au hasard en te regardant de haut en bas.",
+    "choices": [
+      {
+        "label": "Négocier",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu divises le prix par trois. Il rit, te fait monter et te raconte sa vie.",
+            "effects": {
+              "happiness": 4,
+              "money": -5,
+              "skills": {
+                "marchandage": 2
+              }
+            },
+            "souvenir": "Un taxi négocié au tiers du prix"
+          }
+        ]
+      },
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "C'était cher mais pas absurde.",
+            "effects": {
+              "money": -20
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Arrivé{e}, il double le prix « pour les bagages ».",
+            "effects": {
+              "happiness": -4,
+              "money": -40
+            },
+            "signal": "voyage_arnaque"
+          }
+        ]
+      },
+      {
+        "label": "Chercher un autre taxi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le suivant a un compteur. Le trajet coûte quatre fois moins cher.",
+            "effects": {
+              "happiness": 2,
+              "money": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0310",
+    "phase": "sejour",
+    "continents": [
+      "amerique",
+      "afrique",
+      "asie"
+    ],
+    "text": "Deux hommes en uniforme approximatif t'arrêtent dans la rue et demandent à « contrôler ton argent, pour la fausse monnaie ».",
+    "choices": [
+      {
+        "label": "Refuser et proposer le commissariat",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Ils hésitent, puis repartent. Tu as le cœur qui bat, mais tes billets sont saufs.",
+            "effects": {
+              "happiness": 1,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Ils insistent, puis un vrai policier arrive. Ils s'enfuient.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Montrer ton portefeuille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils te le rendent avec des billets en moins. Tu ne t'en rends compte qu'à l'hôtel.",
+            "effects": {
+              "happiness": -10,
+              "money": -200,
+              "setFlags": [
+                "arnaque_faux_policiers"
+              ]
+            },
+            "signal": "voyage_arnaque"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0311",
+    "phase": "sejour",
+    "climats": [
+      "chaud",
+      "tropical"
+    ],
+    "text": "Un chien errant décide de te suivre depuis la plage. Il t'attend devant chaque boutique et dort devant {hebergement}.",
+    "choices": [
+      {
+        "label": "Lui donner à manger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il ne te quitte plus de la semaine. Le jour du départ, tu as le cœur gros.",
+            "effects": {
+              "happiness": 6,
+              "karma": 2
+            },
+            "souvenir": "Un chien des rues qui m'a adopté{e}"
+          }
+        ]
+      },
+      {
+        "label": "L'emmener chez un vétérinaire",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une association locale le prend en charge. Tu fais un don, il aura une famille.",
+            "effects": {
+              "happiness": 8,
+              "karma": 5,
+              "money": -60
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il s'échappe en route, bien nourri et vacciné. Il vit sa vie.",
+            "effects": {
+              "happiness": 4,
+              "karma": 3,
+              "money": -40
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'ignorer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il finit par suivre un autre touriste. Petit pincement.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0312",
+    "phase": "sejour",
+    "continents": [
+      "asie"
+    ],
+    "text": "Dans une pharmacie, personne ne parle ta langue. Tu as besoin d'un médicament contre le mal de gorge.",
+    "choices": [
+      {
+        "label": "Mimer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu tousses théâtralement, tu montres ta gorge. La pharmacienne comprend et rit beaucoup.",
+            "effects": {
+              "health": 3,
+              "happiness": 3,
+              "money": -8
+            },
+            "souvenir": "Un mal de gorge expliqué par le mime"
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle te donne un médicament pour la digestion. Ta gorge est toujours en feu.",
+            "effects": {
+              "health": -2,
+              "money": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Utiliser une appli de traduction",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ça marche, avec une traduction un peu bancale. Elle sourit.",
+            "effects": {
+              "health": 3,
+              "money": -8,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0313",
+    "phase": "sejour",
+    "continents": [
+      "afrique",
+      "asie",
+      "amerique"
+    ],
+    "climats": [
+      "chaud",
+      "tropical",
+      "desert"
+    ],
+    "text": "Le matin, tu te brosses les dents. Le robinet hésite, l'eau a une couleur légèrement brune. On t'a dit de n'utiliser que l'eau en bouteille.",
+    "choices": [
+      {
+        "label": "Prendre l'eau en bouteille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Prudence. Ton estomac reste ton ami toute la semaine.",
+            "effects": {
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Utiliser le robinet",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Rien ne se passe. Tu as de la chance.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Trois jours de ventre en vrac. Leçon apprise.",
+            "effects": {
+              "happiness": -6,
+              "health": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0314",
+    "phase": "sejour",
+    "continents": [
+      "europe"
+    ],
+    "climats": [
+      "chaud"
+    ],
+    "text": "À 14 heures, tous les magasins ferment pour la sieste. Tu avais prévu ton après-midi shopping.",
+    "choices": [
+      {
+        "label": "Faire la sieste aussi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une heure de sommeil, puis la ville revit doucement. Tu repars en forme.",
+            "effects": {
+              "health": 3,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chercher ce qui est ouvert",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Une petite épicerie tenue par un monsieur qui ne dort jamais. Il t'offre un fruit.",
+            "effects": {
+              "happiness": 4
+            },
+            "souvenir": "Un fruit offert pendant la sieste générale"
+          },
+          {
+            "chance": 0.5,
+            "text": "Rien. Tu erres sous le soleil.",
+            "effects": {
+              "happiness": -2,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0315",
+    "phase": "sejour",
+    "continents": [
+      "oceanie",
+      "amerique"
+    ],
+    "climats": [
+      "froid",
+      "chaud",
+      "tempere"
+    ],
+    "text": "Sur une route de campagne, au crépuscule, un grand animal sauvage traverse juste devant toi.",
+    "choices": [
+      {
+        "label": "Freiner calmement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il te regarde, puis disparaît dans les arbres. Un moment suspendu.",
+            "effects": {
+              "happiness": 7
+            },
+            "souvenir": "Une rencontre sauvage au crépuscule"
+          }
+        ]
+      },
+      {
+        "label": "Klaxonner",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il détale. Toi aussi, d'une certaine façon.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il se fige, puis charge le pare-chocs. Dégâts sur la voiture.",
+            "effects": {
+              "happiness": -6,
+              "money": -400
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0316",
+    "phase": "sejour",
+    "climats": [
+      "chaud",
+      "tropical"
+    ],
+    "text": "La plage est couverte de méduses échouées. Un drapeau violet flotte sur le poste de secours.",
+    "choices": [
+      {
+        "label": "Ne pas se baigner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais une longue balade sur le sable et découvres une petite crique abritée.",
+            "effects": {
+              "happiness": 4
+            },
+            "souvenir": "Une crique abritée, loin des méduses"
+          }
+        ]
+      },
+      {
+        "label": "Se baigner quand même",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu nages sans souci. Coup de bol.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Brûlure sur tout le bras. Ça pique pendant des heures.",
+            "effects": {
+              "happiness": -6,
+              "health": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0317",
+    "phase": "sejour",
+    "continents": [
+      "europe"
+    ],
+    "climats": [
+      "froid"
+    ],
+    "text": "Le soleil ne se couche pas. Il est minuit et il fait grand jour. Tu n'arrives pas à dormir.",
+    "choices": [
+      {
+        "label": "Sortir te promener",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Une ville dorée à minuit, des gens qui pique-niquent. Irréel.",
+            "effects": {
+              "happiness": 8
+            },
+            "souvenir": "Une promenade sous le soleil de minuit"
+          },
+          {
+            "chance": 0.2,
+            "text": "Tu rentres à 4 heures. Le lendemain est rude.",
+            "effects": {
+              "happiness": 2,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Masque de nuit et rideaux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dors enfin. Ton corps te dit merci.",
+            "effects": {
+              "health": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0318",
+    "phase": "sejour",
+    "climats": [
+      "desert"
+    ],
+    "text": "Le vent se lève sur le désert. En quelques minutes, une tempête de sable masque le soleil.",
+    "choices": [
+      {
+        "label": "Se mettre à l'abri",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu attends dans un café, le foulard sur le visage. La tempête passe en une heure.",
+            "effects": {
+              "happiness": 2,
+              "health": 1
+            },
+            "souvenir": "Une tempête de sable vue depuis un café"
+          }
+        ]
+      },
+      {
+        "label": "Continuer à marcher",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu arrives couvert{e} de sable mais indemne.",
+            "effects": {
+              "happiness": -1
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le sable dans les yeux, dans les poumons. Tu tousses toute la nuit.",
+            "effects": {
+              "happiness": -5,
+              "health": -7
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0319",
+    "phase": "sejour",
+    "destinations": [
+      "us",
+      "ca"
+    ],
+    "text": "Au restaurant, l'addition arrive. Le serveur te regarde. Ici, le pourboire est presque obligatoire, et tu ne sais pas combien laisser.",
+    "choices": [
+      {
+        "label": "Laisser 20 %",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le serveur te remercie chaleureusement. Tu as respecté l'usage.",
+            "effects": {
+              "karma": 2,
+              "money": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien laisser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le serveur te court après pour te demander si quelque chose n'allait pas. Malaise.",
+            "effects": {
+              "happiness": -4,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à la table voisine",
+        "requiresSkill": {
+          "anglais": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Des locaux t'expliquent le système et t'offrent un dessert pour ta curiosité.",
+            "effects": {
+              "happiness": 5,
+              "money": -12,
+              "newFriend": true,
+              "skills": {
+                "anglais": 2
+              }
+            },
+            "souvenir": "Un dessert offert pour avoir demandé les usages"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0320",
+    "phase": "sejour",
+    "continents": [
+      "asie",
+      "afrique",
+      "amerique"
+    ],
+    "text": "Tu prends un cours de cuisine au marché avec une cheffe du coin. Elle te fait choisir les herbes, les piments, le poisson.",
+    "choices": [
+      {
+        "label": "Suivre ses gestes",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Tu reproduis trois plats. Elle te donne ses recettes écrites à la main.",
+            "effects": {
+              "happiness": 8,
+              "skills": {
+                "cuisine": 4
+              },
+              "money": -35,
+              "setFlags": [
+                "cuisine_du_monde"
+              ]
+            },
+            "souvenir": "Un cours de cuisine au marché"
+          },
+          {
+            "chance": 0.2,
+            "text": "Tu brûles l'ail. Elle rit et recommence avec toi.",
+            "effects": {
+              "happiness": 5,
+              "skills": {
+                "cuisine": 2
+              },
+              "money": -35
+            }
+          }
+        ]
+      },
+      {
+        "label": "Regarder et goûter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu manges tout. Excellent, mais tu ne sauras pas le refaire.",
+            "effects": {
+              "happiness": 5,
+              "money": -35
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0321",
+    "phase": "sejour",
+    "minJours": 7,
+    "text": "Ta carte bancaire est refusée dans un restaurant. Ta banque l'a bloquée pour « activité suspecte à l'étranger ».",
+    "choices": [
+      {
+        "label": "Appeler ta banque",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Quarante minutes de musique d'attente plus tard, c'est débloqué.",
+            "effects": {
+              "happiness": -3,
+              "money": -10
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "On te demande un code reçu par SMS. Ton forfait étranger est coupé.",
+            "effects": {
+              "happiness": -7
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer en liquide ce qu'il reste",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Pile de quoi payer. Tu manges des sandwichs jusqu'au lendemain.",
+            "effects": {
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il te manque cinq euros. Le serveur t'en fait cadeau, gêné de te voir gêné{e}.",
+            "effects": {
+              "happiness": 1,
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0322",
+    "phase": "sejour",
+    "continents": [
+      "afrique"
+    ],
+    "text": "Les rues de la vieille médina se ressemblent toutes. Ton téléphone n'a plus de réseau. Tu es perdu{e}.",
+    "choices": [
+      {
+        "label": "Demander à un enfant",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il te ramène pour une pièce et te montre un raccourci.",
+            "effects": {
+              "happiness": 3,
+              "money": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il t'emmène chez son oncle qui vend des tapis.",
+            "effects": {
+              "happiness": -2,
+              "money": -30
+            }
+          }
+        ]
+      },
+      {
+        "label": "Suivre ton instinct",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu ressors par une porte inattendue, avec une vue magnifique sur les remparts.",
+            "effects": {
+              "happiness": 5
+            },
+            "souvenir": "Une sortie inattendue de la médina"
+          },
+          {
+            "chance": 0.5,
+            "text": "Une heure de tours en rond. Tu finis par sortir, épuisé{e}.",
+            "effects": {
+              "happiness": -3,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0323",
+    "phase": "sejour",
+    "climats": [
+      "tempere"
+    ],
+    "minJours": 7,
+    "text": "Il pleut sans arrêt depuis trois jours. Ton programme de plein air tombe à l'eau, littéralement.",
+    "choices": [
+      {
+        "label": "Musées et cafés",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu découvres des collections passionnantes et une pâtisserie que tu n'oublieras pas.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 3,
+              "money": -30
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sortir quand même en ciré",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les paysages sous la pluie ont une beauté sauvage. Tu es trempé{e} et content{e}.",
+            "effects": {
+              "happiness": 5,
+              "health": -1
+            },
+            "souvenir": "Des paysages sauvages sous la pluie"
+          },
+          {
+            "chance": 0.4,
+            "text": "Rhume carabiné au retour.",
+            "effects": {
+              "happiness": -4,
+              "health": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0324",
+    "phase": "sejour",
+    "climats": [
+      "tropical"
+    ],
+    "text": "Pendant une randonnée en forêt tropicale, tu sens des démangeaisons à la cheville. Des sangsues.",
+    "choices": [
+      {
+        "label": "Les retirer calmement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le guide te montre comment faire avec du sel. Un peu dégoûtant, mais rien de grave.",
+            "effects": {
+              "health": -1,
+              "smarts": 2,
+              "skills": {
+                "survie": 2
+              }
+            },
+            "souvenir": "Des sangsues retirées avec du sel"
+          }
+        ]
+      },
+      {
+        "label": "Paniquer et les arracher",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ça saigne longtemps. Tu marches le reste du trajet en grimaçant.",
+            "effects": {
+              "happiness": -4,
+              "health": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0325",
+    "phase": "sejour",
+    "climats": [
+      "tropical"
+    ],
+    "text": "Le guide de snorkeling répète : « Ne touchez pas le corail. » Une tortue passe tout près de toi.",
+    "choices": [
+      {
+        "label": "La regarder sans bouger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle passe sous toi, majestueuse. Un des plus beaux moments de ta vie.",
+            "effects": {
+              "happiness": 12,
+              "karma": 2,
+              "setFlags": [
+                "a_nage_avec_tortue"
+              ]
+            },
+            "souvenir": "Une tortue de mer sous moi"
+          }
+        ]
+      },
+      {
+        "label": "Essayer de la toucher",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle s'enfuit. Le guide te gronde sévèrement.",
+            "effects": {
+              "happiness": -3,
+              "karma": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu poses le pied sur le corail. Coupure et honte.",
+            "effects": {
+              "happiness": -5,
+              "health": -4,
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0326",
+    "phase": "sejour",
+    "continents": [
+      "europe"
+    ],
+    "text": "Un village fête son saint patron. Fanfare, processions, stands de nourriture. Tu es le seul visage étranger de la place.",
+    "choices": [
+      {
+        "label": "Se mêler à la fête",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Un vieux monsieur t'offre un verre et te présente à tout le village.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true
+            },
+            "souvenir": "La fête d'un saint patron de village"
+          },
+          {
+            "chance": 0.2,
+            "text": "Tu danses avec énergie, et marches sur le pied du maire.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Regarder de loin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une jolie fête, vue d'un banc. Tu repars le cœur léger.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0327",
+    "phase": "sejour",
+    "climats": [
+      "froid"
+    ],
+    "text": "Le trottoir est une patinoire de verglas. Les locaux marchent normalement, toi tu te tiens aux lampadaires.",
+    "choices": [
+      {
+        "label": "Acheter des crampons",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Pour huit euros, tu marches enfin comme un être humain.",
+            "effects": {
+              "happiness": 3,
+              "money": -8,
+              "health": 1
+            },
+            "souvenir": "Des crampons pour marcher sur le verglas"
+          }
+        ]
+      },
+      {
+        "label": "Avancer prudemment",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu arrives, lentement mais sûrement.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Chute spectaculaire. Poignet foulé, fierté brisée.",
+            "effects": {
+              "happiness": -6,
+              "health": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0328",
+    "phase": "sejour",
+    "climats": [
+      "froid"
+    ],
+    "continents": [
+      "asie",
+      "amerique"
+    ],
+    "text": "Au bout de quelques heures en altitude, tu as la tête qui tourne et le souffle court. Ton plan était de grimper encore demain.",
+    "choices": [
+      {
+        "label": "Redescendre un peu",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le malaise passe. Tu remontes doucement deux jours plus tard.",
+            "effects": {
+              "health": 2,
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer à monter",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu t'habitues. Le panorama en haut est fou.",
+            "effects": {
+              "happiness": 9,
+              "health": -2
+            },
+            "souvenir": "Un panorama gagné à bout de souffle"
+          },
+          {
+            "chance": 0.6,
+            "text": "Mal aigu des montagnes. Évacuation vers une clinique.",
+            "effects": {
+              "happiness": -10,
+              "health": -14,
+              "money": -350,
+              "setFlags": [
+                "mal_des_montagnes"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0329",
+    "phase": "sejour",
+    "hebergements": [
+      "camping"
+    ],
+    "text": "Une tempête éclate en pleine nuit sur le camping. Ta tente plie sous le vent, l'eau commence à rentrer.",
+    "choices": [
+      {
+        "label": "Renforcer les piquets",
+        "requiresSkill": {
+          "survie": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu tends les haubans et creuses une rigole. Ta tente tient, contrairement à celles des voisins.",
+            "effects": {
+              "happiness": 6,
+              "skills": {
+                "survie": 2
+              }
+            },
+            "souvenir": "Ma tente, la seule debout après la tempête"
+          }
+        ]
+      },
+      {
+        "label": "Courir aux sanitaires",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes la nuit assis{e} dans les douches avec d'autres campeurs. Fou rire collectif.",
+            "effects": {
+              "happiness": 2,
+              "health": -2,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester dans la tente",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "La tente tient. Nuit agitée, mais au sec.",
+            "effects": {
+              "happiness": -1,
+              "health": -1
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Matelas trempé, sac de couchage ruiné. Réveil glacial.",
+            "effects": {
+              "happiness": -6,
+              "health": -4,
+              "money": -60
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0330",
+    "phase": "sejour",
+    "hebergements": [
+      "camping"
+    ],
+    "text": "Tes voisins de camping ont une enceinte surpuissante et des goûts musicaux très affirmés. Il est minuit.",
+    "choices": [
+      {
+        "label": "Aller leur parler",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ils baissent le son et t'invitent pour la soirée suivante. Charmants, finalement.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils montent le son. Nuit blanche.",
+            "effects": {
+              "happiness": -5,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les rejoindre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu danses jusqu'à 3 heures. Le lendemain, tu dors jusqu'à midi.",
+            "effects": {
+              "happiness": 6,
+              "health": -2
+            },
+            "souvenir": "Une nuit à danser avec mes voisins de camping"
+          }
+        ]
+      },
+      {
+        "label": "Se plaindre à l'accueil",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un gardien arrive à minuit et demi. Silence total. Tu dors enfin.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0331",
+    "phase": "sejour",
+    "hebergements": [
+      "camping"
+    ],
+    "text": "Un renard s'est faufilé sous l'auvent pendant la nuit. Au réveil, une de tes chaussures a disparu.",
+    "choices": [
+      {
+        "label": "Chercher autour du camping",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu la retrouves dans un buisson, mâchouillée. Tu la remets quand même.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Disparue pour toujours. Tu finis le séjour en tongs.",
+            "effects": {
+              "happiness": -2,
+              "money": -25
+            }
+          }
+        ]
+      },
+      {
+        "label": "En rire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu racontes l'histoire aux voisins. Elle fera le tour du camping.",
+            "effects": {
+              "happiness": 4
+            },
+            "souvenir": "Un renard a volé ma chaussure"
+          }
+        ]
+      },
+      {
+        "label": "Suivre les traces",
+        "requiresSkill": {
+          "survie": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu suis les empreintes jusqu'au terrier. Ta chaussure est là, avec un trésor de cuillères volées.",
+            "effects": {
+              "happiness": 6,
+              "skills": {
+                "survie": 2
+              }
+            },
+            "souvenir": "Le terrier du renard voleur"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0332",
+    "phase": "sejour",
+    "hebergements": [
+      "camping"
+    ],
+    "text": "Un couple de retraités campe à côté de toi dans un camping-car équipé comme un appartement. Ils t'invitent pour l'apéro.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils ont fait le tour de l'Europe trois fois. Leurs histoires sont incroyables.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true,
+              "smarts": 2
+            },
+            "souvenir": "Les histoires d'un couple de retraités nomades"
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils t'apportent quand même des tomates de leur potager de voyage.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0333",
+    "phase": "sejour",
+    "hebergements": [
+      "camping"
+    ],
+    "text": "Les douches du camping sont froides. Totalement froides. Le gardien dit que ça sera réparé « demain ».",
+    "choices": [
+      {
+        "label": "Douche glacée",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu cries, puis tu te sens étrangement vivant{e}.",
+            "effects": {
+              "health": 2,
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller nager à la place",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Le lac fait office de salle de bains. Superbe.",
+            "effects": {
+              "happiness": 5,
+              "health": 2
+            },
+            "souvenir": "Le lac en guise de salle de bains"
+          },
+          {
+            "chance": 0.2,
+            "text": "Le lac est plus froid que la douche. Tu rentres en grelottant.",
+            "effects": {
+              "happiness": -2,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Payer l'hôtel du village pour une douche",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Quinze euros pour une douche chaude. Le luxe absolu.",
+            "effects": {
+              "happiness": 4,
+              "money": -15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0334",
+    "phase": "sejour",
+    "hebergements": [
+      "camping"
+    ],
+    "text": "Un feu de camp s'organise au centre du camping. Quelqu'un sort une guitare.",
+    "choices": [
+      {
+        "label": "Jouer un morceau",
+        "requiresSkill": {
+          "guitare": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tout le monde chante. Tu deviens la vedette du camping.",
+            "effects": {
+              "happiness": 10,
+              "newFriend": true,
+              "skills": {
+                "guitare": 2
+              }
+            },
+            "souvenir": "Un feu de camp en chansons"
+          }
+        ]
+      },
+      {
+        "label": "Chanter avec eux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chamallows grillés, chansons approximatives, étoiles. Une soirée simple et belle.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller dormir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu t'endors bercé{e} par les chansons au loin.",
+            "effects": {
+              "health": 2,
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0335",
+    "phase": "sejour",
+    "hebergements": [
+      "camping"
+    ],
+    "text": "Un sanglier fouille les poubelles du camping. Il se dirige vers ta glacière.",
+    "choices": [
+      {
+        "label": "Faire du bruit",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il repart en grognant. Ta glacière est sauvée.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il emporte ton saucisson. Respect pour sa détermination.",
+            "effects": {
+              "happiness": -1,
+              "money": -10
+            },
+            "souvenir": "Le sanglier qui a volé mon saucisson"
+          }
+        ]
+      },
+      {
+        "label": "Ne pas bouger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il dévore ton pique-nique du lendemain. Tu restes dans ta tente.",
+            "effects": {
+              "happiness": -3,
+              "money": -20
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0336",
+    "phase": "sejour",
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "Dans le dortoir de l'auberge, ton voisin de lit ronfle comme un moteur de tracteur.",
+    "choices": [
+      {
+        "label": "Bouchons d'oreille",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ça marche. Nuit correcte.",
+            "effects": {
+              "health": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il ronfle à travers les bouchons. Ça devrait être scientifiquement impossible.",
+            "effects": {
+              "happiness": -3,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Siffler doucement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il se tourne, le silence revient. Victoire.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il se réveille, vexé. Tout le dortoir aussi.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0337",
+    "phase": "sejour",
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "Dans l'auberge, tu remarques que le cadenas de ton casier a été forcé.",
+    "choices": [
+      {
+        "label": "Vérifier tes affaires",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Seul ton chargeur manque. Tu t'en sors bien.",
+            "effects": {
+              "happiness": -2,
+              "money": -20
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton argent liquide a disparu. L'accueil hausse les épaules.",
+            "effects": {
+              "happiness": -8,
+              "money": -150,
+              "setFlags": [
+                "vole_en_voyage"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Alerter l'accueil",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils vérifient les caméras et retrouvent le voleur. Tes affaires te sont rendues.",
+            "effects": {
+              "happiness": 5,
+              "karma": 1
+            },
+            "souvenir": "Mes affaires volées, retrouvées grâce aux caméras"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0338",
+    "phase": "sejour",
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "À l'auberge, un groupe de voyageurs de quatre pays différents prépare un itinéraire commun pour demain.",
+    "choices": [
+      {
+        "label": "Les rejoindre",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Une journée de randonnée en anglais approximatif, des fous rires. Vous vous suivez encore sur les réseaux des années après.",
+            "effects": {
+              "happiness": 10,
+              "newFriend": true,
+              "skills": {
+                "anglais": 2
+              }
+            },
+            "souvenir": "Une journée avec des inconnus devenus amis"
+          },
+          {
+            "chance": 0.2,
+            "text": "Le groupe se dispute sur l'itinéraire toute la journée. Instructif.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ton programme",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Journée solo, efficace. Le soir, ils te racontent tout.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0339",
+    "phase": "sejour",
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "Dans la cuisine commune de l'auberge, une voyageuse cuisine pour vingt personnes et te demande de l'aide.",
+    "choices": [
+      {
+        "label": "Couper des légumes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Repas géant, conversations en six langues. Une des meilleures soirées du séjour.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true,
+              "skills": {
+                "cuisine": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer ta recette",
+        "requiresSkill": {
+          "cuisine": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prépares ton plat de famille. Tout le monde demande la recette.",
+            "effects": {
+              "happiness": 10,
+              "newFriend": true,
+              "skills": {
+                "cuisine": 2
+              }
+            },
+            "souvenir": "Mon plat de famille servi à vingt voyageurs"
+          }
+        ]
+      },
+      {
+        "label": "Manger tes nouilles instantanées",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Seul{e} au bout de la table. L'odeur de leur plat te torture.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0340",
+    "phase": "sejour",
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "Au réveil, des petits boutons rouges en ligne sur ton bras. Des punaises de lit.",
+    "choices": [
+      {
+        "label": "Prévenir l'accueil et changer de lit",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ils traitent le dortoir et te remboursent une nuit.",
+            "effects": {
+              "happiness": -3,
+              "money": 15
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils nient tout. Tu changes d'auberge.",
+            "effects": {
+              "happiness": -5,
+              "money": -40
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laver toutes tes affaires",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une demi-journée à la laverie. Mais tu ne ramènes pas les punaises chez toi.",
+            "effects": {
+              "happiness": -3,
+              "money": -15,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0341",
+    "phase": "sejour",
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "Un voyageur sympathique de l'auberge te demande cinquante euros. Sa carte bancaire est bloquée, il promet de te rembourser demain.",
+    "choices": [
+      {
+        "label": "Prêter l'argent",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il te rembourse le lendemain avec un paquet de biscuits. Ta foi en l'humanité grimpe.",
+            "effects": {
+              "happiness": 5,
+              "karma": 3
+            },
+            "souvenir": "Un prêt remboursé avec un paquet de biscuits"
+          },
+          {
+            "chance": 0.6,
+            "text": "Il a quitté l'auberge au petit matin.",
+            "effects": {
+              "happiness": -6,
+              "money": -50
+            },
+            "signal": "voyage_arnaque"
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il comprend. Tu te sens un peu méchant{e}, mais prudent{e}.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0342",
+    "phase": "sejour",
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "L'auberge organise une soirée « pub crawl » à prix réduit. Cinq bars, une seule nuit.",
+    "choices": [
+      {
+        "label": "Participer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Soirée mémorable. Tu connais tout le monde à la fin.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true,
+              "health": -3,
+              "money": -30
+            },
+            "souvenir": "Un pub crawl mémorable"
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu perds le groupe au troisième bar. Retour à pied, perdu{e}.",
+            "effects": {
+              "happiness": -3,
+              "health": -3,
+              "money": -30
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester à l'auberge",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le dortoir est vide et silencieux. Tu dors douze heures.",
+            "effects": {
+              "health": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0343",
+    "phase": "sejour",
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "Une visite guidée gratuite part de l'auberge. Le guide vit de pourboires.",
+    "choices": [
+      {
+        "label": "Suivre la visite et donner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le guide est passionnant et drôle. Tu lui donnes vingt euros, il le mérite.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 3,
+              "karma": 1,
+              "money": -20
+            },
+            "souvenir": "Une visite à pied avec un guide passionné"
+          }
+        ]
+      },
+      {
+        "label": "Suivre puis filer discrètement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu as tout appris pour rien. Petite gêne en le croisant le lendemain.",
+            "effects": {
+              "smarts": 3,
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0344",
+    "phase": "sejour",
+    "hebergements": [
+      "habitant"
+    ],
+    "text": "Chez l'habitant, la famille t'attend pour le dîner. La table est couverte de plats et tout le monde te regarde goûter.",
+    "choices": [
+      {
+        "label": "Tout goûter avec enthousiasme",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "La grand-mère est conquise. On te ressert trois fois.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true
+            },
+            "souvenir": "Un dîner de famille chez l'habitant"
+          },
+          {
+            "chance": 0.2,
+            "text": "Un plat est très épicé. Tu pleures, ils rient, tout le monde est heureux.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parler de ta famille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu montres des photos, ils montrent les leurs. Un vrai échange.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            },
+            "souvenir": "Des photos de famille échangées autour d'une table"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0345",
+    "phase": "sejour",
+    "hebergements": [
+      "habitant"
+    ],
+    "text": "La grand-mère de ta famille d'accueil ne parle pas un mot de ta langue, mais elle te parle sans arrêt avec de grands gestes.",
+    "choices": [
+      {
+        "label": "Répondre par des gestes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous vous comprenez parfaitement. Elle t'apprend à faire du pain.",
+            "effects": {
+              "happiness": 8,
+              "skills": {
+                "cuisine": 2
+              }
+            },
+            "souvenir": "Une grand-mère qui m'a appris le pain sans un mot en commun"
+          }
+        ]
+      },
+      {
+        "label": "Hocher la tête",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Elle est ravie. Tu as accepté quelque chose, sans savoir quoi.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as accepté de l'accompagner à 6 heures au marché. C'était génial.",
+            "effects": {
+              "happiness": 6
+            },
+            "souvenir": "Le marché à 6 heures avec la grand-mère de mes hôtes"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0346",
+    "phase": "sejour",
+    "hebergements": [
+      "habitant"
+    ],
+    "text": "Ton hôte te demande si tu veux l'aider à la récolte demain matin. Le réveil est à 5 heures.",
+    "choices": [
+      {
+        "label": "Aider",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une matinée dans les champs, puis un petit-déjeuner incroyable. Tu as mal au dos et le cœur content.",
+            "effects": {
+              "happiness": 8,
+              "health": 1,
+              "karma": 3,
+              "newFriend": true,
+              "skills": {
+                "jardinage": 2
+              }
+            },
+            "souvenir": "Une matinée de récolte chez mes hôtes"
+          }
+        ]
+      },
+      {
+        "label": "Dormir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dors. Au retour, la famille rit de toi gentiment.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Montrer ton savoir-faire",
+        "requiresSkill": {
+          "jardinage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu travailles si bien que le grand-père te confie son sécateur préféré. Grand honneur.",
+            "effects": {
+              "happiness": 9,
+              "karma": 3,
+              "skills": {
+                "jardinage": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0347",
+    "phase": "sejour",
+    "hebergements": [
+      "habitant"
+    ],
+    "text": "La chambre chez l'habitant est beaucoup plus petite que sur les photos. Le lit fait la taille d'un canapé.",
+    "choices": [
+      {
+        "label": "Faire avec",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dors en position de cuillère avec ta valise. L'accueil compense largement.",
+            "effects": {
+              "happiness": 1,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander une autre chambre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils te donnent la chambre du fils, qui part chez sa tante. Gêné{e} mais confortable.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il n'y en a pas d'autre. Ils s'excusent mille fois.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0348",
+    "phase": "sejour",
+    "hebergements": [
+      "habitant"
+    ],
+    "text": "L'enfant de tes hôtes veut absolument apprendre des mots français. Il te suit partout avec un cahier.",
+    "choices": [
+      {
+        "label": "Lui donner des cours",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il apprend trente mots en trois jours. Ses parents t'offrent un cadeau au départ.",
+            "effects": {
+              "happiness": 7,
+              "karma": 3
+            },
+            "souvenir": "Mon petit élève de français à l'étranger"
+          }
+        ]
+      },
+      {
+        "label": "Lui apprendre des gros mots",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il les répète au dîner. Silence glacial à table.",
+            "effects": {
+              "happiness": 2,
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0349",
+    "phase": "sejour",
+    "hebergements": [
+      "habitant"
+    ],
+    "text": "Chez tes hôtes, on enlève ses chaussures, on ne mange pas avant les anciens, et on rentre avant 23 heures.",
+    "choices": [
+      {
+        "label": "Respecter les règles",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La famille t'adopte. On te considère comme un membre de la maison.",
+            "effects": {
+              "happiness": 6,
+              "karma": 3,
+              "newFriend": true
+            },
+            "souvenir": "Adopté{e} par ma famille d'accueil"
+          }
+        ]
+      },
+      {
+        "label": "Rentrer à 1 heure du matin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La porte est fermée. Tu frappes, le père t'ouvre en silence. Ambiance froide au petit-déjeuner.",
+            "effects": {
+              "happiness": -5,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0350",
+    "phase": "sejour",
+    "hebergements": [
+      "habitant"
+    ],
+    "text": "Ta famille d'accueil t'invite à une fête familiale : un baptême, avec toute la parenté.",
+    "choices": [
+      {
+        "label": "Y aller avec respect",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu danses, tu manges, tu prends des photos pour la famille. On t'envoie les tirages pendant des années.",
+            "effects": {
+              "happiness": 9,
+              "newFriend": true,
+              "karma": 2
+            },
+            "souvenir": "Invité{e} à un baptême chez mes hôtes"
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils sont un peu déçus, mais te gardent une part de gâteau.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0351",
+    "phase": "sejour",
+    "hebergements": [
+      "hotel"
+    ],
+    "text": "À la réception, on t'annonce que l'hôtel est en surréservation. Ta chambre a été donnée à quelqu'un d'autre.",
+    "choices": [
+      {
+        "label": "Exiger une solution",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ils te logent dans l'hôtel quatre étoiles d'en face, à leurs frais. Belle surprise.",
+            "effects": {
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On te propose un hôtel loin du centre, sans dédommagement.",
+            "effects": {
+              "happiness": -5,
+              "money": -30
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier en anglais",
+        "requiresSkill": {
+          "anglais": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu obtiens une suite et un dîner offert. Le directeur s'excuse personnellement.",
+            "effects": {
+              "happiness": 10,
+              "skills": {
+                "anglais": 2
+              }
+            },
+            "souvenir": "Une suite obtenue après une surréservation"
+          }
+        ]
+      },
+      {
+        "label": "Partir chercher ailleurs",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu trouves une petite pension charmante, moins chère.",
+            "effects": {
+              "happiness": 3,
+              "money": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0352",
+    "phase": "sejour",
+    "hebergements": [
+      "hotel"
+    ],
+    "text": "Ta chambre d'hôtel est juste à côté de l'ascenseur, qui sonne à chaque étage, toute la nuit.",
+    "choices": [
+      {
+        "label": "Demander à changer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Nouvelle chambre, silence total. Tu dors comme un bébé.",
+            "effects": {
+              "health": 3,
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "L'hôtel est complet. Bouchons d'oreille et patience.",
+            "effects": {
+              "health": -2,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire avec",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu comptes les sonneries comme des moutons. Ça finit par marcher.",
+            "effects": {
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0353",
+    "phase": "sejour",
+    "hebergements": [
+      "hotel"
+    ],
+    "text": "La chambre est sale, la douche fuit, le petit-déjeuner est froid. Tu écris un avis en ligne. Le gérant te propose une nuit offerte si tu le retires.",
+    "choices": [
+      {
+        "label": "Garder l'avis honnête",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refuses. D'autres voyageurs te remercieront.",
+            "effects": {
+              "karma": 3,
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter le marché",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu récupères une nuit gratuite. Ta conscience grince un peu.",
+            "effects": {
+              "karma": -3,
+              "money": 60
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0354",
+    "phase": "sejour",
+    "hebergements": [
+      "hotel"
+    ],
+    "text": "Le minibar de l'hôtel est plein de tentations. Une petite bouteille d'eau coûte 8 euros.",
+    "choices": [
+      {
+        "label": "Se servir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une soirée devant la télé avec chips et soda. La note finale fait mal.",
+            "effects": {
+              "happiness": 3,
+              "money": -45
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller à l'épicerie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Pour 8 euros, tu as de quoi tenir trois jours.",
+            "effects": {
+              "happiness": 2,
+              "money": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0355",
+    "phase": "sejour",
+    "hebergements": [
+      "hotel"
+    ],
+    "text": "L'alarme incendie de l'hôtel se déclenche à 3 heures du matin. Les clients descendent en pyjama.",
+    "choices": [
+      {
+        "label": "Descendre immédiatement",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Fausse alerte. Tu rigoles avec les autres clients sur le parking.",
+            "effects": {
+              "happiness": 2,
+              "newFriend": true
+            },
+            "souvenir": "Une alerte incendie en pyjama sur le parking"
+          },
+          {
+            "chance": 0.2,
+            "text": "Un vrai début d'incendie en cuisine, vite maîtrisé. Tu as bien fait de descendre.",
+            "effects": {
+              "happiness": -2,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester au lit",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Fausse alerte, tu as gagné une heure de sommeil.",
+            "effects": {
+              "health": 1
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Les pompiers frappent à ta porte et te font sortir sans ménagement.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0356",
+    "phase": "sejour",
+    "hebergements": [
+      "hotel"
+    ],
+    "text": "Le buffet du petit-déjeuner de l'hôtel est immense. Tu as le droit d'y aller jusqu'à 10 heures.",
+    "choices": [
+      {
+        "label": "Manger pour toute la journée",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu tiens jusqu'au dîner. Économie et indigestion légère.",
+            "effects": {
+              "money": 15,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Remplir discrètement ton sac",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Pique-nique gratuit pour le déjeuner.",
+            "effects": {
+              "money": 12,
+              "karma": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un serveur te voit et te regarde fixement pendant que tu remets les croissants.",
+            "effects": {
+              "happiness": -4,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Petit-déjeuner raisonnable",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un café, un fruit, un œuf. Tu commences la journée sans lourdeur.",
+            "effects": {
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0357",
+    "phase": "sejour",
+    "hebergements": [
+      "luxe",
+      "palace"
+    ],
+    "text": "Le majordome du palace se présente : il sera à ton service jour et nuit pendant tout le séjour.",
+    "choices": [
+      {
+        "label": "Lui demander l'impossible",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il obtient une table au restaurant complet depuis des mois. Magicien.",
+            "effects": {
+              "happiness": 8,
+              "money": -300
+            },
+            "souvenir": "Une table impossible obtenue par le majordome"
+          },
+          {
+            "chance": 0.3,
+            "text": "Il s'exécute, mais tu sens qu'il te trouve un peu exigeant{e}.",
+            "effects": {
+              "happiness": 3,
+              "money": -300,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le traiter comme un égal",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il te raconte la vie du palace, les clients, ses rêves. Tu lui laisses un gros pourboire.",
+            "effects": {
+              "happiness": 7,
+              "karma": 3,
+              "money": -200,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0358",
+    "phase": "sejour",
+    "hebergements": [
+      "luxe",
+      "palace"
+    ],
+    "text": "Au bord de la piscine de l'hôtel, tu reconnais une célébrité mondiale, lunettes noires et casquette.",
+    "choices": [
+      {
+        "label": "Lui demander une photo",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Elle accepte avec le sourire. Ta photo fera le tour de tes amis.",
+            "effects": {
+              "happiness": 9
+            },
+            "souvenir": "Une photo avec une star au bord de la piscine"
+          },
+          {
+            "chance": 0.7,
+            "text": "Son garde du corps t'intercepte poliment mais fermement.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "La laisser tranquille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le lendemain, elle te salue d'un signe de tête. Tu existes.",
+            "effects": {
+              "happiness": 5,
+              "karma": 2
+            },
+            "souvenir": "Le salut discret d'une célébrité"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0359",
+    "phase": "sejour",
+    "hebergements": [
+      "luxe",
+      "palace"
+    ],
+    "text": "Tu commandes un club sandwich au service d'étage. Sur la note : 96 euros.",
+    "choices": [
+      {
+        "label": "Payer sans broncher",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "C'est le meilleur club sandwich de ta vie, au moins. Ton compte en banque pleure.",
+            "effects": {
+              "happiness": 1,
+              "money": -96
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contester la note",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "On t'explique les frais de service, la taxe, le plateau en argent. Tu paies quand même.",
+            "effects": {
+              "happiness": -3,
+              "money": -96
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le directeur offre le sandwich en geste commercial.",
+            "effects": {
+              "happiness": 4
+            },
+            "souvenir": "Un club sandwich à 96 euros, finalement offert"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0360",
+    "phase": "sejour",
+    "hebergements": [
+      "luxe",
+      "palace"
+    ],
+    "text": "Deux clients du palace se disputent violemment au bord de la piscine. Il est question d'un héritage et d'un amant.",
+    "choices": [
+      {
+        "label": "Écouter discrètement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Mieux qu'une série. Tu apprends des secrets de famille hallucinants.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Intervenir pour calmer",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ils se calment, te remercient et t'invitent à dîner.",
+            "effects": {
+              "happiness": 6,
+              "karma": 2,
+              "newFriend": true
+            },
+            "souvenir": "Un dîner avec deux inconnus réconciliés"
+          },
+          {
+            "chance": 0.6,
+            "text": "Ils se retournent contre toi. Tu repars sous les insultes.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0361",
+    "phase": "sejour",
+    "hebergements": [
+      "luxe",
+      "palace"
+    ],
+    "text": "Le spa du palace propose un soin « rituel royal » de trois heures. Prix : 650 euros.",
+    "choices": [
+      {
+        "label": "Se l'offrir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sors avec l'impression d'avoir dix ans de moins.",
+            "effects": {
+              "happiness": 8,
+              "health": 4,
+              "looks": 3,
+              "money": -650
+            },
+            "souvenir": "Un rituel royal au spa du palace"
+          }
+        ]
+      },
+      {
+        "label": "Profiter du hammam gratuit",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le hammam est déjà sublime. Tu en profites des heures.",
+            "effects": {
+              "happiness": 5,
+              "health": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0362",
+    "phase": "sejour",
+    "hebergements": [
+      "luxe",
+      "palace"
+    ],
+    "text": "Le concierge du palace te propose « tout ce que tu veux » pour ce soir. Absolument tout.",
+    "choices": [
+      {
+        "label": "Une soirée VIP",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu entres dans un club fermé au public. Soirée surréaliste.",
+            "effects": {
+              "happiness": 9,
+              "money": -1500
+            },
+            "souvenir": "Une soirée VIP organisée par le concierge"
+          },
+          {
+            "chance": 0.3,
+            "text": "Ambiance froide, gens prétentieux. Tu rentres à minuit, déçu{e}.",
+            "effects": {
+              "happiness": -3,
+              "money": -1500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un dîner simple et local",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il t'emmène dans le restaurant de sa tante. Le meilleur repas du séjour.",
+            "effects": {
+              "happiness": 9,
+              "money": -60,
+              "newFriend": true
+            },
+            "souvenir": "Le restaurant de la tante du concierge"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0363",
+    "phase": "sejour",
+    "hebergements": [
+      "luxe",
+      "palace"
+    ],
+    "text": "Ta carte-clé ne marche plus. Le palace est immense et tu t'es perdu{e} dans un couloir de service.",
+    "choices": [
+      {
+        "label": "Suivre les employés",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu découvres les cuisines, les lingeries, les coulisses. Fascinant.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 2
+            },
+            "souvenir": "Les coulisses d'un palace"
+          }
+        ]
+      },
+      {
+        "label": "Appeler la réception",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un groom vient te chercher. Gêne légère, mais tu dors dans ta chambre.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0364",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Premier soir seul{e} {en_pays}. Au restaurant, toutes les tables sont occupées par des couples et des familles. Le serveur te propose le comptoir.",
+    "choices": [
+      {
+        "label": "S'asseoir au comptoir",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le cuisinier te parle en préparant les plats et te fait goûter tout ce qui sort. Tu n'as jamais aussi bien dîné seul{e}.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true,
+              "money": -25
+            },
+            "souvenir": "Un dîner au comptoir, seul{e} mais pas seul{e}"
+          },
+          {
+            "chance": 0.3,
+            "text": "Le comptoir est bruyant mais tu manges bien, avec un livre.",
+            "effects": {
+              "happiness": 3,
+              "money": -25
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre à emporter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dînes sur un banc face à la ville. Un peu triste, un peu beau.",
+            "effects": {
+              "happiness": 1,
+              "money": -12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0365",
+    "phase": "sejour",
+    "seul": true,
+    "minJours": 7,
+    "text": "Le troisième soir, la solitude te tombe dessus. Personne avec qui partager ce que tu as vu aujourd'hui.",
+    "choices": [
+      {
+        "label": "Appeler un proche",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une heure au téléphone. Tu racontes tout, ça fait du bien.",
+            "effects": {
+              "happiness": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire dans un carnet",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu remplis dix pages. Tu relis tes notes avec émotion des années plus tard.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 2
+            },
+            "souvenir": "Dix pages de carnet écrites un soir de solitude"
+          }
+        ]
+      },
+      {
+        "label": "Sortir rencontrer du monde",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Dans un bar, tu rencontres d'autres voyageurs. Tu n'es plus seul{e}.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true
+            },
+            "souvenir": "Le bar où je n'étais plus seul{e}"
+          },
+          {
+            "chance": 0.4,
+            "text": "Personne ne te parle. Tu rentres plus seul{e} qu'avant.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0366",
+    "phase": "sejour",
+    "seul": true,
+    "climats": [
+      "chaud",
+      "tropical"
+    ],
+    "text": "Seul{e} sur une plage au lever du soleil, tu réalises que personne ne sait où tu es, et que c'est la première fois depuis longtemps.",
+    "choices": [
+      {
+        "label": "Savourer ce moment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une paix immense te remplit. Tu sais ce que tu veux changer en rentrant.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 2,
+              "setFlags": [
+                "declic_en_voyage"
+              ]
+            },
+            "souvenir": "Le lever du soleil où tout est devenu clair"
+          }
+        ]
+      },
+      {
+        "label": "Envoyer ta position à quelqu'un",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Prudent{e}. Tu profites ensuite du soleil l'esprit tranquille.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0367",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Un voyageur solitaire comme toi engage la conversation au café. Vous avez le même itinéraire pour les trois prochains jours.",
+    "choices": [
+      {
+        "label": "Voyager ensemble",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Trois jours de fous rires et de confidences. Une amitié rare.",
+            "effects": {
+              "happiness": 10,
+              "newFriend": true
+            },
+            "souvenir": "Trois jours avec un compagnon de route inattendu"
+          },
+          {
+            "chance": 0.3,
+            "text": "Il parle sans arrêt. Le troisième jour, tu prétextes un changement de programme.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ta liberté",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous échangez vos numéros. Vous vous croisez par hasard deux fois. Le destin s'amuse.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0368",
+    "phase": "sejour",
+    "seul": true,
+    "minAge": 18,
+    "text": "Dans un bar près de {incontournable}, une personne te sourit depuis le comptoir. Vous parlez jusqu'à la fermeture.",
+    "choices": [
+      {
+        "label": "Se revoir le lendemain",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Trois jours de romance de vacances, de balades et de baisers. Le départ est déchirant.",
+            "effects": {
+              "happiness": 12,
+              "setFlags": [
+                "romance_de_voyage"
+              ]
+            },
+            "souvenir": "Une romance de voyage {en_pays}"
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle ne vient pas au rendez-vous. Tu attends une heure, puis tu visites seul{e}.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ce souvenir intact",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une seule soirée, parfaite. Tu y penseras longtemps.",
+            "effects": {
+              "happiness": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Séduire avec aplomb",
+        "requiresSkill": {
+          "seduction": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle change son billet pour rester deux jours de plus. Une semaine hors du temps.",
+            "effects": {
+              "happiness": 14,
+              "skills": {
+                "seduction": 2
+              },
+              "setFlags": [
+                "romance_de_voyage"
+              ]
+            },
+            "souvenir": "Une semaine hors du temps {en_pays}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0369",
+    "phase": "sejour",
+    "seul": true,
+    "text": "De retour vers {hebergement} tard le soir, tu remarques que quelqu'un te suit depuis plusieurs rues.",
+    "choices": [
+      {
+        "label": "Entrer dans un commerce éclairé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La personne passe son chemin. Le commerçant appelle un taxi pour toi.",
+            "effects": {
+              "happiness": -2,
+              "smarts": 2,
+              "money": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accélérer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu le sèmes. Ton cœur bat fort.",
+            "effects": {
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il t'arrache ton sac et s'enfuit. Tu n'es pas blessé{e}, mais secoué{e}.",
+            "effects": {
+              "happiness": -10,
+              "money": -120,
+              "setFlags": [
+                "agresse_en_voyage"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te retourner et le fixer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Surpris, il change de trottoir.",
+            "effects": {
+              "happiness": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il s'approche et demande une cigarette. Rien de méchant, mais tu tremblais.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0370",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Tu veux une photo de toi devant {incontournable}. Il faut demander à un inconnu de la prendre.",
+    "choices": [
+      {
+        "label": "Demander à une famille",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Le père prend vingt photos sous tous les angles. L'une est parfaite.",
+            "effects": {
+              "happiness": 5
+            },
+            "souvenir": "La photo parfaite devant {incontournable}"
+          },
+          {
+            "chance": 0.2,
+            "text": "Toutes les photos sont floues et coupées. Souvenir quand même.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Utiliser le minuteur",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu cales ton téléphone sur un mur. Photo réussie au cinquième essai.",
+            "effects": {
+              "happiness": 4,
+              "skills": {
+                "photo": 1
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le téléphone glisse et tombe. Écran fissuré.",
+            "effects": {
+              "happiness": -4,
+              "money": -90
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0371",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Un local t'invite à dîner chez lui avec sa famille. Tu le connais depuis deux heures.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Accueil chaleureux, repas inoubliable, échange sincère. Tu repars avec une adresse et un ami.",
+            "effects": {
+              "happiness": 10,
+              "newFriend": true,
+              "karma": 2
+            },
+            "souvenir": "Un dîner chez des inconnus devenus amis"
+          },
+          {
+            "chance": 0.2,
+            "text": "Le repas se termine par la présentation des produits du cousin. Gênant, mais tu manges bien.",
+            "effects": {
+              "happiness": 2,
+              "money": -30
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner prudemment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il comprend. Vous prenez un thé sur une terrasse publique à la place.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0372",
+    "phase": "sejour",
+    "seul": true,
+    "minJours": 7,
+    "text": "Tu tombes malade seul{e} dans ta chambre : fièvre, frissons. Personne pour aller à la pharmacie.",
+    "choices": [
+      {
+        "label": "Appeler la réception",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le réceptionniste t'apporte des médicaments et une soupe. Gentillesse inattendue.",
+            "effects": {
+              "health": 3,
+              "happiness": 4,
+              "money": -15
+            },
+            "souvenir": "Une soupe apportée par le réceptionniste"
+          }
+        ]
+      },
+      {
+        "label": "Y aller toi-même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu y vas en titubant. Ça passe en deux jours.",
+            "effects": {
+              "health": -3,
+              "money": -15
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Malaise dans la rue. Des passants t'aident. Deux jours au lit.",
+            "effects": {
+              "happiness": -6,
+              "health": -6,
+              "money": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre que ça passe",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ça passe tout seul après une nuit difficile.",
+            "effects": {
+              "health": -3,
+              "happiness": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Trois jours de fièvre seul{e}. Le voyage en prend un coup.",
+            "effects": {
+              "happiness": -10,
+              "health": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0373",
+    "phase": "sejour",
+    "seul": true,
+    "climats": [
+      "chaud",
+      "tropical"
+    ],
+    "minJours": 7,
+    "text": "Le programme prévoyait de visiter {destination} toute la semaine. Mais un voyageur te parle d'une île magnifique à deux heures de bateau.",
+    "choices": [
+      {
+        "label": "Changer de plan",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'île est paradisiaque. La meilleure décision de ton voyage.",
+            "effects": {
+              "happiness": 10,
+              "money": -40
+            },
+            "souvenir": "Un changement de plan sur un coup de tête"
+          },
+          {
+            "chance": 0.3,
+            "text": "L'île est jolie mais bondée. Tu regrettes un peu ton plan initial.",
+            "effects": {
+              "happiness": 1,
+              "money": -40
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le programme",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu explores {destination} de fond en comble. Rassurant.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0374",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Tu croises un compatriote français au détour d'une rue. Il est ravi de parler sa langue après trois semaines.",
+    "choices": [
+      {
+        "label": "Prendre un verre",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Vous partagez vos galères de voyage avec des fous rires. Une belle soirée.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            },
+            "souvenir": "Des galères de voyage partagées avec un compatriote"
+          },
+          {
+            "chance": 0.3,
+            "text": "Il se plaint de tout le pays pendant deux heures. Tu t'éclipses.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Échanger trois mots et repartir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu préfères l'immersion. Il comprend.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le faire rire de ses galères",
+        "requiresSkill": {
+          "humour": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu transformes ses malheurs de voyage en sketch. Il pleure de rire et te présente ses amis du coin.",
+            "effects": {
+              "happiness": 8,
+              "newFriend": true,
+              "skills": {
+                "humour": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0375",
+    "phase": "sejour",
+    "seul": true,
+    "minAge": 18,
+    "text": "Dans une boutique de tatouage, un artiste propose de te tatouer un symbole local. Tu y penses depuis hier soir.",
+    "choices": [
+      {
+        "label": "Se faire tatouer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le tatouage est magnifique. Il te rappellera ce voyage toute ta vie.",
+            "effects": {
+              "happiness": 8,
+              "looks": 2,
+              "money": -120,
+              "setFlags": [
+                "tatouage_de_voyage"
+              ]
+            },
+            "souvenir": "Un tatouage fait {en_pays}"
+          },
+          {
+            "chance": 0.3,
+            "text": "Il s'infecte un peu. Une semaine de soins et de regrets.",
+            "effects": {
+              "happiness": -3,
+              "health": -4,
+              "money": -120,
+              "setFlags": [
+                "tatouage_de_voyage"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre de rentrer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prends une photo du motif. Tu y penseras encore.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0376",
+    "phase": "sejour",
+    "seul": true,
+    "continents": [
+      "asie"
+    ],
+    "text": "Tu loues un scooter pour explorer la région seul{e}. Le loueur ne demande ni permis, ni casque.",
+    "choices": [
+      {
+        "label": "Exiger un casque",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu roules en sécurité sur des routes de campagne superbes.",
+            "effects": {
+              "happiness": 7,
+              "health": 1,
+              "money": -20
+            },
+            "souvenir": "Des routes de campagne à scooter"
+          }
+        ]
+      },
+      {
+        "label": "Partir sans casque",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Liberté totale, cheveux au vent. Tu as de la chance.",
+            "effects": {
+              "happiness": 6,
+              "money": -20
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une chute sur du gravier. Bras et genoux râpés, scooter abîmé.",
+            "effects": {
+              "happiness": -8,
+              "health": -10,
+              "money": -200
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0377",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Tu passes une journée comme bénévole dans un refuge pour animaux ou une école du coin.",
+    "choices": [
+      {
+        "label": "Travailler dur",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu nettoies, tu portes, tu joues avec les enfants ou les animaux. Une journée qui a du sens.",
+            "effects": {
+              "happiness": 9,
+              "karma": 6,
+              "health": -1
+            },
+            "souvenir": "Une journée de bénévolat {en_pays}"
+          }
+        ]
+      },
+      {
+        "label": "Faire des photos pour les réseaux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les photos sont belles, mais tu as peu aidé. Le responsable le remarque.",
+            "effects": {
+              "happiness": 2,
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0378",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Un voyageur propose de garder ton sac pendant que tu te baignes. Tu es seul{e}, et ton passeport est dedans.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il le garde sagement. Tu nages en paix.",
+            "effects": {
+              "happiness": 5,
+              "karma": 1
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "À ton retour, ton sac et le voyageur ont disparu.",
+            "effects": {
+              "happiness": -12,
+              "money": -200,
+              "setFlags": [
+                "passeport_perdu"
+              ]
+            },
+            "signal": "voyage_arnaque"
+          }
+        ]
+      },
+      {
+        "label": "Garder un œil dessus en nageant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Bain de deux minutes, toujours sur le qui-vive. Prudent.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout laisser à {hebergement}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu nages l'esprit tranquille avec juste ta serviette.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0379",
+    "phase": "sejour",
+    "seul": true,
+    "continents": [
+      "asie",
+      "amerique",
+      "afrique"
+    ],
+    "text": "Le bus de nuit part à 23 heures pour un trajet de dix heures. Tu es seul{e}, coincé{e} entre deux inconnus.",
+    "choices": [
+      {
+        "label": "Discuter avec ton voisin",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il partage ses fruits et te raconte son village. Le trajet passe vite.",
+            "effects": {
+              "happiness": 6,
+              "newFriend": true
+            },
+            "souvenir": "Les fruits partagés dans un bus de nuit"
+          },
+          {
+            "chance": 0.3,
+            "text": "Il s'endort sur ton épaule. Tu n'oses pas bouger pendant six heures.",
+            "effects": {
+              "happiness": -1,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dormir avec le sac contre toi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dors mal mais tout est là à l'arrivée.",
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0380",
+    "phase": "sejour",
+    "seul": true,
+    "unique": true,
+    "text": "C'est ton anniversaire, et tu le passes seul{e} {en_pays}. Personne ici ne le sait.",
+    "choices": [
+      {
+        "label": "Le dire au serveur",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tout le restaurant chante pour toi. On t'offre un dessert avec une bougie.",
+            "effects": {
+              "happiness": 10
+            },
+            "souvenir": "Mon anniversaire fêté par des inconnus"
+          },
+          {
+            "chance": 0.3,
+            "text": "Il hoche la tête et repart. Tu manges ton dessert seul{e}.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "T'offrir un cadeau",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu t'achètes quelque chose que tu n'aurais jamais acheté ailleurs. Joyeux anniversaire.",
+            "effects": {
+              "happiness": 6,
+              "money": -60
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0381",
+    "phase": "sejour",
+    "seul": true,
+    "climats": [
+      "froid",
+      "tempere"
+    ],
+    "text": "Le coucher de soleil depuis la montagne est sublime. Il reste une heure de jour, le sentier de descente est long et personne ne sait que tu es ici.",
+    "choices": [
+      {
+        "label": "Redescendre maintenant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu arrives en bas à la nuit tombante, rassuré{e}. La vue valait la course.",
+            "effects": {
+              "happiness": 6,
+              "health": 1
+            },
+            "souvenir": "Un coucher de soleil en montagne, et une descente à temps"
+          }
+        ]
+      },
+      {
+        "label": "Rester jusqu'à la nuit",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu descends à la lampe frontale. Long, effrayant, mais tu y arrives.",
+            "effects": {
+              "happiness": 4,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu te perds dans le noir. Tu passes la nuit dehors, transi{e}.",
+            "effects": {
+              "happiness": -10,
+              "health": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couper hors sentier dans le noir",
+        "outcomes": [
+          {
+            "chance": 0.55,
+            "text": "Tu glisses, tu te griffes, mais tu atteins la route.",
+            "effects": {
+              "happiness": -5,
+              "health": -8
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une entorse t'immobilise. Un berger te retrouve au matin, frigorifié{e}.",
+            "effects": {
+              "happiness": -12,
+              "health": -15
+            }
+          },
+          {
+            "chance": 0.15,
+            "text": "Tu chutes dans un ravin. Personne ne savait où te chercher.",
+            "effects": {
+              "death": "d'une chute en montagne, seul{e} en pleine nuit"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0382",
+    "phase": "sejour",
+    "seul": true,
+    "minJours": 14,
+    "text": "Tu t'inscris seul{e} à un cours de langue de deux heures dans une petite école du coin.",
+    "choices": [
+      {
+        "label": "Participer à fond",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu apprends les bases et tu te fais deux copains de classe. Les gens du coin apprécient tes efforts.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 3,
+              "newFriend": true
+            },
+            "souvenir": "Mes premiers mots de la langue locale"
+          }
+        ]
+      },
+      {
+        "label": "Rester en retrait",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prends des notes. Utile pour commander au marché.",
+            "effects": {
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0383",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Seul{e} {en_pays}, tu passes une journée entière sans dire un mot à personne.",
+    "choices": [
+      {
+        "label": "Savourer le silence",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu observes, tu marches, tu penses. Tu découvres que tu es de bonne compagnie.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Engager la conversation à tout prix",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une vieille dame sur un banc te raconte sa vie. Un cadeau.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            },
+            "souvenir": "La vie d'une vieille dame, racontée sur un banc"
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu demandes l'heure à quatre personnes qui ont toutes une montre.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0384",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Un groupe organisé passe près de toi avec un guide passionnant. Tu traînes à l'arrière pour écouter.",
+    "choices": [
+      {
+        "label": "Rejoindre officiellement le groupe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu paies ta place et le guide t'accueille avec humour. Tu apprends des choses fascinantes.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 3,
+              "money": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter en douce",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Personne ne remarque rien. Visite gratuite.",
+            "effects": {
+              "smarts": 2,
+              "karma": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le guide te demande de payer devant tout le monde. Rouge de honte.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0385",
+    "phase": "sejour",
+    "seul": true,
+    "hebergements": [
+      "habitant",
+      "auberge"
+    ],
+    "text": "Tu dînes seul{e} dans une table d'hôtes où tous les voyageurs mangent ensemble autour d'une seule grande table.",
+    "choices": [
+      {
+        "label": "Prendre la parole",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Tu racontes une anecdote de voyage, tout le monde rit. Soirée merveilleuse.",
+            "effects": {
+              "happiness": 9,
+              "newFriend": true
+            },
+            "souvenir": "Une table d'hôtes qui riait de mon histoire"
+          },
+          {
+            "chance": 0.2,
+            "text": "Ta blague tombe à plat. Silence poli, puis on parle d'autre chose.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter les autres",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Des histoires de tous les coins du monde. Tu repars avec trois idées de voyages.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0386",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Un concert gratuit a lieu sur une place. Tu es seul{e} au milieu d'une foule qui danse.",
+    "choices": [
+      {
+        "label": "Danser comme si personne ne regardait",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Personne ne regarde, en effet. Tu passes une soirée libératrice.",
+            "effects": {
+              "happiness": 9,
+              "health": 2,
+              "skills": {
+                "danse": 1
+              }
+            },
+            "souvenir": "Danser seul{e} au milieu de la foule"
+          }
+        ]
+      },
+      {
+        "label": "Rester sur le côté",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu profites de la musique, en tapant du pied.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0387",
+    "phase": "sejour",
+    "seul": true,
+    "hebergements": [
+      "auberge"
+    ],
+    "text": "Dans une auberge, tu te retrouves seul{e} dans un dortoir de dix lits. Au milieu de la nuit, un inconnu entre et fouille les sacs.",
+    "choices": [
+      {
+        "label": "Allumer la lumière",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il s'enfuit. Tu alertes l'accueil, qui le retrouve.",
+            "effects": {
+              "happiness": 1,
+              "karma": 2,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il prétend s'être trompé de dortoir, et file avec ton chargeur.",
+            "effects": {
+              "happiness": -3,
+              "money": -20
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire semblant de dormir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il prend ton portefeuille. Le matin, tu portes plainte.",
+            "effects": {
+              "happiness": -8,
+              "money": -120,
+              "setFlags": [
+                "vole_en_voyage"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0388",
+    "phase": "sejour",
+    "seul": true,
+    "text": "Seul{e} à une terrasse, tu écris une carte postale à toi-même, à ouvrir dans dix ans.",
+    "choices": [
+      {
+        "label": "Écrire tes rêves",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu notes ce que tu veux être dans dix ans. Le facteur la livrera quelques jours après ton retour.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2,
+              "setFlags": [
+                "carte_postale_a_soi"
+              ]
+            },
+            "souvenir": "Une carte postale écrite à moi-même"
+          }
+        ]
+      },
+      {
+        "label": "Écrire juste « Salut »",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu trouves ça drôle. Ton futur toi aussi, peut-être.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0389",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "vie_de_luxe"
+      ]
+    },
+    "minAge": 18,
+    "text": "Un ami milliardaire t'invite sur son yacht pour une soirée. La musique est forte, le champagne coule à flots.",
+    "choices": [
+      {
+        "label": "Profiter de la fête",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Feux d'artifice sur la mer, invités célèbres. Une nuit irréelle.",
+            "effects": {
+              "happiness": 10,
+              "health": -2
+            },
+            "souvenir": "Une soirée sur un yacht"
+          },
+          {
+            "chance": 0.3,
+            "text": "Le mal de mer gâche ta soirée. Tu passes la nuit sur le pont, pâle.",
+            "effects": {
+              "happiness": -4,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sauter du pont supérieur, la nuit",
+        "outcomes": [
+          {
+            "chance": 0.75,
+            "text": "Tu atterris dans l'eau noire sous les acclamations. Tu remontes dégrisé{e} et ravi{e}.",
+            "effects": {
+              "happiness": 6,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Tu heurtes l'eau de travers, sonné{e}. L'équipage te repêche de justesse.",
+            "effects": {
+              "happiness": -10,
+              "health": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Discuter avec l'équipage",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Leur vie est bien plus intéressante que celle des invités.",
+            "effects": {
+              "happiness": 5,
+              "newFriend": true,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0390",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Des paparazzis t'ont repéré{e} à la sortie de ton hôtel. Les flashs crépitent.",
+    "choices": [
+      {
+        "label": "Poser avec le sourire",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les photos sont flatteuses. Ta réputation y gagne.",
+            "effects": {
+              "happiness": 5,
+              "looks": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une photo te montre la bouche ouverte en mangeant. Elle devient virale.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les esquiver",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sors par la cuisine. Les cuisiniers rient de bon cœur avec toi.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0391",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "milliardaire"
+      ]
+    },
+    "climats": [
+      "tropical"
+    ],
+    "text": "Tu loues une île privée pour une semaine. Personne d'autre que toi, ton équipage et le personnel.",
+    "choices": [
+      {
+        "label": "Profiter de la solitude",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Plages vierges, silence absolu. Une semaine pour réfléchir à ta vie.",
+            "effects": {
+              "happiness": 12,
+              "health": 4,
+              "money": -80000
+            },
+            "souvenir": "Une semaine sur une île privée"
+          }
+        ]
+      },
+      {
+        "label": "Inviter la population locale à une fête",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une fête géante avec les habitants des îles voisines. On parle de toi pendant des années.",
+            "effects": {
+              "happiness": 12,
+              "karma": 6,
+              "money": -95000,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0392",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Tu croises un serveur maltraité par un client fortuné qui exige un service royal à grands cris.",
+    "choices": [
+      {
+        "label": "Défendre le serveur",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Le client se calme sous ton regard. Le serveur te remercie à voix basse.",
+            "effects": {
+              "happiness": 6,
+              "karma": 5
+            },
+            "souvenir": "Le jour où j'ai défendu un serveur"
+          },
+          {
+            "chance": 0.2,
+            "text": "Le client est un ancien partenaire d'affaires. Tu perds un contact, mais tu gardes ta dignité.",
+            "effects": {
+              "happiness": 3,
+              "karma": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu détournes les yeux. Tu y penses en t'endormant.",
+            "effects": {
+              "happiness": -3,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0393",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Dans une galerie {en_pays}, un artiste local expose une toile qui te bouleverse. Elle coûte 15 000 euros.",
+    "choices": [
+      {
+        "label": "L'acheter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'artiste pleure de joie. C'est la plus grosse vente de sa vie.",
+            "effects": {
+              "happiness": 9,
+              "karma": 4,
+              "money": -15000
+            },
+            "souvenir": "Une toile achetée à un artiste {en_pays}"
+          }
+        ]
+      },
+      {
+        "label": "Négocier",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu l'obtiens à 10 000. L'artiste est un peu triste.",
+            "effects": {
+              "happiness": 4,
+              "money": -10000,
+              "karma": -1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il refuse fermement. Tu repars les mains vides.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0394",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "milliardaire"
+      ]
+    },
+    "text": "Tu veux visiter {incontournable} sans la foule. On te propose une privatisation, à prix d'or.",
+    "choices": [
+      {
+        "label": "Privatiser",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu visites sans la foule, en silence. Une expérience unique.",
+            "effects": {
+              "happiness": 8,
+              "money": -25000
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les touristes refoulés te huent à la sortie. Une vidéo circule.",
+            "effects": {
+              "happiness": -4,
+              "karma": -4,
+              "money": -25000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Visiter à l'ouverture comme tout le monde",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Lève-tôt, tu es parmi les premiers. Presque aussi magique, et gratuit.",
+            "effects": {
+              "happiness": 6,
+              "karma": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0395",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Un hélicoptère t'attend pour survoler {destination}. Le pilote dit que la météo est un peu limite.",
+    "choices": [
+      {
+        "label": "Décoller quand même",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La ville vue d'en haut au coucher du soleil. Époustouflant.",
+            "effects": {
+              "happiness": 10,
+              "money": -3000
+            },
+            "souvenir": "{destination} vue d'hélicoptère"
+          },
+          {
+            "chance": 0.3,
+            "text": "Turbulences violentes. Le pilote fait demi-tour, toi tu es vert{e}.",
+            "effects": {
+              "happiness": -5,
+              "health": -3,
+              "money": -3000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reporter à demain",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le lendemain, ciel parfait. La patience paie.",
+            "effects": {
+              "happiness": 9,
+              "money": -3000
+            },
+            "souvenir": "{destination} vue d'hélicoptère, par ciel parfait"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0396",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Lors d'un gala de charité {en_pays}, un enchérisseur te défie ouvertement pour un lot.",
+    "choices": [
+      {
+        "label": "Surenchérir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gagnes le lot à 50 000 euros. L'argent va à une école locale.",
+            "effects": {
+              "happiness": 7,
+              "karma": 6,
+              "money": -50000
+            },
+            "souvenir": "Une école financée lors d'un gala"
+          }
+        ]
+      },
+      {
+        "label": "Le laisser gagner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il triomphe, mais l'école reçoit quand même l'argent. Tout le monde y gagne.",
+            "effects": {
+              "happiness": 3,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0397",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Tu jettes des billets depuis le balcon de ta suite pour amuser tes invités. La foule se bouscule en bas.",
+    "choices": [
+      {
+        "label": "Continuer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une bousculade éclate. Une vidéo de toi tourne partout le lendemain.",
+            "effects": {
+              "happiness": -5,
+              "karma": -10,
+              "money": -5000,
+              "setFlags": [
+                "scandale_billets_jetes"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Arrêter et descendre aider",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu redistribues calmement. Quelques personnes te remercient, d'autres te jugent.",
+            "effects": {
+              "happiness": 1,
+              "karma": 1,
+              "money": -5000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0398",
+    "phase": "sejour",
+    "conditions": {
+      "tags": [
+        "vie_de_luxe"
+      ]
+    },
+    "text": "Tu engages un chef étoilé pour cuisiner les spécialités locales rien que pour toi sur ta terrasse.",
+    "choices": [
+      {
+        "label": "Le regarder cuisiner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il te montre ses secrets. Le repas est un chef-d'œuvre.",
+            "effects": {
+              "happiness": 9,
+              "skills": {
+                "cuisine": 3
+              },
+              "money": -4000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Inviter le personnel à table",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Repas joyeux, sans hiérarchie. Tout le monde s'en souvient.",
+            "effects": {
+              "happiness": 10,
+              "karma": 5,
+              "money": -4000,
+              "newFriend": true
+            },
+            "souvenir": "Un dîner étoilé partagé avec le personnel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0399",
+    "phase": "sejour",
+    "groupes": [
+      "luxe"
+    ],
+    "text": "En classe affaires, ton voisin, un patron connu, te propose de discuter investissement pendant le séjour.",
+    "choices": [
+      {
+        "label": "Accepter un dîner",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il te donne un tuyau qui s'avère excellent.",
+            "effects": {
+              "happiness": 5,
+              "money": 8000,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il passe le dîner à parler de lui. Tu paies l'addition.",
+            "effects": {
+              "happiness": -2,
+              "money": -400
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu profites du séjour sans parler d'argent. Reposant.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voy_sej_0400",
+    "phase": "sejour",
+    "groupes": [
+      "luxe"
+    ],
+    "hebergements": [
+      "luxe",
+      "palace"
+    ],
+    "text": "Le personnel de ton hôtel de luxe fait grève pour de meilleurs salaires. Les clients riches se plaignent bruyamment.",
+    "choices": [
+      {
+        "label": "Soutenir les grévistes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu leur apportes des cafés et parles au directeur. Ils s'en souviendront.",
+            "effects": {
+              "happiness": 6,
+              "karma": 6,
+              "newFriend": true
+            },
+            "souvenir": "Des cafés apportés aux grévistes du palace"
+          }
+        ]
+      },
+      {
+        "label": "Se plaindre aussi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu obtiens une réduction. Le personnel te regarde différemment.",
+            "effects": {
+              "money": 300,
+              "karma": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sors visiter la ville. Rien n'est réglé à ton retour.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

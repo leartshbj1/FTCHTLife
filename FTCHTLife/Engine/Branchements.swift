@@ -129,6 +129,7 @@ extension GameEngine {
         t.formUnion(BeauteMoteur.tags(j))
         t.formUnion(SecteMoteur.tags(j.sectes))
         t.formUnion(AgenceMoteur.tags(j.agences))
+        t.formUnion(VoyMoteur.tags(j.voyages, age: j.age))
         return t
     }
 
