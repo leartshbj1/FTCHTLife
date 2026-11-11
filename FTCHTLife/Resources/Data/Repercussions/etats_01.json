@@ -1,0 +1,3247 @@
+[
+  {
+    "id": "rep_eta_0001",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "fume"
+      ]
+    },
+    "text": "Cette année, tu as fumé l'équivalent d'un petit barbecue. Ton souffle monte les escaliers une marche après toi.",
+    "effects": {
+      "health": -4,
+      "money": -900
+    }
+  },
+  {
+    "id": "rep_eta_0002",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "fume"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton paquet coûte maintenant le prix d'un déjeuner. Tu sautes donc des déjeuners. C'est une logique de fumeur, elle se tient très bien de l'intérieur.",
+    "effects": {
+      "health": -3,
+      "money": -1300,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_eta_0003",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 16,
+    "conditions": {
+      "flags": [
+        "fume"
+      ]
+    },
+    "text": "Tes doigts ont pris une jolie teinte miel. Ton dentiste parle de toi à ses collègues, en séminaire, avec des diapositives.",
+    "effects": {
+      "looks": -3,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_eta_0004",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 16,
+    "conditions": {
+      "flags": [
+        "fume"
+      ],
+      "flagMinYears": {
+        "fume": 3
+      }
+    },
+    "text": "Ta toux du matin réveille l'immeuble. Les voisins ont glissé sous ta porte une brochure « Arrêter en 30 jours », avec 29 jours déjà barrés.",
+    "choices": [
+      {
+        "label": "Arrêter pour de bon",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as jeté ton dernier paquet dans une poubelle municipale, avec un discours. Un pigeon a applaudi, ou il avait froid.",
+            "effects": {
+              "health": 5,
+              "happiness": -3,
+              "clearFlags": [
+                "fume"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as tenu jusqu'au premier café. Le café n'y est pour rien, mais tu lui en veux.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer à la vapoteuse",
+        "outcomes": [
+          {
+            "text": "Tu souffles désormais un nuage parfum « barbe à papa fraise ». Tu fumes moins, mais tu ressembles à une machine à fumée de discothèque.",
+            "effects": {
+              "health": 2,
+              "looks": -1,
+              "money": -60
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer, c'est ta personnalité",
+        "outcomes": [
+          {
+            "text": "Tu tousses avec style. Le style ne rembourse rien.",
+            "effects": {
+              "health": -3,
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0005",
+    "on": "event:rep_eta_0004",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 1.0,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "fume"
+      ]
+    },
+    "patience": 1,
+    "text": "Un an sans cigarette, depuis la brochure des voisins. Tu sens à nouveau les odeurs, y compris celle de ton appartement. Tu aurais préféré ne pas savoir.",
+    "effects": {
+      "health": 4,
+      "money": 1000,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_eta_0006",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "fume"
+      ],
+      "flagMinYears": {
+        "fume": 8
+      }
+    },
+    "clearFlags": [
+      "fume"
+    ],
+    "text": "Un matin, sans raison, la cigarette t'a dégoûté{e}. Tu as offert ton briquet à un inconnu qui t'a remercié comme pour un rein.",
+    "effects": {
+      "health": 5,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_eta_0007",
+    "on": "chaque_annee",
+    "chance": 0.07,
+    "minAge": 35,
+    "conditions": {
+      "flags": [
+        "fume"
+      ],
+      "flagMinYears": {
+        "fume": 15
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "poumons_goudronnes"
+    ],
+    "text": "Ta radio des poumons est sortie si sombre que le radiologue a d'abord cru à une panne d'imprimante. Puis il a enlevé ses lunettes, ce qui n'est jamais bon signe.",
+    "effects": {
+      "health": -8,
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_eta_0008",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "poumons_goudronnes"
+      ]
+    },
+    "text": "Tes poumons goudronnés sifflent dès la troisième marche. Dans l'immeuble, on reconnaît ton arrivée à l'oreille, comme un train régional.",
+    "effects": {
+      "health": -5,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_eta_0009",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "poumons_goudronnes"
+      ]
+    },
+    "text": "Ton pneumologue t'a fait souffler dans un tube. L'aiguille a hésité, puis elle a fait semblant de bouger, par politesse.",
+    "effects": {
+      "health": -3,
+      "money": -80
+    }
+  },
+  {
+    "id": "rep_eta_0010",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "poumons_goudronnes"
+      ],
+      "excludeFlags": [
+        "fume"
+      ],
+      "flagMinYears": {
+        "poumons_goudronnes": 5
+      }
+    },
+    "clearFlags": [
+      "poumons_goudronnes"
+    ],
+    "text": "Des années sans fumer, et ton pneumologue a dit « pas mal » en regardant ta radio. Venant de lui, c'est une déclaration d'amour.",
+    "effects": {
+      "health": 7,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_eta_0011",
+    "on": "chaque_annee",
+    "chance": 0.03,
+    "minAge": 50,
+    "conditions": {
+      "flags": [
+        "poumons_goudronnes",
+        "fume"
+      ],
+      "tags": [
+        "sick"
+      ]
+    },
+    "text": "Tes poumons ont tenu leur dernière réunion, sans toi.",
+    "effects": {
+      "death": "d'une quinte de toux si puissante qu'elle a déclenché l'alarme de la voiture du voisin"
+    }
+  },
+  {
+    "id": "rep_eta_0012",
+    "on": "chaque_annee",
+    "chance": 0.08,
+    "minAge": 40,
+    "conditions": {
+      "flags": [
+        "n_a_jamais_fume"
+      ],
+      "excludeFlags": [
+        "fume"
+      ]
+    },
+    "text": "Tes poumons, qui n'ont jamais vu une cigarette, font la fierté de ton médecin. Il montre ta radio aux fumeurs de la salle d'attente, comme une voiture de collection.",
+    "effects": {
+      "health": 3,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_eta_0013",
+    "on": "chaque_annee",
+    "chance": 1.0,
+    "conditions": {
+      "flags": [
+        "n_a_jamais_fume",
+        "fume"
+      ]
+    },
+    "clearFlags": [
+      "n_a_jamais_fume"
+    ],
+    "text": "Toi qui n'avais jamais touché une cigarette, tu as fini par craquer. Ton médecin a retiré ta radio de sa vitrine, en silence.",
+    "effects": {
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_eta_0014",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "boit_trop"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Cette année, tu as fêté beaucoup de choses : des anniversaires, des mardis, l'ouverture d'une boulangerie. Ton foie n'était invité à aucune fête, mais il a fait tout le ménage.",
+    "effects": {
+      "health": -4,
+      "money": -500
+    }
+  },
+  {
+    "id": "rep_eta_0015",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "boit_trop"
+      ],
+      "tags": [
+        "adult",
+        "friend"
+      ]
+    },
+    "text": "Tu as encore envoyé à 2 h du matin un message vocal de neuf minutes à {ami}. Personne ne l'a écouté en entier, sauf toi, le lendemain, en rougissant.",
+    "effects": {
+      "happiness": -3,
+      "relationships": {
+        "friend": -3
+      }
+    }
+  },
+  {
+    "id": "rep_eta_0016",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "boit_trop"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton visage du lendemain de fête est devenu ton visage tout court. Les photos de l'année sont formelles.",
+    "effects": {
+      "looks": -4,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_eta_0017",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "boit_trop"
+      ],
+      "flagMinYears": {
+        "boit_trop": 2
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton médecin a lu tes analyses et a dit « ah », de la voix qu'on entend dans les documentaires sur les naufrages.",
+    "choices": [
+      {
+        "label": "Tenter un mois sans alcool",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu as tenu le mois, puis l'année. Tu découvres que les soirées finissent, en vrai, vers 23 h.",
+            "effects": {
+              "health": 5,
+              "money": 400,
+              "happiness": -1,
+              "clearFlags": [
+                "boit_trop"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as tenu jusqu'au premier mariage où l'on t'a invité{e}. Les mariés, eux, ont tenu moins longtemps.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lever un verre à sa santé",
+        "outcomes": [
+          {
+            "text": "Le médecin n'a pas trinqué. Il a juste noté quelque chose, longtemps.",
+            "effects": {
+              "health": -3,
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0018",
+    "on": "chaque_annee",
+    "chance": 0.07,
+    "minAge": 30,
+    "conditions": {
+      "flags": [
+        "boit_trop"
+      ],
+      "flagMinYears": {
+        "boit_trop": 10
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "foie_fatigue"
+    ],
+    "text": "Après des années d'apéros, ton foie a posé un arrêt maladie. Le médecin parle de « foie fatigué » avec la gravité d'un délégué syndical.",
+    "effects": {
+      "health": -8,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0019",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "foie_fatigue"
+      ]
+    },
+    "text": "Ton foie fatigué traite désormais chaque verre comme une réclamation à instruire sous huit semaines. Tu sens passer chaque dossier.",
+    "effects": {
+      "health": -5,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0020",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "foie_fatigue"
+      ]
+    },
+    "text": "Ton teint a pris une nuance « vieux parchemin ». Une antiquaire t'a regardé{e} avec beaucoup trop d'intérêt.",
+    "effects": {
+      "looks": -3,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_eta_0021",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "foie_fatigue"
+      ],
+      "excludeFlags": [
+        "boit_trop"
+      ],
+      "flagMinYears": {
+        "foie_fatigue": 3
+      }
+    },
+    "clearFlags": [
+      "foie_fatigue"
+    ],
+    "text": "Sans alcool depuis longtemps, ton foie a repris du service. Tes analyses sont si propres que le labo les a affichées dans le couloir.",
+    "effects": {
+      "health": 7,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_eta_0022",
+    "on": "chaque_annee",
+    "chance": 0.03,
+    "minAge": 45,
+    "conditions": {
+      "flags": [
+        "foie_fatigue",
+        "boit_trop"
+      ],
+      "tags": [
+        "sick"
+      ]
+    },
+    "text": "Ton foie a présenté sa démission, sans préavis.",
+    "effects": {
+      "death": "pendant un toast que tu portais « à la santé de tout le monde »"
+    }
+  },
+  {
+    "id": "rep_eta_0023",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "mange_mal"
+      ]
+    },
+    "text": "Cette année, ton plat préféré était « le truc du distributeur, en bas ». Ta peau a voté contre, à une large majorité.",
+    "effects": {
+      "health": -3,
+      "looks": -3
+    }
+  },
+  {
+    "id": "rep_eta_0024",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "mange_mal"
+      ]
+    },
+    "text": "Bilan de l'année : plus de nuggets que de légumes. Les légumes ont gagné une fois, avec une rondelle de cornichon.",
+    "effects": {
+      "health": -4,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_eta_0025",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "mange_mal"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Le livreur de pizzas te souhaite ton anniversaire. Il connaît aussi ton code d'entrée, ton digicode et le prénom de ton chat imaginaire.",
+    "effects": {
+      "health": -3,
+      "money": -700
+    }
+  },
+  {
+    "id": "rep_eta_0026",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "mange_mal"
+      ],
+      "flagMinYears": {
+        "mange_mal": 2
+      }
+    },
+    "text": "Ta ceinture a cédé au restaurant, devant témoins. Le serveur a fait semblant de ne rien voir, avec beaucoup de talent.",
+    "choices": [
+      {
+        "label": "Se mettre aux légumes",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu as découvert le brocoli. Il n'a aucun goût, mais tu te sens moralement supérieur{e}.",
+            "effects": {
+              "health": 5,
+              "happiness": -2,
+              "clearFlags": [
+                "mange_mal"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as tenu une semaine, puis tu as fait frire le brocoli.",
+            "effects": {
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter une ceinture plus grande",
+        "outcomes": [
+          {
+            "text": "Elle est magnifique et a deux crans d'avance sur toi. Pour l'instant.",
+            "effects": {
+              "money": -30,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0027",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "mange_mal"
+      ],
+      "flagMinYears": {
+        "mange_mal": 5
+      }
+    },
+    "clearFlags": [
+      "mange_mal"
+    ],
+    "text": "Tu as appris à cuisiner par accident, pendant une panne de téléphone qui t'empêchait de commander. Tu t'es surpris{e} à aimer les lentilles.",
+    "effects": {
+      "health": 4,
+      "smarts": 1,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_eta_0028",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "sportif_regulier"
+      ]
+    },
+    "text": "Trois séances par semaine, toute l'année. Tes mollets ont désormais leur propre fan-club.",
+    "effects": {
+      "health": 4,
+      "looks": 2
+    }
+  },
+  {
+    "id": "rep_eta_0029",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "sportif_regulier"
+      ]
+    },
+    "text": "Grâce au sport, tu dors comme une bûche et tu montes les escaliers en continuant à parler. Les autres t'en veulent un peu.",
+    "effects": {
+      "health": 3,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_eta_0030",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "sportif_regulier"
+      ],
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "Tu parles de ton fractionné au travail. Tes collègues ont créé un groupe sans toi pour parler, justement, de ton fractionné.",
+    "effects": {
+      "health": 2,
+      "happiness": 2,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_eta_0031",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "sportif_regulier"
+      ],
+      "flagMinYears": {
+        "sportif_regulier": 3
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton abonnement à la salle expire pile la semaine où sort la nouvelle saison de ta série préférée. Le destin a un sens du timing.",
+    "choices": [
+      {
+        "label": "Renouveler, sans discuter",
+        "outcomes": [
+          {
+            "text": "Tu regardes la série sur le tapis de course. Tu cours plus vite pendant les scènes tendues.",
+            "effects": {
+              "health": 2,
+              "money": -400
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une pause, juste un mois",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le mois est devenu un an. Tes baskets prennent la poussière avec dignité.",
+            "effects": {
+              "happiness": -2,
+              "clearFlags": [
+                "sportif_regulier"
+              ],
+              "setFlags": [
+                "sedentaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as tenu un mois sans sport, puis tes jambes se sont mises à courir toutes seules.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0032",
+    "on": "chaque_annee",
+    "chance": 0.06,
+    "minAge": 30,
+    "conditions": {
+      "flags": [
+        "sportif_regulier"
+      ],
+      "excludeFlags": [
+        "genou_fragile"
+      ],
+      "flagMinYears": {
+        "sportif_regulier": 4
+      }
+    },
+    "setFlags": [
+      "genou_fragile"
+    ],
+    "text": "À force de vouloir battre ton record, ton genou a fait un bruit de biscotte. Le kiné a soupiré comme quelqu'un qui l'avait prédit.",
+    "effects": {
+      "health": -5,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0033",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 45,
+    "conditions": {
+      "flags": [
+        "sportif_regulier"
+      ],
+      "flagMinYears": {
+        "sportif_regulier": 10
+      }
+    },
+    "unique": true,
+    "text": "Dix ans de sport régulier : ton médecin t'annonce un âge biologique inférieur de huit ans. Tu le dis à tout le monde, y compris à la caisse automatique.",
+    "effects": {
+      "health": 6,
+      "happiness": 4,
+      "looks": 2
+    }
+  },
+  {
+    "id": "rep_eta_0034",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "sedentaire"
+      ]
+    },
+    "text": "Ton canapé a gardé ta forme exacte. Quand tu te lèves, il a l'air triste.",
+    "effects": {
+      "health": -3,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_eta_0035",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "sedentaire"
+      ]
+    },
+    "text": "Ton record de pas de l'année : 412, le jour où tu as cherché la télécommande.",
+    "effects": {
+      "health": -4
+    }
+  },
+  {
+    "id": "rep_eta_0036",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "sedentaire"
+      ]
+    },
+    "text": "Monter au deuxième étage t'a demandé une pause au premier. Tu as fait semblant de lire attentivement les boîtes aux lettres.",
+    "effects": {
+      "health": -3,
+      "looks": -2
+    }
+  },
+  {
+    "id": "rep_eta_0037",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "sedentaire"
+      ],
+      "flagMinYears": {
+        "sedentaire": 2
+      }
+    },
+    "text": "Ta montre connectée a cessé de te féliciter. Elle t'envoie maintenant des messages passifs-agressifs : « Tout va bien ? »",
+    "choices": [
+      {
+        "label": "Se mettre à marcher",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une demi-heure par jour. Tu as découvert ton quartier, et que la boulangerie d'en face existait.",
+            "effects": {
+              "health": 4,
+              "happiness": 2,
+              "clearFlags": [
+                "sedentaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as acheté un vélo d'appartement. C'est maintenant un excellent porte-manteau.",
+            "effects": {
+              "money": -250,
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "S'inscrire à la salle",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu y vas, pour de vrai, trois fois par semaine. Le personnel ne t'a pas reconnu{e} la deuxième fois.",
+            "effects": {
+              "health": 3,
+              "money": -400,
+              "clearFlags": [
+                "sedentaire"
+              ],
+              "setFlags": [
+                "sportif_regulier"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu paies l'abonnement. C'est ton don annuel à la salle.",
+            "effects": {
+              "money": -400,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ranger la montre dans un tiroir",
+        "outcomes": [
+          {
+            "text": "Silence enfin. Elle vibre parfois au fond du tiroir, comme un remords.",
+            "effects": {
+              "health": -2,
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0038",
+    "on": "chaque_annee",
+    "chance": 0.07,
+    "minAge": 30,
+    "conditions": {
+      "flags": [
+        "sedentaire"
+      ],
+      "excludeFlags": [
+        "dos_fragile"
+      ],
+      "flagMinYears": {
+        "sedentaire": 8
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "dos_fragile"
+    ],
+    "text": "Des années assis{e}, et ton dos a pris la forme exacte de ta chaise de bureau. Il ne sait plus faire autre chose.",
+    "effects": {
+      "health": -4
+    }
+  },
+  {
+    "id": "rep_eta_0039",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "tension_haute"
+      ]
+    },
+    "text": "Ta tension monte comme un soufflé dès que quelqu'un double dans la file. Ton tensiomètre a son propre tiroir et ses humeurs.",
+    "effects": {
+      "health": -4,
+      "happiness": -1,
+      "money": -100
+    }
+  },
+  {
+    "id": "rep_eta_0040",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "tension_haute"
+      ]
+    },
+    "text": "Le cardiologue t'a interdit le sel. Tu regardes la salière comme un amour de jeunesse, de loin, avec regret.",
+    "effects": {
+      "happiness": -3,
+      "health": 1
+    }
+  },
+  {
+    "id": "rep_eta_0041",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "tension_haute"
+      ],
+      "excludeFlags": [
+        "mange_mal",
+        "sedentaire"
+      ],
+      "flagMinYears": {
+        "tension_haute": 2
+      }
+    },
+    "clearFlags": [
+      "tension_haute"
+    ],
+    "text": "Moins de sel, plus de marche : ta tension est redescendue. Ton cardiologue a eu l'air presque déçu de n'avoir rien à dire.",
+    "effects": {
+      "health": 5,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_eta_0042",
+    "on": "chaque_annee",
+    "chance": 0.03,
+    "minAge": 55,
+    "conditions": {
+      "flags": [
+        "tension_haute"
+      ],
+      "tags": [
+        "sick"
+      ]
+    },
+    "text": "Ta tension a choisi cette année pour son grand final.",
+    "effects": {
+      "death": "d'énervement, en lisant les commentaires sous un article sur les ronds-points"
+    }
+  },
+  {
+    "id": "rep_eta_0043",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "insomniaque"
+      ]
+    },
+    "text": "Cette année encore, tu as vu chaque lever de soleil. Tu n'as pas pu en profiter : tu avais les yeux en forme de clémentine.",
+    "effects": {
+      "health": -3,
+      "looks": -3
+    }
+  },
+  {
+    "id": "rep_eta_0044",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "insomniaque"
+      ]
+    },
+    "text": "À 3 h du matin, tu as relu tous les messages que tu as envoyés depuis dix ans. Tu as honte d'environ 80 % d'entre eux, et les 20 % restants sont des « ok ».",
+    "effects": {
+      "happiness": -4,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_eta_0045",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "insomniaque"
+      ],
+      "tags": [
+        "job"
+      ]
+    },
+    "text": "Tu t'es endormi{e} en réunion, puis réveillé{e} en disant « d'accord » très fort. On t'a confié le dossier.",
+    "effects": {
+      "happiness": -3,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_eta_0046",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "insomniaque"
+      ],
+      "flagMinYears": {
+        "insomniaque": 1
+      }
+    },
+    "text": "Quelqu'un te conseille une tisane « tellement forte qu'elle est interdite dans trois pays ». Il a l'air sérieux et un peu trop reposé.",
+    "choices": [
+      {
+        "label": "Boire la tisane",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as dormi quatorze heures et tu t'es réveillé{e} reposé{e}, ce qui ne t'était pas arrivé depuis l'école primaire.",
+            "effects": {
+              "health": 4,
+              "happiness": 3,
+              "clearFlags": [
+                "insomniaque"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle avait un goût de foin mouillé et l'effet d'un double expresso.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Consulter un spécialiste du sommeil",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu as dormi une nuit avec quarante électrodes sur la tête. Diagnostic : trop d'écran, trop de café, trop de pensées. Tu as tout réduit, et le sommeil est revenu.",
+            "effects": {
+              "money": -150,
+              "health": 4,
+              "clearFlags": [
+                "insomniaque"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Avec les électrodes, tu n'as évidemment pas fermé l'œil. Le spécialiste a facturé quand même.",
+            "effects": {
+              "money": -150,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter la nuit",
+        "outcomes": [
+          {
+            "text": "Tu utilises tes nuits pour apprendre le portugais. Tu le parles mal, mais sans dormir.",
+            "effects": {
+              "smarts": 2,
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0047",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "insomniaque"
+      ],
+      "flagMinYears": {
+        "insomniaque": 4
+      }
+    },
+    "clearFlags": [
+      "insomniaque"
+    ],
+    "text": "Le sommeil est revenu tout seul, une nuit, sans prévenir, comme un chat parti trois ans. Tu n'oses pas en parler, de peur qu'il reparte.",
+    "effects": {
+      "health": 4,
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_eta_0048",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "dos_fragile"
+      ]
+    },
+    "text": "Ton dos a décidé cette année qu'il ne ramassait plus rien en dessous du genou. Une pièce de deux euros est toujours par terre, dans ta cuisine.",
+    "effects": {
+      "health": -3,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0049",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "dos_fragile"
+      ]
+    },
+    "text": "Tu as passé une semaine à marcher comme un point d'interrogation après avoir éternué un peu trop fort.",
+    "effects": {
+      "health": -4
+    }
+  },
+  {
+    "id": "rep_eta_0050",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "dos_fragile"
+      ],
+      "flagMinYears": {
+        "dos_fragile": 2
+      }
+    },
+    "text": "Ton kiné te tend une feuille d'exercices à faire tous les matins. Elle est déjà froissée : il connaît les gens.",
+    "choices": [
+      {
+        "label": "Faire les exercices, vraiment",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Gainage, étirements, tous les matins. Ton dos a cessé de faire la tête. Tu en parles comme d'une réconciliation familiale.",
+            "effects": {
+              "health": 5,
+              "happiness": 2,
+              "clearFlags": [
+                "dos_fragile"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as fait les exercices onze jours. Le douzième, tu t'es bloqué{e} en enfilant une chaussette.",
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter un fauteuil massant",
+        "outcomes": [
+          {
+            "text": "Il fait un bruit de bétonnière et coûte un mois de loyer. Mais il t'aime.",
+            "effects": {
+              "money": -900,
+              "health": 1,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0051",
+    "on": "chaque_annee",
+    "chance": 0.06,
+    "minAge": 28,
+    "conditions": {
+      "flags": [
+        "dos_fragile"
+      ],
+      "flagMinYears": {
+        "dos_fragile": 6
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "hernie_discale"
+    ],
+    "text": "Verdict de l'IRM, après des années de dos fragile : hernie discale. Tu as entendu « hernie » et pensé à un fromage. Tu avais tort.",
+    "effects": {
+      "health": -7,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_eta_0052",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "hernie_discale"
+      ]
+    },
+    "text": "Ta hernie discale prévoit la pluie mieux que la météo nationale. Tu es devenu{e} la station météo du quartier, à contrecœur.",
+    "effects": {
+      "health": -4,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0053",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "hernie_discale"
+      ]
+    },
+    "text": "Tu ne peux plus porter que des choses légères : un croissant, une lettre, une mauvaise nouvelle. Les déménagements des amis se font sans toi.",
+    "effects": {
+      "health": -2,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0054",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "hernie_discale"
+      ],
+      "flagMinYears": {
+        "hernie_discale": 2
+      }
+    },
+    "text": "Le chirurgien propose d'opérer ta hernie. Il a l'air très enthousiaste. Trop, peut-être.",
+    "choices": [
+      {
+        "label": "Se faire opérer",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "L'opération a réussi. Tu marches droit pour la première fois depuis des années et tu trouves le monde soudain très haut.",
+            "effects": {
+              "money": -1500,
+              "health": 6,
+              "happiness": 3,
+              "clearFlags": [
+                "hernie_discale",
+                "dos_fragile"
+              ],
+              "setFlags": [
+                "convalescent"
+              ]
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "L'opération a réussi, mais ta hernie a déménagé deux vertèbres plus haut. Le chirurgien parle d'un « cas intéressant ».",
+            "effects": {
+              "money": -1500,
+              "health": -3,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rééducation patiente",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Des mois de piscine et d'élastiques colorés. La hernie s'est résorbée, vexée qu'on ne lui accorde plus d'attention.",
+            "effects": {
+              "health": 3,
+              "money": -300,
+              "clearFlags": [
+                "hernie_discale"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu fais tes exercices en grimaçant. Ça ne guérit rien, mais ça forge le caractère.",
+            "effects": {
+              "smarts": 1,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0055",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "genou_fragile"
+      ]
+    },
+    "text": "Ton genou craque en montant l'escalier, en le descendant, et parfois rien qu'en le regardant.",
+    "effects": {
+      "health": -3,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_eta_0056",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "genou_fragile"
+      ]
+    },
+    "text": "Ton genou a gonflé trois fois cette année, dont une le jour de la photo de groupe. Tu es au premier rang, la jambe tendue, comme un monarque blessé.",
+    "effects": {
+      "health": -3,
+      "looks": -1
+    }
+  },
+  {
+    "id": "rep_eta_0057",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "genou_fragile"
+      ],
+      "flagMinYears": {
+        "genou_fragile": 2
+      }
+    },
+    "text": "Ton médecin propose une infiltration dans le genou. Il te montre l'aiguille, puis la range très vite en voyant ta tête.",
+    "choices": [
+      {
+        "label": "Accepter l'aiguille",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Trois secondes de terreur, puis un genou neuf, ou presque. Tu as remonté l'escalier deux fois, pour le plaisir.",
+            "effects": {
+              "health": 5,
+              "money": -60,
+              "clearFlags": [
+                "genou_fragile"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "L'aiguille a fait son travail à moitié. Ton genou ne craque plus que le week-end.",
+            "effects": {
+              "health": 1,
+              "money": -60
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter une genouillère ridicule",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Elle est beige, elle gratte, et elle marche. Ton genou s'est renforcé en silence.",
+            "effects": {
+              "looks": -2,
+              "health": 3,
+              "clearFlags": [
+                "genou_fragile"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Elle est beige, elle gratte, et elle ne sert à rien. Mais tu la gardes, par principe.",
+            "effects": {
+              "looks": -2,
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0058",
+    "on": "chaque_annee",
+    "chance": 0.06,
+    "minAge": 55,
+    "conditions": {
+      "flags": [
+        "genou_fragile"
+      ],
+      "flagMinYears": {
+        "genou_fragile": 10
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "convalescent"
+    ],
+    "clearFlags": [
+      "genou_fragile"
+    ],
+    "text": "Ton genou fragile a rendu les armes : prothèse en titane. Tu bipes désormais aux portiques de l'aéroport et tu adores ça.",
+    "effects": {
+      "health": -4,
+      "money": -800,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_eta_0059",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "accro_aux_ecrans"
+      ]
+    },
+    "text": "Ton temps d'écran moyen cette année : 9 h 40 par jour. Ton téléphone te l'a annoncé fièrement, comme un record sportif.",
+    "effects": {
+      "smarts": -2,
+      "happiness": -2,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_eta_0060",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "accro_aux_ecrans"
+      ]
+    },
+    "text": "Tu as fait défiler l'équivalent de 340 kilomètres de vidéos cette année. À pied, tu serais à la mer.",
+    "effects": {
+      "health": -3,
+      "smarts": -1
+    }
+  },
+  {
+    "id": "rep_eta_0061",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "accro_aux_ecrans"
+      ]
+    },
+    "text": "Tu as regardé un tutoriel de cuisine de quarante minutes, puis commandé un kebab. Tu connais maintenant par cœur une recette que tu ne feras jamais.",
+    "effects": {
+      "happiness": -1,
+      "money": -100,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_eta_0062",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 10,
+    "conditions": {
+      "flags": [
+        "accro_aux_ecrans"
+      ],
+      "flagMinYears": {
+        "accro_aux_ecrans": 2
+      }
+    },
+    "text": "Ton téléphone est tombé dans les toilettes. Pendant ses trois jours dans le riz, tu as vu le ciel, un oiseau, et ton voisin, qui a beaucoup vieilli.",
+    "choices": [
+      {
+        "label": "Faire une cure numérique",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu as découvert les livres, les promenades et l'ennui véritable. L'ennui, c'est surprenant, fait du bien.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2,
+              "clearFlags": [
+                "accro_aux_ecrans"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le riz a rendu le téléphone. Tu l'as rallumé dans la cuisine, encore collant.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "En racheter un, en urgence",
+        "outcomes": [
+          {
+            "text": "Livraison express, écran plus grand. La cure aura duré un après-midi.",
+            "effects": {
+              "money": -700,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0063",
+    "on": "chaque_annee",
+    "chance": 0.06,
+    "conditions": {
+      "flags": [
+        "accro_aux_ecrans"
+      ],
+      "flagMinYears": {
+        "accro_aux_ecrans": 6
+      }
+    },
+    "unique": true,
+    "text": "Tes yeux, après des années d'écran, voient flou au-delà du bras tendu. L'opticien te propose une monture « professeur fatigué ».",
+    "effects": {
+      "looks": -2,
+      "health": -2,
+      "money": -250
+    }
+  },
+  {
+    "id": "rep_eta_0064",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "zen"
+      ]
+    },
+    "text": "Tu as médité tous les matins. Les petits soucis glissent sur toi comme sur une poêle neuve.",
+    "effects": {
+      "happiness": 4,
+      "health": 2
+    }
+  },
+  {
+    "id": "rep_eta_0065",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "zen"
+      ]
+    },
+    "text": "Quelqu'un t'a doublé{e} dans la file et tu as souri. Il en a été si troublé qu'il t'a rendu ta place, puis s'est excusé deux fois.",
+    "effects": {
+      "happiness": 3,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_eta_0066",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "zen"
+      ]
+    },
+    "text": "Ta sérénité agace beaucoup ta famille pendant les repas. Plus ils s'énervent, plus tu respires lentement, ce qui les énerve davantage.",
+    "effects": {
+      "happiness": 3,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_eta_0067",
+    "on": "chaque_annee",
+    "chance": 0.12,
+    "conditions": {
+      "flags": [
+        "zen"
+      ],
+      "flagMinYears": {
+        "zen": 3
+      },
+      "tags": [
+        "job"
+      ]
+    },
+    "clearFlags": [
+      "zen"
+    ],
+    "text": "Un nouveau chef, un open space et une imprimante qui ne marche jamais : ta zénitude n'a pas survécu au premier trimestre.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_eta_0068",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "zen"
+      ],
+      "flagMinYears": {
+        "zen": 4
+      }
+    },
+    "clearFlags": [
+      "zen"
+    ],
+    "text": "Tu as raté trois séances de méditation, puis trente. Ton coussin de méditation sert maintenant au chat, qui est très zen, lui.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0069",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "deprime"
+      ]
+    },
+    "text": "Cette année avait la couleur d'un parking en novembre. Même tes plantes avaient l'air de compatir.",
+    "effects": {
+      "happiness": -5,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_eta_0070",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "deprime"
+      ]
+    },
+    "text": "Tu as passé beaucoup de dimanches au lit, à fixer une tache au plafond. Elle a maintenant un prénom : Gérard.",
+    "effects": {
+      "happiness": -4,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_eta_0071",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "deprime"
+      ],
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} a sonné chez toi avec des croissants et n'a posé aucune question. Tu as pleuré dans le croissant. Il était quand même bon.",
+    "effects": {
+      "happiness": 2,
+      "relationships": {
+        "friend": 4
+      }
+    }
+  },
+  {
+    "id": "rep_eta_0072",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "deprime"
+      ],
+      "flagMinYears": {
+        "deprime": 1
+      }
+    },
+    "text": "Tu as compris que ça ne passerait pas tout seul. Le numéro d'un psy traîne sur ton frigo depuis des mois, sous un aimant en forme d'ananas.",
+    "choices": [
+      {
+        "label": "Appeler, enfin",
+        "outcomes": [
+          {
+            "chance": 0.75,
+            "text": "Les séances coûtent cher et tu parles beaucoup de ta mère, mais petit à petit, la couleur revient.",
+            "effects": {
+              "happiness": 6,
+              "money": -600,
+              "clearFlags": [
+                "deprime"
+              ]
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Le premier psy ne t'a pas plu : il avait le même pull que ton ex. Tu cherches un autre numéro.",
+            "effects": {
+              "happiness": -1,
+              "money": -60
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre que ça passe",
+        "outcomes": [
+          {
+            "text": "Ça ne passe pas. L'aimant ananas te regarde avec pitié.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0073",
+    "on": "event:rep_eta_0072",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [
+      1,
+      1
+    ],
+    "conditions": {
+      "excludeFlags": [
+        "deprime"
+      ]
+    },
+    "patience": 1,
+    "text": "Un an après ton premier rendez-vous chez le psy, tu t'es surpris{e} à fredonner en faisant la vaisselle. Tu as arrêté, gêné{e}, puis tu as repris.",
+    "effects": {
+      "happiness": 4,
+      "health": 1
+    }
+  },
+  {
+    "id": "rep_eta_0074",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "deprime"
+      ],
+      "flagMinYears": {
+        "deprime": 3
+      }
+    },
+    "clearFlags": [
+      "deprime"
+    ],
+    "text": "Sans prévenir, un mardi, tu as ri à une blague nulle. Puis à une autre. La brume a commencé à se lever.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_eta_0075",
+    "on": "chaque_annee",
+    "chance": 0.07,
+    "conditions": {
+      "flags": [
+        "deprime"
+      ],
+      "excludeFlags": [
+        "solitaire"
+      ],
+      "flagMinYears": {
+        "deprime": 4
+      },
+      "tags": [
+        "adult"
+      ]
+    },
+    "unique": true,
+    "setFlags": [
+      "solitaire"
+    ],
+    "text": "À force de dire non à tout, plus personne ne t'invite. Ton téléphone ne sonne plus que pour te proposer une isolation des combles.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_eta_0076",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "anxieux"
+      ]
+    },
+    "text": "Cette année, tu as vérifié 4 000 fois que le gaz était éteint. Tu n'as pas le gaz.",
+    "effects": {
+      "happiness": -4,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_eta_0077",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "anxieux"
+      ]
+    },
+    "text": "Tu as répété dix fois dans ta tête comment commander un pain aux raisins, puis tu as dit « bonjour, un raisin » et tu es parti{e} en courant.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_eta_0078",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "anxieux"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Un « Il faut qu'on parle » reçu un vendredi soir t'a fait passer le week-end à rédiger ton testament. C'était pour décaler une réunion.",
+    "effects": {
+      "happiness": -4,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_eta_0079",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "anxieux"
+      ],
+      "flagMinYears": {
+        "anxieux": 2
+      }
+    },
+    "text": "Ton cœur s'est emballé au supermarché, au rayon yaourts. Aux urgences, on a dit « crise d'angoisse » et proposé un rendez-vous.",
+    "choices": [
+      {
+        "label": "Suivre une thérapie",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu as appris à reconnaître tes pensées catastrophes et à leur répondre poliment « merci, au revoir ».",
+            "effects": {
+              "happiness": 5,
+              "money": -500,
+              "clearFlags": [
+                "anxieux"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "C'est long. Mais tu tiens désormais devant le rayon yaourts, et c'est un début.",
+            "effects": {
+              "happiness": 1,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Se mettre à la méditation",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Dix minutes par jour, puis vingt. Le bruit dans ta tête a baissé d'un cran, puis de deux.",
+            "effects": {
+              "happiness": 4,
+              "clearFlags": [
+                "anxieux"
+              ],
+              "setFlags": [
+                "zen"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as médité en pensant à tout ce que tu devais faire après. Ça compte quand même ?",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Éviter les yaourts",
+        "outcomes": [
+          {
+            "text": "Problème réglé, pour les yaourts.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0080",
+    "on": "chaque_annee",
+    "chance": 0.07,
+    "conditions": {
+      "flags": [
+        "anxieux"
+      ],
+      "excludeFlags": [
+        "burn_out"
+      ],
+      "flagMinYears": {
+        "anxieux": 4
+      },
+      "tags": [
+        "job"
+      ]
+    },
+    "unique": true,
+    "setFlags": [
+      "burn_out"
+    ],
+    "text": "Tes angoisses ont fini par signer un CDI dans ton corps : burn-out. Tu as pleuré devant la photocopieuse. Elle n'a rien dit, c'était déjà ça.",
+    "effects": {
+      "happiness": -6,
+      "health": -4
+    }
+  },
+  {
+    "id": "rep_eta_0081",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "burn_out"
+      ]
+    },
+    "text": "Ton burn-out te laisse sans énergie. Répondre à un courriel te prend une matinée et une sieste.",
+    "effects": {
+      "happiness": -5,
+      "health": -3
+    }
+  },
+  {
+    "id": "rep_eta_0082",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "burn_out"
+      ]
+    },
+    "text": "Le simple son d'une notification te fait sursauter comme un chat devant un concombre.",
+    "effects": {
+      "happiness": -4,
+      "health": -2,
+      "smarts": -1
+    }
+  },
+  {
+    "id": "rep_eta_0083",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "burn_out"
+      ],
+      "flagMinYears": {
+        "burn_out": 1
+      }
+    },
+    "text": "Ton médecin t'a prescrit du repos et t'a demandé ce que tu aimais faire, avant. Tu as mis longtemps à répondre.",
+    "choices": [
+      {
+        "label": "Prendre le temps de récupérer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Six mois de jardinage, de siestes et de soupe. Tu reviens transformé{e}, avec des opinions très arrêtées sur les tomates.",
+            "effects": {
+              "happiness": 6,
+              "health": 4,
+              "money": -1500,
+              "clearFlags": [
+                "burn_out"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu récupères doucement, mais le moindre tableur te donne encore des sueurs froides.",
+            "effects": {
+              "happiness": 2,
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout plaquer, changer de vie",
+        "outcomes": [
+          {
+            "text": "Tu ouvres une crêperie. Tu travailles deux fois plus, mais plus personne ne t'envoie de tableur.",
+            "effects": {
+              "happiness": 7,
+              "money": -3000,
+              "clearFlags": [
+                "burn_out"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Serrer les dents",
+        "outcomes": [
+          {
+            "text": "Tu serres les dents si fort que ton dentiste s'en inquiète aussi.",
+            "effects": {
+              "happiness": -4,
+              "health": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0084",
+    "on": "event:rep_eta_0083",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      1,
+      2
+    ],
+    "text": "Ta crêperie, ouverte après ton burn-out, fête sa première année. Un ancien collègue est venu, a vu ta tête reposée et a commandé deux galettes, l'air jaloux.",
+    "effects": {
+      "happiness": 4,
+      "money": 1500
+    }
+  },
+  {
+    "id": "rep_eta_0085",
+    "on": "chaque_annee",
+    "chance": 0.08,
+    "conditions": {
+      "flags": [
+        "burn_out"
+      ],
+      "excludeFlags": [
+        "deprime"
+      ],
+      "flagMinYears": {
+        "burn_out": 2
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "deprime"
+    ],
+    "text": "Ton burn-out, traîné trop longtemps, a fini par tout éteindre. Plus rien ne te fait envie, même pas le fromage.",
+    "effects": {
+      "happiness": -6
+    }
+  },
+  {
+    "id": "rep_eta_0086",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "coeur_brise"
+      ]
+    },
+    "text": "Ton cœur brisé t'a fait écouter la même chanson triste 312 fois cette année. Ta plateforme de musique t'a envoyé un mot de soutien.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_eta_0087",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 13,
+    "conditions": {
+      "flags": [
+        "coeur_brise"
+      ]
+    },
+    "text": "Tu as aperçu ton ex sur la photo d'un ami d'ami. Tu as zoomé si fort que tu as aimé la photo par accident. Tu as déménagé mentalement en Patagonie.",
+    "effects": {
+      "happiness": -5
+    }
+  },
+  {
+    "id": "rep_eta_0088",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "coeur_brise"
+      ],
+      "flagMinYears": {
+        "coeur_brise": 1
+      }
+    },
+    "clearFlags": [
+      "coeur_brise"
+    ],
+    "text": "Un matin, tu as pensé à ton ex et ça ne t'a rien fait, comme une vieille facture d'électricité. Ton cœur a fini ses travaux.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_eta_0089",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "coeur_brise"
+      ],
+      "flagMinYears": {
+        "coeur_brise": 2
+      },
+      "tags": [
+        "adult"
+      ],
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "text": "Tes amis ont décidé que ton chagrin d'amour avait assez duré. Ils t'ont inscrit{e} d'office à un speed dating.",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Personne ne t'a plu, mais tu as ri pour la première fois depuis longtemps. Ton cœur a repris son service minimum.",
+            "effects": {
+              "happiness": 4,
+              "newFriend": true,
+              "clearFlags": [
+                "coeur_brise"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu as raconté ta rupture aux sept personnes. La septième a pleuré avec toi, c'était presque bien.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester chez soi avec un pot de glace",
+        "outcomes": [
+          {
+            "text": "Le pot de glace, lui, ne t'a jamais quitté{e}.",
+            "effects": {
+              "happiness": -2,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0090",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "coeur_brise"
+      ],
+      "flagMinYears": {
+        "coeur_brise": 4
+      },
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "unique": true,
+    "setFlags": [
+      "celibataire_endurci"
+    ],
+    "clearFlags": [
+      "coeur_brise"
+    ],
+    "text": "Des années de cœur brisé, et tu as tranché : l'amour, c'est fini. Tu as adopté un cactus. Lui, au moins, pique franchement.",
+    "effects": {
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0091",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "solitaire"
+      ]
+    },
+    "text": "Cette année, la personne avec qui tu as le plus parlé, c'est la voix du GPS. Elle ne t'a jamais demandé comment tu allais.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_eta_0092",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "solitaire"
+      ]
+    },
+    "text": "Tu as fêté ton anniversaire seul{e}, une bougie plantée dans une pizza surgelée. Tu as fait un vœu : que quelqu'un appelle. Ta banque a appelé.",
+    "effects": {
+      "happiness": -5,
+      "health": -1
+    }
+  },
+  {
+    "id": "rep_eta_0093",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 16,
+    "conditions": {
+      "flags": [
+        "solitaire"
+      ]
+    },
+    "text": "Tu connais par cœur les horaires de la caissière du samedi. Elle t'a souri une fois : meilleur moment du trimestre.",
+    "effects": {
+      "happiness": -2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_eta_0094",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 14,
+    "conditions": {
+      "flags": [
+        "solitaire"
+      ],
+      "flagMinYears": {
+        "solitaire": 1
+      }
+    },
+    "text": "Affiche à la boulangerie : un club de belote cherche un quatrième joueur. Les trois autres ont 82 ans de moyenne et un vocabulaire étonnant.",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu perds tout, tu ris beaucoup, et Josette t'a adopté{e}. Tu as maintenant un rendez-vous fixe le jeudi.",
+            "effects": {
+              "happiness": 5,
+              "newFriend": true,
+              "clearFlags": [
+                "solitaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu as perdu toutes les parties, mais on t'a gardé{e} pour l'ambiance.",
+            "effects": {
+              "happiness": 2,
+              "clearFlags": [
+                "solitaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rentrer chez soi",
+        "outcomes": [
+          {
+            "text": "Tu as regardé l'affiche longtemps, puis tu es rentré{e}. Le GPS t'a souhaité bonne soirée.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0095",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "solitaire"
+      ],
+      "requiresPartner": true
+    },
+    "clearFlags": [
+      "solitaire"
+    ],
+    "text": "Depuis que tu es en couple, ton téléphone sonne. C'est souvent {partenaire} qui te demande de racheter du pain, mais c'est une voix.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_eta_0096",
+    "on": "chaque_annee",
+    "chance": 0.07,
+    "minAge": 25,
+    "conditions": {
+      "flags": [
+        "solitaire"
+      ],
+      "excludeFlags": [
+        "deprime"
+      ],
+      "flagMinYears": {
+        "solitaire": 6
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "deprime"
+    ],
+    "text": "Tu parles maintenant à tes plantes, et tu as l'impression que le ficus te boude. Tu as gardé ça pour toi, comme tout le reste.",
+    "effects": {
+      "happiness": -5
+    }
+  },
+  {
+    "id": "rep_eta_0097",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "optimiste"
+      ]
+    },
+    "text": "Cette année, tu as vu le bon côté de tout, même de la panne de chaudière en janvier : « Au moins, on se serre les coudes ! » Personne n'a voulu se serrer.",
+    "effects": {
+      "happiness": 4,
+      "health": 1
+    }
+  },
+  {
+    "id": "rep_eta_0098",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "optimiste"
+      ]
+    },
+    "text": "Ta bonne humeur est contagieuse. Ta voisine grincheuse a recommencé à arroser ses géraniums, et elle t'en veut un peu.",
+    "effects": {
+      "happiness": 3,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_eta_0099",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "optimiste"
+      ]
+    },
+    "text": "Tu as dit « ça va bien se passer » à quelqu'un qui passait son permis. Ça s'est bien passé. Tu considères désormais que c'est grâce à toi.",
+    "effects": {
+      "happiness": 2,
+      "smarts": -1,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_eta_0100",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "optimiste"
+      ],
+      "flagMinYears": {
+        "optimiste": 3
+      },
+      "tags": [
+        "poor"
+      ]
+    },
+    "clearFlags": [
+      "optimiste"
+    ],
+    "text": "Ton optimisme a tenu bon jusqu'à ton relevé de compte de mars. Tu dis maintenant « on verra » au lieu de « ça va aller ».",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_eta_0101",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "complexe"
+      ]
+    },
+    "text": "Tu as évité tous les miroirs cette année, y compris les cuillères.",
+    "effects": {
+      "happiness": -4,
+      "looks": -1
+    }
+  },
+  {
+    "id": "rep_eta_0102",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "complexe"
+      ]
+    },
+    "text": "Sur chaque photo de groupe, tu t'es placé{e} derrière quelqu'un de plus grand. Sur certaines, on ne voit que ton coude.",
+    "effects": {
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_eta_0103",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "complexe"
+      ],
+      "flagMinYears": {
+        "complexe": 2
+      }
+    },
+    "text": "Ton complexe t'a encore gâché une sortie à la piscine. Un magazine de salle d'attente titre : « Et si tu t'aimais comme tu es ? »",
+    "choices": [
+      {
+        "label": "Essayer de s'accepter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu as remis le maillot. Personne n'a regardé, et c'est précisément ça, la liberté.",
+            "effects": {
+              "happiness": 5,
+              "looks": 2,
+              "clearFlags": [
+                "complexe"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu as essayé. Le miroir de la cabine, lui, n'a pas fait d'effort.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Consulter un chirurgien esthétique",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le résultat est réussi, et tu te regardes enfin sans grimacer. Ton banquier, lui, grimace pour deux.",
+            "effects": {
+              "money": -3000,
+              "looks": 6,
+              "happiness": 3,
+              "clearFlags": [
+                "complexe"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton nez est parfait maintenant. Tu as donc trouvé un problème à ton oreille gauche.",
+            "effects": {
+              "money": -3000,
+              "looks": 3,
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout cacher sous un grand pull",
+        "outcomes": [
+          {
+            "text": "En juillet, c'est un choix courageux.",
+            "effects": {
+              "happiness": -2,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0104",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 40,
+    "conditions": {
+      "flags": [
+        "complexe"
+      ],
+      "flagMinYears": {
+        "complexe": 5
+      }
+    },
+    "clearFlags": [
+      "complexe"
+    ],
+    "text": "Avec l'âge, ton complexe s'est dissous. Tu ne sais plus très bien de quoi tu avais honte, et franchement tu n'as plus le temps.",
+    "effects": {
+      "happiness": 5,
+      "looks": 1
+    }
+  },
+  {
+    "id": "rep_eta_0105",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "traumatise"
+      ]
+    },
+    "text": "Certaines nuits, ça revient. Tu te réveilles en sursaut, le cœur au galop, et tu vérifies que la porte est fermée. Deux fois.",
+    "effects": {
+      "happiness": -4,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_eta_0106",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "traumatise"
+      ]
+    },
+    "text": "Un bruit, une odeur, un rien te ramène là-bas. Tu as quitté un anniversaire à cause d'un ballon qui a éclaté.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_eta_0107",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 12,
+    "conditions": {
+      "flags": [
+        "traumatise"
+      ],
+      "flagMinYears": {
+        "traumatise": 1
+      }
+    },
+    "text": "Un ami t'a donné le nom d'une thérapeute spécialisée. Il l'a écrit sur un ticket de caisse, entre le beurre et les piles.",
+    "choices": [
+      {
+        "label": "Prendre rendez-vous",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "C'est long, ça remue, et puis un jour le souvenir n'a plus de dents. Il est toujours là, mais il ne mord plus.",
+            "effects": {
+              "happiness": 6,
+              "health": 2,
+              "money": -700,
+              "clearFlags": [
+                "traumatise"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu y retournes chaque semaine, même quand c'est dur. C'est déjà beaucoup.",
+            "effects": {
+              "happiness": 1,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne jamais en parler",
+        "outcomes": [
+          {
+            "text": "Tu ranges ça tout au fond. Ça ne prend pas de place, en apparence.",
+            "effects": {
+              "happiness": -3,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_eta_0108",
+    "on": "chaque_annee",
+    "chance": 0.08,
+    "conditions": {
+      "flags": [
+        "traumatise"
+      ],
+      "excludeFlags": [
+        "anxieux"
+      ],
+      "flagMinYears": {
+        "traumatise": 3
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "anxieux"
+    ],
+    "text": "Le choc s'est installé en toi comme un locataire qui ne paie pas : tu sursautes au moindre bruit et tu t'inquiètes de tout.",
+    "effects": {
+      "happiness": -4
+    }
+  },
+  {
+    "id": "rep_eta_0109",
+    "on": "chaque_annee",
+    "chance": 0.1,
+    "conditions": {
+      "flags": [
+        "traumatise"
+      ],
+      "flagMinYears": {
+        "traumatise": 6
+      }
+    },
+    "clearFlags": [
+      "traumatise"
+    ],
+    "text": "Le temps a fait son travail, lentement, comme une rivière sur un caillou. Tu y penses encore, mais plus tous les jours.",
+    "effects": {
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_eta_0110",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "hypocondriaque"
+      ]
+    },
+    "text": "Cette année, tu as cru avoir sept maladies rares, dont une qui ne touche que les perroquets. Ton médecin a mis ta photo à l'accueil, à côté du calendrier.",
+    "effects": {
+      "money": -150,
+      "happiness": -3
+    }
+  },
+  {
+    "id": "rep_eta_0111",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "hypocondriaque"
+      ]
+    },
+    "text": "Tu as acheté un tensiomètre, un oxymètre et un thermomètre auriculaire. Tu te mesures chaque matin comme une fusée avant le décollage.",
+    "effects": {
+      "money": -120,
+      "health": 1,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0112",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "hypocondriaque"
+      ],
+      "flagMinYears": {
+        "hypocondriaque": 3
+      }
+    },
+    "clearFlags": [
+      "hypocondriaque"
+    ],
+    "text": "Ton médecin a fini par te dire : « Vous êtes en parfaite santé, et ça, c'est incurable. » Étrangement, ça t'a rassuré{e}.",
+    "effects": {
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_eta_0113",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "convalescent"
+      ]
+    },
+    "text": "Ta convalescence continue : sieste réglementaire et meilleur coussin du salon. Ton corps recolle les morceaux en silence.",
+    "effects": {
+      "health": 3,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_eta_0114",
+    "on": "chaque_annee",
+    "chance": 0.4,
+    "conditions": {
+      "flags": [
+        "convalescent"
+      ],
+      "flagMinYears": {
+        "convalescent": 2
+      }
+    },
+    "clearFlags": [
+      "convalescent"
+    ],
+    "text": "Plus aucune raison de rester sous le plaid : tu es officiellement remis{e} sur pied. Le canapé ne t'a pas remercié{e}.",
+    "effects": {
+      "health": 2
+    }
+  },
+  {
+    "id": "rep_eta_0115",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "dos_en_papier_bulle"
+      ]
+    },
+    "text": "Ton dos fait toujours ce bruit de papier bulle quand tu te lèves. Un enfant dans le bus t'a demandé de recommencer.",
+    "effects": {
+      "health": -2,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_eta_0116",
+    "on": "chaque_annee",
+    "chance": 0.08,
+    "conditions": {
+      "flags": [
+        "dos_en_papier_bulle"
+      ],
+      "flagMinYears": {
+        "dos_en_papier_bulle": 5
+      }
+    },
+    "unique": true,
+    "setFlags": [
+      "dos_fragile"
+    ],
+    "clearFlags": [
+      "dos_en_papier_bulle"
+    ],
+    "text": "Le papier bulle de ton dos n'a plus de bulles : il ne reste que le carton. Ton dos est désormais officiellement fragile.",
+    "effects": {
+      "health": -4
+    }
+  },
+  {
+    "id": "rep_eta_0117",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "celibataire_endurci"
+      ],
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "text": "Célibataire endurci{e} : tu dors en diagonale, tu as une étagère par paire de chaussettes et zéro compromis sur le thermostat.",
+    "effects": {
+      "happiness": 3,
+      "money": 200
+    }
+  },
+  {
+    "id": "rep_eta_0118",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "minAge": 28,
+    "conditions": {
+      "flags": [
+        "celibataire_endurci"
+      ],
+      "excludeTags": [
+        "partner"
+      ]
+    },
+    "text": "Aux repas de famille, on te demande encore « Et toi, toujours personne ? ». Tu as préparé une réponse en trois parties, avec bibliographie.",
+    "effects": {
+      "happiness": -2,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_eta_0119",
+    "on": "chaque_annee",
+    "chance": 0.5,
+    "conditions": {
+      "flags": [
+        "celibataire_endurci"
+      ],
+      "requiresPartner": true
+    },
+    "clearFlags": [
+      "celibataire_endurci"
+    ],
+    "text": "Toi, en couple ? Ta famille a ouvert le champagne et ta voisine a perdu un pari. Tu as rangé ta deuxième étagère à chaussettes.",
+    "effects": {
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_eta_0120",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "coeur_en_beton"
+      ]
+    },
+    "text": "Ton cœur en béton ne laisse rien passer. Les comédies romantiques te font l'effet d'un documentaire sur la TVA.",
+    "effects": {
+      "happiness": -1,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_eta_0121",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "conditions": {
+      "flags": [
+        "coeur_en_beton"
+      ],
+      "flagMinYears": {
+        "coeur_en_beton": 2
+      },
+      "requiresPartner": true
+    },
+    "clearFlags": [
+      "coeur_en_beton"
+    ],
+    "text": "Quelqu'un a fini par fissurer ton cœur en béton : {partenaire}. Tu as pleuré devant une publicité pour du café. C'était troublant.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_eta_0122",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "minAge": 30,
+    "conditions": {
+      "flags": [
+        "sedentaire",
+        "mange_mal"
+      ],
+      "excludeFlags": [
+        "tension_haute"
+      ]
+    },
+    "setFlags": [
+      "tension_haute"
+    ],
+    "text": "Ton médecin a pris ta tension, puis ton poids, puis un long silence. « Canapé et frites, c'est ça ? » Tu n'as pas pu nier.",
+    "effects": {
+      "health": -5,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_eta_0123",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "deprime",
+        "solitaire"
+      ]
+    },
+    "text": "Seul{e} et sans envie, tu as traversé l'année comme un couloir sans lumière. Le seul message reçu en décembre était une publicité pour des rideaux.",
+    "effects": {
+      "happiness": -6,
+      "health": -2
+    }
+  },
+  {
+    "id": "rep_eta_0124",
+    "on": "chaque_annee",
+    "chance": 0.35,
+    "conditions": {
+      "flags": [
+        "sportif_regulier",
+        "zen"
+      ]
+    },
+    "text": "Sport le matin, méditation le soir : une année radieuse. Ta pharmacienne t'a demandé ton secret, puis ton numéro.",
+    "effects": {
+      "happiness": 6,
+      "health": 5,
+      "looks": 3
+    }
+  },
+  {
+    "id": "rep_eta_0125",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "fume",
+        "boit_trop"
+      ],
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Une cigarette dans une main, un verre dans l'autre : tu as passé l'année en terrasse, quelle que soit la météo. Ta voix a pris trois octaves vers le bas.",
+    "effects": {
+      "health": -6,
+      "money": -600,
+      "looks": -1
+    }
+  },
+  {
+    "id": "rep_eta_0126",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "insomniaque",
+        "accro_aux_ecrans"
+      ]
+    },
+    "text": "Ton téléphone éclaire ton visage jusqu'à 4 h du matin. Depuis la rue, ta fenêtre ressemble à un aquarium hanté.",
+    "effects": {
+      "health": -4,
+      "happiness": -2,
+      "looks": -2
+    }
+  },
+  {
+    "id": "rep_eta_0127",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "anxieux",
+        "insomniaque"
+      ]
+    },
+    "text": "Couché{e} à minuit, tu as passé la nuit à imaginer tout ce qui pourrait mal tourner demain, puis après-demain, puis dans vingt ans.",
+    "effects": {
+      "happiness": -4,
+      "health": -3
+    }
+  },
+  {
+    "id": "rep_eta_0128",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "optimiste",
+        "deprime"
+      ]
+    },
+    "clearFlags": [
+      "deprime"
+    ],
+    "text": "Ton optimisme a fini par battre ta déprime, aux points. Tu ne sais pas comment, mais un matin tu as acheté des fleurs pour toi.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_eta_0129",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "coeur_brise",
+        "boit_trop"
+      ]
+    },
+    "text": "Tu as voulu noyer ton chagrin d'amour. Il savait nager, et en plus il avait apporté des glaçons.",
+    "effects": {
+      "happiness": -3,
+      "health": -4
+    }
+  },
+  {
+    "id": "rep_eta_0130",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "dos_fragile",
+        "sedentaire"
+      ]
+    },
+    "text": "Assis{e} toute l'année, ton dos fragile s'est soudé à la forme de ta chaise. Tu te lèves en trois étapes, avec bruitages.",
+    "effects": {
+      "health": -4,
+      "happiness": -1
+    }
+  },
+  {
+    "id": "rep_eta_0131",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "zen",
+        "anxieux"
+      ]
+    },
+    "clearFlags": [
+      "anxieux"
+    ],
+    "text": "La méditation a désamorcé tes angoisses une par une, avec la patience d'une démineuse. Le gaz, tu ne le vérifies plus qu'une fois.",
+    "effects": {
+      "happiness": 5,
+      "health": 1
+    }
+  },
+  {
+    "id": "rep_eta_0132",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "complexe",
+        "accro_aux_ecrans"
+      ]
+    },
+    "text": "À force de comparer ton visage aux filtres des réseaux, tu as l'impression d'être la version sans mise à jour de toi-même.",
+    "effects": {
+      "happiness": -4,
+      "looks": -1
+    }
+  },
+  {
+    "id": "rep_eta_0133",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "sportif_regulier",
+        "fume"
+      ]
+    },
+    "text": "Tu cours trois fois par semaine et tu fumes une cigarette pour fêter chaque course. Ton médecin ne sait pas s'il doit te féliciter ou te gronder, alors il fait les deux.",
+    "effects": {
+      "health": 1,
+      "happiness": 1
+    }
+  },
+  {
+    "id": "rep_eta_0134",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "sportif_regulier",
+        "mange_mal"
+      ]
+    },
+    "text": "Tu cours dix kilomètres pour mériter ton burger, puis tu prends un dessert pour récompenser le burger. Bilan comptable de ton corps : zéro, mais avec beaucoup de mouvement.",
+    "effects": {
+      "health": 1,
+      "happiness": 2
+    }
+  },
+  {
+    "id": "rep_eta_0135",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "minAge": 60,
+    "conditions": {
+      "flags": [
+        "n_a_jamais_fume",
+        "sportif_regulier"
+      ],
+      "excludeFlags": [
+        "fume"
+      ]
+    },
+    "text": "Jamais une cigarette, du sport toute ta vie : tu montes maintenant les escaliers de la résidence plus vite que l'ascenseur. Le gardien a chronométré.",
+    "effects": {
+      "health": 4,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_eta_0136",
+    "on": "chaque_annee",
+    "chance": 0.2,
+    "conditions": {
+      "flags": [
+        "solitaire",
+        "celibataire_endurci"
+      ]
+    },
+    "text": "Célibataire et sans compagnie, tu as développé une relation très profonde avec un podcast. Tu lui réponds à voix haute, et il ne te contredit jamais.",
+    "effects": {
+      "happiness": -2,
+      "smarts": 1
+    }
+  },
+  {
+    "id": "rep_eta_0137",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "burn_out",
+        "boit_trop"
+      ]
+    },
+    "text": "Entre ton burn-out et ta bouteille du soir, l'année est floue. Tu as retrouvé dans ton agenda des rendez-vous que tu ne te souviens pas d'avoir pris, ni manqués.",
+    "effects": {
+      "happiness": -4,
+      "health": -4
+    }
+  },
+  {
+    "id": "rep_eta_0138",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "hypocondriaque",
+        "accro_aux_ecrans"
+      ]
+    },
+    "text": "Tu passes tes nuits à chercher tes symptômes en ligne. Tu en as trouvé quarante, dont « pixel mort à l'œil gauche ».",
+    "effects": {
+      "happiness": -3,
+      "smarts": -1
+    }
+  }
+]
