@@ -211,7 +211,7 @@ que le module étranger).
 | `chefEtat`, `pays`, `capitale`, `palais`, `siegeGouvernement`, `parlement`, `chambreHaute`, `union` | Textes des institutions. Les listes ont 3 formes : nom, « à … », « de … ». `union` = [nom, siège] ou null (pas de commissaire). |
 | `postes` | Noms locaux `{poste: [masculin, féminin]}`. Absent = nom français. |
 | `absents` | Postes qui n'existent pas dans ce pays (cachés, candidature refusée). |
-| `election` | `{poste: "directe" | "indirecte" | "nomination"}`. Absent = règle française. |
+| `election` | `{poste: mode}` avec `directe`, `indirecte` ou `nomination`. Absent = règle française. |
 | `durees`, `agesMin`, `mandatsMax` | Par poste. Absent = valeur française. |
 | `deuxTours`, `passerEnForce`, `referendum`, `dissolution`, `coalitions`, `electionsControlees`, `partiUnique`, `parrainages` | Règles de la Constitution. `passerEnForce` = nom de la procédure (« l'article 49.3 », « un décret-loi ») ou null. |
 
