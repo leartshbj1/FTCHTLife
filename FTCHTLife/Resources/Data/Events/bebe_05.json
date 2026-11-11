@@ -1,0 +1,3574 @@
+[
+  {
+    "id": "beb_0201",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 3,
+    "weight": 5,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "excludeFlags": [
+        "beb_petit_prodige",
+        "beb_audition"
+      ]
+    },
+    "text": "Sur le xylophone en plastique de la crèche, tu joues « Au clair de la lune » sans une fausse note. L'auxiliaire en lâche son café.",
+    "choices": [
+      {
+        "label": "Rejouer pour {parent}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu rejoues le morceau à la maison. {parent} pleure, appelle Mamie, puis tape « enfant génie » sur internet.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 4,
+              "relationships": {
+                "parent": 4
+              },
+              "setFlags": [
+                "beb_petit_prodige"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Devant {parent}, tu ne joues qu'une seule note pendant dix minutes. Personne ne croit l'auxiliaire.",
+            "effects": {
+              "happiness": -3,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Taper comme un batteur",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu frappes le xylophone comme une rock star. Le talent est là, la nuance beaucoup moins.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Improviser une suite",
+        "requiresSkill": {
+          "piano": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu enchaînes avec une variation de ton invention. La crèche entière écoute en silence, même les bébés.",
+            "effects": {
+              "smarts": 8,
+              "happiness": 8,
+              "skills": {
+                "piano": 4
+              },
+              "setFlags": [
+                "beb_petit_prodige"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0202",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 9,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "flags": [
+        "beb_petit_prodige"
+      ]
+    },
+    "text": "{parent} t'emmène auditionner au conservatoire de {ville}. Le jury compte trois personnes, sept paires de lunettes et zéro sourire.",
+    "choices": [
+      {
+        "label": "Jouer ton morceau",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le jury hoche la tête trois fois. Tu es admis{e} en « éveil musical renforcé ». {parent} achète un piano d'occasion.",
+            "effects": {
+              "smarts": 8,
+              "happiness": 6,
+              "clearFlags": [
+                "beb_petit_prodige"
+              ],
+              "setFlags": [
+                "beb_audition"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le trac te paralyse. Tu joues « Au clair de la lune » à l'envers. Le jury note « original », puis « non ».",
+            "effects": {
+              "happiness": -6,
+              "clearFlags": [
+                "beb_petit_prodige"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Inspecter le piano",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes l'audition allongé{e} sous le piano à étudier les pédales. Refusé{e}, mais très bien informé{e}.",
+            "effects": {
+              "smarts": 4,
+              "happiness": -3,
+              "clearFlags": [
+                "beb_petit_prodige"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer à quatre mains",
+        "requiresSkill": {
+          "piano": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu invites la présidente du jury à jouer avec toi. Elle accepte. Tu repars avec une place, une bourse et une admiratrice.",
+            "effects": {
+              "smarts": 10,
+              "happiness": 10,
+              "money": 50,
+              "skills": {
+                "piano": 5
+              },
+              "clearFlags": [
+                "beb_petit_prodige"
+              ],
+              "setFlags": [
+                "beb_audition"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0203",
+    "category": "bebe",
+    "minAge": 4,
+    "maxAge": 5,
+    "weight": 9,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "flags": [
+        "beb_audition"
+      ]
+    },
+    "text": "Une émission locale, « Les Petits Génies de {ville} », veut te filmer au piano. Il y aura des projecteurs, un présentateur et un chronomètre.",
+    "choices": [
+      {
+        "label": "Accepter les projecteurs",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu joues comme jamais. Le lendemain, la boulangère te demande un autographe sur un sachet de croissants.",
+            "effects": {
+              "happiness": 10,
+              "looks": 3,
+              "clearFlags": [
+                "beb_audition"
+              ],
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le présentateur écorche ton prénom. Tu fonds en larmes en direct, devant toute la ville. La scène te noue le ventre depuis.",
+            "effects": {
+              "happiness": -10,
+              "clearFlags": [
+                "beb_audition"
+              ],
+              "setFlags": [
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Préférer jouer dehors",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu choisis la boue du jardin. {parent} soupire, puis te rejoint dans la flaque. Le piano attendra.",
+            "effects": {
+              "happiness": 8,
+              "health": 3,
+              "relationships": {
+                "parent": 4
+              },
+              "clearFlags": [
+                "beb_audition"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger un cachet",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu réclames des bonbons et un camion de pompiers. La production accepte. Tu joues sans enthousiasme, mais avec le camion.",
+            "effects": {
+              "happiness": 6,
+              "money": 30,
+              "clearFlags": [
+                "beb_audition"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La production te trouve « un caractère de diva » et choisit un autre enfant.",
+            "effects": {
+              "happiness": -5,
+              "clearFlags": [
+                "beb_audition"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0204",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 5,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "excludeFlags": [
+        "beb_caprice_viral"
+      ]
+    },
+    "text": "Au rayon surgelés, {parent} refuse d'acheter la glace trois parfums. Tu sens que ton heure est venue.",
+    "choices": [
+      {
+        "label": "S'allonger sur les surgelés",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu t'étales sur le bac à congélation en hurlant. Une cliente filme. Le soir, la vidéo a 400 000 vues.",
+            "effects": {
+              "happiness": 4,
+              "health": -3,
+              "relationships": {
+                "parent": -6
+              },
+              "setFlags": [
+                "beb_caprice_viral"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le froid te coupe dans ton élan. Tu te relèves les joues gelées, et la dignité aussi.",
+            "effects": {
+              "health": -4,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pleurer en silence",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une grosse larme roule sur ta joue. {parent} craque et prend la glace. La technique est notée pour plus tard.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "parent": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Plaider ta cause",
+        "requiresSkill": {
+          "eloquence": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« La vanille, c'est bon pour les os. » Argument faux, mais si bien dit que {parent} achète la glace.",
+            "effects": {
+              "happiness": 7,
+              "smarts": 4,
+              "skills": {
+                "eloquence": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0205",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 9,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "flags": [
+        "beb_caprice_viral"
+      ]
+    },
+    "text": "À la boulangerie, une dame reconnaît {parent} : « C'est vous, la famille du rayon surgelés ! » Elle veut une photo avec toi.",
+    "choices": [
+      {
+        "label": "Poser comme une star",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu fais des cœurs avec les doigts. Tu reçois un pain au chocolat de fan.",
+            "effects": {
+              "happiness": 6,
+              "looks": 3,
+              "clearFlags": [
+                "beb_caprice_viral"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une deuxième cliente te reconnaît. {parent} décide de faire ses courses dans une autre ville.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "parent": -5
+              },
+              "clearFlags": [
+                "beb_caprice_viral"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rejouer la scène",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu te jettes par terre devant la vitrine des gâteaux. Deuxième vidéo, deuxième succès. Tout le quartier connaît ton visage.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": -8
+              },
+              "clearFlags": [
+                "beb_caprice_viral"
+              ],
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te cacher derrière {parent}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La dame repart déçue. {parent} t'achète un croissant pour ta discrétion.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 3
+              },
+              "clearFlags": [
+                "beb_caprice_viral"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0206",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 4,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "La crèche signale un cas de « syndrome pieds-mains-bouche ». Le lendemain, tu as des boutons aux trois endroits indiqués.",
+    "choices": [
+      {
+        "label": "Gratter",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu te grattes jusqu'au sang. Une semaine d'éviction et des moufles pour dormir.",
+            "effects": {
+              "health": -6,
+              "looks": -4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu grattes aussi {parent}, pour comparer. Toute la famille y passe.",
+            "effects": {
+              "health": -5,
+              "relationships": {
+                "parent": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réclamer de la glace",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le médecin conseille du froid pour les aphtes. Glace matin, midi et soir : la meilleure maladie de ta vie.",
+            "effects": {
+              "happiness": 8,
+              "health": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser de manger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Trois jours de grève de la faim à cause des aphtes. Tu perds un kilo et ta bonne humeur.",
+            "effects": {
+              "health": -6,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0207",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 4,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Ce matin, tes yeux sont collés comme deux huîtres. {parent} doit les nettoyer au sérum physiologique.",
+    "choices": [
+      {
+        "label": "Les ouvrir de force",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tes paupières s'ouvrent dans un bruit de scotch. Résultat : un œil rouge de pirate pendant une semaine.",
+            "effects": {
+              "health": -4,
+              "looks": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter les gouttes",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Gouttes froides, quelques cris, et deux jours plus tard tes yeux sont comme neufs.",
+            "effects": {
+              "health": 5,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Tu clignes au mauvais moment. Les gouttes vont partout sauf dans tes yeux. Ça traîne deux semaines.",
+            "effects": {
+              "health": -4,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contaminer la famille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu frottes tes yeux, puis le visage de chacun. Pendant dix jours, la maison ressemble à un élevage de lapins albinos.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": -5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0208",
+    "category": "bebe",
+    "minAge": 0,
+    "maxAge": 2,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Trois jours de fièvre à 40 °C. Soudain, tu te raidis et tes yeux se révulsent : une convulsion fébrile. {parent} appelle le 15 en tremblant.",
+    "choices": [
+      {
+        "label": "Lutter contre la fièvre",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Une nuit à l'hôpital, puis des boutons roses apparaissent : c'était une roséole. Les médecins sont rassurants, {parent} beaucoup moins.",
+            "effects": {
+              "health": -10,
+              "relationships": {
+                "parent": 6
+              }
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Une deuxième crise survient à l'hôpital. Examens, une semaine de surveillance, et une peur qui ne quittera plus jamais {parent}.",
+            "effects": {
+              "health": -18,
+              "happiness": -6,
+              "relationships": {
+                "parent": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te blottir contre {parent}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Épuisé{e} mais apaisé{e}, tu te réveilles dans les bras de {parent}. Le pédiatre confirme une roséole sans gravité.",
+            "effects": {
+              "health": -6,
+              "relationships": {
+                "parent": 8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0209",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "excludeFlags": [
+        "beb_platre"
+      ]
+    },
+    "text": "Au parc, tu grimpes l'échelle de la grande structure, celle réservée aux « plus de 6 ans ». Un barreau glisse sous ta main.",
+    "choices": [
+      {
+        "label": "Te rattraper",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu te rattrapes d'une main, comme dans un film d'action. Les grands te respectent.",
+            "effects": {
+              "happiness": 6,
+              "health": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Chute d'un mètre cinquante. Bras cassé, plâtre bleu jusqu'au coude.",
+            "effects": {
+              "health": -14,
+              "happiness": -6,
+              "setFlags": [
+                "beb_platre"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sauter exprès",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Atterrissage parfait dans les copeaux de bois. Applaudissements depuis le banc des parents.",
+            "effects": {
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Atterrissage sur le poignet. Urgences, radio, plâtre, et la grimace de {parent} devant la radiographie.",
+            "effects": {
+              "health": -15,
+              "happiness": -5,
+              "setFlags": [
+                "beb_platre"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Redescendre prudemment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu redescends à reculons, barreau par barreau. Tu passes ton tour, mais pas aux urgences.",
+            "effects": {
+              "happiness": -3,
+              "health": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0210",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 9,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "flags": [
+        "beb_platre"
+      ]
+    },
+    "text": "Six semaines de plâtre. Il est couvert de dessins, de signatures de la crèche et d'une odeur indescriptible. Aujourd'hui, on le scie.",
+    "choices": [
+      {
+        "label": "Regarder la scie",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La scie vibre sans couper la peau. Ton bras ressort tout maigre et sent le vieux fromage. Mais il marche.",
+            "effects": {
+              "health": 8,
+              "happiness": 4,
+              "clearFlags": [
+                "beb_platre"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La vue de la scie te fait hurler. Le médecin termine en chantant pour couvrir tes cris.",
+            "effects": {
+              "health": 6,
+              "happiness": -4,
+              "clearFlags": [
+                "beb_platre"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le plâtre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu exiges de garder le plâtre en souvenir. Il trône sur ton étagère, et plus personne n'ose entrer dans ta chambre.",
+            "effects": {
+              "happiness": 6,
+              "health": 5,
+              "clearFlags": [
+                "beb_platre"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0211",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Tu as tourné le verrou de la salle de bains pour voir ce que ça fait. Ça fait que tu ne peux plus sortir.",
+    "choices": [
+      {
+        "label": "Attendre les pompiers",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Trois pompiers démontent la porte. Tu les accueilles en pyjama de super-héros. Plus beau jour de ta vie.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le temps qu'ils arrivent, tu as vidé le shampoing dans la baignoire. Mousse sur trois étages.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "parent": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter {parent}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« Tourne le petit bouton vers la gauche. » Tu le tournes onze fois vers la droite, puis vers la gauche. Victoire.",
+            "effects": {
+              "smarts": 5,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta gauche n'est pas la gauche de {parent}. Une heure de cours de géométrie à travers une porte.",
+            "effects": {
+              "smarts": 4,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Démonter la poignée",
+        "requiresSkill": {
+          "bricolage": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Avec la lime à ongles, tu dévisses la poignée et sors la tête haute. {parent} hésite entre te féliciter et avoir peur.",
+            "effects": {
+              "smarts": 6,
+              "happiness": 6,
+              "skills": {
+                "bricolage": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0212",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Le chat dort au soleil. Tu as un pot de yaourt à la fraise et une cuillère. Le chat a l'air d'avoir faim de partout.",
+    "choices": [
+      {
+        "label": "Tartiner le chat",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le chat se réveille rose et poisseux. Il fait sa toilette pendant trois jours et ne t'adresse plus la parole.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le chat te griffe le nez. Trois traits rouges en souvenir.",
+            "effects": {
+              "looks": -5,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partager le yaourt",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une cuillère pour toi, une cuillère pour le chat. Vous devenez inséparables, avec une gastro en commun.",
+            "effects": {
+              "happiness": 6,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout manger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le manges avec les doigts en regardant le chat dormir. Paix et fraise.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0213",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "{parent} te retrouve à 2 h du matin devant le frigo ouvert, les yeux grands ouverts, en train de parler à une tranche de jambon.",
+    "choices": [
+      {
+        "label": "Continuer la conversation",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu expliques au jambon des choses très importantes sur les dinosaures. Le lendemain, tu ne te souviens de rien.",
+            "effects": {
+              "happiness": 3,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu te retournes, dis « au revoir, madame » à {parent} et retournes te coucher. {parent}, en revanche, ne dort plus.",
+            "effects": {
+              "health": -3,
+              "relationships": {
+                "parent": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Manger le jambon",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le manges en dormant. Le lendemain, tu accuses le chat. Le chat n'a jamais été aussi souvent accusé.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Se réveiller en sursaut",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu hurles en découvrant que tu es dans la cuisine. Tout l'immeuble se réveille.",
+            "effects": {
+              "happiness": -5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le choc te tient éveillé{e} jusqu'au matin, puis plusieurs nuits encore. Le sommeil et toi êtes fâchés.",
+            "effects": {
+              "health": -5,
+              "happiness": -3,
+              "setFlags": [
+                "insomniaque"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0214",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Tu es persuadé{e} qu'un monstre vit au fond des toilettes et qu'il t'aspire si tu tires la chasse sans courir.",
+    "choices": [
+      {
+        "label": "Tirer et courir",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu tires et sprintes jusqu'au salon. Le monstre ne t'a pas eu{e}. Pas encore.",
+            "effects": {
+              "happiness": 4,
+              "health": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu glisses sur le tapis de bain en fuyant. Bosse au front, victoire du monstre.",
+            "effects": {
+              "health": -5,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne plus tirer la chasse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu laisses la chasse aux autres. {parent} mène l'enquête et découvre l'ampleur du problème.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "parent": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Regarder dans le trou",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu regardes longtemps. Rien. Tu en conclus que le monstre est timide, ce qui te rassure beaucoup.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu te penches trop et ta frange trempe dans l'eau. Ce n'est pas le monstre qui est traumatisé.",
+            "effects": {
+              "health": -3,
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0215",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 3,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Chaque samedi, {parent} sort l'aspirateur. Tu l'as baptisé « le Grogneur » et tu le soupçonnes de manger les enfants.",
+    "choices": [
+      {
+        "label": "Attaquer le Grogneur",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu le frappes avec une cuillère en bois. Il se tait : {parent} a marché sur le fil. Tu proclames ta victoire.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il t'aspire une chaussette. Tu fuis en hurlant, un pied nu.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Monter sur le canapé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu observes le Grogneur depuis le canapé, comme on observe un requin depuis un bateau.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aider {parent}",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu tiens le tuyau. Le Grogneur devient ton allié. Tu passes l'aspirateur sur le chien, qui adore.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu aspires une pièce de puzzle, une boucle d'oreille et le poisson en plastique du bain. Démontage d'urgence.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0216",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Photo avec le Père Noël de la galerie marchande. Il a une barbe en coton qui se décolle et une odeur de tabac froid.",
+    "choices": [
+      {
+        "label": "S'asseoir sur ses genoux",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu lui demandes un dinosaure grandeur nature. Il répond « on verra ». Tu connais cette phrase.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu tires sur la barbe. Elle vient. Le Père Noël est un monsieur chauve qui s'appelle Gilles.",
+            "effects": {
+              "happiness": -6,
+              "smarts": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Hurler de terreur",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La photo te montre tordu{e} en deux, écarlate, à côté d'un Père Noël désemparé. Elle ressortira à ton mariage.",
+            "effects": {
+              "happiness": -5,
+              "looks": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui raconter une blague",
+        "requiresSkill": {
+          "humour": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta blague du renne qui rote fait pleurer de rire Gilles. Il te glisse un sucre d'orge et note ton dinosaure en premier.",
+            "effects": {
+              "happiness": 8,
+              "skills": {
+                "humour": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0217",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 4,
+    "weight": 5,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Ta nouvelle nounou, Miss Gwen, ne te parle qu'en anglais. Elle prend le thé à 16 h avec toi et tes peluches.",
+    "choices": [
+      {
+        "label": "Répéter ce qu'elle dit",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Trois mois plus tard, tu dis « more biscuits, please » avec un accent impeccable. Tes parents ne comprennent plus tes demandes.",
+            "effects": {
+              "smarts": 8,
+              "happiness": 4,
+              "skills": {
+                "anglais": 3
+              },
+              "setFlags": [
+                "polyglotte"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu mélanges tout : « Je veux du milk avec le gâteau, please. » Personne ne sait quelle langue tu parles.",
+            "effects": {
+              "smarts": 4,
+              "happiness": 3,
+              "skills": {
+                "anglais": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre en français",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous vous comprenez sans parler la même langue. C'est beau, mais tu ne sais toujours pas dire « biscuit ».",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renverser le thé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le thé finit sur un ourson. Miss Gwen dit « oh dear » pendant une semaine. C'est ton premier juron anglais, très poli.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 3,
+              "skills": {
+                "anglais": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0218",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Au parc de {ville}, un touriste perdu montre une carte à {parent}, qui ne comprend pas un mot de ce qu'il dit.",
+    "choices": [
+      {
+        "label": "Montrer au hasard",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu pointes la boulangerie. Il avait justement faim. Succès diplomatique.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu pointes le bac à sable. Le touriste s'y assoit, perplexe, et sort son pique-nique.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te cacher",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu te caches derrière {parent} et regardes le touriste s'éloigner. Occasion ratée, goûter préservé.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui parler anglais",
+        "requiresSkill": {
+          "anglais": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« Train station? This way! » Le touriste t'offre un porte-clés de son pays et {parent} raconte l'histoire à tout le monde.",
+            "effects": {
+              "smarts": 8,
+              "happiness": 8,
+              "relationships": {
+                "parent": 4
+              },
+              "skills": {
+                "anglais": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0219",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 3,
+    "weight": 5,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "excludeFlags": [
+        "beb_vocabulaire"
+      ]
+    },
+    "text": "Au milieu du repas du dimanche, tu regardes {parent} et prononces très distinctement ton premier long mot : « procrastination ».",
+    "choices": [
+      {
+        "label": "Le répéter partout",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu le dis à la boulangère, au facteur, au chien. Les grands-parents demandent si tu es « surdoué ».",
+            "effects": {
+              "smarts": 8,
+              "happiness": 4,
+              "setFlags": [
+                "beb_vocabulaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu le prononces en postillonnant sur la tarte. Plus personne n'en veut.",
+            "effects": {
+              "smarts": 4,
+              "happiness": -3,
+              "setFlags": [
+                "beb_vocabulaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne plus rien dire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu retournes au babillage. La famille croit avoir rêvé. Toi, tu sais.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0220",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 9,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "flags": [
+        "beb_vocabulaire"
+      ]
+    },
+    "text": "À la maternelle, la maîtresse dit « on a qu'à faire comme ça ». Tu lèves le doigt pour signaler qu'il manque une négation.",
+    "choices": [
+      {
+        "label": "Corriger la maîtresse",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle éclate de rire et te nomme « gardien de la grammaire ». Tu prends ce rôle très au sérieux.",
+            "effects": {
+              "smarts": 8,
+              "happiness": 6,
+              "clearFlags": [
+                "beb_vocabulaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle te trouve « un peu pénible ». Toute la classe te surnomme « le Dictionnaire ».",
+            "effects": {
+              "smarts": 4,
+              "happiness": -6,
+              "clearFlags": [
+                "beb_vocabulaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ça pour toi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu notes mentalement la faute. Tu en relèves 47 dans l'année. Une encyclopédie silencieuse est née.",
+            "effects": {
+              "smarts": 6,
+              "happiness": -3,
+              "clearFlags": [
+                "beb_vocabulaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un exposé",
+        "requiresSkill": {
+          "eloquence": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu expliques la négation à la classe avec des exemples de goûters. La maîtresse t'invite à recommencer chez les grands.",
+            "effects": {
+              "smarts": 10,
+              "happiness": 8,
+              "skills": {
+                "eloquence": 4
+              },
+              "clearFlags": [
+                "beb_vocabulaire"
+              ],
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0221",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Pendant que {parent} compare deux lessives, tu remplis discrètement le chariot : chocolats, un nain de jardin, douze citrons et une bouée.",
+    "choices": [
+      {
+        "label": "Tout garder",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "{parent} ne remarque rien jusqu'à la caisse. Le ticket fait un mètre. Le nain de jardin vit désormais chez vous.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "parent": -6
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La caissière s'étonne d'une bouée en décembre. Tout retourne en rayon, sauf ta dignité.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder les chocolats",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les chocolats passent inaperçus. Tu les manges dans la voiture, puis tu les rends sur la banquette.",
+            "effects": {
+              "health": -4,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "{parent} les voit, mais les achète quand même, par pure fatigue.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu présentes la bouée à {parent} comme un cadeau. Elle retourne en rayon dans l'émotion générale.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0222",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Tu as trouvé le rouge à lèvres de {parent}, rouge pompier. Ton visage est une toile blanche.",
+    "choices": [
+      {
+        "label": "Maquillage intégral",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu te peins tout le visage, le chien et un bout du mur. Tu ressembles à un clown qui aurait perdu un pari.",
+            "effects": {
+              "looks": -5,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{parent} trouve le résultat « audacieux » et prend une photo avant de te débarbouiller.",
+            "effects": {
+              "looks": 3,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dessiner sur le miroir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dessines un soleil sur le miroir de la salle de bains. Il y reste trois semaines : personne n'ose l'effacer.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le goûter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Goût de cire et de fraise chimique. Tu ne recommenceras pas, mais tes dents restent roses toute la journée.",
+            "effects": {
+              "health": -3,
+              "looks": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0223",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Pendant l'atelier « collage de haricots secs », tu te demandes si un haricot rentre dans une narine.",
+    "choices": [
+      {
+        "label": "Vérifier",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il rentre. Il ne ressort pas. L'ORL le retire avec une pince en t'expliquant que le nez n'est pas un placard.",
+            "effects": {
+              "health": -5,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il rentre, puis ressort sur un éternuement géant, en plein dans le pot de colle.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Essayer l'oreille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le haricot a presque le temps de germer. Une semaine plus tard, le médecin le retire avec stupeur.",
+            "effects": {
+              "health": -6,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Coller les haricots",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais un hérisson en haricots, très réussi. La maîtresse l'expose. Ton nez reste vide.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0224",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 4,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Dans le jardin des voisins, un buisson est couvert de petites baies rouges et brillantes. On dirait des bonbons qui poussent.",
+    "choices": [
+      {
+        "label": "En manger une poignée",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vomissements, somnolence, appel au centre antipoison. Une nuit en pédiatrie, branché{e} de partout.",
+            "effects": {
+              "health": -18,
+              "happiness": -6,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elles sont amères. Tu craches tout et rentres en grimaçant. {parent} n'en saura jamais rien.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "En cueillir pour {parent}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{parent} voit les baies, pâlit, et t'explique longuement qu'on ne mange rien du jardin sans demander. Tu reçois un vrai bonbon pour ta prudence.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écraser les baies",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu peins en rouge la terrasse des voisins. Ils sont moins enthousiastes que toi.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0225",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 4,
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Dans le sac de {parent}, il y a une boîte de petits comprimés roses. On dirait les bonbons de la boulangerie.",
+    "choices": [
+      {
+        "label": "En croquer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu en avales plusieurs. Somnolence étrange, urgences, lavage d'estomac. Depuis, {parent} range tout sous clé.",
+            "effects": {
+              "health": -20,
+              "happiness": -6,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu croques le premier : c'est amer. Tu recraches tout au moment où {parent} entre dans la pièce et manque de défaillir.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les secouer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ça fait un bruit génial. {parent} récupère la boîte, blême, et t'offre une vraie maraca à la place.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0226",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby",
+        "siblings"
+      ]
+    },
+    "text": "{fratrie} te tire les cheveux pour récupérer le seul feutre qui marche encore. Tu as une poignée de cheveux en moins et une rage en plus.",
+    "choices": [
+      {
+        "label": "Mordre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Morsure réglementaire sur l'avant-bras. Vous êtes punis tous les deux, dans des pièces séparées.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "sibling": -5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu mords, {fratrie} hurle, et le feutre roule sous le canapé pour toujours.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "sibling": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller voir {parent}",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "{parent} confisque le feutre. Justice est rendue : plus personne ne dessine.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "{parent} vous dit de « régler ça entre vous ». Tu règles ça en pleurant plus fort.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de partager",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dessines la moitié d'une maison, {fratrie} l'autre. Le toit est bizarre, mais c'est votre maison.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "sibling": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0227",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Papi sort son vieux jeu de dames et prétend qu'il va « te laisser gagner ». Il ment : il n'a jamais laissé gagner personne.",
+    "choices": [
+      {
+        "label": "Jouer sérieusement",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu le bats, par accident. Papi exige des revanches jusqu'à minuit.",
+            "effects": {
+              "smarts": 8,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Il te bat en six coups et fait la danse de la victoire. Tu découvres la défaite et la mauvaise foi.",
+            "effects": {
+              "smarts": 4,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avaler un pion",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gobes une dame noire. Papi déclare forfait par inquiétude. Tu gagnes, techniquement.",
+            "effects": {
+              "health": -4,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui tendre un piège",
+        "requiresSkill": {
+          "echecs": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sacrifies trois pions et lui prends tout le plateau. Papi te regarde désormais comme un rival, et t'offre un échiquier.",
+            "effects": {
+              "smarts": 10,
+              "happiness": 8,
+              "skills": {
+                "echecs": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0228",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "La maîtresse demande de dessiner ta famille. Tu dessines {parent} sous la forme d'une grosse pomme de terre avec des bras.",
+    "choices": [
+      {
+        "label": "Offrir le dessin",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{parent} rit et l'accroche au frigo. Les invités demandent qui est la patate. On ne répond pas.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{parent} se regarde longuement dans le miroir après ça. Tu as visiblement touché un point sensible.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "parent": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ajouter une moustache",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La patate gagne une moustache et un chapeau. La maîtresse l'affiche dans le couloir, rubrique « Portraits ».",
+            "effects": {
+              "happiness": 6,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un vrai portrait",
+        "requiresSkill": {
+          "dessin": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La ressemblance est troublante. La maîtresse montre ton dessin au directeur, qui parle d'un « œil exceptionnel ».",
+            "effects": {
+              "smarts": 6,
+              "happiness": 8,
+              "relationships": {
+                "parent": 4
+              },
+              "skills": {
+                "dessin": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0229",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Au mariage de ta tante, le DJ lance un vieux tube disco. Les adultes dansent mal. Tu sens que c'est ton moment.",
+    "choices": [
+      {
+        "label": "Monter sur la table",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu danses entre les verres sous les acclamations. Puis tu glisses dans la pièce montée.",
+            "effects": {
+              "happiness": 8,
+              "health": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu renverses trois verres sur la nappe des témoins. Ovation, puis punition.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Danser sous la table",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu danses sous la nappe avec deux cousins et un chien. Personne ne vous voit. Meilleure fête de ta vie.",
+            "effects": {
+              "happiness": 7
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir la piste",
+        "requiresSkill": {
+          "danse": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta démonstration est si énergique que les mariés te laissent la piste. Tout le monde filme, ta tante pleure de joie.",
+            "effects": {
+              "happiness": 10,
+              "looks": 4,
+              "skills": {
+                "danse": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0230",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "À l'enterrement de ta grand-grand-tante Huguette, que tu n'as jamais connue, l'orgue émet un bruit de pet. Personne ne rit. Sauf toi, presque.",
+    "choices": [
+      {
+        "label": "Exploser de rire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton rire résonne dans toute l'église. Puis un oncle craque. Puis tout le monde. Huguette, paraît-il, aurait adoré.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Vingt adultes te foudroient du regard. On te sort de l'église par l'oreille.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "parent": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te pincer la joue",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu tiens bon, rouge comme une tomate. {parent} te félicite discrètement à la sortie.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "parent": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Imiter l'orgue dehors",
+        "requiresSkill": {
+          "humour": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Sur le parvis, ton imitation parfaite fait rire toute la famille. Le deuil devient un souvenir doux.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "parent": 4
+              },
+              "skills": {
+                "humour": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0231",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Après un spectacle de magie à la télé, tu décides de faire disparaître le portefeuille de {parent}.",
+    "choices": [
+      {
+        "label": "Le cacher au congélateur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{parent} le cherche deux jours. Il réapparaît, congelé, à côté des petits pois. Tu salues ton public.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "parent": -5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu oublies où tu l'as caché. Le tour de magie tourne à l'enquête familiale.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "parent": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire « abracadabra »",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Rien ne disparaît. Tu en conclus que la magie exige une cape, et tu t'en fabriques une avec une serviette.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le faire réapparaître",
+        "requiresSkill": {
+          "magie": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le fais disparaître, puis le sors de derrière l'oreille de {parent}. Applaudissements. Tu gardes 5 € de cachet.",
+            "effects": {
+              "happiness": 8,
+              "money": 5,
+              "relationships": {
+                "parent": 3
+              },
+              "skills": {
+                "magie": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0232",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Chandeleur : {parent} te laisse faire sauter une crêpe. La poêle est presque plus lourde que toi.",
+    "choices": [
+      {
+        "label": "La lancer très haut",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "La crêpe touche le plafond et y reste. Elle tombera trois jours plus tard, sur le chat.",
+            "effects": {
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu lâches la poêle. Elle frôle ton pied. {parent} reprend la main, et la poêle.",
+            "effects": {
+              "health": -4,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Boire la pâte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu bois la pâte crue au bol. Mal de ventre, aucun regret.",
+            "effects": {
+              "health": -4,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire la crêpe parfaite",
+        "requiresSkill": {
+          "cuisine": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Saut, retournement, réception. Dorée à point. {parent} te nomme chef de la Chandeleur à vie.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 3,
+              "relationships": {
+                "parent": 4
+              },
+              "skills": {
+                "cuisine": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0233",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "À la maternelle, chacun plante une graine de haricot dans un pot de yaourt. Le tien ne pousse pas. Celui de ton voisin mesure déjà 10 cm.",
+    "choices": [
+      {
+        "label": "Échanger les pots",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Personne ne remarque rien. On te félicite pour un haricot qui n'est pas le tien, et le mensonge te paraît soudain très facile.",
+            "effects": {
+              "happiness": 3,
+              "setFlags": [
+                "menteur_notoire"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton voisin te démasque devant toute la classe. Tu passes la récré seul{e} avec ta honte.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre encore",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le neuvième jour, une petite pousse sort. C'est le plus beau haricot du monde.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il ne poussera jamais. La maîtresse t'explique que tu l'as noyé à force d'amour.",
+            "effects": {
+              "happiness": -4,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le mettre au soleil",
+        "requiresSkill": {
+          "jardinage": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Fenêtre plein sud, un peu d'eau, une chanson. Ton haricot rattrape tout le monde et finit au plafond.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 4,
+              "skills": {
+                "jardinage": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0234",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Tu as trouvé un tournevis et le babyphone de ta chambre. Il y a des vis. Les vis sont faites pour être dévissées.",
+    "choices": [
+      {
+        "label": "Tout démonter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Douze pièces étalées sur le tapis. Le babyphone n'émettra plus jamais. {parent} dort l'oreille collée au mur.",
+            "effects": {
+              "smarts": 4,
+              "relationships": {
+                "parent": -5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu avales une petite vis. Radio de contrôle, attente angoissée, et tout finit par s'arranger.",
+            "effects": {
+              "health": -6,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rendre le tournevis",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le tends à {parent}, qui le range très, très haut.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le remonter",
+        "requiresSkill": {
+          "mecanique": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le démontes et le remontes. Il capte maintenant la radio des taxis. {parent} hésite entre la peur et l'admiration.",
+            "effects": {
+              "smarts": 8,
+              "happiness": 6,
+              "skills": {
+                "mecanique": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0235",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Jour de parcours de motricité à la crèche : tunnel, poutre, cerceaux et un gros coussin en mousse en forme de chenille.",
+    "choices": [
+      {
+        "label": "Foncer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu boucles le parcours en un temps record et termines par un plongeon sur la chenille.",
+            "effects": {
+              "health": 6,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu tombes de la poutre sur le cerceau, du cerceau sur la chenille. Bosse et ego cabossés.",
+            "effects": {
+              "health": -5,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester dans le tunnel",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu t'installes dans le tunnel et refuses d'en sortir. L'auxiliaire te passe le goûter par l'entrée.",
+            "effects": {
+              "happiness": 5,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une roulade",
+        "requiresSkill": {
+          "sport": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Roulade avant impeccable sur la chenille. L'éducatrice demande à {parent} si tu fais de la gym.",
+            "effects": {
+              "health": 8,
+              "happiness": 6,
+              "skills": {
+                "sport": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0236",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 10,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Au restaurant, {parent} te tend une tablette pour avoir la paix. Un dessin animé de licornes chante à plein volume.",
+    "choices": [
+      {
+        "label": "Regarder tout le repas",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu ne lèves pas les yeux de l'écran pendant deux heures. Tu ne sais même pas ce que tu as mangé. L'écran devient ton meilleur ami.",
+            "effects": {
+              "happiness": 4,
+              "smarts": -3,
+              "setFlags": [
+                "accro_aux_ecrans"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le son est si fort que la table voisine demande à changer de place.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "parent": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Préférer le pain",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sculptes la mie de pain pour toute la tablée. Le serveur t'en commande une.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Observer les autres",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu regardes un monsieur manger des escargots. Ton dégoût est profond, et très formateur.",
+            "effects": {
+              "smarts": 4,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0237",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Chaque mercredi chez Mamie et Papi, c'est frites, soda et dessert à volonté. « Ce que tes parents ne savent pas ne leur fait pas de mal », dit Papi.",
+    "choices": [
+      {
+        "label": "Tout manger",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu deviens expert en frites. La pédiatre, moins enthousiaste, parle de « mauvaises habitudes ».",
+            "effects": {
+              "happiness": 8,
+              "health": -5,
+              "setFlags": [
+                "mange_mal"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Indigestion dans la voiture du retour. Les parents finissent par savoir.",
+            "effects": {
+              "health": -6,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réclamer des légumes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Mamie te regarde comme si tu étais malade et te prépare une soupe, inquiète.",
+            "effects": {
+              "health": 5,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout raconter aux parents",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le mercredi frites est aboli. Papi te boude une semaine, puis te pardonne avec un paquet de chips.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0238",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Pour la 400e fois, tu réclames « Le Petit Hérisson qui avait froid aux pieds ». {parent} le récite les yeux fermés.",
+    "choices": [
+      {
+        "label": "Le réclamer encore",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu finis par le réciter seul{e}, page par page. Mamie croit que tu sais lire. Les livres deviennent ta passion.",
+            "effects": {
+              "smarts": 6,
+              "happiness": 4,
+              "setFlags": [
+                "lecteur_assidu"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{parent} saute une page. Tu le remarques et exiges qu'on reprenne depuis le début.",
+            "effects": {
+              "smarts": 3,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Choisir un autre livre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu choisis un livre sur les volcans. {parent} pleure de soulagement.",
+            "effects": {
+              "smarts": 5,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Raconter ta version",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Dans ta version, le hérisson achète des chaussons et devient président. {parent} la trouve meilleure que l'original.",
+            "effects": {
+              "smarts": 5,
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0239",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 4,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "{parent} t'inscrit au « yoga parent-enfant ». La prof parle très doucement et vous demande de faire l'arbre.",
+    "choices": [
+      {
+        "label": "Faire l'arbre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu tiens trois secondes sur un pied, puis tu tombes sur la prof. Elle reste calme, toi aussi. Tu y prends goût.",
+            "effects": {
+              "happiness": 5,
+              "health": 3,
+              "setFlags": [
+                "zen"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu fais l'arbre en criant « je suis un chêne ! ». La relaxation collective est compromise.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dormir sur le tapis",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu t'endors pendant l'exercice de respiration. La prof te cite en exemple.",
+            "effects": {
+              "health": 4,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire le chien qui aboie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La posture du chien tête en bas n'exigeait pas d'aboyer. Exclusion polie.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0240",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Au bac à sable, un enfant nommé Enzo te prend ton seau rouge et le garde en te regardant droit dans les yeux.",
+    "choices": [
+      {
+        "label": "Reprendre le seau",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu tires, il tire. Le seau se casse. Vous pleurez tous les deux sur ses débris.",
+            "effects": {
+              "happiness": -4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu récupères le seau et lui lances du sable. Ses parents et les tiens échangent des regards glaciaux.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne jamais oublier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu graves son visage dans ta mémoire. Dans vingt ans, tu te souviendras encore d'Enzo et du seau rouge.",
+            "effects": {
+              "happiness": -5,
+              "setFlags": [
+                "rancunier"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre sa pelle",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prends sa pelle. Échange forcé. Faute de mieux, vous construisez un château ensemble, puis une amitié.",
+            "effects": {
+              "happiness": 5,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0241",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Dans la salle d'attente du médecin, une petite fille pleure à chaudes larmes. Tu tiens dans tes mains ta voiture de course préférée.",
+    "choices": [
+      {
+        "label": "Lui donner ta voiture",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Elle arrête de pleurer. Sa mère remercie {parent}. Tu repars sans voiture, mais avec un sentiment nouveau et étrange.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": 5
+              },
+              "setFlags": [
+                "genereux"
+              ]
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Elle jette la voiture par terre et pleure de plus belle. La générosité, c'est compliqué.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "La prêter cinq minutes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle sourit. Tu récupères la voiture quand le médecin t'appelle. Tout le monde est content.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire vroum très fort",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais vroum pour couvrir ses pleurs. Ça ne marche pas, mais tu as essayé.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0242",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Le gâteau au chocolat a perdu une part. Tu as du chocolat sur le menton, le nez et le front. {parent} demande qui a fait ça.",
+    "choices": [
+      {
+        "label": "Accuser le chat",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le chat n'aime pas le chocolat et n'a pas de front. {parent} rit tellement que tu échappes à la punition. Tu retiens la leçon, la mauvaise.",
+            "effects": {
+              "happiness": 5,
+              "setFlags": [
+                "menteur_notoire"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Privé{e} de dessert pour la semaine : un pour le gâteau, six pour le mensonge.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu avoues. Ta franchise est récompensée par une demi-part supplémentaire.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser un fantôme",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu décris un fantôme en tablier qui adore le chocolat. {parent} reconnaît le talent d'un futur romancier.",
+            "effects": {
+              "smarts": 4,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0243",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 4,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "À la crèche, tu es devenu{e} le chef de la « bande des tétines » : quatre bébés qui se déplacent en groupe et volent les biscuits des grands.",
+    "choices": [
+      {
+        "label": "Lancer un raid",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Raid réussi. Ta bande t'acclame la bouche pleine. L'auxiliaire t'appelle désormais « le parrain ».",
+            "effects": {
+              "happiness": 8,
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Pris la main dans la boîte. Ta bande te dénonce immédiatement.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dissoudre la bande",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rends ta tétine de chef. La crèche retrouve la paix, et toi un certain ennui.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Recruter le mordeur",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta bande devient redoutée. Même les auxiliaires vous laissent passer.",
+            "effects": {
+              "happiness": 6,
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0244",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Un grand de la maternelle te dit que tes oreilles sont « comme des portières de voiture ouvertes ».",
+    "choices": [
+      {
+        "label": "Pleurer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu passes la soirée devant le miroir à scotcher tes oreilles. La remarque te suivra longtemps.",
+            "effects": {
+              "looks": -3,
+              "happiness": -6,
+              "setFlags": [
+                "complexe"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{parent} t'assure que les éléphants sont très respectés. Étrangement, ça aide.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Battre des oreilles",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais semblant de voler avec tes oreilles. Toute la cour rit avec toi, pas de toi.",
+            "effects": {
+              "happiness": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre du tac au tac",
+        "requiresSkill": {
+          "humour": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« Au moins, moi, j'entends la cloche de la récré. » Le grand reste sans voix. La cour t'adopte.",
+            "effects": {
+              "happiness": 8,
+              "skills": {
+                "humour": 3
+              },
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0245",
+    "category": "bebe",
+    "minAge": 3,
+    "maxAge": 5,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Pendant que la boulangère rend la monnaie à {parent}, un bocal de bonbons est resté ouvert, juste à hauteur de ta main.",
+    "choices": [
+      {
+        "label": "En prendre un",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Personne ne voit rien. Le bonbon a un goût de victoire mêlé de culpabilité.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La boulangère t'a vu{e}. {parent} paie le bonbon et te fait présenter des excuses devant toute la file.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "parent": -4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "En prendre dix",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tes poches débordent. Tu les manges sous la couette pendant une semaine. Une carrière commence.",
+            "effects": {
+              "health": -4,
+              "happiness": 6,
+              "setFlags": [
+                "voleur"
+              ]
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Les bonbons tombent de tes poches devant la caisse comme d'une machine à sous. Honte totale.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "parent": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La boulangère te trouve si poli{e} qu'elle t'en offre deux. La politesse paie.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0246",
+    "category": "bebe",
+    "minAge": 4,
+    "maxAge": 5,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "{parent} t'inscrit au judo. Ton kimono est trop grand, et ta ceinture blanche fait trois fois le tour de ta taille.",
+    "choices": [
+      {
+        "label": "Faire tomber le prof",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Il se laisse tomber de façon très théâtrale. Tu y crois. Tu ne rates plus un seul cours.",
+            "effects": {
+              "happiness": 8,
+              "health": 5,
+              "setFlags": [
+                "sportif_regulier"
+              ]
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Il ne tombe pas. Tu passes l'heure accroché{e} à sa jambe comme un koala.",
+            "effects": {
+              "happiness": 4,
+              "health": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester au bord",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu restes au bord du tatami. Le prof te nomme arbitre. C'est moins sportif, mais très gratifiant.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une chute arrière",
+        "requiresSkill": {
+          "sport": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu maîtrises la chute dès le premier cours. Le prof te présente au club comme « un futur champion ».",
+            "effects": {
+              "health": 8,
+              "happiness": 8,
+              "skills": {
+                "sport": 4
+              },
+              "setFlags": [
+                "sportif_regulier"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0247",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Un chien énorme, sans laisse, traverse le parc à toute vitesse dans ta direction. Il a l'air joyeux. Il a aussi la taille d'un poney.",
+    "choices": [
+      {
+        "label": "Courir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il croit que c'est un jeu et te renverse. Ton menton heurte le banc : six points de suture et une peur bleue des chiens.",
+            "effects": {
+              "health": -12,
+              "looks": -6,
+              "setFlags": [
+                "traumatise"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu cours jusqu'à {parent}, qui fait barrage. Le chien lèche {parent} à ta place.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester immobile",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Le chien te renifle, perd tout intérêt et repart. Tu viens de découvrir un secret important.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Il te lèche intégralement le visage. Aucune blessure, mais un dégoût durable.",
+            "effects": {
+              "happiness": -4,
+              "looks": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui tendre ton goûter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il prend le goûter et un peu la main avec. Rien de grave, mais tes doigts sentent le chien pendant deux jours.",
+            "effects": {
+              "health": -3,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0248",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "Tu as découvert qu'en juin, le soleil se lève à 5 h 40. Tu trouves inacceptable que la famille dorme encore.",
+    "choices": [
+      {
+        "label": "Réveiller tout le monde",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu fais la tournée des chambres avec une casserole. Plus personne ne dort à 5 h 41, toi le premier, et pour longtemps.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "parent": -6
+              },
+              "setFlags": [
+                "insomniaque"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{parent} installe un réveil lumineux : tant qu'il est bleu, on dort. Tu fixes le bleu pendant une heure.",
+            "effects": {
+              "health": 3,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer en silence",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu construis une tour de cubes en chuchotant. {parent} se lève à 7 h et pleure d'émotion.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te rendormir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fermes les yeux par politesse et te rendors. Tes parents ne comprennent pas ce miracle.",
+            "effects": {
+              "health": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0249",
+    "category": "bebe",
+    "minAge": 2,
+    "maxAge": 5,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "baby"
+      ]
+    },
+    "text": "{parent} part une semaine en déplacement et te laisse un calendrier où tu dois barrer chaque jour jusqu'au retour.",
+    "choices": [
+      {
+        "label": "Barrer les jours",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu barres consciencieusement chaque case. Le dernier soir, tu t'endors devant la porte d'entrée.",
+            "effects": {
+              "happiness": -3,
+              "smarts": 3,
+              "relationships": {
+                "parent": 5
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu barres les sept cases le premier jour pour accélérer. Ça ne marche pas. Depuis, chaque départ te serre le ventre.",
+            "effects": {
+              "happiness": -6,
+              "setFlags": [
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler chaque soir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous parlez tous les soirs en visio. Tu montres ta chambre, tes pieds et le plafond. Ça console tout le monde.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bouder au retour",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais semblant de ne pas reconnaître {parent} pendant dix minutes. Puis tu craques et pleures dans ses bras.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beb_0250",
+    "category": "bebe",
+    "minAge": 1,
+    "maxAge": 4,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "baby"
+      ],
+      "excludeFlags": [
+        "beb_allergique"
+      ]
+    },
+    "text": "Chez une amie de {parent}, on te donne un biscuit au beurre de cacahuète. Quelques minutes plus tard, ta bouche gonfle comme un ballon.",
+    "choices": [
+      {
+        "label": "Le signaler tout de suite",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "{parent} réagit vite : antihistaminique, médecin, puis diagnostic : allergie à l'arachide. Tu repars avec une trousse d'urgence.",
+            "effects": {
+              "health": -6,
+              "relationships": {
+                "parent": 3
+              },
+              "setFlags": [
+                "beb_allergique"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ta gorge se serre. Le SAMU arrive, adrénaline, une nuit à l'hôpital. Tout le monde a eu très peur.",
+            "effects": {
+              "health": -18,
+              "happiness": -6,
+              "setFlags": [
+                "beb_allergique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Finir le biscuit",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Plaques rouges, souffle court, urgences. Le mot « allergie » entre dans ta vie avec une trousse à pharmacie.",
+            "effects": {
+              "health": -15,
+              "happiness": -4,
+              "setFlags": [
+                "beb_allergique"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu gonfles, tu rougis, mais l'antihistaminique agit vite. Diagnostic : allergie.",
+            "effects": {
+              "health": -8,
+              "setFlags": [
+                "beb_allergique"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

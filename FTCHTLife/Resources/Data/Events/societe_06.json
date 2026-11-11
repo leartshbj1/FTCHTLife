@@ -1,0 +1,3167 @@
+[
+  {
+    "id": "soc_0251",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "excludeFlags": [
+        "soc_sinistre",
+        "soc_contre_expertise"
+      ]
+    },
+    "text": "Après quatre jours de pluie, la rivière sort de son lit en pleine nuit. À 3 h, l'eau monte dans ton salon. Une barque des pompiers passe dans la rue, lampe braquée sur les fenêtres.",
+    "choices": [
+      {
+        "label": "Monter à l'étage et attendre",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'eau s'arrête à la quatrième marche. Au matin, ton rez-de-chaussée est une soupe de boue. Les photos de famille flottent. Tu es vivant{e}, et c'est tout ce qui compte, se répète-t-on.",
+            "effects": {
+              "happiness": -10,
+              "money": -2500,
+              "health": -3,
+              "setFlags": [
+                "soc_sinistre"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu passes la nuit sur le palier, à écouter l'eau monter dans le noir. Tu sors indemne, mais le bruit de la pluie te réveille encore des années après.",
+            "effects": {
+              "happiness": -14,
+              "money": -3000,
+              "setFlags": [
+                "soc_sinistre",
+                "traumatise"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire signe à la barque",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "On t'évacue avec un sac et ton chat sous le bras. Gymnase, lit de camp, soupe chaude. Une bénévole te prête un pull. Tu dors à peine.",
+            "effects": {
+              "happiness": -8,
+              "health": -2,
+              "money": -2500,
+              "setFlags": [
+                "soc_sinistre"
+              ]
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "En montant dans la barque, tu glisses et tombes dans l'eau glacée. Un pompier te repêche par le col. Hypothermie légère.",
+            "effects": {
+              "health": -12,
+              "happiness": -10,
+              "money": -2500,
+              "setFlags": [
+                "soc_sinistre"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aider les voisins âgés",
+        "requiresSkill": {
+          "survie": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Lampe frontale, corde, calme. Tu guides la barque jusqu'au couple du rez-de-chaussée d'en face, coincé sur sa table. Ils s'en sortent grâce à toi. Ta maison est inondée, mais tu sais ce que tu as fait.",
+            "effects": {
+              "happiness": 6,
+              "health": -5,
+              "money": -2500,
+              "karma": 10,
+              "setFlags": [
+                "soc_sinistre",
+                "heros_local"
+              ],
+              "skills": {
+                "survie": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0252",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 92,
+    "weight": 10,
+    "conditions": {
+      "flags": [
+        "soc_sinistre"
+      ]
+    },
+    "text": "Un mois après l'inondation, l'expert de l'assurance passe vingt minutes chez toi. Son rapport évalue tes dégâts à 1 900 €. Rien que ta cuisine en vaut six fois plus.",
+    "choices": [
+      {
+        "label": "Accepter pour en finir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu signes. L'argent arrive vite. Tu refais ce que tu peux, et le reste attendra des années.",
+            "effects": {
+              "money": 1900,
+              "happiness": -6,
+              "clearFlags": [
+                "soc_sinistre"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander une contre-expertise",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu mandates un expert indépendant, payé de ta poche. Il prend 300 photos et un air grave. « On va se battre. »",
+            "effects": {
+              "money": -600,
+              "happiness": 3,
+              "smarts": 2,
+              "clearFlags": [
+                "soc_sinistre"
+              ],
+              "setFlags": [
+                "soc_contre_expertise"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rejoindre le collectif des sinistrés",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Cent quarante familles, un avocat commun, une pression médiatique. L'assureur revoit toutes les estimations à la hausse. Tu touches 9 000 €.",
+            "effects": {
+              "money": 9000,
+              "happiness": 9,
+              "newFriend": true,
+              "clearFlags": [
+                "soc_sinistre"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le collectif se divise sur la stratégie. Les réunions durent des heures. Tu finis par accepter 3 500 €, épuisé{e}.",
+            "effects": {
+              "money": 3500,
+              "happiness": -4,
+              "clearFlags": [
+                "soc_sinistre"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0253",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 93,
+    "weight": 10,
+    "conditions": {
+      "flags": [
+        "soc_contre_expertise"
+      ]
+    },
+    "text": "Réunion d'expertise contradictoire chez toi : ton expert, celui de l'assurance, et toi au milieu d'une cuisine qui sent encore la vase.",
+    "choices": [
+      {
+        "label": "Laisser ton expert parler",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il démonte chaque ligne du premier rapport, mètre en main. L'assureur cède : 11 200 €. Tu offres une bouteille à ton expert, qui l'a bien méritée.",
+            "effects": {
+              "money": 11200,
+              "happiness": 12,
+              "clearFlags": [
+                "soc_contre_expertise"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les deux experts s'accordent sur un compromis froid : 5 400 €. Mieux qu'avant, moins que promis.",
+            "effects": {
+              "money": 5400,
+              "happiness": 3,
+              "clearFlags": [
+                "soc_contre_expertise"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Montrer tes photos et factures",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu as tout gardé, classé, daté. L'expert de l'assurance soupire et révise son rapport sans discuter. 9 800 €.",
+            "effects": {
+              "money": 9800,
+              "happiness": 10,
+              "smarts": 3,
+              "clearFlags": [
+                "soc_contre_expertise"
+              ],
+              "setFlags": [
+                "econome"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0254",
+    "category": "societe",
+    "minAge": 25,
+    "maxAge": 90,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "proprietaire"
+      ]
+    },
+    "text": "Un feu de forêt progresse vers ton lotissement. Le ciel est orange, les cendres tombent comme de la neige. Les gendarmes recommandent d'évacuer, mais ce n'est pas encore obligatoire.",
+    "choices": [
+      {
+        "label": "Partir tout de suite",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu prends les papiers, l'album photo, l'animal. Deux jours plus tard, tu rentres : le feu s'est arrêté à 400 mètres. Ta maison sent la fumée pendant des mois.",
+            "effects": {
+              "happiness": -4,
+              "health": -2,
+              "money": -300
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le feu traverse ton jardin. La maison tient, mais la véranda et la haie sont réduites en cendres.",
+            "effects": {
+              "happiness": -10,
+              "money": -6000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester pour arroser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu arroses le toit et les murs pendant des heures. Le feu contourne ta maison. Les pompiers te passent un savon terrible pour être resté{e}.",
+            "effects": {
+              "happiness": 3,
+              "health": -8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La fumée t'étouffe. Les pompiers te sortent de force, les poumons en feu. Trois jours d'hôpital. La maison, elle, brûle en partie.",
+            "effects": {
+              "health": -20,
+              "happiness": -14,
+              "money": -8000,
+              "setFlags": [
+                "traumatise"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0255",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 4,
+    "text": "Une tempête de neige a couché les lignes électriques. Cinq jours sans courant en plein mois de janvier. Il fait 9 °C dans ta chambre.",
+    "choices": [
+      {
+        "label": "Aller chez un proche",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Cinq jours sur un canapé-lit, dans une maison avec trop de monde et un poêle à bois. Tu rentres réchauffé{e} et plus patient{e}.",
+            "effects": {
+              "happiness": 3,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenir chez toi",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Bonnet, trois pulls, bougies. Tu lis à la lampe de poche. C'est presque romantique jusqu'au quatrième jour.",
+            "effects": {
+              "happiness": -4,
+              "health": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu attrapes une vilaine bronchite. Les canalisations gèlent et éclatent. Le dégel sera humide.",
+            "effects": {
+              "health": -10,
+              "money": -700,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Installer un poêle d'appoint",
+        "requiresSkill": {
+          "bricolage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ressors le vieux poêle du garage, refais le raccord du conduit en sécurité. Toute la rue vient se réchauffer chez toi avec une casserole de soupe.",
+            "effects": {
+              "happiness": 9,
+              "health": 2,
+              "newFriend": true,
+              "skills": {
+                "bricolage": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0256",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 95,
+    "weight": 3,
+    "unique": true,
+    "text": "Un glissement de terrain a coupé l'unique route de ton village. Pendant trois semaines, le ravitaillement se fait par un sentier de randonnée et un hélicoptère deux fois par semaine.",
+    "choices": [
+      {
+        "label": "Organiser l'entraide",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu tiens la liste des besoins de chacun, coordonnes les porteurs. Le village ne s'est jamais aussi bien parlé. Une fête est organisée à la réouverture de la route.",
+            "effects": {
+              "happiness": 10,
+              "health": -3,
+              "karma": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Deux familles se disputent les dernières bouteilles de gaz. Tu passes ton temps à arbitrer. Fatigue immense.",
+            "effects": {
+              "happiness": -5,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire le sentier chaque jour",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Six kilomètres de sentier avec un sac de courses. Tu perds trois kilos et gagnes des mollets de chamois.",
+            "effects": {
+              "health": 8,
+              "looks": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu glisses sur une plaque de boue. Cheville foulée, et c'est toi qu'on ravitaille désormais.",
+            "effects": {
+              "health": -8,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir chez des proches",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu quittes le village pour la ville. Quand tu reviens, tout le monde a vécu une aventure commune sans toi.",
+            "effects": {
+              "happiness": -4,
+              "money": -150
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0257",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 80,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "voiture"
+      ]
+    },
+    "text": "Chute de neige soudaine sur le col. La circulation est bloquée. Tu es coincé{e} dans ta voiture depuis trois heures, la jauge d'essence descend, la nuit tombe.",
+    "choices": [
+      {
+        "label": "Faire tourner le moteur par intervalles",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Dix minutes de chauffage toutes les heures, fenêtre entrouverte. La protection civile passe à minuit avec des couvertures et du thé. Tu redescends à l'aube.",
+            "effects": {
+              "health": -3,
+              "happiness": -4
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Tu t'endors moteur allumé, pot d'échappement bouché par la neige. Un gendarme frappe à la vitre juste à temps. Tu as la tête qui tourne pendant deux jours.",
+            "effects": {
+              "health": -15,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rejoindre le refuge à pied",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Deux kilomètres dans la tempête. Tu arrives au refuge les pieds gelés. Soupe, poêle, inconnus solidaires. Une nuit inoubliable.",
+            "effects": {
+              "health": -5,
+              "happiness": 6,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu perds la route dans le blizzard. Les secours te retrouvent en hypothermie. Hôpital, engelures, et une très grosse frayeur.",
+            "effects": {
+              "health": -15,
+              "happiness": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Monter les chaînes",
+        "requiresSkill": {
+          "mecanique": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu montes les chaînes en dix minutes, puis aides trois autres voitures. Le chasse-neige ouvre la voie, et tu redescends en tête de colonne.",
+            "effects": {
+              "happiness": 8,
+              "health": -2,
+              "karma": 3,
+              "skills": {
+                "mecanique": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0258",
+    "category": "societe",
+    "minAge": 20,
+    "maxAge": 95,
+    "weight": 5,
+    "text": "Sécheresse historique : l'eau du robinet est coupée de 8 h à 20 h dans {ville}. Une citerne communale est installée sur la place. Il faut venir avec des bidons.",
+    "choices": [
+      {
+        "label": "Porter les bidons des voisins âgés",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Trois allers-retours par jour. Ton dos proteste, tes voisins te remercient avec des confitures. Tu connais enfin le prénom de tout le monde.",
+            "effects": {
+              "happiness": 8,
+              "health": -3,
+              "karma": 5
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le troisième jour, ton dos se bloque net au milieu de la place. On te ramène en brouette. Les confitures arrivent quand même.",
+            "effects": {
+              "health": -10,
+              "happiness": 2,
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Récupérer l'eau de la douche",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Douche dans une bassine, eau réutilisée pour les toilettes et les plantes. Tu deviens une experte ou un expert de la goutte. Ta facture baisse de moitié.",
+            "effects": {
+              "money": 60,
+              "happiness": 3,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter de l'eau en bouteille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le supermarché est dévalisé. Tu trouves les derniers packs à un prix indécent. Ton coffre est plein, ton porte-monnaie vide.",
+            "effects": {
+              "money": -120,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0259",
+    "category": "societe",
+    "minAge": 25,
+    "maxAge": 90,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "proprietaire"
+      ]
+    },
+    "text": "Un violent orage déclenche une coulée de boue sur la colline. Au matin, il y a trente centimètres de terre dans ton salon et une souche d'arbre devant la télé.",
+    "choices": [
+      {
+        "label": "Déblayer avec les voisins",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Toute la rue vient avec des pelles. En une journée, le salon est vidé. Le soir, barbecue sur le trottoir avec ce qui a été sauvé du congélateur.",
+            "effects": {
+              "happiness": 6,
+              "health": -4,
+              "money": -1200
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu te coupes la main sur un débris caché dans la boue. Tétanos, points de suture, et la souche est toujours là.",
+            "effects": {
+              "health": -9,
+              "happiness": -6,
+              "money": -1200
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre l'assurance",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'état de catastrophe naturelle est reconnu en dix jours. Tout est pris en charge. Une entreprise nettoie mieux que toi.",
+            "effects": {
+              "happiness": 3,
+              "money": -380
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'arrêté se fait attendre trois mois. La boue sèche, l'odeur s'installe, les moisissures aussi.",
+            "effects": {
+              "happiness": -10,
+              "health": -5,
+              "money": -2500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0260",
+    "category": "societe",
+    "minAge": 25,
+    "maxAge": 90,
+    "weight": 4,
+    "text": "Vague de froid à -14 °C. La chaudière collective de l'immeuble d'à côté lâche, et quarante habitants se retrouvent sans chauffage, dont une famille avec un nourrisson.",
+    "choices": [
+      {
+        "label": "Héberger la famille",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Quatre nuits avec un bébé qui pleure toutes les trois heures. Tu dors mal. Ils te laissent un dessin et un pot de miel. Tu ne les oublieras pas.",
+            "effects": {
+              "happiness": 8,
+              "health": -3,
+              "karma": 7,
+              "setFlags": [
+                "genereux"
+              ]
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le bébé a la grippe, puis toi. La semaine est rude, mais personne n'a eu froid.",
+            "effects": {
+              "health": -8,
+              "happiness": 3,
+              "karma": 7,
+              "setFlags": [
+                "genereux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prêter des radiateurs",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu vides ta cave : deux radiateurs d'appoint et une couverture chauffante. Ta facture d'électricité du mois prend froid à ta place.",
+            "effects": {
+              "happiness": 5,
+              "money": -90,
+              "karma": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer tes volets",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu restes au chaud. Le lendemain, tu croises les voisins emmitouflés sur le trottoir et tu baisses les yeux.",
+            "effects": {
+              "happiness": -5,
+              "karma": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0261",
+    "category": "societe",
+    "minAge": 30,
+    "maxAge": 95,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "proprietaire"
+      ]
+    },
+    "text": "Séisme de magnitude 5,1 en pleine nuit. Les cadres tombent, la vaisselle explose. Au matin, une fissure en diagonale traverse le mur de ta chambre.",
+    "choices": [
+      {
+        "label": "Faire venir un expert",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Fissure superficielle. Un enduit, un coup de peinture, et le mur est comme neuf. Mais tu le regardes chaque soir avant de dormir.",
+            "effects": {
+              "money": -400,
+              "happiness": -3,
+              "setFlags": [
+                "anxieux"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le mur porteur est touché. Travaux de 22 000 €, partiellement pris en charge, et trois mois chez ta cousine.",
+            "effects": {
+              "money": -9000,
+              "happiness": -14,
+              "setFlags": [
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reboucher toi-même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Enduit, ponçage, peinture. Le mur est impeccable. Pour l'instant.",
+            "effects": {
+              "money": -40,
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La fissure réapparaît deux mois plus tard, plus large. L'assurance refuse : « travaux non conformes ». Tu paies tout.",
+            "effects": {
+              "money": -12000,
+              "happiness": -15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0262",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 90,
+    "weight": 3,
+    "text": "Alerte orange. Le ciel vire au vert sombre et, au bout de la rue, une colonne grise tourbillonne en arrachant des tuiles. Une mini-tornade se dirige vers ton quartier.",
+    "choices": [
+      {
+        "label": "Te réfugier à la cave",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Trois minutes de vacarme. Tu remontes : les tuiles du voisin sont dans ton jardin, ton trampoline chez quelqu'un d'autre. Personne n'est blessé.",
+            "effects": {
+              "happiness": -3,
+              "money": -200
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Une partie du toit s'envole. Il pleut dans ta chambre pendant deux semaines, le temps que le couvreur trouve une date.",
+            "effects": {
+              "happiness": -10,
+              "money": -3500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Filmer depuis la fenêtre",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta vidéo est reprise par toutes les chaînes. Un météorologue la commente en direct. Tu restes collé{e} à la vitre, fasciné{e}.",
+            "effects": {
+              "happiness": 5,
+              "fame": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La vitre explose. Éclats de verre dans les bras et le visage. Points de suture, et une vidéo de quatre secondes, floue.",
+            "effects": {
+              "health": -12,
+              "looks": -4,
+              "happiness": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0263",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 85,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "voiture"
+      ]
+    },
+    "text": "Épisode de pluies diluviennes. Sur ta route, un gué est submergé : l'eau boueuse traverse la chaussée sur trente mètres. Un panneau indique « Route barrée », à moitié couché.",
+    "choices": [
+      {
+        "label": "Traverser quand même",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Tu passes, le cœur au bord des lèvres, l'eau jusqu'aux portières. Le moteur tousse mais tient. Tu trembles pendant tout le reste du trajet.",
+            "effects": {
+              "happiness": -4,
+              "money": -900
+            }
+          },
+          {
+            "chance": 0.45,
+            "text": "Le courant pousse la voiture sur le côté. Tu sors par la fenêtre et t'agrippes à un arbre. Les pompiers te récupèrent une heure plus tard. Voiture perdue.",
+            "effects": {
+              "health": -15,
+              "happiness": -15,
+              "money": -6000,
+              "setFlags": [
+                "traumatise"
+              ]
+            }
+          },
+          {
+            "chance": 0.1,
+            "text": "La voiture est emportée.",
+            "effects": {
+              "death": "emporté par une crue en voulant traverser une route inondée"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire demi-tour",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Détour de quarante minutes. Le soir, aux informations, tu vois une voiture emportée au même endroit. Tu restes longtemps assis{e} sur ton canapé.",
+            "effects": {
+              "happiness": 4,
+              "money": -15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre la décrue",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Deux heures dans la voiture, la radio, un paquet de chips. L'eau baisse. Tu passes sans encombre, un peu en retard pour tout.",
+            "effects": {
+              "happiness": 3,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0264",
+    "category": "societe",
+    "minAge": 20,
+    "maxAge": 95,
+    "weight": 4,
+    "text": "Une pollution industrielle rend l'eau du robinet de {ville} impropre à la consommation pendant dix jours. La mairie distribue des bouteilles. Les rumeurs, elles, circulent gratuitement.",
+    "choices": [
+      {
+        "label": "Aller aux réunions d'information",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu comprends ce qui s'est passé, et qui est responsable. Tu rejoins le collectif qui obtient des contrôles renforcés sur l'usine.",
+            "effects": {
+              "smarts": 4,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les réponses sont floues, les chiffres contradictoires. Tu repars plus inquiet ou plus inquiète qu'avant. Tu achètes un filtre très cher.",
+            "effects": {
+              "money": -180,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Boire l'eau quand même",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« J'ai toujours bu l'eau du robinet. » Tu n'as rien. Tu as eu de la chance et tu le sais.",
+            "effects": {
+              "happiness": 2,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Trois jours de maux de ventre et de nausées. Le médecin te regarde avec l'air de quelqu'un qui a lu les consignes.",
+            "effects": {
+              "health": -10,
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0265",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 3,
+    "text": "Exercice de sécurité autour de la centrale nucléaire voisine : la préfecture distribue des comprimés d'iode à tous les foyers. Ta rue panique doucement.",
+    "choices": [
+      {
+        "label": "Lire la notice calmement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "C'est un exercice, les comprimés se prennent uniquement sur consigne officielle. Tu les ranges avec ta trousse de secours. Tu expliques ça trois fois à ton voisin.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "En prendre un par précaution",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Mauvaise idée : maux de tête, palpitations, et un pharmacien qui te fait la morale pendant dix minutes.",
+            "effects": {
+              "health": -5,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Préparer un sac d'urgence",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Lampe, radio, eau, papiers, médicaments. Le sac te rassure. Il servira lors de la prochaine coupure de courant.",
+            "effects": {
+              "happiness": 4,
+              "money": -45,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu prépares un sac, puis deux, puis une réserve de conserves pour six mois. Ta cave ressemble à un abri. Tes amis s'inquiètent.",
+            "effects": {
+              "money": -500,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0266",
+    "category": "societe",
+    "minAge": 22,
+    "maxAge": 65,
+    "weight": 7,
+    "conditions": {
+      "requiresJob": true
+    },
+    "text": "Épidémie de grippe : sur les quinze personnes de ton service, tu es la seule encore debout. Ton patron te demande de « tenir la boutique ».",
+    "choices": [
+      {
+        "label": "Tout tenir seul{e}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu fais le travail de quatre personnes pendant dix jours. Ton patron te remercie avec une prime et une boîte de chocolats.",
+            "effects": {
+              "money": 400,
+              "happiness": 4,
+              "health": -5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le huitième jour, la grippe te rattrape aussi. Tu passes une semaine au lit, et ton bureau est vide pour de bon.",
+            "effects": {
+              "health": -12,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire le minimum",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu réponds aux urgences et laisses le reste. Tout le monde comprend. Tu restes en bonne santé.",
+            "effects": {
+              "happiness": 3,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger du télétravail",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Accordé. Tu travailles en pyjama, loin des microbes. Tu évites la grippe et te découvres une passion pour le thé au gingembre.",
+            "effects": {
+              "happiness": 5,
+              "health": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Refusé. Ton patron te trouve « peu solidaire ». L'ambiance se refroidit plus vite que ta tasse.",
+            "effects": {
+              "happiness": -5,
+              "money": -50
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0267",
+    "category": "societe",
+    "minAge": 28,
+    "maxAge": 80,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Le 24 décembre, une gastro fulgurante frappe la famille. Ton fils est tombé le premier, ta belle-sœur ensuite. La dinde attend au four.",
+    "choices": [
+      {
+        "label": "Maintenir le réveillon",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Par miracle, tu es épargné{e}. Tu manges de la dinde seul{e} à table, en écoutant la symphonie des salles de bains.",
+            "effects": {
+              "happiness": 3,
+              "health": 1
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Tu tombes à minuit pile. Le père Noël passe dans une maison très silencieuse et très malodorante.",
+            "effects": {
+              "health": -8,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annuler et soigner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Riz, bouillon, réhydratation, tisanes. Tu soignes tout le monde. Le réveillon est reporté au 2 janvier, et il est délicieux.",
+            "effects": {
+              "happiness": 5,
+              "health": -3,
+              "relationships": {
+                "child": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir chez des amis",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes la soirée ailleurs. Tu te sens coupable à chaque bouchée de bûche. Personne ne te le pardonne vraiment.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "child": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0268",
+    "category": "societe",
+    "minAge": 65,
+    "maxAge": 100,
+    "weight": 6,
+    "text": "La pharmacie propose la vaccination contre la grippe saisonnière, sans rendez-vous. Ton voisin Gilbert affirme que « ça donne la grippe ».",
+    "choices": [
+      {
+        "label": "Te faire vacciner",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Une piqûre, un bras un peu douloureux deux jours. Tout l'hiver, tu passes entre les gouttes pendant que Gilbert tousse à la fenêtre.",
+            "effects": {
+              "health": 6,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Un peu de fièvre le soir même. Gilbert jubile. Le lendemain, tu vas parfaitement bien. Gilbert, lui, attrape la vraie grippe en février.",
+            "effects": {
+              "health": 3,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter Gilbert",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu passes l'hiver sans rien attraper. Gilbert te le répète tous les jours.",
+            "effects": {
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Grippe sévère, dix jours au lit, une semaine de fatigue. Gilbert t'apporte de la soupe sans un mot.",
+            "effects": {
+              "health": -14,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Convaincre Gilbert",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vous y allez ensemble et prenez un café après. Gilbert dit « c'est pour te faire plaisir ». C'est surtout pour la pharmacienne, qu'il trouve charmante.",
+            "effects": {
+              "happiness": 6,
+              "health": 5,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Gilbert te traite de « mouton ». Vous ne vous parlez plus jusqu'au printemps.",
+            "effects": {
+              "happiness": -4,
+              "health": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0269",
+    "category": "societe",
+    "minAge": 26,
+    "maxAge": 55,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Mot de l'école : « Épidémie de poux en cours. Merci de vérifier la tête de votre enfant. » Ta fille se gratte déjà. Toi aussi, rien qu'en lisant le mot.",
+    "choices": [
+      {
+        "label": "Traitement complet",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Lotion, peigne fin, lavage de tous les draps à 60 °C. Les poux sont vaincus. La machine à laver a besoin de vacances.",
+            "effects": {
+              "happiness": 3,
+              "money": -35
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ils reviennent une semaine plus tard. Et cette fois, ils sont aussi sur ta tête.",
+            "effects": {
+              "happiness": -5,
+              "money": -60,
+              "looks": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Méthode de grand-mère",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Vinaigre et peigne fin. Ça marche, mais toute la maison sent la salade.",
+            "effects": {
+              "happiness": 3,
+              "money": -3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Les poux adorent le vinaigre, apparemment. La famille entière est infestée.",
+            "effects": {
+              "happiness": -6,
+              "money": -80
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couper court",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta fille revient de chez le coiffeur avec une coupe de garçon manqué. Elle adore. Toi, tu regrettes ses tresses.",
+            "effects": {
+              "happiness": 3,
+              "money": -20,
+              "relationships": {
+                "child": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0270",
+    "category": "societe",
+    "minAge": 22,
+    "maxAge": 45,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Ton bébé respire vite et mal, en creusant le ventre. Bronchiolite. Les urgences pédiatriques sont saturées et annoncent cinq heures d'attente.",
+    "choices": [
+      {
+        "label": "Attendre aux urgences",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Cinq heures avec un bébé dans les bras. L'infirmière fait des miracles avec le peu de lits disponibles. Retour à la maison avec un mouche-bébé et une immense fatigue.",
+            "effects": {
+              "health": -5,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le bébé doit être hospitalisé trois jours sous oxygène. Tu ne dors pas, tu ne manges pas. Il rentre en souriant. Tu pleures de soulagement.",
+            "effects": {
+              "health": -8,
+              "happiness": -10,
+              "relationships": {
+                "child": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler le 15",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le médecin régulateur pose les bonnes questions et t'oriente vers un pédiatre de garde, plus près. Consultation en une heure. Tu le remercies à voix basse.",
+            "effects": {
+              "happiness": 5,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0271",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 85,
+    "weight": 6,
+    "text": "Dans le train bondé, ton voisin de siège tousse à pleins poumons, sans se couvrir la bouche, depuis une demi-heure. Il reste une heure de trajet.",
+    "choices": [
+      {
+        "label": "Lui proposer un masque",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il le prend en s'excusant : il ne voulait pas se plaindre. Le reste du trajet est plus serein, pour vous deux.",
+            "effects": {
+              "happiness": 5,
+              "health": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "« Je ne suis pas malade. » Il tousse sur ton masque tendu. Tu tombes malade trois jours plus tard.",
+            "effects": {
+              "health": -7,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de place",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu finis le trajet debout, entre deux valises et un vélo. Tu restes en bonne santé. Tes jambes, moins.",
+            "effects": {
+              "health": 2,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu retiens ta respiration à chaque quinte. Tu arrives avec un mal de tête, et la grippe deux jours plus tard.",
+            "effects": {
+              "health": -8,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0272",
+    "category": "societe",
+    "minAge": 13,
+    "maxAge": 18,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "school"
+      ]
+    },
+    "text": "Une épidémie saisonnière fait fermer ton lycée pendant une semaine. Cours en ligne, devoirs sur plateforme. Personne ne vérifie vraiment si tu es connecté{e}.",
+    "choices": [
+      {
+        "label": "Suivre sérieusement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais tout, à l'heure. Au retour, tu es la seule personne de la classe à avoir compris le chapitre sur les vecteurs. Le prof te regarde avec gratitude.",
+            "effects": {
+              "smarts": 5,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer en ligne toute la semaine",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu passes niveau 87 et tu dors à 4 h tous les soirs. Le retour en classe est brutal, et ta vue un peu floue.",
+            "effects": {
+              "smarts": -4,
+              "health": -3,
+              "happiness": 4,
+              "setFlags": [
+                "accro_aux_ecrans"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Interrogation surprise en visio le mercredi. Tu réponds avec ta manette encore dans la main. Zéro.",
+            "effects": {
+              "smarts": -3,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aider le petit voisin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Son école est fermée aussi. Tu deviens prof de CE1 à mi-temps pour le petit du dessous. Tu as une patience que tu ne te connaissais pas.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0273",
+    "category": "societe",
+    "minAge": 25,
+    "maxAge": 60,
+    "weight": 3,
+    "text": "Après avoir gardé le fils de ta cousine, tu découvres des boutons partout. À ton âge, la varicelle. Ton médecin rit doucement, puis devient sérieux.",
+    "choices": [
+      {
+        "label": "Repos complet",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Deux semaines au lit, de la fièvre, des démangeaisons infernales. Tu guéris sans cicatrice, grâce à une discipline héroïque.",
+            "effects": {
+              "health": -6,
+              "happiness": -5
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Complication pulmonaire : hospitalisation de quelques jours. L'adulte qui attrape une maladie d'enfant n'est pas un sujet de blague.",
+            "effects": {
+              "health": -15,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer à travailler",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu contamines deux collègues et une stagiaire enceinte doit consulter en urgence. On te le fait payer, à juste titre.",
+            "effects": {
+              "health": -8,
+              "happiness": -9,
+              "karma": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te gratter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu cèdes. Tu gardes trois petites cicatrices sur le front, souvenir éternel d'un après-midi de baby-sitting.",
+            "effects": {
+              "health": -5,
+              "looks": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0274",
+    "category": "societe",
+    "minAge": 22,
+    "maxAge": 80,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "endette"
+      ]
+    },
+    "text": "Une travailleuse sociale te conseille de déposer un dossier à la commission de surendettement. Il faut y lister toutes tes dettes, y compris celles que tu préfères oublier.",
+    "choices": [
+      {
+        "label": "Tout déclarer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le dossier est accepté : plan de remboursement sur sept ans, intérêts gelés, une partie des dettes effacée. Tu respires pour la première fois depuis longtemps.",
+            "effects": {
+              "happiness": 10,
+              "money": 1500,
+              "setFlags": [
+                "econome"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Dossier recevable, mais un créancier conteste. Les mois passent en courriers. Tu tiens, à peine.",
+            "effects": {
+              "happiness": -5,
+              "health": -3,
+              "setFlags": [
+                "surendette"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Oublier un crédit",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le crédit oublié refait surface au moment du plan. Le dossier est rejeté pour mauvaise foi. Tout est à recommencer, en pire.",
+            "effects": {
+              "happiness": -12,
+              "money": -800,
+              "setFlags": [
+                "surendette"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te débrouiller seul{e}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refuses par fierté. Tu jongles entre les relances et les découverts. Tu maigris de trois kilos sans le vouloir.",
+            "effects": {
+              "happiness": -8,
+              "health": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0275",
+    "category": "societe",
+    "minAge": 20,
+    "maxAge": 65,
+    "weight": 6,
+    "conditions": {
+      "requiresJob": true
+    },
+    "text": "Ton train s'arrête en rase campagne : « incident technique ». La climatisation s'éteint. Il fait 34 °C dehors. Ton rendez-vous professionnel est dans deux heures.",
+    "choices": [
+      {
+        "label": "Prévenir et patienter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Quatre heures d'arrêt. Le contrôleur distribue de l'eau. Le rendez-vous est reporté, ton client compréhensif. Tu demandes un remboursement.",
+            "effects": {
+              "happiness": -4,
+              "health": -3,
+              "money": 40
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton client signe avec un concurrent ce même après-midi. « Le train ? Pas de chance. »",
+            "effects": {
+              "happiness": -10,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Travailler dans le train",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ordinateur sur les genoux, partage de connexion de ta voisine. Tu fais ta présentation en visio depuis le couloir, en sueur. Ça passe.",
+            "effects": {
+              "happiness": 5,
+              "health": -3,
+              "money": 100
+            }
+          }
+        ]
+      },
+      {
+        "label": "Animer le wagon",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Jeu du portrait, partage de biscuits, chorale improvisée. Le wagon 12 vit la meilleure panne de l'histoire ferroviaire.",
+            "effects": {
+              "happiness": 8,
+              "health": -2,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0276",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 80,
+    "weight": 4,
+    "text": "Panne de signalisation géante : ton train est bloqué depuis trois heures. Des passagers forcent les portes et descendent marcher sur les voies vers la gare suivante.",
+    "choices": [
+      {
+        "label": "Les suivre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Deux kilomètres sur le ballast, valise à la main. Tu arrives à la gare, épuisé{e}. Le trafic reprend dix minutes plus tard, avec ton train vide.",
+            "effects": {
+              "health": -4,
+              "happiness": -5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu trébuches sur une traverse. Cheville tordue, et une amende pour circulation sur les voies.",
+            "effects": {
+              "health": -8,
+              "money": -150,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester à bord",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La circulation est d'abord coupée à cause des marcheurs, puis reprend. Tu arrives quatre heures en retard, mais assis{e} et en un seul morceau.",
+            "effects": {
+              "happiness": -3,
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0277",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 30,
+    "weight": 6,
+    "text": "Minuit et demi. Le dernier bus de nuit ne passe pas : « service supprimé faute de chauffeur ». Tu es à six kilomètres de chez toi et ton téléphone est à 4 %.",
+    "choices": [
+      {
+        "label": "Rentrer à pied",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Une heure et quart dans une ville endormie. Tu croises un renard, une boulangerie qui enfourne. C'est étrangement beau.",
+            "effects": {
+              "health": 3,
+              "happiness": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un groupe te suit sur deux rues en t'interpellant. Tu entres dans une pharmacie de garde et y attends un long moment. Tu rentres en courant.",
+            "effects": {
+              "happiness": -8,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre un taxi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le trouves après vingt minutes. 32 € la course. Tu rentres en sécurité et un peu plus pauvre.",
+            "effects": {
+              "money": -32,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler un ami",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il décroche, vient en pyjama et ne te pose aucune question. Tu lui dois une grande dette d'honneur.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton téléphone s'éteint pendant l'appel. Tu marches quand même, en espérant qu'il ne te cherche pas toute la nuit.",
+            "effects": {
+              "happiness": -5,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0278",
+    "category": "societe",
+    "minAge": 20,
+    "maxAge": 80,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "voiture"
+      ]
+    },
+    "text": "Le pont principal de {ville} est fermé pour deux ans de travaux. Ton trajet de dix minutes passe à cinquante, par une déviation saturée.",
+    "choices": [
+      {
+        "label": "Passer au vélo",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La passerelle piétonne reste ouverte. À vélo, tu mets douze minutes. En trois mois, tu as perdu quatre kilos et gagné une humeur radieuse.",
+            "effects": {
+              "health": 9,
+              "happiness": 6,
+              "looks": 3,
+              "setFlags": [
+                "sportif_regulier"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu glisses sur la passerelle mouillée en novembre. Bras cassé, et retour forcé à la déviation.",
+            "effects": {
+              "health": -10,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Subir la déviation",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Quatre-vingts minutes par jour dans les bouchons. Tu apprends des langues avec des podcasts. Tu n'en maîtrises aucune, mais tu connais tous les panneaux.",
+            "effects": {
+              "happiness": -6,
+              "money": -60
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser un covoiturage",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Trois collègues, une voiture, des frais partagés. Les bouchons sont plus drôles à quatre. Vous lancez un quiz quotidien.",
+            "effects": {
+              "happiness": 5,
+              "money": 80,
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0279",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 80,
+    "weight": 5,
+    "text": "Ta correspondance est annulée à 23 h. Prochain train : 6 h 12. La gare ferme ses salles d'attente. Tu restes sur un banc avec trois inconnus et un distributeur de chips.",
+    "choices": [
+      {
+        "label": "Chercher un hôtel",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le seul hôtel ouvert te prend 95 € pour une chambre qui sent le tabac froid. Tu dors cinq heures, à peu près.",
+            "effects": {
+              "money": -95,
+              "health": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Complet. Tu reviens au banc, plus fatigué{e}, avec 2 km de marche en plus.",
+            "effects": {
+              "health": -3,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Discuter en espagnol",
+        "requiresSkill": {
+          "espagnol": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les trois inconnus sont des étudiants de Valence. Vous parlez jusqu'à l'aube, partagez des chips, des clémentines et des adresses. L'un d'eux t'invite pour l'été.",
+            "effects": {
+              "happiness": 9,
+              "health": -2,
+              "newFriend": true,
+              "skills": {
+                "espagnol": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dormir sur le banc",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Trois heures de sommeil en accordéon. Tu montes dans le train de 6 h 12 avec un torticolis légendaire.",
+            "effects": {
+              "health": -5,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0280",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 75,
+    "weight": 6,
+    "text": "L'ascenseur de la gare est en panne, comme chaque mois. Une jeune mère regarde les 48 marches, sa poussette, son bébé et sa valise. Ton train part dans quatre minutes.",
+    "choices": [
+      {
+        "label": "Porter la poussette",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous montez ensemble. Tu attrapes ton train de justesse, en sueur. Elle te crie merci depuis le quai. Ta journée commence bien.",
+            "effects": {
+              "happiness": 7,
+              "karma": 4,
+              "health": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu rates ton train, mais tu ne regrettes rien. Le suivant est dans une heure, et tu as un café à la main.",
+            "effects": {
+              "happiness": 3,
+              "karma": 4,
+              "money": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Courir à ton train",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Depuis la fenêtre, tu vois quelqu'un d'autre l'aider. Tu te sens un peu moins bien que lui.",
+            "effects": {
+              "happiness": -3,
+              "karma": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Signaler la panne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu écris au service client pour la cinquième fois de l'année. Réponse automatique. Tu gardes les messages au cas où.",
+            "effects": {
+              "happiness": -3,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0281",
+    "category": "societe",
+    "minAge": 14,
+    "maxAge": 80,
+    "weight": 6,
+    "text": "Le valideur du tram ne marchait pas, alors tu es monté{e} sans valider. Deux contrôleurs entrent et te demandent ton titre de transport.",
+    "choices": [
+      {
+        "label": "Expliquer la panne",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'un des contrôleurs vérifie la borne, constate la panne et te laisse partir. Tu les remercies un peu trop fort.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "« Il fallait valider à la station suivante. » Amende de 50 €. Tu contestes par courrier, sans grand espoir.",
+            "effects": {
+              "money": -50,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier",
+        "requiresSkill": {
+          "marchandage": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu proposes d'acheter immédiatement un ticket à bord, avec le sourire. Le contrôleur accepte. Tu repars avec un billet et sans amende.",
+            "effects": {
+              "happiness": 5,
+              "money": -2,
+              "skills": {
+                "marchandage": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Descendre en vitesse",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Les portes se ferment juste derrière toi. Tu as échappé à l'amende. Tu es à trois stations de chez toi, sous la pluie.",
+            "effects": {
+              "happiness": -3,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Les contrôleurs t'arrêtent sur le quai. Amende majorée pour tentative de fuite.",
+            "effects": {
+              "money": -150,
+              "happiness": -8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0282",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 90,
+    "weight": 3,
+    "text": "{ville} teste une navette autonome sans chauffeur. Tu montes pour essayer. Elle s'arrête net au milieu d'un rond-point et annonce : « Obstacle détecté. » L'obstacle est un pigeon.",
+    "choices": [
+      {
+        "label": "Attendre que ça reparte",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Quinze minutes et des klaxons plus tard, le pigeon s'envole. La navette repart. Tu arrives en retard mais avec une anecdote parfaite.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le pigeon s'installe. Un technicien finit par venir à pied. Une heure de perdue pour huit cents mètres.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chasser le pigeon",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu descends au milieu du rond-point en agitant les bras. Une voiture freine juste devant toi. Le pigeon part. Ton cœur aussi, presque.",
+            "effects": {
+              "health": -3,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Filmer pour la mairie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta vidéo, envoyée au service innovation, déclenche une mise à jour du logiciel : les pigeons ne sont plus des obstacles. Un adjoint te remercie avec un stylo.",
+            "effects": {
+              "happiness": 6,
+              "fame": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0283",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 85,
+    "weight": 4,
+    "text": "Le métro s'immobilise dans un tunnel. Plus d'annonce, lumière réduite. Au bout de vingt minutes, une passagère commence à respirer très vite et se met à pleurer.",
+    "choices": [
+      {
+        "label": "Lui parler doucement",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu lui demandes son prénom, sa destination, ses projets du week-end. Elle se calme. Quand le métro repart, elle te serre la main sans rien dire.",
+            "effects": {
+              "happiness": 7,
+              "karma": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Sa panique te gagne un peu. Vous respirez ensemble, très mal. Le métro repart enfin. Vous êtes deux à trembler.",
+            "effects": {
+              "happiness": -4,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Guider sa respiration",
+        "requiresSkill": {
+          "survie": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Inspirer quatre secondes, retenir, expirer six. Tu comptes avec elle. En cinq minutes, son souffle redevient normal. Tout le wagon respire avec vous.",
+            "effects": {
+              "happiness": 9,
+              "karma": 5,
+              "skills": {
+                "survie": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mettre tes écouteurs",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Quelqu'un d'autre s'occupe d'elle. Tu fixes ta playlist sans l'écouter. Tu repenses à ses pleurs toute la soirée.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0284",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 90,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "{ami} t'invite à sa cérémonie de naturalisation à la préfecture. Après dix ans de démarches, il ou elle reçoit enfin la nationalité. Tu es le seul invité ou la seule invitée.",
+    "choices": [
+      {
+        "label": "Y aller avec des fleurs",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La cérémonie est sobre, puis l'hymne commence et {ami} pleure. Toi aussi. Vous fêtez ça avec un repas de son pays d'origine et un dessert d'ici.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "friend": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chanter l'hymne ensemble",
+        "requiresSkill": {
+          "chant": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta voix soutient la sienne, un peu hésitante sur les paroles. Le préfet sourit. Une photo de vous deux, en train de chanter, finit encadrée chez {ami}.",
+            "effects": {
+              "happiness": 12,
+              "relationships": {
+                "friend": 12
+              },
+              "skills": {
+                "chant": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Oublier la date",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu reçois une photo à midi : {ami}, sans personne à ses côtés au milieu des familles des autres. Tu t'excuses longuement. Il te faudra du temps.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "friend": -10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0285",
+    "category": "societe",
+    "minAge": 20,
+    "maxAge": 80,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Un reportage sur le don d'organes lance la conversation au dîner. {partenaire} te demande soudain : « Et toi, tu voudrais donner ? Il faut que l'autre le sache. »",
+    "choices": [
+      {
+        "label": "Oui, et le dire clairement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous en parlez longtemps, sérieusement. Vous inscrivez vos volontés et vous le dites à vos familles. C'est étrange, puis apaisant.",
+            "effects": {
+              "happiness": 5,
+              "karma": 6,
+              "relationships": {
+                "partner": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de sujet",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu parles du dessert. {partenaire} n'insiste pas, mais tu sens que la question reviendra. Elle reste là, entre vous.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "partner": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que tu hésites",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu avoues tes peurs. {partenaire} t'écoute sans juger. Vous n'avez pas décidé, mais vous vous connaissez un peu mieux.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2,
+              "relationships": {
+                "partner": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0286",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 90,
+    "weight": 5,
+    "text": "{ville} lance un budget participatif : 50 000 € pour des projets proposés et votés par les habitants. Tu as une idée de table de ping-pong en béton, de bancs, et d'arbres sur le parking désert.",
+    "choices": [
+      {
+        "label": "Déposer le projet",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton projet arrive troisième, financé. Un an plus tard, des enfants jouent au ping-pong à l'ombre des jeunes arbres. Tu passes souvent, l'air de rien.",
+            "effects": {
+              "happiness": 11,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le projet arrive septième. Seuls les six premiers sont financés. Un parking reste un parking.",
+            "effects": {
+              "happiness": -5,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dessiner une maquette",
+        "requiresSkill": {
+          "dessin": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta vue en perspective, avec des arbres et des enfants dessinés à la main, fait la différence. Projet élu en tête. La mairie garde ton dessin pour sa communication.",
+            "effects": {
+              "happiness": 13,
+              "fame": 3,
+              "skills": {
+                "dessin": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Voter pour les autres",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu votes pour un jardin partagé et une boîte à livres. Les deux passent. Tu as l'impression d'avoir gagné sans rien faire.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0287",
+    "category": "societe",
+    "minAge": 16,
+    "maxAge": 25,
+    "weight": 5,
+    "unique": true,
+    "text": "Une mission de service civique te tend les bras : huit mois dans une association d'aide aux personnes âgées, pour une petite indemnité mensuelle.",
+    "choices": [
+      {
+        "label": "Signer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu fais des courses, des jeux de société, des sorties au marché. Mme Lucas, 97 ans, t'apprend la belote et la vie. Tu trouves ta voie : le social.",
+            "effects": {
+              "happiness": 9,
+              "smarts": 3,
+              "money": 600,
+              "setFlags": [
+                "benevole"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "L'association manque de moyens, on t'utilise pour photocopier. Tu apprends quand même deux ou trois choses sur la patience.",
+            "effects": {
+              "happiness": -3,
+              "money": 600
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chercher un job payé",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu travailles dans un fast-food. C'est mieux payé, et moins riche de sens. Tu le sais, et tu as besoin de l'argent.",
+            "effects": {
+              "money": 1200,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0288",
+    "category": "societe",
+    "minAge": 14,
+    "maxAge": 90,
+    "weight": 5,
+    "text": "Journées du patrimoine : la préfecture ouvre ses salons au public. Le guide s'éloigne, et tu te retrouves seul{e} devant le grand bureau du préfet. Le fauteuil a l'air très confortable.",
+    "choices": [
+      {
+        "label": "T'asseoir une seconde",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu t'assois, tu prends un air grave, ton ami te photographie. La photo fait rire toute ta famille. Personne ne t'a vu{e}.",
+            "effects": {
+              "happiness": 7
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le préfet en personne entre à ce moment-là. Il rit, te serre la main et te demande ta première décision. Tu bafouilles quelque chose sur les pistes cyclables.",
+            "effects": {
+              "happiness": 6,
+              "fame": 1,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter le guide",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu découvres l'histoire du bâtiment, ses tapisseries et les crises qu'il a vu passer. Tu repars avec une curiosité nouvelle pour l'histoire de {ville}.",
+            "effects": {
+              "smarts": 4,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0289",
+    "category": "societe",
+    "minAge": 20,
+    "maxAge": 65,
+    "weight": 5,
+    "conditions": {
+      "requiresJob": true
+    },
+    "text": "Exercice d'évacuation incendie au travail. Tu étais aux toilettes du troisième étage. Quand tu sors, tout le bâtiment est vide et la sirène hurle.",
+    "choices": [
+      {
+        "label": "Prendre l'escalier de secours",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu rejoins le parking. Le responsable sécurité te coche sur sa liste avec un regard de reproche. Ton équipe t'applaudit, pour rire.",
+            "effects": {
+              "happiness": -3,
+              "health": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La porte de l'escalier est verrouillée. Tu signales l'anomalie au responsable sécurité. La porte est réparée la semaine suivante. Tu as peut-être sauvé des vies futures.",
+            "effects": {
+              "happiness": 5,
+              "karma": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester dans les toilettes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Les pompiers volontaires de l'exercice te trouvent là, porte ouverte. Ton nom apparaît dans le rapport sous la mention « personne non évacuée ». Tu deviens une blague pour l'année.",
+            "effects": {
+              "happiness": -6,
+              "fame": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0290",
+    "category": "societe",
+    "minAge": 13,
+    "maxAge": 18,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "school"
+      ]
+    },
+    "text": "Une alerte à la bombe vide ton lycée en pleine épreuve de maths. Huit cents élèves attendent sur le stade pendant que les démineurs fouillent les salles.",
+    "choices": [
+      {
+        "label": "Réviser sur la pelouse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu profites de deux heures inattendues pour revoir les fonctions. L'épreuve est reportée. Tu la réussis haut la main.",
+            "effects": {
+              "smarts": 5,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Profiter du soleil",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Pique-nique improvisé, bataille de pelouse, rires. Le lendemain, tout le monde parle de cette journée comme d'une fête.",
+            "effects": {
+              "happiness": 6,
+              "smarts": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chercher qui a fait ça",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu remarques un élève de seconde très nerveux qui supprime des messages. Tu préviens un surveillant. C'était lui. Il sera exclu.",
+            "effects": {
+              "happiness": 3,
+              "karma": 3,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu accuses à tort un élève qui avait juste l'air bizarre. Il ne t'adresse plus la parole, et il a raison.",
+            "effects": {
+              "happiness": -5,
+              "karma": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0291",
+    "category": "societe",
+    "minAge": 14,
+    "maxAge": 15,
+    "weight": 6,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "school"
+      ]
+    },
+    "text": "Tu fais ton stage d'observation de troisième à la mairie de {ville}. Premier jour : on t'installe à l'accueil de l'état civil, face à un monsieur furieux à propos d'un acte de naissance.",
+    "choices": [
+      {
+        "label": "Aller chercher une agente",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'agente règle tout en cinq minutes. Le monsieur part calmé. Tu apprends que la diplomatie est un métier, et tu prends des notes.",
+            "effects": {
+              "smarts": 4,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'écouter toi-même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu l'écoutes, tu notes, tu lui proposes un café. Il se calme. L'agente te félicite. Ton rapport de stage aura un chapitre entier sur lui.",
+            "effects": {
+              "smarts": 3,
+              "happiness": 7
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il crie plus fort. Tu restes figé{e}. L'agente arrive à la rescousse. Tu passes le reste de la semaine à classer des dossiers.",
+            "effects": {
+              "happiness": -5,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à voir le maire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le maire te reçoit cinq minutes, entre deux réunions. Il te dit que ce métier est « fatigant mais passionnant ». Tu repars avec un porte-clés.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0292",
+    "category": "societe",
+    "minAge": 62,
+    "maxAge": 100,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "retired"
+      ]
+    },
+    "text": "Toutes les démarches se font désormais en ligne. La médiathèque propose des ateliers numériques pour les seniors. Le premier s'intitule « Créer son identifiant sans pleurer ».",
+    "choices": [
+      {
+        "label": "T'inscrire",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "En six séances, tu maîtrises les mails, les démarches et les appels vidéo avec tes petits-enfants. Tu leur expliques même un raccourci clavier.",
+            "effects": {
+              "smarts": 6,
+              "happiness": 7
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tu perds trois fois ton mot de passe. Le formateur, patient, finit par l'écrire sur un post-it caché dans ton portefeuille.",
+            "effects": {
+              "smarts": 3,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aider les autres",
+        "requiresSkill": {
+          "code": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu deviens l'assistant ou l'assistante officieuse de l'atelier. Les retraités du quartier t'apportent des tartes en échange de ton aide. Tu ne t'es jamais senti{e} aussi utile.",
+            "effects": {
+              "happiness": 11,
+              "smarts": 3,
+              "newFriend": true,
+              "skills": {
+                "code": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser par principe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu continues d'envoyer tes courriers en recommandé. Tes démarches prennent trois fois plus longtemps, mais tu gardes ta dignité de papier.",
+            "effects": {
+              "happiness": -3,
+              "money": -40
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0293",
+    "category": "societe",
+    "minAge": 60,
+    "maxAge": 100,
+    "weight": 5,
+    "text": "Un démarcheur au téléphone t'annonce que ta maison est « éligible à l'isolation pour 1 € » grâce à une aide de l'État. Il lui faut seulement ton numéro fiscal et une signature aujourd'hui.",
+    "choices": [
+      {
+        "label": "Accepter le rendez-vous",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Deux techniciens posent un isolant très moyen, mais réel. Les factures baissent un peu. Tu as eu de la chance.",
+            "effects": {
+              "happiness": 3,
+              "money": -1
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Ils posent trois rouleaux de laine dans le grenier et te font signer un crédit de 14 000 €. Tu découvres le piège trois mois plus tard.",
+            "effects": {
+              "money": -4000,
+              "happiness": -14,
+              "setFlags": [
+                "endette"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Raccrocher",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu raccroches poliment. Il rappelle six fois dans la semaine. Tu finis par laisser le téléphone sonner en tricotant.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler la mairie pour vérifier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La mairie te confirme l'arnaque et te met en relation avec un vrai conseiller énergie. Tu obtiens une aide réelle, avec de vrais artisans.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 3,
+              "money": 300
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0294",
+    "category": "societe",
+    "minAge": 55,
+    "maxAge": 100,
+    "weight": 5,
+    "text": "Le bureau de poste de ton village va fermer. Il sera remplacé par un « point relais » dans la supérette, ouvert deux matinées par semaine.",
+    "choices": [
+      {
+        "label": "Mobiliser le village",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Pétition, banderoles, conseil municipal bondé. La poste reste ouverte trois jours par semaine. Une victoire partielle mais savoureuse.",
+            "effects": {
+              "happiness": 10,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Malgré six cents signatures, la poste ferme. Mais le village s'est réveillé, et une association naît dans la foulée.",
+            "effects": {
+              "happiness": -4,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire au député",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu reçois une réponse type, signée d'une main fatiguée. La poste ferme. Ta lettre, encadrée, décore le point relais.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "T'adapter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le point relais est tenu par la fille du boulanger, qui connaît tout le monde. Ce n'est pas si mal, finalement. Les horaires sont terribles.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0295",
+    "category": "societe",
+    "minAge": 28,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Tu accompagnes la sortie scolaire au musée d'histoire naturelle. Tu comptes ton groupe de six : il y en a cinq. Le petit Noah a disparu entre les dinosaures et les minéraux.",
+    "choices": [
+      {
+        "label": "Prévenir l'enseignante",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Les gardiens bloquent les sorties, et Noah est retrouvé deux minutes plus tard, fasciné par un squelette de baleine. Ton cœur reprend un rythme normal au bout d'une heure.",
+            "effects": {
+              "happiness": 3,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Vingt minutes d'angoisse absolue. On retrouve Noah dans la boutique, avec un dinosaure en peluche non payé. Tu as pris dix ans.",
+            "effects": {
+              "happiness": -6,
+              "health": -4,
+              "money": -18
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le chercher seul{e}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu le retrouves derrière un mammouth, mais en revenant, tu as perdu les quatre autres. Le chaos est total.",
+            "effects": {
+              "happiness": -8,
+              "health": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu le retrouves en trente secondes, devant le diplodocus. Personne n'a rien vu. Tu ne le racontes à personne.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0296",
+    "category": "societe",
+    "minAge": 18,
+    "maxAge": 80,
+    "weight": 4,
+    "conditions": {
+      "gender": "female"
+    },
+    "text": "La mairie organise une marche exploratoire de femmes : parcourir le quartier de nuit pour repérer les rues mal éclairées et les endroits où on ne se sent pas en sécurité.",
+    "choices": [
+      {
+        "label": "Participer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Vous repérez onze points noirs, dont le passage sous la voie ferrée. Six mois plus tard, il est éclairé et repeint. Tu y passes désormais sans accélérer.",
+            "effects": {
+              "happiness": 8,
+              "karma": 4,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le rapport est rangé dans un tiroir. Rien ne change. Mais vous avez créé un groupe qui se raccompagne le soir.",
+            "effects": {
+              "happiness": 3,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer tes remarques par écrit",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu listes trois rues précises. L'une d'elles reçoit deux lampadaires l'année suivante. C'est la tienne.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0297",
+    "category": "societe",
+    "minAge": 25,
+    "maxAge": 85,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ]
+    },
+    "text": "En tant qu'élu{e}, tu es appelé{e} à la cellule de crise : une crue menace le quartier bas de {ville}. Il faut décider en une heure d'évacuer ou non trois cents personnes.",
+    "choices": [
+      {
+        "label": "Évacuer par précaution",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'eau monte à un mètre dans le quartier vide. Personne n'est blessé. On te remercie dans le journal local, avec une photo en bottes.",
+            "effects": {
+              "happiness": 10,
+              "fame": 4,
+              "karma": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La crue s'arrête à cinquante mètres. Trois cents personnes ont dormi dans un gymnase pour rien. On te reproche d'avoir « paniqué ». Tu ne regrettes pas.",
+            "effects": {
+              "happiness": -4,
+              "fame": 2,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre les relevés",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les relevés confirment une baisse. Pas d'évacuation, pas de dégâts. Tu as eu raison, et un peu de chance.",
+            "effects": {
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'eau monte la nuit. Les pompiers évacuent en urgence. Des familles perdent tout. L'opposition demande ta démission.",
+            "effects": {
+              "happiness": -15,
+              "fame": 3,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Coordonner les secours",
+        "requiresSkill": {
+          "eloquence": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu réunis pompiers, services techniques et associations, distribues les rôles. L'évacuation se fait dans le calme en quarante minutes. Le préfet te félicite publiquement.",
+            "effects": {
+              "happiness": 12,
+              "smarts": 3,
+              "fame": 4,
+              "skills": {
+                "eloquence": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0298",
+    "category": "societe",
+    "minAge": 25,
+    "maxAge": 85,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "pol_elu"
+      ]
+    },
+    "text": "Un journaliste local t'a photographié{e} en train de charger les courses de la semaine dans la voiture de fonction de la mairie, un samedi. L'article sort demain.",
+    "choices": [
+      {
+        "label": "Reconnaître l'erreur",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu rembourses les kilomètres et t'excuses publiquement. L'affaire dure trois jours. Les gens retiennent surtout ta franchise.",
+            "effects": {
+              "happiness": -3,
+              "money": -120,
+              "karma": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Malgré tes excuses, l'opposition en fait un symbole. Tu deviens « l'élu des courses » dans tous les tracts.",
+            "effects": {
+              "happiness": -9,
+              "money": -120,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier en bloc",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le journaliste publie la photo, nette, avec le ticket de caisse qui dépasse du sac. Ton démenti devient une blague régionale.",
+            "effects": {
+              "happiness": -12,
+              "fame": 4,
+              "setFlags": [
+                "honte_publique",
+                "menteur_notoire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser une erreur de service",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prétends que la voiture devait être « testée ». Personne n'y croit. Ton chauffeur, cité malgré lui, ne t'adresse plus la parole.",
+            "effects": {
+              "happiness": -8,
+              "karma": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0299",
+    "category": "societe",
+    "minAge": 40,
+    "maxAge": 95,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "rich"
+      ]
+    },
+    "text": "Le clocher de l'église de {ville} menace de s'effondrer. La commune n'a pas les moyens de le restaurer. Le maire te demande un mécénat de 80 000 €, avec une plaque à ton nom.",
+    "choices": [
+      {
+        "label": "Financer entièrement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le clocher est sauvé. Le jour de l'inauguration, les cloches sonnent pour toi. Tes impôts baissent, et ta réputation monte en flèche.",
+            "effects": {
+              "money": -80000,
+              "happiness": 12,
+              "fame": 5,
+              "karma": 6,
+              "setFlags": [
+                "genereux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer une souscription",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu donnes 20 000 € et entraînes les habitants. Six cents donateurs, du plus petit au plus gros. La plaque porte tous les noms, et le tien est parmi eux.",
+            "effects": {
+              "money": -20000,
+              "happiness": 10,
+              "karma": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La souscription plafonne à 40 000 €. Les travaux sont faits à moitié. Le clocher tient, mais il penche un peu.",
+            "effects": {
+              "money": -20000,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le clocher est démonté et remplacé par une structure métallique. On te le rappelle à chaque fête de village.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soc_0300",
+    "category": "societe",
+    "minAge": 20,
+    "maxAge": 80,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "poor"
+      ]
+    },
+    "text": "Ton compte est à découvert depuis le 8 du mois. Une amie te pousse à prendre rendez-vous avec l'assistante sociale du centre communal. Tu n'y es jamais allé{e}, par fierté.",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Elle t'aide à faire valoir des droits que tu ignorais : aide au logement réévaluée, chèque énergie, épicerie solidaire. Ton budget respire enfin.",
+            "effects": {
+              "money": 900,
+              "happiness": 9,
+              "smarts": 2,
+              "setFlags": [
+                "econome"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le dossier prend deux mois, mais aboutit. En attendant, elle t'oriente vers une banque alimentaire. Tu y vas, la tête basse, puis la tête haute.",
+            "effects": {
+              "money": 400,
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te débrouiller seul{e}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu vends ta console, tu fais des extras le week-end. Tu t'en sors, de justesse, épuisé{e}.",
+            "effects": {
+              "money": 300,
+              "health": -5,
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les frais bancaires s'accumulent. À la fin du trimestre, ton découvert a doublé.",
+            "effects": {
+              "money": -350,
+              "happiness": -9,
+              "setFlags": [
+                "endette"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

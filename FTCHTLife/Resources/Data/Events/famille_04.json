@@ -1,0 +1,3778 @@
+[
+  {
+    "id": "fam_0151",
+    "category": "famille",
+    "minAge": 8,
+    "maxAge": 17,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ],
+      "excludeFlags": [
+        "fam_divorce_secret",
+        "fam_deux_maisons"
+      ]
+    },
+    "text": "En cherchant le scotch, tu trouves un jugement de divorce dans le tiroir de la cuisine. Il date d'il y a deux ans. {mere} et {pere} vivent toujours ensemble, et {pere} dort « dans le bureau, pour son dos ».",
+    "choices": [
+      {
+        "label": "Poser la question au dîner",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Silence de mort, puis {mere} sort un tableau en couleurs « qu'on comptait te montrer ». Ils avaient tout prévu, sauf ta tête.",
+            "effects": {
+              "happiness": -10,
+              "relationships": {
+                "mother": 2,
+                "father": 2
+              },
+              "setFlags": [
+                "fam_divorce_secret"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{pere} jure que c'est un accessoire pour sa troupe de théâtre amateur. Il n'a jamais fait de théâtre.",
+            "effects": {
+              "happiness": -7,
+              "relationships": {
+                "father": -5
+              },
+              "setFlags": [
+                "fam_divorce_secret"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comme si de rien",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gardes le secret et tu analyses chaque regard entre eux comme un détective épuisé. Tu dors mal.",
+            "effects": {
+              "happiness": -8,
+              "health": -3,
+              "stress": 6,
+              "setFlags": [
+                "fam_divorce_secret",
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0152",
+    "category": "famille",
+    "minAge": 8,
+    "maxAge": 19,
+    "weight": 8,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "father"
+      ],
+      "flags": [
+        "fam_divorce_secret"
+      ]
+    },
+    "text": "{pere} déménage enfin pour de bon : un studio de 19 m² au-dessus d'une pizzeria. Il veut que tu l'aides à décorer « ta chambre », c'est-à-dire un clic-clac coincé entre le frigo et la fenêtre.",
+    "choices": [
+      {
+        "label": "Décorer avec lui",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Guirlandes lumineuses et poster de dauphin. C'est moche, c'est à vous deux, et c'est parfait.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "father": 8
+              },
+              "clearFlags": [
+                "fam_divorce_secret"
+              ],
+              "setFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La perceuse traverse le mur. Le pizzaiolo passe la tête par le trou et vous offre une margherita en guise de bienvenue.",
+            "effects": {
+              "happiness": 5,
+              "health": -2,
+              "relationships": {
+                "father": 5
+              },
+              "clearFlags": [
+                "fam_divorce_secret"
+              ],
+              "setFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bouder",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu refuses d'y mettre les pieds. Il décore seul et t'envoie la photo d'un cactus avec ton prénom écrit au feutre.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "father": -8
+              },
+              "clearFlags": [
+                "fam_divorce_secret"
+              ],
+              "setFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Construire une mezzanine",
+        "requiresSkill": {
+          "bricolage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Avec trois palettes et beaucoup de vis, tu crées une mezzanine. Le studio passe à 19 m² et demi. {pere} a les yeux qui brillent.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "father": 12
+              },
+              "skills": {
+                "bricolage": 8
+              },
+              "clearFlags": [
+                "fam_divorce_secret"
+              ],
+              "setFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0153",
+    "category": "famille",
+    "minAge": 10,
+    "maxAge": 20,
+    "weight": 8,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ],
+      "flags": [
+        "fam_deux_maisons"
+      ]
+    },
+    "text": "À ta remise de diplôme, le nouveau compagnon de {mere} et la nouvelle compagne de {pere} se retrouvent assis côte à côte. Ils portent exactement le même pull.",
+    "choices": [
+      {
+        "label": "Les présenter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils deviennent inséparables et fondent un club de randonnée. Tes parents sont jaloux de leurs propres conjoints.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "mother": 3,
+                "father": 3
+              },
+              "clearFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils comparent tes deux maisons à voix haute. Tu repars avec ton diplôme et un classement officiel de tes Noëls.",
+            "effects": {
+              "happiness": -5,
+              "stress": 3,
+              "clearFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "T'asseoir entre eux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sers de zone tampon pendant deux heures. Tu applaudis pour quatre et tu repars avec une crampe à la main.",
+            "effects": {
+              "happiness": 3,
+              "health": -1,
+              "relationships": {
+                "mother": 2,
+                "father": 2
+              },
+              "clearFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir au buffet",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu manges onze petits fours en paix. C'était le meilleur moment de la cérémonie.",
+            "effects": {
+              "happiness": 5,
+              "health": -2,
+              "clearFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les quatre parents te rejoignent au buffet en même temps. Photo de famille forcée, sourires crispés, bouche pleine.",
+            "effects": {
+              "happiness": -3,
+              "looks": -2,
+              "clearFlags": [
+                "fam_deux_maisons"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0154",
+    "category": "famille",
+    "minAge": 7,
+    "maxAge": 16,
+    "weight": 4,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "mother"
+      ],
+      "excludeFlags": [
+        "fam_famille_recomposee"
+      ]
+    },
+    "text": "{mere} t'annonce que son compagnon Hervé et ses trois enfants emménagent samedi. Ils s'appellent Kylian, Kylia et Kylou. Ta chambre devient « un espace partagé ».",
+    "choices": [
+      {
+        "label": "Accueillir la troupe",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Kylou, 5 ans, te suit partout et t'appelle « chef ». Tu as désormais une armée.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "mother": 4
+              },
+              "setFlags": [
+                "fam_famille_recomposee"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Kylian prend ton lit, Kylia ton bureau. Il te reste une étagère et ton honneur.",
+            "effects": {
+              "happiness": -7,
+              "setFlags": [
+                "fam_famille_recomposee"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier un contrat",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Hervé signe sans lire : ta chambre reste à toi contre deux vaisselles par semaine. Tu viens de gagner ta première guerre froide.",
+            "effects": {
+              "happiness": 9,
+              "smarts": 3,
+              "skills": {
+                "marchandage": 8
+              },
+              "setFlags": [
+                "fam_famille_recomposee"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "T'enfermer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu t'enfermes dans la salle de bains. Il y a maintenant six personnes qui tambourinent à la porte.",
+            "effects": {
+              "happiness": -9,
+              "relationships": {
+                "mother": -6
+              },
+              "setFlags": [
+                "fam_famille_recomposee"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0155",
+    "category": "famille",
+    "minAge": 8,
+    "maxAge": 18,
+    "weight": 8,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "mother"
+      ],
+      "flags": [
+        "fam_famille_recomposee"
+      ]
+    },
+    "text": "Guerre de la salle de bains dans ta famille recomposée : sept personnes, un seul miroir, et Kylia qui y reste 50 minutes chaque matin.",
+    "choices": [
+      {
+        "label": "Faire un planning",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ton planning plastifié tient onze jours. Un record absolu dans cette maison.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 3,
+              "setFlags": [
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Hervé ajoute « 6 h 10 : Hervé, 40 min ». Le planning devient une déclaration de guerre.",
+            "effects": {
+              "happiness": -5,
+              "stress": 4,
+              "setFlags": [
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te laver chez le voisin",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le voisin accepte, en échange de la tonte de sa pelouse. Tu es propre et épuisé{e}.",
+            "effects": {
+              "health": 3,
+              "happiness": -3,
+              "money": 10,
+              "setFlags": [
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "T'allier avec Kylian",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous vous levez à 5 h pour passer les premiers. Une amitié naît dans la buée.",
+            "effects": {
+              "happiness": 7,
+              "health": -3,
+              "relationships": {
+                "sibling": 5
+              },
+              "setFlags": [
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Kylian te trahit au bout de trois jours et passe devant toi. Tu as froid, tu es en retard et tu as appris la vie.",
+            "effects": {
+              "happiness": -6,
+              "smarts": 1,
+              "setFlags": [
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0156",
+    "category": "famille",
+    "minAge": 9,
+    "maxAge": 20,
+    "weight": 8,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "mother"
+      ],
+      "flags": [
+        "fam_famille_recomposee",
+        "fam_recomposee_salle_de_bain"
+      ]
+    },
+    "text": "{mere} et Hervé se disputent fort pour la première fois. Kylian, Kylia et Kylou débarquent dans ta chambre avec leurs oreillers : « On fait quoi si ça casse ? »",
+    "choices": [
+      {
+        "label": "Les rassurer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Vous jouez aux cartes jusqu'à 2 h. Au matin, les adultes se sont réconciliés, et vous, vous êtes devenus une vraie fratrie.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "sibling": 8
+              },
+              "clearFlags": [
+                "fam_famille_recomposee",
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ça casse. Hervé repart avec ses enfants. Kylou te laisse son doudou « pour te tenir compagnie ».",
+            "effects": {
+              "happiness": -12,
+              "relationships": {
+                "mother": 3
+              },
+              "clearFlags": [
+                "fam_famille_recomposee",
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écouter à la porte",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils se disputent pour savoir qui a mangé le dernier yaourt. Crise mineure. Tu rassures tout le monde avec un rapport détaillé.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 2,
+              "clearFlags": [
+                "fam_famille_recomposee",
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer de la guitare",
+        "requiresSkill": {
+          "guitare": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu joues une ballade si triste que les adultes s'arrêtent pour demander « c'est quoi ce bruit ? ». Tout le monde finit par rire.",
+            "effects": {
+              "happiness": 9,
+              "relationships": {
+                "mother": 4,
+                "sibling": 5
+              },
+              "skills": {
+                "guitare": 6
+              },
+              "clearFlags": [
+                "fam_famille_recomposee",
+                "fam_recomposee_salle_de_bain"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0157",
+    "category": "famille",
+    "minAge": 28,
+    "maxAge": 75,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta grand-tante Odette est morte. Son testament, écrit au crayon à papier, lègue sa maison « à celui qui m'a rendu visite le plus souvent ». Personne n'est jamais venu. Sauf le facteur.",
+    "choices": [
+      {
+        "label": "Contester le testament",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu engages un avocat. Il facture 1 200 € pour te dire « c'est compliqué ». La bataille commence.",
+            "effects": {
+              "money": -1200,
+              "happiness": -5,
+              "setFlags": [
+                "fam_heritage_conteste"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser la maison au facteur",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le facteur pleure, t'invite à la pendaison de crémaillère et t'offre un calendrier. Ta famille te traite de traître.",
+            "effects": {
+              "happiness": 5,
+              "karma": 6,
+              "relationships": {
+                "parent": -5
+              },
+              "setFlags": [
+                "genereux"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0158",
+    "category": "famille",
+    "minAge": 28,
+    "maxAge": 80,
+    "weight": 9,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "fam_heritage_conteste"
+      ]
+    },
+    "text": "Réunion chez le notaire pour la maison d'Odette. Le facteur est venu avec son avocat, ton cousin avec un huissier, et ta tante avec une boîte de chocolats « pour amadouer ».",
+    "choices": [
+      {
+        "label": "Proposer un partage",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le notaire découpe la maison en parts. Tu hérites de 8 % d'une maison et de 100 % d'une gouttière.",
+            "effects": {
+              "money": 3000,
+              "happiness": 4,
+              "clearFlags": [
+                "fam_heritage_conteste"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton cousin refuse par principe. Le dossier part en appel. Rendez-vous dans deux ans.",
+            "effects": {
+              "money": -800,
+              "happiness": -6,
+              "clearFlags": [
+                "fam_heritage_conteste"
+              ],
+              "setFlags": [
+                "fam_heritage_appel"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout réclamer",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le juge te donne raison. Tu hérites de la maison et de la haine éternelle de toute ta famille.",
+            "effects": {
+              "money": 45000,
+              "happiness": 6,
+              "relationships": {
+                "parent": -12
+              },
+              "clearFlags": [
+                "fam_heritage_conteste"
+              ],
+              "setFlags": [
+                "solitaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Tu perds. Frais de justice : 4 000 €. Le facteur t'envoie une carte de vœux compatissante.",
+            "effects": {
+              "money": -4000,
+              "happiness": -10,
+              "clearFlags": [
+                "fam_heritage_conteste"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Plaider toi-même",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton discours sur Odette fait pleurer le notaire. Partage équitable, et tout le monde repart avec un souvenir. Même le facteur.",
+            "effects": {
+              "money": 12000,
+              "happiness": 10,
+              "relationships": {
+                "parent": 5
+              },
+              "skills": {
+                "eloquence": 10
+              },
+              "clearFlags": [
+                "fam_heritage_conteste"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0159",
+    "category": "famille",
+    "minAge": 14,
+    "maxAge": 60,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "excludeFlags": [
+        "fam_secret_grandpere"
+      ]
+    },
+    "text": "En rangeant le grenier, tu découvres la vérité : ton grand-père, « ancien pilote de chasse » de toutes les histoires de famille, était en fait moniteur d'auto-école à Châteauroux.",
+    "choices": [
+      {
+        "label": "Garder le secret",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rejoins le cercle très fermé des gens qui savent. Au dîner, il te fait un clin d'œil lourd de sens.",
+            "effects": {
+              "happiness": 4,
+              "setFlags": [
+                "fam_secret_grandpere"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le confronter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il soupire : « Un créneau en marche arrière avec un élève paniqué, c'est aussi un combat. » Vous devenez complices.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2,
+              "setFlags": [
+                "fam_secret_grandpere"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il nie tout et te raconte un nouvel épisode aérien, plus long et plus héroïque que les autres.",
+            "effects": {
+              "happiness": -3,
+              "setFlags": [
+                "fam_secret_grandpere"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout dire au groupe familial",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le groupe explose. Ton oncle demande « et les médailles ? ». Elles venaient d'une brocante. Ta tante quitte la conversation.",
+            "effects": {
+              "happiness": 3,
+              "karma": -3,
+              "relationships": {
+                "parent": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0160",
+    "category": "famille",
+    "minAge": 15,
+    "maxAge": 65,
+    "weight": 9,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "fam_secret_grandpere"
+      ]
+    },
+    "text": "Pour les 90 ans de ton grand-père, la famille a commandé un gâteau en forme d'avion de chasse et invité la presse locale pour « le héros du ciel ».",
+    "choices": [
+      {
+        "label": "Le laisser briller",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il raconte un combat aérien imaginaire avec un tel talent que le journaliste en fait sa une. Tu souris en silence.",
+            "effects": {
+              "happiness": 6,
+              "karma": 2,
+              "clearFlags": [
+                "fam_secret_grandpere"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'inciter à avouer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il avoue, puis raconte comment il a appris à conduire à 3 000 élèves. La salle applaudit encore plus fort.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "parent": 4
+              },
+              "clearFlags": [
+                "fam_secret_grandpere"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il te foudroie du regard et te raye de son livre d'or. Toute la famille dit que tu gâches toujours tout.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "parent": -5
+              },
+              "clearFlags": [
+                "fam_secret_grandpere"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retoucher le gâteau",
+        "requiresSkill": {
+          "dessin": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Discrètement, tu transformes l'avion en petite voiture à double pédale. Il comprend, éclate de rire et te serre dans ses bras.",
+            "effects": {
+              "happiness": 9,
+              "skills": {
+                "dessin": 6
+              },
+              "clearFlags": [
+                "fam_secret_grandpere"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0161",
+    "category": "famille",
+    "minAge": 20,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "{mere} et {pere} divorcent après 35 ans de mariage. Ils se partagent tout calmement, sauf la machine à raclette. Ils te demandent d'arbitrer.",
+    "choices": [
+      {
+        "label": "Arbitrer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu proposes une garde alternée de la raclette. Elle voyage entre deux appartements, emmaillotée dans un plaid.",
+            "effects": {
+              "happiness": 4,
+              "money": -40,
+              "relationships": {
+                "mother": 3,
+                "father": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils se liguent contre toi : « De quoi tu te mêles ? » Au moins, ils sont d'accord sur quelque chose.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "mother": -2,
+                "father": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Racheter la machine",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu l'achètes 60 €. Ton salon devient le seul endroit où toute la famille se retrouve encore.",
+            "effects": {
+              "money": -60,
+              "happiness": 6,
+              "relationships": {
+                "mother": 4,
+                "father": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas t'en mêler",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils finissent par la casser en se la disputant dans l'escalier. Personne ne mange de raclette cet hiver.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0162",
+    "category": "famille",
+    "minAge": 14,
+    "maxAge": 30,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "father"
+      ]
+    },
+    "text": "La nouvelle compagne de {pere}, Sabrina, a quatre ans de plus que toi. Elle veut qu'on soit « comme des potes » et a déjà créé un groupe de discussion à deux.",
+    "choices": [
+      {
+        "label": "Jouer le jeu",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Elle te prête son abonnement de streaming. Tu acceptes la belle-famille en échange de séries.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "father": 3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle te raconte leur vie de couple. Avec trop de détails. Tu cherches comment on efface un souvenir.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder tes distances",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vouvoiement strict. Sabrina pense que tu la détestes, {pere} pense que tu fais une crise.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "father": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "En parler à {pere}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il rougit, se gratte la tête et avoue qu'il trouve ça bizarre, lui aussi.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "father": 5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il te reproche de « ne jamais vouloir son bonheur ». Repas glacial pendant des mois.",
+            "effects": {
+              "happiness": -7,
+              "relationships": {
+                "father": -8
+              },
+              "setFlags": [
+                "rancunier"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0163",
+    "category": "famille",
+    "minAge": 18,
+    "maxAge": 70,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "Entre le fromage et le café, {mere} t'avoue que ton « cousin Fabrice », modèle de ton enfance qui finissait toujours son assiette, n'a jamais existé. Elle l'avait inventé pour te faire manger.",
+    "choices": [
+      {
+        "label": "Éclater de rire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ris tellement que tu finis ton assiette. Fabrice aurait été fier de toi.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "mother": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger des comptes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle sort un album de dessins de Fabrice. Il avait de meilleures notes que toi, même imaginaire.",
+            "effects": {
+              "happiness": -4,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu découvres que {pere} avait lui aussi eu un Fabrice. C'est une tradition familiale.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mettre une assiette pour Fabrice",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Désormais, à chaque Noël, tu dresses un couvert pour Fabrice. La famille trouve ça glaçant. Toi, hilarant.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "mother": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0164",
+    "category": "famille",
+    "minAge": 25,
+    "maxAge": 70,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "siblings"
+      ]
+    },
+    "text": "Le testament de ta tante lègue sa maison à {fratrie}, et à toi… son perroquet de 62 ans, qui insulte les gens en trois langues.",
+    "choices": [
+      {
+        "label": "Garder le perroquet",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il t'appelle « le petit » et siffle à 6 h. Tu l'aimes contre ta volonté.",
+            "effects": {
+              "happiness": 6,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il retient ton code de carte bancaire en t'entendant le dire. Il le répète au livreur.",
+            "effects": {
+              "money": -150,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger un échange",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "{fratrie} accepte de te céder le garage. Tu as un perroquet et un garage. C'est un début.",
+            "effects": {
+              "money": 2000,
+              "happiness": 5,
+              "relationships": {
+                "sibling": -3
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "{fratrie} refuse et ajoute que le perroquet « t'a toujours préféré ». Repas de famille tendus pour cinq ans.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "sibling": -10
+              },
+              "setFlags": [
+                "rancunier"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Parler italien au perroquet",
+        "requiresSkill": {
+          "italien": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le perroquet répond en italien et révèle la cachette des économies de ta tante : 3 200 € dans la boîte à biscuits.",
+            "effects": {
+              "money": 3200,
+              "happiness": 8,
+              "skills": {
+                "italien": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0165",
+    "category": "famille",
+    "minAge": 5,
+    "maxAge": 11,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "Tes parents séparés t'ont chacun acheté le même vélo pour ton anniversaire. Chacun voulait être « le parent du vélo ».",
+    "choices": [
+      {
+        "label": "Garder les deux",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un vélo chez papa, un chez maman. Tu es le seul enfant de la classe à posséder une flotte.",
+            "effects": {
+              "happiness": 6,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le dire aux deux",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ils mesurent le ridicule et vont rendre un vélo au magasin… ensemble. Tu ne sais pas quoi en penser.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "mother": 2,
+                "father": 2
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils s'accusent mutuellement d'avoir copié. Le vélo devient une affaire d'État.",
+            "effects": {
+              "happiness": -5,
+              "stress": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Revendre le deuxième",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu le revends 90 € à la voisine. Tes parents sont horrifiés et un peu impressionnés.",
+            "effects": {
+              "money": 90,
+              "happiness": 5,
+              "smarts": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La voisine te paie en bonbons. Tu as perdu un vélo et gagné trois caries.",
+            "effects": {
+              "happiness": 2,
+              "health": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0166",
+    "category": "famille",
+    "minAge": 26,
+    "maxAge": 55,
+    "weight": 5,
+    "unique": true,
+    "conditions": {
+      "requiresPartner": true,
+      "excludeFlags": [
+        "fam_beau_parent"
+      ]
+    },
+    "text": "{partenaire} a un fils d'une première union, Noé, 9 ans. Il t'appelle « l'autre » et cache tes chaussures dans le congélateur.",
+    "choices": [
+      {
+        "label": "Gagner sa confiance",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu passes l'après-midi à son jeu de cartes incompréhensible. Il t'appelle désormais « l'autre, mais en mieux ».",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "partner": 5
+              },
+              "setFlags": [
+                "fam_beau_parent"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il gagne toutes les parties et te fait signer un papier : « Je suis nul. » Rien ne bouge.",
+            "effects": {
+              "happiness": -4,
+              "setFlags": [
+                "fam_beau_parent"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser {partenaire} gérer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{partenaire} gère. Noé gère mieux. Tes chaussures sont toujours gelées le matin.",
+            "effects": {
+              "happiness": -5,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un tour de magie",
+        "requiresSkill": {
+          "magie": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais disparaître une pièce et réapparaître ses chaussettes. Noé te nomme « sorcier officiel » et te parle enfin.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "partner": 6
+              },
+              "skills": {
+                "magie": 8
+              },
+              "setFlags": [
+                "fam_beau_parent"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0167",
+    "category": "famille",
+    "minAge": 26,
+    "maxAge": 60,
+    "weight": 8,
+    "unique": true,
+    "conditions": {
+      "requiresPartner": true,
+      "flags": [
+        "fam_beau_parent"
+      ]
+    },
+    "text": "Pour la fête des familles à l'école, Noé a fabriqué deux colliers de nouilles. L'un est pour toi. Son autre parent l'a appris et demande des explications.",
+    "choices": [
+      {
+        "label": "Porter le collier fièrement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le portes au travail toute la semaine. Les nouilles gonflent un peu sous la pluie. Noé rayonne.",
+            "effects": {
+              "happiness": 10,
+              "looks": -2,
+              "relationships": {
+                "partner": 6
+              },
+              "clearFlags": [
+                "fam_beau_parent"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler l'autre parent",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous parlez une heure et fondez le club très privé des adultes qui aiment Noé. Tout le monde respire.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 2,
+              "clearFlags": [
+                "fam_beau_parent"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On te raccroche au nez au bout de 30 secondes. Noé, lui, s'en fiche : il veut des pâtes.",
+            "effects": {
+              "happiness": -3,
+              "clearFlags": [
+                "fam_beau_parent"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rendre le collier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu veux éviter les histoires. Noé range le collier dans un tiroir sans un mot. Tu te sens minuscule.",
+            "effects": {
+              "happiness": -9,
+              "relationships": {
+                "partner": -6
+              },
+              "clearFlags": [
+                "fam_beau_parent"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0168",
+    "category": "famille",
+    "minAge": 16,
+    "maxAge": 60,
+    "weight": 4,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "father"
+      ]
+    },
+    "text": "{pere} reçoit une lettre adressée à « Jean-Mi le Fauve ». Il pâlit. Tu apprends qu'il a été catcheur amateur dans les années 90.",
+    "choices": [
+      {
+        "label": "Exiger les vidéos",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les cassettes sont incroyables : il saute d'une échelle en slip léopard. Tu les regardes en boucle.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "father": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il refuse. Tu les trouves quand même au grenier. Il ne te parle plus pendant une semaine.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "father": -5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un retour sur le ring",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il s'entraîne trois mois et livre un combat de gala au gymnase du village. Il gagne. Il se casse un doigt. Il est ravi.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "father": 10
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tour de reins à l'échauffement. Il appelle ça « l'âge du Fauve » et passe un mois sur une bouillotte.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "father": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder ça pour toi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Désormais, à chaque dispute, tu murmures « le Fauve ». Il se tait aussitôt. Tu as une arme absolue.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0169",
+    "category": "famille",
+    "minAge": 30,
+    "maxAge": 80,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "En triant les papiers de ta grand-mère disparue, tu trouves un livret d'épargne oublié : 4 800 € au nom de « l'enfant le plus gentil ». Aucun prénom.",
+    "choices": [
+      {
+        "label": "Le garder",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu décides que l'enfant le plus gentil, c'est toi. Ta conscience te réveille trois nuits de suite.",
+            "effects": {
+              "money": 4800,
+              "happiness": 3,
+              "karma": -6
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ton cousin a vu le livret. Il en parle au réveillon. Tu deviens « le voleur de Mamie ».",
+            "effects": {
+              "money": 4800,
+              "happiness": -10,
+              "relationships": {
+                "parent": -8
+              },
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partager entre tous",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chacun reçoit 400 €. Ton cousin achète un drone et le noie dans l'étang le jour même.",
+            "effects": {
+              "money": 400,
+              "happiness": 4,
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser un vote",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Toute la famille vote pour elle-même. Résultat : douze voix, douze candidats, zéro gagnant.",
+            "effects": {
+              "happiness": -3,
+              "stress": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Dans le livret, un mot de Mamie : « Évidemment, c'est Lucien. » Personne ne connaît de Lucien.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0170",
+    "category": "famille",
+    "minAge": 6,
+    "maxAge": 14,
+    "weight": 10,
+    "conditions": {
+      "tags": [
+        "siblings"
+      ]
+    },
+    "text": "{fratrie} a raconté à toute l'école que tu dors avec une veilleuse en forme de pingouin. C'est vrai, mais quand même.",
+    "choices": [
+      {
+        "label": "Te venger",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu révèles que {fratrie} parle à ses peluches. Match nul. Tes parents confisquent tout le monde.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "sibling": -5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta vengeance rate : le pingouin finit en photo dans le journal de l'école.",
+            "effects": {
+              "happiness": -6,
+              "looks": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Assumer le pingouin",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu déclares que le pingouin est « vintage ». Trois camarades avouent en avoir un aussi.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "On t'appelle « Pingouin » jusqu'à la fin de l'année. Tu marches désormais en te dandinant, par fatalisme.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pleurer chez les parents",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "{fratrie} n'a pas de dessert pendant une semaine. Tu as gagné, mais à l'école, on te traite de balance.",
+            "effects": {
+              "happiness": -2,
+              "relationships": {
+                "sibling": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0171",
+    "category": "famille",
+    "minAge": 18,
+    "maxAge": 60,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "À l'enterrement de ta grand-tante, un monsieur inconnu pleure plus fort que tout le monde. C'était son mari secret depuis 40 ans. Personne n'était au courant.",
+    "choices": [
+      {
+        "label": "Aller lui parler",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il s'appelle Marcel, fait des confitures et possède 800 photos d'elle en train de rire. Tu découvres une tante que tu ne connaissais pas.",
+            "effects": {
+              "happiness": 6,
+              "karma": 3,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il te prend pour un neveu caché et te confie ses dettes de pétanque. Tu paies la tournée.",
+            "effects": {
+              "money": -300,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'annoncer à la famille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta mère s'évanouit sur le buffet. Ton oncle exige un test ADN pour un mariage. Ça n'existe pas.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder la confidence",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Marcel te glisse un pot de confiture « pour ta discrétion ». C'est la meilleure de ta vie.",
+            "effects": {
+              "happiness": 5,
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0172",
+    "category": "famille",
+    "minAge": 20,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "{mere}, fraîchement divorcée, t'annonce qu'elle va « vivre sa vie ». Elle a acheté une moto, un blouson à franges et un billet pour traverser les États-Unis.",
+    "choices": [
+      {
+        "label": "L'encourager",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Elle t'envoie chaque jour des photos du désert. Tu ne l'as jamais vue aussi heureuse.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "mother": 8
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle tombe en panne au Nouveau-Mexique. Tu paies le dépanneur à distance : 900 €.",
+            "effects": {
+              "money": -900,
+              "happiness": -3,
+              "relationships": {
+                "mother": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui faire la morale",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle te répond « C'est toi le parent, maintenant ? » et part quand même.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "mother": -6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir avec elle",
+        "requiresSkill": {
+          "anglais": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu négocies les motels en anglais, elle te présente partout comme « mon interprète ». Le plus beau voyage de ta vie.",
+            "effects": {
+              "happiness": 14,
+              "money": -1500,
+              "relationships": {
+                "mother": 12
+              },
+              "skills": {
+                "anglais": 10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0173",
+    "category": "famille",
+    "minAge": 12,
+    "maxAge": 17,
+    "weight": 4,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "{mere} attend un bébé avec son nouveau compagnon. Vu l'écart d'âge, tout le monde au parc te demande si c'est le tien.",
+    "choices": [
+      {
+        "label": "Jouer l'aîné{e} modèle",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu pousses le landau avec fierté en précisant « demi » à voix basse à chaque passant.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "mother": 6
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le bébé vomit sur ta veste préférée au moment exact où ton crush passe.",
+            "effects": {
+              "looks": -4,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir la maison",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes tes soirées ailleurs. On t'oublie un peu. C'était le but, et c'est quand même triste.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "mother": -5
+              },
+              "setFlags": [
+                "solitaire"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chanter des berceuses",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le bébé ne s'endort qu'avec ta voix. Tu deviens indispensable, et un peu la star de la maison.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "mother": 7
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le bébé hurle dès la première note. Ta carrière de nounou s'arrête là.",
+            "effects": {
+              "happiness": -3,
+              "looks": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0174",
+    "category": "famille",
+    "minAge": 20,
+    "maxAge": 80,
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ton oncle fortuné est mort et lègue toute sa fortune à une fondation pour la protection des escargots. Tu reçois une lettre de remerciement signée d'une empreinte de coquille.",
+    "choices": [
+      {
+        "label": "Contester",
+        "outcomes": [
+          {
+            "chance": 0.2,
+            "text": "Le juge, ému, t'accorde 10 000 €. Les escargots font appel, mais lentement.",
+            "effects": {
+              "money": 10000,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.8,
+            "text": "Tu perds face à un avocat spécialisé en gastéropodes. Frais : 2 500 €.",
+            "effects": {
+              "money": -2500,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un don",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu envoies 50 €. La fondation baptise un escargot en ton honneur. Il est lent, mais digne.",
+            "effects": {
+              "money": -50,
+              "happiness": 6,
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Adopter un escargot",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Gérard l'escargot s'installe sur ton balcon. Il est plus fidèle que ne l'a jamais été ton oncle.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0175",
+    "category": "famille",
+    "minAge": 16,
+    "maxAge": 40,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "Tes parents divorcés sont restés « amis » et partent en vacances ensemble, avec leurs nouveaux conjoints. Ils t'invitent. Le camping-car a six places.",
+    "choices": [
+      {
+        "label": "Y aller",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Semaine étrangement harmonieuse. La seule personne qui se dispute, c'est toi, avec le GPS.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "mother": 4,
+                "father": 4
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Crise de jalousie sur une aire d'autoroute. Tu rentres en covoiturage avec un inconnu qui fait du yodel.",
+            "effects": {
+              "health": -3,
+              "happiness": -8,
+              "money": -35
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner poliment",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu reçois 140 photos de groupe. Sur chacune, quelqu'un fait la tête.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0176",
+    "category": "famille",
+    "minAge": 12,
+    "maxAge": 70,
+    "weight": 5,
+    "conditions": {},
+    "text": "Dans un vieux carnet, tu découvres que ton arrière-grand-père a changé le nom de famille en 1932. Le nom d'origine était « Grosbidon ». Tu t'appelles {nom} par miracle.",
+    "choices": [
+      {
+        "label": "Fleurir sa tombe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lui apportes un bouquet et un merci sincère. C'est le minimum.",
+            "effects": {
+              "happiness": 5,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reprendre le nom",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu te fais appeler Grosbidon par panache. Ça devient un surnom de légende.",
+            "effects": {
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La mairie refuse. Le guichetier rit tellement qu'il doit sortir prendre l'air. Timbre fiscal perdu.",
+            "effects": {
+              "happiness": -2,
+              "money": -30
+            }
+          }
+        ]
+      },
+      {
+        "label": "Brûler le carnet",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le secret meurt avec la cendre. Tu dors très bien.",
+            "effects": {
+              "happiness": 3,
+              "smarts": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0177",
+    "category": "famille",
+    "minAge": 10,
+    "maxAge": 60,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "grandparents"
+      ]
+    },
+    "text": "À 82 ans, ton grand-père quitte ta grand-mère pour une dame rencontrée au club de belote. La famille est en état de choc. Ta grand-mère, elle, a l'air soulagée.",
+    "choices": [
+      {
+        "label": "Soutenir ta grand-mère",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Le lendemain, elle s'inscrit à la salsa. Tu l'accompagnes et tu te fais distancer.",
+            "effects": {
+              "happiness": 7,
+              "health": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle te fait trier les affaires du grand-père : 41 paires de chaussettes beiges.",
+            "effects": {
+              "happiness": -2,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rencontrer la dame",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle s'appelle Josette, elle triche aux cartes, et ton grand-père est amoureux comme à 20 ans.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser une médiation",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Ils s'assoient, se regardent, et décident de rester amis. Josette apporte un cake.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Ta grand-mère t'interrompt : « Laisse, mon petit. J'attendais ça depuis 1974. »",
+            "effects": {
+              "happiness": -2,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0178",
+    "category": "famille",
+    "minAge": 30,
+    "maxAge": 75,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "siblings"
+      ]
+    },
+    "text": "Partage des meubles de la maison familiale. {fratrie} a collé des gommettes rouges sur tout ce qui l'intéresse. Il y a une gommette sur le chat.",
+    "choices": [
+      {
+        "label": "Coller tes gommettes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Guerre des gommettes. À la fin, le canapé en porte 140. Vous le coupez en deux.",
+            "effects": {
+              "happiness": -4,
+              "money": -200,
+              "relationships": {
+                "sibling": -6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Vous riez tellement que vous oubliez de vous disputer. Le chat garde ses gommettes.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "sibling": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout laisser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repars avec un tire-bouchon et ta dignité. {fratrie} te remerciera trois ans plus tard.",
+            "effects": {
+              "happiness": -3,
+              "karma": 4,
+              "relationships": {
+                "sibling": 5
+              },
+              "setFlags": [
+                "genereux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier lot par lot",
+        "requiresSkill": {
+          "marchandage": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Buffet contre vaisselle, tondeuse contre argenterie : tu repars avec tout ce qui a de la valeur. {fratrie} n'a rien vu venir.",
+            "effects": {
+              "money": 2500,
+              "happiness": 6,
+              "skills": {
+                "marchandage": 10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0179",
+    "category": "famille",
+    "minAge": 30,
+    "maxAge": 60,
+    "weight": 4,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "father"
+      ]
+    },
+    "text": "{pere}, 70 ans, se remarie avec Ghislaine, qui a cinq enfants. Au mariage, tu découvres que tu as désormais 14 demi-neveux et une table de 40 couverts à Noël.",
+    "choices": [
+      {
+        "label": "T'intégrer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu sympathises avec un des fils de Ghislaine. Vous fondez le club des enfants de second mariage.",
+            "effects": {
+              "happiness": 7,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu es placé{e} à côté du fils de Ghislaine qui vend des assurances. Tu repars avec trois contrats.",
+            "effects": {
+              "money": -300,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un discours",
+        "requiresSkill": {
+          "eloquence": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton discours sur « l'amour qui n'a pas d'âge » fait pleurer Ghislaine et les 14 demi-neveux. {pere} dit que tu es son plus beau cadeau.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "father": 10
+              },
+              "skills": {
+                "eloquence": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir avant le dessert",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rates le lâcher de colombes. {pere} te le rappellera pendant quatre ans.",
+            "effects": {
+              "happiness": -2,
+              "relationships": {
+                "father": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0180",
+    "category": "famille",
+    "minAge": 7,
+    "maxAge": 15,
+    "weight": 10,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "Chez {pere}, c'est pizza et jeux vidéo jusqu'à minuit. Chez {mere}, légumes vapeur et extinction des feux à 20 h 30. Tu dois choisir où passer les vacances.",
+    "choices": [
+      {
+        "label": "Chez {pere}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Trois semaines de pizza. Tu reviens avec le teint d'une pâte à crêpe et le sourire.",
+            "effects": {
+              "happiness": 8,
+              "health": -5,
+              "relationships": {
+                "father": 4
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Trois semaines de pizza, et l'habitude est prise. Les légumes te semblent désormais suspects.",
+            "effects": {
+              "happiness": 6,
+              "health": -6,
+              "relationships": {
+                "father": 3
+              },
+              "setFlags": [
+                "mange_mal"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chez {mere}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Brocoli 21 jours d'affilée. Tu cours plus vite, mais tu as perdu une partie de ton âme.",
+            "effects": {
+              "health": 6,
+              "happiness": -3,
+              "relationships": {
+                "mother": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer moitié-moitié",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Diplomatie parfaite. Tu deviens l'enfant le plus raisonnable de ta classe, à ton grand regret.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 2,
+              "relationships": {
+                "mother": 2,
+                "father": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0181",
+    "category": "famille",
+    "minAge": 14,
+    "maxAge": 45,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "father",
+        "mother"
+      ]
+    },
+    "text": "Tu découvres que {pere} a perdu son emploi il y a trois ans. Depuis, il part chaque matin avec sa mallette… et passe la journée à la bibliothèque municipale.",
+    "choices": [
+      {
+        "label": "Lui en parler doucement",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il craque et avoue. Vous refaites son CV ensemble. Il a lu 600 livres et sait tout sur les pharaons.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 3,
+              "relationships": {
+                "father": 10
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il nie et rentre le soir « épuisé par les réunions ». Tu joues le jeu, la gorge serrée.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "father": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le dire à {mere}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{mere} le savait depuis le début. Elle lui préparait même ses sandwichs.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Scène de ménage historique. On t'en veut d'avoir parlé.",
+            "effects": {
+              "happiness": -9,
+              "relationships": {
+                "father": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller lire avec lui",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous passez l'après-midi côte à côte au rayon histoire, sans un mot. Le plus beau moment de ton année.",
+            "effects": {
+              "happiness": 8,
+              "smarts": 4,
+              "relationships": {
+                "father": 8
+              },
+              "setFlags": [
+                "lecteur_assidu"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0182",
+    "category": "famille",
+    "minAge": 8,
+    "maxAge": 60,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "grandparents"
+      ]
+    },
+    "text": "Ton grand-père t'a remis une carte au trésor dessinée à la main, menant au fond de son jardin. Le jour venu, toute la famille débarque avec des pelles.",
+    "choices": [
+      {
+        "label": "Creuser",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu trouves une boîte de pièces anciennes. Un collectionneur en propose 2 600 €.",
+            "effects": {
+              "money": 2600,
+              "happiness": 10,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Tu trouves un mot : « Merci d'avoir retourné le potager. » Ton grand-père a de l'humour, et des ampoules en moins.",
+            "effects": {
+              "happiness": 3,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Regarder les autres",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sirotes une limonade pendant que ton oncle se bloque le dos. Le trésor reste introuvable.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0183",
+    "category": "famille",
+    "minAge": 8,
+    "maxAge": 17,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "En plein divorce, tes parents ne communiquent plus qu'à travers toi. « Dis à ta mère que… » « Dis à ton père que… » Tu es devenu{e} un standard téléphonique.",
+    "choices": [
+      {
+        "label": "Transmettre fidèlement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu transmets même les insultes. Tu en apprends des nouvelles.",
+            "effects": {
+              "happiness": -6,
+              "stress": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu transmets tout, tout le temps. Tu commences à sursauter quand quelqu'un dit « Dis à… ».",
+            "effects": {
+              "happiness": -8,
+              "health": -2,
+              "setFlags": [
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Adoucir les messages",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu reformules tout gentiment. Ils finissent par se parler normalement, sans comprendre pourquoi.",
+            "effects": {
+              "happiness": 6,
+              "karma": 4,
+              "relationships": {
+                "mother": 3,
+                "father": 3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils comparent leurs notes et découvrent tes messages inventés. Tu es puni{e} des deux côtés.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "mother": -3,
+                "father": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire grève",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu colles « Standard fermé » sur ta porte. Ils sont obligés de s'écrire. Enfin un progrès.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0184",
+    "category": "famille",
+    "minAge": 10,
+    "maxAge": 60,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "{prenom}, {mere} t'avoue enfin que ton prénom a été tiré au sort dans un chapeau. L'autre papier disait « Barnabé-Lune ».",
+    "choices": [
+      {
+        "label": "En rire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu remercies le chapeau à voix haute. {mere} rit tellement qu'elle renverse son thé.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "mother": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander les autres options",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il y avait aussi « Clafoutis ». Tu as eu chaud, très chaud.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le papier gagnant disait « Barnabé-Lune ». C'est ton parrain qui a triché. Tu lui dois tout.",
+            "effects": {
+              "happiness": 3,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te vexer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu boudes une semaine. {mere} t'appelle « Barnabé-Lune » pour se venger.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "mother": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0185",
+    "category": "famille",
+    "minAge": 7,
+    "maxAge": 15,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "Depuis le divorce, {pere} veut être le parent cool : il t'offre une console. {mere} réplique avec un trampoline. La surenchère ne fait que commencer.",
+    "choices": [
+      {
+        "label": "Faire monter les enchères",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu obtiens une tablette, un chiot et une journée au parc d'attractions. Tu culpabilises, vaguement.",
+            "effects": {
+              "happiness": 10,
+              "karma": -5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils repèrent le manège et s'allient contre toi : tout est confisqué jusqu'à Noël.",
+            "effects": {
+              "happiness": -10,
+              "relationships": {
+                "mother": -3,
+                "father": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Leur dire d'arrêter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils sont touchés. Pour la première fois en deux ans, ils boivent un café ensemble.",
+            "effects": {
+              "happiness": 6,
+              "karma": 4,
+              "relationships": {
+                "mother": 5,
+                "father": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Profiter en silence",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sautes sur le trampoline en jouant à la console. Entorse de la cheville, mais avec style.",
+            "effects": {
+              "happiness": 6,
+              "health": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0186",
+    "category": "famille",
+    "minAge": 16,
+    "maxAge": 60,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "grandparents"
+      ]
+    },
+    "text": "Ta grand-mère distribue ses bijoux de son vivant « pour éviter les histoires ». Évidemment, ça crée des histoires.",
+    "choices": [
+      {
+        "label": "Prendre la broche moche",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Personne n'en voulait. Elle est en or massif. Expertise : 1 900 €.",
+            "effects": {
+              "money": 1900,
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Elle est en plastique. Mais ta grand-mère t'embrasse pour ton bon goût.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "parent": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser choisir les autres",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il te reste un dé à coudre. Ta grand-mère chuchote qu'il appartenait à une reine. Elle ment, avec amour.",
+            "effects": {
+              "happiness": 5,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réclamer la bague",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta cousine aussi. Joute verbale devant ta grand-mère, qui finit par garder la bague.",
+            "effects": {
+              "happiness": -5,
+              "relationships": {
+                "parent": -2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu l'obtiens. Ta cousine ne te parle plus et la bague est trop petite.",
+            "effects": {
+              "looks": 2,
+              "happiness": -1,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0187",
+    "category": "famille",
+    "minAge": 16,
+    "maxAge": 55,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "mother"
+      ],
+      "excludeFlags": [
+        "fam_demi_soeur"
+      ]
+    },
+    "text": "{mere} t'avoue qu'elle a eu une fille avant ta naissance, confiée à l'adoption à 17 ans. Ta demi-sœur tient la boulangerie où tu achètes ton pain depuis dix ans.",
+    "choices": [
+      {
+        "label": "Aller la voir",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Elle t'attend avec deux croissants. Elle sait qui tu es depuis toujours : c'est pour ça qu'elle te donnait le plus gros.",
+            "effects": {
+              "happiness": 12,
+              "relationships": {
+                "mother": 3
+              },
+              "setFlags": [
+                "fam_demi_soeur"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle reste fermée. Tu achètes une baguette et tu repars, le cœur battant.",
+            "effects": {
+              "happiness": -4,
+              "setFlags": [
+                "fam_demi_soeur"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de boulangerie",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fuis. Le pain de l'autre boulangerie est mauvais. C'est une punition.",
+            "effects": {
+              "happiness": -6,
+              "health": -1,
+              "relationships": {
+                "mother": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "En vouloir à {mere}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ne lui adresses plus la parole pendant des semaines. Elle laisse des messages en pleurs sur ton répondeur.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "mother": -12
+              },
+              "setFlags": [
+                "rancunier"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0188",
+    "category": "famille",
+    "minAge": 16,
+    "maxAge": 60,
+    "weight": 8,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "mother"
+      ],
+      "flags": [
+        "fam_demi_soeur"
+      ]
+    },
+    "text": "Ta demi-sœur boulangère est invitée pour la première fois au repas de famille. Elle arrive avec une pièce montée. {mere} tremble en découpant le rôti.",
+    "choices": [
+      {
+        "label": "Faire les présentations",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tout le monde l'adore. Ton oncle lui demande sa recette de pain au chocolat avant même son prénom.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "mother": 8
+              },
+              "clearFlags": [
+                "fam_demi_soeur"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ta tante fait une remarque déplacée. Ta demi-sœur part avant le dessert. Il faudra du temps.",
+            "effects": {
+              "happiness": -6,
+              "clearFlags": [
+                "fam_demi_soeur"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui laisser la parole",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle raconte sa vie en dix minutes, sans une once de rancune. Même ton oncle bourru essuie une larme.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "mother": 5
+              },
+              "clearFlags": [
+                "fam_demi_soeur"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pâtisser avec elle",
+        "requiresSkill": {
+          "cuisine": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "En cuisine, vous découvrez que vous avez le même coup de poignet pour le fouet. Dessert à quatre mains, famille conquise.",
+            "effects": {
+              "happiness": 12,
+              "relationships": {
+                "mother": 6
+              },
+              "skills": {
+                "cuisine": 10
+              },
+              "clearFlags": [
+                "fam_demi_soeur"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0189",
+    "category": "famille",
+    "minAge": 18,
+    "maxAge": 50,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "Tes parents divorcent et le juge te convoque comme témoin pour établir qui a « détruit la tondeuse en 2009 ». C'est apparemment le cœur du dossier.",
+    "choices": [
+      {
+        "label": "Dire la vérité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "C'était toi. Le juge rit, tes parents aussi. Premier fou rire commun depuis des années.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "mother": 3,
+                "father": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "La vérité accuse {pere}. Il te regarde comme un chien trahi.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "father": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser le chien",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le chien est mort en 2015 et ne peut pas se défendre. Tout le monde accepte cette version.",
+            "effects": {
+              "happiness": 4,
+              "karma": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser de témoigner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Amende pour refus de comparaître : 150 €. Tu considères que c'est le prix de la paix.",
+            "effects": {
+              "money": -150,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0190",
+    "category": "famille",
+    "minAge": 6,
+    "maxAge": 14,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "Pour ton anniversaire, tes deux familles recomposées se réunissent : quatre parents, six demi-frères et demi-sœurs, deux chiens. Il y a trois gâteaux et un concours tacite de qui t'aime le plus.",
+    "choices": [
+      {
+        "label": "Goûter les trois",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une part de chaque, par diplomatie. Tu dors quatorze heures et rêves de crème au beurre.",
+            "effects": {
+              "happiness": 8,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Choisir un gâteau",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu choisis celui de ta belle-mère. {mere} prend des notes dans un petit carnet.",
+            "effects": {
+              "happiness": 2,
+              "relationships": {
+                "mother": -5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Pendant que tu hésites, un des chiens mange les trois. Problème résolu.",
+            "effects": {
+              "happiness": -3,
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un discours",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "« Je vous aime tous pareil, sauf le chien qui mord. » Tonnerre d'applaudissements, sauf du chien.",
+            "effects": {
+              "happiness": 7,
+              "relationships": {
+                "mother": 3,
+                "father": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0191",
+    "category": "famille",
+    "minAge": 14,
+    "maxAge": 35,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "mother"
+      ]
+    },
+    "text": "Tu découvres que {mere} tient depuis quinze ans un blog anonyme très suivi qui raconte ton enfance, sous le pseudo « Maman Survivante ». Ta première rentrée a 12 000 réactions.",
+    "choices": [
+      {
+        "label": "Exiger la fermeture",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Elle ferme le blog… et ouvre un podcast. Tu es l'épisode 1.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "mother": -3
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle ferme tout, sincèrement désolée. Vous parlez enfin, sans abonnés.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "mother": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout lire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes la nuit à lire. Tu te découvres drôle, attachant{e} et terriblement collant{e}. Tu pleures un peu.",
+            "effects": {
+              "happiness": 5,
+              "smarts": 2,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre en commentaire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tes répliques deviennent virales. Tu deviens la star du blog. {mere} te demande de signer une décharge.",
+            "effects": {
+              "happiness": 6,
+              "fame": 3,
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton identité est découverte. Tout le monde t'appelle « le bébé de Maman Survivante ».",
+            "effects": {
+              "happiness": -10,
+              "looks": -2,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0192",
+    "category": "famille",
+    "minAge": 30,
+    "maxAge": 75,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "siblings"
+      ]
+    },
+    "text": "{fratrie} et toi avez hérité ensemble de la maison de campagne. {fratrie} veut vendre, toi garder.",
+    "choices": [
+      {
+        "label": "Vendre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous vendez. Parfois tu passes devant en voiture, et tu ralentis.",
+            "effects": {
+              "money": 25000,
+              "happiness": -5,
+              "relationships": {
+                "sibling": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Racheter sa part",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu t'endettes pour racheter la part de {fratrie}. La maison est à toi, la toiture qui fuit aussi.",
+            "effects": {
+              "money": -20000,
+              "happiness": 10,
+              "setFlags": [
+                "endette"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La banque suit, puis la chaudière lâche le premier hiver. Tu dors en bonnet dans ton rêve d'enfance.",
+            "effects": {
+              "money": -26000,
+              "happiness": 2,
+              "health": -4,
+              "setFlags": [
+                "endette"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder en indivision",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Planning des week-ends partagé. Ça marche, à condition de ne jamais vous croiser.",
+            "effects": {
+              "happiness": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{fratrie} laisse la vaisselle sale dans l'évier pendant trois mois. Guerre froide.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "sibling": -8
+              },
+              "setFlags": [
+                "rancunier"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0193",
+    "category": "famille",
+    "minAge": 16,
+    "maxAge": 60,
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "grandparents"
+      ]
+    },
+    "text": "Sur son lit d'hôpital, ta grand-mère t'avoue avoir gagné au loto en 1987 sans jamais en parler, « pour ne pas gâter les enfants ».",
+    "choices": [
+      {
+        "label": "Demander où est l'argent",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Elle t'indique une boîte sous l'escalier. Il reste 9 000 € en vieux billets encore échangeables.",
+            "effects": {
+              "money": 9000,
+              "happiness": 10,
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "« J'ai tout donné aux chats du quartier. » Les chats du quartier vivent mieux que toi.",
+            "effects": {
+              "happiness": -3,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui tenir la main",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle se remet, rentre chez elle et ne reparle jamais du loto. Tu n'oses pas demander. Tu l'aimes encore plus.",
+            "effects": {
+              "happiness": 6,
+              "karma": 4,
+              "relationships": {
+                "parent": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prévenir toute la famille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La famille fouille sa maison pendant sa convalescence. Elle revient et réécrit son testament au feutre rouge.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "parent": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0194",
+    "category": "famille",
+    "minAge": 8,
+    "maxAge": 20,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "Didier, le compagnon de {mere} depuis six mois, t'offre un mug « À mon enfant de cœur » et attend visiblement quelque chose en retour.",
+    "choices": [
+      {
+        "label": "L'appeler « Didier »",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il hoche courageusement la tête et range le mug. Tu le surprends à boire dedans en cachette.",
+            "effects": {
+              "happiness": 2,
+              "relationships": {
+                "mother": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenter « papa Didier »",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Didier fond en larmes dans le jardin. Il t'emmène à la pêche tous les week-ends depuis.",
+            "effects": {
+              "happiness": 6,
+              "relationships": {
+                "mother": 5
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{pere} l'apprend. Ambiance glaciale à la remise des bulletins.",
+            "effects": {
+              "happiness": -6,
+              "relationships": {
+                "father": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0195",
+    "category": "famille",
+    "minAge": 20,
+    "maxAge": 70,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "text": "Ta tante lègue sa ferme à la famille, à une condition : que quelqu'un s'occupe de ses onze chèvres. Tous les regards se tournent vers toi.",
+    "choices": [
+      {
+        "label": "Prendre les chèvres",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Te voilà à la tête d'un élevage de chèvres à mi-temps. Ton fromage est mauvais, mais c'est le tien.",
+            "effects": {
+              "happiness": 8,
+              "health": 4,
+              "money": -400
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une chèvre dévore les essuie-glaces et un siège de ta voiture. Elle ne regrette rien.",
+            "effects": {
+              "money": -600,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton cousin récupère la ferme et les chèvres. Il a l'air radieux sur les photos. Toi, moins.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre les chèvres",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu vends le troupeau 1 100 €. La famille te regarde comme si tu avais vendu ta tante.",
+            "effects": {
+              "money": 1100,
+              "happiness": -2,
+              "relationships": {
+                "parent": -5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les chèvres s'échappent du camion et s'installent sur le rond-point. Tu paies la fourrière animale.",
+            "effects": {
+              "money": -250,
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0196",
+    "category": "famille",
+    "minAge": 18,
+    "maxAge": 55,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "tags": [
+        "father",
+        "mother"
+      ]
+    },
+    "text": "{pere} t'avoue qu'il s'est marié à Las Vegas à 19 ans et que ce mariage n'a jamais été annulé. Techniquement, il est bigame.",
+    "choices": [
+      {
+        "label": "L'aider à régulariser",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu retrouves la première épouse en ligne. Elle signe tout et vous envoie une carte de vœux chaque année.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 3,
+              "money": -200,
+              "relationships": {
+                "father": 6
+              }
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Paperasse internationale cauchemardesque : 1 400 € de frais et quatre formulaires incompréhensibles.",
+            "effects": {
+              "money": -1400,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire à {mere}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu portes le secret. À chaque anniversaire de mariage, tu fixes ton assiette.",
+            "effects": {
+              "happiness": -5,
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler le Nevada",
+        "requiresSkill": {
+          "anglais": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Trois coups de fil impeccables en anglais. Annulation obtenue en une semaine. {pere} te doit une vie.",
+            "effects": {
+              "happiness": 9,
+              "relationships": {
+                "father": 10
+              },
+              "skills": {
+                "anglais": 8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0197",
+    "category": "famille",
+    "minAge": 22,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "mother"
+      ],
+      "excludeTags": [
+        "chez_parents"
+      ]
+    },
+    "text": "Après son divorce, {mere} s'installe « trois semaines » sur ton canapé. Ça fait cinq mois. Elle a repeint ta cuisine en saumon.",
+    "choices": [
+      {
+        "label": "Lui trouver un appartement",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Vous visitez 23 studios. Elle signe pour celui juste en face de chez toi.",
+            "effects": {
+              "happiness": 3,
+              "money": -100,
+              "relationships": {
+                "mother": 3
+              }
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Elle refuse tout. Elle aime le saumon. Et ton canapé.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "La garder",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Repas chauds tous les soirs et zéro vie privée. Ton linge est repassé, ton moral un peu moins.",
+            "effects": {
+              "happiness": -4,
+              "health": 3,
+              "relationships": {
+                "mother": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Poser un ultimatum",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle part, vexée, chez ta tante. Le saumon reste.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "mother": -6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle pleure. Tu cèdes. Elle repeint le salon en pistache.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0198",
+    "category": "famille",
+    "minAge": 16,
+    "maxAge": 70,
+    "weight": 5,
+    "conditions": {},
+    "text": "Ta cousine a déposé la recette familiale de la tarte aux pommes et la vend désormais en supermarché, sous le nom « Tarte de Mamie (la mienne) ».",
+    "choices": [
+      {
+        "label": "Réclamer ta part",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "La famille signe un accord : 2 % des ventes. Tu touches 340 € par an, versés en tartes et en euros.",
+            "effects": {
+              "money": 340,
+              "happiness": 5
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Elle te rappelle que tu n'as jamais su la faire. C'est vrai.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "La féliciter",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle t'offre un carton de tartes. Tu es le seul membre de la famille qu'elle invite encore.",
+            "effects": {
+              "happiness": 4,
+              "karma": 3,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une meilleure tarte",
+        "requiresSkill": {
+          "cuisine": 4
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta version au beurre salé écrase la sienne au concours de la fête du village. Vengeance savoureuse et publique.",
+            "effects": {
+              "happiness": 10,
+              "skills": {
+                "cuisine": 10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0199",
+    "category": "famille",
+    "minAge": 18,
+    "maxAge": 60,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "mother",
+        "father"
+      ]
+    },
+    "text": "{mere} et {pere}, divorcés depuis vingt ans, ont réservé sans le savoir la même croisière. Chacun t'appelle depuis le pont pour se plaindre de l'autre.",
+    "choices": [
+      {
+        "label": "Les réconcilier à distance",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ils finissent par dîner ensemble au buffet et rentrent amis. Tu n'y comprends rien, mais bravo.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "mother": 4,
+                "father": 4
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Ils se disputent un transat au milieu de la Méditerranée. Le commandant de bord t'appelle personnellement.",
+            "effects": {
+              "happiness": -5,
+              "stress": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couper ton téléphone",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Une semaine de silence total. Tu n'as jamais aussi bien dormi.",
+            "effects": {
+              "health": 4,
+              "happiness": 5,
+              "relationships": {
+                "mother": -2,
+                "father": -2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fam_0200",
+    "category": "famille",
+    "minAge": 30,
+    "maxAge": 82,
+    "weight": 8,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "fam_heritage_appel"
+      ]
+    },
+    "text": "Deux ans après l'appel, le facteur qui se dispute la maison d'Odette avec toi t'invite à boire un café pour « régler ça entre gens bien ».",
+    "choices": [
+      {
+        "label": "Accepter le café",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Vous partagez : lui au rez-de-chaussée, toi l'étage pour les vacances. Il fait d'excellentes crêpes.",
+            "effects": {
+              "happiness": 8,
+              "money": 500,
+              "newFriend": true,
+              "clearFlags": [
+                "fam_heritage_appel"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "C'était un piège : son avocat t'attend dans la cuisine. Tu signes n'importe quoi entre deux sucres.",
+            "effects": {
+              "money": -2000,
+              "happiness": -8,
+              "clearFlags": [
+                "fam_heritage_appel"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer ton avocat",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Encore 1 500 € de frais. Le dossier grossit, la maison s'effondre doucement.",
+            "effects": {
+              "money": -1500,
+              "happiness": -6,
+              "clearFlags": [
+                "fam_heritage_appel"
+              ],
+              "setFlags": [
+                "rancunier"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Abandonner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lâches l'affaire. Tu dors enfin. Le facteur t'envoie une carte postale de « ta » maison.",
+            "effects": {
+              "happiness": 5,
+              "health": 3,
+              "clearFlags": [
+                "fam_heritage_appel"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
