@@ -55,7 +55,7 @@ meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voy
 ISSUES = ["", "_sommet", "_perdu", "_blessure", "_animal", "_rencontre", "_honte", "_victoire", "_casse", "_arnaque"]
 SIGNAUX |= {a + i for a in ACTIVITES for i in ISSUES}
 RE_FLAG = re.compile(r"^[a-z0-9_]+$")
-RE_ID = re.compile(r"^rep_[a-z_]+_\d{4}$")
+RE_ID = re.compile(r"^rep_[a-z0-9_]+_\d{4}$")
 
 
 def charger_evenements():
