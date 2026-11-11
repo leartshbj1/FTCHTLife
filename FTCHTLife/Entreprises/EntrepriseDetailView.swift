@@ -22,9 +22,12 @@ struct EntrepriseDetailView: View {
                 entete(e, type)
                 resumeRapport(e)
                 EntrepriseCriseSection(entreprise: e) { texte in message = texte }
-                pilotage(e, type)
-                estimation(e)
-                leviersMetier(e, type)
+                // Group : un ViewBuilder accepte au plus 10 vues avant iOS 17.
+                Group {
+                    pilotage(e, type)
+                    estimation(e)
+                    leviersMetier(e, type)
+                }
                 chiffres(e, type)
                 actions(e, type, j)
                 equipe(e, j)
@@ -503,12 +506,6 @@ struct EntrepriseDetailView: View {
                 .monospacedDigit()
                 .foregroundStyle(rouge ? Color.red : Color.secondary)
         }
-    }
-
-    private func nomNiveauSuivant(_ e: Entreprise) -> String {
-        var suivante = e
-        suivante.niveau += 1
-        return engine.nomDuNiveau(suivante)
     }
 
     private func montantsInjection(_ e: Entreprise, _ j: Joueur) -> [Int] {

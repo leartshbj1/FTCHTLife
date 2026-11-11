@@ -154,8 +154,19 @@ struct EntrepriseRapportView: View {
                 Text("Cette boîte n'existe plus.")
             }
         }
-        .navigationTitle("Rapport \(entreprise.map { "à \($0.rapport?.age ?? 0) ans" } ?? "")")
+        .navigationTitle(titre)
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var titre: String {
+        guard let age = entreprise?.rapport?.age else { return "Rapport" }
+        return "Rapport à \(age) ans"
+    }
+
+    static func libelleCapacite(_ r: EntrepriseRapport, _ eco: EntrepriseEco) -> String {
+        guard r.usines > 0 else { return "Capacité" }
+        let unite: String = r.usines > 1 ? (eco.usine?.pluriel ?? "usines") : (eco.usine?.nom ?? "usine")
+        return "Capacité (\(r.usines) \(unite))"
     }
 
     @ViewBuilder
@@ -164,7 +175,7 @@ struct EntrepriseRapportView: View {
             ligne("Clients potentiels (\(r.sites) \(r.sites > 1 ? eco.site.pluriel : eco.site.nom))", "\(r.marche)")
             ligne("Demande", "\(r.demande)")
             ligne("Part de marché", "\(Int(r.partDeMarche * 100)) %")
-            ligne("Capacité" + (r.usines > 0 ? " (\(r.usines) \(r.usines > 1 ? (eco.usine?.pluriel ?? "usines") : (eco.usine?.nom ?? "usine")))" : ""), "\(r.capacite)")
+            ligne(Self.libelleCapacite(r, eco), "\(r.capacite)")
             ligne(eco.vente.pluriel.capitalized + " réalisé(e)s", "\(r.ventes)")
             ligne("Clients refusés", "\(r.clientsRefuses)", rouge: r.clientsRefuses > 0)
             ligne("Capacité utilisée", "\(Int(r.tauxOccupation * 100)) %")
@@ -237,7 +248,7 @@ struct GraphiqueEntreprise: View {
         }
     }
 
-    static func court(_ v: Int) -> String {
+    nonisolated static func court(_ v: Int) -> String {
         let a = abs(v)
         let signe = v < 0 ? "−" : ""
         if a >= 1_000_000_000 { return signe + "\(a / 1_000_000_000) Md" }
