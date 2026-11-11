@@ -64,7 +64,7 @@ extension GameEngine {
     /// Ordre de priorité quand il y a trop d'événements dans l'année (0 = garder en premier).
     func prioriteEvenement(_ e: Evenement) -> Int {
         let id = e.id
-        if Secrets.estCarte(id) || id.hasPrefix("suc_") { return 0 }
+        if Secrets.estCarte(id) || id.hasPrefix("suc_") || id.hasPrefix(PolMoteur.prefixeSoiree) { return 0 }
         if id.hasPrefix("work:") { return 2 }
         if id.hasPrefix("fet_") { return 3 }
         return 1   // suites des choix passés, voisins…

@@ -241,7 +241,15 @@ extension GameEngine {
         let episodes = Successions.episodesDeLAnnee(joueur: j, etat: &suc)
         j.succession = suc
 
+        // Soirée électorale : résultats de l'élection de l'an passé, en premier.
+        var soiree: Evenement? = nil
+        if var pol = j.politique {
+            soiree = PolMoteur.soireeElectorale(&pol, j)
+            j.politique = pol
+        }
+
         joueur = j
+        if let ev = soiree { fileEvenements.insert(EvenementAffiche(evenement: ev, texte: ev.text), at: 0) }
         fileEvenements += secrets.evenements.map { EvenementAffiche(evenement: $0, texte: $0.text) }
         (fetes + suites + episodes).forEach { declencher($0) }
         voisinageAnnee()
@@ -296,6 +304,10 @@ extension GameEngine {
             var etat = j.succession ?? SuccessionEtat()
             Successions.apresChoix(evenementId: e.id, choix: index, issue: k ?? 0, joueur: j, etat: &etat)
             j.succession = etat
+        }
+        if e.id.hasPrefix(PolMoteur.prefixeSoiree), var pol = j.politique {
+            PolMoteur.apresChoixSoiree(evenementId: e.id, choix: index, &pol)
+            j.politique = pol
         }
         voisinageApresChoix(e, choix: index, issue: issue, &j)
         apresChoixTravail(e, choix: index, issue: k, &j)
