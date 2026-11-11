@@ -185,3 +185,13 @@ Variables en plus : `{rival}` (un rival du joueur), `{pm}` (le Premier ministre)
 - **Après-politique** : mémoires, conférences, chroniqueur télé, conseil d'administration, fondation ; dossiers `apres`.
 - **Dynastie** : `PolMoteur.heritage(j.politique)` donne un `PolEtat` de départ pour un enfant qui reprend la vie (influence selon le rang atteint).
 - Tags en plus : `pol_chef_parti`, `pol_gouverne`, `pol_ancien`.
+
+## Soirée électorale
+
+Chaque élection (municipale, régionale, législative, présidentielle, sénatoriale, perchoir, présidence de région,
+secrétariat général) est tranchée au passage d'année par `PolMoteur.resoudreElection`, qui garde le résultat dans
+`PolEtat.soiree` (`PolSoiree` : poste, victoire, scores, premier tour, participation, adversaire).
+Au début de l'année suivante, `GameEngine.modulesAvantTirage` appelle `PolMoteur.soireeElectorale` et place en tête
+de file un événement à choix `pol_soiree_victoire` ou `pol_soiree_defaite` (scène, scores, participation, réactions).
+Le choix applique ses effets classiques, puis `modulesApresChoix` appelle `PolMoteur.apresChoixSoiree` pour
+les effets politiques (popularité, influence, loyauté). Cet événement a la priorité maximale dans `limiterFileEvenements`.

@@ -413,6 +413,8 @@ struct PolEtat: Codable, Equatable {
     var dissolutionFaite: Bool = false
     var memoires: Bool = false
     var fondation: Bool = false
+    /// Résultat de la dernière élection, à montrer en événement « soirée électorale » au début de l'année suivante.
+    var soiree: PolSoiree?
 
     init() {}
 
@@ -458,6 +460,7 @@ struct PolEtat: Codable, Equatable {
         dissolutionFaite = try c.decodeIfPresent(Bool.self, forKey: .dissolutionFaite) ?? false
         memoires = try c.decodeIfPresent(Bool.self, forKey: .memoires) ?? false
         fondation = try c.decodeIfPresent(Bool.self, forKey: .fondation) ?? false
+        soiree = try c.decodeIfPresent(PolSoiree.self, forKey: .soiree)
     }
 
     mutating func borner() {
@@ -638,4 +641,19 @@ enum PolCatalogue {
     static func ministere(_ id: String?) -> PolMinistere? { id.flatMap { i in ministeres.first { $0.id == i } } }
     static func dossier(_ id: String) -> PolDossier? { dossiersParId[id] }
     static func loi(_ id: String) -> PolLoi? { loisParId[id] }
+}
+
+/// Résultat d'une élection, gardé jusqu'à l'affichage de la soirée électorale.
+struct PolSoiree: Codable, Equatable {
+    var poste: PolPoste
+    var gagne: Bool
+    var reelection: Bool
+    var adversaire: String
+    /// Score final du joueur (second tour pour la présidentielle), en %.
+    var score: Double
+    /// Score du premier tour (présidentielle seulement).
+    var tour1: Double?
+    var eliminePremierTour: Bool = false
+    /// Participation en % (nil pour une élection indirecte).
+    var participation: Double?
 }

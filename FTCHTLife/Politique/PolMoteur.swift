@@ -361,7 +361,7 @@ enum PolMoteur {
         return s
     }
 
-    private static func pourcentage(_ x: Double) -> String {
+    static func pourcentage(_ x: Double) -> String {
         String(format: "%.1f", x).replacingOccurrences(of: ".", with: ",") + " %"
     }
 
@@ -375,24 +375,35 @@ enum PolMoteur {
 
         var gagne = score >= 50
         var detail: String
+        var soiree = PolSoiree(poste: p, gagne: gagne, reelection: c.reelection, adversaire: c.adversaire, score: 0)
         if p == .president {
             let tour1 = max(2.1, min(46, score * 0.55 + Double.random(in: -3...3)))
+            soiree.tour1 = tour1
+            soiree.participation = Double.random(in: 70...82)
             if score < 42 {
                 gagne = false
+                soiree.eliminePremierTour = true
+                soiree.score = tour1
                 detail = "Premier tour : \(pourcentage(tour1)). Éliminé" + j.g("", "e") + " dès le premier tour."
             } else {
                 let tour2 = max(50.1, min(78, 50 + (score - 50) * 0.7))
                 let perdu = max(22, min(49.9, 50 + (score - 50) * 0.7))
+                soiree.score = gagne ? tour2 : perdu
                 detail = "Premier tour : \(pourcentage(tour1)). Second tour : \(pourcentage(gagne ? tour2 : perdu))."
             }
         } else if p.electionIndirecte {
             let electeurs = p == .secretaireGeneral ? "pays membres" : (p == .senateur ? "grands électeurs" : (p == .presidentAssemblee ? "députés" : "conseillers régionaux"))
             let pct = gagne ? max(50.1, min(97, 50 + (score - 50) * 0.7)) : max(0.4, min(49.9, 50 + (score - 50) * 0.7))
+            soiree.score = pct
             detail = "Vote des \(electeurs) : \(pourcentage(pct))."
         } else {
             let pct = gagne ? max(50.1, min(97, 50 + (score - 50) * 0.7)) : max(0.4, min(49.9, 50 + (score - 50) * 0.7))
+            soiree.score = pct
+            soiree.participation = participationPour(p)
             detail = "Résultat : \(pourcentage(pct))."
         }
+        soiree.gagne = gagne
+        e.soiree = soiree
         majRivalApresElection(c, gagne: gagne, &e)
 
         if gagne {
