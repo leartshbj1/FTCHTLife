@@ -62,6 +62,9 @@ def check_entourage(v, where, errs):
 TAG_PREFIXES += ("pol_", "tv_", "secteur_", "metier_")
 TAGS |= {"entrepreneur","patron","magnat","ancien_entrepreneur","failli","phone","influencer","star_reseaux","bad_buzz","sponsorise",
          "mandat_debut","mandat_installe","bateau_oublie","avion_oublie","projet_en_cours","notable"}
+# Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
+TAGS |= {"gang","gang_haut","dealer","sous_enquete","chaleur","ancien_gang","balance","argent_sale"}
+PH |= {"organisation","chef","rival","rang"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
