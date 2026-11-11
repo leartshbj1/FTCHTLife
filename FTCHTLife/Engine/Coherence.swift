@@ -20,7 +20,7 @@ extension GameEngine {
         if let pol = j.politique {
             if pol.estChefDeParti { return "Tu diriges un parti : c'est déjà un travail à plein temps (non payé)." }
             if let p = pol.mandat?.poste, Self.postesPleinTemps.contains(p) {
-                return "Ton mandat de \(p.nom(j.genre).lowercased()) est un temps plein. Démissionne d'abord si tu veux retravailler."
+                return "Ton mandat de \(p.nom(j).polMinuscule()) est un temps plein. Démissionne d'abord si tu veux retravailler."
             }
         }
         return nil
