@@ -42,7 +42,9 @@ struct PolDecretsView: View {
                         }
                         HStack { Text("Capital politique (influence)"); Spacer(); Text("\(e.influence)").foregroundStyle(.secondary) }
                         Picker("Domaine", selection: $domaine) {
-                            ForEach(Self.domaines, id: \.0) { Text($0.1).tag($0.0) }
+                            ForEach(Self.domaines.indices, id: \.self) { k in
+                                Text(Self.domaines[k].1).tag(Self.domaines[k].0)
+                            }
                         }
                     }
                     let liste = PolMoteur.decretsDisponibles(j, e).filter { domaine == "tous" || $0.domaine == domaine }
@@ -101,7 +103,7 @@ struct PolDecretsView: View {
                     Image(systemName: "exclamationmark.shield.fill").foregroundStyle(.orange)
                 }
             }
-            Text(d.description).font(.caption).foregroundStyle(.secondary)
+            Text(PolMoteur.remplir(d.description, j, e)).font(.caption).foregroundStyle(.secondary)
             let resume = PolMoteur.resumeEffets(d.effets)
             if !resume.isEmpty { Text(resume).font(.caption2).foregroundStyle(Theme.encre.opacity(0.8)) }
             HStack {

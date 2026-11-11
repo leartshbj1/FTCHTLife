@@ -200,7 +200,7 @@ struct PolitiqueView: View {
         if !liste.isEmpty {
             Section("Sur ton bureau (à traiter avant la fin de l'année)") {
                 ForEach(liste) { d in
-                    LigneAction(titre: d.title,
+                    LigneAction(titre: remplir(d.title),
                                 sousTitre: d.kind == "scandale" ? "Scandale" : (d.kind == "militant" ? "Vie de parti" : "Dossier"),
                                 icone: d.kind == "scandale" ? "flame.fill" : "folder.fill") {
                         ouvrir(d, intro: nil)
@@ -414,7 +414,7 @@ struct PolitiqueView: View {
     private func ouvrir(_ d: PolDossier, intro: String?) {
         guard let j = engine.joueur else { return }
         let e = j[keyPath: etat] ?? nil
-        dossierOuvert = PolDossierAffiche(dossier: d, intro: intro,
+        dossierOuvert = PolDossierAffiche(dossier: d, intro: intro, titre: PolMoteur.remplir(d.title, j, e),
                                           texte: PolMoteur.remplir(d.text, j, e),
                                           choix: d.choices.map { PolMoteur.remplir($0.label, j, e) })
     }
@@ -477,6 +477,7 @@ struct PolDossierAffiche: Identifiable {
     let id = UUID()
     let dossier: PolDossier
     let intro: String?
+    let titre: String
     let texte: String
     let choix: [String]
 }
@@ -502,7 +503,7 @@ struct PolDossierView: View {
                     Label(etiquette, systemImage: affiche.dossier.kind == "scandale" ? "flame.fill" : "folder.fill")
                         .font(.caption.weight(.bold))
                         .foregroundStyle(Theme.accent)
-                    Text(affiche.dossier.title).font(.title3.weight(.bold))
+                    Text(affiche.titre).font(.title3.weight(.bold))
                     Text(affiche.texte).font(.body)
                     if let r = resultat {
                         Text(r)
@@ -1030,7 +1031,7 @@ extension PolitiqueView {
             if let c = i.conflit {
                 HStack {
                     Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(.red)
-                    Text("Conflit armé avec \(PolMoteur.nomPays(c)) depuis \(i.anneesConflit) an\(i.anneesConflit > 1 ? "s" : "")")
+                    Text("Conflit armé avec \(PolMoteur.nomPays(c)) depuis \(max(1, i.anneesConflit)) an\(i.anneesConflit > 1 ? "s" : "")")
                         .font(.subheadline.weight(.semibold))
                 }
                 if PolMoteur.peutDiplomatie(j, e) {
@@ -1043,7 +1044,7 @@ extension PolitiqueView {
             if let c = PolMoteur.paysCible(e), c != i.conflit {
                 HStack { Text("Relation la plus tendue"); Spacer(); Text(PolMoteur.drapeau(c) + " " + PolMoteur.nomPaysMaj(c)).foregroundStyle(.secondary) }
             }
-            if !i.traites.isEmpty {
+            if !i.traites.isEmpty || !i.sanctions.isEmpty {
                 Text("\(i.traites.count) accord\(i.traites.count > 1 ? "s" : "") en vigueur" + (i.sanctions.isEmpty ? "" : " · \(i.sanctions.count) pays sous sanctions"))
                     .font(.caption).foregroundStyle(.secondary)
             }

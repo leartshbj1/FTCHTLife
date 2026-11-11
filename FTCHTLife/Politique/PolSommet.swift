@@ -434,20 +434,22 @@ extension PolMoteur {
         guard peutVisiter(j, e) else { return PolResultat(texte: "Il faut représenter le pays pour faire une visite d'État.") }
         if e.international.conflit == pays { return PolResultat(texte: "Impossible : vous êtes en guerre.") }
         if e.international.sanctions.contains(pays) { return PolResultat(texte: "Une visite pendant tes propres sanctions ? Lève-les d'abord.") }
+        guard !dejaFaitCetteAnnee("visite_pays_" + pays, j) else { return PolResultat(texte: "Tu y es déjà allé" + j.g("", "e") + " cette année.") }
         guard let n = [1, 2].first(where: { !dejaFaitCetteAnnee("visite_\($0)", j) }), marquer("visite_\(n)", &j) else {
             return PolResultat(texte: "Deux visites d'État par an, c'est déjà beaucoup d'heures d'avion. Le reste attendra.")
         }
-        guard marquer("visite_pays_" + pays, &j) else { return PolResultat(texte: "Tu y es déjà allé" + j.g("", "e") + " cette année.") }
+        _ = marquer("visite_pays_" + pays, &j)
         let s = PolCatalogue.systeme(pays)
         j.stats.bonheur += 2
         if Double.random(in: 0...1) < 0.12 + Double(e.casseroles) / 400 {
             changerRelation(pays, -5, &e)
             e.popularite -= 2
             e.borner()
-            return PolResultat(texte: drapeau(pays) + " " + [
+            let recit: String = [
                 "Visite d'État \(s.auPays). Une phrase sortie de son contexte en conférence de presse fait la une là-bas pendant trois jours. Tu rentres plus tôt que prévu.",
                 "Visite d'État \(s.auPays). Le protocole s'emmêle, l'hymne est joué deux fois, et ton hôte y voit un manque de respect. Le communiqué final est glacial.",
-            ].randomElement()! + "\n\nEffets : relation -5, popularité -2.")
+            ].randomElement() ?? ""
+            return PolResultat(texte: drapeau(pays) + " " + recit + "\n\nEffets : relation -5, popularité -2.")
         }
         let gain = Int.random(in: 8...14)
         changerRelation(pays, gain, &e)
@@ -456,12 +458,13 @@ extension PolMoteur {
         e.borner()
         e.international.borner()
         e.titres.append(remplir("{prenom} {nom} en visite d'État \(s.auPays)", j, e))
-        return PolResultat(texte: drapeau(pays) + " " + [
+        let recit: String = [
             "Visite d'État \(s.auPays). Tapis rouge, dîner officiel et une longue conversation en tête-à-tête qui déborde de deux heures. Les deux délégations repartent avec des projets.",
             "Visite d'État \(s.auPays). Tu visites une usine, une université et un quartier populaire. La presse locale salue un ton direct et sans condescendance.",
             "Visite d'État \(s.auPays). Le discours devant les parlementaires est applaudi debout. Ton conseiller diplomatique note que c'est rare.",
             "Visite d'État \(s.auPays). Peu de choses spectaculaires, mais un accord discret sur les visas et une relation qui se réchauffe.",
-        ].randomElement()! + "\n\nEffets : relation +\(gain), poids mondial +2, popularité +1.")
+        ].randomElement() ?? ""
+        return PolResultat(texte: drapeau(pays) + " " + recit + "\n\nEffets : relation +\(gain), poids mondial +2, popularité +1.")
     }
 
     static func chanceTraite(_ pays: String, _ e: PolEtat) -> Double {
@@ -581,17 +584,20 @@ extension PolMoteur {
             e.pays.croissance -= 0.6
             e.pays.moral -= 4
             e.pays.securite -= 3
-            e.popularite += n == 1 ? 5 : -3
+            let auPouvoir = peutDiplomatie(j, e)
+            if auPouvoir { e.popularite += n == 1 ? 5 : -3 }
             e.international.tension = max(e.international.tension, 60)
-            j.stats.bonheur -= 3
+            j.stats.bonheur -= auPouvoir ? 3 : 1
             l.append("⚔️ Le conflit avec \(nomPays(c)) entre dans sa \(n == 1 ? "première" : "\(n)e") année. Dette, moral et croissance en souffrent.")
-            if n >= 3, Double.random(in: 0...1) < 0.2 {
+            // Sans le joueur aux commandes, le gouvernement en place finit par négocier.
+            let finSpontanee = auPouvoir ? (n >= 3 ? 0.2 : 0) : 0.35
+            if Double.random(in: 0...1) < finSpontanee {
                 terminerConflit(c, &j, &e)
                 l.append("🕊️ Épuisés, les deux camps acceptent un cessez-le-feu négocié par des pays tiers.")
-            } else if let m = e.mandat, e.dossiers.count < 5,
+            } else if auPouvoir, let m = e.mandat, e.dossiers.count < 5,
                       let d = tirerDossier(kind: "guerre", poste: m.poste.rawValue, j, e) {
                 e.dossiers.append(PolDossierEnAttente(dossierId: d.id, ageArrivee: j.age))
-                l.append("🎖️ Décision de guerre : « \(d.title) » (onglet Politique).")
+                l.append("🎖️ Décision de guerre : « \(remplir(d.title, j, e)) » (onglet Politique).")
             }
         }
 
@@ -600,7 +606,7 @@ extension PolMoteur {
            Double.random(in: 0...1) < (m.poste == .ministre ? 0.4 : 0.6),
            let d = tirerDossier(kind: "international", poste: m.poste.rawValue, j, e) {
             e.dossiers.append(PolDossierEnAttente(dossierId: d.id, ageArrivee: j.age))
-            l.append("🌍 Dossier international : « \(d.title) » (onglet Politique).")
+            l.append("🌍 Dossier international : « \(remplir(d.title, j, e)) » (onglet Politique).")
         }
         e.international.borner()
         e.borner()
