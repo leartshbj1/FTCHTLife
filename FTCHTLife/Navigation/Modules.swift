@@ -63,8 +63,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
     // Relations
     case famille, amour, amis, rencontres, telephone, voisins, animaux, reputationFamille, secrets
     // Activités
-    case loisirs, projets, coiffeur, chirurgie, sante, television, casino, permis, etranger, crime, prison, casier
-    case loisirs, projets, sante, television, casino, permis, voyages, etranger, crime, prison, casier
+    case loisirs, projets, coiffeur, chirurgie, sante, television, casino, permis, voyages, etranger, crime, prison, casier
     // Moi
     case profil, competences, trophees, journalDuMonde, musee, reglages
 
@@ -78,8 +77,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
             return .biens
         case .famille, .amour, .amis, .rencontres, .telephone, .voisins, .animaux, .reputationFamille, .secrets:
             return .relations
-        case .loisirs, .projets, .coiffeur, .chirurgie, .sante, .television, .casino, .permis, .etranger, .crime, .prison, .casier:
-        case .loisirs, .projets, .sante, .television, .casino, .permis, .voyages, .etranger, .crime, .prison, .casier:
+        case .loisirs, .projets, .coiffeur, .chirurgie, .sante, .television, .casino, .permis, .voyages, .etranger, .crime, .prison, .casier:
             return .activites
         case .profil, .competences, .trophees, .journalDuMonde, .musee, .reglages:
             return .moi
@@ -266,8 +264,6 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
 
     /// Entrées impossibles derrière les barreaux.
     static let fermesEnPrison: [ModuleJeu] = [.offresEmploi, .entreprise, .boutique, .rencontres, .loisirs, .projets, .chirurgie,
-                                              .television, .casino, .permis, .etranger, .crime, .ecole, .universite]
-    static let fermesEnPrison: [ModuleJeu] = [.offresEmploi, .entreprise, .boutique, .rencontres, .loisirs, .projets,
                                               .television, .casino, .permis, .voyages, .etranger, .crime, .ecole, .universite]
 
     /// Raison pour laquelle l'entrée est fermée pour l'instant (nil = ouverte).

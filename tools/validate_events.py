@@ -67,7 +67,6 @@ TAGS |= {"entrepreneur","patron","magnat","ancien_entrepreneur","failli","phone"
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"gang","gang_haut","dealer","sous_enquete","chaleur","ancien_gang","balance","argent_sale"}
 PH |= {"organisation","chef","rival","rang"}
-<<<<<<< HEAD
 # Module Cœur (docs/COEUR.md) : liaisons, tromperies, enfants cachés, crises de couple ; tags réseaux (docs/PHONE.md).
 TAGS |= {"liaison","liaison_longue","liaison_ultimatum","liaison_soupcon","liaison_hetero","ancien_amant","grossesse_liaison",
          "enfant_cache","enfant_cache_adulte","paternite_douteuse","partenaire_infidele","soupcon_partenaire","trahi",
@@ -93,11 +92,9 @@ TAG_PREFIXES += ("beaute_",)
 SPECIAL |= {"beaute"}
 # Secte et agence de détective (docs/SECTE_DETECTIVE.md)
 TAGS |= {"gourou","secte_communaute","secte_grande","secte_enquete","ancien_gourou","proche_dans_secte","detective","detective_celebre","detective_clandestin","ancien_detective"}
-=======
 # Le Milieu, trafic et coups (vie4_trafic.json)
 TAGS |= {"dealer_gros","guerre_prix","rupture_stock","independant","coup_prepare","braqueur","a_revendeurs","produit_drogue"}
 PH |= {"produit","zone","concurrent"}
->>>>>>> b09dfa9b89f2c72b3f8c340ee10d80dcb25ac07d
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return

@@ -21,8 +21,7 @@ CONDITIONS = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner"
 REQUIRES = {"flags", "excludeFlags", "minCounters", "maxCounters", "flagMinYears", "flagMaxYears"}
 EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame", "relationships",
           "newFriend", "death", "setFlags", "clearFlags", "followUps",
-          "vie", "entourage", "skills", "coeur"}  # "coeur" : docs/COEUR.md  # "entourage" : docs/ENTOURAGE.md ; "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
-          "vie", "entourage", "skills", "beaute"}  # "beaute" : docs/BEAUTE.md ; "entourage" : docs/ENTOURAGE.md ; "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
+          "vie", "entourage", "skills", "coeur", "beaute"}  # coeur : docs/COEUR.md ; beaute : docs/BEAUTE.md ; entourage : docs/ENTOURAGE.md ; vie : module amour/crime/santé
 RELATIONS = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
 TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemployed", "retired", "rich",
         "poor", "friend", "mother", "father", "siblings", "partner", "children", "sick", "attractive", "smart",
@@ -113,8 +112,7 @@ def verifier_effets(eff, ou, erreurs, ids):
     for k, v in eff.items():
         if k not in EFFETS:
             erreurs.append(f"{ou} : effet inconnu « {k} »")
-        elif k in ("vie", "entourage", "skills", "coeur"):
-        elif k in ("vie", "entourage", "skills", "beaute"):
+        elif k in ("vie", "entourage", "skills", "coeur", "beaute"):
             if not isinstance(v, dict):
                 erreurs.append(f"{ou} : {k} doit être un objet")
         elif k == "relationships":
