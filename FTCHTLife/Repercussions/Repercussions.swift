@@ -23,6 +23,10 @@ struct RepercussionConditions: Codable, Equatable {
     var minCounters: [String: Int]?
     /// Nombre maximal de fois qu'un signal a eu lieu.
     var maxCounters: [String: Int]?
+    /// Le drapeau doit être posé depuis au moins N années, par ex. {"coeur_brise": 2}.
+    var flagMinYears: [String: Int]?
+    /// Le drapeau doit être posé depuis au plus N années.
+    var flagMaxYears: [String: Int]?
 
     /// Partie « événement classique » des conditions, vérifiée par le moteur.
     var conditionsEvenement: ConditionsEvenement {
@@ -45,7 +49,7 @@ struct Repercussion: Codable, Identifiable, Equatable {
     var chance: Double?
     /// Délai en années [min, max] après le signal. Défaut [1, 1]. 0 = à la fin de la même année.
     var delay: [Int]?
-    /// Si la suite ne peut pas arriver à l'échéance (conditions), on réessaie pendant ce nombre d'années. Défaut 0.
+    /// Si la suite ne peut pas arriver à l'échéance (conditions, prison…), on réessaie pendant ce nombre d'années. Défaut 2.
     var patience: Int?
     /// N'arrive qu'une fois par vie. Défaut false.
     var unique: Bool?
@@ -67,6 +71,9 @@ struct Repercussion: Codable, Identifiable, Equatable {
     var setFlags: [String]?
     /// Drapeaux retirés quand la suite arrive.
     var clearFlags: [String]?
+    /// Catégorie de l'événement produit (défaut "suite"). Ex. "prison" pour une suite qui peut arriver en prison :
+    /// le moteur n'y laisse passer que les catégories "prison" et "sante".
+    var category: String?
     /// Texte de la suite. Absent = la règle ne fait que poser des drapeaux.
     var text: String?
     var effects: Effets?
@@ -107,6 +114,9 @@ enum Repercussions {
 
     static func regle(_ id: String) -> Repercussion? { parId[id] }
 
+    /// Années pendant lesquelles une suite bloquée (conditions non remplies, joueur en prison…) attend avant d'être oubliée.
+    static let patienceParDefaut = 2
+
     // MARK: - Signaux
 
     /// À appeler quand quelque chose arrive au joueur.
@@ -126,7 +136,7 @@ enum Repercussions {
         for r in parSignal[signal] ?? [] {
             if let c = r.choice, c != choix { continue }
             if let o = r.outcome, o != issue { continue }
-            if let req = r.requires, !drapeauxOK(req, etat) { continue }
+            if let req = r.requires, !drapeauxOK(req, etat, age: age) { continue }
             if r.unique == true && etat.uniquesVues.contains(r.id) { continue }
 
             for f in r.forget ?? [] { etat.flags[f] = nil }
@@ -157,7 +167,7 @@ enum Repercussions {
         let echeance = age + Int.random(in: mini...maxi)
         // Les échéances ne sont vérifiées qu'au passage d'année : une suite à délai 0 signalée en cours d'année
         // doit encore être valable au prochain passage (âge + 1), sinon elle serait oubliée.
-        let dernier = max(echeance, age + 1) + max(0, r.patience ?? 0)
+        let dernier = max(echeance, age + 1) + max(0, r.patience ?? patienceParDefaut)
         etat.programmees.append(RepercussionProgrammee(id: r.id, age: echeance, ageMax: dernier))
         if r.unique == true { etat.uniquesVues.append(r.id) }
     }
@@ -179,7 +189,7 @@ enum Repercussions {
             if p.age > age { restantes.append(p); continue }     // pas encore
             if p.ageMax < age { continue }                       // trop tard : on oublie
             let e = evenement(r)
-            let ok = (r.conditions.map { drapeauxOK($0, etat) } ?? true) && conditionsOK(e)
+            let ok = (r.conditions.map { drapeauxOK($0, etat, age: age) } ?? true) && conditionsOK(e)
             if !ok {
                 if age < p.ageMax { restantes.append(p) }        // on retentera l'an prochain
                 continue
@@ -189,12 +199,43 @@ enum Repercussions {
             if r.text != nil { arrivees.append(e) }
         }
         etat.programmees = restantes
+        return arrivees + etatsDurables(age: age, etat: &etat, conditionsOK: conditionsOK)
+    }
+
+    /// Signal spécial : les règles "on": "chaque_annee" sont évaluées à chaque passage d'année, sans être programmées.
+    /// Elles décrivent des états durables (« tu fumes », « tu as des dettes », « tu cours trois fois par semaine »)
+    /// qui pèsent un peu chaque année sur les stats, et leur guérison ou aggravation.
+    static let signalAnnuel = "chaque_annee"
+    /// Nombre maximal d'états durables affichés par an (les règles sans texte ne comptent pas).
+    static let maxEtatsParAn = 3
+
+    private static func etatsDurables(age: Int, etat: inout RepercussionsEtat,
+                                      conditionsOK: (Evenement) -> Bool) -> [Evenement] {
+        let candidates = (parSignal[signalAnnuel] ?? []).filter { r in
+            if r.unique == true && etat.uniquesVues.contains(r.id) { return false }
+            if let c = r.conditions, !drapeauxOK(c, etat, age: age) { return false }
+            return conditionsOK(evenement(r))
+        }.shuffled()
+        var arrivees: [Evenement] = []
+        for r in candidates {
+            guard Double.random(in: 0..<1) < (r.chance ?? 1) else { continue }
+            if r.text != nil && arrivees.count >= maxEtatsParAn { continue }
+            // Un drapeau retiré par un état plus tôt cette année peut rendre un autre état caduc.
+            if let c = r.conditions, !drapeauxOK(c, etat, age: age) { continue }
+            for f in r.forget ?? [] { etat.flags[f] = nil }
+            for f in r.remember ?? [] where etat.flags[f] == nil { etat.flags[f] = age }
+            for f in r.clearFlags ?? [] { etat.flags[f] = nil }
+            for f in r.setFlags ?? [] where etat.flags[f] == nil { etat.flags[f] = age }
+            if r.unique == true { etat.uniquesVues.append(r.id) }
+            etat.compteurs["\(signalAnnuel):\(r.id)", default: 0] += 1
+            if r.text != nil { arrivees.append(evenement(r)) }
+        }
         return arrivees
     }
 
     /// Transforme une suite en événement affichable par le moteur.
     static func evenement(_ r: Repercussion) -> Evenement {
-        Evenement(id: r.id, category: "suite", minAge: r.minAge ?? 0, maxAge: r.maxAge ?? 200,
+        Evenement(id: r.id, category: r.category ?? "suite", minAge: r.minAge ?? 0, maxAge: r.maxAge ?? 200,
                   weight: 1, unique: nil, conditions: r.conditions?.conditionsEvenement,
                   text: r.text ?? "", effects: r.effects, choices: r.choices)
     }
@@ -215,8 +256,14 @@ enum Repercussions {
         return true
     }
 
-    static func drapeauxOK(_ c: RepercussionConditions, _ etat: RepercussionsEtat) -> Bool {
+    static func drapeauxOK(_ c: RepercussionConditions, _ etat: RepercussionsEtat, age: Int) -> Bool {
         guard drapeauxOK(flags: c.flags, excludeFlags: c.excludeFlags, etat: etat) else { return false }
+        for (f, n) in c.flagMinYears ?? [:] {
+            guard let pose = etat.flags[f], age - pose >= n else { return false }
+        }
+        for (f, n) in c.flagMaxYears ?? [:] {
+            guard let pose = etat.flags[f], age - pose <= n else { return false }
+        }
         for (s, n) in c.minCounters ?? [:] where etat.compteur(s) < n { return false }
         for (s, n) in c.maxCounters ?? [:] where etat.compteur(s) > n { return false }
         return true

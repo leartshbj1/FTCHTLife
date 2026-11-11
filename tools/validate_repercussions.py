@@ -14,11 +14,11 @@ RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOSSIER = os.path.join(RACINE, "FTCHTLife", "Resources", "Data", "Repercussions")
 EVENTS = os.path.join(RACINE, "FTCHTLife", "Resources", "Data", "Events")
 
-CHAMPS = {"id", "on", "choice", "outcome", "chance", "delay", "patience", "unique", "minAge", "maxAge",
+CHAMPS = {"id", "category", "on", "choice", "outcome", "chance", "delay", "patience", "unique", "minAge", "maxAge",
           "conditions", "requires", "remember", "forget", "emit", "setFlags", "clearFlags", "text", "effects", "choices"}
 CONDITIONS = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner", "requiresSchool", "tags",
-              "excludeTags", "flags", "excludeFlags", "minCounters", "maxCounters"}
-REQUIRES = {"flags", "excludeFlags", "minCounters", "maxCounters"}
+              "excludeTags", "flags", "excludeFlags", "minCounters", "maxCounters", "flagMinYears", "flagMaxYears"}
+REQUIRES = {"flags", "excludeFlags", "minCounters", "maxCounters", "flagMinYears", "flagMaxYears"}
 EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame", "relationships",
           "newFriend", "death", "setFlags", "clearFlags", "followUps",
           "vie"}  # "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
@@ -29,7 +29,8 @@ TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemp
         "permis_voiture", "permis_moto", "permis_poids_lourd", "licence_pilote", "conducteur", "sans_permis",
         "permis_suspendu", "permis_annule", "permis_probatoire", "permis_points_bas", "conduit_sans_permis",
         "faux_permis", "pilote", "chasseur", "chauffard"}
-VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie", "partenaire", "metier", "e"}
+VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie", "partenaire", "metier", "e",
+             "enfant", "ex", "grandparent"}  # module vie
 SIGNAUX = set("""
 rencontre rendez_vous rendez_vous_rate couple rupture largue tromperie tromperie_decouverte demande_mariage
 demande_refusee mariage divorce veuvage grossesse naissance_enfant adoption enfant_majeur enfant_quitte_maison
@@ -42,14 +43,14 @@ deces_proche heritage maladie guerison chirurgie_esthetique hopital achat_maison
 voyage celebrite fiancailles_rompues addiction cure_desintox meilleur_ami
 permis_suspendu permis_annule permis_points_recuperes faux_permis_achete faux_permis_demasque
 conduite_sans_permis_arretee corruption_examinateur corruption_ratee casino_usurier casino_usurier_violence
-vie_suite
+vie_suite chaque_annee
 """.split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
 ISSUES = ["", "_sommet", "_perdu", "_blessure", "_animal", "_rencontre", "_honte", "_victoire", "_casse", "_arnaque"]
 SIGNAUX |= {a + i for a in ACTIVITES for i in ISSUES}
 RE_FLAG = re.compile(r"^[a-z0-9_]+$")
-RE_ID = re.compile(r"^rep_[a-z]+_\d{4}$")
+RE_ID = re.compile(r"^rep_[a-z_]+_\d{4}$")
 
 
 def charger_evenements():
@@ -101,6 +102,9 @@ def verifier_effets(eff, ou, erreurs, ids):
             erreurs.append(f"{ou} : {k} doit être un entier")
 
 
+AVERT = []
+
+
 def verifier_conditions(c, ou, erreurs, autorises):
     if not isinstance(c, dict):
         erreurs.append(f"{ou} : doit être un objet")
@@ -111,12 +115,13 @@ def verifier_conditions(c, ou, erreurs, autorises):
         elif k in ("tags", "excludeTags"):
             for t in v or []:
                 if t not in TAGS:
-                    erreurs.append(f"{ou} : tag inconnu « {t} »")
+                    # Les modules ajoutent leurs propres tags (prison, origine_<pays>…) : simple avertissement.
+                    AVERT.append(f"{ou} : tag « {t} » hors de la liste de base (tag de module ?)")
         elif k in ("flags", "excludeFlags"):
             for f in v or []:
                 if not RE_FLAG.match(f):
                     erreurs.append(f"{ou} : drapeau mal formé « {f} »")
-        elif k in ("minCounters", "maxCounters"):
+        elif k in ("minCounters", "maxCounters", "flagMinYears", "flagMaxYears"):
             if not isinstance(v, dict) or not all(isinstance(n, int) for n in v.values()):
                 erreurs.append(f"{ou} : {k} doit être un objet signal → entier")
         elif k == "gender" and v not in (None, "any", "male", "female"):
@@ -231,6 +236,7 @@ def main(fichiers):
         if r.get("choices") and r.get("effects"):
             erreurs.append(f"{ou} : effects à la racine ET choices (mettre les effets dans les issues)")
 
+    avertissements += AVERT
     for a in avertissements:
         print("avertissement :", a)
     for e in erreurs:
