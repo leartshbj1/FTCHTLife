@@ -131,6 +131,7 @@ struct MenuCategorieView: View {
         switch m {
         case .telephone: return PhoneEngine.nonLus(j.telephone)
         case .boutique: return engine.evenementsBoutiqueEnAttente
+        case .chirurgie: return j.beaute?.suites.count ?? 0
         case .vieAuBahut, .ecole: return engine.scolEtat?.aFaire.count ?? 0
         default: return 0
         }

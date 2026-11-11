@@ -65,6 +65,9 @@ TAGS |= {"entrepreneur","patron","magnat","ancien_entrepreneur","failli","phone"
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"gang","gang_haut","dealer","sous_enquete","chaleur","ancien_gang","balance","argent_sale"}
 PH |= {"organisation","chef","rival","rang"}
+# Module Beauté (docs/BEAUTE.md) : tags beaute_* (BeauteMoteur.tags) et sous-objet "beaute" des effets.
+TAG_PREFIXES += ("beaute_",)
+SPECIAL |= {"beaute"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return

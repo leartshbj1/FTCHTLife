@@ -35,6 +35,8 @@ struct Effets: Codable, Equatable {
     var dreamMarks: [String]?
     /// Module entourage (fiançailles, mariage, offre d'emploi…). Voir docs/ENTOURAGE.md.
     var entourage: EntourageEffets?
+    /// Module Beauté (réparer, soigner, calvitie, coupe ratée, opération offerte). Voir docs/BEAUTE.md.
+    var beaute: BeauteEffets?
 }
 
 struct ConditionsEvenement: Codable, Equatable {

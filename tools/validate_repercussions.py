@@ -21,7 +21,7 @@ CONDITIONS = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner"
 REQUIRES = {"flags", "excludeFlags", "minCounters", "maxCounters", "flagMinYears", "flagMaxYears"}
 EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame", "relationships",
           "newFriend", "death", "setFlags", "clearFlags", "followUps",
-          "vie", "entourage", "skills"}  # "entourage" : docs/ENTOURAGE.md ; "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
+          "vie", "entourage", "skills", "beaute"}  # "beaute" : docs/BEAUTE.md ; "entourage" : docs/ENTOURAGE.md ; "vie" : sous-objet du module amour/crime/santé, vérifié par son propre validateur
 RELATIONS = {"mother", "father", "parent", "sibling", "friend", "partner", "child"}
 TAGS = {"male", "female", "baby", "school", "university", "job", "adult", "unemployed", "retired", "rich",
         "poor", "friend", "mother", "father", "siblings", "partner", "children", "sick", "attractive", "smart",
@@ -59,6 +59,11 @@ ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_spor
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()
 ISSUES = ["", "_sommet", "_perdu", "_blessure", "_animal", "_rencontre", "_honte", "_victoire", "_casse", "_arnaque"]
 SIGNAUX |= {a + i for a in ACTIVITES for i in ISSUES}
+# Module Beauté (docs/BEAUTE.md)
+SIGNAUX |= set("""coiffeur coiffure_ratee coiffure_audacieuse chirurgie_ratee chirurgie_clandestine chirurgie_forfait
+injections calvitie""".split())
+SIGNAUX |= {"chirurgie_" + i for i in """botox levres cernes blanchiment facettes greffe rhino paupieres oreilles menton
+fossettes lifting lipo abdo seins reduction bbl pectoraux mollets jambes""".split()}
 RE_FLAG = re.compile(r"^[a-z0-9_]+$")
 RE_ID = re.compile(r"^rep_[a-z0-9_]+_\d{4}$")
 
@@ -87,7 +92,7 @@ def verifier_effets(eff, ou, erreurs, ids):
     for k, v in eff.items():
         if k not in EFFETS:
             erreurs.append(f"{ou} : effet inconnu « {k} »")
-        elif k in ("vie", "entourage", "skills"):
+        elif k in ("vie", "entourage", "skills", "beaute"):
             if not isinstance(v, dict):
                 erreurs.append(f"{ou} : {k} doit être un objet")
         elif k == "relationships":

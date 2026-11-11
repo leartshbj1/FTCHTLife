@@ -22,7 +22,6 @@ extension GameEngine {
         Activite(id: "soiree", titre: "Faire la fête", icone: "party.popper.fill", ageMin: 16, cout: 50, description: "Musique forte, décisions douteuses."),
         Activite(id: "medecin", titre: "Médecin", icone: "cross.case.fill", ageMin: 0, cout: 200, description: "Se faire soigner (un peu)."),
         Activite(id: "vacances", titre: "Vacances", icone: "airplane", ageMin: 18, cout: 1500, description: "Une semaine au soleil."),
-        Activite(id: "chirurgie", titre: "Chirurgie esthétique", icone: "wand.and.stars", ageMin: 18, cout: 6000, description: "Changer de visage. Ou pas."),
         Activite(id: "loterie", titre: "Loterie", icone: "ticket.fill", ageMin: 18, cout: 10, description: "Un billet, un rêve, aucune chance."),
         Activite(id: "casino", titre: "Casino", icone: "suit.spade.fill", ageMin: 18, cout: 500, description: "Miser 500 € à la roulette."),
     ]
@@ -106,16 +105,6 @@ extension GameEngine {
                      "Une semaine en Espagne. Tu as appris à dire « encore une sangria ».",
                      "Tu es " + j.g("allé", "allée") + " au Japon et tu as mangé un truc qui bougeait encore."].randomElement()!
             texte += " (+\(b) bonheur)"
-        case "chirurgie":
-            if Double.random(in: 0...1) < 0.8 {
-                let ap = Int.random(in: 8...25)
-                j.stats.apparence += ap
-                texte = "L'opération est un succès. Ton miroir ne te reconnaît plus. (+\(ap) apparence)"
-            } else {
-                j.stats.apparence -= 20
-                j.stats.bonheur -= 15
-                texte = "Le chirurgien a éternué au mauvais moment. Tu ressembles maintenant à un poisson-lune. (-20 apparence)"
-            }
         case "loterie":
             let r = Int.random(in: 1...10000)
             if r == 1 {
