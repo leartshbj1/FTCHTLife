@@ -234,3 +234,15 @@ Limites : indépendant 1 marchandise, 2 quartiers, 4 revendeurs ; membre 1 + ran
 - Effets `vie` en plus : `clients`, `revendeurs`, `tension`, `stock` (entiers, en plus ou en moins).
 - Variables : `{produit}`, `{zone}`, `{concurrent}` (les noms de quartiers et de concurrents portent leur article : écrire « dans {zone} », « chez {concurrent} », jamais « de {zone} »).
 - Signaux : `trafic_zone`, `trafic_guerre_prix`, `trafic_revendeur_arrete`, `trafic_overdose`, `coup_reussi`, `coup_rate`, `coup_trahison`.
+
+## Protection, enquête par étapes, façades, international
+
+Code : `VieProtection.swift` (avocat, policiers, douaniers, juge, comptable, prête-nom, téléphones jetables, profil bas, jauge expliquée), `VieEnquete.swift` (enquête en 4 étapes : signalement, filature, écoutes, perquisition, une réaction par an ; fuite à l'étranger et mandat international ; commerces de façade et contrôle fiscal), `VieInternational.swift` (routes d'import et d'export, cargaisons, douane, confiance des partenaires). Écrans : `VieProtectionVue.swift`. Données : `Data/MilieuRoutes`.
+
+`VieMilieuEtat.enquete` contient désormais l'étape de l'enquête (0 à 3), plus le nombre d'années.
+
+Pour les événements :
+- Tags : `protege`, `avocat_attitre`, `profil_bas`, `douanier`, `recherche`, `enquete_signalement`, `enquete_filature`, `enquete_ecoutes`, `enquete_perquisition`, `facade`, `international`, `cargaison_en_route`.
+- Effets `vie` : `contactPolice` (entier), `confianceEtranger` (entier), `cargaisonSaisie` (true).
+- Variable : `{etranger}` (partenaire étranger principal, avec son article : « chez {etranger} »).
+- Signaux : `protection_scandale`, `juge_achete`, `profil_bas`, `fuite_etranger`, `extradition`, `facade_achat`, `controle_fiscal`, `cargaison_saisie`, `cargaison_livree`.

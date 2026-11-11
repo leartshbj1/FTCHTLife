@@ -4,7 +4,7 @@ import SwiftUI
 
 /// Exécute une action du module, l'écrit dans le journal et l'affiche.
 @MainActor
-private struct VieActionMilieu {
+struct VieActionMilieu {
     let engine: GameEngine
     let message: Binding<String?>
 
@@ -28,7 +28,7 @@ private struct VieActionMilieu {
 }
 
 /// Jauge 0…100 dont la couleur dit si c'est bon ou mauvais.
-private struct VieJauge: View {
+struct VieJauge: View {
     let titre: String
     let valeur: Int
     var mauvaisSiHaut = true
@@ -44,6 +44,40 @@ private struct VieJauge: View {
     }
 }
 
+/// Message court en bas de l'écran, qui disparaît tout seul (pas de fenêtre à fermer).
+struct VieToast: ViewModifier {
+    @Binding var message: String?
+
+    func body(content: Content) -> some View {
+        content
+            .safeAreaInset(edge: .bottom) {
+                if let m = message {
+                    Text(m)
+                        .font(.subheadline)
+                        .padding(12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
+                        .padding(.horizontal)
+                        .padding(.bottom, 6)
+                        .onTapGesture { message = nil }
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
+            }
+            .animation(.easeOut(duration: 0.2), value: message)
+            .task(id: message) {
+                guard message != nil else { return }
+                do {
+                    try await Task.sleep(nanoseconds: 6_000_000_000)
+                    message = nil
+                } catch {}
+            }
+    }
+}
+
+extension View {
+    func vieToast(_ message: Binding<String?>) -> some View { modifier(VieToast(message: message)) }
+}
+
 // MARK: - Ton business
 
 struct VieTraficView: View {
@@ -52,6 +86,7 @@ struct VieTraficView: View {
     @State private var produitChoisi: String?
     @State private var zoneChoisie: String?
     @State private var confirmerFermeture = false
+    @State private var quantites: [String: Int] = [:]
 
     @MainActor private var act: VieActionMilieu { VieActionMilieu(engine: engine, message: $message) }
 
@@ -66,7 +101,7 @@ struct VieTraficView: View {
             }
         }
         .navigationTitle("Ton business")
-        .vieAlerte($message)
+        .vieToast($message)
         .confirmationDialog("Fermer le business ?", isPresented: $confirmerFermeture, titleVisibility: .visible) {
             Button("Tout arrêter", role: .destructive) { act.texte { j in MilieuTrafic.fermer(&j) } }
         } message: {
@@ -163,6 +198,23 @@ struct VieTraficView: View {
                         }
                     }
                 }
+            }
+        }
+
+        Section("Gestion") {
+            NavigationLink { VieProtectionView() } label: {
+                Label("Protection et enquête", systemImage: "shield.lefthalf.filled")
+            }
+            if MilieuInternational.accessible(j) {
+                NavigationLink { VieInternationalView() } label: {
+                    Label("International", systemImage: "globe.europe.africa.fill")
+                }
+            } else {
+                Label("International : réservé aux organisations ou après 25 lots vendus", systemImage: "globe")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+            NavigationLink { VieBlanchimentView() } label: {
+                Label("Blanchiment et commerces", systemImage: "arrow.triangle.2.circlepath")
             }
         }
 
@@ -284,9 +336,15 @@ struct VieTraficView: View {
             }
             Text(l.qualite.detail).font(.caption2).foregroundStyle(.secondary)
             let prix = MilieuTrafic.prixAchat(p, l.qualite, b)
+            let q = quantites[l.produitId] ?? 1
+            let maxAchat = max(1, min(999, (VieMilieu.etat(j).argentSale + j.argent) / max(1, prix)))
+            Stepper("Acheter \(q) lot\(q > 1 ? "s" : "")", value: Binding(get: { q }, set: { quantites[l.produitId] = max(1, min(999, $0)) }), in: 1...999)
             HStack {
-                Button("1 lot · \(Format.argent(prix))") { act.texte { j in MilieuTrafic.acheter(l.produitId, lots: 1, &j) } }
-                Button("5 lots · \(Format.argent(prix * 5))") { act.texte { j in MilieuTrafic.acheter(l.produitId, lots: 5, &j) } }
+                Button("+10") { quantites[l.produitId] = min(999, q + 10) }
+                Button("Max (\(maxAchat))") { quantites[l.produitId] = maxAchat }
+                Spacer()
+                Button("Acheter · \(Format.argent(prix * q))") { act.texte { j in MilieuTrafic.acheter(l.produitId, lots: q, &j) } }
+                    .buttonStyle(.borderedProminent)
             }
             .buttonStyle(.bordered)
             .tint(Theme.accent)
@@ -359,7 +417,7 @@ struct VieCoupView: View {
             }
         }
         .navigationTitle("Monter un coup")
-        .vieAlerte($message)
+        .vieToast($message)
         .confirmationDialog("Passer à l'acte ?", isPresented: $confirmer, titleVisibility: .visible) {
             Button("C'est parti", role: .destructive) { act.lignes { j in MilieuCoups.executer(&j) } }
         } message: {

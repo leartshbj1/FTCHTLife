@@ -136,6 +136,14 @@ struct VieMilieuEtat: Codable, Equatable {
     var coup: VieCoupEnCours?
     var coupsReussis: Int?
     var coupsRates: Int?
+    /// Protection contre la police (VieProtection.swift).
+    var protection: VieProtection?
+    /// Trafic international (VieInternational.swift).
+    var international: VieInternationalEtat?
+    /// Commerces de façade et argent blanchi cette année (VieEnquete.swift).
+    var facades: [String]?
+    var blanchiAnnee: Int?
+    var blanchiFacades: Int?
 
     var membre: Bool { organisationId != nil }
 }
@@ -183,6 +191,10 @@ enum VieMilieu {
         t.formUnion(MilieuTrafic.tags(j))
         if m.coup != nil { t.insert("coup_prepare") }
         if (m.coupsReussis ?? 0) > 0 { t.insert("braqueur") }
+        t.formUnion(MilieuProtection.tags(j))
+        t.formUnion(MilieuEnquete.tags(j))
+        t.formUnion(MilieuFacades.tags(j))
+        t.formUnion(MilieuInternational.tags(j))
         return t
     }
 
@@ -196,6 +208,7 @@ enum VieMilieu {
         t = t.replacingOccurrences(of: "{rival}", with: MilieuDonnees.organisation(m.rivalId)?.nom ?? "la bande d'en face")
         t = t.replacingOccurrences(of: "{rang}", with: org?.rang(m.rang).lowercased() ?? "petite main")
         t = MilieuTrafic.remplir(t, j)
+        t = MilieuInternational.remplir(t, j)
         return t
     }
 
@@ -390,8 +403,12 @@ enum VieMilieu {
         return [mi.textesEchec.auHasard("Ça a raté. {chef} ne va pas aimer.")]
     }
 
-    static func arreter(_ crime: String, mois: Int, texte: String, _ j: inout Joueur) -> [String] {
+    static func arreter(_ crime: String, mois moisBruts: Int, texte: String, _ j: inout Joueur) -> [String] {
         var lignes = [texte]
+        // Avocat attitré et juge acheté (VieProtection.swift).
+        let facteur = MilieuProtection.facteurPeine(j)
+        let mois = moisBruts > 0 ? max(1, Int(Double(moisBruts) * facteur)) : 0
+        if facteur < 1 && moisBruts > 0 { lignes.append(MilieuProtection.etat(j).juge ? "Ton avocat et un juge bienveillant font tomber une partie des charges." : "Ton avocat fait tomber une partie des charges.") }
         modifier(&j) { $0.enquete = nil; $0.trafic = nil }
         var v = j.vieEtat
         v.justice.casier.append(VieCasierLigne(age: j.age, crime: crime, mois: mois))
@@ -408,9 +425,10 @@ enum VieMilieu {
         let m = etat(j)
         let somme = min(montant, m.argentSale)
         guard somme > 0 else { return "Tu n'as pas d'argent sale à blanchir." }
-        let commission = m.rang >= 3 ? 15 : 30
+        let commission = (m.rang >= 3 ? 15 : 30) - (MilieuProtection.etat(j).comptable ? 10 : 0)
         let net = somme * (100 - commission) / 100
         j.argent += net
+        modifier(&j) { $0.blanchiAnnee = ($0.blanchiAnnee ?? 0) + somme }
         modifier(&j) { $0.argentSale -= somme; $0.chaleur += somme > 200_000 ? 8 : 3 }
         VieSysteme.signaler("blanchiment", &j)
         return "Ton argent passe par une laverie, un garage et deux sociétés écrans. Tu récupères \(Format.argent(net)) propres (commission de \(commission) %)."
@@ -470,6 +488,7 @@ enum VieMilieu {
         // Trafic (VieTrafic.swift) et casse en préparation (VieCoups.swift).
         lignes += MilieuTrafic.vieillir(&j)
         lignes += MilieuCoups.vieillir(&j)
+        lignes += MilieuInternational.vieillir(&j)
 
         // Tribut au chef, loyauté.
         if m.membre && m.rang < 4 && !enPrison {
@@ -487,27 +506,12 @@ enum VieMilieu {
             lignes.append("Les territoires de ton organisation te rapportent \(Format.argent(revenu)) d'argent sale.")
         }
 
-        // Police : l'attention retombe un peu, une enquête peut s'ouvrir, puis aboutir.
+        // Police : l'attention retombe un peu. Protection payée, enquête par étapes, commerces et fisc.
         modifier(&j) { $0.chaleur -= enPrison ? 15 : 6 }
+        lignes += MilieuProtection.vieillir(&j)
+        lignes += MilieuEnquete.vieillir(&j)
+        lignes += MilieuFacades.vieillir(&j)
         let e = etat(j)
-        if let annees = e.enquete {
-            if VieHasard.reussi(0.25 + Double(annees) * 0.15 + Double(e.chaleur) / 300), !enPrison {
-                let mois = 24 + e.rang * 24 + (e.trafic != nil ? 24 : 0) + e.argentSale / 50_000
-                lignes += arreter("association de malfaiteurs", mois: min(mois, 360),
-                                  texte: "6 h du matin. La porte vole en éclats. L'enquête qui te visait depuis \(annees + 1) an\(annees > 0 ? "s" : "") vient de se refermer sur toi.", &j)
-                modifier(&j) { $0.argentSale = 0 }
-            } else if e.chaleur < 15 && VieHasard.reussi(0.3) {
-                modifier(&j) { $0.enquete = nil }
-                VieSysteme.signaler("enquete_classee", &j)
-                lignes.append("Ton avocat t'apprend que l'enquête te visant a été classée faute de preuves.")
-            } else {
-                modifier(&j) { $0.enquete = annees + 1 }
-            }
-        } else if (e.membre || e.trafic != nil) && VieHasard.reussi(Double(e.chaleur) / 250) {
-            modifier(&j) { $0.enquete = 0 }
-            VieSysteme.signaler("enquete_ouverte", &j)
-            lignes.append("Une voiture banalisée stationne en bas de chez toi depuis des jours. Une enquête est ouverte.")
-        }
 
         // Violence du milieu : les hauts rangs risquent leur vie.
         if e.membre && !enPrison && VieHasard.reussi(Double(e.rang) * 0.02 + Double(organisation(j)?.dangerosite ?? 1) * 0.005) {
@@ -549,6 +553,8 @@ enum VieMilieu {
         }
         if fx.saisie == true { MilieuTrafic.saisir(&j) }
         MilieuTrafic.appliquer(fx, &j)
+        MilieuProtection.appliquer(fx, &j)
+        MilieuInternational.appliquer(fx, &j)
         if fx.enquete == true && a.enquete == nil {
             modifier(&j) { $0.enquete = 0 }
             VieSysteme.signaler("enquete_ouverte", &j)

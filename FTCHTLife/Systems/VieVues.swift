@@ -18,7 +18,8 @@ private struct VieAlerte: ViewModifier {
 }
 
 extension View {
-    func vieAlerte(_ message: Binding<String?>) -> some View { modifier(VieAlerte(message: message)) }
+    /// Message non bloquant en bas de l'écran (VieToast), pour enchaîner les actions sans fermer de fenêtre.
+    func vieAlerte(_ message: Binding<String?>) -> some View { modifier(VieToast(message: message)) }
 }
 
 extension GameEngine {
