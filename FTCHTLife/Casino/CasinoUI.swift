@@ -107,6 +107,15 @@ struct CasinoSelecteurMise: View {
                         .disabled(mise + v > maximum)
                         .opacity(mise + v > maximum ? 0.35 : 1)
                     }
+                    // Multiplier la mise d'un geste, au lieu d'empiler les jetons un par un.
+                    ForEach([2, 10, 100], id: \.self) { x in
+                        let cible = mise.multipliedReportingOverflow(by: x).overflow ? maximum : mise * x
+                        Button { mise = min(cible, maximum) } label: {
+                            CasinoJeton(texte: "×\(x)", couleur: CasinoStyle.or.opacity(0.85))
+                        }
+                        .disabled(mise == 0 || mise >= maximum)
+                        .opacity(mise == 0 || mise >= maximum ? 0.35 : 1)
+                    }
                     Button { mise = maximum } label: { CasinoJeton(texte: "Tapis", couleur: CasinoStyle.rouge) }
                     Button { mise = 0 } label: { CasinoJeton(texte: "×", couleur: .black) }
                 }
@@ -118,8 +127,20 @@ struct CasinoSelecteurMise: View {
         }
         .padding(12)
         .background(Color.black.opacity(0.25), in: RoundedRectangle(cornerRadius: 14))
-        .onAppear { if mise == 0 || mise > maximum { mise = min(lieu.miseMin, maximum) } }
+        .onAppear {
+            guard mise == 0 || mise > maximum else { return }
+            // On reprend la mise de la dernière fois si elle est possible ici, sinon la mise minimum.
+            if let d = MemoireQuantites.derniere(Self.cleMemoire), d >= lieu.miseMin, d <= maximum {
+                mise = d
+            } else {
+                mise = min(lieu.miseMin, maximum)
+            }
+        }
+        .onChange(of: mise) { m in MemoireQuantites.retenir(Self.cleMemoire, m) }
     }
+
+    /// La dernière mise choisie, tous jeux confondus.
+    static let cleMemoire = "casino.mise"
 
     /// 1500 → « 1,5k », 2000000 → « 2M ».
     static func court(_ v: Int) -> String {

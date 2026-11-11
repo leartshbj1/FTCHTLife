@@ -513,6 +513,8 @@ struct PlacementsMontantView: View {
     @State var texte = ""
 
     private var montant: Int { min(saisie.maximum, Int(texte.filter(\.isNumber)) ?? 0) }
+    /// Clé de mémoire : le titre de la saisie (« Acheter Pomme Corp », « Placer sur le livret »…).
+    private var cleMemoire: String { "placements." + saisie.titre }
 
     var body: some View {
         NavigationStack {
@@ -525,11 +527,28 @@ struct PlacementsMontantView: View {
                     Text("Maximum : \(Format.argent(max(0, saisie.maximum)))")
                 }
                 Section("Raccourcis") {
+                    if let d = MemoireQuantites.derniere(cleMemoire), d <= saisie.maximum {
+                        Button {
+                            texte = String(d)
+                        } label: {
+                            Label("Comme la dernière fois : \(Format.argent(d))", systemImage: "arrow.clockwise")
+                        }
+                        .buttonStyle(.borderless)
+                    }
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 90))], spacing: 8) {
                         ForEach(Array(raccourcis.enumerated()), id: \.offset) { _, r in
                             Button(r.0) { texte = String(r.1) }
                                 .buttonStyle(.bordered)
                                 .tint(Theme.accent)
+                        }
+                        // ×10 et ×100 multiplient le montant déjà tapé (sans dépasser le maximum).
+                        if montant > 0 {
+                            ForEach([10, 100], id: \.self) { x in
+                                Button("×\(x)") { texte = String(min(saisie.maximum, montant.multipliedReportingOverflow(by: x).overflow ? saisie.maximum : montant * x)) }
+                                    .buttonStyle(.bordered)
+                                    .tint(Theme.accent)
+                                    .disabled(montant >= saisie.maximum)
+                            }
                         }
                     }
                     .padding(.vertical, 4)
@@ -543,7 +562,10 @@ struct PlacementsMontantView: View {
                     Button("Valider") {
                         let m = montant
                         dismiss()
-                        if m > 0 { saisie.valider(m) }
+                        if m > 0 {
+                            MemoireQuantites.retenir(cleMemoire, m)
+                            saisie.valider(m)
+                        }
                     }
                     .disabled(montant <= 0)
                 }

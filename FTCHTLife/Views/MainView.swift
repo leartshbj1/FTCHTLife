@@ -11,6 +11,9 @@ struct MainView: View {
     @State private var bulleAge: Int?
     /// Bilan annuel des entreprises à montrer une fois les événements et la une du monde fermés.
     @State private var bilanEntreprisesEnAttente = false
+    /// Résultat du dernier choix fait en un tap, affiché un instant en haut.
+    @State private var bandeau: ResultatBandeau?
+    @AppStorage(ModeRapide.cleActif) private var rapide = true
 
     var body: some View {
         if let j = engine.joueur {
@@ -20,10 +23,20 @@ struct MainView: View {
                     bandeauPrison
                 }
                 JournalVieView(joueur: j)
+                    .overlay(alignment: .bottomTrailing) {
+                        if rapide && j.vivant && engine.evenementEnCours == nil {
+                            BoutonAvancer { avancer(j) }
+                                .padding(12)
+                                .transition(.opacity)
+                        }
+                    }
                 PanneauStats(stats: j.stats, reference: statsAvant) { moduleDirect = .profil }
                 barreMenus(j)
             }
             .background(Theme.fond.ignoresSafeArea())
+            // L'événement est une carte posée sur l'écran, pas une feuille : elle arrive et repart
+            // tout de suite, et les choix sont touchables dès qu'ils sont visibles.
+            .overlay { carteEvenement }
             .overlay(alignment: .top) {
                 if let age = bulleAge {
                     BulleAge(age: age)
@@ -38,12 +51,6 @@ struct MainView: View {
             .sheet(item: $moduleDirect) { m in
                 EcranModule(module: m)
                     .environmentObject(engine)
-            }
-            .sheet(item: $engine.evenementEnCours) { aff in
-                EventView(affiche: aff)
-                    .environmentObject(engine)
-                    .interactiveDismissDisabled()
-                    .presentationDetents([.medium, .large])
             }
             .sheet(item: flashMonde) { f in
                 MondeFlashSheet(flash: f, age: engine.joueur?.age ?? 0)
@@ -68,6 +75,55 @@ struct MainView: View {
     private var bilanEntreprises: Binding<Bool> {
         Binding(get: { bilanEntreprisesEnAttente && engine.evenementEnCours == nil && engine.flashMonde == nil },
                 set: { if !$0 { bilanEntreprisesEnAttente = false } })
+    }
+
+    // MARK: Événement en cours
+
+    private var animationCarte: Animation {
+        ModeRapide.animation(.spring(response: 0.28, dampingFraction: 0.9), rapide: rapide)
+    }
+
+    private var carteEvenement: some View {
+        let aff = engine.evenementEnCours
+        return ZStack {
+            if aff != nil {
+                // Voile qui bloque l'écran dessous tant qu'on n'a pas répondu.
+                Color.black.opacity(0.35)
+                    .ignoresSafeArea()
+                    .contentShape(Rectangle())
+                    .onTapGesture {}
+                    .transition(.opacity)
+            }
+            VStack(spacing: 8) {
+                if let b = bandeau {
+                    BandeauResultatView(resultat: b) { withAnimation(animationCarte) { bandeau = nil } }
+                        .id(b.id)
+                        .transition(.move(edge: .top).combined(with: .opacity))
+                }
+                Spacer(minLength: 0)
+                if let a = aff {
+                    EventView(affiche: a, resultatEnUnTap: { montrerBandeau($0) })
+                        .environmentObject(engine)
+                        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                        .shadow(color: Color.black.opacity(0.25), radius: 16, y: 6)
+                        .padding(.top, 40)
+                        .id(a.id)
+                        .transition(rapide ? .opacity : .move(edge: .bottom).combined(with: .opacity))
+                }
+            }
+            .padding(.horizontal, 8)
+            .padding(.bottom, 6)
+        }
+        .animation(animationCarte, value: aff?.id)
+        .animation(animationCarte, value: bandeau?.id)
+    }
+
+    private func montrerBandeau(_ b: ResultatBandeau) {
+        bandeau = b
+        let id = b.id
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            if bandeau?.id == id { bandeau = nil }
+        }
     }
 
     // MARK: En-tête
@@ -150,14 +206,30 @@ struct MainView: View {
     private func vieillir(_ j: Joueur) {
         Vibration.moyenne()
         statsAvant = j.stats
-        withAnimation(.spring(response: 0.45, dampingFraction: 0.85)) {
+        bandeau = nil
+        withAnimation(ModeRapide.animation(.spring(response: 0.45, dampingFraction: 0.85), rapide: rapide)) {
             engine.vieillir()
         }
+        apresAnnees()
+    }
+
+    /// « ⏩ Avancer » : passe les années jusqu'au prochain moment important.
+    private func avancer(_ j: Joueur) {
+        Vibration.moyenne()
+        statsAvant = j.stats
+        bandeau = nil
+        withAnimation(ModeRapide.animation(.spring(response: 0.45, dampingFraction: 0.85), rapide: rapide)) {
+            _ = engine.avancerJusquauProchainMoment()
+        }
+        apresAnnees()
+    }
+
+    private func apresAnnees() {
         guard let nouveau = engine.joueur, nouveau.vivant else { return }
         if !engine.entreprisesAvecRapportNonLu.isEmpty { bilanEntreprisesEnAttente = true }
-        withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) { bulleAge = nouveau.age }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
-            withAnimation(.easeIn(duration: 0.25)) { if bulleAge == nouveau.age { bulleAge = nil } }
+        withAnimation(ModeRapide.animation(.spring(response: 0.4, dampingFraction: 0.8), rapide: rapide)) { bulleAge = nouveau.age }
+        DispatchQueue.main.asyncAfter(deadline: .now() + (rapide ? 0.8 : 1.4)) {
+            withAnimation(.easeIn(duration: 0.2)) { if bulleAge == nouveau.age { bulleAge = nil } }
         }
     }
 
@@ -194,6 +266,27 @@ struct BulleAge: View {
             .background(Capsule().fill(Theme.accent))
             .shadow(color: Theme.accent.opacity(0.4), radius: 10, y: 4)
             .allowsHitTesting(false)
+    }
+}
+
+// MARK: - Bouton « Avancer »
+
+/// Petit bouton du mode rapide : vivre plusieurs années d'un coup, jusqu'au prochain moment important.
+struct BoutonAvancer: View {
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Label("Avancer", systemImage: "forward.fill")
+                .font(.system(size: 14, weight: .heavy, design: .rounded))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 9)
+                .background(Capsule().fill(Theme.accent.opacity(0.92)))
+                .shadow(color: Theme.accent.opacity(0.35), radius: 6, y: 3)
+        }
+        .buttonStyle(StyleAppui())
+        .accessibilityLabel("Avancer jusqu'au prochain moment important")
     }
 }
 
@@ -269,7 +362,8 @@ struct JournalVieView: View {
                     if joueur.journal.count <= 2 && joueur.vivant {
                         CommentJouerCarte()
                     }
-                    Color.clear.frame(height: 1).id("fin")
+                    // Place pour le bouton « Avancer » du mode rapide.
+                    Color.clear.frame(height: 44).id("fin")
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 12)

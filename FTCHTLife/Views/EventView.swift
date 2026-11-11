@@ -5,38 +5,37 @@ import SwiftUI
 struct EventView: View {
     @EnvironmentObject var engine: GameEngine
     let affiche: EvenementAffiche
+    /// Mode « choix en un tap » : reçoit le résultat à afficher en bandeau, puis l'événement se ferme tout seul.
+    /// Sans ce rappel (ou réglage coupé), le résultat s'affiche dans la carte avec « Continuer ».
+    var resultatEnUnTap: ((ResultatBandeau) -> Void)? = nil
+
+    @AppStorage(ModeRapide.cleActif) private var rapide = true
+    @AppStorage(ModeRapide.cleUnTap) private var unTap = true
 
     /// Stats et argent juste avant le choix, pour afficher les gains et pertes.
     @State private var avant: Instantane?
-    @State private var apparu = false
 
-    /// Toujours lire la version à jour (le résultat s'ajoute après le choix).
-    private var courant: EvenementAffiche { engine.evenementEnCours ?? affiche }
+    /// La version à jour de CET événement (le résultat s'ajoute après le choix).
+    /// Pendant que la carte s'en va, le moteur montre déjà le suivant : on garde alors l'ancienne version.
+    private var courant: EvenementAffiche {
+        if let e = engine.evenementEnCours, e.id == affiche.id { return e }
+        return affiche
+    }
 
     var body: some View {
         let aff = courant
         let style = StyleEvenement.pour(aff.evenement)
         return VStack(spacing: 0) {
             bandeau(style)
-            ScrollView {
-                VStack(spacing: 18) {
-                    Text(aff.texte)
-                        .font(.system(size: 19, weight: .semibold, design: .rounded))
-                        .foregroundStyle(Theme.encre)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.horizontal, 22)
-                        .padding(.top, 22)
-
-                    if let resultat = aff.resultat {
-                        resultatVue(resultat, style)
-                            .transition(.move(edge: .bottom).combined(with: .opacity))
-                    }
-                }
-                .padding(.bottom, 16)
+            // Sans défilement si tout tient, sinon le texte défile et les boutons restent visibles.
+            ViewThatFits(in: .vertical) {
+                corps(aff, style)
+                ScrollView { corps(aff, style) }
             }
             if aff.resultat != nil {
                 BoutonEvenement(titre: "Continuer", couleur: style.couleur, badge: nil, principal: true) {
+                    // Un double tap ne doit pas sauter l'événement suivant.
+                    guard engine.evenementEnCours?.id == aff.id else { return }
                     avant = nil
                     engine.fermerEvenement()
                 }
@@ -48,11 +47,27 @@ struct EventView: View {
                     .padding(.bottom, 18)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
         .background(Theme.carte)
-        .scaleEffect(apparu ? 1 : 0.97)
-        .opacity(apparu ? 1 : 0)
-        .onAppear { withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) { apparu = true } }
+    }
+
+    private func corps(_ aff: EvenementAffiche, _ style: StyleEvenement) -> some View {
+        VStack(spacing: 18) {
+            Text(aff.texte)
+                .font(.system(size: 19, weight: .semibold, design: .rounded))
+                .foregroundStyle(Theme.encre)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 22)
+                .padding(.top, 22)
+
+            if let resultat = aff.resultat {
+                resultatVue(resultat, style)
+                    .transition(.opacity)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.bottom, 16)
     }
 
     // MARK: Bandeau
@@ -97,13 +112,28 @@ struct EventView: View {
             ForEach(visibles) { item in
                 BoutonEvenement(titre: item.choix.label, couleur: style.couleur,
                                 badge: Competences.badge(item.choix), principal: false) {
-                    if let j = engine.joueur {
-                        avant = Instantane(stats: j.stats, argent: j.argent)
-                    }
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) {
-                        engine.choisir(item.index)
-                    }
+                    choisir(item, aff, style)
                 }
+            }
+        }
+    }
+
+    private func choisir(_ item: ChoixVisible, _ aff: EvenementAffiche, _ style: StyleEvenement) {
+        // Un double tap ne doit pas répondre à l'événement suivant.
+        guard engine.evenementEnCours?.id == aff.id, engine.evenementEnCours?.resultat == nil else { return }
+        let instantane = engine.joueur.map { Instantane(stats: $0.stats, argent: $0.argent) }
+        avant = instantane
+        if unTap, let rapporter = resultatEnUnTap {
+            engine.choisir(item.index)
+            // Pas de résultat (ex. une étape suivante s'ouvre) : la carte reste, on ne ferme rien.
+            guard let apres = engine.evenementEnCours, apres.id == aff.id, let texte = apres.resultat else { return }
+            let deltas = instantane.flatMap { a in engine.joueur.map { ChangementStat.entre(a, $0) } } ?? []
+            rapporter(ResultatBandeau(titre: item.choix.label, texte: texte, couleur: style.couleur, changements: deltas))
+            avant = nil
+            engine.fermerEvenement()
+        } else {
+            withAnimation(ModeRapide.animation(.spring(response: 0.3, dampingFraction: 0.85), rapide: rapide)) {
+                engine.choisir(item.index)
             }
         }
     }

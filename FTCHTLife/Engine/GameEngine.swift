@@ -12,6 +12,8 @@ final class GameEngine: ObservableObject {
     @Published var flashMonde: MondeFlash?
 
     var fileEvenements: [EvenementAffiche] = []
+    /// Une sauvegarde est déjà prévue pour cet instant (voir `sauvegarder`).
+    private var sauvegardePrevue = false
 
     init() {
         SignauxModules.configurer()
@@ -471,9 +473,25 @@ final class GameEngine: ObservableObject {
             .appendingPathComponent("ftchtlife-sauvegarde.json")
     }
 
+    /// File d'écriture : les sauvegardes partent hors de l'écran, une à la fois et dans l'ordre.
+    private static let fileSauvegarde = DispatchQueue(label: "ftchtlife.sauvegarde", qos: .utility)
+
+    /// Sauvegarde la vie en cours. Encoder et écrire toute la vie à chaque geste bloquait l'écran
+    /// (la vie grossit d'année en année) : on regroupe les demandes d'un même instant en une seule,
+    /// et l'encodage comme l'écriture se font en arrière-plan.
     func sauvegarder() {
-        guard let j = joueur, let data = try? JSONEncoder().encode(j) else { return }
-        try? data.write(to: urlSauvegarde, options: .atomic)
+        guard !sauvegardePrevue else { return }
+        sauvegardePrevue = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.sauvegardePrevue = false
+            guard let j = self.joueur else { return }
+            let url = self.urlSauvegarde
+            Self.fileSauvegarde.async {
+                guard let data = try? JSONEncoder().encode(j) else { return }
+                try? data.write(to: url, options: .atomic)
+            }
+        }
     }
 
     private func charger() {
@@ -487,7 +505,9 @@ final class GameEngine: ObservableObject {
         flashMonde = nil
         evenementEnCours = nil
         fileEvenements = []
-        try? FileManager.default.removeItem(at: urlSauvegarde)
+        let url = urlSauvegarde
+        // Après les écritures déjà en route, sinon une ancienne sauvegarde pourrait revenir.
+        Self.fileSauvegarde.async { try? FileManager.default.removeItem(at: url) }
     }
 
     /// Modifie le joueur en cours et sauvegarde.
@@ -503,11 +523,16 @@ final class GameEngine: ObservableObject {
 }
 
 enum Format {
-    static func argent(_ montant: Int) -> String {
+    /// Créé une seule fois : fabriquer un NumberFormatter à chaque montant affiché ralentissait chaque écran.
+    private static let formateurArgent: NumberFormatter = {
         let f = NumberFormatter()
         f.numberStyle = .decimal
         f.groupingSeparator = "'"
         f.maximumFractionDigits = 0
-        return (f.string(from: NSNumber(value: montant)) ?? "\(montant)") + " €"
+        return f
+    }()
+
+    static func argent(_ montant: Int) -> String {
+        (formateurArgent.string(from: NSNumber(value: montant)) ?? "\(montant)") + " €"
     }
 }

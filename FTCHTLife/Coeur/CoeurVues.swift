@@ -4,6 +4,7 @@ import SwiftUI
 
 struct CoeurSection: View {
     @EnvironmentObject var engine: GameEngine
+    @Environment(\.presentoir) private var presentoir
     @State private var message: String?
 
     var body: some View {
@@ -26,7 +27,8 @@ struct CoeurSection: View {
 
     private func faire(_ action: CoeurSysteme.Action) {
         let texte = engine.vieAction { j in CoeurSysteme.agir(action, &j) }
-        if !texte.isEmpty { message = texte }
+        guard !texte.isEmpty else { return }
+        if let p = presentoir { p.montrer(texte) } else { message = texte }
     }
 
     private func lignes(_ options: [CoeurSysteme.Option]) -> some View {
@@ -127,6 +129,7 @@ struct CoeurSection: View {
 
 struct CoeurActionsProcheSection: View {
     @EnvironmentObject var engine: GameEngine
+    @Environment(\.presentoir) private var presentoir
     let relationId: UUID
     @State private var carte: CoeurCartePrete?
     @State private var message: String?
@@ -163,10 +166,12 @@ struct CoeurActionsProcheSection: View {
         engine.modifier { j in
             resultat = CoeurActionsSysteme.faire(a, sur: relationId, &j, engine: engine)
         }
+        // La carte et le message passent par la racine de l'écran : posés ici, dans la liste,
+        // ils seraient refermés aussitôt par le rafraîchissement de la liste.
         if let c = resultat.carte {
-            carte = c
+            if let p = presentoir { p.ouvrir(CoeurCarteView(carte: c)) } else { carte = c }
         } else if !resultat.texte.isEmpty {
-            message = resultat.texte
+            if let p = presentoir { p.montrer(resultat.texte) } else { message = resultat.texte }
         }
     }
 }
