@@ -52,6 +52,16 @@ struct ShopView: View {
                 ShopInfoRow(titre: "Score de crédit", valeur: "\(b.creditScore)", icone: "gauge.medium")
             }
 
+            if let id = MemoireQuantites.texte("boutique.dernierArticle"), let dernier = ShopCatalog.shared.item(id) {
+                Section("Comme la dernière fois") {
+                    NavigationLink {
+                        ShopItemDetailView(item: dernier, listing: nil)
+                    } label: {
+                        Label("Racheter : \(dernier.name)", systemImage: "arrow.clockwise")
+                    }
+                }
+            }
+
             if !b.pendingEvents.isEmpty {
                 Section("À régler") {
                     ForEach(b.pendingEvents) { ev in
@@ -223,8 +233,18 @@ struct ShopItemDetailView: View {
     let listing: ShopListing?
     @State private var message: String?
     @State private var achatReussi = false
+    /// Nombre d'exemplaires à acheter cash (objets neufs seulement ; une occasion est unique).
+    @State private var quantite = 1
 
     private var prix: Int { listing?.price ?? ShopEngine.currentPrice(item) }
+
+    private var cleQuantite: String { "boutique." + item.id }
+
+    /// Combien d'exemplaires on peut payer cash (100 au plus).
+    private func maximumCash(_ argent: Int) -> Int {
+        guard listing == nil, prix > 0 else { return 1 }
+        return max(1, min(100, argent / prix))
+    }
 
     var body: some View {
         let j = engine.joueur
@@ -258,13 +278,21 @@ struct ShopItemDetailView: View {
                     ShopInfoRow(titre: "Effet à l'achat", valeur: effets, icone: "sparkles")
                 }
             }
+            if listing == nil, let j, ShopHooks.canAfford(prix, j.argent), maximumCash(j.argent) > 1 {
+                Section("Combien ?") {
+                    SelecteurQuantite(quantite: $quantite, maximum: maximumCash(j.argent),
+                                      derniere: MemoireQuantites.derniere(cleQuantite))
+                }
+            }
             Section {
                 Button {
                     acheter(.cash)
                 } label: {
-                    Label("Payer cash \(Format.argent(prix))", systemImage: "banknote")
+                    Label(quantite > 1 ? "Payer cash \(quantite) × \(Format.argent(prix)) = \(Format.argent(prix * quantite))"
+                                       : "Payer cash \(Format.argent(prix))",
+                          systemImage: "banknote")
                 }
-                .disabled(achatReussi || !(j.map { ShopHooks.canAfford(prix, $0.argent) } ?? false))
+                .disabled(achatReussi || !(j.map { ShopHooks.canAfford(prix * max(1, quantite), $0.argent) } ?? false))
 
                 if item.financing != .none, let j {
                     let check = ShopEngine.canFinance(item, price: prix, person: j)
@@ -302,9 +330,23 @@ struct ShopItemDetailView: View {
     private func acheter(_ mode: ShopEngine.PaymentMode) {
         let avant = engine.joueur?.possessions?.residence
         var resultat = ShopResult(ok: false, message: "")
+        let combien = (mode == .cash && listing == nil) ? max(1, quantite) : 1
         engine.modifier { j in
-            resultat = ShopEngine.buy(item, listing: listing, mode: mode, &j)
+            var achetes = 0
+            for _ in 0..<combien {
+                let r = ShopEngine.buy(item, listing: listing, mode: mode, &j)
+                if !r.ok { if achetes == 0 { resultat = r }; break }
+                achetes += 1
+                resultat = r
+            }
+            if achetes > 1 {
+                resultat = ShopResult(ok: true, message: "Tu as acheté \(achetes) × \(item.name) cash pour \(Format.argent(prix * achetes)).")
+            }
             if resultat.ok { engine.ajouterLigne(&j, resultat.message) }
+        }
+        if resultat.ok {
+            MemoireQuantites.retenir(cleQuantite, combien)
+            MemoireQuantites.retenirTexte("boutique.dernierArticle", item.id)
         }
         engine.notifierEmmenagementBoutique(avant: avant)
         achatReussi = resultat.ok
