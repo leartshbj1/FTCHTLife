@@ -167,8 +167,156 @@ struct Entreprise: Codable, Identifiable, Equatable {
     var dividendes: Int = 0
     var concurrent: String
 
+    // Gestion poussée (v2). Valeurs par défaut pour les anciennes sauvegardes : voir init(from:).
+    /// Points de vente (camions, salons, boutiques, agences…).
+    var sites: Int = 1
+    /// Unités de production (types à usine). −1 = à initialiser.
+    var usines: Int = -1
+    /// Employés « anonymes » (hors cadres nommés). −1 = à initialiser selon le besoin.
+    var effectif: Int = -1
+    /// Multiplicateur de prix (0,6 à 2).
+    var prix: Double = 1
+    /// Qualité de 1 à 5.
+    var qualite: Int = 3
+    /// Budget marketing en % du chiffre d'affaires.
+    var marketing: Int = 2
+    /// Niveau des salaires (0,8 à 1,4).
+    var salaireNiveau: Double = 1
+    /// Moral de l'équipe 0-100.
+    var moral: Int = 60
+    /// Pression de la concurrence (0,75 à 1,35), bouge chaque année.
+    var pression: Double = 1
+    /// Ids des leviers propres au métier activés.
+    var leviers: [String] = []
+    /// Dernier rapport annuel détaillé.
+    var rapport: EntrepriseRapport?
+    /// Le rapport de l'année n'a pas encore été montré au joueur.
+    var rapportNonLu: Bool = false
+
     var dernierBilan: EntrepriseBilan? { historique.last }
     var echelle: Double { EntrepriseMoteur.echelle(niveau) }
+}
+
+/// Rapport annuel détaillé d'une boîte.
+struct EntrepriseRapport: Codable, Equatable {
+    var age: Int
+    /// Clients potentiels sur les zones couvertes.
+    var marche: Int
+    var demande: Int
+    var capacite: Int
+    var ventes: Int
+    var prixVente: Double
+    var chiffreAffaires: Int
+    var achats: Int
+    var salaires: Int
+    var loyers: Int
+    var marketing: Int
+    var leviers: Int
+    var banque: Int
+    var resultat: Int
+    var tresorerie: Int
+    var effectif: Int
+    var sites: Int
+    var usines: Int
+    var reputation: Int
+    var moral: Int
+    var partDeMarche: Double
+    var faits: [String] = []
+    var conseils: [String] = []
+
+    var couts: Int { achats + salaires + loyers + marketing + leviers + banque }
+    var clientsRefuses: Int { max(0, demande - ventes) }
+    var tauxOccupation: Double { capacite > 0 ? Double(ventes) / Double(capacite) : 0 }
+}
+
+extension Entreprise {
+    enum CodingKeys: String, CodingKey {
+        case id, typeId, nom, ageCreation, annees, niveau, niveauMax, tresorerie, dette, detteInitiale, reputation, elan
+        case employes, candidats, historique, anneesDansLeRouge, crise, evenementsVus, offreRachat, dividendes, concurrent
+        case sites, usines, effectif, prix, qualite, marketing, salaireNiveau, moral, pression, leviers, rapport, rapportNonLu
+    }
+
+    /// Lecture tolérante : les anciennes sauvegardes n'ont pas les champs de la gestion poussée.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
+        typeId = try c.decode(String.self, forKey: .typeId)
+        nom = try c.decode(String.self, forKey: .nom)
+        ageCreation = try c.decodeIfPresent(Int.self, forKey: .ageCreation) ?? 18
+        annees = try c.decodeIfPresent(Int.self, forKey: .annees) ?? 0
+        niveau = try c.decodeIfPresent(Int.self, forKey: .niveau) ?? 0
+        niveauMax = try c.decodeIfPresent(Int.self, forKey: .niveauMax) ?? niveau
+        tresorerie = try c.decodeIfPresent(Int.self, forKey: .tresorerie) ?? 0
+        dette = try c.decodeIfPresent(Int.self, forKey: .dette) ?? 0
+        detteInitiale = try c.decodeIfPresent(Int.self, forKey: .detteInitiale) ?? dette
+        reputation = try c.decodeIfPresent(Int.self, forKey: .reputation) ?? 50
+        elan = try c.decodeIfPresent(Int.self, forKey: .elan) ?? 0
+        employes = try c.decodeIfPresent([EntrepriseEmploye].self, forKey: .employes) ?? []
+        candidats = try c.decodeIfPresent([EntrepriseEmploye].self, forKey: .candidats) ?? []
+        historique = try c.decodeIfPresent([EntrepriseBilan].self, forKey: .historique) ?? []
+        anneesDansLeRouge = try c.decodeIfPresent(Int.self, forKey: .anneesDansLeRouge) ?? 0
+        crise = try c.decodeIfPresent(EntrepriseCrise.self, forKey: .crise)
+        evenementsVus = try c.decodeIfPresent([String].self, forKey: .evenementsVus) ?? []
+        offreRachat = try c.decodeIfPresent(Int.self, forKey: .offreRachat)
+        dividendes = try c.decodeIfPresent(Int.self, forKey: .dividendes) ?? 0
+        concurrent = try c.decodeIfPresent(String.self, forKey: .concurrent) ?? "Le Truc d'en Face"
+        sites = try c.decodeIfPresent(Int.self, forKey: .sites) ?? EntrepriseMoteur.seuilsSites[min(max(0, niveau), 5)]
+        usines = try c.decodeIfPresent(Int.self, forKey: .usines) ?? -1
+        effectif = try c.decodeIfPresent(Int.self, forKey: .effectif) ?? -1
+        prix = try c.decodeIfPresent(Double.self, forKey: .prix) ?? 1
+        qualite = try c.decodeIfPresent(Int.self, forKey: .qualite) ?? 3
+        marketing = try c.decodeIfPresent(Int.self, forKey: .marketing) ?? 2
+        salaireNiveau = try c.decodeIfPresent(Double.self, forKey: .salaireNiveau) ?? 1
+        moral = try c.decodeIfPresent(Int.self, forKey: .moral) ?? 60
+        pression = try c.decodeIfPresent(Double.self, forKey: .pression) ?? 1
+        leviers = try c.decodeIfPresent([String].self, forKey: .leviers) ?? []
+        rapport = try c.decodeIfPresent(EntrepriseRapport.self, forKey: .rapport)
+        rapportNonLu = try c.decodeIfPresent(Bool.self, forKey: .rapportNonLu) ?? false
+    }
+}
+
+// MARK: - Leviers propres au métier (Data/EntrepriseLeviers)
+
+struct EntrepriseUnite: Codable, Equatable {
+    var nom: String
+    var pluriel: String
+    var cout: Int?
+}
+
+struct EntrepriseLevierEffets: Codable, Equatable {
+    var demande: Int?
+    var prix: Int?
+    var coutVariable: Int?
+    var capacite: Int?
+    var productivite: Int?
+    var reputation: Int?
+    var moral: Int?
+    var risque: Int?
+    var karma: Int?
+}
+
+struct EntrepriseLevier: Codable, Identifiable, Equatable {
+    var id: String
+    var nom: String
+    var description: String
+    var icone: String
+    var groupe: String?
+    var niveauMin: Int?
+    var coutInstallation: Int?
+    var coutAnnuel: Int?
+    var parSite: Bool?
+    var effets: EntrepriseLevierEffets?
+    var activation: String?
+}
+
+struct EntrepriseLeviersType: Codable, Equatable {
+    var typeId: String
+    var vente: EntrepriseUnite?
+    var site: EntrepriseUnite?
+    var usine: EntrepriseUnite?
+    var prixUnitaire: Double?
+    var elasticite: Double?
+    var leviers: [EntrepriseLevier]?
 }
 
 /// Une boîte qui n'existe plus (vendue, en faillite) : pour l'historique et la nécrologie.
@@ -197,6 +345,19 @@ struct EntreprisesEtat: Codable, Equatable {
 enum EntrepriseCatalogue {
     static let types: [EntrepriseType] = DonneesJSON.chargerTableaux(dossier: "Entreprises", type: EntrepriseType.self)
     static let evenements: [EntrepriseEvenement] = DonneesJSON.chargerTableaux(dossier: "EntrepriseEvents", type: EntrepriseEvenement.self)
+    static let leviersParType: [String: EntrepriseLeviersType] = {
+        var d: [String: EntrepriseLeviersType] = [:]
+        for l in DonneesJSON.chargerTableaux(dossier: "EntrepriseLeviers", type: EntrepriseLeviersType.self) { d[l.typeId] = l }
+        return d
+    }()
+    /// Calibrage économique de chaque type, calculé une fois.
+    static let economies: [String: EntrepriseEco] = {
+        var d: [String: EntrepriseEco] = [:]
+        for t in types { d[t.id] = EntrepriseEco(t, donnees: leviersParType[t.id]) }
+        return d
+    }()
+
+    static func eco(_ typeId: String) -> EntrepriseEco? { economies[typeId] }
 
     static func type(_ id: String) -> EntrepriseType? { types.first { $0.id == id } }
     static func evenement(_ id: String) -> EntrepriseEvenement? { evenements.first { $0.id == id } }

@@ -9,6 +9,8 @@ struct MainView: View {
     @State private var statsAvant: Stats?
     /// Bulle « 12 ans ! » affichée un instant après chaque année.
     @State private var bulleAge: Int?
+    /// Bilan annuel des entreprises à montrer une fois les événements et la une du monde fermés.
+    @State private var bilanEntreprisesEnAttente = false
 
     var body: some View {
         if let j = engine.joueur {
@@ -47,6 +49,10 @@ struct MainView: View {
                 MondeFlashSheet(flash: f, age: engine.joueur?.age ?? 0)
                     .presentationDetents([.medium, .large])
             }
+            .sheet(isPresented: bilanEntreprises) {
+                EntreprisesBilanAnnuelView()
+                    .environmentObject(engine)
+            }
             .animauxEvenements(cle: \.animaux)
             .scolPresentationAuto()
         }
@@ -56,6 +62,12 @@ struct MainView: View {
     private var flashMonde: Binding<MondeFlash?> {
         Binding(get: { engine.evenementEnCours == nil ? engine.flashMonde : nil },
                 set: { if $0 == nil { engine.flashMonde = nil } })
+    }
+
+    /// Bilan des entreprises : seulement quand plus rien d'autre n'attend à l'écran.
+    private var bilanEntreprises: Binding<Bool> {
+        Binding(get: { bilanEntreprisesEnAttente && engine.evenementEnCours == nil && engine.flashMonde == nil },
+                set: { if !$0 { bilanEntreprisesEnAttente = false } })
     }
 
     // MARK: En-tête
@@ -142,6 +154,7 @@ struct MainView: View {
             engine.vieillir()
         }
         guard let nouveau = engine.joueur, nouveau.vivant else { return }
+        if !engine.entreprisesAvecRapportNonLu.isEmpty { bilanEntreprisesEnAttente = true }
         withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) { bulleAge = nouveau.age }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.4) {
             withAnimation(.easeIn(duration: 0.25)) { if bulleAge == nouveau.age { bulleAge = nil } }

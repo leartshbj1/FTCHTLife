@@ -1,0 +1,3088 @@
+[
+  {
+    "typeId": "food_truck",
+    "vente": {
+      "nom": "menu",
+      "pluriel": "menus"
+    },
+    "site": {
+      "nom": "camion",
+      "pluriel": "camions",
+      "cout": 22000
+    },
+    "prixUnitaire": 12,
+    "elasticite": 1.4,
+    "leviers": [
+      {
+        "id": "ft_tournee_festivals",
+        "nom": "Tournée des festivals",
+        "description": "Tu suis les festivals tout l'été : des foules affamées, éméchées et pas très regardantes. Ton équipe dort dans le camion.",
+        "icone": "music.note.list",
+        "groupe": "ft_emplacement",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 6000,
+        "parSite": true,
+        "effets": {
+          "demande": 20,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -4,
+          "risque": 6,
+          "karma": 0
+        },
+        "activation": "Premier client du festival : un type en cape qui paie en pièces de 10 centimes et en compliments."
+      },
+      {
+        "id": "ft_parking_bureaux",
+        "nom": "Parking des bureaux à midi",
+        "description": "Tous les midis devant les tours de bureaux : des cadres pressés, réguliers et trop fatigués pour se plaindre.",
+        "icone": "building.2",
+        "groupe": "ft_emplacement",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 2000,
+        "parSite": true,
+        "effets": {
+          "demande": 10,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 5,
+          "reputation": 0,
+          "moral": 3,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Les cadres ont créé un groupe WhatsApp juste pour savoir si {entreprise} est là aujourd'hui."
+      },
+      {
+        "id": "ft_frites_maison",
+        "nom": "Frites maison",
+        "description": "Des vraies pommes de terre épluchées à la main. Les clients adorent, les mains de ton équipe un peu moins.",
+        "icone": "flame",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 6,
+          "prix": 8,
+          "coutVariable": 10,
+          "capacite": 0,
+          "productivite": -5,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Quarante kilos de patates livrés. Ton cuistot les regarde comme un ennemi personnel."
+      },
+      {
+        "id": "ft_steak_mystere",
+        "nom": "Steak d'origine floue",
+        "description": "Un fournisseur sans site web te vend des steaks très bon marché. Ne demande pas de quel animal.",
+        "icone": "questionmark.circle",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -20,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -3,
+          "moral": 0,
+          "risque": 15,
+          "karma": -2
+        },
+        "activation": "Le fournisseur a livré de nuit, sans facture, en te faisant un clin d'œil. Tout va bien."
+      },
+      {
+        "id": "ft_camion_graffe",
+        "nom": "Camion repeint par un graffeur",
+        "description": "Ton camion devient une œuvre d'art ambulante. Les gens le prennent en photo, et parfois ils achètent un {produit}.",
+        "icone": "paintbrush",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 4000,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 7,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le graffeur a signé sur le pare-brise. Tu vois un peu moins la route, mais c'est de l'art."
+      },
+      {
+        "id": "ft_precommande",
+        "nom": "Précommande sur appli",
+        "description": "Les clients commandent avant d'arriver : moins de queue, plus de ventes, et zéro conversation humaine.",
+        "icone": "iphone",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 18000,
+        "coutAnnuel": 4000,
+        "parSite": false,
+        "effets": {
+          "demande": 8,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 15,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "L'appli {entreprise} est en ligne. Trois clients ont déjà commandé un menu sans fromage. Tous en même temps."
+      },
+      {
+        "id": "ft_franchise",
+        "nom": "Franchiser le concept",
+        "description": "Des inconnus paient pour peindre ton logo sur leur camion. Ils cuisinent moins bien que toi, mais ils paient.",
+        "icone": "doc.text",
+        "groupe": null,
+        "niveauMin": 3,
+        "coutInstallation": 30000,
+        "coutAnnuel": 5000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": -8,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le premier franchisé a mis ton logo à l'envers. Il dit que c'est « une relecture »."
+      }
+    ]
+  },
+  {
+    "typeId": "kebab",
+    "vente": {
+      "nom": "kebab",
+      "pluriel": "kebabs"
+    },
+    "site": {
+      "nom": "snack",
+      "pluriel": "snacks",
+      "cout": 35000
+    },
+    "prixUnitaire": 9,
+    "elasticite": 1.4,
+    "leviers": [
+      {
+        "id": "keb_sauce_secrete",
+        "nom": "Sauce secrète",
+        "description": "Une recette que personne ne connaît. En vrai c'est de la sauce blanche avec un truc orange, mais le mystère fait vendre.",
+        "icone": "drop.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 1500,
+        "coutAnnuel": 1200,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 3,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Tu as noté la recette sur une serviette en papier. Puis tu t'es essuyé la bouche avec."
+      },
+      {
+        "id": "keb_livraison_velo",
+        "nom": "Livraison à vélo",
+        "description": "Des livreurs en vélo sillonnent {ville}. Plus de clients, des frites un peu froides et des genoux en compote.",
+        "icone": "bicycle",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 9000,
+        "parSite": true,
+        "effets": {
+          "demande": 15,
+          "prix": 0,
+          "coutVariable": 5,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -2,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "Ton premier livreur est parti avec la commande et l'enthousiasme. Il est revenu avec un seul des deux."
+      },
+      {
+        "id": "keb_ouvert_5h",
+        "nom": "Ouvert jusqu'à 5 h",
+        "description": "Tu nourris toute la faune nocturne de {ville}. Énorme chiffre, clients philosophes et quelques bagarres de comptoir.",
+        "icone": "moon.stars",
+        "groupe": "keb_horaires",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 18,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": -5,
+          "reputation": 0,
+          "moral": -6,
+          "risque": 10,
+          "karma": 0
+        },
+        "activation": "À 4 h 12, un client t'a demandé ta main. Il voulait juste la sauce, en fait."
+      },
+      {
+        "id": "keb_ferme_dimanche",
+        "nom": "Fermé le dimanche",
+        "description": "Un jour de repos sacré. Moins de ventes, mais une équipe qui ne pleure plus dans la chambre froide.",
+        "icone": "bed.double",
+        "groupe": "keb_horaires",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -8,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 5,
+          "reputation": 0,
+          "moral": 8,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Panneau « Fermé le dimanche » accroché. Ton maître de la broche a versé une larme de joie."
+      },
+      {
+        "id": "keb_broche_xxl",
+        "nom": "Broche XXL de 80 kg",
+        "description": "Une broche de la taille d'un collégien. Tu sers deux fois plus vite, mais elle tourne aussi la nuit dans tes cauchemars.",
+        "icone": "flame.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 6000,
+        "coutAnnuel": 500,
+        "parSite": true,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": 4,
+          "capacite": 20,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 8,
+          "karma": 0
+        },
+        "activation": "La broche XXL est installée. Deux employés ont dû se mettre à genoux pour la porter, par respect."
+      },
+      {
+        "id": "keb_frites_dans_le_pain",
+        "nom": "Frites dans le pain d'office",
+        "description": "Tu glisses des frites dans chaque kebab sans demander. Personne n'a jamais protesté.",
+        "icone": "takeoutbag.and.cup.and.straw",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 8,
+          "prix": 0,
+          "coutVariable": 6,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Tu as officialisé ce que tout {ville} faisait déjà en douce. Un pas de géant pour la gastronomie."
+      },
+      {
+        "id": "keb_franchise",
+        "nom": "Franchise « {entreprise} Express »",
+        "description": "Ta recette dupliquée dans toute la région, avec une centrale d'achat. Moins cher, plus gros, un peu moins bon.",
+        "icone": "building.2.crop.circle",
+        "groupe": null,
+        "niveauMin": 3,
+        "coutInstallation": 40000,
+        "coutAnnuel": 10000,
+        "parSite": false,
+        "effets": {
+          "demande": 10,
+          "prix": -5,
+          "coutVariable": -10,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le contrat de franchise fait 80 pages. La page 42 parle uniquement de la sauce."
+      }
+    ]
+  },
+  {
+    "typeId": "pizzeria",
+    "vente": {
+      "nom": "pizza",
+      "pluriel": "pizzas"
+    },
+    "site": {
+      "nom": "pizzeria",
+      "pluriel": "pizzerias",
+      "cout": 45000
+    },
+    "prixUnitaire": 14,
+    "elasticite": 1.3,
+    "leviers": [
+      {
+        "id": "piz_four_bois",
+        "nom": "Four à bois",
+        "description": "Un vrai four à bois : pizzas sublimes, prix plus élevés, et un pizzaiolo qui sent le feu de camp en permanence.",
+        "icone": "flame",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 12000,
+        "coutAnnuel": 2500,
+        "parSite": true,
+        "effets": {
+          "demande": 8,
+          "prix": 10,
+          "coutVariable": 0,
+          "capacite": -10,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "Le four est allumé. Il ne s'éteindra plus jamais. C'est lui le patron maintenant."
+      },
+      {
+        "id": "piz_ananas",
+        "nom": "Pizza à l'ananas assumée",
+        "description": "La moitié de {ville} t'adore, l'autre moitié veut te dénoncer à un tribunal du goût. Dans les deux cas, on parle de toi.",
+        "icone": "exclamationmark.bubble",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 6,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 3,
+          "karma": 0
+        },
+        "activation": "Un client a pleuré devant la carte. Un autre en a commandé trois. L'équilibre est atteint."
+      },
+      {
+        "id": "piz_livraison_scooter",
+        "nom": "Livraison en scooter",
+        "description": "Des scooters livrent tout {ville}. Les ventes s'envolent, les rétroviseurs aussi.",
+        "icone": "scooter",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 12000,
+        "parSite": true,
+        "effets": {
+          "demande": 18,
+          "prix": 0,
+          "coutVariable": 4,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 10,
+          "karma": 0
+        },
+        "activation": "Ton premier livreur a fait un dérapage contrôlé devant la pizzeria. Il dit que c'était voulu."
+      },
+      {
+        "id": "piz_pate_48h",
+        "nom": "Pâte maturée 48 h",
+        "description": "Une pâte qui repose plus longtemps que toi. Plus légère, plus chère, plus compliquée à planifier.",
+        "icone": "clock",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 6,
+          "coutVariable": 5,
+          "capacite": 0,
+          "productivite": -8,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "La pâte repose. Ton pizzaiolo lui parle doucement pour qu'elle ne stresse pas."
+      },
+      {
+        "id": "piz_fromage_type",
+        "nom": "Fromage « type mozzarella »",
+        "description": "Un fromage vaguement blanc qui fond vaguement. Personne ne voit la différence, à part ta conscience.",
+        "icone": "eye.slash",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -18,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -3,
+          "moral": 0,
+          "risque": 8,
+          "karma": -2
+        },
+        "activation": "Le carton dit « produit laitier à usage pizzaiolesque ». Ça a l'air officiel."
+      },
+      {
+        "id": "piz_appli_fidelite",
+        "nom": "Appli maison avec fidélité",
+        "description": "Une appli {entreprise} avec la dixième pizza offerte. Les clients reviennent, ta marge un peu moins.",
+        "icone": "app.badge",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 25000,
+        "coutAnnuel": 6000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": -3,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "L'appli est en ligne. Le premier avis dit « bien mais pas assez de pizzas ». C'est une appli."
+      },
+      {
+        "id": "piz_centrale_achat",
+        "nom": "Centrale d'achat",
+        "description": "Tu achètes farine, tomates et fromage par camions entiers. Les fournisseurs te détestent, ta marge t'adore.",
+        "icone": "shippingbox",
+        "groupe": null,
+        "niveauMin": 3,
+        "coutInstallation": 20000,
+        "coutAnnuel": 5000,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -15,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le premier camion de farine est arrivé. Il y en a pour neuf ans. Peut-être dix."
+      }
+    ]
+  },
+  {
+    "typeId": "boulangerie",
+    "vente": {
+      "nom": "sachet",
+      "pluriel": "sachets"
+    },
+    "site": {
+      "nom": "boulangerie",
+      "pluriel": "boulangeries",
+      "cout": 60000
+    },
+    "prixUnitaire": 6,
+    "elasticite": 1.2,
+    "leviers": [
+      {
+        "id": "boul_four_bois",
+        "nom": "Four à bois",
+        "description": "Du pain cuit au bois, croustillant à en faire pleurer un critique. Mais le four met une heure à se réveiller, comme toi.",
+        "icone": "flame.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 15000,
+        "coutAnnuel": 3000,
+        "parSite": true,
+        "effets": {
+          "demande": 8,
+          "prix": 8,
+          "coutVariable": 0,
+          "capacite": -8,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le four à bois est installé. Ton boulanger lui a déjà donné un prénom et une date d'anniversaire."
+      },
+      {
+        "id": "boul_levain_1947",
+        "nom": "Levain de 1947",
+        "description": "Un levain plus vieux que ta grand-mère et plus capricieux. Le pain est divin, la fabrication interminable.",
+        "icone": "hourglass",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 3000,
+        "coutAnnuel": 500,
+        "parSite": false,
+        "effets": {
+          "demande": 5,
+          "prix": 8,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": -5,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Tu as acheté le levain aux enchères. Il est arrivé dans un bocal avec une notice manuscrite et des menaces."
+      },
+      {
+        "id": "boul_sept_sur_sept",
+        "nom": "Ouvert 7 jours sur 7",
+        "description": "Pas un jour sans croissant à {ville}. Les clients sont ravis, ton équipe a oublié la couleur du ciel.",
+        "icone": "calendar",
+        "groupe": "boul_horaires",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -7,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le panneau « Fermé le lundi » a été jeté. Ton apprenti l'a récupéré pour le pleurer en privé."
+      },
+      {
+        "id": "boul_ferme_aout",
+        "nom": "Fermé tout le mois d'août",
+        "description": "La tradition : un mois de vacances. Les clients vont acheter du pain industriel et reviennent en s'excusant.",
+        "icone": "sun.max",
+        "groupe": "boul_horaires",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -6,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 5,
+          "reputation": 0,
+          "moral": 9,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Écriteau scotché sur la vitrine : « Fermé pour cause de bonheur ». Les voisins sont jaloux."
+      },
+      {
+        "id": "boul_surgele",
+        "nom": "Viennoiseries surgelées « artisanales »",
+        "description": "Des croissants industriels réchauffés avec amour. Énormément de temps gagné, un peu d'âme perdue.",
+        "icone": "snowflake",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -20,
+          "capacite": 0,
+          "productivite": 15,
+          "reputation": -3,
+          "moral": 0,
+          "risque": 10,
+          "karma": -2
+        },
+        "activation": "Le camion de surgelés est arrivé par la porte de derrière. Comme d'habitude, personne n'a rien vu."
+      },
+      {
+        "id": "boul_concours",
+        "nom": "Concours de la meilleure baguette",
+        "description": "Tu inscris ta baguette à tous les concours du coin. Si tu gagnes, la file d'attente traverse la rue.",
+        "icone": "rosette",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 2000,
+        "coutAnnuel": 1500,
+        "parSite": false,
+        "effets": {
+          "demande": 10,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 4,
+          "moral": 2,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Ta baguette est partie au concours dans un étui de violon. Le jury a trouvé ça excessif mais touchant."
+      },
+      {
+        "id": "boul_labo_central",
+        "nom": "Laboratoire central",
+        "description": "Toute la pâte est préparée dans un seul labo et livrée dans les boutiques. Ultra efficace, un peu moins charmant.",
+        "icone": "building.columns",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 80000,
+        "coutAnnuel": 15000,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -12,
+          "capacite": 20,
+          "productivite": 0,
+          "reputation": -1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le laboratoire central de {entreprise} tourne. On dirait une usine, mais avec plus de farine dans les cheveux."
+      }
+    ]
+  },
+  {
+    "typeId": "restaurant_gastro",
+    "vente": {
+      "nom": "couvert",
+      "pluriel": "couverts"
+    },
+    "site": {
+      "nom": "restaurant",
+      "pluriel": "restaurants",
+      "cout": 200000
+    },
+    "prixUnitaire": 140,
+    "elasticite": 0.8,
+    "leviers": [
+      {
+        "id": "gas_guides",
+        "nom": "Courtiser les guides gastronomiques",
+        "description": "Tu repères les inspecteurs à leur façon de mâcher. Ça rapporte du prestige, et des sueurs froides en cuisine.",
+        "icone": "star.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 15000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 4,
+          "moral": -3,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Un client seul a commandé une carafe d'eau et pris des notes. Toute la brigade a fait un malaise."
+      },
+      {
+        "id": "gas_portions_micro",
+        "nom": "Portions microscopiques",
+        "description": "Trois petits pois, une mousse et beaucoup d'assiette. On appelle ça l'audace, ta comptable appelle ça le bonheur.",
+        "icone": "circle.dotted",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -3,
+          "prix": 5,
+          "coutVariable": -15,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le premier client a cherché son plat pendant une minute. Il a fini par lui dire bonjour."
+      },
+      {
+        "id": "gas_potager_toit",
+        "nom": "Potager sur le toit",
+        "description": "Tes herbes poussent au-dessus de la salle. C'est frais, c'est local, c'est très bon pour la carte et les photos.",
+        "icone": "leaf.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 30000,
+        "coutAnnuel": 6000,
+        "parSite": true,
+        "effets": {
+          "demande": 5,
+          "prix": 0,
+          "coutVariable": -5,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le potager est planté. Un pigeon a déjà pris possession du basilic et ne compte pas négocier."
+      },
+      {
+        "id": "gas_menu_unique",
+        "nom": "Menu unique imposé",
+        "description": "Un seul menu, pas de choix, pas de discussion. La cuisine tourne comme une horloge, les difficiles restent dehors.",
+        "icone": "list.bullet.rectangle",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -5,
+          "prix": 8,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 12,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "La carte fait maintenant une seule ligne. Le serveur la récite comme un poème funèbre."
+      },
+      {
+        "id": "gas_chef_tyran",
+        "nom": "Laisser le chef hurler",
+        "description": "Ton chef crie, tout le monde court. Les plats sortent plus vite, les commis sortent en larmes.",
+        "icone": "speaker.wave.3",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 10,
+          "reputation": 1,
+          "moral": -10,
+          "risque": 12,
+          "karma": -1
+        },
+        "activation": "Le chef a hurlé « OUI CHEF » à lui-même. Personne n'a osé lui dire que c'était lui le chef."
+      },
+      {
+        "id": "gas_cave",
+        "nom": "Cave à vins de compétition",
+        "description": "Une cave qui coûte plus cher que ta maison. Les clients paient plus, le sommelier marche plus droit.",
+        "icone": "wineglass",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 60000,
+        "coutAnnuel": 10000,
+        "parSite": false,
+        "effets": {
+          "demande": 4,
+          "prix": 12,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le sommelier a dormi dans la cave la première nuit. Il dit qu'il « veillait les bouteilles »."
+      },
+      {
+        "id": "gas_bistrot_bis",
+        "nom": "Bistrot bis pour les gens normaux",
+        "description": "Une adresse moins chère sous ton nom. Les foules arrivent, les puristes ricanent.",
+        "icone": "fork.knife",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 50000,
+        "coutAnnuel": 8000,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": -12,
+          "coutVariable": 0,
+          "capacite": 10,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le bistrot de {entreprise} a ouvert. Un critique a écrit « accessible », et il ne voulait pas être gentil."
+      }
+    ]
+  },
+  {
+    "typeId": "bar",
+    "vente": {
+      "nom": "verre",
+      "pluriel": "verres"
+    },
+    "site": {
+      "nom": "bar",
+      "pluriel": "bars",
+      "cout": 50000
+    },
+    "prixUnitaire": 7,
+    "elasticite": 1.3,
+    "leviers": [
+      {
+        "id": "bar_happy_hour",
+        "nom": "Happy hour de 17 h à minuit",
+        "description": "Un happy hour qui dure tellement longtemps qu'il n'a plus rien de happy pour ta marge. Mais le bar est plein.",
+        "icone": "clock.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 18,
+          "prix": -12,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "Premier happy hour de sept heures. Un client a demandé si l'heure normale existait encore."
+      },
+      {
+        "id": "bar_karaoke",
+        "nom": "Karaoké du jeudi",
+        "description": "Le jeudi, {ville} vient massacrer des tubes chez toi. Ça boit beaucoup, ça chante faux, ton équipe souffre.",
+        "icone": "music.mic",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 3000,
+        "coutAnnuel": 1000,
+        "parSite": true,
+        "effets": {
+          "demande": 10,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": -4,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Premier karaoké : quelqu'un a chanté la même chanson quatre fois. Personne n'a eu le cœur de l'arrêter."
+      },
+      {
+        "id": "bar_cocktails_fumee",
+        "nom": "Cocktails à 14 € avec fumée",
+        "description": "Des cocktails servis sous cloche avec de la fumée. Plus chers, plus longs à faire, et très instagrammables.",
+        "icone": "smoke",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -4,
+          "prix": 15,
+          "coutVariable": 8,
+          "capacite": 0,
+          "productivite": -8,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Ton barman a enfumé un cocktail. Puis le bar. Puis un client. Ça fait partie de l'expérience."
+      },
+      {
+        "id": "bar_licence_4h",
+        "nom": "Licence jusqu'à 4 h",
+        "description": "Tu fermes quand les oiseaux se lèvent. Énorme chiffre de nuit, gros risques de nuit.",
+        "icone": "moon.fill",
+        "groupe": "bar_horaires",
+        "niveauMin": 0,
+        "coutInstallation": 5000,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 15,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -6,
+          "risque": 12,
+          "karma": 0
+        },
+        "activation": "Licence obtenue. Le videur a acheté des lunettes de soleil pour la sortie de 4 h."
+      },
+      {
+        "id": "bar_ferme_minuit",
+        "nom": "Fermeture à minuit pile",
+        "description": "À minuit, tout le monde dehors. Moins de ventes, moins d'embrouilles, une équipe qui voit son lit.",
+        "icone": "moon.zzz",
+        "groupe": "bar_horaires",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -8,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 7,
+          "risque": -5,
+          "karma": 0
+        },
+        "activation": "À minuit pile, les lumières se sont rallumées. Trois couples ont découvert à quoi ils ressemblaient vraiment."
+      },
+      {
+        "id": "bar_doseur_court",
+        "nom": "Doseur un peu court",
+        "description": "Tes doseurs sont légèrement plus petits que la norme. Personne ne mesure, sauf les contrôleurs et le karma.",
+        "icone": "drop",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -12,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 6,
+          "karma": -1
+        },
+        "activation": "Tu as racheté des doseurs « format éco ». Le fournisseur t'a fait un clin d'œil très appuyé."
+      },
+      {
+        "id": "bar_rooftop",
+        "nom": "Rooftop avec vue",
+        "description": "Un bar sur le toit avec vue sur {ville}. Les prix montent aussi haut que les clients.",
+        "icone": "building.2",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 60000,
+        "coutAnnuel": 12000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 12,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "Le rooftop est ouvert. Il y a du vent, des guirlandes et quelqu'un qui fait déjà une demande en mariage."
+      }
+    ]
+  },
+  {
+    "typeId": "brasserie",
+    "vente": {
+      "nom": "bouteille",
+      "pluriel": "bouteilles"
+    },
+    "site": {
+      "nom": "taproom",
+      "pluriel": "taprooms",
+      "cout": 48000
+    },
+    "usine": {
+      "nom": "cuverie",
+      "pluriel": "cuveries",
+      "cout": 130000
+    },
+    "prixUnitaire": 4,
+    "elasticite": 1.0,
+    "leviers": [
+      {
+        "id": "bra_houblon_local",
+        "nom": "Houblon cultivé à {ville}",
+        "description": "Ton houblon pousse à côté de la brasserie. C'est plus cher, mais tu peux dire « local » quatorze fois par étiquette.",
+        "icone": "leaf",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 6,
+          "prix": 5,
+          "coutVariable": 8,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le houblon est planté. Ton maître brasseur lui chante des chansons à boire pour l'encourager."
+      },
+      {
+        "id": "bra_biere_bizarre",
+        "nom": "Bière de saison bizarre",
+        "description": "IPA au cornichon, stout au pain d'épices : les amateurs font la queue, les autres font une grimace polie.",
+        "icone": "sparkles",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 4000,
+        "parSite": false,
+        "effets": {
+          "demande": 10,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "La première fournée « Cornichon Sauvage » est prête. Elle est verte. Ce n'était pas prévu."
+      },
+      {
+        "id": "bra_cuves_xxl",
+        "nom": "Cuves de fermentation XXL",
+        "description": "Des cuves inox géantes. Tu brasses plus d'un coup, tu ne passes plus tes nuits à remplir des seaux.",
+        "icone": "cylinder.split.1x2",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 40000,
+        "coutAnnuel": 3000,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 20,
+          "productivite": 5,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Les cuves sont livrées. Ton apprenti s'est caché dedans pour la photo. Il est ressorti un peu ivre."
+      },
+      {
+        "id": "bra_festival",
+        "nom": "Festival de la bière maison",
+        "description": "Un festival annuel dans ta brasserie. Ça fait connaître {entreprise}, et ça fait vomir dans tes plates-bandes.",
+        "icone": "megaphone.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 10000,
+        "coutAnnuel": 10000,
+        "parSite": false,
+        "effets": {
+          "demande": 10,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 4,
+          "risque": 8,
+          "karma": 0
+        },
+        "activation": "Le festival est lancé. Il y a une fanfare, un concours de moustaches et zéro toilettes suffisantes."
+      },
+      {
+        "id": "bra_eau_source",
+        "nom": "Eau du robinet « de source »",
+        "description": "L'étiquette parle d'une source de montagne. La source, c'est le robinet de la cuisine. Il est en montagne, presque.",
+        "icone": "drop.triangle",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -10,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 8,
+          "karma": -2
+        },
+        "activation": "Tu as fait imprimer des étiquettes avec une cascade. Le robinet n'a jamais été aussi flatté."
+      },
+      {
+        "id": "bra_grande_distrib",
+        "nom": "Contrat avec la grande distribution",
+        "description": "Tes bières dans tous les supermarchés. Des volumes énormes, des prix écrasés et des acheteurs qui négocient au couteau.",
+        "icone": "cart.fill",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 25,
+          "prix": -15,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le contrat est signé. L'acheteur t'a serré la main et retiré 15 % en même temps."
+      },
+      {
+        "id": "bra_export",
+        "nom": "Export en Belgique (audacieux)",
+        "description": "Vendre de la bière aux Belges, c'est comme vendre du sable au désert. Mais si ça marche, c'est la gloire.",
+        "icone": "globe.europe.africa",
+        "groupe": null,
+        "niveauMin": 3,
+        "coutInstallation": 25000,
+        "coutAnnuel": 8000,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "Ta première palette a passé la frontière. Un douanier a goûté et a dit « pas mal pour des Français »."
+      }
+    ]
+  },
+  {
+    "typeId": "salon_coiffure",
+    "vente": {
+      "nom": "coupe",
+      "pluriel": "coupes"
+    },
+    "site": {
+      "nom": "salon",
+      "pluriel": "salons",
+      "cout": 40000
+    },
+    "prixUnitaire": 35,
+    "elasticite": 1.1,
+    "leviers": [
+      {
+        "id": "coif_domicile",
+        "nom": "Coupes à domicile",
+        "description": "Tes coiffeurs se déplacent chez les clients. Plus de demandes, des prix plus élevés, beaucoup de temps dans les bouchons.",
+        "icone": "car.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 3000,
+        "parSite": true,
+        "effets": {
+          "demande": 12,
+          "prix": 5,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": -10,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Première coupe à domicile : le chat du client a tout surveillé d'un air de juge."
+      },
+      {
+        "id": "coif_fauteuils_massants",
+        "nom": "Fauteuils massants au bac",
+        "description": "Le shampooing devient un moment de grâce. Certains clients reviennent juste pour le fauteuil.",
+        "icone": "sparkles",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 6000,
+        "coutAnnuel": 600,
+        "parSite": true,
+        "effets": {
+          "demande": 5,
+          "prix": 6,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Les fauteuils sont installés. Ta réceptionniste fait déjà ses pauses dedans."
+      },
+      {
+        "id": "coif_sans_rdv",
+        "nom": "Sans rendez-vous",
+        "description": "Tout le monde entre quand il veut. Le salon est plein, l'agenda n'existe plus, ton équipe court partout.",
+        "icone": "figure.walk",
+        "groupe": "coif_rdv",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 10,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 5,
+          "reputation": -1,
+          "moral": -4,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "La porte est ouverte. Un client est entré pour demander son chemin et ressorti avec une frange."
+      },
+      {
+        "id": "coif_appli_rdv",
+        "nom": "Réservation sur appli",
+        "description": "Les clients réservent en ligne. Plus de trous dans l'agenda, plus de gens qui « passaient juste pour voir ».",
+        "icone": "calendar.badge.clock",
+        "groupe": "coif_rdv",
+        "niveauMin": 2,
+        "coutInstallation": 15000,
+        "coutAnnuel": 3000,
+        "parSite": false,
+        "effets": {
+          "demande": 8,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 10,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "L'appli de {entreprise} est en ligne. Le premier rendez-vous a été pris à 3 h du matin par quelqu'un d'inquiet."
+      },
+      {
+        "id": "coif_jeu_de_mots",
+        "nom": "Nom de salon à jeu de mots",
+        "description": "Une enseigne à calembour bien lourd. Les passants s'arrêtent pour soupirer, puis certains entrent.",
+        "icone": "textformat",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 1500,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 6,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "La nouvelle enseigne dit « Tif'Hanie ». Personne ne s'appelle Tiphanie ici. C'est ça, l'audace."
+      },
+      {
+        "id": "coif_colorations_vegetales",
+        "nom": "Colorations végétales",
+        "description": "Des couleurs à base de plantes. Plus chères, plus longues, mais les clients se sentent bons pour la planète.",
+        "icone": "leaf",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 3,
+          "prix": 8,
+          "coutVariable": 10,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Première coloration au henné : la cliente est ravie, le lavabo est orange pour toujours."
+      },
+      {
+        "id": "coif_apprentis",
+        "nom": "Armée d'apprentis",
+        "description": "Des apprentis pour tout faire. Plus de mains, moins d'expérience, quelques franges un peu aventureuses.",
+        "icone": "person.3.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 6000,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 10,
+          "productivite": -5,
+          "reputation": -1,
+          "moral": 3,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Trois apprentis embauchés. L'un d'eux tient les ciseaux comme une baguette de chef d'orchestre."
+      }
+    ]
+  },
+  {
+    "typeId": "barbier",
+    "vente": {
+      "nom": "taille de barbe",
+      "pluriel": "tailles de barbe"
+    },
+    "site": {
+      "nom": "échoppe",
+      "pluriel": "échoppes",
+      "cout": 30000
+    },
+    "prixUnitaire": 25,
+    "elasticite": 1.1,
+    "leviers": [
+      {
+        "id": "barb_whisky",
+        "nom": "Whisky offert pendant la taille",
+        "description": "Un petit verre pendant que tu tailles. Les clients se détendent, les rasoirs un peu moins.",
+        "icone": "wineglass.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 2500,
+        "parSite": true,
+        "effets": {
+          "demande": 10,
+          "prix": 5,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 6,
+          "karma": 0
+        },
+        "activation": "Le premier client a bu son whisky et demandé une deuxième barbe. Il n'en avait qu'une."
+      },
+      {
+        "id": "barb_coupe_choux",
+        "nom": "Rasoir coupe-choux obligatoire",
+        "description": "Le rasage à l'ancienne, lame nue. C'est classe, c'est cher, c'est légèrement terrifiant.",
+        "icone": "scissors",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 8,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": -8,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 8,
+          "karma": 0
+        },
+        "activation": "Le premier client a fermé les yeux et récité son testament. Il est ressorti impeccable."
+      },
+      {
+        "id": "barb_serviettes_cedre",
+        "nom": "Serviettes chaudes au cèdre",
+        "description": "Des serviettes brûlantes parfumées au bois. Les clients sortent en sentant la cabane de luxe.",
+        "icone": "flame",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 5,
+          "coutVariable": 5,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 1,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Ton responsable des serviettes chaudes a enfin un vrai budget. Il a pleuré dans une serviette, chaude."
+      },
+      {
+        "id": "barb_ambiance_taverne",
+        "nom": "Platine vinyle et ambiance taverne",
+        "description": "Bois sombre, vinyles et têtes d'animaux en plastique. Les clients restent, ton équipe aussi, avec plaisir.",
+        "icone": "record.circle",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 3000,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 6,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 4,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "La platine joue du vieux blues. Un client a commencé à raconter sa vie, personne ne l'a arrêté."
+      },
+      {
+        "id": "barb_express",
+        "nom": "Formule express 10 minutes",
+        "description": "Une barbe en dix minutes chrono. Plus de clients, des prix plus bas, des finitions parfois approximatives.",
+        "icone": "timer",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 8,
+          "prix": -10,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 15,
+          "reputation": -1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Record battu : neuf minutes trente. Le client a encore un peu de mousse dans l'oreille."
+      },
+      {
+        "id": "barb_huile_maison",
+        "nom": "Huile à barbe sous ta marque",
+        "description": "Une huile à barbe {entreprise} vendue au comptoir. Elle sent le bois, l'argent et la réussite.",
+        "icone": "drop.fill",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 12000,
+        "coutAnnuel": 3000,
+        "parSite": false,
+        "effets": {
+          "demande": 5,
+          "prix": 4,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Premier flacon vendu. Le client l'a reniflé si fort qu'il a éternué dessus."
+      }
+    ]
+  },
+  {
+    "typeId": "onglerie",
+    "vente": {
+      "nom": "pose",
+      "pluriel": "poses"
+    },
+    "site": {
+      "nom": "salon",
+      "pluriel": "salons",
+      "cout": 18000
+    },
+    "prixUnitaire": 40,
+    "elasticite": 1.3,
+    "leviers": [
+      {
+        "id": "ongl_nail_art",
+        "nom": "Nail art extrême",
+        "description": "Des ongles transformés en tableaux de maître. Plus chers, plus longs, et impossibles à porter pour taper un SMS.",
+        "icone": "paintpalette",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 6,
+          "prix": 12,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": -10,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Première œuvre livrée : la Joconde sur un pouce. La cliente ne peut plus ouvrir de canette."
+      },
+      {
+        "id": "ongl_non_stop",
+        "nom": "Sans rendez-vous non-stop",
+        "description": "On entre, on s'assoit, on attend. Le salon tourne à plein, l'équipe ne voit plus la lumière du jour.",
+        "icone": "door.left.hand.open",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 10,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -5,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le salon est en flux continu. Une cliente a fait la queue si longtemps que ses ongles ont poussé."
+      },
+      {
+        "id": "ongl_resine_douteuse",
+        "nom": "Résine importée sans notice",
+        "description": "Une résine pas chère, livrée dans des bidons sans étiquette. Ça tient. Pour l'instant.",
+        "icone": "exclamationmark.triangle",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -20,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 15,
+          "karma": -2
+        },
+        "activation": "Tu as ouvert le bidon. L'odeur a fait fuir une mouche. Elle n'est jamais revenue."
+      },
+      {
+        "id": "ongl_ventilation",
+        "nom": "Ventilation de bloc opératoire",
+        "description": "Une aspiration digne d'un hôpital. L'équipe respire enfin autre chose que du vernis.",
+        "icone": "wind",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 5000,
+        "coutAnnuel": 500,
+        "parSite": true,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 5,
+          "reputation": 1,
+          "moral": 6,
+          "risque": -5,
+          "karma": 0
+        },
+        "activation": "La ventilation tourne. Ta prothésiste a dit « je sens à nouveau les odeurs », puis elle a senti le kebab d'à côté."
+      },
+      {
+        "id": "ongl_influenceuse",
+        "nom": "Poses offertes à une influenceuse",
+        "description": "Une influenceuse vient gratuitement chaque mois. Ses abonnés débarquent, son ego aussi.",
+        "icone": "camera.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 4000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": 0,
+          "risque": 4,
+          "karma": 0
+        },
+        "activation": "Elle a filmé ses ongles pendant quarante minutes. Toi, tu as été coupée au montage."
+      },
+      {
+        "id": "ongl_carte_fidelite",
+        "nom": "Carte fidélité, dixième pose offerte",
+        "description": "Une carte à tampons qui fidélise. Les clientes reviennent, la dixième pose te coûte un peu de marge.",
+        "icone": "creditcard",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 7,
+          "prix": -5,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Les cartes sont imprimées. Une cliente en a déjà rempli trois avec un tampon trouvé on ne sait où."
+      },
+      {
+        "id": "ongl_galeries",
+        "nom": "Franchise en galerie commerciale",
+        "description": "Des stands {entreprise} dans tous les centres commerciaux. Énorme visibilité, ambiance néon et musique d'ascenseur.",
+        "icone": "bag.fill",
+        "groupe": null,
+        "niveauMin": 3,
+        "coutInstallation": 25000,
+        "coutAnnuel": 6000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": -8,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Ton premier stand en galerie est ouvert. Il est coincé entre un vendeur de coques et un photomaton."
+      }
+    ]
+  },
+  {
+    "typeId": "institut_beaute",
+    "vente": {
+      "nom": "soin",
+      "pluriel": "soins"
+    },
+    "site": {
+      "nom": "institut",
+      "pluriel": "instituts",
+      "cout": 60000
+    },
+    "prixUnitaire": 65,
+    "elasticite": 0.9,
+    "leviers": [
+      {
+        "id": "inst_spa",
+        "nom": "Hammam et jacuzzi",
+        "description": "Un vrai spa au sous-sol. Les clients paient plus cher pour transpirer dans le calme.",
+        "icone": "bubbles.and.sparkles",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 40000,
+        "coutAnnuel": 6000,
+        "parSite": true,
+        "effets": {
+          "demande": 8,
+          "prix": 12,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le jacuzzi est rempli. Ton gérant de spa l'a testé pendant trois heures, « pour la sécurité »."
+      },
+      {
+        "id": "inst_pierres_chaudes",
+        "nom": "Massage aux pierres chaudes",
+        "description": "Des galets brûlants posés sur le dos des clients. Ils adorent. Les masseurs ont de la corne aux doigts.",
+        "icone": "circle.grid.3x3.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 5,
+          "prix": 6,
+          "coutVariable": 5,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -2,
+          "risque": 4,
+          "karma": 0
+        },
+        "activation": "Les pierres sont chaudes. Ton masseur aussi, il a mis un pull par habitude."
+      },
+      {
+        "id": "inst_creme_quantique",
+        "nom": "Crème « anti-âge quantique »",
+        "description": "Une crème banale avec une étiquette scientifique très impressionnante. Le mot « quantique » vend tout seul.",
+        "icone": "testtube.2",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 10,
+          "coutVariable": -5,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -1,
+          "moral": 0,
+          "risque": 8,
+          "karma": -2
+        },
+        "activation": "L'étiquette promet « une régénération cellulaire multidimensionnelle ». Ton conseiller beauté a dû s'asseoir."
+      },
+      {
+        "id": "inst_coffrets",
+        "nom": "Coffrets cadeaux en ligne",
+        "description": "Des bons cadeaux vendus en ligne. Plein de nouveaux clients, offerts par des gens qui ne savaient pas quoi offrir.",
+        "icone": "gift.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 6000,
+        "coutAnnuel": 2000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": -5,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Premier coffret vendu : « Pour ma belle-mère, ça va la détendre. » Courage à la belle-mère."
+      },
+      {
+        "id": "inst_chants_baleine",
+        "nom": "Chants de baleine en boucle",
+        "description": "L'ambiance zen absolue pour les clients. Ton équipe, elle, rêve de harpons au bout de la troisième heure.",
+        "icone": "waveform",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 3,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": -6,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "La playlist dure huit heures. C'est la même baleine. Elle a l'air triste."
+      },
+      {
+        "id": "inst_abonnement",
+        "nom": "Abonnement beauté mensuel",
+        "description": "Un abonnement à prix fixe. Les clients reviennent tous les mois, et toi tu dors mieux.",
+        "icone": "arrow.triangle.2.circlepath",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 15000,
+        "coutAnnuel": 4000,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": -8,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Les abonnements sont lancés. Une cliente a demandé si elle pouvait abonner son mari. Oui, mais il faudra le convaincre."
+      }
+    ]
+  },
+  {
+    "typeId": "epicerie",
+    "vente": {
+      "nom": "panier",
+      "pluriel": "paniers"
+    },
+    "site": {
+      "nom": "épicerie",
+      "pluriel": "épiceries",
+      "cout": 30000
+    },
+    "prixUnitaire": 18,
+    "elasticite": 1.6,
+    "leviers": [
+      {
+        "id": "epi_ouvert_2h",
+        "nom": "Ouvert jusqu'à 2 h",
+        "description": "Tu es le seul phare dans la nuit de {ville}. Les prix montent après minuit, et personne ne discute à 1 h 40.",
+        "icone": "moon.stars.fill",
+        "groupe": "epi_horaires",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 18,
+          "prix": 6,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -6,
+          "risque": 10,
+          "karma": 0
+        },
+        "activation": "À 1 h 52, quelqu'un a acheté trois bouteilles de soda et un ananas. Tu n'as pas posé de questions."
+      },
+      {
+        "id": "epi_horaires_bureau",
+        "nom": "Horaires de bureau",
+        "description": "Fermé à 19 h comme un fonctionnaire. Moins de clients, mais une équipe qui a encore une vie sociale.",
+        "icone": "briefcase",
+        "groupe": "epi_horaires",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -10,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 8,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Ton magasinier est rentré chez lui à 19 h 05. Sa famille ne l'a pas reconnu."
+      },
+      {
+        "id": "epi_dates_depassees",
+        "nom": "Promo sur les dates limites dépassées",
+        "description": "Tu revends ce qui aurait dû finir à la poubelle. C'est presque anti-gaspillage, si on ne regarde pas trop.",
+        "icone": "calendar.badge.exclamationmark",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -15,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 12,
+          "karma": -2
+        },
+        "activation": "Bac « bonnes affaires » installé. Un yaourt a gonflé, tu l'as tourné face au mur."
+      },
+      {
+        "id": "epi_produits_monde",
+        "nom": "Rayon produits du monde",
+        "description": "Des épices introuvables, des biscuits d'ailleurs. Les expatriés de {ville} viennent pleurer de joie entre les rayons.",
+        "icone": "globe",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 5000,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 10,
+          "prix": 0,
+          "coutVariable": 3,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le rayon est installé. Un client a trouvé les bonbons de son enfance et t'a serré dans ses bras."
+      },
+      {
+        "id": "epi_livraison",
+        "nom": "Livraison au pied de l'immeuble",
+        "description": "Tu livres les courses au coin de la rue. Les gens paresseux de {ville} t'adorent, et ils sont nombreux.",
+        "icone": "box.truck",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 7000,
+        "parSite": true,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 3,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Premier livreur parti. Il est revenu avec un pourboire et une plainte pour le pack d'eau au 6e sans ascenseur."
+      },
+      {
+        "id": "epi_ardoise",
+        "nom": "Ardoise pour les habitués",
+        "description": "Les habitués paient « à la fin du mois ». Ils sont fidèles, mais certains mois durent très longtemps.",
+        "icone": "pencil.and.outline",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 8,
+          "prix": 0,
+          "coutVariable": 4,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 6,
+          "karma": 1
+        },
+        "activation": "L'ardoise est accrochée. Monsieur Bernard en est déjà à 47 €. Il dit qu'il a un plan."
+      },
+      {
+        "id": "epi_centrale",
+        "nom": "Centrale d'achat",
+        "description": "Tu achètes en gros pour toutes tes épiceries. Tes prix d'achat fondent, tes fournisseurs aussi.",
+        "icone": "shippingbox.fill",
+        "groupe": null,
+        "niveauMin": 3,
+        "coutInstallation": 20000,
+        "coutAnnuel": 5000,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -12,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "La première commande groupée est arrivée : 4 000 rouleaux de papier toilette. Tu as un plan, apparemment."
+      }
+    ]
+  },
+  {
+    "typeId": "boutique_telephones",
+    "vente": {
+      "nom": "téléphone",
+      "pluriel": "téléphones"
+    },
+    "site": {
+      "nom": "boutique",
+      "pluriel": "boutiques",
+      "cout": 40000
+    },
+    "prixUnitaire": 180,
+    "elasticite": 1.7,
+    "leviers": [
+      {
+        "id": "tel_reparation_express",
+        "nom": "Réparation d'écran en 20 minutes",
+        "description": "Écran cassé ? Vingt minutes chrono. La moitié de {ville} fait tomber son téléphone, c'est une mine d'or.",
+        "icone": "wrench.and.screwdriver",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 4000,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": -5,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Ton réparateur a changé un écran en dix-neuf minutes. Il s'est fait applaudir par trois inconnus."
+      },
+      {
+        "id": "tel_pieces_compatibles",
+        "nom": "Pièces « compatibles »",
+        "description": "Des pièces qui ressemblent aux vraies, de loin, de nuit. La batterie chauffe un peu, mais elle chauffe moins cher.",
+        "icone": "exclamationmark.octagon",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -18,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -3,
+          "moral": 0,
+          "risque": 12,
+          "karma": -2
+        },
+        "activation": "Le colis de pièces est arrivé d'un pays dont tu n'as pas trouvé le nom sur la carte."
+      },
+      {
+        "id": "tel_reconditionnes",
+        "nom": "Rayon reconditionnés",
+        "description": "Des téléphones d'occasion remis à neuf. Moins chers, bons pour la planète, et ta réputation remonte.",
+        "icone": "arrow.3.trianglepath",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": -15,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Premier reconditionné vendu. Il contenait encore 2 000 photos de chats. Tu les as effacées. Presque toutes."
+      },
+      {
+        "id": "tel_mur_coques",
+        "nom": "Mur de coques à strass",
+        "description": "Un mur entier de coques qui brillent. Les ados s'arrêtent, les parents paient en soupirant.",
+        "icone": "iphone.gen2",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 2000,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 5,
+          "prix": 5,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le mur est installé. Il brille tellement que le magasin d'en face a baissé ses stores."
+      },
+      {
+        "id": "tel_commission",
+        "nom": "Vendeurs payés à la commission",
+        "description": "Tes vendeurs touchent un bonus à chaque vente. Ils vendent plus, mentent un peu et se détestent beaucoup.",
+        "icone": "dollarsign.circle",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 5,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 12,
+          "reputation": -2,
+          "moral": -5,
+          "risque": 0,
+          "karma": -1
+        },
+        "activation": "Le premier vendeur a vendu trois téléphones à une seule cliente. Elle était venue acheter un chargeur."
+      },
+      {
+        "id": "tel_garantie",
+        "nom": "Extension de garantie que personne ne lit",
+        "description": "Une garantie hors de prix avec des petites lignes très petites. Elle ne couvre ni les chutes, ni l'eau, ni la vie.",
+        "icone": "doc.plaintext",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -3,
+          "prix": 8,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": -1
+        },
+        "activation": "Les contrats sont imprimés en police 4. Ton magasinier a dû prendre une loupe pour les ranger."
+      },
+      {
+        "id": "tel_operateur",
+        "nom": "Partenariat avec un opérateur",
+        "description": "Tu vends des forfaits avec tes téléphones. L'opérateur te verse des commissions et te traite comme un sous-fifre.",
+        "icone": "antenna.radiowaves.left.and.right",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": -5,
+          "coutVariable": -10,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le contrat est signé. L'opérateur t'a envoyé un mug et trente pages de règles sur la couleur des vitrines."
+      }
+    ]
+  },
+  {
+    "typeId": "fleuriste",
+    "vente": {
+      "nom": "bouquet",
+      "pluriel": "bouquets"
+    },
+    "site": {
+      "nom": "boutique",
+      "pluriel": "boutiques",
+      "cout": 28000
+    },
+    "prixUnitaire": 35,
+    "elasticite": 1.2,
+    "leviers": [
+      {
+        "id": "fleur_saint_valentin",
+        "nom": "Opération Saint-Valentin",
+        "description": "Tu transformes février en guerre. Ventes énormes, épines dans les doigts, équipe en larmes le 15.",
+        "icone": "heart.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 3000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -6,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Commande reçue : 200 roses rouges pour un seul homme. Il a beaucoup de choses à se faire pardonner."
+      },
+      {
+        "id": "fleur_locales",
+        "nom": "Fleurs cultivées près de {ville}",
+        "description": "Plus de roses venues en avion. Des fleurs locales, plus chères mais qui ne sentent pas le kérosène.",
+        "icone": "leaf.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 4,
+          "prix": 5,
+          "coutVariable": 10,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Le producteur local a livré lui-même. Il a mis un quart d'heure à décrire chaque tulipe."
+      },
+      {
+        "id": "fleur_triporteur",
+        "nom": "Livraison en triporteur",
+        "description": "Tes bouquets traversent {ville} en triporteur fleuri. Les passants sourient, les automobilistes beaucoup moins.",
+        "icone": "bicycle",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 3000,
+        "coutAnnuel": 4000,
+        "parSite": true,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le triporteur est sorti. Il a été pris en photo quarante fois avant le premier carrefour."
+      },
+      {
+        "id": "fleur_funeraire",
+        "nom": "Spécialité enterrements",
+        "description": "Couronnes, gerbes, compositions solennelles. Une clientèle fidèle jusqu'au bout. Littéralement.",
+        "icone": "leaf.arrow.triangle.circlepath",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 10,
+          "prix": 8,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": -3,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Première couronne livrée. Le défunt n'a rien dit, mais la famille a trouvé ça très réussi."
+      },
+      {
+        "id": "fleur_recup_cimetiere",
+        "nom": "Bouquets « recyclés » du cimetière",
+        "description": "Tu récupères les fleurs encore fraîches sur les tombes. Écologique, rentable, et absolument honteux.",
+        "icone": "exclamationmark.triangle.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -25,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -3,
+          "moral": 0,
+          "risque": 20,
+          "karma": -3
+        },
+        "activation": "Tu es reparti du cimetière avec les bras pleins de chrysanthèmes. Un corbeau t'a regardé longuement."
+      },
+      {
+        "id": "fleur_abonnement_bureaux",
+        "nom": "Abonnement fleurs pour bureaux",
+        "description": "Des bouquets livrés chaque lundi dans les entreprises. Revenus réguliers, créativité un peu en pilote automatique.",
+        "icone": "building.2.fill",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 5000,
+        "coutAnnuel": 2000,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": -5,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 5,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Premier contrat signé avec un cabinet d'avocats. Ils veulent des fleurs « sérieuses ». Tu as pris des glaïeuls."
+      }
+    ]
+  },
+  {
+    "typeId": "magasin_bio",
+    "vente": {
+      "nom": "panier",
+      "pluriel": "paniers"
+    },
+    "site": {
+      "nom": "magasin",
+      "pluriel": "magasins",
+      "cout": 55000
+    },
+    "prixUnitaire": 32,
+    "elasticite": 1.1,
+    "leviers": [
+      {
+        "id": "bio_vrac",
+        "nom": "Rayon vrac géant",
+        "description": "Lentilles, noix et céréales à se servir soi-même. Moins d'emballage, plus de clients qui renversent tout.",
+        "icone": "scalemass",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 8000,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -8,
+          "capacite": 0,
+          "productivite": -5,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Le rayon vrac est ouvert. Un enfant a déjà vidé un silo de quinoa sur ses chaussures."
+      },
+      {
+        "id": "bio_producteurs_50km",
+        "nom": "Que des producteurs à moins de 50 km",
+        "description": "Tout vient du coin. C'est plus cher, plus irrégulier, et les clients de {ville} adorent connaître le prénom de leur carotte.",
+        "icone": "map",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 5,
+          "prix": 6,
+          "coutVariable": 10,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Le producteur de poireaux t'a montré des photos de ses poireaux. Pendant vingt minutes. Il en est fier."
+      },
+      {
+        "id": "bio_etiquettes",
+        "nom": "Étiquettes un peu mensongères",
+        "description": "« Bio » en très gros, « presque » en très petit. Les marges explosent tant que personne ne lit les détails.",
+        "icone": "tag",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -18,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 15,
+          "karma": -3
+        },
+        "activation": "Tu as imprimé des étiquettes vertes avec une feuille dessus. Ça suffit pour 80 % des gens."
+      },
+      {
+        "id": "bio_yoga",
+        "nom": "Ateliers yoga entre les rayons",
+        "description": "Le samedi matin, yoga au rayon légumes. Les clients se détendent, et ils achètent des graines en sortant.",
+        "icone": "figure.mind.and.body",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 3000,
+        "parSite": true,
+        "effets": {
+          "demande": 8,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": -3,
+          "reputation": 0,
+          "moral": 3,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Premier cours : quelqu'un a fait la posture du chien tête en bas sur les courgettes."
+      },
+      {
+        "id": "bio_carte_bois",
+        "nom": "Carte fidélité en bois",
+        "description": "Une carte de fidélité biodégradable. Elle fidélise, et elle fait un peu mal quand on s'assoit dessus.",
+        "icone": "creditcard.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 1500,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 7,
+          "prix": -4,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Les cartes sont gravées. Un client a voulu la composter dès la première semaine."
+      },
+      {
+        "id": "bio_marque_maison",
+        "nom": "Marque bio maison",
+        "description": "Des produits {entreprise} fabriqués à façon. Meilleure marge, logo très vert, sourire très commercial.",
+        "icone": "leaf.fill",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 30000,
+        "coutAnnuel": 6000,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 3,
+          "coutVariable": -12,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Ta première boîte de muesli maison est en rayon. Le carton parle de toi comme d'un ermite inspiré."
+      }
+    ]
+  },
+  {
+    "typeId": "marque_vetements",
+    "vente": {
+      "nom": "t-shirt",
+      "pluriel": "t-shirts"
+    },
+    "site": {
+      "nom": "boutique",
+      "pluriel": "boutiques",
+      "cout": 16000
+    },
+    "usine": {
+      "nom": "atelier",
+      "pluriel": "ateliers",
+      "cout": 45000
+    },
+    "prixUnitaire": 35,
+    "elasticite": 1.2,
+    "leviers": [
+      {
+        "id": "vet_made_in_france",
+        "nom": "Fabriqué en France",
+        "description": "Ateliers français, coutures solides, prix assumés. Les clients paient plus cher pour se sentir patriotes.",
+        "icone": "flag.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 5,
+          "prix": 12,
+          "coutVariable": 20,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Le premier lot est sorti. Chaque t-shirt a une étiquette avec le prénom de la couturière. Elle s'appelle Josiane."
+      },
+      {
+        "id": "vet_soustraitance_lointaine",
+        "nom": "Sous-traitance très lointaine",
+        "description": "Fabriqué très loin, par des gens que tu ne verras jamais. Pas cher, beaucoup de volume, beaucoup de questions évitées.",
+        "icone": "airplane",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 0,
+          "coutVariable": -25,
+          "capacite": 15,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 15,
+          "karma": -3
+        },
+        "activation": "Le contrat est signé par mail. L'usine n'a pas d'adresse, juste des coordonnées GPS."
+      },
+      {
+        "id": "vet_drops_limites",
+        "nom": "Drops limités",
+        "description": "Des collections en tout petit nombre. Rupture en dix minutes, frustration générale, désir décuplé.",
+        "icone": "bolt.fill",
+        "groupe": "vet_rythme",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 10,
+          "prix": 10,
+          "coutVariable": 0,
+          "capacite": -10,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Le drop a été vendu en six minutes. Un client a fait un malaise d'émotion devant son écran."
+      },
+      {
+        "id": "vet_soldes_permanentes",
+        "nom": "Soldes permanentes",
+        "description": "Tout est à −50 % toute l'année. Plus personne ne sait quel est le vrai prix, surtout pas toi.",
+        "icone": "percent",
+        "groupe": "vet_rythme",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 18,
+          "prix": -15,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Les étiquettes « dernière chance » sont collées. Ce sera la dernière chance jusqu'à la prochaine."
+      },
+      {
+        "id": "vet_influenceurs",
+        "nom": "Armée d'influenceurs",
+        "description": "Des dizaines d'influenceurs portent ta marque en se filmant dans leur cuisine. Ça marche, bizarrement.",
+        "icone": "person.3.sequence.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 15000,
+        "parSite": false,
+        "effets": {
+          "demande": 18,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 1,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "Un influenceur a posté une vidéo avec ton t-shirt. À l'envers. Avec le prix encore accroché."
+      },
+      {
+        "id": "vet_coton_bio",
+        "nom": "Coton bio certifié",
+        "description": "Du coton cultivé sans produits chimiques. Plus cher, plus doux, et tu peux enfin dormir.",
+        "icone": "leaf",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 5,
+          "coutVariable": 10,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Les certificats sont arrivés. Tu les as encadrés au-dessus de la caisse pour que tout le monde les voie."
+      },
+      {
+        "id": "vet_collab_luxe",
+        "nom": "Collab avec une maison de luxe",
+        "description": "Une collection capsule avec une grande maison. Ton t-shirt coûte trois fois plus cher et c'est toujours le même t-shirt.",
+        "icone": "crown.fill",
+        "groupe": null,
+        "niveauMin": 3,
+        "coutInstallation": 80000,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": 15,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 4,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "La maison de luxe a validé le projet. Ils ont juste changé la couleur, la coupe, le logo et le nom."
+      }
+    ]
+  },
+  {
+    "typeId": "friperie",
+    "vente": {
+      "nom": "fripe",
+      "pluriel": "fripes"
+    },
+    "site": {
+      "nom": "boutique",
+      "pluriel": "boutiques",
+      "cout": 15000
+    },
+    "prixUnitaire": 15,
+    "elasticite": 1.5,
+    "leviers": [
+      {
+        "id": "frip_vente_kilo",
+        "nom": "Vente au kilo",
+        "description": "Tout au poids, sans réfléchir. Les clients remplissent des sacs entiers, ta marge maigrit.",
+        "icone": "scalemass.fill",
+        "groupe": "frip_prix",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": -12,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 8,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "La balance est installée. Un client a pesé son manteau avec lui dedans, pour voir."
+      },
+      {
+        "id": "frip_vintage_curated",
+        "nom": "Sélection « vintage curated »",
+        "description": "Les mêmes vêtements, mais triés, repassés et décrits avec des mots compliqués. Les prix triplent.",
+        "icone": "sparkle",
+        "groupe": "frip_prix",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": -5,
+          "prix": 20,
+          "coutVariable": 5,
+          "capacite": 0,
+          "productivite": -5,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Une veste de 1994 est maintenant une « pièce iconique de l'ère grunge ». Elle vaut 120 €."
+      },
+      {
+        "id": "frip_upcycling",
+        "nom": "Atelier upcycling",
+        "description": "Ta couturière transforme les vieux rideaux en vestes. Plus cher, plus unique, plus long à produire.",
+        "icone": "scissors",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 4000,
+        "coutAnnuel": 0,
+        "parSite": true,
+        "effets": {
+          "demande": 0,
+          "prix": 8,
+          "coutVariable": 4,
+          "capacite": 0,
+          "productivite": -5,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Premier chef-d'œuvre : une salopette faite avec trois nappes de mariage. Elle est déjà vendue."
+      },
+      {
+        "id": "frip_greniers",
+        "nom": "Vider les greniers des mamies",
+        "description": "Tu proposes de vider gratuitement les greniers. Tu repars avec des trésors et une conscience un peu poussiéreuse.",
+        "icone": "house.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 3,
+          "prix": 0,
+          "coutVariable": -15,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": -3,
+          "risque": 0,
+          "karma": -1
+        },
+        "activation": "Une mamie t'a offert un café et toute la garde-robe de feu son mari. Tu as accepté les deux."
+      },
+      {
+        "id": "frip_eshop",
+        "nom": "Boutique en ligne",
+        "description": "Toutes tes fripes en ligne. Plus de clients, mais des heures à photographier des pulls sur un cintre.",
+        "icone": "network",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 3000,
+        "coutAnnuel": 2000,
+        "parSite": false,
+        "effets": {
+          "demande": 12,
+          "prix": 0,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": -5,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Ton community manager a photographié 300 pulls. Il voit des mailles quand il ferme les yeux."
+      },
+      {
+        "id": "frip_desodorisant",
+        "nom": "Désodorisant industriel",
+        "description": "Ça ne sent plus la cave de ton grand-oncle. Ça sent la cave de ton grand-oncle avec de la lavande.",
+        "icone": "aqi.low",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 600,
+        "parSite": true,
+        "effets": {
+          "demande": 4,
+          "prix": 0,
+          "coutVariable": 2,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 2,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Premier pschitt. Un client a dit « ça sent le propre ». Personne ne l'avait jamais dit ici."
+      }
+    ]
+  },
+  {
+    "typeId": "marque_sneakers",
+    "vente": {
+      "nom": "paire",
+      "pluriel": "paires"
+    },
+    "site": {
+      "nom": "boutique",
+      "pluriel": "boutiques",
+      "cout": 36000
+    },
+    "usine": {
+      "nom": "usine",
+      "pluriel": "usines",
+      "cout": 100000
+    },
+    "prixUnitaire": 130,
+    "elasticite": 1.1,
+    "leviers": [
+      {
+        "id": "snk_collab_rappeur",
+        "nom": "Collab avec un rappeur",
+        "description": "Un rappeur porte tes baskets dans son clip. Les ventes décollent, les ennuis aussi s'il fait parler de lui.",
+        "icone": "music.mic",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 25000,
+        "coutAnnuel": 8000,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": 10,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 10,
+          "karma": 0
+        },
+        "activation": "Le rappeur a signé le contrat en direct sur les réseaux. Il a mal orthographié {entreprise}, ça a fait le buzz."
+      },
+      {
+        "id": "snk_drop_limite",
+        "nom": "Drop limité",
+        "description": "Quelques centaines de paires, pas une de plus. Les fans campent devant tes boutiques, les bots devant ton site.",
+        "icone": "bolt.fill",
+        "groupe": "snk_rythme",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 8,
+          "prix": 15,
+          "coutVariable": 0,
+          "capacite": -10,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "Le drop est annoncé. Un type dort déjà sur le trottoir avec une glacière et un plan."
+      },
+      {
+        "id": "snk_production_masse",
+        "nom": "Production de masse",
+        "description": "Des paires par conteneurs entiers. Plus de ventes possibles, moins de prestige : tout le monde a les mêmes.",
+        "icone": "square.stack.3d.up.fill",
+        "groupe": "snk_rythme",
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": -8,
+          "coutVariable": -10,
+          "capacite": 15,
+          "productivite": 0,
+          "reputation": -2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 0
+        },
+        "activation": "Tes usines tournent à plein. Tu as croisé trois personnes avec tes baskets aux pieds dans le même bus."
+      },
+      {
+        "id": "snk_fabrication_europe",
+        "nom": "Fabrication en Europe",
+        "description": "Fabriquées pas loin, par des gens bien payés. Plus cher, plus solide, et tu peux visiter l'usine sans gilet pare-balles.",
+        "icone": "globe.europe.africa.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 8,
+          "coutVariable": 18,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 3,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Ton responsable production est revenu d'Italie avec des chaussures et un accent."
+      },
+      {
+        "id": "snk_semelles_pneus",
+        "nom": "Semelles en pneus recyclés",
+        "description": "Tes semelles sont d'anciens pneus. C'est écolo, ça accroche bien et ça sent un peu le garage les jours de pluie.",
+        "icone": "arrow.3.trianglepath",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 4,
+          "prix": 0,
+          "coutVariable": 5,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 2,
+          "moral": 0,
+          "risque": 0,
+          "karma": 1
+        },
+        "activation": "Premier lot de semelles livré par un garagiste ravi de se débarrasser de 800 pneus."
+      },
+      {
+        "id": "snk_appli_tirage",
+        "nom": "Appli de tirage au sort",
+        "description": "Une appli {entreprise} pour tenter sa chance à chaque sortie. Les fans y passent leur vie, toi tu encaisses.",
+        "icone": "dice.fill",
+        "groupe": null,
+        "niveauMin": 2,
+        "coutInstallation": 40000,
+        "coutAnnuel": 8000,
+        "parSite": false,
+        "effets": {
+          "demande": 15,
+          "prix": 5,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": 0,
+          "moral": 0,
+          "risque": 5,
+          "karma": 0
+        },
+        "activation": "L'appli est en ligne. 40 000 inscrits en une nuit, dont environ 39 000 bots."
+      },
+      {
+        "id": "snk_revendeurs",
+        "nom": "Vendre en douce aux revendeurs",
+        "description": "Tu refiles des cartons entiers aux revendeurs avant la sortie. Prix plus hauts, fans furieux s'ils l'apprennent.",
+        "icone": "eye.slash.fill",
+        "groupe": null,
+        "niveauMin": 0,
+        "coutInstallation": 0,
+        "coutAnnuel": 0,
+        "parSite": false,
+        "effets": {
+          "demande": 0,
+          "prix": 12,
+          "coutVariable": 0,
+          "capacite": 0,
+          "productivite": 0,
+          "reputation": -4,
+          "moral": 0,
+          "risque": 10,
+          "karma": -2
+        },
+        "activation": "Le revendeur est venu chercher les cartons de nuit, en capuche. Très discret. À part la capuche fluo."
+      }
+    ]
+  }
+]

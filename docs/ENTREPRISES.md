@@ -183,3 +183,90 @@ drames d'équipe (le cousin qui pique dans la caisse, la mère qui réorganise t
 6. Répercussions : signaux `entreprise_creee`, `entreprise_agrandie`, `entreprise_empire`, `entreprise_vendue`,
    `entreprise_faillite`, `entreprise_fermee`, `proche_licencie` (renvoyés dans `EntreprisesEtat.signaux`, à vider par le module répercussions).
 7. Mort du joueur : rien à faire, `EntrepriseMoteur.resumeVie(j.entreprises)` donne des lignes pour la nécrologie.
+
+## Gestion poussée (v2)
+
+Chaque boîte se pilote comme une vraie entreprise. Les décisions prennent effet au bilan suivant ; l'écran de pilotage
+affiche une **estimation de l'année prochaine** (sans le hasard) à chaque réglage.
+
+### Modèle économique annuel
+
+- **Points de vente** (`sites` : camions, salons, boutiques, agences…) : chacun apporte des clients potentiels (le marché
+  touché) et, sauf pour les types à usine, de la capacité de production. Ouvrir coûte `site.cout`, chaque site a un loyer.
+- **Usines** (optionnel, types qui fabriquent : marque de vêtements, sneakers, brasserie, studio…) : la capacité vient des
+  usines, les points de vente ne font que vendre. Trop de boutiques pour trop peu d'usines = ruptures de stock.
+- **Demande** = marché touché × attractivité : qualité, réputation, marketing, élan, prix (élasticité du type),
+  leviers activés, pression de la concurrence (qui bouge chaque année). **Part de marché** = demande / marché touché.
+- **Capacité** = unités × taux d'encadrement (effectif × productivité ÷ effectif nécessaire). La productivité dépend du
+  moral, des salaires, des cadres (employés nommés) et des leviers.
+- **Ventes** = min(demande, capacité) × hasard du marché. Les clients refusés sont comptés dans le rapport.
+- **Coûts** : achats (par vente, selon la qualité), salaires (effectif × salaire × niveau de salaire + cadres),
+  loyers, marketing (% du chiffre d'affaires), leviers (coût annuel), banque.
+- **Réputation** : tend vers une cible fixée par la qualité, le rapport qualité/prix, le marketing et les leviers.
+- **Moral** de l'équipe : tend vers une cible fixée par les salaires, la surcharge de travail et les licenciements ;
+  sous 30, des employés démissionnent.
+- **Niveau** (nom affiché, événements) : dépend du nombre de points de vente (1, 2, 4, 10, 30, 100).
+
+### Réglages génériques
+
+Prix (−40 % à +100 %), qualité (1 à 5), budget marketing (0, 2, 5, 10, 20 % du CA), niveau des salaires (−20 % à +40 %),
+effectif (embaucher coûte 10 % d'un salaire annuel, licencier 25 % et fait baisser le moral), points de vente et usines
+(ouvrir, fermer en récupérant 30 %).
+
+### Leviers propres à chaque type (`Data/EntrepriseLeviers/*.json`)
+
+Chaque fichier est un tableau ; une entrée par type :
+
+```json
+{
+  "typeId": "marque_sneakers",
+  "vente": { "nom": "paire", "pluriel": "paires" },
+  "site": { "nom": "boutique", "pluriel": "boutiques", "cout": 60000 },
+  "usine": { "nom": "usine", "pluriel": "usines", "cout": 90000 },
+  "prixUnitaire": 130,
+  "elasticite": 1.1,
+  "leviers": [
+    {
+      "id": "snk_collab_rappeur",
+      "nom": "Collab avec un rappeur",
+      "description": "Il porte tes baskets dans un clip. Elles sont à l'envers, mais ça compte.",
+      "icone": "music.mic",
+      "groupe": null,
+      "niveauMin": 0,
+      "coutInstallation": 25000,
+      "coutAnnuel": 8000,
+      "parSite": false,
+      "effets": { "demande": 15, "prix": 10, "coutVariable": 0, "capacite": 0, "productivite": 0, "reputation": 3, "moral": 0, "risque": 10, "karma": 0 },
+      "activation": "Le rappeur a signé le contrat avec ton stylo. Il l'a gardé."
+    }
+  ]
+}
+```
+
+| Champ | Rôle |
+|---|---|
+| `vente` | ce qu'on compte comme une vente (« kebab », « coupe », « abonnement », « billet ») |
+| `site` | nom du point de vente et coût d'ouverture d'un site de plus |
+| `usine` | optionnel : nom de l'unité de production et coût. Présent = la capacité vient des usines |
+| `prixUnitaire` | prix moyen d'une vente en euros, au réglage normal |
+| `elasticite` | sensibilité des clients au prix : 0,6 (luxe, on s'en fiche) à 1,8 (tout le monde compare) |
+| `leviers` | 5 à 7 décisions propres au métier |
+| `groupe` | leviers d'un même groupe : un seul actif à la fois (ex. horaires) |
+| `niveauMin` | taille minimale de la boîte (0 à 5) |
+| `coutInstallation` | payé à l'activation (× nombre de sites si `parSite`) |
+| `coutAnnuel` | payé à chaque bilan (× nombre de sites si `parSite`) |
+| `effets` | en % : `demande`, `prix` (prix de vente), `coutVariable`, `capacite`, `productivite` ; en points par an : `reputation`, `moral`, `karma` (karma appliqué au joueur à chaque bilan) ; `risque` = % de chances de crise en plus |
+| `activation` | phrase drôle affichée quand on active le levier |
+
+Sans entrée pour un type, le jeu utilise des valeurs par défaut (site nommé « local », pas d'usine, pas de levier).
+
+### Branchement de la v2 (fil moteur)
+
+1. Après chaque anniversaire, quand `!engine.entreprisesAvecRapportNonLu.isEmpty`, présenter en feuille
+   `EntreprisesBilanAnnuelView().environmentObject(engine)` (après les cartes d'événements de l'année, ou à leur place
+   si la file est vide). Le bouton « Continuer » appelle `engine.marquerRapportsEntreprisesLus()`.
+   La feuille montre pour chaque boîte : chiffre d'affaires et évolution, résultat, ventes, part de marché, trésorerie,
+   faits marquants, conseils, la crise de l'année, un lien vers le rapport complet (graphique) et vers le pilotage.
+2. Rien d'autre : `bilanEntreprises(&j)` fait déjà tout le calcul, et les anciennes sauvegardes sont converties
+   automatiquement (points de vente déduits du niveau, effectif conseillé).
+3. Le framework `Charts` (iOS 16) est utilisé pour le graphique : rien à ajouter dans `project.yml`, il est lié automatiquement.
