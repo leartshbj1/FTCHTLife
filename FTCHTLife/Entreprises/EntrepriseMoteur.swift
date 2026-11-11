@@ -6,8 +6,7 @@ enum EntrepriseMoteur {
     static let niveauMax = 5
     /// Taille relative de la boîte par niveau.
     static let echelles: [Double] = [1, 2.5, 6, 16, 50, 160]
-    /// Coût pour passer au niveau suivant, en multiple du coût de création.
-    static let coutsAgrandissement: [Double] = [2, 5, 14, 40, 120]
+    static let maxSites = 500
     /// Part du coût de création que le joueur doit payer lui-même s'il emprunte.
     static let apportMinimum = 0.3
     static let tauxInteret = 0.06
@@ -22,20 +21,16 @@ enum EntrepriseMoteur {
     }
 
     /// Nombre de postes clés.
-    static func postes(_ e: Entreprise) -> Int { e.niveau + 1 }
-
-    static func coutAgrandissement(_ e: Entreprise, _ type: EntrepriseType) -> Int? {
-        guard e.niveau < niveauMax else { return nil }
-        return Int(Double(type.coutCreation) * coutsAgrandissement[e.niveau])
-    }
+    static func postes(_ e: Entreprise) -> Int { min(8, e.niveau + 1) }
 
     static func coutPub(_ e: Entreprise, _ type: EntrepriseType) -> Int {
         max(500, Int(Double(type.coutCreation) * 0.08 * e.echelle))
     }
 
-    /// Charges fixes annuelles (loyers, stocks, personnel au salaire normal).
+    /// Charges annuelles (dernier rapport, sinon estimation au réglage normal).
     static func charges(_ e: Entreprise, _ type: EntrepriseType) -> Int {
-        Int(Double(type.chiffreAffairesBase) * e.echelle * (1 - type.marge))
+        if let r = e.rapport { return r.couts }
+        return Int(Double(type.chiffreAffairesBase) * e.echelle * (1 - type.marge))
     }
 
     /// Trésorerie sous laquelle la boîte est considérée en grand danger.
@@ -43,12 +38,13 @@ enum EntrepriseMoteur {
         -Int(Double(charges(e, type)) * 0.3)
     }
 
-    /// Valeur estimée de la boîte (fonds de commerce + rentabilité + trésorerie − dette).
+    /// Valeur estimée de la boîte (murs et machines + rentabilité + trésorerie − dette).
     static func valeur(_ e: Entreprise, _ type: EntrepriseType) -> Int {
-        let fonds = Double(type.coutCreation) * 0.4 * e.echelle
+        let eco = EntrepriseCatalogue.eco(type.id)
+        let actifs = Double((eco?.coutSite ?? type.coutCreation) * e.sites + (eco?.coutUsine ?? 0) * max(0, e.usines)) * 0.5
         let resultat = Double(max(0, e.dernierBilan?.resultat ?? 0))
         let image = 0.6 + Double(e.reputation) / 125
-        let v = fonds + resultat * type.multipleValeur * 4 * image + Double(e.tresorerie) - Double(e.dette)
+        let v = actifs + resultat * type.multipleValeur * 4 * image + Double(e.tresorerie) - Double(e.dette)
         return max(0, Int(v))
     }
 

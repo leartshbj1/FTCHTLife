@@ -1,0 +1,2624 @@
+[
+  {
+    "id": "rep_sen_0001",
+    "on": "event:enf_0042",
+    "requires": {
+      "flags": [
+        "joueur_d_echecs"
+      ]
+    },
+    "chance": 0.6,
+    "delay": [
+      10,
+      18
+    ],
+    "minAge": 20,
+    "patience": 4,
+    "unique": true,
+    "text": "Tu apprends la mort de M. Gomez, le voisin du balcon qui t'avait appris les échecs. Il t'a légué son échiquier, avec un mot : « Le cavalier ne va toujours pas en ligne droite. »",
+    "choices": [
+      {
+        "label": "Rejouer en son honneur",
+        "outcomes": [
+          {
+            "text": "Tu ressors les pièces. Tu perds contre toi-même, comme lui. Ça fait du bien.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le ranger au grenier",
+        "outcomes": [
+          {
+            "text": "L'échiquier rejoint les cartons. De temps en temps, tu entends un roque dans ta tête.",
+            "effects": {
+              "happiness": -4,
+              "clearFlags": [
+                "joueur_d_echecs"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0002",
+    "on": "event:rep_sen_0001",
+    "choice": 0,
+    "chance": 0.7,
+    "delay": [
+      1,
+      4
+    ],
+    "text": "Le tournoi d'échecs de {ville} cherche des joueurs. Depuis l'échiquier de M. Gomez, tu t'entraînes en cachette, le soir, contre ton téléphone.",
+    "choices": [
+      {
+        "label": "S'inscrire",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Tu gagnes le tournoi. Le trophée a la forme d'un fou en plastique doré. Tu dors avec.",
+            "effects": {
+              "happiness": 12,
+              "smarts": 4,
+              "money": 150,
+              "fame": 2
+            }
+          },
+          {
+            "chance": 0.55,
+            "text": "Tu te fais battre au premier tour par un garçon de neuf ans qui mange un goûter pendant la partie. Il n'a même pas posé sa compote.",
+            "effects": {
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Regarder depuis le public",
+        "outcomes": [
+          {
+            "text": "Tu commentes chaque coup à voix basse. Un arbitre te demande de commenter à voix encore plus basse.",
+            "effects": {
+              "happiness": 2,
+              "smarts": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0003",
+    "on": "event:rep_sen_0002",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.8,
+    "delay": [
+      12,
+      18
+    ],
+    "unique": true,
+    "text": "Le garçon à la compote qui t'avait battu{e} au tournoi de {ville} est devenu grand maître. Dans une interview, il cite comme déclic « un adulte qui a pleuré au premier tour ».",
+    "effects": {
+      "happiness": -5,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_sen_0004",
+    "on": "chaque_annee",
+    "chance": 0.15,
+    "minAge": 55,
+    "conditions": {
+      "flags": [
+        "joueur_d_echecs"
+      ],
+      "flagMinYears": {
+        "joueur_d_echecs": 30
+      }
+    },
+    "text": "Au parc, tu joues aux échecs avec les vieux du banc. Ils trichent, tu triches, personne ne dit rien : c'est le contrat. Tes neurones te remercient.",
+    "effects": {
+      "smarts": 3,
+      "happiness": 4
+    }
+  },
+  {
+    "id": "rep_sen_0005",
+    "on": "event:eco_0137",
+    "choice": 1,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      12,
+      22
+    ],
+    "minAge": 20,
+    "conditions": {
+      "flags": [
+        "musicien_amateur"
+      ]
+    },
+    "patience": 3,
+    "text": "La guitare découverte en CE2 ne t'a jamais lâché{e}. Une connaissance monte un groupe de reprises pour les mariages et cherche quelqu'un qui « connaît au moins trois accords ».",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous jouez dans vingt mariages par an. Tu as mal aux doigts, de l'argent dans les poches et un costume à paillettes.",
+            "effects": {
+              "happiness": 10,
+              "money": 1200,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Premier concert dans un bar : le patron coupe le courant à la quatrième chanson. Le groupe se sépare dans le parking.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "Tu joues seul{e} dans ton salon. Ton public : une plante. Elle ne s'est jamais plainte.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0006",
+    "on": "event:enf_0129",
+    "choice": 2,
+    "chance": 0.7,
+    "delay": [
+      10,
+      25
+    ],
+    "minAge": 22,
+    "patience": 3,
+    "unique": true,
+    "text": "Mamie t'avait promis le vieux piano le jour où tu lui avais joué une valse. Elle a tenu parole dans son testament. Il faut quatre déménageurs, un escalier élargi et un accordeur qui pleure.",
+    "effects": {
+      "happiness": 8,
+      "money": -350,
+      "setFlags": [
+        "musicien_amateur"
+      ]
+    }
+  },
+  {
+    "id": "rep_sen_0007",
+    "on": "chaque_annee",
+    "chance": 0.12,
+    "minAge": 16,
+    "conditions": {
+      "flags": [
+        "musicien_amateur"
+      ]
+    },
+    "text": "Un soir de pluie, tu as ressorti ton instrument. Tu as joué deux heures sans regarder ton téléphone. Le voisin a tapé au mur, en rythme.",
+    "effects": {
+      "happiness": 5,
+      "stress": -3
+    }
+  },
+  {
+    "id": "rep_sen_0008",
+    "on": "event:eco_0071",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [
+      12,
+      22
+    ],
+    "minAge": 22,
+    "patience": 4,
+    "unique": true,
+    "text": "Le livre sur les volcans du rallye lecture, en CM1, ne t'a jamais quitté{e}. Tu pars enfin voir un vrai volcan. Il fume. Toi aussi, d'émotion, et un peu de soufre.",
+    "effects": {
+      "happiness": 10,
+      "smarts": 3,
+      "money": -700
+    }
+  },
+  {
+    "id": "rep_sen_0009",
+    "on": "event:eco_0228",
+    "choice": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 28,
+    "patience": 4,
+    "unique": true,
+    "text": "L'auteur du roman d'aventure oublié du CDI, celui que personne n'empruntait depuis 1987, signe dans une petite librairie. Il est très vieux. Quand tu lui racontes, il pleure : tu es son troisième lecteur, et le seul à l'avoir fini.",
+    "effects": {
+      "happiness": 8,
+      "karma": 2,
+      "smarts": 2
+    }
+  },
+  {
+    "id": "rep_sen_0010",
+    "on": "event:eco_0228",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      0,
+      0
+    ],
+    "text": "Le nom de ton prof de maths sur la vieille fiche de prêt du CDI te brûle les doigts. Il a emprunté ce roman d'aventure en 1987 et ne l'a jamais rendu à temps : six mois de retard, tamponnés.",
+    "choices": [
+      {
+        "label": "Négocier un point en plus",
+        "outcomes": [
+          {
+            "text": "Il te met 14 au lieu de 13 sans un mot. Vous ne vous regarderez plus jamais dans les yeux.",
+            "effects": {
+              "karma": -5,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui parler du livre",
+        "outcomes": [
+          {
+            "text": "Ses yeux s'allument. Il te prête toute sa bibliothèque d'aventure, un roman par semaine, sans fiche de prêt.",
+            "effects": {
+              "smarts": 6,
+              "happiness": 5,
+              "setFlags": [
+                "lecteur_assidu"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0011",
+    "on": "event:eco_0018",
+    "choice": 2,
+    "chance": 0.5,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "unique": true,
+    "text": "Le surnom écrit sur toi dans les toilettes du collège, tu l'entends encore parfois dans ta tête. Sur un réseau, tu retrouves celui qui l'avait écrit. Il vend des cuisines équipées.",
+    "choices": [
+      {
+        "label": "Lui écrire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il répond le soir même : il a honte depuis vingt ans et te demande pardon. Tu relis le message quatre fois. Quelque chose se décroche.",
+            "effects": {
+              "happiness": 12,
+              "stress": -5,
+              "clearFlags": [
+                "harcele"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il ne se souvient de rien. Il te propose un plan de travail en quartz à −15 %.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer l'appli",
+        "outcomes": [
+          {
+            "text": "Tu fermes l'appli. Le passé reste aux toilettes du collège, où est sa place.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0012",
+    "on": "event:eco_0018",
+    "choice": 1,
+    "chance": 0.4,
+    "delay": [
+      18,
+      28
+    ],
+    "minAge": 30,
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "patience": 4,
+    "unique": true,
+    "text": "Ton enfant rentre de l'école la tête basse : quelqu'un lui a donné un surnom méchant. Tu reconnais le regard. Tu fais exactement ce que {parent} avait fait pour toi : tu serres ton enfant très fort et tu lui dis tout ce qui est génial chez lui.",
+    "effects": {
+      "happiness": 6,
+      "karma": 4,
+      "relationships": {
+        "child": 8,
+        "parent": 4
+      }
+    }
+  },
+  {
+    "id": "rep_sen_0013",
+    "on": "event:eco_0010",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 28,
+    "patience": 4,
+    "unique": true,
+    "text": "Le garçon qui mangeait seul à la cantine, celui des dinosaures, est devenu paléontologue. Il a donné ton nom à un petit lézard fossile. Tu ne sais pas si c'est un compliment, mais tu es dans un musée.",
+    "effects": {
+      "happiness": 10,
+      "fame": 2,
+      "karma": 3
+    }
+  },
+  {
+    "id": "rep_sen_0014",
+    "on": "event:eco_0010",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 22,
+    "patience": 4,
+    "text": "À un mariage, tu croises l'élève qui mangeait seul à la cantine. Il est rayonnant, entouré d'amis. Il te reconnaît et te salue très poliment, ce qui est bien pire qu'une gifle.",
+    "effects": {
+      "happiness": -5,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_sen_0015",
+    "on": "event:eco_0029",
+    "choice": 2,
+    "chance": 0.5,
+    "delay": [
+      8,
+      18
+    ],
+    "minAge": 22,
+    "conditions": {
+      "tags": [
+        "adult"
+      ]
+    },
+    "patience": 4,
+    "unique": true,
+    "text": "Entretien d'embauche. Le recruteur te regarde longuement. C'est le camarade de la photo moqueuse que tu avais fait tourner en 4e. Il a gardé la capture.",
+    "choices": [
+      {
+        "label": "T'excuser franchement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il hoche la tête : « Personne ne s'était jamais excusé. » Tu as le poste, et un poids en moins.",
+            "effects": {
+              "happiness": 8,
+              "karma": 6,
+              "money": 500
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "« Je sais », dit-il. Il te raccompagne à l'ascenseur avec une politesse glaciale.",
+            "effects": {
+              "happiness": -8,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comme si de rien",
+        "outcomes": [
+          {
+            "text": "Il te reconnaît à la deuxième question. L'entretien dure quatre minutes, dont trois de silence.",
+            "effects": {
+              "happiness": -10,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0016",
+    "on": "event:eco_0104",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      6,
+      15
+    ],
+    "minAge": 18,
+    "patience": 4,
+    "text": "L'élève dont tout le groupe de classe se moquait passe à la télé régionale : elle préside une association contre le harcèlement. Elle montre des captures d'écran. Ton emoji qui rit est flouté, mais tu le reconnais.",
+    "effects": {
+      "happiness": -6,
+      "karma": -2
+    }
+  },
+  {
+    "id": "rep_sen_0017",
+    "on": "event:eco_0104",
+    "choice": 0,
+    "chance": 0.4,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 22,
+    "patience": 4,
+    "unique": true,
+    "text": "Une inconnue t'écrit : c'est l'élève du groupe de classe. Elle a gardé en capture ton « arrêtez, c'est pas drôle ». Elle dit que ce message l'a tenue debout toute une année. Vous prenez un café, puis dix.",
+    "effects": {
+      "happiness": 10,
+      "karma": 4,
+      "newFriend": true
+    }
+  },
+  {
+    "id": "rep_sen_0018",
+    "on": "event:eco_0048",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 28,
+    "patience": 4,
+    "unique": true,
+    "text": "Le petit 6e que tu avais défendu contre les 3e est devenu chirurgien. Le jour où tu atterris sur sa table pour une broutille, il te reconnaît, te soigne comme un ministre et te raconte la scène à chaque infirmier.",
+    "effects": {
+      "health": 8,
+      "happiness": 6,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_sen_0019",
+    "on": "event:eco_0048",
+    "choice": 2,
+    "chance": 0.35,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 28,
+    "patience": 4,
+    "text": "Dans un reportage sur le harcèlement scolaire, un homme raconte qu'on lui volait son goûter en 6e « devant des gens qui passaient sans rien dire ». Tu reconnais le couloir. Tu te reconnais aussi.",
+    "effects": {
+      "happiness": -6,
+      "karma": -2
+    }
+  },
+  {
+    "id": "rep_sen_0020",
+    "on": "event:eco_0128",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 22,
+    "conditions": {
+      "flags": [
+        "complexe"
+      ]
+    },
+    "patience": 5,
+    "unique": true,
+    "text": "Un studio de doublage cherche une voix avec « un vrai accent, assumé ». L'accent que tu cachais au collège, quand tu parlais le moins possible.",
+    "choices": [
+      {
+        "label": "Passer l'audition",
+        "outcomes": [
+          {
+            "text": "Tu es pris{e}. Ta voix sort de la bouche d'un renard dans un dessin animé. Les enfants de tout le pays t'imitent.",
+            "effects": {
+              "happiness": 12,
+              "money": 900,
+              "fame": 2,
+              "clearFlags": [
+                "complexe"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas répondre",
+        "outcomes": [
+          {
+            "text": "Tu supprimes l'annonce. Le renard aura une voix neutre. Il sera moins bien.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0021",
+    "on": "event:enf_0053",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      12,
+      25
+    ],
+    "minAge": 20,
+    "patience": 4,
+    "text": "Au mariage de ton cousin, celui du film d'horreur en cachette, il fait son discours et te désigne : « Et voici la balance officielle de la famille. » Cent quarante invités rient. Tu ris aussi, en retard.",
+    "effects": {
+      "happiness": -4,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_sen_0022",
+    "on": "event:eco_0297",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      12,
+      20
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "text": "Dans un salon professionnel, l'ancien caïd du trafic de stylos gel du collège tient le stand d'un fabricant de stylos. Il te fixe : « Balance. » Puis il t'offre un stylo. Parfumé. Tu n'oses pas l'utiliser.",
+    "effects": {
+      "happiness": -2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_sen_0023",
+    "on": "event:enf_0014",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 18,
+    "patience": 4,
+    "unique": true,
+    "text": "Ton mensonge d'enfance a survécu : un copain de la rue, devenu journaliste, veut faire le portrait de {parent}, « le cascadeur du quartier ». Il passe jeudi avec un photographe.",
+    "choices": [
+      {
+        "label": "Avouer enfin",
+        "outcomes": [
+          {
+            "text": "Il rit si fort qu'il en fait un article bien plus drôle : « Le cascadeur qui tournait en Mongolie ». {parent} l'encadre.",
+            "effects": {
+              "happiness": 6,
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenir le mensonge",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{parent} accepte de sauter du muret pour la photo. Trois mois de kiné, mais l'article est magnifique.",
+            "effects": {
+              "happiness": 6,
+              "karma": -4,
+              "relationships": {
+                "parent": -3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le journaliste vérifie. Titre : « Le cascadeur qui n'existait pas ». Tout le quartier le lit.",
+            "effects": {
+              "happiness": -10,
+              "fame": 2,
+              "setFlags": [
+                "menteur_notoire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0024",
+    "on": "event:rep_sen_0023",
+    "choice": 1,
+    "outcome": 1,
+    "chance": 0.6,
+    "delay": [
+      5,
+      12
+    ],
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "patience": 5,
+    "text": "Tes enfants ont trouvé en ligne l'article « Le cascadeur qui n'existait pas ». Depuis, à chaque histoire que tu racontes, ils demandent : « En tournage en Mongolie ? »",
+    "effects": {
+      "happiness": -4,
+      "relationships": {
+        "child": -2
+      }
+    }
+  },
+  {
+    "id": "rep_sen_0025",
+    "on": "event:beb_0064",
+    "requires": {
+      "flags": [
+        "curieux"
+      ]
+    },
+    "chance": 0.4,
+    "delay": [
+      18,
+      25
+    ],
+    "minAge": 21,
+    "patience": 4,
+    "text": "Tu n'as jamais arrêté de demander « pourquoi ». Passé vingt ans, ça s'appelle de la recherche, et quelqu'un accepte même de te payer pour ça. Un peu.",
+    "effects": {
+      "smarts": 8,
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_sen_0026",
+    "on": "event:enf_0033",
+    "choice": 2,
+    "chance": 0.6,
+    "delay": [
+      6,
+      10
+    ],
+    "minAge": 16,
+    "patience": 3,
+    "unique": true,
+    "text": "La « sorcière » du bout du quartier, la retraitée aux chats que tu nourrissais pendant ses vacances, est morte. Son testament te laisse 2 000 € et ses onze chats. Ensemble, ou rien.",
+    "choices": [
+      {
+        "label": "Accepter les chats",
+        "outcomes": [
+          {
+            "text": "Onze chats emménagent. Ton canapé n'a pas survécu, ton cœur si.",
+            "effects": {
+              "happiness": 8,
+              "money": 2000,
+              "health": -2,
+              "setFlags": [
+                "onze_chats"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre l'argent, placer les chats",
+        "outcomes": [
+          {
+            "text": "Tu places les chats chez des voisins et gardes l'argent. Le notaire te regarde comme une sorcière.",
+            "effects": {
+              "money": 2000,
+              "karma": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout refuser",
+        "outcomes": [
+          {
+            "text": "Les chats partent au refuge avec l'argent. Ils sont plus riches que toi.",
+            "effects": {
+              "karma": 3,
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0027",
+    "on": "event:rep_sen_0026",
+    "choice": 0,
+    "chance": 0.6,
+    "delay": [
+      8,
+      15
+    ],
+    "unique": true,
+    "text": "Le dernier des onze chats de la sorcière s'est endormi au soleil, très vieux. Tu as l'impression qu'elle est venue le chercher. Tu laisses un bol de lait sur sa tombe, au cas où.",
+    "effects": {
+      "happiness": -6,
+      "karma": 3,
+      "clearFlags": [
+        "onze_chats"
+      ]
+    }
+  },
+  {
+    "id": "rep_sen_0028",
+    "on": "event:enf_0115",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      20,
+      30
+    ],
+    "minAge": 30,
+    "patience": 4,
+    "unique": true,
+    "text": "Les histoires des retraités de ta rue, recueillies pour ton petit journal à 50 centimes, sont devenues un livre. Un éditeur local le publie. Les retraités ne sont plus là, mais ils sont page 34, et ils ont l'air contents.",
+    "effects": {
+      "happiness": 10,
+      "fame": 3,
+      "money": 400,
+      "smarts": 3
+    }
+  },
+  {
+    "id": "rep_sen_0029",
+    "on": "event:beb_0150",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.9,
+    "delay": [
+      13,
+      16
+    ],
+    "minAge": 18,
+    "maxAge": 22,
+    "patience": 4,
+    "unique": true,
+    "text": "Maintenant que tu es majeur{e}, la banque t'écrit : le livret ouvert avec les 500 € du vieux ticket de papi contient maintenant 740 €. Papi n'est plus là pour voir. Il aurait dit de ne pas tout dépenser.",
+    "choices": [
+      {
+        "label": "Tout dépenser en une soirée",
+        "outcomes": [
+          {
+            "text": "Soirée mémorable. Tu ne te souviens de rien, mais tout le monde te remercie.",
+            "effects": {
+              "happiness": 8,
+              "money": 740,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le laisser dormir",
+        "outcomes": [
+          {
+            "text": "Tu le laisses dormir. Tu as l'impression que papi hoche la tête quelque part.",
+            "effects": {
+              "happiness": 3,
+              "setFlags": [
+                "econome"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0030",
+    "on": "event:rep_sen_0029",
+    "choice": 1,
+    "chance": 0.8,
+    "delay": [
+      15,
+      22
+    ],
+    "text": "Le livret de papi, jamais touché depuis ta majorité, a grossi en silence. Il sert d'apport pour un appartement. Sur l'acte, tu as envie d'écrire « avec l'aide de papi et d'un ticket oublié ».",
+    "effects": {
+      "happiness": 10,
+      "money": 2500
+    }
+  },
+  {
+    "id": "rep_sen_0031",
+    "on": "event:enf_0139",
+    "choice": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 25,
+    "conditions": {
+      "flags": [
+        "econome"
+      ]
+    },
+    "patience": 4,
+    "text": "Six mois d'économies pour un skateboard, à dix ans. La méthode n'a pas changé, seuls les montants. Le banquier lit tes relevés comme un roman d'amour.",
+    "effects": {
+      "money": 1500,
+      "happiness": 6,
+      "smarts": 2
+    }
+  },
+  {
+    "id": "rep_sen_0032",
+    "on": "event:enf_0139",
+    "choice": 1,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 28,
+    "conditions": {
+      "flags": [
+        "panier_perce"
+      ]
+    },
+    "patience": 4,
+    "text": "Le skateboard jamais acheté, à cause des bonbons… tu en offres un à trente ans passés, à crédit, en trois fois. Tu tombes dessus en quatre secondes. Le crédit, lui, tient bon.",
+    "effects": {
+      "money": -180,
+      "health": -6,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_sen_0033",
+    "on": "event:beb_0081",
+    "choice": 1,
+    "chance": 0.4,
+    "delay": [
+      22,
+      30
+    ],
+    "minAge": 26,
+    "conditions": {
+      "flags": [
+        "econome"
+      ]
+    },
+    "patience": 4,
+    "text": "La tirelire cochon de tes 4 ans a fait des petits : trois comptes, un tableur en couleur et une application qui t'envoie des félicitations. Au restaurant, c'est toi qu'on appelle pour l'addition.",
+    "effects": {
+      "money": 800,
+      "happiness": 3,
+      "smarts": 2
+    }
+  },
+  {
+    "id": "rep_sen_0034",
+    "on": "event:enf_0025",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      8,
+      15
+    ],
+    "minAge": 18,
+    "patience": 4,
+    "unique": true,
+    "text": "En rangeant ses vieux relevés de banque, {parent} tombe sur une ligne mystérieuse : « 99,99 € — 5 000 diamants ». {parent} te regarde. Tu avais dix ans et beaucoup de diamants.",
+    "choices": [
+      {
+        "label": "Rembourser avec les intérêts",
+        "outcomes": [
+          {
+            "text": "Tu fais un virement de 120 €. {parent} rit, puis l'encadre.",
+            "effects": {
+              "money": -120,
+              "karma": 5,
+              "happiness": 4,
+              "relationships": {
+                "parent": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser le chien de l'époque",
+        "outcomes": [
+          {
+            "text": "Le chien est mort depuis longtemps. {parent} trouve ça encore plus lâche.",
+            "effects": {
+              "karma": -4,
+              "happiness": -3,
+              "relationships": {
+                "parent": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0035",
+    "on": "event:enf_0064",
+    "choice": 1,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 20,
+    "patience": 4,
+    "unique": true,
+    "text": "Les 50 € du portefeuille trouvé au parc dorment toujours dans une enveloppe, avec la photo du chat. Tu ne les as jamais dépensés. Ils te regardent encore, la nuit, depuis le tiroir.",
+    "choices": [
+      {
+        "label": "Retrouver le propriétaire",
+        "outcomes": [
+          {
+            "text": "Tu le retrouves, très vieux. Il ne se souvient de rien, mais il pleure devant la photo du chat. Il t'offre un café et sa reconnaissance éternelle.",
+            "effects": {
+              "karma": 8,
+              "happiness": 6,
+              "money": -50
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les dépenser enfin",
+        "outcomes": [
+          {
+            "text": "Tu t'offres un repas. Il a un goût de portefeuille.",
+            "effects": {
+              "karma": -3,
+              "happiness": 1,
+              "money": 50
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0036",
+    "on": "event:enf_0064",
+    "choice": 0,
+    "chance": 0.3,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 20,
+    "patience": 4,
+    "text": "Le monsieur au portefeuille, celui à la photo de chat dédicacée, te reconnaît dans la rue des années plus tard. Il a toujours le chat, ou un autre, il ne sait plus. Il t'invite à dîner et te présente comme « la personne la plus honnête de {ville} ».",
+    "effects": {
+      "happiness": 6,
+      "karma": 3
+    }
+  },
+  {
+    "id": "rep_sen_0037",
+    "on": "event:enf_0123",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      20,
+      30
+    ],
+    "minAge": 30,
+    "patience": 4,
+    "unique": true,
+    "text": "En vidant une vieille boîte, tu retrouves le bonbon volé à la boulangerie à dix ans, jamais mangé. Tu y retournes. La boulangère est toujours là. Tu lui rends un bonbon fossile et 10 €. Elle s'en souvenait.",
+    "effects": {
+      "karma": 6,
+      "happiness": 5,
+      "money": -10
+    }
+  },
+  {
+    "id": "rep_sen_0038",
+    "on": "event:enf_0063",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "unique": true,
+    "text": "Un des petits que tu payais en bonbons pour laver les voitures de la rue est devenu inspecteur du travail. Il t'a retrouvé{e}. Il a gardé les comptes, écrits au feutre.",
+    "choices": [
+      {
+        "label": "Lui offrir un sac de bonbons",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il éclate de rire et repart avec le sac. Affaire classée.",
+            "effects": {
+              "happiness": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il considère le sac comme un aveu. Rappel de salaire : 300 €, indexé sur le prix du crocodile en gélatine.",
+            "effects": {
+              "money": -300,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier en bloc",
+        "outcomes": [
+          {
+            "text": "Il sort une photo de toi, un seau à la main, sous un panneau « LAVAGE 1 € ». Tu paies les bonbons et ton honneur.",
+            "effects": {
+              "karma": -3,
+              "money": -150,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0039",
+    "on": "chaque_annee",
+    "chance": 0.12,
+    "minAge": 20,
+    "conditions": {
+      "flags": [
+        "petit_commercant"
+      ],
+      "flagMinYears": {
+        "petit_commercant": 12
+      }
+    },
+    "text": "Ta fibre commerciale d'enfance ressort : tu as revendu en ligne des objets que tu ne savais même pas posséder, avec une description si bien tournée que tu as failli les racheter.",
+    "effects": {
+      "money": 250,
+      "happiness": 3
+    }
+  },
+  {
+    "id": "rep_sen_0040",
+    "on": "event:beb_0092",
+    "choice": 1,
+    "outcome": 1,
+    "chance": 0.4,
+    "delay": [
+      20,
+      30
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "text": "Le monsieur pressé qui avait payé 20 € ta limonade sans regarder, quand tu avais cinq ans, est devenu ton client. Il paie toujours sans regarder. Tu as un peu honte, mais tu ne dis toujours rien.",
+    "effects": {
+      "money": 300,
+      "karma": -3
+    }
+  },
+  {
+    "id": "rep_sen_0041",
+    "on": "event:enf_0002",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.5,
+    "delay": [
+      22,
+      32
+    ],
+    "minAge": 32,
+    "conditions": {
+      "flags": [
+        "genou_fragile"
+      ]
+    },
+    "patience": 4,
+    "text": "Tes genoux se souviennent de la rue du Moulin. À chaque changement de temps, ils annoncent la pluie quarante-huit heures à l'avance. La météo nationale fait moins bien.",
+    "effects": {
+      "health": -6,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_sen_0042",
+    "on": "event:enf_0002",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      18,
+      30
+    ],
+    "minAge": 28,
+    "patience": 4,
+    "text": "Les gamins de la rue du Moulin parlent encore d'un dérapage mythique, « dans le temps ». Tu ne leur dis pas que c'était toi. Tu descends la rue en voiture, en freinant.",
+    "effects": {
+      "happiness": 5
+    }
+  },
+  {
+    "id": "rep_sen_0043",
+    "on": "event:eco_0221",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [
+      18,
+      28
+    ],
+    "minAge": 32,
+    "conditions": {
+      "flags": [
+        "dos_fragile"
+      ]
+    },
+    "patience": 3,
+    "text": "Le kiné te demande depuis quand tu as mal au dos. Tu réponds « depuis la pyramide humaine de 5e ». Il écrit « acrosport » dans ton dossier, d'un air très grave.",
+    "choices": [
+      {
+        "label": "Faire les exercices tous les matins",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu tiens trois mois. Ton dos se redresse, ton humeur aussi.",
+            "effects": {
+              "health": 8,
+              "happiness": 3,
+              "clearFlags": [
+                "dos_fragile"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu tiens trois jours. La feuille d'exercices sert de marque-page.",
+            "effects": {
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter un fauteuil à 900 €",
+        "outcomes": [
+          {
+            "text": "Le fauteuil masse, chauffe et parle. Ton dos va un peu mieux, ton compte beaucoup moins.",
+            "effects": {
+              "money": -900,
+              "health": 3,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0044",
+    "on": "event:enf_0133",
+    "choice": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 22,
+    "patience": 4,
+    "unique": true,
+    "text": "Le numéro de téléphone inconnu, écrit sur ton plâtre de trottinette, tu l'avais recopié dans un carnet. Un soir d'ennui, des années plus tard, tu appelles.",
+    "choices": [
+      {
+        "label": "Appeler",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "C'est une pizzeria fermée depuis longtemps. Le répondeur marche encore. Tu laisses une commande, par principe.",
+            "effects": {
+              "happiness": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "C'est quelqu'un de ta classe de l'époque, qui avait signé en secret. Vous parlez trois heures.",
+            "effects": {
+              "happiness": 9,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser le mystère",
+        "outcomes": [
+          {
+            "text": "Certains numéros sont plus beaux non composés.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0045",
+    "on": "event:enf_0068",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 25,
+    "conditions": {
+      "flags": [
+        "accro_aux_ecrans"
+      ]
+    },
+    "patience": 4,
+    "text": "Il est 3 h du matin et tu joues encore sous la couette, comme à dix ans. La différence : plus personne ne vient te confisquer la console. C'est pire.",
+    "choices": [
+      {
+        "label": "Te mettre un contrôle parental",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Coupure automatique à 23 h. Tu dors. Tu redécouvres le matin, ses oiseaux et sa lumière bizarre.",
+            "effects": {
+              "health": 6,
+              "happiness": 3,
+              "clearFlags": [
+                "accro_aux_ecrans"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu devines le code en deux essais : c'était ta date de naissance. Tu t'es eu{e} toi-même.",
+            "effects": {
+              "health": -3,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter un écran plus grand",
+        "outcomes": [
+          {
+            "text": "Ton nouvel écran fait la taille d'un mur. Tes cernes aussi.",
+            "effects": {
+              "money": -500,
+              "happiness": 4,
+              "health": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0046",
+    "on": "event:enf_0119",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      12,
+      20
+    ],
+    "minAge": 22,
+    "patience": 4,
+    "unique": true,
+    "text": "Le contrôle parental contourné en deux minutes, puis expliqué à {parent} : c'est devenu la ligne préférée de ton CV. Une recruteuse en cybersécurité rit pendant une minute, puis te fait passer un test. Tu le réussis.",
+    "effects": {
+      "smarts": 5,
+      "money": 900,
+      "happiness": 6
+    }
+  },
+  {
+    "id": "rep_sen_0047",
+    "on": "event:beb_0017",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.7,
+    "delay": [
+      11,
+      14
+    ],
+    "minAge": 12,
+    "maxAge": 17,
+    "patience": 2,
+    "unique": true,
+    "text": "La vidéo de toi bébé en train d'éternuer refait surface au collège. Trois cent mille vues, et désormais trois cents élèves qui éternuent quand tu passes dans le couloir.",
+    "effects": {
+      "happiness": -8,
+      "stress": 5,
+      "fame": 2
+    }
+  },
+  {
+    "id": "rep_sen_0048",
+    "on": "event:rep_sen_0047",
+    "chance": 0.6,
+    "delay": [
+      10,
+      15
+    ],
+    "minAge": 26,
+    "patience": 4,
+    "unique": true,
+    "text": "La marque de mouchoirs qui t'avait envoyé un colis quand tu éternuais en vidéo, bébé, te recontacte. Elle veut « le bébé, mais adulte ». Cachet : 2 000 €. Il faut éternuer sur commande.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "text": "Tu éternues quarante-trois fois devant une équipe de tournage. Ton visage est sur les paquets, ton nez en mauvais état.",
+            "effects": {
+              "money": 2000,
+              "fame": 3,
+              "happiness": 4,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "Tu gardes ton intégrité nasale. Ta mère, elle, a déjà dit oui pour une photo d'archive.",
+            "effects": {
+              "karma": 2,
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0049",
+    "on": "event:beb_0114",
+    "choice": 0,
+    "chance": 0.5,
+    "delay": [
+      16,
+      26
+    ],
+    "minAge": 18,
+    "patience": 4,
+    "text": "À un premier rendez-vous, l'autre personne te fixe, puis pâlit : « Attends… le bébé sur les paquets de couches, c'était toi ? J'ai changé mon petit frère avec ta tête pendant deux ans. »",
+    "effects": {
+      "happiness": -3,
+      "fame": 2
+    }
+  },
+  {
+    "id": "rep_sen_0050",
+    "on": "event:beb_0119",
+    "choice": 0,
+    "chance": 0.5,
+    "delay": [
+      16,
+      25
+    ],
+    "minAge": 18,
+    "patience": 4,
+    "unique": true,
+    "text": "Le journal local ressort l'article du « bébé détecteur de fumée » pour son anniversaire. Ta photo en grenouillère fait la une. Les pompiers t'invitent à leur bal, au premier rang, sans grenouillère.",
+    "effects": {
+      "happiness": 6,
+      "fame": 2,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_sen_0051",
+    "on": "event:beb_0053",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.9,
+    "delay": [
+      11,
+      14
+    ],
+    "maxAge": 22,
+    "patience": 2,
+    "unique": true,
+    "text": "Brioche, le chien arraché après quatre-vingt-sept jours de siège quand tu avais cinq ans, s'est endormi pour de bon. Tu le pleures plus que certaines personnes, et tu l'assumes.",
+    "effects": {
+      "happiness": -10,
+      "health": -2,
+      "clearFlags": [
+        "chien_d_enfance"
+      ]
+    }
+  },
+  {
+    "id": "rep_sen_0052",
+    "on": "event:rep_sen_0051",
+    "chance": 0.6,
+    "delay": [
+      8,
+      18
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "unique": true,
+    "text": "Au refuge, un chien te fixe derrière la grille. Il a exactement l'air de Brioche quand il voulait ta tartine. Le soigneur dit qu'il n'aime personne. Il remue la queue.",
+    "choices": [
+      {
+        "label": "L'adopter",
+        "outcomes": [
+          {
+            "text": "Tu l'appelles Brioche II. Il mange ta tartine dès le premier matin. La boucle est bouclée.",
+            "effects": {
+              "happiness": 12,
+              "health": 3,
+              "money": -250,
+              "setFlags": [
+                "chien_d_enfance"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pas maintenant",
+        "outcomes": [
+          {
+            "text": "Tu repars sans lui. Tu y penses tout le trajet, puis toute la semaine.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0053",
+    "on": "chaque_annee",
+    "chance": 0.25,
+    "conditions": {
+      "flags": [
+        "chien_d_enfance"
+      ]
+    },
+    "text": "Ton chien t'attend chaque soir derrière la porte, comme si tu revenais de la guerre. Tu reviens juste du supermarché, mais tu acceptes les honneurs.",
+    "effects": {
+      "happiness": 4,
+      "stress": -2
+    }
+  },
+  {
+    "id": "rep_sen_0054",
+    "on": "event:beb_0046",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.6,
+    "delay": [
+      18,
+      30
+    ],
+    "minAge": 20,
+    "conditions": {
+      "flags": [
+        "peur_des_chats"
+      ],
+      "requiresPartner": true
+    },
+    "patience": 8,
+    "unique": true,
+    "text": "Le chat de {partenaire} dort sous votre lit. À 2 h du matin, tu as de nouveau trois ans, et il y a vraiment quelque chose sous le lit.",
+    "choices": [
+      {
+        "label": "Affronter le chat",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il grimpe sur ton ventre, ronronne et s'endort. Trente ans de terreur effacés en une nuit.",
+            "effects": {
+              "happiness": 8,
+              "stress": -4,
+              "clearFlags": [
+                "peur_des_chats"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il s'assoit sur ton visage. Tu as eu raison toute ta vie.",
+            "effects": {
+              "happiness": -5,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dormir sur le canapé",
+        "outcomes": [
+          {
+            "text": "Tu dors sur le canapé. Le chat te rejoint. Il n'y a pas d'issue.",
+            "effects": {
+              "happiness": -4,
+              "health": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0055",
+    "on": "event:eco_0255",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.6,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 22,
+    "conditions": {
+      "flags": [
+        "peur_de_l_eau"
+      ]
+    },
+    "patience": 4,
+    "unique": true,
+    "text": "Tes amis louent un bateau pour l'été. Depuis la ligne d'eau du test de natation en 6e, tu regardes la mer comme un contrôle surprise.",
+    "choices": [
+      {
+        "label": "Prendre des cours de natation",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Six cours avec des enfants de sept ans. Ils t'applaudissent au premier plongeon. Tu montes sur le bateau.",
+            "effects": {
+              "health": 6,
+              "happiness": 8,
+              "clearFlags": [
+                "peur_de_l_eau"
+              ]
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le maître-nageur est le même qu'en 6e. Il te reconnaît. Il garde la main tendue tout le cours.",
+            "effects": {
+              "happiness": -3,
+              "stress": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester sur le quai",
+        "outcomes": [
+          {
+            "text": "Tu gardes les sacs sur le quai. Tu as le plus beau bronzage du groupe, et le plus sec.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0056",
+    "on": "event:eco_0100",
+    "choice": 0,
+    "outcome": 2,
+    "chance": 0.4,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 25,
+    "conditions": {
+      "tags": [
+        "job"
+      ]
+    },
+    "patience": 5,
+    "text": "Tu avais raté le brevet. Le jour où tu signes ton plus beau contrat, tu repenses aux grilles du collège et à la foule devant la liste. Tu souris longtemps, dans l'ascenseur.",
+    "effects": {
+      "happiness": 8,
+      "smarts": 2
+    }
+  },
+  {
+    "id": "rep_sen_0057",
+    "on": "event:eco_0100",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.3,
+    "delay": [
+      20,
+      30
+    ],
+    "minAge": 35,
+    "patience": 4,
+    "text": "Ta mention au brevet ne t'a jamais servi à rien. Tu la places quand même dans une conversation, à un dîner, passé trente-cinq ans. Un silence poli s'installe, puis quelqu'un ressert du vin.",
+    "effects": {
+      "happiness": -3,
+      "fame": -1
+    }
+  },
+  {
+    "id": "rep_sen_0058",
+    "on": "event:eco_0064",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 28,
+    "patience": 4,
+    "unique": true,
+    "text": "Le prof du soutien du jeudi midi, celui qui expliquait les fractions autrement, t'a donné ton métier sans le savoir. Tu lui écris une lettre. Il répond, avec une faute corrigée en rouge et un « 18/20 ».",
+    "effects": {
+      "happiness": 8,
+      "smarts": 2,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_sen_0059",
+    "on": "event:eco_0064",
+    "choice": 1,
+    "chance": 0.4,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 22,
+    "patience": 4,
+    "text": "Au restaurant, il faut partager l'addition en sept. Le serveur attend. Les fractions de 5e, refusées un jeudi midi, te regardent de loin en ricanant. Tu paies tout pour ne pas calculer.",
+    "effects": {
+      "happiness": -4,
+      "money": -150
+    }
+  },
+  {
+    "id": "rep_sen_0060",
+    "on": "event:eco_0110",
+    "choice": 1,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      12,
+      22
+    ],
+    "minAge": 24,
+    "conditions": {
+      "tags": [
+        "job"
+      ]
+    },
+    "patience": 5,
+    "text": "« Toi qui étais si fort{e} en maths… » Au travail, on te confie un tableur monstrueux. Ce fameux 20 au contrôle, obtenu avec la copie trouvée dans la cour, revient te chercher.",
+    "choices": [
+      {
+        "label": "Avouer que tu ne sais pas",
+        "outcomes": [
+          {
+            "text": "Ta cheffe rit et t'envoie en formation. Tu apprends enfin ce chapitre, vingt ans après.",
+            "effects": {
+              "karma": 5,
+              "smarts": 4,
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Apprendre en cachette la nuit",
+        "outcomes": [
+          {
+            "text": "Trois semaines de tutoriels à 2 h du matin. Le tableur marche. Toi, moins.",
+            "effects": {
+              "smarts": 6,
+              "health": -5,
+              "stress": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0061",
+    "on": "event:eco_0209",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "text": "{parent} te tend un papier à signer « à ma place, tu sais faire ». Tu n'as jamais su depuis quand on savait, pour le carnet de liaison. Personne n'en reparlera jamais.",
+    "effects": {
+      "happiness": 3,
+      "karma": 2,
+      "relationships": {
+        "parent": 3
+      }
+    }
+  },
+  {
+    "id": "rep_sen_0062",
+    "on": "event:eco_0050",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      8,
+      18
+    ],
+    "minAge": 22,
+    "patience": 4,
+    "unique": true,
+    "text": "On se souvient de ton discours contre les lundis, au concours d'éloquence du collège. Un ami te demande d'être témoin à son mariage, pour faire LE discours.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Triomphe. Une tante pleure, un oncle demande ta carte. On t'invite à trois autres mariages.",
+            "effects": {
+              "happiness": 10,
+              "fame": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le trac te reprend et tu parles des lundis pendant quatre minutes, par réflexe.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "text": "Quelqu'un d'autre lit un poème trouvé en ligne. Tu as mal pour le marié.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0063",
+    "on": "event:eco_0050",
+    "choice": 0,
+    "outcome": 2,
+    "chance": 0.4,
+    "delay": [
+      8,
+      18
+    ],
+    "minAge": 22,
+    "conditions": {
+      "tags": [
+        "job"
+      ]
+    },
+    "patience": 4,
+    "text": "Le « non » du concours d'éloquence te revient à chaque réunion où il faut prendre la parole. Tu prépares tes interventions comme un sauvetage en mer, et tu dis quand même « non ».",
+    "effects": {
+      "happiness": -4,
+      "stress": 5,
+      "health": -2,
+      "setFlags": [
+        "anxieux"
+      ]
+    }
+  },
+  {
+    "id": "rep_sen_0064",
+    "on": "event:eco_0009",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      30
+    ],
+    "minAge": 30,
+    "patience": 4,
+    "unique": true,
+    "text": "Délégué{e} à treize ans avec cent pour cent des voix. Un parti local s'en souvient et te propose une place sur sa liste aux municipales de {ville}.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Élu{e} conseiller ou conseillère municipale. Ton premier vœu en séance : des distributeurs de bonbons à la mairie.",
+            "effects": {
+              "happiness": 6,
+              "fame": 3,
+              "stress": 4,
+              "setFlags": [
+                "celebre_localement"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Battu{e} de justesse : 14 voix d'écart. L'histoire se répète, en plus cher.",
+            "effects": {
+              "happiness": -6,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "text": "Tu restes dans le public. Tu votes, et tu commentes les distributeurs des autres.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0065",
+    "on": "event:rep_sen_0064",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.6,
+    "delay": [
+      2,
+      5
+    ],
+    "text": "Les distributeurs de bonbons de la mairie, promis en séance, ont été installés. Les enfants viennent en délégation te remercier. Le dentiste du quartier, lui, te fait un procès moral.",
+    "effects": {
+      "happiness": 7,
+      "fame": 2,
+      "karma": 1
+    }
+  },
+  {
+    "id": "rep_sen_0066",
+    "on": "event:eco_0170",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "text": "Au repas des vingt ans de la promo, un ancien camarade ressort ta promesse électorale de délégué : la piscine à vagues. Il a calculé les intérêts. Tout le monde applaudit ta dette.",
+    "effects": {
+      "happiness": -3,
+      "karma": -2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_sen_0067",
+    "on": "event:beb_0123",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.4,
+    "delay": [
+      20,
+      30
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "text": "Malik, ton premier ami de maternelle, celui qui connaissait tous les noms des camions, est devenu routier. Une fois par an, il passe devant chez toi et klaxonne trois fois. Tu sors toujours sur le perron.",
+    "effects": {
+      "happiness": 6
+    }
+  },
+  {
+    "id": "rep_sen_0068",
+    "on": "event:enf_0067",
+    "choice": 2,
+    "chance": 0.4,
+    "delay": [
+      8,
+      15
+    ],
+    "minAge": 18,
+    "patience": 4,
+    "unique": true,
+    "text": "Une policière t'écrit : le joueur « très gentil » à qui tu avais donné l'adresse du commissariat a fini par être arrêté. Ton message de l'époque était dans le dossier. Elle trouve que tu avais du flair.",
+    "effects": {
+      "karma": 6,
+      "happiness": 5,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_sen_0069",
+    "on": "event:enf_0150",
+    "choice": 0,
+    "chance": 0.5,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "unique": true,
+    "text": "Tu repasses dans ton ancienne rue, celle d'avant le déménagement. La boîte à souvenirs est toujours enterrée sous l'arbre de la cabane. En théorie.",
+    "choices": [
+      {
+        "label": "Creuser",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu la trouves. Dedans : une bille, un mot illisible et un dessin de toi en chevalier. Tu pleures dans un jardin qui n'est plus le tien.",
+            "effects": {
+              "happiness": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un parking a remplacé l'arbre. Tu creuses quand même, mentalement, garé{e} pile au-dessus.",
+            "effects": {
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer ton chemin",
+        "outcomes": [
+          {
+            "text": "Certains trésors sont mieux sous terre.",
+            "effects": {
+              "happiness": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0070",
+    "on": "event:enf_0150",
+    "choice": 2,
+    "chance": 0.5,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "unique": true,
+    "text": "La seule personne à qui tu as vraiment écrit après le déménagement te répond toujours. Des centaines de lettres. Elle se marie et te demande d'être témoin.",
+    "effects": {
+      "happiness": 10,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_sen_0071",
+    "on": "event:enf_0095",
+    "choice": 1,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "unique": true,
+    "text": "L'Anglaise du fort de sable, ta correspondante depuis l'enfance, s'installe à {ville}. Ton anglais ne s'est pas amélioré, son français non plus. Vous parlez en sable, et ça marche.",
+    "effects": {
+      "happiness": 8,
+      "newFriend": true
+    }
+  },
+  {
+    "id": "rep_sen_0072",
+    "on": "event:alb_0057",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      8,
+      15
+    ],
+    "minAge": 22,
+    "conditions": {
+      "tags": [
+        "job"
+      ]
+    },
+    "patience": 5,
+    "unique": true,
+    "text": "{pere} croit toujours que tu es docteur. Il vient de promettre au café que tu examinerais le dos du patron, samedi, sans faute.",
+    "choices": [
+      {
+        "label": "Dire enfin la vérité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il se tait longtemps, puis annonce au café : « Mon enfant est {metier}. C'est presque docteur. » Tu ne sais pas si c'est vrai, mais il est fier.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "father": 6
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il ne te parle plus pendant un mois. Puis il te demande de regarder son grain de beauté, au cas où.",
+            "effects": {
+              "happiness": -6,
+              "stress": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Examiner le dos",
+        "outcomes": [
+          {
+            "text": "Tu prescris du repos et un verre de raki. Le patron guérit. Tu es désormais le médecin officiel du café.",
+            "effects": {
+              "happiness": 3,
+              "karma": -3,
+              "fame": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0073",
+    "on": "event:alb_0111",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.5,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 30,
+    "patience": 4,
+    "unique": true,
+    "text": "Ton cousin Ardit, celui du « business » de lavage auto qui avait fermé en trois semaines, a réussi. Mercedes, montre dorée, fête au pays. Il te présente comme son « premier investisseur ».",
+    "choices": [
+      {
+        "label": "Lui rappeler les 800 €",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il te rembourse 800 € devant tout le monde, plus un plateau de baklava. La mer s'est ouverte une deuxième fois.",
+            "effects": {
+              "money": 800,
+              "happiness": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il rit : « Toujours le sens de l'humour, cousin ! » et te tape dans le dos.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire",
+        "outcomes": [
+          {
+            "text": "Il lave ta voiture tous les dimanches, sans savoir pourquoi tu souris.",
+            "effects": {
+              "karma": 4,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0074",
+    "on": "event:rep_sen_0073",
+    "choice": 1,
+    "chance": 0.7,
+    "delay": [
+      3,
+      8
+    ],
+    "text": "Ardit a ouvert une deuxième station de lavage et l'a baptisée de ton prénom. Le néon « {prenom} » clignote sur la moitié des lettres. Tu as ta propre enseigne, à moitié.",
+    "effects": {
+      "happiness": 6,
+      "fame": 1,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_sen_0075",
+    "on": "event:alb_0111",
+    "choice": 1,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      3,
+      10
+    ],
+    "text": "« Celui qui a de l'argent mais pas de cœur » : la réputation tient toujours, de tante en tante. Pour ton anniversaire, la famille t'offre une tirelire. Vide.",
+    "effects": {
+      "happiness": -5,
+      "karma": -1
+    }
+  },
+  {
+    "id": "rep_sen_0076",
+    "on": "event:alb_0107",
+    "choice": 1,
+    "chance": 0.6,
+    "delay": [
+      5,
+      10
+    ],
+    "maxAge": 45,
+    "unique": true,
+    "text": "Tu habites toujours ta chambre d'enfant, sous le poster de foot. Ton compte en banque est splendide. Ta vie sentimentale beaucoup moins : on ne ramène personne sous une couette à fleurs.",
+    "choices": [
+      {
+        "label": "Partir enfin",
+        "outcomes": [
+          {
+            "text": "Tu déménages. {mere} pleure, puis vient faire le ménage chez toi dès le lendemain.",
+            "effects": {
+              "money": -1500,
+              "happiness": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester encore un peu",
+        "outcomes": [
+          {
+            "text": "Tu restes. {mere} remplace le poster par un plus récent. Elle croit que c'est le problème.",
+            "effects": {
+              "money": 1000,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0077",
+    "on": "event:alb_0293",
+    "choice": 1,
+    "chance": 0.7,
+    "delay": [
+      2,
+      5
+    ],
+    "conditions": {
+      "flags": [
+        "boit_trop"
+      ]
+    },
+    "text": "Le petit verre de raki du matin, sauvé par une bouteille offerte au docteur, a pris de l'ampleur : un le matin, un à midi, et un « pour la digestion de la digestion ».",
+    "choices": [
+      {
+        "label": "Revenir au çaj mali",
+        "outcomes": [
+          {
+            "text": "Tu passes au thé de montagne. Tes analyses s'améliorent, ton docteur aussi.",
+            "effects": {
+              "health": 6,
+              "happiness": -2,
+              "clearFlags": [
+                "boit_trop"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de docteur",
+        "outcomes": [
+          {
+            "text": "Le nouveau docteur est du village. Il te demande la recette.",
+            "effects": {
+              "health": -5,
+              "happiness": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0078",
+    "on": "event:alb_0103",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.5,
+    "delay": [
+      8,
+      18
+    ],
+    "text": "La « cuvée de {prenom} », la raki ratée de ta première nuit au kazan, sert toujours à recevoir les ennemis de la famille. Un voisin indélicat en a bu un verre l'an dernier. Il a déménagé.",
+    "effects": {
+      "happiness": 4,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_sen_0079",
+    "on": "event:alb_0064",
+    "choice": 0,
+    "outcome": 0,
+    "chance": 0.5,
+    "delay": [
+      12,
+      25
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "unique": true,
+    "text": "Gjysh n'est plus là, mais la bouteille de la « meilleure cuvée depuis 1987 », celle du feu que tu avais gardé toute la nuit, t'attend dans le buffet. Ton prénom est écrit dessus, de sa main.",
+    "choices": [
+      {
+        "label": "L'ouvrir pour toute la famille",
+        "outcomes": [
+          {
+            "text": "Chacun boit une goutte. Personne ne parle pendant une minute, ce qui est un record familial.",
+            "effects": {
+              "happiness": 10,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "La garder fermée",
+        "outcomes": [
+          {
+            "text": "Tu la poses sur ton étagère. Tu la regardes les soirs difficiles. Ça suffit.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rep_sen_0080",
+    "on": "event:alb_0079",
+    "choice": 1,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 28,
+    "patience": 4,
+    "text": "À la naissance d'un neveu, toute la famille parle albanais autour du berceau. Toi, tu souris comme un touriste. L'école du samedi, séchée pour dormir, vient de te coûter une conversation.",
+    "effects": {
+      "happiness": -5,
+      "smarts": -1
+    }
+  },
+  {
+    "id": "rep_sen_0081",
+    "on": "event:alb_0079",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.5,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 27,
+    "patience": 4,
+    "text": "Les ados de l'école albanaise du samedi sont restés inséparables : un groupe de messagerie en trois langues, trois mariages en commun et deux parrainages croisés.",
+    "effects": {
+      "happiness": 8,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_sen_0082",
+    "on": "event:eco_0290",
+    "choice": 1,
+    "chance": 0.4,
+    "delay": [
+      15,
+      25
+    ],
+    "minAge": 22,
+    "patience": 4,
+    "unique": true,
+    "text": "Le nouvel élève venu de Tirana, que tu avais accueilli d'un « Përshëndetje ! », se marie. Tu es à la table d'honneur, entre sa grand-mère et un agneau entier. Il raconte ton bonjour au micro.",
+    "effects": {
+      "happiness": 9,
+      "health": -2,
+      "karma": 2
+    }
+  },
+  {
+    "id": "rep_sen_0083",
+    "on": "event:alb_0053",
+    "choice": 0,
+    "outcome": 1,
+    "chance": 0.4,
+    "delay": [
+      10,
+      20
+    ],
+    "minAge": 25,
+    "patience": 4,
+    "text": "Tes cheveux ont retrouvé leur couleur depuis longtemps, mais ta grand-mère te présente toujours à tout nouveau venu comme « la salade ». Le surnom a traversé deux frontières et un mariage.",
+    "effects": {
+      "happiness": -2,
+      "fame": 1
+    }
+  },
+  {
+    "id": "rep_sen_0084",
+    "on": "chaque_annee",
+    "chance": 0.3,
+    "conditions": {
+      "flags": [
+        "pique_assiette"
+      ]
+    },
+    "text": "« Celui ou celle qui laisse payer » : au café, l'addition arrive toujours pile quand tu reviens des toilettes. Tes amis ont commencé à commander pour toi l'eau du robinet.",
+    "effects": {
+      "karma": -2,
+      "happiness": -2
+    }
+  },
+  {
+    "id": "rep_sen_0085",
+    "on": "chaque_annee",
+    "chance": 0.5,
+    "conditions": {
+      "flags": [
+        "pique_assiette"
+      ],
+      "flagMinYears": {
+        "pique_assiette": 10
+      }
+    },
+    "text": "Dix ans ont passé : le café a enfin oublié que tu laissais payer. Pour fêter ça, tu paies une tournée. Personne n'en revient.",
+    "effects": {
+      "karma": 3,
+      "money": -40,
+      "happiness": 4,
+      "clearFlags": [
+        "pique_assiette"
+      ]
+    }
+  },
+  {
+    "id": "rep_sen_0086",
+    "on": "event:enf_0150",
+    "emit": [
+      "demenagement"
+    ]
+  },
+  {
+    "id": "rep_sen_0087",
+    "on": "event:enf_0133",
+    "emit": [
+      "hopital"
+    ]
+  },
+  {
+    "id": "rep_sen_0088",
+    "on": "event:enf_0134",
+    "choice": 0,
+    "outcome": 1,
+    "emit": [
+      "hopital"
+    ]
+  },
+  {
+    "id": "rep_sen_0089",
+    "on": "event:alb_0107",
+    "choice": 0,
+    "emit": [
+      "demenagement"
+    ]
+  },
+  {
+    "id": "rep_sen_0090",
+    "on": "event:alb_0107",
+    "choice": 2,
+    "outcome": 0,
+    "emit": [
+      "demenagement"
+    ]
+  },
+  {
+    "id": "rep_sen_0091",
+    "on": "event:alb_0221",
+    "choice": 0,
+    "emit": [
+      "demenagement"
+    ]
+  },
+  {
+    "id": "rep_sen_0092",
+    "on": "event:alb_0148",
+    "emit": [
+      "achat_voiture"
+    ]
+  },
+  {
+    "id": "rep_sen_0093",
+    "on": "event:alb_0231",
+    "choice": 0,
+    "emit": [
+      "voyage"
+    ]
+  },
+  {
+    "id": "rep_sen_0094",
+    "on": "event:alb_0231",
+    "choice": 2,
+    "emit": [
+      "voyage"
+    ]
+  },
+  {
+    "id": "rep_sen_0095",
+    "on": "event:alb_0244",
+    "choice": 0,
+    "emit": [
+      "voyage"
+    ]
+  },
+  {
+    "id": "rep_sen_0096",
+    "on": "event:alb_0258",
+    "emit": [
+      "voyage"
+    ]
+  },
+  {
+    "id": "rep_sen_0097",
+    "on": "event:alb_0203",
+    "emit": [
+      "voyage"
+    ]
+  },
+  {
+    "id": "rep_sen_0098",
+    "on": "event:eco_0172",
+    "emit": [
+      "voyage"
+    ]
+  },
+  {
+    "id": "rep_sen_0099",
+    "on": "event:eco_0240",
+    "emit": [
+      "voyage"
+    ]
+  },
+  {
+    "id": "rep_sen_0100",
+    "on": "event:alb_0246",
+    "emit": [
+      "voyage"
+    ]
+  },
+  {
+    "id": "rep_sen_0101",
+    "on": "event:eco_0271",
+    "choice": 1,
+    "outcome": 0,
+    "emit": [
+      "meilleur_ami"
+    ]
+  },
+  {
+    "id": "rep_sen_0102",
+    "on": "event:alb_0245",
+    "choice": 2,
+    "outcome": 0,
+    "emit": [
+      "meilleur_ami"
+    ]
+  }
+]
