@@ -260,6 +260,8 @@ struct Joueur: Codable, Equatable {
     var voyages: VoyagesEtat? = nil
     /// Carrières spéciales, salle de sport, musée, investissements (docs/CARRIERES_SPECIALES.md).
     var speciales: SpeEtat? = nil
+    /// Module Gloire : livres, pubs, fêtes, attaché de presse, procès (docs/GLOIRE.md).
+    var gloire: GloireEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 

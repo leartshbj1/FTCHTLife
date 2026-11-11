@@ -134,6 +134,7 @@ extension GameEngine {
         t.formUnion(SpeMoteur.tags(j.speciales))
         t.formUnion(AgenceMoteur.tags(j.agences))
         t.formUnion(VoyMoteur.tags(j.voyages, age: j.age))
+        t.formUnion(GloireMoteur.tags(j))
         return t
     }
 
@@ -206,6 +207,7 @@ extension GameEngine {
         lignes += secteAnnee(&j)
         lignes += agenceAnnee(&j)
         lignes += specialesAnnee(&j)
+        lignes += GloireMoteur.passerAnnee(&j)
         passageAnneeBoutique(&j)
 
         if var rf = j.reputationFamille {
@@ -319,6 +321,8 @@ extension GameEngine {
         if let m = eff.dreamMarks { RevesMoteur.marquer(&j.reves, m) }
         for ligne in CoeurSysteme.appliquer(eff.coeur, &j) { ajouterLigne(&j, ligne) }
         beauteAppliquer(eff.beaute, &j)
+        // Gloire : le champ "fame" des événements nourrit la jauge commune (module Télé / Gloire).
+        if let f = eff.fame, f != 0 { GloireMoteur.ajouterGloire(f, &j) }
         j.argent = Shkurtaaa.argent(j.argent)
     }
 

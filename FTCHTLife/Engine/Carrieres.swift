@@ -153,6 +153,7 @@ extension GameEngine {
         j.argent += e.money ?? 0
         if e.injured == true { j.stats.sante -= 10 }
         j.stats.borner()
+        if let f = e.fame, f != 0 { GloireMoteur.ajouterGloire(f, &j) }
     }
 
     func terminerCarriere(_ j: inout Joueur, raison: CareerEndReason) {

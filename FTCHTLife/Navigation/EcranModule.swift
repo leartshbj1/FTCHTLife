@@ -66,6 +66,8 @@ struct EcranModule: View {
         case .crime: Feuille(titre: "Crime") { VieCrimeView() }
         case .prison: PrisonEcran()
         case .casier: CasierView(chemin: \.casier)
+        case .celebrite: Feuille(titre: "Célébrité") { GloireView() }
+        case .proces: Feuille(titre: "Procès") { ProcesView() }
 
         // Moi
         case .profil: ProfilView()

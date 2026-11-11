@@ -30,7 +30,7 @@ struct MainView: View {
                                 .transition(.opacity)
                         }
                     }
-                PanneauStats(stats: j.stats, reference: statsAvant) { moduleDirect = .profil }
+                PanneauStats(stats: j.stats, reference: statsAvant, gloire: GloireMoteur.gloireAffichee(j)) { moduleDirect = .profil }
                 barreMenus(j)
             }
             .background(Theme.fond.ignoresSafeArea())
@@ -442,6 +442,8 @@ struct PanneauStats: View {
     let stats: Stats
     /// Stats de l'an dernier : si présentes, chaque barre montre son changement.
     var reference: Stats? = nil
+    /// Jauge « Gloire » (module Gloire), affichée seulement quand on commence à être connu.
+    var gloire: Int? = nil
     let ouvrirProfil: () -> Void
 
     private func d(_ actuel: Int, _ ancien: Int?) -> Int? {
@@ -456,6 +458,9 @@ struct PanneauStats: View {
                 BarreStat(titre: "Santé", icone: "heart.fill", valeur: stats.sante, delta: d(stats.sante, reference?.sante))
                 BarreStat(titre: "Intelligence", icone: "brain.head.profile", valeur: stats.intelligence, delta: d(stats.intelligence, reference?.intelligence))
                 BarreStat(titre: "Apparence", icone: "sparkles", valeur: stats.apparence, delta: d(stats.apparence, reference?.apparence))
+                if let g = gloire {
+                    BarreGloire(valeur: g)
+                }
             }
             .padding(.horizontal)
             .padding(.vertical, 10)

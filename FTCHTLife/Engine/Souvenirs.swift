@@ -114,6 +114,13 @@ struct Souvenir: Codable, Equatable {
         // Secte et agence
         "secte_fondee": "tu as fondé ta secte", "secte_scandale": "ta secte a fait scandale", "agence_ouverte": "tu as ouvert ton agence",
         "agence_affaire_celebre": "tu as résolu une affaire célèbre",
+        // Gloire et procès
+        "livre_publie": "tu as publié un livre", "best_seller": "ton livre est devenu un best-seller",
+        "pub_tournee": "tu as tourné une pub", "pub_ratee": "ta pub a tourné au scandale", "pub_arnaque": "tu as fait la pub d'une arnaque",
+        "gloire_scandale": "tu as fait scandale", "gloire_fete": "tu as fait la fête avec des stars",
+        "drogue_essai": "tu as pris de la drogue en soirée",
+        "poursuite_gagnee": "tu as gagné un procès que tu avais lancé", "poursuite_perdue": "tu as perdu un procès que tu avais lancé",
+        "poursuite_accord": "tu as accepté un accord à l'amiable", "poursuite_proche": "tu as traîné un proche en justice",
     ]
 
     // MARK: - États durables
