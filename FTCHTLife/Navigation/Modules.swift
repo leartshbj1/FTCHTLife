@@ -57,7 +57,7 @@ enum CategorieMenu: String, CaseIterable, Identifiable {
 
 enum ModuleJeu: String, CaseIterable, Identifiable {
     // Carrière
-    case ecole, vieAuBahut, universite, offresEmploi, monTravail, entreprise, politique, retraite
+    case ecole, vieAuBahut, universite, offresEmploi, monTravail, entreprise, agenceDetective, secte, politique, retraite
     // Biens
     case boutique, mesBiens, placements, testament, heritages
     // Relations
@@ -71,7 +71,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
 
     var categorie: CategorieMenu {
         switch self {
-        case .ecole, .vieAuBahut, .universite, .offresEmploi, .monTravail, .entreprise, .politique, .retraite:
+        case .ecole, .vieAuBahut, .universite, .offresEmploi, .monTravail, .entreprise, .agenceDetective, .secte, .politique, .retraite:
             return .carriere
         case .boutique, .mesBiens, .placements, .testament, .heritages:
             return .biens
@@ -89,6 +89,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         switch self {
         case .ecole, .vieAuBahut, .universite: return "Études"
         case .offresEmploi, .monTravail, .entreprise: return "Travail"
+        case .agenceDetective, .secte: return "À ton compte"
         case .politique, .retraite: return "Plus tard"
         case .boutique, .mesBiens: return "Acheter et posséder"
         case .placements, .testament, .heritages: return "Argent et héritage"
@@ -112,6 +113,8 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .offresEmploi: return "Offres d'emploi"
         case .monTravail: return "Mon travail"
         case .entreprise: return "Ma boîte"
+        case .agenceDetective: return "Agence de détective"
+        case .secte: return "Ma secte"
         case .politique: return "Politique"
         case .retraite: return "Retraite"
         case .boutique: return "Boutique"
@@ -155,6 +158,8 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .offresEmploi: return "Des centaines de métiers. Postule."
         case .monTravail: return "Bosser, glander, réclamer une augmentation."
         case .entreprise: return "Créer et faire tourner ta propre boîte."
+        case .agenceDetective: return "Filatures, planques, clients et secrets."
+        case .secte: return "Fonder un mouvement. Adeptes, dons, dérives."
         case .politique: return "De militant à président. Lois absurdes."
         case .retraite: return "Maison de retraite, loto du jeudi."
         case .boutique: return "Maisons, voitures, bateaux, bijoux, voyages."
@@ -198,6 +203,8 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .offresEmploi: return "magnifyingglass"
         case .monTravail: return "briefcase.fill"
         case .entreprise: return "building.2.fill"
+        case .agenceDetective: return "magnifyingglass.circle.fill"
+        case .secte: return "flame.fill"
         case .politique: return "building.columns.fill"
         case .retraite: return "figure.walk"
         case .boutique: return "cart.fill"
@@ -263,6 +270,8 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
             return nil
         case .offresEmploi where j.age < 14: return "Dès 14 ans. Avant, tu vends tes dessins à ta famille."
         case .entreprise where j.age < 16: return "Dès 16 ans. Pour l'instant, monte un stand de limonade."
+        case .agenceDetective where j.age < AgenceMoteur.ageMinClandestin && j.agences?.actuelle == nil: return "Dès 18 ans. Pour l'instant, espionne ta sœur."
+        case .secte where j.age < SecteMoteur.ageMin && j.sectes?.actuelle == nil: return "Dès 18 ans. Pour l'instant, ton club secret de la cabane suffit."
         case .politique where j.age < PolMoteur.ageMilitant: return "Dès \(PolMoteur.ageMilitant) ans."
         case .retraite where j.age < RetraiteSysteme.ageOnglet: return "Dès \(RetraiteSysteme.ageOnglet) ans. Profite, ça arrive vite."
         case .boutique where j.age < 12: return "Dès 12 ans. Tes parents gardent la carte bleue."

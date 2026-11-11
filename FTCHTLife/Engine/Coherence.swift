@@ -16,6 +16,7 @@ extension GameEngine {
     /// Raison qui empêche d'avoir un emploi en ce moment (prison, chef de parti, mandat à plein temps), ou nil.
     func empechementEmploi(_ j: Joueur) -> String? {
         if j.vieEtat.justice.enPrison { return "Tu es en prison. Les recruteurs ne font pas les parloirs." }
+        if let raison = empechementActivite(j) { return raison }
         if let pol = j.politique {
             if pol.estChefDeParti { return "Tu diriges un parti : c'est déjà un travail à plein temps (non payé)." }
             if let p = pol.mandat?.poste, Self.postesPleinTemps.contains(p) {
@@ -28,6 +29,15 @@ extension GameEngine {
     private func besoinCoherence(_ j: Joueur) -> Bool {
         guard j.vivant, j.emploi != nil || j.carriere != nil else { return false }
         return (j.carriere != nil && j.emploi == nil) || empechementEmploi(j) != nil
+    }
+
+    /// Activité à plein temps du joueur (agence de détective, grande secte) qui empêche d'avoir un emploi, ou nil.
+    func empechementActivite(_ j: Joueur) -> String? {
+        if j.agences?.actuelle != nil { return "Ton agence de détective est ton métier à plein temps." }
+        if let s = j.sectes?.actuelle, SecteMoteur.pleinTemps(s) {
+            return "\(s.nom) occupe désormais tout ton temps."
+        }
+        return nil
     }
 
     /// Termine l'emploi quand la situation ne le permet plus.
@@ -43,6 +53,10 @@ extension GameEngine {
             ajouterLigne(&j, pol.estChefDeParti
                 ? "Tu quittes ton poste de \(titre) pour te consacrer à ton parti. Ton patron te souhaite bonne chance, ton banquier un peu moins."
                 : "Tu quittes ton poste de \(titre) : ton mandat est un temps plein (et même un peu plus).")
+        } else if let raison = empechementActivite(j) {
+            let titre = j.emploi?.titre.lowercased() ?? "ton poste"
+            if j.carriere != nil { terminerCarriere(&j, raison: .quit) } else { j.dernierEmploi = j.emploi; j.emploi = nil }
+            ajouterLigne(&j, "Tu quittes ton poste de \(titre). " + raison)
         } else if j.carriere != nil && j.emploi == nil {
             // Un module a retiré l'emploi (expatriation, démission…) : la carrière s'arrête aussi.
             terminerCarriere(&j, raison: .quit)
@@ -65,6 +79,7 @@ extension GameEngine {
     func prioriteEvenement(_ e: Evenement) -> Int {
         let id = e.id
         if Secrets.estCarte(id) || id.hasPrefix("suc_") || id.hasPrefix(PolMoteur.prefixeSoiree) { return 0 }
+        if id.hasPrefix(SecteMoteur.prefixe + "sec_enq") || id.hasPrefix(AgenceMoteur.prefixeDenouement) { return 0 }
         if id.hasPrefix("work:") { return 2 }
         if id.hasPrefix("fet_") { return 3 }
         return 1   // suites des choix passés, voisins…

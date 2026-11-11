@@ -1,0 +1,1446 @@
+[
+  {
+    "id": "det_equ_0001",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "{enqueteur} frappe à la porte de ton bureau, un tableau de chiffres à la main : trois affaires bouclées cette année, et un salaire qui n'a pas bougé.",
+    "choices": [
+      {
+        "label": "Accorder l'augmentation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{enqueteur} sourit, serre ta main, et retourne au travail avec une énergie neuve.",
+            "effects": {
+              "money": -3000
+            },
+            "agence": {
+              "enqueteurCompetence": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une prime ponctuelle",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Marché conclu. Pour cette année.",
+            "effects": {
+              "money": -1500
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "« Une prime, c'est ce qu'on donne quand on ne veut pas augmenter. » Ambiance froide.",
+            "effects": {
+              "money": -1500
+            },
+            "agence": {
+              "enqueteurCompetence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} encaisse sans rien dire. Le silence dure des semaines.",
+            "agence": {
+              "enqueteurCompetence": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Une lettre de démission arrive le lundi suivant.",
+            "effects": {
+              "happiness": -4
+            },
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0002",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "Tu découvres que {enqueteur} a posé un micro dans le bureau d'une cible, sans t'en parler. Les enregistrements sont décisifs.",
+    "choices": [
+      {
+        "label": "Utiliser les enregistrements",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'affaire est pliée. Personne ne demande d'où viennent les informations. Pour l'instant.",
+            "effects": {
+              "karma": -6
+            },
+            "agence": {
+              "signal": "agence_methode_limite",
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le micro est découvert. La piste remonte jusqu'à {agence}.",
+            "effects": {
+              "karma": -6
+            },
+            "agence": {
+              "plainte": true,
+              "reputation": -10,
+              "prisonMois": 0,
+              "infraction": "atteinte à la vie privée",
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout détruire et recadrer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu effaces tout devant {enqueteur}. « Ici, on ne fait pas ça. » Le message est passé.",
+            "effects": {
+              "karma": 4
+            },
+            "agence": {
+              "enqueteurCompetence": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Licencier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{enqueteur} vide son bureau dans un carton. L'agence est propre, et plus petite.",
+            "effects": {
+              "karma": 3
+            },
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0003",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "affaireEnCours": true
+    },
+    "text": "{enqueteur} rentre d'une filature avec un poignet cassé et une histoire confuse de scooter et de portail automatique.",
+    "choices": [
+      {
+        "label": "Payer les frais et les jours de repos",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{enqueteur} revient trois semaines plus tard, plâtre signé par tout le quartier.",
+            "effects": {
+              "money": -1500,
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander de continuer en télétravail",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Recherches documentaires d'une seule main. {enqueteur} trouve une piste que personne n'avait vue.",
+            "agence": {
+              "enqueteurCompetence": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} accepte, mais tu sens que ça ne s'oubliera pas.",
+            "agence": {
+              "enqueteurCompetence": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0004",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "{enqueteur} a une idée : recouper les tickets de péage avec les relevés de carte de fidélité des stations-service. C'est brillant, et parfaitement légal.",
+    "choices": [
+      {
+        "label": "Féliciter devant tout le monde",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{enqueteur} rougit. La méthode devient « la méthode maison ».",
+            "effects": {
+              "happiness": 3
+            },
+            "agence": {
+              "enqueteurCompetence": 4,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder l'idée pour toi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu présentes la méthode aux clients comme la tienne. {enqueteur} le sait.",
+            "effects": {
+              "karma": -5
+            },
+            "agence": {
+              "enqueteurCompetence": -2,
+              "reputation": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0005",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "Une agence concurrente propose à {enqueteur} un salaire nettement supérieur au tien.",
+    "choices": [
+      {
+        "label": "Surenchérir",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "{enqueteur} reste. Ta masse salariale grimace.",
+            "effects": {
+              "money": -4000
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ils surenchérissent à leur tour. {enqueteur} part, avec un sourire d'excuse.",
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rappeler ce qui fait votre force",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu parles des affaires communes, de la confiance, du respect. {enqueteur} reste.",
+            "effects": {
+              "skills": {
+                "eloquence": 2
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu parles de confiance. {enqueteur} parle de loyer. Départ.",
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser partir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu souhaites bonne chance. {enqueteur} part avec un carnet d'adresses que tu as aidé à remplir.",
+            "agence": {
+              "enqueteurPart": true,
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0006",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "affaireEnCours": true
+    },
+    "text": "{enqueteur} t'avoue avoir sympathisé de trop près avec la personne qu'il fallait surveiller. Un vrai conflit d'intérêts.",
+    "choices": [
+      {
+        "label": "Retirer {enqueteur} de l'affaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu reprends le dossier toi-même. {enqueteur} comprend, et te remercie de ne pas en faire un drame.",
+            "agence": {
+              "enqueteurCompetence": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Utiliser cette proximité",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Des informations de première main. Et un malaise grandissant entre vous.",
+            "effects": {
+              "karma": -8
+            },
+            "agence": {
+              "reputation": 2,
+              "enqueteurCompetence": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} refuse de trahir cette personne et démissionne.",
+            "effects": {
+              "karma": -4
+            },
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rendre le dossier au client",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu expliques qu'un conflit d'intérêts empêche de continuer. Le client grogne, mais respecte.",
+            "effects": {
+              "karma": 3
+            },
+            "agence": {
+              "reputation": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0007",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "Une formation intensive en techniques d'entretien et de filature a lieu à {ville}. Tu pourrais y inscrire {enqueteur}.",
+    "choices": [
+      {
+        "label": "Payer la formation",
+        "cost": 1800,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{enqueteur} revient avec un classeur, des réflexes neufs et une confiance contagieuse.",
+            "agence": {
+              "enqueteurCompetence": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Former {enqueteur} toi-même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Deux semaines côte à côte. Tu apprends autant que tu enseignes.",
+            "effects": {
+              "smarts": 1
+            },
+            "agence": {
+              "enqueteurCompetence": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu n'as pas le temps, ça se voit. La formation tourne court.",
+            "agence": {
+              "enqueteurCompetence": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Pas cette année",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le budget est serré. {enqueteur} hausse les épaules."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0008",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "{enqueteur} s'endort au volant après trois nuits de planque. Rien de grave : un rétroviseur et beaucoup de peur.",
+    "choices": [
+      {
+        "label": "Imposer du repos",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une semaine de congé. {enqueteur} revient en forme, et prudent au volant.",
+            "effects": {
+              "karma": 3
+            },
+            "agence": {
+              "enqueteurCompetence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Revoir le planning de toute l'équipe",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plus de planques de nuit en solo. Ça coûte plus cher, mais personne ne finit dans un fossé.",
+            "effects": {
+              "money": -1500,
+              "karma": 4
+            },
+            "agence": {
+              "enqueteurCompetence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien changer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} tient le coup. Pour l'instant."
+          },
+          {
+            "chance": 0.5,
+            "text": "La fois suivante, c'est un poteau. {enqueteur} démissionne de son lit d'hôpital.",
+            "effects": {
+              "karma": -6
+            },
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0009",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "minReputation": 20
+    },
+    "text": "Un article paraît sur une de tes affaires, avec des détails que seul quelqu'un de l'agence pouvait connaître. Tout désigne {enqueteur}.",
+    "choices": [
+      {
+        "label": "Confronter {enqueteur}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Aveux, larmes, une dette de jeu. Tu congédies sans porter plainte.",
+            "agence": {
+              "enqueteurPart": true
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} n'y est pour rien. La fuite venait du client lui-même. Tu dois des excuses.",
+            "effects": {
+              "happiness": -3
+            },
+            "agence": {
+              "enqueteurCompetence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tendre un piège",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu glisses une fausse information. Elle apparaît dans le journal deux jours plus tard. Plus de doute.",
+            "effects": {
+              "smarts": 2
+            },
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer les yeux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu laisses passer. La confiance, elle, ne repasse pas.",
+            "agence": {
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0010",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "Fin d'année. {enqueteur} propose un dîner d'équipe dans une brasserie où personne ne vous suivra.",
+    "choices": [
+      {
+        "label": "Inviter tout le monde",
+        "cost": 400,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des anecdotes de planques, des rires, un serveur qui se demande pourquoi tout le monde s'assoit face à la porte.",
+            "effects": {
+              "happiness": 6
+            },
+            "agence": {
+              "enqueteurCompetence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu as un dossier à finir. L'équipe y va sans toi.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0011",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "affaireEnCours": true
+    },
+    "text": "{enqueteur} a passé dix ans dans la police et peut consulter un fichier de police grâce à un ancien collègue. « Une petite vérification, personne ne saura. »",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'information tombe en dix minutes. Elle débloque l'enquête.",
+            "effects": {
+              "karma": -6
+            },
+            "agence": {
+              "signal": "agence_methode_limite",
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La consultation est tracée. L'ancien collègue est suspendu, et ton nom apparaît dans le rapport.",
+            "effects": {
+              "karma": -6
+            },
+            "agence": {
+              "plainte": true,
+              "reputation": -10,
+              "prisonMois": 0,
+              "infraction": "recel de violation du secret professionnel",
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« On fait sans. » {enqueteur} acquiesce, un peu déçu, un peu soulagé.",
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0012",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "Tu retrouves {enqueteur} au bar du coin, à 15 h, en pleine journée de filature.",
+    "choices": [
+      {
+        "label": "Avoir une vraie conversation",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Un divorce, des nuits sans sommeil. Vous parlez longtemps. {enqueteur} accepte de se faire aider.",
+            "effects": {
+              "karma": 6
+            },
+            "agence": {
+              "enqueteurCompetence": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "{enqueteur} nie tout et part en claquant la porte.",
+            "agence": {
+              "enqueteurCompetence": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avertissement écrit",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le message est reçu. L'ambiance, elle, se refroidit.",
+            "agence": {
+              "enqueteurCompetence": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Licencier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ne peux pas te le permettre. Un carton, une poignée de main sèche.",
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0013",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 2
+    },
+    "text": "Deux de tes enquêteurs ne se supportent plus. L'un accuse l'autre de lui voler ses pistes. Le café du bureau est devenu une zone de guerre.",
+    "choices": [
+      {
+        "label": "Organiser une médiation",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une heure tendue, puis une poignée de main. Ils finissent par s'appeler « collègue » sans ironie.",
+            "effects": {
+              "skills": {
+                "eloquence": 2
+              }
+            },
+            "agence": {
+              "enqueteurCompetence": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La médiation dégénère. L'un des deux démissionne.",
+            "effects": {
+              "happiness": -3
+            },
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les séparer sur les dossiers",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Chacun ses affaires, chacun ses horaires. L'efficacité baisse un peu, le volume sonore beaucoup."
+          }
+        ]
+      },
+      {
+        "label": "Trancher",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu donnes raison à {enqueteur}. L'autre ne te le pardonnera pas.",
+            "agence": {
+              "enqueteurCompetence": 2,
+              "reputation": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0014",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "minAnnees": 2
+    },
+    "text": "{enqueteur} t'annonce vouloir ouvrir sa propre agence l'an prochain, « avec quelques clients, si ça ne te dérange pas ».",
+    "choices": [
+      {
+        "label": "Bénir le projet",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu offres même ton vieux téléobjectif. Vous vous enverrez des clients pendant des années.",
+            "effects": {
+              "karma": 6,
+              "happiness": 2
+            },
+            "agence": {
+              "enqueteurPart": true,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de devenir associé{e}",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} accepte. {agence} gagne une associée ou un associé, et toi une deuxième tête.",
+            "agence": {
+              "enqueteurCompetence": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} veut son nom sur la porte, pas à côté du tien. Départ à l'amiable.",
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Interdire de toucher à tes clients",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ambiance glaciale jusqu'au départ. Deux clients partent quand même.",
+            "agence": {
+              "enqueteurPart": true,
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0015",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "C'est l'anniversaire de {enqueteur}. Toute l'agence a oublié. Toi y compris.",
+    "choices": [
+      {
+        "label": "Improviser un gâteau",
+        "cost": 20,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une tarte aux pommes de supérette, une bougie de secours. {enqueteur} rit aux éclats.",
+            "effects": {
+              "happiness": 4
+            },
+            "agence": {
+              "enqueteurCompetence": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer l'oubli",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« Des détectives qui oublient une date. » Le reproche est mérité.",
+            "effects": {
+              "happiness": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prétendre que c'était un test",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "« Tu as vu que personne n'en parlait ? C'était un test de discrétion. » {enqueteur} rit jaune.",
+            "effects": {
+              "karma": -1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Personne n'y croit. Surtout pas {enqueteur}.",
+            "agence": {
+              "enqueteurCompetence": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0016",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "affaireEnCours": true
+    },
+    "text": "{enqueteur} a oublié l'appareil photo, avec trois semaines de clichés, dans un taxi.",
+    "choices": [
+      {
+        "label": "Retrouver le taxi",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une enquête dans l'enquête. Tu retrouves le chauffeur en deux jours. Il voulait justement le rapporter.",
+            "effects": {
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Introuvable. Trois semaines à refaire.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer un savon",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{enqueteur} encaisse. Les photos restent perdues.",
+            "agence": {
+              "enqueteurCompetence": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Racheter un appareil",
+        "cost": 900,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le neuf est meilleur. Les photos, elles, sont perdues."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0017",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "affaireEnCours": true,
+      "sansAgrement": false
+    },
+    "text": "{enqueteur} t'appelle depuis un commissariat : un passant a signalé une personne « louche » qui suivait une femme. C'était la filature.",
+    "choices": [
+      {
+        "label": "Aller chercher {enqueteur}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu montres les papiers de l'agence, le mandat du client. Tout le monde repart, un peu gêné.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un avocat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'avocat règle tout en une heure. La facture, elle, dure plus longtemps.",
+            "effects": {
+              "money": -800
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0018",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "affaireEnCours": true,
+      "sansAgrement": true
+    },
+    "text": "Coup de fil du commissariat : {enqueteur} est en garde à vue après une filature. Et ton agence n'a pas d'agrément.",
+    "choices": [
+      {
+        "label": "Tout assumer",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu te présentes au commissariat. Les policiers notent ton nom. Ce n'est pas fini.",
+            "effects": {
+              "karma": 5
+            },
+            "agence": {
+              "plainte": true,
+              "signal": "agence_plainte"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu te présentes. Un inspecteur fatigué vous laisse repartir avec un avertissement.",
+            "effects": {
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier tout lien",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "{enqueteur} se débrouille sans toi et ne te le pardonne pas.",
+            "effects": {
+              "karma": -10
+            },
+            "agence": {
+              "enqueteurPart": true
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ton numéro est dans son téléphone. Mentir n'arrange rien.",
+            "effects": {
+              "karma": -8
+            },
+            "agence": {
+              "plainte": true,
+              "enqueteurPart": true,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0019",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "{enqueteur} te propose de spécialiser {agence} dans les fraudes aux assurances. « C'est là qu'il y a de l'argent régulier. »",
+    "choices": [
+      {
+        "label": "Suivre l'idée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un créneau, des clients fidèles, et une carte de visite plus nette.",
+            "effects": {
+              "money": 3000
+            },
+            "agence": {
+              "reputation": 3,
+              "enqueteurCompetence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester généraliste",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu aimes trop la variété. Les chats perdus et les cold cases, tout ensemble.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0020",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "minAnnees": 1
+    },
+    "text": "{enqueteur} annonce une naissance à venir et demande un congé de plusieurs mois.",
+    "choices": [
+      {
+        "label": "Accorder, avec le sourire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu offres un body brodé « futur détective ». L'équipe s'organise.",
+            "effects": {
+              "happiness": 3,
+              "karma": 4
+            },
+            "agence": {
+              "enqueteurCompetence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accorder, en grimaçant",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu signes. Tu passes trois mois à faire deux métiers.",
+            "effects": {
+              "health": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0021",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "affaireEnCours": true
+    },
+    "text": "En lisant un dossier, {enqueteur} pâlit : la cible est un membre de sa propre famille.",
+    "choices": [
+      {
+        "label": "Retirer {enqueteur} du dossier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu reprends l'affaire. {enqueteur} te remercie d'un regard. Le reste ne vous regarde plus.",
+            "effects": {
+              "karma": 4
+            },
+            "agence": {
+              "enqueteurCompetence": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander son aide malgré tout",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} accepte, mais le dossier devient un champ de mines familial.",
+            "effects": {
+              "karma": -4
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} prévient sa famille. L'affaire s'effondre.",
+            "agence": {
+              "reputation": -4,
+              "enqueteurPart": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0022",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "{enqueteur} reçoit des menaces après une affaire : une photo de sa porte d'entrée, glissée sous la porte de l'agence.",
+    "choices": [
+      {
+        "label": "Prévenir la police et protéger",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plainte, changement de serrure, raccompagnements. Tu ne laisses personne seul.",
+            "effects": {
+              "money": -800,
+              "karma": 5
+            },
+            "agence": {
+              "signal": "agence_menace"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Retrouver l'auteur toi-même",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu retrouves l'auteur, le cousin rancunier d'une ancienne cible. Une conversation ferme suffit.",
+            "effects": {
+              "smarts": 2
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La conversation tourne mal. Toi aussi, maintenant, tu as une photo sous ta porte.",
+            "effects": {
+              "health": -5
+            },
+            "agence": {
+              "signal": "agence_menace"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Minimiser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« Ça fait partie du métier. » {enqueteur} ne trouve pas ça drôle, et démissionne le mois suivant.",
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0023",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "minAnnees": 3
+    },
+    "text": "{enqueteur} demande à devenir associé de {agence}. « Je n'ai pas compté mes heures. Je voudrais que ça compte. »",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le nom change sur la porte. Les décisions se prennent à deux, ce qui est plus lent et souvent plus juste.",
+            "effects": {
+              "happiness": 3,
+              "money": -2000
+            },
+            "agence": {
+              "enqueteurCompetence": 6,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une participation aux bénéfices",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Compromis accepté. Tout le monde y gagne un peu.",
+            "effects": {
+              "money": -1500
+            },
+            "agence": {
+              "enqueteurCompetence": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "« Ce n'est pas la même chose. » Déception palpable.",
+            "agence": {
+              "enqueteurCompetence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} accepte le refus. Pour l'instant.",
+            "agence": {
+              "enqueteurCompetence": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{enqueteur} part fonder sa propre agence, en face.",
+            "agence": {
+              "enqueteurPart": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0024",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "Une étudiante d'une école de criminologie veut faire un stage chez {agence}. Elle a déjà lu tous tes rapports publics et en a repéré deux erreurs.",
+    "choices": [
+      {
+        "label": "La prendre en stage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle classe, recoupe, repère. {enqueteur} apprend autant d'elle qu'elle de vous.",
+            "effects": {
+              "smarts": 1
+            },
+            "agence": {
+              "enqueteurCompetence": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu n'as pas le temps de former quelqu'un. Elle ira chez le concurrent, qui aura l'air plus intelligent.",
+            "agence": {
+              "reputation": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0025",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1,
+      "minResolues": 2
+    },
+    "text": "Une journaliste veut interviewer {enqueteur}, qui a résolu presque seul une affaire récente. Ton nom n'apparaîtrait pas.",
+    "choices": [
+      {
+        "label": "Laisser la lumière à {enqueteur}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'article est élogieux, et l'agence y gagne par ricochet.",
+            "effects": {
+              "karma": 4
+            },
+            "agence": {
+              "reputation": 4,
+              "enqueteurCompetence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Imposer ton nom",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'article cite « {agence} et son équipe ». {enqueteur} sourit poliment. Trop poliment.",
+            "effects": {
+              "karma": -3
+            },
+            "agence": {
+              "reputation": 3,
+              "enqueteurCompetence": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_equ_0026",
+    "kind": "equipe",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEnqueteurs": 1
+    },
+    "text": "Il manque 600 € dans la caisse des frais de terrain. Les justificatifs de {enqueteur} sont un peu trop arrondis.",
+    "choices": [
+      {
+        "label": "Demander des explications",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une erreur de saisie, des tickets égarés. Tout est rentré dans l'ordre."
+          },
+          {
+            "chance": 0.4,
+            "text": "Aveux gênés : des fins de mois difficiles. Vous convenez d'un remboursement.",
+            "effects": {
+              "karma": 3
+            },
+            "agence": {
+              "enqueteurCompetence": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Enquêter discrètement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu enquêtes sur ton enquêteur. Tu trouves la vérité, et une drôle d'impression de vide.",
+            "effects": {
+              "happiness": -3
+            },
+            "agence": {
+              "enqueteurCompetence": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer les yeux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "600 €, ce n'est pas la fin du monde. Mais ça recommence.",
+            "effects": {
+              "money": -600
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

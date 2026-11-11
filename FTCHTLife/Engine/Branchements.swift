@@ -124,6 +124,8 @@ extension GameEngine {
         t.formUnion(vivantTags(j))
         if let v = VoisinageStockage.lire(j) { t.formUnion(VoisinageMoteur.tags(v)) }
         t.formUnion(EntourageTags.tags(j))
+        t.formUnion(SecteMoteur.tags(j.sectes))
+        t.formUnion(AgenceMoteur.tags(j.agences))
         return t
     }
 
@@ -192,6 +194,8 @@ extension GameEngine {
         j.telephone = tel
 
         lignes += bilanEntreprises(&j)
+        lignes += secteAnnee(&j)
+        lignes += agenceAnnee(&j)
         passageAnneeBoutique(&j)
 
         if var rf = j.reputationFamille {
@@ -258,6 +262,8 @@ extension GameEngine {
         (fetes + suites + episodes).forEach { declencher($0) }
         voisinageAnnee()
         vivantAvantTirage()
+        secteAvantTirage()
+        agenceAvantTirage()
     }
 
     /// Événements en plus de la bibliothèque (crises du monde, retombées télé).
@@ -318,6 +324,8 @@ extension GameEngine {
         voisinageApresChoix(e, choix: index, issue: issue, &j)
         apresChoixTravail(e, choix: index, issue: k, &j)
         vivantApresChoix(e, choix: index, issue: k, &j)
+        secteApresChoix(e, choix: index, issue: k, &j)
+        agenceApresChoix(e, choix: index, issue: k, &j)
         revesMettreAJour(&j, etat: \.reves)
     }
 
@@ -341,6 +349,8 @@ extension GameEngine {
     // MARK: - Mort
 
     func modulesMort(_ j: inout Joueur) {
+        if j.sectes?.actuelle != nil { fermerSecte(&j, fin: "mort") }
+        if j.agences?.actuelle != nil { fermerAgence(&j, fin: "mort") }
         if var rf = j.reputationFamille {
             _ = ReputationFamille.bilanDeVie(joueur: j, etat: &rf)
             j.reputationFamille = rf

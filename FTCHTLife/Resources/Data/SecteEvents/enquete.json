@@ -1,0 +1,2064 @@
+[
+  {
+    "id": "sec_enq_0001",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 1
+    },
+    "text": "Le Courrier de {ville} publie une enquête d'une page : « {secte}, la dérive d'un mouvement ». Des familles y parlent d'argent et de ruptures.",
+    "choices": [
+      {
+        "label": "Demander un droit de réponse mesuré",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ta réponse est publiée. Elle ne convainc pas tout le monde, mais elle calme le jeu.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "surveillance": -5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La journaliste publie ta réponse… et la commente point par point.",
+            "effects": {
+              "happiness": -2
+            },
+            "secte": {
+              "surveillance": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attaquer le journal en diffamation",
+        "cost": 10000,
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le journal publie un rectificatif sur un détail. Tu le brandis comme une victoire.",
+            "effects": {
+              "happiness": 3
+            },
+            "secte": {
+              "ferveur": 4,
+              "surveillance": 2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le procès en diffamation remet l'affaire à la une. Tu perds, et tout le monde relit l'article.",
+            "effects": {
+              "happiness": -5
+            },
+            "secte": {
+              "surveillance": 10,
+              "notoriete": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'article fait son chemin. Quelques familles appellent le journal pour raconter leur propre histoire.",
+            "secte": {
+              "surveillance": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir les portes à la journaliste",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle assiste à deux réunions. Son second article est plus nuancé que le premier.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "surveillance": -6,
+              "derive": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle remarque ce que tu n'avais plus remarqué : les regards fuyants, la caisse à la sortie.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "surveillance": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0002",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 1
+    },
+    "text": "Une vingtaine de familles déposent une plainte collective avec l'association Libres d'Esprit. Elles parlent « d'emprise » et de dons forcés.",
+    "choices": [
+      {
+        "label": "Proposer une médiation aux familles",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Quelques familles acceptent. Des dons sont remboursés. La plainte perd de sa force.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "surveillance": -6,
+              "tresor": -15000,
+              "derive": -4,
+              "enquete": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les familles refusent : « On ne négocie pas avec vous. »",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "surveillance": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre un avocat dès maintenant",
+        "cost": 5000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton avocat te pose les questions que le juge posera. Certaines te mettent mal à l'aise.",
+            "effects": {
+              "smarts": 2
+            },
+            "secte": {
+              "defense": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dénoncer une campagne de haine",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les {adeptes} y croient, les enquêteurs beaucoup moins.",
+            "effects": {
+              "karma": -3
+            },
+            "secte": {
+              "ferveur": 5,
+              "surveillance": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0003",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 1
+    },
+    "text": "La mission de vigilance contre les dérives sectaires publie une note d'alerte qui cite nommément {secte}.",
+    "choices": [
+      {
+        "label": "Écrire à la mission pour demander un entretien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'entretien a lieu. On te remet une liste de critères de dérive. Tu en coches beaucoup trop.",
+            "effects": {
+              "karma": 3,
+              "smarts": 1
+            },
+            "secte": {
+              "surveillance": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer le nom du mouvement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Nouveau logo, même fonctionnement. Les journalistes écrivent « ex-{secte} » dans chaque article.",
+            "secte": {
+              "surveillance": 3,
+              "notoriete": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire signer une pétition de soutien aux {adeptes}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des centaines de signatures. Pour la mission, c'est surtout une liste de personnes à contacter.",
+            "secte": {
+              "ferveur": 4,
+              "surveillance": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0004",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 1
+    },
+    "text": "Une ancienne adepte publie une vidéo de quarante minutes sur ce qu'elle a vécu dans {secte}. Elle est partagée des milliers de fois.",
+    "choices": [
+      {
+        "label": "Lui écrire pour t'excuser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle publie ton message, avec un commentaire : « C'est un début. »",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "surveillance": -3,
+              "derive": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Elle ne répond pas. Tu as fait ta part.",
+            "effects": {
+              "karma": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Publier une contre-vidéo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta vidéo est commentée par des milliers de gens qui citent la sienne.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "surveillance": 6,
+              "notoriete": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire pression sur elle via des {adeptes}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle filme les messages qu'elle reçoit et les publie dans une deuxième vidéo.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "surveillance": 15,
+              "derive": 6,
+              "signal": "secte_scandale"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0005",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 1,
+      "minAdeptes": 100
+    },
+    "text": "Le conseil municipal de {ville} débat de {secte} en séance publique. Une élue demande au maire « ce qu'il compte faire ».",
+    "choices": [
+      {
+        "label": "Demander à être entendu{e} par le conseil",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu parles cinq minutes, calmement. Le débat est reporté.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "surveillance": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta présence fait monter la tension. La séance est filmée et diffusée.",
+            "effects": {
+              "happiness": -2
+            },
+            "secte": {
+              "surveillance": 5,
+              "notoriete": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer cent {adeptes} assister à la séance",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La salle est pleine. Le maire parle d'intimidation.",
+            "effects": {
+              "karma": -4
+            },
+            "secte": {
+              "surveillance": 10,
+              "ferveur": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser passer l'orage",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le débat se termine par un vœu symbolique. Symbolique, mais public.",
+            "secte": {
+              "surveillance": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0006",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 1,
+      "minAdeptes": 50
+    },
+    "text": "Un magazine d'investigation télévisé prépare un reportage sur {secte}. Une équipe a filmé en caméra cachée pendant une retraite.",
+    "choices": [
+      {
+        "label": "Accepter l'interview pour donner ta version",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu es calme, précis{e}. Le reportage te laisse le dernier mot, et c'est déjà beaucoup.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "surveillance": -3,
+              "notoriete": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les images en caméra cachée parlent plus fort que toi.",
+            "effects": {
+              "happiness": -4
+            },
+            "secte": {
+              "surveillance": 8,
+              "notoriete": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenter de faire interdire la diffusion",
+        "cost": 15000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le juge des référés refuse. L'émission ajoute un carton : « {secte} a tenté d'empêcher ce reportage. »",
+            "effects": {
+              "happiness": -4
+            },
+            "secte": {
+              "surveillance": 10,
+              "notoriete": 12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Préparer les {adeptes} à l'émission",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils la regardent ensemble. Plusieurs se reconnaissent à l'écran, floutés, et ne disent rien.",
+            "secte": {
+              "ferveur": -3,
+              "adeptesPct": -6,
+              "notoriete": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0007",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 2
+    },
+    "text": "La gendarmerie convoque une dizaine de membres de {secte} pour des auditions. Ils viennent te demander quoi dire.",
+    "choices": [
+      {
+        "label": "Leur dire de répondre honnêtement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils disent la vérité, la bonne et la moins bonne. Les enquêteurs notent que tu n'as pas fait pression.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "derive": -4,
+              "defense": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Leur faire répéter une version commune",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les versions sont identiques, mot pour mot. Trop identiques.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "surveillance": 8,
+              "derive": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'un d'eux craque en audition et raconte la répétition.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "surveillance": 12,
+              "derive": 6,
+              "enquete": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Leur payer un avocat à chacun",
+        "cost": 20000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les auditions se passent dans les règles. Ça coûte cher, et ça ne prouve rien dans un sens ni dans l'autre.",
+            "secte": {
+              "defense": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0008",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 2
+    },
+    "text": "Contrôle fiscal : deux inspecteurs s'installent pour trois semaines dans le bureau de {secte}. Ils veulent tout voir, depuis la fondation.",
+    "choices": [
+      {
+        "label": "Tout leur montrer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ils trouvent des erreurs, pas de fraude. Le redressement est sévère, mais supportable.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "tresorPct": -20,
+              "surveillance": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils trouvent des dons non déclarés. Le dossier est transmis au parquet.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "tresorPct": -30,
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre un fiscaliste réputé",
+        "cost": 12000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il conteste chaque ligne. Le contrôle s'éternise, mais le redressement est réduit.",
+            "secte": {
+              "tresorPct": -10,
+              "defense": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire disparaître certains justificatifs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les inspecteurs remarquent les trous dans les classeurs. Ils ont l'habitude.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "surveillance": 12,
+              "enquete": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0009",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 2
+    },
+    "text": "Un rapport de la mission de vigilance contre les dérives sectaires est transmis au procureur. Il recense des dizaines de signalements.",
+    "choices": [
+      {
+        "label": "Prendre les devants : rencontrer le procureur avec ton avocat",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il t'écoute. Il note ta coopération. Il n'abandonne rien.",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "defense": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le rendez-vous est bref et glacial. Mais il est au dossier.",
+            "secte": {
+              "defense": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réformer les pratiques en urgence",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Fin des contributions obligatoires, fin de l'isolement. Les enquêteurs remarquent le changement. Certains {adeptes} aussi, et ils partent.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -12,
+              "adeptesPct": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien changer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le rapport fait son chemin, page après page.",
+            "secte": {
+              "surveillance": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0010",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 2,
+      "procheMembre": true
+    },
+    "text": "Les enquêteurs ont convoqué {proche} pour une audition.",
+    "choices": [
+      {
+        "label": "Dire à {proche} de tout raconter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} parle pendant trois heures. En sortant, {proche} t'appelle : « Je leur ai dit la vérité. Je t'aime quand même. »",
+            "effects": {
+              "karma": 10,
+              "happiness": -2
+            },
+            "secte": {
+              "defense": 1,
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander de te protéger",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{proche} ment pour toi. Les enquêteurs le sentent.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "surveillance": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{proche} refuse de mentir et te le reproche ensuite.",
+            "effects": {
+              "karma": -6,
+              "happiness": -4
+            },
+            "secte": {
+              "surveillance": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui trouver un avocat",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'audition se passe dans le calme. Avoir quelqu'un à ses côtés change tout pour {proche}.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "defense": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0011",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 2,
+      "minTresor": 10000
+    },
+    "text": "Les relevés bancaires de {secte} ont été réquisitionnés. Ton trésorier panique et propose de détruire les archives internes.",
+    "choices": [
+      {
+        "label": "Refuser et garder les archives",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les archives restent. Elles contiennent des choses gênantes, mais aussi la preuve que tu n'as rien caché.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "defense": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le laisser faire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les archives partent en fumée. L'enquête n'en a plus besoin : elle a les relevés.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "surveillance": 10,
+              "enquete": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton trésorier est filmé en train de brûler des cartons par un voisin.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "surveillance": 15,
+              "enquete": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le dénoncer aux enquêteurs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il est entendu. Il se sent trahi et dit tout ce qu'il sait, sur lui comme sur toi.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "defense": 1,
+              "surveillance": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0012",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 2
+    },
+    "text": "Tu es convoqué{e} en audition libre à la brigade de recherches. Tu peux partir à tout moment, mais tout ce que tu dis sera noté.",
+    "choices": [
+      {
+        "label": "Venir avec ton avocat et répondre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Quatre heures de questions. Tu ne te contredis pas.",
+            "effects": {
+              "smarts": 1
+            },
+            "secte": {
+              "defense": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une question sur Hélène, la malade qui avait arrêté ses soins, te déstabilise. Tu bafouilles.",
+            "effects": {
+              "happiness": -4
+            },
+            "secte": {
+              "surveillance": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le silence",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "C'est ton droit. Les enquêteurs prennent note de ce silence.",
+            "secte": {
+              "surveillance": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les convaincre de ta bonne foi",
+        "requiresSkill": {
+          "eloquence": 4
+        },
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu parles bien. Un enquêteur semble douter de son propre dossier.",
+            "effects": {
+              "skills": {
+                "eloquence": 4
+              }
+            },
+            "secte": {
+              "surveillance": -5,
+              "defense": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Plus tu parles, plus ils notent. Ton avocat te fait les gros yeux.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "surveillance": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0013",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 3
+    },
+    "text": "Six heures du matin. Des gendarmes enfoncent la porte. Perquisition au siège de {secte}, et chez toi en même temps.",
+    "choices": [
+      {
+        "label": "Coopérer calmement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ouvres les tiroirs toi-même. Les enquêteurs le notent dans le procès-verbal.",
+            "effects": {
+              "karma": 4,
+              "happiness": -6
+            },
+            "secte": {
+              "defense": 1,
+              "signal": "secte_perquisition"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Filmer en direct sur les réseaux en criant à la persécution",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La vidéo galvanise les {adeptes}. Le juge d'instruction, lui, la regarde aussi.",
+            "effects": {
+              "karma": -5,
+              "happiness": -4
+            },
+            "secte": {
+              "ferveur": 8,
+              "surveillance": 12,
+              "signal": "secte_perquisition"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler ton avocat et te taire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils emportent des ordinateurs, des classeurs, des carnets. Tu ne dis pas un mot.",
+            "effects": {
+              "happiness": -6
+            },
+            "secte": {
+              "signal": "secte_perquisition"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0014",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 3
+    },
+    "text": "Garde à vue. Quarante-huit heures dans une cellule qui sent la javel. Les enquêteurs ont des transcriptions, des relevés et des témoignages.",
+    "choices": [
+      {
+        "label": "Tout reconnaître",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu racontes tout, la sincérité du début et la dérive. Les enquêteurs ont l'air presque surpris.",
+            "effects": {
+              "karma": 10,
+              "happiness": -6
+            },
+            "secte": {
+              "defense": 1,
+              "derive": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Nier en bloc",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu tiens quarante-huit heures. Tu sors épuisé{e}, sans charge pour l'instant.",
+            "effects": {
+              "health": -4,
+              "happiness": -6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On te met face à tes propres messages. Tu nies quand même. Ça ne fait bonne impression à personne.",
+            "effects": {
+              "health": -4,
+              "happiness": -8
+            },
+            "secte": {
+              "surveillance": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accuser ton second",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton second l'apprend dans la cellule d'à côté. Il se met à parler, beaucoup.",
+            "effects": {
+              "karma": -10,
+              "happiness": -6
+            },
+            "secte": {
+              "surveillance": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0015",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 3
+    },
+    "text": "Le juge d'instruction te met en examen pour abus de faiblesse et t'interdit tout contact avec les {adeptes} et la direction de {secte}.",
+    "choices": [
+      {
+        "label": "Respecter le contrôle judiciaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu te retrouves seul{e}. Le mouvement continue sans toi, tant bien que mal.",
+            "effects": {
+              "happiness": -8,
+              "karma": 4
+            },
+            "secte": {
+              "defense": 1,
+              "ferveur": -6,
+              "adeptesPct": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer à diriger en secret",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tes messages passent par des intermédiaires. Personne ne remarque rien.",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "ferveur": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un intermédiaire est arrêté avec un de tes messages. Le juge est furieux.",
+            "effects": {
+              "karma": -8,
+              "happiness": -8
+            },
+            "secte": {
+              "surveillance": 15,
+              "defense": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Démissionner de la tête du mouvement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu passes la main à un conseil. Le juge note ce geste.",
+            "effects": {
+              "happiness": -4,
+              "karma": 6
+            },
+            "secte": {
+              "defense": 1,
+              "derive": -8,
+              "ferveur": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0016",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 3
+    },
+    "text": "Le juge ordonne le gel des comptes de {secte} et la saisie de plusieurs biens. Les {adeptes} ne peuvent plus être remboursés, ni payés.",
+    "choices": [
+      {
+        "label": "Proposer un plan de remboursement des victimes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le juge l'accepte comme gage de bonne foi. Une partie de l'argent ira directement aux plaignants.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "defense": 1,
+              "tresorPct": -30,
+              "derive": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer une collecte d'urgence auprès des {adeptes}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les {adeptes} donnent encore. Pour l'accusation, c'est la preuve qu'ils ne savent pas dire non.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "tresor": 20000,
+              "derive": 8,
+              "surveillance": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Contester la saisie",
+        "cost": 8000,
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Une partie des biens est libérée.",
+            "effects": {
+              "happiness": 2
+            },
+            "secte": {
+              "tresorPct": 10
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "La saisie est confirmée en appel.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "surveillance": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0017",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 3,
+      "minAnnees": 2
+    },
+    "text": "Ton ancien second, Bastien, accepte de témoigner contre toi. Il a gardé des messages, des enregistrements, des tableaux de dons.",
+    "choices": [
+      {
+        "label": "Lui écrire une lettre d'excuses sincère",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il ne répond pas. Mais au procès, il parlera de toi avec moins de colère.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "defense": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le discréditer auprès des {adeptes}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les {adeptes} le traitent de traître. Le juge, lui, trouve son témoignage très solide.",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "ferveur": 4,
+              "surveillance": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chercher les failles de son témoignage avec tes avocats",
+        "cost": 10000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ils trouvent des contradictions. Ça ne l'annule pas, mais ça l'affaiblit.",
+            "secte": {
+              "defense": 1
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils ne trouvent rien. Il dit vrai, et tu le sais.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0018",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 3,
+      "minAdeptes": 300
+    },
+    "text": "Après la perquisition, des journalistes campent devant le temple. Des {adeptes} dorment sur place pour « protéger » les lieux.",
+    "choices": [
+      {
+        "label": "Demander aux {adeptes} de rentrer chez eux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils obéissent. Les images de la nuit montrent un bâtiment vide, et c'est mieux ainsi.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "surveillance": -4,
+              "ferveur": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les laisser organiser une veillée devant les caméras",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les images font le tour des chaînes d'info. Des {adeptes} en pleurs, des pancartes. L'opinion n'est pas de ton côté.",
+            "effects": {
+              "karma": -4
+            },
+            "secte": {
+              "ferveur": 6,
+              "surveillance": 10,
+              "notoriete": 12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire une déclaration sobre à la presse",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Trois phrases, pas une de trop. Pour une fois, tu donnes l'image de quelqu'un qui respecte la justice.",
+            "effects": {
+              "skills": {
+                "eloquence": 3
+              }
+            },
+            "secte": {
+              "surveillance": -3,
+              "defense": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0019",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 4
+    },
+    "text": "Premier jour de ton procès au tribunal correctionnel de {ville}. La présidente te demande si tu reconnais les faits.",
+    "choices": [
+      {
+        "label": "Plaider coupable et coopérer",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le tribunal tient compte de tes aveux : peine avec sursis. Tu sors libre, avec un casier et des regrets.",
+            "effects": {
+              "karma": 6,
+              "happiness": -6
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation",
+              "derive": -10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Malgré tes aveux, les faits sont graves : deux ans de prison, dont une partie avec sursis.",
+            "effects": {
+              "karma": 6,
+              "happiness": -12
+            },
+            "secte": {
+              "prisonMois": 12,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le tribunal te condamne avec sursis et prononce la dissolution du mouvement.",
+            "effects": {
+              "karma": 6,
+              "happiness": -8
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "dissoudre": true,
+              "signal": "secte_dissoute"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout nier",
+        "outcomes": [
+          {
+            "chance": 0.25,
+            "text": "Les preuves sont fragiles. Relaxe. Les {adeptes} chantent sur les marches du palais.",
+            "effects": {
+              "happiness": 15
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4,
+              "ferveur": 10
+            }
+          },
+          {
+            "chance": 0.45,
+            "text": "Le tribunal ne te croit pas : quatre ans de prison ferme.",
+            "effects": {
+              "happiness": -15,
+              "karma": -4
+            },
+            "secte": {
+              "prisonMois": 48,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Tes dénégations agacent le tribunal : trois ans de prison et dissolution de {secte}.",
+            "effects": {
+              "happiness": -15,
+              "karma": -4
+            },
+            "secte": {
+              "prisonMois": 36,
+              "infraction": "abus de faiblesse",
+              "dissoudre": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Engager le meilleur ténor du barreau",
+        "cost": 60000,
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ton avocat démonte l'accusation pièce par pièce. Relaxe au bénéfice du doute.",
+            "effects": {
+              "happiness": 12
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4
+            }
+          },
+          {
+            "chance": 0.35,
+            "text": "Il obtient du sursis, là où le parquet demandait de la prison ferme.",
+            "effects": {
+              "happiness": -4
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Même lui ne peut rien face aux témoignages : dix-huit mois ferme.",
+            "effects": {
+              "happiness": -12
+            },
+            "secte": {
+              "prisonMois": 18,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0020",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 4,
+      "minAdeptes": 10
+    },
+    "text": "Au procès, Mireille, une ancienne adepte, s'avance à la barre. Elle raconte les dons, la honte, la peur de partir. La salle est silencieuse.",
+    "choices": [
+      {
+        "label": "Lui demander pardon publiquement",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le tribunal note ton geste. Peine de prison avec sursis et obligation d'indemniser les victimes.",
+            "effects": {
+              "karma": 12,
+              "happiness": -6
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation",
+              "tresorPct": -40
+            }
+          },
+          {
+            "chance": 0.35,
+            "text": "Le pardon ne suffit pas : un an de prison ferme.",
+            "effects": {
+              "karma": 12,
+              "happiness": -10
+            },
+            "secte": {
+              "prisonMois": 12,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Les juges estiment que le doute profite à l'accusé{e} pour l'essentiel des faits. Relaxe partielle, sans peine.",
+            "effects": {
+              "karma": 10,
+              "happiness": 8
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "La faire interroger durement par ton avocat",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Elle se trouble. Le tribunal relaxe faute de preuves suffisantes.",
+            "effects": {
+              "karma": -10,
+              "happiness": 6
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "La salle se retourne contre toi. Trois ans de prison ferme.",
+            "effects": {
+              "karma": -10,
+              "happiness": -14
+            },
+            "secte": {
+              "prisonMois": 36,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester impassible",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton silence passe pour de l'indifférence. Deux ans de prison ferme.",
+            "effects": {
+              "happiness": -12
+            },
+            "secte": {
+              "prisonMois": 24,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Sursis, amende et dissolution du mouvement.",
+            "effects": {
+              "happiness": -8
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "dissoudre": true,
+              "signal": "secte_dissoute"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0021",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 4,
+      "procheMembre": true
+    },
+    "text": "Le tribunal a cité {proche} comme témoin à ton procès. Tu ne sais pas ce que {proche} va dire.",
+    "choices": [
+      {
+        "label": "Lui faire passer un message : « Dis la vérité »",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "{proche} dit tout, en pleurant. Le tribunal y voit un mouvement qui t'a échappé, pas un plan. Sursis.",
+            "effects": {
+              "karma": 10,
+              "happiness": -6
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le témoignage de {proche} est accablant, parce qu'il est honnête. Deux ans ferme.",
+            "effects": {
+              "karma": 10,
+              "happiness": -12
+            },
+            "secte": {
+              "prisonMois": 24,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "{proche} décrit aussi tout ce qui était bon. Le doute profite à la défense : relaxe.",
+            "effects": {
+              "karma": 8,
+              "happiness": 12
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander de mentir pour toi",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "{proche} ment, mal. Le tribunal n'y croit pas, et te condamne à trois ans ferme.",
+            "effects": {
+              "karma": -12,
+              "happiness": -14
+            },
+            "secte": {
+              "prisonMois": 36,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "{proche} refuse et le dit à la barre. C'est dévastateur. Quatre ans ferme et dissolution du mouvement.",
+            "effects": {
+              "karma": -12,
+              "happiness": -15
+            },
+            "secte": {
+              "prisonMois": 48,
+              "infraction": "abus de faiblesse",
+              "dissoudre": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0022",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 4
+    },
+    "text": "Avant le délibéré, la présidente te donne la parole une dernière fois. Toute la salle te regarde, {adeptes} et victimes mêlés.",
+    "choices": [
+      {
+        "label": "Reconnaître le mal causé",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Tes mots sont simples et justes. Peine avec sursis, mise à l'épreuve et indemnisation des victimes.",
+            "effects": {
+              "karma": 12,
+              "happiness": -4
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation",
+              "tresorPct": -30
+            }
+          },
+          {
+            "chance": 0.35,
+            "text": "Les juges saluent ta sincérité, mais la peine tombe : un an ferme.",
+            "effects": {
+              "karma": 12,
+              "happiness": -10
+            },
+            "secte": {
+              "prisonMois": 12,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le tribunal prononce la dissolution de {secte}, sans prison pour toi.",
+            "effects": {
+              "karma": 10,
+              "happiness": -5
+            },
+            "secte": {
+              "dissoudre": true,
+              "signal": "secte_dissoute"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prêcher une dernière fois",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Ton discours électrise les {adeptes} et glace les juges. Cinq ans ferme.",
+            "effects": {
+              "karma": -6,
+              "happiness": -15
+            },
+            "secte": {
+              "prisonMois": 60,
+              "infraction": "abus de faiblesse en bande organisée",
+              "signal": "secte_condamnation",
+              "ferveur": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les juges t'écoutent sans réagir. Trois ans ferme et dissolution.",
+            "effects": {
+              "karma": -6,
+              "happiness": -15
+            },
+            "secte": {
+              "prisonMois": 36,
+              "infraction": "abus de faiblesse",
+              "dissoudre": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les preuves étaient minces. Malgré ton prêche, tu es relaxé{e}.",
+            "effects": {
+              "happiness": 10
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4,
+              "ferveur": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te taire",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Sursis et amende. Le silence ne t'a ni sauvé{e}, ni condamné{e}.",
+            "effects": {
+              "happiness": -6
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Deux ans ferme. Tu ne sauras jamais si un mot aurait changé quelque chose.",
+            "effects": {
+              "happiness": -12
+            },
+            "secte": {
+              "prisonMois": 24,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0023",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 4
+    },
+    "text": "Le procureur requiert six ans de prison pour abus de faiblesse, fraude fiscale et travail dissimulé. Ton avocat te parle d'une dernière stratégie.",
+    "choices": [
+      {
+        "label": "Rejeter la faute sur ton trésorier",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le tribunal suit en partie : le trésorier est condamné, toi relaxé{e} pour la fraude. Reste le sursis pour le reste.",
+            "effects": {
+              "karma": -12,
+              "happiness": -2
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Personne n'y croit : c'est toi qui signais tout. Cinq ans ferme.",
+            "effects": {
+              "karma": -12,
+              "happiness": -15
+            },
+            "secte": {
+              "prisonMois": 60,
+              "infraction": "fraude fiscale",
+              "signal": "secte_condamnation"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer d'indemniser toutes les victimes",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'indemnisation pèse lourd. Deux ans, dont un ferme.",
+            "effects": {
+              "karma": 8,
+              "happiness": -8
+            },
+            "secte": {
+              "tresorPct": -60,
+              "prisonMois": 12,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Sursis total, indemnisation et dissolution de {secte}.",
+            "effects": {
+              "karma": 8,
+              "happiness": -6
+            },
+            "secte": {
+              "tresorPct": -60,
+              "prisonMois": 0,
+              "infraction": "travail dissimulé",
+              "dissoudre": true,
+              "signal": "secte_dissoute"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire citer des experts et des témoins de moralité",
+        "cost": 25000,
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Le tribunal écarte la plupart des charges. Relaxe pour l'essentiel.",
+            "effects": {
+              "happiness": 12
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les experts réduisent la note : trois ans, dont dix-huit mois ferme.",
+            "effects": {
+              "happiness": -10
+            },
+            "secte": {
+              "prisonMois": 18,
+              "infraction": "fraude fiscale",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Ça ne suffit pas. Six ans ferme, comme requis.",
+            "effects": {
+              "happiness": -15
+            },
+            "secte": {
+              "prisonMois": 72,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0024",
+    "kind": "enquete",
+    "doctrines": [
+      "medecine_vibratoire",
+      "souffle_vivant",
+      "champ_quantique"
+    ],
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 4
+    },
+    "text": "Jour du verdict. Le dossier contient le cas d'une adepte gravement malade qui avait renoncé à ses soins après tes séances. La présidente se lève pour lire le jugement.",
+    "choices": [
+      {
+        "label": "Te lever et écouter",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le tribunal retient la non-assistance à personne en danger : quatre ans de prison ferme.",
+            "effects": {
+              "happiness": -15,
+              "karma": -2
+            },
+            "secte": {
+              "prisonMois": 48,
+              "infraction": "non-assistance à personne en danger",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Exercice illégal de la médecine : deux ans de prison avec sursis, interdiction d'exercer toute activité de soin.",
+            "effects": {
+              "happiness": -8
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "exercice illégal de la médecine",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.25,
+            "text": "Huit ans ferme et dissolution du mouvement. Dans la salle, quelqu'un sanglote.",
+            "effects": {
+              "happiness": -15,
+              "karma": -4
+            },
+            "secte": {
+              "prisonMois": 96,
+              "infraction": "exercice illégal de la médecine",
+              "dissoudre": true
+            }
+          },
+          {
+            "chance": 0.15,
+            "text": "Le lien de causalité n'est pas établi. Relaxe. Tu ne te sens pas innocent{e} pour autant.",
+            "effects": {
+              "happiness": 6,
+              "karma": 2
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander à parler à la famille de l'adepte",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La présidente refuse, mais la famille t'a vu{e} te lever. Trois ans, dont dix-huit mois ferme.",
+            "effects": {
+              "karma": 8,
+              "happiness": -10
+            },
+            "secte": {
+              "prisonMois": 18,
+              "infraction": "non-assistance à personne en danger",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Sursis et dissolution. La famille ne te regarde pas.",
+            "effects": {
+              "karma": 8,
+              "happiness": -8
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "exercice illégal de la médecine",
+              "dissoudre": true,
+              "signal": "secte_dissoute"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_enq_0025",
+    "kind": "enquete",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "enquete": 4
+    },
+    "text": "Jour du verdict. Le tribunal a examiné les dons, l'isolement des familles et les heures de travail non payées. La présidente prend la parole.",
+    "choices": [
+      {
+        "label": "Te lever et écouter",
+        "outcomes": [
+          {
+            "chance": 0.25,
+            "text": "Relaxe. Les preuves ne suffisent pas. Les {adeptes} pleurent de joie, les familles de rage.",
+            "effects": {
+              "happiness": 15
+            },
+            "secte": {
+              "signal": "secte_relaxe",
+              "enquete": -4,
+              "ferveur": 8
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Deux ans de prison avec sursis et une lourde amende.",
+            "effects": {
+              "happiness": -6
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "escroquerie en bande organisée",
+              "signal": "secte_condamnation",
+              "tresorPct": -30
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Trois ans de prison ferme.",
+            "effects": {
+              "happiness": -15
+            },
+            "secte": {
+              "prisonMois": 36,
+              "infraction": "escroquerie en bande organisée",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.15,
+            "text": "Cinq ans ferme et dissolution de {secte}.",
+            "effects": {
+              "happiness": -15
+            },
+            "secte": {
+              "prisonMois": 60,
+              "infraction": "travail dissimulé",
+              "dissoudre": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fixer les victimes dans les yeux",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu soutiens leurs regards. Deux ans ferme. Elles, au moins, ont été entendues.",
+            "effects": {
+              "happiness": -12,
+              "karma": 4
+            },
+            "secte": {
+              "prisonMois": 24,
+              "infraction": "abus de faiblesse",
+              "signal": "secte_condamnation"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Sursis, et la dissolution du mouvement est prononcée.",
+            "effects": {
+              "happiness": -6,
+              "karma": 4
+            },
+            "secte": {
+              "prisonMois": 0,
+              "infraction": "abus de faiblesse",
+              "dissoudre": true,
+              "signal": "secte_dissoute"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

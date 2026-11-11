@@ -65,6 +65,8 @@ TAGS |= {"entrepreneur","patron","magnat","ancien_entrepreneur","failli","phone"
 # Le Milieu : crime organisé (docs/donnees-vie-sociale.md)
 TAGS |= {"gang","gang_haut","dealer","sous_enquete","chaleur","ancien_gang","balance","argent_sale"}
 PH |= {"organisation","chef","rival","rang"}
+# Secte et agence de détective (docs/SECTE_DETECTIVE.md)
+TAGS |= {"gourou","secte_communaute","secte_grande","secte_enquete","ancien_gourou","proche_dans_secte","detective","detective_celebre","detective_clandestin","ancien_detective"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return

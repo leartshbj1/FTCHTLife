@@ -1,0 +1,2082 @@
+[
+  {
+    "id": "sec_der_0001",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 20,
+      "minDerive": 20
+    },
+    "text": "Mireille, une adepte, veut quitter {secte}. Elle réclame les 12 000 € qu'elle a donnés en trois ans.",
+    "choices": [
+      {
+        "label": "La laisser partir et la rembourser",
+        "cost": 12000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle part sans faire de bruit. Quelques {adeptes} trouvent que tu as été juste.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -5,
+              "ferveur": -3,
+              "surveillance": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "La laisser partir sans rembourser",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Elle s'en va, amère. Elle ne dit rien, pour l'instant.",
+            "effects": {
+              "karma": -2
+            },
+            "secte": {
+              "adeptes": -1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle s'adresse à l'association Libres d'Esprit, qui ouvre un dossier à ton nom.",
+            "effects": {
+              "karma": -2
+            },
+            "secte": {
+              "adeptes": -1,
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "La faire culpabiliser devant le groupe",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Sous les regards, elle s'excuse et reste. Elle ne lève plus les yeux pendant les réunions.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "ferveur": 5,
+              "derive": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle sort en larmes et raconte la scène à sa famille, qui alerte un journaliste.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "surveillance": 15,
+              "adeptes": -3,
+              "signal": "secte_scandale"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0002",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 15
+    },
+    "text": "La sœur d'un adepte, Kévin, l'appelle dix fois par jour. Des {adeptes} te demandent s'il ne vaudrait pas mieux qu'il « coupe les ponts avec les éléments négatifs ».",
+    "choices": [
+      {
+        "label": "Encourager Kévin à garder le lien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Kévin revoit sa sœur. Elle se calme en voyant qu'il va bien. Une famille de moins contre toi.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -5,
+              "surveillance": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Valider la rupture avec la famille",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Kévin change de numéro. Il ne vit plus que pour le groupe.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "ferveur": 6,
+              "derive": 10
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Sa sœur fait un signalement auprès de la mission de vigilance contre les dérives sectaires.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 10,
+              "surveillance": 12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien dire, laisser Kévin choisir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Sans consigne claire, la pression du groupe décide pour lui. Il espace les appels.",
+            "effects": {
+              "karma": -2
+            },
+            "secte": {
+              "derive": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0003",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 10
+    },
+    "text": "Hélène, une adepte, a une maladie grave. Elle veut arrêter son traitement pour ne compter que sur l'enseignement de {secte}. Elle attend ton avis.",
+    "choices": [
+      {
+        "label": "Lui dire fermement de continuer ses soins",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle continue. Elle te remercie plus tard, quand son médecin lui annonce de bonnes nouvelles.",
+            "effects": {
+              "karma": 12
+            },
+            "secte": {
+              "derive": -6,
+              "ferveur": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est son choix",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Elle arrête. Quelques mois plus tard, elle est hospitalisée en urgence. Sa famille pose beaucoup de questions.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "derive": 8,
+              "surveillance": 12,
+              "signal": "secte_scandale"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Son médecin traitant la convainc de reprendre. Il demande qui lui a mis cette idée en tête.",
+            "effects": {
+              "karma": -4
+            },
+            "secte": {
+              "surveillance": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'encourager à arrêter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Son état se dégrade vite. Les urgences, puis la police, puis les journaux : tout le monde veut savoir qui l'a convaincue.",
+            "effects": {
+              "karma": -15,
+              "happiness": -5
+            },
+            "secte": {
+              "derive": 15,
+              "surveillance": 20,
+              "signal": "secte_scandale"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0004",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "lieux": [
+        "domaine"
+      ]
+    },
+    "text": "Sur le domaine, des parents veulent retirer leurs enfants de l'école du village pour qu'ils suivent « l'enseignement de {secte} ».",
+    "choices": [
+      {
+        "label": "Exiger que les enfants restent scolarisés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les parents obéissent, déçus. Les enfants continuent d'aller à l'école avec leurs copains, et c'est très bien ainsi.",
+            "effects": {
+              "karma": 10
+            },
+            "secte": {
+              "derive": -6,
+              "ferveur": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser une école interne sans déclaration",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les enfants n'ont plus de contact avec l'extérieur. L'Éducation nationale n'est pas au courant. Pour l'instant.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "ferveur": 6,
+              "derive": 14
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "L'école signale les absences. Une inspectrice et un gendarme se présentent au portail.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "derive": 12,
+              "surveillance": 18,
+              "enquete": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Une instruction en famille déclarée, avec inspections",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tout est fait dans les règles. Les inspections sont tendues, mais les enfants apprennent à lire et à compter.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "surveillance": 4,
+              "derive": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0005",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 30,
+      "minDerive": 20
+    },
+    "text": "Ton trésorier te signale que plusieurs {adeptes} ont pris des crédits pour payer leur contribution.",
+    "choices": [
+      {
+        "label": "Baisser la contribution immédiatement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La caisse en souffre. Les visages se détendent dès la réunion suivante.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "tresorPct": -15,
+              "derive": -8,
+              "ferveur": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire comme si tu ne savais rien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'argent continue d'entrer. Toi, tu sais.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "tresor": 8000,
+              "derive": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un « plan d'étalement » interne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les dettes envers les banques deviennent des dettes envers {secte}. C'est pire, mais ça se voit moins.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "tresor": 5000,
+              "derive": 10,
+              "surveillance": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0006",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 10
+    },
+    "text": "Les veillées de prière durent maintenant jusqu'à trois heures du matin. Plusieurs {adeptes} arrivent au travail épuisés.",
+    "choices": [
+      {
+        "label": "Finir à 22 h, point",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tout le monde dort mieux. L'intensité baisse un peu, la santé du groupe s'améliore.",
+            "effects": {
+              "karma": 5,
+              "health": 2
+            },
+            "secte": {
+              "derive": -5,
+              "ferveur": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les rallonger encore",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Épuisés, ils n'ont plus la force de douter. Ça marche, et c'est précisément le problème.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "ferveur": 8,
+              "derive": 10
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un adepte s'endort au volant en rentrant. Il s'en sort avec des contusions, et son employeur s'interroge.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 8,
+              "surveillance": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0007",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 25
+    },
+    "text": "Ton second propose des séances de « confession publique », où chacun avoue ses fautes devant le groupe.",
+    "choices": [
+      {
+        "label": "Refuser catégoriquement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton second grimace. Les {adeptes} ne sauront jamais à quoi ils ont échappé.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les instaurer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les secrets de chacun deviennent la propriété de tous. Plus personne n'ose partir : chacun sait trop de choses sur les autres.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "ferveur": 7,
+              "derive": 14
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un adepte humilié part et dépose une main courante pour harcèlement.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 10,
+              "surveillance": 10,
+              "adeptes": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer des entretiens privés, confidentiels",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "C'est moins spectaculaire, plus respectueux. Certains se confient vraiment.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "ferveur": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0008",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 30
+    },
+    "text": "Un ancien adepte publie sur un forum un long témoignage sur « l'emprise » qu'il a vécue dans {secte}. Les {adeptes} l'ont lu.",
+    "choices": [
+      {
+        "label": "Reconnaître publiquement certaines erreurs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta réponse sobre surprend tout le monde. Le débat se calme, et quelques pratiques changent vraiment.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "derive": -8,
+              "ferveur": -4,
+              "surveillance": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le présenter comme un menteur et un malade",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les {adeptes} serrent les rangs contre « le traître ».",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "ferveur": 5,
+              "derive": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "D'autres anciens répondent sous son message : « Moi aussi. » Le fil devient une liste.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "surveillance": 12,
+              "adeptesPct": -5,
+              "signal": "secte_scandale"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Interdire aux {adeptes} de lire Internet",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La règle est respectée par peur. Les plus curieux lisent en cachette, et doutent encore plus.",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "derive": 8,
+              "ferveur": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0009",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 60,
+      "minDerive": 20
+    },
+    "text": "Ton second propose un système de « veilleurs » : des {adeptes} chargés de signaler les comportements « tièdes » des autres.",
+    "choices": [
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La confiance reste possible entre les {adeptes}. C'est un bien fragile, tu viens de le protéger.",
+            "effects": {
+              "karma": 5
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les rapports arrivent chaque semaine. Les amitiés entre {adeptes} deviennent prudentes, puis rares.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "ferveur": 5,
+              "derive": 12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter, mais t'en servir contre ton second",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu retournes le système contre lui. Il est isolé, et tout le monde a compris le message.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "derive": 10,
+              "ferveur": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0010",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "lieux": [
+        "domaine"
+      ]
+    },
+    "text": "Sur le domaine, ton second veut confisquer les téléphones « pour protéger les {adeptes} des ondes négatives du monde ».",
+    "choices": [
+      {
+        "label": "Refuser : chacun garde son téléphone",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les familles continuent de recevoir des nouvelles. C'est ta meilleure assurance, et la leur.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -5,
+              "surveillance": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Les confisquer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le domaine devient une île. Dehors, des familles s'inquiètent de ne plus rien savoir.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "ferveur": 6,
+              "derive": 14,
+              "surveillance": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une mère sans nouvelles depuis trois mois appelle la gendarmerie, qui vient vérifier que tout le monde va bien.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "derive": 12,
+              "surveillance": 15
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un téléphone collectif, à heures fixes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Compromis bancal : on peut appeler, mais tout le monde entend.",
+            "effects": {
+              "karma": -3
+            },
+            "secte": {
+              "derive": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0011",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minTresor": 20000,
+      "minAdeptes": 40
+    },
+    "text": "Ton trésorier, Hugo, se sert dans la caisse depuis des mois. Tu as les preuves sous les yeux.",
+    "choices": [
+      {
+        "label": "Porter plainte",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Hugo est entendu par la police. Le scandale éclabousse un peu le mouvement, mais tes comptes sont propres.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "surveillance": 5,
+              "derive": -4,
+              "tresor": 5000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le renvoyer discrètement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il part sans bruit. L'argent, lui, ne revient pas.",
+            "effects": {
+              "karma": 1
+            },
+            "secte": {
+              "tresor": -3000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le garder, il te sera redevable",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Hugo sait que tu sais. Il fera désormais tout ce que tu lui demanderas.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "derive": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0012",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 20
+    },
+    "text": "Raymonde, quatre-vingt-sept ans, veut léguer sa maison et ses économies à {secte}. Ses enfants ne sont pas au courant.",
+    "choices": [
+      {
+        "label": "Refuser le legs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle insiste, puis accepte. Ses enfants n'en sauront jamais rien, et c'est sans doute mieux.",
+            "effects": {
+              "karma": 12
+            },
+            "secte": {
+              "derive": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger qu'elle en parle à ses enfants et à un notaire",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le notaire la reçoit seule. Elle confirme un petit legs, raisonnable. Tout est en règle.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "tresor": 20000,
+              "derive": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les enfants réagissent très mal et accusent {secte} de manipulation.",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter sans rien dire à personne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le testament est signé. Le jour où il sera ouvert, tout le monde voudra savoir comment.",
+            "effects": {
+              "karma": -15
+            },
+            "secte": {
+              "tresor": 180000,
+              "derive": 14,
+              "surveillance": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0013",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 40,
+      "lieux": [
+        "local",
+        "temple",
+        "domaine"
+      ]
+    },
+    "text": "Sandrine travaille soixante-dix heures par semaine à la boutique de {secte}, sans salaire. Elle dit qu'elle est heureuse de « servir ».",
+    "choices": [
+      {
+        "label": "L'embaucher avec un vrai contrat",
+        "cost": 22000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle a un salaire, des congés et une mutuelle. Elle est presque gênée d'être payée.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "derive": -6,
+              "surveillance": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui imposer des horaires raisonnables",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La boutique ouvre moins longtemps. Sandrine dort enfin.",
+            "effects": {
+              "karma": 5
+            },
+            "secte": {
+              "derive": -4,
+              "tresor": -2000
+            }
+          }
+        ]
+      },
+      {
+        "label": "La laisser servir",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "La boutique tourne et rapporte. Sandrine maigrit.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "tresor": 6000,
+              "derive": 7
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un contrôle de l'inspection du travail relève du travail dissimulé.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "derive": 6,
+              "surveillance": 14
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0014",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 15
+    },
+    "text": "Le mari de Claire, qui n'est pas membre, lui pose un ultimatum : « {secte} ou moi. » Claire vient te demander quoi faire.",
+    "choices": [
+      {
+        "label": "L'encourager à choisir son couple",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Claire s'éloigne du mouvement. Plus tard, elle t'envoie une carte : ils vont mieux.",
+            "effects": {
+              "karma": 10
+            },
+            "secte": {
+              "adeptes": -1,
+              "derive": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui dire que son mari est « toxique »",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Claire quitte son mari et emménage avec d'autres {adeptes}.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "ferveur": 5,
+              "derive": 10
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Le mari va voir l'association Libres d'Esprit avec des captures d'écran.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 8,
+              "surveillance": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui dire que la réponse lui appartient",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Claire réfléchit seule. Elle reste dans le groupe, mais vient moins souvent.",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "derive": -1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0015",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "text": "Après une séance très intense, un adepte, Julien, fait une violente crise d'angoisse. Il tremble et ne reconnaît plus personne.",
+    "choices": [
+      {
+        "label": "Appeler les secours",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les pompiers l'emmènent. Les urgentistes posent des questions, tu y réponds honnêtement.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "surveillance": 4,
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est une « purification »",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La crise passe. Julien en ressort convaincu d'avoir vécu une expérience mystique.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "ferveur": 6,
+              "derive": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La crise ne passe pas. Sa colocataire appelle elle-même le SAMU, puis la police.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "derive": 10,
+              "surveillance": 15,
+              "signal": "secte_scandale"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le calmer, puis l'orienter vers un psychologue",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il consulte. Il revient quelques mois plus tard, plus prudent, et toi aussi.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0016",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 10
+    },
+    "text": "Tu as instauré un jeûne de purification. Une adepte s'est évanouie pendant la réunion.",
+    "choices": [
+      {
+        "label": "Arrêter le jeûne pour tout le monde",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tout le monde mange. Tu présentes ça comme une « nouvelle étape ». Personne n'est dupe, tout le monde est soulagé.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -5,
+              "ferveur": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire qu'elle n'était pas prête",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle se sent coupable. Les autres jeûnent encore plus pour prouver qu'ils sont prêts.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "ferveur": 5,
+              "derive": 9
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'emmener chez un médecin et rendre le jeûne facultatif",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle se remet vite. Un jeûne facultatif, c'est déjà beaucoup moins dangereux.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0017",
+    "kind": "derive",
+    "doctrines": [
+      "ordre_hermetique",
+      "champ_quantique",
+      "ascension_numerique",
+      "eveil_interieur",
+      "abondance"
+    ],
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 50
+    },
+    "text": "Ton second propose de créer sept « niveaux d'initiation », chacun plus cher que le précédent. Le dernier coûterait 15 000 €.",
+    "choices": [
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'enseignement reste le même pour tous. La caisse y perd, la doctrine y gagne.",
+            "effects": {
+              "karma": 5
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les {adeptes} se pressent pour monter. Certains vendent leur voiture pour accéder au niveau 4.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "tresor": 40000,
+              "ferveur": 6,
+              "derive": 12
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un journaliste s'inscrit au niveau 1 sous un faux nom. Il a l'air très intéressé par les tarifs.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "tresor": 20000,
+              "derive": 10,
+              "surveillance": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Des niveaux gratuits, fondés sur l'ancienneté",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les {adeptes} progressent avec le temps, pas avec leur compte en banque.",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "ferveur": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0018",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 20
+    },
+    "text": "L'ex-mari d'une adepte refuse que leurs enfants viennent aux réunions de {secte}. Il a saisi le juge aux affaires familiales.",
+    "choices": [
+      {
+        "label": "Dire à l'adepte de respecter sa demande",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les enfants restent hors du mouvement. Le juge note la bonne foi de la mère.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Témoigner en sa faveur au tribunal",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le juge t'écoute poliment, puis donne la garde principale au père.",
+            "effects": {
+              "happiness": -2
+            },
+            "secte": {
+              "surveillance": 6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton témoignage est cité dans le jugement, comme un élément inquiétant.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "surveillance": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Conseiller de cacher les enfants aux réunions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Pendant un temps, ça marche. Puis un enfant en parle à son père.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 8,
+              "surveillance": 12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0019",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minTresor": 80000
+    },
+    "text": "La caisse de {secte} déborde. Une berline de luxe te tente, « pour représenter dignement le mouvement ».",
+    "choices": [
+      {
+        "label": "Renoncer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu gardes ta vieille voiture. Les {adeptes} le remarquent, et ça compte.",
+            "effects": {
+              "karma": 5
+            },
+            "secte": {
+              "ferveur": 3,
+              "derive": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'acheter avec la caisse",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Elle est magnifique. Certains {adeptes} qui n'ont plus de voiture du tout la regardent passer.",
+            "effects": {
+              "happiness": 6,
+              "karma": -8
+            },
+            "secte": {
+              "tresor": -60000,
+              "derive": 8,
+              "ferveur": -3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une photo de la voiture garée devant le local circule sur les réseaux, avec le montant de la contribution mensuelle.",
+            "effects": {
+              "happiness": 3,
+              "karma": -8
+            },
+            "secte": {
+              "tresor": -60000,
+              "surveillance": 10,
+              "signal": "secte_scandale"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0020",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "lieux": [
+        "domaine"
+      ]
+    },
+    "text": "Pendant une retraite sur le domaine, Agnès apprend que son père est mourant. Les règles interdisent de quitter les lieux pendant la retraite.",
+    "choices": [
+      {
+        "label": "La laisser partir immédiatement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle arrive à temps. Elle n'oubliera jamais que tu as dit oui sans hésiter.",
+            "effects": {
+              "karma": 12
+            },
+            "secte": {
+              "derive": -5,
+              "ferveur": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander de rester",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle reste. Son père meurt sans elle. Quelque chose se brise en elle, et dans le groupe aussi.",
+            "effects": {
+              "karma": -15,
+              "happiness": -4
+            },
+            "secte": {
+              "derive": 12,
+              "ferveur": -4,
+              "surveillance": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Supprimer cette règle pour tout le monde",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plus personne ne sera retenu. Agnès part, et d'autres respirent.",
+            "effects": {
+              "karma": 10
+            },
+            "secte": {
+              "derive": -8,
+              "ferveur": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0021",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "lieux": [
+        "domaine"
+      ]
+    },
+    "text": "Un couple veut vendre son appartement pour venir vivre sur le domaine et verser le produit de la vente à {secte}.",
+    "choices": [
+      {
+        "label": "Leur conseiller de garder leur appartement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils le mettent en location. S'ils partent un jour, ils auront un toit. Tu viens peut-être de leur sauver la vie.",
+            "effects": {
+              "karma": 10
+            },
+            "secte": {
+              "derive": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter la vente et le don",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "220 000 € entrent dans la caisse. Ils n'ont plus rien dehors, et plus de raison de partir.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "tresor": 220000,
+              "derive": 12,
+              "surveillance": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter seulement une partie du don",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils donnent un dixième et placent le reste. C'est un compromis que tu peux défendre.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "tresor": 22000,
+              "derive": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0022",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "lieux": [
+        "domaine"
+      ]
+    },
+    "text": "Murielle, infirmière et adepte, propose de soigner les {adeptes} sur le domaine « pour éviter les médecins ».",
+    "choices": [
+      {
+        "label": "Refuser : on va chez le médecin",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Murielle garde la trousse de premiers secours. Le reste se fait chez le médecin du village.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Créer une infirmerie interne",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Plus personne ne sort pour se soigner. Murielle dépasse ses compétences, et le sait.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 10,
+              "ferveur": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un adepte mal soigné finit aux urgences. Le médecin signale le cas.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 10,
+              "surveillance": 14
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire venir un médecin chaque semaine",
+        "cost": 6000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un vrai médecin, payé, qui vient le jeudi. Les soins sont meilleurs, les familles rassurées.",
+            "effects": {
+              "karma": 5
+            },
+            "secte": {
+              "derive": -5,
+              "surveillance": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0023",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "lieux": [
+        "domaine"
+      ],
+      "minAnnees": 3
+    },
+    "text": "Léo, dix-sept ans, a grandi sur le domaine. Il veut partir vivre chez ses grands-parents et finir le lycée en ville.",
+    "choices": [
+      {
+        "label": "L'aider à partir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu l'accompagnes à la gare. Ses parents t'en veulent. Léo, lui, t'écrit une fois par an.",
+            "effects": {
+              "karma": 12
+            },
+            "secte": {
+              "derive": -6,
+              "ferveur": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Convaincre ses parents de le retenir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il reste, de mauvaise grâce. Il compte les mois jusqu'à sa majorité.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il fugue. Ses grands-parents vont directement à la gendarmerie.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 8,
+              "surveillance": 15,
+              "enquete": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser la famille décider seule",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les parents finissent par céder. Léo part, sans ta bénédiction ni ton opposition.",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "derive": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0024",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 40,
+      "minDerive": 30
+    },
+    "text": "Ton second te propose d'enregistrer en secret les confidences des {adeptes}, « au cas où quelqu'un voudrait nous nuire un jour ».",
+    "choices": [
+      {
+        "label": "Refuser et le mettre en garde",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il hausse les épaules. Tu le surveilles désormais un peu plus.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des heures d'enregistrements dorment dans un disque dur. Le jour où ils sortiront, ce sera une catastrophe.",
+            "effects": {
+              "karma": -15
+            },
+            "secte": {
+              "derive": 15,
+              "surveillance": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le démettre de ses fonctions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il part furieux et emporte quelques fidèles. Tu as fait ce qu'il fallait.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "derive": -5,
+              "adeptesPct": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0025",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true
+    },
+    "text": "{proche} a déjà donné toutes ses économies à {secte}. Aujourd'hui, {proche} veut aussi verser son héritage à venir.",
+    "choices": [
+      {
+        "label": "Refuser l'argent de {proche}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} insiste, puis se range à ton avis. Tu as protégé ta famille contre toi-même.",
+            "effects": {
+              "karma": 10
+            },
+            "secte": {
+              "derive": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La famille l'apprend. Au prochain repas, plus personne ne te parle.",
+            "effects": {
+              "karma": -12,
+              "relationships": {
+                "mother": -15,
+                "father": -15,
+                "sibling": -10
+              }
+            },
+            "secte": {
+              "tresor": 40000,
+              "derive": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rembourser une partie de ses dons",
+        "cost": 10000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} ne comprend pas, puis comprend très bien. Ce geste vaut plus que tous les prêches.",
+            "effects": {
+              "karma": 12,
+              "happiness": 3
+            },
+            "secte": {
+              "derive": -6,
+              "ferveur": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0026",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true
+    },
+    "text": "{proche} vient te voir en cachette. « Je veux partir, mais j'ai peur de ce que les autres vont dire. Et de ce que toi, tu vas dire. »",
+    "choices": [
+      {
+        "label": "Lui dire de partir, sans honte",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} quitte {secte} le lendemain. Vous vous serrez longtemps dans les bras. Ta famille respire.",
+            "effects": {
+              "karma": 12,
+              "happiness": 4,
+              "relationships": {
+                "mother": 8,
+                "father": 8
+              }
+            },
+            "secte": {
+              "adeptes": -1,
+              "derive": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander de rester pour toi",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} reste. Quelque chose s'éteint dans son regard, et tu en es responsable.",
+            "effects": {
+              "karma": -12,
+              "happiness": -4
+            },
+            "secte": {
+              "derive": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annoncer son départ devant le groupe",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les {adeptes} entourent {proche} pour « l'aider à réfléchir ». {proche} reste, humiliation en prime.",
+            "effects": {
+              "karma": -15
+            },
+            "secte": {
+              "derive": 12,
+              "ferveur": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{proche} part sous les huées. Le soir même, toute la famille est au courant.",
+            "effects": {
+              "karma": -15,
+              "relationships": {
+                "mother": -15,
+                "father": -15
+              }
+            },
+            "secte": {
+              "derive": 10,
+              "surveillance": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0027",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true,
+      "minDerive": 20
+    },
+    "text": "{proche} ne parle plus au reste de la famille depuis des mois, en appliquant tes règles sur « les liens toxiques ».",
+    "choices": [
+      {
+        "label": "Pousser {proche} à renouer avec la famille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un premier appel, puis un déjeuner. {mere} t'envoie un message court : « Merci. »",
+            "effects": {
+              "karma": 10,
+              "relationships": {
+                "mother": 10
+              }
+            },
+            "secte": {
+              "derive": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser les choses en l'état",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La famille te tient pour responsable. Elle n'a pas tort.",
+            "effects": {
+              "karma": -6,
+              "relationships": {
+                "mother": -10,
+                "father": -8
+              }
+            },
+            "secte": {
+              "derive": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Assouplir la règle pour tout le monde",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Partout dans le mouvement, des {adeptes} rappellent leurs proches. Certains ne reviennent pas aux réunions, d'autres reviennent apaisés.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "derive": -10,
+              "ferveur": -4,
+              "adeptesPct": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0028",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true,
+      "minAdeptes": 30
+    },
+    "text": "Tu découvres qu'un de tes lieutenants pousse {proche} à donner toujours plus, dans ton dos.",
+    "choices": [
+      {
+        "label": "Renvoyer le lieutenant",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il part en claquant la porte. Pour {proche}, c'est un poids en moins, un poids dont personne n'osait parler.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "derive": -5,
+              "adeptesPct": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fermer les yeux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'argent entre. {proche} s'appauvrit, et toi, tu fais semblant.",
+            "effects": {
+              "karma": -12,
+              "relationships": {
+                "sibling": -5
+              }
+            },
+            "secte": {
+              "tresor": 8000,
+              "derive": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Mettre en place des plafonds de dons pour tous",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plus personne ne peut donner plus de 10 % de ses revenus. C'est une règle simple qui protège beaucoup de monde.",
+            "effects": {
+              "karma": 10
+            },
+            "secte": {
+              "derive": -8,
+              "tresorPct": -10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0029",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true
+    },
+    "text": "{proche} n'en peut plus et voudrait prendre un mois de vacances, loin de {secte}. Dans le groupe, certains parlent déjà de « tiédeur ».",
+    "choices": [
+      {
+        "label": "Défendre son droit au repos devant tous",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} part un mois. Le groupe apprend qu'on peut souffler sans trahir.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander de reporter",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} reste et s'use encore un peu plus.",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "ferveur": 2,
+              "derive": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0030",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minDerive": 60
+    },
+    "text": "Un soir, en relisant les messages de la semaine, tu mesures ce que {secte} est devenu : la peur, l'argent, les familles brisées. Tu pourrais encore changer de cap.",
+    "choices": [
+      {
+        "label": "Convoquer une assemblée et tout remettre à plat",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Comptes ouverts, règles assouplies, dons plafonnés. Une partie des {adeptes} part, les autres respirent.",
+            "effects": {
+              "karma": 15,
+              "happiness": 4
+            },
+            "secte": {
+              "derive": -20,
+              "ferveur": -6,
+              "adeptesPct": -15,
+              "surveillance": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer, il est trop tard",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fermes l'ordinateur. Demain, tu prêcheras comme d'habitude.",
+            "effects": {
+              "karma": -5,
+              "happiness": -4
+            },
+            "secte": {
+              "derive": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre du recul et confier les rênes à un conseil",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu restes une figure, plus un chef. Le mouvement devient moins intense, et beaucoup moins dangereux.",
+            "effects": {
+              "karma": 12,
+              "happiness": 2
+            },
+            "secte": {
+              "derive": -15,
+              "ferveur": -8,
+              "notoriete": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_der_0031",
+    "kind": "derive",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 40,
+      "minDerive": 40
+    },
+    "text": "Un adepte âgé, Lucien, a signé une procuration bancaire au nom de ton trésorier. Il ne se souvient plus pourquoi.",
+    "choices": [
+      {
+        "label": "Faire annuler la procuration",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La banque annule tout. Lucien est un peu perdu, mais à l'abri.",
+            "effects": {
+              "karma": 10
+            },
+            "secte": {
+              "derive": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser faire",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les retraits commencent. Personne ne pose de question.",
+            "effects": {
+              "karma": -15
+            },
+            "secte": {
+              "tresor": 25000,
+              "derive": 14
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Sa banque détecte des mouvements anormaux et alerte le procureur.",
+            "effects": {
+              "karma": -15
+            },
+            "secte": {
+              "tresor": 10000,
+              "derive": 12,
+              "surveillance": 18,
+              "enquete": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

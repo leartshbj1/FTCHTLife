@@ -1,0 +1,2036 @@
+[
+  {
+    "id": "sec_ext_0001",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 30
+    },
+    "text": "Une journaliste du quotidien régional demande une interview sur {secte}. Elle a l'air sérieuse et bien renseignée.",
+    "choices": [
+      {
+        "label": "Accepter et répondre à tout",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'article est nuancé : des questions, mais aussi des témoignages positifs. Tu t'en sors bien.",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "notoriete": 8,
+              "surveillance": -3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tes réponses sont honnêtes, mais l'article cite aussi deux anciens membres très critiques.",
+            "effects": {
+              "happiness": -2
+            },
+            "secte": {
+              "notoriete": 8,
+              "surveillance": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "La séduire par ton charisme",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Elle ressort sous le charme. Son papier est presque élogieux.",
+            "effects": {
+              "skills": {
+                "eloquence": 3
+              }
+            },
+            "secte": {
+              "notoriete": 10,
+              "adeptes": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Elle a bien vu que tu jouais un rôle. Son article s'intitule « Le charme comme méthode ».",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "notoriete": 6,
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'article paraît quand même, avec la mention : « {gourou} n'a pas souhaité répondre. »",
+            "effects": {
+              "happiness": -1
+            },
+            "secte": {
+              "surveillance": 4,
+              "notoriete": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0002",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 20,
+      "lieux": [
+        "local",
+        "temple"
+      ]
+    },
+    "text": "Des bénévoles de l'association Libres d'Esprit distribuent des tracts devant ton local : « Votre proche a changé ? Parlons-en. »",
+    "choices": [
+      {
+        "label": "Aller leur parler calmement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La discussion est tendue, mais respectueuse. Ils repartent avec ton numéro, toi avec le leur.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "surveillance": -2,
+              "derive": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ils t'écoutent, puis te citent mot pour mot dans leur bulletin. Tu n'aurais pas dû parler de « purification ».",
+            "effects": {
+              "happiness": -2
+            },
+            "secte": {
+              "surveillance": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander aux {adeptes} de les ignorer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les {adeptes} passent tête baissée. Deux d'entre eux gardent pourtant un tract dans leur poche.",
+            "secte": {
+              "ferveur": 2,
+              "adeptes": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer des {adeptes} les chasser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ça crie, ça bouscule. Un bénévole filme tout.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "surveillance": 12,
+              "ferveur": 3,
+              "signal": "secte_scandale"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0003",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 100,
+      "minNotoriete": 20
+    },
+    "text": "Une réalisatrice propose un documentaire sur {secte}. Elle promet de « montrer toutes les facettes ».",
+    "choices": [
+      {
+        "label": "Accepter et tout lui ouvrir",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le film est juste : tes qualités, tes zones d'ombre, des {adeptes} sincères. Tu es surpris{e} de t'y reconnaître.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "notoriete": 15,
+              "surveillance": -2,
+              "adeptes": 10
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le montage garde surtout les moments gênants. Tu découvres ce que les autres voient de toi.",
+            "effects": {
+              "happiness": -5
+            },
+            "secte": {
+              "notoriete": 15,
+              "surveillance": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter mais contrôler les tournages",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle refuse les conditions et fait le film sans toi, avec d'anciens membres.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "notoriete": 10,
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle tourne un autre film, sur un autre groupe. Tu le regardes en te disant que ça aurait pu être toi."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0004",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 150
+    },
+    "text": "La mairie de {ville} bloque le permis de construire de ton futur lieu de culte. Les {adeptes} parlent de discrimination.",
+    "choices": [
+      {
+        "label": "Négocier avec l'urbanisme",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Quelques modifications de façade, et le permis passe.",
+            "effects": {
+              "skills": {
+                "marchandage": 3
+              }
+            },
+            "secte": {
+              "surveillance": -2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Refus définitif. Le terrain reste un champ.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "ferveur": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attaquer la décision au tribunal administratif",
+        "cost": 8000,
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu gagnes. La mairie doit délivrer le permis. Les voisins, eux, ne t'aimeront jamais.",
+            "effects": {
+              "happiness": 4
+            },
+            "secte": {
+              "notoriete": 6,
+              "surveillance": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu perds, et les frais d'avocat avec.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "surveillance": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Organiser une manifestation devant la mairie",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Deux cents {adeptes} chantent devant l'hôtel de ville. Le maire parle de « pression inacceptable » au journal du soir.",
+            "effects": {
+              "karma": -3
+            },
+            "secte": {
+              "ferveur": 6,
+              "surveillance": 10,
+              "notoriete": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0005",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 50,
+      "lieux": [
+        "local",
+        "temple"
+      ]
+    },
+    "text": "Une pétition circule dans le quartier : « Non à la secte dans notre rue. » Elle a déjà quatre cents signatures.",
+    "choices": [
+      {
+        "label": "Organiser une journée portes ouvertes",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Des voisins viennent, boivent un café, posent des questions. Certains repartent rassurés.",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "surveillance": -5,
+              "notoriete": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Personne ne vient, sauf un conseiller municipal qui photographie les lieux.",
+            "effects": {
+              "happiness": -2
+            },
+            "secte": {
+              "surveillance": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Répondre par une contre-pétition",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les {adeptes} signent tous. Le quartier est désormais coupé en deux.",
+            "effects": {
+              "karma": -2
+            },
+            "secte": {
+              "ferveur": 4,
+              "surveillance": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La pétition atterrit sur le bureau du préfet.",
+            "secte": {
+              "surveillance": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0006",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minTresor": 30000
+    },
+    "text": "Ton comptable t'alerte : {secte} encaisse beaucoup d'argent sans statut clair. Le fisc pourrait s'y intéresser.",
+    "choices": [
+      {
+        "label": "Tout régulariser et payer ce qui est dû",
+        "cost": 15000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une association déclarée, des comptes tenus, des impôts payés. Tu dors mieux.",
+            "effects": {
+              "karma": 5,
+              "smarts": 1
+            },
+            "secte": {
+              "surveillance": -8,
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire passer les dons pour des « cadeaux personnels »",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Pour l'instant, personne ne regarde.",
+            "effects": {
+              "karma": -6,
+              "money": 5000
+            },
+            "secte": {
+              "derive": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La banque signale des virements suspects. Ton nom arrive au service de contrôle fiscal.",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "surveillance": 12
+            }
+          }
+        ]
+      },
+      {
+        "label": "Remettre ça à plus tard",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le comptable soupire et range le dossier dans la pile « urgent ».",
+            "secte": {
+              "surveillance": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0007",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minTresor": 50000
+    },
+    "text": "Ta banque t'informe qu'elle ferme le compte de {secte} : « trop de dépôts en espèces non justifiés ».",
+    "choices": [
+      {
+        "label": "Ouvrir un compte ailleurs, avec des justificatifs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ça prend du temps, et beaucoup de paperasse. Mais tout est propre.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "surveillance": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder l'argent liquide dans un coffre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le coffre du local se remplit de billets. Ce n'est pas très spirituel, ni très prudent.",
+            "effects": {
+              "karma": -4
+            },
+            "secte": {
+              "derive": 4,
+              "surveillance": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir des comptes au nom de fidèles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Douze {adeptes} prêtent leur nom. Si quelqu'un regarde un jour, ils seront tous en première ligne.",
+            "effects": {
+              "karma": -10
+            },
+            "secte": {
+              "derive": 8,
+              "surveillance": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0008",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 300
+    },
+    "text": "Le fondateur d'un autre mouvement te propose une fusion. Il a mille fidèles, et pas mal de dettes.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les deux groupes fusionnent. Ses fidèles t'acceptent, ses dettes aussi.",
+            "secte": {
+              "adeptes": 300,
+              "tresor": -40000,
+              "ferveur": -5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ses fidèles n'acceptent pas ta doctrine. Après six mois de guerre froide, ils partent tous.",
+            "effects": {
+              "happiness": -4
+            },
+            "secte": {
+              "ferveur": -6,
+              "tresor": -20000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser poliment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il te souhaite bonne chance. Six mois plus tard, son groupe est dissous par la justice. Tu as bien fait.",
+            "effects": {
+              "happiness": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Débaucher ses meilleurs fidèles",
+        "requiresSkill": {
+          "seduction": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une cinquantaine de ses gens passent chez toi. Il ne te le pardonnera jamais.",
+            "effects": {
+              "karma": -4,
+              "skills": {
+                "seduction": 2
+              }
+            },
+            "secte": {
+              "adeptes": 50,
+              "surveillance": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0009",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 100,
+      "minNotoriete": 30
+    },
+    "text": "Une actrice connue assiste à une réunion de {secte}. Elle dit qu'elle aimerait « s'investir ».",
+    "choices": [
+      {
+        "label": "L'accueillir comme n'importe qui",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle apprécie qu'on ne la traite pas comme une star. Elle revient, discrètement.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "ferveur": 2,
+              "adeptes": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "En faire l'ambassadrice du mouvement",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ses millions d'abonnés découvrent {secte}. Les inscriptions explosent.",
+            "effects": {
+              "happiness": 6
+            },
+            "secte": {
+              "adeptes": 60,
+              "notoriete": 20,
+              "surveillance": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Son agent panique. Elle publie un démenti : « J'étais juste curieuse. »",
+            "effects": {
+              "happiness": -4
+            },
+            "secte": {
+              "notoriete": 12,
+              "surveillance": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui demander un don important",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle donne 30 000 € et disparaît. Le chèque est sans signature d'excuse.",
+            "effects": {
+              "karma": -3
+            },
+            "secte": {
+              "tresor": 30000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0010",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 30
+    },
+    "text": "Une vidéo d'un de tes prêches circule, remontée avec des effets sonores ridicules. Elle fait deux millions de vues.",
+    "choices": [
+      {
+        "label": "En rire publiquement",
+        "requiresSkill": {
+          "humour": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu publies une réponse pleine d'autodérision. Elle fait plus de vues que l'originale, et tu gagnes quelques sympathies.",
+            "effects": {
+              "happiness": 4,
+              "skills": {
+                "humour": 3
+              }
+            },
+            "secte": {
+              "notoriete": 12,
+              "surveillance": -2,
+              "adeptes": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger le retrait de la vidéo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta demande de retrait devient elle-même un mème. Ça s'appelle l'effet boomerang.",
+            "effects": {
+              "happiness": -4
+            },
+            "secte": {
+              "notoriete": 15,
+              "surveillance": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire aux {adeptes} que c'est une attaque",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les {adeptes} se sentent persécutés. La ferveur monte, l'image de {secte} baisse.",
+            "secte": {
+              "ferveur": 6,
+              "notoriete": 8,
+              "surveillance": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0011",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 15
+    },
+    "text": "Les parents d'une jeune adepte, Camille, vingt-deux ans, sonnent chez toi. Ils veulent « récupérer leur fille ».",
+    "choices": [
+      {
+        "label": "Les recevoir et organiser une rencontre avec Camille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les trois parlent pendant des heures. Camille reste dans le groupe, mais rentre dîner chez eux le dimanche.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "derive": -4,
+              "surveillance": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Leur claquer la porte au nez",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils vont directement voir l'association Libres d'Esprit.",
+            "effects": {
+              "karma": -5
+            },
+            "secte": {
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que Camille ne veut plus les voir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "C'est faux. Camille l'apprend des mois plus tard et quitte le mouvement, folle de rage.",
+            "effects": {
+              "karma": -12
+            },
+            "secte": {
+              "adeptes": -1,
+              "surveillance": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ils te croient. Ils ne reviennent pas. Ils ne dorment plus.",
+            "effects": {
+              "karma": -15
+            },
+            "secte": {
+              "derive": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0012",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 100,
+      "minNotoriete": 20
+    },
+    "text": "Un ancien membre, Thierry, accepte de témoigner à visage découvert dans un magazine télévisé sur {secte}.",
+    "choices": [
+      {
+        "label": "Le contacter pour s'excuser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il accepte de te voir. Le reportage mentionne que tu as reconnu tes torts.",
+            "effects": {
+              "karma": 10
+            },
+            "secte": {
+              "surveillance": -3,
+              "derive": -5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il ne répond pas. Le reportage passe tel quel.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "surveillance": 8,
+              "notoriete": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le menacer d'un procès",
+        "cost": 5000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il diffuse ta mise en demeure à l'antenne. L'effet est désastreux.",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "surveillance": 12,
+              "notoriete": 10,
+              "signal": "secte_scandale"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Préparer les {adeptes} : « On va mentir sur nous »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les {adeptes} regardent l'émission en groupe et rient aux bons moments. Certains rient moins fort que d'autres.",
+            "effects": {
+              "karma": -4
+            },
+            "secte": {
+              "ferveur": 4,
+              "surveillance": 6,
+              "adeptes": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0013",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 100,
+      "minSurveillance": 20
+    },
+    "text": "La mission de vigilance contre les dérives sectaires mentionne {secte} dans son rapport annuel, dans un paragraphe sur les « mouvements à surveiller ».",
+    "choices": [
+      {
+        "label": "Demander à être reçu{e} pour t'expliquer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Un fonctionnaire t'écoute une heure. Il prend des notes, sans rien promettre.",
+            "effects": {
+              "karma": 3
+            },
+            "secte": {
+              "surveillance": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il te pose des questions précises sur les dons et l'isolement. Tu ressors en sueur.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "surveillance": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Crier à la persécution",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton communiqué indigné circule. Les {adeptes} sont galvanisés, les journalistes aussi.",
+            "secte": {
+              "ferveur": 6,
+              "notoriete": 8,
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire profil bas",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ne commentes pas. Le rapport est lu, puis oublié. Pour cette année.",
+            "secte": {
+              "surveillance": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0014",
+    "kind": "exterieur",
+    "doctrines": [
+      "eveil_interieur",
+      "medecine_vibratoire",
+      "champ_quantique",
+      "souffle_vivant",
+      "abondance"
+    ],
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 20
+    },
+    "text": "Une influenceuse bien-être te propose un partenariat payant pour présenter {secte} à ses abonnés.",
+    "choices": [
+      {
+        "label": "Accepter, en restant honnête",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle présente ton mouvement avec la mention « collaboration commerciale ». Quelques curieux viennent voir.",
+            "secte": {
+              "adeptes": 8,
+              "notoriete": 6,
+              "tresor": -3000
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui faire promettre des miracles",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ses abonnés affluent. Ils s'attendent à guérir de tout.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "adeptes": 25,
+              "derive": 6,
+              "notoriete": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un médecin vulgarisateur démonte la vidéo point par point.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "notoriete": 10,
+              "surveillance": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle trouve un autre mouvement à promouvoir. Celui-là promet de faire maigrir par la pensée."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0015",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 300
+    },
+    "text": "Un candidat aux municipales de {ville} vient te voir. Il veut les voix de tes {nb} {adeptes}, en échange de « bienveillance ».",
+    "choices": [
+      {
+        "label": "Refuser toute consigne de vote",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu dis aux {adeptes} de voter comme ils l'entendent. Le candidat repart bredouille.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Donner une consigne de vote",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il est élu de justesse. Il te doit un service, et tout le monde le sait.",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "derive": 6,
+              "surveillance": 6,
+              "notoriete": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il perd. L'opposition l'accuse d'être « le candidat de la secte ».",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "surveillance": 10,
+              "notoriete": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0016",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "lieux": [
+        "domaine"
+      ]
+    },
+    "text": "Aucun assureur ne veut couvrir le domaine : « Activité à risque, rassemblements fréquents. »",
+    "choices": [
+      {
+        "label": "Payer un assureur spécialisé",
+        "cost": 12000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une prime énorme, mais tout le monde est couvert.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "surveillance": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Se passer d'assurance",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Rien ne se passe. Pour cette année.",
+            "secte": {
+              "derive": 2
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Un incendie dans la grange. Personne n'est blessé, mais tout est perdu.",
+            "effects": {
+              "happiness": -6
+            },
+            "secte": {
+              "tresor": -40000,
+              "surveillance": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0017",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 50
+    },
+    "text": "Une chercheuse en sociologie veut étudier {secte} pendant un an, en observant les réunions.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Son étude est rigoureuse et pas forcément tendre, mais elle reconnaît des choses positives.",
+            "effects": {
+              "smarts": 3,
+              "karma": 3
+            },
+            "secte": {
+              "surveillance": -4,
+              "notoriete": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Sa thèse décrit avec précision les mécanismes d'emprise du groupe. Elle est citée partout.",
+            "effects": {
+              "smarts": 3,
+              "happiness": -3
+            },
+            "secte": {
+              "surveillance": 8,
+              "notoriete": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle étudie un autre groupe. Dans sa conclusion, elle évoque « des mouvements qui n'ont pas souhaité ouvrir leurs portes ».",
+            "secte": {
+              "surveillance": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0018",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 40
+    },
+    "text": "Un mouvement concurrent ouvre un local à deux rues du tien et invite tes {adeptes} à des « soirées découverte ».",
+    "choices": [
+      {
+        "label": "Laisser les {adeptes} libres d'y aller",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Quelques-uns y vont, la plupart reviennent. Ceux qui restent là-bas n'étaient peut-être pas à leur place chez toi.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "adeptesPct": -4,
+              "derive": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Interdire d'y mettre les pieds",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'interdit rend la chose fascinante. Trois {adeptes} y vont en cachette.",
+            "secte": {
+              "derive": 4,
+              "adeptesPct": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Aller débattre avec leur chef",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le débat public tourne à ton avantage. Une partie de son public te rejoint.",
+            "effects": {
+              "skills": {
+                "eloquence": 4
+              }
+            },
+            "secte": {
+              "adeptes": 15,
+              "notoriete": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu perds tes moyens. Il cite tes contradictions, et ça se voit.",
+            "effects": {
+              "happiness": -5
+            },
+            "secte": {
+              "adeptesPct": -5,
+              "ferveur": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0019",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minTresor": 250000,
+      "lieux": [
+        "temple"
+      ]
+    },
+    "text": "Un agriculteur à la retraite met en vente une ferme de quarante hectares, isolée, à une heure de {ville}.",
+    "choices": [
+      {
+        "label": "L'acheter pour fonder un domaine",
+        "cost": 250000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu signes. Les {adeptes} imaginent déjà les potagers, les chants et la vie en commun.",
+            "effects": {
+              "happiness": 5
+            },
+            "secte": {
+              "ferveur": 8,
+              "notoriete": 4,
+              "surveillance": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser passer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle est vendue à un couple de maraîchers. C'est sans doute plus sain."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0020",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "lieux": [
+        "domaine"
+      ]
+    },
+    "text": "Les services sanitaires inspectent la cuisine collective du domaine.",
+    "choices": [
+      {
+        "label": "Mettre aux normes immédiatement",
+        "cost": 8000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Nouveaux frigos, nouvelles règles d'hygiène. L'inspecteur repart satisfait.",
+            "effects": {
+              "karma": 2
+            },
+            "secte": {
+              "surveillance": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui faire visiter seulement les parties propres",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ça passe.",
+            "effects": {
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il ouvre la mauvaise porte. Le rapport fait trois pages.",
+            "effects": {
+              "happiness": -3
+            },
+            "secte": {
+              "surveillance": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0021",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 30
+    },
+    "text": "Le directeur de l'école de {ville} t'appelle : le petit Noé, fils d'un couple de fidèles, a manqué trois semaines de cours.",
+    "choices": [
+      {
+        "label": "Exiger des parents que Noé retourne à l'école",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Noé retrouve sa classe dès lundi. Le directeur te remercie, surpris.",
+            "effects": {
+              "karma": 8
+            },
+            "secte": {
+              "derive": -4,
+              "surveillance": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que ça ne te regarde pas",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le directeur fait un signalement à l'inspection académique et mentionne {secte}.",
+            "effects": {
+              "karma": -4
+            },
+            "secte": {
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couvrir les parents",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu inventes une maladie. Le directeur n'y croit qu'à moitié.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "derive": 6,
+              "surveillance": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0022",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 10
+    },
+    "text": "{mere} débarque à l'improviste à une de tes réunions. Elle reste au fond de la salle, les bras croisés.",
+    "choices": [
+      {
+        "label": "La présenter aux {adeptes}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle serre des mains, pose des questions. Le soir, elle te dit : « Je ne comprends pas, mais j'essaie. »",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "mother": 6
+              }
+            },
+            "secte": {
+              "ferveur": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "L'ignorer et continuer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle part avant la fin. Tu reçois un long message le soir même.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "mother": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "La raccompagner dehors et lui parler",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Sur le trottoir, vous parlez vraiment. Elle a peur pour toi, pas de toi.",
+            "effects": {
+              "happiness": 2,
+              "karma": 2,
+              "relationships": {
+                "mother": 8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0023",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAnnees": 3
+    },
+    "text": "Ton médecin te regarde par-dessus ses lunettes : tension trop haute, quatre heures de sommeil par nuit. « Votre mouvement va vous tuer avant de sauver qui que ce soit. »",
+    "choices": [
+      {
+        "label": "Ralentir vraiment",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu délègues, tu dors, tu marches. Les {adeptes} te trouvent plus calme, et plus convaincant{e}.",
+            "effects": {
+              "health": 8,
+              "happiness": 4
+            },
+            "secte": {
+              "ferveur": -2,
+              "derive": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer comme avant",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu tiens. Pour l'instant.",
+            "effects": {
+              "health": -8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Malaise en plein prêche. Les {adeptes} y voient un signe, ton cardiologue y voit un avertissement.",
+            "effects": {
+              "health": -12,
+              "happiness": -3
+            },
+            "secte": {
+              "ferveur": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Confier les réunions à ton second pendant un mois",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu te reposes. À ton retour, ton second a pris quelques habitudes qui ne te plaisent pas.",
+            "effects": {
+              "health": 6
+            },
+            "secte": {
+              "derive": 3,
+              "ferveur": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0024",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 150
+    },
+    "text": "Un psychiatre publie un essai sur l'emprise sectaire. Un chapitre entier, anonymisé mais reconnaissable, décrit {secte}.",
+    "choices": [
+      {
+        "label": "Le lire jusqu'au bout",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Certaines pages te font mal parce qu'elles sont vraies. Tu changes deux ou trois choses, sans le dire.",
+            "effects": {
+              "smarts": 3,
+              "karma": 4
+            },
+            "secte": {
+              "derive": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le dénoncer comme un tissu de mensonges",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le livre se vend mieux grâce à toi.",
+            "secte": {
+              "notoriete": 6,
+              "surveillance": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Interdire aux {adeptes} de le lire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il circule en photocopie, de main en main.",
+            "effects": {
+              "karma": -3
+            },
+            "secte": {
+              "derive": 4,
+              "ferveur": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0025",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minNotoriete": 40
+    },
+    "text": "Une émission satirique consacre un sketch à un gourou qui te ressemble étrangement, jusqu'à ta façon de lever les bras.",
+    "choices": [
+      {
+        "label": "Envoyer un message drôle à la production",
+        "requiresSkill": {
+          "humour": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils lisent ton message à l'antenne. Le public t'applaudit, et ça adoucit ton image.",
+            "effects": {
+              "happiness": 5,
+              "skills": {
+                "humour": 2
+              }
+            },
+            "secte": {
+              "notoriete": 10,
+              "surveillance": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Arrêter de lever les bras",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu prêches désormais les mains dans les poches. Les {adeptes} trouvent que tu as l'air moins inspiré{e}.",
+            "effects": {
+              "happiness": -2
+            },
+            "secte": {
+              "ferveur": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte pour atteinte à l'image",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La plainte est classée en deux semaines. Le sketch, lui, est rediffusé.",
+            "effects": {
+              "happiness": -4
+            },
+            "secte": {
+              "notoriete": 8,
+              "surveillance": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0026",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 30
+    },
+    "text": "Le libraire du quartier refuse désormais de vendre ton livre. Une adepte, vexée, veut organiser un boycott de sa boutique.",
+    "choices": [
+      {
+        "label": "L'en dissuader",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le libraire est libre de ses choix. Toi aussi, et tu choisis la paix.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "derive": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser faire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La boutique perd quelques clients. Le libraire raconte l'histoire au journal local.",
+            "effects": {
+              "karma": -3
+            },
+            "secte": {
+              "surveillance": 4,
+              "ferveur": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0027",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAdeptes": 500,
+      "minAnnees": 4
+    },
+    "text": "Des {adeptes} installés à l'étranger veulent ouvrir une antenne de {secte} dans leur pays.",
+    "choices": [
+      {
+        "label": "Les encourager, avec une charte de bonnes pratiques",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une petite antenne ouvre, avec des règles claires et un compte séparé.",
+            "effects": {
+              "happiness": 3
+            },
+            "secte": {
+              "adeptes": 20,
+              "notoriete": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Exiger que les dons étrangers remontent ici",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'argent arrive par virements internationaux. La cellule anti-blanchiment, elle, regarde passer ces virements.",
+            "effects": {
+              "karma": -3
+            },
+            "secte": {
+              "tresor": 15000,
+              "adeptes": 20,
+              "surveillance": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ils sont déçus. Certains fondent un groupe à eux, sans toi.",
+            "secte": {
+              "ferveur": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0028",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minAnnees": 2
+    },
+    "text": "Un ancien adepte, parti il y a deux ans avec rien, t'écrit. Il dort dans sa voiture et demande de l'aide.",
+    "choices": [
+      {
+        "label": "L'aider à payer un logement",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il retrouve un toit. Dans sa lettre de remerciement, il ne parle pas de doctrine, seulement de toi.",
+            "effects": {
+              "karma": 10,
+              "happiness": 3
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui proposer de revenir dans le mouvement",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il revient, faute de mieux. Ce n'est pas vraiment un choix.",
+            "effects": {
+              "karma": -4
+            },
+            "secte": {
+              "adeptes": 1,
+              "derive": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il refuse : « Je t'ai demandé de l'aide, pas une deuxième fois. »",
+            "effects": {
+              "karma": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas répondre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La lettre reste sur ton bureau pendant des semaines.",
+            "effects": {
+              "karma": -5,
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0029",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true
+    },
+    "text": "{mere} t'accuse d'avoir entraîné {proche} dans {secte}. Elle te dit que tu as « volé » un membre de la famille.",
+    "choices": [
+      {
+        "label": "Reconnaître que tu as eu tort de recruter {proche}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{mere} pleure. Pour la première fois depuis longtemps, vous êtes du même côté.",
+            "effects": {
+              "karma": 8,
+              "relationships": {
+                "mother": 10
+              }
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que {proche} est adulte et libre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "C'est vrai, et ça ne change rien. {mere} raccroche.",
+            "effects": {
+              "relationships": {
+                "mother": -8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui proposer de venir voir par elle-même",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Elle vient. Elle trouve que {proche} a l'air plus apaisé qu'elle ne le craignait, mais aussi plus fatigué.",
+            "effects": {
+              "relationships": {
+                "mother": 4
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "« Jamais. » Le mot claque comme une porte.",
+            "effects": {
+              "relationships": {
+                "mother": -6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0030",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true,
+      "minAdeptes": 30
+    },
+    "text": "{proche} donne une interview à la radio locale pour défendre {secte}. Le reste de la famille l'entend en direct.",
+    "choices": [
+      {
+        "label": "Remercier {proche}, puis appeler la famille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fais le tour des appels pour désamorcer. Ça prend la soirée, et ça marche à moitié.",
+            "effects": {
+              "relationships": {
+                "father": -3,
+                "mother": -3
+              }
+            },
+            "secte": {
+              "notoriete": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire tourner l'enregistrement partout",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'interview devient un outil de recrutement. La famille, elle, se sent trahie publiquement.",
+            "effects": {
+              "karma": -3,
+              "relationships": {
+                "mother": -10,
+                "father": -10
+              }
+            },
+            "secte": {
+              "adeptes": 6,
+              "notoriete": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0031",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true
+    },
+    "text": "Le meilleur ami de {proche} vient te trouver, furieux. Depuis que {proche} est dans {secte}, il dit ne plus reconnaître son ami d'enfance.",
+    "choices": [
+      {
+        "label": "L'écouter jusqu'au bout",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il parle longtemps. Tu comprends ce que vit la famille, et tu promets d'encourager {proche} à prendre du recul.",
+            "effects": {
+              "karma": 6
+            },
+            "secte": {
+              "derive": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui dire que c'est lui le problème",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il part en serrant les poings. Il prendra rendez-vous chez un avocat.",
+            "effects": {
+              "karma": -8
+            },
+            "secte": {
+              "surveillance": 6,
+              "derive": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une rencontre à trois",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La rencontre est difficile, mais chacun parle. {proche} promet de rentrer plus tôt, et tient parole.",
+            "effects": {
+              "karma": 4
+            },
+            "secte": {
+              "derive": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec_ext_0032",
+    "kind": "exterieur",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "procheMembre": true
+    },
+    "text": "L'employeur de {proche} t'appelle. Depuis des mois, {proche} distribue des brochures de {secte} au bureau et manque des réunions pour des retraites.",
+    "choices": [
+      {
+        "label": "Promettre de parler à {proche}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu demandes à {proche} de garder le mouvement hors du travail. Le poste est sauvé, de justesse.",
+            "effects": {
+              "karma": 5
+            },
+            "secte": {
+              "derive": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire à l'employeur de se mêler de ses affaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} reçoit un avertissement, puis une lettre de licenciement. {proche} se tourne encore plus vers le groupe.",
+            "effects": {
+              "karma": -6
+            },
+            "secte": {
+              "ferveur": 3,
+              "derive": 5,
+              "surveillance": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer à {proche} un poste salarié dans le mouvement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "{proche} démissionne pour travailler pour {secte}. Désormais, son salaire, son logement et ses amis dépendent de toi.",
+            "effects": {
+              "karma": -4
+            },
+            "secte": {
+              "derive": 6,
+              "tresor": -15000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

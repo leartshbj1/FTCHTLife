@@ -246,6 +246,10 @@ struct Joueur: Codable, Equatable {
     var etranger: ExpatEtat? = nil
     /// Module « Jeu vivant » : jalons, projets, photo de l'an passé (docs/VIVANT.md).
     var jeuVivant: JeuVivantEtat? = nil
+    /// Module Secte (docs/SECTE_DETECTIVE.md).
+    var sectes: SectesEtat? = nil
+    /// Module Agence de détective privé (docs/SECTE_DETECTIVE.md).
+    var agences: AgencesEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 
@@ -275,6 +279,8 @@ struct Joueur: Codable, Equatable {
         if let e = emploi { return e.titre }
         if let e = etudes { return g("Étudiant", "Étudiante") + " en \(e.filiere.nom.lowercased())" }
         if let n = niveauScolaire { return n }
+        if agences?.actuelle != nil { return g("Détective privé", "Détective privée") }
+        if let s = sectes?.actuelle, SecteMoteur.pleinTemps(s) { return "Gourou de " + s.nom }
         if age < 3 { return "Bébé à plein temps" }
         if age >= 65 { return g("Retraité", "Retraitée") }
         return "Sans emploi"

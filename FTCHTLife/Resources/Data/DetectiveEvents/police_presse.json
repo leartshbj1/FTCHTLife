@@ -1,0 +1,1491 @@
+[
+  {
+    "id": "det_pol_0001",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true
+    },
+    "text": "Le commandant Vasseur, de la brigade criminelle, t'attend devant {agence}. « Votre affaire croise la mienne. Vous vous retirez, ou je vous retire. »",
+    "choices": [
+      {
+        "label": "Coopérer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu partages ce que tu sais. Il ne te remercie pas, mais il te rappelle la semaine suivante pour une question.",
+            "effects": {
+              "karma": 3
+            },
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il prend tout et ne te donne rien. Ton client apprend la suite dans le journal.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer en parallèle",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu le devances d'un jour. Il ne te le pardonnera jamais, mais il te respecte.",
+            "effects": {
+              "smarts": 2
+            },
+            "agence": {
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il te fait convoquer pour entrave. Trois heures dans un couloir qui sent le café brûlé.",
+            "effects": {
+              "happiness": -6
+            },
+            "agence": {
+              "plainte": true,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui proposer un échange",
+        "requiresSkill": {
+          "eloquence": 2
+        },
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Une info contre une info. Le début d'une collaboration bizarre et efficace.",
+            "effects": {
+              "skills": {
+                "eloquence": 2
+              }
+            },
+            "agence": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il te rit au nez. Poliment."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0002",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minResolues": 2
+    },
+    "text": "L'inspectrice Morel, que tu as aidée l'an dernier, t'appelle sur ton portable. Elle a besoin d'un coup de main officieux sur une disparition.",
+    "choices": [
+      {
+        "label": "Aider",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Tu trouves une piste en deux jours. Elle te doit une faveur, et elle tient ses comptes.",
+            "effects": {
+              "karma": 5
+            },
+            "agence": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La piste ne mène nulle part, mais elle apprécie l'effort.",
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Facturer ton aide",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Elle paie de sa poche, sans un mot. La prochaine fois, elle appellera quelqu'un d'autre.",
+            "effects": {
+              "money": 800
+            },
+            "agence": {
+              "reputation": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« Je comprends. » Tu as l'impression qu'elle ne comprend pas."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0003",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "sansAgrement": false,
+      "minAnnees": 1
+    },
+    "text": "Contrôle de la commission des agences de recherches privées. Un inspecteur en gilet gris épluche tes contrats, tes mandats et tes fichiers.",
+    "choices": [
+      {
+        "label": "Tout montrer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Dossiers propres, mandats signés. Il repart en hochant la tête. « Rare. »",
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il trouve un mandat mal daté et une méthode limite dans un rapport. Avertissement, et une remarque qui pique.",
+            "effects": {
+              "happiness": -4
+            },
+            "agence": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Cacher deux dossiers",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il ne voit rien. Tu transpires tout l'après-midi.",
+            "effects": {
+              "karma": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il les trouve. Rien n'énerve plus un contrôleur qu'un tiroir fermé à clé.",
+            "effects": {
+              "karma": -4
+            },
+            "agence": {
+              "suspension": 1,
+              "reputation": -10,
+              "signal": "agence_suspendue"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0004",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "sansAgrement": true,
+      "minAnnees": 1
+    },
+    "text": "Deux policiers en civil entrent dans {agence} : on te soupçonne d'exercer sans agrément. Ils ont un client à toi comme témoin.",
+    "choices": [
+      {
+        "label": "Tout avouer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Procès-verbal, amende, convocation. Ça coûte, mais tu peux tout régulariser ensuite.",
+            "effects": {
+              "money": -3000
+            },
+            "agence": {
+              "prisonMois": 0,
+              "infraction": "exercice illégal de la profession d'agent de recherches privées",
+              "reputation": -5,
+              "signal": "agence_plainte"
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le juge est sévère : condamnation pour l'exemple.",
+            "effects": {
+              "money": -5000
+            },
+            "agence": {
+              "prisonMois": 2,
+              "infraction": "exercice illégal de la profession d'agent de recherches privées",
+              "reputation": -10,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer le consultant",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "« Je fais du conseil en sécurité, pas des enquêtes. » Faute de preuves solides, ils repartent.",
+            "effects": {
+              "skills": {
+                "eloquence": 2
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Ton client, lui, a tout raconté. Ton mensonge aggrave ton cas.",
+            "effects": {
+              "karma": -5
+            },
+            "agence": {
+              "prisonMois": 3,
+              "infraction": "exercice illégal de la profession d'agent de recherches privées",
+              "reputation": -15,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0005",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "sansAgrement": true
+    },
+    "text": "Un client mécontent te menace : soit tu baisses ta facture de moitié, soit il te dénonce pour exercice sans agrément.",
+    "choices": [
+      {
+        "label": "Céder",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu baisses la facture. Il sourit. Tu sais maintenant qu'il reviendra.",
+            "effects": {
+              "money": -2000,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tenir bon",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il bluffait. La facture est payée en entier, avec mauvaise humeur.",
+            "effects": {
+              "money": 1000
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il ne bluffait pas. Un courrier de la préfecture arrive le mois suivant.",
+            "agence": {
+              "plainte": true,
+              "reputation": -5,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déposer une demande d'agrément tout de suite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu le prends de vitesse. Ta demande est en cours, ta position plus solide.",
+            "effects": {
+              "smarts": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0006",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minResolues": 1
+    },
+    "text": "Une ancienne cible porte plainte contre toi pour atteinte à la vie privée. Son avocat parle de « filature obsessionnelle ».",
+    "choices": [
+      {
+        "label": "Prouver la légalité de tes méthodes",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Mandat, horaires, photos prises depuis la voie publique. Plainte classée.",
+            "effects": {
+              "smarts": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une photo prise par-dessus une haie fait tout basculer. Amende et sermon.",
+            "effects": {
+              "money": -2500
+            },
+            "agence": {
+              "reputation": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier un retrait",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un chèque et une lettre d'excuses. La plainte disparaît, ton orgueil un peu aussi.",
+            "effects": {
+              "money": -4000
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0007",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minResolues": 2
+    },
+    "text": "Le juge d'instruction te convoque comme témoin dans une affaire que tu as résolue. L'avocat de la défense t'attend avec un sourire carnassier.",
+    "choices": [
+      {
+        "label": "Préparer ton témoignage",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Dates, photos, méthodes. Tu tiens deux heures sans fléchir. Le jury t'écoute.",
+            "effects": {
+              "smarts": 2
+            },
+            "agence": {
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "L'avocat trouve une contradiction de dix minutes dans tes horaires. Ça suffit pour semer le doute.",
+            "effects": {
+              "happiness": -5
+            },
+            "agence": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Improviser",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ton naturel passe bien. Tu es convaincant{e}.",
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu bafouilles. L'avocat se régale.",
+            "effects": {
+              "happiness": -6
+            },
+            "agence": {
+              "reputation": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0008",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minResolues": 3
+    },
+    "text": "La police judiciaire exige que tu leur remettes tous tes dossiers sur un ancien client, aujourd'hui soupçonné de fraude.",
+    "choices": [
+      {
+        "label": "Tout remettre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu coopères. Ton ancien client tombe. Tes autres clients se demandent si leurs secrets sont à l'abri chez toi.",
+            "effects": {
+              "karma": 3
+            },
+            "agence": {
+              "reputation": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Invoquer le secret professionnel",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton avocat te soutient. La police repart avec un mandat à demander, et toi avec ta crédibilité.",
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Perquisition le lendemain. Tout est saisi, y compris ta machine à café.",
+            "effects": {
+              "happiness": -5
+            },
+            "agence": {
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0009",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "text": "Un brigadier te propose, pour 500 € par requête, de consulter les fichiers de police à ta place. « Tout le monde le fait. »",
+    "choices": [
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses. Il hausse les épaules. Tu notes son nom dans un carnet que tu ne montres à personne.",
+            "effects": {
+              "karma": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter une fois",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "L'information arrive. Tu as maintenant un secret de plus, et un brigadier qui sait des choses sur toi.",
+            "effects": {
+              "karma": -10,
+              "money": -500
+            },
+            "agence": {
+              "signal": "agence_methode_limite"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'inspection générale enquêtait déjà sur lui. Ton nom apparaît dans ses relevés bancaires.",
+            "effects": {
+              "karma": -10,
+              "money": -500
+            },
+            "agence": {
+              "prisonMois": 6,
+              "infraction": "corruption",
+              "reputation": -25,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le dénoncer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'inspection générale te remercie, discrètement. Certains policiers, eux, ne te disent plus bonjour.",
+            "effects": {
+              "karma": 10
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Ta dénonciation se perd dans un tiroir. Le brigadier, lui, l'apprend.",
+            "effects": {
+              "karma": 8
+            },
+            "agence": {
+              "signal": "agence_menace"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0010",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minEquipement": 2
+    },
+    "text": "Lors d'un contrôle routier, un gendarme trouve dans ta boîte à gants un micro-émetteur et un trousseau de clés qui ne sont pas à toi.",
+    "choices": [
+      {
+        "label": "Expliquer ton métier",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il appelle sa hiérarchie, qui appelle la tienne. Tout s'arrange, avec une remarque au dossier.",
+            "effects": {
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le micro n'a rien de légal. Saisie et convocation.",
+            "agence": {
+              "plainte": true,
+              "reputation": -6,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dire que c'est un jouet",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Le gendarme a un neveu qui adore les gadgets. Tu repars, incrédule.",
+            "effects": {
+              "karma": -2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Le gendarme a aussi un détecteur de mensonges intégré : vingt ans de métier.",
+            "effects": {
+              "karma": -2
+            },
+            "agence": {
+              "plainte": true,
+              "reputation": -8,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0011",
+    "kind": "police",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minReputation": 30
+    },
+    "text": "Le vieux commissaire Lagarde part à la retraite. Il t'invite à boire un verre et pose une chemise cartonnée sur le comptoir. « Une affaire que je n'ai jamais pu boucler. »",
+    "choices": [
+      {
+        "label": "Prendre le dossier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il te serre la main longtemps. Tu sens que ce dossier pèse plus que son poids de papier.",
+            "effects": {
+              "smarts": 2,
+              "happiness": 3
+            },
+            "agence": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Juste trinquer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Vous parlez du métier, des erreurs et des réussites. Une belle soirée, sans rien à lire après.",
+            "effects": {
+              "happiness": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0012",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "text": "Un policier vient te voir en civil, gêné : il soupçonne sa femme de lui cacher quelque chose et ne veut pas utiliser les moyens du service.",
+    "choices": [
+      {
+        "label": "Prendre l'affaire",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Elle préparait un changement de carrière. Il te remercie, soulagé, et te doit une faveur.",
+            "effects": {
+              "money": 1500
+            },
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La vérité est moins heureuse. Il encaisse, digne. Tu as désormais un allié dans la maison.",
+            "effects": {
+              "money": 1500
+            },
+            "agence": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, conflit d'intérêts",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il comprend. Il te recommande quand même à un collègue.",
+            "agence": {
+              "reputation": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0013",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minAnnees": 2,
+      "minResolues": 2
+    },
+    "text": "Une écoute téléphonique illégale que tu as utilisée l'an passé refait surface dans un dossier. Le parquet s'intéresse à toi.",
+    "choices": [
+      {
+        "label": "Prendre un bon avocat",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton avocat démontre que rien ne te relie directement à l'écoute. Classement sans suite, de justesse.",
+            "effects": {
+              "money": -6000
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Malgré l'avocat, la preuve est là. Condamnation avec sursis.",
+            "effects": {
+              "money": -6000
+            },
+            "agence": {
+              "prisonMois": 0,
+              "infraction": "violation du secret des correspondances",
+              "reputation": -15,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Plaider coupable",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu reconnais les faits. Amende et suspension temporaire de ton agrément.",
+            "effects": {
+              "money": -3000,
+              "karma": 3
+            },
+            "agence": {
+              "prisonMois": 0,
+              "infraction": "violation du secret des correspondances",
+              "suspension": 1,
+              "reputation": -10,
+              "signal": "agence_suspendue"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0014",
+    "kind": "police",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "sansAgrement": false,
+      "minAnnees": 3
+    },
+    "text": "Ton agrément arrive à renouvellement. Il te faut une formation continue de quarante heures et un dossier complet.",
+    "choices": [
+      {
+        "label": "Faire les choses bien",
+        "cost": 1200,
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Quarante heures de droit, d'éthique et de café tiède. Agrément renouvelé.",
+            "effects": {
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Bâcler le dossier",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ça passe, de justesse."
+          },
+          {
+            "chance": 0.4,
+            "text": "Dossier incomplet. Suspension le temps de régulariser.",
+            "effects": {
+              "happiness": -5
+            },
+            "agence": {
+              "suspension": 1,
+              "signal": "agence_suspendue"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0015",
+    "kind": "presse",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minResolues": 1
+    },
+    "text": "Une journaliste du quotidien régional veut écrire un portrait de {agence}. « Les lecteurs adorent les détectives. »",
+    "choices": [
+      {
+        "label": "Accepter l'interview",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Un bel article, une photo flatteuse devant ta porte. Le téléphone sonne plus souvent.",
+            "effects": {
+              "happiness": 4
+            },
+            "agence": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "L'article est sympathique, mais la photo montre très clairement ta voiture de planque. Plus jamais discrète.",
+            "effects": {
+              "happiness": -2
+            },
+            "agence": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, la discrétion avant tout",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un détective dont on parle est un détective qu'on repère. Elle comprend."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0016",
+    "kind": "presse",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minReputation": 60
+    },
+    "text": "Une chaîne de télévision veut tourner un documentaire sur ton agence, caméras embarquées pendant six mois.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le documentaire est un succès. Tu deviens « le détective de la télé ». Les clients affluent, les cibles aussi te reconnaissent.",
+            "effects": {
+              "happiness": 6,
+              "money": 10000
+            },
+            "agence": {
+              "reputation": 12,
+              "celebre": true,
+              "signal": "agence_affaire_celebre"
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le montage te fait passer pour une caricature. On rit de toi dans les dîners.",
+            "effects": {
+              "happiness": -8,
+              "money": 10000
+            },
+            "agence": {
+              "reputation": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter avec droit de regard",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu négocies chaque scène. Le documentaire est sobre, juste, un peu ennuyeux. Parfait.",
+            "effects": {
+              "money": 6000,
+              "skills": {
+                "marchandage": 2
+              }
+            },
+            "agence": {
+              "reputation": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le métier se fait dans l'ombre. Tu y restes."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0017",
+    "kind": "presse",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minReputation": 50,
+      "minResolues": 5
+    },
+    "text": "Une maison d'édition te propose d'écrire un livre sur tes affaires les plus marquantes, noms changés.",
+    "choices": [
+      {
+        "label": "Écrire le livre",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le livre se vend bien. On te demande des dédicaces dans des librairies où il pleut.",
+            "effects": {
+              "money": 12000,
+              "happiness": 6,
+              "smarts": 2
+            },
+            "agence": {
+              "reputation": 6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Un ancien client se reconnaît malgré les noms changés et porte plainte.",
+            "effects": {
+              "money": 8000
+            },
+            "agence": {
+              "plainte": true,
+              "reputation": -4,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre un prête-plume",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le livre est plus romanesque que vrai. Ton nom est sur la couverture, ton style nulle part.",
+            "effects": {
+              "money": 6000
+            },
+            "agence": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tes affaires appartiennent à tes clients. Tu le leur dois.",
+            "effects": {
+              "karma": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0018",
+    "kind": "presse",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minReputation": 25
+    },
+    "text": "Un article accuse {agence} d'utiliser des « méthodes de barbouze ». Certaines lignes sont fausses. D'autres, pas tout à fait.",
+    "choices": [
+      {
+        "label": "Exiger un droit de réponse",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta réponse, mesurée, convainc. L'article fait pschitt.",
+            "effects": {
+              "skills": {
+                "eloquence": 2
+              }
+            },
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Ta réponse relance la polémique. Deuxième article, plus long.",
+            "effects": {
+              "happiness": -5
+            },
+            "agence": {
+              "reputation": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Porter plainte pour diffamation",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu gagnes, symboliquement. Un euro de dommages et un journaliste vexé.",
+            "effects": {
+              "money": -2000
+            },
+            "agence": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Pendant le procès, d'autres choses ressortent. Tu aurais dû te taire.",
+            "effects": {
+              "money": -3000
+            },
+            "agence": {
+              "reputation": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire profil bas",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La polémique s'éteint au bout de trois semaines. Quelques clients aussi.",
+            "agence": {
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0019",
+    "kind": "presse",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minReputation": 40,
+      "minResolues": 3
+    },
+    "text": "Un podcast de faits divers très écouté veut consacrer une saison entière à l'une de tes affaires.",
+    "choices": [
+      {
+        "label": "Participer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ta voix grave fait des merveilles. Des milliers d'auditeurs t'écrivent. Certains ont des affaires à te confier.",
+            "effects": {
+              "happiness": 5
+            },
+            "agence": {
+              "reputation": 7,
+              "celebre": true,
+              "signal": "agence_affaire_celebre"
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Les auditeurs se mettent à enquêter eux-mêmes et harcèlent un innocent. Tu regrettes.",
+            "effects": {
+              "karma": -6,
+              "happiness": -6
+            },
+            "agence": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les vraies victimes n'ont pas besoin d'un générique et de publicités pour des matelas.",
+            "effects": {
+              "karma": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0020",
+    "kind": "presse",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minReputation": 70
+    },
+    "text": "Une plateforme de streaming veut s'inspirer de ta vie pour une série. Le héros aurait vingt ans de moins et beaucoup plus de cheveux.",
+    "choices": [
+      {
+        "label": "Vendre les droits",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un chèque à six chiffres et une avant-première où tu ne reconnais rien. Tes clients, eux, te trouvent soudain fascinant{e}.",
+            "effects": {
+              "money": 60000,
+              "happiness": 8
+            },
+            "agence": {
+              "reputation": 10,
+              "celebre": true,
+              "signal": "agence_affaire_celebre"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Être consultant{e} sur la série",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu corriges chaque scène de filature. Ils ignorent toutes tes corrections. Ça paie bien quand même.",
+            "effects": {
+              "money": 25000,
+              "happiness": 4
+            },
+            "agence": {
+              "reputation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ne veux pas d'un acteur qui joue mieux ta vie que toi."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0021",
+    "kind": "presse",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "affaireEnCours": true,
+      "minReputation": 20
+    },
+    "text": "Une journaliste d'investigation te propose un marché : elle te donne une piste sur ton affaire en cours, tu lui donnes l'exclusivité du dénouement.",
+    "choices": [
+      {
+        "label": "Accepter le marché",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Sa piste est excellente. Son article aussi. {client} n'apprécie pas vraiment d'y être cité, même anonymement.",
+            "agence": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "L'article sort trop tôt et fait capoter la fin de l'enquête.",
+            "effects": {
+              "happiness": -5
+            },
+            "agence": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La discrétion envers ton client passe avant tout. Elle comprend, et garde ta carte.",
+            "effects": {
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0022",
+    "kind": "presse",
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "minReputation": 55,
+      "sansAgrement": false
+    },
+    "text": "La chambre syndicale des agents de recherches privées veut te décerner son prix annuel. Il faudra faire un discours.",
+    "choices": [
+      {
+        "label": "Faire un discours sincère",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu parles des nuits froides, des vérités qui coûtent, de ceux qu'on retrouve. Silence, puis applaudissements.",
+            "effects": {
+              "happiness": 8,
+              "skills": {
+                "eloquence": 2
+              }
+            },
+            "agence": {
+              "reputation": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un discours drôle",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu racontes l'histoire du dogue et de la gouttière. La salle pleure de rire.",
+            "effects": {
+              "happiness": 8
+            },
+            "agence": {
+              "reputation": 5
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La blague sur le contrôleur de la commission tombe à plat. Il est au premier rang.",
+            "effects": {
+              "happiness": -2
+            },
+            "agence": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envoyer un message vidéo",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu restes dans l'ombre, comme il se doit. Un peu de mystère, ça entretient la légende.",
+            "agence": {
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0023",
+    "kind": "presse",
+    "weight": 1,
+    "unique": false,
+    "text": "Une vidéo de toi en pleine planque, déguisé{e} en livreur avec une fausse moustache, fait le tour des réseaux sociaux.",
+    "choices": [
+      {
+        "label": "En rire publiquement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu postes une photo avec la moustache. Le public adore. Ta discrétion, un peu moins.",
+            "effects": {
+              "happiness": 5
+            },
+            "agence": {
+              "reputation": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander le retrait",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La vidéo disparaît. Elle a déjà été vue deux millions de fois.",
+            "effects": {
+              "happiness": -3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "L'effet inverse : on appelle ça « l'effet moustache ». Trois millions de vues.",
+            "effects": {
+              "happiness": -5
+            },
+            "agence": {
+              "reputation": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de déguisement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu passes au bonnet et aux lunettes. La moustache rejoint le tiroir des souvenirs."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0024",
+    "kind": "presse",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minReputation": 60
+    },
+    "text": "Une émission de débat te veut en plateau pour commenter une affaire criminelle qui passionne le pays.",
+    "choices": [
+      {
+        "label": "Y aller et rester prudent{e}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses d'accuser qui que ce soit. On te trouve « rafraîchissant{e} ». On te réinvite.",
+            "effects": {
+              "happiness": 3
+            },
+            "agence": {
+              "reputation": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Y aller et donner ta théorie",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta théorie s'avère juste trois semaines plus tard. Tu deviens une référence.",
+            "effects": {
+              "happiness": 6
+            },
+            "agence": {
+              "reputation": 10,
+              "celebre": true,
+              "signal": "agence_affaire_celebre"
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta théorie est fausse, et la personne que tu as désignée porte plainte.",
+            "effects": {
+              "happiness": -8,
+              "karma": -6
+            },
+            "agence": {
+              "reputation": -10,
+              "plainte": true,
+              "signal": "agence_plainte"
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu ne commentes pas les affaires des autres. Ça te vaut un respect discret dans le milieu.",
+            "agence": {
+              "reputation": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "det_pol_0025",
+    "kind": "presse",
+    "weight": 1,
+    "unique": false,
+    "conditions": {
+      "minReputation": 65
+    },
+    "text": "Le cabinet du ministre pour lequel tu as travaillé fait la une : un scandale éclate. Un journaliste a trouvé ton nom dans les notes de frais.",
+    "choices": [
+      {
+        "label": "Ne faire aucun commentaire",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ton silence te protège. L'orage passe au-dessus de ta tête.",
+            "agence": {
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "« Aucun commentaire » devient le titre de l'article. On imagine le pire.",
+            "effects": {
+              "happiness": -4
+            },
+            "agence": {
+              "reputation": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Expliquer ton rôle",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Une vérification de routine, rien de plus. Les journalistes passent à autre chose.",
+            "agence": {
+              "reputation": 1
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Chaque mot est déformé. Tu comprends pourquoi les politiques parlent si peu.",
+            "effects": {
+              "happiness": -5
+            },
+            "agence": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout révéler",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu racontes ce que tu as vu. Le scandale grossit. Le cabinet ne t'appellera plus jamais, la presse tous les jours.",
+            "effects": {
+              "karma": 4
+            },
+            "agence": {
+              "reputation": 6,
+              "celebre": true,
+              "signal": "agence_affaire_celebre"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

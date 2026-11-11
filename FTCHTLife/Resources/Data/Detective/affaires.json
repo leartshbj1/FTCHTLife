@@ -1,0 +1,3385 @@
+[
+  {
+    "id": "adultere",
+    "nom": "Soupçons d'adultère",
+    "icone": "heart.slash.fill",
+    "description": "Un conjoint veut savoir. Des nuits de planque devant des hôtels et des parkings.",
+    "honoraires": [
+      1500,
+      5000
+    ],
+    "difficulte": [
+      25,
+      50
+    ],
+    "duree": 2,
+    "reputationMin": 0,
+    "danger": 0.03,
+    "methodes": {
+      "filature": 1.4,
+      "planque": 1.4,
+      "terrain": 0.8,
+      "recherches": 0.7,
+      "infiltration": 0.9,
+      "limite": 1.2
+    },
+    "clients": [
+      "Une pharmacienne de {ville}",
+      "Un chef d'entreprise nerveux",
+      "Une avocate qui connaît trop bien les divorces",
+      "Un boulanger qui ne dort plus",
+      "Une retraitée au collier de perles",
+      "Un dentiste qui paie en liquide",
+      "Une professeure de piano méfiante"
+    ],
+    "cibles": [
+      "son mari, Gérald",
+      "sa compagne depuis vingt ans",
+      "son époux, un banquier très ponctuel",
+      "sa femme, Sandrine",
+      "son mari, qui joue soi-disant au squash",
+      "son fiancé, Yanis"
+    ],
+    "indices": [
+      "Un ticket de parking à l'heure où {cible} disait être au bureau.",
+      "Deux cafés commandés, une seule tasse touchée.",
+      "Un bouquet acheté chez un fleuriste à l'autre bout de {ville}.",
+      "Une réservation au nom de « M. et Mme Martin ». Original.",
+      "Le téléphone de {cible} passe en mode avion tous les jeudis à 19 h.",
+      "Une alliance glissée dans une poche avant d'entrer au restaurant.",
+      "Ta thermos est vide, ta patience aussi, mais la porte de l'hôtel s'ouvre enfin."
+    ],
+    "denouements": [
+      {
+        "text": "Ton rapport est prêt : {cible} ne trompe personne. Des cours de danse en secret, pour leur anniversaire. Mais ton client veut quand même « quelque chose ».",
+        "choices": [
+          {
+            "label": "Dire la vérité",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "La bonne nouvelle passe mal, mais la facture est réglée. Tu as peut-être sauvé un couple, ou au moins un tango.",
+                "effects": {
+                  "karma": 5
+                },
+                "agence": {
+                  "reputation": 3,
+                  "paiement": 1
+                }
+              }
+            ]
+          },
+          {
+            "label": "Inventer des preuves",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "Un dossier vague, des photos suggestives, des heures arrangées. On te paie avec un sourire triste. Tu dors moins bien.",
+                "effects": {
+                  "karma": -12
+                },
+                "agence": {
+                  "paiement": 1.5
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "L'avocat d'en face démonte tes « preuves » en dix minutes. Plainte pour dénonciation calomnieuse.",
+                "effects": {
+                  "karma": -10
+                },
+                "agence": {
+                  "reputation": -15,
+                  "plainte": true,
+                  "paiement": 0,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Rendre l'acompte",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu refuses de jouer ce jeu-là. Tu rends l'argent, tu fermes le dossier, tu allumes la lumière du bureau un peu plus longtemps.",
+                "effects": {
+                  "karma": 8,
+                  "money": -500
+                },
+                "agence": {
+                  "reputation": 2,
+                  "paiement": 0
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Les photos sont nettes. La personne que {cible} retrouve chaque jeudi, c'est le meilleur ami du couple. Ton client attend ton appel.",
+        "choices": [
+          {
+            "label": "Tout remettre",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu poses les photos sur la table. Long silence. On te paie, on te remercie, on part sans fermer la porte.",
+                "effects": {
+                  "karma": 2
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              }
+            ]
+          },
+          {
+            "label": "Annoncer avec ménagement",
+            "requiresSkill": {
+              "eloquence": 2
+            },
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu choisis chaque mot. Il y a des larmes, puis une poignée de main. Deux semaines plus tard, une amie de ton client t'appelle.",
+                "effects": {
+                  "skills": {
+                    "eloquence": 3
+                  }
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Faire payer la cible",
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "Une enveloppe change de mains dans un parking souterrain. Ton rapport sera vide. Tu viens de franchir une ligne.",
+                "effects": {
+                  "karma": -20
+                },
+                "agence": {
+                  "bonus": 8000,
+                  "paiement": 0.5
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "La conversation était enregistrée. Plainte pour chantage, et le juge n'a aucun humour.",
+                "effects": {
+                  "karma": -15,
+                  "happiness": -10
+                },
+                "agence": {
+                  "reputation": -25,
+                  "plainte": true,
+                  "prisonMois": 6,
+                  "infraction": "chantage",
+                  "paiement": 0,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fraude_assurance",
+    "nom": "Fraude à l'assurance",
+    "icone": "cross.case.fill",
+    "description": "Un assureur paie une rente. Il aimerait vérifier que le dos de l'assuré est vraiment cassé.",
+    "honoraires": [
+      3000,
+      9000
+    ],
+    "difficulte": [
+      35,
+      70
+    ],
+    "duree": 2,
+    "reputationMin": 5,
+    "danger": 0.05,
+    "methodes": {
+      "filature": 1.3,
+      "planque": 1.5,
+      "terrain": 1.0,
+      "recherches": 1.1,
+      "infiltration": 0.8,
+      "limite": 1.1
+    },
+    "clients": [
+      "Une compagnie d'assurances régionale",
+      "Un gestionnaire de sinistres au bord du burn-out",
+      "Une mutuelle qui a déjà payé trois fois",
+      "Un courtier qui flaire l'arnaque",
+      "Une assureuse de flotte automobile"
+    ],
+    "cibles": [
+      "un assuré en invalidité totale",
+      "un restaurateur dont la cuisine a brûlé à point",
+      "un chauffeur au cou soi-disant bloqué",
+      "une bijoutière cambriolée sans effraction",
+      "un ancien maçon en fauteuil roulant",
+      "un propriétaire inondé chaque hiver"
+    ],
+    "indices": [
+      "Le fauteuil roulant reste dans le coffre pendant que son propriétaire porte un frigo.",
+      "Un club de padel confirme une inscription en compétition. Niveau confirmé.",
+      "Le restaurant avait des dettes de loyer. Beaucoup.",
+      "Les bijoux « volés » apparaissent sur un site de petites annonces, photographiés sur la même nappe.",
+      "Une minerve posée sur le siège passager, à côté d'un sac de golf.",
+      "Le voisin se souvient très bien de l'odeur d'essence, deux jours avant l'incendie."
+    ],
+    "denouements": [
+      {
+        "text": "Le dossier sur {cible} est accablant : la fraude est filmée, datée, indiscutable. En creusant, tu découvres une famille surendettée, avec trois enfants à charge.",
+        "choices": [
+          {
+            "label": "Livrer la vidéo",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "L'assureur coupe la rente et engage des poursuites. Ils te paient bien et te rappelleront. Toi, tu repenses aux trois enfants.",
+                "effects": {
+                  "karma": -2
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 5
+                }
+              }
+            ]
+          },
+          {
+            "label": "Signaler aussi sa détresse",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Le gestionnaire, touché, propose un échéancier plutôt qu'un procès. Rare.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "« On ne vous paie pas pour faire du social. » Paiement réglé, ton nom un peu moins bien noté.",
+                "effects": {
+                  "karma": 4
+                },
+                "agence": {
+                  "paiement": 0.8
+                }
+              }
+            ]
+          },
+          {
+            "label": "Rendre un rapport vide",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "« Rien d'anormal observé. » L'assureur paie sans enthousiasme et ne te rappellera pas.",
+                "effects": {
+                  "karma": 3
+                },
+                "agence": {
+                  "paiement": 0.5,
+                  "reputation": -5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Le dossier est solide. Mais le gestionnaire qui t'a mandaté te propose discrètement de gonfler le préjudice : il touche une prime sur les fraudes « détectées ».",
+        "choices": [
+          {
+            "label": "Refuser net",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu rends un rapport exact. Il ne te sourit plus dans les couloirs. Tant pis.",
+                "effects": {
+                  "karma": 5
+                },
+                "agence": {
+                  "paiement": 1
+                }
+              }
+            ]
+          },
+          {
+            "label": "Accepter le partage",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Le chiffre gonfle, ta part aussi. Personne ne relit jamais ces annexes.",
+                "effects": {
+                  "karma": -15
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 6000
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Un audit interne passe par là. Ton nom est sur les factures.",
+                "effects": {
+                  "karma": -10
+                },
+                "agence": {
+                  "reputation": -20,
+                  "plainte": true,
+                  "prisonMois": 0,
+                  "infraction": "complicité d'escroquerie",
+                  "paiement": 0,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Prévenir sa hiérarchie",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "La direction te remercie, le gestionnaire est remercié tout court. Tu gagnes un client fidèle.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "La direction étouffe l'affaire et ne te confie plus rien.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": -3
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "disparition",
+    "nom": "Personne disparue",
+    "icone": "person.fill.questionmark",
+    "description": "Quelqu'un est parti sans un mot. La police a classé : majeur, libre d'aller où il veut. La famille, elle, ne classe rien.",
+    "honoraires": [
+      4000,
+      15000
+    ],
+    "difficulte": [
+      45,
+      95
+    ],
+    "duree": 3,
+    "reputationMin": 10,
+    "danger": 0.08,
+    "methodes": {
+      "filature": 0.9,
+      "planque": 0.8,
+      "terrain": 1.5,
+      "recherches": 1.4,
+      "infiltration": 1.0,
+      "limite": 1.2
+    },
+    "clients": [
+      "Une mère qui garde la chambre intacte",
+      "Un frère qui ne lâche jamais rien",
+      "Une épouse qui reçoit encore ses relevés de banque",
+      "Un vieil associé inquiet",
+      "Une fille qui veut des réponses avant la fin de sa propre vie"
+    ],
+    "cibles": [
+      "un ingénieur de quarante ans parti acheter du pain",
+      "une étudiante qui a vidé son compte un mardi",
+      "un père de famille disparu après une faillite",
+      "un musicien qui ne répond plus depuis huit mois",
+      "une infirmière partie en vacances sans revenir"
+    ],
+    "indices": [
+      "Un retrait de 300 € dans un distributeur d'une gare de province.",
+      "Une carte postale jamais envoyée, retrouvée dans un tiroir : « Pardonnez-moi. »",
+      "Un patron de bar se souvient d'un client « qui parlait de recommencer à zéro ».",
+      "Une nouvelle adresse e-mail créée le lendemain de la disparition.",
+      "Un nom d'emprunt sur un bail, avec la même signature penchée.",
+      "Une photo floue, prise dans un marché à l'autre bout du pays."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as retrouvé {cible}. En vie, dans un autre pays, sous un autre nom. Il te supplie de ne rien dire : il a fui pour une raison qu'il refuse de te donner.",
+        "choices": [
+          {
+            "label": "Dire la vérité à la famille",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "La famille pleure de soulagement, puis de colère. Elle paie. Toi, tu n'as pas oublié son regard.",
+                "effects": {
+                  "karma": 2
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Transmettre une simple lettre",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu dis à la famille qu'il est vivant et qu'il va bien, et tu remets une lettre de lui. Pas d'adresse. Tout le monde accepte, à moitié.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 0.8,
+                  "reputation": 4
+                }
+              }
+            ]
+          },
+          {
+            "label": "Déclarer l'enquête sans issue",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu mens à une mère. Elle te paie quand même pour tes efforts. C'est presque pire.",
+                "effects": {
+                  "karma": -6,
+                  "happiness": -8
+                },
+                "agence": {
+                  "paiement": 0.5,
+                  "reputation": -2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "La piste mène à un hangar et à des gens qui n'aiment pas les questions. Ce que tu vois là-bas dépasse une simple disparition : quelqu'un retient {cible} contre son gré.",
+        "choices": [
+          {
+            "label": "Appeler la police",
+            "outcomes": [
+              {
+                "chance": 0.8,
+                "text": "Tu donnes l'adresse, les plaques, tout. L'intervention a lieu le lendemain. La personne disparue rentre chez elle. La presse veut ton nom.",
+                "effects": {
+                  "karma": 12
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 12,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              },
+              {
+                "chance": 0.2,
+                "text": "Les policiers arrivent trop tard, le hangar est vide. Mais tes photos permettent des arrestations un mois plus tard.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Y aller seul{e}",
+            "outcomes": [
+              {
+                "chance": 0.4,
+                "text": "Tu entres par l'arrière et ressors avec la personne disparue, sous le bras et sous la pluie. Une histoire que tu raconteras toute ta vie.",
+                "effects": {
+                  "karma": 10,
+                  "health": -5
+                },
+                "agence": {
+                  "paiement": 1.3,
+                  "reputation": 15,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              },
+              {
+                "chance": 0.6,
+                "text": "Mauvaise idée. Coup de barre, côtes fêlées, et la police qui te demande ce que tu faisais là.",
+                "effects": {
+                  "health": -25
+                },
+                "agence": {
+                  "paiement": 0.5,
+                  "reputation": -5,
+                  "signal": "agence_blessure"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "enquete_moralite",
+    "nom": "Enquête de moralité",
+    "icone": "doc.text.magnifyingglass",
+    "description": "Un employeur ou une famille veut savoir à qui ils ont affaire avant de signer.",
+    "honoraires": [
+      800,
+      2500
+    ],
+    "difficulte": [
+      20,
+      35
+    ],
+    "duree": 1,
+    "reputationMin": 0,
+    "danger": 0.0,
+    "methodes": {
+      "filature": 0.8,
+      "planque": 0.6,
+      "terrain": 1.3,
+      "recherches": 1.5,
+      "infiltration": 0.9,
+      "limite": 1.0
+    },
+    "clients": [
+      "Une PME qui recrute un directeur financier",
+      "Un père qui doute du fiancé de sa fille",
+      "Une agence de garde d'enfants",
+      "Une propriétaire avant de louer son appartement",
+      "Un club de golf très sélectif",
+      "Une fondation qui choisit un trésorier"
+    ],
+    "cibles": [
+      "un candidat au CV impeccable",
+      "le futur gendre, Maxime",
+      "une nounou recommandée par une amie",
+      "un locataire trop charmant",
+      "un nouveau trésorier",
+      "un associé potentiel"
+    ],
+    "indices": [
+      "Un diplôme d'une école qui n'existe plus depuis 1998. Ni avant.",
+      "Trois anciens employeurs, trois versions différentes de son départ.",
+      "Un casier vierge, des voisins unanimes : personne de plus normal.",
+      "Une ancienne adresse dans {ville}, au-dessus d'un bar qui lui fait encore crédit.",
+      "Un profil professionnel parfait, créé il y a six mois exactement."
+    ],
+    "denouements": [
+      {
+        "text": "Ton enquête sur {cible} ne révèle rien de grave, sauf une condamnation ancienne, purgée, pour un vol à vingt ans. Depuis, une vie irréprochable.",
+        "choices": [
+          {
+            "label": "Tout mentionner",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Rapport complet. Ton client remercie et écarte la candidature. C'est son droit. Ça te laisse un goût de fer.",
+                "effects": {
+                  "karma": -2
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 2
+                }
+              }
+            ]
+          },
+          {
+            "label": "Mentionner avec contexte",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu écris la faute et les quinze années qui ont suivi. Ton client hésite, puis signe. Tu as fait ton métier, pas celui d'un juge.",
+                "effects": {
+                  "karma": 5
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              }
+            ]
+          },
+          {
+            "label": "Taire l'histoire",
+            "outcomes": [
+              {
+                "chance": 0.8,
+                "text": "Personne ne le saura jamais. Sauf toi.",
+                "effects": {
+                  "karma": 3
+                },
+                "agence": {
+                  "paiement": 1
+                }
+              },
+              {
+                "chance": 0.2,
+                "text": "Ton client l'apprend par un autre canal et te reproche ton rapport incomplet.",
+                "agence": {
+                  "paiement": 0.5,
+                  "reputation": -8
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "espionnage_industriel",
+    "nom": "Espionnage industriel",
+    "icone": "building.2.fill",
+    "description": "Des plans qui fuient, un concurrent qui sort le même produit trois semaines avant. Quelqu'un parle.",
+    "honoraires": [
+      12000,
+      40000
+    ],
+    "difficulte": [
+      70,
+      130
+    ],
+    "duree": 3,
+    "reputationMin": 35,
+    "danger": 0.1,
+    "methodes": {
+      "filature": 1.1,
+      "planque": 1.0,
+      "terrain": 1.0,
+      "recherches": 1.3,
+      "infiltration": 1.5,
+      "limite": 1.4
+    },
+    "clients": [
+      "Un fabricant de pièces aéronautiques",
+      "Une start-up de cosmétiques au bord de la levée de fonds",
+      "Un laboratoire pharmaceutique familial",
+      "Une maison de parfums",
+      "Un constructeur de vélos électriques"
+    ],
+    "cibles": [
+      "un ingénieur aux horaires étranges",
+      "la directrice de la recherche",
+      "un stagiaire très curieux",
+      "un consultant externe",
+      "un administrateur réseau taciturne"
+    ],
+    "indices": [
+      "Une clé USB oubliée dans la photocopieuse, avec un dossier nommé « vacances ».",
+      "Un déjeuner hebdomadaire avec un cadre du concurrent. Toujours le même restaurant, toujours l'addition séparée.",
+      "Des impressions à 23 h, un samedi, sur le badge de {cible}.",
+      "Une voiture neuve, payée comptant, par quelqu'un qui gagne 2 800 € par mois.",
+      "Un message chiffré qui commence par « Comme convenu ».",
+      "Le concurrent a déposé un brevet avec la même faute d'orthographe que le plan volé."
+    ],
+    "denouements": [
+      {
+        "text": "La taupe, c'est bien {cible}. Mais le concurrent qui achète les secrets te contacte : il double tes honoraires si ton rapport accuse quelqu'un d'autre.",
+        "choices": [
+          {
+            "label": "Remettre la vérité",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "La taupe est confondue, la direction te serre la main et ton nom circule dans les bonnes salles de réunion.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 10
+                }
+              }
+            ]
+          },
+          {
+            "label": "Accepter la double paie",
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "Un innocent est licencié, le vrai coupable continue. Ton compte en banque n'a pas d'états d'âme. Toi, si.",
+                "effects": {
+                  "karma": -25
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 25000
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "Le concurrent t'a enregistré. Il te tient, maintenant. Puis la police, après une perquisition chez lui.",
+                "effects": {
+                  "karma": -20
+                },
+                "agence": {
+                  "reputation": -30,
+                  "plainte": true,
+                  "prisonMois": 12,
+                  "infraction": "corruption",
+                  "paiement": 0,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Piéger le concurrent",
+            "requiresSkill": {
+              "eloquence": 3
+            },
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Tu fais semblant d'accepter et enregistres l'offre. La direction porte plainte, le concurrent tombe. Un coup de maître.",
+                "effects": {
+                  "karma": 8,
+                  "smarts": 3
+                },
+                "agence": {
+                  "paiement": 1.5,
+                  "reputation": 18,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Il a senti le piège et coupe tout contact. Tu remets ton rapport, honnête et moins spectaculaire.",
+                "effects": {
+                  "karma": 4
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Les fuites ne viennent pas d'un traître : ton propre client vend lui-même ses secrets à l'étranger et cherche un bouc émissaire avant un audit.",
+        "choices": [
+          {
+            "label": "Rendre le dossier et partir",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu ne seras pas complice. Tu perds le reste des honoraires et un client puissant.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": 2
+                }
+              }
+            ]
+          },
+          {
+            "label": "Prévenir les autorités",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "Une enquête est ouverte. Ton témoignage pèse. Les journaux parlent du « détective qui a dénoncé son client ».",
+                "effects": {
+                  "karma": 12
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": 12,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "Ses avocats contre-attaquent : violation du secret professionnel. Plainte.",
+                "effects": {
+                  "karma": 10,
+                  "happiness": -8
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": -5,
+                  "plainte": true,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Désigner le bouc émissaire",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu fais ce qu'on attend de toi. Un ingénieur perd sa carrière. Tu touches une prime de discrétion.",
+                "effects": {
+                  "karma": -30
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 15000
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recherche_heritiers",
+    "nom": "Recherche d'héritiers",
+    "icone": "house.fill",
+    "description": "Un notaire a une succession sur les bras et personne pour la recevoir. Archives, registres, cimetières.",
+    "honoraires": [
+      2000,
+      12000
+    ],
+    "difficulte": [
+      30,
+      80
+    ],
+    "duree": 2,
+    "reputationMin": 5,
+    "danger": 0.01,
+    "methodes": {
+      "filature": 0.6,
+      "planque": 0.5,
+      "terrain": 1.3,
+      "recherches": 1.6,
+      "infiltration": 0.7,
+      "limite": 0.9
+    },
+    "clients": [
+      "Une étude notariale de {ville}",
+      "Un notaire à lunettes rondes",
+      "Une mairie de village embarrassée",
+      "Un cabinet de généalogie débordé"
+    ],
+    "cibles": [
+      "la succession d'une vieille dame sans enfants",
+      "le legs d'un oncle d'Amérique bien réel",
+      "un appartement vide depuis douze ans",
+      "un compte bancaire dormant depuis 1987",
+      "une maison de famille et ses quarante tableaux"
+    ],
+    "indices": [
+      "Un acte de baptême de 1931, avec une note au crayon dans la marge.",
+      "Une lettre d'amour jamais postée, cachée sous le papier peint.",
+      "Un registre de paroisse où une page a été arrachée, proprement.",
+      "Une tombe entretenue par quelqu'un, avec des fleurs fraîches chaque mois.",
+      "Une petite-nièce qui ignore tout, à trois rues de l'appartement en question."
+    ],
+    "denouements": [
+      {
+        "text": "Dossier : {cible}. Tu as trouvé l'héritière : une caissière de supermarché qui ignore tout. Un cabinet concurrent te propose de lui faire signer un contrat qui lui prendra 40 % de l'héritage.",
+        "choices": [
+          {
+            "label": "Prévenir l'héritière honnêtement",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu lui expliques tout, sans intermédiaire. Elle t'embrasse sur les deux joues. Le notaire te recommandera.",
+                "effects": {
+                  "karma": 10,
+                  "happiness": 5
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Faire équipe avec le cabinet",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Elle signe sans comprendre. Ta commission est excellente. Elle te dit merci, ce qui est le pire.",
+                "effects": {
+                  "karma": -15
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 9000
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Dossier : {cible}. En remontant l'arbre, tu découvres un second héritier que personne n'attendait : un enfant né hors mariage, il y a cinquante ans. Le premier héritier te propose de l'oublier.",
+        "choices": [
+          {
+            "label": "Mentionner les deux",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Le notaire partage la succession. Le premier héritier te maudit. Le second pleure au téléphone.",
+                "effects": {
+                  "karma": 10
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 5
+                }
+              }
+            ]
+          },
+          {
+            "label": "Oublier le second",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "Une page de ton dossier disparaît. L'enveloppe pèse son poids.",
+                "effects": {
+                  "karma": -18
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 7000
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "Le notaire, méticuleux, retrouve la trace tout seul. Il ne te confiera plus jamais rien.",
+                "effects": {
+                  "karma": -12
+                },
+                "agence": {
+                  "paiement": 0.3,
+                  "reputation": -15
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vol_entreprise",
+    "nom": "Vols en entreprise",
+    "icone": "banknote.fill",
+    "description": "Du stock qui s'évapore, une caisse qui ne tombe jamais juste. Quelqu'un se sert, de l'intérieur.",
+    "honoraires": [
+      1500,
+      6000
+    ],
+    "difficulte": [
+      25,
+      55
+    ],
+    "duree": 2,
+    "reputationMin": 0,
+    "danger": 0.03,
+    "methodes": {
+      "filature": 1.1,
+      "planque": 1.3,
+      "terrain": 1.0,
+      "recherches": 1.1,
+      "infiltration": 1.5,
+      "limite": 1.1
+    },
+    "clients": [
+      "Une enseigne de bricolage de {ville}",
+      "Un grossiste en vins",
+      "Une chaîne de pressings",
+      "Un patron de garage furieux",
+      "Une directrice d'hôtel quatre étoiles",
+      "Un entrepôt de matériel informatique"
+    ],
+    "cibles": [
+      "un employé de l'équipe de nuit",
+      "la caissière principale",
+      "le chef de rayon",
+      "un magasinier très apprécié",
+      "le livreur du mardi"
+    ],
+    "indices": [
+      "Des cartons vides, parfaitement refermés, au fond de la réserve.",
+      "La caméra 4 est toujours « en panne » le vendredi soir.",
+      "Un collègue de {cible} revend des perceuses neuves en ligne, à moitié prix.",
+      "Les écarts de caisse cessent pendant les congés de quelqu'un.",
+      "Une camionnette sans logo, garée devant la porte de service à 5 h du matin."
+    ],
+    "denouements": [
+      {
+        "text": "Le voleur, c'est {cible}. Les vols sont petits, réguliers, pour payer les soins d'un parent malade. Ton client veut un licenciement pour faute grave et une plainte.",
+        "choices": [
+          {
+            "label": "Livrer le rapport",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Les faits sont les faits. Licenciement, plainte, dossier clos. Ton client est ravi. Tu manges seul{e} ce soir-là.",
+                "effects": {
+                  "karma": -3
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 4
+                }
+              }
+            ]
+          },
+          {
+            "label": "Plaider pour un arrangement",
+            "requiresSkill": {
+              "eloquence": 1
+            },
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "Ton client accepte un remboursement échelonné et une démission discrète. Tout le monde respire.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "« Je ne vous paie pas pour être avocat. » Il paie quand même, en grognant.",
+                "effects": {
+                  "karma": 5
+                },
+                "agence": {
+                  "paiement": 0.8
+                }
+              }
+            ]
+          },
+          {
+            "label": "Prévenir discrètement le voleur",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Une semaine pour tout rembourser et partir, voilà ce que tu proposes en tête à tête. Ton rapport dit « vols interrompus ». Ton client paie, sans comprendre.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 0.7,
+                  "reputation": -2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Les vols sont organisés : un réseau entier, avec le directeur adjoint à sa tête. Celui-ci t'invite à déjeuner et pose une enveloppe sur la table.",
+        "choices": [
+          {
+            "label": "Refuser l'enveloppe",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu remets tout à la direction. Six licenciements, une plainte, une réputation qui grimpe.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8
+                }
+              }
+            ]
+          },
+          {
+            "label": "Prendre l'enveloppe",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Ton rapport accuse deux intérimaires. L'adjoint te tape sur l'épaule. Tu te laves les mains longtemps.",
+                "effects": {
+                  "karma": -20
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 5000
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Un intérimaire accusé à tort porte plainte et prouve son innocence. Ton rapport devient une pièce à charge contre toi.",
+                "effects": {
+                  "karma": -15
+                },
+                "agence": {
+                  "reputation": -20,
+                  "plainte": true,
+                  "prisonMois": 0,
+                  "infraction": "corruption",
+                  "paiement": 0,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fugue",
+    "nom": "Adolescent en fugue",
+    "icone": "figure.walk",
+    "description": "Seize ans, un sac à dos et plus de nouvelles. Les parents ne dorment plus. Chaque jour compte.",
+    "honoraires": [
+      2000,
+      7000
+    ],
+    "difficulte": [
+      30,
+      60
+    ],
+    "duree": 2,
+    "reputationMin": 5,
+    "danger": 0.06,
+    "methodes": {
+      "filature": 0.9,
+      "planque": 0.8,
+      "terrain": 1.5,
+      "recherches": 1.3,
+      "infiltration": 1.0,
+      "limite": 1.1
+    },
+    "clients": [
+      "Un couple de commerçants épuisés",
+      "Une mère seule qui travaille de nuit",
+      "Un père divorcé qui culpabilise",
+      "Une grand-mère qui l'élève seule"
+    ],
+    "cibles": [
+      "leur fils de seize ans, Théo",
+      "sa fille, Inès, quinze ans",
+      "leur cadet, Nolan",
+      "sa petite-fille, Maëlle, dix-sept ans"
+    ],
+    "indices": [
+      "Une conversation sur une messagerie de jeu vidéo : « rdv gare routière ».",
+      "Un ticket de bus pour une ville côtière, payé en liquide.",
+      "Un ami jure ne rien savoir, en regardant ses chaussures.",
+      "Un sweat à capuche reconnu sur une vidéo de caméra de station-service.",
+      "Un foyer d'accueil se souvient d'un prénom donné trop vite."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as retrouvé {cible}, à l'abri chez une tante éloignée. Vous parlez longtemps : à la maison, ce n'est pas seulement de la mésentente. Il y a de la peur dans chaque phrase.",
+        "choices": [
+          {
+            "label": "Ramener l'ado aux parents",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Mission accomplie, sur le papier. Les parents paient. Dans la voiture, personne ne parle.",
+                "effects": {
+                  "karma": -6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              }
+            ]
+          },
+          {
+            "label": "Alerter les services sociaux",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "Une éducatrice prend le relais. Les parents sont furieux et refusent de payer le solde. Tu as fait ce qu'il fallait.",
+                "effects": {
+                  "karma": 12
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": 4
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "Les parents portent plainte contre toi pour « ingérence ». Elle n'ira pas loin, mais elle coûte des nerfs.",
+                "effects": {
+                  "karma": 10,
+                  "happiness": -5
+                },
+                "agence": {
+                  "paiement": 0,
+                  "plainte": true,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Organiser une rencontre neutre",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Un café, une table, une médiatrice. Rien n'est réglé, mais tout le monde a parlé. C'est un début.",
+                "effects": {
+                  "karma": 8,
+                  "skills": {
+                    "eloquence": 2
+                  }
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "{client} attend dans la voiture. Tu as localisé l'ado dans un squat, avec des adultes qui ne t'inspirent rien de bon.",
+        "choices": [
+          {
+            "label": "Appeler la police",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Intervention rapide, ado récupéré, deux adultes interpellés. Les parents t'appellent « l'ange gardien » pendant des années.",
+                "effects": {
+                  "karma": 10
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8
+                }
+              }
+            ]
+          },
+          {
+            "label": "Entrer et le convaincre",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Tu parles longtemps. L'ado finit par te suivre. Les parents pleurent sur le trottoir.",
+                "effects": {
+                  "karma": 10
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 10
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Quelqu'un n'apprécie pas ta visite. Tu repars avec l'ado et une arcade ouverte.",
+                "effects": {
+                  "karma": 8,
+                  "health": -15
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6,
+                  "signal": "agence_blessure"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "harcelement",
+    "nom": "Harcèlement anonyme",
+    "icone": "exclamationmark.bubble.fill",
+    "description": "Des messages, des appels muets, une voiture qui passe trop souvent. Quelqu'un fait peur, et la police manque de preuves.",
+    "honoraires": [
+      2000,
+      8000
+    ],
+    "difficulte": [
+      30,
+      65
+    ],
+    "duree": 2,
+    "reputationMin": 10,
+    "danger": 0.08,
+    "methodes": {
+      "filature": 1.2,
+      "planque": 1.3,
+      "terrain": 1.0,
+      "recherches": 1.4,
+      "infiltration": 0.8,
+      "limite": 1.3
+    },
+    "clients": [
+      "Une infirmière de {ville} à bout de nerfs",
+      "Un professeur de lycée qui reçoit des lettres",
+      "Une commerçante dont la vitrine est taguée chaque nuit",
+      "Une jeune journaliste locale",
+      "Un élu municipal sans garde du corps"
+    ],
+    "cibles": [
+      "un compte anonyme très bien renseigné",
+      "un ancien conjoint qui jure avoir tourné la page",
+      "un voisin de palier trop poli",
+      "un collègue écarté d'une promotion",
+      "une voiture grise immatriculée dans un autre département"
+    ],
+    "indices": [
+      "Les messages partent toujours d'un même réseau Wi-Fi public, près d'une médiathèque.",
+      "Une faute d'orthographe récurrente : « je vous surveille » sans s.",
+      "Un mégot de la même marque, chaque matin, sous la fenêtre de ton client.",
+      "La voiture grise appartient à une société de location. Le contrat est au nom d'un mort.",
+      "Un message arrive deux minutes après que tu as quitté la planque. Il t'a vu{e}."
+    ],
+    "denouements": [
+      {
+        "text": "Le harceleur est identifié : {cible}. Les preuves sont solides, mais à moitié obtenues par des moyens discutables. La victime veut juste que ça s'arrête.",
+        "choices": [
+          {
+            "label": "Tout donner à la police",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Les preuves légales suffisent. Une interdiction d'approcher est prononcée. Ton client respire enfin.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "L'avocat de la défense s'acharne sur tes méthodes. Le dossier tient, mais ton nom est cité.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": -3,
+                  "plainte": true,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Confronter le harceleur",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Tu montres ce que tu sais. Le visage en face se décompose. Les messages cessent le soir même.",
+                "effects": {
+                  "karma": 4
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 4
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Déni, cris, menaces. Les messages redoublent pendant une semaine, avant l'intervention de la police.",
+                "effects": {
+                  "happiness": -6
+                },
+                "agence": {
+                  "paiement": 0.8,
+                  "signal": "agence_menace"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "contrefacon",
+    "nom": "Réseau de contrefaçon",
+    "icone": "tag.fill",
+    "description": "Des sacs, des montres, des pièces auto. Une marque veut remonter la filière jusqu'à l'entrepôt.",
+    "honoraires": [
+      8000,
+      25000
+    ],
+    "difficulte": [
+      55,
+      110
+    ],
+    "duree": 3,
+    "reputationMin": 25,
+    "danger": 0.14,
+    "methodes": {
+      "filature": 1.3,
+      "planque": 1.3,
+      "terrain": 1.0,
+      "recherches": 1.0,
+      "infiltration": 1.5,
+      "limite": 1.2
+    },
+    "clients": [
+      "Une maison de maroquinerie de luxe",
+      "Un fabricant de pièces de freinage",
+      "Une marque de baskets très suivie",
+      "Un horloger jurassien"
+    ],
+    "cibles": [
+      "un grossiste de la zone industrielle",
+      "un vendeur de marché très bien approvisionné",
+      "une boutique en ligne aux avis trop parfaits",
+      "un transporteur aux camions toujours vides au retour"
+    ],
+    "indices": [
+      "Un lot de sacs avec la même erreur de couture sur la doublure.",
+      "Un conteneur déclaré « jouets » pèse le poids d'une tonne de cuir.",
+      "Un intermédiaire qui ne parle que par messages vocaux de quatre secondes.",
+      "Une adresse de livraison qui est un pressing fermé depuis 2019.",
+      "Des plaquettes de frein en carton compressé. Celles-là, il faut les arrêter vite."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as remonté la filière jusqu'à l'entrepôt de {cible}. Dedans : des sacs, mais aussi des pièces de frein contrefaites qui équipent déjà des voitures en circulation.",
+        "choices": [
+          {
+            "label": "Tout signaler aux douanes",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Saisie record, rappel de pièces en urgence, et ton nom dans le communiqué des douanes.",
+                "effects": {
+                  "karma": 12
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 14,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Ne livrer que les sacs au client",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "La marque est contente, la saisie partielle. Les freins, eux, continuent de rouler.",
+                "effects": {
+                  "karma": -15
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 4
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "Un accident, quelques mois plus tard. L'enquête remonte jusqu'à ton rapport incomplet.",
+                "effects": {
+                  "karma": -20,
+                  "happiness": -12
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": -20
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Un des gros bras du réseau te coince à la sortie de l'entrepôt. Il sait qui tu es, où est ton agence, et il propose « un arrangement ».",
+        "choices": [
+          {
+            "label": "Faire semblant d'accepter",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Tu gagnes du temps, tu préviens la police le soir même. Coup de filet. Mais ils connaissent ton adresse.",
+                "effects": {
+                  "karma": 5,
+                  "happiness": -5
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 10,
+                  "signal": "agence_menace"
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Il comprend ton double jeu. Tu sors de là avec deux côtes cassées et le dossier quand même.",
+                "effects": {
+                  "health": -25
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8,
+                  "signal": "agence_blessure"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Accepter vraiment",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Ton rapport est vide, ta poche pleine. Désormais, ils savent que tu es achetable.",
+                "effects": {
+                  "karma": -25
+                },
+                "agence": {
+                  "paiement": 0.5,
+                  "bonus": 15000,
+                  "signal": "agence_menace"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cold_case",
+    "nom": "Affaire classée",
+    "icone": "archivebox.fill",
+    "description": "Un meurtre ou une disparition vieille de vingt ans. La police a rangé le carton. La famille t'apporte le carton.",
+    "honoraires": [
+      15000,
+      60000
+    ],
+    "difficulte": [
+      100,
+      160
+    ],
+    "duree": 4,
+    "reputationMin": 50,
+    "danger": 0.12,
+    "methodes": {
+      "filature": 0.7,
+      "planque": 0.6,
+      "terrain": 1.5,
+      "recherches": 1.6,
+      "infiltration": 1.0,
+      "limite": 1.2
+    },
+    "clients": [
+      "Une sœur qui n'a jamais cru à la version officielle",
+      "Un fils devenu avocat",
+      "Une association de familles de victimes",
+      "Un ancien gendarme rongé par le dossier",
+      "Une romancière qui veut la vérité avant le livre"
+    ],
+    "cibles": [
+      "la disparition d'une jeune serveuse en 2003",
+      "la mort d'un notaire « tombé » d'une falaise",
+      "l'incendie d'une ferme et de ses occupants",
+      "le meurtre jamais élucidé d'un chauffeur de taxi",
+      "l'accident de chasse d'un maire"
+    ],
+    "indices": [
+      "Un témoin jamais entendu parce que son nom était mal orthographié dans le procès-verbal.",
+      "Un scellé égaré dans une cave de commissariat, encore intact.",
+      "Une lettre anonyme reçue à l'époque, jamais exploitée.",
+      "Un suspect de 2003 qui vit aujourd'hui à trois kilomètres, sous un autre nom.",
+      "Une photo de mariage où apparaît quelqu'un qui ne devait pas être là.",
+      "Un ancien enquêteur à la retraite qui ferme la porte, puis la rouvre."
+    ],
+    "denouements": [
+      {
+        "text": "Vingt ans après, tu tiens le nom : un notable respecté, aujourd'hui malade et mourant. Les preuves suffisent à rouvrir l'enquête, pas à l'envoyer en prison à temps.",
+        "choices": [
+          {
+            "label": "Remettre tout au parquet",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "Le dossier est rouvert. Le notable meurt avant le procès, mais la vérité est officielle. La famille dort, enfin.",
+                "effects": {
+                  "karma": 12
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 20,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "Le parquet refuse de rouvrir, prescription. Mais la presse s'empare de ton rapport.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 12,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Aller voir le notable",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Dans une chambre qui sent l'éther, il avoue tout, d'une voix éteinte. Tu enregistres. La famille a ce qu'elle cherchait depuis vingt ans.",
+                "effects": {
+                  "karma": 8,
+                  "happiness": -5
+                },
+                "agence": {
+                  "paiement": 1.2,
+                  "reputation": 15,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Accepter l'offre de ses enfants",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Ses enfants te proposent une fortune pour garder le silence. Tu dis à la famille que la piste est morte.",
+                "effects": {
+                  "karma": -30,
+                  "happiness": -10
+                },
+                "agence": {
+                  "paiement": 0.3,
+                  "bonus": 40000
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "La vérité est plus simple et plus cruelle : la victime n'a pas été tuée. Elle s'est enfuie et vit encore, sous un autre nom. Elle t'écrit : « Laissez-moi morte. »",
+        "choices": [
+          {
+            "label": "Dire la vérité à la famille",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Un choc, puis un appel. Puis une rencontre, peut-être. Ce n'est plus ton histoire.",
+                "effects": {
+                  "karma": 4
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 12,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Respecter son choix",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu rends un rapport sans conclusion. Tu gardes la lettre dans ton coffre, pour toujours.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 0.6,
+                  "reputation": -3
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "protection_temoin",
+    "nom": "Protection d'un témoin",
+    "icone": "shield.lefthalf.filled",
+    "description": "Quelqu'un doit témoigner dans un procès et ne veut pas arriver au tribunal en morceaux. Pas d'enquête : de la vigilance.",
+    "honoraires": [
+      6000,
+      20000
+    ],
+    "difficulte": [
+      40,
+      80
+    ],
+    "duree": 2,
+    "reputationMin": 30,
+    "danger": 0.22,
+    "methodes": {
+      "filature": 1.0,
+      "planque": 1.4,
+      "terrain": 1.2,
+      "recherches": 1.0,
+      "infiltration": 0.8,
+      "limite": 1.0
+    },
+    "clients": [
+      "Une comptable qui a vu les mauvais chiffres",
+      "Un chauffeur-livreur témoin d'un règlement de comptes",
+      "Une avocate qui protège son client",
+      "Un ancien associé repenti"
+    ],
+    "cibles": [
+      "un témoin qui a peur de son ombre",
+      "une ancienne employée d'une société écran",
+      "un mécanicien qui en sait trop",
+      "une gardienne d'immeuble courageuse"
+    ],
+    "indices": [
+      "La même moto passe trois fois dans la rue en dix minutes.",
+      "Un livreur de pizzas que personne n'a commandé.",
+      "Une nouvelle voisine qui s'installe, sans meubles.",
+      "Un appel à l'hôtel : « Je voudrais parler à mon cousin, chambre 12 ». Il n'y a pas de cousin.",
+      "Tu changes d'itinéraire trois fois. La voiture derrière aussi."
+    ],
+    "denouements": [
+      {
+        "text": "La veille du procès, un inconnu t'aborde : le témoin doit « tomber malade » demain, et tu recevras 30 000 €. Personne n'a besoin d'être blessé.",
+        "choices": [
+          {
+            "label": "Refuser et prévenir la police",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu signales l'approche. Le témoin dépose sous protection. Le verdict tombe, lourd. On te remercie, et on te conseille de regarder derrière toi.",
+                "effects": {
+                  "karma": 12
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 15,
+                  "signal": "agence_menace"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Accepter l'argent",
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "Le témoin « tombe malade ». Le procès est reporté. Tu as trente mille euros et plus de sommeil.",
+                "effects": {
+                  "karma": -35
+                },
+                "agence": {
+                  "paiement": 0,
+                  "bonus": 30000
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "La police surveillait l'émissaire. Tu es pris{e} l'enveloppe à la main.",
+                "effects": {
+                  "karma": -30
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": -40,
+                  "plainte": true,
+                  "prisonMois": 24,
+                  "infraction": "subornation de témoin",
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Changer de planque cette nuit",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "Déménagement à 3 h du matin, deux voitures, un hôtel sans nom. Le témoin arrive au tribunal à l'heure, pâle mais entier.",
+                "effects": {
+                  "karma": 8,
+                  "health": -3
+                },
+                "agence": {
+                  "paiement": 1.2,
+                  "reputation": 12
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "Ils vous retrouvent sur le parking. Tu prends le coup à la place du témoin.",
+                "effects": {
+                  "karma": 10,
+                  "health": -30
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 15,
+                  "signal": "agence_blessure"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arnaque_sentimentale",
+    "nom": "Arnaque sentimentale",
+    "icone": "heart.text.square.fill",
+    "description": "Un amour rencontré en ligne, jamais vu en vrai, qui a toujours un problème d'argent urgent.",
+    "honoraires": [
+      1500,
+      5000
+    ],
+    "difficulte": [
+      25,
+      50
+    ],
+    "duree": 2,
+    "reputationMin": 0,
+    "danger": 0.02,
+    "methodes": {
+      "filature": 0.6,
+      "planque": 0.5,
+      "terrain": 0.9,
+      "recherches": 1.6,
+      "infiltration": 1.3,
+      "limite": 1.3
+    },
+    "clients": [
+      "Une veuve qui a déjà envoyé 40 000 €",
+      "Un fils inquiet pour son père",
+      "Un retraité qui ne veut pas y croire",
+      "Une sœur qui a vu les virements"
+    ],
+    "cibles": [
+      "un « chirurgien en mission humanitaire »",
+      "une « militaire en poste à l'étranger »",
+      "un « architecte bloqué à la douane »",
+      "une « héritière dont les comptes sont gelés »"
+    ],
+    "indices": [
+      "La photo de profil appartient à un moniteur de ski autrichien, très surpris.",
+      "Les messages arrivent toujours à 3 h du matin, heure de {ville}.",
+      "Un virement vers un compte ouvert il y a dix jours, déjà fermé.",
+      "Le même poème d'amour, mot pour mot, sur quatre forums différents.",
+      "Une adresse IP qui ne correspond pas du tout à « la mission humanitaire »."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as les preuves : {cible} n'existe pas. Derrière, un réseau organisé. Mais la victime refuse de te croire et s'apprête à envoyer ses dernières économies.",
+        "choices": [
+          {
+            "label": "Lui montrer les preuves",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "La victime regarde longtemps la photo du moniteur de ski. Puis les larmes. Puis un merci, à peine audible.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 5
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "« Vous êtes jaloux de notre amour. » Le virement part le lendemain. Le client qui t'a mandaté paie, accablé.",
+                "effects": {
+                  "karma": 4,
+                  "happiness": -5
+                },
+                "agence": {
+                  "paiement": 1
+                }
+              }
+            ]
+          },
+          {
+            "label": "Piéger l'escroc en ligne",
+            "requiresSkill": {
+              "code": 2
+            },
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "Tu te fais passer pour une nouvelle victime et obtiens un rendez-vous de « remise d'argent ». La police attend au bon endroit.",
+                "effects": {
+                  "karma": 10,
+                  "skills": {
+                    "code": 2
+                  }
+                },
+                "agence": {
+                  "paiement": 1.2,
+                  "reputation": 12
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "L'escroc sent le coup, disparaît et rouvre un profil le lendemain. Tu n'as rien perdu, à part ton temps.",
+                "agence": {
+                  "paiement": 0.8
+                }
+              }
+            ]
+          },
+          {
+            "label": "Bloquer les virements avec la famille",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "La famille et la banque gèlent les comptes. La victime est furieuse, mais ses économies sont sauves.",
+                "effects": {
+                  "karma": 5
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chantage",
+    "nom": "Victime de chantage",
+    "icone": "lock.fill",
+    "description": "Quelqu'un paie depuis des mois pour qu'une vieille histoire reste enterrée. Il veut savoir qui fait chanter, et comment l'arrêter.",
+    "honoraires": [
+      5000,
+      18000
+    ],
+    "difficulte": [
+      45,
+      90
+    ],
+    "duree": 3,
+    "reputationMin": 25,
+    "danger": 0.1,
+    "methodes": {
+      "filature": 1.2,
+      "planque": 1.2,
+      "terrain": 0.9,
+      "recherches": 1.3,
+      "infiltration": 1.1,
+      "limite": 1.4
+    },
+    "clients": [
+      "Un chirurgien réputé",
+      "Une candidate aux municipales",
+      "Un patron de chaîne de restaurants",
+      "Une ancienne championne reconvertie",
+      "Un notaire de {ville}"
+    ],
+    "cibles": [
+      "un maître-chanteur qui signe « un ami »",
+      "une ancienne secrétaire",
+      "un ex-associé ruiné",
+      "un photographe sans scrupules"
+    ],
+    "indices": [
+      "Les lettres sont imprimées sur une imprimante dont la cartouche jaune fuit.",
+      "Les dépôts d'argent se font toujours dans une consigne de gare.",
+      "Le maître-chanteur connaît un détail que seules trois personnes savaient.",
+      "Une boîte postale ouverte avec une fausse pièce d'identité, mais une vraie empreinte de pouce sur le formulaire.",
+      "Le dernier message est arrivé pendant que {cible} était, en théorie, à l'hôpital."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as identifié {cible}. Mais en lisant les pièces, tu comprends ce que ton client cache : une faute grave, jamais jugée, qui a ruiné quelqu'un.",
+        "choices": [
+          {
+            "label": "Livrer le maître-chanteur",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Le chantage s'arrête, ton client respire. La vieille histoire reste enterrée, avec ton aide.",
+                "effects": {
+                  "karma": -6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Pousser ton client à avouer",
+            "requiresSkill": {
+              "eloquence": 2
+            },
+            "outcomes": [
+              {
+                "chance": 0.4,
+                "text": "Après une nuit blanche, ton client se rend en personne chez le procureur. Tu ne le reverras plus. Tu le respectes.",
+                "effects": {
+                  "karma": 12
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8
+                }
+              },
+              {
+                "chance": 0.6,
+                "text": "Ton client te traite de donneur de leçons et refuse de payer le solde.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": -2
+                }
+              }
+            ]
+          },
+          {
+            "label": "Reprendre le chantage à ton compte",
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "Tu deviens la menace. Ça rapporte. Tu ne te regardes plus dans les vitrines.",
+                "effects": {
+                  "karma": -35
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 20000
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "Ton client fait appel à un autre détective. Plus doué que toi.",
+                "effects": {
+                  "karma": -30
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": -35,
+                  "plainte": true,
+                  "prisonMois": 18,
+                  "infraction": "chantage",
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Le maître-chanteur, c'est l'enfant que ton client n'a jamais reconnu. Il ne veut pas l'argent : il veut un nom.",
+        "choices": [
+          {
+            "label": "Organiser une rencontre",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Une table, deux chaises, des silences. Le chantage s'arrête. Peut-être que quelque chose commence.",
+                "effects": {
+                  "karma": 12,
+                  "happiness": 4
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "La rencontre tourne mal, mais le chantage cesse quand même. Ton client paie, sonné.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1
+                }
+              }
+            ]
+          },
+          {
+            "label": "Donner juste l'identité",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu remets un nom et une adresse. La suite ne te regarde pas, et c'est très bien comme ça.",
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "faux_art",
+    "nom": "Faux tableaux",
+    "icone": "paintpalette.fill",
+    "description": "Une toile vendue une fortune, un doute d'expert, une galerie qui transpire. Le milieu de l'art, ses dorures et ses caves.",
+    "honoraires": [
+      10000,
+      35000
+    ],
+    "difficulte": [
+      60,
+      120
+    ],
+    "duree": 3,
+    "reputationMin": 40,
+    "danger": 0.05,
+    "methodes": {
+      "filature": 1.0,
+      "planque": 0.9,
+      "terrain": 1.2,
+      "recherches": 1.5,
+      "infiltration": 1.4,
+      "limite": 1.1
+    },
+    "clients": [
+      "Un collectionneur qui a acheté trop cher",
+      "Une maison de ventes inquiète",
+      "Une petite-fille de peintre",
+      "Un musée de province embarrassé"
+    ],
+    "cibles": [
+      "une galerie très chic du centre",
+      "un expert aux certificats faciles",
+      "un marchand qui ne vend que des « découvertes »",
+      "un atelier de restauration discret"
+    ],
+    "indices": [
+      "Un pigment de blanc de titane, inventé trente ans après la mort du peintre.",
+      "Une étiquette de collection au dos, imprimée avec une police de traitement de texte récent.",
+      "Le même « tableau inédit » proposé à deux acheteurs à une semaine d'intervalle.",
+      "Un faussaire de génie, sorti de prison l'an dernier, qui vit étrangement bien.",
+      "Une poussière d'atelier qui n'a jamais connu le XIXe siècle."
+    ],
+    "denouements": [
+      {
+        "text": "Le faussaire est un vieil artiste génial et fauché. Il te montre ses toiles : elles sont plus belles que les vraies. {client} attend ton rapport.",
+        "choices": [
+          {
+            "label": "Le dénoncer",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Procès, saisie, scandale dans les salles de ventes. Ton nom apparaît dans la presse spécialisée.",
+                "effects": {
+                  "karma": 2
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 12,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Viser seulement la galerie",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "Tu remontes jusqu'au marchand qui revendait les faux comme vrais. Lui tombe. Le vieil artiste, lui, peint enfin sous son nom.",
+                "effects": {
+                  "karma": 10
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 10
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "Sans le faussaire, le dossier est trop mince. Le marchand s'en sort.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 0.7,
+                  "reputation": 2
+                }
+              }
+            ]
+          },
+          {
+            "label": "Acheter une de ses toiles",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu repars avec un faux magnifique pour ton bureau. Ton rapport, lui, reste vague. Personne n'a jamais vu une toile aussi bien accrochée.",
+                "effects": {
+                  "karma": -5,
+                  "happiness": 8,
+                  "money": -3000
+                },
+                "agence": {
+                  "paiement": 0.6
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "paris_truques",
+    "nom": "Matchs truqués",
+    "icone": "sportscourt.fill",
+    "description": "Une fédération reçoit un tuyau : un club de deuxième division perd un peu trop bien. Ou un athlète gagne un peu trop facilement.",
+    "honoraires": [
+      10000,
+      30000
+    ],
+    "difficulte": [
+      55,
+      110
+    ],
+    "duree": 3,
+    "reputationMin": 35,
+    "danger": 0.12,
+    "methodes": {
+      "filature": 1.3,
+      "planque": 1.0,
+      "terrain": 1.2,
+      "recherches": 1.3,
+      "infiltration": 1.5,
+      "limite": 1.3
+    },
+    "clients": [
+      "Une fédération sportive nationale",
+      "Un président de club soupçonneux",
+      "Un opérateur de paris en ligne",
+      "Un sponsor qui ne veut pas d'éclaboussures"
+    ],
+    "cibles": [
+      "un gardien de but aux erreurs spectaculaires",
+      "une cycliste aux progrès fulgurants",
+      "un arbitre très bien habillé",
+      "un entraîneur adjoint au téléphone toujours chaud"
+    ],
+    "indices": [
+      "Des mises énormes sur un score exact improbable, placées depuis le même quartier.",
+      "Un rendez-vous dans un parking après l'entraînement, avec un homme qui ne regarde jamais le terrain.",
+      "Une glacière de « vitamines » qui voyage avec l'équipe, mais jamais avec le médecin.",
+      "Une montre de luxe sur le poignet d'un joueur payé au SMIC.",
+      "Trois cartons jaunes dans les dix premières minutes. Les parieurs adorent."
+    ],
+    "denouements": [
+      {
+        "text": "Le système est prouvé, et il passe par {cible}. Mais la personne que tu tiens est elle-même menacée par ceux qui la paient. Elle te le dit en tremblant.",
+        "choices": [
+          {
+            "label": "Tout remettre à la fédération",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Enquête officielle, suspensions, gros titres. Tu as fait le ménage dans un sport qui en avait besoin.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 15,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Obtenir un témoignage",
+            "requiresSkill": {
+              "eloquence": 2
+            },
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Ton témoin accepte de parler, sous protection. Le réseau tombe en entier, pas seulement le pion.",
+                "effects": {
+                  "karma": 12
+                },
+                "agence": {
+                  "paiement": 1.3,
+                  "reputation": 18,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Le réseau apprend que quelqu'un parle. Toi aussi, tu reçois un message très clair.",
+                "effects": {
+                  "karma": 8,
+                  "happiness": -8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8,
+                  "signal": "agence_menace"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Parier toi-même avant de remettre",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Un dernier match truqué, une mise discrète. Tu remets ton rapport le lundi, plus riche.",
+                "effects": {
+                  "karma": -20
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 12000
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "L'opérateur de paris repère ta mise. Le détective du dossier qui parie sur le dossier : la fédération ne rit pas.",
+                "effects": {
+                  "karma": -15
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": -30,
+                  "plainte": true,
+                  "prisonMois": 0,
+                  "infraction": "délit d'initié sportif",
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "abus_faiblesse",
+    "nom": "Abus de faiblesse",
+    "icone": "person.2.fill",
+    "description": "Une personne âgée change de testament, vend sa maison, s'isole. Sa famille soupçonne l'aide à domicile si dévouée.",
+    "honoraires": [
+      3000,
+      10000
+    ],
+    "difficulte": [
+      35,
+      70
+    ],
+    "duree": 2,
+    "reputationMin": 10,
+    "danger": 0.03,
+    "methodes": {
+      "filature": 1.1,
+      "planque": 1.2,
+      "terrain": 1.4,
+      "recherches": 1.3,
+      "infiltration": 1.1,
+      "limite": 1.2
+    },
+    "clients": [
+      "Un neveu qui ne venait jamais",
+      "Une fille qui vit à l'étranger",
+      "Un voisin de toujours",
+      "Une banque inquiète des retraits"
+    ],
+    "cibles": [
+      "l'aide à domicile de sa tante",
+      "le nouveau « meilleur ami » de son père",
+      "une infirmière libérale omniprésente",
+      "un conseiller financier très attentionné"
+    ],
+    "indices": [
+      "Une procuration bancaire signée d'une écriture tremblante, puis très ferme.",
+      "Le téléphone fixe de la vieille dame a été résilié. « Elle n'en avait plus besoin. »",
+      "Une voiture neuve devant chez {cible}, payée le lendemain d'un gros retrait.",
+      "Les médicaments du soir disparaissent avant d'être pris.",
+      "Une boulangère raconte que le vieil homme ne vient plus seul depuis six mois."
+    ],
+    "denouements": [
+      {
+        "text": "Le dossier contre {cible} est accablant. Mais en parlant avec la personne âgée, tu comprends autre chose : sa famille, elle, ne venait que pour l'héritage. Et c'est {cible} qui lui tient la main, tous les jours.",
+        "choices": [
+          {
+            "label": "Rendre le rapport complet",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "La justice tranchera. La famille récupère la procuration et place la personne âgée en maison de retraite.",
+                "effects": {
+                  "karma": 0
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 5
+                }
+              }
+            ]
+          },
+          {
+            "label": "Signaler à un juge des tutelles",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Un mandataire neutre est nommé. Ni la famille ni l'aidante ne gèrent plus l'argent. Tout le monde t'en veut un peu, ce qui est bon signe.",
+                "effects": {
+                  "karma": 10
+                },
+                "agence": {
+                  "paiement": 0.8,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Enterrer le dossier",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu dis à la famille que tu n'as rien trouvé. Elle te paie mal et va voir un autre détective.",
+                "effects": {
+                  "karma": 2
+                },
+                "agence": {
+                  "paiement": 0.3,
+                  "reputation": -6
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "garde_enfant",
+    "nom": "Litige de garde",
+    "icone": "figure.and.child.holdinghands",
+    "description": "Un parent veut prouver que l'autre n'est pas à la hauteur. Les enfants, eux, voudraient juste qu'on arrête.",
+    "honoraires": [
+      2000,
+      6000
+    ],
+    "difficulte": [
+      25,
+      50
+    ],
+    "duree": 2,
+    "reputationMin": 5,
+    "danger": 0.02,
+    "methodes": {
+      "filature": 1.3,
+      "planque": 1.2,
+      "terrain": 1.2,
+      "recherches": 0.9,
+      "infiltration": 0.7,
+      "limite": 1.1
+    },
+    "clients": [
+      "Un père qui voit ses enfants un week-end sur deux",
+      "Une mère qui ne fait plus confiance",
+      "Une grand-mère inquiète",
+      "Un beau-père qui veut bien faire"
+    ],
+    "cibles": [
+      "son ex-femme, Céline",
+      "son ancien compagnon",
+      "le père des enfants, Rodolphe",
+      "sa belle-fille"
+    ],
+    "indices": [
+      "Les enfants attendent devant l'école vingt minutes, deux mercredis de suite.",
+      "Un tableau de devoirs impeccable sur le frigo, des courses faites, des pyjamas lavés.",
+      "Une soirée bruyante un week-end de garde, jusqu'à 2 h du matin.",
+      "Une nouvelle compagne, qui s'occupe très bien des petits.",
+      "Un rendez-vous chez le pédiatre honoré, à l'heure, avec le carnet."
+    ],
+    "denouements": [
+      {
+        "text": "Ton enquête sur {cible} ne montre rien de grave : un parent ordinaire, fatigué, qui aime ses enfants. Ton client veut un rapport « orienté ».",
+        "choices": [
+          {
+            "label": "Rapport honnête",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Ton client est déçu et paie à contrecœur. Le juge, lui, aura un rapport sincère.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 4
+                }
+              }
+            ]
+          },
+          {
+            "label": "Rapport orienté",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Tu grossis deux retards et une soirée. Le juge accorde la garde à ton client. Quelque part, des enfants changent de maison.",
+                "effects": {
+                  "karma": -18
+                },
+                "agence": {
+                  "paiement": 1.3
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "L'avocat adverse prouve que ton rapport est biaisé. Plainte, et ton nom cité dans le jugement.",
+                "effects": {
+                  "karma": -15
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": -20,
+                  "plainte": true,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Suggérer une médiation",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu glisses la carte d'une médiatrice dans le rapport. Ton client hésite, puis appelle.",
+                "effects": {
+                  "karma": 6,
+                  "skills": {
+                    "eloquence": 1
+                  }
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "La filature de {cible} révèle un vrai danger : des allers-retours au volant après avoir bu, avec les enfants à l'arrière.",
+        "choices": [
+          {
+            "label": "Tout transmettre au juge",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Le juge suspend la garde le temps d'un suivi. Personne n'est heureux, mais personne n'est en danger.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Alerter la police la prochaine fois",
+            "outcomes": [
+              {
+                "chance": 0.7,
+                "text": "Un contrôle routier « par hasard », un soir. Les enfants sont rentrés sains et saufs.",
+                "effects": {
+                  "karma": 10
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8
+                }
+              },
+              {
+                "chance": 0.3,
+                "text": "La police arrive trop tard pour le contrôle. Mais ton rapport fait le reste.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 4
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "animal_disparu",
+    "nom": "Animal de prix disparu",
+    "icone": "pawprint.fill",
+    "description": "Un lévrier primé, un chat aux yeux vairons, un perroquet qui parle trois langues. Le client est riche. Le client est inconsolable.",
+    "honoraires": [
+      800,
+      4000
+    ],
+    "difficulte": [
+      20,
+      40
+    ],
+    "duree": 1,
+    "reputationMin": 0,
+    "danger": 0.01,
+    "methodes": {
+      "filature": 0.9,
+      "planque": 1.1,
+      "terrain": 1.5,
+      "recherches": 1.0,
+      "infiltration": 0.8,
+      "limite": 0.8
+    },
+    "clients": [
+      "Une héritière qui parle à son chat comme à un ministre",
+      "Un ancien ambassadeur",
+      "Une star de la télé locale",
+      "Un éleveur de chiens de concours"
+    ],
+    "cibles": [
+      "son lévrier afghan, Sultan",
+      "son chat sacré de Birmanie, Mozart",
+      "son perroquet gris, Professeur",
+      "sa chienne de concours, Duchesse"
+    ],
+    "indices": [
+      "Des affiches « Perdu » arrachées dans tout le quartier, une par une.",
+      "Une annonce en ligne : « Chien de race, papiers perdus, prix à débattre ».",
+      "Un voisin entend un perroquet jurer en portugais derrière une haie.",
+      "Des poils sur le siège arrière de la voiture du jardinier.",
+      "Une gamelle neuve devant la porte d'une maison sans animal."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as retrouvé {cible}, chez une petite fille du quartier qui l'a recueilli et le soigne comme un trésor. L'animal a l'air plus heureux là qu'au château.",
+        "choices": [
+          {
+            "label": "Rendre l'animal",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Retrouvailles en larmes, chèque généreux. La petite fille te fait un dessin. Tu le gardes.",
+                "effects": {
+                  "karma": 2
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 4
+                }
+              }
+            ]
+          },
+          {
+            "label": "Proposer une garde partagée",
+            "requiresSkill": {
+              "eloquence": 1
+            },
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "Le riche propriétaire, ému, accepte des visites. Une amitié improbable commence.",
+                "effects": {
+                  "karma": 10,
+                  "happiness": 6
+                },
+                "agence": {
+                  "paiement": 1.2,
+                  "reputation": 6
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "« Une garde partagée ? Pour un animal ? » Il reprend son bien et paie avec un soupir.",
+                "effects": {
+                  "karma": 4
+                },
+                "agence": {
+                  "paiement": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Le voleur de {cible} est le propre neveu de ton client, qui réclame une rançon pour payer ses dettes de jeu.",
+        "choices": [
+          {
+            "label": "Tout dire",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Scène de famille, animal rendu, neveu déshérité. Ton client te paie deux fois. Tu n'as rien demandé.",
+                "agence": {
+                  "paiement": 2,
+                  "reputation": 5
+                }
+              }
+            ]
+          },
+          {
+            "label": "Négocier en coulisse",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "L'animal revient « par miracle ». Le neveu te doit une fière chandelle, et ton client ne saura jamais rien.",
+                "effects": {
+                  "karma": 4
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "faux_arret_maladie",
+    "nom": "Faux arrêt maladie",
+    "icone": "bed.double.fill",
+    "description": "Un salarié en arrêt depuis six mois, aperçu en train de repeindre un bateau. L'employeur veut savoir.",
+    "honoraires": [
+      1000,
+      3500
+    ],
+    "difficulte": [
+      20,
+      40
+    ],
+    "duree": 1,
+    "reputationMin": 0,
+    "danger": 0.02,
+    "methodes": {
+      "filature": 1.4,
+      "planque": 1.4,
+      "terrain": 0.9,
+      "recherches": 1.0,
+      "infiltration": 0.7,
+      "limite": 1.1
+    },
+    "clients": [
+      "Une PME de transport",
+      "Un hôpital privé",
+      "Une mairie",
+      "Un patron de boulangerie industrielle"
+    ],
+    "cibles": [
+      "un cariste en arrêt pour lombalgie",
+      "un comptable en dépression",
+      "une commerciale en congé longue durée",
+      "un chauffeur de car"
+    ],
+    "indices": [
+      "Une course à pied de dix kilomètres, dossard 412, chrono honorable.",
+      "Un stand sur une brocante tous les dimanches, déchargé à la force des bras.",
+      "Le volet roulant baissé à 10 h, levé à 18 h. Ponctuel comme un bureau.",
+      "Un deuxième emploi, au noir, dans une entreprise de déménagement.",
+      "Des rendez-vous médicaux réels, réguliers, chez un spécialiste du sommeil."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as les images : {cible} travaille au noir pendant son arrêt. Mais tu as aussi le reste : l'arrêt est justifié par un harcèlement réel au bureau, que ton client ignore ou fait semblant d'ignorer.",
+        "choices": [
+          {
+            "label": "Rapport factuel",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Licenciement pour faute. Ton client est content. Le harcèlement continue avec quelqu'un d'autre.",
+                "effects": {
+                  "karma": -5
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 3
+                }
+              }
+            ]
+          },
+          {
+            "label": "Mentionner le harcèlement",
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "La direction ouvre une enquête interne. Le chef toxique est muté. Ton client te regarde autrement.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "« On ne vous a rien demandé de tel. » Paiement minimal, porte fermée.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 0.5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "{client} veut que tu te fasses passer pour un médecin du travail pour « coincer » {cible} à domicile.",
+        "choices": [
+          {
+            "label": "Refuser",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu fais ton travail de filature, rien de plus. Le rapport est moins spectaculaire, mais propre.",
+                "effects": {
+                  "karma": 4
+                },
+                "agence": {
+                  "paiement": 1
+                }
+              }
+            ]
+          },
+          {
+            "label": "Accepter le déguisement",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "La blouse blanche fonctionne. Le rapport est implacable.",
+                "effects": {
+                  "karma": -8
+                },
+                "agence": {
+                  "paiement": 1.3,
+                  "signal": "agence_methode_limite"
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Le vrai médecin du travail appelle le jour même. Usurpation de fonction, plainte.",
+                "effects": {
+                  "karma": -8
+                },
+                "agence": {
+                  "paiement": 0,
+                  "reputation": -15,
+                  "plainte": true,
+                  "prisonMois": 0,
+                  "infraction": "usurpation de fonction",
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "usurpation_identite",
+    "nom": "Usurpation d'identité",
+    "icone": "creditcard.fill",
+    "description": "Des crédits ouverts à son nom, des amendes pour une voiture qu'il n'a jamais eue. Quelqu'un vit sa vie à sa place.",
+    "honoraires": [
+      2000,
+      8000
+    ],
+    "difficulte": [
+      35,
+      70
+    ],
+    "duree": 2,
+    "reputationMin": 10,
+    "danger": 0.04,
+    "methodes": {
+      "filature": 0.9,
+      "planque": 0.9,
+      "terrain": 1.0,
+      "recherches": 1.6,
+      "infiltration": 1.2,
+      "limite": 1.3
+    },
+    "clients": [
+      "Une institutrice ruinée par des crédits fantômes",
+      "Un jeune infirmier fiché à la banque de France",
+      "Un retraité recherché pour des excès de vitesse",
+      "Une chanteuse dont le double vend des concerts"
+    ],
+    "cibles": [
+      "un double qui a tous ses papiers",
+      "une ancienne colocataire",
+      "un réseau de faux dossiers de crédit",
+      "un employé de banque indélicat"
+    ],
+    "indices": [
+      "Une copie de passeport scannée dans un dossier de location, il y a trois ans.",
+      "Une signature presque parfaite, sauf la boucle du « g ».",
+      "Un colis livré au nom de ton client, à une adresse qu'il n'a jamais habitée.",
+      "Le même numéro de téléphone sur onze demandes de crédit.",
+      "Une photo d'identité retouchée, mais pas les oreilles. On oublie toujours les oreilles."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as remonté jusqu'à {cible}. La personne derrière tout ça est un ancien proche de ton client, en grande détresse, qui jure avoir voulu tout rembourser.",
+        "choices": [
+          {
+            "label": "Porter plainte avec ton client",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Plainte, procès, remboursement partiel. La vie de ton client redémarre.",
+                "effects": {
+                  "karma": 3
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Proposer un accord amiable",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Aveux écrits, échéancier, crédits soldés. Pas de procès, pas de vengeance.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 4
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "L'accord est signé, puis rompu au bout de deux mois. Ton client t'en veut.",
+                "effects": {
+                  "karma": 4
+                },
+                "agence": {
+                  "paiement": 0.7,
+                  "reputation": -3
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "En remontant la filière, tu tombes sur une base de données volée : des milliers d'identités, dont celle de ton client.",
+        "choices": [
+          {
+            "label": "Alerter la police et la CNIL",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Démantèlement, communiqué officiel, et ton agence citée comme « à l'origine de la découverte ».",
+                "effects": {
+                  "karma": 10
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 14,
+                  "celebre": true,
+                  "signal": "agence_affaire_celebre"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Vendre la découverte à un journaliste",
+            "outcomes": [
+              {
+                "chance": 0.6,
+                "text": "Un scoop, un chèque, et la police vexée d'avoir lu ça dans le journal.",
+                "effects": {
+                  "karma": -3
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 5000,
+                  "reputation": 6
+                }
+              },
+              {
+                "chance": 0.4,
+                "text": "Les fraudeurs, prévenus par l'article, effacent tout et disparaissent.",
+                "effects": {
+                  "karma": -8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "bonus": 5000,
+                  "reputation": -10
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "debiteur_introuvable",
+    "nom": "Débiteur introuvable",
+    "icone": "eurosign.circle.fill",
+    "description": "Quelqu'un doit beaucoup d'argent et a déménagé sans laisser d'adresse. Le créancier veut une adresse, juste une adresse.",
+    "honoraires": [
+      800,
+      3000
+    ],
+    "difficulte": [
+      20,
+      40
+    ],
+    "duree": 1,
+    "reputationMin": 0,
+    "danger": 0.04,
+    "methodes": {
+      "filature": 1.1,
+      "planque": 1.0,
+      "terrain": 1.2,
+      "recherches": 1.5,
+      "infiltration": 0.8,
+      "limite": 1.2
+    },
+    "clients": [
+      "Un artisan jamais payé pour une cuisine",
+      "Une société de location de matériel",
+      "Un propriétaire aux loyers impayés",
+      "Une ancienne associée"
+    ],
+    "cibles": [
+      "un client parti avec la cuisine",
+      "un locataire évaporé",
+      "un entrepreneur en faillite opportune",
+      "un ancien associé devenu fantôme"
+    ],
+    "indices": [
+      "Un nouvel abonnement à une salle de sport, à trois départements de là.",
+      "Le chien du débiteur est toujours inscrit chez le même vétérinaire.",
+      "Une carte de fidélité utilisée à {ville} la semaine dernière.",
+      "Une boîte aux lettres avec deux noms, dont un écrit au crayon.",
+      "Un profil de vente en ligne : « Cuisine équipée, très bon état »."
+    ],
+    "denouements": []
+  },
+  {
+    "id": "lettres_anonymes",
+    "nom": "Lettres anonymes",
+    "icone": "envelope.fill",
+    "description": "Un village, des lettres sans signature, des secrets de famille glissés sous les portes. Tout le monde soupçonne tout le monde.",
+    "honoraires": [
+      1500,
+      5000
+    ],
+    "difficulte": [
+      30,
+      60
+    ],
+    "duree": 2,
+    "reputationMin": 5,
+    "danger": 0.02,
+    "methodes": {
+      "filature": 1.0,
+      "planque": 1.2,
+      "terrain": 1.5,
+      "recherches": 1.2,
+      "infiltration": 1.2,
+      "limite": 1.0
+    },
+    "clients": [
+      "Le maire d'un village de quatre cents âmes",
+      "Une famille qui ne se parle plus",
+      "Le curé, désemparé",
+      "La directrice de l'école communale"
+    ],
+    "cibles": [
+      "un corbeau qui sait tout sur tout le monde",
+      "une voisine trop discrète",
+      "le postier, qui voit tout passer",
+      "un ancien instituteur"
+    ],
+    "indices": [
+      "Les lettres sont découpées dans un hebdomadaire local, édition du jeudi.",
+      "Une odeur de lavande sur le papier. Il y a trois maisons qui sentent la lavande.",
+      "Le corbeau sait ce qui s'est dit au conseil municipal à huis clos.",
+      "Un tampon postal d'une commune voisine, toujours le mardi.",
+      "Une vieille machine à écrire, vendue à la brocante il y a deux ans. L'acheteur paie toujours en pièces."
+    ],
+    "denouements": [
+      {
+        "text": "Le corbeau, c'est {cible}. Tout ce que disent les lettres est vrai, et certaines révélations ont empêché des injustices.",
+        "choices": [
+          {
+            "label": "Révéler son identité",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Assemblée houleuse à la salle des fêtes. Les lettres cessent. Le village ne sera plus jamais pareil.",
+                "effects": {
+                  "karma": 2
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 6
+                }
+              }
+            ]
+          },
+          {
+            "label": "Lui parler en secret",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu promets le silence contre la fin des lettres. Le village respire sans savoir. Ton rapport dit « auteur probablement parti ».",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 0.7,
+                  "reputation": 2
+                }
+              }
+            ]
+          },
+          {
+            "label": "Publier les lettres toi-même",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu fais pire que le corbeau. Le village te déteste, la presse t'adore une semaine.",
+                "effects": {
+                  "karma": -12
+                },
+                "agence": {
+                  "paiement": 0.5,
+                  "reputation": -5,
+                  "bonus": 3000
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "origines",
+    "nom": "Recherche d'origines",
+    "icone": "figure.2.and.child.holdinghands",
+    "description": "Un adulte né sous X, ou adopté, veut connaître son histoire avant qu'il ne soit trop tard.",
+    "honoraires": [
+      1500,
+      6000
+    ],
+    "difficulte": [
+      30,
+      70
+    ],
+    "duree": 2,
+    "reputationMin": 0,
+    "danger": 0.0,
+    "methodes": {
+      "filature": 0.6,
+      "planque": 0.5,
+      "terrain": 1.3,
+      "recherches": 1.6,
+      "infiltration": 0.8,
+      "limite": 1.1
+    },
+    "clients": [
+      "Une femme de cinquante ans adoptée à la naissance",
+      "Un homme qui a fait un test ADN par curiosité",
+      "Une jeune mère qui veut des antécédents médicaux",
+      "Un retraité qui a trouvé une lettre dans les affaires de sa mère"
+    ],
+    "cibles": [
+      "sa mère biologique",
+      "son père biologique, connu seulement par un prénom",
+      "une sœur dont personne ne parlait",
+      "un frère aîné placé dans une autre famille"
+    ],
+    "indices": [
+      "Un registre de maternité où une ligne est surlignée au crayon rouge.",
+      "Une lettre de l'époque : « Je reviendrai te chercher. » Jamais envoyée.",
+      "Une cousine éloignée sur un site de généalogie, qui répond en trois minutes.",
+      "Une photo de classe de 1970, avec le même menton que ton client.",
+      "Un dossier d'aide sociale, caviardé aux trois quarts."
+    ],
+    "denouements": [
+      {
+        "text": "Tu as retrouvé {cible}. Une vie, une famille, des enfants qui ne savent rien. La personne refuse le contact, poliment, fermement.",
+        "choices": [
+          {
+            "label": "Transmettre le refus",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Tu annonces la nouvelle avec douceur. Ton client pleure, puis te remercie de lui avoir au moins donné un visage.",
+                "effects": {
+                  "karma": 6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 4
+                }
+              }
+            ]
+          },
+          {
+            "label": "Donner l'adresse quand même",
+            "outcomes": [
+              {
+                "chance": 0.5,
+                "text": "Ton client se présente à la porte. La porte s'ouvre. Contre toute attente, il y a du café.",
+                "effects": {
+                  "karma": -4,
+                  "happiness": 4
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 2
+                }
+              },
+              {
+                "chance": 0.5,
+                "text": "La porte claque. La famille te menace d'une plainte pour atteinte à la vie privée.",
+                "effects": {
+                  "karma": -6
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": -6,
+                  "plainte": true,
+                  "signal": "agence_plainte"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Proposer une lettre",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Une lettre de ton client, que tu remets en main propre. Pas de réponse pour l'instant. Pas de porte fermée non plus.",
+                "effects": {
+                  "karma": 8
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "{client} pleure dans ton bureau : {cible} est en vie, à vingt minutes d'ici, et cherche de son côté depuis des années. Les deux recherches se croisaient sans se voir.",
+        "choices": [
+          {
+            "label": "Organiser les retrouvailles",
+            "outcomes": [
+              {
+                "chance": 1,
+                "text": "Un parc, un banc, deux personnes qui se ressemblent et n'osent pas se toucher. Puis si. Tu fais semblant d'avoir une poussière dans l'œil.",
+                "effects": {
+                  "karma": 10,
+                  "happiness": 10
+                },
+                "agence": {
+                  "paiement": 1,
+                  "reputation": 8
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
