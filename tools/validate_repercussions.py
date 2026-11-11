@@ -88,12 +88,25 @@ RE_FLAG = re.compile(r"^[a-z0-9_]+$")
 RE_ID = re.compile(r"^rep_[a-z0-9_]+_\d{4}$")
 
 
+def etapes_scene(choix):
+    """Étapes « then » d'une scène, à toutes les profondeurs."""
+    for c in choix:
+        for o in c.get("outcomes") or []:
+            t = o.get("then")
+            if isinstance(t, dict):
+                yield t
+                yield from etapes_scene(t.get("choices") or [])
+
+
 def charger_evenements():
     evts = {}
     for f in glob.glob(os.path.join(EVENTS, "*.json")):
         try:
             for e in json.load(open(f, encoding="utf-8")):
                 evts[e.get("id")] = e
+                for etape in etapes_scene(e.get("choices") or []):   # scènes (docs/SCENES.md)
+                    if etape.get("id"):
+                        evts[etape["id"]] = etape
         except Exception:
             pass
     return evts
@@ -268,6 +281,18 @@ def main(fichiers):
                 verifier_texte(o.get("text", ""), ou, erreurs)
                 if "effects" in o:
                     verifier_effets(o["effects"], f"{ou} choix {ci} issue {oi}", erreurs, ids)
+        for etape in etapes_scene(r.get("choices") or []):
+            if not etape.get("text") or not etape.get("choices"):
+                erreurs.append(f"{ou} : étape de scène sans text ou sans choices")
+            verifier_texte(etape.get("text", ""), ou, erreurs)
+            for c in etape.get("choices") or []:
+                verifier_texte(c.get("label", ""), ou, erreurs)
+                if not c.get("outcomes"):
+                    erreurs.append(f"{ou} : choix d'étape sans outcomes")
+                for o in c.get("outcomes") or []:
+                    verifier_texte(o.get("text", ""), ou, erreurs)
+                    if "effects" in o:
+                        verifier_effets(o["effects"], f"{ou} étape", erreurs, ids)
         if r.get("choices") and r.get("effects"):
             erreurs.append(f"{ou} : effects à la racine ET choices (mettre les effets dans les issues)")
 

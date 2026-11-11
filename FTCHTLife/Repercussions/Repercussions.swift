@@ -87,6 +87,8 @@ struct RepercussionProgrammee: Codable, Equatable {
     var age: Int
     /// Dernier âge où elle peut encore arriver (échéance + patience).
     var ageMax: Int
+    /// Ce qui a causé la suite (choix ou signal), pour le rappel « Parce que… » (Engine/Souvenirs.swift).
+    var souvenir: Souvenir? = nil
 }
 
 /// État des répercussions d'une vie, à stocker dans `Joueur` (champ optionnel).
@@ -98,6 +100,8 @@ struct RepercussionsEtat: Codable, Equatable {
     var programmees: [RepercussionProgrammee] = []
     /// Ids des suites uniques déjà arrivées ou programmées.
     var uniquesVues: [String] = []
+    /// Origine des drapeaux (choix ou signal qui les a posés), pour le rappel « Parce que… ».
+    var origines: [String: Souvenir]?
 
     init() {}
 
@@ -114,6 +118,10 @@ enum Repercussions {
 
     static func regle(_ id: String) -> Repercussion? { parId[id] }
 
+    /// Souvenir du choix en cours de résolution (posé par le moteur dans `choisir`, puis remis à nil).
+    /// Les suites programmées et les drapeaux posés pendant ce temps s'en souviennent.
+    static var souvenirCourant: Souvenir?
+
     /// Années pendant lesquelles une suite bloquée (conditions non remplies, joueur en prison…) attend avant d'être oubliée.
     static let patienceParDefaut = 2
 
@@ -125,11 +133,12 @@ enum Repercussions {
     /// Pose les drapeaux immédiats et programme les suites. Ne touche pas aux stats.
     static func signaler(_ signal: String, choix: Int? = nil, issue: Int? = nil,
                          age: Int, etat: inout RepercussionsEtat) {
-        signaler(signal, choix: choix, issue: issue, age: age, etat: &etat, profondeur: 0)
+        signaler(signal, choix: choix, issue: issue, age: age, etat: &etat, profondeur: 0,
+                 souvenir: souvenirCourant ?? Souvenir.pourSignal(signal, age: age))
     }
 
     private static func signaler(_ signal: String, choix: Int?, issue: Int?,
-                                 age: Int, etat: inout RepercussionsEtat, profondeur: Int) {
+                                 age: Int, etat: inout RepercussionsEtat, profondeur: Int, souvenir: Souvenir?) {
         etat.compteurs[signal, default: 0] += 1
         if let c = choix { etat.compteurs["\(signal)/\(c)", default: 0] += 1 }
 
@@ -139,17 +148,21 @@ enum Repercussions {
             if let req = r.requires, !drapeauxOK(req, etat, age: age) { continue }
             if r.unique == true && etat.uniquesVues.contains(r.id) { continue }
 
-            for f in r.forget ?? [] { etat.flags[f] = nil }
-            for f in r.remember ?? [] where etat.flags[f] == nil { etat.flags[f] = age }
+            for f in r.forget ?? [] { etat.flags[f] = nil; etat.origines?[f] = nil }
+            for f in r.remember ?? [] where etat.flags[f] == nil {
+                etat.flags[f] = age
+                noterOrigine(f, souvenir, &etat)
+            }
             if profondeur < 4 {
                 for autre in r.emit ?? [] where autre != signal {
-                    signaler(autre, choix: nil, issue: nil, age: age, etat: &etat, profondeur: profondeur + 1)
+                    signaler(autre, choix: nil, issue: nil, age: age, etat: &etat, profondeur: profondeur + 1,
+                             souvenir: souvenir ?? Souvenir.pourSignal(autre, age: age))
                 }
             }
 
             guard r.text != nil || r.setFlags != nil || r.clearFlags != nil else { continue }  // règle de marquage / traduction seule
             guard Double.random(in: 0..<1) < (r.chance ?? 1) else { continue }
-            programmer(r, age: age, etat: &etat)
+            programmer(r, age: age, etat: &etat, souvenir: souvenir)
         }
     }
 
@@ -157,10 +170,10 @@ enum Repercussions {
     static func programmer(id: String, age: Int, etat: inout RepercussionsEtat) {
         guard let r = parId[id] else { return }
         if r.unique == true && etat.uniquesVues.contains(r.id) { return }
-        programmer(r, age: age, etat: &etat)
+        programmer(r, age: age, etat: &etat, souvenir: souvenirCourant)
     }
 
-    private static func programmer(_ r: Repercussion, age: Int, etat: inout RepercussionsEtat) {
+    private static func programmer(_ r: Repercussion, age: Int, etat: inout RepercussionsEtat, souvenir: Souvenir?) {
         let d = r.delay ?? [1, 1]
         let mini = max(0, d.first ?? 1)
         let maxi = max(mini, d.count > 1 ? d[1] : mini)
@@ -168,7 +181,7 @@ enum Repercussions {
         // Les échéances ne sont vérifiées qu'au passage d'année : une suite à délai 0 signalée en cours d'année
         // doit encore être valable au prochain passage (âge + 1), sinon elle serait oubliée.
         let dernier = max(echeance, age + 1) + max(0, r.patience ?? patienceParDefaut)
-        etat.programmees.append(RepercussionProgrammee(id: r.id, age: echeance, ageMax: dernier))
+        etat.programmees.append(RepercussionProgrammee(id: r.id, age: echeance, ageMax: dernier, souvenir: souvenir))
         if r.unique == true { etat.uniquesVues.append(r.id) }
     }
 
@@ -188,14 +201,18 @@ enum Repercussions {
             guard let r = parId[p.id] else { continue }          // règle supprimée : on oublie
             if p.age > age { restantes.append(p); continue }     // pas encore
             if p.ageMax < age { continue }                       // trop tard : on oublie
-            let e = evenement(r)
+            var e = evenement(r)
+            e.rappel = p.souvenir
             let ok = (r.conditions.map { drapeauxOK($0, etat, age: age) } ?? true) && conditionsOK(e)
             if !ok {
                 if age < p.ageMax { restantes.append(p) }        // on retentera l'an prochain
                 continue
             }
-            for f in r.clearFlags ?? [] { etat.flags[f] = nil }
-            for f in r.setFlags ?? [] where etat.flags[f] == nil { etat.flags[f] = age }
+            for f in r.clearFlags ?? [] { etat.flags[f] = nil; etat.origines?[f] = nil }
+            for f in r.setFlags ?? [] where etat.flags[f] == nil {
+                etat.flags[f] = age
+                noterOrigine(f, p.souvenir, &etat)
+            }
             if r.text != nil { arrivees.append(e) }
         }
         etat.programmees = restantes
@@ -222,13 +239,17 @@ enum Repercussions {
             if r.text != nil && arrivees.count >= maxEtatsParAn { continue }
             // Un drapeau retiré par un état plus tôt cette année peut rendre un autre état caduc.
             if let c = r.conditions, !drapeauxOK(c, etat, age: age) { continue }
-            for f in r.forget ?? [] { etat.flags[f] = nil }
+            for f in r.forget ?? [] { etat.flags[f] = nil; etat.origines?[f] = nil }
             for f in r.remember ?? [] where etat.flags[f] == nil { etat.flags[f] = age }
-            for f in r.clearFlags ?? [] { etat.flags[f] = nil }
+            for f in r.clearFlags ?? [] { etat.flags[f] = nil; etat.origines?[f] = nil }
             for f in r.setFlags ?? [] where etat.flags[f] == nil { etat.flags[f] = age }
             if r.unique == true { etat.uniquesVues.append(r.id) }
             etat.compteurs["\(signalAnnuel):\(r.id)", default: 0] += 1
-            if r.text != nil { arrivees.append(evenement(r)) }
+            if r.text != nil {
+                var e = evenement(r)
+                e.rappel = rappelEtat(r, etat)
+                arrivees.append(e)
+            }
         }
         return arrivees
     }
@@ -244,8 +265,30 @@ enum Repercussions {
 
     /// Pose ou retire des drapeaux (pour un effet "setFlags"/"clearFlags" d'événement).
     static func appliquerDrapeaux(poser: [String]?, retirer: [String]?, age: Int, etat: inout RepercussionsEtat) {
-        for f in retirer ?? [] { etat.flags[f] = nil }
-        for f in poser ?? [] where etat.flags[f] == nil { etat.flags[f] = age }
+        for f in retirer ?? [] { etat.flags[f] = nil; etat.origines?[f] = nil }
+        for f in poser ?? [] where etat.flags[f] == nil {
+            etat.flags[f] = age
+            noterOrigine(f, souvenirCourant, &etat)
+        }
+    }
+
+    // MARK: - Souvenirs (idée 59)
+
+    private static func noterOrigine(_ flag: String, _ s: Souvenir?, _ etat: inout RepercussionsEtat) {
+        guard let s = s else { return }
+        var o = etat.origines ?? [:]
+        o[flag] = s
+        etat.origines = o
+    }
+
+    /// Rappel d'un état durable : l'origine du premier drapeau exigé, sinon « tu fumes depuis N ans ».
+    static func rappelEtat(_ r: Repercussion, _ etat: RepercussionsEtat) -> Souvenir? {
+        for f in r.conditions?.flags ?? [] {
+            guard let pose = etat.flags[f] else { continue }
+            if let s = etat.origines?[f] { return s }
+            if let s = Souvenir.pourDrapeau(f, poseA: pose) { return s }
+        }
+        return nil
     }
 
     /// Vérifie flags / excludeFlags d'un événement classique.

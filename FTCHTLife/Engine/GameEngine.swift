@@ -338,20 +338,26 @@ final class GameEngine: ObservableObject {
             joueur = j
             fileEvenements.append(EvenementAffiche(evenement: e, texte: texte))
         } else {
-            ajouterLigne(&j, texte)
+            // Idée 59 : une suite rappelle ce qui l'a causée (« Parce que tu as choisi… il y a 6 ans. »).
+            if let s = e.rappel, s.etat != true {
+                ajouterLigne(&j, texte + " " + remplir(s.phrase(ageActuel: j.age), j))
+            } else {
+                ajouterLigne(&j, texte)
+            }
             if let eff = e.effects { appliquer(eff, &j) }
             modulesApresEvenementSimple(e, &j)
             joueur = j
         }
     }
 
-    /// Le joueur choisit une option dans l'événement en cours.
+    /// Le joueur choisit une option dans l'événement en cours (ou dans l'étape en cours d'une scène).
     func choisir(_ index: Int) {
-        guard var aff = evenementEnCours, aff.resultat == nil,
-              let choix = aff.evenement.choices, choix.indices.contains(index),
-              var j = joueur else { return }
+        guard var aff = evenementEnCours, aff.resultat == nil, var j = joueur else { return }
+        let choix = aff.choixCourants
+        guard choix.indices.contains(index) else { return }
         let c = choix[index]
-        if Secrets.estCarte(aff.evenement.id) {
+        aff.dernierChoix = index
+        if aff.etape == nil, Secrets.estCarte(aff.evenement.id) {
             let r = Secrets.resoudre(evenementId: aff.evenement.id, choix: index, joueur: &j)
             ajouterLigne(&j, aff.texte + " → " + c.label + ". " + r.texte)
             joueur = j
@@ -362,23 +368,58 @@ final class GameEngine: ObservableObject {
         }
         let issue = Self.tirage(c.outcomes)
         let resultat = remplir(issue?.text ?? "Il ne se passe rien.", j)
-        ajouterLigne(&j, aff.texte + " → " + c.label + ". " + resultat)
+        ajouterLigne(&j, aff.texteCourant + " → " + c.label + ". " + resultat)
+        let traces = TracesChoix(j.repercussions)
+        // Les suites et drapeaux posés par ce choix se souviendront de lui (idée 59).
+        Repercussions.souvenirCourant = Souvenir.choix(c.label, texte: aff.texteCourant, age: j.age)
         if let eff = issue?.effects { appliquer(eff, &j) }
-        modulesApresChoix(aff.evenement, choix: index, c, issue: issue, &j)
+        modulesApresChoix(evenementEtape(aff), choix: index, c, issue: issue, &j)
+        Repercussions.souvenirCourant = nil
         joueur = j
         aff.resultat = resultat
+        aff.laisseDesTraces = traces.differe(j.repercussions)
+        // Scène à choix enchaînés (idée 58) : l'étape suivante attend « Continuer ».
+        if let suite = issue?.then, !suite.choices.isEmpty, j.vivant {
+            aff.suiteEnAttente = suite
+        }
         evenementEnCours = aff
         sauvegarder()
     }
 
-    /// Ferme l'événement en cours et passe au suivant.
+    /// L'événement à signaler pour l'étape en cours : l'événement lui-même, ou une étape de scène
+    /// avec son propre id (`"on": "event:<id de l'étape>"` dans les répercussions).
+    func evenementEtape(_ aff: EvenementAffiche) -> Evenement {
+        guard let etape = aff.etape else { return aff.evenement }
+        let e = aff.evenement
+        return Evenement(id: etape.id ?? "\(e.id)#\(aff.numeroEtape)", category: e.category, minAge: e.minAge, maxAge: e.maxAge,
+                         weight: nil, unique: nil, conditions: nil, text: etape.text, effects: nil, choices: etape.choices)
+    }
+
+    /// Ferme l'événement en cours et passe au suivant (ou à l'étape suivante de la scène).
     func fermerEvenement() {
         if let j = joueur, !j.vivant {
             evenementEnCours = nil
             fileEvenements = []
             return
         }
+        if var aff = evenementEnCours, let suite = aff.suiteEnAttente, let j = joueur {
+            aff.etapesPassees.append(EtapePassee(texte: aff.texteCourant, choix: Self.labelChoisi(aff), resultat: aff.resultat ?? ""))
+            aff.etape = suite
+            aff.texteEtape = remplir(suite.text, j)
+            aff.numeroEtape += 1
+            aff.suiteEnAttente = nil
+            aff.resultat = nil
+            aff.laisseDesTraces = false
+            aff.dernierChoix = nil
+            evenementEnCours = aff
+            return
+        }
         evenementEnCours = fileEvenements.isEmpty ? nil : fileEvenements.removeFirst()
+    }
+
+    private static func labelChoisi(_ aff: EvenementAffiche) -> String {
+        guard let i = aff.dernierChoix, aff.choixCourants.indices.contains(i) else { return "" }
+        return aff.choixCourants[i].label
     }
 
     /// Tire un élément au hasard en tenant compte de son poids.

@@ -33,11 +33,15 @@ struct EventView: View {
                 ScrollView { corps(aff, style) }
             }
             if aff.resultat != nil {
-                BoutonEvenement(titre: "Continuer", couleur: style.couleur, badge: nil, principal: true) {
+                BoutonEvenement(titre: aff.suiteEnAttente != nil ? "Et ensuite…" : "Continuer",
+                                couleur: style.couleur, badge: nil, principal: true) {
                     // Un double tap ne doit pas sauter l'événement suivant.
                     guard engine.evenementEnCours?.id == aff.id else { return }
                     avant = nil
-                    engine.fermerEvenement()
+                    // Scène à choix enchaînés : « Et ensuite… » ouvre l'étape suivante dans la même carte.
+                    withAnimation(ModeRapide.animation(.easeInOut(duration: 0.25), rapide: rapide)) {
+                        engine.fermerEvenement()
+                    }
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 18)
@@ -53,13 +57,25 @@ struct EventView: View {
 
     private func corps(_ aff: EvenementAffiche, _ style: StyleEvenement) -> some View {
         VStack(spacing: 18) {
-            Text(aff.texte)
+            if aff.numeroEtape == 1, let r = aff.evenement.rappel, let j = engine.joueur {
+                RappelSouvenir(souvenir: r, phrase: engine.remplir(r.phrase(ageActuel: j.age), j), couleur: style.couleur)
+                    .padding(.horizontal)
+                    .padding(.top, 16)
+            }
+            if !aff.etapesPassees.isEmpty {
+                EtapesPasseesVue(etapes: aff.etapesPassees, couleur: style.couleur)
+                    .padding(.horizontal)
+                    .padding(.top, 16)
+            }
+            Text(aff.texteCourant)
                 .font(.system(size: 19, weight: .semibold, design: .rounded))
                 .foregroundStyle(Theme.encre)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 22)
-                .padding(.top, 22)
+                .padding(.top, aff.numeroEtape == 1 && aff.evenement.rappel == nil ? 22 : 4)
+                .id(aff.numeroEtape)
+                .transition(.opacity)
 
             if let resultat = aff.resultat {
                 resultatVue(resultat, style)
@@ -84,6 +100,14 @@ struct EventView: View {
                 .tracking(0.8)
                 .foregroundStyle(.white)
             Spacer()
+            if courant.estScene {
+                Text("Étape \(courant.numeroEtape)")
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 9)
+                    .padding(.vertical, 4)
+                    .background(Capsule().stroke(Color.white.opacity(0.6), lineWidth: 1))
+            }
             if let j = engine.joueur {
                 Text("\(j.age) an\(j.age > 1 ? "s" : "")")
                     .font(.system(size: 13, weight: .bold, design: .rounded))
@@ -101,17 +125,20 @@ struct EventView: View {
     // MARK: Choix
 
     private func choix(_ aff: EvenementAffiche, _ style: StyleEvenement) -> some View {
-        let tous = aff.evenement.choices ?? []
+        let tous = aff.choixCourants
         let visibles: [ChoixVisible]
         if let j = engine.joueur {
             visibles = Competences.choixVisibles(tous, j).map { ChoixVisible(index: $0.index, choix: $0.choix) }
         } else {
             visibles = tous.enumerated().map { ChoixVisible(index: $0.offset, choix: $0.element) }
         }
+        // Idée 59 : le risque de chaque choix, avant de choisir.
+        let risques = Risques.pourCarte(aff.evenement, choix: tous, argentJoueur: engine.joueur?.argent ?? 0)
         return VStack(spacing: 10) {
             ForEach(visibles) { item in
                 BoutonEvenement(titre: item.choix.label, couleur: style.couleur,
-                                badge: Competences.badge(item.choix), principal: false) {
+                                badge: Competences.badge(item.choix), principal: false,
+                                risque: risques[item.index]) {
                     choisir(item, aff, style)
                 }
             }
@@ -150,6 +177,11 @@ struct EventView: View {
             let deltas = changements()
             if !deltas.isEmpty {
                 PastillesChangements(elements: deltas)
+            }
+            if courant.laisseDesTraces {
+                Label("Ce choix laissera des traces.", systemImage: "clock.arrow.circlepath")
+                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.secondary)
             }
         }
         .padding()
@@ -237,6 +269,8 @@ struct BoutonEvenement: View {
     let couleur: Color
     let badge: String?
     let principal: Bool
+    /// Risque affiché sous le texte du choix (idée 59).
+    var risque: RisqueChoix? = nil
     let action: () -> Void
 
     var body: some View {
@@ -251,6 +285,9 @@ struct BoutonEvenement: View {
                     .font(.system(size: 16, weight: .bold, design: .rounded))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(principal ? Color.white : Theme.encre)
+                if let r = risque {
+                    BadgeRisque(risque: r)
+                }
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 14)
@@ -259,6 +296,118 @@ struct BoutonEvenement: View {
             .overlay(RoundedRectangle(cornerRadius: 14).stroke(couleur.opacity(principal ? 0 : 0.35), lineWidth: 1.5))
         }
         .buttonStyle(StyleAppui())
+        .accessibilityHint(risque?.description ?? "")
+    }
+}
+
+// MARK: - Risque et souvenirs (idée 59)
+
+/// « Très risqué · santé, argent », sous le texte d'un choix.
+struct BadgeRisque: View {
+    let risque: RisqueChoix
+
+    var couleur: Color {
+        switch risque.niveau {
+        case .aucun: return Theme.argentPositif
+        case .faible: return Color(red: 0.55, green: 0.62, blue: 0.20)
+        case .moyen: return Color(red: 0.93, green: 0.55, blue: 0.10)
+        case .eleve: return Color(red: 0.85, green: 0.30, blue: 0.15)
+        case .extreme: return Color(red: 0.72, green: 0.10, blue: 0.16)
+        }
+    }
+
+    var icone: String {
+        switch risque.niveau {
+        case .aucun: return "checkmark.shield.fill"
+        case .faible: return "gauge.with.dots.needle.33percent"
+        case .moyen: return risque.pari ? "dice.fill" : "exclamationmark.triangle.fill"
+        case .eleve: return risque.pari ? "dice.fill" : "exclamationmark.triangle.fill"
+        case .extreme: return "flame.fill"
+        }
+    }
+
+    var body: some View {
+        HStack(spacing: 5) {
+            Image(systemName: icone)
+            Text(risque.titre)
+            if !risque.enjeux.isEmpty {
+                Text("·")
+                ForEach(risque.enjeux, id: \.self) { e in
+                    Image(systemName: e.icone)
+                }
+            }
+        }
+        .font(.system(size: 11, weight: .bold, design: .rounded))
+        .foregroundStyle(couleur)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 3)
+        .background(Capsule().fill(couleur.opacity(0.12)))
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(risque.description)
+    }
+}
+
+/// Bandeau « Ça vient de là » en haut d'une suite : « Parce que tu as choisi « X » il y a 6 ans. »
+struct RappelSouvenir: View {
+    let souvenir: Souvenir
+    let phrase: String
+    let couleur: Color
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: "arrow.uturn.backward.circle.fill")
+                .font(.system(size: 18))
+                .foregroundStyle(couleur)
+            VStack(alignment: .leading, spacing: 3) {
+                Text("ÇA VIENT DE LÀ")
+                    .font(.system(size: 10, weight: .heavy, design: .rounded))
+                    .tracking(0.8)
+                    .foregroundStyle(couleur)
+                Text(phrase)
+                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .foregroundStyle(Theme.encre)
+                    .fixedSize(horizontal: false, vertical: true)
+                if let c = souvenir.contexte, !c.isEmpty {
+                    Text("« \(c) »")
+                        .font(.system(size: 12))
+                        .italic()
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 14).fill(couleur.opacity(0.08)))
+        .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(couleur.opacity(0.3), style: StrokeStyle(lineWidth: 1, dash: [4, 3])))
+    }
+}
+
+/// Étapes déjà jouées d'une scène, en petit au-dessus de la question en cours.
+struct EtapesPasseesVue: View {
+    let etapes: [EtapePassee]
+    let couleur: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            ForEach(Array(etapes.enumerated()), id: \.offset) { _, e in
+                HStack(alignment: .top, spacing: 8) {
+                    Circle().fill(couleur.opacity(0.5)).frame(width: 7, height: 7).padding(.top, 5)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(e.choix)
+                            .font(.system(size: 13, weight: .bold, design: .rounded))
+                            .foregroundStyle(couleur)
+                        Text(e.resultat)
+                            .font(.system(size: 13))
+                            .foregroundStyle(.secondary)
+                            .lineLimit(3)
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 14).fill(Theme.fond))
     }
 }
 
@@ -321,7 +470,7 @@ struct StyleEvenement {
         case "permis": return StyleEvenement(titre: "Permis", icone: "car.fill", couleur: bleu)
         case "vsn": return StyleEvenement(titre: "Voisins", icone: "house.and.flag.fill", couleur: vert)
         case "msg": return StyleEvenement(titre: "Téléphone", icone: "iphone", couleur: bleu)
-        case "rep": return StyleEvenement(titre: "Ça revient", icone: "arrow.uturn.backward.circle.fill", couleur: violet)
+        case "rep", "suite": return StyleEvenement(titre: "Ça revient", icone: "arrow.uturn.backward.circle.fill", couleur: violet)
         case "anniversaire": return StyleEvenement(titre: "Anniversaire", icone: "birthday.cake.fill", couleur: rose)
         case "noel": return StyleEvenement(titre: "Noël", icone: "gift.fill", couleur: rouge)
         case "nouvel_an": return StyleEvenement(titre: "Nouvel An", icone: "party.popper.fill", couleur: or)

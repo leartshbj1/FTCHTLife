@@ -65,6 +65,18 @@ struct Issue: Codable, Equatable {
     var chance: Double?
     var text: String
     var effects: Effets?
+    /// Scène à choix enchaînés : après cette issue, la même carte continue avec une nouvelle question.
+    /// Voir docs/SCENES.md.
+    var then: EtapeScene? = nil
+}
+
+/// Étape suivante d'une scène (idée 58) : un texte et 1 à 4 choix, dans la même carte que l'événement.
+/// Une scène compte pour un seul événement dans la limite de 3 événements à choix par an.
+struct EtapeScene: Codable, Equatable {
+    /// Id pour les répercussions (`"on": "event:<id>"`). Défaut : "<id de l'événement>#<n° d'étape>".
+    var id: String?
+    var text: String
+    var choices: [Choix]
 }
 
 struct Choix: Codable, Equatable {
@@ -72,6 +84,9 @@ struct Choix: Codable, Equatable {
     var outcomes: [Issue]
     /// Choix caché : visible seulement si le joueur a ces niveaux de compétence. Voir docs/COMPETENCES.md.
     var requiresSkill: [String: Int]?
+    /// Force le niveau de risque affiché avant de choisir : "none", "low", "medium", "high" ou "extreme".
+    /// Absent = calculé à partir des issues (voir Engine/Risques.swift).
+    var risk: String? = nil
 }
 
 struct Evenement: Codable, Identifiable, Equatable {
@@ -87,6 +102,9 @@ struct Evenement: Codable, Identifiable, Equatable {
     /// Effets directs, pour un événement sans choix.
     var effects: Effets?
     var choices: [Choix]?
+    /// Rempli par le moteur (pas dans les JSON) : ce qui a causé cette suite, pour le rappel
+    /// « Parce que tu as fait X il y a N ans ». Voir Engine/Souvenirs.swift.
+    var rappel: Souvenir? = nil
 }
 
 /// Un événement prêt à être affiché, avec les noms déjà remplacés.
@@ -95,6 +113,38 @@ struct EvenementAffiche: Identifiable, Equatable {
     let evenement: Evenement
     let texte: String
     var resultat: String?
+
+    // Scènes à choix enchaînés (docs/SCENES.md)
+    /// Étape affichée (nil = la première, celle de l'événement).
+    var etape: EtapeScene? = nil
+    /// Texte de l'étape affichée, noms remplacés.
+    var texteEtape: String? = nil
+    /// Numéro de l'étape affichée (1 = la première).
+    var numeroEtape: Int = 1
+    /// Étape qui suivra quand le joueur touchera « Continuer ».
+    var suiteEnAttente: EtapeScene? = nil
+    /// Étapes déjà jouées dans cette carte.
+    var etapesPassees: [EtapePassee] = []
+    /// Le dernier choix a laissé des traces (souvenir ou suite programmée).
+    var laisseDesTraces = false
+    /// Index du dernier choix fait dans l'étape affichée.
+    var dernierChoix: Int? = nil
+
+    var texteCourant: String { texteEtape ?? texte }
+    var choixCourants: [Choix] { etape?.choices ?? evenement.choices ?? [] }
+    /// La scène compte au moins deux étapes.
+    var estScene: Bool { numeroEtape > 1 || suiteEnAttente != nil || Self.contientEtapes(evenement.choices) }
+
+    static func contientEtapes(_ choix: [Choix]?) -> Bool {
+        (choix ?? []).contains { $0.outcomes.contains { $0.then != nil } }
+    }
+}
+
+/// Une étape déjà jouée d'une scène.
+struct EtapePassee: Equatable {
+    let texte: String
+    let choix: String
+    let resultat: String
 }
 
 enum BibliothequeEvenements {

@@ -117,6 +117,37 @@ def check_text(t, where, errs):
     if m2 and not re.search(r"\bt'|\bte\b|\btoi\b|\bt’", m2.group(2)): WARN.append(f"{where}: {{e}} semble porter sur un autre personnage que le joueur")
     for p in re.findall(r"\{(\w+)\}", t):
         if p not in PH: errs.append(f"{where}: placeholder inconnu {{{p}}}")
+RISK = {"none","low","medium","high","extreme"}
+def check_choices(ch, w, errs, ids, ev_id, etape):
+    """Choix d'un événement ou d'une étape de scène (docs/SCENES.md) : 3 étapes au plus par scène."""
+    for ci,c in enumerate(ch):
+        cw=f"{w}/choix{ci}"; check_text(c.get("label"), cw, errs)
+        rs=c.get("requiresSkill")
+        if rs is not None and (not isinstance(rs,dict) or any(x not in SKILLS or not 1<=n<=5 for x,n in rs.items())): errs.append(f"{cw}: requiresSkill invalide {rs}")
+        if c.get("risk") is not None and c["risk"] not in RISK: errs.append(f"{cw}: risk doit être {sorted(RISK)}")
+        outs=c.get("outcomes") or []
+        if not outs: errs.append(f"{cw}: aucun outcome")
+        s=sum(o.get("chance",0) for o in outs)
+        if abs(s-1)>0.011: errs.append(f"{cw}: somme des chances = {s}")
+        for oi,o in enumerate(outs):
+            check_text(o.get("text"), f"{cw}/o{oi}", errs); check_effects(o.get("effects",{}), f"{cw}/o{oi}", errs)
+            t=o.get("then")
+            if t is None: continue
+            tw=f"{cw}/o{oi}/then"
+            if etape >= 3: errs.append(f"{tw}: une scène a 3 étapes au plus"); continue
+            if not isinstance(t, dict): errs.append(f"{tw}: then doit être un objet"); continue
+            for k in t:
+                if k not in ("id","text","choices"): errs.append(f"{tw}: clé inconnue {k}")
+            sid=t.get("id")
+            if sid is not None:
+                if not isinstance(sid,str) or not sid.startswith(ev_id): errs.append(f"{tw}: l'id d'étape doit commencer par l'id de l'événement ({ev_id})")
+                elif sid in ids: errs.append(f"{tw}: id d'étape dupliqué {sid}")
+                else: ids[sid]=w
+            check_text(t.get("text"), tw, errs)
+            tch=t.get("choices") or []
+            if not 1 <= len(tch) <= 4: errs.append(f"{tw}: 1 à 4 choix")
+            if tch and all(c2.get("requiresSkill") for c2 in tch): errs.append(f"{tw}: au moins un choix doit être sans requiresSkill")
+            check_choices(tch, tw, errs, ids, ev_id, etape+1)
 def main():
     files = sys.argv[1:] or sorted(glob.glob(os.path.join(ROOT,"FTCHTLife/Resources/Data/Events/*.json")))
     ids, errs, n = {}, [], 0
@@ -143,16 +174,7 @@ def main():
                 if "resultText" in ev: errs.append(f"{w}: resultText non supporté, mets le texte dans text")
             if len(ch) > 4: errs.append(f"{w}: plus de 4 choix")
             if ch and all(c.get("requiresSkill") for c in ch): errs.append(f"{w}: au moins un choix doit être sans requiresSkill")
-            for ci,c in enumerate(ch):
-                cw=f"{w}/choix{ci}"; check_text(c.get("label"), cw, errs)
-                rs=c.get("requiresSkill")
-                if rs is not None and (not isinstance(rs,dict) or any(x not in SKILLS or not 1<=n<=5 for x,n in rs.items())): errs.append(f"{cw}: requiresSkill invalide {rs}")
-                outs=c.get("outcomes") or []
-                if not outs: errs.append(f"{cw}: aucun outcome")
-                s=sum(o.get("chance",0) for o in outs)
-                if abs(s-1)>0.011: errs.append(f"{cw}: somme des chances = {s}")
-                for oi,o in enumerate(outs):
-                    check_text(o.get("text"), f"{cw}/o{oi}", errs); check_effects(o.get("effects",{}), f"{cw}/o{oi}", errs)
+            check_choices(ch, w, errs, ids, i, 1)
     for e in errs: print("ERREUR", e)
     for x in WARN: print("AVERTISSEMENT", x)
     print(f"{n} événements, {len(files)} fichiers, {len(errs)} erreurs")
