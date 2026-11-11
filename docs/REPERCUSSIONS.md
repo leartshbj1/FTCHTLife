@@ -142,3 +142,28 @@ Conventions de noms de drapeaux : minuscules, `_`, au passé ou à l'état (`a_t
 `fume`, `casier_judiciaire`, `ancien_detenu`, `permis_en_poche`, `permis_suspendu`, `joueur_du_casino`,
 `accro_au_jeu`, `sevre_du_jeu`, `en_prison` (posé à prison_entree, retiré à prison_sortie/evasion), `a_trompe_partenaire`, `s_est_fait_tromper`, `divorce`, `marie`, `parent`,
 `randonneur`, `phobie_de_la_foret`, `a_gagne_loterie`, `celebre_localement`, `menteur_notoire`.
+
+## États durables (`"on": "chaque_annee"`)
+
+Une règle `"on": "chaque_annee"` n'est pas programmée : elle est évaluée à **chaque passage d'année** (conditions + `chance`).
+Elle décrit un état qui dure tant qu'un drapeau est posé : une habitude, une blessure, une réputation, une dette.
+Au plus 3 états avec texte sont affichés par an (les règles sans texte ne comptent pas).
+
+- Effet chaque année : `"conditions": {"flags": ["fume"]}, "chance": 0.5, "text": "…", "effects": {"health": -3}`.
+- Guérison / sortie : `"conditions": {"flags": ["coeur_brise"], "flagMinYears": {"coeur_brise": 2}}, "chance": 0.4, "clearFlags": ["coeur_brise"], "text": "…"`.
+- Aggravation : `flagMinYears` long → `setFlags` d'un état plus grave, ou maladie, ou mort rare.
+- `flagMinYears` / `flagMaxYears` (dans `conditions` ou `requires`) : depuis combien d'années le drapeau est posé.
+
+### Drapeaux d'état (vocabulaire commun)
+
+Posés par les événements (`effects.setFlags`), les suites ou les modules ; chacun a des états durables dans `etats_*.json`.
+
+| Domaine | Drapeaux |
+|---|---|
+| Hygiène de vie | `fume`, `boit_trop`, `mange_mal`, `sportif_regulier`, `sedentaire`, `insomniaque`, `dos_fragile`, `genou_fragile`, `accro_aux_ecrans`, `zen` |
+| Moral | `deprime`, `anxieux`, `burn_out`, `coeur_brise`, `solitaire`, `optimiste`, `complexe`, `traumatise` |
+| Réputation | `menteur_notoire`, `rapporteur`, `populaire`, `harcele`, `celebre_localement`, `honte_publique`, `heros_local`, `casier_judiciaire` |
+| Argent | `endette`, `econome`, `panier_perce`, `dette_louche`, `proprietaire` |
+| Esprit | `lecteur_assidu`, `autodidacte`, `polyglotte`, `curieux` |
+| Apparence | `soigne_son_apparence`, `tatoue`, `coupe_ratee`, `refait_de_partout` |
+| Karma | `benevole`, `voleur`, `rancunier`, `genereux` |
