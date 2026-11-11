@@ -11,6 +11,8 @@ import sys
 RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "FTCHTLife", "Resources", "Data")
 DOSSIER_TYPES = os.path.join(RACINE, "Entreprises")
 DOSSIER_EVENTS = os.path.join(RACINE, "EntrepriseEvents")
+DOSSIER_LEVIERS = os.path.join(RACINE, "EntrepriseLeviers")
+CLES_EFFETS_LEVIER = {"demande", "prix", "coutVariable", "capacite", "productivite", "reputation", "moral", "risque", "karma"}
 
 SECTEURS = {"restauration", "beaute", "commerce", "mode", "tech", "services", "artisanat", "loisirs", "immobilier", "transport"}
 DIPLOMES = {"aucun", "ecoleObligatoire", "bac", "licence", "master", "doctorat"}
@@ -184,9 +186,65 @@ def main():
         if utilise_employe and c.get("employe") is None:
             err(fichier, ident, "utilise {employe}/{poste} ou un effet employé sans conditions.employe")
 
+    vus_types = set()
+    ids_leviers = set()
+    for fichier, l in lire(DOSSIER_LEVIERS):
+        ident = l.get("typeId", "?")
+        if ids_types and ident not in ids_types:
+            err(fichier, ident, "typeId inconnu")
+        if ident in vus_types:
+            err(fichier, ident, "type décrit deux fois")
+        vus_types.add(ident)
+        inconnues = set(l) - {"typeId", "vente", "site", "usine", "prixUnitaire", "elasticite", "leviers"}
+        if inconnues:
+            err(fichier, ident, f"clés inconnues {sorted(inconnues)}")
+        for bloc, cles in (("vente", {"nom", "pluriel"}), ("site", {"nom", "pluriel", "cout"}), ("usine", {"nom", "pluriel", "cout"})):
+            b = l.get(bloc)
+            if b is None:
+                if bloc != "usine":
+                    err(fichier, ident, f"{bloc} manquant")
+                continue
+            if set(b) != cles:
+                err(fichier, ident, f"{bloc} : clés attendues {sorted(cles)}")
+            if "cout" in b and (not isinstance(b["cout"], int) or b["cout"] <= 0):
+                err(fichier, ident, f"{bloc}.cout entier positif")
+        if not isinstance(l.get("prixUnitaire"), (int, float)) or l.get("prixUnitaire", 0) <= 0:
+            err(fichier, ident, "prixUnitaire positif")
+        el = l.get("elasticite", 1.2)
+        if not isinstance(el, (int, float)) or not 0.4 <= el <= 2.2:
+            err(fichier, ident, "elasticite entre 0.4 et 2.2")
+        lev = l.get("leviers", [])
+        if not 4 <= len(lev) <= 8:
+            err(fichier, ident, "4 à 8 leviers")
+        for v in lev:
+            lid = v.get("id", "?")
+            if lid in ids_leviers:
+                err(fichier, lid, "id de levier en double")
+            ids_leviers.add(lid)
+            inc = set(v) - {"id", "nom", "description", "icone", "groupe", "niveauMin", "coutInstallation", "coutAnnuel", "parSite", "effets", "activation"}
+            if inc:
+                err(fichier, lid, f"clés inconnues {sorted(inc)}")
+            for champ in ("nom", "description", "icone", "activation"):
+                if not isinstance(v.get(champ), str) or not v.get(champ):
+                    err(fichier, lid, f"{champ} manquant")
+            for champ in ("coutInstallation", "coutAnnuel"):
+                if not isinstance(v.get(champ, 0), int) or v.get(champ, 0) < 0:
+                    err(fichier, lid, f"{champ} entier positif ou nul")
+            if not 0 <= v.get("niveauMin", 0) <= 5:
+                err(fichier, lid, "niveauMin de 0 à 5")
+            eff = v.get("effets", {})
+            if set(eff) - CLES_EFFETS_LEVIER:
+                err(fichier, lid, f"effets inconnus {sorted(set(eff) - CLES_EFFETS_LEVIER)}")
+            for k, x in eff.items():
+                if not isinstance(x, int) or isinstance(x, bool) or abs(x) > 100:
+                    err(fichier, lid, f"effet {k} : entier entre -100 et 100")
+            for champ in ("description", "activation"):
+                if isinstance(v.get(champ), str):
+                    verifier_texte(fichier, lid, v[champ], champ)
+
     for m in erreurs:
         print("❌ " + m)
-    print(f"{len(ids_types)} types, {len(ids)} événements d'entreprise, {len(erreurs)} erreur(s).")
+    print(f"{len(ids_types)} types, {len(ids)} événements d'entreprise, {len(vus_types)} types avec leviers ({len(ids_leviers)} leviers), {len(erreurs)} erreur(s).")
     return 1 if erreurs else 0
 
 

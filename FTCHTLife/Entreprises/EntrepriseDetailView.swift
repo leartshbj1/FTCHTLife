@@ -20,7 +20,11 @@ struct EntrepriseDetailView: View {
         List {
             if let e = entreprise, let type = EntrepriseCatalogue.type(e.typeId), let j = engine.joueur {
                 entete(e, type)
+                resumeRapport(e)
                 EntrepriseCriseSection(entreprise: e) { texte in message = texte }
+                pilotage(e, type)
+                estimation(e)
+                leviersMetier(e, type)
                 chiffres(e, type)
                 actions(e, type, j)
                 equipe(e, j)
@@ -32,6 +36,7 @@ struct EntrepriseDetailView: View {
         }
         .navigationTitle(entreprise?.nom ?? "Entreprise")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear { engine.normaliserEntreprises() }
         .alert("FTCHTLife", isPresented: Binding(get: { message != nil }, set: { if !$0 { message = nil } })) {
             Button("OK") { message = nil }
         } message: {
@@ -127,17 +132,6 @@ struct EntrepriseDetailView: View {
                 }
                 Button("Annuler", role: .cancel) {}
             }
-            if let cout = EntrepriseMoteur.coutAgrandissement(e, type) {
-                LigneAction(titre: "Agrandir : " + nomNiveauSuivant(e),
-                            sousTitre: Format.argent(cout) + (engine.budgetEntreprise(e) < cout ? " · pas assez d'argent" : ""),
-                            icone: "arrow.up.right.circle.fill",
-                            actif: engine.budgetEntreprise(e) >= cout && !j.actionsAnnee.contains("ent_agr_" + id)) {
-                    message = engine.agrandirEntreprise(e.id)
-                }
-            } else {
-                Text("👑 Tu as atteint le sommet. Il n'y a plus rien à conquérir, à part le respect de ta famille.")
-                    .font(.caption)
-            }
             if e.dette > 0 {
                 LigneAction(titre: "Rembourser la banque", sousTitre: Format.argent(e.dette),
                             icone: "building.columns.fill",
@@ -185,10 +179,10 @@ struct EntrepriseDetailView: View {
                 }
             }
         } header: {
-            Text("Équipe · \(e.employes.count)/\(EntrepriseMoteur.postes(e)) postes clés")
+            Text("Cadres · \(e.employes.count)/\(EntrepriseMoteur.postes(e)) postes clés")
         } footer: {
             if e.employes.count < EntrepriseMoteur.postes(e) {
-                Text("Chaque poste vide fait perdre 8 % de chiffre d'affaires et te fatigue.")
+                Text("Les cadres rendent toute l'équipe plus efficace. Chaque poste clé vide coûte des clients et te fatigue.")
             }
         }
     }
@@ -249,6 +243,254 @@ struct EntrepriseDetailView: View {
                 Button("Annuler", role: .cancel) {}
             }
         }
+    }
+
+    // MARK: - Gestion poussée
+
+    @ViewBuilder
+    private func resumeRapport(_ e: Entreprise) -> some View {
+        if let r = e.rapport, let eco = EntrepriseCatalogue.eco(e.typeId) {
+            Section {
+                ResumeRapportEntreprise(entreprise: e, rapport: r, eco: eco)
+                NavigationLink {
+                    EntrepriseRapportView(entrepriseId: e.id)
+                } label: {
+                    Label("Rapport complet et graphiques", systemImage: "chart.bar.doc.horizontal")
+                }
+            } header: {
+                Text("Bilan à \(r.age) ans")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func pilotage(_ e: Entreprise, _ type: EntrepriseType) -> some View {
+        if let eco = EntrepriseCatalogue.eco(type.id) {
+            Section {
+                Picker(selection: Binding(get: { e.prix }, set: { _ = engine.reglerPrix(e.id, $0) })) {
+                    ForEach(EntrepriseSimulation.niveauxPrix, id: \.self) { p in
+                        Text(Self.textePrix(p, eco)).tag(p)
+                    }
+                } label: {
+                    Label("Prix", systemImage: "tag.fill")
+                }
+                Picker(selection: Binding(get: { e.qualite }, set: { _ = engine.reglerQualite(e.id, $0) })) {
+                    ForEach(1...5, id: \.self) { q in
+                        Text(EntrepriseSimulation.qualiteNoms[q - 1]).tag(q)
+                    }
+                } label: {
+                    Label("Qualité", systemImage: "sparkles")
+                }
+                Picker(selection: Binding(get: { e.marketing }, set: { _ = engine.reglerMarketing(e.id, $0) })) {
+                    ForEach(EntrepriseSimulation.budgetsMarketing, id: \.self) { m in
+                        Text(m == 0 ? "Aucun" : "\(m) % du CA").tag(m)
+                    }
+                } label: {
+                    Label("Marketing", systemImage: "megaphone.fill")
+                }
+                Picker(selection: Binding(get: { e.salaireNiveau }, set: { _ = engine.reglerSalaires(e.id, $0) })) {
+                    ForEach(EntrepriseSimulation.niveauxSalaire, id: \.self) { s in
+                        Text(Self.texteSalaire(s, type)).tag(s)
+                    }
+                } label: {
+                    Label("Salaires", systemImage: "banknote.fill")
+                }
+            } header: {
+                Text("Pilotage")
+            } footer: {
+                Text("Les réglages comptent pour le prochain bilan. Regarde l'estimation juste en dessous avant de valider.")
+            }
+
+            let conseille = engine.effectifConseilleEntreprise(e)
+            Section {
+                HStack {
+                    Label("Employés", systemImage: "person.3.fill")
+                    Spacer()
+                    Text("\(max(0, e.effectif))").font(.headline.monospacedDigit())
+                }
+                HStack(spacing: 8) {
+                    boutonEffectif(e, -5)
+                    boutonEffectif(e, -1)
+                    boutonEffectif(e, 1)
+                    boutonEffectif(e, 5)
+                    boutonEffectif(e, 20)
+                }
+                .buttonStyle(.bordered)
+                LigneAction(titre: "Ajuster à l'effectif conseillé (\(conseille))",
+                            sousTitre: "Juste ce qu'il faut pour servir la demande prévue",
+                            icone: "wand.and.stars",
+                            actif: conseille != max(0, e.effectif)) {
+                    message = engine.ajusterEffectif(e.id)
+                }
+            } header: {
+                Text("Effectif")
+            } footer: {
+                Text("Embaucher coûte 10 % d'un salaire annuel, licencier 25 % et fait chuter le moral. Salaire de base : \(Format.argent(type.salaireEmploye))/an.")
+            }
+
+            Section {
+                HStack {
+                    Label(eco.site.pluriel.capitalized, systemImage: "storefront.fill")
+                    Spacer()
+                    Text("\(e.sites)").font(.headline.monospacedDigit())
+                }
+                LigneAction(titre: "Ouvrir 1 \(eco.site.nom)", sousTitre: Format.argent(eco.coutSite),
+                            icone: "plus.circle.fill", actif: engine.budgetEntreprise(e) >= eco.coutSite) {
+                    message = engine.ouvrirSites(e.id, nombre: 1)
+                }
+                if e.sites >= 2 {
+                    LigneAction(titre: "Ouvrir 5 \(eco.site.pluriel)", sousTitre: Format.argent(eco.coutSite * 5),
+                                icone: "plus.square.fill.on.square.fill", actif: engine.budgetEntreprise(e) >= eco.coutSite * 5) {
+                        message = engine.ouvrirSites(e.id, nombre: 5)
+                    }
+                }
+                if e.sites >= 10 {
+                    LigneAction(titre: "Ouvrir 25 \(eco.site.pluriel)", sousTitre: Format.argent(eco.coutSite * 25),
+                                icone: "building.2.fill", actif: engine.budgetEntreprise(e) >= eco.coutSite * 25) {
+                        message = engine.ouvrirSites(e.id, nombre: 25)
+                    }
+                }
+                if e.sites > 1 {
+                    LigneAction(titre: "Fermer 1 \(eco.site.nom)", sousTitre: "Tu récupères 30 % de sa valeur",
+                                icone: "minus.circle.fill") {
+                        message = engine.fermerSites(e.id, nombre: 1)
+                    }
+                }
+                if let u = eco.usine {
+                    HStack {
+                        Label(u.pluriel.capitalized, systemImage: "building.columns.fill")
+                        Spacer()
+                        Text("\(max(0, e.usines))").font(.headline.monospacedDigit())
+                    }
+                    LigneAction(titre: "Construire 1 \(u.nom)", sousTitre: Format.argent(eco.coutUsine),
+                                icone: "hammer.fill", actif: engine.budgetEntreprise(e) >= eco.coutUsine) {
+                        message = engine.ouvrirUsines(e.id, nombre: 1)
+                    }
+                    if e.usines > 1 {
+                        LigneAction(titre: "Fermer 1 \(u.nom)", sousTitre: "Tu récupères 30 % de sa valeur",
+                                    icone: "minus.circle.fill") {
+                            message = engine.fermerUsines(e.id, nombre: 1)
+                        }
+                    }
+                }
+            } header: {
+                Text("Locaux" + (eco.usine != nil ? " et production" : ""))
+            } footer: {
+                Text(eco.usine != nil
+                     ? "Les \(eco.site.pluriel) attirent les clients, les \(eco.usine?.pluriel ?? "usines") fabriquent. Plus de points de vente sans production = ruptures de stock."
+                     : "Chaque \(eco.site.nom) attire de nouveaux clients mais demande du personnel et un loyer. Niveau suivant à \(Self.prochainSeuil(e.sites)) \(eco.site.pluriel).")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func estimation(_ e: Entreprise) -> some View {
+        if let r = engine.estimationEntreprise(e), let eco = EntrepriseCatalogue.eco(e.typeId) {
+            Section {
+                ligne("Demande attendue", "\(r.demande) \(eco.vente.pluriel)")
+                ligne("Capacité", "\(r.capacite) \(eco.vente.pluriel)", rouge: r.capacite < r.demande)
+                ligne("Part de marché", "\(Int(r.partDeMarche * 100)) %")
+                ligne("Chiffre d'affaires", Format.argent(r.chiffreAffaires))
+                ligne("Coûts", Format.argent(r.couts))
+                ligne("Résultat", (r.resultat >= 0 ? "+" : "") + Format.argent(r.resultat), rouge: r.resultat < 0)
+                    .bold()
+                if r.demande > r.capacite {
+                    Text("Tu vas refuser environ \(r.demande - r.capacite) clients.")
+                        .font(.caption).foregroundStyle(.orange)
+                }
+            } header: {
+                Text("Estimation pour l'an prochain")
+            } footer: {
+                Text("Sans compter le hasard du marché, les crises et la concurrence.")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func leviersMetier(_ e: Entreprise, _ type: EntrepriseType) -> some View {
+        if let eco = EntrepriseCatalogue.eco(type.id), !eco.leviers.isEmpty {
+            Section {
+                ForEach(eco.leviers) { l in
+                    let actif = e.leviers.contains(l.id)
+                    let bloque = e.niveau < (l.niveauMin ?? 0)
+                    Button {
+                        message = actif ? engine.desactiverLevier(e.id, levier: l.id) : engine.activerLevier(e.id, levier: l.id)
+                    } label: {
+                        HStack(alignment: .top, spacing: 12) {
+                            Image(systemName: l.icone)
+                                .font(.system(size: 18))
+                                .foregroundStyle(actif ? Color.green : (bloque ? Color.gray : Theme.accent))
+                                .frame(width: 28)
+                            VStack(alignment: .leading, spacing: 3) {
+                                HStack {
+                                    Text(l.nom).foregroundStyle(bloque ? Color.gray : Theme.encre)
+                                    if actif {
+                                        Text("ACTIF").font(.caption2.bold()).foregroundStyle(.green)
+                                    }
+                                }
+                                Text(engine.remplir(EntrepriseMoteur.remplir(l.description, e, type, employe: nil), engine.joueur!))
+                                    .font(.caption).foregroundStyle(.secondary)
+                                Text(Self.resumeLevier(l, e, bloque: bloque))
+                                    .font(.caption2).foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                    .disabled(bloque && !actif)
+                }
+            } header: {
+                Text("Leviers du métier")
+            } footer: {
+                Text("Touche un levier pour l'activer ou l'arrêter.")
+            }
+        }
+    }
+
+    private func boutonEffectif(_ e: Entreprise, _ delta: Int) -> some View {
+        Button(delta > 0 ? "+\(delta)" : "\(delta)") {
+            message = engine.changerEffectif(e.id, delta: delta)
+        }
+        .frame(maxWidth: .infinity)
+        .disabled(delta < 0 && e.effectif <= 0)
+    }
+
+    static func textePrix(_ p: Double, _ eco: EntrepriseEco) -> String {
+        let pct = Int(((p - 1) * 100).rounded())
+        let prix = Format.argent(Int((eco.prixUnitaire * p).rounded()))
+        if pct == 0 { return "Normal (\(prix))" }
+        return (pct > 0 ? "+\(pct) %" : "\(pct) %") + " (\(prix))"
+    }
+
+    static func texteSalaire(_ s: Double, _ type: EntrepriseType) -> String {
+        let pct = Int(((s - 1) * 100).rounded())
+        let montant = Format.argent(Int(Double(type.salaireEmploye) * s))
+        if pct == 0 { return "Au prix du marché (\(montant))" }
+        return (pct > 0 ? "+\(pct) %" : "\(pct) %") + " (\(montant))"
+    }
+
+    static func prochainSeuil(_ sites: Int) -> Int {
+        EntrepriseMoteur.seuilsSites.first { $0 > sites } ?? sites
+    }
+
+    static func resumeLevier(_ l: EntrepriseLevier, _ e: Entreprise, bloque: Bool) -> String {
+        if bloque { return "Réservé aux boîtes de niveau \((l.niveauMin ?? 0) + 1) et plus" }
+        var morceaux: [String] = []
+        let f = l.effets
+        func ajoute(_ v: Int?, _ nom: String) {
+            if let v = v, v != 0 { morceaux.append((v > 0 ? "+" : "") + "\(v) % \(nom)") }
+        }
+        ajoute(f?.demande, "clients")
+        ajoute(f?.prix, "prix")
+        ajoute(f?.coutVariable, "coûts d'achat")
+        ajoute(f?.capacite, "capacité")
+        ajoute(f?.productivite, "productivité")
+        if let r = f?.reputation, r != 0 { morceaux.append((r > 0 ? "+" : "") + "\(r) réputation/an") }
+        if let m = f?.moral, m != 0 { morceaux.append((m > 0 ? "+" : "") + "\(m) moral") }
+        if let r = f?.risque, r > 0 { morceaux.append("risque +\(r) %") }
+        let parSite = l.parSite == true ? " par site" : ""
+        let install = (l.coutInstallation ?? 0) * (l.parSite == true ? e.sites : 1)
+        if install > 0 { morceaux.append("mise en place " + Format.argent(install)) }
+        if let a = l.coutAnnuel, a > 0 { morceaux.append(Format.argent(a) + "/an" + parSite) }
+        return morceaux.joined(separator: " · ")
     }
 
     // MARK: - Outils

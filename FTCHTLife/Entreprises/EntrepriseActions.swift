@@ -57,62 +57,90 @@ extension GameEngine {
         let idsDisparus = Set(disparus.map { $0.id })
         e.employes.removeAll { idsDisparus.contains($0.id) }
 
-        // Chiffre d'affaires
-        let base = Double(type.chiffreAffairesBase) * e.echelle
-        let v = max(0, min(0.9, type.volatilite))
-        let marche = 1 + Double.random(in: -v...v)
-        let image = 0.5 + Double(e.reputation) / 100
-        var equipe = 1.0
-        for emp in e.employes {
-            equipe += Double(emp.competence - 50) / 400 + Double(emp.motivation - 50) / 800
-        }
-        let manquants = max(0, EntrepriseMoteur.postes(e) - e.employes.count)
-        equipe = max(0.4, equipe - 0.08 * Double(manquants))
-        let elan = max(0.3, 1 + Double(e.elan) / 100)
-        let absent = (j.emploi != nil || j.etudes != nil) ? 0.85 : 1.0
-        let ca = max(0, Int(base * marche * image * equipe * elan * absent))
+        guard let eco = EntrepriseCatalogue.eco(type.id) else { return true }
+        let patronDisponible = j.emploi == nil && j.etudes == nil
+        EntrepriseMoteur.normaliser(&e, eco, patronDisponible: patronDisponible)
+        let lev = EntrepriseSimulation.effetsLeviers(e, eco)
+        var faits: [String] = []
 
-        // Charges, salaires au-dessus (ou en dessous) du salaire normal, banque
-        let charges = EntrepriseMoteur.charges(e, type)
-        let surcout = e.employes.reduce(0) { $0 + ($1.salaire - type.salaireEmploye) }
-        var banque = 0
+        // L'année : demande, capacité, ventes, coûts
+        let v = max(0, min(0.9, type.volatilite))
+        let alea = 1 + Double.random(in: -v...v)
+        var r = EntrepriseSimulation.annee(e, eco, patronDisponible: patronDisponible, alea: alea, age: j.age)
+        let precedent = e.rapport
         if e.dette > 0 {
-            let interets = Int(Double(e.dette) * EntrepriseMoteur.tauxInteret)
             let rembourse = min(e.dette, max(1, e.detteInitiale / EntrepriseMoteur.dureeEmprunt))
             e.dette -= rembourse
-            banque = interets + rembourse
         }
-        let resultat = ca - charges - surcout - banque
-        e.tresorerie += resultat
-        e.historique.append(EntrepriseBilan(age: j.age, chiffreAffaires: ca, resultat: resultat))
-        if e.historique.count > 12 { e.historique.removeFirst(e.historique.count - 12) }
+        e.tresorerie += r.resultat
+        r.tresorerie = e.tresorerie
+        e.historique.append(EntrepriseBilan(age: j.age, chiffreAffaires: r.chiffreAffaires, resultat: r.resultat))
+        if e.historique.count > 15 { e.historique.removeFirst(e.historique.count - 15) }
         e.annees += 1
+        if alea > 1 + v * 0.6 { faits.append("📈 Année faste sur le marché : les clients se sont rués sur les \(eco.vente.pluriel).") }
+        if alea < 1 - v * 0.6 { faits.append("📉 Le marché s'est effondré cette année. Ce n'est pas ta faute. Enfin, pas que.") }
 
-        // Réputation qui revient doucement vers la moyenne, élan qui s'estompe
-        e.reputation = Stats.borne(e.reputation + (50 - e.reputation) / 10 + Int.random(in: -2...2))
+        // Réputation, élan, moral
+        let cibleRep = EntrepriseSimulation.cibleReputation(e, r)
+        e.reputation = Stats.borne(e.reputation + (cibleRep - e.reputation) * 3 / 10 + (lev.reputation ?? 0) + Int.random(in: -2...2))
         e.elan = e.elan * 7 / 10
+        let cibleMoral = EntrepriseSimulation.cibleMoral(e, r, lev)
+        e.moral = Stats.borne(e.moral + (cibleMoral - e.moral) * 4 / 10 + Int.random(in: -3...3))
+        if r.capacite > 0 && Double(r.demande) > Double(r.capacite) * 1.1 {
+            faits.append("😩 L'équipe est débordée : \(r.clientsRefuses) clients sont repartis sans rien.")
+        }
+        if e.moral < 30 && e.effectif > 0 {
+            let partis = max(1, Int(Double(e.effectif) * Double.random(in: 0.1...0.25)))
+            e.effectif -= min(partis, e.effectif)
+            faits.append("🚪 Moral au plus bas : \(partis) employé\(partis > 1 ? "s ont" : " a") démissionné.")
+        }
+        if let k = lev.karma, k != 0 { j.stats.karma += k }
 
-        // Équipe
+        // La concurrence bouge
+        let avant = e.pression
+        e.pression = min(1.35, max(0.75, e.pression * Double.random(in: 0.93...1.08)))
+        if e.pression > avant * 1.05 {
+            faits.append("🥊 \(e.concurrent) a cassé ses prix et ouvert à côté de chez toi.")
+        } else if e.pression < avant * 0.95 {
+            faits.append("😌 \(e.concurrent) traverse une mauvaise passe. Tes clients reviennent.")
+        }
+
+        // Cadres nommés
         for i in e.employes.indices {
             e.employes[i].annees += 1
             e.employes[i].competence = Stats.borne(e.employes[i].competence + Int.random(in: 0...3))
-            e.employes[i].motivation = Stats.borne(e.employes[i].motivation + Int.random(in: -7...3))
+            e.employes[i].motivation = Stats.borne(e.employes[i].motivation + Int.random(in: -7...3) + (e.moral - 50) / 20)
         }
         let demissions = e.employes.filter { $0.motivation < 15 && Double.random(in: 0...1) < 0.5 }
         for d in demissions {
-            lignes.append("🚪 \(d.prenom) a démissionné de \(e.nom) en laissant un mot : « Bisous, débrouille-toi. »")
+            faits.append("🚪 \(d.prenom) a démissionné en laissant un mot : « Bisous, débrouille-toi. »")
         }
         let idsDemissions = Set(demissions.map { $0.id })
         e.employes.removeAll { idsDemissions.contains($0.id) }
 
         // Le patron qui fait tout lui-même
+        let manquants = EntrepriseSimulation.postesCadresManquants(e)
         if manquants > 0 {
             j.stats.bonheur -= 2 * manquants
             j.stats.sante -= manquants / 2
         }
 
-        let icone = resultat >= 0 ? "🏪" : "📉"
-        lignes.append("\(icone) \(e.nom) : chiffre d'affaires \(Format.argent(ca)), résultat \(resultat >= 0 ? "+" : "")\(Format.argent(resultat)), trésorerie \(Format.argent(e.tresorerie)).")
+        // Rapport
+        r.reputation = e.reputation
+        r.moral = e.moral
+        r.effectif = e.effectif
+        r.faits = faits
+        r.conseils = EntrepriseSimulation.conseils(e, eco, r, patronDisponible: patronDisponible)
+        e.rapport = r
+        e.rapportNonLu = true
+
+        let icone = r.resultat >= 0 ? "🏪" : "📉"
+        var ligne = "\(icone) \(e.nom) : \(r.ventes) \(r.ventes > 1 ? eco.vente.pluriel : eco.vente.nom), chiffre d'affaires \(Format.argent(r.chiffreAffaires)), résultat \(r.resultat >= 0 ? "+" : "")\(Format.argent(r.resultat))"
+        if let p = precedent, p.chiffreAffaires > 0 {
+            let evo = Int((Double(r.chiffreAffaires) / Double(p.chiffreAffaires) - 1) * 100)
+            ligne += " (\(evo >= 0 ? "+" : "")\(evo) %)"
+        }
+        lignes.append(ligne + ", trésorerie \(Format.argent(e.tresorerie)).")
 
         // Faillite ?
         if e.tresorerie < EntrepriseMoteur.seuilFaillite(e, type) {
@@ -133,7 +161,8 @@ extension GameEngine {
         }
 
         // Crise ou opportunité de l'année
-        if Double.random(in: 0...1) < min(0.9, 0.5 * type.risque) {
+        let risqueLeviers = 1 + Double(lev.risque ?? 0) / 100
+        if Double.random(in: 0...1) < min(0.9, 0.5 * type.risque * risqueLeviers) {
             let patronAbsent = j.emploi != nil
             let possibles = EntrepriseCatalogue.evenements.filter { EntrepriseMoteur.eligible($0, e, type, patronAbsent: patronAbsent) }
             if let ev = EntrepriseMoteur.tirage(possibles, poids: { $0.weight ?? 1 }) {
@@ -223,7 +252,11 @@ extension GameEngine {
                 if b.employePart == true { e.employes.remove(at: k) }
             }
             if let n = b.niveau, n != 0 {
-                e.niveau = min(EntrepriseMoteur.niveauMax, max(0, e.niveau + n))
+                // Un niveau de plus ou de moins = le nombre de points de vente du niveau visé.
+                let vise = min(EntrepriseMoteur.niveauMax, max(0, e.niveau + n))
+                let seuil = EntrepriseMoteur.seuilsSites[vise]
+                e.sites = n > 0 ? max(e.sites, seuil) : max(1, min(e.sites, seuil))
+                e.niveau = EntrepriseMoteur.niveauPourSites(e.sites)
                 e.niveauMax = max(e.niveauMax, e.niveau)
             }
             faillite = b.faillite == true
@@ -285,6 +318,9 @@ extension GameEngine {
         j.argent -= apport
         var e = Entreprise(typeId: type.id, nom: nomFinal, ageCreation: j.age, dette: dette, detteInitiale: dette,
                            concurrent: EntrepriseCatalogue.concurrents.randomElement()!)
+        if let eco = EntrepriseCatalogue.eco(type.id) {
+            EntrepriseMoteur.normaliser(&e, eco, patronDisponible: j.emploi == nil && j.etudes == nil)
+        }
         e.candidats = EntrepriseMoteur.candidats(e, type)
         var etat = j.entreprises ?? EntreprisesEtat()
         etat.actives.append(e)
@@ -390,34 +426,221 @@ extension GameEngine {
         }
     }
 
-    func agrandirEntreprise(_ id: UUID) -> String {
-        agirSurEntreprise(id) { e, type, j, signaux in
-            guard let cout = EntrepriseMoteur.coutAgrandissement(e, type) else {
-                return "\(e.nom) est déjà un empire. Il ne reste plus qu'à ouvrir une succursale sur la Lune."
-            }
-            let cle = "ent_agr_" + e.id.uuidString
-            if j.actionsAnnee.contains(cle) { return "Un agrandissement par an. Laisse sécher la peinture." }
-            guard payer(cout, &e, &j) else { return "Il faut \(Format.argent(cout)) (trésorerie et ton argent compris)." }
-            j.actionsAnnee.append(cle)
-            e.niveau += 1
-            e.niveauMax = max(e.niveauMax, e.niveau)
-            e.reputation = Stats.borne(e.reputation + 3)
-            e.candidats = EntrepriseMoteur.candidats(e, type)
-            let nomNiveau = remplir(EntrepriseMoteur.remplir(type.nomNiveau(e.niveau), e, type, employe: nil), j)
-            let texte: String
-            if e.niveau == EntrepriseMoteur.niveauMax {
+    // MARK: - Pilotage (gestion poussée)
+
+    /// Met le niveau à jour après un changement du nombre de points de vente. Renvoie une phrase si le niveau change.
+    private func majNiveauEntreprise(_ e: inout Entreprise, _ type: EntrepriseType, _ j: inout Joueur, _ signaux: inout [String]) -> String? {
+        let avant = e.niveau
+        e.niveau = EntrepriseMoteur.niveauPourSites(e.sites)
+        let nouveauRecord = e.niveau > e.niveauMax
+        e.niveauMax = max(e.niveauMax, e.niveau)
+        guard e.niveau != avant else { return nil }
+        e.candidats = EntrepriseMoteur.candidats(e, type)
+        let nomNiveau = remplir(EntrepriseMoteur.remplir(type.nomNiveau(e.niveau), e, type, employe: nil), j)
+        if e.niveau < avant { return "📉 \(e.nom) redevient : \(nomNiveau)." }
+        let texte: String
+        if e.niveau == EntrepriseMoteur.niveauMax {
+            if nouveauRecord {
                 signaux.append("entreprise_empire")
                 j.stats.bonheur += 25
-                texte = "👑 \(e.nom), c'est maintenant : \(nomNiveau). Tu es officiellement " + j.g("un magnat", "une magnate")
-                    + ". Les gens baissent les yeux quand tu entres dans une boulangerie."
-            } else {
+            }
+            texte = "👑 \(e.nom), c'est maintenant : \(nomNiveau). Tu es officiellement " + j.g("un magnat", "une magnate")
+                + ". Les gens baissent les yeux quand tu entres dans une boulangerie."
+        } else {
+            if nouveauRecord {
                 signaux.append("entreprise_agrandie")
                 j.stats.bonheur += 8
-                texte = "📈 \(e.nom) grandit : \(nomNiveau). Il faudra \(EntrepriseMoteur.postes(e)) personnes aux postes clés."
             }
-            ajouterLigne(&j, texte)
+            texte = "📈 \(e.nom) devient : \(nomNiveau). Il faudra \(EntrepriseMoteur.postes(e)) cadres aux postes clés."
+        }
+        ajouterLigne(&j, texte)
+        return texte
+    }
+
+    func ouvrirSites(_ id: UUID, nombre: Int) -> String {
+        agirSurEntreprise(id) { e, type, j, signaux in
+            guard let eco = EntrepriseCatalogue.eco(type.id), nombre > 0 else { return "" }
+            let n = min(nombre, EntrepriseMoteur.maxSites - e.sites)
+            guard n > 0 else { return "Tu as déjà \(e.sites) \(eco.site.pluriel). Même les dictateurs s'arrêtent à un moment." }
+            let cout = eco.coutSite * n
+            guard payer(cout, &e, &j) else { return "Il faut \(Format.argent(cout)) (trésorerie et ton argent compris)." }
+            e.sites += n
+            var texte = "Et de \(e.sites) \(e.sites > 1 ? eco.site.pluriel : eco.site.nom) ! Ouverture : \(Format.argent(cout))."
+            texte += " Pense à embaucher : il faut du monde pour les faire tourner."
+            if let niveau = majNiveauEntreprise(&e, type, &j, &signaux) { texte += "\n\n" + niveau }
             return texte
         }
+    }
+
+    func fermerSites(_ id: UUID, nombre: Int) -> String {
+        agirSurEntreprise(id) { e, type, j, signaux in
+            guard let eco = EntrepriseCatalogue.eco(type.id), nombre > 0 else { return "" }
+            let n = min(nombre, e.sites - 1)
+            guard n > 0 else { return "C'est ton dernier \(eco.site.nom). Pour tout fermer, va dans « Et après ? »." }
+            let rendu = Int(Double(eco.coutSite * n) * 0.3)
+            e.sites -= n
+            e.tresorerie += rendu
+            e.moral = Stats.borne(e.moral - 5)
+            var texte = "Tu fermes \(n) \(n > 1 ? eco.site.pluriel : eco.site.nom) et récupères \(Format.argent(rendu)) en revendant les meubles."
+            if let niveau = majNiveauEntreprise(&e, type, &j, &signaux) { texte += "\n\n" + niveau }
+            return texte
+        }
+    }
+
+    func ouvrirUsines(_ id: UUID, nombre: Int) -> String {
+        agirSurEntreprise(id) { e, type, j, _ in
+            guard let eco = EntrepriseCatalogue.eco(type.id), let u = eco.usine, nombre > 0 else { return "" }
+            let cout = eco.coutUsine * nombre
+            guard payer(cout, &e, &j) else { return "Il faut \(Format.argent(cout)) (trésorerie et ton argent compris)." }
+            e.usines = max(0, e.usines) + nombre
+            return "Tu construis \(nombre) \(nombre > 1 ? u.pluriel : u.nom) pour \(Format.argent(cout)). Les voisins adorent le bruit."
+        }
+    }
+
+    func fermerUsines(_ id: UUID, nombre: Int) -> String {
+        agirSurEntreprise(id) { e, type, _, _ in
+            guard let eco = EntrepriseCatalogue.eco(type.id), let u = eco.usine, nombre > 0 else { return "" }
+            let n = min(nombre, max(0, e.usines) - 1)
+            guard n > 0 else { return "Sans \(u.nom), tu n'aurais plus rien à vendre." }
+            let rendu = Int(Double(eco.coutUsine * n) * 0.3)
+            e.usines -= n
+            e.tresorerie += rendu
+            e.moral = Stats.borne(e.moral - 8)
+            return "Tu fermes \(n) \(n > 1 ? u.pluriel : u.nom) et récupères \(Format.argent(rendu)). La presse locale parle de toi, et pas en bien."
+        }
+    }
+
+    /// Embauche (delta > 0) ou licencie (delta < 0) du personnel.
+    func changerEffectif(_ id: UUID, delta: Int) -> String {
+        agirSurEntreprise(id) { e, type, j, _ in
+            guard delta != 0 else { return "" }
+            let salaire = Double(type.salaireEmploye) * e.salaireNiveau
+            if delta > 0 {
+                let cout = Int(salaire * 0.1 * Double(delta))
+                guard payer(cout, &e, &j) else { return "Recruter coûte \(Format.argent(cout)) (annonces, entretiens, café). Tu ne les as pas." }
+                e.effectif = max(0, e.effectif) + delta
+                return "Tu embauches \(delta) personne\(delta > 1 ? "s" : ""). Recrutement : \(Format.argent(cout)). L'équipe compte maintenant \(e.effectif) employés."
+            }
+            let n = min(-delta, max(0, e.effectif))
+            guard n > 0 else { return "Il n'y a plus personne à licencier. À part toi." }
+            let indemnites = Int(salaire * 0.25 * Double(n))
+            e.tresorerie -= indemnites
+            e.effectif -= n
+            e.moral = Stats.borne(e.moral - min(25, 3 + n * 40 / max(1, e.effectif + n)))
+            if n >= 5 { j.stats.karma -= 2 }
+            return "Tu licencies \(n) personne\(n > 1 ? "s" : ""). Indemnités : \(Format.argent(indemnites)). Ceux qui restent font semblant de ne pas avoir peur."
+        }
+    }
+
+    /// Met l'effectif au niveau conseillé pour la demande prévue.
+    func ajusterEffectif(_ id: UUID) -> String {
+        guard let j = joueur, let e = j.entreprises?.actives.first(where: { $0.id == id }),
+              let eco = EntrepriseCatalogue.eco(e.typeId) else { return "" }
+        let cible = EntrepriseSimulation.effectifConseille(e, eco, patronDisponible: j.emploi == nil && j.etudes == nil)
+        let delta = cible - max(0, e.effectif)
+        if delta == 0 { return "L'effectif est déjà parfait. Tu peux te remettre à ne rien faire." }
+        return changerEffectif(id, delta: delta)
+    }
+
+    func reglerPrix(_ id: UUID, _ prix: Double) -> String {
+        agirSurEntreprise(id) { e, _, _, _ in
+            e.prix = min(2, max(0.6, prix))
+            return ""
+        }
+    }
+
+    func reglerQualite(_ id: UUID, _ qualite: Int) -> String {
+        agirSurEntreprise(id) { e, _, _, _ in
+            e.qualite = min(5, max(1, qualite))
+            return ""
+        }
+    }
+
+    func reglerMarketing(_ id: UUID, _ pourcent: Int) -> String {
+        agirSurEntreprise(id) { e, _, _, _ in
+            e.marketing = min(30, max(0, pourcent))
+            return ""
+        }
+    }
+
+    func reglerSalaires(_ id: UUID, _ niveau: Double) -> String {
+        agirSurEntreprise(id) { e, _, _, _ in
+            let avant = e.salaireNiveau
+            e.salaireNiveau = min(1.4, max(0.8, niveau))
+            if e.salaireNiveau < avant { e.moral = Stats.borne(e.moral - 10) }
+            if e.salaireNiveau > avant { e.moral = Stats.borne(e.moral + 5) }
+            return ""
+        }
+    }
+
+    func activerLevier(_ id: UUID, levier: String) -> String {
+        agirSurEntreprise(id) { e, type, j, _ in
+            guard let eco = EntrepriseCatalogue.eco(type.id), let l = eco.levier(levier) else { return "" }
+            if e.leviers.contains(levier) { return "C'est déjà en place." }
+            if e.niveau < (l.niveauMin ?? 0) { return "Ta boîte est encore trop petite pour ça." }
+            let cout = (l.coutInstallation ?? 0) * (l.parSite == true ? e.sites : 1)
+            guard payer(cout, &e, &j) else { return "Il faut \(Format.argent(cout)) pour mettre ça en place." }
+            if let g = l.groupe {
+                e.leviers.removeAll { autre in eco.levier(autre)?.groupe == g }
+            }
+            e.leviers.append(levier)
+            let phrase = l.activation.map { remplir(EntrepriseMoteur.remplir($0, e, type, employe: nil), j) } ?? "C'est en place."
+            return phrase + (cout > 0 ? " (\(Format.argent(cout)))" : "")
+        }
+    }
+
+    func desactiverLevier(_ id: UUID, levier: String) -> String {
+        agirSurEntreprise(id) { e, type, _, _ in
+            e.leviers.removeAll { $0 == levier }
+            let nom = EntrepriseCatalogue.eco(type.id)?.levier(levier)?.nom ?? "Ce levier"
+            return "« \(nom) » est arrêté. L'argent déjà dépensé, lui, ne revient pas."
+        }
+    }
+
+    /// Estimation de l'année prochaine avec les réglages actuels (sans hasard).
+    func estimationEntreprise(_ e: Entreprise) -> EntrepriseRapport? {
+        guard let j = joueur, let eco = EntrepriseCatalogue.eco(e.typeId) else { return nil }
+        let patron = j.emploi == nil && j.etudes == nil
+        var copie = e
+        EntrepriseMoteur.normaliser(&copie, eco, patronDisponible: patron)
+        return EntrepriseSimulation.annee(copie, eco, patronDisponible: patron, age: j.age + 1)
+    }
+
+    func effectifConseilleEntreprise(_ e: Entreprise) -> Int {
+        guard let j = joueur, let eco = EntrepriseCatalogue.eco(e.typeId) else { return 0 }
+        var copie = e
+        let patron = j.emploi == nil && j.etudes == nil
+        EntrepriseMoteur.normaliser(&copie, eco, patronDisponible: patron)
+        return EntrepriseSimulation.effectifConseille(copie, eco, patronDisponible: patron)
+    }
+
+    /// Complète les champs des boîtes venues d'anciennes sauvegardes (à appeler à l'ouverture de l'écran).
+    func normaliserEntreprises() {
+        guard var j = joueur, var etat = j.entreprises else { return }
+        let patron = j.emploi == nil && j.etudes == nil
+        var change = false
+        for i in etat.actives.indices {
+            guard let eco = EntrepriseCatalogue.eco(etat.actives[i].typeId) else { continue }
+            let avant = etat.actives[i]
+            EntrepriseMoteur.normaliser(&etat.actives[i], eco, patronDisponible: patron)
+            if etat.actives[i] != avant { change = true }
+        }
+        guard change else { return }
+        j.entreprises = etat
+        enregistrerJoueur(j)
+    }
+
+    /// Boîtes dont le rapport annuel n'a pas encore été montré.
+    var entreprisesAvecRapportNonLu: [Entreprise] {
+        joueur?.entreprises?.actives.filter { $0.rapportNonLu && $0.rapport != nil } ?? []
+    }
+
+    func marquerRapportsEntreprisesLus() {
+        guard var j = joueur, var etat = j.entreprises else { return }
+        guard etat.actives.contains(where: { $0.rapportNonLu }) else { return }
+        for i in etat.actives.indices { etat.actives[i].rapportNonLu = false }
+        j.entreprises = etat
+        enregistrerJoueur(j)
     }
 
     func rembourserDetteEntreprise(_ id: UUID) -> String {
