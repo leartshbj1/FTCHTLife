@@ -236,6 +236,6 @@ extension String {
     /// Première lettre en minuscule, le reste intact (« Député au Bundestag » → « député au Bundestag »).
     func polMinuscule() -> String {
         guard let premier = first else { return self }
-        return premier.lowercased() + dropFirst()
+        return premier.lowercased() + String(dropFirst())
     }
 }

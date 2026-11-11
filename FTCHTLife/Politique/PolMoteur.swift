@@ -252,6 +252,7 @@ enum PolMoteur {
         guard j.vivant else { return "Tu es " + j.g("mort", "morte") + "." }
         if e.candidature != nil { return "Tu es déjà en campagne." }
         if e.ineligibilite > 0 { return "Tu es inéligible encore \(e.ineligibilite) an\(e.ineligibilite > 1 ? "s" : "")." }
+        if let ancien = e.paysId, ancien != sys.id { return "Tu viens d'arriver \(sys.auPays) : installe-toi d'abord, tu pourras te présenter l'an prochain." }
         if !peutSePresenterIci(p, j) { return "Sans la nationalité, impossible de te présenter \(sys.auPays)." }
         if j.age < sys.ageMin(p) { return "Il faut avoir \(sys.ageMin(p)) ans." }
         if sys.estPartiUnique && e.partiId == nil { return "Ici, aucune candidature n'est possible sans la carte du parti." }
@@ -445,7 +446,7 @@ enum PolMoteur {
         var soiree = PolSoiree(poste: p, gagne: gagne, reelection: c.reelection, adversaire: c.adversaire, score: 0)
         if p == .premierMinistre && !sys.estIndirecte(p) {
             // Législatives : le parti du joueur doit arriver en tête ; la part des sièges décide de la majorité.
-            var sieges = gagne ? 40 + (score - 50) * 0.8 + Double.random(in: -4...4) : 30 + (score - 50) * 0.6
+            var sieges: Double = gagne ? 40 + (score - 50) * 0.8 + Double.random(in: -4...4) : 30 + (score - 50) * 0.6
             sieges = gagne ? max(34, min(64, sieges)) : max(8, min(33, sieges))
             if gagne && sys.coalitions != true { sieges = max(sieges, 50.5) }
             soiree.score = sieges

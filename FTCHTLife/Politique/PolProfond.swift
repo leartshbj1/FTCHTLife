@@ -311,8 +311,9 @@ extension PolMoteur {
         guard marquer("commission", &j) else { return dejaFait }
         let chance = (Double(e.influence) * 0.5 + Double(j.stats.intelligence) * 0.2) / 100 - Double(e.casseroles) / 300
         let s = systeme(j)
+        let commissionMaj: String = s.commission.prefix(1).uppercased() + String(s.commission.dropFirst())
         guard Double.random(in: 0...1) < chance else {
-            return PolResultat(texte: "\(s.commission.prefix(1).uppercased() + s.commission.dropFirst()) a préféré un candidat plus expérimenté sur les dossiers de l'Union.")
+            return PolResultat(texte: "\(commissionMaj) a préféré un candidat plus expérimenté sur les dossiers de l'Union.")
         }
         if e.mandat != nil { terminerMandat(&j, &e, fin: "parti" + j.g("", "e") + " à \(s.commission)") }
         e.mandat = PolMandat(poste: .commissaire, anneesRestantes: s.duree(.commissaire), ageDebut: j.age)
