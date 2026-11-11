@@ -63,7 +63,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
     // Relations
     case famille, amour, amis, rencontres, telephone, voisins, animaux, reputationFamille, secrets
     // Activités
-    case loisirs, projets, sante, television, casino, permis, etranger, crime, prison, casier
+    case loisirs, projets, sante, television, casino, permis, voyages, etranger, crime, prison, casier
     // Moi
     case profil, competences, trophees, journalDuMonde, musee, reglages
 
@@ -77,7 +77,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
             return .biens
         case .famille, .amour, .amis, .rencontres, .telephone, .voisins, .animaux, .reputationFamille, .secrets:
             return .relations
-        case .loisirs, .projets, .sante, .television, .casino, .permis, .etranger, .crime, .prison, .casier:
+        case .loisirs, .projets, .sante, .television, .casino, .permis, .voyages, .etranger, .crime, .prison, .casier:
             return .activites
         case .profil, .competences, .trophees, .journalDuMonde, .musee, .reglages:
             return .moi
@@ -97,7 +97,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .reputationFamille, .secrets: return "Réputation et secrets"
         case .loisirs, .projets, .television, .casino: return "Sorties et loisirs"
         case .sante, .permis: return "Santé et démarches"
-        case .etranger: return "Voyager"
+        case .voyages, .etranger: return "Voyager"
         case .crime, .prison, .casier: return "Hors-la-loi"
         case .profil, .competences, .trophees: return "Moi"
         case .journalDuMonde, .musee, .reglages: return "Le jeu"
@@ -134,6 +134,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .television: return "Télévision"
         case .casino: return "Casino"
         case .permis: return "Permis"
+        case .voyages: return "Voyage sur mesure"
         case .etranger: return "Vivre à l'étranger"
         case .crime: return "Crime"
         case .prison: return "Prison"
@@ -177,6 +178,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .television: return "Quiz, téléréalité, gloire éphémère."
         case .casino: return "Roulette, poker, machines à sous."
         case .permis: return "Code, conduite, points."
+        case .voyages: return "65 pays, ton transport, tes proches, tes souvenirs."
         case .etranger: return "26 pays, visas, langues, choc culturel."
         case .crime: return "Petits larcins et gros coups."
         case .prison: return "Tu es derrière les barreaux."
@@ -220,6 +222,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .television: return "tv.fill"
         case .casino: return "suit.spade.fill"
         case .permis: return "car.fill"
+        case .voyages: return "suitcase.rolling.fill"
         case .etranger: return "globe.europe.africa.fill"
         case .crime: return "theatermasks.fill"
         case .prison: return "lock.shield.fill"
@@ -247,7 +250,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
 
     /// Entrées impossibles derrière les barreaux.
     static let fermesEnPrison: [ModuleJeu] = [.offresEmploi, .entreprise, .boutique, .rencontres, .loisirs, .projets,
-                                              .television, .casino, .permis, .etranger, .crime, .ecole, .universite]
+                                              .television, .casino, .permis, .voyages, .etranger, .crime, .ecole, .universite]
 
     /// Raison pour laquelle l'entrée est fermée pour l'instant (nil = ouverte).
     func verrou(_ j: Joueur) -> String? {
@@ -269,6 +272,7 @@ enum ModuleJeu: String, CaseIterable, Identifiable {
         case .placements where j.age < 10: return "Dès 10 ans, avec le livret."
         case .testament where j.age < 18: return "Dès 18 ans."
         case .etranger where j.age < 18: return "Dès 18 ans. Avant, tu suis tes parents."
+        case .voyages where j.age < 12: return "Dès 12 ans. Avant, tu suis tes parents en vacances."
         case .rencontres where j.age < 14: return "Dès 14 ans. Pour l'instant, les cartes de récré suffisent."
         case .telephone where j.age < 13: return "Le téléphone arrive à 13 ans. Écran fissuré inclus."
         case .television where j.age < 10: return "Dès 10 ans."

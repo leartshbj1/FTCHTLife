@@ -53,6 +53,7 @@ struct EcranModule: View {
         case .television: TeleView()
         case .casino: CasinoView()
         case .permis: PermisView(chemin: \.permis)
+        case .voyages: VoyagesView()
         case .etranger:
             ExpatView(etat: { $0.etatExpat }, ecrire: { j, e in j.etranger = e },
                       visaToujoursAccepte: Shkurtaaa.actif)

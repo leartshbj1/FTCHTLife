@@ -124,6 +124,7 @@ extension GameEngine {
         t.formUnion(vivantTags(j))
         if let v = VoisinageStockage.lire(j) { t.formUnion(VoisinageMoteur.tags(v)) }
         t.formUnion(EntourageTags.tags(j))
+        t.formUnion(VoyMoteur.tags(j.voyages, age: j.age))
         return t
     }
 

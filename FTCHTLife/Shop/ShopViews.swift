@@ -82,6 +82,11 @@ struct ShopView: View {
                 } label: {
                     Label("Agence de voyages", systemImage: "airplane.departure")
                 }
+                NavigationLink {
+                    VoyagesListe()
+                } label: {
+                    Label("Voyage sur mesure", systemImage: "suitcase.rolling.fill")
+                }
             }
 
             Section("Magasins") {
