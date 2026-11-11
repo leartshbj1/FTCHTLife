@@ -1,0 +1,3498 @@
+[
+  {
+    "id": "pas_0201",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 50,
+    "weight": 6,
+    "conditions": {
+      "requiresJob": true,
+      "excludeFlags": [
+        "pas_groupe_bureau"
+      ]
+    },
+    "text": "Tes collègues montent un groupe de rock pour la fête annuelle de l'entreprise. Il leur manque un bassiste, et ils te regardent avec insistance.",
+    "choices": [
+      {
+        "label": "Apprendre la basse",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Quatre cordes, deux notes, beaucoup de hochements de tête. Tu fais partie des « Tableurs Sauvages ». Les répétitions sont le meilleur moment de la semaine.",
+            "effects": {
+              "happiness": 9,
+              "money": -180,
+              "setFlags": [
+                "pas_groupe_bureau"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Après trois répétitions, tu as des ampoules et aucune ligne de basse. Ils engagent le stagiaire à ta place.",
+            "effects": {
+              "happiness": -5,
+              "money": -180
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer de faire le son",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu deviens ingénieur du son, c'est-à-dire la personne qui monte et descend un bouton. Tu es indispensable et invisible.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2,
+              "setFlags": [
+                "pas_groupe_bureau"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Décliner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu prétextes une allergie aux amplis. On te regarde comme quelqu'un qui n'aime pas la joie.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sortir ta guitare",
+        "requiresSkill": {
+          "guitare": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes à la basse comme si de rien n'était et tu cales tout le groupe. On te nomme directeur musical d'office.",
+            "effects": {
+              "happiness": 12,
+              "skills": {
+                "guitare": 5
+              },
+              "newFriend": true,
+              "setFlags": [
+                "pas_groupe_bureau"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0202",
+    "category": "passions",
+    "minAge": 23,
+    "maxAge": 55,
+    "weight": 8,
+    "conditions": {
+      "requiresJob": true,
+      "flags": [
+        "pas_groupe_bureau"
+      ]
+    },
+    "text": "Soir de la fête d'entreprise. Ton groupe attaque son troisième morceau quand le grand directeur monte sur scène et réclame le micro.",
+    "choices": [
+      {
+        "label": "Lui donner le micro",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il chante faux mais avec cœur. La salle est en délire. Le lundi, il te salue par ton prénom dans l'ascenseur.",
+            "effects": {
+              "happiness": 10,
+              "money": 150,
+              "setFlags": [
+                "populaire"
+              ],
+              "clearFlags": [
+                "pas_groupe_bureau"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il chante un slow très personnel dédié à son ex-femme, présente dans la salle. Malaise de deux mille ans.",
+            "effects": {
+              "happiness": -6,
+              "clearFlags": [
+                "pas_groupe_bureau"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couper son micro",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il croit à une panne et redescend. Le concert continue. Personne ne saura jamais.",
+            "effects": {
+              "happiness": 7
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Il a vu le bassiste couper le micro. Ambiance glaciale. Ta prochaine évaluation annuelle s'annonce sportive.",
+            "effects": {
+              "happiness": -8,
+              "money": -200,
+              "clearFlags": [
+                "pas_groupe_bureau"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire un duo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu chantes avec lui, en couvrant ses fausses notes. Le service communication publie la vidéo en interne. Tu deviens une star de la cafétéria.",
+            "effects": {
+              "happiness": 11,
+              "fame": 1,
+              "setFlags": [
+                "populaire"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0203",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 50,
+    "weight": 6,
+    "conditions": {
+      "flags": [
+        "musicien"
+      ]
+    },
+    "text": "Ton groupe joue dans un bar. Un client très joyeux réclame la même chanson de variété pour la quatorzième fois, billet de 20 € à la main.",
+    "choices": [
+      {
+        "label": "La rejouer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu la joues une quinzième fois. Il pleure de bonheur. Tu ne pourras plus jamais entendre cette chanson sans trembler.",
+            "effects": {
+              "money": 20,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Il se vexe, renverse sa bière sur l'ampli. Court-circuit. Fin du concert et réparation à tes frais.",
+            "effects": {
+              "money": -120,
+              "happiness": -6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le patron le raccompagne dehors. La salle t'applaudit pour ton courage artistique.",
+            "effects": {
+              "happiness": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Version metal",
+        "requiresSkill": {
+          "guitare": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu la transformes en morceau de metal de sept minutes. Le client fait du headbang, la salle aussi. Le patron vous réengage tous les mois.",
+            "effects": {
+              "happiness": 13,
+              "money": 200,
+              "skills": {
+                "guitare": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0204",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {
+      "excludeFlags": [
+        "pas_troupe"
+      ]
+    },
+    "text": "La troupe de théâtre amateur de {ville} est en panique : l'acteur principal s'est cassé la jambe à trois jours de la première. On te supplie de le remplacer.",
+    "choices": [
+      {
+        "label": "Apprendre le texte",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Trois nuits blanches, quarante pages apprises. Le soir de la première, tu es parfait{e}... sauf la dernière réplique. Le public n'a rien vu.",
+            "effects": {
+              "happiness": 12,
+              "health": -4,
+              "setFlags": [
+                "pas_troupe"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu joues avec le texte caché dans un journal. Le personnage lit le journal pendant toute la pièce, même pendant la scène d'amour.",
+            "effects": {
+              "happiness": -5,
+              "setFlags": [
+                "pas_troupe"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer en improvisant",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu inventes tout. La pièce n'a plus rien à voir, mais le public rit aux larmes. L'auteur, présent dans la salle, beaucoup moins.",
+            "effects": {
+              "happiness": 9,
+              "setFlags": [
+                "pas_troupe"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tes partenaires sont perdus. La pièce finit vingt minutes plus tôt, en plein milieu du deuxième acte.",
+            "effects": {
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La première est annulée. La troupe te regarde de travers à la boulangerie pendant des mois.",
+            "effects": {
+              "happiness": -4,
+              "karma": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0205",
+    "category": "passions",
+    "minAge": 21,
+    "maxAge": 65,
+    "weight": 7,
+    "conditions": {
+      "flags": [
+        "pas_troupe"
+      ]
+    },
+    "text": "Festival départemental de théâtre amateur. Ta troupe joue une tragédie, mais vos décors sont arrivés dans le camion d'une troupe de cirque. Vous avez un trapèze et un canon à confettis.",
+    "choices": [
+      {
+        "label": "Jouer avec",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La tragédie avec trapèze devient l'événement du festival. Prix du jury « pour l'audace ».",
+            "effects": {
+              "happiness": 13,
+              "fame": 1,
+              "money": 100
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le canon à confettis part en pleine scène de mort. Fou rire général, y compris du mort. Dernière place.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer sans décor",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Scène nue, lumière crue. Le jury parle de « minimalisme courageux ». Mention honorable.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Haranguer le public",
+        "requiresSkill": {
+          "eloquence": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu expliques la situation au public avec tant de verve qu'ils jouent les décors eux-mêmes. Triomphe, premier prix, article dans le journal.",
+            "effects": {
+              "happiness": 16,
+              "fame": 2,
+              "money": 200,
+              "skills": {
+                "eloquence": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0206",
+    "category": "passions",
+    "minAge": 21,
+    "maxAge": 70,
+    "weight": 6,
+    "conditions": {
+      "flags": [
+        "pas_troupe"
+      ]
+    },
+    "text": "Le nouveau metteur en scène de ta troupe exige quatre répétitions par semaine, des chaussettes noires obligatoires et le silence absolu pendant ses monologues.",
+    "choices": [
+      {
+        "label": "Organiser une mutinerie",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La troupe vote, il part en claquant la porte. Tu deviens metteur en scène par défaut. La pression est énorme.",
+            "effects": {
+              "happiness": 6,
+              "health": -3,
+              "smarts": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La mutinerie échoue. Tu es exclu{e} de la troupe. Tu regardes leurs affiches avec amertume.",
+            "effects": {
+              "happiness": -10,
+              "clearFlags": [
+                "pas_troupe"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Obéir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu achètes des chaussettes noires. La pièce est rigoureuse, ennuyeuse, et applaudie poliment. Tu es épuisé{e}.",
+            "effects": {
+              "happiness": -4,
+              "health": -3,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Quitter la troupe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu pars avec élégance. Tes soirées redeviennent libres. Tu t'ennuies un peu, mais tes chaussettes sont à nouveau colorées.",
+            "effects": {
+              "happiness": -2,
+              "health": 2,
+              "clearFlags": [
+                "pas_troupe"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0207",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Pour ton anniversaire, {partenaire} t'offre un baptême de parapente en biplace. Le moniteur, Rodrigue, a l'air de s'être levé il y a dix minutes.",
+    "choices": [
+      {
+        "label": "Décoller",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Vingt minutes au-dessus de la vallée. Tu cries, tu ris, tu pleures. Rodrigue te laisse même tenir les commandes.",
+            "effects": {
+              "happiness": 14,
+              "relationships": {
+                "partner": 8
+              }
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Atterrissage raté dans un champ de maïs. Entorse de la cheville et épis dans les cheveux.",
+            "effects": {
+              "health": -9,
+              "happiness": -3,
+              "relationships": {
+                "partner": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander un autre moniteur",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "On te donne Ginette, 62 ans, 9 000 vols. Vol parfait. Rodrigue boude au snack.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "partner": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Échanger contre un dîner",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu préfères manger au restaurant panoramique. {partenaire} est un peu déçu, mais le dessert est excellent.",
+            "effects": {
+              "happiness": 3,
+              "health": -1,
+              "relationships": {
+                "partner": -4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0208",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 55,
+    "weight": 4,
+    "conditions": {
+      "excludeFlags": [
+        "pas_parapente"
+      ]
+    },
+    "text": "Fin du stage de parapente : premier vol en solo. Juste après le décollage, un thermique te soulève de deux cents mètres d'un coup.",
+    "choices": [
+      {
+        "label": "Profiter de l'ascension",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu planes avec les vautours pendant une heure. Tu atterris en larmes de joie. Tu achètes ta propre voile le soir même.",
+            "effects": {
+              "happiness": 15,
+              "money": -1800,
+              "setFlags": [
+                "pas_parapente"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu te fais aspirer vers un nuage. Panique, frein trop fort, fermeture de voile. Le parachute de secours s'ouvre. Arrivée dans un sapin.",
+            "effects": {
+              "health": -14,
+              "happiness": -8,
+              "setFlags": [
+                "traumatise"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Descendre tout de suite",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu spirales sagement jusqu'à l'atterrissage. Le moniteur dit « prudent ». Tu entends « ennuyeux ».",
+            "effects": {
+              "happiness": 4,
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Enrouler le thermique",
+        "requiresSkill": {
+          "sport": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu centres le thermique comme un vieux briscard. Le club te propose de rejoindre l'équipe de cross. Tu voles au-dessus de tout.",
+            "effects": {
+              "happiness": 17,
+              "health": 2,
+              "skills": {
+                "sport": 5
+              },
+              "setFlags": [
+                "pas_parapente"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0209",
+    "category": "passions",
+    "minAge": 23,
+    "maxAge": 65,
+    "weight": 6,
+    "conditions": {
+      "flags": [
+        "pas_parapente"
+      ]
+    },
+    "text": "Compétition régionale de précision en parapente : il faut poser le pied sur une cible de dix centimètres au milieu d'un pré. Les vaches observent.",
+    "choices": [
+      {
+        "label": "Viser le centre",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Pied pile sur la cible. Médaille d'or. Les vaches meuglent. C'est sûrement de l'admiration.",
+            "effects": {
+              "happiness": 15,
+              "money": 150,
+              "fame": 1
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Rafale au dernier moment. Tu te poses dans l'abreuvoir. Tu es trempé{e} mais classé{e} 14e.",
+            "effects": {
+              "happiness": -4,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer la sécurité",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Atterrissage propre à trois mètres de la cible. Milieu de tableau. Jambes intactes.",
+            "effects": {
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre ta voile",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Finalement, la peur a gagné. Tu vends ta voile et tu regardes les autres voler en mangeant une glace.",
+            "effects": {
+              "money": 1100,
+              "happiness": -6,
+              "clearFlags": [
+                "pas_parapente"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0210",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 55,
+    "weight": 5,
+    "text": "Baptême de plongée en mer. À six mètres de fond, un poulpe curieux s'accroche à ton masque et semble vouloir le garder.",
+    "choices": [
+      {
+        "label": "Tirer le masque",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le poulpe lâche prise, vexé, en crachant de l'encre. Tu remontes avec une histoire extraordinaire.",
+            "effects": {
+              "happiness": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le masque se remplit d'eau, tu paniques et tu remontes trop vite. Oreilles bouchées pendant une semaine.",
+            "effects": {
+              "health": -9,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester calme",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu attends. Le poulpe se lasse et repart. Le moniteur te fait un grand signe « OK ». Tu as un ami à huit bras.",
+            "effects": {
+              "happiness": 8,
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le caresser",
+        "requiresSkill": {
+          "sport": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Parfaitement stable dans l'eau, tu lui tends une main. Il s'enroule autour, curieux. Le moniteur filme. La vidéo fait le tour du club.",
+            "effects": {
+              "happiness": 14,
+              "fame": 1,
+              "skills": {
+                "sport": 4,
+                "survie": 3
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0211",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 55,
+    "weight": 2,
+    "unique": true,
+    "text": "Tu tentes l'ascension d'un sommet à plus de 4 000 mètres avec un guide. À 3 800 mètres, tu as la tête qui tourne et la nausée.",
+    "choices": [
+      {
+        "label": "Continuer",
+        "outcomes": [
+          {
+            "chance": 0.45,
+            "text": "Chaque pas est une montagne. Mais tu arrives au sommet à l'aube, au-dessus d'un océan de nuages. Rien ne sera plus pareil.",
+            "effects": {
+              "happiness": 22,
+              "health": -4,
+              "setFlags": [
+                "optimiste"
+              ]
+            }
+          },
+          {
+            "chance": 0.55,
+            "text": "Œdème d'altitude. Le guide appelle l'hélicoptère. Trois jours d'hôpital et une facture à donner le vertige.",
+            "effects": {
+              "health": -20,
+              "happiness": -10,
+              "money": -2500
+            }
+          }
+        ]
+      },
+      {
+        "label": "Redescendre",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le guide approuve : « La montagne sera toujours là. » Toi aussi, grâce à ça. Le vin chaud du refuge a le goût de la sagesse.",
+            "effects": {
+              "happiness": -4,
+              "health": 3,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acclimatation",
+        "requiresSkill": {
+          "survie": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu reconnais les symptômes : tu redescends de 200 m, tu bois, tu dors, tu remontes le lendemain. Sommet atteint, sans bobo.",
+            "effects": {
+              "happiness": 24,
+              "health": 4,
+              "skills": {
+                "survie": 8
+              },
+              "setFlags": [
+                "optimiste"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0212",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 70,
+    "weight": 1,
+    "unique": true,
+    "text": "Tu hérites de l'album de timbres d'un grand-oncle que tu n'as jamais connu. Page 47, un timbre est imprimé à l'envers.",
+    "choices": [
+      {
+        "label": "Le faire expertiser",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "L'expert devient pâle. Erreur d'impression rarissime. Il part aux enchères pour 18 000 €.",
+            "effects": {
+              "money": 18000,
+              "happiness": 20
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "C'est une erreur... du grand-oncle, qui l'a collé à l'envers. Valeur : 30 centimes. Expertise : 80 €.",
+            "effects": {
+              "money": -80,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le vendre en ligne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le mets à 50 €. Il part en quatre minutes. Tu as un très mauvais pressentiment.",
+            "effects": {
+              "money": 50,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier en salle",
+        "requiresSkill": {
+          "marchandage": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais monter trois collectionneurs les uns contre les autres. Le marteau tombe à 26 000 €. Le commissaire-priseur te tend sa carte.",
+            "effects": {
+              "money": 26000,
+              "happiness": 22,
+              "skills": {
+                "marchandage": 8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0213",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 65,
+    "weight": 5,
+    "conditions": {
+      "requiresPartner": true,
+      "tags": [
+        "pratique_collection"
+      ]
+    },
+    "text": "Ta collection de boules à neige compte 412 pièces et occupe tout le salon. {partenaire} pose un ultimatum : « Elles ou moi. »",
+    "choices": [
+      {
+        "label": "Garder les boules",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "{partenaire} plaisantait à moitié. Vous trouvez un compromis : une étagère par pièce.",
+            "effects": {
+              "happiness": 5,
+              "relationships": {
+                "partner": -5
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{partenaire} ne plaisantait pas du tout. Ambiance polaire pendant des semaines, comme dans une boule à neige.",
+            "effects": {
+              "happiness": -9,
+              "relationships": {
+                "partner": -15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre la collection",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu vends tout sauf trois. Le salon respire. Toi, un peu moins. Mais {partenaire} t'embrasse.",
+            "effects": {
+              "money": 600,
+              "happiness": -6,
+              "relationships": {
+                "partner": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir un mini-musée",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le garage devient le « Musée de la Neige ». Entrée 2 €. Trente visiteurs par mois, dont un car de retraités.",
+            "effects": {
+              "money": 200,
+              "happiness": 9,
+              "relationships": {
+                "partner": 3
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Zéro visiteur. Le garage, la voiture dehors et les boules à l'intérieur. Victoire partielle.",
+            "effects": {
+              "money": -100,
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0214",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 40,
+    "weight": 9,
+    "text": "Le bar du coin organise un tournoi de jeu vidéo de course de karts. Le gagnant repart avec une pizza par semaine pendant un an.",
+    "choices": [
+      {
+        "label": "Jouer à fond",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Dérapages parfaits, carapaces bien placées. Victoire ! Tu manges des pizzas tous les jeudis pendant un an.",
+            "effects": {
+              "happiness": 12,
+              "health": -4,
+              "money": 300
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "Une serveuse qui ne joue « jamais » te pulvérise en finale. Tu repars avec un diplôme en papier.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer en équipe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sabotes les adversaires de tes amis en mode kamikaze. Ton pote gagne et partage les pizzas.",
+            "effects": {
+              "happiness": 7,
+              "health": -2,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Regarder seulement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu commentes les courses comme un pro. On t'offre une bière. Tu as trouvé ta vocation : commentateur.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0215",
+    "category": "passions",
+    "minAge": 24,
+    "maxAge": 45,
+    "weight": 5,
+    "conditions": {
+      "requiresJob": true,
+      "tags": [
+        "pratique_jeux_video"
+      ]
+    },
+    "text": "Ton clan de jeu en ligne joue de 23 h à 3 h du matin. Ce matin, tu t'es endormi{e} en réunion et tu as murmuré « soigne-moi ! ».",
+    "choices": [
+      {
+        "label": "Continuer les raids",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ton clan atteint le top 100 mondial. Tu as les yeux rouges mais le cœur en fête.",
+            "effects": {
+              "happiness": 8,
+              "health": -8,
+              "setFlags": [
+                "accro_aux_ecrans",
+                "insomniaque"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Avertissement écrit au travail. Ta prime saute. Ton clan, lui, ne sait même pas ton vrai prénom.",
+            "effects": {
+              "money": -500,
+              "happiness": -8,
+              "setFlags": [
+                "accro_aux_ecrans"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Jouer le week-end",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu passes en mode « joueur du dimanche ». Ton clan te traite de traître. Ton patron te trouve l'air reposé.",
+            "effects": {
+              "happiness": -2,
+              "health": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Quitter le clan",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu supprimes le jeu. Les deux premières semaines, tes doigts tapotent la table tout seuls. Ensuite, tu revis.",
+            "effects": {
+              "health": 8,
+              "happiness": -4,
+              "smarts": 2,
+              "clearFlags": [
+                "accro_aux_ecrans"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0216",
+    "category": "passions",
+    "minAge": 24,
+    "maxAge": 45,
+    "weight": 5,
+    "conditions": {
+      "requiresJob": true,
+      "excludeFlags": [
+        "marathonien"
+      ]
+    },
+    "text": "À la machine à café, ton collègue Ludovic te lance un pari : finir le marathon de {ville} avant lui. Le perdant porte une cravate en forme de poisson pendant un mois.",
+    "choices": [
+      {
+        "label": "Relever le pari",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Quatre mois d'entraînement, 4 h 21 contre 4 h 35. Ludovic porte la cravate-poisson avec dignité. Tu as attrapé le virus de la course.",
+            "effects": {
+              "happiness": 15,
+              "health": 10,
+              "setFlags": [
+                "marathonien",
+                "sportif_regulier"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ludovic te dépasse au 38e en te faisant un clin d'œil. Tu portes la cravate-poisson même en réunion client.",
+            "effects": {
+              "happiness": -6,
+              "health": 6,
+              "looks": -3,
+              "setFlags": [
+                "marathonien"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un semi",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous courez le semi ensemble et vous finissez main dans la main. La cravate-poisson est exposée à l'accueil.",
+            "effects": {
+              "happiness": 7,
+              "health": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ludovic court seul. Il parle de son marathon à chaque pause café pendant deux ans.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0217",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 55,
+    "weight": 2,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "marathonien"
+      ]
+    },
+    "text": "Tu t'es inscrit{e} à un ultra-trail de 100 km en montagne, 6 000 mètres de dénivelé. Au 60e kilomètre, il fait nuit et tu parles à un rocher.",
+    "choices": [
+      {
+        "label": "Continuer",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu passes la ligne après 22 heures de course. Tu ne sens plus rien. Tu es invincible. Tu dors trois jours.",
+            "effects": {
+              "happiness": 22,
+              "health": -6,
+              "fame": 1
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Hypothermie au col. Les secouristes te descendent sur une civière. Tes ongles de pieds tombent un par un.",
+            "effects": {
+              "health": -18,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Abandonner au ravito",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rends ton dossard avec une soupe aux vermicelles à la main. Abandonner aussi, c'est savoir courir.",
+            "effects": {
+              "happiness": -5,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Gérer ton effort",
+        "requiresSkill": {
+          "sport": 4
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Marche dans les montées, course en descente, sel et sucre toutes les heures. Tu finis dans les cinquante premiers.",
+            "effects": {
+              "happiness": 25,
+              "health": 2,
+              "fame": 2,
+              "skills": {
+                "sport": 8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0218",
+    "category": "passions",
+    "minAge": 24,
+    "maxAge": 60,
+    "weight": 4,
+    "conditions": {
+      "flags": [
+        "marathonien"
+      ]
+    },
+    "text": "Tu es en route vers ton record personnel. À 500 mètres de l'arrivée, un coureur s'effondre juste devant toi.",
+    "choices": [
+      {
+        "label": "T'arrêter l'aider",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le mets en position latérale de sécurité et tu fais signe aux secours. Il s'en sort. Le journal te consacre un article. Ton record attendra.",
+            "effects": {
+              "happiness": 12,
+              "karma": 8,
+              "fame": 2,
+              "setFlags": [
+                "heros_local"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Record personnel battu. Mais l'image de ce coureur te hante pendant des semaines.",
+            "effects": {
+              "happiness": -3,
+              "karma": -6,
+              "health": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une photographe a tout capturé. La photo de toi enjambant le coureur fait le tour de la région.",
+            "effects": {
+              "happiness": -12,
+              "karma": -8,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Le porter jusqu'au bout",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vous franchissez la ligne ensemble. Toute la tribune est debout. Tes cuisses ne t'aiment plus.",
+            "effects": {
+              "happiness": 15,
+              "health": -4,
+              "fame": 3,
+              "karma": 6,
+              "setFlags": [
+                "heros_local"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les secouristes te hurlent de le poser : on ne déplace pas un blessé. Tu as mal fait en voulant bien faire.",
+            "effects": {
+              "happiness": -4,
+              "karma": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0219",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 60,
+    "weight": 6,
+    "conditions": {
+      "excludeFlags": [
+        "pas_roman"
+      ]
+    },
+    "text": "Tu te lances un défi : écrire un roman de 50 000 mots en un mois. Le 3 du mois, tu en es à 412 mots, dont le titre.",
+    "choices": [
+      {
+        "label": "Écrire chaque soir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le 30, à 23 h 58, tu tapes le 50 000e mot. Le roman est mauvais, mais il existe. Tu pleures de fierté.",
+            "effects": {
+              "happiness": 12,
+              "smarts": 5,
+              "health": -4,
+              "setFlags": [
+                "pas_roman"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu abandonnes le 17, au chapitre où ton héros doit choisir entre deux sandwichs. Le document s'appelle toujours « roman1_final ».",
+            "effects": {
+              "happiness": -5,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réécrire le chapitre 1",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "À la fin du mois, tu as un premier chapitre sublime, réécrit trente fois. Et rien d'autre.",
+            "effects": {
+              "smarts": 4,
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Écrire au café",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu écris peu, mais tu as l'air d'un écrivain. Tu bois 60 cafés. Ton cœur bat en italique.",
+            "effects": {
+              "money": -150,
+              "health": -5,
+              "happiness": 3,
+              "setFlags": [
+                "pas_roman"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0220",
+    "category": "passions",
+    "minAge": 23,
+    "maxAge": 70,
+    "weight": 7,
+    "conditions": {
+      "flags": [
+        "pas_roman"
+      ]
+    },
+    "text": "Ton manuscrit est fini. Une « maison d'édition » te répond en 48 heures : ils adorent, et il ne te reste qu'à payer 3 200 € de « frais de fabrication ».",
+    "choices": [
+      {
+        "label": "Payer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu reçois 200 exemplaires dans des cartons. Personne ne les distribue. Tu en offres un à chaque anniversaire pendant quinze ans.",
+            "effects": {
+              "money": -3200,
+              "happiness": -6,
+              "smarts": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chercher un vrai éditeur",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Quarante envois, quarante silences. Mais une éditrice te demande la suite. Il y a de l'espoir.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 3,
+              "money": -120
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Quarante refus. Tu tapisses le mur des toilettes avec les lettres. C'est très inspirant pendant les pauses.",
+            "effects": {
+              "happiness": -7,
+              "money": -120
+            }
+          }
+        ]
+      },
+      {
+        "label": "Publier en ligne",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu le publies chapitre par chapitre sur une plateforme. Quelques milliers de lecteurs fidèles. On t'appelle « l'auteur du feuilleton du mardi ».",
+            "effects": {
+              "happiness": 9,
+              "fame": 2,
+              "money": 80
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un commentaire : « bof ». C'est le seul. Tu le relis tous les soirs pour comprendre ce qu'il voulait dire.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0221",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 75,
+    "weight": 3,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "pas_roman"
+      ]
+    },
+    "text": "Une vraie éditrice parisienne veut publier ton roman. Seule condition : changer la fin, où tout le monde meurt dans un accident de tondeuse.",
+    "choices": [
+      {
+        "label": "Changer la fin",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Fin heureuse, tondeuse épargnée. Le livre se vend à 8 000 exemplaires. Tu passes à la radio locale. Tu signes le deuxième.",
+            "effects": {
+              "happiness": 18,
+              "money": 6000,
+              "fame": 4,
+              "smarts": 3,
+              "clearFlags": [
+                "pas_roman"
+              ],
+              "setFlags": [
+                "lecteur_assidu"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le livre sort, discrètement. 600 exemplaires vendus. Tu te demandes toute ta vie si la tondeuse aurait fait mieux.",
+            "effects": {
+              "happiness": 4,
+              "money": 900,
+              "clearFlags": [
+                "pas_roman"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Défendre ta fin",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Elle cède. Le livre devient culte grâce à sa fin absurde. Les étudiants en lettres débattent de la tondeuse.",
+            "effects": {
+              "happiness": 22,
+              "money": 9000,
+              "fame": 6,
+              "clearFlags": [
+                "pas_roman"
+              ]
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Elle te raccroche au nez. Le manuscrit retourne au tiroir, avec la tondeuse.",
+            "effects": {
+              "happiness": -10,
+              "clearFlags": [
+                "pas_roman"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0222",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 60,
+    "weight": 6,
+    "text": "Tu te lances dans la pâte feuilletée maison : six tours, trois jours de repos au frigo. Au quatrième tour, le beurre perce la pâte.",
+    "choices": [
+      {
+        "label": "Continuer coûte que coûte",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Miracle : les feuilletés gonflent comme des oreillers. Ta cuisine sent la boulangerie de luxe.",
+            "effects": {
+              "happiness": 10,
+              "health": -1
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le beurre fond partout dans le four. Fumée, alarme incendie, voisins sur le palier. Tu commandes des pizzas.",
+            "effects": {
+              "happiness": -6,
+              "money": -30
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter une pâte toute faite",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton chausson aux pommes est très bien. Ta fierté, un peu moins. Personne ne voit la différence, sauf toi.",
+            "effects": {
+              "happiness": 2,
+              "money": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rattraper au froid",
+        "requiresSkill": {
+          "cuisine": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu colmates, tu farines, tu refroidis vingt minutes au congélateur. Croissants dorés, 72 feuilles nettes. Ton boulanger te demande ta recette.",
+            "effects": {
+              "happiness": 14,
+              "skills": {
+                "cuisine": 7
+              },
+              "money": 40
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0223",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 55,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "siblings"
+      ]
+    },
+    "text": "{fratrie} se marie et te demande de réaliser la pièce montée : 150 choux, du caramel, et une tour d'un mètre. Le mariage est samedi.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "La tour tient. Les invités applaudissent la pièce montée avant les mariés. {fratrie} t'embrasse en pleurant.",
+            "effects": {
+              "happiness": 13,
+              "relationships": {
+                "sibling": 10
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Dans la voiture, au premier rond-point, la tour bascule. Arrivée en « pièce démontée ». Fou rire ou drame, selon qui on interroge.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "sibling": -6
+              },
+              "money": -90
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer des cupcakes",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Cent cupcakes au glaçage pastel. C'est joli, moins grandiose. Ta tante fait remarquer que « ce n'est pas traditionnel ».",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "sibling": 3
+              },
+              "money": -60
+            }
+          }
+        ]
+      },
+      {
+        "label": "Caramel parfait",
+        "requiresSkill": {
+          "cuisine": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Choux réguliers, caramel ambré, nougatine en forme de cœurs. Le traiteur officiel te demande ta carte. {fratrie} ne s'en remet pas.",
+            "effects": {
+              "happiness": 16,
+              "relationships": {
+                "sibling": 14
+              },
+              "skills": {
+                "cuisine": 6
+              },
+              "fame": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0224",
+    "category": "passions",
+    "minAge": 28,
+    "maxAge": 55,
+    "weight": 3,
+    "conditions": {
+      "requiresJob": true,
+      "tags": [
+        "pratique_patisserie"
+      ]
+    },
+    "text": "Tes gâteaux font le bonheur de tout ton bureau. Ta collègue Sandrine te dit : « Tu devrais ouvrir ta pâtisserie. » Une boutique est à louer en bas de chez toi.",
+    "choices": [
+      {
+        "label": "Tout plaquer",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ta boutique « Le Chou Joyeux » devient l'adresse du quartier. Tu te lèves à 4 h, mais tu chantes en pétrissant.",
+            "effects": {
+              "happiness": 18,
+              "money": 4000,
+              "health": -4
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le loyer, les charges, le four qui lâche. Fermeture au bout de onze mois. Il te reste un tablier et des dettes.",
+            "effects": {
+              "happiness": -14,
+              "money": -9000,
+              "setFlags": [
+                "endette"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vendre le week-end",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu vends tes gâteaux au marché du dimanche. Petit revenu, gros plaisir, et un emploi qui paie le loyer.",
+            "effects": {
+              "happiness": 8,
+              "money": 900,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester raisonnable",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gardes ton poste. Tu continues d'apporter des gâteaux au bureau. Sandrine soupire à chaque part.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0225",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 65,
+    "weight": 5,
+    "conditions": {
+      "excludeFlags": [
+        "pas_astronome"
+      ]
+    },
+    "text": "Tu as acheté un télescope d'occasion pour 600 €. Problème : un lampadaire neuf éclaire ta fenêtre comme un stade de foot.",
+    "choices": [
+      {
+        "label": "Écrire à la mairie",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Miracle administratif : le lampadaire est équipé d'un cache. Tu vois enfin la nébuleuse d'Orion. Passion déclarée.",
+            "effects": {
+              "happiness": 11,
+              "smarts": 4,
+              "setFlags": [
+                "pas_astronome"
+              ]
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "La mairie te répond dans un délai de huit mois que « la sécurité prime ». Le télescope prend la poussière.",
+            "effects": {
+              "happiness": -5,
+              "money": -600
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir à la campagne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Chaque samedi, tu roules une heure jusqu'à un champ. Ciel noir, galaxies, et une chouette qui te surveille. Tu es accro.",
+            "effects": {
+              "happiness": 9,
+              "smarts": 4,
+              "money": -80,
+              "setFlags": [
+                "pas_astronome"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Revendre le télescope",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le revends 450 €. Tu regardes le ciel en vidéo, sur ton canapé. La Lune n'a jamais semblé si loin.",
+            "effects": {
+              "money": -150,
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0226",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 80,
+    "weight": 1,
+    "unique": true,
+    "conditions": {
+      "flags": [
+        "pas_astronome"
+      ]
+    },
+    "text": "Sur tes photos du ciel, un petit point flou change de place d'une nuit à l'autre. Il n'apparaît dans aucun catalogue.",
+    "choices": [
+      {
+        "label": "Signaler la découverte",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Confirmé : c'est une comète inconnue ! Elle porte désormais ton nom. Tu es dans les journaux, puis dans les livres.",
+            "effects": {
+              "happiness": 25,
+              "smarts": 6,
+              "fame": 8,
+              "clearFlags": [
+                "pas_astronome"
+              ]
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "C'était une poussière sur ton capteur. Un astronome professionnel te répond très poliment. Très, très poliment.",
+            "effects": {
+              "happiness": -6,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder le secret",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu l'appelles « Bernadette » et tu ne le dis à personne. Chaque nuit, tu lui fais coucou. C'est ta comète.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Calculer l'orbite",
+        "requiresSkill": {
+          "code": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton programme reconstitue l'orbite en une nuit. Dossier béton, découverte validée en une semaine. La comète porte ton nom.",
+            "effects": {
+              "happiness": 25,
+              "smarts": 8,
+              "fame": 8,
+              "skills": {
+                "code": 6
+              },
+              "clearFlags": [
+                "pas_astronome"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0227",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 70,
+    "weight": 6,
+    "conditions": {
+      "flags": [
+        "pas_astronome"
+      ]
+    },
+    "text": "Tu organises la « Nuit des étoiles » de {ville} dans le stade municipal. Deux cents personnes sont venues. Le ciel est entièrement couvert.",
+    "choices": [
+      {
+        "label": "Raconter les étoiles",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu racontes les constellations et leurs légendes, lampe sous le menton. Les enfants sont captivés. Les nuages se déchirent à 23 h.",
+            "effects": {
+              "happiness": 11,
+              "fame": 1,
+              "karma": 2
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il se met à pleuvoir. Deux cents personnes trempées te regardent comme si c'était ta faute.",
+            "effects": {
+              "happiness": -7
+            }
+          }
+        ]
+      },
+      {
+        "label": "Projeter un film",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu projettes un documentaire sur un drap. La moitié du public s'endort sur l'herbe. Ambiance paisible.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Annuler",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu annules. À 1 h du matin, le ciel est parfaitement dégagé. Tu regardes ça seul{e}, en silence, plein de regrets.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0228",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 65,
+    "weight": 3,
+    "unique": true,
+    "text": "Tu pars trois semaines sur un chemin de grande randonnée, sac de 14 kilos sur le dos. Le premier soir, tes pieds sont déjà deux tomates.",
+    "choices": [
+      {
+        "label": "Continuer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Les ampoules durcissent, le sac s'allège, la tête aussi. Tu rentres changé{e}, plus lent{e} et plus calme.",
+            "effects": {
+              "happiness": 16,
+              "health": 10,
+              "setFlags": [
+                "zen"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tendinite au tendon d'Achille au 9e jour. Retour en car, la jambe sur le siège voisin.",
+            "effects": {
+              "health": -9,
+              "happiness": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Alléger le sac",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu renvoies par la poste ton livre, ton deuxième pull et ta casserole. Cinq kilos en moins. Le chemin devient un plaisir.",
+            "effects": {
+              "happiness": 10,
+              "health": 7,
+              "money": -25
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rentrer le lendemain",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu reprends le train. Tu racontes à tout le monde que c'était « très ressourçant ». C'était surtout douloureux.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0229",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 60,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Randonnée avec {ami}, qui ne jure que par son application GPS. Brouillard épais sur le plateau. L'application affiche : « Vous êtes dans un lac. »",
+    "choices": [
+      {
+        "label": "Faire confiance à l'appli",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Elle finit par se recalibrer. Vous arrivez au refuge avec deux heures de retard et une faim de loup.",
+            "effects": {
+              "happiness": 3,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Vous marchez dans une tourbière jusqu'aux genoux. {ami} perd une chaussure. Retour à la nuit, gelés.",
+            "effects": {
+              "health": -8,
+              "happiness": -5,
+              "relationships": {
+                "friend": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Attendre que ça se lève",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous partagez un saucisson assis sur un rocher. Le brouillard se lève au bout d'une heure. Belle amitié, petite hypothermie.",
+            "effects": {
+              "happiness": 5,
+              "health": -3,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Carte et boussole",
+        "requiresSkill": {
+          "survie": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sors la carte, tu prends un azimut, tu comptes tes pas. Le refuge apparaît exactement là où tu l'avais dit. {ami} désinstalle l'appli.",
+            "effects": {
+              "happiness": 12,
+              "smarts": 3,
+              "relationships": {
+                "friend": 7
+              },
+              "skills": {
+                "survie": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0230",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 70,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "bateau"
+      ]
+    },
+    "text": "Pêche au large sur ton bateau. Ta canne plie jusqu'à toucher l'eau : un thon énorme. Au même moment, le ciel vire au noir.",
+    "choices": [
+      {
+        "label": "Combattre le thon",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Une heure de lutte sous la pluie. Le thon fait 90 kilos. Tu rentres au port trempé{e}, sous les applaudissements des pêcheurs.",
+            "effects": {
+              "happiness": 16,
+              "money": 600,
+              "health": -3,
+              "fame": 1
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "La houle se lève, le thon t'emmène, le bateau tangue. Tu te cognes la tête au mât. Le thon gagne.",
+            "effects": {
+              "health": -12,
+              "happiness": -7,
+              "money": -300
+            }
+          }
+        ]
+      },
+      {
+        "label": "Couper la ligne",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu coupes et tu rentres au port avant l'orage. Le thon raconte sûrement l'histoire à ses amis.",
+            "effects": {
+              "happiness": -3,
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rentrer au moteur",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le moteur cale. Tu passes trois heures à dériver avant que les sauveteurs en mer arrivent. Honte et facture.",
+            "effects": {
+              "health": -5,
+              "happiness": -6,
+              "money": -400
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le moteur tient, tu rentres juste à temps. Au bar du port, ta prise grossit à chaque récit.",
+            "effects": {
+              "happiness": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0231",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 75,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "pratique_peche"
+      ]
+    },
+    "text": "Concours régional de pêche à la mouche. Tes concurrents ont des mouches importées à 9 € pièce. Toi, tu as des mouches en poils de ton chat.",
+    "choices": [
+      {
+        "label": "Pêcher au chat",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Les truites adorent le poil de chat. Tu gagnes le concours. Ton chat reçoit une médaille par procuration.",
+            "effects": {
+              "happiness": 13,
+              "money": 120,
+              "fame": 1
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Aucune touche en quatre heures. Un concurrent te demande si ton chat va bien.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Acheter des mouches",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu dépenses 90 € au stand. Résultat : trois truites et un classement moyen. Le chat te boude.",
+            "effects": {
+              "money": -90,
+              "happiness": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Monter la mouche parfaite",
+        "requiresSkill": {
+          "bricolage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ton imitation d'éphémère, montée au fil de soie à 5 h du matin, est irrésistible. Premier prix et commande de cinquante mouches par le club.",
+            "effects": {
+              "happiness": 15,
+              "money": 350,
+              "skills": {
+                "bricolage": 5,
+                "survie": 2
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0232",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 60,
+    "weight": 9,
+    "conditions": {
+      "tags": [
+        "locataire"
+      ]
+    },
+    "text": "Tu as installé un potager sur ton balcon au sixième étage. Les tomates poussent bien. Le voisin du dessous reçoit l'eau d'arrosage sur son linge.",
+    "choices": [
+      {
+        "label": "Lui offrir des tomates",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il goûte, il fond. Il te donne ses graines de basilic grec. Une amitié de balcon est née.",
+            "effects": {
+              "happiness": 8,
+              "health": 2,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il est allergique aux tomates. Il te le dit en éternuant et en te tendant une facture de pressing.",
+            "effects": {
+              "happiness": -4,
+              "money": -35
+            }
+          }
+        ]
+      },
+      {
+        "label": "Arroser la nuit",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu arroses à 2 h du matin. Ton sommeil en pâtit, mais les tomates sont superbes et le voisin n'a rien vu.",
+            "effects": {
+              "happiness": 3,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tout déplacer",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ramènes les bacs à l'intérieur. Les tomates dépriment. Toi aussi. La salade survit dans la baignoire.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0233",
+    "category": "passions",
+    "minAge": 28,
+    "maxAge": 70,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "proprietaire"
+      ]
+    },
+    "text": "Tu transformes ta pelouse en potager en permaculture. Les voisins observent tes buttes de compost et ta tondeuse revendue avec une inquiétude grandissante.",
+    "choices": [
+      {
+        "label": "Tout planter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Récolte monstrueuse : courgettes géantes, haricots, fraises. Tu n'achètes plus de légumes de l'été.",
+            "effects": {
+              "happiness": 10,
+              "health": 5,
+              "money": 300,
+              "setFlags": [
+                "econome"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les limaces organisent un festin. Il te reste trois radis et une citrouille anémique.",
+            "effects": {
+              "happiness": -6,
+              "money": -150
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder un coin pelouse",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Moitié potager, moitié gazon. Les voisins sont rassurés. Les tomates aussi.",
+            "effects": {
+              "happiness": 5,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Associer les plantes",
+        "requiresSkill": {
+          "jardinage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Capucines contre les pucerons, basilic au pied des tomates, poules contre les limaces. Le jardin est une jungle productive. Les voisins demandent des conseils.",
+            "effects": {
+              "happiness": 13,
+              "health": 6,
+              "money": 500,
+              "skills": {
+                "jardinage": 7
+              },
+              "setFlags": [
+                "econome"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0234",
+    "category": "passions",
+    "minAge": 28,
+    "maxAge": 65,
+    "weight": 4,
+    "conditions": {
+      "tags": [
+        "proprietaire"
+      ]
+    },
+    "text": "Tu veux ouvrir la cuisine sur le salon. Tu as une masse, des lunettes de protection et la conviction que ce mur n'est « sûrement pas porteur ».",
+    "choices": [
+      {
+        "label": "Taper",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le mur tombe, rien ne s'effondre. La pièce est magnifique. Tu as de la poussière dans les oreilles pour un mois.",
+            "effects": {
+              "happiness": 12,
+              "health": -2
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Le plafond fait « crrrac ». Il faut étayer en urgence et appeler un ingénieur. Facture de 6 000 € et un lumbago.",
+            "effects": {
+              "money": -6000,
+              "health": -8,
+              "happiness": -12,
+              "setFlags": [
+                "dos_fragile"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Appeler un pro",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le maçon confirme : mur porteur. Il pose une poutre. C'est cher, mais la maison tient debout.",
+            "effects": {
+              "money": -3500,
+              "happiness": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Sonder le mur",
+        "requiresSkill": {
+          "bricolage": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu perces un trou test, tu repères les solives, tu poses toi-même un IPN calculé au millimètre. Travail de pro pour le prix des matériaux.",
+            "effects": {
+              "money": -900,
+              "happiness": 14,
+              "smarts": 2,
+              "skills": {
+                "bricolage": 7
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0235",
+    "category": "passions",
+    "minAge": 30,
+    "maxAge": 70,
+    "weight": 2,
+    "unique": true,
+    "text": "Après deux ans de soirées dans le garage, ton kayak en bois fait main est terminé. Mise à l'eau officielle au lac, devant la famille et trois pêcheurs sceptiques.",
+    "choices": [
+      {
+        "label": "Monter dedans",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il flotte, il file, il brille au soleil. Les pêcheurs applaudissent. Tu pagaies jusqu'au coucher du soleil, ému{e}.",
+            "effects": {
+              "happiness": 20,
+              "health": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Une infiltration au bout de cinquante mètres. Tu coules lentement, avec dignité, devant toute la famille.",
+            "effects": {
+              "happiness": -10,
+              "health": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire monter un enfant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le neveu pagaie en riant, le kayak tient. Tu regardes depuis la rive, rassuré{e} et un peu frustré{e}.",
+            "effects": {
+              "happiness": 8,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Vérifier les joints",
+        "requiresSkill": {
+          "bricolage": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu repasses une couche de résine la veille. Ton kayak est étanche comme un sous-marin. Un artisan veut t'acheter les plans.",
+            "effects": {
+              "happiness": 22,
+              "money": 800,
+              "skills": {
+                "bricolage": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0236",
+    "category": "passions",
+    "minAge": 28,
+    "maxAge": 45,
+    "weight": 5,
+    "text": "Tu as ressorti ton skate d'adolescence. Au skatepark, les ados te regardent t'approcher du grand bowl comme un dinosaure qui sort du musée.",
+    "choices": [
+      {
+        "label": "Tenter le drop",
+        "outcomes": [
+          {
+            "chance": 0.35,
+            "text": "Tu plonges dans le bowl, tu remontes, tu ressors. Les ados frappent leur planche sur le rebord. Respect.",
+            "effects": {
+              "happiness": 13,
+              "looks": 2
+            }
+          },
+          {
+            "chance": 0.65,
+            "text": "La planche part, toi aussi, mais pas dans la même direction. Coccyx fêlé. Tu dors sur le ventre pendant un mois.",
+            "effects": {
+              "health": -12,
+              "happiness": -7
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rouler à plat",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais des allers-retours tranquilles sur le parking. Un ado te dit « c'est bien, monsieur-madame ». Tu ne sais pas comment le prendre.",
+            "effects": {
+              "happiness": 4,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ranger le skate",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu le raccroches au mur du garage. Il a l'air triste. Toi aussi.",
+            "effects": {
+              "happiness": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0237",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 45,
+    "weight": 4,
+    "text": "Jour de grosse houle. Les surfeurs du coin sortent tous. Une série de vagues de trois mètres arrive sur la pointe.",
+    "choices": [
+      {
+        "label": "Aller au pic",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu prends LA vague de la journée. Les locaux crient. Une photographe immortalise l'instant.",
+            "effects": {
+              "happiness": 18,
+              "fame": 1,
+              "health": 2
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "La vague te retourne comme une crêpe et te plaque sur le fond. Épaule déboîtée et une tasse d'eau salée.",
+            "effects": {
+              "health": -15,
+              "happiness": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester au bord",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu surfes les petites vagues de l'intérieur avec les débutants. Tu passes une bonne journée, sans gloire.",
+            "effects": {
+              "happiness": 5,
+              "health": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lire la série",
+        "requiresSkill": {
+          "sport": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu attends la quatrième vague de la série, toujours la plus propre. Démarrage parfait, ride parfait. Les locaux te font une place au pic.",
+            "effects": {
+              "happiness": 17,
+              "health": 4,
+              "skills": {
+                "sport": 6
+              },
+              "newFriend": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0238",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 65,
+    "weight": 5,
+    "text": "La fanfare municipale de {ville} cherche désespérément un joueur de tuba. Tu n'as jamais touché un tuba. Le chef dit que « ça s'apprend en marchant ».",
+    "choices": [
+      {
+        "label": "Prendre le tuba",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ça fait « prout » pendant trois mois, puis « poum ». Au défilé du 14 Juillet, tu es la basse de toute la ville.",
+            "effects": {
+              "happiness": 10,
+              "health": 3,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu trébuches en marchant avec le tuba au défilé et tu entraînes deux clarinettes dans ta chute.",
+            "effects": {
+              "health": -6,
+              "happiness": -5,
+              "setFlags": [
+                "honte_publique"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer les cymbales",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu frappes deux fois par morceau, au mauvais moment la première année. Tu adores l'ambiance et les buffets.",
+            "effects": {
+              "happiness": 6,
+              "health": -1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu changes de trottoir chaque fois que tu croises le chef. Il te salue quand même avec un regard plein d'espoir.",
+            "effects": {
+              "happiness": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0239",
+    "category": "passions",
+    "minAge": 30,
+    "maxAge": 55,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "children"
+      ]
+    },
+    "text": "Ton fils prend des cours de musique. Pour le concert de fin d'année, l'école propose des duos parent-enfant. Il te regarde avec de grands yeux.",
+    "choices": [
+      {
+        "label": "Jouer le triangle",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu ponctues son morceau de trois « ting ». Il est ravi. Tu as rarement été aussi stressé{e} pour trois « ting ».",
+            "effects": {
+              "happiness": 7,
+              "relationships": {
+                "child": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Chanter avec lui",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Vous chantez faux ensemble, mais en rythme. La salle fond. Une grand-mère pleure au premier rang.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "child": 8
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu oublies les paroles, il continue seul. Il te console après le concert. Les rôles s'inversent.",
+            "effects": {
+              "happiness": -3,
+              "relationships": {
+                "child": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accompagner au piano",
+        "requiresSkill": {
+          "piano": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu l'accompagnes avec douceur, tu ralentis quand il hésite. Standing ovation. Il te serre dans ses bras dans les coulisses.",
+            "effects": {
+              "happiness": 15,
+              "relationships": {
+                "child": 12
+              },
+              "skills": {
+                "piano": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0240",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 65,
+    "weight": 5,
+    "conditions": {
+      "requiresPartner": true
+    },
+    "text": "Ta maquette de trois-mâts en allumettes occupe la table de la salle à manger depuis huit mois. {partenaire} demande où vous mangerez à Noël.",
+    "choices": [
+      {
+        "label": "Finir avant Noël",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu colles la dernière allumette le 24 à 18 h. Le trois-mâts trône sur la cheminée. {partenaire} admet que c'est beau.",
+            "effects": {
+              "happiness": 11,
+              "health": -3,
+              "relationships": {
+                "partner": 4
+              }
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le chat saute sur le pont. Huit mois de travail en miettes. Noël se passe dans un silence funèbre.",
+            "effects": {
+              "happiness": -12,
+              "relationships": {
+                "partner": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déménager au garage",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le chantier naval s'installe dans le garage froid. Tu y passes tes soirées en doudoune. Le repas de Noël est sauvé.",
+            "effects": {
+              "happiness": 3,
+              "health": -2,
+              "relationships": {
+                "partner": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Manger autour",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La famille mange debout autour du bateau. La sauce coule sur la grand-voile. {partenaire} ne dit rien. C'est pire.",
+            "effects": {
+              "happiness": -4,
+              "relationships": {
+                "partner": -8
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0241",
+    "category": "passions",
+    "minAge": 30,
+    "maxAge": 50,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "pratique_jeux_video"
+      ]
+    },
+    "text": "Une équipe d'adolescents te recrute pour un tournoi de jeu de tir en ligne, en tant que « vétéran ». Ils parlent vite et utilisent des mots que tu ne connais pas.",
+    "choices": [
+      {
+        "label": "Jouer le vétéran",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ton calme fait des merveilles. Ils t'appellent « le vieux sage ». Vous atteignez les quarts de finale.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 2,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tes réflexes ont 15 ans de retard. Ils te remplacent par le cousin de l'un d'eux, âgé de 11 ans.",
+            "effects": {
+              "happiness": -7
+            }
+          }
+        ]
+      },
+      {
+        "label": "Devenir le coach",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu gères les horaires, les goûters et les engueulades. L'équipe gagne un petit tournoi. Tu rayonnes comme un parent à la kermesse.",
+            "effects": {
+              "happiness": 8,
+              "karma": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu restes sur tes vieux jeux en solo. Ils ne t'ont jamais déçu. Sauf le niveau de l'eau, celui-là.",
+            "effects": {
+              "happiness": -1,
+              "health": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0242",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 60,
+    "weight": 5,
+    "text": "Cours de danse swing. Ton partenaire de cours attitré a déménagé. La prof te met avec Bernard, 1 m 95, qui danse comme un parapluie qui s'ouvre.",
+    "choices": [
+      {
+        "label": "Danser avec Bernard",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Après trois cours, vous trouvez votre rythme. Bernard devient ton meilleur partenaire et un vrai ami.",
+            "effects": {
+              "happiness": 9,
+              "health": 3,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Bernard te fait tourner trop vite. Tu atterris dans le vestiaire. Coude contusionné.",
+            "effects": {
+              "health": -6,
+              "happiness": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Danser seul{e}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu fais tes pas dans un coin, face au miroir. C'est un peu triste mais très technique.",
+            "effects": {
+              "happiness": -2,
+              "health": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Guider Bernard",
+        "requiresSkill": {
+          "danse": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu guides ses grands bras dans le bon tempo. Au gala de fin d'année, votre numéro fait se lever la salle.",
+            "effects": {
+              "happiness": 14,
+              "looks": 3,
+              "health": 3,
+              "skills": {
+                "danse": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0243",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 75,
+    "weight": 5,
+    "text": "Concours photo animalière du parc naturel. Tu passes neuf heures dans un affût en toile, immobile. Un renard apparaît enfin... juste quand ta jambe s'engourdit.",
+    "choices": [
+      {
+        "label": "Déclencher vite",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Une photo nette, le renard te regarde droit dans l'objectif. Deuxième prix et exposition à la maison du parc.",
+            "effects": {
+              "happiness": 11,
+              "money": 100
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Ta jambe lâche, tu tombes de l'affût. Le renard s'enfuit. Tu as une superbe photo de tes chaussures.",
+            "effects": {
+              "happiness": -5,
+              "health": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne pas bouger",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le renard reste dix minutes puis part. Toi, tu ne peux plus marcher pendant une heure. Mais tu l'as vu.",
+            "effects": {
+              "happiness": 5,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Régler en silence",
+        "requiresSkill": {
+          "photo": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Mode silencieux, vitesse rapide, mise au point sur l'œil. Le renard bâille. La photo remporte le premier prix et une une de magazine.",
+            "effects": {
+              "happiness": 16,
+              "money": 400,
+              "fame": 2,
+              "skills": {
+                "photo": 7
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0244",
+    "category": "passions",
+    "minAge": 25,
+    "maxAge": 60,
+    "weight": 3,
+    "conditions": {
+      "tags": [
+        "gros_salaire"
+      ]
+    },
+    "text": "Tu t'offres un saut en parachute en tandem au-dessus des montagnes : 4 000 mètres, une minute de chute libre, 450 €.",
+    "choices": [
+      {
+        "label": "Sauter",
+        "outcomes": [
+          {
+            "chance": 0.85,
+            "text": "La porte s'ouvre, le vide t'aspire. Une minute qui dure une vie. Tu atterris en tremblant et en riant.",
+            "effects": {
+              "happiness": 18,
+              "money": -450
+            }
+          },
+          {
+            "chance": 0.15,
+            "text": "Atterrissage brutal sur un terrain caillouteux. Ta cheville craque. Le moniteur, lui, n'a rien.",
+            "effects": {
+              "health": -12,
+              "happiness": -4,
+              "money": -450
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre la vidéo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sautes avec la vidéo en option à 120 €. Ta tête en chute libre est hilarante. La famille la regarde en boucle à Noël.",
+            "effects": {
+              "happiness": 15,
+              "money": -570
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renoncer dans l'avion",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu redescends avec le pilote. Non remboursable. Tu regardes les autres tomber par le hublot.",
+            "effects": {
+              "happiness": -8,
+              "money": -450
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0245",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 55,
+    "weight": 5,
+    "text": "Via ferrata en montagne : câbles, échelles, et une passerelle népalaise suspendue à 80 mètres au-dessus du torrent. Elle se balance.",
+    "choices": [
+      {
+        "label": "Traverser",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Pas à pas, mousqueton après mousqueton. Au milieu, tu oses regarder. C'est sublime. Tu traverses en conquérant.",
+            "effects": {
+              "happiness": 12,
+              "health": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Crise de vertige au milieu. Tu restes accroché{e} vingt minutes, figé{e}. Un guide vient te chercher. Les cauchemars durent un moment.",
+            "effects": {
+              "happiness": -8,
+              "health": -3,
+              "setFlags": [
+                "anxieux"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre l'échappatoire",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu sors par le chemin de secours. Tu attends les autres au parking avec un sandwich. Pas de gloire, pas de vertige.",
+            "effects": {
+              "happiness": -2,
+              "health": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Traverser en courant",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu cours, ça balance, tu hurles, tu arrives. Le guide te sermonne. Tu as adoré.",
+            "effects": {
+              "happiness": 9
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton pied passe entre deux câbles. Genou tordu, longe tendue. Retour en boitant.",
+            "effects": {
+              "health": -10,
+              "happiness": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0246",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 75,
+    "weight": 5,
+    "text": "Au repair café du quartier, une dame de 84 ans te confie le grille-pain de son mariage. « Il a cinquante-deux ans, il ne m'a jamais lâchée, jusqu'à hier. »",
+    "choices": [
+      {
+        "label": "Tenter la réparation",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Un fil dessoudé. Tu le ressoudes. Le grille-pain revit. La dame t'embrasse sur les deux joues et revient avec une tarte.",
+            "effects": {
+              "happiness": 10,
+              "karma": 4,
+              "skills": {
+                "bricolage": 3
+              },
+              "setFlags": [
+                "benevole"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu casses le bouton en le démontant. Il était introuvable depuis 1987. La dame est très gentille. C'est pire.",
+            "effects": {
+              "happiness": -7,
+              "karma": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lui conseiller d'en racheter un",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Elle te regarde comme si tu lui avais proposé de racheter un mari. Elle part chercher un autre bénévole.",
+            "effects": {
+              "happiness": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Diagnostiquer",
+        "requiresSkill": {
+          "mecanique": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Thermostat bloqué : tu le nettoies et tu règles le ressort. Il grille mieux qu'en 1972. Tu deviens le chouchou du repair café.",
+            "effects": {
+              "happiness": 12,
+              "karma": 5,
+              "skills": {
+                "mecanique": 5
+              },
+              "newFriend": true,
+              "setFlags": [
+                "benevole"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0247",
+    "category": "passions",
+    "minAge": 28,
+    "maxAge": 75,
+    "weight": 5,
+    "conditions": {
+      "tags": [
+        "pratique_collection"
+      ]
+    },
+    "text": "À la bourse aux collectionneurs, toi et ton éternel rival Firmin tendez la main en même temps vers la dernière pièce qui manque à vos collections.",
+    "choices": [
+      {
+        "label": "Surenchérir",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu l'emportes à 240 € au lieu de 30. Firmin te maudit sur trois générations. La pièce est parfaite.",
+            "effects": {
+              "money": -240,
+              "happiness": 9,
+              "setFlags": [
+                "panier_perce"
+              ]
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Firmin monte à 400 €. Tu abandonnes. Il te fait un clin d'œil cruel en repartant.",
+            "effects": {
+              "happiness": -7
+            }
+          }
+        ]
+      },
+      {
+        "label": "La lui laisser",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Firmin, désarmé, t'invite à boire un verre. Vous découvrez que vous n'aviez jamais vraiment été rivaux.",
+            "effects": {
+              "happiness": 6,
+              "karma": 3,
+              "newFriend": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer un échange",
+        "requiresSkill": {
+          "marchandage": 2
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu échanges ta pièce en double contre la sienne, plus 50 € de différence. Firmin croit avoir gagné. Tu sais que c'est toi.",
+            "effects": {
+              "happiness": 11,
+              "money": 50,
+              "skills": {
+                "marchandage": 5
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0248",
+    "category": "passions",
+    "minAge": 22,
+    "maxAge": 70,
+    "weight": 5,
+    "conditions": {
+      "excludeFlags": [
+        "lecteur_assidu"
+      ]
+    },
+    "text": "Ton blog de critiques de romans policiers, lu par une quarantaine de personnes, est repéré par le journal local. Ils te proposent une chronique hebdomadaire payée 50 €.",
+    "choices": [
+      {
+        "label": "Accepter",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Chaque semaine, un livre, une chronique. Tu lis comme jamais. Les libraires te saluent dans la rue.",
+            "effects": {
+              "happiness": 10,
+              "smarts": 6,
+              "money": 1200,
+              "setFlags": [
+                "lecteur_assidu"
+              ]
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu démolis le polar d'un auteur local. Il habite ta rue. Il ne te salue plus, son chien non plus.",
+            "effects": {
+              "happiness": -4,
+              "money": 300,
+              "smarts": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester sur le blog",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu préfères rester libre et confidentiel. Tes quarante lecteurs restent fidèles. Ils sont maintenant quarante et un.",
+            "effects": {
+              "happiness": 4,
+              "smarts": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander 100 €",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Ils acceptent. Ton premier vrai salaire d'écrivain. Tu encadres la fiche de paie.",
+            "effects": {
+              "money": 2400,
+              "happiness": 10,
+              "smarts": 4,
+              "setFlags": [
+                "lecteur_assidu"
+              ]
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Ils prennent quelqu'un d'autre à 40 €. Tu lis sa chronique chaque semaine en la trouvant moins bien.",
+            "effects": {
+              "happiness": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0249",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 55,
+    "weight": 6,
+    "conditions": {
+      "tags": [
+        "friend"
+      ]
+    },
+    "text": "Course de radeaux artisanaux sur la rivière de {ville}. Avec {ami}, vous avez six bidons, des palettes, et un bout de rideau en guise de voile.",
+    "choices": [
+      {
+        "label": "Foncer",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le radeau fend l'eau comme un paquebot ivre. Troisième place et coupe en plastique doré.",
+            "effects": {
+              "happiness": 11,
+              "relationships": {
+                "friend": 5
+              }
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Les bidons se détachent au premier virage. Vous finissez la course à la nage derrière vos palettes.",
+            "effects": {
+              "happiness": -3,
+              "health": -3,
+              "relationships": {
+                "friend": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prix du déguisement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Déguisés en pirates-pingouins, vous coulez à mi-parcours mais gagnez le prix du meilleur costume.",
+            "effects": {
+              "happiness": 8,
+              "money": 30,
+              "relationships": {
+                "friend": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Assembler solide",
+        "requiresSkill": {
+          "bricolage": 1
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Brêlages serrés, bidons bien répartis, gouvernail en planche à pain. Vous gagnez la course. {ami} t'appelle « l'amiral ».",
+            "effects": {
+              "happiness": 13,
+              "money": 100,
+              "relationships": {
+                "friend": 7
+              },
+              "skills": {
+                "bricolage": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pas_0250",
+    "category": "passions",
+    "minAge": 20,
+    "maxAge": 65,
+    "weight": 6,
+    "text": "Nuit des étoiles filantes. Tu t'allonges dans un champ à 2 h du matin avec une couverture. Une lampe torche s'approche : le fermier te prend pour un voleur de poules.",
+    "choices": [
+      {
+        "label": "Tout expliquer",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le fermier s'allonge à côté de toi. Vous comptez quarante-deux étoiles filantes. Il t'offre des œufs au matin.",
+            "effects": {
+              "happiness": 10,
+              "health": 1,
+              "newFriend": true
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il ne te croit pas. Les gendarmes arrivent à 3 h. Tu passes la nuit à expliquer ce qu'est une perséide.",
+            "effects": {
+              "happiness": -6,
+              "health": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fuir en courant",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu cours à travers champ dans le noir. Clôture électrique. Les étoiles, tu les as vues, mais pas dans le ciel.",
+            "effects": {
+              "health": -7,
+              "happiness": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire le mort",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il éclaire ta couverture, hausse les épaules et repart. Tu restes figé{e} deux heures. Tu as raté la moitié des étoiles.",
+            "effects": {
+              "happiness": -2,
+              "health": -1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
