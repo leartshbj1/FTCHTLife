@@ -37,6 +37,8 @@ struct Effets: Codable, Equatable {
     var entourage: EntourageEffets?
     /// Module « Cœur » (liaisons, tromperies, enfants cachés, crises de couple). Voir docs/COEUR.md.
     var coeur: CoeurEffets?
+    /// Module Beauté (réparer, soigner, calvitie, coupe ratée, opération offerte). Voir docs/BEAUTE.md.
+    var beaute: BeauteEffets?
 }
 
 struct ConditionsEvenement: Codable, Equatable {

@@ -250,6 +250,8 @@ struct Joueur: Codable, Equatable {
     var jeuVivant: JeuVivantEtat? = nil
     /// Module « Cœur » : liaisons, infidélités, enfants cachés, crises de couple (docs/COEUR.md).
     var coeur: CoeurEtat? = nil
+    /// Module Beauté : coiffeur, chirurgie esthétique, calvitie (docs/BEAUTE.md).
+    var beaute: BeauteEtat? = nil
 
     var nomComplet: String { "\(prenom) \(nom)" }
 

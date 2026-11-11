@@ -87,6 +87,9 @@ def check_coeur(v, where, errs):
         if k not in COEUR: errs.append(f"{where}: clé coeur inconnue {k}"); continue
         if not isinstance(x, COEUR[k]) or (COEUR[k] is int and isinstance(x, bool)): errs.append(f"{where}: coeur.{k} mauvais type")
         elif k in COEUR_VALEURS and x not in COEUR_VALEURS[k]: errs.append(f"{where}: coeur.{k} valeur inconnue {x}")
+# Module Beauté (docs/BEAUTE.md) : tags beaute_* (BeauteMoteur.tags) et sous-objet "beaute" des effets.
+TAG_PREFIXES += ("beaute_",)
+SPECIAL |= {"beaute"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return

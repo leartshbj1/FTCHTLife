@@ -126,6 +126,7 @@ extension GameEngine {
         if let v = VoisinageStockage.lire(j) { t.formUnion(VoisinageMoteur.tags(v)) }
         t.formUnion(EntourageTags.tags(j))
         t.formUnion(CoeurSysteme.tags(j))
+        t.formUnion(BeauteMoteur.tags(j))
         return t
     }
 
@@ -205,6 +206,10 @@ extension GameEngine {
         }
 
         lignes += AmeSoeur.passerAnnee(&j)
+        let beaute = BeauteMoteur.passerAnnee(&j)
+        lignes += beaute.lignes
+        if deces == nil { deces = beaute.deces }
+
         lignes += Competences.finAnnee(&j)
         j.stats.borner()
         return (lignes, deces)
@@ -300,6 +305,7 @@ extension GameEngine {
         }
         if let m = eff.dreamMarks { RevesMoteur.marquer(&j.reves, m) }
         for ligne in CoeurSysteme.appliquer(eff.coeur, &j) { ajouterLigne(&j, ligne) }
+        beauteAppliquer(eff.beaute, &j)
         j.argent = Shkurtaaa.argent(j.argent)
     }
 
