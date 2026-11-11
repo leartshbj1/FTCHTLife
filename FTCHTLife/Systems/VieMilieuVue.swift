@@ -46,6 +46,15 @@ struct VieMilieuView: View {
                 .font(.subheadline).foregroundStyle(.secondary)
             HStack { Text("Ta réputation dans la rue"); Spacer(); Text("\(VieMilieu.notoriete(j))/100").foregroundStyle(.secondary) }
         }
+        Section("À ton compte") {
+            lienBusiness(j, m)
+            lienCoup(j, m)
+            if m.argentSale > 0 {
+                LigneAction(titre: "Blanchir \(Format.argent(m.argentSale)) d'argent sale", sousTitre: "Commission de 30 %", icone: "arrow.triangle.2.circlepath") {
+                    agir { j in VieMilieu.blanchir(VieMilieu.etat(j).argentSale, &j) }
+                }
+            }
+        }
         let orgs = VieMilieu.organisationsAccessibles(j)
         Section("Organisations") {
             if m.balance {
@@ -103,25 +112,9 @@ struct VieMilieuView: View {
                 }
             }
         }
-        Section("Trafic") {
-            if let t = m.trafic, let p = MilieuDonnees.produit(t.produitId) {
-                HStack { Text(p.nom); Spacer(); Text("\(t.lots) lot\(t.lots > 1 ? "s" : "") · réseau \(t.reseau)/10").foregroundStyle(.secondary) }
-                LigneAction(titre: "Racheter un lot", sousTitre: Format.argent(p.prixLot), icone: "shippingbox.fill", actif: !enPrison) {
-                    agir { j in VieMilieu.acheterLot(p, &j) }
-                }
-                LigneAction(titre: "Recruter des revendeurs", sousTitre: Format.argent(2_000 * t.reseau), icone: "person.3.fill", actif: !enPrison) {
-                    agir { j in VieMilieu.etendreReseau(&j) }
-                }
-                LigneAction(titre: "Arrêter le trafic", icone: "xmark.octagon.fill") {
-                    agir { j in VieMilieu.arreterTrafic(&j) }
-                }
-            } else {
-                ForEach(VieMilieu.produitsAccessibles(j)) { p in
-                    LigneAction(titre: p.nom, sousTitre: "Lot : \(Format.argent(p.prixLot)) · \(p.description)", icone: "shippingbox", actif: !enPrison) {
-                        agir { j in VieMilieu.acheterLot(p, &j) }
-                    }
-                }
-            }
+        Section("Business") {
+            lienBusiness(j, m)
+            lienCoup(j, m)
         }
         Section("Argent sale : \(Format.argent(m.argentSale))") {
             LigneAction(titre: "Tout blanchir", sousTitre: "Commission de \(m.rang >= 3 ? 15 : 30) %", icone: "arrow.triangle.2.circlepath", actif: m.argentSale > 0) {
@@ -166,11 +159,46 @@ struct VieMilieuView: View {
         }
     }
 
+    // MARK: Business et casse
+
+    @ViewBuilder
+    private func lienBusiness(_ j: Joueur, _ m: VieMilieuEtat) -> some View {
+        NavigationLink { VieTraficView() } label: {
+            if let t = m.trafic {
+                let b = t.b
+                VStack(alignment: .leading, spacing: 2) {
+                    Label("Ton business", systemImage: "shippingbox.fill")
+                    Text("\(b.lignes.count) marchandise\(b.lignes.count > 1 ? "s" : "") · \(b.zones.count) quartier\(b.zones.count > 1 ? "s" : "") · \(t.reseau) revendeur\(t.reseau > 1 ? "s" : "") · stock \(b.stockTotal)")
+                        .font(.caption).foregroundStyle(.secondary)
+                    if b.decision != nil {
+                        Text("Une décision t'attend").font(.caption.weight(.semibold)).foregroundStyle(.orange)
+                    }
+                }
+            } else {
+                Label(m.membre ? "Monter un trafic" : "Dealer à ton compte", systemImage: "shippingbox")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func lienCoup(_ j: Joueur, _ m: VieMilieuEtat) -> some View {
+        NavigationLink { VieCoupView() } label: {
+            if let co = m.coup, let c = MilieuCoups.cible(co.cibleId) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Label("Coup en préparation", systemImage: "scope")
+                    Text(c.nom).font(.caption).foregroundStyle(.secondary)
+                }
+            } else {
+                Label("Monter un coup", systemImage: "scope")
+            }
+        }
+    }
+
     // MARK: Police
 
     @ViewBuilder
     private func police(_ j: Joueur, _ m: VieMilieuEtat) -> some View {
-        if m.membre || m.trafic != nil || m.chaleur > 0 || m.enquete != nil {
+        if m.membre || m.trafic != nil || m.coup != nil || m.chaleur > 0 || m.enquete != nil {
             Section("Police") {
                 BarreStat(titre: "Attention", icone: "light.beacon.max.fill", valeur: m.chaleur)
                 if let annees = m.enquete {

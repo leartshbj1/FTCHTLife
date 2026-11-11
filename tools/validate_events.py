@@ -91,10 +91,13 @@ def check_coeur(v, where, errs):
 # Module Beauté (docs/BEAUTE.md) : tags beaute_* (BeauteMoteur.tags) et sous-objet "beaute" des effets.
 TAG_PREFIXES += ("beaute_",)
 SPECIAL |= {"beaute"}
-=======
 # Secte et agence de détective (docs/SECTE_DETECTIVE.md)
 TAGS |= {"gourou","secte_communaute","secte_grande","secte_enquete","ancien_gourou","proche_dans_secte","detective","detective_celebre","detective_clandestin","ancien_detective"}
->>>>>>> c40baf757f880accd4c86b962fc34d9f747e04d8
+=======
+# Le Milieu, trafic et coups (vie4_trafic.json)
+TAGS |= {"dealer_gros","guerre_prix","rupture_stock","independant","coup_prepare","braqueur","a_revendeurs","produit_drogue"}
+PH |= {"produit","zone","concurrent"}
+>>>>>>> b09dfa9b89f2c72b3f8c340ee10d80dcb25ac07d
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
