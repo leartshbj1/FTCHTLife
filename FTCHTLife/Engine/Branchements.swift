@@ -75,6 +75,9 @@ enum SignauxModules {
         TropheesBranchements.compteurs = { $0.repercussions?.compteurs ?? [:] }
         TropheesBranchements.drapeaux = { Set(($0.repercussions?.flags ?? [:]).keys) }
         TropheesBranchements.modeShkurtaaa = { Shkurtaaa.actif }
+
+        // Leart et Shkurta (docs/AME_SOEUR.md) : pas d'écart, de liaison ni d'infidélité dans le module Cœur.
+        CoeurSysteme.coupleProtege = { AmeSoeur.coupleProtege($0) }
     }
 }
 

@@ -33,6 +33,8 @@ Pour tous les autres prénoms, rien ne change.
     du perso le journal dit qu'elle lui tenait la main ;
   - filet de sécurité : si un module oublie la règle et la transforme en ex, elle revient l'année suivante.
   - le lien ne descend jamais sous 60.
+  - module Cœur : ni écart, ni liaison (même via Pécho), et le/la partenaire ne devient jamais infidèle
+    (crochet `CoeurSysteme.coupleProtege`, branché dans `SignauxModules.configurer()`).
 
 ## Code
 
