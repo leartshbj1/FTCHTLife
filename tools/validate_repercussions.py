@@ -14,7 +14,7 @@ RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOSSIER = os.path.join(RACINE, "FTCHTLife", "Resources", "Data", "Repercussions")
 EVENTS = os.path.join(RACINE, "FTCHTLife", "Resources", "Data", "Events")
 
-CHAMPS = {"id", "on", "choice", "outcome", "chance", "delay", "patience", "unique", "minAge", "maxAge",
+CHAMPS = {"id", "category", "on", "choice", "outcome", "chance", "delay", "patience", "unique", "minAge", "maxAge",
           "conditions", "requires", "remember", "forget", "emit", "setFlags", "clearFlags", "text", "effects", "choices"}
 CONDITIONS = {"gender", "minMoney", "maxMoney", "requiresJob", "requiresPartner", "requiresSchool", "tags",
               "excludeTags", "flags", "excludeFlags", "minCounters", "maxCounters", "flagMinYears", "flagMaxYears"}

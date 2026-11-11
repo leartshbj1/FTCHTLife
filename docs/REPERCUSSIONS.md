@@ -75,7 +75,8 @@ Chaque fichier de `Resources/Data/Repercussions/` est un tableau :
 | `remember` / `forget` | drapeaux posés / retirés **tout de suite** au signal (même si `chance` rate) | aucun |
 | `conditions` | conditions **à l'échéance** : tous les champs des événements (`gender`, `tags`, `requiresPartner`…) + `flags`, `excludeFlags`, `minCounters`, `maxCounters` | aucune |
 | `minAge`, `maxAge` | âge requis à l'échéance | aucun |
-| `patience` | si les conditions ne sont pas remplies à l'échéance, on réessaie pendant N années, puis on oublie | 0 |
+| `patience` | si les conditions ne sont pas remplies à l'échéance (ou joueur en prison), on réessaie pendant N années, puis on oublie | 2 |
+| `category` | catégorie de l'événement produit ; `"prison"` pour une suite qui doit pouvoir arriver en prison | `"suite"` |
 | `unique` | une seule fois par vie | false |
 | `setFlags` / `clearFlags` | drapeaux posés / retirés **quand la suite arrive** | aucun |
 | `text` | texte (mêmes variables que les événements : `{prenom}`, `{partenaire}`, `{e}`…). Absent = règle qui ne fait que gérer des drapeaux | aucun |

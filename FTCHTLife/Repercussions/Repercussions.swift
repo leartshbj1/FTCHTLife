@@ -49,7 +49,7 @@ struct Repercussion: Codable, Identifiable, Equatable {
     var chance: Double?
     /// Délai en années [min, max] après le signal. Défaut [1, 1]. 0 = à la fin de la même année.
     var delay: [Int]?
-    /// Si la suite ne peut pas arriver à l'échéance (conditions), on réessaie pendant ce nombre d'années. Défaut 0.
+    /// Si la suite ne peut pas arriver à l'échéance (conditions, prison…), on réessaie pendant ce nombre d'années. Défaut 2.
     var patience: Int?
     /// N'arrive qu'une fois par vie. Défaut false.
     var unique: Bool?
@@ -71,6 +71,9 @@ struct Repercussion: Codable, Identifiable, Equatable {
     var setFlags: [String]?
     /// Drapeaux retirés quand la suite arrive.
     var clearFlags: [String]?
+    /// Catégorie de l'événement produit (défaut "suite"). Ex. "prison" pour une suite qui peut arriver en prison :
+    /// le moteur n'y laisse passer que les catégories "prison" et "sante".
+    var category: String?
     /// Texte de la suite. Absent = la règle ne fait que poser des drapeaux.
     var text: String?
     var effects: Effets?
@@ -110,6 +113,9 @@ enum Repercussions {
     private static let parId: [String: Repercussion] = Dictionary(toutes.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
 
     static func regle(_ id: String) -> Repercussion? { parId[id] }
+
+    /// Années pendant lesquelles une suite bloquée (conditions non remplies, joueur en prison…) attend avant d'être oubliée.
+    static let patienceParDefaut = 2
 
     // MARK: - Signaux
 
@@ -161,7 +167,7 @@ enum Repercussions {
         let echeance = age + Int.random(in: mini...maxi)
         // Les échéances ne sont vérifiées qu'au passage d'année : une suite à délai 0 signalée en cours d'année
         // doit encore être valable au prochain passage (âge + 1), sinon elle serait oubliée.
-        let dernier = max(echeance, age + 1) + max(0, r.patience ?? 0)
+        let dernier = max(echeance, age + 1) + max(0, r.patience ?? patienceParDefaut)
         etat.programmees.append(RepercussionProgrammee(id: r.id, age: echeance, ageMax: dernier))
         if r.unique == true { etat.uniquesVues.append(r.id) }
     }
@@ -229,7 +235,7 @@ enum Repercussions {
 
     /// Transforme une suite en événement affichable par le moteur.
     static func evenement(_ r: Repercussion) -> Evenement {
-        Evenement(id: r.id, category: "suite", minAge: r.minAge ?? 0, maxAge: r.maxAge ?? 200,
+        Evenement(id: r.id, category: r.category ?? "suite", minAge: r.minAge ?? 0, maxAge: r.maxAge ?? 200,
                   weight: 1, unique: nil, conditions: r.conditions?.conditionsEvenement,
                   text: r.text ?? "", effects: r.effects, choices: r.choices)
     }
