@@ -14,9 +14,9 @@ RACINE = Path(__file__).resolve().parent.parent / "FTCHTLife" / "Resources" / "D
 POSTES = {"militant", "conseiller", "adjoint", "maire", "depute", "ministre", "president", "any",
           "conseillerRegional", "presidentRegion", "senateur", "presidentAssemblee", "premierMinistre",
           "commissaire", "secretaireGeneral", "chef_parti", "ancien"}
-KINDS = {"dossier", "scandale", "debat", "campagne", "militant", "lobby", "proces", "crise", "parti", "apres"}
+KINDS = {"dossier", "scandale", "debat", "campagne", "militant", "lobby", "proces", "crise", "parti", "apres", "coalition"}
 PREFIXES = {"dossier": "dos_", "scandale": "sca_", "debat": "deb_", "campagne": "cam_", "militant": "mil_",
-            "lobby": "lob_", "proces": "pro_", "crise": "cri_", "parti": "par_", "apres": "apr_"}
+            "lobby": "lob_", "proces": "pro_", "crise": "cri_", "parti": "par_", "apres": "apr_", "coalition": "coa_"}
 SEGMENTS = {"jeunes", "retraites", "ruraux", "urbains", "patrons", "fonctionnaires"}
 PAYS = {"dette": 15, "chomage": 3, "croissance": 2, "securite": 15, "moral": 15}
 NIVEAUX = {"municipal": "mun_", "regional": "reg_", "national": "nat_", "international": "int_"}
@@ -27,7 +27,16 @@ POL = {"popularite", "influence", "casseroles", "loyaute", "caisse", "parrainage
        "finMandat", "ineligibilite", "loi", "abroger", "exclusionParti",
        "segments", "pays", "mobilisation", "majorite", "rival"}
 VARIABLES = {"prenom", "nom", "ville", "e", "parti", "poste", "adversaire", "ministere",
-             "mere", "pere", "partenaire", "ami", "rival", "pm"}
+             "mere", "pere", "partenaire", "ami", "rival", "pm",
+             # Institutions du pays du joueur (Systemes/systemes.json) : jamais en début de phrase.
+             "pays", "au_pays", "du_pays", "capitale", "chef_etat",
+             "palais", "au_palais", "du_palais", "siege_gouv", "au_siege_gouv", "du_siege_gouv",
+             "parlement", "au_parlement", "du_parlement", "senat", "au_senat", "du_senat",
+             "union", "siege_union"}
+REGIMES = {"semi_presidentiel", "presidentiel", "parlementaire", "monarchie_parlementaire", "monarchie_executive",
+           "directorial", "parti_unique"}
+POSTES_SYSTEME = {"conseiller", "adjoint", "conseillerRegional", "maire", "presidentRegion", "depute", "senateur",
+                  "presidentAssemblee", "ministre", "premierMinistre", "commissaire", "president", "secretaireGeneral"}
 CLES_PRIX = {"immobilier", "voitures", "bateaux", "avions", "bijoux", "voyages", "nourriture", "tech",
              "luxe", "animaux", "sante", "etudes", "loisirs", "vetements", "tout"}
 CLES_SALAIRES = {"restauration", "commerce", "transport", "batiment", "beaute", "securite", "administration",
@@ -144,13 +153,65 @@ def charger(dossier):
     return res
 
 
+def verifier_pays(f, i, o, ids_pays):
+    p = o.get("pays")
+    if p is None:
+        return
+    if not isinstance(p, list) or not p:
+        err(f, f"{i}: pays doit être une liste non vide d'ids de pays")
+        return
+    for x in p:
+        if x not in ids_pays:
+            err(f, f"{i}: pays inconnu {x}")
+
+
+def verifier_systemes():
+    systemes = charger("Systemes")
+    ids_pays = set()
+    for f, s in systemes:
+        i = s.get("id", "?")
+        ids_pays.add(i)
+        for k in ("id", "regime", "chefExecutif", "chefEtat", "resume", "pays", "capitale", "palais",
+                  "siegeGouvernement", "parlement", "postes", "election", "durees", "agesMin", "mandatsMax"):
+            if k not in s:
+                err(f, f"{i}: champ manquant {k}")
+        if s.get("regime") not in REGIMES:
+            err(f, f"{i}: régime inconnu {s.get('regime')}")
+        for k in ("pays", "palais", "siegeGouvernement", "parlement", "chambreHaute"):
+            v = s.get(k)
+            if v is not None and (not isinstance(v, list) or len(v) != 3):
+                err(f, f"{i}: {k} doit donner 3 formes (nom, « à », « de »)")
+        for k, v in (s.get("postes") or {}).items():
+            if k not in POSTES_SYSTEME:
+                err(f, f"{i}: poste inconnu {k}")
+            if v is not None and (not isinstance(v, list) or len(v) != 2):
+                err(f, f"{i}: poste {k} : [masculin, féminin] ou null")
+        for k, v in (s.get("election") or {}).items():
+            if k not in POSTES_SYSTEME or v not in ("directe", "indirecte", "nomination"):
+                err(f, f"{i}: election {k}={v} invalide")
+        for cle in ("durees", "agesMin", "mandatsMax"):
+            for k, v in (s.get(cle) or {}).items():
+                if k not in POSTES_SYSTEME or not isinstance(v, int) or v <= 0:
+                    err(f, f"{i}: {cle} {k}={v} invalide")
+    return systemes, ids_pays
+
+
 def main():
     ids = set()
+    systemes, ids_pays = verifier_systemes()
+    if "fr" not in ids_pays:
+        err("Systemes", "le système français (fr) est obligatoire")
     partis = charger("Partis")
     for f, p in partis:
         for k in ("id", "nom", "sigle", "slogan", "description", "couleur", "bord", "bonusElection", "cotisation"):
             if k not in p:
                 err(f, f"parti sans {k}")
+        verifier_pays(f, p.get("id", "?"), p, ids_pays)
+    uniques = {s.get("id") for _, s in systemes if s.get("partiUnique")}
+    for pid in ids_pays:
+        n = sum(1 for _, p in partis if pid in (p.get("pays") or ["fr"]))
+        if n < (1 if pid in uniques else 2):
+            err("Partis", f"le pays {pid} n'a pas assez de partis ({n})")
     ministeres = charger("Ministeres")
     ids_min = {m.get("id") for _, m in ministeres}
 
@@ -164,6 +225,7 @@ def main():
         for k in ("id", "niveau", "titre", "description", "difficulte", "headline", "texteAdoption", "texteRejet"):
             if k not in l:
                 err(f, f"{i}: champ manquant {k}")
+        verifier_pays(f, i, l, ids_pays)
         if l.get("niveau") not in NIVEAUX:
             err(f, f"{i}: niveau doit être municipal, regional, national ou international")
         pref = NIVEAUX.get(l.get("niveau"), "?")
@@ -207,6 +269,7 @@ def main():
         for k in ("id", "kind", "postes", "title", "text", "choices"):
             if k not in d:
                 err(f, f"{i}: champ manquant {k}")
+        verifier_pays(f, i, d, ids_pays)
         kind = d.get("kind")
         if kind not in KINDS:
             err(f, f"{i}: kind inconnu {kind}")
@@ -244,7 +307,7 @@ def main():
     from collections import Counter
     comptes = Counter(d.get("kind") for _, d in dossiers)
     niveaux = Counter(l.get("niveau") for _, l in lois)
-    print(f"Partis : {len(partis)}, ministères : {len(ministeres)}, lois : {len(lois)} {dict(niveaux)}, "
+    print(f"Systèmes : {len(systemes)}, partis : {len(partis)}, ministères : {len(ministeres)}, lois : {len(lois)} {dict(niveaux)}, "
           f"dossiers : {len(dossiers)} {dict(comptes)}")
     if erreurs:
         print(f"\n{len(erreurs)} erreur(s) :")
