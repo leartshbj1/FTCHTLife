@@ -136,6 +136,12 @@ struct SpeCarriere: Codable, Equatable {
     var albums: [SpeAlbum] = []
     var offreLabel: String = ""
 
+    // Bilan de l'année (optionnels : les sauvegardes d'avant restent lisibles)
+    /// Valeurs au début de l'année (réputation, gains, fans…) pour calculer les écarts du bilan.
+    var instantane: [String: Int]? = nil
+    /// Faits marquants de l'année (combats, prix…), affichés dans le bilan.
+    var faits: [String]? = nil
+
     init(type: SpeCarriereType, ageDebut: Int) {
         self.type = type
         self.ageDebut = ageDebut
@@ -177,6 +183,9 @@ struct SpeMusee: Codable, Equatable {
     var actionsAnnee: [String] = []
     var bilan: [String] = []
     var resultatAn: Int = 0
+    /// Visiteurs et prestige de l'année d'avant (bilan).
+    var visiteursAvant: Int? = nil
+    var prestigeAvant: Int? = nil
 
     init(nom: String, theme: String, taille: Int, ageOuverture: Int) {
         self.nom = nom
@@ -267,7 +276,61 @@ struct SpeEtat: Codable, Equatable {
     var investissements: [SpeInvest] = []
     var cartesVues: [String] = []
 
+    /// Bilan de l'année à afficher en pop-up au passage d'année (nil = déjà vu).
+    var bilan: SpeBilanAnnee? = nil
+    /// Emploi normal tel qu'il était l'an dernier (bilan des métiers).
+    var metierAvant: SpeMetierInstantane? = nil
+    /// Marqueurs de l'année écoulée (film_succes, defaite_ko…) : ils déclenchent des cartes de réaction.
+    var marqueurs: [String]? = nil
+    /// Marqueurs posés pendant l'année en cours (combats, clips…), versés dans `marqueurs` au passage d'année.
+    var marqueursAnnee: [String]? = nil
+
     init() {}
+
+    mutating func marquer(_ m: String) {
+        var l = marqueursAnnee ?? []
+        if !l.contains(m) { l.append(m) }
+        marqueursAnnee = l
+    }
+}
+
+// MARK: - Bilan de l'année
+
+struct SpeBilanLigne: Codable, Equatable, Identifiable {
+    var id = UUID()
+    var emoji: String
+    var libelle: String
+    var valeur: String
+    /// 1 bonne nouvelle, -1 mauvaise, 0 neutre.
+    var ton: Int = 0
+}
+
+struct SpeBilanSection: Codable, Equatable, Identifiable {
+    var id = UUID()
+    var emoji: String
+    var titre: String
+    var sousTitre: String
+    /// Le grand chiffre de l'année (entrées, combats, note de saison…).
+    var grosChiffre: String = ""
+    var grosLibelle: String = ""
+    var lignes: [SpeBilanLigne] = []
+    var faits: [String] = []
+}
+
+struct SpeBilanAnnee: Codable, Equatable, Identifiable {
+    var id = UUID()
+    var age: Int
+    var sections: [SpeBilanSection]
+    /// Carrière spéciale, musée ou investissements : le mode rapide s'arrête pour le montrer.
+    var important: Bool
+}
+
+struct SpeMetierInstantane: Codable, Equatable {
+    var titre: String
+    var salaire: Int
+    var niveau: Int
+    var performance: Int
+    var entreprise: String
 }
 
 // MARK: - Cartes (Data/SpecialesEvents)
@@ -318,6 +381,8 @@ struct SpeCarte: Codable, Equatable, Identifiable {
     var genres: [String]?
     /// Cartes « invest » : types d'investissement concernés (combattant, film, album, club, agence).
     var types: [String]?
+    /// Carte de réaction : n'arrive que l'année où l'un de ces marqueurs est posé (voir docs).
+    var marqueurs: [String]?
     var groupe: Bool?
     var unique: Bool?
     var poids: Double?

@@ -1,0 +1,796 @@
+[
+  {
+    "id": "man_0101",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "campagne"
+    ],
+    "text": "Ta campagne pour {marque} est sortie. En sortant du métro, tu tombes nez à nez avec ton visage, haut de quatre mètres, sur un panneau publicitaire.",
+    "choices": [
+      {
+        "label": "Prendre une photo devant",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Ta photo fait rire et attendrit tes abonnés. {agence} la repartage fièrement.",
+            "effects": {
+              "happiness": 8,
+              "fame": 2
+            },
+            "spe": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Un passant te reconnaît, puis dix. Tu finis par t'enfuir en courant, flatté{e} et un peu paniqué{e}.",
+            "effects": {
+              "happiness": 5,
+              "fame": 3,
+              "stress": 3
+            },
+            "spe": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Emmener tes parents voir l'affiche",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ils restent plantés devant un long moment. Ta mère dit que la photo est retouchée, mais qu'elle est jolie quand même.",
+            "effects": {
+              "happiness": 10,
+              "relationships": {
+                "mother": 5
+              }
+            },
+            "spe": {
+              "forme": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Passer vite, sans regarder",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Cette personne lisse et parfaite sur l'affiche, ce n'est pas tout à fait toi. Tu préfères ne pas trop la fixer.",
+            "effects": {
+              "happiness": -2,
+              "smarts": 2
+            },
+            "spe": {
+              "forme": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0102",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "campagne"
+    ],
+    "minNiveau": 2,
+    "text": "Après le succès de ta campagne, {marque} veut te faire signer un contrat d'exclusivité de deux ans. Gros chèque, mais plus le droit de travailler pour aucune autre maison.",
+    "choices": [
+      {
+        "label": "Signer l'exclusivité",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Revenu garanti, visibilité énorme. Tu deviens leur visage.",
+            "effects": {
+              "happiness": 8,
+              "fame": 3
+            },
+            "spe": {
+              "gainPct": 25,
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "La marque change de directeur artistique trois mois plus tard. Le nouveau ne t'utilise plus, mais tu restes bloqué{e}.",
+            "effects": {
+              "happiness": -6
+            },
+            "spe": {
+              "gainPct": 15,
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser pour garder ta liberté",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "D'autres maisons se manifestent, curieuses de te voir libre.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "reputation": 5,
+              "gainPct": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "{marque} choisit quelqu'un d'autre. Le chèque est parti avec.",
+            "effects": {
+              "happiness": -3
+            },
+            "spe": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser {agence} négocier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Exclusivité réduite à un an et limitée aux parfums. Ton agent mérite sa commission, pour une fois.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "gainPct": 18,
+              "reputation": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0103",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "campagne",
+      "promotion"
+    ],
+    "text": "Ta campagne a été vue partout. Des inconnus t'écrivent maintenant chaque jour, certains très gentils, d'autres beaucoup moins. L'un d'eux sait où tu habites.",
+    "choices": [
+      {
+        "label": "Prévenir la police et {agence}",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "L'agence prend l'affaire au sérieux, la police aussi. Les messages s'arrêtent.",
+            "effects": {
+              "happiness": 2,
+              "stress": -4
+            },
+            "spe": {
+              "forme": 2
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "La procédure est lente. Tu changes de trajet pendant des semaines, les nerfs à vif.",
+            "effects": {
+              "happiness": -6,
+              "stress": 8
+            },
+            "spe": {
+              "forme": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Déménager discrètement",
+        "cost": 4000,
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Nouvelle adresse, nouveaux réflexes : plus jamais de photo devant chez toi.",
+            "effects": {
+              "happiness": 2,
+              "stress": -6,
+              "smarts": 2
+            },
+            "spe": {
+              "forme": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ignorer, ça fait partie du métier",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Les messages finissent par s'arrêter d'eux-mêmes.",
+            "effects": {
+              "happiness": -2,
+              "stress": 3
+            },
+            "spe": {
+              "forme": 0
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un soir, il est en bas de chez toi. Tu ne dors plus.",
+            "effects": {
+              "happiness": -10,
+              "stress": 10,
+              "setFlags": [
+                "anxieux"
+              ]
+            },
+            "spe": {
+              "forme": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0104",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "baisse"
+    ],
+    "text": "Tes réservations ont nettement baissé cette année. {agence} parle de « nouvelles tendances ». Tu passes des heures devant le miroir à chercher ce qui ne va plus.",
+    "choices": [
+      {
+        "label": "En parler à quelqu'un de confiance",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Une amie mannequin te raconte ses propres creux. Ton physique n'a rien perdu. Le marché a juste changé de saison.",
+            "effects": {
+              "happiness": 6,
+              "stress": -5,
+              "relationships": {
+                "friend": 3
+              }
+            },
+            "spe": {
+              "forme": 5
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "On te répond « t'es magnifique, arrête ». Ça part d'une bonne intention. Ça ne t'aide pas.",
+            "effects": {
+              "happiness": -2
+            },
+            "spe": {
+              "forme": 0
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te mettre au régime strict",
+        "outcomes": [
+          {
+            "chance": 0.3,
+            "text": "Tu perds quelques kilos. Les réservations ne remontent pas pour autant.",
+            "effects": {
+              "happiness": -4,
+              "health": -5
+            },
+            "spe": {
+              "forme": -3
+            }
+          },
+          {
+            "chance": 0.7,
+            "text": "Tu sautes des repas, tu comptes tout. Tu as froid, tu es épuisé{e}. Ce n'était pas le problème.",
+            "effects": {
+              "happiness": -8,
+              "health": -10,
+              "setFlags": [
+                "mange_mal"
+              ]
+            },
+            "spe": {
+              "forme": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renouveler ton book avec un photographe",
+        "costPct": 10,
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Nouvelles photos, nouvelle énergie. Les castings rappellent.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "reputation": 4,
+              "gainPct": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les photos sont belles. Le marché, lui, reste calme.",
+            "effects": {
+              "happiness": 1
+            },
+            "spe": {
+              "reputation": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0105",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "baisse"
+    ],
+    "minNiveau": 1,
+    "text": "Moins de contrats cette année, et un booker de {agence} te suggère « une petite retouche » au visage pour relancer ta carrière. Il te tend la carte d'un chirurgien.",
+    "choices": [
+      {
+        "label": "Refuser fermement",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lui rends sa carte. Ton visage est le tien. Tu le dis, et ça te fait du bien de l'entendre.",
+            "effects": {
+              "happiness": 6,
+              "karma": 2
+            },
+            "spe": {
+              "forme": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre rendez-vous",
+        "cost": 6000,
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Le résultat est discret. Les castings reprennent un peu. Tu te regardes différemment.",
+            "effects": {
+              "happiness": 2,
+              "looks": 4
+            },
+            "spe": {
+              "gainPct": 8
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Gonflements, mois de récupération, et un visage que tu reconnais mal. Tu regrettes.",
+            "effects": {
+              "happiness": -10,
+              "health": -5,
+              "looks": -4
+            },
+            "spe": {
+              "forme": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer d'agence",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta nouvelle agence te voit comme tu es, et te place sur des campagnes plus matures.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "reputation": 4,
+              "gainPct": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Repartir de zéro dans une petite agence, c'est dur. Mais tu respires mieux.",
+            "effects": {
+              "happiness": 2
+            },
+            "spe": {
+              "reputation": -2,
+              "forme": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0106",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "baisse",
+      "reputation_baisse"
+    ],
+    "minAge": 26,
+    "text": "Les réservations baissent et un directeur de casting te glisse que tu es « un peu âgé{e} pour les défilés ». Tu as à peine trente ans.",
+    "choices": [
+      {
+        "label": "Te tourner vers les campagnes et la publicité",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Les marques adorent les visages qui ont du vécu. Tu enchaînes les tournages.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "gainPct": 12,
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La transition est lente, mais elle se fait.",
+            "effects": {
+              "happiness": 1
+            },
+            "spe": {
+              "gainPct": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Préparer l'après : formation, projets",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Stylisme, photographie, direction artistique : tu découvres que tu as un œil. Le futur te fait moins peur.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 5
+            },
+            "spe": {
+              "forme": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Dénoncer l'âgisme du milieu",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Ta tribune est très partagée. D'autres mannequins témoignent à leur tour.",
+            "effects": {
+              "happiness": 6,
+              "fame": 4,
+              "karma": 3
+            },
+            "spe": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Certains clients te jugent « difficile ». Le téléphone sonne encore moins.",
+            "effects": {
+              "happiness": -4,
+              "fame": 2,
+              "karma": 3
+            },
+            "spe": {
+              "reputation": -4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0107",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "promotion"
+    ],
+    "text": "Nouveau statut : {rang}. {agence} double ton agenda : castings le matin, essayages l'après-midi, soirées le soir. Tu dors dans les taxis.",
+    "choices": [
+      {
+        "label": "Tout accepter tant que ça dure",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu tiens le rythme et ton compte en banque explose.",
+            "effects": {
+              "happiness": 4,
+              "health": -4
+            },
+            "spe": {
+              "gainPct": 20,
+              "forme": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Malaise sur un défilé, en coulisses. Le médecin parle d'épuisement.",
+            "effects": {
+              "happiness": -6,
+              "health": -10,
+              "setFlags": [
+                "burn_out"
+              ]
+            },
+            "spe": {
+              "gainPct": 10,
+              "forme": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Imposer des jours de repos",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "L'agence râle, puis s'adapte. Tu es plus en forme et ça se voit sur les photos.",
+            "effects": {
+              "happiness": 6,
+              "health": 4
+            },
+            "spe": {
+              "gainPct": 10,
+              "forme": 6
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Une autre mannequin prend tes créneaux. Tu apprends que personne n'est irremplaçable.",
+            "effects": {
+              "happiness": -3,
+              "health": 4
+            },
+            "spe": {
+              "gainPct": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0108",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "reputation_baisse"
+    ],
+    "text": "Ta réputation a baissé cette année. Un photographe raconte partout que tu étais « ingérable » sur sa séance. Tu te souviens surtout qu'il t'avait parlé de façon déplacée.",
+    "choices": [
+      {
+        "label": "Raconter ta version",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "D'autres mannequins confirment son comportement. C'est lui que le milieu évite désormais.",
+            "effects": {
+              "happiness": 8,
+              "karma": 5,
+              "fame": 2
+            },
+            "spe": {
+              "reputation": 8
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il a des amis puissants. Tu perds deux contrats, mais tu as dit la vérité.",
+            "effects": {
+              "happiness": -4,
+              "karma": 5
+            },
+            "spe": {
+              "reputation": -3,
+              "gainPct": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "En parler à {agence}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ton agence te croit et refuse désormais de travailler avec lui.",
+            "effects": {
+              "happiness": 6,
+              "stress": -4
+            },
+            "spe": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "On te répond qu'il « est comme ça ». Tu commences à chercher une autre agence.",
+            "effects": {
+              "happiness": -6
+            },
+            "spe": {
+              "forme": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser couler",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "La rumeur s'éteint au bout de quelques mois. Le malaise, lui, reste.",
+            "effects": {
+              "happiness": -5,
+              "stress": 4
+            },
+            "spe": {
+              "forme": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0109",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "reputation_baisse",
+      "baisse"
+    ],
+    "minNiveau": 2,
+    "text": "Après une année compliquée, une célèbre émission de téléréalité te propose de participer. Gros cachet, grande visibilité. Le milieu de la mode, lui, risque de ne pas aimer.",
+    "choices": [
+      {
+        "label": "Accepter l'émission",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Le public t'adore, ton nombre d'abonnés explose. Les maisons de luxe, elles, ne rappellent plus.",
+            "effects": {
+              "happiness": 6,
+              "fame": 8
+            },
+            "spe": {
+              "gainPct": 20,
+              "reputation": -6
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Le montage fait de toi le personnage détesté de la saison. Tu découvres ce qu'est le harcèlement en ligne.",
+            "effects": {
+              "happiness": -10,
+              "fame": 6,
+              "stress": 8
+            },
+            "spe": {
+              "gainPct": 15,
+              "reputation": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser et rester dans la mode",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu préfères construire lentement. {agence} approuve, et te trouve deux campagnes discrètes.",
+            "effects": {
+              "happiness": 3
+            },
+            "spe": {
+              "reputation": 3,
+              "gainPct": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "man_0110",
+    "carriere": "mannequin",
+    "marqueurs": [
+      "blessure"
+    ],
+    "text": "Ta blessure de l'an dernier laisse des traces : ta cheville reste fragile et {agence} hésite à te réserver pour les défilés.",
+    "choices": [
+      {
+        "label": "Rééducation sérieuse avant tout",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Quelques mois de kiné et ta cheville tient. Tu remarches avec assurance.",
+            "effects": {
+              "health": 8,
+              "happiness": 4
+            },
+            "spe": {
+              "forme": 5
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "C'est plus long que prévu. Tu fais des photos assises en attendant.",
+            "effects": {
+              "health": 4,
+              "happiness": -3
+            },
+            "spe": {
+              "gainPct": -5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te concentrer sur les séances photo",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Moins de défilés, plus de studio. Tu découvres que tu adores le travail de la lumière.",
+            "effects": {
+              "happiness": 5,
+              "skills": {
+                "photo": 2
+              }
+            },
+            "spe": {
+              "gainPct": 5,
+              "forme": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Remonter tout de suite sur le podium",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu serres les dents à chaque pas, mais personne ne le voit.",
+            "effects": {
+              "happiness": 3,
+              "health": -4
+            },
+            "spe": {
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ta cheville lâche à nouveau, en plein défilé. Cette fois, tu vas devoir t'arrêter.",
+            "effects": {
+              "happiness": -8,
+              "health": -8
+            },
+            "spe": {
+              "blessure": 1,
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

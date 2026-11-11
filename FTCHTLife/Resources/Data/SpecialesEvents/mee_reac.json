@@ -1,0 +1,223 @@
+[
+  {
+    "id": "mee_0101",
+    "carriere": "musee",
+    "marqueurs": ["record"],
+    "text": "Record de fréquentation pour {musee} cette année ! Ce matin, la file d'attente fait le tour du pâté de maisons et les gardiens te demandent des renforts.",
+    "choices": [
+      {
+        "label": "Embaucher du personnel supplémentaire",
+        "cost": 40000,
+        "outcomes": [
+          { "chance": 0.8, "text": "Accueil fluide, visiteurs ravis, équipe soulagée. Les avis en ligne sont excellents.", "effects": { "happiness": 8 }, "spe": { "visiteursPct": 10, "prestige": 3 } },
+          { "chance": 0.2, "text": "Les nouvelles recrues sont mal formées. Un visiteur s'appuie sur une toile sans que personne ne réagisse.", "effects": { "happiness": -3 }, "spe": { "visiteursPct": 5, "collectionPct": -2 } }
+        ]
+      },
+      {
+        "label": "Instaurer des créneaux de réservation",
+        "outcomes": [
+          { "chance": 0.7, "text": "Moins de foule, plus de confort. Les visiteurs prennent le temps de regarder.", "effects": { "happiness": 5, "smarts": 2 }, "spe": { "prestige": 4, "visiteursPct": -3 } },
+          { "chance": 0.3, "text": "Le site de réservation plante le premier jour. Les réseaux sociaux s'en donnent à cœur joie.", "effects": { "happiness": -5 }, "spe": { "prestige": -2 } }
+        ]
+      },
+      {
+        "label": "Laisser les gens entrer, c'est la fête",
+        "outcomes": [
+          { "chance": 0.5, "text": "C'est bondé, bruyant et joyeux. La billetterie déborde.", "effects": { "happiness": 6, "money": 30000 }, "spe": { "visiteursPct": 8 } },
+          { "chance": 0.5, "text": "Bousculade devant {oeuvre}. Le cadre est rayé. Les restaurateurs te font la tête.", "effects": { "happiness": -6 }, "spe": { "collectionPct": -5, "prestige": -3 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mee_0102",
+    "carriere": "musee",
+    "marqueurs": ["record"],
+    "text": "Avec le record de visiteurs, tout le monde veut voir {oeuvre}. Les gens s'agglutinent devant, téléphone levé, sans vraiment la regarder.",
+    "choices": [
+      {
+        "label": "Interdire les photos dans la salle",
+        "outcomes": [
+          { "chance": 0.5, "text": "Les visiteurs regardent enfin l'œuvre. Certains en sortent émus. D'autres râlent en ligne.", "effects": { "happiness": 4 }, "spe": { "prestige": 4, "visiteursPct": -3 } },
+          { "chance": 0.5, "text": "Les gardiens passent leurs journées à faire la police. L'ambiance devient tendue.", "effects": { "happiness": -3 }, "spe": { "prestige": 1, "visiteursPct": -5 } }
+        ]
+      },
+      {
+        "label": "Créer un espace photo officiel juste à côté",
+        "cost": 8000,
+        "outcomes": [
+          { "chance": 1.0, "text": "Une reproduction grandeur nature avec un joli éclairage. Les selfies vont là-bas, l'original respire.", "effects": { "happiness": 6, "smarts": 2 }, "spe": { "visiteursPct": 6 } }
+        ]
+      },
+      {
+        "label": "Organiser des visites contemplatives à l'aube",
+        "outcomes": [
+          { "chance": 1.0, "text": "Vingt personnes, une heure de silence devant l'œuvre. Ces visites sont complètes pour six mois.", "effects": { "happiness": 8, "money": 15000 }, "spe": { "prestige": 5 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mee_0103",
+    "carriere": "musee",
+    "marqueurs": ["record"],
+    "text": "Suite à ton année record, l'académie te demande d'accueillir gratuitement les classes des écoles de la région. Il y en a des centaines.",
+    "choices": [
+      {
+        "label": "Accepter et créer des ateliers pour enfants",
+        "cost": 20000,
+        "outcomes": [
+          { "chance": 0.8, "text": "Les enfants dessinent devant les tableaux, posent des questions géniales. Une petite fille veut devenir conservatrice.", "effects": { "happiness": 12, "karma": 6 }, "spe": { "prestige": 6, "visiteursPct": 5 } },
+          { "chance": 0.2, "text": "Un groupe de CM2 découvre que la sculpture du hall est très facile à escalader. Plus de peur que de mal.", "effects": { "happiness": 4, "karma": 4 }, "spe": { "prestige": 3, "collectionPct": -2 } }
+        ]
+      },
+      {
+        "label": "Accepter, mais avec un tarif réduit",
+        "outcomes": [
+          { "chance": 1.0, "text": "Compromis raisonnable. Les écoles viennent, moins nombreuses, et la caisse tient.", "effects": { "happiness": 4, "money": 5000 }, "spe": { "prestige": 2, "visiteursPct": 3 } }
+        ]
+      },
+      {
+        "label": "Refuser, ton équipe est déjà débordée",
+        "outcomes": [
+          { "chance": 1.0, "text": "La presse locale titre : « Le musée qui ferme ses portes aux enfants ». Aïe.", "effects": { "happiness": -4, "karma": -4 }, "spe": { "prestige": -4 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mee_0104",
+    "carriere": "musee",
+    "marqueurs": ["record"],
+    "minNiveau": 1,
+    "text": "Ton année record attire l'attention : un grand musée étranger propose d'emprunter {oeuvre} pour une exposition. En échange, ils te prêteraient une de leurs pièces maîtresses.",
+    "choices": [
+      {
+        "label": "Accepter l'échange",
+        "outcomes": [
+          { "chance": 0.7, "text": "L'œuvre prêtée fait sensation. Ton musée entre dans la cour des grands.", "effects": { "happiness": 8 }, "spe": { "prestige": 8, "visiteursPct": 10 } },
+          { "chance": 0.3, "text": "{oeuvre} revient avec une éraflure due au transport. L'assurance couvre, ta tranquillité moins.", "effects": { "happiness": -3 }, "spe": { "prestige": 4, "collectionPct": -3 } }
+        ]
+      },
+      {
+        "label": "Refuser, l'œuvre ne quitte pas les murs",
+        "outcomes": [
+          { "chance": 1.0, "text": "Ta décision rassure ton public fidèle. Le grand musée, lui, ne reviendra pas vers toi de sitôt.", "effects": { "happiness": 2 }, "spe": { "prestige": -1, "visiteursPct": 2 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mee_0105",
+    "carriere": "musee",
+    "marqueurs": ["deficit"],
+    "text": "{musee} a terminé l'année en déficit. Ton comptable pose le bilan sur la table et dit, très calmement : « Il va falloir faire des choix. »",
+    "choices": [
+      {
+        "label": "Augmenter le prix du billet",
+        "outcomes": [
+          { "chance": 0.5, "text": "Les recettes remontent. Les familles, elles, viennent moins.", "effects": { "happiness": 1, "money": 20000 }, "spe": { "visiteursPct": -8 } },
+          { "chance": 0.5, "text": "La hausse fait fuir plus de monde que prévu. Le déficit ne bouge presque pas.", "effects": { "happiness": -5, "money": 5000 }, "spe": { "visiteursPct": -12, "prestige": -2 } }
+        ]
+      },
+      {
+        "label": "Réduire les dépenses de fonctionnement",
+        "outcomes": [
+          { "chance": 0.6, "text": "Moins d'éclairage, horaires réduits, chauffage au minimum. Ça tient, mais le musée paraît un peu triste.", "effects": { "happiness": -2, "money": 25000 }, "spe": { "prestige": -3, "visiteursPct": -4 } },
+          { "chance": 0.4, "text": "Les économies touchent la conservation. Une toile souffre de l'humidité.", "effects": { "happiness": -6, "money": 25000 }, "spe": { "collectionPct": -5, "prestige": -2 } }
+        ]
+      },
+      {
+        "label": "Lancer une campagne de mécénat",
+        "outcomes": [
+          { "chance": 0.5, "text": "Plusieurs entreprises et amateurs d'art répondent présent. Le trou est comblé.", "effects": { "happiness": 8, "money": 50000 }, "spe": { "prestige": 2 } },
+          { "chance": 0.5, "text": "Quelques dons touchants, mais pas assez pour équilibrer les comptes.", "effects": { "happiness": 2, "money": 12000 }, "spe": { "prestige": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mee_0106",
+    "carriere": "musee",
+    "marqueurs": ["deficit"],
+    "text": "Avec le déficit de l'année, ton comptable recommande de licencier trois personnes. Parmi elles, la guide qui travaille au musée depuis son ouverture.",
+    "choices": [
+      {
+        "label": "Licencier pour sauver le musée",
+        "outcomes": [
+          { "chance": 1.0, "text": "Les comptes respirent. Le jour de son départ, elle te serre la main sans un mot. Tu y penses longtemps.", "effects": { "happiness": -8, "karma": -4, "money": 60000 }, "spe": { "prestige": -3 } }
+        ]
+      },
+      {
+        "label": "Baisser ton propre salaire pour les garder",
+        "outcomes": [
+          { "chance": 1.0, "text": "Tu renonces à ta rémunération pour l'année. Ton équipe le sait, et elle se donne à fond.", "effects": { "happiness": 4, "karma": 8, "money": -30000 }, "spe": { "prestige": 3, "visiteursPct": 3 } }
+        ]
+      },
+      {
+        "label": "Réunir l'équipe et chercher des idées ensemble",
+        "outcomes": [
+          { "chance": 0.6, "text": "La guide propose des visites nocturnes payantes. Un succès qui sauve les trois postes.", "effects": { "happiness": 10, "karma": 4, "money": 30000 }, "spe": { "visiteursPct": 6 } },
+          { "chance": 0.4, "text": "Beaucoup de bonne volonté, peu de solutions. Il faudra trancher plus tard.", "effects": { "happiness": -2, "karma": 2 }, "spe": { "prestige": 1 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mee_0107",
+    "carriere": "musee",
+    "marqueurs": ["deficit"],
+    "minNiveau": 1,
+    "text": "Pour combler le déficit, un collectionneur privé propose de racheter {oeuvre} à un prix très élevé. C'est l'œuvre qui a fait connaître {musee}.",
+    "choices": [
+      {
+        "label": "Vendre",
+        "outcomes": [
+          { "chance": 0.5, "text": "Les comptes sont sauvés pour des années. Mais une salle est vide, et le public le remarque.", "effects": { "happiness": -4, "money": 300000 }, "spe": { "collectionPct": -15, "prestige": -6, "visiteursPct": -8 } },
+          { "chance": 0.5, "text": "La presse s'indigne : « Le musée brade son patrimoine ». Des donateurs se retirent.", "effects": { "happiness": -8, "money": 300000 }, "spe": { "collectionPct": -15, "prestige": -10 } }
+        ]
+      },
+      {
+        "label": "Refuser et chercher d'autres solutions",
+        "outcomes": [
+          { "chance": 0.5, "text": "L'affaire s'ébruite et le public se mobilise : la billetterie bondit par solidarité.", "effects": { "happiness": 8, "money": 30000 }, "spe": { "visiteursPct": 10, "prestige": 3 } },
+          { "chance": 0.5, "text": "Tu gardes l'œuvre et le déficit. L'année prochaine sera serrée.", "effects": { "happiness": -2, "stress": 5 }, "spe": { "prestige": 1 } }
+        ]
+      },
+      {
+        "label": "Proposer un prêt de longue durée plutôt qu'une vente",
+        "requiresSkill": { "eloquence": 3 },
+        "outcomes": [
+          { "chance": 1.0, "text": "Cinq ans de prêt contre une belle somme, et l'œuvre reviendra. Le collectionneur est séduit par l'idée.", "effects": { "happiness": 6, "money": 120000 }, "spe": { "visiteursPct": -4 } }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mee_0108",
+    "carriere": "musee",
+    "marqueurs": ["deficit"],
+    "text": "Le déficit de {musee} commence à se savoir. Un promoteur te propose de louer les salles pour des soirées privées : mariages, séminaires, galas d'entreprise.",
+    "choices": [
+      {
+        "label": "Accepter les soirées privées",
+        "outcomes": [
+          { "chance": 0.6, "text": "Les soirées rapportent bien et se passent sans incident. Le déficit fond.", "effects": { "happiness": 5, "money": 50000 }, "spe": { "prestige": -2 } },
+          { "chance": 0.4, "text": "Lors d'un mariage, un invité renverse du champagne sur une vitrine. La presse s'en amuse.", "effects": { "happiness": -4, "money": 40000 }, "spe": { "prestige": -5, "collectionPct": -3 } }
+        ]
+      },
+      {
+        "label": "Refuser, ce n'est pas le rôle d'un musée",
+        "outcomes": [
+          { "chance": 1.0, "text": "Ton intégrité plaît aux amateurs d'art. Ton comptable, un peu moins.", "effects": { "happiness": 2, "karma": 2 }, "spe": { "prestige": 2 } }
+        ]
+      },
+      {
+        "label": "Accepter seulement des soirées culturelles",
+        "outcomes": [
+          { "chance": 1.0, "text": "Concerts de chambre et lectures entre les tableaux. Ça rapporte moins, mais ça fait parler de toi.", "effects": { "happiness": 6, "money": 20000 }, "spe": { "prestige": 3, "visiteursPct": 4 } }
+        ]
+      }
+    ]
+  }
+]

@@ -123,9 +123,14 @@ enum SpeMoteur {
     }
 
     static func passerAnnee(_ j: inout Joueur) -> Bilan {
-        guard var e = j.speciales else { return Bilan() }
+        guard var e = j.speciales ?? (j.emploi != nil ? SpeEtat() : nil) else { return Bilan() }
         var b = Bilan()
         e.actionsSalle = []
+        // Les marqueurs de l'année écoulée (combats, clips…) servent aux cartes de réaction de cette année.
+        e.marqueurs = e.marqueursAnnee ?? []
+        e.marqueursAnnee = nil
+        var sections: [SpeBilanSection] = []
+        var important = false
 
         // Salle de sport
         if e.abonnement > 0 {
@@ -154,6 +159,7 @@ enum SpeMoteur {
             c.annees += 1
             c.bilan = []
             var fin: String? = nil
+            let debutLignes = b.lignes.count
             switch c.type {
             case .mma: anneeMMA(&c, &e, &j, &b, &fin)
             case .sport: anneeSport(&c, &e, &j, &b, &fin)
@@ -163,25 +169,63 @@ enum SpeMoteur {
             }
             c.actionsAnnee = []
             borner(&c)
+            let lignesCarriere = Array(b.lignes[debutLignes...])
+            var section = sectionCarriere(c, j, lignesAnnee: lignesCarriere, fin: fin != nil)
+            for m in marqueursCarriere(c, j) { marquerFin(&e, m) }
+            c.instantane = instantane(c)
+            c.faits = nil
             e.carriere = c
             if let raison = fin {
                 b.lignes.append(terminer(&e, j, raison: raison))
                 b.signaux.append("spe_fin_carriere")
+                section.faits.append("🏁 Fin de carrière.")
             }
+            sections.append(section)
+            important = true
         }
 
         // Musée
         if var m = e.musee {
+            m.visiteursAvant = m.visiteursAn
+            m.prestigeAvant = m.prestige
             anneeMusee(&m, &j, &b)
+            sections.append(sectionMusee(m))
+            if let avant = m.visiteursAvant, avant > 0, m.visiteursAn > avant * 6 / 5 { marquerFin(&e, "record") }
+            if m.resultatAn < 0 { marquerFin(&e, "deficit") }
             e.musee = m
+            important = true
         }
 
         // Investissements
+        let avantInvest = Dictionary(uniqueKeysWithValues: e.investissements.filter { !$0.termine }.map { ($0.id, $0.valeur) })
         anneeInvestissements(&e, &j, &b)
+        if !avantInvest.isEmpty {
+            let s = sectionInvest(e, avant: avantInvest)
+            sections.append(s.section)
+            for m in s.marqueurs { marquerFin(&e, m) }
+            important = true
+        }
 
+        // Emploi normal (bilan plus simple)
+        if let em = j.emploi {
+            sections.insert(sectionMetier(em, j, avant: e.metierAvant), at: 0)
+            e.metierAvant = SpeMetierInstantane(titre: em.titre, salaire: em.salaire, niveau: j.carriere?.level ?? em.niveau,
+                                                performance: j.carriere?.performance ?? em.performance,
+                                                entreprise: j.carriere?.company ?? "")
+        } else {
+            e.metierAvant = nil
+        }
+
+        e.bilan = sections.isEmpty ? nil : SpeBilanAnnee(age: j.age, sections: sections, important: important)
         bornerSalle(&e)
         j.speciales = e
         return b
+    }
+
+    static func marquerFin(_ e: inout SpeEtat, _ m: String) {
+        var l = e.marqueurs ?? []
+        if !l.contains(m) { l.append(m) }
+        e.marqueurs = l
     }
 
     /// Montée de rang : ligne du journal et signaux.
@@ -363,6 +407,14 @@ enum SpeMoteur {
             recit += " Trois défaites de suite : la ligue ne renouvelle pas ton contrat. Retour à l'échelon du dessous."
         }
         borner(&c)
+        let resume = (gagne ? "✅ Victoire" : "❌ Défaite") + (methode == "décision" ? " aux points" : (methode == "KO" ? " par KO" : " par soumission"))
+            + " contre \(adv)" + (difficulte == 3 ? " (combat pour la ceinture)" : "")
+        var faits = c.faits ?? []
+        faits.append(resume)
+        c.faits = faits
+        e.marquer(gagne ? "victoire" : (methode == "KO" ? "defaite_ko" : "defaite"))
+        if gagne && difficulte == 3 { e.marquer("titre_gagne") }
+        if c.blessure > 0 { e.marquer("blessure") }
         return ResultatCombat(texte: recit, gagne: gagne, signaux: signaux)
     }
 
@@ -819,6 +871,7 @@ enum SpeMoteur {
         if let a = k.maxAge, j.age > a { return false }
         if k.unique == true && e.cartesVues.contains(k.id) { return false }
         if k.carriere == "invest" && investsVises(e, types: k.types).isEmpty { return false }
+        if let mk = k.marqueurs, !mk.isEmpty, Set(mk).isDisjoint(with: e.marqueurs ?? []) { return false }
         if let c = e.carriere {
             if let s = k.sports, !s.isEmpty, c.type == .sport, !s.contains(c.sport) { return false }
             if let g = k.genres, !g.isEmpty {
@@ -831,13 +884,24 @@ enum SpeMoteur {
     }
 
     /// Au plus une carte du module par an.
+    /// Au plus une carte du module par an. Les cartes de réaction (marqueurs de l'année : film sorti,
+    /// défaite par KO, saison ratée…) passent en premier, juste après le bilan.
     static func carteDeLAnnee(_ e: SpeEtat, _ j: Joueur) -> SpeCarte? {
+        func reactions(_ s: String) -> [SpeCarte] {
+            SpeCatalogue.cartes.filter { $0.carriere == s && $0.marqueurs?.isEmpty == false && carteOK($0, e, j) }
+        }
         var sources: [String] = []
-        if let c = e.carriere, Double.random(in: 0...1) < 0.6 { sources.append(c.type.rawValue) }
-        if e.musee != nil, Double.random(in: 0...1) < 0.35 { sources.append("musee") }
-        if e.investissements.contains(where: { !$0.termine }), Double.random(in: 0...1) < 0.25 { sources.append("invest") }
+        if let c = e.carriere {
+            let chance = reactions(c.type.rawValue).isEmpty ? 0.8 : 0.95
+            if Double.random(in: 0...1) < chance { sources.append(c.type.rawValue) }
+        }
+        if e.musee != nil, Double.random(in: 0...1) < (reactions("musee").isEmpty ? 0.35 : 0.7) { sources.append("musee") }
+        if e.investissements.contains(where: { !$0.termine }),
+           Double.random(in: 0...1) < (reactions("invest").isEmpty ? 0.25 : 0.6) { sources.append("invest") }
         if e.abonnement > 0, e.carriere?.type != .mma, Double.random(in: 0...1) < 0.2 { sources.append("salle") }
         for s in sources {
+            let reac = reactions(s)
+            if !reac.isEmpty, Double.random(in: 0...1) < 0.85, let k = GameEngine.tirage(reac, poids: { $0.poids ?? 1 }) { return k }
             let liste = SpeCatalogue.cartes.filter { $0.carriere == s && carteOK($0, e, j) }
             if let k = GameEngine.tirage(liste, poids: { $0.poids ?? 1 }) { return k }
         }

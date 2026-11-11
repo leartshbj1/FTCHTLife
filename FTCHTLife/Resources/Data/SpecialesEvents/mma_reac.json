@@ -1,0 +1,1267 @@
+[
+  {
+    "id": "mma_0101",
+    "carriere": "mma",
+    "marqueurs": [
+      "victoire"
+    ],
+    "text": "Ta victoire contre {adversaire} tourne en boucle sur les réseaux. Au micro, dans la cage, on te tend la parole devant toute la salle.",
+    "choices": [
+      {
+        "label": "Provoquer le prochain sur la liste",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Ta tirade fait le buzz. L'organisateur se frotte les mains : le combat se vendra tout seul.",
+            "effects": {
+              "happiness": 6,
+              "fame": 4,
+              "karma": -2
+            },
+            "spe": {
+              "reputation": 6,
+              "gainPct": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu bafouilles, tu insultes sa mère, la salle hue. Ce n'était pas ton meilleur moment.",
+            "effects": {
+              "happiness": -3,
+              "fame": 2,
+              "karma": -4
+            },
+            "spe": {
+              "reputation": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rendre hommage à {adversaire}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu lèves son bras avec le tien. La salle applaudit. Les puristes t'adoptent.",
+            "effects": {
+              "happiness": 6,
+              "karma": 5
+            },
+            "spe": {
+              "reputation": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Remercier {coach} et ta famille",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Ta voix se brise un peu. Ta famille pleure au premier rang. {coach} fait semblant de ne pas pleurer.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "parent": 4
+              }
+            },
+            "spe": {
+              "reputation": 3,
+              "forme": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0102",
+    "carriere": "mma",
+    "marqueurs": [
+      "victoire"
+    ],
+    "minNiveau": 1,
+    "text": "Après ta victoire, l'organisateur te propose tout de suite un adversaire bien mieux classé. Il te reste à peine trois mois pour te préparer.",
+    "choices": [
+      {
+        "label": "Accepter, tu es en confiance",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu enchaînes sur ta lancée. Le camp est dur, mais tu arrives affûté{e}.",
+            "effects": {
+              "happiness": 6,
+              "health": -3
+            },
+            "spe": {
+              "forme": 6,
+              "reputation": 5,
+              "gainPct": 10
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Ton corps n'a pas récupéré du dernier combat. Tu arrives au camp avec une épaule qui grince.",
+            "effects": {
+              "happiness": -4,
+              "health": -6
+            },
+            "spe": {
+              "forme": -8,
+              "gainPct": 10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander six mois de préparation",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "L'organisateur accepte en grognant. Tu fais un vrai camp complet.",
+            "effects": {
+              "happiness": 3
+            },
+            "spe": {
+              "forme": 10,
+              "technique": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Il donne le combat à un autre. Tu devras attendre ton tour.",
+            "effects": {
+              "happiness": -5
+            },
+            "spe": {
+              "reputation": -2,
+              "forme": 5
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier une bourse plus grosse",
+        "requiresSkill": {
+          "eloquence": 3
+        },
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu rappelles que ton dernier combat a fait la meilleure audience de la soirée. Il double ta bourse.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "gainPct": 20
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0103",
+    "carriere": "mma",
+    "marqueurs": [
+      "victoire"
+    ],
+    "text": "Tu as gagné, mais {adversaire} est sorti de la cage sur une civière. On dit qu'il est encore à l'hôpital.",
+    "choices": [
+      {
+        "label": "Aller le voir",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il va mieux. Vous parlez longtemps, de vos enfances, de vos peurs. Il te dit qu'il t'aurait fait pareil.",
+            "effects": {
+              "happiness": 6,
+              "karma": 6,
+              "newFriend": true
+            },
+            "spe": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Sa famille ne veut pas te voir. Tu repars avec ton bouquet et une boule dans le ventre.",
+            "effects": {
+              "happiness": -6,
+              "karma": 3
+            },
+            "spe": {
+              "forme": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prendre des nouvelles par {coach}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Commotion sérieuse, mais il s'en remettra. Tu dors mal plusieurs nuits quand même.",
+            "effects": {
+              "happiness": -3,
+              "karma": 1
+            },
+            "spe": {
+              "forme": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te dire que c'est le métier",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Vous saviez tous les deux ce que vous risquiez. Tu passes à autre chose, du moins en apparence.",
+            "effects": {
+              "happiness": -1,
+              "karma": -2
+            },
+            "spe": {
+              "forme": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0104",
+    "carriere": "mma",
+    "marqueurs": [
+      "defaite"
+    ],
+    "text": "Tu as perdu aux points contre {adversaire}, sur une décision partagée. Toute la salle a sifflé les juges. Toi, tu es persuadé{e} d'avoir gagné.",
+    "choices": [
+      {
+        "label": "Contester officiellement la décision",
+        "outcomes": [
+          {
+            "chance": 0.2,
+            "text": "La commission requalifie le combat en match nul. Petite victoire morale.",
+            "effects": {
+              "happiness": 6
+            },
+            "spe": {
+              "reputation": 4
+            }
+          },
+          {
+            "chance": 0.8,
+            "text": "Recours rejeté. Mais le dossier fait parler de toi, et pas en mal.",
+            "effects": {
+              "happiness": -3
+            },
+            "spe": {
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réclamer une revanche",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le public la réclame aussi. Le combat est programmé pour l'an prochain.",
+            "effects": {
+              "happiness": 6,
+              "fame": 2
+            },
+            "spe": {
+              "reputation": 4,
+              "gainPct": 8
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "{adversaire} préfère passer à autre chose. Tu ruminais déjà, tu rumines encore.",
+            "effects": {
+              "happiness": -5
+            },
+            "spe": {
+              "forme": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Revoir le combat avec {coach}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "En vidéo, c'est moins net que dans ta tête. Tu as laissé filer le deuxième round. Leçon apprise.",
+            "effects": {
+              "smarts": 3,
+              "happiness": -2
+            },
+            "spe": {
+              "technique": 3,
+              "forme": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0105",
+    "carriere": "mma",
+    "marqueurs": [
+      "defaite"
+    ],
+    "minNiveau": 1,
+    "text": "Après ta défaite, un club concurrent te propose de te rejoindre, avec un coach réputé et des partenaires d'entraînement de haut niveau. {coach} t'entraîne depuis tes débuts.",
+    "choices": [
+      {
+        "label": "Rester fidèle à {coach}",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Vous remettez tout à plat ensemble. Il change ta préparation. Tu sens la différence.",
+            "effects": {
+              "happiness": 5,
+              "karma": 4
+            },
+            "spe": {
+              "forme": 6,
+              "technique": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Rien ne change vraiment. Tu te demandes si tu n'as pas fait une erreur.",
+            "effects": {
+              "happiness": -3
+            },
+            "spe": {
+              "forme": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Partir dans le nouveau club",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Le niveau d'entraînement est brutal. Tu progresses plus en six mois qu'en deux ans.",
+            "effects": {
+              "happiness": 2,
+              "karma": -3
+            },
+            "spe": {
+              "technique": 6,
+              "cardio": 4,
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu n'es qu'un nom parmi d'autres. {coach} ne répond plus à tes appels.",
+            "effects": {
+              "happiness": -6,
+              "karma": -3
+            },
+            "spe": {
+              "technique": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Garder {coach} et ajouter un spécialiste",
+        "costPct": 15,
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un spécialiste de lutte vient deux fois par semaine. {coach} joue le jeu, un peu vexé.",
+            "effects": {
+              "happiness": 3
+            },
+            "spe": {
+              "technique": 5,
+              "forme": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0106",
+    "carriere": "mma",
+    "marqueurs": [
+      "defaite_ko"
+    ],
+    "text": "K.-O. contre {adversaire}. Tu ne te souviens pas d'être tombé{e}. Le médecin de la fédération t'impose un scanner et une suspension médicale.",
+    "choices": [
+      {
+        "label": "Respecter scrupuleusement le repos",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Trois mois sans coup reçu, des maux de tête qui disparaissent. Tu reviens prudent{e}, mais entier{e}.",
+            "effects": {
+              "health": 6,
+              "happiness": 2
+            },
+            "spe": {
+              "forme": -4
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Les maux de tête persistent. Le neurologue fronce les sourcils et prolonge l'arrêt.",
+            "effects": {
+              "health": -4,
+              "happiness": -6,
+              "stress": 5
+            },
+            "spe": {
+              "blessure": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reprendre le sparring au bout de trois semaines",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Rien de grave cette fois. Mais {coach} te regarde différemment.",
+            "effects": {
+              "health": -4
+            },
+            "spe": {
+              "forme": 3
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Un crochet banal à l'entraînement, et tout tourne à nouveau. Deuxième commotion en un mois.",
+            "effects": {
+              "health": -12,
+              "happiness": -8
+            },
+            "spe": {
+              "blessure": 1,
+              "forme": -8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Demander un deuxième avis médical",
+        "cost": 800,
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Le spécialiste est clair : pas de lésion, mais pas d'impact à la tête pendant quatre mois. Tu sais à quoi t'en tenir.",
+            "effects": {
+              "health": 4,
+              "smarts": 2
+            },
+            "spe": {
+              "forme": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0107",
+    "carriere": "mma",
+    "marqueurs": [
+      "defaite_ko"
+    ],
+    "minAge": 18,
+    "text": "Ta famille a vu le K.-O. à la télé. Au repas du dimanche, personne ne parle de MMA. Puis {mere} pose sa fourchette : « Je veux que tu arrêtes. »",
+    "choices": [
+      {
+        "label": "Lui expliquer pourquoi tu continues",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Tu parles longtemps, calmement. Elle ne comprend pas tout, mais elle respecte ton choix.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "mother": 4
+              }
+            },
+            "spe": {
+              "forme": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Le ton monte. Tu pars avant le dessert. Le silence dure des semaines.",
+            "effects": {
+              "happiness": -8,
+              "relationships": {
+                "mother": -6
+              }
+            },
+            "spe": {
+              "forme": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Promettre de faire attention",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu acceptes de faire un bilan médical complet chaque année. Ça la rassure un peu. Toi aussi.",
+            "effects": {
+              "happiness": 3,
+              "relationships": {
+                "mother": 3
+              },
+              "health": 2
+            },
+            "spe": {
+              "forme": 1
+            }
+          }
+        ]
+      },
+      {
+        "label": "Envisager sérieusement d'arrêter",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Tu prends quelques mois pour réfléchir. La flamme revient, et cette fois, tu sais pourquoi tu combats.",
+            "effects": {
+              "happiness": 4,
+              "relationships": {
+                "mother": 4
+              }
+            },
+            "spe": {
+              "forme": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Tu annonces ta retraite. Ta mère pleure de soulagement. Toi, tu as un grand vide à remplir.",
+            "effects": {
+              "happiness": -2,
+              "relationships": {
+                "mother": 8
+              },
+              "health": 4
+            },
+            "spe": {
+              "finCarriere": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0108",
+    "carriere": "mma",
+    "marqueurs": [
+      "defaite_ko"
+    ],
+    "text": "Depuis le K.-O., quelque chose a changé. En sparring, tu fermes les yeux au moment de l'impact. Tu recules. {coach} l'a vu aussi.",
+    "choices": [
+      {
+        "label": "En parler franchement avec {coach}",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Il te raconte son propre K.-O., il y a vingt ans. Vous reprenez doucement, avec des gants plus gros. La peur recule.",
+            "effects": {
+              "happiness": 6,
+              "stress": -5
+            },
+            "spe": {
+              "forme": 6,
+              "technique": 2
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "Il te dit « ça passera ». Ça ne passe pas.",
+            "effects": {
+              "happiness": -4,
+              "stress": 4
+            },
+            "spe": {
+              "forme": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Voir un préparateur mental",
+        "costPct": 8,
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Visualisation, respiration, retour progressif au contact. Tu retrouves ton calme sous les coups.",
+            "effects": {
+              "happiness": 6,
+              "stress": -8
+            },
+            "spe": {
+              "forme": 8
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "Le travail est long. Tu progresses, mais tu n'es pas encore prêt{e} pour un vrai combat.",
+            "effects": {
+              "happiness": 1,
+              "stress": -3
+            },
+            "spe": {
+              "forme": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Te forcer et cacher ta peur",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu serres les dents et ça finit par revenir. Par miracle.",
+            "effects": {
+              "happiness": 2,
+              "stress": 4
+            },
+            "spe": {
+              "forme": 3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu prends des coups que tu aurais évités avant. Ton coach parle de te retirer des cartes.",
+            "effects": {
+              "happiness": -8,
+              "health": -5,
+              "stress": 6
+            },
+            "spe": {
+              "forme": -6,
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0109",
+    "carriere": "mma",
+    "marqueurs": [
+      "titre_gagne"
+    ],
+    "unique": true,
+    "text": "Champion ! Quand tu rentres à {ville}, la mairie organise une réception. Les gamins de ta première salle t'attendent avec une banderole mal orthographiée.",
+    "choices": [
+      {
+        "label": "Passer la journée avec les gamins de la salle",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Tu poses la ceinture sur les épaules de chacun. L'un d'eux te dit qu'il veut devenir comme toi. Tu ne t'en remettras pas.",
+            "effects": {
+              "happiness": 12,
+              "karma": 6,
+              "fame": 3
+            },
+            "spe": {
+              "reputation": 5,
+              "forme": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire la fête toute la nuit",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "La ville entière trinque avec toi. Mémorable, et la gueule de bois aussi.",
+            "effects": {
+              "happiness": 10,
+              "health": -4,
+              "fame": 2
+            },
+            "spe": {
+              "forme": -4
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une photo de toi debout sur une table finit dans la presse. Pas très champion.",
+            "effects": {
+              "happiness": 4,
+              "fame": 4
+            },
+            "spe": {
+              "reputation": -4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Financer du matériel pour ta première salle",
+        "cost": 10000,
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Nouveaux sacs, nouveaux tapis, une plaque à ton nom. {coach} fait semblant d'avoir une poussière dans l'œil.",
+            "effects": {
+              "happiness": 10,
+              "karma": 8
+            },
+            "spe": {
+              "reputation": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0110",
+    "carriere": "mma",
+    "marqueurs": [
+      "titre_gagne"
+    ],
+    "minNiveau": 2,
+    "text": "Avec ta ceinture viennent les obligations : défense du titre dans six mois, sponsors, interviews. Tout le monde veut maintenant te battre, toi.",
+    "choices": [
+      {
+        "label": "Te couper du monde pour te préparer",
+        "outcomes": [
+          {
+            "chance": 0.7,
+            "text": "Camp d'entraînement isolé, aucun écran. Tu arrives plus fort{e} que jamais.",
+            "effects": {
+              "happiness": 2,
+              "health": 3
+            },
+            "spe": {
+              "forme": 10,
+              "cardio": 3
+            }
+          },
+          {
+            "chance": 0.3,
+            "text": "La solitude te pèse. Tu doutes, seul{e} dans ta chambre, chaque soir.",
+            "effects": {
+              "happiness": -6,
+              "stress": 6
+            },
+            "spe": {
+              "forme": 4
+            }
+          }
+        ]
+      },
+      {
+        "label": "Profiter des contrats de sponsoring",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Boisson énergisante, montre, équipementier. Ton compte bancaire explose, ton camp d'entraînement un peu moins.",
+            "effects": {
+              "happiness": 5,
+              "fame": 4
+            },
+            "spe": {
+              "gainPct": 25,
+              "forme": -6
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Tu passes plus de temps sur des tournages publicitaires que sur le tapis. {coach} s'inquiète à voix haute.",
+            "effects": {
+              "happiness": 2,
+              "stress": 4
+            },
+            "spe": {
+              "gainPct": 20,
+              "forme": -10
+            }
+          }
+        ]
+      },
+      {
+        "label": "Avouer à {coach} que la pression te dévore",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Il te répond que tous les champions ont peur de perdre. Il te construit un plan à la semaine. Tu respires.",
+            "effects": {
+              "happiness": 6,
+              "stress": -8
+            },
+            "spe": {
+              "forme": 5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0111",
+    "carriere": "mma",
+    "marqueurs": [
+      "inactif"
+    ],
+    "text": "Pas un seul combat cette année. Ton nom disparaît des classements, ton compte en banque se vide et tu te demandes si les organisateurs t'ont oublié{e}.",
+    "choices": [
+      {
+        "label": "Relancer ton manager tous les jours",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Il finit par te décrocher une place sur une carte régionale. C'est peu, mais c'est un combat.",
+            "effects": {
+              "happiness": 4
+            },
+            "spe": {
+              "reputation": 2,
+              "gainPct": 5
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Il te répond moins vite à chaque fois. Tu commences à chercher un autre manager.",
+            "effects": {
+              "happiness": -5,
+              "stress": 4
+            },
+            "spe": {
+              "forme": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Donner des cours à la salle pour tenir",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Cours de MMA pour adultes le soir. Ça paie le loyer et tu restes en forme.",
+            "effects": {
+              "happiness": 3
+            },
+            "spe": {
+              "gainPct": 8,
+              "forme": 3,
+              "technique": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Provoquer un combattant connu sur les réseaux",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Il répond. Le public s'enflamme. Vous voilà programmés pour l'an prochain.",
+            "effects": {
+              "happiness": 6,
+              "fame": 3
+            },
+            "spe": {
+              "reputation": 5,
+              "gainPct": 8
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Il ne répond pas. Tes amis, eux, te font remarquer que ça fait un peu pitié.",
+            "effects": {
+              "happiness": -4,
+              "karma": -2
+            },
+            "spe": {
+              "reputation": -2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0112",
+    "carriere": "mma",
+    "marqueurs": [
+      "inactif",
+      "blessure"
+    ],
+    "minNiveau": 1,
+    "text": "Après une année sans combattre, un organisateur t'appelle : un combattant s'est désisté, il te faut remplacer au pied levé. Le combat est dans dix jours.",
+    "choices": [
+      {
+        "label": "Accepter, c'est ta chance",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu n'as rien à perdre et ça se voit. Tu crées la surprise de la soirée.",
+            "effects": {
+              "happiness": 12,
+              "fame": 3
+            },
+            "spe": {
+              "reputation": 8,
+              "gainPct": 12
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Ton cardio lâche au deuxième round. Défaite, mais tu as eu le courage de venir.",
+            "effects": {
+              "happiness": -4,
+              "health": -5
+            },
+            "spe": {
+              "reputation": 2,
+              "gainPct": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser, tu n'es pas prêt{e}",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'organisateur note ton nom dans la colonne « pas fiable ». Mais ton corps te remercie.",
+            "effects": {
+              "happiness": -2,
+              "health": 2
+            },
+            "spe": {
+              "reputation": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0113",
+    "carriere": "mma",
+    "marqueurs": [
+      "blessure"
+    ],
+    "text": "Ta blessure de l'an dernier ne guérit pas aussi vite que prévu. Le kiné parle de mois de rééducation. Tu regardes les autres s'entraîner depuis le banc.",
+    "choices": [
+      {
+        "label": "Suivre la rééducation à la lettre",
+        "outcomes": [
+          {
+            "chance": 0.8,
+            "text": "Exercices ennuyeux, progrès minuscules, puis un jour, plus de douleur. Tu peux reprendre.",
+            "effects": {
+              "health": 8,
+              "happiness": 4
+            },
+            "spe": {
+              "forme": 4
+            }
+          },
+          {
+            "chance": 0.2,
+            "text": "La guérison est lente, mais propre. Encore un peu de patience.",
+            "effects": {
+              "health": 4,
+              "happiness": -2
+            },
+            "spe": {
+              "forme": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reprendre trop tôt",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Ça tient. Tu as eu de la chance.",
+            "effects": {
+              "health": -3,
+              "happiness": 3
+            },
+            "spe": {
+              "forme": 4
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Rechute au troisième entraînement. Tout est à refaire.",
+            "effects": {
+              "health": -10,
+              "happiness": -8
+            },
+            "spe": {
+              "blessure": 1,
+              "forme": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Profiter de l'arrêt pour travailler autre chose",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Analyse vidéo, stratégie, nutrition. Tu reviendras plus intelligent{e} dans la cage.",
+            "effects": {
+              "smarts": 4,
+              "happiness": 2
+            },
+            "spe": {
+              "technique": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0114",
+    "carriere": "mma",
+    "marqueurs": [
+      "promotion"
+    ],
+    "minNiveau": 1,
+    "text": "Nouveau statut : {rang}. {ligue} t'envoie un contrat de plusieurs combats. Les bourses sont plus grosses, les adversaires aussi. Le contrat fait trente pages.",
+    "choices": [
+      {
+        "label": "Signer vite avant qu'ils ne changent d'avis",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Contrat correct, même si tu découvres plus tard une clause d'exclusivité très large.",
+            "effects": {
+              "happiness": 8
+            },
+            "spe": {
+              "gainPct": 10,
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Une clause leur permet de te couper si tu perds un combat. Tu l'apprends trop tard.",
+            "effects": {
+              "happiness": 2,
+              "stress": 5
+            },
+            "spe": {
+              "gainPct": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Faire relire le contrat par un avocat",
+        "cost": 3000,
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "L'avocat fait retirer deux clauses abusives. {ligue} cède sans broncher. Bien vu.",
+            "effects": {
+              "happiness": 6,
+              "smarts": 3
+            },
+            "spe": {
+              "gainPct": 15,
+              "reputation": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Fêter ça avec {coach} et l'équipe",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Pizza dans la salle, musique trop forte, photo de groupe. Une soirée dont vous parlerez longtemps.",
+            "effects": {
+              "happiness": 8,
+              "relationships": {
+                "friend": 3
+              }
+            },
+            "spe": {
+              "forme": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0115",
+    "carriere": "mma",
+    "marqueurs": [
+      "retrogradation"
+    ],
+    "text": "Après tes résultats de l'an dernier, tu redescends d'un cran. Nouveau statut : {rang}. Le nouveau contrat est moins généreux, et les organisateurs ne te prennent plus au téléphone aussi vite.",
+    "choices": [
+      {
+        "label": "Remonter la pente combat après combat",
+        "outcomes": [
+          {
+            "chance": 0.6,
+            "text": "Plus de pression, plus d'ego. Tu combats pour le plaisir et ça se voit dans la cage.",
+            "effects": {
+              "happiness": 5
+            },
+            "spe": {
+              "forme": 8,
+              "reputation": 3
+            }
+          },
+          {
+            "chance": 0.4,
+            "text": "Les combats sont durs, les salles petites. Tu tiens, mais la motivation vacille.",
+            "effects": {
+              "happiness": -4
+            },
+            "spe": {
+              "forme": -2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Changer de catégorie de poids",
+        "outcomes": [
+          {
+            "chance": 0.5,
+            "text": "Dans ta nouvelle catégorie, tu es plus à l'aise. Un nouveau départ.",
+            "effects": {
+              "happiness": 6,
+              "health": 3
+            },
+            "spe": {
+              "forme": 6,
+              "reputation": 2
+            }
+          },
+          {
+            "chance": 0.5,
+            "text": "Les adversaires sont plus lourds et frappent plus fort. Tu le sens dès le premier sparring.",
+            "effects": {
+              "happiness": -3,
+              "health": -4
+            },
+            "spe": {
+              "forme": -3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mma_0116",
+    "carriere": "mma",
+    "marqueurs": [
+      "defaite_ko",
+      "retrogradation"
+    ],
+    "minAge": 30,
+    "text": "Un K.-O. de plus. À ton âge, tu récupères moins vite, et {coach} te dit à voix basse qu'il est peut-être temps de penser à la suite.",
+    "choices": [
+      {
+        "label": "Annoncer ta retraite",
+        "outcomes": [
+          {
+            "chance": 1.0,
+            "text": "Un dernier passage dans la cage pour saluer le public. Tu ranges tes gants avec ton corps encore entier.",
+            "effects": {
+              "happiness": 4,
+              "health": 6,
+              "fame": 2
+            },
+            "spe": {
+              "finCarriere": true
+            }
+          }
+        ]
+      },
+      {
+        "label": "Un dernier combat, pour partir sur une victoire",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu gagnes. Tu lèves les bras et tu sais que c'est la dernière fois. Sortie parfaite.",
+            "effects": {
+              "happiness": 12,
+              "fame": 3
+            },
+            "spe": {
+              "reputation": 6,
+              "gainPct": 10
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu perds encore. Le chemin du vestiaire est très long.",
+            "effects": {
+              "happiness": -10,
+              "health": -8
+            },
+            "spe": {
+              "reputation": -4,
+              "forme": -6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Continuer, tu n'as pas dit ton dernier mot",
+        "outcomes": [
+          {
+            "chance": 0.4,
+            "text": "Tu adaptes ton style, plus de lutte, moins d'échanges. Ça fonctionne.",
+            "effects": {
+              "happiness": 4
+            },
+            "spe": {
+              "technique": 4,
+              "forme": 3
+            }
+          },
+          {
+            "chance": 0.6,
+            "text": "Tu continues. Les maux de tête aussi.",
+            "effects": {
+              "happiness": -4,
+              "health": -6
+            },
+            "spe": {
+              "forme": -4
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

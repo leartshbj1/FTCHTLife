@@ -63,6 +63,7 @@ struct MainView: View {
             .animauxEvenements(cle: \.animaux)
             .naissanceBebe()
             .scolPresentationAuto()
+            .speBilanAuto()
         }
     }
 

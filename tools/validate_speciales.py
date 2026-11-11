@@ -14,7 +14,7 @@ CARRIERES = {"mma": "mma_", "sport": "spo_", "mannequin": "man_", "cinema": "cin
 SPORTS = {"football", "basket", "tennis", "rugby", "athletisme", "cyclisme"}
 GENRES = {"rap", "pop", "rock", "electro", "variete", "jazz",
           "comedie", "drame", "action", "horreur", "sf", "documentaire", "auteur"}
-CLES_CARTE = {"id", "carriere", "minNiveau", "maxNiveau", "minAge", "maxAge", "sports", "genres", "types", "groupe",
+CLES_CARTE = {"id", "carriere", "minNiveau", "maxNiveau", "minAge", "maxAge", "sports", "genres", "types", "marqueurs", "groupe",
               "unique", "poids", "text", "choices"}
 CLES_CHOIX = {"label", "outcomes", "cost", "costPct", "requiresSkill", "risk"}
 CLES_ISSUE = {"chance", "text", "effects", "spe"}
@@ -22,6 +22,16 @@ CLES_SPE = {"reputation", "forme", "niveau", "blessure", "gainPct", "fansPct", "
             "prestige", "visiteursPct", "collectionPct", "investPct", "finCarriere", "signal"}
 CLES_EFFETS = {"happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame", "relationships",
                "newFriend", "death", "setFlags", "clearFlags", "followUps", "skills", "familyRep", "dreamMarks"}
+MARQUEURS = {
+    "mma": {"victoire", "defaite", "defaite_ko", "titre_gagne", "inactif"},
+    "sport": {"saison_top", "saison_ratee", "titre", "selection", "transfert"},
+    "mannequin": {"campagne", "baisse"},
+    "cinema": {"court_sorti", "court_prix", "film_succes", "film_flop", "film_moyen", "film_prix", "critique_bonne",
+               "critique_mauvaise", "sans_film"},
+    "musique": {"album_certifie", "album_succes", "album_flop", "fans_baisse", "offre_label", "clip_viral"},
+    "musee": {"record", "deficit"},
+    "invest": {"invest_succes", "invest_echec"},
+}
 VARIABLES = {"prenom", "nom", "ville", "mere", "pere", "parent", "ami", "fratrie", "partenaire", "metier", "e",
              "rang", "coach", "adversaire", "ligue", "salle", "club", "sport", "agence", "marque", "film",
              "groupe", "label", "musee", "oeuvre", "projet"}
@@ -64,6 +74,10 @@ def main():
             for s in c.get("sports") or []:
                 if s not in SPORTS:
                     erreurs.append(f"{ou}: sport inconnu {s}")
+            communs = {"promotion", "retrogradation", "reputation_baisse", "blessure"}
+            for mk in c.get("marqueurs") or []:
+                if mk not in MARQUEURS.get(car, set()) | (communs if car in ("mma", "sport", "mannequin", "cinema", "musique") else set()):
+                    erreurs.append(f"{ou}: marqueur inconnu pour {car} : {mk}")
             for ty in c.get("types") or []:
                 if ty not in {"combattant", "film", "album", "club", "agence"}:
                     erreurs.append(f"{ou}: type d'investissement inconnu {ty}")
@@ -99,6 +113,13 @@ def main():
                     for k in (o.get("effects") or {}):
                         if k not in CLES_EFFETS:
                             erreurs.append(f"{oo}: effet inconnu {k}")
+                    eff = o.get("effects") or {}
+                    for k in ("happiness", "health", "smarts", "looks", "karma", "money", "stress", "fame"):
+                        if k in eff and (not isinstance(eff[k], int) or isinstance(eff[k], bool)):
+                            erreurs.append(f"{oo}: {k} doit être un entier")
+                    for k in ("relationships", "skills", "familyRep"):
+                        if k in eff and not (isinstance(eff[k], dict) and all(isinstance(x, int) for x in eff[k].values())):
+                            erreurs.append(f"{oo}: {k} doit être un objet {{clé: entier}}")
                     for k, v in (o.get("spe") or {}).items():
                         if k not in CLES_SPE:
                             erreurs.append(f"{oo}: clé spe inconnue {k}")

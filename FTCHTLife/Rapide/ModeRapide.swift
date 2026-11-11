@@ -82,6 +82,7 @@ extension GameEngine {
             guard let k = joueur, k.vivant else { break }
             if evenementEnCours != nil || flashMonde != nil { break }
             if !entreprisesAvecRapportNonLu.isEmpty { break }
+            if k.speciales?.bilan?.important == true { break }
             if !etatAnimaux(\.animaux).enAttente.isEmpty { break }
             // Un bébé est né : on s'arrête pour choisir son prénom.
             if !k.coeurEtat.bebesANommer.isEmpty { break }
