@@ -231,7 +231,7 @@ extension GameEngine {
         j.fetes = etatFetes
 
         var rep = j.repercussions ?? RepercussionsEtat()
-        let suites = Repercussions.echeances(age: j.age, etat: &rep) { self.conditionsRemplies($0, j, tags: t) }
+        let suites = Repercussions.echeances(age: j.age, etat: &rep) { self.conditionsRemplies($0, j, tags: t) && VieSysteme.evenementAutorise($0, tags: t) }
         j.repercussions = rep
 
         let secrets = Secrets.passerAnnee(joueur: &j)
