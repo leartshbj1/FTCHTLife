@@ -384,7 +384,7 @@ struct AnimauxEvenementsHote: View {
     private func planifier() {
         guard courant == nil else { return }
         Task { @MainActor in
-            try? await Task.sleep(nanoseconds: 600_000_000)
+            try? await Task.sleep(nanoseconds: 350_000_000)
             if courant == nil, let prochain = engine.prochainEvenementAnimal(cle) {
                 courant = prochain
             }

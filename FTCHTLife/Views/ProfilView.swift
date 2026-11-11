@@ -52,6 +52,7 @@ struct ReglagesView: View {
     var body: some View {
         Feuille(titre: "Réglages") {
             List {
+                ModeRapideReglages()
                 ShkurtaaaSettingsSection()
                 Section("Comment jouer") {
                     Text("Touche **Âge +1** pour vivre une année. Il se passe des choses, parfois on te demande de choisir.")

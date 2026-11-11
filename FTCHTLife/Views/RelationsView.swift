@@ -61,6 +61,7 @@ struct ListeRelationsView: View {
                     }
                 }
             }
+            .presentoirRacine()
         }
     }
 
@@ -118,6 +119,7 @@ struct RelationDetailView: View {
         }
         .navigationTitle(engine.joueur?.relations.first(where: { $0.id == relationId })?.prenom ?? "")
         .alerteResultat($message)
+        .presentoirRacine()
     }
 }
 

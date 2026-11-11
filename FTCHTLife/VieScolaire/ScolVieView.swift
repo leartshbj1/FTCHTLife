@@ -243,7 +243,7 @@ struct ScolPresentationAuto: ViewModifier {
         if let t = etat.aFaire.first(where: { !proposees.contains("\(j.age)-\($0.id)") }) {
             proposees.insert("\(j.age)-\(t.id)")
             // Laisse la feuille de l'événement se fermer avant d'ouvrir la suivante.
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 if engine.evenementEnCours == nil { tache = t }
             }
         }

@@ -41,6 +41,7 @@ extension GameEngine {
 
 struct VieRelationActions: View {
     @EnvironmentObject var engine: GameEngine
+    @Environment(\.presentoir) private var presentoir
     let relationId: UUID
     @State private var message: String?
 
@@ -58,7 +59,7 @@ struct VieRelationActions: View {
                     Section("Plus d'actions") {
                         ForEach(actions) { a in
                             LigneAction(titre: a.titre, icone: a.icone) {
-                                message = engine.vieAction { j in VieRelations.agir(a, sur: relationId, &j) }
+                                montrer(engine.vieAction { j in VieRelations.agir(a, sur: relationId, &j) })
                             }
                         }
                     }
@@ -67,12 +68,18 @@ struct VieRelationActions: View {
         }
         .vieAlerte($message)
     }
+
+    /// Le message passe par la racine de l'écran (une alerte posée dans la liste se refermerait aussitôt).
+    private func montrer(_ texte: String) {
+        if let p = presentoir { p.montrer(texte) } else { message = texte }
+    }
 }
 
 // MARK: - Famille élargie, adoption, rencontres (section à ajouter dans RelationsView)
 
 struct VieFamilleSection: View {
     @EnvironmentObject var engine: GameEngine
+    @Environment(\.presentoir) private var presentoir
     @State private var message: String?
 
     var body: some View {
@@ -98,12 +105,14 @@ struct VieFamilleSection: View {
                     Section { Label("Bébé en route (encore \(min(9, mois)) mois)", systemImage: "figure.and.child.holdinghands") }
                 }
                 Section("Amour et famille") {
-                    if j.age >= 14 && j.partenaireActuel == nil && !v.justice.enPrison {
+                    // Le lien reste là même une fois en couple : s'il disparaissait au moment où
+                    // « Tenter ma chance » réussit, l'écran des rencontres se refermerait sous le doigt.
+                    if j.age >= 14 && !v.justice.enPrison {
                         NavigationLink { VieRencontresView() } label: { Label("Faire des rencontres", systemImage: "heart.circle.fill") }
                     }
                     if j.age >= 21 {
                         LigneAction(titre: "Adopter un enfant", sousTitre: "15 000 € de frais", icone: "house.and.flag.fill", actif: !v.justice.enPrison) {
-                            message = engine.vieAction { j in VieRelations.adopter(&j) }
+                            montrer(engine.vieAction { j in VieRelations.adopter(&j) })
                         }
                     }
                     if v.mariages > 0 || v.divorces > 0 {
@@ -113,6 +122,11 @@ struct VieFamilleSection: View {
             }
         }
         .vieAlerte($message)
+    }
+
+    /// Le message passe par la racine de l'écran (une alerte posée dans la liste se refermerait aussitôt).
+    private func montrer(_ texte: String) {
+        if let p = presentoir { p.montrer(texte) } else { message = texte }
     }
 }
 
