@@ -37,6 +37,10 @@ SPECIAL |= {"death","newFriend","relationships","setFlags","clearFlags","followU
 PH |= {"prenom","nom","ville","mere","pere","parent","ami","fratrie","partenaire","metier","e","enfant","ex","codetenu","grandparent"}
 COND |= {"gender","minMoney","maxMoney","requiresJob","requiresPartner","requiresSchool","tags","excludeTags","flags","excludeFlags"}
 SPECIAL |= {"death","newFriend","relationships","setFlags","skills"}  # skills : docs/COMPETENCES.md
+# Module Jeu vivant (docs/VIVANT.md) : tags des autres modules utilisés par ses événements, et les siens.
+TAG_PREFIXES += ("pol_", "tv_", "secteur_", "metier_")
+TAGS |= {"entrepreneur","patron","magnat","ancien_entrepreneur","failli","phone","influencer","star_reseaux","bad_buzz","sponsorise",
+         "mandat_debut","mandat_installe","bateau_oublie","avion_oublie","projet_en_cours","notable"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return

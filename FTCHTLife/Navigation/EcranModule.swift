@@ -48,6 +48,7 @@ struct EcranModule: View {
 
         // Activités
         case .loisirs: LoisirsEcran(etat: \.loisirs, signaler: Self.signaler)
+        case .projets: Feuille(titre: "Projets perso") { ProjetsView() }
         case .sante: Feuille(titre: "Santé") { VieSanteView() }
         case .television: TeleView()
         case .casino: CasinoView()
