@@ -23,6 +23,8 @@ LOISIRS_TAG = re.compile(r"^((pratique|habitue)_[a-z0-9_]+|sportif|blesse|abonne
 TAGS |= {"etranger","expat_nouveau","expat_installe","langue_faible","bilingue","polyglotte","binational","de_retour"}
 # Train de vie (Engine/Coherence.swift, tagsTrainDeVie).
 TAGS |= {"millionaire","milliardaire","endette","gros_salaire","petit_salaire","chez_parents","locataire","proprietaire","voiture","voiture_luxe","moto","bateau","avion_prive","bijoux","collection_art","multi_proprietaire","vie_de_luxe","grand_voyageur"}
+# Easter egg « Leart et Shkurta » (FTCHTLife/AmeSoeur, docs/AME_SOEUR.md).
+TAGS |= {"ame_soeur","ame_soeur_leart","ame_soeur_shkurta"}
 TAGS |= {"pol_ancien","pol_candidat","pol_chef_parti","pol_elu","pol_gouverne","pol_militant","pol_scandale"}
 TAG_PREFIXES = ("pays_","loi_","zone_","origine_","famille_")
 # Modules Casier et Réputation familiale.

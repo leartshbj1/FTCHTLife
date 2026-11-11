@@ -90,6 +90,7 @@ enum VieSysteme {
 
     /// En prison, seuls les événements « prison » et « sante » arrivent.
     static func evenementAutorise(_ e: Evenement, tags: Set<String>) -> Bool {
+        if !AmeSoeur.evenementAutorise(e, tags: tags) { return false }
         let cat = e.category ?? ""
         if tags.contains("prison") { return cat == "prison" || cat == "sante" }
         return cat != "prison"
@@ -178,7 +179,8 @@ enum VieSysteme {
         case "ex": types = [.ex]
         default: return []
         }
-        guard let i = j.relations.indices.filter({ types.contains(j.relations[$0].type) && j.relations[$0].vivant }).randomElement() else { return [] }
+        let ameSoeur = j.ameSoeur?.relationId
+        guard let i = j.relations.indices.filter({ types.contains(j.relations[$0].type) && j.relations[$0].vivant && j.relations[$0].id != ameSoeur }).randomElement() else { return [] }
         j.relations[i].vivant = false
         let r = j.relations[i]
         j.stats.bonheur -= r.type == .partenaire || r.type == .enfant ? 25 : 10

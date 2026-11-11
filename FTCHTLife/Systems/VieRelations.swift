@@ -197,6 +197,7 @@ enum VieRelations {
             break
         }
         if r.type == .ex && celibataire && ageOk { a.append(.flirter) }
+        if AmeSoeur.estAmeSoeur(r, j) { a.removeAll { $0 == .rompre || $0 == .divorcer } }
         return a
     }
 
@@ -261,7 +262,7 @@ enum VieRelations {
             guard paye(2_500) else { return "La bague coûte 2 500 €. Une bague en capsule de bière, ça ne compte pas." }
             let annees = j.vieEtat.anneesEnsemble
             let chance = Double(r.lien) / 100 * (annees >= 2 ? 1 : (annees == 1 ? 0.7 : 0.35))
-            if VieHasard.reussi(VieBonus.seduction(chance)) {
+            if AmeSoeur.estAmeSoeur(r, j) || VieHasard.reussi(VieBonus.seduction(chance)) {
                 var v = j.vieEtat; v.statutCouple = .fiance; j.vieEtat = v
                 lien(10); j.stats.bonheur += 12
                 VieSysteme.signaler("demande_mariage", &j)
@@ -377,6 +378,7 @@ enum VieRelations {
 
     @discardableResult
     static func rompre(_ j: inout Joueur, parLeJoueur: Bool) -> [String] {
+        if AmeSoeur.coupleProtege(j) { return AmeSoeur.refusRupture(&j, parLeJoueur: parLeJoueur) }
         guard let p = j.partenaireActuel, let i = j.relations.firstIndex(where: { $0.id == p.id }) else { return [] }
         var v = j.vieEtat
         let etaitMarie = v.statutCouple == .marie

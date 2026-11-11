@@ -237,6 +237,8 @@ struct Joueur: Codable, Equatable {
     var retraite: RetraiteEtat? = nil
     var succession: SuccessionEtat? = nil
     var voisinage: VoisinageEtat? = nil
+    /// Easter egg « Leart et Shkurta » : l'âme sœur rencontrée (docs/AME_SOEUR.md).
+    var ameSoeur: AmeSoeurEtat? = nil
     /// Dernier métier exercé (gardé pour la nécrologie, car `emploi` est vidé à la mort).
     var dernierEmploi: Emploi? = nil
     /// Emploi du module Métiers (Careers) et CV.
