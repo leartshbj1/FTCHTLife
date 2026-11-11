@@ -83,6 +83,8 @@ extension GameEngine {
             if evenementEnCours != nil || flashMonde != nil { break }
             if !entreprisesAvecRapportNonLu.isEmpty { break }
             if !etatAnimaux(\.animaux).enAttente.isEmpty { break }
+            // Un bébé est né : on s'arrête pour choisir son prénom.
+            if !k.coeurEtat.bebesANommer.isEmpty { break }
             let tachesApres = Set((scolEtat?.aFaire ?? []).map { "\($0.id)" })
             if !tachesApres.subtracting(tachesAvant).isEmpty { break }
             // Les grands caps de la vie méritent qu'on s'arrête.

@@ -432,12 +432,18 @@ enum VieRelations {
         v.grossesse = nil
         let jumeaux = VieHasard.reussi(0.03)
         var lignes: [String] = []
+        var aNommer: [UUID] = []
         for _ in 0..<(jumeaux ? 2 : 1) {
             let g: Genre = Bool.random() ? .homme : .femme
             let bebe = Relation(prenom: VieDonnees.prenom(g), nom: j.nom, genre: g, type: .enfant, age: 0, lien: 90)
             j.relations.append(bebe)
-            lignes.append("👶 " + VieDonnees.replique("birthTexts", nom: bebe.prenom, defaut: "Bienvenue à \(bebe.prenom) !") + " (\(g == .homme ? "un garçon" : "une fille"))")
+            aNommer.append(bebe.id)
+            // Le prénom est choisi juste après dans la fenêtre de naissance (Coeur/CoeurNaissance.swift).
+            lignes.append("👶 C'est \(g == .homme ? "un garçon" : "une fille") ! Il faut lui trouver un prénom.")
         }
+        var c = j.coeurEtat
+        c.bebesANommer += aNommer
+        j.coeurEtat = c
         if jumeaux { lignes.append("Des jumeaux ! Tu ne dormiras plus jamais.") }
         v.autreParent = nil
         j.vieEtat = v
