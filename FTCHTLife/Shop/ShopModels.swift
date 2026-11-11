@@ -124,8 +124,11 @@ struct ShopItem: Codable, Identifiable, Hashable {
     let usedMarket: Bool
     let tags: [String]
     let city: String?
+    /// Émoji affiché dans les listes (facultatif : sinon déduit de la catégorie, voir `LuxeEmoji`).
+    let emoji: String?
 
     var displayName: String { brand.isEmpty ? name : "\(name)" }
+    var emojiAffiche: String { emoji ?? LuxeEmoji.pour(self) }
 }
 
 struct ShopRental: Codable, Identifiable, Hashable {
@@ -150,6 +153,8 @@ struct ShopEffects: Codable, Hashable {
     var valuePct: Double?
     var destroy: Bool?
     var stolen: Bool?
+    /// Mondanité / célébrité (voir `ShopActor.mondanite`).
+    var fame: Int?
 
 }
 
@@ -257,6 +262,8 @@ struct Possessions: Codable, Hashable {
     var totalSpent: Int = 0
     /// Événements tirés au passage d'année, en attente d'un choix du joueur.
     var pendingEvents: [PendingShopEvent] = []
+    /// Vie de luxe : spa, soirées VIP, dons, société secrète (nil tant que rien n'a été fait).
+    var luxe: LuxeEtat?
 
     init() {}
 
@@ -271,6 +278,7 @@ struct Possessions: Codable, Hashable {
         travels = try c.decodeIfPresent([ShopTravelRecord].self, forKey: .travels) ?? []
         totalSpent = try c.decodeIfPresent(Int.self, forKey: .totalSpent) ?? 0
         pendingEvents = try c.decodeIfPresent([PendingShopEvent].self, forKey: .pendingEvents) ?? []
+        luxe = try c.decodeIfPresent(LuxeEtat.self, forKey: .luxe)
     }
 
     var debt: Int { items.compactMap { $0.loan?.remaining }.reduce(0, +) }
@@ -291,6 +299,20 @@ protocol ShopActor {
     var smarts: Int { get set }
     var karma: Int { get set }
     var boutique: Possessions { get set }
+    /// Célébrité mondaine, 0 à 100. Par défaut gardée dans `boutique.luxe` ;
+    /// un module « célébrité » peut l'implémenter sur `Joueur` pour la brancher sur sa propre jauge.
+    var mondanite: Int { get set }
+}
+
+extension ShopActor {
+    var mondanite: Int {
+        get { boutique.luxe?.mondanite ?? 0 }
+        set {
+            var l = boutique.luxe ?? LuxeEtat()
+            l.mondanite = max(0, min(100, newValue))
+            boutique.luxe = l
+        }
+    }
 }
 
 /// Un événement tiré pendant le passage d'année, en attente d'un choix du joueur.

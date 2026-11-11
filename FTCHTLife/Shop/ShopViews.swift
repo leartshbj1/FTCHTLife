@@ -18,11 +18,17 @@ struct ShopView: View {
                     Text("Aucune vie en cours.").foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("Boutique")
-            .navigationBarTitleDisplayMode(.inline)
+            .styleLuxe("Boutique")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Fermer") { dismiss() }
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle")
+                            .font(.system(size: 22, weight: .semibold))
+                            .foregroundStyle(.white)
+                    }
+                    .accessibilityLabel("Fermer")
                 }
             }
             .sheet(item: $evenement) { ev in
@@ -41,79 +47,79 @@ struct ShopView: View {
     @ViewBuilder
     private func contenu(_ j: Joueur) -> some View {
         let b = j.boutique
-        List {
-            Section {
-                ShopInfoRow(titre: "Compte en banque", valeur: Format.argent(j.argent), icone: "banknote.fill")
-                ShopInfoRow(titre: "Logement", valeur: ShopEngine.residenceName(b), icone: "house.fill")
-                ShopInfoRow(titre: "Valeur de tes biens", valeur: Format.argent(b.assetsValue), icone: "chart.line.uptrend.xyaxis")
-                if b.debt > 0 {
-                    ShopInfoRow(titre: "Crédits restants", valeur: Format.argent(b.debt), icone: "creditcard.fill")
-                }
-                ShopInfoRow(titre: "Score de crédit", valeur: "\(b.creditScore)", icone: "gauge.medium")
-            }
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                BandeauLuxe(j: j)
 
-            if let id = MemoireQuantites.texte("boutique.dernierArticle"), let dernier = ShopCatalog.shared.item(id) {
-                Section("Comme la dernière fois") {
-                    NavigationLink {
-                        ShopItemDetailView(item: dernier, listing: nil)
-                    } label: {
-                        Label("Racheter : \(dernier.name)", systemImage: "arrow.clockwise")
-                    }
-                }
-            }
-
-            if !b.pendingEvents.isEmpty {
-                Section("À régler") {
+                if !b.pendingEvents.isEmpty {
+                    TitreGroupeLuxe(titre: "À régler")
                     ForEach(b.pendingEvents) { ev in
                         Button {
                             evenement = ev
                         } label: {
-                            Label(ev.text, systemImage: "exclamationmark.bubble.fill")
-                                .foregroundStyle(Theme.encre)
-                                .lineLimit(2)
+                            LigneEmoji(emoji: "⚠️", titre: "Un souci avec tes biens", sousTitre: ev.text)
                         }
+                        .buttonStyle(.plain)
                     }
                 }
-            }
 
-            Section("Chez toi") {
-                NavigationLink {
+                TitreGroupeLuxe(titre: "Chez toi")
+                lien("📦", "Mes biens", b.items.isEmpty ? "Rien pour l'instant" : "\(b.items.count) bien\(b.items.count > 1 ? "s" : "") · \(Format.argent(b.assetsValue))") {
                     ShopOwnedListView()
-                } label: {
-                    Label("Mes biens (\(b.items.count))", systemImage: "archivebox.fill")
                 }
-                NavigationLink {
-                    ShopHousingView()
-                } label: {
-                    Label("Logement et location", systemImage: "key.fill")
+                lien("🔑", "Logement", ShopEngine.residenceName(b)) { ShopHousingView() }
+                if b.debt > 0 {
+                    LigneEmoji(emoji: "💳", titre: "Crédits restants", sousTitre: "Score de crédit \(b.creditScore)",
+                               detail: Format.argent(b.debt), detailCouleur: Theme.argentNegatif, chevron: false)
                 }
-                NavigationLink {
-                    ShopTravelView()
-                } label: {
-                    Label("Agence de voyages", systemImage: "airplane.departure")
+                if let id = MemoireQuantites.texte("boutique.dernierArticle"), let dernier = ShopCatalog.shared.item(id) {
+                    lien("🔁", "Comme la dernière fois", "Racheter : \(dernier.name)") {
+                        ShopItemDetailView(item: dernier, listing: nil)
+                    }
                 }
-                NavigationLink {
-                    VoyagesListe()
-                } label: {
-                    Label("Voyage sur mesure", systemImage: "suitcase.rolling.fill")
-                }
-            }
 
-            Section("Magasins") {
+                TitreGroupeLuxe(titre: "Luxe et prestige")
+                ForEach(LuxeMaisonType.allCases) { t in
+                    lien(t.emoji, t.titre, t.sousTitre) { LuxeMaisonsView(type: t) }
+                }
+
+                TitreGroupeLuxe(titre: "Art de vivre")
+                lien("🧖", "Spa de luxe", "Massages, cures, bains et retraites") { LuxeServicesView(type: .spa) }
+                lien("🥂", "Soirées VIP", "Galas, avant-premières, défilés, dîners privés") { LuxeServicesView(type: .vip) }
+                lien("🎗️", "Dons aux œuvres", LuxeMoteur.titreDonateur(b.luxe?.donsTotal ?? 0) ?? "Donner à une bonne cause") { LuxeDonsView() }
+                lien("🕯️", "Société secrète", sousTitreSociete(j)) { LuxeSocieteView() }
+
+                TitreGroupeLuxe(titre: "Voyages")
+                lien("✈️", "Agence de voyages", "Séjours tout compris, bons et mauvais souvenirs") { ShopTravelView() }
+                lien("🧳", "Voyage sur mesure", "Choisis la destination, la durée et le confort") { VoyagesListe() }
+
+                TitreGroupeLuxe(titre: "Magasins")
                 ForEach(ShopCategory.allCases) { cat in
-                    NavigationLink {
+                    lien(LuxeEmoji.categorie(cat), cat.title, "\(ShopCatalog.shared.items(in: cat).count) articles, neufs ou d'occasion") {
                         ShopCategoryView(category: cat)
-                    } label: {
-                        HStack {
-                            Label(cat.title, systemImage: cat.icon)
-                            Spacer()
-                            Text("\(ShopCatalog.shared.items(in: cat).count)")
-                                .font(.caption).foregroundStyle(.secondary)
-                        }
                     }
                 }
             }
+            .padding(.bottom, 30)
         }
+        .background(Theme.fond.ignoresSafeArea())
+    }
+
+    private func lien<Destination: View>(_ emoji: String, _ titre: String, _ sousTitre: String,
+                                         @ViewBuilder _ destination: @escaping () -> Destination) -> some View {
+        NavigationLink {
+            destination()
+        } label: {
+            LigneEmoji(emoji: emoji, titre: titre, sousTitre: sousTitre)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func sousTitreSociete(_ j: Joueur) -> String {
+        if let s = LuxeMoteur.societe(j), let m = j.boutique.luxe?.societe {
+            return "\(s.rangs[min(m.rang, s.rangs.count - 1)].titre) de \(s.name)"
+        }
+        return "Sur cooptation seulement"
     }
 }
 
@@ -190,7 +196,7 @@ struct ShopCategoryView: View {
                 }
             }
         }
-        .navigationTitle(category.title)
+        .styleLuxe(category.title)
     }
 }
 
@@ -202,10 +208,9 @@ struct ShopItemRow: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: shopSymbol(item.icon, item.category.icon))
-                .font(.title3)
-                .foregroundStyle(Theme.accent)
-                .frame(width: 32)
+            Text(item.emojiAffiche)
+                .font(.system(size: 30))
+                .frame(width: 40)
             VStack(alignment: .leading, spacing: 2) {
                 Text(item.name).font(.body.weight(.semibold)).foregroundStyle(Theme.encre)
                 HStack(spacing: 6) {
@@ -251,7 +256,7 @@ struct ShopItemDetailView: View {
         List {
             Section {
                 VStack(alignment: .leading, spacing: 8) {
-                    Image(systemName: shopSymbol(item.icon, item.category.icon)).font(.system(size: 40)).foregroundStyle(Theme.accent)
+                    Text(item.emojiAffiche).font(.system(size: 56))
                     Text(item.name).font(.title2.bold())
                     if !item.brand.isEmpty { Text(item.brand).foregroundStyle(.secondary) }
                     Text(item.description)
@@ -308,8 +313,7 @@ struct ShopItemDetailView: View {
                 }
             }
         }
-        .navigationTitle(item.name)
-        .navigationBarTitleDisplayMode(.inline)
+        .styleLuxe(item.name)
         .alert(achatReussi ? "Achat effectué" : "Achat impossible", isPresented: Binding(get: { message != nil }, set: { if !$0 { message = nil } })) {
             Button("OK") {
                 if achatReussi { dismiss() }
@@ -389,7 +393,7 @@ struct ShopOwnedListView: View {
                                     ShopOwnedDetailView(ownedId: o.id)
                                 } label: {
                                     HStack(spacing: 12) {
-                                        Image(systemName: shopSymbol(item.icon, item.category.icon)).foregroundStyle(Theme.accent).frame(width: 28)
+                                        Text(item.emojiAffiche).font(.system(size: 26)).frame(width: 36)
                                         VStack(alignment: .leading, spacing: 2) {
                                             Text(o.nickname ?? item.name).fontWeight(.semibold)
                                             Text("État \(o.condition) %\(o.isRentedOut ? " · loué" : "")\(o.loan != nil ? " · crédit" : "")")
@@ -405,7 +409,7 @@ struct ShopOwnedListView: View {
                 }
             }
         }
-        .navigationTitle("Mes biens")
+        .styleLuxe("Mes biens")
     }
 }
 
@@ -428,7 +432,7 @@ struct ShopOwnedDetailView: View {
                 Text("Ce bien ne t'appartient plus.").foregroundStyle(.secondary)
             }
         }
-        .navigationTitle(owned.flatMap { $0.nickname } ?? "Mon bien")
+        .styleLuxe(owned.flatMap { $0.nickname } ?? "Mon bien")
         .navigationBarTitleDisplayMode(.inline)
         .alert("", isPresented: Binding(get: { message != nil }, set: { if !$0 { message = nil } })) {
             Button("OK") {}
@@ -455,7 +459,7 @@ struct ShopOwnedDetailView: View {
         List {
             Section {
                 VStack(alignment: .leading, spacing: 6) {
-                    Image(systemName: shopSymbol(item.icon, item.category.icon)).font(.system(size: 36)).foregroundStyle(Theme.accent)
+                    Text(item.emojiAffiche).font(.system(size: 52))
                     Text(o.nickname ?? item.name).font(.title2.bold())
                     if o.nickname != nil { Text(item.name).foregroundStyle(.secondary) }
                     Text(item.description).font(.callout)
@@ -606,7 +610,7 @@ struct ShopHousingView: View {
                 }
             }
         }
-        .navigationTitle("Logement")
+        .styleLuxe("Logement")
         .alert("", isPresented: Binding(get: { message != nil }, set: { if !$0 { message = nil } })) {
             Button("OK") {}
         } message: {
@@ -668,7 +672,7 @@ struct ShopTravelView: View {
                 }
             }
         }
-        .navigationTitle("Voyages")
+        .styleLuxe("Voyages")
         .confirmationDialog(choisi?.name ?? "", isPresented: Binding(get: { choisi != nil }, set: { if !$0 { choisi = nil } }), titleVisibility: .visible) {
             if let t = choisi {
                 Button("Partir pour \(Format.argent(ShopEngine.tripPrice(t)))") { partir(t) }

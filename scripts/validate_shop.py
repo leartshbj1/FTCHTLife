@@ -4,7 +4,7 @@ import json, sys, glob, os
 ROOT = os.path.join(os.path.dirname(__file__), "..", "FTCHTLife", "Resources", "Data", "Shop")
 CATS = {"realEstate","car","moto","boat","aircraft","jewelry","watch","art","fashion","gadget","collection"}
 FIN = {"none","carLoan","mortgage"}
-EFF = {"money","happiness","health","looks","smarts","karma","condition","valuePct","destroy","stolen"}
+EFF = {"money","happiness","health","looks","smarts","karma","condition","valuePct","destroy","stolen","fame"}
 SCOPES = {"item","owner","trip"}
 errors, ids = [], {}
 def err(f, i, m): errors.append(f"{os.path.basename(f)}[{i}] {m}")
@@ -69,6 +69,62 @@ for f in sorted(glob.glob(os.path.join(ROOT, "events_*.json"))):
                 if not isinstance(oc.get("weight"), int) or "text" not in oc: err(f, i, "outcome invalide")
                 check_effects(f, i, oc.get("effects", {}))
         counts["events"] = counts.get("events", 0) + 1
+
+# Vie de luxe (luxe_*.json, voir docs/boutique-format.md §7)
+def check_outcomes(f, i, outs):
+    if not outs: err(f, i, "pas d'outcomes")
+    for oc in outs:
+        if not isinstance(oc.get("weight"), int) or "text" not in oc: err(f, i, "outcome invalide")
+        check_effects(f, i, oc.get("effects") or {})
+all_items = []
+for g in glob.glob(os.path.join(ROOT, "catalog_*.json")):
+    all_items += load(g)
+f = os.path.join(ROOT, "luxe_maisons.json")
+for i, o in enumerate(load(f) if os.path.exists(f) else []):
+    uniq(f, i, o)
+    for k in ["type","name","emoji","description","accueil","categories"]:
+        if k not in o: err(f, i, f"champ manquant {k}")
+    if o.get("type") not in {"auto","bateau","avion","joaillier"}: err(f, i, "type invalide")
+    for c in o.get("categories", []):
+        if c not in CATS: err(f, i, f"catégorie invalide {c}")
+    subs, brands = set(o.get("subcategories") or []), set(o.get("brands") or [])
+    vitrine = [x for x in all_items if x.get("brand") in brands or (x.get("category") in o.get("categories", []) and (not subs or x.get("subcategory") in subs) and x.get("price", 0) >= (o.get("minPrice") or 0))]
+    if not vitrine: err(f, i, "vitrine vide")
+    counts["maisons"] = counts.get("maisons", 0) + 1
+f = os.path.join(ROOT, "luxe_services.json")
+for i, o in enumerate(load(f) if os.path.exists(f) else []):
+    uniq(f, i, o)
+    for k in ["type","name","emoji","description","price","minAge","outcomes"]:
+        if k not in o: err(f, i, f"champ manquant {k}")
+    if o.get("type") not in {"spa","vip"}: err(f, i, "type invalide")
+    if not isinstance(o.get("price"), int) or o["price"] <= 0: err(f, i, "prix invalide")
+    check_effects(f, i, o.get("effects") or {})
+    check_outcomes(f, i, o.get("outcomes", []))
+    counts["services"] = counts.get("services", 0) + 1
+f = os.path.join(ROOT, "luxe_oeuvres.json")
+for i, o in enumerate(load(f) if os.path.exists(f) else []):
+    uniq(f, i, o)
+    for k in ["name","emoji","cause","description","merci","hommage"]:
+        if k not in o: err(f, i, f"champ manquant {k}")
+    if not o.get("merci"): err(f, i, "merci vide")
+    counts["oeuvres"] = counts.get("oeuvres", 0) + 1
+f = os.path.join(ROOT, "luxe_societes.json")
+for i, o in enumerate(load(f) if os.path.exists(f) else []):
+    uniq(f, i, o)
+    for k in ["name","emoji","devise","description","minAge","minPatrimoine","minMondanite","droitEntree","cotisation","rangs","rituels"]:
+        if k not in o: err(f, i, f"champ manquant {k}")
+    if not o.get("rangs"): err(f, i, "au moins un rang")
+    for rg in o.get("rangs", []):
+        for k in ["titre","cout","anneesMin","reseau"]:
+            if not (k in rg and (k == "titre" or isinstance(rg[k], int))): err(f, i, f"rang invalide ({k})")
+    if not o.get("rituels"): err(f, i, "au moins un rituel")
+    for rt in o.get("rituels", []):
+        uniq(f, i, rt)
+        if "text" not in rt or not 1 <= len(rt.get("choices", [])) <= 4: err(f, i, "rituel invalide")
+        for c in rt.get("choices", []):
+            if "label" not in c: err(f, i, "choix sans label")
+            check_outcomes(f, i, c.get("outcomes", []))
+    counts["societes"] = counts.get("societes", 0) + 1
 for k, v in sorted(counts.items()): print(f"{k:12} {v}")
 print(f"TOTAL        {sum(counts.values())}")
 if errors:
