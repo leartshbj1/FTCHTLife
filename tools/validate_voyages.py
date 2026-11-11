@@ -106,6 +106,8 @@ def check_moment(m, where, errs, dest_ids):
     for k in (m.get("conditions") or {}):
         if k not in COND_KEYS: errs.append(f"{where}: condition inconnue {k}")
     placeholders(m.get("text", ""), where, errs)
+    if not (m.get("avec") or m.get("groupe")) and re.search(r"\{(compagnon|Compagnon_qui|il|Il)", json.dumps(m, ensure_ascii=False)):
+        errs.append(f"{where}: variable de compagnon sans « avec » ni « groupe » (le joueur peut être seul)")
     if m.get("seul") and "{compagnon" in m.get("text", ""):
         errs.append(f"{where}: {{compagnon}} dans un moment « seul »")
     choices = m.get("choices") or []
