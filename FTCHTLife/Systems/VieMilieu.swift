@@ -67,6 +67,8 @@ struct MilieuProduit: Codable, Identifiable, Equatable {
     var peineMaxMois: Int
     var rangMin: Int
     var description: String
+    /// Lots demandés par an dans un quartier moyen (VieTrafic.swift).
+    var demandeBase: Double?
 }
 
 enum MilieuDonnees {
@@ -94,6 +96,18 @@ struct VieTrafic: Codable, Equatable {
     /// Taille du réseau de revente (1…10).
     var reseau: Int = 1
     var anneesActif = 0
+    /// Le business détaillé (VieTrafic.swift). nil pour les anciennes sauvegardes.
+    var business: TraficBusiness?
+
+    /// Business, converti depuis l'ancien format si besoin. Garde produitId et lots à jour.
+    var b: TraficBusiness {
+        get { business ?? TraficBusiness(lignes: [VieLigneTrafic(produitId: produitId, stock: lots)]) }
+        set {
+            business = newValue
+            if let p = newValue.lignes.first { produitId = p.produitId }
+            lots = newValue.stockTotal
+        }
+    }
 }
 
 struct VieMilieuEtat: Codable, Equatable {
@@ -118,6 +132,10 @@ struct VieMilieuEtat: Codable, Equatable {
     var actionsAnnee: [String] = []
     /// Mort violente à annoncer au moteur (VieSysteme.causeDeces).
     var causeDeces: String?
+    /// Casse en préparation (VieCoups.swift).
+    var coup: VieCoupEnCours?
+    var coupsReussis: Int?
+    var coupsRates: Int?
 
     var membre: Bool { organisationId != nil }
 }
@@ -162,6 +180,9 @@ enum VieMilieu {
         if !m.membre && !m.anciennesOrganisations.isEmpty { t.insert("ancien_gang") }
         if m.balance { t.insert("balance") }
         if m.argentSale >= 10_000 { t.insert("argent_sale") }
+        t.formUnion(MilieuTrafic.tags(j))
+        if m.coup != nil { t.insert("coup_prepare") }
+        if (m.coupsReussis ?? 0) > 0 { t.insert("braqueur") }
         return t
     }
 
@@ -174,6 +195,7 @@ enum VieMilieu {
         t = t.replacingOccurrences(of: "{chef}", with: m.chefNom ?? "le patron")
         t = t.replacingOccurrences(of: "{rival}", with: MilieuDonnees.organisation(m.rivalId)?.nom ?? "la bande d'en face")
         t = t.replacingOccurrences(of: "{rang}", with: org?.rang(m.rang).lowercased() ?? "petite main")
+        t = MilieuTrafic.remplir(t, j)
         return t
     }
 
@@ -380,49 +402,6 @@ enum VieMilieu {
         return lignes
     }
 
-    // MARK: Trafic
-
-    static func produitsAccessibles(_ j: Joueur) -> [MilieuProduit] {
-        let m = etat(j)
-        guard m.membre else { return [] }
-        return MilieuDonnees.produits.filter { $0.rangMin <= m.rang }.sorted { $0.prixLot < $1.prixLot }
-    }
-
-    static func acheterLot(_ p: MilieuProduit, _ j: inout Joueur) -> String {
-        let m = etat(j)
-        if let t = m.trafic, t.produitId != p.id { return "Tu as déjà un trafic de \(MilieuDonnees.produit(t.produitId)?.nom.lowercased() ?? "marchandise"). Un seul business à la fois." }
-        let total = m.argentSale + j.argent
-        guard total >= p.prixLot else { return "Il te faut \(Format.argent(p.prixLot)) pour un lot." }
-        // On paie d'abord avec l'argent sale.
-        let sale = min(m.argentSale, p.prixLot)
-        j.argent -= p.prixLot - sale
-        let debut = m.trafic == nil
-        modifier(&j) {
-            $0.argentSale -= sale
-            if $0.trafic == nil { $0.trafic = VieTrafic(produitId: p.id, lots: 0) }
-            $0.trafic?.lots += 1
-            $0.chaleur += p.chaleur / 2
-        }
-        if debut { VieSysteme.signaler("trafic_debut", &j) }
-        return "Tu as récupéré un lot de \(p.nom.lowercased()). Maintenant, il faut l'écouler sans se faire remarquer."
-    }
-
-    static func etendreReseau(_ j: inout Joueur) -> String {
-        guard let t = etat(j).trafic else { return "" }
-        if t.reseau >= 10 { return "Ton réseau couvre déjà toute la zone. Plus grand, c'est la guerre." }
-        let cout = 2_000 * t.reseau
-        guard etat(j).argentSale + j.argent >= cout else { return "Recruter coûte \(Format.argent(cout))." }
-        let sale = min(etat(j).argentSale, cout)
-        j.argent -= cout - sale
-        modifier(&j) { $0.argentSale -= sale; $0.trafic?.reseau += 1; $0.chaleur += 6 }
-        return "Tu recrutes de nouveaux revendeurs. Plus de ventes, plus de bouches qui peuvent parler."
-    }
-
-    static func arreterTrafic(_ j: inout Joueur) -> String {
-        modifier(&j) { $0.trafic = nil; $0.chaleur -= 10 }
-        return "Tu fermes ton business. Le stock disparaît dans la nuit, les téléphones aussi."
-    }
-
     // MARK: Blanchiment
 
     static func blanchir(_ montant: Int, _ j: inout Joueur) -> String {
@@ -488,20 +467,9 @@ enum VieMilieu {
         let enPrison = j.vieEtat.justice.enPrison
         let m = etat(j)
 
-        // Trafic : ventes de l'année.
-        if let t = m.trafic, !enPrison, let p = MilieuDonnees.produit(t.produitId) {
-            if t.lots > 0 {
-                let vendus = min(t.lots, max(1, t.reseau))
-                let gain = (0..<vendus).reduce(0) { s, _ in s + Int.random(in: p.reventeMin...max(p.reventeMin, p.reventeMax)) }
-                modifier(&j) { $0.trafic?.lots -= vendus; $0.trafic?.anneesActif += 1; $0.argentSale += gain; $0.chaleur += p.chaleur; $0.respect += 2 }
-                lignes.append("Ton réseau a écoulé \(vendus) lot\(vendus > 1 ? "s" : "") de \(p.nom.lowercased()) : \(Format.argent(gain)) d'argent sale.")
-            }
-            if VieHasard.reussi(Double(etat(j).chaleur) / 500 + Double(t.reseau) * 0.01) {
-                modifier(&j) { $0.trafic?.lots = 0; $0.chaleur += 10 }
-                VieSysteme.signaler("trafic_saisie", &j)
-                lignes.append("La brigade des stupéfiants a saisi ton stock. Personne n'a parlé. Pour l'instant.")
-            }
-        }
+        // Trafic (VieTrafic.swift) et casse en préparation (VieCoups.swift).
+        lignes += MilieuTrafic.vieillir(&j)
+        lignes += MilieuCoups.vieillir(&j)
 
         // Tribut au chef, loyauté.
         if m.membre && m.rang < 4 && !enPrison {
@@ -578,8 +546,9 @@ enum VieMilieu {
             $0.chaleur += fx.milieuChaleur ?? 0
             $0.loyaute += fx.milieuLoyaute ?? 0
             $0.argentSale += fx.argentSale ?? 0
-            if fx.saisie == true { $0.trafic?.lots = 0 }
         }
+        if fx.saisie == true { MilieuTrafic.saisir(&j) }
+        MilieuTrafic.appliquer(fx, &j)
         if fx.enquete == true && a.enquete == nil {
             modifier(&j) { $0.enquete = 0 }
             VieSysteme.signaler("enquete_ouverte", &j)

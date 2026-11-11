@@ -39,6 +39,16 @@ struct VieEffets: Codable, Equatable {
     var promotion: Bool?
     /// Le stock du trafic est saisi.
     var saisie: Bool?
+
+    // Le business du trafic (VieTrafic.swift), en plus ou en moins
+    /// Fidélité des clients.
+    var clients: Int?
+    /// Nombre de revendeurs.
+    var revendeurs: Int?
+    /// Tension avec les concurrents, dans tous les quartiers.
+    var tension: Int?
+    /// Lots de la marchandise principale.
+    var stock: Int?
 }
 
 // MARK: - État sauvegardé du module (champ `vie` de Joueur)

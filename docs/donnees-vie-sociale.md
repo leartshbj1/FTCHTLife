@@ -210,3 +210,27 @@ Variables en plus : `{organisation}`, `{chef}`, `{rival}`, `{rang}`.
 Effets en plus, dans le sous-objet `"vie"` : `milieuRespect` (±), `milieuChaleur` (±), `milieuLoyaute` (±), `argentSale` (±, euros), `enquete` (`true` ouvre une enquête, `false` la classe), `quitterMilieu` (`true`), `promotion` (`true`), `saisie` (`true` : le stock du trafic est saisi), plus les effets existants (`jailMonths`, `fine`, `record`, `targetDies`…).
 
 Signaux émis (Répercussions) : `gang_entree`, `gang_promotion`, `gang_trahison`, `gang_sortie`, `gang_chef`, `trafic_debut`, `trafic_saisie`, `enquete_ouverte`, `enquete_classee`, `guerre_territoire`, `blanchiment`, `balance`, `mission_reussie`, `mission_ratee`.
+
+## Le business du trafic et les casses
+
+Code : `FTCHTLife/Systems/VieTrafic.swift` (business), `VieCoups.swift` (casses), `VieTraficVue.swift` (écrans « Ton business » et « Monter un coup », ouverts depuis « Le Milieu »).
+
+### Données
+
+- `Data/MilieuZones/*.json` : quartiers `{id, nom (avec l'article), description, taille, police, prix, entree, rangMin, clientele, preferences: {produitId: multiplicateur}}`.
+- `Data/MilieuConcurrents/*.json` : concurrents `{id, nom, style (agressif|discount|premium|discret), description, force, prix (écart en %), qualite (coupee|standard|premier), zones: [ids, vide = partout]}`.
+- `Data/MilieuProduits` : champ en plus `demandeBase` (lots demandés par an dans un quartier moyen).
+- `Data/MilieuCoups/*.json` : cibles de casse `{id, nom, description, icon, minAge, notorieteMin, difficulte, butinMin, butinMax, peineMinMois, peineMaxMois, chaleur, roles, reperageCout}`. Rôles : chauffeur, guetteur, perceur, informaticien, gros_bras, infiltre.
+
+### Mécanique (chaque année)
+
+Pour chaque marchandise et chaque quartier : demande (base × taille du quartier × préférence × cours du marché), part de marché (qualité du fournisseur, prix choisi, fidélité, stratégie, face au prix et à la force du concurrent), puis limite par la capacité du réseau (4 lots par revendeur, payés 1 500 € par an plus 12 % des ventes) et par le stock. Chiffre d'affaires moins salaires et sécurité = bénéfice en argent sale. Les concurrents réagissent (baisse de prix, renforts), la tension monte et peut finir en attaque. Au plus un dilemme par an (revendeur arrêté, vol interne, overdose, pénurie, gros client, policier corrompu, mineurs, taxe d'une organisation pour les indépendants, accord de partage). Sans réponse, il se règle tout seul l'année suivante, avec l'option par défaut.
+
+Limites : indépendant 1 marchandise, 2 quartiers, 4 revendeurs ; membre 1 + rang marchandises (max 4), 1 + rang + territoires quartiers (max 6), 4 + 4 × rang + 2 × territoires revendeurs (max 30).
+
+### Pour les événements
+
+- Tags : `dealer`, `dealer_gros`, `guerre_prix`, `rupture_stock`, `independant`, `coup_prepare`, `braqueur`.
+- Effets `vie` en plus : `clients`, `revendeurs`, `tension`, `stock` (entiers, en plus ou en moins).
+- Variables : `{produit}`, `{zone}`, `{concurrent}` (les noms de quartiers et de concurrents portent leur article : écrire « dans {zone} », « chez {concurrent} », jamais « de {zone} »).
+- Signaux : `trafic_zone`, `trafic_guerre_prix`, `trafic_revendeur_arrete`, `trafic_overdose`, `coup_reussi`, `coup_rate`, `coup_trahison`.
