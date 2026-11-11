@@ -1,0 +1,6136 @@
+[
+ {
+  "id": "rep_met_5220",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_agriculteur"
+   ]
+  },
+  "text": "Mauvaise récolte, et le prix du blé s'effondre. La banque te convoque. Tu as signé pour un tracteur à 180 000 €.",
+  "choices": [
+   {
+    "label": "Renégocier le prêt",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "La banque étale les échéances. Tu respires, pour cinq ans de plus.",
+      "effects": {
+       "happiness": 3,
+       "money": -500
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La banque refuse. Tu dois vendre une parcelle.",
+      "effects": {
+       "happiness": -10,
+       "money": -3000,
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Diversifier",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu vends en circuit court, des lentilles et de la farine. Ça prend.",
+      "effects": {
+       "happiness": 6,
+       "money": 800,
+       "smarts": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Trop de travail, trop peu de clients. Tu t'épuises.",
+      "effects": {
+       "happiness": -5,
+       "health": -4,
+       "money": -500
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout garder pour toi",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne dis rien à personne. Tu fais les comptes la nuit, seul{e} dans la cuisine.",
+      "effects": {
+       "happiness": -8,
+       "health": -3,
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5221",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_agriculteur"
+   ]
+  },
+  "text": "Ton voisin de champ a été reconnu malade des pesticides. Tu regardes ton pulvérisateur autrement.",
+  "choices": [
+   {
+    "label": "Passer en bio",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Trois ans de conversion difficiles. Puis tu vends mieux, et tu dors mieux.",
+      "effects": {
+       "health": 5,
+       "happiness": 6,
+       "money": -1500
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La conversion te coûte cher. Les rendements chutent.",
+      "effects": {
+       "health": 4,
+       "happiness": -4,
+       "money": -3000
+      }
+     }
+    ]
+   },
+   {
+    "label": "Protection complète",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Combinaison, masque, cabine filtrée. Tu ressembles à un astronaute dans ton champ.",
+      "effects": {
+       "health": 4,
+       "money": -600,
+       "happiness": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer comme avant",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu continues. Tu y penses à chaque traitement.",
+      "effects": {
+       "health": -6,
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5222",
+  "on": "chaque_annee",
+  "chance": 0.04,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_agriculteur"
+   ]
+  },
+  "text": "Un agriculteur du canton a mis fin à ses jours. À l'enterrement, tous les hommes regardent leurs bottes. Personne ne dit rien.",
+  "choices": [
+   {
+    "label": "Rejoindre une entraide",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu rejoins une association d'agriculteurs qui se parlent, enfin. Tu n'es plus seul{e}.",
+      "effects": {
+       "happiness": 6,
+       "karma": 6,
+       "newFriend": true
+      }
+     }
+    ]
+   },
+   {
+    "label": "Parler de ta fatigue",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu le dis à voix haute, pour la première fois. Un voisin répond : « Moi aussi. »",
+      "effects": {
+       "happiness": 7,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "On te regarde bizarrement. Mais tu as dit les mots.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Retourner travailler",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu retournes aux champs. Le silence te suit.",
+      "effects": {
+       "happiness": -8,
+       "setFlags": [
+        "deprime"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5223",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_agriculteur",
+    "children"
+   ]
+  },
+  "text": "{enfant} ne veut pas reprendre la ferme. Ça fait quatre générations.",
+  "choices": [
+   {
+    "label": "Respecter son choix",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu dis que c'est sa vie. Tu pleures dans le hangar, seul{e}.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui montrer la ferme autrement",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Un été avec toi aux moissons. {enfant} change d'avis, peut-être.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Rien n'y fait. Mais vous avez passé un bel été.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Insister",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu insistes. {enfant} part loin, plus vite que prévu.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "child": -8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5224",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_eleveur_laitier",
+    "siblings"
+   ]
+  },
+  "text": "Deux traites par jour, 365 jours par an. Tu ne pourras pas aller au mariage de {fratrie}, à 600 km.",
+  "choices": [
+   {
+    "label": "Trouver un remplaçant",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le service de remplacement t'envoie quelqu'un. Tu danses au mariage, ému{e}.",
+      "effects": {
+       "happiness": 8,
+       "money": -300,
+       "relationships": {
+        "sibling": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le remplaçant se désiste la veille. Tu restes.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "sibling": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire l'aller-retour",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Traite à 5 h, 600 km, cérémonie, 600 km, traite à 22 h. Tu as vu le « oui ».",
+      "effects": {
+       "happiness": 4,
+       "health": -6,
+       "relationships": {
+        "sibling": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu regardes la vidéo le lendemain. {fratrie} comprend, presque.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "sibling": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5225",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_eleveur_laitier"
+   ]
+  },
+  "text": "La laiterie te paie le litre moins cher qu'il ne te coûte à produire.",
+  "choices": [
+   {
+    "label": "Bloquer la laiterie",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Une semaine de blocage. Les prix remontent un peu.",
+      "effects": {
+       "happiness": 6,
+       "money": 300,
+       "karma": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Rien ne change. Tu as perdu une semaine de collecte.",
+      "effects": {
+       "happiness": -6,
+       "money": -800
+      }
+     }
+    ]
+   },
+   {
+    "label": "Vendre en direct",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu fais des yaourts et du fromage. Le travail double, le prix aussi.",
+      "effects": {
+       "money": 600,
+       "health": -4,
+       "happiness": 4,
+       "smarts": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu continues. Les dettes s'empilent comme les bottes de foin.",
+      "effects": {
+       "money": -1000,
+       "happiness": -6,
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5226",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_eleveur_laitier",
+    "children"
+   ]
+  },
+  "text": "Un vêlage difficile à 2 h du matin. {enfant} t'a suivi{e} à l'étable en pyjama, une lampe frontale sur la tête.",
+  "choices": [
+   {
+    "label": "L'impliquer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "{enfant} tient la lampe. Le veau sort. Vous l'appelez ensemble. Un souvenir pour la vie.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "child": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Renvoyer au lit",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "{enfant} retourne au lit en grognant. Le veau naît sans spectateur.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser regarder",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "{enfant} regarde, les yeux grands ouverts. Le veau tète.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "child": 6
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le veau ne survit pas. {enfant} pleure dans tes bras jusqu'au matin.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5227",
+  "on": "chaque_annee",
+  "chance": 0.03,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_eleveur_laitier"
+   ]
+  },
+  "text": "Tuberculose bovine dans le troupeau voisin. Si un seul de tes animaux est positif, tout le troupeau est abattu.",
+  "choices": [
+   {
+    "label": "Faire tester",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tous négatifs. Tu dors pour la première fois depuis une semaine.",
+      "effects": {
+       "happiness": 8
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Une vache positive. Tout le troupeau part. Trente ans de sélection.",
+      "effects": {
+       "happiness": -18,
+       "money": -5000,
+       "setFlags": [
+        "traumatise"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Isoler le troupeau",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu barricades tes prés. Le test arrive quand même. Négatif. Tu as eu peur.",
+      "effects": {
+       "happiness": 3,
+       "health": -2,
+       "money": -300
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5228",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_viticulteur"
+   ]
+  },
+  "text": "Gel noir en avril. Toute la famille passe la nuit à allumer des bougies entre les rangs.",
+  "choices": [
+   {
+    "label": "Toute la nuit",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "À l'aube, les bourgeons ont tenu. Tu embrasses tout le monde.",
+      "effects": {
+       "happiness": 10,
+       "health": -4
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "À l'aube, tout est noir. La récolte de l'année est perdue.",
+      "effects": {
+       "happiness": -12,
+       "health": -4,
+       "money": -3000
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tenter l'assurance",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu laisses faire le gel. L'assurance couvre une partie. Tu n'as rien tenté.",
+      "effects": {
+       "happiness": -6,
+       "money": -1000
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5229",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_viticulteur",
+    "siblings"
+   ]
+  },
+  "text": "{fratrie} veut vendre ses parts du domaine familial à un grand groupe de spiritueux.",
+  "choices": [
+   {
+    "label": "Racheter ses parts",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu empruntes et rachètes. Le domaine reste à la famille. Tu es endetté{e} pour vingt ans.",
+      "effects": {
+       "money": -5000,
+       "happiness": 4,
+       "relationships": {
+        "sibling": 2
+       },
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier en famille",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "{fratrie} renonce. Vous trinquez au domaine.",
+      "effects": {
+       "happiness": 8,
+       "relationships": {
+        "sibling": 6
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "{fratrie} vend. Tu as un nouvel associé en costume.",
+      "effects": {
+       "happiness": -10,
+       "relationships": {
+        "sibling": -8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le grand groupe te laisse gérer. Tu n'es plus chez toi.",
+      "effects": {
+       "happiness": -6,
+       "money": 1000
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5230",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_viticulteur",
+    "partner"
+   ]
+  },
+  "text": "Tu goûtes, tu reçois les clients, tu trinques. {partenaire} compte les bouteilles vides dans la poubelle de verre.",
+  "choices": [
+   {
+    "label": "Cracher",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu craches. Tu ne bois plus qu'au repas. {partenaire} n'a plus besoin de compter.",
+      "effects": {
+       "health": 5,
+       "happiness": 1,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Minimiser",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "« C'est le métier. » {partenaire} n'insiste pas, mais compte encore.",
+      "effects": {
+       "health": -4,
+       "happiness": -1,
+       "relationships": {
+        "partner": -4
+       },
+       "setFlags": [
+        "boit_trop"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire une pause",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Un mois sans alcool. Ton vin te paraît meilleur après.",
+      "effects": {
+       "health": 6,
+       "happiness": 3,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5231",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_viticulteur"
+   ]
+  },
+  "text": "Ton vin a été servi au mariage d'une célébrité. Tout le village le sait avant toi.",
+  "choices": [
+   {
+    "label": "Profiter de la publicité",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Les commandes explosent. Tu vends toute la cuvée en deux semaines.",
+      "effects": {
+       "money": 3000,
+       "happiness": 8,
+       "fame": 2,
+       "setFlags": [
+        "celebre_localement"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester en retrait",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne dis rien. Tes clients habituels sont plus fidèles que jamais.",
+      "effects": {
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Augmenter les prix",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu doubles le prix. Les nouveaux clients paient, les anciens râlent.",
+      "effects": {
+       "money": 2000,
+       "happiness": 2,
+       "karma": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5232",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_apiculteur"
+   ]
+  },
+  "text": "Une piqûre de trop : ta gorge gonfle, tu finis aux urgences. Le médecin dit que tu es devenu{e} allergique au venin.",
+  "choices": [
+   {
+    "label": "Désensibilisation",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Trois ans d'injections. Tu peux garder tes ruches. Tu portes toujours un stylo d'adrénaline.",
+      "effects": {
+       "health": 3,
+       "money": -400,
+       "happiness": 2,
+       "setFlags": [
+        "allergie_abeilles"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer prudemment",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Combinaison intégrale, gants épais. Ça tient.",
+      "effects": {
+       "happiness": -2,
+       "health": -2,
+       "setFlags": [
+        "allergie_abeilles"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Une abeille passe par la manche. Retour aux urgences.",
+      "effects": {
+       "health": -12,
+       "happiness": -8,
+       "setFlags": [
+        "allergie_abeilles"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Arrêter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu vends tes ruches. Une partie de toi part avec elles.",
+      "effects": {
+       "happiness": -12,
+       "health": 4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5233",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_apiculteur"
+   ]
+  },
+  "text": "Tes ruches meurent : frelons asiatiques, pesticides, hiver trop doux. La moitié de ton cheptel en un an.",
+  "choices": [
+   {
+    "label": "Racheter des essaims",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu reconstitues le cheptel. Ça coûte cher, mais tu repars.",
+      "effects": {
+       "money": -2000,
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te battre contre les frelons",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Des pièges partout. Tu tues des frelons comme un chasseur. Les ruches survivantes tiennent.",
+      "effects": {
+       "happiness": 4,
+       "health": -2,
+       "money": -200
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te décourager",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu regardes les ruches vides. Tu ne sais plus pourquoi tu continues.",
+      "effects": {
+       "happiness": -10,
+       "setFlags": [
+        "deprime"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5234",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_apiculteur"
+   ]
+  },
+  "text": "Un négociant te propose de « couper » ton miel avec du sirop importé. Personne ne verrait la différence. Il paie bien.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu gagnes beaucoup. Tu ne goûtes plus ton propre miel.",
+      "effects": {
+       "money": 3000,
+       "karma": -12,
+       "happiness": -4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Un contrôle détecte la fraude. Amende, honte, journal local.",
+      "effects": {
+       "money": -4000,
+       "karma": -12,
+       "happiness": -12,
+       "setFlags": [
+        "honte_publique"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Ton miel reste pur. Ta trésorerie reste maigre.",
+      "effects": {
+       "karma": 6,
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le dénoncer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu préviens les services de la répression des fraudes. Le négociant est condamné.",
+      "effects": {
+       "karma": 10,
+       "happiness": 5
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5235",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_apiculteur",
+    "children"
+   ]
+  },
+  "text": "Un essaim s'est installé dans la cour de l'école de {enfant}. La directrice t'appelle personnellement.",
+  "choices": [
+   {
+    "label": "Faire une démonstration",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu récupères l'essaim devant toute l'école, en combinaison. {enfant} est la star de la classe.",
+      "effects": {
+       "happiness": 8,
+       "fame": 1,
+       "relationships": {
+        "child": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Venir discrètement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu viens le soir, quand l'école est vide. Personne ne te voit. L'essaim est sauvé.",
+      "effects": {
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Envoyer un collègue",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Un collègue s'en charge. {enfant} boude.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5236",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_berger"
+   ]
+  },
+  "text": "Le loup a tué quatorze brebis cette nuit. Tu passes la journée à les ramasser.",
+  "choices": [
+   {
+    "label": "Demander l'indemnisation",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "L'État indemnise. Ça ne remplace pas tes bêtes, mais ça paie le foin.",
+      "effects": {
+       "money": 1000,
+       "happiness": -5
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le dossier est refusé : « Pas de preuve formelle. » Tu jettes la lettre.",
+      "effects": {
+       "happiness": -10
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre des chiens de protection",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Deux patous. Les randonneurs ont peur, le loup aussi.",
+      "effects": {
+       "money": -800,
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Veiller la nuit",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu dors dans la cabane, fusil chargé à blanc. Tu dors mal.",
+      "effects": {
+       "health": -6,
+       "happiness": -4,
+       "setFlags": [
+        "insomniaque"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5237",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_berger"
+   ]
+  },
+  "text": "Quatre mois en estive, seul{e} en montagne. Le seul humain croisé cette semaine est un randonneur perdu.",
+  "choices": [
+   {
+    "label": "Profiter de la solitude",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le silence te remplit. Tu redescends en septembre plus calme que jamais.",
+      "effects": {
+       "happiness": 6,
+       "health": 4,
+       "setFlags": [
+        "zen"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder le contact",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Un appel par jour depuis le seul rocher qui capte. Ça suffit.",
+      "effects": {
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Souffrir de l'isolement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu parles à tes brebis. Elles ne répondent pas.",
+      "effects": {
+       "happiness": -7,
+       "setFlags": [
+        "solitaire"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5238",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_berger"
+   ]
+  },
+  "text": "Ton chien de troupeau, ton collègue depuis douze ans, n'arrive plus à monter la pente.",
+  "choices": [
+   {
+    "label": "Le garder à la maison",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Il dort au coin du feu. Il surveille la porte. Il est retraité.",
+      "effects": {
+       "happiness": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le laisser partir doucement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le vétérinaire vient à la bergerie. Tu le tiens dans tes bras jusqu'au bout.",
+      "effects": {
+       "happiness": -12,
+       "karma": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Former un jeune chien",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le vieux chien forme le jeune. Une transmission.",
+      "effects": {
+       "happiness": 6,
+       "money": -300
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5239",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_berger"
+   ]
+  },
+  "text": "Des randonneurs te photographient comme une attraction. L'un d'eux te demande si tu es « un vrai ».",
+  "choices": [
+   {
+    "label": "Répondre avec humour",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "« Non, je suis un hologramme. » Ils rient. Ils achètent un fromage.",
+      "effects": {
+       "happiness": 5,
+       "money": 20
+      }
+     }
+    ]
+   },
+   {
+    "label": "Les ignorer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu continues ton chemin. Tu entends « mal aimable » dans ton dos.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Leur expliquer ton métier",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une heure d'explications. Ils repartent avec un autre regard sur la montagne.",
+      "effects": {
+       "happiness": 4,
+       "karma": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5240",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_maraicher"
+   ]
+  },
+  "text": "Repiquer, désherber, cueillir, courbé{e} dix heures par jour. Ton dos se bloque en pleine saison.",
+  "choices": [
+   {
+    "label": "Ostéopathe",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Trois séances. Le dos se débloque. La saison peut continuer.",
+      "effects": {
+       "health": 5,
+       "money": -150,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Planches surélevées",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu passes l'hiver à construire des planches surélevées. Ton dos te remercie au printemps.",
+      "effects": {
+       "health": 6,
+       "money": -500,
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ramasses les tomates à genoux. Ton dos ne se redresse plus le soir.",
+      "effects": {
+       "health": -8,
+       "happiness": -3,
+       "setFlags": [
+        "dos_fragile"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5241",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_maraicher"
+   ]
+  },
+  "text": "Au marché, une cliente compare tes tomates à celles du supermarché et te traite de voleur, à voix haute.",
+  "choices": [
+   {
+    "label": "Lui faire goûter",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Elle goûte. Elle se tait. Elle en achète deux kilos.",
+      "effects": {
+       "happiness": 6,
+       "money": 10
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Elle goûte et dit que « c'est pareil ». Tu respires profondément.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui expliquer les coûts",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu expliques les semences, l'eau, les heures. Les autres clients écoutent. Plusieurs achètent.",
+      "effects": {
+       "happiness": 4,
+       "money": 30
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui dire d'aller ailleurs",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Elle part. D'autres clients applaudissent. D'autres non.",
+      "effects": {
+       "happiness": 3,
+       "karma": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5242",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_maraicher"
+   ]
+  },
+  "text": "Arrêté sécheresse : interdiction d'arroser. Tes salades meurent sous tes yeux.",
+  "choices": [
+   {
+    "label": "Arroser la nuit",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Personne ne voit. Tes salades survivent.",
+      "effects": {
+       "happiness": 4,
+       "karma": -4,
+       "money": 200
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Un voisin te dénonce. Amende.",
+      "effects": {
+       "happiness": -6,
+       "money": -1500,
+       "karma": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Respecter l'arrêté",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu perds la récolte. Tu as respecté la loi.",
+      "effects": {
+       "happiness": -6,
+       "money": -1000,
+       "karma": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pailler et prier",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu pailles tout. La moitié survit.",
+      "effects": {
+       "happiness": -2,
+       "money": -400,
+       "health": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5243",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_maraicher",
+    "father"
+   ]
+  },
+  "text": "{pere}, à la retraite, vient t'aider au marché. Il rend la monnaie de travers et offre des courgettes à toutes les dames.",
+  "choices": [
+   {
+    "label": "Le laisser faire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Les dames reviennent pour lui. Les ventes augmentent.",
+      "effects": {
+       "happiness": 6,
+       "money": 50,
+       "relationships": {
+        "father": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui confier la caisse",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il se débrouille. Il est fier.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "father": 6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La caisse est fausse de 80 €. Il jure que ce n'est pas lui.",
+      "effects": {
+       "happiness": -2,
+       "money": -80,
+       "relationships": {
+        "father": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui dire de rester chez lui",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Il rentre chez lui, vexé. Le marché est plus calme, et plus triste.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "father": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5244",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_bucheron",
+    "partner"
+   ]
+  },
+  "text": "La tronçonneuse a rebondi. Ta jambière anti-coupure a arrêté la chaîne à un centimètre de ta cuisse. Le soir, tu montres le pantalon déchiqueté à {partenaire}.",
+  "choices": [
+   {
+    "label": "Changer tout l'équipement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Casque neuf, jambières neuves, gants neufs. {partenaire} vérifie tout chaque matin.",
+      "effects": {
+       "health": 3,
+       "money": -400,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "En rire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ris. {partenaire}, non.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "partner": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre une semaine",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une semaine à la maison. Tu repenses à ce centimètre.",
+      "effects": {
+       "happiness": -2,
+       "health": 3,
+       "money": -200,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5245",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_bucheron"
+   ]
+  },
+  "text": "Après la tempête, les communes s'arrachent les bûcherons. Tu pourrais travailler soixante-dix heures par semaine pendant deux mois.",
+  "choices": [
+   {
+    "label": "Tout prendre",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Deux mois d'enfer. Tu gagnes ce que tu gagnes en six mois.",
+      "effects": {
+       "money": 5000,
+       "health": -8,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Un arbre sous tension se libère. Côtes cassées.",
+      "effects": {
+       "money": 2000,
+       "health": -14,
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Travailler normalement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu gardes ton rythme. Tu gagnes moins, tu dors.",
+      "effects": {
+       "money": 1000,
+       "happiness": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5246",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_bucheron"
+   ]
+  },
+  "text": "Tes doigts blanchissent et deviennent insensibles au froid : le syndrome des vibrations, dit le médecin.",
+  "choices": [
+   {
+    "label": "Gants anti-vibrations",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Des gants spéciaux. Ça freine l'évolution.",
+      "effects": {
+       "health": 3,
+       "money": -100,
+       "happiness": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ralentir",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Moins de tronçonneuse, plus de débardage. Tu gagnes moins.",
+      "effects": {
+       "health": 4,
+       "money": -300
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ignorer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tes doigts ne sentent plus la tasse de café.",
+      "effects": {
+       "health": -6,
+       "happiness": -3,
+       "setFlags": [
+        "mains_abimees"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5247",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_bucheron",
+    "children"
+   ]
+  },
+  "text": "Au marché, une militante te traite de « tueur d'arbres » devant {enfant}.",
+  "choices": [
+   {
+    "label": "Expliquer à {enfant}",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu expliques : on coupe, on replante, on soigne la forêt. {enfant} comprend mieux que la militante.",
+      "effects": {
+       "happiness": 4,
+       "smarts": 2,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Répondre à la militante",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu lui parles de gestion forestière. Elle t'écoute, surprise.",
+      "effects": {
+       "happiness": 5,
+       "karma": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ça tourne au cri. {enfant} a peur.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu pars avec {enfant}. Le mot reste dans sa tête.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5248",
+  "on": "chaque_annee",
+  "chance": 0.03,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_marin_pecheur"
+   ]
+  },
+  "text": "Un chalutier du port a sombré cette nuit. Trois hommes que tu connaissais. Le port entier attend sur le quai.",
+  "choices": [
+   {
+    "label": "Soutenir les familles",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu passes des jours chez les veuves, à porter les courses, à écouter.",
+      "effects": {
+       "happiness": -6,
+       "karma": 10
+      }
+     }
+    ]
+   },
+   {
+    "label": "Repartir en mer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu repars. C'est la seule chose que tu sais faire. Tu regardes la mer autrement.",
+      "effects": {
+       "happiness": -8,
+       "money": 300
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester à terre un temps",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne peux pas repartir. Pas tout de suite.",
+      "effects": {
+       "happiness": -10,
+       "money": -500,
+       "setFlags": [
+        "traumatise"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5249",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_marin_pecheur",
+    "partner"
+   ]
+  },
+  "text": "Quinze jours en mer. Au retour, {partenaire} a tout géré : la fuite d'eau, la grippe, les impôts. Et te le fait savoir.",
+  "choices": [
+   {
+    "label": "Prendre le relais",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu prends tout en charge pendant ta semaine à terre. {partenaire} dort.",
+      "effects": {
+       "happiness": 3,
+       "health": -2,
+       "relationships": {
+        "partner": 7
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui faire un cadeau",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu offres un week-end. Ça ne règle rien, mais ça fait du bien.",
+      "effects": {
+       "money": -300,
+       "happiness": 4,
+       "relationships": {
+        "partner": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te défendre",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "« Moi, j'étais en mer, je risquais ma vie. » La dispute dure toute la semaine.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "partner": -7
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5250",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_marin_pecheur"
+   ]
+  },
+  "text": "Les quotas baissent. Tu es payé{e} à la part : ce mois-ci, la part ne paie même pas le loyer.",
+  "choices": [
+   {
+    "label": "Petit boulot à terre",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu travailles à la criée entre deux marées.",
+      "effects": {
+       "money": 400,
+       "health": -4,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Emprunter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu empruntes à la coopérative. La mer remboursera, peut-être.",
+      "effects": {
+       "money": 800,
+       "happiness": -4,
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Pêcher en douce",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu dépasses ton quota. Personne ne vérifie.",
+      "effects": {
+       "money": 1000,
+       "karma": -6,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Contrôle des affaires maritimes. Amende énorme.",
+      "effects": {
+       "money": -3000,
+       "happiness": -10,
+       "karma": -6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5251",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_marin_pecheur"
+   ]
+  },
+  "text": "Mains crevassées par le sel, dos cassé, doigts gelés. À quarante-cinq ans, tu as les articulations de quelqu'un de soixante-dix.",
+  "choices": [
+   {
+    "label": "Voir un rhumatologue",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Traitement, conseils. Tu ne peux pas changer de métier, mais tu peux souffrir moins.",
+      "effects": {
+       "health": 4,
+       "money": -100,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu continues. Tes mains ne se ferment plus le matin.",
+      "effects": {
+       "health": -8,
+       "happiness": -3,
+       "setFlags": [
+        "mains_abimees"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5252",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_marin_pecheur"
+   ]
+  },
+  "text": "Tu ramènes du poisson à tout le quartier. Les voisins ont tous un congélateur plein de maquereaux, et commencent à t'éviter.",
+  "choices": [
+   {
+    "label": "Organiser un barbecue",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Grand barbecue de maquereaux dans la rue. Tout le monde vient, même ceux qui t'évitaient.",
+      "effects": {
+       "happiness": 8,
+       "newFriend": true,
+       "money": -40
+      }
+     }
+    ]
+   },
+   {
+    "label": "Arrêter les cadeaux",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu vends ton poisson au lieu de l'offrir. Les voisins reviennent te dire bonjour.",
+      "effects": {
+       "happiness": 2,
+       "money": 200
+      }
+     }
+    ]
+   },
+   {
+    "label": "Insister",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu continues. Un voisin a déménagé. Coïncidence ?",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5253",
+  "on": "chaque_annee",
+  "chance": 0.03,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_marin_pecheur"
+   ]
+  },
+  "text": "La tempête t'a surpris{e} en mer. Pendant douze heures, tu as cru mourir. Le bateau est rentré au port avec la cabine arrachée.",
+  "choices": [
+   {
+    "label": "Repartir dès que possible",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu repars. La peur est là, mais la mer aussi.",
+      "effects": {
+       "happiness": -4,
+       "money": 300
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester à terre",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne repars plus pendant six mois. Tu cherches autre chose.",
+      "effects": {
+       "happiness": -8,
+       "money": -1500,
+       "setFlags": [
+        "traumatise"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "En parler",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu racontes la tempête au café du port, puis à un psychologue. Ça soulage.",
+      "effects": {
+       "happiness": 4,
+       "money": -100
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5254",
+  "on": "chaque_annee",
+  "conditions": {
+   "tags": [
+    "metier_marin_pecheur"
+   ]
+  },
+  "remember": [
+   "a_ete_marin_pecheur"
+  ]
+ },
+ {
+  "id": "rep_met_5255",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "a_ete_marin_pecheur"
+   ],
+   "excludeTags": [
+    "metier_marin_pecheur"
+   ]
+  },
+  "text": "Tu as quitté la mer. Pourtant, chaque matin à 3 h, tu te réveilles et tu regardes la météo marine.",
+  "choices": [
+   {
+    "label": "Accepter l'habitude",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu bois ton café en écoutant le bulletin. Tu sais exactement le temps qu'il fait au large.",
+      "effects": {
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Descendre au port",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu descends au port à l'aube. Les anciens te font une place sur le banc.",
+      "effects": {
+       "happiness": 6,
+       "newFriend": true
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te forcer à dormir",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu te forces à dormir. Tu rêves de houle.",
+      "effects": {
+       "happiness": -3,
+       "health": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5256",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "a_ete_marin_pecheur"
+   ],
+   "excludeTags": [
+    "metier_marin_pecheur"
+   ]
+  },
+  "text": "La bénédiction de la mer, en mémoire des disparus. On te demande de lire les noms des marins perdus.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu lis chaque nom. Ta voix tremble sur trois d'entre eux. Le port entier est silencieux.",
+      "effects": {
+       "happiness": -3,
+       "karma": 8,
+       "fame": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu restes au fond, dans la foule. Tu lis les noms dans ta tête.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5257",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_ostreiculteur"
+   ]
+  },
+  "text": "Norovirus dans la lagune : interdiction de vente avant Noël. Soixante-dix pour cent de ton chiffre d'affaires.",
+  "choices": [
+   {
+    "label": "Demander une aide",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Une aide de crise couvre une partie. Tu passeras l'hiver.",
+      "effects": {
+       "money": 2000,
+       "happiness": -4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'aide tarde. Tu empruntes.",
+      "effects": {
+       "money": -1000,
+       "happiness": -8,
+       "setFlags": [
+        "endette"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Vendre quand même",
+    "outcomes": [
+     {
+      "chance": 0.3,
+      "text": "Personne ne s'en aperçoit. Tu as eu de la chance.",
+      "effects": {
+       "money": 3000,
+       "karma": -12,
+       "happiness": -3
+      }
+     },
+     {
+      "chance": 0.7,
+      "text": "Des clients tombent malades. Le scandale te rattrape.",
+      "effects": {
+       "money": -3000,
+       "karma": -12,
+       "happiness": -12,
+       "setFlags": [
+        "honte_publique"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu attends. Noël est maigre.",
+      "effects": {
+       "money": -2000,
+       "happiness": -6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5258",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_ostreiculteur",
+    "partner"
+   ]
+  },
+  "text": "Les marées dictent tes horaires : 4 h du matin un jour, 15 h le lendemain. {partenaire} t'a offert un calendrier des marées pour savoir quand te voir.",
+  "choices": [
+   {
+    "label": "Afficher le calendrier",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le calendrier trône sur le frigo. Vous planifiez vos soirées selon la lune.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "partner": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'emmener aux parcs",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu emmènes {partenaire} sur les parcs à l'aube. La lumière est magique.",
+      "effects": {
+       "happiness": 7,
+       "health": -1,
+       "relationships": {
+        "partner": 7
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas s'adapter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Vous vous croisez. Le calendrier jaunit.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "partner": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5259",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_ostreiculteur"
+   ]
+  },
+  "text": "Le 24 au soir, toute la famille compte sur toi pour ouvrir les huîtres. Trois douzaines par personne. Tu sors d'une semaine de quatorze heures par jour.",
+  "choices": [
+   {
+    "label": "Ouvrir avec le sourire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ouvres trois cents huîtres. La famille t'applaudit. Ta main gauche est en sang.",
+      "effects": {
+       "happiness": 4,
+       "health": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Apprendre aux autres",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Atelier ouverture d'huîtres pour tous. Fous rires, quelques pansements.",
+      "effects": {
+       "happiness": 7
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton beau-frère s'ouvre la paume. Le réveillon finit aux urgences.",
+      "effects": {
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Apporter des huîtres ouvertes",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu les as ouvertes à l'atelier. Tu dors dans le canapé avant le dessert.",
+      "effects": {
+       "happiness": 2,
+       "health": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5260",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_ostreiculteur",
+    "father"
+   ]
+  },
+  "text": "Les huîtres meurent de l'eau trop chaude. {pere} t'a transmis l'exploitation. Tu songes à vendre.",
+  "choices": [
+   {
+    "label": "Garder l'exploitation",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu tiens bon. {pere} vient t'aider le samedi, avec ses vieilles bottes.",
+      "effects": {
+       "happiness": 4,
+       "money": -1000,
+       "relationships": {
+        "father": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Vendre",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu vends. {pere} ne dit rien. Il ne vient plus à la plage.",
+      "effects": {
+       "happiness": -8,
+       "money": 3000,
+       "relationships": {
+        "father": -8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer d'espèce",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu te lances dans les palourdes. Ça marche.",
+      "effects": {
+       "happiness": 6,
+       "smarts": 3,
+       "money": 500
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Les palourdes meurent aussi. Tu as perdu deux ans.",
+      "effects": {
+       "happiness": -8,
+       "money": -2000
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5261",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_vendangeur"
+   ]
+  },
+  "text": "Trois semaines de vendanges courbé{e} entre les rangs. Le dos te fait payer chaque grappe.",
+  "choices": [
+   {
+    "label": "Massages et repos",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu prends une semaine de repos. Le dos se calme.",
+      "effects": {
+       "health": 4,
+       "money": -100,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Enchaîner les vendanges",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu enchaînes avec un autre domaine. Ton dos te le fera payer en novembre.",
+      "effects": {
+       "money": 800,
+       "health": -6,
+       "setFlags": [
+        "dos_fragile"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5262",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_vendangeur"
+   ]
+  },
+  "text": "Le dernier soir des vendanges, la fête dure jusqu'à l'aube. Tu te réveilles dans une cuve vide.",
+  "choices": [
+   {
+    "label": "En rire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Ta photo dans la cuve fait le tour du domaine. On t'invitera l'an prochain.",
+      "effects": {
+       "happiness": 7,
+       "newFriend": true
+      }
+     }
+    ]
+   },
+   {
+    "label": "Avoir honte",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu rentres sans dire au revoir. Tu as mal à la tête et à l'orgueil.",
+      "effects": {
+       "happiness": -3,
+       "health": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5263",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_vendangeur"
+   ]
+  },
+  "text": "Le domaine te paie moins que prévu et retient « le logement ». Le logement, c'était une grange.",
+  "choices": [
+   {
+    "label": "Réclamer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le domaine paie. Le régisseur te regarde mal.",
+      "effects": {
+       "money": 300,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "On te menace de ne pas te reprendre l'an prochain.",
+      "effects": {
+       "happiness": -5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Inspection du travail",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu signales. Un contrôle est annoncé.",
+      "effects": {
+       "happiness": 3,
+       "karma": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser tomber",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu pars avec ce qu'on te donne.",
+      "effects": {
+       "happiness": -5,
+       "money": -200
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5264",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_vendangeur"
+   ]
+  },
+  "text": "Canicule : 38 °C dans les rangs. Un collègue s'effondre à côté de toi.",
+  "choices": [
+   {
+    "label": "Lui porter secours",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu le mets à l'ombre, tu appelles les secours. Il s'en sort. Il te serre longtemps la main.",
+      "effects": {
+       "happiness": 6,
+       "karma": 8,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Il est hospitalisé, dans un état grave. Tu repenses à la chaleur toute l'année.",
+      "effects": {
+       "happiness": -8,
+       "karma": 6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger des pauses",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu exiges des pauses pour tout le monde. Le régisseur cède.",
+      "effects": {
+       "happiness": 4,
+       "karma": 5,
+       "health": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5265",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_cueilleur_saisonnier"
+   ]
+  },
+  "text": "On t'a envoyé{e} cueillir dans une parcelle traitée la veille. Ta peau brûle, ta tête tourne.",
+  "choices": [
+   {
+    "label": "Aller aux urgences",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Intoxication légère. Tu signales l'exploitant.",
+      "effects": {
+       "health": -2,
+       "happiness": -2,
+       "karma": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu finis la journée. Tu vomis le soir.",
+      "effects": {
+       "health": -8,
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser de travailler",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "On te change de parcelle.",
+      "effects": {
+       "happiness": 2,
+       "health": 2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "On te renvoie le soir même.",
+      "effects": {
+       "money": -200,
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5266",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_cueilleur_saisonnier"
+   ]
+  },
+  "text": "Payé{e} au kilo. Les fraises sont petites cette année. Ta journée vaut 31 €.",
+  "choices": [
+   {
+    "label": "Changer d'exploitation",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Un autre producteur paie à l'heure. Tu respires.",
+      "effects": {
+       "money": 200,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Partout c'est pareil.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Accélérer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu cueilles plus vite, tu dors moins. Tes genoux crient.",
+      "effects": {
+       "money": 100,
+       "health": -5,
+       "happiness": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5267",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_cueilleur_saisonnier"
+   ]
+  },
+  "text": "Tu as mangé tellement de cerises cette semaine que ton ventre te fait payer la note.",
+  "choices": [
+   {
+    "label": "Rester au lit",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une journée au lit, dans le noir. Les cerises te dégoûtent pour un an.",
+      "effects": {
+       "health": -3,
+       "happiness": -2,
+       "money": -60
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer à cueillir",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu cueilles entre deux visites aux toilettes chimiques. Héroïque et pathétique.",
+      "effects": {
+       "health": -4,
+       "happiness": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5268",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_cueilleur_saisonnier"
+   ]
+  },
+  "text": "Dans le camping des saisonniers, tu t'es lié{e} avec un groupe venu de partout. Ils te proposent de faire la saison des oranges en Espagne cet hiver.",
+  "choices": [
+   {
+    "label": "Partir avec eux",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Un hiver au soleil, des amis pour la vie, un peu d'espagnol.",
+      "effects": {
+       "happiness": 9,
+       "smarts": 3,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le travail promis n'existe pas. Tu rentres en avion à tes frais.",
+      "effects": {
+       "happiness": -4,
+       "money": -600
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu restes. Tu reçois leurs photos d'orangers en janvier.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5269",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_garde_forestier"
+   ]
+  },
+  "text": "Tu as verbalisé un chasseur du village pour braconnage. Depuis, tes pneus sont crevés une semaine sur deux.",
+  "choices": [
+   {
+    "label": "Porter plainte",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Une caméra le filme. Il est condamné. Le village se divise.",
+      "effects": {
+       "happiness": 3,
+       "karma": 4
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Aucune preuve. Les pneus continuent de crever.",
+      "effects": {
+       "happiness": -6,
+       "money": -300
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aller lui parler",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Une longue discussion au café. Il arrête. Vous ne serez pas amis, mais c'est la paix.",
+      "effects": {
+       "happiness": 5,
+       "karma": 3
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Il te menace devant témoins. Tu as peur pour ta famille.",
+      "effects": {
+       "happiness": -8,
+       "setFlags": [
+        "anxieux"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander une mutation",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu pars dans une autre forêt. Tu as perdu ta forêt, et un peu de toi.",
+      "effects": {
+       "happiness": -6,
+       "money": -500
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5270",
+  "on": "chaque_annee",
+  "chance": 0.03,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_garde_forestier"
+   ]
+  },
+  "text": "Un incendie ravage le massif dont tu t'occupes depuis quinze ans. Tu regardes ta forêt brûler.",
+  "choices": [
+   {
+    "label": "Aider les pompiers",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Trois jours sans dormir à guider les pompiers. La forêt est perdue, les villages sont sauvés.",
+      "effects": {
+       "health": -6,
+       "happiness": -4,
+       "karma": 8,
+       "setFlags": [
+        "heros_local"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Planifier la replantation",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu commences à dessiner la forêt de demain. Tu ne la verras pas adulte.",
+      "effects": {
+       "happiness": -3,
+       "smarts": 4,
+       "karma": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne plus y retourner",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne peux plus regarder les troncs noirs.",
+      "effects": {
+       "happiness": -12,
+       "setFlags": [
+        "traumatise"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5271",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_garde_forestier"
+   ]
+  },
+  "text": "Tu passes tes journées seul{e} en forêt. En ville, le bruit te donne la migraine, et la foule te fait fuir.",
+  "choices": [
+   {
+    "label": "Limiter la ville",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu fais tes courses à l'aube, au village. Tu es bien.",
+      "effects": {
+       "happiness": 4,
+       "health": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te forcer à sortir",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Un concert en ville. Finalement, c'est bien aussi.",
+      "effects": {
+       "happiness": 5,
+       "newFriend": true
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu repars au bout d'une heure, la tête en vrac.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "T'isoler",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne descends plus en ville.",
+      "effects": {
+       "happiness": -4,
+       "setFlags": [
+        "solitaire"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5272",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_garde_forestier"
+   ]
+  },
+  "text": "Une tique de trop : fatigue, douleurs articulaires, fièvre. Le médecin parle de maladie de Lyme.",
+  "choices": [
+   {
+    "label": "Traitement immédiat",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Antibiotiques. Tu guéris en un mois.",
+      "effects": {
+       "health": 4,
+       "money": -60,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Les symptômes disparaissent. Tu as eu de la chance.",
+      "effects": {
+       "happiness": 1
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La maladie s'installe. Fatigue chronique pendant des mois.",
+      "effects": {
+       "health": -12,
+       "happiness": -8
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5273",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_ingenieur_eolien"
+   ]
+  },
+  "text": "Le village où tu vis a voté contre le parc éolien que tu conçois. Au café, on ne te sert plus avec le sourire.",
+  "choices": [
+   {
+    "label": "Organiser une réunion publique",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu expliques, tu écoutes. Quelques voisins changent d'avis.",
+      "effects": {
+       "happiness": 5,
+       "karma": 4,
+       "smarts": 2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La réunion tourne au procès. Tu rentres épuisé{e}.",
+      "effects": {
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Déménager",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu pars vivre en ville. Tu n'auras plus à te justifier au café.",
+      "effects": {
+       "happiness": -2,
+       "money": -1500
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire profil bas",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu bois ton café chez toi.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5274",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_ingenieur_eolien",
+    "children"
+   ]
+  },
+  "text": "Tu passes la moitié de l'année sur des chantiers en mer du Nord. {enfant} te dessine en hélicoptère, au-dessus de la maison.",
+  "choices": [
+   {
+    "label": "Demander des missions à terre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu passes sur un projet terrestre. Tu dînes à la maison.",
+      "effects": {
+       "happiness": 6,
+       "money": -300,
+       "relationships": {
+        "child": 8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Aucun projet à terre. Tu restes.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Emmener {enfant} en visite",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une visite d'un parc côtier. {enfant} reste bouche bée devant les pales de 80 mètres.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "child": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "{enfant} affiche le dessin au-dessus de son lit.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5275",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_ingenieur_eolien",
+    "father"
+   ]
+  },
+  "text": "{pere} répète à table que les éoliennes « tuent les oiseaux » et « rendent malade avec leurs infrasons ».",
+  "choices": [
+   {
+    "label": "Débattre avec des chiffres",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "{pere} finit par admettre que les chats tuent plus d'oiseaux. Victoire.",
+      "effects": {
+       "happiness": 5,
+       "smarts": 2,
+       "relationships": {
+        "father": 2
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Ça dégénère. Le repas est gâché.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "father": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui faire visiter un parc",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "{pere} visite un parc, lève les yeux, se tait longtemps. « C'est quand même beau. »",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "father": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser dire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu laisses dire. Tu manges ton dessert en silence.",
+      "effects": {
+       "happiness": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5276",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_ingenieur_eolien"
+   ]
+  },
+  "text": "Une compagnie pétrolière te propose le double de ton salaire.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu acceptes. Ton compte en banque explose. Tes convictions, elles, implosent.",
+      "effects": {
+       "money": 5000,
+       "karma": -8,
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu refuses. Ton patron l'apprend et t'augmente un peu.",
+      "effects": {
+       "karma": 6,
+       "happiness": 5,
+       "money": 300
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier un poste de transition",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ils te confient leur division renouvelable. Tu y crois.",
+      "effects": {
+       "money": 3000,
+       "happiness": 5
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "La division renouvelable est une vitrine. Tu démissionnes un an plus tard.",
+      "effects": {
+       "money": 1000,
+       "happiness": -6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5277",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_technicien_eolien"
+   ]
+  },
+  "text": "Trois cents échelons, cent mètres, par grand vent. Tes genoux craquent à chaque palier.",
+  "choices": [
+   {
+    "label": "Renforcement musculaire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une salle de sport trois fois par semaine. Les genoux tiennent.",
+      "effects": {
+       "health": 5,
+       "money": -200,
+       "setFlags": [
+        "sportif_regulier"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Genouillères",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Des genouillères en mousse. Ça aide un peu.",
+      "effects": {
+       "health": 2,
+       "money": -50
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ignorer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu montes en serrant les dents. Les genoux ne pardonnent rien.",
+      "effects": {
+       "health": -7,
+       "happiness": -3,
+       "setFlags": [
+        "genou_fragile"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5278",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_technicien_eolien",
+    "partner"
+   ]
+  },
+  "text": "Coincé{e} cinq heures dans une nacelle pendant un orage. Tu as appelé {partenaire} pour dire je t'aime, au cas où.",
+  "choices": [
+   {
+    "label": "Rentrer et en parler",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu racontes tout. {partenaire} te serre très fort.",
+      "effects": {
+       "happiness": 4,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Minimiser",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "« C'était rien. » {partenaire} sait que ce n'est pas rien.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Changer de poste",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu demandes un poste au sol. Tu es soulagé{e}, et un peu triste.",
+      "effects": {
+       "happiness": 2,
+       "money": -300,
+       "relationships": {
+        "partner": 5
+       },
+       "setFlags": [
+        "peur_du_vide"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5279",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_technicien_eolien"
+   ]
+  },
+  "text": "Quatre nuits par semaine à l'hôtel. Tu connais mieux la carte des kebabs de la côte que ta propre cuisine.",
+  "choices": [
+   {
+    "label": "Cuisiner à l'hôtel",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une plaque électrique et des boîtes. Tu manges mieux.",
+      "effects": {
+       "health": 4,
+       "money": -50,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Explorer les restaurants",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu deviens expert{e} des restaurants routiers. Ton tour de taille aussi.",
+      "effects": {
+       "happiness": 4,
+       "health": -3,
+       "money": -200
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien changer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Kebab, kebab, kebab.",
+      "effects": {
+       "health": -6,
+       "happiness": -1,
+       "setFlags": [
+        "mange_mal"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5280",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_technicien_eolien",
+    "siblings"
+   ]
+  },
+  "text": "Les enfants de {fratrie} pensent que tu es un super-héros parce que tu « montes sur les moulins à vent ».",
+  "choices": [
+   {
+    "label": "Jouer le jeu",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu arrives au goûter avec ta tenue de grimpeur. Ils hurlent de joie.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "sibling": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Expliquer le métier",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu expliques le vent, l'électricité. L'un d'eux veut faire ton métier.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "sibling": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Leur montrer une éolienne",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une visite au pied d'une éolienne. Ils sont émerveillés.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "sibling": 6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5281",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_charge_etudes_environnement"
+   ]
+  },
+  "text": "Le promoteur te fait comprendre qu'un rapport « sans grenouille » serait apprécié. Il connaît ton patron.",
+  "choices": [
+   {
+    "label": "Rendre le vrai rapport",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le rapport est publié. Le projet est modifié. Les grenouilles restent.",
+      "effects": {
+       "karma": 10,
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton patron te retire le dossier. Tu as perdu, mais tu as raison.",
+      "effects": {
+       "karma": 10,
+       "happiness": -6,
+       "money": -300
+      }
+     }
+    ]
+   },
+   {
+    "label": "Arranger le rapport",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le parking sera construit. Tu ne passes plus devant.",
+      "effects": {
+       "money": 500,
+       "karma": -12,
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Alerter une association",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "L'association attaque le permis. Le projet est suspendu.",
+      "effects": {
+       "karma": 8,
+       "happiness": 5
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "On remonte jusqu'à toi. Tu perds ton poste.",
+      "effects": {
+       "karma": 8,
+       "happiness": -10,
+       "money": -1500
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5282",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_charge_etudes_environnement",
+    "partner"
+   ]
+  },
+  "text": "Inventaires de nuit, chauves-souris et amphibiens, de mars à juin. {partenaire} se demande si tu vis une double vie.",
+  "choices": [
+   {
+    "label": "L'emmener une nuit",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une nuit au bord d'une mare, à écouter les tritons. {partenaire} comprend, la gorge serrée.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Montrer les photos",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu montres cinq cents photos de chauves-souris. Plus aucun doute.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "partner": 3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien expliquer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le doute s'installe.",
+      "effects": {
+       "happiness": -5,
+       "relationships": {
+        "partner": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5283",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_charge_etudes_environnement"
+   ]
+  },
+  "text": "Tu lis des rapports sur le climat toute la journée. Le soir, tu ne peux plus regarder les infos.",
+  "choices": [
+   {
+    "label": "Agir localement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu rejoins un collectif de quartier. Agir apaise.",
+      "effects": {
+       "happiness": 6,
+       "karma": 5,
+       "newFriend": true
+      }
+     }
+    ]
+   },
+   {
+    "label": "Couper les infos",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu coupes. Tu respires.",
+      "effects": {
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ruminer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne dors plus. Tu te demandes si avoir des enfants a encore un sens.",
+      "effects": {
+       "happiness": -8,
+       "health": -3,
+       "setFlags": [
+        "anxieux"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5284",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_charge_etudes_environnement",
+    "children"
+   ]
+  },
+  "text": "Pique-nique en famille. Tu refuses que {enfant} s'assoie sur une colonie de fourmis protégées. Il y en a partout.",
+  "choices": [
+   {
+    "label": "Déplacer le pique-nique",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Vous pique-niquez sur un parking. {enfant} ne comprend pas tout.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Transformer en leçon",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu sors ta loupe. {enfant} découvre un monde. Le sandwich attendra.",
+      "effects": {
+       "happiness": 6,
+       "smarts": 2,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lâcher prise",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu laisses {enfant} s'asseoir. Les fourmis s'en remettront.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5285",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_eboueur"
+   ]
+  },
+  "text": "Une seringue dans un sac mal fermé. Piqûre au doigt. Trois mois d'attente pour les résultats.",
+  "choices": [
+   {
+    "label": "Traitement préventif",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Un mois de traitement lourd. Les résultats sont négatifs. Tu respires.",
+      "effects": {
+       "health": -4,
+       "happiness": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre les résultats",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Trois mois d'angoisse. Négatif. Tu as vieilli de trois ans.",
+      "effects": {
+       "happiness": -8,
+       "setFlags": [
+        "anxieux"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5286",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_eboueur"
+   ]
+  },
+  "text": "Une mère montre ton camion à son enfant : « Si tu ne travailles pas à l'école, tu finiras comme ça. »",
+  "choices": [
+   {
+    "label": "Lui répondre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "« Comme ça, c'est à dire utile ? » Elle rougit. Les passants sourient.",
+      "effects": {
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Elle hausse les épaules. Tu repars vexé{e}.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Saluer l'enfant",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu fais un clin d'œil à l'enfant et lui laisses actionner la benne. Il ne t'oubliera pas.",
+      "effects": {
+       "happiness": 5,
+       "karma": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien dire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne dis rien. Ça te reste toute la tournée.",
+      "effects": {
+       "happiness": -6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5287",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_eboueur"
+   ]
+  },
+  "text": "Dans les encombrants, tu trouves un tableau ancien. Tu l'as rapporté chez toi.",
+  "choices": [
+   {
+    "label": "Le faire expertiser",
+    "outcomes": [
+     {
+      "chance": 0.1,
+      "text": "C'est une œuvre d'un peintre célèbre. Tu vends. Tu ne travailleras plus jamais.",
+      "effects": {
+       "money": 25000,
+       "happiness": 15,
+       "fame": 3
+      }
+     },
+     {
+      "chance": 0.9,
+      "text": "C'est une croûte. Elle orne ton salon.",
+      "effects": {
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le rendre",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu sonnes chez l'ancien propriétaire. Il ne savait pas que sa mère l'avait jeté. Il pleure.",
+      "effects": {
+       "karma": 10,
+       "happiness": 6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le garder",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le tableau trône dans ton entrée. Tu l'aimes bien.",
+      "effects": {
+       "happiness": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5288",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_eboueur"
+   ]
+  },
+  "text": "Fin d'année : tu passes vendre les calendriers. Certains donnent vingt euros, d'autres claquent la porte.",
+  "choices": [
+   {
+    "label": "Faire toutes les portes",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu fais tout le quartier. Tu connais maintenant chaque voisin.",
+      "effects": {
+       "money": 400,
+       "happiness": 4,
+       "newFriend": true
+      }
+     }
+    ]
+   },
+   {
+    "label": "Sauter les maisons hostiles",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu évites les portes qui claquent. Tu gagnes moins, tu souffres moins.",
+      "effects": {
+       "money": 200,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder une liste noire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Les radins sont notés. Leur poubelle sera ramassée en dernier.",
+      "effects": {
+       "money": 300,
+       "happiness": 3,
+       "karma": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5289",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_agent_tri"
+   ]
+  },
+  "text": "Sur le tapis de tri, tu trouves un obus de la Première Guerre mondiale. Il est entier.",
+  "choices": [
+   {
+    "label": "Arrêter le tapis",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le centre est évacué. Les démineurs arrivent. Tu es dans le journal.",
+      "effects": {
+       "happiness": 6,
+       "fame": 2,
+       "setFlags": [
+        "celebre_localement"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le poser de côté",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu le poses dans un coin, délicatement. Les démineurs te disent que tu as eu de la chance.",
+      "effects": {
+       "happiness": -4,
+       "health": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5290",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_agent_tri",
+    "friend"
+   ]
+  },
+  "text": "Chez {ami}, pendant l'apéro, tu fouilles sa poubelle jaune et sors un pot de yaourt plein.",
+  "choices": [
+   {
+    "label": "Lui faire la leçon",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "{ami} rit. Puis trie mieux.",
+      "effects": {
+       "happiness": 4,
+       "karma": 2,
+       "relationships": {
+        "friend": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "{ami} se vexe. L'apéro tourne court.",
+      "effects": {
+       "happiness": -3,
+       "relationships": {
+        "friend": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Remettre le pot",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu remets le pot. Tu n'y arrives pas. Tu le reprends.",
+      "effects": {
+       "happiness": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "En faire un jeu",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Un quiz du tri pour tous les invités. {ami} gagne un yaourt.",
+      "effects": {
+       "happiness": 6,
+       "relationships": {
+        "friend": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5291",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_agent_tri"
+   ]
+  },
+  "text": "Un morceau de verre dans un sac en plastique te tranche le gant et la main.",
+  "choices": [
+   {
+    "label": "Déclarer l'accident",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Points de suture, arrêt. Le centre change de gants.",
+      "effects": {
+       "health": -3,
+       "happiness": 2,
+       "karma": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu mets un pansement et continues. La plaie s'infecte.",
+      "effects": {
+       "health": -8,
+       "happiness": -3,
+       "setFlags": [
+        "mains_abimees"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5292",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_agent_tri"
+   ]
+  },
+  "text": "Tu es en poste de nuit. Tu dors le jour, et le chantier en bas de chez toi commence à 8 h.",
+  "choices": [
+   {
+    "label": "Bouchons et masque",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu dors avec des bouchons de chantier. Ça marche, presque.",
+      "effects": {
+       "health": 3,
+       "money": -40
+      }
+     }
+    ]
+   },
+   {
+    "label": "Demander un poste de jour",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Accordé. Tu redors comme un humain.",
+      "effects": {
+       "health": 5,
+       "happiness": 5,
+       "money": -150
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Refusé. Tu fais avec.",
+      "effects": {
+       "health": -4,
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire avec",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu dors quatre heures. Tu es irritable.",
+      "effects": {
+       "health": -6,
+       "happiness": -4,
+       "setFlags": [
+        "insomniaque"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5293",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_technicien_traitement_eau"
+   ]
+  },
+  "text": "Alerte « eau non potable » sur la commune. Les voisins savent que tu travailles à la station. On sonne chez toi toute la soirée.",
+  "choices": [
+   {
+    "label": "Répondre à chacun",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu expliques, tu rassures. Toute la rue boit de l'eau en bouteille pendant trois jours.",
+      "effects": {
+       "happiness": 3,
+       "karma": 4,
+       "health": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire une affiche",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une affiche sur ta porte : « Je ne sais rien de plus que la mairie. » Ça marche.",
+      "effects": {
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Débrancher la sonnette",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu débranches la sonnette. Le lendemain, on te reproche d'avoir « caché quelque chose ».",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5294",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_technicien_traitement_eau",
+    "mother"
+   ]
+  },
+  "text": "{mere} n'achète que de l'eau en bouteille « parce que l'eau du robinet, on ne sait pas ce qu'il y a dedans ». Toi, tu sais.",
+  "choices": [
+   {
+    "label": "Lui faire visiter la station",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "{mere} visite la station. Elle boit au robinet depuis.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "mother": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Comparer les analyses",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu montres les analyses de son eau en bouteille. Elle n'est pas plus pure.",
+      "effects": {
+       "happiness": 4,
+       "smarts": 2,
+       "relationships": {
+        "mother": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser faire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu portes ses packs d'eau chaque semaine.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "mother": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5295",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_technicien_traitement_eau"
+   ]
+  },
+  "text": "Une fuite de chlore à la station. Tu as respiré le gaz quelques secondes. Ta gorge brûle encore le lendemain.",
+  "choices": [
+   {
+    "label": "Consulter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Bilan pulmonaire. Rien de grave cette fois.",
+      "effects": {
+       "health": 3,
+       "happiness": 2,
+       "money": -50
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ignorer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Ta gorge brûle une semaine.",
+      "effects": {
+       "health": -6,
+       "happiness": -2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5296",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_technicien_traitement_eau"
+   ]
+  },
+  "text": "Sécheresse. Ton voisin remplit sa piscine la nuit, malgré l'interdiction, et te demande de ne rien dire.",
+  "choices": [
+   {
+    "label": "Le dénoncer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu préviens la mairie. Il est verbalisé. Il te déteste.",
+      "effects": {
+       "karma": 6,
+       "happiness": -2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui parler",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il vide sa piscine dans son potager. Compromis.",
+      "effects": {
+       "happiness": 4,
+       "karma": 4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il te dit de te mêler de tes affaires.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien dire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne dis rien. Tu y penses en voyant les rivières à sec.",
+      "effects": {
+       "happiness": -4,
+       "karma": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5297",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_responsable_rse"
+   ]
+  },
+  "text": "Ta direction veut annoncer « la neutralité carbone en 2030 » sans aucun plan. Tu dois rédiger le communiqué.",
+  "choices": [
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La direction accepte de bâtir un vrai plan d'abord.",
+      "effects": {
+       "happiness": 6,
+       "karma": 8
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "On te retire le dossier. Quelqu'un d'autre rédige.",
+      "effects": {
+       "happiness": -5,
+       "karma": 8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Écrire avec des réserves",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu écris, avec des conditions. Le communiqué est flou. Ta conscience aussi.",
+      "effects": {
+       "happiness": -2,
+       "karma": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Écrire comme demandé",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu écris. Ça te reste en travers de la gorge.",
+      "effects": {
+       "money": 300,
+       "karma": -8,
+       "happiness": -6
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5298",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_responsable_rse",
+    "siblings"
+   ]
+  },
+  "text": "Au repas de famille, {fratrie} te demande ce que tu fais vraiment, à part « planter des arbres pour la photo ».",
+  "choices": [
+   {
+    "label": "Expliquer sérieusement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu expliques les audits, les fournisseurs, les vraies avancées. {fratrie} en reste sans voix.",
+      "effects": {
+       "happiness": 5,
+       "smarts": 2,
+       "relationships": {
+        "sibling": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "En rire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "« Des arbres, et des selfies. » Tout le monde rit.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "sibling": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te vexer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu te vexes. Tu passes le dessert en silence.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "sibling": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5299",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_responsable_rse"
+   ]
+  },
+  "text": "Tu prêches la sobriété au bureau. Un collègue publie une photo de ton gros 4x4 sur l'intranet.",
+  "choices": [
+   {
+    "label": "Changer de voiture",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu revends le 4x4. Tu achètes un vélo électrique.",
+      "effects": {
+       "money": -1000,
+       "happiness": 4,
+       "health": 3,
+       "karma": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te justifier",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu expliques que tu habites à la campagne. Personne ne t'écoute.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "En rire publiquement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu publies une photo de toi à vélo, avec le 4x4 en vente. Tu gagnes le respect.",
+      "effects": {
+       "happiness": 6,
+       "karma": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5300",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_responsable_rse"
+   ]
+  },
+  "text": "En auditant un fournisseur, tu découvres des conditions de travail indignes. Ta hiérarchie veut garder le contrat.",
+  "choices": [
+   {
+    "label": "Alerter publiquement",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le scandale éclate. Le fournisseur est écarté. Tu es licencié{e}.",
+      "effects": {
+       "karma": 15,
+       "happiness": 4,
+       "money": -3000
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le scandale éclate. Ta direction te félicite publiquement, à contrecœur.",
+      "effects": {
+       "karma": 15,
+       "happiness": 10,
+       "fame": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Négocier en interne",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Un plan d'amélioration est imposé au fournisseur.",
+      "effects": {
+       "karma": 8,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Rien ne change. Tu as essayé.",
+      "effects": {
+       "karma": 4,
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te taire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu te tais. Tu ne te regardes plus dans le miroir.",
+      "effects": {
+       "karma": -12,
+       "happiness": -10
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5301",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_guide_nature"
+   ]
+  },
+  "text": "Pendant une sortie, un enfant s'est éloigné. Vingt minutes de panique avant de le retrouver sous un pont.",
+  "choices": [
+   {
+    "label": "Revoir tes méthodes",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Binômes, sifflets, comptage. Plus jamais.",
+      "effects": {
+       "happiness": -2,
+       "smarts": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prévenir les parents",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu dis tout aux parents. Ils te remercient de ton honnêteté.",
+      "effects": {
+       "happiness": 3,
+       "karma": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder ça pour toi",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne dis rien. Tu fais des cauchemars de forêts.",
+      "effects": {
+       "happiness": -6,
+       "setFlags": [
+        "anxieux"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5302",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_guide_nature"
+   ]
+  },
+  "text": "Ton contrat saisonnier s'arrête en octobre. Tu cherches un deuxième travail pour l'hiver.",
+  "choices": [
+   {
+    "label": "Animer en école",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Des animations dans les écoles. Les enfants t'adorent.",
+      "effects": {
+       "money": 800,
+       "happiness": 6
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Pas de budget cette année.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Travailler en grande surface",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ranges des rayons. Tu rêves de limaces.",
+      "effects": {
+       "money": 600,
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Vivre de peu",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu vis de tes économies. L'hiver est maigre et libre.",
+      "effects": {
+       "money": -400,
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5303",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_guide_nature",
+    "children"
+   ]
+  },
+  "text": "{enfant} en a assez des balades : « Encore une limace ? Je veux une tablette. »",
+  "choices": [
+   {
+    "label": "Lui offrir une tablette",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "{enfant} a sa tablette. Tu fais tes balades seul{e}.",
+      "effects": {
+       "happiness": -3,
+       "money": -300,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui donner une mission",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une mission secrète : trouver une salamandre. {enfant} part en courant.",
+      "effects": {
+       "happiness": 7,
+       "relationships": {
+        "child": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Insister",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "{enfant} vient, de mauvaise grâce.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "child": -3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5304",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_guide_nature"
+   ]
+  },
+  "text": "Pendant une sortie, un participant ramasse un champignon que tu n'as jamais vu et veut le goûter.",
+  "choices": [
+   {
+    "label": "L'en empêcher fermement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Il te traite de rabat-joie. Le champignon était mortel.",
+      "effects": {
+       "happiness": 4,
+       "karma": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le laisser faire",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il est délicieux. Ouf.",
+      "effects": {
+       "happiness": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il est hospitalisé. Tu es entendu{e} par la gendarmerie.",
+      "effects": {
+       "happiness": -12,
+       "karma": -6,
+       "setFlags": [
+        "traumatise"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre une photo",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu identifies le champignon : une espèce rare. Tu la signales.",
+      "effects": {
+       "happiness": 5,
+       "smarts": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5305",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_installateur_solaire"
+   ]
+  },
+  "text": "Un toit en plein mois d'août, soixante degrés sur les panneaux. Tu fais un malaise.",
+  "choices": [
+   {
+    "label": "Imposer des horaires d'été",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu travailles de 6 h à 13 h l'été. Plus de malaise.",
+      "effects": {
+       "health": 4,
+       "happiness": 3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Boire plus",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Trois litres d'eau par jour. Ça aide, pas assez.",
+      "effects": {
+       "health": 1,
+       "happiness": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien changer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu continues. Le malaise suivant est plus grave.",
+      "effects": {
+       "health": -10,
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5306",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_installateur_solaire"
+   ]
+  },
+  "text": "Une société de panneaux a escroqué des retraités du coin. Depuis, on te claque la porte au nez.",
+  "choices": [
+   {
+    "label": "Montrer tes références",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu montres tes chantiers, tes avis, tes garanties. Les gens reviennent.",
+      "effects": {
+       "happiness": 4,
+       "money": 200
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te tourner vers les pros",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu travailles pour des entreprises. Moins de méfiance, moins de contact humain.",
+      "effects": {
+       "happiness": -2,
+       "money": 300
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aider les victimes",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu aides gratuitement les retraités escroqués. Ta réputation se reconstruit.",
+      "effects": {
+       "happiness": 6,
+       "karma": 8,
+       "money": -200
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5307",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_installateur_solaire",
+    "partner"
+   ]
+  },
+  "text": "Tu installes des panneaux partout, sauf chez toi. {partenaire} a vu le voisin en poser et te le fait remarquer.",
+  "choices": [
+   {
+    "label": "Installer chez toi",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Un samedi de travail, et votre toit produit. {partenaire} rayonne.",
+      "effects": {
+       "happiness": 6,
+       "money": -1500,
+       "relationships": {
+        "partner": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Promettre pour l'année prochaine",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu promets. {partenaire} note la date.",
+      "effects": {
+       "happiness": -2,
+       "relationships": {
+        "partner": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Critiquer le voisin",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu montres à {partenaire} tous les défauts de l'installation du voisin. C'est mesquin, et efficace.",
+      "effects": {
+       "happiness": 3,
+       "karma": -2,
+       "relationships": {
+        "partner": -1
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5308",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_installateur_solaire"
+   ]
+  },
+  "text": "Une échelle mal calée. Tu tombes de trois mètres, sur une haie.",
+  "choices": [
+   {
+    "label": "Aller aux urgences",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Rien de cassé. Tu es plein{e} d'épines.",
+      "effects": {
+       "health": -3,
+       "happiness": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Remonter tout de suite",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu remontes. Le vertige est nouveau.",
+      "effects": {
+       "health": -3,
+       "happiness": -5,
+       "setFlags": [
+        "peur_du_vide"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Raconter partout",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Ton histoire fait rire tout le chantier. Tu y gagnes un surnom.",
+      "effects": {
+       "happiness": 4,
+       "health": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5309",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_nettoyeur_plages"
+   ]
+  },
+  "text": "Un matin, tu trouves un oiseau mazouté encore vivant.",
+  "choices": [
+   {
+    "label": "L'emmener au centre de soins",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "L'oiseau est sauvé. Tu le relâches un mois plus tard.",
+      "effects": {
+       "happiness": 10,
+       "karma": 6
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il ne survit pas. Tu restes longtemps au bord de l'eau.",
+      "effects": {
+       "happiness": -6,
+       "karma": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le nettoyer toi-même",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu essaies. Tu ne sais pas faire. Tu appelles un centre trop tard.",
+      "effects": {
+       "happiness": -8
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5310",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_nettoyeur_plages"
+   ]
+  },
+  "text": "Des touristes te prennent en photo comme une curiosité locale.",
+  "choices": [
+   {
+    "label": "Poser fièrement",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu poses avec ton sac de mégots. Une touriste te remercie pour la plage propre.",
+      "effects": {
+       "happiness": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Leur demander de ramasser",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ils ramassent avec toi. Dix minutes. C'est déjà ça.",
+      "effects": {
+       "happiness": 6,
+       "karma": 3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ils rient et s'en vont.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ignorer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu continues. Ce n'est pas un zoo.",
+      "effects": {
+       "happiness": -1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5311",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_nettoyeur_plages"
+   ]
+  },
+  "text": "Huit heures par jour au soleil, sur le sable. Ta peau a pris dix ans en un été.",
+  "choices": [
+   {
+    "label": "Crème et chapeau",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu te protèges. Ta peau te remercie.",
+      "effects": {
+       "health": 4,
+       "money": -40,
+       "looks": 1
+      }
+     }
+    ]
+   },
+   {
+    "label": "Profiter du bronzage",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu es bronzé{e} comme jamais. Ta dermatologue te gronde.",
+      "effects": {
+       "looks": 3,
+       "health": -5
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5312",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_nettoyeur_plages"
+   ]
+  },
+  "text": "La saison s'arrête fin août. Tu as gagné de quoi tenir jusqu'en octobre.",
+  "choices": [
+   {
+    "label": "Chercher autre chose",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu trouves un contrat en déchetterie. Ce n'est pas la plage, mais c'est un salaire.",
+      "effects": {
+       "money": 600,
+       "happiness": -1
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Rien. Tu attends la saison suivante.",
+      "effects": {
+       "money": -400,
+       "happiness": -5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir ailleurs",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu pars faire la saison d'hiver dans une station de ski.",
+      "effects": {
+       "money": 500,
+       "happiness": 3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5313",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_consultant_bilan_carbone"
+   ]
+  },
+  "text": "Tu prends l'avion trois fois par mois pour aller dire aux entreprises de moins prendre l'avion.",
+  "choices": [
+   {
+    "label": "Passer à la visio",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu proposes des missions à distance. Tu perds deux clients, gagnes ta cohérence.",
+      "effects": {
+       "money": -500,
+       "happiness": 5,
+       "karma": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Prendre le train",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Le train, partout. Tu travailles dans les wagons. Tes clients sont admiratifs.",
+      "effects": {
+       "happiness": 4,
+       "money": -200,
+       "karma": 4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Assumer l'hypocrisie",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu continues. Tes clients le savent. Tu sais qu'ils savent.",
+      "effects": {
+       "happiness": -4,
+       "karma": -4,
+       "money": 300
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5314",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_consultant_bilan_carbone",
+    "father"
+   ]
+  },
+  "text": "À Noël, {pere} te demande combien de carbone il y a dans la dinde. Tu réponds. Plus personne ne mange.",
+  "choices": [
+   {
+    "label": "T'excuser",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu t'excuses. Le repas reprend. {pere} ne te posera plus de question.",
+      "effects": {
+       "happiness": 2,
+       "relationships": {
+        "father": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Proposer des alternatives",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu proposes un menu végétal pour l'an prochain. {pere} en rit encore.",
+      "effects": {
+       "happiness": 3,
+       "relationships": {
+        "father": -2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Manger la dinde",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu manges la dinde. {pere} sourit. Tu es humain{e}.",
+      "effects": {
+       "happiness": 5,
+       "relationships": {
+        "father": 5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5315",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_consultant_bilan_carbone"
+   ]
+  },
+  "text": "Ton plus gros client met fin à ta mission : « La RSE, on lève le pied cette année. »",
+  "choices": [
+   {
+    "label": "Prospecter",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu trouves deux nouveaux clients.",
+      "effects": {
+       "money": 800,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Rien. Les budgets fondent partout.",
+      "effects": {
+       "money": -1500,
+       "happiness": -6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te reconvertir",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu te formes à l'adaptation climatique. Le marché est plus porteur.",
+      "effects": {
+       "smarts": 5,
+       "money": -500,
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5316",
+  "on": "chaque_annee",
+  "chance": 0.07,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_consultant_bilan_carbone"
+   ]
+  },
+  "text": "Une compagnie pétrolière te propose une mission très bien payée pour « valoriser ses efforts ».",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu acceptes. Tu peux payer ton loyer jusqu'à l'an prochain. Tu ne parles de cette mission à personne.",
+      "effects": {
+       "money": 6000,
+       "karma": -10,
+       "happiness": -5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu refuses. Le mois est maigre.",
+      "effects": {
+       "karma": 6,
+       "happiness": 3,
+       "money": -200
+      }
+     }
+    ]
+   },
+   {
+    "label": "Accepter et dire la vérité",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Ton rapport est honnête. Ils l'enterrent, mais te paient.",
+      "effects": {
+       "money": 6000,
+       "karma": 3,
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Ils te paient la moitié et te blacklistent.",
+      "effects": {
+       "money": 3000,
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5317",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "poumons_poussiere"
+   ],
+   "flagMinYears": {
+    "poumons_poussiere": 3
+   }
+  },
+  "text": "Des années après, le souffle te manque dans l'escalier. La poussière d'autrefois s'est installée dans tes poumons.",
+  "choices": [
+   {
+    "label": "Bilan respiratoire",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Atteinte modérée. Kiné respiratoire, inhalateur. Tu retrouves un peu d'air.",
+      "effects": {
+       "health": 4,
+       "money": -150,
+       "happiness": 2,
+       "clearFlags": [
+        "poumons_poussiere"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Fibrose débutante. Tu devras vivre avec.",
+      "effects": {
+       "health": -12,
+       "happiness": -8
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ignorer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu montes l'escalier en trois fois. Tu fais semblant de regarder la vue.",
+      "effects": {
+       "health": -8,
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5318",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "mains_abimees"
+   ],
+   "flagMinYears": {
+    "mains_abimees": 3
+   }
+  },
+  "text": "Tes mains abîmées te lâchent de plus en plus. Ce matin, impossible d'ouvrir un pot de confiture. Tu as dû demander de l'aide.",
+  "choices": [
+   {
+    "label": "Voir un spécialiste",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Rééducation, attelles de nuit. Tu retrouves de la force.",
+      "effects": {
+       "health": 5,
+       "money": -200,
+       "happiness": 3,
+       "clearFlags": [
+        "mains_abimees"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "L'arthrose est installée. Tu adaptes tes gestes.",
+      "effects": {
+       "health": -4,
+       "happiness": -5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Adapter la maison",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Ouvre-bocaux, poignées épaisses, couteaux ergonomiques. Ça change tout.",
+      "effects": {
+       "happiness": 4,
+       "money": -120
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien dire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu évites ce qui fait mal. Tu évites beaucoup de choses.",
+      "effects": {
+       "happiness": -6,
+       "health": -3
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5319",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "oreilles_abimees"
+   ],
+   "flagMinYears": {
+    "oreilles_abimees": 3
+   }
+  },
+  "text": "Les sifflements dans tes oreilles ne s'arrêtent plus. Au restaurant, tu ne suis plus les conversations.",
+  "choices": [
+   {
+    "label": "Appareils auditifs",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Des appareils discrets. Tu redécouvres le bruit de la pluie.",
+      "effects": {
+       "health": 4,
+       "money": -1200,
+       "happiness": 6
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lire sur les lèvres",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu deviens expert{e} en lecture labiale. C'est épuisant.",
+      "effects": {
+       "happiness": -3,
+       "smarts": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te retirer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu sors de moins en moins.",
+      "effects": {
+       "happiness": -8,
+       "setFlags": [
+        "solitaire"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5320",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "flags": [
+    "vie_decalee"
+   ],
+   "flagMinYears": {
+    "vie_decalee": 3
+   }
+  },
+  "text": "Des années d'horaires décalés. {partenaire} et toi vivez comme des colocataires polis qui se laissent des mots sur le frigo.",
+  "choices": [
+   {
+    "label": "Thérapie de couple",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Vous réapprenez à vous parler. Vous retrouvez des soirées.",
+      "effects": {
+       "happiness": 8,
+       "money": -400,
+       "relationships": {
+        "partner": 10
+       },
+       "clearFlags": [
+        "vie_decalee"
+       ]
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La thérapie révèle que vous avez changé tous les deux. Vous restez, mais différemment.",
+      "effects": {
+       "happiness": -4,
+       "money": -400,
+       "relationships": {
+        "partner": -3
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Un voyage à deux",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Une semaine ensemble, sans réveil. Vous vous redécouvrez.",
+      "effects": {
+       "happiness": 7,
+       "money": -1000,
+       "relationships": {
+        "partner": 8
+       },
+       "clearFlags": [
+        "vie_decalee"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Laisser filer",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Les mots sur le frigo se font plus courts.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "partner": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5321",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "peur_du_vide"
+   ],
+   "flagMinYears": {
+    "peur_du_vide": 3
+   }
+  },
+  "text": "Le vertige ne t'a pas quitté{e}. Même monter sur un escabeau pour changer une ampoule te noue le ventre.",
+  "choices": [
+   {
+    "label": "Thérapie",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Exposition progressive avec une psychologue. Tu montes au premier étage d'un phare. Victoire.",
+      "effects": {
+       "happiness": 7,
+       "money": -300,
+       "clearFlags": [
+        "peur_du_vide"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Éviter les hauteurs",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu vis au rez-de-chaussée de ta vie.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Forcer le passage",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu montes en serrant les dents. Ça passe.",
+      "effects": {
+       "happiness": 5,
+       "clearFlags": [
+        "peur_du_vide"
+       ]
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Crise de panique en haut de l'escabeau. Tu tombes.",
+      "effects": {
+       "health": -8,
+       "happiness": -5
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5322",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "flags": [
+    "secret_de_chantier"
+   ],
+   "flagMinYears": {
+    "secret_de_chantier": 3
+   }
+  },
+  "text": "Des archéologues fouillent le terrain voisin de ton ancien chantier. Ils parlent d'une nécropole « qui devait continuer plus loin ».",
+  "choices": [
+   {
+    "label": "Avouer",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Les archéologues te remercient. On te pardonne, presque.",
+      "effects": {
+       "karma": 10,
+       "happiness": 5
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu es poursuivi{e} pour destruction de vestiges.",
+      "effects": {
+       "karma": 10,
+       "happiness": -10,
+       "money": -3000
+      }
+     }
+    ]
+   },
+   {
+    "label": "Te taire",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu ne dis rien. Tu passes devant le chantier tous les jours.",
+      "effects": {
+       "happiness": -6,
+       "karma": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5323",
+  "on": "chaque_annee",
+  "chance": 0.06,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "metier_apiculteur"
+   ],
+   "flags": [
+    "allergie_abeilles"
+   ],
+   "flagMinYears": {
+    "allergie_abeilles": 1
+   }
+  },
+  "text": "Avec ton allergie, chaque visite aux ruches est un pari. Aujourd'hui, une abeille s'est glissée sous ton voile.",
+  "choices": [
+   {
+    "label": "Stylo d'adrénaline",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu te piques à temps. Les urgences te gardent la nuit.",
+      "effects": {
+       "health": -4,
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Attendre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La réaction est légère. Tu as eu de la chance.",
+      "effects": {
+       "health": -2,
+       "happiness": -2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Choc anaphylactique. Les secours arrivent de justesse.",
+      "effects": {
+       "health": -15,
+       "happiness": -10
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_met_5324",
+  "on": "chaque_annee",
+  "chance": 0.05,
+  "unique": true,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "flags": [
+    "caisse_de_grand_cru"
+   ],
+   "flagMinYears": {
+    "caisse_de_grand_cru": 3
+   }
+  },
+  "text": "La caisse de grand cru dort à la cave depuis des années. Un négociant t'en propose trois fois le prix d'achat.",
+  "choices": [
+   {
+    "label": "Vendre",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu vends. {partenaire} a enfin sa cuisine.",
+      "effects": {
+       "money": 12000,
+       "happiness": 5,
+       "relationships": {
+        "partner": 6
+       },
+       "clearFlags": [
+        "caisse_de_grand_cru"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ouvrir une bouteille",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Vous ouvrez une bouteille à deux, un soir sans raison. Elle est sublime.",
+      "effects": {
+       "happiness": 10,
+       "relationships": {
+        "partner": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Garder encore",
+    "outcomes": [
+     {
+      "chance": 1,
+      "text": "Tu attends. Le prix monte, la tentation aussi.",
+      "effects": {
+       "happiness": 2
+      }
+     }
+    ]
+   }
+  ]
+ }
+]
