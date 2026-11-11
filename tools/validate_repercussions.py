@@ -51,6 +51,11 @@ TAGS |= {"liaison", "liaison_longue", "liaison_ultimatum", "liaison_soupcon", "l
 # Le Milieu, trafic et coups (vie4_trafic.json)
 TAGS |= {"dealer_gros", "guerre_prix", "rupture_stock", "independant", "coup_prepare", "braqueur", "a_revendeurs", "produit_drogue"}
 VARIABLES |= {"produit", "zone", "concurrent"}
+# Protection, enquête par étapes, façades, fuite, trafic international (vie5_protection_international.json)
+TAGS |= {"protege", "avocat_attitre", "profil_bas", "international", "cargaison_en_route", "douanier",
+         "enquete_signalement", "enquete_filature", "enquete_ecoutes", "enquete_perquisition", "facade", "recherche",
+         "comptable", "juge", "prete_nom"}
+VARIABLES |= {"etranger"}
 SIGNAUX = set("""
 rencontre rendez_vous rendez_vous_rate couple rupture largue tromperie tromperie_decouverte demande_mariage
 demande_refusee mariage divorce veuvage grossesse naissance_enfant adoption enfant_majeur enfant_quitte_maison
@@ -74,6 +79,8 @@ SIGNAUX |= set("""secte_fondee secte_mouvement secte_proche_recrute secte_prelev
 secte_enquete secte_perquisition secte_proces secte_condamnation secte_relaxe secte_dissoute
 agence_ouverte agence_affaire_resolue agence_affaire_ratee agence_affaire_celebre agence_methode_limite agence_plainte
 agence_suspendue agence_blessure agence_menace agence_fermee""".split())
+SIGNAUX |= set("""cargaison_saisie cargaison_livree protection_scandale profil_bas juge_achete
+controle_fiscal facade_achat fuite_etranger extradition""".split())
 SIGNAUX |= set("""trafic_zone trafic_guerre_prix trafic_revendeur_arrete trafic_overdose coup_reussi coup_rate coup_trahison""".split())
 ACTIVITES = """randonnee camping peche escalade ski kayak champignons salle_sport course natation velo yoga danse
 meditation spa cinema restaurant concert soiree jardinage cuisine jeux_video voyage""".split()

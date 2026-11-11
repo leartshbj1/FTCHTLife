@@ -189,6 +189,8 @@ enum MilieuEnquete {
         let enPrison = j.vieEtat.justice.enPrison
         let p = MilieuProtection.etat(j)
 
+        // En prison (par un événement), la fuite est finie.
+        if p.recherche && enPrison { MilieuProtection.modifier(&j) { $0.recherche = false } }
         // En fuite : Interpol peut te retrouver.
         if p.recherche && !enPrison {
             if VieHasard.reussi(VieBonus.arrestation(0.12)) {

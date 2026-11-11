@@ -1,0 +1,3451 @@
+[
+ {
+  "id": "rep_pi_0001",
+  "on": "juge_achete",
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "remember": [
+   "pi_juge_paye"
+  ]
+ },
+ {
+  "id": "rep_pi_0002",
+  "on": "juge_achete",
+  "chance": 0.6,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Le juge te reçoit dans un restaurant vide, un lundi. Il ne touche pas à son assiette. « Je n'ai jamais fait ça. » Tu sais que c'est vrai. Tu sais aussi qu'il le refera.",
+  "effects": {
+   "happiness": 1,
+   "karma": -3,
+   "vie": {
+    "milieuChaleur": -5
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0003",
+  "on": "cargaison_saisie",
+  "chance": 0.6,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La nouvelle tombe : ta cargaison a été saisie. Chez {etranger}, on attend ton appel. On veut savoir qui paie la perte.",
+  "choices": [
+   {
+    "label": "Assumer la perte",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu prends tout sur toi. Ça fait mal à tes réserves. Là-bas, on retient que ta parole vaut quelque chose.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "confianceEtranger": 10
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Tu assumes. Ils prennent l'argent, et augmentent quand même leurs prix pour la suite.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "confianceEtranger": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Exiger qu'ils partagent",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ils acceptent de partager. Froidement.",
+      "effects": {
+       "vie": {
+        "argentSale": -5000,
+        "confianceEtranger": -8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ils refusent. « La marchandise était à toi dès qu'elle a quitté le port. »",
+      "effects": {
+       "setFlags": [
+        "pi_dette_etranger"
+       ],
+       "vie": {
+        "argentSale": -8000,
+        "confianceEtranger": -15
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0004",
+  "on": "cargaison_saisie",
+  "chance": 0.35,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Quelques mois après la saisie, ton avocat te prévient : les douanes ont transmis un nom à la police. Le nom d'un de tes hommes. Le fil remonte.",
+  "choices": [
+   {
+    "label": "Faire partir ton homme à l'étranger",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il part. Le fil s'arrête avec lui. Pour l'instant.",
+      "effects": {
+       "vie": {
+        "argentSale": -6000,
+        "revendeurs": -1,
+        "milieuChaleur": -5
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il part, mais pas assez vite. Il est interpellé à l'aéroport.",
+      "effects": {
+       "vie": {
+        "argentSale": -6000,
+        "revendeurs": -1,
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Compter sur son silence",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il se tait. Il fait sa garde à vue sans un mot. Il sort sans charges.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 6,
+        "milieuChaleur": 5
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il ne se tait pas.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0005",
+  "on": "cargaison_saisie",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Deux saisies, c'est un hasard. Trois, c'est une fuite. Tes hommes se regardent en coin. Quelqu'un parle, et tout le monde le sait.",
+  "choices": [
+   {
+    "label": "Chercher la fuite",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Tu trouves un chauffeur qui parlait trop à sa copine. Rien de plus. Tu respires.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 4,
+        "milieuRespect": 3
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu ne trouves rien. Le soupçon reste, il pourrit tout.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "milieuLoyaute": -10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout réorganiser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Nouveaux trajets, nouveaux hommes, nouvelles règles. Ça coûte cher, mais la fuite, si elle existe, n'a plus rien à dire.",
+      "effects": {
+       "vie": {
+        "argentSale": -8000,
+        "confianceEtranger": 4,
+        "milieuChaleur": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0006",
+  "on": "cargaison_livree",
+  "chance": 1.0,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Ta première cargaison est arrivée. Intacte. Tu regardes les cartons comme un enfant devant un sapin. Tu sais que tu viens de changer de catégorie.",
+  "effects": {
+   "happiness": 4,
+   "vie": {
+    "milieuRespect": 4,
+    "confianceEtranger": 5
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0007",
+  "on": "cargaison_livree",
+  "chance": 0.3,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Une livraison de plus, sans un accroc. Chez {etranger}, on t'envoie un message court : « Bon travail. » Venant d'eux, c'est presque une déclaration.",
+  "effects": {
+   "happiness": 1,
+   "vie": {
+    "confianceEtranger": 6
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0008",
+  "on": "cargaison_livree",
+  "chance": 0.25,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "international",
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Les livraisons arrivent maintenant comme une horloge. Tes concurrents ne comprennent pas d'où vient ton stock. Ils commencent à poser des questions autour d'eux.",
+  "effects": {
+   "vie": {
+    "milieuRespect": 4,
+    "tension": 8
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0009",
+  "on": "protection_scandale",
+  "chance": 0.8,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton contact a été pris. Son visage est dans le journal, flouté. Ton nom n'y est pas. Pas encore. Ton téléphone, lui, ne s'arrête plus de sonner.",
+  "choices": [
+   {
+    "label": "Payer son avocat en secret",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il comprend que tu ne l'abandonnes pas. Il se tait.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "milieuLoyaute": 5,
+        "milieuChaleur": 5
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le paiement est repéré. Les enquêteurs se demandent qui paie l'avocat d'un policier ripou.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Couper tout lien",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Silence radio. Il tient sans toi, par orgueil.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il se sent lâché. Il commence à négocier avec le procureur.",
+      "effects": {
+       "setFlags": [
+        "pi_flic_tombe"
+       ],
+       "vie": {
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0010",
+  "on": "protection_scandale",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "protege"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Après le scandale, tes autres contacts dans la police se font tout petits. Plus personne ne répond aussi vite qu'avant. Certains ne répondent plus du tout.",
+  "effects": {
+   "happiness": -3,
+   "vie": {
+    "contactPolice": -1,
+    "milieuChaleur": 6
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0011",
+  "on": "protection_scandale",
+  "chance": 0.5,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "avocat_attitre"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Ton avocat t'envoie la facture des derniers mois. Il a passé ses nuits sur l'affaire de ton contact. Le montant te fait asseoir.",
+  "effects": {
+   "vie": {
+    "argentSale": -8000,
+    "milieuChaleur": -6
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0012",
+  "on": "profil_bas",
+  "chance": 0.4,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Tu es à la maison à vingt heures, tous les soirs. Ceux qui vivent avec toi ne savent pas quoi faire de toi. Toi non plus.",
+  "effects": {
+   "happiness": 1
+  }
+ },
+ {
+  "id": "rep_pi_0013",
+  "on": "profil_bas",
+  "chance": 0.4,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Ton retrait n'est pas passé inaperçu. Quelqu'un teste tes frontières : un nouveau visage vend au coin d'une de tes rues.",
+  "choices": [
+   {
+    "label": "Ne pas bouger, profil bas oblige",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu laisses faire. Tes hommes te regardent comme on regarde un chef fatigué.",
+      "effects": {
+       "vie": {
+        "milieuRespect": -6,
+        "clients": -4,
+        "milieuChaleur": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Envoyer un message",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le nouveau visage disparaît du coin. Tes hommes respirent. La police, elle, a vu passer quelque chose.",
+      "effects": {
+       "vie": {
+        "milieuRespect": 4,
+        "milieuChaleur": 8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le message dégénère. Ton année calme ne l'est plus.",
+      "effects": {
+       "vie": {
+        "milieuRespect": 2,
+        "milieuChaleur": 14,
+        "tension": 10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0014",
+  "on": "controle_fiscal",
+  "chance": 0.8,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le contrôleur du fisc s'installe dans l'arrière-boutique avec un ordinateur et une patience infinie. Ton gérant transpire.",
+  "choices": [
+   {
+    "label": "Le laisser faire, comptes en main",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il trouve des erreurs mineures. Une régularisation. Il part en te serrant la main.",
+      "effects": {
+       "vie": {
+        "fine": 4000
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il trouve une incohérence. Il transmet au parquet.",
+      "effects": {
+       "vie": {
+        "fine": 8000,
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire venir ton comptable",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Ton comptable parle la même langue que lui. Ils s'entendent. Le contrôle se termine bien.",
+      "effects": {
+       "vie": {
+        "argentSale": -3000,
+        "fine": 2000
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Ton comptable est trop habile. Ça éveille les soupçons.",
+      "effects": {
+       "vie": {
+        "argentSale": -3000,
+        "milieuChaleur": 10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0015",
+  "on": "controle_fiscal",
+  "chance": 0.4,
+  "delay": [
+   1,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "facade"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Depuis le contrôle, ton commerce de façade reçoit des courriers de l'administration tous les mois. Rien de grave. Juste un regard qui ne se détourne plus.",
+  "effects": {
+   "happiness": -2,
+   "vie": {
+    "milieuChaleur": 6
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0016",
+  "on": "facade_achat",
+  "chance": 1.0,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Premier jour derrière le comptoir de ton commerce. Une vraie cliente entre, demande un renseignement, te remercie. Tu te sens bizarrement honnête.",
+  "effects": {
+   "happiness": 3
+  }
+ },
+ {
+  "id": "rep_pi_0017",
+  "on": "facade_achat",
+  "chance": 0.4,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "facade"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Les voisins de ton nouveau commerce te souhaitent la bienvenue avec un gâteau. Ils ont l'air contents qu'un local vide revive enfin.",
+  "effects": {
+   "happiness": 3,
+   "karma": -1
+  }
+ },
+ {
+  "id": "rep_pi_0018",
+  "on": "fuite_etranger",
+  "chance": 1.0,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Première nuit dans un pays où personne ne te connaît. Une chambre d'hôtel, un néon qui clignote. Tu entends une sirène et ton cœur s'arrête. Ce n'était qu'une ambulance.",
+  "effects": {
+   "happiness": -8,
+   "health": -2
+  }
+ },
+ {
+  "id": "rep_pi_0019",
+  "on": "fuite_etranger",
+  "chance": 0.6,
+  "delay": [
+   0,
+   1
+  ],
+  "conditions": {
+   "tags": [
+    "recherche"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "Ta famille a appris ta fuite par la police, venue fouiller chez eux. On te fait passer un message : « Ne nous appelle pas. Pas encore. »",
+  "effects": {
+   "happiness": -8,
+   "relationships": {
+    "parent": -6
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0020",
+  "on": "extradition",
+  "chance": 1.0,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "text": "L'avion du retour. Deux policiers de chaque côté. Par le hublot, tu regardes ton pays d'exil s'éloigner. Tu y avais appris une langue, des habitudes, un peu de paix.",
+  "effects": {
+   "happiness": -12
+  }
+ },
+ {
+  "id": "rep_pi_0021",
+  "on": "enquete_ouverte",
+  "chance": 0.7,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "avocat_attitre"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton avocat t'appelle avant même que tu ne saches. « Une enquête est ouverte. Tu ne dis rien à personne. Tu ne changes rien de visible. Et tu viens me voir demain à huit heures. »",
+  "effects": {
+   "happiness": -2,
+   "vie": {
+    "milieuChaleur": -5
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0022",
+  "on": "enquete_ouverte",
+  "chance": 0.4,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "protege"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'enquête est ouverte, et ton contact dans la police devient injoignable. Il protège sa peau avant la tienne. C'est la règle, tu le savais.",
+  "effects": {
+   "happiness": -3,
+   "vie": {
+    "milieuChaleur": 4
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0023",
+  "on": "arrestation",
+  "chance": 0.5,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "protege"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Ton contact dans la police a appris ton arrestation par la radio de service. Il t'envoie, par ton avocat, un seul mot : « Rien. » Rien sur lui, comprends-tu. Rien sur personne.",
+  "effects": {
+   "vie": {
+    "milieuLoyaute": 2
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0024",
+  "on": "enquete_classee",
+  "chance": 0.6,
+  "delay": [
+   0,
+   0
+  ],
+  "conditions": {
+   "tags": [
+    "avocat_attitre"
+   ],
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "L'enquête est classée. Ton avocat te serre la main avec un sourire de joueur de poker. « Je n'ai rien fait d'illégal. Juste beaucoup de choses légales très vite. »",
+  "effects": {
+   "happiness": 6,
+   "vie": {
+    "argentSale": -3000
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0025",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "tags": [
+    "protege"
+   ],
+   "flags": [
+    "pi_flic_gourmand"
+   ],
+   "flagMinYears": {
+    "pi_flic_gourmand": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_flic_gourmand"
+  ],
+  "text": "Le policier qui voulait toujours plus est tombé pour une autre affaire. Dans sa voiture, les enquêteurs ont trouvé un carnet. Ils cherchent à qui correspondent les initiales.",
+  "choices": [
+   {
+    "label": "Faire profil bas",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu disparais quelques mois. Les initiales restent des initiales.",
+      "effects": {
+       "vie": {
+        "clients": -4,
+        "milieuChaleur": 4,
+        "contactPolice": -1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui faire passer un message",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il comprend. Il ne déchiffrera rien pour eux.",
+      "effects": {
+       "vie": {
+        "argentSale": -6000,
+        "contactPolice": -1
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le message est intercepté. Il devient une pièce du dossier.",
+      "effects": {
+       "vie": {
+        "argentSale": -6000,
+        "contactPolice": -1,
+        "milieuChaleur": 18,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0026",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_flic_remplacant"
+   ],
+   "flagMinYears": {
+    "pi_flic_remplacant": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_flic_remplacant"
+  ],
+  "text": "Le jeune policier qui avait remplacé ton ancien contact a des remords. Il te rend l'argent, dans une enveloppe déchirée. « Je ne peux pas. Je ne dirai rien. »",
+  "choices": [
+   {
+    "label": "Le croire",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Il ne dit rien. Il quitte la police l'année suivante.",
+      "effects": {
+       "vie": {
+        "contactPolice": -1
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Il ne dit rien. Mais il a gardé une copie de ton numéro dans un tiroir.",
+      "effects": {
+       "vie": {
+        "contactPolice": -1,
+        "milieuChaleur": 8
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le rassurer, longuement",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui parles longtemps, doucement. Il repart un peu plus calme. Tu as perdu un contact, pas un ennemi.",
+      "effects": {
+       "karma": 2,
+       "vie": {
+        "contactPolice": -1
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0027",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "conditions": {
+   "flags": [
+    "pi_igs"
+   ],
+   "flagMinYears": {
+    "pi_igs": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_igs"
+  ],
+  "text": "L'enquête interne sur ton contact se termine. Il est suspendu, pas poursuivi. Il t'appelle d'une cabine : « Je suis grillé. Mais je n'ai rien dit. »",
+  "choices": [
+   {
+    "label": "Lui verser une aide",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il touche une enveloppe chaque mois, le temps de retrouver du travail. Il te le rendra un jour, en silence.",
+      "effects": {
+       "vie": {
+        "argentSale": -6000,
+        "contactPolice": -1,
+        "milieuLoyaute": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le remercier et couper",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il raccroche. Tu perds un contact, et peut-être un ami.",
+      "effects": {
+       "vie": {
+        "contactPolice": -1
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0028",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_flic_redevable"
+   ],
+   "flagMinYears": {
+    "pi_flic_redevable": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_flic_redevable"
+  ],
+  "text": "Le policier que tu as aidé quand il était au plus mal te rend la pareille. Il passe en voiture, baisse la vitre : « Grosse opération la semaine prochaine. Sur tout le quartier. »",
+  "choices": [
+   {
+    "label": "Tout fermer une semaine",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La semaine suivante, ils ratissent tout. Ils trouvent tout le monde, sauf toi.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": -15,
+        "clients": -3,
+        "milieuRespect": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0029",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "tags": [
+    "protege"
+   ],
+   "flags": [
+    "pi_flic_bavard"
+   ],
+   "flagMinYears": {
+    "pi_flic_bavard": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_flic_bavard"
+  ],
+  "text": "Les bavardages du commissariat sont remontés jusqu'à un juge d'instruction. Il veut savoir qui protège qui dans ta ville.",
+  "effects": {
+   "happiness": -3,
+   "vie": {
+    "milieuChaleur": 12
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0030",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_flic_tombe"
+   ],
+   "flagMinYears": {
+    "pi_flic_tombe": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_flic_tombe"
+  ],
+  "text": "Ton ancien contact dans la police sort de prison. Il t'attend sur le trottoir d'en face. Il a vieilli de dix ans. « Tu me dois quelque chose. »",
+  "choices": [
+   {
+    "label": "Payer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une grosse somme. Il la prend sans compter. Il disparaît pour de bon.",
+      "effects": {
+       "karma": 2,
+       "vie": {
+        "argentSale": -15000
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui proposer un travail",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il accepte. Un ex-policier dans ton équipe, c'est une boussole précieuse.",
+      "effects": {
+       "vie": {
+        "milieuRespect": 3,
+        "contactPolice": 1
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il refuse. « Je ne veux plus rien de toi. » Il crache par terre et s'en va.",
+      "effects": {
+       "happiness": -3
+      }
+     }
+    ]
+   },
+   {
+    "label": "L'ignorer",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il te regarde partir. Il ne fera rien. Il n'a plus la force.",
+      "effects": {
+       "karma": -3
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il va voir un journaliste.",
+      "effects": {
+       "karma": -3,
+       "setFlags": [
+        "pi_journaliste"
+       ],
+       "vie": {
+        "milieuChaleur": 10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0031",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "flags": [
+    "pi_flic_double"
+   ],
+   "flagMinYears": {
+    "pi_flic_double": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_flic_double"
+  ],
+  "text": "Le policier qui travaillait pour toi et pour un autre a choisi. Pas toi. Une descente frappe un de tes points, le jour exact où ton concurrent n'avait rien dehors.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "stock": -4,
+    "contactPolice": -1,
+    "milieuChaleur": 10
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0032",
+  "on": "chaque_annee",
+  "chance": 0.25,
+  "conditions": {
+   "flags": [
+    "pi_avocat_sait"
+   ],
+   "flagMinYears": {
+    "pi_avocat_sait": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_avocat_sait"
+  ],
+  "text": "Ton ancien avocat publie un livre. Un roman, dit la couverture. Le personnage principal te ressemble terriblement. Tout le monde, dans le milieu, l'a lu.",
+  "choices": [
+   {
+    "label": "L'attaquer en justice",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Le procès traîne et fait encore plus de publicité au livre.",
+      "effects": {
+       "money": -8000,
+       "fame": 3,
+       "vie": {
+        "milieuChaleur": 8
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Tu gagnes. Le livre est retiré. Mais tout le monde l'a déjà lu.",
+      "effects": {
+       "money": -8000,
+       "fame": 2
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le lire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il a tout compris de toi. Même ce que tu ne savais pas. Tu refermes le livre très tard.",
+      "effects": {
+       "happiness": -4,
+       "karma": 1
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0033",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "pi_avocat_messager"
+   ],
+   "flagMinYears": {
+    "pi_avocat_messager": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_avocat_messager"
+  ],
+  "text": "Ton avocat a été fouillé à la sortie d'un parloir. Un message de ta part, griffonné, dans la poche de sa veste. Il est placé en garde à vue.",
+  "choices": [
+   {
+    "label": "Lui trouver un avocat, pour l'avocat",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il s'en sort, radié pour deux ans. Il ne te reprochera rien en public.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "milieuChaleur": 10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il négocie sa liberté contre ce qu'il sait de toi.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "milieuChaleur": 25,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Nier connaître le message",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ton avocat comprend qu'il est seul. Il en tire les conclusions.",
+      "effects": {
+       "setFlags": [
+        "pi_avocat_sait"
+       ],
+       "vie": {
+        "milieuChaleur": 15,
+        "milieuLoyaute": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0034",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "flags": [
+    "pi_avocat_parti"
+   ],
+   "flagMinYears": {
+    "pi_avocat_parti": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_avocat_parti"
+  ],
+  "text": "Ton ancien avocat défend maintenant ton principal rival. Il connaît tes forces, tes faiblesses, tes peurs. Le rival aussi, maintenant.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "tension": 10,
+    "milieuRespect": -2
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0035",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_juge_peur"
+   ],
+   "flagMinYears": {
+    "pi_juge_peur": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_juge_peur",
+   "pi_juge_paye"
+  ],
+  "text": "Le juge que tu paies a craqué. Arrêt maladie, puis une lettre au procureur général. Il ne te nomme pas. Il dit seulement qu'il « veut soulager sa conscience ».",
+  "choices": [
+   {
+    "label": "Faire profil bas, tout de suite",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Ton nom ne sort pas. Mais tu n'as plus personne au palais.",
+      "effects": {
+       "happiness": -4,
+       "vie": {
+        "milieuChaleur": 10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Ton nom sort. Une enquête est ouverte.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 25,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Faire pression sur sa famille",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Il retire sa lettre. Il ne te regardera plus jamais.",
+      "effects": {
+       "karma": -10,
+       "vie": {
+        "milieuChaleur": 5
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Sa famille va directement à la police.",
+      "effects": {
+       "karma": -10,
+       "vie": {
+        "milieuChaleur": 30,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0036",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_comptable_parti"
+   ],
+   "flagMinYears": {
+    "pi_comptable_parti": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_comptable_parti"
+  ],
+  "text": "Ton ancien comptable est cité comme témoin dans une affaire financière. Pas la tienne. Mais l'avocat de la partie adverse pose des questions sur ses anciens clients.",
+  "choices": [
+   {
+    "label": "Lui faire rappeler sa promesse",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Il tient sa promesse. Il ne connaît personne, il ne se souvient de rien.",
+      "effects": {
+       "vie": {
+        "argentSale": -3000
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Il tient sa promesse, mais ses mains tremblent à la barre. Un enquêteur le remarque.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien faire",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il ne dit rien. Il n'a jamais eu l'intention de dire quoi que ce soit.",
+      "effects": {
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il hésite trop longtemps sur une question. Le juge note le silence.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 8
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0037",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_comptable_tenu"
+   ],
+   "flagMinYears": {
+    "pi_comptable_tenu": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_comptable_tenu"
+  ],
+  "text": "Ton comptable, celui qui voulait partir, a fait une dépression. Il est hospitalisé. Ses dossiers sont dans son bureau, sans surveillance.",
+  "choices": [
+   {
+    "label": "Récupérer les dossiers",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Tu récupères tout. Il y a un carnet en plus. Ses notes à lui, sur toi.",
+      "effects": {
+       "happiness": -3,
+       "vie": {
+        "milieuChaleur": -5
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Sa femme te surprend dans le bureau. Elle ne dit rien. Elle a tout compris.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Aller le voir à l'hôpital",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il te regarde depuis son lit. « Tu m'as fait ça. » Tu ne réponds pas.",
+      "effects": {
+       "happiness": -6,
+       "karma": 2
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0038",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_comptable_voleur"
+   ],
+   "flagMinYears": {
+    "pi_comptable_voleur": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_comptable_voleur"
+  ],
+  "text": "Le comptable qui se servait dans ta caisse a recommencé. Plus gros, cette fois.",
+  "choices": [
+   {
+    "label": "Le renvoyer",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il part. Il connaît tout. Tu croises les doigts.",
+      "effects": {
+       "setFlags": [
+        "pi_comptable_parti"
+       ],
+       "vie": {
+        "argentSale": -5000
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il part, et se met à table quelques mois plus tard pour une autre affaire.",
+      "effects": {
+       "vie": {
+        "argentSale": -5000,
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui faire peur",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il rembourse tout, en tremblant. Il ne volera plus. Il te hait.",
+      "effects": {
+       "karma": -4,
+       "setFlags": [
+        "pi_comptable_tenu"
+       ],
+       "vie": {
+        "milieuRespect": 3
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0039",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_prete_nom_gourmand"
+   ],
+   "flagMinYears": {
+    "pi_prete_nom_gourmand": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_prete_nom_gourmand"
+  ],
+  "text": "Ton prête-nom a vendu un de « ses » appartements sans te prévenir. L'argent est sur son compte. Le sien, officiellement.",
+  "choices": [
+   {
+    "label": "Le récupérer, d'une façon ou d'une autre",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il rend l'argent. Il a compris. Il ne signera plus rien sans toi.",
+      "effects": {
+       "karma": -3,
+       "vie": {
+        "milieuRespect": 4
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il rend une partie. Il dit qu'il a des frais. Tu laisses filer.",
+      "effects": {
+       "money": -20000
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout reprendre et changer de prête-nom",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Un notaire, des frais, un nouveau visage. L'ancien garde ce qu'il a volé, et ses souvenirs.",
+      "effects": {
+       "money": -30000
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0040",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "pi_prete_nom_divorce"
+   ],
+   "flagMinYears": {
+    "pi_prete_nom_divorce": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_prete_nom_divorce"
+  ],
+  "text": "L'ex-femme de ton prête-nom écrit à un journal local. « Mon ex-mari possède des biens qu'il n'a jamais pu payer. » Personne ne la prend au sérieux. Presque personne.",
+  "effects": {
+   "happiness": -2,
+   "vie": {
+    "milieuChaleur": 8
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0041",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_journaliste"
+   ],
+   "flagMinYears": {
+    "pi_journaliste": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_journaliste"
+  ],
+  "text": "L'article est sorti. Trois pages, ta silhouette floutée, des chiffres approximatifs mais pas faux. Ton nom n'est pas écrit. Tout le monde le lit quand même entre les lignes.",
+  "choices": [
+   {
+    "label": "Porter plainte en diffamation",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "La plainte fait parler de l'article une deuxième fois.",
+      "effects": {
+       "money": -5000,
+       "fame": 3,
+       "vie": {
+        "milieuChaleur": 6
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Ton avocat t'en dissuade à temps. Le silence vaut mieux.",
+      "effects": {
+       "money": -1000
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien faire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "L'article vit sa vie. Une semaine, puis on passe à autre chose. Sauf la police.",
+      "effects": {
+       "fame": 2,
+       "vie": {
+        "milieuChaleur": 10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0042",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "pi_enqueteur_obsede"
+   ],
+   "flagMinYears": {
+    "pi_enqueteur_obsede": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_enqueteur_obsede"
+  ],
+  "text": "Le capitaine qui ne pensait qu'à toi part à la retraite. Il passe te voir le dernier jour, sans badge. « Je n'ai jamais réussi. Mais je voulais que tu saches que je savais. »",
+  "choices": [
+   {
+    "label": "Lui offrir un verre",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Vous buvez sans parler. Deux vies fatiguées, de chaque côté d'une même histoire.",
+      "effects": {
+       "happiness": 3,
+       "vie": {
+        "milieuChaleur": -15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui fermer la porte",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il sourit. Il s'en va. Son successeur a récupéré tes dossiers.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": -5
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0043",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "pi_ecoutes"
+   ],
+   "flagMinYears": {
+    "pi_ecoutes": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_ecoutes"
+  ],
+  "text": "Au tribunal, dans le procès d'un autre, on diffuse des extraits d'écoutes. Ta voix. Une phrase banale, mais ta voix. Le juge relève la tête.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "milieuChaleur": 12
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0044",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "pi_preuves_confiees"
+   ],
+   "flagMinYears": {
+    "pi_preuves_confiees": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_preuves_confiees"
+  ],
+  "text": "Ton bras droit, celui qui devait tout détruire, est arrêté pour autre chose. Dans ses affaires, un vieux téléphone. Le tien.",
+  "choices": [
+   {
+    "label": "Payer pour qu'il se taise",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il se tait. Le téléphone reste une énigme pour les enquêteurs.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "milieuLoyaute": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il se tait. Le téléphone, lui, parle.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Le lâcher",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il comprend. Il explique aux enquêteurs à qui était ce téléphone.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 25,
+        "enquete": true,
+        "milieuLoyaute": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0045",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "pi_preuves_vues"
+   ],
+   "flagMinYears": {
+    "pi_preuves_vues": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "La copie que tu n'as jamais détruite refait surface. Un cambriolage banal chez un proche, un sac volé, et quelqu'un qui comprend ce qu'il a entre les mains.",
+  "choices": [
+   {
+    "label": "Racheter le document",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Le voleur te le revend, ravi. Tu le brûles enfin.",
+      "effects": {
+       "vie": {
+        "argentSale": -8000
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Le voleur en a fait des photos. Il revient chaque année.",
+      "effects": {
+       "setFlags": [
+        "pi_preuves_vues"
+       ],
+       "vie": {
+        "argentSale": -8000
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "clearFlags": [
+   "pi_preuves_vues"
+  ]
+ },
+ {
+  "id": "rep_pi_0046",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_famille_mouillee"
+   ],
+   "flagMinYears": {
+    "pi_famille_mouillee": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_famille_mouillee"
+  ],
+  "text": "Le proche qui avait caché tes preuves est convoqué par la police. Il t'appelle juste avant d'entrer. « Qu'est-ce que je dis ? »",
+  "choices": [
+   {
+    "label": "Lui dire de tout nier",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il nie. Il ressort blême. Il ne t'adresse plus la parole pendant un an.",
+      "effects": {
+       "happiness": -6,
+       "relationships": {
+        "parent": -4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il nie mal. On le garde vingt-quatre heures.",
+      "effects": {
+       "happiness": -10,
+       "vie": {
+        "milieuChaleur": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui dire de dire la vérité, pour se protéger",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il dit la vérité. Elle te coûte cher. Mais lui, il est libre.",
+      "effects": {
+       "karma": 8,
+       "happiness": -4,
+       "vie": {
+        "milieuChaleur": 20,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0047",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "tags": [
+    "mother"
+   ],
+   "flags": [
+    "pi_famille_interrogee"
+   ],
+   "flagMinYears": {
+    "pi_famille_interrogee": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_famille_interrogee"
+  ],
+  "text": "Des années après l'audition de ta famille, un dimanche, ta mère pose un plat sur la table et dit : « On n'en parle plus. Mais on n'oublie pas. »",
+  "effects": {
+   "happiness": 2,
+   "relationships": {
+    "parent": 3
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0048",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "pi_balance_inconnue"
+   ],
+   "flagMinYears": {
+    "pi_balance_inconnue": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_balance_inconnue"
+  ],
+  "text": "Tu as fini par savoir qui t'a signalé. Quelqu'un de proche. Quelqu'un qui pensait, peut-être, te sauver de toi-même.",
+  "choices": [
+   {
+    "label": "Lui pardonner",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu ne dis rien. Tu sais. Ça suffit à tout changer entre vous.",
+      "effects": {
+       "karma": 5,
+       "happiness": -4
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui faire savoir que tu sais",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une phrase. Un regard. Vous ne vous reparlerez plus.",
+      "effects": {
+       "happiness": -6,
+       "vie": {
+        "milieuRespect": 2
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0049",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_gerante_sait"
+   ],
+   "flagMinYears": {
+    "pi_gerante_sait": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_gerante_sait"
+  ],
+  "text": "L'ancienne gérante de ton commerce te recontacte. Elle a perdu son nouveau travail. Elle a besoin d'argent. Elle n'a pas besoin de dire le reste.",
+  "choices": [
+   {
+    "label": "Payer",
+    "outcomes": [
+     {
+      "chance": 0.7,
+      "text": "Elle prend l'argent. Elle reviendra peut-être. Ou pas.",
+      "effects": {
+       "vie": {
+        "argentSale": -5000
+       }
+      }
+     },
+     {
+      "chance": 0.3,
+      "text": "Elle prend l'argent. Elle revient l'année d'après.",
+      "effects": {
+       "setFlags": [
+        "pi_gerante_sait"
+       ],
+       "vie": {
+        "argentSale": -5000
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui proposer un poste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Elle revient travailler pour toi. Une ennemie à l'intérieur vaut mieux qu'une ennemie dehors.",
+      "effects": {
+       "vie": {
+        "argentSale": -2000,
+        "milieuLoyaute": 2
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Elle ne fait rien. Elle voulait juste essayer.",
+      "effects": {
+       "happiness": -1
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Elle va raconter ce qu'elle sait au fisc.",
+      "effects": {
+       "vie": {
+        "milieuChaleur": 15
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0050",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "conditions": {
+   "tags": [
+    "facade"
+   ],
+   "flags": [
+    "pi_fisc_courrier"
+   ],
+   "flagMinYears": {
+    "pi_fisc_courrier": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_fisc_courrier"
+  ],
+  "text": "Le courrier du fisc devient une convocation. Ton commerce de façade est épluché pendant deux mois.",
+  "choices": [
+   {
+    "label": "Payer un redressement à l'amiable",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu paies une grosse somme. Le dossier se ferme. Le commerce continue, sous surveillance.",
+      "effects": {
+       "vie": {
+        "fine": 12000,
+        "milieuChaleur": 5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Contester tout",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Tu gagnes. Ils ne peuvent rien prouver.",
+      "effects": {
+       "money": -4000,
+       "happiness": 4
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Tu perds, et la contestation a ouvert des portes que tu aurais voulu fermées.",
+      "effects": {
+       "vie": {
+        "fine": 15000,
+        "milieuChaleur": 15,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0051",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "flags": [
+    "pi_facade_vraie"
+   ],
+   "flagMinYears": {
+    "pi_facade_vraie": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_facade_vraie"
+  ],
+  "text": "Ton commerce de façade est devenu une vraie réussite. Un acheteur sérieux propose une somme honnête. De quoi vivre sans rien d'autre.",
+  "choices": [
+   {
+    "label": "Garder le commerce et lâcher le reste",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu y penses toute une nuit. Le matin, tu ne sais toujours pas. Mais pour la première fois, tu as un vrai choix.",
+      "effects": {
+       "happiness": 5,
+       "karma": 3,
+       "setFlags": [
+        "pi_question_sortie"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "label": "Tout garder",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu gardes le commerce et le reste. Il continue à laver ce qu'il doit laver.",
+      "effects": {
+       "money": 4000
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0052",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "tags": [
+    "recherche"
+   ],
+   "flags": [
+    "pi_exil_localise"
+   ],
+   "flagMinYears": {
+    "pi_exil_localise": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_exil_localise"
+  ],
+  "text": "On frappe à ta porte, à six heures du matin, dans ton pays d'exil. Une police locale, un interprète, un papier officiel. Ils sont venus te chercher.",
+  "choices": [
+   {
+    "label": "Te rendre sans résister",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tends les poignets. Commence une longue procédure d'extradition.",
+      "effects": {
+       "happiness": -15,
+       "vie": {
+        "jailMonths": 36,
+        "record": 1
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Fuir par l'arrière",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "Tu cours, tu passes un mur, tu disparais. Encore. Tout recommencer ailleurs.",
+      "effects": {
+       "happiness": -10,
+       "vie": {
+        "argentSale": -5000
+       }
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "Le jardin est bouclé.",
+      "effects": {
+       "happiness": -15,
+       "vie": {
+        "jailMonths": 48,
+        "record": 1
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0053",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "tags": [
+    "recherche"
+   ],
+   "flags": [
+    "pi_exil_installe"
+   ],
+   "flagMinYears": {
+    "pi_exil_installe": 4
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_exil_installe"
+  ],
+  "text": "Ton voisin, dans ton pays d'exil, t'invite au baptême de son fils. Il veut que tu sois le parrain. Il ne connaît que ton faux prénom.",
+  "choices": [
+   {
+    "label": "Accepter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu tiens l'enfant au-dessus des fonts baptismaux. Tu promets de le protéger. C'est la première promesse honnête depuis des années.",
+      "effects": {
+       "happiness": 10,
+       "karma": 5
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser avec une excuse",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il est déçu. Tu ne peux pas lui expliquer que ton nom est un mensonge.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0054",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "conditions": {
+   "tags": [
+    "recherche"
+   ],
+   "flags": [
+    "pi_exil_flic_local"
+   ],
+   "flagMinYears": {
+    "pi_exil_flic_local": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "text": "Le policier qui t'a reconnu revient chercher sa part. Le double, cette fois.",
+  "choices": [
+   {
+    "label": "Payer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il prend. Il reviendra. Tu vis maintenant au rythme de ses visites.",
+      "effects": {
+       "happiness": -5,
+       "setFlags": [
+        "pi_exil_flic_local"
+       ],
+       "vie": {
+        "argentSale": -20000
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Partir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Une nuit, tu pars. Une autre ville, un autre nom.",
+      "effects": {
+       "happiness": -8,
+       "vie": {
+        "argentSale": -5000
+       }
+      }
+     }
+    ]
+   }
+  ],
+  "clearFlags": [
+   "pi_exil_flic_local"
+  ]
+ },
+ {
+  "id": "rep_pi_0055",
+  "on": "chaque_annee",
+  "chance": 0.6,
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "flags": [
+    "pi_emissaire_vexe"
+   ],
+   "flagMinYears": {
+    "pi_emissaire_vexe": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_emissaire_vexe"
+  ],
+  "text": "Chez {etranger}, on n'a pas oublié l'affront de l'an dernier. Les prix augmentent, sans explication. Le message est clair.",
+  "choices": [
+   {
+    "label": "Payer et faire amende honorable",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu envoies un cadeau et des excuses. La température remonte, lentement.",
+      "effects": {
+       "vie": {
+        "argentSale": -8000,
+        "confianceEtranger": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Chercher ailleurs",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu cherches d'autres fournisseurs. Ils apprendront que tu cherches.",
+      "effects": {
+       "vie": {
+        "confianceEtranger": -12
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0056",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "flags": [
+    "pi_douanier_gourmand"
+   ],
+   "flagMinYears": {
+    "pi_douanier_gourmand": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_douanier_gourmand"
+  ],
+  "text": "Le douanier qui en voulait toujours plus s'est fait prendre. Pas pour toi. Pour un autre réseau. Mais les enquêteurs ouvrent tous ses dossiers.",
+  "choices": [
+   {
+    "label": "Suspendre toutes les cargaisons",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tout s'arrête quelques mois. Ton partenaire étranger n'est pas content.",
+      "effects": {
+       "vie": {
+        "confianceEtranger": -8,
+        "cargaisonSaisie": true,
+        "milieuChaleur": -5
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Continuer et croiser les doigts",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Ton nom n'apparaît nulle part. Tu as eu de la chance.",
+      "effects": {
+       "happiness": 2
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Les enquêteurs remontent jusqu'à une de tes cargaisons.",
+      "effects": {
+       "vie": {
+        "cargaisonSaisie": true,
+        "milieuChaleur": 18,
+        "enquete": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0057",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "flags": [
+    "pi_douanier_peur"
+   ],
+   "flagMinYears": {
+    "pi_douanier_peur": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_douanier_peur"
+  ],
+  "text": "Ton douanier, celui qui avait peur, n'a pas tenu. Il a démissionné, et il a parlé à un avocat. Pas forcément à la police. Pas encore.",
+  "effects": {
+   "happiness": -4,
+   "vie": {
+    "milieuChaleur": 12,
+    "confianceEtranger": -4
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0058",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_equipier_arrete"
+   ],
+   "flagMinYears": {
+    "pi_equipier_arrete": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_equipier_arrete"
+  ],
+  "text": "Ton homme, arrêté là-bas il y a des années, sort enfin de sa prison étrangère. Il rentre au pays, maigre, avec un accent qu'il n'avait pas. Il frappe à ta porte.",
+  "choices": [
+   {
+    "label": "L'accueillir et le payer pour les années perdues",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu lui donnes une grosse somme. Il pleure. Les autres l'apprennent. Ils savent que tu n'oublies pas les tiens.",
+      "effects": {
+       "karma": 3,
+       "vie": {
+        "argentSale": -15000,
+        "milieuLoyaute": 12
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui proposer de reprendre du service",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il reprend. Il est plus dur qu'avant. Utile.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": 4,
+        "revendeurs": 1
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Il refuse. « J'ai payé. Je suis quitte. » Il s'en va.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": -4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne pas ouvrir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il frappe longtemps. Il s'en va. Il raconte partout ce que tu vaux.",
+      "effects": {
+       "karma": -6,
+       "vie": {
+        "milieuLoyaute": -15,
+        "milieuRespect": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0059",
+  "on": "chaque_annee",
+  "chance": 0.45,
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "flags": [
+    "pi_exclusif"
+   ],
+   "flagMinYears": {
+    "pi_exclusif": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_exclusif"
+  ],
+  "text": "Ton exclusivité avec les gens de chez {etranger} fait des jaloux. Les réseaux de la région se sont réunis sans toi. Ils parlent de toi.",
+  "choices": [
+   {
+    "label": "Les inviter à négocier",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu leur revends une part, à ton prix. Ils grincent. La paix tient.",
+      "effects": {
+       "vie": {
+        "argentSale": 10000,
+        "tension": -10
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "La négociation tourne mal. Tout le monde repart plus énervé.",
+      "effects": {
+       "vie": {
+        "tension": 15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Les ignorer",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Ils ne t'oublient pas, eux. La tension monte d'un cran partout.",
+      "effects": {
+       "vie": {
+        "tension": 20,
+        "milieuRespect": 4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0060",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "pi_mandat"
+   ],
+   "flagMinYears": {
+    "pi_mandat": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_mandat"
+  ],
+  "text": "Un mariage dans ta famille, à l'étranger. Tout le monde y va. Toi, tu ne peux pas passer une frontière sans risquer les menottes.",
+  "effects": {
+   "happiness": -8,
+   "relationships": {
+    "parent": -2
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0061",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "tags": [
+    "dealer_gros"
+   ],
+   "flags": [
+    "pi_question_sortie"
+   ],
+   "flagMinYears": {
+    "pi_question_sortie": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_question_sortie"
+  ],
+  "text": "La question d'arrêter revient, plus fort. Tu as l'argent, l'âge, la fatigue. Il ne manque que la décision.",
+  "choices": [
+   {
+    "label": "Arrêter. Vraiment.",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu fais le tour de tes hommes, de tes partenaires, de tes dettes. Ça prend un an. Puis un matin, tu n'es plus personne dans le milieu.",
+      "effects": {
+       "happiness": 10,
+       "karma": 6,
+       "vie": {
+        "milieuRespect": -20,
+        "milieuChaleur": -20,
+        "quitterMilieu": true
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu essaies. On ne te laisse pas partir si facilement. Tu dois payer pour ta liberté.",
+      "effects": {
+       "happiness": 4,
+       "karma": 4,
+       "vie": {
+        "argentSale": -30000,
+        "quitterMilieu": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Encore un an",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Encore un an. Tout le monde dit ça. Presque personne ne s'arrête.",
+      "effects": {
+       "happiness": -4
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0062",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "tags": [
+    "children"
+   ],
+   "flags": [
+    "pi_enfant_sait"
+   ],
+   "flagMinYears": {
+    "pi_enfant_sait": 4
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_enfant_sait"
+  ],
+  "text": "Ton enfant a grandi. Un soir, il pose la question qu'il garde depuis des années. « Est-ce que tu as fait du mal à des gens ? »",
+  "choices": [
+   {
+    "label": "Dire la vérité",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu dis la vérité. Il pleure. Il te serre dans ses bras quand même. Tu ne sais pas quoi faire de ce pardon.",
+      "effects": {
+       "happiness": -4,
+       "karma": 4,
+       "relationships": {
+        "child": 5
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu dis la vérité. Il s'en va. Il ne revient pas pendant longtemps.",
+      "effects": {
+       "happiness": -14,
+       "relationships": {
+        "child": -15
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Mentir",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu mens. Il sait que tu mens. Il a appris ça de toi aussi.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "child": -10
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0063",
+  "on": "chaque_annee",
+  "chance": 0.35,
+  "conditions": {
+   "flags": [
+    "pi_sans_sortie"
+   ],
+   "flagMinYears": {
+    "pi_sans_sortie": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_sans_sortie"
+  ],
+  "text": "Le réseau entre continents tourne sans toi désormais, mais à travers toi. Tu es un nœud, un rouage. Tu ne te souviens plus de la dernière décision que tu as prise seul{e}.",
+  "effects": {
+   "happiness": -8,
+   "vie": {
+    "argentSale": 20000,
+    "confianceEtranger": 5
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0064",
+  "on": "chaque_annee",
+  "chance": 0.6,
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "flags": [
+    "pi_trahison_etranger"
+   ],
+   "flagMinYears": {
+    "pi_trahison_etranger": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_trahison_etranger"
+  ],
+  "text": "Chez {etranger}, on a appris que tu t'es fourni chez leurs ennemis. Un émissaire vient, avec un message très court : « Tu choisis. Maintenant. »",
+  "choices": [
+   {
+    "label": "Revenir vers eux, en payant",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu paies une somme énorme pour ton pardon. Ils te reprennent, mais ne t'oublieront jamais.",
+      "effects": {
+       "vie": {
+        "argentSale": -30000,
+        "confianceEtranger": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Rester avec les nouveaux",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Tu restes. Ils coupent tout. Et ils racontent partout que ta parole ne vaut rien.",
+      "effects": {
+       "vie": {
+        "confianceEtranger": -30,
+        "milieuRespect": -8
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Tu restes. Un de tes entrepôts brûle la semaine suivante.",
+      "effects": {
+       "money": -10000,
+       "happiness": -8,
+       "vie": {
+        "confianceEtranger": -30,
+        "stock": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0065",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "pi_garantie"
+   ],
+   "flagMinYears": {
+    "pi_garantie": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_garantie"
+  ],
+  "text": "Ton bras droit, qui avait servi de garantie, te le rappelle un soir. « J'ai mis ma parole sur la table pour toi. Tu me dois une part. »",
+  "choices": [
+   {
+    "label": "Lui donner une vraie part",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il devient associé. Il ne sera plus jamais seulement ton bras droit.",
+      "effects": {
+       "vie": {
+        "argentSale": -10000,
+        "milieuLoyaute": 10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Refuser",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Il comprend où est sa place. Il ne l'oubliera pas.",
+      "effects": {
+       "vie": {
+        "milieuLoyaute": -12
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0066",
+  "on": "chaque_annee",
+  "chance": 0.6,
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "flags": [
+    "pi_invite_grille"
+   ],
+   "flagMinYears": {
+    "pi_invite_grille": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_invite_grille"
+  ],
+  "text": "L'invité de chez {etranger} que tu hébergeais a été identifié après sa bagarre. Il a été expulsé vers son pays. Là-bas, on se demande comment ça a pu arriver chez toi.",
+  "effects": {
+   "vie": {
+    "confianceEtranger": -15,
+    "milieuChaleur": 8
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0067",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "tags": [
+    "international",
+    "children"
+   ],
+   "flags": [
+    "pi_famille_vue"
+   ],
+   "flagMinYears": {
+    "pi_famille_vue": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_famille_vue"
+  ],
+  "text": "Un homme de chez {etranger} attend devant l'école de tes enfants. Il ne fait rien. Il salue. Il repart. Tu as compris le message : ils savent où sont les tiens.",
+  "choices": [
+   {
+    "label": "Leur demander ce qu'ils veulent",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "« Rien, voyons. Juste de la confiance. » La confiance, chez eux, a un visage.",
+      "effects": {
+       "happiness": -10,
+       "vie": {
+        "confianceEtranger": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Envoyer tes enfants loin quelque temps",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tes enfants partent chez des cousins. Ils ne comprennent pas. Toi si.",
+      "effects": {
+       "happiness": -8,
+       "relationships": {
+        "child": -4
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0068",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "flags": [
+    "pi_coeur_fatigue"
+   ],
+   "flagMinYears": {
+    "pi_coeur_fatigue": 3
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_coeur_fatigue"
+  ],
+  "text": "Une douleur dans la poitrine en pleine réunion. Une ambulance, des tuyaux, des bips. Les médecins disent que tu as eu de la chance. Cette fois.",
+  "effects": {
+   "health": -20,
+   "happiness": -10
+  }
+ },
+ {
+  "id": "rep_pi_0069",
+  "on": "chaque_annee",
+  "chance": 0.3,
+  "conditions": {
+   "tags": [
+    "dealer"
+   ],
+   "flags": [
+    "pi_vie_normale"
+   ],
+   "flagMinYears": {
+    "pi_vie_normale": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_vie_normale"
+  ],
+  "text": "Tu repenses parfois à ton année de profil bas. Les dîners, les soirées sans téléphone. Ça te manque d'une façon qui t'inquiète.",
+  "effects": {
+   "happiness": -2,
+   "karma": 1
+  }
+ },
+ {
+  "id": "rep_pi_0070",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "flags": [
+    "pi_fidele_guerre"
+   ],
+   "flagMinYears": {
+    "pi_fidele_guerre": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_fidele_guerre"
+  ],
+  "text": "La guerre là-bas est finie. Les gens de chez {etranger} ont gagné, et ils se souviennent de qui est resté pendant la tempête. Le premier lot de la paix arrive avec un prix d'ami.",
+  "effects": {
+   "happiness": 3,
+   "vie": {
+    "confianceEtranger": 15,
+    "stock": 4,
+    "milieuRespect": 4
+   }
+  }
+ },
+ {
+  "id": "rep_pi_0071",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "conditions": {
+   "tags": [
+    "international"
+   ],
+   "flags": [
+    "pi_espion_etranger"
+   ],
+   "flagMinYears": {
+    "pi_espion_etranger": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_espion_etranger"
+  ],
+  "text": "Tu as la preuve que l'ancien revenu de l'étranger rapporte tout à ses nouveaux maîtres. Ce qu'il raconte sur toi, chez {etranger}, n'est pas toujours vrai.",
+  "choices": [
+   {
+    "label": "Le renvoyer là-bas",
+    "outcomes": [
+     {
+      "chance": 0.6,
+      "text": "Il repart. Là-bas, on comprend le message, et on le respecte.",
+      "effects": {
+       "vie": {
+        "confianceEtranger": -4,
+        "milieuRespect": 4
+       }
+      }
+     },
+     {
+      "chance": 0.4,
+      "text": "Il repart, vexé, et raconte que tu es paranoïaque.",
+      "effects": {
+       "vie": {
+        "confianceEtranger": -10
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Lui donner de fausses informations",
+    "outcomes": [
+     {
+      "chance": 0.5,
+      "text": "Il transmet. Tu sais maintenant exactement ce qu'ils savent de toi.",
+      "effects": {
+       "vie": {
+        "milieuRespect": 3,
+        "confianceEtranger": 2
+       }
+      }
+     },
+     {
+      "chance": 0.5,
+      "text": "Le jeu est découvert. Chez {etranger}, on n'aime pas être joué.",
+      "effects": {
+       "vie": {
+        "confianceEtranger": -15
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0072",
+  "on": "chaque_annee",
+  "chance": 0.4,
+  "conditions": {
+   "tags": [
+    "children",
+    "partner"
+   ],
+   "flags": [
+    "pi_enfant_perquisition"
+   ],
+   "flagMinYears": {
+    "pi_enfant_perquisition": 2
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_enfant_perquisition"
+  ],
+  "text": "Ton enfant fait des cauchemars depuis la perquisition. Des hommes en gilet, la porte qui saute. La psychologue de l'école t'a convoqué{e}.",
+  "choices": [
+   {
+    "label": "Y aller et écouter",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu écoutes. Tu ne te défends pas. En sortant, tu restes longtemps dans la voiture.",
+      "effects": {
+       "happiness": -8,
+       "karma": 3,
+       "relationships": {
+        "child": 4
+       }
+      }
+     }
+    ]
+   },
+   {
+    "label": "Envoyer {partenaire} à ta place",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "Tu n'y vas pas. Ton enfant le remarque. Il remarque tout.",
+      "effects": {
+       "happiness": -4,
+       "relationships": {
+        "child": -6
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "rep_pi_0073",
+  "on": "chaque_annee",
+  "chance": 0.5,
+  "conditions": {
+   "tags": [
+    "partner"
+   ],
+   "flags": [
+    "pi_promesse_rompue"
+   ],
+   "flagMinYears": {
+    "pi_promesse_rompue": 1
+   },
+   "excludeTags": [
+    "prison"
+   ]
+  },
+  "unique": true,
+  "clearFlags": [
+   "pi_promesse_rompue"
+  ],
+  "text": "{partenaire} a compris que tu n'arrêterais pas. Pas de cris, pas de scène. Juste une valise près de la porte et une phrase : « Je t'ai attendu{e} assez longtemps. »",
+  "choices": [
+   {
+    "label": "Supplier",
+    "outcomes": [
+     {
+      "chance": 0.4,
+      "text": "{partenaire} reste. Une dernière chance, dit-on. Tu sais ce que valent les dernières chances dans ta vie.",
+      "effects": {
+       "relationships": {
+        "partner": 4
+       },
+       "happiness": -4
+      }
+     },
+     {
+      "chance": 0.6,
+      "text": "{partenaire} part quand même.",
+      "effects": {
+       "relationships": {
+        "partner": -25
+       },
+       "happiness": -14
+      }
+     }
+    ]
+   },
+   {
+    "label": "Ne rien dire",
+    "outcomes": [
+     {
+      "chance": 1.0,
+      "text": "La porte se ferme doucement. Le silence de la maison est immense.",
+      "effects": {
+       "relationships": {
+        "partner": -25
+       },
+       "happiness": -14
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

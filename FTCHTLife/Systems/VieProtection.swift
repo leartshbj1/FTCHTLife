@@ -346,6 +346,9 @@ enum MilieuProtection {
         if p.profilBas { t.insert("profil_bas") }
         if p.douaniers > 0 { t.insert("douanier") }
         if p.recherche { t.insert("recherche") }
+        if p.juge { t.insert("juge") }
+        if p.comptable { t.insert("comptable") }
+        if p.preteNom { t.insert("prete_nom") }
         return t
     }
 

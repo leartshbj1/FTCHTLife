@@ -95,6 +95,11 @@ TAGS |= {"gourou","secte_communaute","secte_grande","secte_enquete","ancien_gour
 # Le Milieu, trafic et coups (vie4_trafic.json)
 TAGS |= {"dealer_gros","guerre_prix","rupture_stock","independant","coup_prepare","braqueur","a_revendeurs","produit_drogue"}
 PH |= {"produit","zone","concurrent"}
+# Protection contre la police, enquête par étapes, façades, fuite à l'étranger, trafic international (vie5_protection_international.json)
+TAGS |= {"protege","avocat_attitre","profil_bas","international","cargaison_en_route","douanier",
+         "enquete_signalement","enquete_filature","enquete_ecoutes","enquete_perquisition","facade","recherche",
+         "comptable", "juge","prete_nom"}
+PH |= {"etranger"}
 WARN = []
 def check_effects(e, where, errs):
     if not isinstance(e, dict): errs.append(f"{where}: effects pas un objet"); return
