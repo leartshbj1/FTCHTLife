@@ -138,7 +138,7 @@ final class GameEngine: ObservableObject {
             j.relations[i].age += 1
             j.relations[i].lien = Stats.borne(j.relations[i].lien + Int.random(in: -4...1))
             let r = j.relations[i]
-            if r.age >= 50 && Double.random(in: 0...1) < Self.chanceDeces(age: r.age, sante: 70) {
+            if r.age >= 50 && !AmeSoeur.estAmeSoeur(r, j) && Double.random(in: 0...1) < Self.chanceDeces(age: r.age, sante: 70) {
                 j.relations[i].vivant = false
                 lignes.append("💀 \(r.designation), \(r.prenom), est \(r.genre == .femme ? "morte" : "mort") à \(r.age) ans.")
                 j.stats.bonheur -= r.type.estParent ? 25 : 10

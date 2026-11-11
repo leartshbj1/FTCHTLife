@@ -277,7 +277,7 @@ enum ExpatMoteur {
             let r = j.relations[i]
             switch r.type {
             case .partenaire:
-                let chance = Double(r.lien) / 100 * 0.8 + 0.1
+                let chance = AmeSoeur.estAmeSoeur(r, j) ? 1 : Double(r.lien) / 100 * 0.8 + 0.1
                 if Double.random(in: 0..<1) < chance {
                     lignes.append("❤️ \(r.prenom) vient avec toi. Il y a eu des larmes, puis des cartons.")
                     j.relations[i].lien = Stats.borne(r.lien + 5)

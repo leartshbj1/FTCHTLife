@@ -100,6 +100,7 @@ extension GameEngine {
     func tagsModules(_ j: Joueur) -> Set<String> {
         var t: Set<String> = []
         t.formUnion(VieSysteme.tags(j))
+        t.formUnion(AmeSoeur.tags(j))
         t.formUnion(tagsTrainDeVie(j))
         t.formUnion(ExpatMoteur.tags(j.etatExpat, j))
         t.insert("origine_\(j.etatExpat.paysNaissance)")
@@ -201,6 +202,7 @@ extension GameEngine {
             appliquer(a.effets, &j)
         }
 
+        lignes += AmeSoeur.passerAnnee(&j)
         lignes += Competences.finAnnee(&j)
         j.stats.borner()
         return (lignes, deces)
@@ -258,6 +260,7 @@ extension GameEngine {
         (fetes + suites + episodes).forEach { declencher($0) }
         voisinageAnnee()
         vivantAvantTirage()
+        ameSoeurAvantTirage()
     }
 
     /// Événements en plus de la bibliothèque (crises du monde, retombées télé).
@@ -341,6 +344,7 @@ extension GameEngine {
     // MARK: - Mort
 
     func modulesMort(_ j: inout Joueur) {
+        if let adieu = AmeSoeur.adieu(j) { ajouterLigne(&j, adieu) }
         if var rf = j.reputationFamille {
             _ = ReputationFamille.bilanDeVie(joueur: j, etat: &rf)
             j.reputationFamille = rf
