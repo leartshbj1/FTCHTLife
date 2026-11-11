@@ -1,0 +1,4688 @@
+[
+  {
+    "id": "cri_c01_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "La grève générale",
+    "text": "La réforme du travail portée par le gouvernement a mis le pays dans la rue. Ce matin, tous les syndicats appellent à la grève générale reconductible : trains à l'arrêt, raffineries bloquées, écoles fermées, ports paralysés. Plus d'un million de manifestants défilent. Les caméras attendent ta réaction.",
+    "choices": [
+      {
+        "label": "Maintenir la réforme et le calendrier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu déclares que « la rue ne gouverne pas ». Les syndicats répondent en votant la reconduction partout. Le bras de fer commence.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -5,
+              "mobilisation": 12,
+              "segments": {
+                "patrons": 6,
+                "fonctionnaires": -6
+              }
+            },
+            "suite": "cri_c01_2a"
+          }
+        ]
+      },
+      {
+        "label": "Inviter immédiatement les syndicats à négocier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les syndicats acceptent de venir, sans suspendre la grève. Tes alliés y voient un aveu de faiblesse, le pays un peu de bon sens.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 3,
+              "mobilisation": -4,
+              "segments": {
+                "patrons": -3
+              }
+            },
+            "suite": "cri_c01_2b"
+          }
+        ]
+      },
+      {
+        "label": "Suspendre la réforme pour une concertation de six mois",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La suspension calme une partie des cortèges, mais les syndicats exigent désormais le retrait pur et simple. Ta majorité grince des dents.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 4,
+              "mobilisation": -8,
+              "majorite": -4,
+              "segments": {
+                "patrons": -6,
+                "fonctionnaires": 4
+              }
+            },
+            "suite": "cri_c01_2b"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c01_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le pays à l'arrêt",
+    "text": "Troisième semaine de grève. Un tiers des stations-service sont à sec, les entreprises de transport licencient leurs intérimaires, les hôpitaux peinent à faire venir leurs soignants. Les sondages basculent lentement contre les grévistes, mais aussi contre toi. Il faut débloquer la situation.",
+    "choices": [
+      {
+        "label": "Réquisitionner les raffineries et les dépôts",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les forces de l'ordre lèvent les piquets à l'aube. Le carburant revient, mais les images de grévistes traînés au sol font le tour des réseaux. Les syndicats parlent de « déclaration de guerre sociale ».",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": -3,
+              "mobilisation": 8,
+              "segments": {
+                "jeunes": -4,
+                "ruraux": 3
+              },
+              "pays": {
+                "croissance": 0.1,
+                "moral": -3
+              }
+            },
+            "suite": "cri_c01_3"
+          },
+          {
+            "chance": 1,
+            "text": "Les réquisitions fonctionnent sans heurts majeurs. Isolés, les bloqueurs des dépôts lèvent le camp. Le mouvement s'essouffle, la rancœur reste.",
+            "effects": {
+              "stress": 3
+            },
+            "pol": {
+              "popularite": 2,
+              "mobilisation": -6,
+              "segments": {
+                "patrons": 4
+              },
+              "pays": {
+                "croissance": 0.2
+              }
+            },
+            "suite": "cri_c01_3"
+          }
+        ]
+      },
+      {
+        "label": "Attendre que le mouvement s'épuise",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu tiens. Les grévistes perdent des semaines de salaire, l'économie aussi. La grève finit par refluer, mais la facture se lit dans les chiffres de croissance.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -4,
+              "mobilisation": -5,
+              "pays": {
+                "croissance": -0.4,
+                "chomage": 0.2,
+                "moral": -5
+              }
+            },
+            "suite": "cri_c01_3"
+          }
+        ]
+      },
+      {
+        "label": "Lâcher du lest sur les points les plus contestés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu retires deux articles de la réforme. Les syndicats modérés appellent à la reprise, les plus durs dénoncent une trahison. Le front syndical se fissure.",
+            "effects": {
+              "stress": 3
+            },
+            "pol": {
+              "popularite": 3,
+              "mobilisation": -10,
+              "majorite": -3,
+              "segments": {
+                "patrons": -4,
+                "fonctionnaires": 3
+              }
+            },
+            "suite": "cri_c01_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c01_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La nuit des négociations",
+    "text": "Autour de la table, huit syndicats et les organisations patronales. Les uns veulent le retrait, les autres un geste fort sur les salaires. Dehors, les cortèges continuent. Il est 2 heures du matin et chacun attend que tu poses une proposition.",
+    "choices": [
+      {
+        "label": "Céder sur l'essentiel pour arrêter la grève",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'accord est signé au petit matin. La grève s'arrête, la réforme est vidée de sa substance. Les marchés et ta majorité font la grimace.",
+            "effects": {
+              "stress": 3,
+              "health": -2
+            },
+            "pol": {
+              "popularite": 5,
+              "mobilisation": -15,
+              "majorite": -6,
+              "segments": {
+                "patrons": -8,
+                "fonctionnaires": 6,
+                "jeunes": 3
+              },
+              "pays": {
+                "dette": 2,
+                "moral": 5
+              }
+            },
+            "suite": "cri_c01_3"
+          }
+        ]
+      },
+      {
+        "label": "Proposer un vrai compromis : réforme allégée contre hausse des bas salaires",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Trois syndicats signent, deux refusent. La grève devient minoritaire, et tu peux défendre un texte qui tient debout.",
+            "effects": {
+              "stress": 4,
+              "health": -2
+            },
+            "pol": {
+              "popularite": 4,
+              "mobilisation": -10,
+              "segments": {
+                "patrons": -2,
+                "urbains": 3
+              },
+              "pays": {
+                "dette": 1,
+                "moral": 3
+              }
+            },
+            "suite": "cri_c01_3"
+          },
+          {
+            "chance": 1,
+            "text": "Le compromis est refusé en bloc. Les syndicats sortent de la salle devant les caméras. Tu as dévoilé tes concessions pour rien.",
+            "effects": {
+              "stress": 7,
+              "health": -2
+            },
+            "pol": {
+              "popularite": -3,
+              "mobilisation": 6
+            },
+            "suite": "cri_c01_3"
+          }
+        ]
+      },
+      {
+        "label": "Jouer la division en signant avec les seuls modérés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un accord minoritaire est signé. Juridiquement, il tient. Politiquement, les syndicats écartés jurent de te le faire payer, et le climat social s'empoisonne.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": -1,
+              "mobilisation": 4,
+              "segments": {
+                "fonctionnaires": -5,
+                "patrons": 3
+              },
+              "pays": {
+                "moral": -3
+              }
+            },
+            "suite": "cri_c01_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c01_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le vote de tous les dangers",
+    "text": "Le texte, sous sa forme actuelle, arrive {au_parlement}. Une partie de ta majorité menace de voter contre, l'opposition a déposé des milliers d'amendements et les syndicats appellent à une dernière journée de mobilisation le jour du vote.",
+    "choices": [
+      {
+        "label": "Faire adopter le texte sans vote, par la procédure d'exception",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le texte est adopté sans que les députés aient voté. Il est légal, il est perçu comme un passage en force. Une motion de censure échoue à quelques voix.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -7,
+              "mobilisation": 12,
+              "majorite": -5,
+              "segments": {
+                "jeunes": -5,
+                "patrons": 5
+              }
+            },
+            "suite": "cri_c01_4"
+          }
+        ]
+      },
+      {
+        "label": "Convaincre les frondeurs un par un",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Des nuits de coups de fil, des promesses pour leurs circonscriptions. Le texte passe de onze voix. Ta majorité sort épuisée mais légitime.",
+            "effects": {
+              "stress": 6,
+              "health": -3
+            },
+            "pol": {
+              "popularite": 2,
+              "mobilisation": -3,
+              "majorite": 3,
+              "influence": 3
+            },
+            "suite": "cri_c01_4"
+          },
+          {
+            "chance": 1,
+            "text": "Le texte est rejeté. L'humiliation est publique et les frondeurs deviennent un groupe à part entière.",
+            "effects": {
+              "stress": 9,
+              "happiness": -4
+            },
+            "pol": {
+              "popularite": -6,
+              "mobilisation": -5,
+              "majorite": -10,
+              "influence": -4
+            },
+            "suite": "cri_c01_4"
+          }
+        ]
+      },
+      {
+        "label": "Retirer le texte et repartir de zéro",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu retires la réforme. Les syndicats célèbrent leur victoire, ton camp se sent trahi. Au moins, le pays se remet au travail.",
+            "effects": {
+              "stress": 3,
+              "happiness": -2
+            },
+            "pol": {
+              "popularite": 1,
+              "mobilisation": -15,
+              "majorite": -6,
+              "segments": {
+                "patrons": -8,
+                "fonctionnaires": 5
+              },
+              "pays": {
+                "moral": 4
+              }
+            },
+            "suite": "cri_c01_4"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c01_4",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le pays d'après",
+    "text": "La grève est finie. Elle a coûté des semaines de production, des salaires perdus et une méfiance durable entre le pouvoir et une partie du pays. Il te reste à décider comment refermer la plaie, et ce que tu retiendras de ce printemps.",
+    "choices": [
+      {
+        "label": "Instaurer une conférence sociale permanente",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Syndicats et patronat se retrouveront chaque trimestre. Les sceptiques parlent de « comité Théodule », mais la prochaine réforme ne partira pas de zéro. Bilan : un pays fatigué, un dialogue social un peu moins abîmé.",
+            "effects": {
+              "stress": -4,
+              "happiness": 2
+            },
+            "pol": {
+              "popularite": 3,
+              "mobilisation": -6,
+              "segments": {
+                "fonctionnaires": 3
+              },
+              "pays": {
+                "moral": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Verser une prime de reprise aux bas salaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La prime fait du bien aux fins de mois et du mal au budget. Bilan : la colère retombe, la dette grimpe, et chacun sait que la question de fond reste entière.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 4,
+              "mobilisation": -5,
+              "segments": {
+                "urbains": 3,
+                "ruraux": 3
+              },
+              "pays": {
+                "dette": 3,
+                "moral": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Remanier le gouvernement pour tourner la page",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "De nouveaux visages, une nouvelle photo de famille. Bilan : l'opinion lève un sourcil, la majorité retrouve un semblant d'unité, la confiance ne se décrète pas.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 1,
+              "majorite": 4,
+              "influence": 2
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien concéder de plus : la page est tournée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu considères l'affaire close. Bilan : l'autorité de l'État est préservée, mais la rancœur sociale couve et ressortira au premier prétexte.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": -2,
+              "mobilisation": 6,
+              "segments": {
+                "patrons": 3,
+                "fonctionnaires": -4
+              },
+              "pays": {
+                "moral": -3
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c02_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "La crue",
+    "text": "Après quatre jours de pluies diluviennes, la rivière est sortie de son lit en pleine nuit. Des quartiers entiers sont sous un mètre d'eau, douze morts sont déjà confirmés et des centaines d'habitants attendent sur leurs toits. La cellule de crise se tourne vers toi.",
+    "choices": [
+      {
+        "label": "Ordonner l'évacuation de toute la zone menacée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Bus, bateaux, hélicoptères : vingt mille personnes quittent leurs maisons en pleine nuit. C'est lourd, c'est lent, mais personne ne sera surpris par la prochaine montée des eaux.",
+            "effects": {
+              "stress": 7,
+              "health": -2
+            },
+            "pol": {
+              "popularite": 3,
+              "pays": {
+                "dette": 1,
+                "securite": 2
+              }
+            },
+            "suite": "cri_c02_2a"
+          }
+        ]
+      },
+      {
+        "label": "Concentrer tous les secours sur les sinistrés déjà piégés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les équipes hélitreuillent des familles toute la nuit. Les gens sauvés racontent leur peur à la télévision. Mais en amont, l'eau continue de monter.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "securite": 1
+              }
+            },
+            "suite": "cri_c02_2b"
+          }
+        ]
+      },
+      {
+        "label": "Réclamer des renforts militaires et ouvrir les gymnases",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les militaires arrivent au petit matin avec des embarcations et des groupes électrogènes. Les gymnases se remplissent de familles en couverture de survie.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 2,
+              "pays": {
+                "dette": 1,
+                "securite": 3
+              }
+            },
+            "suite": "cri_c02_2a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c02_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La digue de l'amont",
+    "text": "Les évacués s'entassent dans les salles municipales, certains habitants refusent de partir et veillent leur maison. Les ingénieurs sont formels : la digue en amont cédera dans la nuit. On peut ouvrir un déversoir vers les terres agricoles pour sauver les zones habitées, au prix de récoltes et de fermes noyées.",
+    "choices": [
+      {
+        "label": "Ouvrir le déversoir vers les champs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les terres agricoles sont sacrifiées, la ville est épargnée. Les agriculteurs bloquent la route avec leurs tracteurs, furieux d'avoir été « choisis ».",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 2,
+              "segments": {
+                "ruraux": -10,
+                "urbains": 5
+              },
+              "pays": {
+                "croissance": -0.1,
+                "securite": 2
+              }
+            },
+            "suite": "cri_c02_3"
+          }
+        ]
+      },
+      {
+        "label": "Renforcer la digue toute la nuit avec les volontaires",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Sacs de sable, pelleteuses, pompiers et habitants côte à côte. La digue tient. Au matin, l'image de cette chaîne humaine fait le tour du pays.",
+            "effects": {
+              "stress": 8,
+              "health": -3
+            },
+            "pol": {
+              "popularite": 6,
+              "pays": {
+                "moral": 6
+              }
+            },
+            "suite": "cri_c02_3"
+          },
+          {
+            "chance": 1,
+            "text": "La digue cède à 4 heures. Le quartier bas est noyé, deux volontaires sont emportés. On te reprochera ce pari longtemps.",
+            "effects": {
+              "stress": 10,
+              "happiness": -6
+            },
+            "pol": {
+              "popularite": -8,
+              "casseroles": 3,
+              "pays": {
+                "moral": -6,
+                "securite": -3
+              }
+            },
+            "suite": "cri_c02_3"
+          }
+        ]
+      },
+      {
+        "label": "Faire évacuer de force ceux qui refusent de partir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les gendarmes font sortir les récalcitrants. Certains crient à l'abus de pouvoir, mais personne ne mourra dans sa cave cette nuit.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": -1,
+              "segments": {
+                "retraites": -3
+              },
+              "pays": {
+                "securite": 3
+              }
+            },
+            "suite": "cri_c02_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c02_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La nuit où l'eau est revenue",
+    "text": "Pendant que les secours s'activaient en aval, la deuxième vague de crue est arrivée plus tôt que prévu. Une maison de retraite et un camping sont désormais encerclés par l'eau, à deux kilomètres l'un de l'autre. Il reste un seul hélicoptère disponible pour la prochaine heure.",
+    "choices": [
+      {
+        "label": "Envoyer l'hélicoptère à la maison de retraite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Quarante résidents sont évacués à temps. Au camping, les secours fluviaux arrivent avec une heure de retard. Trois vacanciers ne sont pas retrouvés.",
+            "effects": {
+              "stress": 9,
+              "happiness": -5
+            },
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "retraites": 5
+              },
+              "pays": {
+                "moral": -4
+              }
+            },
+            "suite": "cri_c02_3"
+          }
+        ]
+      },
+      {
+        "label": "Envoyer l'hélicoptère au camping",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les familles du camping sont hélitreuillées. À la maison de retraite, le personnel monte les résidents à l'étage, un par un. Deux d'entre eux meurent d'hypothermie.",
+            "effects": {
+              "stress": 9,
+              "happiness": -5
+            },
+            "pol": {
+              "popularite": -3,
+              "segments": {
+                "retraites": -5
+              },
+              "pays": {
+                "moral": -4
+              }
+            },
+            "suite": "cri_c02_3"
+          }
+        ]
+      },
+      {
+        "label": "Réquisitionner les bateaux des particuliers pour couvrir les deux sites",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Des pêcheurs et des plaisanciers répondent à l'appel. Le sauvetage est désordonné mais tout le monde est sorti. Le pays découvre des héros anonymes.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 5,
+              "pays": {
+                "moral": 6
+              }
+            },
+            "suite": "cri_c02_3"
+          },
+          {
+            "chance": 1,
+            "text": "Les embarcations de fortune chavirent dans le courant. Un bénévole se noie. L'improvisation t'est reprochée.",
+            "effects": {
+              "stress": 10,
+              "happiness": -5
+            },
+            "pol": {
+              "popularite": -5,
+              "casseroles": 4,
+              "pays": {
+                "moral": -4
+              }
+            },
+            "suite": "cri_c02_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c02_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Reconstruire, mais où ?",
+    "text": "Les eaux se sont retirées. Il reste la boue, les maisons fissurées, les commerces ruinés et une question que personne n'ose poser : faut-il reconstruire là où l'eau reviendra ? Les assureurs traînent des pieds, les sinistrés attendent une réponse.",
+    "choices": [
+      {
+        "label": "Interdire de reconstruire en zone inondable et racheter les maisons",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les maisons les plus exposées seront rachetées et détruites. C'est cher et douloureux pour ceux qui y ont vécu toute leur vie. Bilan : moins de morts lors de la prochaine crue, et beaucoup de larmes aujourd'hui.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "retraites": -3,
+                "jeunes": 3
+              },
+              "pays": {
+                "dette": 3,
+                "securite": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Débloquer un fonds d'urgence sans conditions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'argent arrive vite et tout le monde est aidé. Bilan : les sinistrés te remercient, les experts rappellent que les mêmes rues seront sous l'eau dans dix ans.",
+            "effects": {
+              "stress": -4,
+              "happiness": 2
+            },
+            "pol": {
+              "popularite": 6,
+              "segments": {
+                "ruraux": 4,
+                "retraites": 3
+              },
+              "pays": {
+                "dette": 3,
+                "moral": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Obliger les assureurs à indemniser sous trente jours",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les assureurs protestent, puis paient. Bilan : la reconstruction démarre sans creuser la dette, et les primes d'assurance augmenteront l'an prochain pour tout le monde.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "patrons": -4
+              },
+              "pays": {
+                "moral": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir une enquête sur l'entretien des digues",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'enquête révélera des années de rapports ignorés, signés par plusieurs gouvernements successifs. Bilan : la vérité soulage les familles, mais elle éclabousse aussi ton camp.",
+            "effects": {
+              "stress": -1
+            },
+            "pol": {
+              "popularite": 2,
+              "casseroles": 4,
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c03_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "La terre a tremblé",
+    "text": "À 4 h 12, un séisme de magnitude 6,8 a frappé l'une des plus grandes villes du pays. Des immeubles entiers se sont effondrés, les hôpitaux sont saturés, le bilan dépasse déjà deux cents morts et des milliers de personnes sont sous les décombres. Les premières heures décideront de tout.",
+    "choices": [
+      {
+        "label": "Accepter toute l'aide internationale proposée",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des équipes de sauveteurs et de chiens arrivent du monde entier, dont plusieurs venues {du_pays_allie}. Les premiers survivants sont sortis des gravats sous les applaudissements.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 4,
+              "influenceMondiale": -2,
+              "relationAllie": 4,
+              "relations": 3,
+              "pays": {
+                "moral": 3
+              }
+            },
+            "suite": "cri_c03_2a"
+          }
+        ]
+      },
+      {
+        "label": "Déployer l'armée et décréter l'état de catastrophe",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'armée prend le contrôle de la ville sinistrée : couvre-feu, barrages, ponts aériens. L'ordre revient vite, la liberté de circuler beaucoup moins.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 3,
+              "pays": {
+                "securite": 5,
+                "dette": 1
+              }
+            },
+            "suite": "cri_c03_2b"
+          }
+        ]
+      },
+      {
+        "label": "S'appuyer sur les seuls secours nationaux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu veux montrer que le pays tient debout seul. Les secouristes font des miracles, mais les engins lourds manquent sur plusieurs sites.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -1,
+              "influenceMondiale": 2,
+              "pays": {
+                "moral": 2
+              }
+            },
+            "suite": "cri_c03_2a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c03_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les dernières heures utiles",
+    "text": "On entre dans le troisième jour. Passé 72 heures, les chances de retrouver des survivants s'effondrent. Il reste trois grues de grande capacité. Un hôpital effondré où l'on entend encore des appels, une cité populaire de dix immeubles écrasés, une école où une classe était en internat.",
+    "choices": [
+      {
+        "label": "Toutes les grues sur l'hôpital",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Onze personnes sont sorties vivantes de l'hôpital. Dans la cité, les habitants creusent à mains nues et t'accusent d'avoir choisi les « beaux quartiers ».",
+            "effects": {
+              "stress": 9,
+              "happiness": -4
+            },
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "urbains": -4
+              },
+              "pays": {
+                "moral": -2
+              }
+            },
+            "suite": "cri_c03_3"
+          }
+        ]
+      },
+      {
+        "label": "Répartir une grue par site",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Aucun site n'est abandonné, aucun n'est traité à fond. Quelques survivants sont retrouvés partout, d'autres ne le seront jamais. Personne ne saura ce qu'un autre choix aurait donné.",
+            "effects": {
+              "stress": 8,
+              "happiness": -3
+            },
+            "pol": {
+              "popularite": 1,
+              "pays": {
+                "moral": 1
+              }
+            },
+            "suite": "cri_c03_3"
+          }
+        ]
+      },
+      {
+        "label": "Prioriser l'école",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les enfants de l'internat sont retrouvés vivants au matin du quatrième jour. Le pays pleure de soulagement. À l'hôpital, les appels se sont tus.",
+            "effects": {
+              "stress": 9,
+              "happiness": -2
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "jeunes": 3
+              },
+              "pays": {
+                "moral": 4
+              }
+            },
+            "suite": "cri_c03_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c03_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La ville sous couvre-feu",
+    "text": "Le couvre-feu tient la ville, mais des vidéos montrent des soldats repoussant des habitants qui voulaient récupérer des affaires dans leurs immeubles à moitié debout. Des commerces ont été pillés, des familles dorment dans des parcs. La colère monte contre l'uniforme.",
+    "choices": [
+      {
+        "label": "Maintenir le couvre-feu strict",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les pillages cessent, la rancœur grandit. Des associations dénoncent des contrôles humiliants et des familles empêchées de chercher leurs proches.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -3,
+              "segments": {
+                "jeunes": -4
+              },
+              "pays": {
+                "securite": 4,
+                "moral": -3
+              }
+            },
+            "suite": "cri_c03_3"
+          }
+        ]
+      },
+      {
+        "label": "Assouplir le couvre-feu et ouvrir des créneaux d'accès accompagnés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les habitants peuvent récupérer papiers et souvenirs, escortés par des pompiers. Quelques pillages reprennent, mais la ville respire un peu.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "securite": -2,
+                "moral": 3
+              }
+            },
+            "suite": "cri_c03_3"
+          }
+        ]
+      },
+      {
+        "label": "Confier la sécurité aux élus locaux et aux associations",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des comités de quartier s'organisent, avec plus ou moins de bonheur. L'armée se recentre sur les secours. Le dispositif devient illisible mais plus humain.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 2,
+              "pays": {
+                "securite": -1,
+                "moral": 2
+              }
+            },
+            "suite": "cri_c03_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c03_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le béton qui a tué",
+    "text": "Les experts sont formels : la plupart des immeubles effondrés avaient été construits après l'entrée en vigueur des normes parasismiques, mais sans les respecter. Des promoteurs, des contrôleurs et des élus avaient fermé les yeux. Les familles de victimes veulent des comptes, et toute la ville doit être reconstruite.",
+    "choices": [
+      {
+        "label": "Faire inspecter tous les bâtiments récents du pays",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des milliers d'immeubles seront contrôlés, certains évacués. Le chantier coûtera des années et des milliards. Bilan : le prochain séisme tuera moins, et le secteur du bâtiment te le fera payer.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "patrons": -6
+              },
+              "pays": {
+                "dette": 4,
+                "securite": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reconstruire vite, avec un impôt de solidarité",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un impôt exceptionnel finance la reconstruction en trois ans. Bilan : des grues partout, une ville relevée, et des contribuables qui grognent mais paient.",
+            "effects": {
+              "stress": -3,
+              "happiness": 2
+            },
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "patrons": -3,
+                "urbains": -2
+              },
+              "pays": {
+                "croissance": 0.3,
+                "moral": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Laisser la justice poursuivre promoteurs et contrôleurs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les mises en examen tombent, y compris contre un élu de ton camp. Bilan : les familles saluent ta neutralité, ta majorité un peu moins.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 5,
+              "majorite": -3,
+              "casseroles": -3,
+              "pays": {
+                "moral": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Accepter le plan de reconstruction proposé par un consortium étranger",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le consortium reconstruit vite et bien, en échange de concessions de long terme. Bilan : la ville renaît, et une partie de son avenir appartient désormais à d'autres.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": -1,
+              "influenceMondiale": -3,
+              "relations": 3,
+              "pays": {
+                "croissance": 0.2,
+                "dette": -2
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c04_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "La nuit de l'attaque",
+    "text": "Vendredi, 21 h 40. Une attaque coordonnée frappe {capitale} : une salle de spectacle et deux terrasses de café. Le bilan provisoire est lourd, des dizaines de blessés sont en urgence absolue. Deux assaillants ont été neutralisés, un troisième est en fuite. Tu dois parler au pays dans l'heure.",
+    "choices": [
+      {
+        "label": "Déclarer l'état d'urgence sur tout le territoire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Perquisitions sans juge, assignations à résidence, interdictions de rassemblement : l'État se donne tous les moyens. Le pays, sidéré, approuve massivement.",
+            "effects": {
+              "stress": 10,
+              "happiness": -5
+            },
+            "pol": {
+              "popularite": 6,
+              "pays": {
+                "securite": 6,
+                "moral": -6
+              }
+            },
+            "suite": "cri_c04_2a"
+          }
+        ]
+      },
+      {
+        "label": "Parler au pays sans mesures d'exception",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu dis la douleur, la détermination, et ta confiance dans la police et la justice. Une partie du pays salue ton sang-froid, une autre te trouve en dessous de l'événement.",
+            "effects": {
+              "stress": 10,
+              "happiness": -5
+            },
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "retraites": -3,
+                "jeunes": 3
+              },
+              "pays": {
+                "moral": -4
+              }
+            },
+            "suite": "cri_c04_2b"
+          }
+        ]
+      },
+      {
+        "label": "Fermer les frontières et déployer l'armée dans les rues",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des soldats en armes patrouillent devant les gares et les écoles. Rassurant pour certains, glaçant pour d'autres. L'enquête, elle, continue.",
+            "effects": {
+              "stress": 10,
+              "happiness": -5
+            },
+            "pol": {
+              "popularite": 5,
+              "tension": 4,
+              "pays": {
+                "securite": 5,
+                "croissance": -0.2,
+                "moral": -5
+              }
+            },
+            "suite": "cri_c04_2a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c04_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La traque sous état d'urgence",
+    "text": "En une semaine, des centaines de perquisitions administratives ont eu lieu. Elles ont permis de saisir des armes, mais un reportage montre une famille sans aucun lien avec l'enquête dont la porte a été enfoncée à 5 heures du matin, devant des enfants terrifiés. Le fugitif court toujours.",
+    "choices": [
+      {
+        "label": "Étendre les pouvoirs : perquisitions de nuit et accès élargi aux données",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Les services obtiennent ce qu'ils demandaient. Le fugitif est arrêté dix jours plus tard. Les défenseurs des libertés parlent d'un « basculement », et les erreurs se multiplient.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "jeunes": -5,
+                "retraites": 4
+              },
+              "pays": {
+                "securite": 6,
+                "moral": -2
+              }
+            },
+            "suite": "cri_c04_3"
+          },
+          {
+            "chance": 1,
+            "text": "Malgré les nouveaux pouvoirs, le fugitif passe entre les mailles. L'opinion commence à se demander à quoi servent tant de mesures d'exception.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -4,
+              "segments": {
+                "jeunes": -5
+              },
+              "pays": {
+                "securite": 2,
+                "moral": -4
+              }
+            },
+            "suite": "cri_c04_3"
+          }
+        ]
+      },
+      {
+        "label": "Recentrer l'enquête sous l'autorité des juges",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les perquisitions de masse cessent, les enquêteurs se concentrent sur les réseaux. Le fugitif est localisé puis interpellé sans un coup de feu.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "jeunes": 3
+              },
+              "pays": {
+                "securite": 4,
+                "moral": 3
+              }
+            },
+            "suite": "cri_c04_3"
+          }
+        ]
+      },
+      {
+        "label": "Présenter des excuses à la famille et créer un contrôle parlementaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu reconnais l'erreur publiquement et confies le contrôle de l'état d'urgence à une commission {du_parlement}. Les libertés respirent, l'opposition crie au laxisme.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 1,
+              "majorite": 2,
+              "segments": {
+                "jeunes": 4,
+                "retraites": -3
+              },
+              "pays": {
+                "securite": 2
+              }
+            },
+            "suite": "cri_c04_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c04_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'immeuble encerclé",
+    "text": "Quatre jours après l'attaque, le fugitif est localisé dans un appartement d'un immeuble résidentiel. Il est armé. Des dizaines de familles vivent dans les étages. Le chef de l'unité d'intervention attend ton feu vert, l'opposition t'accuse déjà de mollesse.",
+    "choices": [
+      {
+        "label": "Donner l'assaut immédiatement",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "L'assaut dure quatre minutes. Le fugitif est tué, un policier grièvement blessé, aucun habitant touché. Le pays respire.",
+            "effects": {
+              "stress": 9
+            },
+            "pol": {
+              "popularite": 7,
+              "pays": {
+                "securite": 6,
+                "moral": 5
+              }
+            },
+            "suite": "cri_c04_3"
+          },
+          {
+            "chance": 1,
+            "text": "L'assaut tourne mal : un voisin est tué par une balle perdue. Le fugitif est neutralisé, mais l'opération est entachée.",
+            "effects": {
+              "stress": 10,
+              "happiness": -5
+            },
+            "pol": {
+              "popularite": -4,
+              "casseroles": 4,
+              "pays": {
+                "securite": 4,
+                "moral": -4
+              }
+            },
+            "suite": "cri_c04_3"
+          }
+        ]
+      },
+      {
+        "label": "Évacuer l'immeuble étage par étage avant d'intervenir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Huit heures d'évacuation silencieuse. Le fugitif, isolé, finit par se rendre. Il sera jugé. Certains auraient voulu une image plus martiale. Le pays, lui, aura un procès.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "jeunes": 3
+              },
+              "pays": {
+                "securite": 5,
+                "moral": 4
+              }
+            },
+            "suite": "cri_c04_3"
+          }
+        ]
+      },
+      {
+        "label": "Tenter une négociation pour obtenir sa reddition",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Après une nuit de dialogue, il se rend. Le pays aura un procès, des réponses, peut-être. L'opposition ironise sur ta « patience ».",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 2,
+              "pays": {
+                "securite": 4,
+                "moral": 2
+              }
+            },
+            "suite": "cri_c04_3"
+          },
+          {
+            "chance": 1,
+            "text": "La négociation échoue : il ouvre le feu sur les policiers avant d'être abattu. Deux agents sont blessés. On te reproche d'avoir attendu.",
+            "effects": {
+              "stress": 10
+            },
+            "pol": {
+              "popularite": -5,
+              "pays": {
+                "securite": 2,
+                "moral": -3
+              }
+            },
+            "suite": "cri_c04_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c04_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La loi d'après",
+    "text": "L'émotion appelle une loi. Tes conseillers en proposent plusieurs versions : inscrire les mesures d'exception dans le droit commun, autoriser la surveillance automatisée des communications, ou au contraire renforcer les moyens du renseignement et de la justice sans toucher aux libertés. Le texte doit partir {au_parlement} dans quinze jours.",
+    "choices": [
+      {
+        "label": "Une loi d'exception permanente",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les pouvoirs de l'état d'urgence deviennent ordinaires. Le texte passe largement. Des juristes rappellent qu'une loi votée pour l'ennemi d'aujourd'hui servira aussi au pouvoir de demain.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "retraites": 5,
+                "jeunes": -6
+              },
+              "pays": {
+                "securite": 6
+              }
+            },
+            "suite": "cri_c04_4"
+          }
+        ]
+      },
+      {
+        "label": "Une loi équilibrée, chaque mesure sous contrôle d'un juge",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La loi renforce la surveillance mais impose l'accord d'un juge pour chaque mesure. Personne n'est pleinement satisfait, ce qui est souvent bon signe.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 2,
+              "majorite": 2,
+              "pays": {
+                "securite": 4
+              }
+            },
+            "suite": "cri_c04_4"
+          }
+        ]
+      },
+      {
+        "label": "Pas de loi nouvelle, mais des moyens humains pour le renseignement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Mille enquêteurs et analystes de plus, des tribunaux spécialisés renforcés. Moins spectaculaire qu'une loi, plus coûteux, peut-être plus utile.",
+            "effects": {
+              "stress": 3
+            },
+            "pol": {
+              "popularite": -1,
+              "segments": {
+                "fonctionnaires": 4
+              },
+              "pays": {
+                "dette": 2,
+                "securite": 4
+              }
+            },
+            "suite": "cri_c04_4"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c04_4",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'hommage",
+    "text": "La cérémonie nationale en mémoire des victimes a lieu dans la cour d'un bâtiment officiel. Les familles sont là. L'une d'elles révèle à la presse que l'un des assaillants était connu et surveillé, puis que la surveillance avait été levée faute d'effectifs. Elles demandent la vérité.",
+    "choices": [
+      {
+        "label": "Ouvrir une commission d'enquête indépendante sur les failles",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La commission documentera des erreurs, des manques de moyens et des alertes ignorées, dont certaines sous ton autorité. Bilan : les familles obtiennent la vérité, toi quelques semaines difficiles, et le renseignement des réformes.",
+            "effects": {
+              "stress": 2,
+              "happiness": 1
+            },
+            "pol": {
+              "popularite": 4,
+              "casseroles": 3,
+              "pays": {
+                "securite": 3,
+                "moral": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Créer un fonds d'indemnisation et un accompagnement à vie des victimes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Soins, aides, suivi psychologique : l'État prend en charge les blessés et les proches. Bilan : un geste digne et durable, même si la question des failles reste ouverte.",
+            "effects": {
+              "stress": -3,
+              "happiness": 2
+            },
+            "pol": {
+              "popularite": 5,
+              "pays": {
+                "dette": 1,
+                "moral": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Invoquer le secret défense sur le dossier du renseignement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses de rendre publiques les notes de surveillance. Bilan : les services sont protégés, les familles se sentent trahies, et la presse ne lâchera pas l'affaire.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": -6,
+              "casseroles": 6,
+              "segments": {
+                "jeunes": -3
+              },
+              "pays": {
+                "moral": -3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Prononcer un discours d'unité et laisser la justice faire son travail",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton discours est sobre, sans slogan. Bilan : le pays se rassemble un moment, les familles attendent le procès, et la vie reprend dans les terrasses de {capitale}.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 3,
+              "pays": {
+                "moral": 5
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c05_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "Les écoutes",
+    "text": "Un journal d'investigation publie à la une : depuis deux ans, un service de renseignement a placé sur écoute des journalistes, des juges et des responsables de l'opposition, sans aucune autorisation légale. Les demandes seraient parties d'un bureau proche du sommet de l'État. L'article évoque aussi des fonds en liquide d'origine inconnue. Tous les regards se tournent vers toi.",
+    "choices": [
+      {
+        "label": "Nier en bloc et dénoncer une manipulation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu parles d'« officine » et de « boules puantes ». Ta base serre les rangs. Le journal, lui, annonce calmement une suite pour la semaine prochaine.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -3,
+              "casseroles": 6,
+              "segments": {
+                "jeunes": -3
+              }
+            },
+            "suite": "cri_c05_2a"
+          }
+        ]
+      },
+      {
+        "label": "Reconnaître la gravité des faits et ordonner une enquête interne",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu promets que « toute la lumière sera faite ». La presse salue le ton, l'opposition attend de voir. Tes collaborateurs, eux, regardent leurs chaussures.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 2,
+              "casseroles": 3
+            },
+            "suite": "cri_c05_2b"
+          }
+        ]
+      },
+      {
+        "label": "Limoger sur-le-champ le directeur du service",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le directeur est remercié dans l'heure. Fusible ou coupable ? Lui-même laisse entendre qu'il n'a fait qu'obéir, et que d'autres le savent.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 1,
+              "casseroles": 4,
+              "influence": -2
+            },
+            "suite": "cri_c05_2b"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c05_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les enregistrements",
+    "text": "Le journal publie la suite : des enregistrements où l'on entend un de tes plus proches collaborateurs commander des écoutes, puis évoquer « les enveloppes » qui ont financé une partie de ta dernière campagne. Ton démenti de la semaine dernière tourne en boucle à côté. Le parquet a ouvert une enquête.",
+    "choices": [
+      {
+        "label": "Sacrifier ton collaborateur et jurer que tu ne savais rien",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Il démissionne en te jetant un regard que tu n'oublieras pas. L'opinion n'est qu'à moitié convaincue, et lui a désormais beaucoup de raisons de parler.",
+            "effects": {
+              "stress": 8,
+              "happiness": -3
+            },
+            "pol": {
+              "popularite": -3,
+              "casseroles": 5
+            },
+            "suite": "cri_c05_3"
+          }
+        ]
+      },
+      {
+        "label": "Invoquer le secret défense sur les activités du service",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le secret défense bloque une partie de l'enquête. Juridiquement, c'est possible. Politiquement, cela ressemble exactement à ce que tu prétends ne pas être.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -7,
+              "casseroles": 8,
+              "segments": {
+                "jeunes": -5
+              }
+            },
+            "suite": "cri_c05_3"
+          }
+        ]
+      },
+      {
+        "label": "Attaquer les juges et le journal pour atteinte à la sûreté de l'État",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fais convoquer les journalistes par la police. Le monde entier en parle, et pas en bien. Des milliers de personnes manifestent pour la liberté de la presse.",
+            "effects": {
+              "stress": 9
+            },
+            "pol": {
+              "popularite": -10,
+              "mobilisation": 10,
+              "casseroles": 8,
+              "influenceMondiale": -5,
+              "relations": -3
+            },
+            "suite": "cri_c05_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c05_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le rapport de l'inspection",
+    "text": "Le rapport d'enquête interne est sur ton bureau, tamponné « confidentiel ». Il est accablant : ton directeur de cabinet a validé les écoutes, et un trésorier de ton parti a fait transiter des fonds en liquide par une société écran. Personne d'autre que toi et trois inspecteurs ne l'a encore lu.",
+    "choices": [
+      {
+        "label": "Transmettre l'intégralité du rapport à la justice",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le rapport part chez le procureur le soir même. Ton directeur de cabinet est mis en examen. Ton parti hurle à la trahison, mais personne ne pourra t'accuser d'avoir couvert.",
+            "effects": {
+              "stress": 7,
+              "happiness": -2
+            },
+            "pol": {
+              "popularite": 5,
+              "majorite": -4,
+              "casseroles": -4,
+              "segments": {
+                "jeunes": 3
+              }
+            },
+            "suite": "cri_c05_3"
+          }
+        ]
+      },
+      {
+        "label": "Enterrer le rapport et négocier des départs discrets",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les intéressés démissionnent pour « raisons personnelles ». Pendant deux semaines, tout semble calme. Puis un inspecteur transmet une copie du rapport à la presse.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -8,
+              "casseroles": 10
+            },
+            "suite": "cri_c05_3"
+          }
+        ]
+      },
+      {
+        "label": "Publier une version caviardée « pour protéger l'enquête »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La version publiée tient en douze pages dont huit noircies. Le compromis ne satisfait personne et alimente toutes les hypothèses.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -3,
+              "casseroles": 5
+            },
+            "suite": "cri_c05_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c05_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La commission d'enquête",
+    "text": "Une commission d'enquête {du_parlement} te convoque sous serment. Une motion de défiance est en préparation et tes propres alliés comptent les voix. Les caméras seront là, les familles des journalistes écoutés aussi. Ce qui se dira dans cette salle restera.",
+    "choices": [
+      {
+        "label": "Témoigner sous serment et tout dire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Trois heures d'audition. Tu reconnais des fautes d'organisation, tu nies toute connaissance des enveloppes, et tu réponds à tout. Bilan : ta parole est abîmée mais debout, et la motion échoue de justesse.",
+            "effects": {
+              "stress": 6,
+              "health": -2
+            },
+            "pol": {
+              "popularite": 3,
+              "majorite": -2,
+              "casseroles": -3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Refuser de comparaître au nom de la séparation des pouvoirs",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fais valoir que ta fonction ne t'oblige pas à répondre. C'est juridiquement défendable. Bilan : la motion échoue, mais l'idée que tu as quelque chose à cacher s'installe pour de bon.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": -6,
+              "majorite": -3,
+              "casseroles": 6
+            }
+          }
+        ]
+      },
+      {
+        "label": "Proposer une grande loi sur le contrôle du renseignement et le financement politique",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu transformes l'audition en programme : autorité indépendante, plafonds stricts, traçabilité des fonds. Bilan : l'opposition dénonce une diversion, l'opinion retient que tu as au moins tiré une leçon.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 4,
+              "majorite": 2,
+              "casseroles": -5,
+              "influence": 3
+            }
+          }
+        ]
+      },
+      {
+        "label": "Remettre ta démission pour protéger les institutions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu annonces ta démission en direct, d'une voix calme. Bilan : le scandale s'arrête avec toi, ta carrière aussi, du moins pour un temps.",
+            "effects": {
+              "stress": -6,
+              "happiness": -8
+            },
+            "pol": {
+              "popularite": 8,
+              "casseroles": -10,
+              "finMandat": "Démission après le scandale des écoutes"
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c06_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "Le virus",
+    "text": "Un nouveau virus respiratoire se propage à grande vitesse. Les hôpitaux de deux régions sont déjà saturés, les morts se comptent chaque jour par dizaines, surtout chez les plus âgés. Les épidémiologistes réclament des mesures immédiates, les commerçants supplient qu'on ne ferme rien.",
+    "choices": [
+      {
+        "label": "Confiner tout le pays dès ce soir",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Rues désertes, écoles fermées, applaudissements aux fenêtres pour les soignants. La courbe ralentit, l'économie s'arrête net.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "retraites": 6,
+                "patrons": -8
+              },
+              "pays": {
+                "croissance": -1.5,
+                "securite": 2,
+                "moral": -6
+              }
+            },
+            "suite": "cri_c06_2a"
+          }
+        ]
+      },
+      {
+        "label": "Mesures ciblées : masques, jauges, télétravail",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le pays continue de tourner, masqué. Les épidémiologistes jugent que c'est trop peu, les commerçants que c'est déjà beaucoup.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 2,
+              "segments": {
+                "patrons": 3
+              },
+              "pays": {
+                "croissance": -0.4,
+                "moral": -2
+              }
+            },
+            "suite": "cri_c06_2b"
+          }
+        ]
+      },
+      {
+        "label": "Ne rien imposer et en appeler à la responsabilité de chacun",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu fais confiance aux citoyens. Le virus, lui, ne fait confiance à personne. Les admissions en réanimation doublent en dix jours.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -4,
+              "segments": {
+                "retraites": -6,
+                "jeunes": 3,
+                "patrons": 4
+              },
+              "pays": {
+                "moral": -4
+              }
+            },
+            "suite": "cri_c06_2b"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c06_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le pays sous cloche",
+    "text": "Trois semaines de confinement. La courbe baisse enfin, mais les petits commerces sombrent, les signalements de violences conjugales explosent et des milliers d'élèves ont décroché. Les médecins demandent deux semaines de plus, les maires réclament de rouvrir.",
+    "choices": [
+      {
+        "label": "Prolonger le confinement de deux semaines",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La vague est brisée. Les soignants respirent. Le reste du pays, un peu moins : la lassitude devient colère dans certains quartiers.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -2,
+              "mobilisation": 6,
+              "segments": {
+                "retraites": 4,
+                "jeunes": -6
+              },
+              "pays": {
+                "croissance": -0.6,
+                "securite": 1,
+                "moral": -4
+              }
+            },
+            "suite": "cri_c06_3"
+          }
+        ]
+      },
+      {
+        "label": "Déconfiner progressivement, région par région",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Le calendrier est complexe, les règles changent d'une ville à l'autre. Mais le pays redémarre sans rebond majeur.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "patrons": 4
+              },
+              "pays": {
+                "croissance": 0.4,
+                "moral": 4
+              }
+            },
+            "suite": "cri_c06_3"
+          },
+          {
+            "chance": 1,
+            "text": "Le déconfinement est trop rapide dans deux régions. Les hôpitaux se remplissent à nouveau.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -4,
+              "pays": {
+                "moral": -4
+              }
+            },
+            "suite": "cri_c06_3"
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir les vannes : chômage partiel et aides sans limite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "« Coûte que coûte. » Les entreprises tiennent, les salariés aussi. La dette, elle, fait un bond que l'on paiera pendant des années.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 6,
+              "mobilisation": -6,
+              "segments": {
+                "patrons": 6
+              },
+              "pays": {
+                "dette": 8,
+                "chomage": -0.6,
+                "moral": 4
+              }
+            },
+            "suite": "cri_c06_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c06_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les lits qui manquent",
+    "text": "La vague a submergé les hôpitaux. Dans plusieurs services, les médecins doivent choisir quels patients iront en réanimation. Un chef de service craque en direct à la télévision. Il faut agir maintenant, quoi qu'on ait décidé avant.",
+    "choices": [
+      {
+        "label": "Confiner enfin, et tout de suite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le confinement tardif finit par casser la courbe, mais le retard se compte en vies. L'opposition parle de « semaines perdues ».",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -3,
+              "casseroles": 3,
+              "segments": {
+                "patrons": -5
+              },
+              "pays": {
+                "croissance": -1.2,
+                "moral": -5
+              }
+            },
+            "suite": "cri_c06_3"
+          }
+        ]
+      },
+      {
+        "label": "Transférer les patients par trains médicalisés vers les régions épargnées",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des trains à grande vitesse transformés en services de réanimation traversent le pays. Une prouesse logistique qui soulage les hôpitaux et redonne un peu de fierté.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "fonctionnaires": 4
+              },
+              "pays": {
+                "dette": 1,
+                "moral": 4
+              }
+            },
+            "suite": "cri_c06_3"
+          }
+        ]
+      },
+      {
+        "label": "Déprogrammer toutes les opérations non urgentes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des lits se libèrent. Les cancers non dépistés et les opérations reportées, on en mesurera le coût plus tard, dans le silence des statistiques.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -1,
+              "segments": {
+                "retraites": -3
+              },
+              "pays": {
+                "moral": -2
+              }
+            },
+            "suite": "cri_c06_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c06_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les premières doses",
+    "text": "Un vaccin est disponible, mais les doses arrivent au compte-gouttes. Les plus âgés ont peur, les plus jeunes s'impatientent, une partie du pays se méfie. Faut-il obliger, inciter, ou laisser chacun choisir ?",
+    "choices": [
+      {
+        "label": "Vacciner d'abord les plus fragiles et les soignants, sans obligation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La priorité est claire et largement acceptée. La campagne avance lentement mais sans heurts.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "retraites": 5
+              },
+              "pays": {
+                "moral": 3
+              }
+            },
+            "suite": "cri_c06_4"
+          }
+        ]
+      },
+      {
+        "label": "Instaurer un pass sanitaire pour les lieux publics",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les rendez-vous de vaccination explosent dans la nuit. Les manifestations aussi : chaque samedi, des milliers de personnes défilent contre un « pays à deux vitesses ».",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -2,
+              "mobilisation": 10,
+              "segments": {
+                "jeunes": -3,
+                "retraites": 4
+              },
+              "pays": {
+                "securite": 2,
+                "croissance": 0.3
+              }
+            },
+            "suite": "cri_c06_4"
+          }
+        ]
+      },
+      {
+        "label": "Rendre la vaccination obligatoire pour tous les adultes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le taux de vaccination grimpe. La contestation se radicalise, et quelques soignants suspendus deviennent des symboles.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -5,
+              "mobilisation": 12,
+              "segments": {
+                "jeunes": -5,
+                "fonctionnaires": -3
+              },
+              "pays": {
+                "securite": 3
+              }
+            },
+            "suite": "cri_c06_4"
+          }
+        ]
+      },
+      {
+        "label": "Acheter des doses supplémentaires au prix fort sur le marché mondial",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les doses arrivent plus vite qu'ailleurs, ce qui ne passe pas inaperçu à l'étranger. Des pays plus pauvres accusent les nations riches de tout rafler.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 3,
+              "influenceMondiale": -3,
+              "relations": -3,
+              "pays": {
+                "dette": 2,
+                "moral": 3
+              }
+            },
+            "suite": "cri_c06_4"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c06_4",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "L'heure des comptes",
+    "text": "L'épidémie reflue. Le bilan est lourd. Un rapport révèle que les stocks stratégiques de masques avaient été détruits sans être renouvelés, il y a des années. Les soignants, épuisés, démissionnent en nombre. Le pays veut savoir ce qui a manqué et ce qui changera.",
+    "choices": [
+      {
+        "label": "Revaloriser massivement les salaires des soignants",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Hausse de salaires, embauches, primes de nuit. Bilan : l'hôpital retrouve un peu d'attractivité, la dette prend encore quelques points, et les soignants applaudissent enfin quelque chose de concret.",
+            "effects": {
+              "stress": -4,
+              "happiness": 2
+            },
+            "pol": {
+              "popularite": 6,
+              "segments": {
+                "fonctionnaires": 8
+              },
+              "pays": {
+                "dette": 4,
+                "moral": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Créer une commission d'enquête sur la gestion de crise",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La commission épinglera tout le monde, toi compris, pour les retards et les messages contradictoires. Bilan : la vérité est dite, la confiance revient lentement.",
+            "effects": {
+              "stress": -1
+            },
+            "pol": {
+              "popularite": 2,
+              "casseroles": 4,
+              "pays": {
+                "moral": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Constituer des stocks stratégiques et relocaliser la production",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Masques, respirateurs, principes actifs : le pays produira lui-même l'essentiel. Bilan : des usines rouvrent, la prochaine crise trouvera des étagères pleines.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "ruraux": 3,
+                "patrons": 2
+              },
+              "pays": {
+                "dette": 3,
+                "chomage": -0.3,
+                "securite": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Tourner la page et parler de relance",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu veux regarder devant. Bilan : l'économie repart, mais les familles endeuillées et les soignants ont le sentiment qu'on les a oubliés un peu vite.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "fonctionnaires": -5,
+                "patrons": 4
+              },
+              "pays": {
+                "croissance": 0.6,
+                "moral": -2
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c07_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "La vidéo",
+    "text": "Un adolescent de 17 ans est mort lors d'un contrôle routier, touché par le tir d'un policier. La version officielle parle de légitime défense. Une vidéo filmée par une passante la contredit. Depuis, la nuit brûle : voitures incendiées, une annexe de mairie en flammes, des affrontements dans plusieurs quartiers.",
+    "choices": [
+      {
+        "label": "Dire publiquement que la vidéo est accablante et aller voir la famille",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu te rends chez la mère du jeune homme, sans caméras. Le geste apaise une partie du quartier. Les syndicats de police, eux, se sentent lâchés.",
+            "effects": {
+              "stress": 7,
+              "happiness": -3
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "jeunes": 6,
+                "urbains": 3
+              },
+              "pays": {
+                "securite": -1
+              }
+            },
+            "suite": "cri_c07_2b"
+          }
+        ]
+      },
+      {
+        "label": "Appeler au calme et rappeler la présomption d'innocence du policier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton message se veut équilibré. Dans les quartiers, il est entendu comme une défense de l'uniforme. La deuxième nuit commence plus tôt que la première.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -2,
+              "mobilisation": 8,
+              "segments": {
+                "jeunes": -6,
+                "retraites": 3
+              },
+              "pays": {
+                "securite": -3
+              }
+            },
+            "suite": "cri_c07_2a"
+          }
+        ]
+      },
+      {
+        "label": "Instaurer un couvre-feu et réclamer des renforts",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Couvre-feu dès 21 heures, unités mobiles en renfort. Ceux qui ont peur pour leur voiture applaudissent, ceux qui pleurent un ami se sentent assiégés.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": 2,
+              "mobilisation": 6,
+              "segments": {
+                "jeunes": -6,
+                "retraites": 5
+              },
+              "pays": {
+                "securite": 2
+              }
+            },
+            "suite": "cri_c07_2a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c07_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La deuxième nuit",
+    "text": "Les émeutes s'étendent. Une école et une médiathèque ont brûlé, un pompier est grièvement blessé, des commerçants veillent armés de battes devant leurs vitrines. Une cagnotte de soutien au policier dépasse le million. Le pays se regarde en chiens de faïence.",
+    "choices": [
+      {
+        "label": "Fermeté totale : interpellations massives et comparutions immédiates",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des centaines de jeunes sont interpellés, beaucoup mineurs, jugés en quelques jours. Le calme revient en une semaine. La rancœur, elle, est stockée pour plus tard.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 3,
+              "mobilisation": -4,
+              "segments": {
+                "jeunes": -8,
+                "retraites": 6
+              },
+              "pays": {
+                "securite": 4,
+                "moral": -3
+              }
+            },
+            "suite": "cri_c07_3"
+          }
+        ]
+      },
+      {
+        "label": "Envoyer médiateurs, éducateurs et élus locaux dans les quartiers",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Des grands frères, des entraîneurs de foot, des responsables associatifs et des profs passent la nuit dehors. Les violences reculent quartier par quartier.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": 2,
+              "mobilisation": -8,
+              "segments": {
+                "jeunes": 4,
+                "retraites": -3
+              },
+              "pays": {
+                "securite": 2,
+                "moral": 2
+              }
+            },
+            "suite": "cri_c07_3"
+          },
+          {
+            "chance": 1,
+            "text": "Les médiateurs sont débordés dans deux quartiers. Un éducateur est blessé. L'opposition te reproche d'avoir « envoyé des travailleurs sociaux contre des cocktails Molotov ».",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -4,
+              "mobilisation": 4,
+              "pays": {
+                "securite": -2
+              }
+            },
+            "suite": "cri_c07_3"
+          }
+        ]
+      },
+      {
+        "label": "Demander à la famille de lancer un appel au calme",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La mère du jeune homme parle, la voix brisée : « Pas en son nom. » Les nuits suivantes sont plus calmes. Personne n'oublie que c'est elle, pas l'État, qui a éteint l'incendie.",
+            "effects": {
+              "stress": 5,
+              "happiness": -2
+            },
+            "pol": {
+              "popularite": 1,
+              "mobilisation": -10,
+              "segments": {
+                "jeunes": 2
+              },
+              "pays": {
+                "securite": 3,
+                "moral": 2
+              }
+            },
+            "suite": "cri_c07_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c07_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La colère des uniformes",
+    "text": "Tes mots ont apaisé une partie des quartiers, mais les policiers manifestent la nuit en voiture de service, gyrophares allumés. Leurs syndicats menacent d'une grève du zèle. Dans deux villes, les émeutes continuent malgré tout.",
+    "choices": [
+      {
+        "label": "Recevoir les syndicats de police et rappeler ton soutien aux forces de l'ordre",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu dis ta confiance dans l'immense majorité des policiers. Les manifestations nocturnes cessent. Les quartiers, eux, se demandent si tu as déjà changé de discours.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 2,
+              "segments": {
+                "jeunes": -3,
+                "retraites": 3
+              },
+              "pays": {
+                "securite": 3
+              }
+            },
+            "suite": "cri_c07_3"
+          }
+        ]
+      },
+      {
+        "label": "Annoncer caméras-piétons obligatoires et une inspection vraiment indépendante",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les syndicats de police dénoncent la défiance, les associations saluent un tournant. Les contrôles seront filmés, les plaintes examinées hors de la hiérarchie policière.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 1,
+              "mobilisation": -4,
+              "segments": {
+                "jeunes": 6,
+                "fonctionnaires": -4
+              },
+              "pays": {
+                "securite": 1,
+                "dette": 1
+              }
+            },
+            "suite": "cri_c07_3"
+          }
+        ]
+      },
+      {
+        "label": "Laisser les syndicats manifester et ne rien dire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton silence est lu comme de la faiblesse des deux côtés. Les policiers ralentissent le travail, et les émeutiers profitent du flottement.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -5,
+              "mobilisation": 4,
+              "pays": {
+                "securite": -4,
+                "moral": -3
+              }
+            },
+            "suite": "cri_c07_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c07_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Après les cendres",
+    "text": "Le calme est revenu. Il reste des écoles calcinées, des commerces ruinés, des familles d'émeutiers mineurs convoquées au tribunal et un procès du policier qui prendra des années. Les quartiers attendent de savoir si l'État ne se montre que les soirs d'incendie.",
+    "choices": [
+      {
+        "label": "Lancer un plan massif pour les quartiers : écoles, emplois, services publics",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des moyens inédits, sur dix ans. Bilan : les éditorialistes parlent de « prime à l'émeute », les habitants de rattrapage. Les résultats se mesureront dans une génération.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 1,
+              "segments": {
+                "jeunes": 6,
+                "urbains": 4,
+                "ruraux": -4
+              },
+              "pays": {
+                "dette": 4,
+                "chomage": -0.2,
+                "moral": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Suspendre les aides sociales des familles d'émeutiers condamnés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La mesure plaît à une large partie du pays. Bilan : les juristes doutent de sa légalité, et des frères et sœurs qui n'ont rien fait paient pour les autres.",
+            "effects": {
+              "stress": -1
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "retraites": 6,
+                "jeunes": -8
+              },
+              "pays": {
+                "securite": 2,
+                "moral": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Réformer les contrôles d'identité avec un récépissé",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Chaque contrôle donnera lieu à un justificatif. Bilan : les contrôles au faciès deviennent mesurables, les syndicats de police râlent, et la confiance commence peut-être à se reconstruire.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": -1,
+              "segments": {
+                "jeunes": 5,
+                "fonctionnaires": -3
+              },
+              "pays": {
+                "securite": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Reconstruire à l'identique et passer à autre chose",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les bâtiments sont rebâtis, rien d'autre ne change. Bilan : la paix revient, la même que celle d'avant, avec les mêmes braises sous la cendre.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": -1,
+              "mobilisation": 3,
+              "pays": {
+                "dette": 1
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c08_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "Le grand froid",
+    "text": "Une vague de froid s'installe pour dix jours et une partie des importations de gaz est interrompue. Le gestionnaire du réseau électrique prévient : sans décision d'ici 48 heures, ce seront des coupures non maîtrisées, en plein hiver, dans tout le pays.",
+    "choices": [
+      {
+        "label": "Organiser des délestages tournants planifiés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Deux heures de coupure par quartier, annoncées à l'avance. Les hôpitaux sont protégés. Le pays apprend à vivre à la bougie.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -3,
+              "pays": {
+                "croissance": -0.3,
+                "moral": -4
+              }
+            },
+            "suite": "cri_c08_2a"
+          }
+        ]
+      },
+      {
+        "label": "Rallumer les vieilles centrales et acheter à n'importe quel prix",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les centrales au charbon redémarrent et le gaz est acheté sur le marché au quintuple du prix habituel. Les lumières restent allumées. La facture, elle, arrive.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 2,
+              "segments": {
+                "jeunes": -3
+              },
+              "pays": {
+                "dette": 4
+              }
+            },
+            "suite": "cri_c08_2b"
+          }
+        ]
+      },
+      {
+        "label": "Appeler à la sobriété et fermer les bâtiments publics non essentiels",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Thermostats baissés, vitrines éteintes, administrations fermées le vendredi. La consommation baisse un peu, pas assez.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "fonctionnaires": -3
+              },
+              "pays": {
+                "croissance": -0.2
+              }
+            },
+            "suite": "cri_c08_2a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c08_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les nuits sans chauffage",
+    "text": "Les délestages s'allongent. Un retraité est retrouvé mort d'hypothermie dans son appartement. Les industriels exigent d'être exemptés de coupures pour éviter le chômage technique, les associations demandent de protéger d'abord les foyers.",
+    "choices": [
+      {
+        "label": "Protéger les foyers et couper les usines",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les ménages retrouvent le chauffage, les chaînes de production s'arrêtent. Des dizaines de milliers de salariés passent au chômage partiel.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "retraites": 6,
+                "patrons": -8
+              },
+              "pays": {
+                "chomage": 0.4,
+                "croissance": -0.5,
+                "moral": 2
+              }
+            },
+            "suite": "cri_c08_3"
+          }
+        ]
+      },
+      {
+        "label": "Protéger l'industrie et maintenir les coupures chez les particuliers",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les usines tournent, les emplois sont sauvés. Les images de familles emmitouflées dans leur salon font la une pendant une semaine.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -6,
+              "segments": {
+                "retraites": -6,
+                "patrons": 6
+              },
+              "pays": {
+                "croissance": 0.2,
+                "moral": -5
+              }
+            },
+            "suite": "cri_c08_3"
+          }
+        ]
+      },
+      {
+        "label": "Ouvrir des centres de chaleur et envoyer des équipes chez les personnes isolées",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Gymnases chauffés, maraudes, appels aux personnes âgées. Le dispositif est modeste mais il sauve des vies et montre un État présent.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "retraites": 4
+              },
+              "pays": {
+                "dette": 1,
+                "moral": 3
+              }
+            },
+            "suite": "cri_c08_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c08_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La facture",
+    "text": "Le pays a passé l'hiver éclairé, mais les factures d'énergie des ménages ont doublé et celles des boulangers, des artisans et des hôpitaux ont triplé. Pendant ce temps, les fournisseurs d'énergie annoncent des bénéfices records.",
+    "choices": [
+      {
+        "label": "Bloquer les prix avec un bouclier tarifaire",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les factures sont gelées, l'État paie la différence. Les ménages respirent, la dette publique beaucoup moins.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 7,
+              "segments": {
+                "retraites": 5,
+                "ruraux": 4
+              },
+              "pays": {
+                "dette": 7,
+                "moral": 4
+              }
+            },
+            "suite": "cri_c08_3"
+          }
+        ]
+      },
+      {
+        "label": "Taxer les superprofits des énergéticiens pour aider les ménages",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La taxe exceptionnelle finance des chèques énergie. Les entreprises du secteur menacent de réduire leurs investissements.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 5,
+              "segments": {
+                "patrons": -6,
+                "urbains": 3
+              },
+              "pays": {
+                "dette": 1,
+                "moral": 3
+              }
+            },
+            "suite": "cri_c08_3"
+          }
+        ]
+      },
+      {
+        "label": "Laisser les prix refléter le marché",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses de creuser la dette. Des artisans mettent la clé sous la porte, des familles choisissent entre se chauffer et manger.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -8,
+              "mobilisation": 8,
+              "segments": {
+                "patrons": 3,
+                "retraites": -6,
+                "ruraux": -5
+              },
+              "pays": {
+                "chomage": 0.3,
+                "moral": -6
+              }
+            },
+            "suite": "cri_c08_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c08_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Préparer l'hiver suivant",
+    "text": "Le printemps est revenu, mais tout le monde sait que l'hiver prochain sera pire si rien ne change. Plusieurs options sont sur ton bureau, dont une offre d'approvisionnement à prix cassé venue {du_pays_cible}, avec qui les relations sont pourtant exécrables.",
+    "choices": [
+      {
+        "label": "Signer le contrat proposé à prix cassé",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le gaz arrivera en abondance et à bas prix, et les relations avec {pays_cible} se réchauffent d'un coup. Bilan : les factures baissent, mais le pays dépend désormais d'un fournisseur qui saura s'en souvenir à la prochaine crise.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 3,
+              "tension": -5,
+              "relationCible": 10,
+              "relationAllie": -5,
+              "segments": {
+                "retraites": 3
+              },
+              "pays": {
+                "dette": -2,
+                "securite": -2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un grand plan de production nationale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Nouvelles centrales, parcs renouvelables, stockage : des chantiers sur quinze ans. Bilan : rien ne changera cet hiver, mais le pays dépendra un jour beaucoup moins des autres.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 2,
+              "influenceMondiale": 2,
+              "segments": {
+                "ruraux": -2,
+                "patrons": 3
+              },
+              "pays": {
+                "dette": 5,
+                "chomage": -0.3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Financer un plan massif d'isolation des logements",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des millions de logements seront rénovés. Bilan : les factures baisseront durablement, les artisans croulent sous les commandes, et l'effet se fera sentir dans trois hivers.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "jeunes": 4,
+                "ruraux": 3
+              },
+              "pays": {
+                "dette": 4,
+                "chomage": -0.4,
+                "croissance": 0.2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Négocier un contrat plus cher mais sûr avec {pays_allie}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le gaz coûtera plus cher, mais il viendra d'un partenaire de confiance. Bilan : la sécurité d'approvisionnement a un prix, et tu as décidé de le payer.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 1,
+              "relationAllie": 8,
+              "pays": {
+                "dette": 2,
+                "securite": 2
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c09_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "Les écrans noirs",
+    "text": "Un rançongiciel a paralysé en une nuit les systèmes informatiques de trente hôpitaux. Plus de dossiers patients, plus d'imagerie, des blocs opératoires à l'arrêt, des urgences qui travaillent au papier et au stylo. Les pirates réclament quarante millions en cryptomonnaie sous 72 heures.",
+    "choices": [
+      {
+        "label": "Refuser catégoriquement de payer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu annonces que l'État ne cédera pas au chantage. Les experts approuvent, les soignants se préparent à des semaines de fonctionnement dégradé.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": 2,
+              "influenceMondiale": 2,
+              "pays": {
+                "securite": 1
+              }
+            },
+            "suite": "cri_c09_2a"
+          }
+        ]
+      },
+      {
+        "label": "Payer discrètement pour rétablir les soins au plus vite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La rançon est versée par un intermédiaire, sans communiqué. Les pirates envoient des clés de déchiffrement dans la nuit.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": 0,
+              "casseroles": 4,
+              "pays": {
+                "dette": 1
+              }
+            },
+            "suite": "cri_c09_2b"
+          }
+        ]
+      },
+      {
+        "label": "Laisser chaque hôpital décider selon sa situation",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plusieurs directions d'hôpitaux, sous pression, paient en douce. D'autres refusent. L'État semble absent de sa propre crise.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -3,
+              "segments": {
+                "fonctionnaires": -3
+              }
+            },
+            "suite": "cri_c09_2b"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c09_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les données à vendre",
+    "text": "Faute de paiement, les pirates publient une première partie des données : diagnostics psychiatriques, séropositivités, interruptions de grossesse, avec noms et adresses. Une patiente transférée faute de scanner est morte pendant le trajet. Les familles demandent si le principe valait ce prix.",
+    "choices": [
+      {
+        "label": "Tenir bon et mobiliser les cyberdéfenseurs militaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les experts militaires reconstruisent les systèmes un à un et font retirer une partie des fichiers volés. Les hôpitaux redémarrent en trois semaines. Le principe tient, la douleur reste.",
+            "effects": {
+              "stress": 7,
+              "happiness": -3
+            },
+            "pol": {
+              "popularite": 2,
+              "influenceMondiale": 3,
+              "pays": {
+                "securite": 3,
+                "dette": 1
+              }
+            },
+            "suite": "cri_c09_3"
+          }
+        ]
+      },
+      {
+        "label": "Céder finalement et payer la rançon",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu paies après avoir juré de ne jamais le faire. Les données cessent de fuiter. Ta parole, elle, a fui avec elles.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -5,
+              "casseroles": 5,
+              "influenceMondiale": -3,
+              "pays": {
+                "dette": 1
+              }
+            },
+            "suite": "cri_c09_3"
+          }
+        ]
+      },
+      {
+        "label": "Créer un fonds d'indemnisation et une cellule d'aide aux patients exposés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Juristes, psychologues, ligne d'écoute : l'État accompagne les victimes de la fuite. Ça ne répare rien, mais ça montre que quelqu'un s'en soucie.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "dette": 1,
+                "moral": 2
+              }
+            },
+            "suite": "cri_c09_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c09_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les clés qui ne marchent pas",
+    "text": "Les clés de déchiffrement ne fonctionnent qu'à moitié : une partie des données est perdue à jamais. Un journal révèle qu'une rançon a été payée avec de l'argent public. Et trois autres groupes de pirates viennent de frapper des hôpitaux, flairant un pays qui paie.",
+    "choices": [
+      {
+        "label": "Assumer publiquement le paiement et en expliquer les raisons",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu expliques que des vies étaient en jeu. Certains comprennent, beaucoup te reprochent d'avoir financé le crime. Au moins, le mensonge s'arrête là.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -2,
+              "casseroles": -2,
+              "influenceMondiale": -2
+            },
+            "suite": "cri_c09_3"
+          }
+        ]
+      },
+      {
+        "label": "Démentir et accuser les hôpitaux d'avoir agi seuls",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les directeurs d'hôpitaux sortent les échanges de courriels. Le démenti tient trois jours.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -8,
+              "casseroles": 8,
+              "segments": {
+                "fonctionnaires": -6
+              }
+            },
+            "suite": "cri_c09_3"
+          }
+        ]
+      },
+      {
+        "label": "Interdire par la loi tout paiement de rançon par un service public",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plus aucun hôpital ne pourra payer. Le message aux pirates est clair, la responsabilité des directeurs aussi. La loi est votée en urgence.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 3,
+              "majorite": 1,
+              "influenceMondiale": 2,
+              "pays": {
+                "securite": 3
+              }
+            },
+            "suite": "cri_c09_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c09_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La signature",
+    "text": "Les services de renseignement ont remonté la piste. Le groupe de pirates opère depuis le territoire {du_pays_cible}, qui ferme les yeux, voire le protège. Les preuves sont solides mais pas publiques. La question n'est plus technique, elle est diplomatique.",
+    "choices": [
+      {
+        "label": "Accuser publiquement {pays_cible} et réclamer des sanctions",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu nommes le pays devant les caméras. Les relations se tendent brutalement et les alliés hésitent à suivre. Bilan : la vérité est dite, la riposte économique coûte cher, et les attaques suivantes viendront peut-être d'ailleurs.",
+            "effects": {
+              "stress": 4
+            },
+            "pol": {
+              "popularite": 4,
+              "tension": 10,
+              "influenceMondiale": 3,
+              "relationCible": -15,
+              "pays": {
+                "croissance": -0.1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ordonner une riposte cyber discrète",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les serveurs du groupe tombent en panne, mystérieusement. Personne ne revendique rien. Bilan : le groupe est démantelé pour un temps, et tu as franchi une ligne dont tu ne parleras jamais.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 1,
+              "tension": 6,
+              "relationCible": -6,
+              "pays": {
+                "securite": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rester discret et investir massivement dans la cybersécurité des hôpitaux",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Pas d'accusation, mais un plan de plusieurs milliards pour sécuriser chaque établissement. Bilan : la prochaine attaque trouvera porte close, et {pays_cible} n'aura payé aucun prix.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "fonctionnaires": 4
+              },
+              "pays": {
+                "dette": 3,
+                "securite": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Saisir les instances internationales avec un dossier commun aux alliés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Plusieurs pays victimes du même groupe se joignent à toi. Bilan : la démarche est lente, mais elle isole {pays_cible} sans te mettre seul en première ligne.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 2,
+              "tension": 3,
+              "influenceMondiale": 5,
+              "relationCible": -6,
+              "relationAllie": 6
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c10_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "Le nuage",
+    "text": "Une explosion a soufflé une usine chimique classée à haut risque, en bordure d'une ville de 80 000 habitants. Six ouvriers sont morts. Un épais nuage noir dérive vers les quartiers résidentiels, l'odeur est âcre, des habitants affluent aux urgences avec les yeux en feu. Personne ne sait encore exactement ce qui brûle.",
+    "choices": [
+      {
+        "label": "Ordonner le confinement de toute la population",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Sirènes, fenêtres fermées, écoles verrouillées. La population reste chez elle et attend des informations qui tardent à venir.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": 1,
+              "pays": {
+                "securite": 2
+              }
+            },
+            "suite": "cri_c10_2a"
+          }
+        ]
+      },
+      {
+        "label": "Évacuer tout le monde dans un rayon de dix kilomètres",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des dizaines de milliers de personnes prennent la route en même temps. C'est le chaos, mais personne ne respire le nuage.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 2,
+              "pays": {
+                "securite": 3,
+                "croissance": -0.1
+              }
+            },
+            "suite": "cri_c10_2b"
+          }
+        ]
+      },
+      {
+        "label": "Rassurer : « aucun danger avéré pour la population »",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ta déclaration est reprise partout. Deux heures plus tard, les pompiers mesurent des taux inquiétants. La phrase te collera à la peau.",
+            "effects": {
+              "stress": 7
+            },
+            "pol": {
+              "popularite": -6,
+              "casseroles": 5,
+              "pays": {
+                "moral": -3
+              }
+            },
+            "suite": "cri_c10_2a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c10_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les analyses",
+    "text": "Le nuage s'est dissipé, mais des suies grasses recouvrent les jardins, les toits et les aires de jeux. Les médecins voient affluer enfants et personnes âgées. L'industriel refuse de communiquer la liste exacte des produits stockés, invoquant le secret commercial. Les habitants veulent savoir ce qu'ils ont respiré.",
+    "choices": [
+      {
+        "label": "Faire saisir les documents de l'usine",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les inspecteurs repartent avec les registres. On découvre que l'usine stockait deux fois plus de produits que son autorisation ne le permettait.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 5,
+              "segments": {
+                "patrons": -5
+              },
+              "pays": {
+                "securite": 2
+              }
+            },
+            "suite": "cri_c10_3"
+          }
+        ]
+      },
+      {
+        "label": "Publier tous les résultats bruts, au fur et à mesure",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tableaux, cartes, mesures heure par heure : la transparence est totale, et parfois angoissante. Mais personne ne pourra dire qu'on lui a menti.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 4,
+              "casseroles": -2,
+              "pays": {
+                "moral": -1
+              }
+            },
+            "suite": "cri_c10_3"
+          }
+        ]
+      },
+      {
+        "label": "Attendre les résultats consolidés avant de communiquer",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Pendant dix jours, rien d'officiel. Les rumeurs remplissent le vide, des collectifs d'habitants font leurs propres prélèvements et les publient.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -5,
+              "mobilisation": 6,
+              "casseroles": 3,
+              "pays": {
+                "moral": -3
+              }
+            },
+            "suite": "cri_c10_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c10_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La zone d'exclusion",
+    "text": "L'évacuation a fonctionné, mais des milliers de familles vivent à l'hôtel ou chez des proches. Les agriculteurs des environs ne savent pas si leur lait et leurs légumes sont contaminés. Des commerçants réclament de rouvrir, des parents refusent de rentrer.",
+    "choices": [
+      {
+        "label": "Interdire la vente de tous les produits agricoles de la zone",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Lait déversé dans les champs, récoltes détruites, indemnisations promises. Les consommateurs sont protégés, les agriculteurs ruinés en attendant les chèques.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 2,
+              "segments": {
+                "ruraux": -6,
+                "urbains": 3
+              },
+              "pays": {
+                "dette": 2,
+                "securite": 3
+              }
+            },
+            "suite": "cri_c10_3"
+          }
+        ]
+      },
+      {
+        "label": "Autoriser un retour rapide des habitants",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les habitants rentrent après une semaine. Les mesures sont rassurantes, la confiance beaucoup moins : des familles gardent leurs fenêtres fermées tout l'été.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 1,
+              "segments": {
+                "patrons": 3
+              },
+              "pays": {
+                "croissance": 0.1,
+                "moral": -2
+              }
+            },
+            "suite": "cri_c10_3"
+          }
+        ]
+      },
+      {
+        "label": "Maintenir la zone d'exclusion jusqu'à la dépollution complète",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Six mois d'exil pour certaines familles. Les commerces de la zone ferment. La prudence a un coût, et ce sont les habitants qui le paient.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -3,
+              "segments": {
+                "ruraux": -3
+              },
+              "pays": {
+                "dette": 2,
+                "chomage": 0.1,
+                "securite": 4
+              }
+            },
+            "suite": "cri_c10_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c10_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre",
+      "maire",
+      "presidentRegion"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le sort de l'usine",
+    "text": "L'enquête est implacable : l'usine avait reçu plusieurs mises en demeure ignorées, et les contrôles avaient été espacés faute d'inspecteurs. Elle emploie 800 personnes, sans compter les sous-traitants. Les salariés veulent garder leur travail, les riverains ne veulent plus jamais revoir ce nuage.",
+    "choices": [
+      {
+        "label": "Fermer définitivement l'usine",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le site est fermé et sera dépollué. Bilan : les riverains respirent, 800 familles cherchent un emploi, et la ville perd son premier employeur.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 2,
+              "segments": {
+                "urbains": 4,
+                "patrons": -5
+              },
+              "pays": {
+                "chomage": 0.2,
+                "securite": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Autoriser la réouverture sous des conditions draconiennes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Stocks réduits, inspecteur permanent, sirènes modernisées. Bilan : les emplois sont sauvés, les riverains restent méfiants, et l'usine sera la plus surveillée du pays.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 1,
+              "segments": {
+                "patrons": 2
+              },
+              "pays": {
+                "securite": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Poursuivre les dirigeants et faire payer le groupe pour les victimes",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les dirigeants sont mis en examen et le groupe doit financer un fonds d'indemnisation. Bilan : justice est rendue aux familles, et les autres industriels comprennent le message.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 5,
+              "casseroles": -2,
+              "segments": {
+                "patrons": -6
+              },
+              "pays": {
+                "securite": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Recruter massivement des inspecteurs pour tous les sites à risque",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des centaines d'inspecteurs sont embauchés. Bilan : moins spectaculaire qu'un procès, mais les prochaines mises en demeure ne finiront plus au fond d'un tiroir.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "fonctionnaires": 4
+              },
+              "pays": {
+                "dette": 1,
+                "securite": 5
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c11_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "Vendredi noir",
+    "text": "L'une des plus grandes banques du pays, gavée de placements risqués, a perdu 45 % en bourse depuis lundi. Des files d'attente se forment devant ses agences, les autres banques ne lui prêtent plus. Son président t'appelle : sans l'État, elle ne rouvrira pas lundi. Des millions d'épargnants y ont leurs comptes.",
+    "choices": [
+      {
+        "label": "La sauver avec de l'argent public",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'État injecte des milliards dans la nuit de dimanche. Lundi, les guichets ouvrent normalement. Le pays n'a rien vu, ou presque.",
+            "effects": {
+              "stress": 8,
+              "health": -2
+            },
+            "pol": {
+              "popularite": -2,
+              "segments": {
+                "patrons": 4
+              },
+              "pays": {
+                "dette": 8
+              }
+            },
+            "suite": "cri_c11_2a"
+          }
+        ]
+      },
+      {
+        "label": "La laisser faire faillite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu refuses de faire payer le contribuable. Lundi, la banque est placée en liquidation et les marchés plongent.",
+            "effects": {
+              "stress": 9,
+              "health": -2
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "patrons": -6,
+                "jeunes": 3
+              },
+              "pays": {
+                "croissance": -0.5
+              }
+            },
+            "suite": "cri_c11_2b"
+          }
+        ]
+      },
+      {
+        "label": "Organiser son rachat par un concurrent, garanti par l'État",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Un week-end de négociations au finish. Un concurrent rachète la banque pour un euro symbolique, l'État garantit les pertes. Tout le monde respire, le contribuable est caution.",
+            "effects": {
+              "stress": 8,
+              "health": -3
+            },
+            "pol": {
+              "popularite": 0,
+              "segments": {
+                "patrons": 3
+              },
+              "pays": {
+                "dette": 4
+              }
+            },
+            "suite": "cri_c11_2a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c11_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Les bonus",
+    "text": "La banque est sauvée. Trois semaines plus tard, la presse révèle que ses dirigeants vont toucher des bonus et des indemnités de départ de plusieurs millions. Des manifestants installent des tentes devant le siège. On te demande si l'argent public a servi à payer ces chèques.",
+    "choices": [
+      {
+        "label": "Imposer des conditions : bonus annulés et entrée de l'État au capital",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'État devient actionnaire, les bonus sont annulés, les dirigeants remplacés. La finance grince, le pays applaudit.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 7,
+              "segments": {
+                "patrons": -6,
+                "jeunes": 4
+              },
+              "pays": {
+                "dette": -1
+              }
+            },
+            "suite": "cri_c11_3"
+          }
+        ]
+      },
+      {
+        "label": "Respecter les contrats signés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Juridiquement, tu n'as pas tort. Politiquement, la phrase « on ne change pas un contrat » devient un slogan contre toi.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": -8,
+              "mobilisation": 10,
+              "segments": {
+                "patrons": 4,
+                "jeunes": -5
+              }
+            },
+            "suite": "cri_c11_3"
+          }
+        ]
+      },
+      {
+        "label": "Saisir la justice sur la gestion des dirigeants",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Le parquet financier ouvre une enquête pour gestion déloyale. Les bonus sont gelés en attendant. C'est lent, mais c'est solide.",
+            "effects": {
+              "stress": 5
+            },
+            "pol": {
+              "popularite": 4,
+              "casseroles": -2,
+              "segments": {
+                "patrons": -3
+              }
+            },
+            "suite": "cri_c11_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c11_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "La contagion",
+    "text": "La faillite s'est propagée. Deux banques moyennes vacillent, les entreprises n'obtiennent plus de crédit, des PME ne peuvent plus payer leurs salariés. Les épargnants vident leurs comptes partout dans le pays. La panique est désormais plus dangereuse que la banque elle-même.",
+    "choices": [
+      {
+        "label": "Garantir tous les dépôts bancaires sans limite",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton annonce stoppe la panique en quelques heures. Le risque, colossal, est désormais porté par l'État.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 5,
+              "segments": {
+                "retraites": 6
+              },
+              "pays": {
+                "dette": 6,
+                "moral": 4
+              }
+            },
+            "suite": "cri_c11_3"
+          }
+        ]
+      },
+      {
+        "label": "Fermer les banques trois jours et limiter les retraits",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Guichets fermés, distributeurs plafonnés. La panique est stoppée nette, la colère aussi forte que la peur. Des images de files devant des distributeurs vides font le tour du monde.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": -6,
+              "mobilisation": 8,
+              "influenceMondiale": -3,
+              "pays": {
+                "croissance": -0.3,
+                "moral": -5
+              }
+            },
+            "suite": "cri_c11_3"
+          }
+        ]
+      },
+      {
+        "label": "Faire prêter directement l'État aux PME",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une banque publique d'urgence prête aux entreprises en difficulté. Les faillites en chaîne sont évitées, au prix d'une administration débordée.",
+            "effects": {
+              "stress": 6
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "patrons": 5
+              },
+              "pays": {
+                "dette": 4,
+                "chomage": -0.3
+              }
+            },
+            "suite": "cri_c11_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c11_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Plus jamais ça ?",
+    "text": "La tempête financière est passée. Il reste une récession à affronter et une question à trancher : comment empêcher qu'une banque puisse à nouveau prendre le pays en otage ? Le lobby bancaire est déjà dans les couloirs {du_parlement}.",
+    "choices": [
+      {
+        "label": "Séparer les banques de dépôt et les banques d'affaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'argent des épargnants ne pourra plus servir à spéculer. Bilan : le lobby bancaire perd sa bataille, les banques promettent de délocaliser une partie de leurs activités, et l'épargne est protégée.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 5,
+              "segments": {
+                "patrons": -6,
+                "jeunes": 3
+              },
+              "pays": {
+                "croissance": -0.2,
+                "securite": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Créer une taxe sur les transactions financières",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Chaque transaction rapportera un peu à l'État. Bilan : les recettes financent la reprise, les opérateurs jurent que les capitaux partiront, et une partie part effectivement.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 4,
+              "segments": {
+                "patrons": -4
+              },
+              "pays": {
+                "dette": -3,
+                "croissance": -0.1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Lancer un plan de relance pour sortir de la récession",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Chantiers, aides à l'embauche, soutien à la consommation. Bilan : la croissance repart, le chômage recule, et la réforme bancaire attendra des jours meilleurs.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": 3,
+              "segments": {
+                "patrons": 3
+              },
+              "pays": {
+                "dette": 5,
+                "croissance": 0.6,
+                "chomage": -0.4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Ne rien changer pour ne pas effrayer les marchés",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les marchés te remercient. Bilan : les banques reprennent leurs habitudes, et chacun sait que la prochaine crise trouvera la même porte ouverte.",
+            "effects": {
+              "stress": -1
+            },
+            "pol": {
+              "popularite": -5,
+              "segments": {
+                "patrons": 5,
+                "jeunes": -4
+              },
+              "pays": {
+                "croissance": 0.2,
+                "moral": -3
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c12_1",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 3,
+    "unique": true,
+    "title": "Les otages",
+    "text": "Sept ressortissants {du_pays}, des humanitaires et des ingénieurs, ont été enlevés {au_pays_cible} par un groupe armé. Une vidéo les montre à genoux, épuisés. Le groupe réclame une rançon et la libération de prisonniers. Les autorités {du_pays_cible} affirment maîtriser la situation, ce que personne ne croit. Les familles sont reçues ce soir.",
+    "choices": [
+      {
+        "label": "Ouvrir un canal de négociation discret par des intermédiaires",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Des intermédiaires locaux prennent contact avec les ravisseurs. Officiellement, l'État « ne négocie pas ». Officieusement, il écoute.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 1,
+              "relationCible": 2
+            },
+            "suite": "cri_c12_2a"
+          }
+        ]
+      },
+      {
+        "label": "Exiger des autorités {du_pays_cible} une coopération totale",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Ton ambassadeur porte un message ferme : pleine coopération ou conséquences. La réponse est polie, lente et ambiguë.",
+            "effects": {
+              "stress": 8
+            },
+            "pol": {
+              "popularite": 2,
+              "tension": 5,
+              "relationCible": -6
+            },
+            "suite": "cri_c12_2b"
+          }
+        ]
+      },
+      {
+        "label": "Préparer une opération des forces spéciales",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les forces spéciales sont prépositionnées dans la région. Les satellites cherchent les otages. Tout dépendra de la qualité du renseignement et du feu vert local.",
+            "effects": {
+              "stress": 9
+            },
+            "pol": {
+              "popularite": 3,
+              "tension": 6,
+              "relationCible": -4,
+              "pays": {
+                "dette": 1
+              }
+            },
+            "suite": "cri_c12_2b"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cri_c12_2a",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le prix d'une vie",
+    "text": "Les intermédiaires reviennent avec une offre : une forte somme et la libération d'un prisonnier condamné pour des faits de violence, en échange des sept otages. Payer, c'est ramener les tiens et financer le groupe. Refuser, c'est peut-être les condamner. Les familles ne dorment plus.",
+    "choices": [
+      {
+        "label": "Accepter l'échange",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'accord est conclu dans le plus grand secret. Les otages sont libérés trois jours plus tard, amaigris mais vivants. Le groupe, lui, est plus riche.",
+            "effects": {
+              "stress": 6,
+              "happiness": 4
+            },
+            "pol": {
+              "popularite": 6,
+              "casseroles": 3,
+              "influenceMondiale": -3,
+              "pays": {
+                "securite": -3,
+                "moral": 6
+              }
+            },
+            "suite": "cri_c12_3"
+          }
+        ]
+      },
+      {
+        "label": "Refuser et gagner du temps en exigeant des preuves de vie",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "Les semaines passent. Les ravisseurs libèrent deux otages en signe de bonne foi, puis cessent de répondre pour les autres.",
+            "effects": {
+              "stress": 9,
+              "happiness": -3
+            },
+            "pol": {
+              "popularite": -2,
+              "pays": {
+                "moral": -2
+              }
+            },
+            "suite": "cri_c12_3"
+          },
+          {
+            "chance": 1,
+            "text": "Les ravisseurs perdent patience et diffusent une nouvelle vidéo. L'un des otages, malade, est mort en captivité.",
+            "effects": {
+              "stress": 10,
+              "happiness": -6
+            },
+            "pol": {
+              "popularite": -7,
+              "pays": {
+                "moral": -6
+              }
+            },
+            "suite": "cri_c12_3"
+          }
+        ]
+      },
+      {
+        "label": "Payer la rançon, mais refuser la libération du prisonnier",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Après d'âpres tractations, les ravisseurs acceptent l'argent seul. Six otages reviennent. Le septième, considéré comme « plus précieux », reste retenu.",
+            "effects": {
+              "stress": 8,
+              "happiness": -2
+            },
+            "pol": {
+              "popularite": 2,
+              "casseroles": 2,
+              "pays": {
+                "moral": 1
+              }
+            },
+            "suite": "cri_c12_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c12_2b",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le feu vert",
+    "text": "Les otages ont été localisés dans une zone isolée. Les autorités {du_pays_cible} refusent toute opération étrangère sur leur sol, mais proposent une intervention de leurs propres forces, réputées brutales. Les forces spéciales attendent tes ordres.",
+    "choices": [
+      {
+        "label": "Lancer l'opération sans leur accord",
+        "outcomes": [
+          {
+            "chance": 2,
+            "text": "L'opération réussit : six otages sont libérés, un soldat est tué. Les autorités {du_pays_cible} dénoncent une violation de leur souveraineté.",
+            "effects": {
+              "stress": 10,
+              "happiness": 2
+            },
+            "pol": {
+              "popularite": 7,
+              "tension": 12,
+              "influenceMondiale": 2,
+              "relationCible": -15,
+              "pays": {
+                "moral": 6
+              }
+            },
+            "suite": "cri_c12_3"
+          },
+          {
+            "chance": 1,
+            "text": "L'opération tourne mal : deux otages et un soldat sont tués dans l'assaut. La crise diplomatique s'ajoute au deuil.",
+            "effects": {
+              "stress": 12,
+              "happiness": -6
+            },
+            "pol": {
+              "popularite": -8,
+              "tension": 14,
+              "relationCible": -15,
+              "pays": {
+                "moral": -6
+              }
+            },
+            "suite": "cri_c12_3"
+          }
+        ]
+      },
+      {
+        "label": "Accepter l'intervention des forces locales",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "L'assaut des forces locales est rapide et violent. Cinq otages sont sauvés, deux meurent dans les échanges de tirs. Les familles veulent savoir pourquoi tu as délégué.",
+            "effects": {
+              "stress": 10,
+              "happiness": -4
+            },
+            "pol": {
+              "popularite": -3,
+              "tension": -3,
+              "relationCible": 5,
+              "pays": {
+                "moral": -3
+              }
+            },
+            "suite": "cri_c12_3"
+          }
+        ]
+      },
+      {
+        "label": "Négocier une opération conjointe, au prix de concessions diplomatiques",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu acceptes de lever certaines sanctions en échange d'une opération commune. Tous les otages sont libérés. Une partie de ta majorité trouve le prix bien élevé.",
+            "effects": {
+              "stress": 9,
+              "happiness": 3
+            },
+            "pol": {
+              "popularite": 5,
+              "majorite": -2,
+              "tension": -4,
+              "relationCible": 8,
+              "relationAllie": -4,
+              "pays": {
+                "moral": 5
+              }
+            },
+            "suite": "cri_c12_3"
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  },
+  {
+    "id": "cri_c12_3",
+    "kind": "crise",
+    "postes": [
+      "president",
+      "premierMinistre",
+      "ministre"
+    ],
+    "ministere": null,
+    "weight": 1,
+    "unique": false,
+    "title": "Le jour d'après",
+    "text": "L'avion officiel s'est posé. Il y a eu des embrassades, et peut-être aussi des cercueils. Maintenant, il faut décider de la suite : la relation avec {pays_cible}, la protection des ressortissants à l'étranger, et le récit que tu feras de ces semaines au pays.",
+    "choices": [
+      {
+        "label": "Rappeler l'ambassadeur et geler la coopération avec {pays_cible}",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "La relation entre dans une période glaciale. Bilan : la fermeté plaît à l'opinion, les entreprises installées là-bas s'inquiètent, et la tension internationale monte d'un cran.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 3,
+              "tension": 6,
+              "influenceMondiale": 1,
+              "relationCible": -12,
+              "pays": {
+                "croissance": -0.1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Renouer le dialogue pour éviter que la crise ne s'envenime",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Tu reçois l'ambassadeur {du_pays_cible} pour tourner la page. Bilan : les relations se détendent, mais une partie de l'opinion juge l'oubli bien rapide.",
+            "effects": {
+              "stress": -3
+            },
+            "pol": {
+              "popularite": -2,
+              "tension": -6,
+              "relationCible": 8
+            }
+          }
+        ]
+      },
+      {
+        "label": "Interdire les déplacements dans les zones dangereuses, ONG comprises",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Les humanitaires dénoncent une mesure qui les empêche d'aider ceux qui en ont le plus besoin. Bilan : moins de ressortissants exposés, moins de présence là où elle comptait.",
+            "effects": {
+              "stress": -2
+            },
+            "pol": {
+              "popularite": 1,
+              "influenceMondiale": -3,
+              "pays": {
+                "securite": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "label": "Rendre hommage aux otages et à ceux qui les ont ramenés, sobrement",
+        "outcomes": [
+          {
+            "chance": 1,
+            "text": "Une cérémonie sans triomphalisme, où les noms des disparus, s'il y en a, sont lus. Bilan : le pays se retrouve un moment, et la diplomatie reprend son cours habituel.",
+            "effects": {
+              "stress": -4,
+              "happiness": 2
+            },
+            "pol": {
+              "popularite": 4,
+              "pays": {
+                "moral": 4
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "enchaine": true
+  }
+]
