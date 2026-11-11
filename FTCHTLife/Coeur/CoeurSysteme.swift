@@ -55,10 +55,18 @@ enum CoeurSysteme {
             if c.ecartsCaches > 0 { t.insert("ecart_secret") }
         }
         if let p = j.partenaireActuel {
-            if j.vieEtat.anneesEnsemble < 1 { t.insert("couple_recent") }
+            if j.vieEtat.anneesEnsemble < 1 { t.insert("couple_recent") } else { t.insert("couple_installe") }
+            if j.vieEtat.anneesEnsemble >= 10 { t.insert("couple_10ans") }
             let ageFemme = j.genre == .femme ? j.age : (p.genre == .femme ? p.age : 0)
+            let methode = contraceptionActive(j)
+            if p.genre != j.genre && (15...50).contains(ageFemme) { t.insert("contraception_possible") }
+            if let m = methode {
+                t.insert("contraception")
+                t.insert("contraception_\(m)")
+            }
             if p.genre != j.genre && (18...47).contains(ageFemme) && j.vieEtat.grossesse == nil {
-                t.insert("couple_fertile")
+                // Sous contraception : couple_fertile_protege (cartes « oubli », « préservatif qui craque »).
+                t.insert(methode == nil ? "couple_fertile" : "couple_fertile_protege")
             }
         }
         if c.tromperies >= 1 { t.insert("infidele") }
@@ -151,8 +159,49 @@ enum CoeurSysteme {
         if let d = fx.lienCible, let id = j.coeurEtat.cibleCarte, let i = j.relations.firstIndex(where: { $0.id == id }) {
             j.relations[i].lien = Stats.borne(j.relations[i].lien + d)
         }
+        if let m = fx.contraception { changerContraception(m, &j) }
+        if fx.rupture == true, enCouple {
+            // Le texte de la carte raconte déjà la rupture : on ne garde que le refus d'un couple protégé.
+            let l = VieRelations.rompre(&j, parLeJoueur: true)
+            if j.partenaireActuel != nil { lignes += l }
+        }
         j.stats.borner()
         return lignes
+    }
+
+    // MARK: - Contraception
+
+    static let methodesContraception = ["pilule", "sterilet", "implant", "preservatif"]
+
+    static func nomContraception(_ m: String) -> String {
+        switch m {
+        case "pilule": return "la pilule"
+        case "sterilet": return "le stérilet"
+        case "implant": return "l'implant"
+        case "preservatif": return "les préservatifs"
+        default: return "rien"
+        }
+    }
+
+    /// Méthode en cours pour le couple actuel (nil si aucune, ou si c'était celle d'une ex).
+    static func contraceptionActive(_ j: Joueur) -> String? {
+        let c = j.coeurEtat
+        guard let m = c.contraception else { return nil }
+        if let de = c.contraceptionDe { return j.partenaireActuel?.id == de ? m : nil }
+        return j.genre == .femme ? m : nil
+    }
+
+    static func changerContraception(_ m: String, _ j: inout Joueur) {
+        var c = j.coeurEtat
+        if m == "aucune" || !methodesContraception.contains(m) {
+            c.contraception = nil
+            c.contraceptionDe = nil
+        } else {
+            // La joueuse la prend elle-même ; sinon c'est la partenaire (préservatifs : le couple).
+            c.contraception = m
+            c.contraceptionDe = j.genre == .femme ? nil : j.partenaireActuel?.id
+        }
+        j.coeurEtat = c
     }
 
     /// Ajoute des soupçons au/à la partenaire ; à 100, tout est découvert.

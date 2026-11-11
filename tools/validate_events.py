@@ -75,12 +75,16 @@ TAGS |= {"liaison","liaison_longue","liaison_ultimatum","liaison_soupcon","liais
 SPECIAL |= {"coeur"}
 PH |= {"amant","amant_role","amant_il","enfant_cache"}
 TAGS |= {"couple_recent","couple_fertile"}
+# Actions de couple : contraception, couple installé (docs/COEUR.md).
+TAGS |= {"couple_installe","couple_10ans","contraception_possible","contraception","contraception_pilule","contraception_sterilet",
+         "contraception_implant","contraception_preservatif","couple_fertile_protege"}
 COEUR = {"ecart":bool,"liaison":str,"via":str,"intensite":int,"soupcon":int,"decouverte":bool,"grossesse":bool,"enfantCache":str,
          "partenaireInfidele":bool,"soupconJoueur":int,"trahisonDecouverte":bool,"pardon":bool,"crise":int,"therapie":int,
-         "relationLibre":bool,"scandale":int,"lienCible":int}
+         "relationLibre":bool,"scandale":int,"lienCible":int,"contraception":str,"rupture":bool}
 COEUR_VALEURS = {"liaison":{"debut","fin","officialiser","avouer"},
                  "via":{"travail","ex","soiree","ami","voyage","sport","voisin","pecho","reseaux","fan","autre"},
-                 "enfantCache":{"reconnaitre","pension","cacher","reveler"}}
+                 "enfantCache":{"reconnaitre","pension","cacher","reveler"},
+                 "contraception":{"pilule","sterilet","implant","preservatif","aucune"}}
 def check_coeur(v, where, errs):
     if not isinstance(v, dict): errs.append(f"{where}: coeur doit être un objet"); return
     for k, x in v.items():
